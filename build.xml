@@ -52,8 +52,19 @@
 	
 	<target name="clean" description="Remove build directory">
         <delete dir="${bin}"/>
-     </target>
-	 
+    </target>
+	
+	<target name="cleanAll" description="Remove jar files and build directory">
+		<delete dir="${bin}"/>
+        <delete>
+			<fileset dir="${distMet}" includes="**/*.jar"/>
+			<fileset dir="${distPre}" includes="**/*.jar"/>
+			<fileset dir="${distPost}" includes="**/*.jar"/>
+			<fileset dir="${distTest}" includes="**/*.jar"/>
+			<fileset dir="${distGraph}" includes="**/*.jar"/>
+		</delete>
+    </target>
+  
 	<target name="run" depends="jar-methods" description="Run keel GUI">
         
         <copy todir="${bin}">
@@ -917,6 +928,18 @@
 		  <fileset dir="${bin}" includes="org/core/**/*.class
 		  keel/Dataset/**/*.class
 		  keel/Algorithms/PSO_Learning/*.class"/>
+		</jar>
+		
+		<jar 
+			jarfile="${distMet}/MPLCS.jar" 
+			manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/MPLCS/Manifest">
+			<fileset dir="${bin}" 
+				includes="keel/Algorithms/Genetic_Rule_Learning/MPLCS/**/*.class"/>
+			<fileset dir="${bin}" includes="org/core/**/*.class
+			keel/Dataset/**/*.class
+			keel/Algorithms/Genetic_Rule_Learning/MPLCS/Assistant/Globals/**/*.class
+			keel/Algorithms/Genetic_Rule_Learning/MPLCS/Assistant/Discretizers/**/*.class
+			keel/Algorithms/PSO_Learning/*.class"/>
 		</jar>
 
     <jar

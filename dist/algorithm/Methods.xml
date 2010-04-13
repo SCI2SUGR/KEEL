@@ -2918,6 +2918,30 @@
     <multioutput>No</multioutput>
   </output>
 </method>
+ <method>
+  <name>Clas-MPLCS</name>
+  <family>Rule Learning</family>
+  <jar_file>MPLCS.jar</jar_file>
+  <problem_type>classification</problem_type>
+  <input>
+    <continuous>Yes</continuous>
+    <integer>Yes</integer>
+    <nominal>Yes</nominal>
+    <missing>Yes</missing>
+    <imprecise>No</imprecise>
+    <multiclass>Yes</multiclass>
+    <multioutput>No</multioutput>
+  </input>
+  <output>
+    <continuous>Yes</continuous>
+    <integer>Yes</integer>
+    <nominal>Yes</nominal>
+    <missing>Yes</missing>
+    <imprecise>No</imprecise>
+    <multiclass>Yes</multiclass>
+    <multioutput>No</multioutput>
+  </output>
+</method>
   <method>
     <name>Clas-PUBLIC</name>
     <family>Decision Trees</family>
