@@ -1,0 +1,115 @@
+<method>
+
+	<name>Multilayer perceptron for classification problems, Conjugate Gradient based training</name>
+
+	<reference>
+
+	<ref>F. Moller. A scaled conjugate gradient algorithm for fast supervised learning. Neural Networks, 6 (1990) 525-533.</ref>
+<ref>B. Widrow and M.A. Lehr. 30 years of Adaptive Neural Networks: Peceptron, Madaline, and Backpropagation, Proceedings of the IEEE, 78:9 (1990) 1415-1442</ref>
+
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification algorithm based on Neural Networks</type>
+
+		<objective>Use a multilayer Perceptron to classify a dataset of examples with minimal error</objective>
+
+		<howWork>This class of networks consists of multiple layers of computational units, usually interconnected in a feed-forward way. Each neuron in one layer has directed connections to the neurons of the subsequent layer. In many applications the units of these networks apply a sigmoid function as an activation function.
+
+We use back-propagation as learning technique. Here the output values are compared with the correct answer to compute the value of some predefined error-function. By various techniques the error is then fed back through the network. Using this information, the algorithm adjusts the weights of each connection in order to reduce the value of the error function by some small amount. After repeating this process for a sufficiently large number of training cycles the network will usually converge to some state where the error of the calculations is small. 
+
+To adjust weights we use a method for non-linear optimization that is called conjugate gradient. It works by iteratively computing search directions, along with a search line procedure that minimize the function, producing a new approximation to the (local) minimum of the objective function. An iteration is defined as a computation of a search direction and the following line search. An epoch is defined as the computation of the function value and gradient f(x) and g(x) = ?f(x). The function and gradients are always computed as a pair. An iteration might involve many epochs (because of the line search)
+</howWork>
+
+		<parameterSpec>  
+
+			<param>topologymlp: The topology of the neural network. It is an integer value which indicates the number of neurons in the hidden layer of the network. We use only one hidden layer in this method</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-MLPerceptronConj-Grad
+Dataset: iris
+Training set: iris -2-10-1tra.dat
+Test set: iris -2-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: default.
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.0 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+1.0 Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9851851851851852 N/C=0.0 
+Global Classification Error + N/C:
+0.014814814814814815 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9851851851851852 
+Global N/C:
+0.0  
+
+
+We can also see the output and target classes for each case of the test set in Experiment\Results\Clas-MLPerceptronConj-Grad:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+</example>
+
+</method>

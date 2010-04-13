@@ -1,0 +1,156 @@
+<method>
+
+	<name>Weighted Fuzzy Classifier</name>
+
+	<reference>  
+<ref>T. Nakashima, G. Schaefer, Y. Yokota, H. Ishibuchi. A Weighted Fuzzy Classifier and its Application to 
+Image Processing Tasks. Fuzzy Sets and Systems 158 (2007) 284-294</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Rule Based Classification System</type>
+
+		<objective>To obtain a Fuzzy Rule Base that better suits the training data</objective>
+
+		<howWork>
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of Labels: the number of possible fuzzy values for each variable.</param>
+			<param>Cost for the majority classes: The way to apply weights for the examples. Can be "no weights", 
+			"1.0" to the minority class and "0.5" to the majority classes or "class proportional"</param>
+			<param>Apply learning of the rule weights: If we want to adjust the weights by an incremental learning approach</param>
+			<param>nu: learning rate for the incremental learning approach</param>
+			<param>epochs: number of epochs for the incremental learning approach</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-Fuzzy-Ishib-Weighted
+Dataset: pima
+Training set: 10fcv
+Test set: 10fcv
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-Fuzzy-Ishib-Weighted folder the classification results for the training and test sets:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.6883116883116883 N/C=0.0 
+Fold 1 : CORRECT=0.7435897435897436 N/C=0.0 
+Fold 2 : CORRECT=0.7763157894736842 N/C=0.0 
+Fold 3 : CORRECT=0.6753246753246753 N/C=0.0 
+Fold 4 : CORRECT=0.7532467532467533 N/C=0.0 
+Fold 5 : CORRECT=0.7631578947368421 N/C=0.0 
+Fold 6 : CORRECT=0.7792207792207793 N/C=0.0 
+Fold 7 : CORRECT=0.8157894736842105 N/C=0.0 
+Fold 8 : CORRECT=0.7012987012987013 N/C=0.0 
+Fold 9 : CORRECT=0.7272727272727273 N/C=0.0 
+Global Classification Error + N/C:
+0.25764717738401954 
+stddev Global Classification Error + N/C:
+0.042172024690593224 
+Correctly classified:
+0.7423528226159805 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.7959479015918958 N/C=0.0 
+Fold 1 : CORRECT=0.7797101449275362 N/C=0.0 
+Fold 2 : CORRECT=0.7789017341040463 N/C=0.0 
+Fold 3 : CORRECT=0.7916063675832128 N/C=0.0 
+Fold 4 : CORRECT=0.7800289435600579 N/C=0.0 
+Fold 5 : CORRECT=0.7658959537572254 N/C=0.0 
+Fold 6 : CORRECT=0.7800289435600579 N/C=0.0 
+Fold 7 : CORRECT=0.7789017341040463 N/C=0.0 
+Fold 8 : CORRECT=0.7756874095513748 N/C=0.0 
+Fold 9 : CORRECT=0.7814761215629522 N/C=0.0 
+Global Classification Error + N/C:
+0.21918147456975948 
+stddev Global Classification Error + N/C:
+0.007775236677459596 
+Correctly classified:
+0.7808185254302406 
+Global N/C:
+0.0 
+
+We can see also the Data Base and Rule Base generated in the files "result0e0.txt" and "result0e1.txt" 
+respectively in the folder experiment/results/Clas-Fuzzy-Ishib-Weighted/pima/:
+
+@Using Triangular Membership Functions as antecedent fuzzy sets
+@Number of Labels per variable: 3
+
+preg:
+ L_1: (-8.5,0.0,8.5)
+ L_2: (0.0,8.5,17.0)
+ L_3: (8.5,17.0,25.5)
+
+plas:
+ L_1: (-99.5,0.0,99.5)
+ L_2: (0.0,99.5,199.0)
+ L_3: (99.5,199.0,298.5)
+
+pres:
+ L_1: (-61.0,0.0,61.0)
+ L_2: (0.0,61.0,122.0)
+ L_3: (61.0,122.0,183.0)
+
+skin:
+ L_1: (-49.5,0.0,49.5)
+ L_2: (0.0,49.5,99.0)
+ L_3: (49.5,99.0,148.5)
+
+insu:
+ L_1: (-423.0,0.0,423.0)
+ L_2: (0.0,423.0,846.0)
+ L_3: (423.0,846.0,1269.0)
+
+mass:
+ L_1: (-33.55,0.0,33.55)
+ L_2: (0.0,33.55,67.1)
+ L_3: (33.55,67.1,100.64999999999999)
+
+pedi:
+ L_1: (-1.093,0.078,1.249)
+ L_2: (0.078,1.249,2.42)
+ L_3: (1.249,2.42,3.5909999999999997)
+
+age:
+ L_1: (-9.0,21.0,51.0)
+ L_2: (21.0,51.0,81.0)
+ L_3: (51.0,81.0,111.0)
+
+@Number of rules: 2850
+
+1: preg IS L_0 AND plas IS L_0 AND pres IS L_0 AND skin IS L_0 AND insu IS L_0 AND mass IS L_0 AND pedi IS L_0 AND age IS L_0: negative with Rule Weight: 0.9975317652744314
+2: preg IS L_0 AND plas IS L_0 AND pres IS L_0 AND skin IS L_0 AND insu IS L_0 AND mass IS L_0 AND pedi IS L_0 AND age IS L_1: negative with Rule Weight: 0.9912393488064557
+3: preg IS L_0 AND plas IS L_0 AND pres IS L_0 AND skin IS L_0 AND insu IS L_0 AND mass IS L_0 AND pedi IS L_0 AND age IS L_2: negative with Rule Weight: 1.0
+4: preg IS L_0 AND plas IS L_0 AND pres IS L_0 AND skin IS L_0 AND insu IS L_0 AND mass IS L_0 AND pedi IS L_1 AND age IS L_0: negative with Rule Weight: 0.9971115827878285
+5: preg IS L_0 AND plas IS L_0 AND pres IS L_0 AND skin IS L_0 AND insu IS L_0 AND mass IS L_0 AND pedi IS L_1 AND age IS L_1: negative with Rule Weight: 0.9938757419366696
+...
+17: preg IS L_0 AND plas IS L_0 AND pres IS L_0 AND skin IS L_0 AND insu IS L_0 AND mass IS L_2 AND pedi IS L_0 AND age IS L_0: positive with Rule Weight: 0.9473425248133995
+18: preg IS L_0 AND plas IS L_0 AND pres IS L_0 AND skin IS L_0 AND insu IS L_0 AND mass IS L_2 AND pedi IS L_0 AND age IS L_1: positive with Rule Weight: 0.9653267738947314
+19: preg IS L_0 AND plas IS L_0 AND pres IS L_0 AND skin IS L_0 AND insu IS L_0 AND mass IS L_2 AND pedi IS L_1 AND age IS L_0: positive with Rule Weight: 0.9698173024396531
+20: preg IS L_0 AND plas IS L_0 AND pres IS L_0 AND skin IS L_0 AND insu IS L_0 AND mass IS L_2 AND pedi IS L_1 AND age IS L_1: positive with Rule Weight: 0.9838227398961739
+...
+
+</example>
+
+</method>

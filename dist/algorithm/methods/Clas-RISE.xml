@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>RISE</name>
+  <nParameters>2</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+   <parameter>
+    <name>Q</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+   <parameter>
+    <name>S</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>30</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>Slipper</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>grow_pct</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.66</default>
+  </parameter>
+  <parameter>
+    <name>numBoosting</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>50</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+</algorithm_specification>

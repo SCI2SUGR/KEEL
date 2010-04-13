@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>Multinomial logistic regression model</name>
+  <nParameters>2</nParameters>
+  <seed>0</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Ridge</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>1e-8</default>
+  </parameter>
+  <parameter>
+    <name>MaxIter</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>-1</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>-1</default>
+  </parameter>
+ </algorithm_specification>

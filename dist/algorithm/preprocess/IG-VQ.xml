@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>Vector Quantization</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>iterations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>percentage_of_prototypes_generated</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>alpha_0</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>size_of_neighborhood_KNN</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>5</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+</algorithm_specification>

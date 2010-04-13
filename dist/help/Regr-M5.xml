@@ -1,0 +1,188 @@
+<method>
+
+	<name>M5</name>
+
+	<reference>  
+
+		<ref>J. R. Quinlan, Learning with Continuous Classes. In Proceedings of the 5th Australian Joint Conference on Artificial Intelligence, Singapore, 343-348, 1992.</ref>
+		<ref>I. Wang, I.H. Witten. Induction of model trees for predicting continuous classes. In: Poster papers of the 9th European Conference on Machine Learning, Prague (Czech Republic, 1997) 128-137.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Model Tree, Linear Regression and Regression Tree.</type>
+
+		<objective>Model trees combine a decision tree model with statistical linear regression. The technique is appropriate when relationships between the input attributes and the output attribute are not linear.</objective>
+
+		<howWork>CART analysis consists of four basic steps:
+	   M5 uses the following idea: split the parameter space into areas (subspaces) and build in each of them a linear regression model. In fact the resulting model can be seen as a modular model, or a committee machine, with the linear models being specialized on the particular subsets of the input space. The splitting in MT follows the idea of a decision tree, but instead of the class labels it has linear regression functions at the leaves, which can predict continuous numeric attributes. Model trees generalize the concepts of regression trees, which have constant values at their leaves.
+	   M5 implements three different models, namely: Linear Regression, Regression Trees, Model Trees. Linear Regression produces a function that models the output based on N different input attributes. Regression Trees and Model Trees are both similar in that they produce decision trees with numeric output for leaf nodes rather than categorical output. The two only differ in the exact nature of this output; Regression Trees produce an averaged numeric value for the ouput whereas Model Trees produce a linear equation equation at each leaf node.
+	   It is important to notice that M5 is limited to predicting numeric output.
+    </howWork>
+
+		<parameterSpec>  
+				
+				<param>type: l (Linear Regression), r (Regression Trees) and m (Model Trees). By default m.</param>
+				
+				<param>pruningFactor: How much to prune the tree. The higher the pruning factor, the more pruning that will occur. Integer, by default 2.</param>
+				
+				<param>unsmoothed: To use or not unsmoothed tree. Boolean, by default True.</param>
+				
+				<param>verbosity: Level of verbosity 0, 1 or 2. By default 0.</param>
+				
+				
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+	
+	<example>
+Problem type: Regression 
+Method: M5
+Dataset: 
+Training set: ele1-10-10tra.dat
+Test set: ele1-10-10tst.dat
+Test Show results: StatChekMO
+
+
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckMO folder the classification results for the test and training set:
+
+TEST RESULTS
+============
+Model = estimation_of_the_low_voltage_electrical_line_length_in_rural_towns 
+MSE of all folds:
+Fold 0 : 551609.917500385 
+Global MSE:
+551609.917500385 
+Global stdev:
+0.0 
+
+TRAIN RESULTS
+============
+Model = estimation_of_the_low_voltage_electrical_line_length_in_rural_towns 
+MSE of all folds:
+Fold 0 : 340813.5966768741 
+Global MSE:
+340813.5966768741 
+Global stdev:
+0.0
+
+We can see too the output and target classes for each case of the test set (result0.tst) in Experiment\Results\M5:
+
+@relation Estimation_of_the_Low_Voltage_Electrical_Line_Length_in_Rural_Towns
+@attribute inhabitants integer [1, 320]
+@attribute distance real [60.0, 1673.329956]
+@attribute length real [80.0, 7675.0]
+@data
+2774.2498 2891.0 
+472.868 375.0 
+872.7067 1357.0 
+2497.6238 3731.0 
+737.4888 668.0 
+713.045 723.0 
+2221.5537 2123.0 
+1952.4748 1663.0 
+192.7059 126.0 
+2132.114 2253.0 
+4565.6818 2702.0 
+842.6539 773.0 
+1298.6339 670.0 
+1771.6813 2797.0 
+531.0314 675.0 
+1127.0176 1296.0 
+1284.0912 1030.0 
+2193.2466 2857.0 
+1080.8961 915.0 
+717.7459 384.0 
+1804.5775 1789.0 
+820.8295 1023.0 
+1612.5437 1726.0 
+994.2931 817.0 
+1028.3135 1261.0 
+2178.4649 2289.0 
+847.5608 660.0 
+774.7953 742.0 
+2828.9688 4437.0 
+2483.4702 2087.0 
+1616.4832 1345.0 
+791.1855 445.0 
+2828.9688 3215.0 
+1880.9176 1936.0 
+2321.9966 4210.0 
+2050.435 2275.0 
+1444.4863 1868.0 
+2122.5905 2522.0 
+2386.2598 2686.0 
+1872.0223 1895.0 
+1831.2125 1660.0 
+1434.7318 1671.0 
+1465.6366 2608.0 
+2828.9688 3210.0 
+2828.9688 5401.0 
+1869.043 1724.0 
+2828.9688 4595.0 
+530.1796 616.0 
+4565.6818 3380.0 
+1007.6625 804.0
+
+And the model tree (result0e0.txt) in Experiment\Results\M5:
+
+@relation Estimation_of_the_Low_Voltage_Electrical_Line_Length_in_Rural_Towns
+@attribute inhabitants integer [1, 320]
+@attribute distance real [60.0, 1673.329956]
+@attribute length real [80.0, 7675.0]
+
+@Pruned training model tree:
+
+distance &lt;= 498  THEN LM1
+distance &gt;  498 
+    distance &lt;= 795  THEN LM2
+    distance &gt;  795 
+        inhabitants &lt;= 54.5  THEN LM3
+        inhabitants &gt;  54.5  THEN LM4
+		
+@Models at the leaves:
+@Unsmoothed linear models at the leaves of the pruned tree (simple):
+    LM1:  length = -259 + 10.4inhabitants + 3.11distance
+    LM2:  length = 397 + 12inhabitants + 2.13distance
+    LM3:  length = 2830
+    LM4:  length = 4570
+	
+@Number of Rules: 4
+
+@Error on training data:
+@Correlation coefficient                  0.8602
+@Mean absolute error                    394.2001
+@Root mean squared error                583.7924
+@Relative absolute error                 46.8904 %
+@Root relative squared error             51.0032 %
+
+@Error on test data:
+@Correlation coefficient                  0.8057
+@Mean absolute error                    463.7558
+@Root mean squared error                742.7045
+@Relative absolute error                 48.2138 %
+@Root relative squared error             60.4213 %
+
+@ElapsedTime: 0.11 seconds
+
+</example>
+
+</method>

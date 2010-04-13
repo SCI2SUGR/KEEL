@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>Improved KNN Condensation</name>
+  <nParameters>4</nParameters>
+  <seed>0</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Gamma rate with respect to the number of instances of the minority class</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Xi multiplicative factor</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.2</default>
+  </parameter>
+  <parameter>
+    <name>Xi exponential factor</name>
+    <type>real</type>
+    <domain>
+      <lowerB>-1</lowerB>
+      <upperB>0</upperB>
+    </domain>
+    <default>-0.5</default>
+  </parameter>
+  <parameter>
+    <name>Distance Function</name>
+    <type>list</type>
+    <domain>
+      <item>Euclidean</item>
+      <item>HVDM</item>
+    </domain>
+    <default>Euclidean</default>   
+  </parameter>
+</algorithm_specification>

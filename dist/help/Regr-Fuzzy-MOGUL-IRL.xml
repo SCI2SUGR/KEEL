@@ -1,0 +1,194 @@
+<method>
+
+    <name>MOGUL: Iterative Rule Learning of Descriptive Mamdani Rules</name>
+
+    <reference>
+
+        <ref>O. Cord&#xF3;n, F. Herrera, A three-stage evolutionary process for learning descriptive and approximate fuzzy logic controller knowledge bases from examples. International Journal of Approximate Reasoning 17:4 (1997) 369-407.</ref>
+        
+    </reference>
+
+    <generalDescription>
+
+        <type>Regression model by generation of fuzzy rule-based systems</type>
+
+        <objective>To obtain a Mamdani fuzzy rule-based system</objective>
+
+        <howWork>This method is based on a three-stage evolutionary process:
+		Step 1: An inductive algorithm that allows us to automatically generate a preliminary
+		        Mandani Fuzzy Rule Set for a concrete problem when a training data set representing
+			its behavior is available.
+			
+		Step 2: A simplification process that searches for the best rules in the Mamdani Fuzzy Rule Set
+		        obtained in the previous step, in order to achieve the lower mean square error (MSE). 
+			This simplification process is based on a binary-coded GA with fixed-length chromosomes.
+			
+		Step 3: A tuning process that adapts the Data Base (fuzzy partitions) of the Fuzzy Rule Set
+		        obtained after the simplification process.
+		        This genetic tuning process is based on a real coding GA so, the real-valued membership 
+                        function parameters used for each variable in each rule are encoded. The fitness function 
+                        is composed only of the mean square criterion.
+        </howWork>
+
+        <parameterSpec>
+    <param>Type of Niches</param>
+    <param>Omega parameter for the maching degree of the positive instances</param>
+    <param>K parameter for the percentage of allowed negative instances</param>
+    <param>Epsilon parameter for the minimun maching degree required to the KB</param>
+    <param>Type of Fitness Function</param>
+    <param>Number of Labels</param>
+    <param>Number of Iterations SELECTION</param>
+    <param>Population Size SELECTION</param>
+    <param>Tau parameter for the minimun maching degree required to the KB SELECTION</param>
+    <param>Rate of rules to estimate the niche radio SELECTION</param>
+    <param>Beta parameter for the Power Law SELECTION</param>
+    <param>Type of Fitness Function SELECTION</param>
+    <param>Cross Probability SELECTION</param>
+    <param>Mutation Probability SELECTION</param>
+    <param>Number of Iterations TUNING</param>
+    <param>Population Size TUNING</param>
+    <param>Parameter a TUNING</param>
+    <param>Parameter b TUNING</param>
+    <param>Cross Probability TUNING</param>
+    <param>Mutation Probability TUNING</param>
+        </parameterSpec>
+
+        <properties>
+            <continuous>Yes</continuous>
+            <discretized>Yes (only with numerical)</discretized>
+            <integer>Yes</integer>
+            <nominal>No</nominal>
+            <valueLess>Yes</valueLess>
+            <impreciseValue>No</impreciseValue>
+        </properties>
+
+    </generalDescription>
+
+    <example>Problem type: Regression
+        Method: Regr-Fuzzy-MOGUL-MamDescrip
+        Dataset: ele1
+        Parameters: default values
+
+
+        After the execution of RunKeel.jar we can see into the experiment\results\Regr-Fuzzy-MOGUL-MamDescrip the results. The file 'result0s0e0.txt' contains the Mandani fuzzy rule set and the approximation errors on training and test datasets after Step 1 (generation of rules):
+
+Number of rules: 25
+
+1.0 50.75 100.5
+60.0 463.332489 866.664978
+0.0 1918.75 3837.5
+
+1.0 50.75 100.5
+60.0 463.332489 866.664978
+0.0 1918.75 3837.5
+
+-48.75 1.0 50.75
+60.0 463.332489 866.664978
+0.0 1918.75 3837.5
+
+
+...
+
+
+50.75 100.5 150.25
+60.0 463.332489 866.664978
+0.0 1918.75 3837.5
+
+50.75 100.5 150.25
+463.332489 866.664978 1269.9974670000001
+1918.75 3837.5 5756.25
+
+
+MSEtra: 707773.5711156345 MSEtst: 497910.0149178999
+Minimun C_R: 0.0 MSE CV_R: 0.0
+
+
+	The file 'result0s0e1.txt' contains the considered initial fuzzy semantics:
+
+Initial Data Base: 
+
+  Variable 1:
+    Label 1: (-48.75,1.0,50.75)
+    Label 2: (1.0,50.75,100.5)
+    Label 3: (50.75,100.5,150.25)
+    Label 4: (100.5,150.25,200.0)
+    Label 5: (150.25,200.0,249.75)
+
+  Variable 2:
+    Label 1: (-343.332489,60.0,463.332489)
+    Label 2: (60.0,463.332489,866.664978)
+    Label 3: (463.332489,866.664978,1269.9974670000001)
+    Label 4: (866.664978,1269.9974670000001,1673.329956)
+    Label 5: (1269.9974670000001,1673.329956,2076.662445)
+
+  Variable 3:
+    Label 1: (-1918.75,0.0,1918.75)
+    Label 2: (0.0,1918.75,3837.5)
+    Label 3: (1918.75,3837.5,5756.25)
+    Label 4: (3837.5,5756.25,7675.0)
+    Label 5: (5756.25,7675.0,9593.75)
+
+    
+	The file 'result0s0e2.txt' contains the Mandani fuzzy rule set and the approximation errors on training and test datasets after Step 2 (simplification process):    
+	
+Number of rules: 12
+
+1.0 50.75 100.5
+60.0 463.332489 866.664978
+0.0 1918.75 3837.5
+
+1.0 50.75 100.5
+60.0 463.332489 866.664978
+0.0 1918.75 3837.5
+
+
+...
+
+
+-48.75 1.0 50.75
+463.332489 866.664978 1269.9974670000001
+0.0 1918.75 3837.5
+
+50.75 100.5 150.25
+463.332489 866.664978 1269.9974670000001
+1918.75 3837.5 5756.25
+
+
+
+Minimum of C_R: 0.0 Minimum covering degree: 0.0
+Average covering degree: 1.5146812083725636 MLE: 822.263007037108
+MSEtra: 1010711.0751304798 , MSEtst: 908328.6399622774
+
+
+	Finally, the file 'result0s0e3.txt' contains the Mandani fuzzy rule set and the approximation errors on training and test datasets after Step 3 (tuning process):    
+	
+Number of rules: 12
+
+0.9999908582153815 37.21121832390102 124.49434319061251
+251.9844682417671 629.840672252603 680.0009027002035
+-955.8906065185614 2851.91892099379 2878.3219889971597
+
+0.9999908582153815 37.21121832390102 124.49434319061251
+251.9844682417671 629.840672252603 680.0009027002035
+-955.8906065185614 2851.91892099379 2878.3219889971597
+
+
+...
+
+
+
+-36.41934848468785 13.297693679120353 55.950951288748726
+336.88045109770144 678.5227536040944 1414.715654366147
+-955.8906065185614 2851.91892099379 2878.3219889971597
+
+25.9480629784607 75.93562351286307 150.0004308146982
+336.88045109770144 678.5227536040944 1414.715654366147
+2125.556355382163 3246.2944384706657 6674.210950856792
+
+
+MSEtra: 455210.9427541043  MSEtst: 599616.7840073506
+Average covering degree: 1.2275134359312132 Minimum covering degree: 0.0	
+	
+    </example>
+
+</method>

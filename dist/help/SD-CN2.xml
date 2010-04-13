@@ -1,0 +1,109 @@
+<method>
+
+	<name>CN2 Algorithm for Subgroup Discovery</name>
+
+	<reference>  
+
+		<ref>N. Lavrac, B. Kavsek, P. Flach, L. Todorovski. Subgroup Discovery with CN2-SD. Journal of Machine Learning Research 5 (2004) 153-188.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by subgroup discovery.</type>
+
+		<objective>The goal of the CN2-SD algorithm is to find rules describing subsets of 
+		the population that are sufficiently large and statistically unsual. </objective>
+
+		<howWork>It works in an iterative fashion, each iteration searching form a 
+		complex that covers a large number of examples of a single class C and few of other classes. 
+		Having found a good complex, the algorithm removes those examples it covers form the training set 
+		and adds the rule &quot;if &lt;complex&gt; then predict C&quot; to the end of the rule list. 
+		This process iterates until no more satisfactory complexes can be found.
+
+The system searches for complexes by carrying out a pruned general-to-specific search. At each stage in the search, CN2SD retains a size-limited set or star S of &apos;best complexes so far&apos;. The system examines only specializations of this set, carrying out a beam search of the space of complexes. A complex is specialized by either adding a new conjunctive term or removing a disjunctive element in one of its selectors. Each complex can be specialized in several ways, and CN2SD generates and evaluates all such specializations. The star is trimmed after completion of this step by removing its lowest ranking elements as measured by an evaluation function (Weighted Relative Accuracy Measure [WRAcc]).
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Percentage_Examples_To_Cover: Is the percentage of examples we would like to cover. It can be the total examples (100%) which will make the algorithm slower and maybe we will get over-fitting, or another percentage (95% for example).</param>
+			<param>Star_Size: is the maximum size for the learning STAR. It is an int value that determines the maximum number of rules of the STAR when searching for the best rule in each step.</param>
+			<param>Use_Disjunct_Selectors: is a code to use selectors with disjunctive values or not. It is a list value to make the method more efficient (without using disjunctive selectors) or more effective, increasing the search space.</param>
+			<param>Nu_Value: is the variable that controls the multiplicative weight. It is unused if we do not elect mulpliticative weights (next parameter).</param>
+			<param>Use_multiplicative_weights: It refers to the type of weights used, that is, multiplicative or additive weights. It we select &quot;YES&quot; then the method will employ multiplicative weights, else additive weights will be used.</param>
+
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: SD-CN2
+Dataset: haberman
+Training set: haberman-10-1tra.dat
+Test set: haberman-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: 
+	Nu_Value = 0.5
+	Percentage_Examples_To_Cover = 0.95
+	Star_Size = 5
+	Use_multiplicative_weigths = YES
+	Use_Disjunt_Selectors = NO
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.7096774193548387 N/C=0.0 
+Global Classification Error + N/C:
+0.2903225806451613
+Correctly classified:
+0.7096774193548387 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\SD-CN2:
+
+
+Rule 1: IF  Positive &gt; 1.0 AND Age &gt; 43.0 AND Year &lt;&gt; 60.0 THEN class -&gt; positive     [ 0.5365853658536586 0.4634146341463415]
+Rule 2: IF  Positive &gt; 4.0 AND Age &lt;&gt; 37.0 AND Year &lt;&gt; 61.0 THEN class -&gt; positive     [ 0.5666666666666667 0.43333333333333335]
+Rule 3: IF  Age &gt; 40.0 AND Positive &gt; 0.0 AND Year &lt;&gt; 67.0 THEN class -&gt; positive     [ 0.4180327868852459 0.5819672131147541]
+Rule 4: IF  Year &lt;= 59.0 AND Age &gt; 41.0 AND Positive &lt;&gt; 1.0 THEN class -&gt; positive     [ 0.48717948717948717 0.5128205128205128]
+Rule 5: IF  Year &gt; 61.0 AND Age &lt;= 53.0 AND Positive &lt;&gt; 4.0 THEN class -&gt; positive     [ 0.3253012048192771 0.6746987951807228]
+Rule 6: IF  Age &lt;= 59.0 AND Year &lt;&gt; 59.0 AND Positive &lt;= 4.0 THEN class -&gt; negative     [ 0.13333333333333333 0.8666666666666667]
+Rule 7: IF  Year &lt;= 61.0 AND Age &lt;= 61.0 AND Positive &lt;= 16.0 THEN class -&gt; negative     [ 0.15384615384615385 0.8461538461538461]
+Rule 8: IF  Year &gt; 59.0 AND Positive &lt;&gt; 1.0 AND Age &lt;&gt; 41.0 THEN class -&gt; negative     [ 0.23204419889502761 0.7679558011049724]
+Rule 9: IF  Positive &gt; 0.0 AND Age &lt;= 52.0 AND Year &lt;= 68.0 THEN class -&gt; negative     [ 0.24691358024691357 0.7530864197530864]
+Rule 10: IF  Age &gt; 50.0 AND Year &lt;&gt; 65.0 AND Positive &lt;= 2.0 THEN class -&gt; negative     [ 0.12903225806451613 0.8709677419354839]
+
+####Average results for test data####
+Avg. Rule length: 10
+Avg. Number of attributes by rule: 3.0
+Avg. Coverage: 0.3064516129032258
+Avg. Support Completo: 0.967741935483871
+Avg. Significance: 1.301651846260631
+Avg. Unusualness: 0.0229065679041563
+
+Accuracy Training: 0.7418181818181818
+Accuracy Test: 0.7096774193548387;
+  Time; 3
+</example>
+
+</method>

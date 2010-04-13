@@ -1,0 +1,83 @@
+<method>
+
+	<name>CHC Adaptative Search for Instance Selection</name>
+
+	<reference>  
+
+		<ref>J.R. Cano, F. Herrera, M. Lozano. Using evolutionary algorithms as instance selection for data reduction in KDD: An experimental study. IEEE Transaction on Evolutionary Computation 7:6 (2003) 561-575</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Instance Selection. Evolutionary</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>CHC evolutionary algorithm applied to the Instance Selection Problem. During each generation the CHC develops the following steps.
+		1. It uses a parent population of size N to generate an intermediate population of N individuals, which are randomly paired and used to generate N potential offsprings.
+		2. Then, a survival competition is held where the best N chromosomes from
+		the parent and offspring populations are selected to form the next generation.
+		CHC also implements a form of heterogeneous recombination using HUX,
+		a special recombination operator. HUX exchanges half of the bits that differ
+		between parents, where the bit position to be exchanged is randomly determined. CHC also employs a method of incest prevention. Before applying HUX
+		to two parents, the Hamming distance between them is measured. Only those
+		parents who differ from each other by some number of bits (mating threshold)
+		are mated. The initial threshold is set at L=4, where L is the length od the
+		chromosomes. If no offspring are inserted into the new population then the
+		threshold is reduced by one.
+		No mutation is applied during the recombination phase. Instead, when the
+		population converges or the search stops making progress, the population is
+		reinitialized to introduce new diversity to the search. The chromosome representing the best solution found over the course of the search is used as a template to reseed the population. Reseeding of the population is accomplished by randomly changing 35 percent of the bits in the template chromosome to form each of the other N - 1 new chromosomes in the population. The search is the resumed.</howWork>
+
+		<parameterSpec>  
+			<param>Population Size: Integer value. Number of chromosome belonging to the population.</param>
+			<param>Number of Evaluations: Integer value. Maximal number of evaluations allowed in the run of the algorithm</param>
+			<param>Alfa Equilibrate Factor: Real value. Trade-off factor that controls the balaning between reduction and accuracy</param>
+			<param>Percentage of Change in Restart: Real value. Quantity of gens changed in a restart operation</param>
+			<param>0 to 1 Probalitity in Recombination: Real value. Probability associated to a restriction in changes from 0 to 1 in recombination operator</param>
+			<param>0 to 1 Probability in Diverge: Real value. Probabiliy associated to a restriction in changes from 0 to 1 in diverge operation</param>
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to classify an example using the K-Nearest Neighbor Rule</param>
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>			</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: IS-CHC
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\IS-CHC:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+5.4,3.4,1.7,0.2,Iris-setosa
+5.9,3.0,4.2,1.5,Iris-versicolor
+6.1,2.8,4.0,1.3,Iris-versicolor
+5.8,2.7,5.1,1.9,Iris-virginica
+5.7,2.5,5.0,2.0,Iris-virginica
+</example>
+
+</method>

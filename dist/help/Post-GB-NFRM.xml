@@ -1,0 +1,106 @@
+<method>
+
+	<name>Genetic-Based New Fuzzy Reasoning Model</name>
+
+	<reference>  
+
+		<ref>D. Park, A. Kandel. Genetic-Based New Fuzzy Reasoning Model with Application to Fuzzy Control, 
+		IEEE Transactions on Systems, Man and Cybernetics 24:1 (1994) 39-47</ref>
+		
+	</reference>
+
+	<generalDescription>  
+
+		<type>Genetic Fuzzy Rule Learning</type>
+
+		<objective>A Genetic Algorithm is used to supplement the fuzzy 
+		reasoning model, by means of a fuzzy relation matrix, and to tune 
+		the membership functions of the input variables.</objective>
+
+		<howWork>Given a Mamdani Fuzzy Rule Set obtained by a Fuzzy Rule Base System this method searches
+		for the best set of parameters for the fuzzy reasoning model in order to achieve the lower 
+		mean square error (MSE). It also includes a tuning of the fuzzy membership functions for the
+		input variables.
+			The NFRM algorithm can be described as follows.
+				1) Determine the linguistic descriptions of the input 
+				variable X and the output variable Y, and their membership functions.
+				2) For a given real-valued input X = x , determine the
+					membership degree corresponding to each linguistic description
+					of X by means of the fuzzy membership functions.
+				3) Determine the fuzzy relation matrix R between the
+					linguistic descriptions of X and Y. These relations are
+					based on the expert&apos;s knowledge which is given in terms
+				of linguistic descriptions.
+				4) Calculate the vector y in terms of the vector x and the fuzzy 
+				relation matrix R: y = x o R.
+			5 ) Using the moment method, transform the vector
+			y to the corresponding real number y in the universe of the variable Y.
+			
+		The genetic process is a simple genetic algorithm, with tournament selection, one-point crossover,
+		mutation that changes the value either a 90% or a 110% of the current value, and a generational
+		approach with elitism.
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>Population Size: Is the number of chromosomes.</param>
+			<param>Number Generations: Is the number of generations of the GA</param>
+			<param>Cross Probability: Is the probability to apply the one-point crossover.  It is a float value between 0 and 1.</param>
+			<param>Mutation Probability: Is the probability to apply the mutation. It is a float value between 0 and 1.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes (only with numerical)</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression
+        Method: Post-GB-NFRM
+        Dataset: ele1
+        Training set: daily-electric-energy-10-1tra.dat
+        Test set: daily-electric-energy-10-1tst.dat
+        Test Show results: Vis-Regr-Check
+        Parameters: default values
+
+        After the execution of RunKeel.jar we can see into the experiment\results\Vis-Regr-Check folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.267066729407457 
+...
+Global MSE:
+0.2562332521719627 
+Global stdev:
+0.054408132425051395 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.21341088549869108 
+...
+Global MSE:
+0.2284557180225128 
+Global stdev:
+0.024018105205013452
+
+		We can also see the output data base and rule base in Experiment\Results\Post-GB-NFRM\Regr-Fuzzy-WM.
+
+</example>
+
+</method>

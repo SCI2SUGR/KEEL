@@ -1,0 +1,113 @@
+<method>
+
+	<name>RIONA</name>
+
+	<reference>  
+
+		<ref>Grzegorz Gora, Arkadiusz Wojna, RIONA: A new classification system combining rule induction and instance-based learning, Fundamenta Informaticae XX (2002) 1-22.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model combining rule induction and instance-based learning.</type>
+
+		<objective>The algorithm tries to show that is enough to consider a small neighbourhood to achieve classification accuracy comparable to an algorithm considering the whole learning set, combining this k-nearest neighbours method and a rule-based algorithm.</objective>
+
+		<howWork>
+			
+			In Riona, decision is predicted not on the basis of the whole support set of all rules matching a test case, but the support set restricted to a neighbourhood of a test case.
+			
+			It simulates classification based on the most frequent decision in the support set of minimal rules covering a test object. The main idea is that the support set is limited to a neighbourhood of a test example.
+			The neigbourhood consist of a number of objects closest to a test example.
+			It is based on the assumption that examples that are closer in the instance space have the same decision and training examples far from a test object are less relevant for classification than closer examples.
+			The crucial empirical observation is that taking a neighbour much smaller than the whole training set preserves or even improves accuracy.
+			The size of the optimal neighbourhood is automatically induced during the learning phase.
+			
+			It is an algorithm with lazy rule induction approach.It does not require calculation of the decision rule set before classification of new objects. It generates only decision rules relevant for a new test object and then classifies it like algorithms generating rules in advance.
+			
+			For every decision class the algorithm RIONA computes not the whole support set of the minimal rules covering a test object, but restricted to the neighbourhood in the following way. For every training object that belongs to the neighbourhood the algorithm constructs the local rule based on the considered example and the test example. Then, it checks whether the local rule is consistent with the remaining training examples from the neighbourhood. If the local rule is consistent then the training example that was used to construct the rule is added to the support set of the appropiate decision. Finally, the algorithm selects the decision with the support set of the highest cardinality.
+			
+
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Seed: it is the seed to initialize the random method.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: RIONA
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: 
+	Seed: 461718121
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.933333333 N/C=0.0 
+Global Classification Error + N/C:
+0.0
+Correctly classified:
+0.933333333333333 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-Riona:
+
+@relation  Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+
+Accuracy Training: 0.9555555555555556
+Accuracy Test: 0.9333333333333333333
+
+</example>
+
+</method>

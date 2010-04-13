@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Minimal Consistent Set</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Distance Function</name>
+    <type>list</type>
+    <domain>
+      <item>Euclidean</item>
+      <item>HVDM</item>
+    </domain>
+    <default>Euclidean</default>   
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>C45Rules</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.25</default>
+  </parameter>
+  <parameter>
+    <name>itemsetsPerLeaf</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>threshold</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+</algorithm_specification>

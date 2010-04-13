@@ -1,0 +1,114 @@
+<html>
+
+<head>
+
+<title>KEEL format</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div align="center"> 
+
+  <p><b>KEEL DATA FILE FORMAT</b></p>
+
+</div>
+
+  <p>The KEEL data files must have the following format:</p>
+
+
+<ul>
+	<li><b>Name of the data set (mandatory):</b> <span lang="EN-GB">The relation name is defined as the first line in 
+	the file. The format is:</span></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>@relation</b> &lt;name&gt; </li></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span lang="EN-GB">where &lt;name&gt; is a string. The string must be 
+	quoted if the name includes spaces.</span><br></p>
+<ul>
+	<li><b>Attributes (mandatory):</b> <span lang="EN-GB">Attribute declarations take the form of an ordered 
+	sequence of <i>@attribute</i> statements. Each attribute in the data set has 
+	its own <i>@attribute</i> statement which uniquely defines the name of that 
+	attribute and it's data type. The order the attributes are declared 
+	indicates the column position in the data section of the file. For example, 
+	if an attribute is the third one declared then Keel expects that all that 
+	attributes values will be found in the third comma delimited column. </span>
+	</li>
+</ul>
+<p style="text-indent:18.0pt"><span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The format for the
+<i>@attribute</i> statement is: </span></p>
+<blockquote>
+	<ul>
+		<li>@attribute &lt;name&gt; integer [{min,max}]</li>
+		<li>@attribute &lt;name&gt; real [{min,max}]</li>
+		<li>@attribute &lt;name&gt; {&lt;value 1&gt;, &lt;value 2&gt;, ..., &lt;value N&gt;}</li>
+	</ul>
+</blockquote>
+<p>
+  </li><br></p>
+<ul>
+	<li><b>Input/Output (optional):</b> <span lang="en-gb">The type of attribute 
+	with respect to it is a input attribute or output attribute can be 
+	especified with these</span><span lang="EN-GB"> statements.</span></li>
+</ul>
+<blockquote>
+	<ul>
+		<li>@inputs &lt;name1&gt;, &lt;name2&gt;, ..., &lt;nameN&gt;</li>
+		<li>@outputs &lt;name1&gt;, &lt;name2&gt;, ..., &lt;nameM&gt;<br></li>
+	</ul>
+</blockquote>
+<p>
+  </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where &lt;name&gt; is a string. The 
+string must be an attribute defined with statements before.</p>
+<p><br></p>
+<ul>
+	<li><b>Data (Mandatory):</b> The order of the columns must be the same than the order in which the attributes were defined.
+	<span lang="EN-GB">The <b>@data</b> declaration 
+	is a single line denoting the start of the data segment in the file. The 
+	format is:</span></li>
+</ul>
+<blockquote>
+	<blockquote>
+		<blockquote>
+			<p>@data<br>x11, x12, ..., x1N<br>x21, x22, ..., x2N<br>..., ..., ..., ...<br>xM1, xM2, ..., xMN<br>
+  </li><br></p>
+		</blockquote>
+	</blockquote>
+</blockquote>
+<ul>
+	<li>We will use the string '&lt;null&gt;' if we need to denote a null value. Lastly, the identifiers can have white spaces and 12 characters at the most.  </li>
+	<br></li>
+	<li>
+	<p style="margin-top: 0; margin-bottom: 0">The files will be saved, by default, with the '.dat' extension.  </li>
+	<br>
+</ul>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid KEEL file is:</span></b></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<div align="center">
+	<table border="1" width="294" height="243">
+		<tr>
+			<td height="237" width="284">
+			<p style="margin-top: 0; margin-bottom: 0"><i>@relation paint </i>
+			</p>
+			<p style="margin-top: 0; margin-bottom: 0"><i><br>@attribute colour {yellow, white, black}
+			<br>@attribute amount integer [1, 10]<br>@attribute density real [0.1, 2.5]</i></p>
+			<p style="margin-top: 0; margin-bottom: 0"><i><br>@inputs colour, amount<br>@outputs density</i></p>
+			<p style="margin-top: 0; margin-bottom: 0"><i><br>@data<br>yellow, 4, 1.2
+			<br>black, 1, 2.1<br>yellow, 2, 0.8<br>white, 8, 0.9 
+  </li></i></td>
+		</tr>
+	</table>
+</div>
+
+
+</body>
+
+</html>

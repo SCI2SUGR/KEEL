@@ -1,0 +1,18 @@
+<project name="DatasetImpl" default="CompileDataset" basedir="../..">
+
+	<property name="dir-javacc" 		location="resources/javacc.jar"/>
+	<property name="src-DatasetParser"	location="keel/Dataset/Parser"/>
+	<property name="src-Dataset"		location="keel/Dataset"/>
+	<property name="build-dataset"		location="build"/>
+	
+	<mkdir dir="${build-dataset}"/>
+	
+	<target name="CompileDataset">
+		<java fork="true" classname="javacc" classpath="${dir-javacc}">
+			<arg value="-OUTPUT_DIRECTORY=${src-Dataset}"/>
+			<arg value="${src-DatasetParser}/parser.jj"/>
+		</java>
+
+		<javac srcdir="${src-Dataset}" destdir="${build-dataset}"/>
+	</target>
+</project>

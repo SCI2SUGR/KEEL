@@ -1,0 +1,101 @@
+<method>
+
+	<name>Adaptive KNN Classifier</name>
+
+	<reference>
+			<ref>J. Wang, P. Neskovic, L. N. Cooper.
+			Improving nearest neighbor rule with a simple adaptative distance measure
+			Pattern Recognition Letters 28 (2007) 207-213 
+			</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type>Lazy Learning based classifier</type>
+
+		<objective> 
+		To perform a classification task by means of a k-NN classifier, where instances are weighted by the distance to its nearest enemy.
+		</objective>
+
+		<howWork>Similar to the KNN algorithm, distances are weighted by the distance from the training instance to its nearest enemy. Thus,
+		the instances which are near to the decission boundaries become more relevant.	
+		</howWork>
+
+		<parameterSpec>  
+  			<param> K: number of neighbors</param>
+  			<param> Distance type: Euclidean or Manhattan</param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+
+		Problem type: Classification 
+		Method: Clas-KNNAdaptive
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat to iris-10-10tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-KNNAdaptive
+		folder the classification results for the test set:
+
+		TEST RESULTS
+		============
+		Classifier= iris 
+		Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 1 : CORRECT=0.8666666666666667 N/C=0.0 
+		Fold 2 : CORRECT=1.0 N/C=0.0 
+		Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 7 : CORRECT=1.0 N/C=0.0 
+		Fold 8 : CORRECT=1.0 N/C=0.0 
+		Fold 9 : CORRECT=1.0 N/C=0.0 
+		Global Classification Error + N/C:
+		0.04666666666666666 
+		stddev Global Classification Error + N/C:
+		0.042687494916218996 
+		Correctly classified:
+		0.9533333333333334 
+		Global N/C:
+		0.0 
+
+		TRAIN RESULTS
+		============
+		Classifier= iris 
+		Summary of data, Classifiers: iris 
+		Fold 0 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 1 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 2 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 3 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 4 : CORRECT=0.9777777777777777 N/C=0.0 
+		Fold 5 : CORRECT=0.9777777777777777 N/C=0.0 
+		Fold 6 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 7 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 8 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 9 : CORRECT=0.9703703703703703 N/C=0.0 
+		Global Classification Error + N/C:
+		0.028148148148148144 
+		stddev Global Classification Error + N/C:
+		0.0029629629629630205 
+		Correctly classified:
+		0.9718518518518519 
+		Global N/C:
+		0.0 
+				
+		
+	</example>
+		
+</method>

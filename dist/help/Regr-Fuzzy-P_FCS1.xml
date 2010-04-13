@@ -1,0 +1,81 @@
+<method>
+
+    <name>(P-FCS1) Pittsburgh Fuzzy Classifier System #1</name>
+
+    <reference>
+
+        <ref>B. Carse, T.C. Fogarty, A. Munro. Evolving fuzzy rule based controllers using genetic algorithms. Fuzzy Sets and Systems 80:3 (1996) 273-293.</ref>
+        
+    </reference>
+
+    <generalDescription>
+
+        <type>Regression model by generation of fuzzy rule-based systems</type>
+
+        <objective>To obtain a Mamdani fuzzy rule-based system</objective>
+
+        <howWork>Carse et al. propose an approach to genetics-based machine learning of fuzzy
+        controllers, called a Pittsburgh Fuzzy Classifier System #1 (P-FCS1). It is based on the
+        Pittsburgh model of learning classifier systems and employs variable length rule-sets
+        and simultaneously evolves fuzzy set membership functions and relations. A special
+        crossover operator which respects the functional linkage between fuzzy rules with
+        overlapping input fuzzy set membership functions is also introduced.
+        </howWork>
+
+        <parameterSpec>
+    <param>Population Size</param>
+    <param>Initial number of rules per individual</param>
+    <param>Number of Generations</param>
+    <param>Crossover Probability</param>
+    <param>Mutation Probability</param>       
+        </parameterSpec>
+        
+      <properties>
+            <continuous>Yes</continuous>
+            <discretized>Yes (only with numerical)</discretized>
+            <integer>Yes</integer>
+            <nominal>No</nominal>
+            <valueLess>Yes</valueLess>
+            <impreciseValue>No</impreciseValue>
+        </properties>
+
+    </generalDescription>
+
+    <example>Problem type: Regression
+        Method: Regr-Fuzzy-P_FCS1
+        Dataset: ele1
+        Parameters: default values
+
+
+        After the execution of RunKeel.jar we can see into the experiment\results\Regr-Fuzzy-P_FCS1 the results. The file 'result0s0e0.txt' contains the Mandani fuzzy rule set and the approximation errors on training and test datasets:
+
+Rule Base with 37 rules
+
+Rule 1: IF X(1) is Gaussian(128.12766112995513, 47.47909621278422) and X(2) is Gaussian(1609.0128944591356, 409.26177285958977) THEN Y is Gaussian(2083.8012966289652, 2037.6908537968832)
+
+Rule 2: IF X(1) is Gaussian(122.93178850829875, 17.525408835510078) and X(2) is Gaussian(1642.01894865482, 443.6841740902664) THEN Y is Gaussian(4157.215954367355, 2250.301380958311)
+
+Rule 3: IF X(1) is Gaussian(184.05710262154628, 55.817624333713965) and X(2) is Gaussian(1628.744845748798, 50.616733209167904) THEN Y is Gaussian(4153.715907685392, 665.7717756168438)
+
+Rule 4: IF X(1) is Gaussian(195.18518595122387, 31.374312859725574) and X(2) is Gaussian(321.47036487719083, 249.4951871533519) THEN Y is Gaussian(6449.009334756762, 1260.6594519682283)
+
+Rule 5: IF X(1) is Gaussian(199.47465077984955, 57.98850252198529) and X(2) is Gaussian(132.35275901190016, 164.8617274403836) THEN Y is Gaussian(1598.3957941395686, 1019.3059014974273)
+
+Rule 6: IF X(1) is Gaussian(22.526824530336732, 30.738195830668484) and X(2) is Gaussian(373.3090441894903, 225.89519425181734) THEN Y is Gaussian(161.37264326479578, 740.8946394940978)
+
+
+. . .
+
+
+Rule 35: IF X(1) is Gaussian(67.57965407301198, 0.9887305264103493) and X(2) is Gaussian(729.837246926937, 405.0603458332448) THEN Y is Gaussian(476.4354229617015, 2293.8887178271675)
+
+Rule 36: IF X(1) is Gaussian(167.09922546662838, 13.115306705832484) and X(2) is Gaussian(1014.5030839631147, 185.5125643536757) THEN Y is Gaussian(1833.3049329331388, 1448.3784765554835)
+
+Rule 37: IF X(1) is Gaussian(164.31992786222136, 52.896770990097494) and X(2) is Gaussian(949.8804125796702, 84.04363174628472) THEN Y is Gaussian(7089.354292919011, 1630.0974916910861)
+
+MSE Training:	497520.02613610704%
+MSE Test:	533584.3523547355%
+	
+    </example>
+
+</method>

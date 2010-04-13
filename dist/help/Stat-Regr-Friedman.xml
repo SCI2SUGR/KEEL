@@ -1,0 +1,145 @@
+<method>
+
+	<name>Friedman Test and Post-Hoc Procedures</name>
+
+	<reference>  
+
+<ref>J. Zar, Biostatistical Analysis, Prentice Hall, Upper Saddle River, New Jersey, 1999.</ref>
+<ref>D. Sheskin, Handbook of parametric and nonparametric statistical procedures. Chapman and Hall/CRC, 2003. </ref>
+<ref>J. Demsar, Statistical comparisons of classifiers over multiple data sets. Journal of Machine Learning Research 7 (2006) 1-30</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Application of non-parametric tests.</type>
+
+		<objective>Execution of the non-parametric Friedman test and post-hoc tests for comparison of the global performance of several regression methods.</objective>
+
+		<howWork>
+Friedman test is a non-parametric equivalent of the test of repeated-measures ANOVA. It computes the ranking of the observed results for algorithm 
+for each data-set, assigning to the best of them the ranking 1, and to the worst the ranking k. We may apply different post-hoc test in order to detect
+significant differences between the algorithms. Specifically we may choose among Iman and Davenport test, Bonferroni-Dunn test, Holm test, Hochbergh test
+and Hommel test.
+</howWork>
+
+		<parameterSpec>  
+		<param>Apply-Iman-Davenport: It can takes the value YES or NO if the user desires to apply the Iman and Davenport test</param>
+		<param>Apply-Nemenyi: It can takes the value YES or NO if the user desires to apply the Nemenyi test</param>
+		<param>Apply-Bonferroni-Dunn: It can takes the value YES or NO if the user desires to apply the Bonferroni-Dunn test</param>
+		<param>Apply-Holm: It can takes the value YES or NO if the user desires to apply the Holm test</param>
+		<param>Apply-Hochberg: It can takes the value YES or NO if the user desires to apply the Hochberg test</param>
+		<param>Apply-Hommel: It can takes the value YES or NO if the user desires to apply the Hommel test</param>
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Methods to compare: Regr-MLPerceptronConj-Grad vs Regr-LinearLMS vs Regr-Fuzzy-WM
+Datasets: daily-electric-energy, Ele1, friedman, machine-cpu
+Default Parameters (all the post-hoc tests are applied)
+Type of partitions: k-fold, k=10
+
+After the execution of RunKeel.jar we can see into the ./results/Stat-Regr-Friedman/TSTRegr-MLPerceptronConj-GradvsRegr-LinearLMSvsRegr-Fuzzy-WM folder the results0s0.stat file:
+
+Friedman Test, Regression
+Regression error in each foldfold:
+Algorithm = Regr-MLPerceptronConj-Grad
+Fold 0 : 0.13358883028152593 
+Fold 1 : 0.17175051992536386 
+Fold 2 : 0.15476569415752764 
+Fold 3 : 0.13145726997608692 
+Fold 4 : 0.2515275751755297 
+Fold 5 : 0.1584639781278857 
+Fold 6 : 0.112863992835126 
+Fold 7 : 0.13594607912315596 
+Fold 8 : 0.19115595561944598 
+Fold 9 : 0.17337698297007884 
+Mean Value: 0.16148968781917267
+Algorithm = Regr-MLPerceptronConj-GradRegr-LinearLMS
+Fold 0 : 0.13276224210953563 
+Fold 1 : 0.18120381885508868 
+Fold 2 : 0.182370405802494 
+Fold 3 : 0.16173335412244483 
+Fold 4 : 0.22907270759939843 
+Fold 5 : 0.1523434941533297 
+Fold 6 : 0.11773693421451363 
+Fold 7 : 0.14663031088893072 
+Fold 8 : 0.221371320386903 
+Fold 9 : 0.17624151293476897 
+Mean Value: 0.17014661010674076
+Algorithm = Regr-MLPerceptronConj-GradRegr-LinearLMSRegr-Fuzzy-WM
+Fold 0 : 0.25075271468396515 
+Fold 1 : 0.2818377224596541 
+Fold 2 : 0.302755945842815 
+Fold 3 : 0.13328313725389387 
+Fold 4 : 0.27549722538369426 
+Fold 5 : 0.17672332649230282 
+Fold 6 : 0.1941539042725541 
+Fold 7 : 0.16673710401211578 
+Fold 8 : 0.19748037076941652 
+Fold 9 : 0.19001148599258205 
+Mean Value: 0.21692329371629934
+
+and a LaTeX output file "output.tex" with the following information:
+
+\documentclass[a4paper,12pt]{article}
+\usepackage [english] {babel}
+\usepackage [latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyfoot[C]{Page \thepage}
+\fancyhead[L]{Friedman Test and Post-Hoc Tests.}
+\textwidth=17cm \topmargin=-0.5cm \oddsidemargin=-0.5cm \textheight=23cm
+\title{Output Tables for the Friedman Test and Post-Hoc Tests.}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Tables.}
+
+\begin{table}[!htp]
+\centering
+\caption{Average Rankings of the algorithms
+}\begin{tabular}{c|c}
+Algorithm&amp;Ranking\\
+\hline
+Regr-MLPerceptronConj-Grad&amp;3.0\\
+Regr-MLPerceptronConj-GradRegr-LinearLMS&amp;1.75\\
+Regr-MLPerceptronConj-GradRegr-LinearLMSRegr-Fuzzy-WM&amp;1.25\\
+\end{tabular}
+\end{table}
+
+Friedman statistic considering reduction performance (distributed according to chi-square with 2 degrees of freedom: 6.5.P-value computed by Friedman Test: 0.03877420783904861.\newline
+
+Iman and Davenport statistic considering reduction performance (distributed according to F-distribution with 2 and 6 degrees of freedom: 13.0. P-value computed by Iman and Daveport Test: 0.006591796875.\newline
+
+Critical Difference (CD) value for Bonferroni-Dunn test considering $p=0.10$: 1.3859292911256331.
+
+Critical Difference (CD) value for Bonferroni-Dunn test considering $p=0.05$: 1.5853334034202398.
+
+Critical Difference (CD) value for Bonferroni-Dunn test considering $p=0.01$: 1.984848734790639.
+
+\begin{table}[!htp]
+\centering\scriptsize
+\caption{Adjusted $p$-values}
+\begin{tabular}{ccccccc}
+i&amp;algorithm&amp;unadjusted $p$&amp;$p_{Bonf}$&amp;$p_{Holm}$&amp;$p_{Hoch}$&amp;$p_{Homm}$\\
+\hline1&amp;Regr-MLPerceptronConj-Grad&amp;0.013328328780817513&amp;0.026656657561635027&amp;0.026656657561635027&amp;0.026656657561635027&amp;0.026656657561635027\\2&amp;Regr-MLPerceptronConj-GradRegr-LinearLMS&amp;0.47950012218695354&amp;0.9590002443739071&amp;0.47950012218695354&amp;0.47950012218695354&amp;0.47950012218695354\\\hline
+\end{tabular}
+\end{table}
+\begin{table}[!htp]
+\centering\scriptsize
+\caption{Adjusted $p$-values}
+\begin{tabular}{ccccc}
+i&amp;hypothesis&amp;unadjusted $p$&amp;$p_{Neme}$\\
+\hline1&amp;Regr-MLPerceptronConj-Grad vs .Regr-MLPerceptronConj-GradRegr-LinearLMSRegr-Fuzzy-WM&amp;0.013328328780817513&amp;0.03998498634245254\\2&amp;Regr-MLPerceptronConj-Grad vs .Regr-MLPerceptronConj-GradRegr-LinearLMS&amp;0.07709987174354177&amp;0.2312996152306253\\3&amp;Regr-MLPerceptronConj-GradRegr-LinearLMS vs .Regr-MLPerceptronConj-GradRegr-LinearLMSRegr-Fuzzy-WM&amp;0.47950012218695354&amp;1.4385003665608607\\\hline
+\end{tabular}
+\end{table}
+\end{document}
+
+</example>
+
+</method>

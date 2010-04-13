@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Uniform Width Discretizer</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>numIntervals</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+</algorithm_specification>

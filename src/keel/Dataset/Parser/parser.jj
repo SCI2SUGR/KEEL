@@ -1,0 +1,517 @@
+
+/****************************************************************************************/
+/** KEEL Data parser. 
+    - By now, the parser is not case-sensitive. This has to be discussed. 
+*/
+/****************************************************************************************/
+
+
+
+options {
+	// The lookahead is set to 1. 
+	LOOKAHEAD=1;
+	// The language is not case-sensitive
+	IGNORE_CASE=true;
+	// An action has to be made for each token
+	COMMON_TOKEN_ACTION=true;
+}
+
+//// SOURCE CODE OF PARSER 
+
+PARSER_BEGIN(DataParser)
+package keel.Dataset;
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+
+public class DataParser {
+	
+    /**
+     * Static variable of type dataParser 
+     */
+    static DataParser dataParser= null;
+
+
+    /**
+     * String where the relation name will be stored
+     */
+    static String relationName = null; 
+
+    /**
+     * This flag indicates if is a train run
+     */
+    static boolean isTrain = false;
+
+    /**
+     * In this vector, all the input attribute names are stored 
+     */
+    static Vector inputAttrNames = new Vector();
+
+    /**
+     * In this vector, all the output attribute names are stored 
+     */
+    static Vector outputAttrNames = new Vector();
+    static Vector inputTestAttrNames = new Vector();
+    static Vector outputTestAttrNames = new Vector();
+    static boolean inputsDef = false;
+    static boolean outputsDef = false;
+
+/** 
+ * It instances a new instance of the class
+ */
+  DataParser() {}
+
+	
+/**
+  * It's the parser main method. It opens the file specified and parses it.
+  * The name of the file to be parsed has to be received as a parameter. 
+  * @param fileName is the name of the file to be parsed.
+  * @param isTrain indicates if it's a train run.
+  */
+  public static void headerParse(String fileName, boolean _isTrain) throws HeaderFormatException{
+    try {
+        FileInputStream f = null;
+        isTrain = _isTrain;
+        inputTestAttrNames  = new Vector();
+        outputTestAttrNames = new Vector();
+        inputsDef = false;
+        outputsDef = false;
+        try {
+            f = new FileInputStream(fileName);
+        }catch (FileNotFoundException e){
+            System.err.println ("The data input file '"+fileName+"' doesn't exist.");
+            System.exit(0);	
+        }
+
+        if (dataParser == null){
+            dataParser = new DataParser(f);	
+        }
+
+        // Call the initial symbol
+        dataParser.ReInit(f);  // We have to reInit the parser.
+
+        dataParser.ppal();
+
+        // Closing the input file
+        f.close();
+    }catch(ParseException e){
+        Token t = getToken(1);
+        throw new HeaderFormatException (("SINTACTICAL ERROR. It has been found the token \""+t.image+"\" at line "+t.beginLine+" column "+t.beginColumn+"."));		
+    } catch(Exception e) {
+        // If any exception is thrown, it's printed
+        e.printStackTrace(System.err);
+    }
+  }//end main
+
+} //end DataParser Class
+
+PARSER_END(DataParser)
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// TOKEN DEFINITIONS //////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/** Characters we want ignore */
+SKIP: { " " 
+		| "\t" 
+		| "\b" 
+		| "\n"
+ 		| "\r" 
+		| <COM: "%" (~["\n","\r"])* ("\n" | "\r" | "\r\n")> 
+		| <COM2: "@relation" (~["\n","\r"])* ("\n" | "\r" | "\r\n")>
+}
+
+/** Reserverd Words */
+TOKEN: {
+	<RELATION: "@relation">
+	| <ATTRIBUTE : "@attribute">
+	| <INPUTS: "@inputs">
+	| <OUTPUTS: "@outputs">	
+	| <DATA: "@data">
+	| <INTEG: "integer">
+	| <REAL: "real">
+}
+
+/** Symbols */
+TOKEN: {
+
+        < EXP: "e" (["+","-"])? (["0"-"9"])+ >
+        | <COPENED: "[">
+	| <CCLOSED: "]">
+	| <CLOPENED: "{">
+	| <CLCLOSED: "}">
+	| <COLON: ",">
+	| <SCOLON: ";">
+	| <NULL: "?"  | "<null>">
+	
+	
+}
+
+
+/** Constants */
+TOKEN: {
+	<INT_CONST: ( ("-"(<DIGIT>)+)|(<DIGIT>)+)>
+	| <BOOLEAN_CONST: "true" | "false">
+	
+    | < REAL_CONST:
+    	("-")? (["0"-"9"])+ "." (["0"-"9"])* (<EXP>)? (["f","F","d","D"])?
+        | "." (["0"-"9"])+ (<EXP>)? (["f","F","d","D"])?
+        | (["0"-"9"])+ <EXP> (["f","F","d","D"])?
+        | (["0"-"9"])+ (<EXP>)? ["f","F","d","D"]
+      >
+
+	| <CAD_CONST: "\"" ([" "-"z"]|<LETTER>|"_"|"\\")* "\""> 
+
+        //| <REAL_CONST: ( (("-"(<DIGIT>)+) | (<DIGIT>)+ )   (("." (<DIGIT>)+ ) |  (<DIGIT>)*) ) >
+}
+
+
+
+/** Identifier */
+TOKEN: {
+	<IDENT: (<LETTER>|<DIGIT>)(<LETTER>|<DIGIT>)* | ("'" (<LETTER>|<DIGIT>|" ")*"'")>
+	| <DIGIT: ["0"-"9"]>
+	| <LETTER: (["A"-"Z", "a"-"z",".","\\","/","-","_","'",":","?","¿","¡","!",">","<","=","~"])> 
+//	| <LETTER: (~["\n"," ","{","}","[","]",","] | ["A"-"Z", "a"-"z",".","\\","/","-","_","'",":","?","¿","¡","!",">","<","=","~"])> 
+//	| <ANYIDENT: (<ANYLETTER>)+>
+//	| <LETTER: ["A"-"Z", "a"-"z",".","\\","/","-","_","'",":","?","�","�","!",">","<","="]>  	
+// <ANYTHING: ((~["\n"])* ("\n"))>
+}
+
+
+
+
+
+/** If is not any, there is an error*/
+TOKEN: {
+	<ERR_LEX: ~[]> 
+}
+
+
+
+/** This function will be called for each token in the entry.*/
+TOKEN_MGR_DECLS: {
+	
+  public static void CommonTokenAction(Token t) {
+	
+        /*if (t.kind == ATTRIBUTE || t.kind == INPUTS || t.kind == OUTPUTS ||
+            t.kind == DATA)
+            System.out.println();
+        System.out.print(t.image+" ");
+        */
+
+	if (DataParser.tokenImage[t.kind].toString().equals("<ERR_LEX>")){
+		System.out.println("ERR_LEX:  Character ["+t.image+"] unknown in line "+t.beginLine+" and column "+t.beginColumn);
+        }
+
+  }//end CommonTokenAction
+}
+
+//// PRODUCTIONS OF OUR GRAMAR
+	
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// INITIAL PRODUCTION OF THE GRAMMAR /////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+  void ppal() : {Token t=null;} {
+	
+    //try{
+        //Reading the relation name (OBLIGATORY).
+        //readRelation()   //The relation is skipped to avoid any problem with its name
+        //Reading the attributes definitions (OBLIGATORY, at least 2 attributes).
+        readAttributes(0)
+        //Reading the @inputs line (OPTIONAL). If not specified, all the attributes that are not outputs, 
+        //will be considered inputs.
+        readInputs()
+        //Reading the @outputs line (OPTIONAL). If not specified, the last attribute will be considered 
+        //the output attribute.
+        readOutputs()
+        <DATA>
+        {processInputsAndOutputs();}
+    /*}catch(ParseException e){
+        t = getToken(1);
+        throw new HeaderFormatException (("SINTACTICAL ERROR. It has found the token \""+t.image+"\" at line "+t.beginLine+" column "+t.beginColumn+"."));
+    }*/	
+  }//end ppal
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  void readRelation() : {} {
+    
+	<RELATION> <IDENT> 	{DataParser.relationName = getToken(0).image.trim();
+                         Attributes.setRelationName (DataParser.relationName);
+                         }
+				identList()
+  }//end readRelation
+
+ 
+
+  void identList() : {} {
+	<IDENT>
+	|
+	{}
+  }//end identList
+ 
+  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void readAttributes (int attCount):{}{
+    <ATTRIBUTE> <IDENT>	{
+                         //A new attribute is instanced
+                         Attribute at = new Attribute();
+                         at.setName(getToken(0).image.trim());
+                        } 
+     attributeType(at) 	{if (isTrain){ 
+                            Attributes.addAttribute(at);
+                        }
+                        else if (!Attributes.getAttribute(attCount).equals(at)){
+                            Token t = getToken(0);
+                            ErrorInfo er = new ErrorInfo(ErrorInfo.AttributeNotDefinedInTrain, 0, t.beginLine, attCount, 0, isTrain, 
+                                                        ("Attribute "+at.getName()+" read in test has not been defined in train DB"));
+                            InstanceSet.errorLogger.setError(er);
+                        }
+                        attCount++;
+                        } 
+                    readAttributes(attCount)
+    | {}
+  } //end readAttributes
+
+
+
+  void attributeType(Attribute at) : {Token t;}{
+	<INTEG>	{//The type of the attribute is set to INTEGER
+	          at.setType(Attribute.INTEGER);
+		}
+		integerBoundaries(at)
+	|
+	
+	<REAL>	{//The type of the attribute is set to REAL
+		 at.setType(Attribute.REAL);
+		}
+	 	realBoundaries(at)
+	|
+	
+	<CLOPENED> {//The type of the attribute is set to NOMINAL
+                    at.setType(Attribute.NOMINAL);
+		   }
+		identNum() {at.addNominalValue(getToken(0).image.trim());
+                            //And setting fixedBounds to true
+                            at.setFixedBounds(true);
+                            }
+			nominalList(at)
+  	<CLCLOSED>	 
+
+	| //This case is when the attribute is nominal, but it has no value list specified.
+	{} {at.setType(Attribute.NOMINAL);}	
+  }//end attributeType
+  
+  
+  
+  void integerBoundaries(Attribute at) : {int min, max;}{
+	<COPENED> 
+		<INT_CONST> {min = Integer.parseInt(getToken(0).image.trim());}
+		<COLON> 
+		<INT_CONST> {max = Integer.parseInt(getToken(0).image.trim());
+                             //setBounds set "fixedBound" to true.
+                             at.setBounds(min,max);
+                            }
+	<CCLOSED>	
+	|
+	{} 
+  }
+ 
+ 
+  void realBoundaries(Attribute at) : {double min, max;}{
+	<COPENED> 
+                realConst() {min = Double.parseDouble(getToken(0).image.trim());}
+		<COLON> 
+		realConst() {max = Double.parseDouble(getToken(0).image.trim());
+                             //setBounds set "fixedBound" to true.
+                             at.setBounds(min,max);
+                            }
+	<CCLOSED> 
+	
+	|
+	{} 
+  }
+  
+  
+  void nominalList (Attribute att) :{}{
+	<COLON> 
+		identNum() {att.addNominalValue(getToken(0).image.trim());}
+			nominalList(att)
+
+	| {}
+  } //end nominalList
+  
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void realConst() :{}{
+  	<REAL_CONST> exponent() 
+        | <INT_CONST>	
+  } //end realConst
+
+
+  void exponent() :{}{
+    <EXP> <INT_CONST>
+    | {}
+  }
+ 
+
+  void identNum () :{}{
+  	<IDENT> | <INT_CONST> | <REAL_CONST>
+  } //end identNum
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void readInputs() :{String attName=null;}{
+	<INPUTS> <IDENT>{attName = getToken(0).image.trim();
+                         inputsDef = true;
+                         if (isTrain){
+                            if (Attributes.getAttribute(attName) == null){
+                                Token t = getToken(0);
+                                ErrorInfo er = new ErrorInfo(ErrorInfo.InputTrainAttributeNotDefined, 0, t.beginLine, 0, 0, isTrain,
+                                        ("The attribute "+attName+" defined in @inputs has not been defined previously. It will be ignored."));
+                                InstanceSet.errorLogger.setError(er);
+                            }
+                            else inputAttrNames.add(attName);
+			}
+                        else{
+                            if (!inputAttrNames.contains(attName)){
+                                Token t = getToken(0);
+                                ErrorInfo er = new ErrorInfo(ErrorInfo.InputTestAttributeNotDefined, 0, t.beginLine, 0, 0, isTrain,
+                                        ("The attribute "+attName+" defined in @inputs in test, it has not been defined in @inputs in its train dataset. It will be ignored"));
+                                InstanceSet.errorLogger.setError(er);
+                            }
+                            inputTestAttrNames.add(attName);
+                        }
+                        }
+		inputs_list()	
+	|
+	{}
+  }
+  
+  void inputs_list () :{String attName=null;}{
+	<COLON> <IDENT>{attName = getToken(0).image.trim();
+                        if (isTrain){
+                            if (Attributes.getAttribute(attName) == null){
+                                Token t = getToken(0);
+                                ErrorInfo er = new ErrorInfo(ErrorInfo.InputTrainAttributeNotDefined, 0, t.beginLine, 0, 0, isTrain,
+                                        ("The attribute "+attName+" defined in @inputs has not been defined previously. It will be ignored."));
+                                InstanceSet.errorLogger.setError(er);
+                            }
+                            else inputAttrNames.add(attName);
+                        }
+                        else{
+                             if (!inputAttrNames.contains(attName)){
+                                Token t = getToken(0);
+                                ErrorInfo er = new ErrorInfo(ErrorInfo.InputTestAttributeNotDefined, 0, t.beginLine, 0, 0, isTrain,
+                                        ("The attribute "+attName+" defined in @inputs in test, it has not been defined in @inputs in its train dataset. It will be ignored."));
+                                InstanceSet.errorLogger.setError(er);
+                            }
+                            inputTestAttrNames.add(attName);
+                        }
+                        }
+  		inputs_list()
+  	|
+	{}	
+  }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void readOutputs () :{String attName=null;}{
+	<OUTPUTS> <IDENT>{attName = getToken(0).image.trim();
+                          outputsDef = true;
+                          if (isTrain){
+                            if (Attributes.getAttribute(attName) == null){
+                                Token t = getToken(0);
+                                ErrorInfo er = new ErrorInfo(ErrorInfo.OutputTrainAttributeNotDefined, 0, t.beginLine, 0, 0, isTrain,
+                                        ("The attribute "+attName+" defined in @outputs has not been defined previously. It will be ignored."));
+                                InstanceSet.errorLogger.setError(er);
+                            }
+                            else outputAttrNames.add(attName);
+                          }
+                          else{
+                            if (!outputAttrNames.contains(attName)){
+                                Token t = getToken(0);
+                                ErrorInfo er = new ErrorInfo(ErrorInfo.OutputTestAttributeNotDefined, 0, t.beginLine, 0, 0, isTrain,
+                                        ("The attribute "+attName+" defined in @outputs in test, it has not been defined in @outputs in its train dataset. It will be ignored."));
+                                InstanceSet.errorLogger.setError(er);                     
+                            }  
+                            outputTestAttrNames.add(attName);
+                          }
+                          }
+		outputs_list()
+	|
+	{}
+  }
+  
+  void outputs_list () :{String attName=null;}{
+  	<COLON> <IDENT> {attName = getToken(0).image.trim();
+                         if (isTrain){
+                            if (Attributes.getAttribute(attName) == null){
+                                Token t = getToken(0);
+                                ErrorInfo er = new ErrorInfo(ErrorInfo.OutputTrainAttributeNotDefined, 0, t.beginLine, 0, 0, isTrain,
+                                        ("The attribute "+attName+" defined in @outputs has not been defined previously. It will be ignored."));
+                                InstanceSet.errorLogger.setError(er);
+                            }
+                            else outputAttrNames.add(attName);
+                         }
+                         else{
+                            if (!outputAttrNames.contains(attName)){
+                                Token t = getToken(0);
+                                ErrorInfo er = new ErrorInfo(ErrorInfo.OutputTestAttributeNotDefined, 0, t.beginLine, 0, 0, isTrain,
+                                        ("The attribute "+attName+" defined in @outputs in test, it has not been defined in @outputs in its train dataset. It will be ignored."));
+                                InstanceSet.errorLogger.setError(er);                     
+                            } 
+                            outputTestAttrNames.add(attName);
+                         }
+			}
+  		outputs_list()
+  	|
+	{}	
+  }
+  
+
+/**
+ * It processes the inputs and the outputs. It's necessary because there's no 
+ * obligation of defining this fields.
+ */
+  JAVACODE void processInputsAndOutputs(){
+  //Afteer parsing the header, the inputs and the outputs are prepared.
+    if (DataParser.isTrain){
+        if (!inputsDef && !outputsDef){
+            outputAttrNames.add(Attributes.getAttribute(Attributes.getNumAttributes()-1).getName());
+            inputAttrNames = Attributes.getAttributesExcept(outputAttrNames);
+        }else if (!inputsDef && outputsDef){
+            inputAttrNames = Attributes.getAttributesExcept(outputAttrNames);
+        }else if (inputsDef && !outputsDef){
+            outputAttrNames = Attributes.getAttributesExcept(inputAttrNames);
+        }
+
+        Attributes.setOutputInputAttributes(inputAttrNames, outputAttrNames);
+    }
+    else{ //Checking is inputs and outputs (if defined), respect the train definition
+        if (inputsDef){
+            if (!Attributes.areAllDefinedAsInputs(inputTestAttrNames)){
+                ErrorInfo er = new ErrorInfo(ErrorInfo.InputsInTestNotEquals, 0, 0, 0, 0, isTrain,
+                                        ("The @input attributes definition of test run doesn't match with the train definition"));
+                InstanceSet.errorLogger.setError(er);   
+                
+            }
+        }
+        if (outputsDef){
+            if (!Attributes.areAllDefinedAsOutputs(outputTestAttrNames)){
+                ErrorInfo er = new ErrorInfo(ErrorInfo.OutputsInTestNotEquals, 0, 0, 0, 0, isTrain,
+                                        ("The @output attributes definition of test run doesn't match with the train definition"));
+                InstanceSet.errorLogger.setError(er);   
+            }
+        }
+    }
+  }//end of processInputsAndOutputs
+

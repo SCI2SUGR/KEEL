@@ -1,0 +1,134 @@
+<method>
+
+	<name>FOCUS</name>
+
+	<reference>  
+
+		<ref>H. Almuallim and T. Dietterich. Learning With Many Irrelevant Features. 9th National Conference on Artificial Intelligence, (AAAI'91). Anaheim (California, 1991) 547-552.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Non Evolutionary Filter method</type>
+
+		<objective>Feature Selection. This method allows search to follow feature subsets </objective>
+
+		<howWork>FS-Focus considers all the combination among N features starting from an empty subset: (N over 1) subsets first,  (N over 2) subsets next, and so on.
+When Focus finds a subset that satisfies the consistency measure, it stops.
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>paramKNN: is the number of nearest neighbours used by the k-NN classifier</param>
+			<param>inconAllow: is the allowed inconsistency rate. It can be estimated by the inconsistency rate of the data with all features</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+Problem type: Preprocess
+Method: Focus
+Dataset: pima
+Training set: pim-10-1tra.dat
+Test set: pim-10-1tst.dat
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see the training and test datasets modified only with the selected features (result0.tra and result0.tst) in experiment\results\FS-Focus
+
+result0.tra
+
+@relation pima_diabetes
+@attribute 'preg'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'plas'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'pres'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'pedi'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'preg','plas','pres','pedi'
+@outputs 'class'
+@data
+8,8,5,0,tested_positive
+2,7,6,1,tested_positive
+8,6,5,0,tested_positive
+1,5,5,2,tested_positive
+1,8,6,0,tested_positive
+
+.......................
+
+1,5,6,0,tested_negative
+0,5,5,0,tested_negative
+1,4,4,0,tested_negative
+2,6,5,1,tested_negative
+2,7,6,0,tested_positive
+
+
+
+result0.tst
+
+@relation pima_diabetes
+@attribute 'preg'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'plas'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'pres'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'pedi'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'preg','plas','pres','pedi'
+@outputs 'class'
+@data
+5,5,5,0,tested_positive
+4,5,6,0,tested_positive
+0,8,7,2,tested_positive
+5,6,5,0,tested_positive
+5,8,6,1,tested_positive
+
+.......................
+
+2,5,7,1,tested_negative
+2,4,7,1,tested_negative
+4,5,0,0,tested_negative
+0,4,5,1,tested_negative
+0,9,5,1,tested_positive
+
+
+
+And the extra file with the classification error in test validation (result0e0.txt) in Experiment\Results\FS-Focus
+
+result0e0.txt
+
+RESULTS generated at Sun Oct 23 22:06:20 CEST 2005 
+--------------------------------------------------
+Algorithm Name: FOCUS
+
+PARTITION Filename: ../results/UniformWidthDiscretizer/pim/result0.tra
+---------------
+
+Features selected: 
+'preg' - 'plas' - 'pres' - 'pedi' - 
+
+4 features of 8
+
+Error in test (using train for prediction): 0.2987012987012987
+Error in test (using test for prediction): 0.24675324675324675
+---------------
+
+
+</example>
+
+</method>

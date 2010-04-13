@@ -1,0 +1,160 @@
+/*
+ * KeelToPropertyList.java
+ */
+package keel.Algorithms.Preprocess.Converter;
+
+import java.io.FileWriter;
+import java.io.File;
+import org.jdom.*;
+import org.jdom.output.XMLOutputter;
+import org.jdom.output.Format;
+
+/**
+ * <p>
+ * <b> KeelToPropertyList </b>
+ * </p>
+ *
+ * Clase extendida de la clase Exporter. Esta clase permite convertir
+ * un fichero de datos con formato Keel a un fichero con formato Property list
+ * (con sintaxis xml)
+ *
+ * @author Teresa Prieto López (UCO)
+ * @version 1.0
+ */
+public class KeelToPropertyList extends Exporter {
+
+    /*
+     * Constructor de la Clase KeelToPropertyList. Inicializa el valor
+     * de la variable miembro nullValue (valor nulo para el texto de una etiqueta xml)
+     * a una cadena vacía.
+     *
+     */
+    public KeelToPropertyList() {
+        nullValue = "";
+    }
+
+
+    /*
+     * Este método llama al método Start de la clase superior Exporter para
+     * cargar los datos del fichero Keel y posteriormente hace una llamada
+     * al método Save() para crear el fichero de datos Property List indicado en el
+     * parámetro de entrada pathnameOutput.
+     *
+     * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
+     * @param  String pathnameOutput Variable con la ruta del fichero de datos de salida
+     * con formato Property List.
+     *
+     * @throws Exception.
+     */
+    public void Start(String pathnameInput, String pathnameOutput) throws Exception {
+
+        super.Start(pathnameInput);
+
+        Save(pathnameOutput);
+
+    }//end Start()
+
+    /*
+     * Método utilizado para crear el fichero con formato Property list (es un fichero con formato xml)
+     * indicada la ruta por el parámetro pathnameOutput. Este fichero se crea a partir
+     * de los datos almacenados en el vector de objetos de la clase
+     * Attribute, el vector data[], y la variable nameRelation.
+     *
+     * @param String pathnameOutput. Variable de tipo String con
+     * la ruta del fichero de datos de salida con formato Property list.
+     *
+     * @throws Exception.
+     *
+     */
+    public void Save(String pathnameOutput) throws Exception {
+        int i;
+        int j;
+        int k;
+        int type;
+        int numInstances;
+        String valueAttribute = new String();
+        String filename = new String();
+        String nameElement = new String();
+        String labelType = new String();
+        Element children;
+        String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
+        String vowel_accent[] = {"á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú"};
+
+
+
+        /* Comprobamos si el nombre del fichero tiene la extensión .xml, si no la tiene
+         * se la ponemos */
+        if (pathnameOutput.endsWith(".plist")) {
+            filename = pathnameOutput;
+        } else {
+            filename = pathnameOutput.concat(".plist");
+        }
+        Element root = new Element("plist");
+        Document myDocument = new Document(root);
+
+
+        org.jdom.Attribute attributePlist = new org.jdom.Attribute("version", "1.0");
+        root.setAttribute(attributePlist);
+
+
+        numInstances = data[0].size();
+
+        for (i = 0; i < numInstances; i++) {
+
+            Element childrenDict = new Element("dict");
+
+            for (j = 0; j < numAttributes; j++) {
+                type = attribute[j].getType();
+
+                nameElement = attribute[j].getName();
+                nameElement = nameElement.replace("\"", "");
+                nameElement = nameElement.replace("'", "");
+
+                if (nameElement.startsWith("\"") && nameElement.endsWith("\"")) {
+                    nameElement = nameElement.substring(1, (nameElement.length()) - 1).replaceAll(" ", "_");
+                }
+                children = new Element("key").addContent(nameElement);
+
+                childrenDict.addContent(children);
+
+                valueAttribute = (String) data[j].elementAt(i);
+                valueAttribute = valueAttribute.replace("\"", "");
+
+                for (k = 0; k < vowel.length; k++) {
+                    valueAttribute = valueAttribute.replace(vowel_accent[k], "&" + vowel[k] + "acute;");
+                }
+                if (valueAttribute.equals("?") || valueAttribute.equals("<null>")) {
+                    valueAttribute = "";
+                }
+                if (type == INTEGER) {
+                    labelType = "integer";
+                }
+                if (type == REAL) {
+                    labelType = "real";
+                }
+                if (type == NOMINAL || type == -1) {
+                    labelType = "string";
+                }
+                children = new Element(labelType).addContent(valueAttribute);
+
+                childrenDict.addContent(children);
+            }
+            root.addContent(childrenDict);
+        }
+
+        try {
+
+            XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
+            outputter.output(myDocument, new FileWriter(pathnameOutput));
+
+            File f = new File(filename);
+
+            System.out.println("Fichero " + f.getName() + " creado correctamente");
+
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }//end Savd()
+}// end class KeelToPropertyList

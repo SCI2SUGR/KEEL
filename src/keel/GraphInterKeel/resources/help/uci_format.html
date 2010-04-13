@@ -1,0 +1,240 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+
+<title>UCI format</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">UCI DATA 
+FILE FORMAT</span></b></h3>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Files are 
+encoded according to C4.5 format. This format consists of two files, one of them 
+it is a name file with extension &quot;.names&quot;, the other one it is a data file with 
+extension &quot;.data&quot;.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of name files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">The .names file contains a series of entries 
+that describe the classes, attributes and values of the dataset.&nbsp; Each record is 
+terminated with a point, but the point can be omitted if it would have been the 
+		last character on a line). Each name consists of a string of characters 
+		without commas, quotes or colon (unless escaped by a vertical bar, |).</span></p>
+		</li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">&nbsp;A 
+		name can contain a point, but this point must be followed by a white 
+		space</span></p></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">
+		Embedded white spaces is permitted but multiple white spaces are 
+		replaced by a single space.</span></p></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">The 
+		first record in the file lists the names of the classes, separated by 
+		commas (and terminated by a point).&nbsp;&nbsp; </span>
+<span lang="EN-GB" style="font-family: Times New Roman">Each successive line 
+		then defines an attribute, in the order in which they will appear in the 
+		.data &nbsp;files, with the following format:</span></p></li>
+	</ul>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 72.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Symbol">&nbsp; </span>
+		<span lang="EN-GB" style="font-family: Times New Roman">&lt;attribute-name : attribute-type&gt;</span></p>
+	</blockquote>
+</blockquote>
+<p class="MsoNormal" style="margin-left: 106.2pt">
+<span lang="EN-GB" style="font-family: Times New Roman">The attribute-name is an 
+identifier &nbsp;followed by a colon. The attribute type which must be one of: </span>
+</p>
+<p class="MsoNormal" style="margin-left: 106.2pt; margin-top:0; margin-bottom:0">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continuous</span></i></b><span lang="EN-GB" style="font-family: Times New Roman">: 
+if the attribute has a continuous values. </span>
+</p>
+<p class="MsoNormal" style="margin-left: 106.2pt; margin-top:0; margin-bottom:0">
+<span style="font-family: Times New Roman" lang="en-gb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><b><i><span lang="EN-GB" style="font-family: Times New Roman">discrete &lt;n&gt;:</span></i></b><span lang="EN-GB" style="font-family: Times New Roman"> 
+	the word 'discrete' followed by an integer which indicates how many values 
+	the attribute can take.</span></p>
+<p class="MsoNormal" style="margin-left: 106.2pt; margin-top:0; margin-bottom:0">
+<span style="font-family: Times New Roman" lang="en-gb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN-GB">&nbsp;</span><b><i><span lang="EN-GB" style="font-family: Times New Roman">ignore:</span></i></b><span lang="EN-GB" style="font-family: Times New Roman"> 
+indicates that this attribute should be ignored.</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">A | (vertical bar) means that the remainder of 
+the line should be considered as a comment.</span></p></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">&nbsp;</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+		files are stored, by default, with the extension &quot;.names&quot;</span></p>
+		</li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 124.2pt">
+&nbsp;</p>
+<p class="MsoNormal"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </i>&nbsp;The 
+format of the '.name' file is the following:</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+&nbsp;</span></p>
+<div align="center">
+<table border="1" width="222" height="120">
+	<tr>
+		<td height="114" width="222"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">class-1, class-2, ..., class-N.<br>
+			characteristic-1: domain.<br>
+			characteristic-2: domain.<br>
+			...<br>
+			characteristic-M: domain.</span></i><span lang="EN-GB" style="color:#003366;
+    mso-ansi-language:EN-GB"><o:p></o:p></span></td>
+	</tr>
+</table>
+</div>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+<br>
+</span><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of data &nbsp;files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The file 
+contains one line by object. Each line contains values of the attributes sorted 
+according to .names file, followed by the class of object, with all entries 
+separated by commas. </span></p></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The format 
+	is same than CVS file (comma separated values), explained in CVS Data File 
+	Format.</span></p></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">A missing 
+	values are indicated by '?'.</span></p></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+	files are stored, by default, with the extension &quot;.data&quot;.</span></p>
+		</li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+format of the '.data' file is the following:</span></b></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="243" height="114">
+		<tr>
+			<td height="114" width="243">
+			<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+    auto;mso-pagination:widow-orphan;mso-hyphenate:auto">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">value<sub>11</sub>, 
+			value<sub>12</sub>, ..., value<sub>1N</sub><br>
+			value<sub>21</sub>, value<sub>22</sub>, ..., value<sub>2N</sub><br>
+			...<br>
+			value<sub>M1</sub>, value<sub>M2</sub>, ..., value<sub>MN</sub></span></i></p>
+			</td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-indent: 18.55pt">&nbsp;</p>
+<p class="MsoNormal" style="margin-left: 18.55pt; margin-bottom: 12.0pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> 
+An example of an UCI data file is the following</span></b></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 72.55pt"><i>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Content of 
+the '.name' file:</span></i></p></li>
+</ul>
+<div align="center">
+<table border="1" width="271" height="409">
+	<tr>
+		<td height="409" width="271">
+			<p class="MsoNormal"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="mso-ansi-language:EN-GB;mso-bidi-font-weight:bold">
+			<font color="#008000">| Firstly the name of classes</font><o:p></o:p></span></i></p>
+			<p class="MsoNormal"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="mso-ansi-language:EN-GB;mso-bidi-font-weight:bold">
+			good, bad.<o:p></o:p></span></i></p>
+			<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="mso-ansi-language:EN-GB;mso-bidi-font-weight:bold">
+			<font color="#008000">|Then the attributes</font><br>
+			dur: continuous.<br>
+			wage1: continuous.<br>
+			wage2: continuous.<br>
+			wage3: continuous.<br>
+			cola: tc, none, tcf.<br>
+			hours: continuous.<br>
+			pension: empl contr, ret allw, none.<br>
+			stby_pay: continuous.<br>
+			shift_diff: continuous.<br>
+			educ_allw: yes, no.<br>
+			holidays: continuous.<br>
+			vacation: average, generous, below average.<br>
+			lngtrm_disabil: yes, no.<br>
+			dntl_ins: half, none, full.</span></i></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<i style="mso-bidi-font-style:normal">
+			<span style="mso-ansi-language:EN-GB; mso-bidi-font-weight:bold" lang="EN-GB">bereavement: yes, no.<br>
+			empl_hplan: half, full, none.</span></i></p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+</div>
+<p>&nbsp;</p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 72.55pt">
+	<span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN-GB">&nbsp;</span><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">Content of 
+the '.data' file:</span></i></p></li>
+</ul>
+<div align="center">
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 72.55pt">&nbsp;</p>
+	<table border="1" width="481" height="103">
+		<tr>
+			<td height="103" width="481"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="mso-ansi-language:EN-GB;mso-bidi-font-weight:bold">
+			2,5.0,4.0,?,none,37,?,?,5,no,11,below average,yes,full,yes,full,good<br>
+			3,2.0,2.5,?,?,35,none,?,?,?,10,average,?,?,yes,full,bad<br>
+			3,4.5,4.5,5.0,none,40,?,?,?,no,11,average,?,half,?,?,good<br>
+			3,3.0,2.0,2.5,tc,40,none,?,5,no,10,below 
+			average,yes,half,yes,full,bad</span></i></td>
+		</tr>
+	</table>
+</div>
+&nbsp;<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 72.55pt">
+<i><span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+</span></i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<br>
+&nbsp;</span></p>
+</body>
+
+</html>

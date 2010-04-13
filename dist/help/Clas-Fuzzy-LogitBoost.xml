@@ -1,0 +1,155 @@
+<method>
+
+	<name>Fuzzy Rule Learning, LogitBoost algorithm</name>
+
+	<reference>  
+
+	<ref>J. Otero, L. S&#xE1;nchez. Induction of descriptive fuzzy classifiers with the Logitboost algorithm. Soft Computing 10:9 (2006) 825-835.</ref>
+    
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification fuzzy model.</type>
+
+		<objective>To obtain fuzzy weak classifiers to boost. Then, the overall classifier outperforms any of the fuzzy classifiers.</objective>
+
+		<howWork>Boosting algorithms are statistical additive modeling techniques that combine different low-quality classifiers to obtain a compound classifier that performs better than any of its components. Logitboost or logistic extended additive model is a backfitting algorithm, which repeatedly invokes a learning algorithm to successively generate a committee of simple, low-quality classifiers. 
+
+In this algorithm, each of the weak hypothesis is a Fuzzy rule extracted from data. Those fuzzy rules are extracted from data by means of a genetic algorithm.
+
+Each time a new simple classifier is added to the compound one, the examples in the training set are re-weighted (so that future classifiers will focus on the most difficult examples). 
+</howWork>
+
+		<parameterSpec>  
+<param>numlabes: the number of possible fuzzy values for each variable.</param>
+<param>numrules: the number of rules for each classifier.</param>
+ 
+</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: ClasifFuzzyLogitBoost
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: numero de etiquetas 2, numero de reglas 8
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTClas-Fuzzy-LogitBoost folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= iris_plants_database 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+...
+Global Classification Error + N/C:
+0.04666666666666666 
+stddev Global Classification Error + N/C:
+0.042687494916218996 
+Correctly classified:
+0.9533333333333334 Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris_plants_database 
+Summary of data, Classifiers: iris_plants_database 
+Fold 0 : CORRECT=0.962962962962963 N/C=0.0 
+...
+Global Classification Error + N/C:
+0.03481481481481481 
+stddev Global Classification Error + N/C:
+0.008795808953361425 
+Correctly classified:
+0.9651851851851851 
+Global N/C:
+0.0
+
+
+
+
+We can see too the output and target classes for each case of the train set (result0s0.tra) in experiment/results/Clas-Fuzzy-LogitBoost/iris/:
+
+@relation Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+...
+
+And the test results (result0s0.tst) in experiment/results/Clas-Fuzzy-LogitBoost/iris/:
+
+@relation Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+</example>
+
+</method>

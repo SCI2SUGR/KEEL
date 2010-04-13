@@ -1,0 +1,123 @@
+<method>
+
+	<name>INNER</name>
+
+	<reference>  
+		<ref>O. Luaces, A. Bahamonde: Inflating examples to obtain rules.
+		International Journal of Intelligent Systems, 18, 1113-1143 (2003)
+		</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model combining rule induction and instance-based learning.</type>
+
+		<objective>The algorithm tries to extract a small set of suitable rules to represent suitablely the training set, achieving an acceptable accuracy.</objective>
+
+		<howWork> INNER first selects a small set of instances, and converts them to punctual rules. They are iteratively inflated in order to cover as many training examples as possible. This process is repeated several times. Then, the complete set of rules extrated is postprocessed, to improve its classification performance and remove redundant rules.			
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>Initial instances: Initial instances per class selected in the first stage.</param>
+			<param>MaxCycles: Maximun number of selecting cycles allowed.</param>
+			<param>Min Coverage: Minimun coverage allowed to stop the selecting stage.</param>
+			<param>Min Presentations: Minimun number of presentations in the inflating phase.</param>
+			<param>Regularize: Number of presentations between phases of regularization of moves.</param>
+			<param>Select Threshold: Maximun impurity level allowed to mantain a rule in the prunning phase.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+	
+	Problem type: Classification 
+	Method: INNER
+	Dataset: iris
+	Type of test: 10-fold cross validation
+	Test Show results: Vis-Clas-Check
+	Parameters: default.
+			 
+	After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the training and test set:
+
+	TEST RESULTS
+	============
+	Classifier= iris 
+	Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+	Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+	Fold 2 : CORRECT=1.0 N/C=0.0 
+	Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+	Fold 4 : CORRECT=1.0 N/C=0.0 
+	Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+	Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+	Fold 7 : CORRECT=1.0 N/C=0.0 
+	Fold 8 : CORRECT=0.9333333333333333 N/C=0.0 
+	Fold 9 : CORRECT=1.0 N/C=0.0 
+	Global Classification Error + N/C:
+	0.039999999999999994 
+	stddev Global Classification Error + N/C:
+	0.03265986323710905 
+	Correctly classified:
+	0.96 
+	Global N/C:
+	0.0 
+
+	TRAIN RESULTS
+	============
+	Classifier= iris 
+	Summary of data, Classifiers: iris 
+	Fold 0 : CORRECT=0.9777777777777777 N/C=0.0 
+	Fold 1 : CORRECT=0.962962962962963 N/C=0.0 
+	Fold 2 : CORRECT=0.9703703703703703 N/C=0.0 
+	Fold 3 : CORRECT=0.9555555555555556 N/C=0.0 
+	Fold 4 : CORRECT=0.9777777777777777 N/C=0.0 
+	Fold 5 : CORRECT=0.9777777777777777 N/C=0.0 
+	Fold 6 : CORRECT=0.9777777777777777 N/C=0.0 
+	Fold 7 : CORRECT=0.9777777777777777 N/C=0.0 
+	Fold 8 : CORRECT=0.9703703703703703 N/C=0.0 
+	Fold 9 : CORRECT=0.962962962962963 N/C=0.0 
+	Global Classification Error + N/C:
+	0.02888888888888889 
+	stddev Global Classification Error + N/C:
+	0.0077335603769707675 
+	Correctly classified:
+	0.9711111111111111 
+	Global N/C:
+	0.0 
+
+	We can also see the rule set obtained in Experiment\Results\Clas-INNER (e.g result2s0e0.txt file):
+		
+	***Rules obtained****
+
+	Number of rules: 7
+
+	Att0: TRUE Att1: TRUE Att2: 0.003152673609804579-0.15194384614656128 Att3: TRUE Class = 0 Impurity= -596.2948862194039
+	Att0: TRUE Att1: TRUE Att2: TRUE Att3: 0.0-0.17008106038916215 Class = 0 Impurity= -626.673183932375
+	Att0: 0.19444444444444448-0.7364378323430009 Att1: 0.08542364449301822-0.574770098509963 Att2: 0.33898305084787733-0.6779661016949152 
+	Att3: 0.375-0.6666666666666666 Class = 1 Impurity= -520.3491419369833
+	Att0: TRUE Att1: TRUE Att2: TRUE Att3: 0.5-0.5 Class = 1 Impurity= -140.62042052487988
+	Att0: TRUE Att1: TRUE Att2: 0.38983050847457623-0.6628547679541459 Att3: TRUE Class = 1 Impurity= -199.0416183780998
+	Att0: TRUE Att1: TRUE Att2: TRUE Att3: 0.7083333333333334-1.0 Class = 2 Impurity= -376.1686067732716
+	Att0: TRUE Att1: TRUE Att2: 0.6440677966101694-0.9857548771381823 Att3: TRUE Class = 2 Impurity= -205.17011570879217
+		
+</example>
+
+</method>

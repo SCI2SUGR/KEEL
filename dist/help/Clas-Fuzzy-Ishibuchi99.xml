@@ -1,0 +1,247 @@
+<method>
+
+	<name>Fuzzy Rule Learning Algorithm Proposed by Ishibuchi et al. in 1999</name>
+
+	<reference>  
+
+<ref>H. Ishibuchi, T. Nakashima, T. Murata. Performance evaluation of fuzzy classifier systems for multidimensional pattern classification problems. IEEE Transactions on Systems, Man, and Cybernetics, Part B: Cybernetics 29:5 (1999) 601-618.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by generation of fuzzy rule-based systems.</type>
+
+		<objective>To obtain fuzzy classifiers as a set of fuzzy rules that better fits the training data.</objective>
+
+		<howWork>Ishibuchi et al. examine the performance of a fuzzy genetics-based
+machine learning method for multidimensional pattern
+classification problems with continuous attributes. In their method,
+each fuzzy if–then rule is handled as an individual, and a fitness
+value is assigned to each rule. Thus, their method can be viewed as
+a classifier system. Their method uses
+linguistic values with fixed membership functions as antecedent
+fuzzy sets, so a linguistic interpretation of each fuzzy if–then rule
+is easily obtained. The fixed membership functions also lead to
+a simple implementation of their method as a computer program.
+The simplicity of implementation and the linguistic interpretation
+of the generated fuzzy if–then rules are the main characteristic
+features of their method.
+		</howWork>
+
+		<parameterSpec>  
+		    <param>Number of Labels</param>
+		    <param>Population Size</param>
+		    <param>Number of Evaluations</param>
+		    <param>Number of Individuals to be Replaced in the Population</param>			
+		    <param>Crossover Probability</param>
+		    <param>Mutation Probability</param>
+		    <param>"Don't Care" Label Probability</param>			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+        Method: Clas-Fuzzy-Ishibuchi99
+		Dataset: iris
+		Training set: iris-10-1tra.dat
+		Test set: iris-10-1tst.dat		
+		Test Show results: Vis-Clas-Check		
+        Parameters: default values
+
+		After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-Fuzzy-Ishibuchi folder the classification results for the test set:
+		
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 2 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 3 : CORRECT=0.8 N/C=0.0 
+Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 5 : CORRECT=1.0 N/C=0.0 
+Fold 6 : CORRECT=1.0 N/C=0.0 
+Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+Global Classification Error + N/C:
+0.05333333333333333 
+stddev Global Classification Error + N/C:
+0.05811865258054233 
+Correctly classified:
+0.9466666666666667 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 1 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 2 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 3 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 4 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 5 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 6 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 7 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 8 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 9 : CORRECT=0.962962962962963 N/C=0.0 
+Global Classification Error + N/C:
+0.04444444444444445 
+stddev Global Classification Error + N/C:
+0.007407407407407364 
+Correctly classified:
+0.9555555555555555 
+Global N/C:
+0.0 
+
+	
+			We can see too the output and target classes for each case of the train set (result0s0.tra) in experiment/results/Clas-Fuzzy-Ishibuchi99/iris/:
+	
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+...
+
+
+		And the test results (result0s0.tst) in experiment/results/Clas-Fuzzy-Ishibuchi/iris/:
+
+		
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+	
+		The file 'experiment/results/Clas-Fuzzy-MOGUL/iris/result0s0e0.txt' contains the considered fuzzy partition:	
+
+		
+Fuzzy Partition:
+----------------
+
+Variable X1:
+
+	Label1:	 (3.3999999999999995, 4.3, 5.2)
+	Label2:	 (4.3, 5.2, 6.1000000000000005)
+	Label3:	 (5.2, 6.1000000000000005, 7.000000000000001)
+	Label4:	 (6.1000000000000005, 7.000000000000001, 7.900000000000001)
+	Label5:	 (7.000000000000001, 7.900000000000001, 8.8)
+
+Variable X2:
+
+	Label1:	 (1.4, 2.0, 2.6)
+	Label2:	 (2.0, 2.6, 3.2)
+	Label3:	 (2.6, 3.2, 3.8000000000000003)
+	Label4:	 (3.2, 3.8000000000000003, 4.4)
+	Label5:	 (3.8000000000000003, 4.4, 5.0)
+
+Variable X3:
+
+	Label1:	 (-0.3500000000000001, 1.1, 2.5500000000000003)
+	Label2:	 (1.1, 2.5500000000000003, 4.0)
+	Label3:	 (2.5500000000000003, 4.0, 5.45)
+	Label4:	 (4.0, 5.45, 6.9)
+	Label5:	 (5.45, 6.9, 8.350000000000001)
+
+Variable X4:
+
+	Label1:	 (-0.5, 0.1, 0.7)
+	Label2:	 (0.1, 0.7, 1.2999999999999998)
+	Label3:	 (0.7, 1.2999999999999998, 1.9)
+	Label4:	 (1.2999999999999998, 1.9, 2.5)
+	Label5:	 (1.9, 2.5, 3.1)
+
+----------------------------------------------
+
+
+        Finally, the file 'experiment/results/Clas-Fuzzy-MOGUL/iris/result0s0e1.txt' contains the fuzzy rule set obtained:
+		
+
+Rule base with 36 rules, 48 variables and 48 labels.
+-----------------------------------------------------------------------------------
+
+Rule 1:
+
+If "X4 is Label 1" then Class is Iris-setosa with certainty degree 1.0
+
+Fitness: 25
+
+...
+
+Rule 36:
+
+If "X1 is Label 2" and "X4 is Label 3" then Class is Iris-versicolor with certainty degree 0.9528145695364236
+
+Fitness: 1
+
+
+Training Accuracy:	94.81481481481482%
+Test Accuracy:		100.0%
+		
+</example>
+
+</method>

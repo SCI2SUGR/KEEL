@@ -1,0 +1,118 @@
+<method>
+
+	<name>Ant Miner</name>
+
+	<reference>
+
+		<ref>Rafael S. Parpinelli, Heitor S. Lopes and Alex A. Freitas. Data Mining With an Ant Colony Optimization Algorithm".
+		IEEE Transactions on Evolutionary Computation 6:4 (2002) 321-332.</ref>
+
+	</reference>
+
+	<generalDescription>
+
+		<type>Classification model by Ant Colony Optimization</type>
+
+		<objective>To determine a set of rules that predicts correctly the value of the target attribute</objective>
+
+		<howWork>This algorithm is based in an ant colony system. In this case, the rule
+		stands for the path that the ant must follow. Each ant starts with an empty rule and
+		the decision of adding a new term depends on a heuristic function and a pheromone value.
+		The heuristic function is the entropy measure for each attribute-value. There is also a
+		prune step that removes one bye one a term of the rule while this process
+		improves the quality of that rule.
+		Once the antecedent of the rule is totally built, the system chooses the as consequent
+		class the majority class of the covered examples. The algorithm then selects the best ant/rule
+		of the current iteration and add it to the rule-set. This process iterates until all examples are covered
+		(depending on the parameters of the user).
+		</howWork>
+
+		<parameterSpec>
+
+			<param>Number_of_Ants: Total number of ants in the system</param>
+			<param>Max_number_of_uncovered_samples: Number of instances than can remain uncovered</param>
+			<param>Min_number_of_samples_by_rule: Minimum number of instances that a rule should cover</param>
+			<param>Max_Iterations_without_converge: Maximum number of iterations without getting any
+			better solution in order to stop the search</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: Ant_Miner
+Dataset: wisconsin
+Training set: wisconsin.dat
+Test set: wisconsin.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier=
+Fold 0 : CORRECT=0.9692532942898975 N/C=0.0
+Global Classification Error + N/C:
+0.03074670571010249
+stddev Global Classification Error + N/C:
+0.0
+Correctly classified:
+0.9692532942898975
+Global N/C:
+0.0
+
+TRAIN RESULTS
+============
+Classifier=
+Summary of data, Classifiers:
+Fold 0 : CORRECT=0.9692532942898975 N/C=0.0
+Global Classification Error + N/C:
+0.03074670571010249
+stddev Global Classification Error + N/C:
+0.0
+Correctly classified:
+0.9692532942898975
+Global N/C:
+0.0
+
+We can also see the output the rule set (result0e0.txt) in Experiment\Results\Clas-Ant_Miner:
+
+Rule0 : &lt; cellShape= 1&gt; ==&gt; negative
+Rule1 : &lt; clumpThickness= 10&gt; ==&gt; positive
+Rule2 : &lt; bareNuclei= 10&gt; ==&gt; positive
+Rule3 : &lt; blandChromatin= 1&gt; ==&gt; negative
+Rule4 : &lt; blandChromatin= 2&gt; ==&gt; negative
+Rule5 : &lt; epithelialSize= 2&gt; ==&gt; negative
+Rule6 : &lt; normalNucleoli= 10&gt; ==&gt; positive
+Rule7 : &lt; cellSize= 10&gt; ==&gt; positive
+Rule8 : &lt; clumpThickness= 7&gt; ==&gt; positive
+Rule9 : &lt; bareNuclei= 1&gt; ==&gt; negative
+Rule10 : &lt; marginalAdhesion= 4&gt; ==&gt; positive
+Rule11 : &lt; normalNucleoli= 1&gt; ==&gt; positive
+Rule12 : &lt; normalNucleoli= 9&gt; ==&gt; positive
+Rule13 : &lt; blandChromatin= 7&gt; ==&gt; positive
+Rule14 : &lt; clumpThickness= 8&gt; ==&gt; positive
+Rule15 : &lt; marginalAdhesion= 10&gt; ==&gt; positive
+Rule16 : &lt; normalNucleoli= 4&gt; ==&gt; positive
+Rule17 : &lt; marginalAdhesion= 5&gt; ==&gt; negative
+DEFAULT_Rule: &lt; ALL&gt; ==&gt; negative
+Train Accuracy: 0.9692533
+Test Accuracy: 0.9692533
+Number of Rules: 19
+Average number of antecedents: 1.0
+</example>
+
+</method>

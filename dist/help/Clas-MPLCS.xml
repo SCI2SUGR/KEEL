@@ -1,0 +1,148 @@
+<method>
+
+	<name>
+        Memetic Pittsburgh Learning Classiﬁer System
+    </name>
+
+	<reference>
+    <ref>
+    Jaume Bacardit and Natalio Krasnogor.
+    Performance and Efﬁciency of Memetic Pittsburgh Learning Classiﬁer Systems
+	</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>
+            GA-based classifier
+        </type>
+        
+		<objective> 
+            To perform a classification task by means of a GA-based algorithm.
+        </objective>
+
+		<howWork>
+            This methods is a GA algorithm whose uses the Pittsburgh approach.
+        </howWork>
+        
+		<parameterSpec>  
+  			<param>     1st parameter: defaultClass</param>
+            <param>     2nd parameter: discretizer1</param>
+            <param>     3rd parameter: discretizer2</param>
+            <param>     4th parameter: discretizer3</param>
+            <param>     5th parameter: discretizer4</param>
+            <param>     6th parameter: discretizer5</param>
+            <param>     7th parameter: discretizer6</param>
+            <param>     8th parameter: discretizer7</param>
+  			<param>     9th parameter: discretizer8</param>
+            <param>     10th parameter: discretizer9</param>
+            <param>     11th parameter: discretizer10</param>
+            <param>     12th parameter: useMDL</param>
+            <param>     13th parameter: iterationHierarchicalSelection</param>
+            <param>     14th parameter: hierarchicalSelectionThreshold</param>
+            <param>     15th parameter: initialNumberOfRules</param>
+            <param>     16th parameter: numIterations</param>
+  			<param>     17th parameter: maxIntervals</param>
+            <param>     18th parameter: initialTheoryLengthRatio</param>
+            <param>     19th parameter: iterationMDL</param>
+            <param>     20th parameter: weightRelaxFactor</param>
+            <param>     21th parameter: sizePenaltyMinRules</param>
+            <param>     22th parameter: popSize</param>
+            <param>     23th parameter: probCrossover</param>
+            <param>     24th parameter: probMutationInd</param>
+  			<param>     25th parameter: defaultClass</param>
+            <param>     26th parameter: probMerge</param>
+            <param>     27th parameter: probOne</param>
+            <param>     28th parameter: probReinitializeBegin</param>
+            <param>     29th parameter: probReinitializeEnd</param>
+            <param>     30th parameter: probSplit</param>
+            <param>     31th parameter: iterationRuleDeletion</param>
+            <param>     32th parameter: ruleDeletionMinRules</param>
+  			<param>     33th parameter: seed</param>
+            <param>     34th parameter: tournamentSize</param>
+            <param>     35th parameter: numStrata</param>
+            <param>     36th parameter: initMethod</param>
+            <param>     37th parameter: probLocalSearch</param>
+            <param>     38th parameter: doRuleCleaning</param>
+            <param>     39th parameter: doRuleSplitting</param>
+            <param>     40th parameter: doRuleGeneralizing</param>
+            <param>     41th parameter: probRSWcrossover</param>
+            <param>     42th parameter: numParentsRSWcrossover</param>
+            <param>     43th parameter: repetitionsRuleOrdering</param>
+            <param>     44th parameter: filterSmartCrossover</param>
+		</parameterSpec> 
+		
+        
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+        
+	</generalDescription>
+
+	<example>
+
+        Problem type: Classification
+        Method: Clas-MPLCS
+        Dataset: iris (10 fold cross validation run)
+        Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+        Test set: iris-10-1tst.dat to iris-10-10tst.dat
+        Test Show results: Vis-Clas-Check
+        Parameters: default values
+		
+        After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-MPLCS
+        folder the classification results for the test set:
+        
+        
+       TEST RESULTS
+        ============
+        Classifier= iris_plants_database 
+        Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 2 : CORRECT=1.0 N/C=0.0 
+        Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+        Fold 4 : CORRECT=1.0 N/C=0.0 
+        Fold 5 : CORRECT=1.0 N/C=0.0 
+        Fold 6 : CORRECT=1.0 N/C=0.0 
+        Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 8 : CORRECT=1.0 N/C=0.0 
+        Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+        Global Classification Error + N/C:
+        0.039999999999999994 
+        stddev Global Classification Error + N/C:
+        0.04422166387140534 
+        Correctly classified:
+        0.96 
+        Global N/C:
+        0.0 
+
+        TRAIN RESULTS
+        ============
+        Classifier= iris_plants_database 
+        Summary of data, Classifiers: iris_plants_database 
+        Fold 0 : CORRECT=1.0 N/C=0.0 
+        Fold 1 : CORRECT=0.9777777777777777 N/C=0.0 
+        Fold 2 : CORRECT=0.9851851851851852 N/C=0.0 
+        Fold 3 : CORRECT=0.9851851851851852 N/C=0.0 
+        Fold 4 : CORRECT=0.9851851851851852 N/C=0.0 
+        Fold 5 : CORRECT=0.9925925925925926 N/C=0.0 
+        Fold 6 : CORRECT=0.9851851851851852 N/C=0.0 
+        Fold 7 : CORRECT=0.9925925925925926 N/C=0.0 
+        Fold 8 : CORRECT=0.9851851851851852 N/C=0.0 
+        Fold 9 : CORRECT=0.9925925925925926 N/C=0.0 
+        Global Classification Error + N/C:
+        0.011851851851851851 
+        stddev Global Classification Error + N/C:
+        0.005925925925925929 
+        Correctly classified:
+        0.9881481481481481 
+        Global N/C:
+        0.0
+                                
+    </example>
+		
+</method>

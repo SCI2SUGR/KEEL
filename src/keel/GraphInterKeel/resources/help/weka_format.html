@@ -1,0 +1,245 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+
+<title>WEKA format</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">WEKA 
+DATA FILE FORMAT</span></b></h3>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The weak 
+data files must have in the following format: &nbsp;</span></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Headline</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">.
+	</span><span lang="EN-GB">The relation name is defined as the first line in 
+	the ARFF file. </span><span lang="ES-TRAD">The format is:</span></p></li>
+</ul>
+<blockquote>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<b><span lang="EN-GB" style="font-family: Times New Roman">@ relation</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	&lt;name-of-relation&gt; </span></p>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB">where &lt;relation-name&gt; is a string. The string must be 
+	quoted if the name includes spaces.</span></p>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Declaration of attributes</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">.
+	</span><span lang="EN-GB">Attribute declarations take the form of an ordered 
+	sequence of <i>@attribute</i> statements. Each attribute in the data set has 
+	its own <i>@attribute</i> statement which uniquely defines the name of that 
+	attribute and it's data type. The order the attributes are declared 
+	indicates the column position in the data section of the file. For example, 
+	if an attribute is the third one declared then Weka expects that all that 
+	attributes values will be found in the third comma delimited column. </span>
+	</p></li>
+</ul>
+<p style="text-indent:18.0pt"><span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The format for the 
+	<i>@attribute</i> statement is: </span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @ attribute</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	&lt;attribute-name&gt; &lt;datatype&gt;</span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where the <i>&lt;attribute-name&gt;</i> must start with an 
+	alphabetic character. If spaces are to be included in the name then the 
+	entire name must be quoted.</span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The <i>&lt;datatype&gt;</i> can be any of the four types 
+	currently (version 3.2.1) supported by Weka:</span></p>
+<blockquote>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">1)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">NUMERIC or REAL.</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+		Numeric attribute can be real numbers.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">2)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">INTEGER.</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+		Integer attribute can be integer numbers.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">3)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">DATE</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">. 
+		Date attribute </span><span lang="EN-GB">is an optional string 
+		specifying how date values should be parsed and printed. The default 
+		format string accepts the ISO-8601 combined date and time format: &quot;yyyy-MM-dd'T'HH:mm:ss&quot;.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">4)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">STRING.</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		</span><span lang="EN-GB">String attributes allow us to create 
+		attributes containing arbitrary textual values.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">5)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">ENUMERATE.</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+		Enumerate attribute consists of a set of possible values separated by 
+		commas (Characters or strings), which can take the attribute. For 
+		example, if we have an attribute that indicates the time podr'&#305;a 
+		Express: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @ attribute time {sunny, rainy, cloudy}</span></p>
+	</blockquote>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Section data</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">. 
+	The </span><span lang="EN-GB">data section of the file contains the data 
+	declaration line and the actual instance lines. The <b>@data</b> declaration 
+	is a single line denoting the start of the data segment in the file. The 
+	format is:</span></p></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">@ 
+	data </span></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">X11, 
+	x12, ... , X1N </span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">X21, 
+	x22, ... , X2N </span></p>
+<blockquote>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">Each instance is represented on a single line, with carriage returns 
+			denoting the end of the instance. Attribute values for each instance 
+			are delimited by commas. They must appear in the order that they 
+			were declared in the header section (i.e. the data corresponding to 
+			the nth @attribute declaration is always the nth field of the 
+			attribute). </span></p>
+	</blockquote>
+</blockquote>
+<p style="text-align:justify;text-indent:35.4pt"><span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	Missing values are represented by a single question mark, as in: </span></p>
+<blockquote>
+	<pre style="text-align: justify; tab-stops: 45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt; font-size: 10.0pt; font-family: Courier New; margin-left: 0cm; margin-right: 0cm; margin-top: 0cm; margin-bottom: .0001pt"><span lang="EN-GB" style="font-size: 12.0pt; font-family: Times New Roman">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;">@data</span></pre>
+	<pre style="text-align: justify; tab-stops: 45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt; font-size: 10.0pt; font-family: Courier New; margin-left: 0cm; margin-right: 0cm; margin-top: 0cm; margin-bottom: .0001pt"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;4.4,?,1.5,?,Iris-setosa</span></pre>
+	<pre style="text-align: justify; tab-stops: 45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt; font-size: 10.0pt; font-family: Courier New; margin-left: 0cm; margin-right: 0cm; margin-top: 0cm; margin-bottom: .0001pt">&nbsp;</pre>
+	<pre style="text-align: justify; tab-stops: 45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt; font-size: 10.0pt; font-family: Courier New; margin-left: 0cm; margin-right: 0cm; margin-top: 0cm; margin-bottom: .0001pt">&nbsp;</pre>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Some of 
+the specifications of this format are:</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<blockquote>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	name of the relationship and the attributes are string type. This string 
+	type is same than string type used on Java.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">If any 
+	name contains spaces it is necessary to include double quote.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">If you 
+	need to indicate a missing values, you have to use symbol '?'.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span><span lang="EN-GB" style="font-family: Times New Roman">The 
+	separation symbol for decimals numbers is a point instead of a comma.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	separation symbol for data in section @ data is comma.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span><span lang="EN-GB">A % symbol means that the remainder of the 
+	line should be considered as a comment.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+	files are stores, by default, with the extension &quot;.arff&#8221;.</span></p>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The WEKA 
+data files must have the following format:</span></b></p>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<div align="center">
+<table border="1" width="307" height="196">
+	<tr>
+		<td height="196" width="307">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">@relation 
+			&lt;relation-name&gt;<br>
+			@attribute &lt;attribute-name-1&gt; &lt;datatype&gt;<br>
+			...<br>
+			@attribute &lt;attribute-name-N&gt; &lt;datatype&gt;<br>
+			@data<br>
+			value<sub>11</sub>,value<sub>12</sub>,value<sub>1N</sub><br>
+			...<br>
+			value<sub>M1</sub>,value<sub>M2</sub>,value<sub>MN</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;color:#003366;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></td>
+	</tr>
+</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.9pt">
+&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid WEKA file is:</span></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.9pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="309" height="301">
+		<tr>
+			<td height="295" width="309">
+			<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+    auto;mso-pagination:widow-orphan;mso-hyphenate:auto">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;
+    mso-bidi-language:AR-SA;mso-bidi-font-weight:bold"><font color="#008000">% Comment</font><o:p></o:p></span></i></p>
+			<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+    auto;mso-pagination:widow-orphan;mso-hyphenate:auto">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">@relation weather<br>
+			@attribute outlook sunny, overcast, rainy<br>
+			@attribute temperature real<br>
+			@attribute humidity real<br>
+			@attribute windy TRUE, FALSE<br>
+			@attribute play yes, no<br>
+			@data<br>
+			sunny,85,85,FALSE,no<br>
+			sunny,80,90,TRUE,no<br>
+			overcast,83,86,FALSE,yes<br>
+			rainy,70,96,FALSE,yes<br>
+			rainy,68,80,FALSE,yes</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;color:#003366;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></p>
+			</td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.9pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<br>
+&nbsp;</span></p>
+</body>
+
+</html>

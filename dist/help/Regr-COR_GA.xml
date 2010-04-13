@@ -1,0 +1,115 @@
+<method>
+
+	<name>Genetic Fuzzy Rule Learning, COR Algorithm</name>
+
+	<reference>  
+
+<ref>J. Casillas, O. Cordon and F. Herrera, COR: A methodology to improve ad hoc data-driven linguistic rule
+learning methods by inducing cooperation among rules, IEEE Transactions on System, Man and Cybernetics, Part B: Cybernetics
+32:4 (2002) 526-537</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutive Fuzzy Rule Base System for the generation of a Linguistic Rule Base</type>
+
+		<objective>To find the best cooperating fuzzy rule set given the training regression data.</objective>
+
+		<howWork>Instead of selecting the consequent with the highest performance in each subspace as usual, 
+		the COR methodology considers the possibility of using another consequent, different
+from the best one, when it allows the FRBS to be more accurate thanks to having a RB with best cooperation. For this
+purpose, COR performs a combinatorial search among the candidate rules looking for the set of consequents which
+globally achieves the best accuracy.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Agrupation of examples</param>
+			<param>Obtention of candidate consequents</param>
+			<param>Delete Rules</param>
+			<param>Learn Weights</param>
+			<param>Number of labels</param>
+			<param>Weight Cross Type</param>
+			<param>Population Size</param>
+			<param>Number of Generations</param>
+			<param>Crossover Probability</param>
+			<param>Mutation Probability</param>
+			<param>Parameter-A (MMA Crossover)</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+			<discretized>No</discretized>
+			<integer>Yes</integer>
+			<nominal>No</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-Thrift
+Dataset: daily-electric-energy
+Training set: 10-fcv (daily-electric-energy-10-1tra.dat to daily-electric-energy-10-10tra.dat)
+Test set: 10-fcv (daily-electric-energy-10-1tst.dat to daily-electric-energy-10-10tst.dat)
+Test Show results: Vis-Regr-Check
+
+Agrupation of examples = WM
+Obtention of candidate consequents = WM
+Delete Rules = YES
+Learn Weights = YES
+Number of labels = 3
+Weight Cross Type = MMA
+Population Size = 51
+Number of Generations = 100
+Crossover Probability = 0.5
+Mutation Probability = 0.4
+Parameter-A (MMA Crossover) = 0.01
+
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Regr-Check/TSTRegr-Thrift/ folder the regression results for the test set:
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.19505247064401568 
+Fold 1 : 0.22613090380055656 
+Fold 2 : 0.20557891436584771 
+Fold 3 : 0.1928981721581955 
+Fold 4 : 0.25998387401500517 
+Fold 5 : 0.1551411277774635 
+Fold 6 : 0.1768145649711438 
+Fold 7 : 0.18344294065916306 
+Fold 8 : 0.258380640783329 
+Fold 9 : 0.1817965051599894 
+Global MSE:
+0.20352201143347096 
+Global stdev:
+0.032903749622292124 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.16453583004126493 
+Fold 1 : 0.14776108559741974 
+Fold 2 : 0.16323463887661066 
+Fold 3 : 0.16647490551722233 
+Fold 4 : 0.15534951163466793 
+Fold 5 : 0.16566314304365753 
+Fold 6 : 0.16066633692181817 
+Fold 7 : 0.15835383004034395 
+Fold 8 : 0.1643272017858388 
+Fold 9 : 0.165930016454041 
+Global MSE:
+0.1612296499912885 
+Global stdev:
+0.0056424601111951965 
+
+We can also see the convergence of the algorithm in the result0s0e0.txt file and the Rule Base and Data Base in 
+the result1s0e0.txt file.
+</example>
+
+</method>

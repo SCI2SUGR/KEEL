@@ -1,0 +1,123 @@
+<method>
+
+	<name>Regr-iRProp+</name>
+
+	<reference>  
+
+		<ref> C. Igel and M. Husken. Empirical evaluation of the improved Rprop learning algorithm. Neurocomputing, 50(C):105--123, 2003.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression model by means of Product Unit Neural Networks or Multilayer Perceptrons trained with the iRProp+ algorithm</type>
+
+		<objective>To determine a classification model with neural networks based on product unit basis functions or sigmoidal basis functions.</objective>
+
+		<howWork> The method consists of optimizing the value of the model coefficients with the IRProp+ algorithm,
+                      minimizing the MSE with respect the training data. In this way, the Product Unit neural network or Multilayer Perceptron model
+                      is obtained from the training set and then checked against the patterns of the generalization set.
+            </howWork>
+
+		<parameterSpec>  
+				<param>Hidden_Nodes: It's the number of neurons in hidden layer</param>
+				<param>Epochs: It's the maximum number of propagations of the iRProp+ algorithm</param>
+				<param>Transfer: It's the type of transfer function used for the nodes of hidden layer</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-iRProp+
+Dataset: daily-electric-energy
+Training set: daily-electric-energy-10-1tra.dat
+Test set: daily-electric-energy-10-1tst.dat
+Test Show results: Vis-Regr-Check
+
+After the execution of RunKeel.jar we can see into the Experiment\results\Vis-Regr-Check\TSTRegr-iRProp+ folder the classification results for the test set:
+Global MSE:
+0.2079569176875477 
+Global stdev:
+0.07779323057486134 
+
+We can see too the output and target values for each case of the test set (result0s0.tst) in Experiment\results\Regr-iRProp+\daily-electric-energy:
+
+@relation Daily_average_cost_of_tKWhe_electry_energy_in_Spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@data
+2.21261 2.678619663226554
+3.82169 3.9412529928653894
+1.3288 1.9386274504493417
+2.53167 2.0973284773768075
+4.00095 3.8220650517749157
+2.9788 2.627740206366281
+1.67147 1.777286827712452
+3.3829 3.4256781816274535
+3.19877 2.6620615800272613
+2.4381 2.6345325009744403
+0.960987 1.425306203776275
+4.14661 4.482340494196057
+2.32848 2.0624218866340236
+1.79736 1.7287362680999712
+4.1939 3.904416025603923
+1.81792 2.2413432003217846
+2.5444 2.3203511301801165
+3.38268 3.996132026508491
+4.23803 4.559352304600621
+1.8952 2.6297753165790767
+2.06576 1.5045056338299165
+3.98641 4.503825398706469
+2.14667 2.6325446580844796
+1.43698 1.7293596437424057
+2.47629 2.6285146326483035
+3.97221 3.98192039987022
+2.66678 3.2021235542125677
+4.02099 3.5991405054129033
+1.81688 1.9829414674186876
+1.96609 1.8278124805413527
+4.03702 3.8400837387564857
+2.06716 2.068919338902936
+2.59703 2.8091434770328667
+4.0713 3.4415846061933513
+1.87965 1.925283531902053
+2.06879 3.0775178489326147
+
+And the best model (result0s0e0.txt) in Experiment\results\Clas-iRProp+\daily-electric-energy:
+
+7.239161793356648 * ( x1^0.29852651709089073 * x2^0.20937555224487045 * x3^0.2527824781448879 * x4^0.21707762764646152 * x5^0.32979640352273143 * x6^0.2495849092204901 )
++1.6359731668701425 * ( x1^-0.12194925496066326 * x2^-0.09762468975742689 * x3^-0.01642626044919582 * x4^-0.07894463374774818 * x5^-0.12728780766849718 * x6^-0.09323208260224479 )
+-0.7985066606437623 * ( x1^0.8635934280950265 * x2^1.5141365357285619 * x3^0.7898128621252345 * x4^0.8350040810622154 * x5^0.327574013003545 * x6^0.7527600181069521 )
+-8.82620160099913 * ( x1^1.1780878072046161 * x2^0.8622198863994985 * x3^0.5248059970764453 * x4^0.37386785387217686 * x5^0.9818141959721483 * x6^0.7775362096614783 )
+-2.9587622872960693 * (1)
+Null Fitness
+Number of hidden neurons: 4 Number of effective links: 29
+Train MSE: 0.17273413859906164
+Test  MSE: 0.16560859288546495
+Train SEP: 13.863827766321599
+Test  SEP: 14.926755317031878
+
+</example>
+
+</method>

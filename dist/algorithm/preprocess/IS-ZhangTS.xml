@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>Tabu Search for Instance Selection</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Tabu List Length</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>Error Rate Threshold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter>
+  <parameter>
+    <name>Distance Function</name>
+    <type>list</type>
+    <domain>
+      <item>Euclidean</item>
+      <item>HVDM</item>
+    </domain>
+    <default>Euclidean</default>   
+  </parameter>
+</algorithm_specification>

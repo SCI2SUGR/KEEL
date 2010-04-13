@@ -1,0 +1,38 @@
+<algorithm_specification>
+  <name>Cluster K-Means</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>ClusterKMeans</item>
+    </domain>
+    <default>ClusterKMeans</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>ADL</item>
+    </domain>
+    <default>ADL</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>nclusters</name>
+    <type>integer</type>
+    <default>1</default>
+  </parameter>
+</algorithm_specification>

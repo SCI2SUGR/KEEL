@@ -1,0 +1,20 @@
+<algorithm_specification>
+  <name>Las Vegas Wrapper (LVW)</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>paramKNN</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>7</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>maxLoops</name>
+    <type>integer</type>
+    <default>770</default>
+  </parameter>
+</algorithm_specification>

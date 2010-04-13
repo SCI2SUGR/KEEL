@@ -1,0 +1,39 @@
+@relation haberman-10-5tst
+@attribute Age integer [30, 83]
+@attribute Year integer [58, 69]
+@attribute Positive integer [0, 52]
+@attribute class {positive, negative}
+@inputs Age, Year, Positive
+@outputs class
+@data
+45, 66, 0, positive
+42, 62, 20, negative
+60, 65, 0, positive
+52, 62, 0, negative
+49, 61, 1, negative
+70, 58, 0, positive
+67, 66, 0, negative
+65, 64, 0, negative
+59, 64, 7, negative
+47, 66, 12, negative
+36, 60, 1, negative
+52, 59, 2, positive
+70, 58, 4, positive
+41, 69, 8, negative
+31, 65, 4, negative
+52, 62, 3, positive
+57, 63, 0, negative
+64, 61, 0, negative
+47, 61, 0, negative
+73, 62, 0, negative
+44, 64, 6, positive
+65, 58, 0, negative
+65, 67, 1, negative
+44, 61, 0, negative
+70, 66, 14, negative
+65, 64, 0, negative
+61, 59, 0, negative
+70, 68, 0, negative
+38, 60, 1, negative
+55, 58, 1, negative
+74, 65, 3, positive

@@ -1,0 +1,91 @@
+<method>
+<name>Naive Bayes Classifier</name>
+	<reference>
+	<ref>
+	P. Domingos and M. Pazzani. On the optimality of the simple Bayesian classifier under zero-one loss. Machine Learning, 29 (1997) 103?137.
+	</ref>
+	<ref>
+	M.E. Maron. Automatic Indexing: An Experimental Inquiry. Journal of the ACM (JACM) 8:3 (1961) 404?417.
+	</ref>
+</reference>
+<generalDescription>
+	<type>Classification using the Bayesian probability.</type>
+	<objective>A naive Bayes classifier is a simple probabilistic classifier based on applying Bayes&apos; theorem with strong (naive) independence assumptions. 
+		A more descriptive term for the underlying probability model would be independent feature model.</objective>
+
+	<howWork>
+		We compute the conditional probability of every example to be on each class. Then the output class of the example 
+		will be assigned as the highest conditional probability calculated.
+	</howWork>
+	
+	<parameterSpec>  
+	</parameterSpec>
+
+	<properties>
+		<continuous>No</continuous>
+		<discretized>Yes</discretized>
+		<integer>No</integer>
+		<nominal>Yes</nominal>
+		<valueLess>No</valueLess>
+		<impreciseValue>No</impreciseValue>
+	</properties>
+</generalDescription>
+
+<example>
+Problem type: Classification 
+Method: Clas-Naive_Bayes
+Dataset: Breast
+Training set: bre-10-1tra.dat to bre-10-10tra.dat
+Test set: bre-10-1tst.dat to bre-10-10tst.dat
+Test Show results: Vis-Clas-Check
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-Naive_Bayes folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.6666666666666667 N/C=0.0 
+Fold 1 : CORRECT=0.75 N/C=0.0 
+Fold 2 : CORRECT=0.7142857142857143 N/C=0.0 
+Fold 3 : CORRECT=0.7407407407407407 N/C=0.0 
+Fold 4 : CORRECT=0.7666666666666666 N/C=0.0 
+Fold 5 : CORRECT=0.6896551724137931 N/C=0.0 
+Fold 6 : CORRECT=0.8888888888888888 N/C=0.0 
+Fold 7 : CORRECT=0.6296296296296297 N/C=0.0 
+Fold 8 : CORRECT=0.7857142857142857 N/C=0.0 
+Fold 9 : CORRECT=0.8076923076923077 N/C=0.0 
+Global Classification Error + N/C:
+0.2560059927301307 
+stddev Global Classification Error + N/C:
+0.07088533496347096 
+Correctly classified:
+0.7439940072698693 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.776 N/C=0.0 
+Fold 1 : CORRECT=0.7710843373493976 N/C=0.0 
+Fold 2 : CORRECT=0.7710843373493976 N/C=0.0 
+Fold 3 : CORRECT=0.764 N/C=0.0 
+Fold 4 : CORRECT=0.7692307692307692 N/C=0.0 
+Fold 5 : CORRECT=0.7661290322580645 N/C=0.0 
+Fold 6 : CORRECT=0.756 N/C=0.0 
+Fold 7 : CORRECT=0.78 N/C=0.0 
+Fold 8 : CORRECT=0.7670682730923695 N/C=0.0 
+Fold 9 : CORRECT=0.7609561752988048 N/C=0.0 
+Global Classification Error + N/C:
+0.23184470754211964 
+stddev Global Classification Error + N/C:
+0.00665044367645917 
+Correctly classified:
+0.7681552924578804 
+Global N/C:
+0.0 
+
+
+</example>
+</method>

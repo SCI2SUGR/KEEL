@@ -1,0 +1,34 @@
+<algorithm_specification>
+  <name>Summary of the algorithm, Modeling probs.</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <nInput>0</nInput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>StatGeneralMO</item>
+    </domain>
+    <default>StatGeneralMO</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>CHK</item>
+    </domain>
+    <default>CHK</default>
+    <disabled/>
+  </parameter>
+</algorithm_specification>

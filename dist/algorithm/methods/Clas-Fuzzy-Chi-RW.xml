@@ -1,0 +1,44 @@
+<algorithm_specification>
+  <name>Fuzzy Rule Learning Model by the Chi et al. approach with rule weights</name>
+  <nParameters>4</nParameters>
+  <seed>0</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of Labels</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>13</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>T-norm for the Computation of the Compatibility Degree</name>
+    <type>list</type>
+    <domain>
+      <item>Product</item>
+      <item>Minimum</item>
+    </domain>
+    <default>Product</default>   
+  </parameter>
+  <parameter>
+    <name>Rule Weight</name>
+    <type>list</type>
+    <domain>
+      <item>No_Weights</item>
+      <item>Certainty_Factor</item>
+      <item>Average_Penalized_Certainty_Factor</item>      
+      <item>Penalized_Certainty_Factor</item>
+    </domain>
+    <default>Penalized_Certainty_Factor</default>   
+  </parameter>
+   <parameter>
+    <name>Fuzzy Reasoning Method</name>
+    <type>list</type>
+    <domain>
+      <item>Winning_Rule</item>
+      <item>Additive_Combination</item>
+    </domain>
+    <default>Winning_Rule</default>   
+  </parameter>
+</algorithm_specification>

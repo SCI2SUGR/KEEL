@@ -1,0 +1,182 @@
+<method>
+
+    <name>MOGUL: Iterative Rule Learning of Mamdani Rules - High Constrained Approach</name>
+
+    <reference>
+
+        <ref>O. Cord&#xF3;n, F. Herrera, Hybridizing genetic algorithms with sharing scheme and evolution strategies for designing approximate fuzzy rule-based systems. Fuzzy Sets and Systems 118:2 (2001) 235-255.</ref>
+        
+    </reference>
+
+    <generalDescription>
+
+        <type>Regression model by generation of fuzzy rule-based systems</type>
+
+        <objective>To obtain a Mamdani fuzzy rule-based system</objective>
+
+        <howWork>This method is based on a three-stage evolutionary process:
+        	Step 1: A rule generation method based on the combination of an inductive algorithm
+        	        and a (mu,landa)-evolution strategy ((mu,landa)-ES). This allows us to
+        	        automatically generate a preliminary Mamdani Fuzzy Rule Set for a concrete
+        	        problem when a training data set representing its behavior is available. 
+        	        
+		Step 2: A simplification process that searches for the best rules in the Mamdani Fuzzy Rule Set
+		        obtained in the previous step, in order to achieve the lower mean square error (MSE). 
+			This simplification process is based on a binary-coded GA with fixed-length chromosomes.
+			
+		Step 3: A tuning process that adapts the membership functions of each fuzzy rule in the Fuzzy Rule Set
+		        obtained after the simplification process.
+		        This genetic tuning process is based on a real coding GA so, the real-valued membership 
+                        function parameters used for each variable in each rule are encoded. The fitness function 
+                        is composed only of the mean square criterion.
+        </howWork>
+
+        <parameterSpec>
+             <param>Evolutionary strategy iterations</param>
+             <param>Number of parents for the evolutionary strategy</param>
+             <param>Number of offspring for the evolutionary strategy</param>
+             <param>Size of the standar deviation string</param>
+             <param>Size of the angle string</param>
+             <param>Recombination operator for the solution string</param>
+             <param>Recombination operator for the deviation string</param>
+             <param>Recombination operator for the angle string</param>
+             <param>Number of parents to recombine the solution string</param>
+             <param>Number of parents to recombine the deviation string</param>
+             <param>Number of parents to recombine the angle string</param>
+             <param>Application of the evolution strategy (1+1)</param>
+             <param>Evolution strategy iterations (1+1)</param>
+             <param>Type of niches</param>
+             <param>Omega parameter for the matching degree of the positive instances</param>
+             <param>K parameter for the percentage of allowed negative instances</param>
+             <param>Epsilon parameter for the minimun matching degree required to the KB</param>
+             <param>Type of fitness function</param>
+             <param>Number of labels of each variable</param>
+		    <param>Number of Iterations SELECTION</param>
+		    <param>Population Size SELECTION</param>
+		    <param>Tau parameter for the minimun maching degree required to the KB SELECTION</param>
+		    <param>Rate of rules to estimate the niche radio SELECTION</param>
+		    <param>Beta parameter for the Power Law SELECTION</param>
+		    <param>Type of Fitness Function SELECTION</param>
+		    <param>Cross Probability SELECTION</param>
+		    <param>Mutation Probability SELECTION</param>
+		    <param>Tuning Application</param>
+		    <param>Number of Iterations TUNING</param>
+		    <param>Population Size TUNING</param>
+		    <param>Tau parameter for the minimum maching degree required to the KB TUNING</param>
+		    <param>Parameter a TUNING</param>
+		    <param>Parameter b TUNING</param>
+		    <param>Cross Probability TUNING</param>
+		    <param>Mutation Probability TUNING</param>             
+        </parameterSpec>
+
+        <properties>
+            <continuous>Yes</continuous>
+            <discretized>Yes (only with numerical)</discretized>
+            <integer>Yes</integer>
+            <nominal>No</nominal>
+            <valueLess>Yes</valueLess>
+            <impreciseValue>No</impreciseValue>
+        </properties>
+
+    </generalDescription>
+
+    <example>Problem type: Regression
+        Method: Regr-Fuzzy-IRLHC
+        Dataset: ele1
+        Parameters: default values
+
+        After the execution of RunKeel.jar we can see into the experiment\results\Regr-Fuzzy-IRLHC the results. 
+The file 'result0s0e0.txt' contains the initial Mamdani fuzzy rule set and the approximation errors on training and test
+datasets:
+
+Numero de reglas: 25
+
+-94.26120904519124 30.69139472438173 121.0035321775097
+-405.79314160117883 353.1241126870395 984.8629571717721
+-1748.1062147629511 1046.2428780767195 4375.136185067792
+
+....
+
+29.595701120778116 42.36145968320135 127.47193123447414
+545.6366485959068 615.4234283318785 979.0353055005157
+1087.0171801652273 4819.1434648240365 6628.359007843521
+
+120.16188685153969 179.90825075995758 296.9123901982082
+729.9811430515364 1366.0384217131127 1754.607131012697
+3255.6313593943905 6724.302076962017 8624.29811879879
+
+
+MSEtra: 643268.3021630958 MSEMtst: 588604.183999187
+MLEtra: 677.4380039766861 MLEtst: 672.1621589264543
+Minimum of C_R: 0.3489549247721186 Minimum of CV_R: 1.5612482060406512
+
+While the file 'result0s0e1.txt' contains the considered initial fuzzy semantics:
+
+Initial Data Base: 
+
+  Variable 1:
+    Label 1: (-78.75,1.0,80.75)
+    Label 2: (1.0,80.75,160.5)
+    Label 3: (80.75,160.5,240.25)
+    Label 4: (160.5,240.25,320.0)
+    Label 5: (240.25,320.0,399.75)
+
+  Variable 2:
+    Label 1: (-343.332489,60.0,463.332489)
+    Label 2: (60.0,463.332489,866.664978)
+    Label 3: (463.332489,866.664978,1269.9974670000001)
+    Label 4: (866.664978,1269.9974670000001,1673.329956)
+    Label 5: (1269.9974670000001,1673.329956,2076.662445)
+
+  Variable 3:
+    Label 1: (-1818.75,80.0,1978.75)
+    Label 2: (80.0,1978.75,3877.5)
+    Label 3: (1978.75,3877.5,5776.25)
+    Label 4: (3877.5,5776.25,7675.0)
+    Label 5: (5776.25,7675.0,9573.75)
+    
+The file 'result0s0e2.txt' contains the Mandani fuzzy rule set and the approximation errors on training and test datasets after Step 2 (simplification process):
+
+Numero de reglas: 16
+
+-94.26120904519124 30.69139472438173 121.0035321775097
+-405.79314160117883 353.1241126870395 984.8629571717721
+-1748.1062147629511 1046.2428780767195 4375.136185067792
+
+...
+
+29.595701120778116 42.36145968320135 127.47193123447414
+545.6366485959068 615.4234283318785 979.0353055005157
+1087.0171801652273 4819.1434648240365 6628.359007843521
+
+120.16188685153969 179.90825075995758 296.9123901982082
+729.9811430515364 1366.0384217131127 1754.607131012697
+3255.6313593943905 6724.302076962017 8624.29811879879
+
+
+Minimum of C_R: 0.2001187420610538 Minimum covering degree: 0.20735632689445166
+Average covering degree: 1.1554601192244403 MLE: 428.8914928359223
+MSEtra: 364914.1423503134 , MSEtst: 589558.1116700919
+
+
+Finally, the file 'result0s0e2.txt' contains the Mandani fuzzy rule set and the approximation errors on training and test datasets after Step 3 (tuning process):
+
+Numero de reglas: 16
+
+-94.36574135547241 30.602668365684966 131.3029828109698
+-599.9517486545477 351.8079565121747 1008.347128335492
+-1748.1062147629511 504.5894108754945 4339.404987501693
+
+...
+
+120.6774866638701 178.09665037076928 275.2144809419987
+729.5735617805323 1366.0384217131127 1754.607131012697
+3287.582189565875 6769.186138940489 8624.298490062129
+
+
+MSEtra: 310212.0421133158  MSEtst: 497094.4283377843
+Average covering degree: 1.1969269900635324 Minimum covering degree: 0.3652977965323083
+    
+    </example>
+
+</method>

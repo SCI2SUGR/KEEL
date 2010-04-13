@@ -1,0 +1,329 @@
+<algorithm_specification>
+
+  <name>MPLCS</name>
+  <nParameters>43</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  
+  <parameter>
+    <name>defaultClass</name>
+    <type>text</type>
+    <default>major</default>
+    <disabled/>
+  </parameter>
+  
+  <parameter>
+    <name>discretizer1</name>
+    <type>text</type>
+    <default>UniformFrequency_10</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>discretizer2</name>
+    <type>text</type>
+    <default>UniformFrequency_15</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>discretizer3</name>
+    <type>text</type>
+    <default>UniformFrequency_20</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>discretizer4</name>
+    <type>text</type>
+    <default>UniformFrequency_25</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>discretizer5</name>
+    <type>text</type>
+    <default>UniformFrequency_4</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>discretizer6</name>
+    <type>text</type>
+    <default>UniformFrequency_5</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>discretizer7</name>
+    <type>text</type>
+    <default>UniformFrequency_6</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>discretizer8</name>
+    <type>text</type>
+    <default>UniformFrequency_7</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>discretizer9</name>
+    <type>text</type>
+    <default>UniformFrequency_8</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>discretizer10</name>
+    <type>text</type>
+    <default>UniformFrequency_9</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>useMDL</name>
+    <type>list</type>
+    <domain>
+      <item>false</item>
+      <item>true</item>
+    </domain>
+    <default>true</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>iterationHierarchicalSelection</name>
+    <type>integer</type>
+    <default>24</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>hierarchicalSelectionThreshold</name>
+    <type>integer</type>
+    <default>0</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>initialNumberOfRules</name>
+    <type>integer</type>
+    <default>20</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>numIterations</name>
+    <type>integer</type>
+    <default>500</default>
+    <disabled/>
+  </parameter>
+
+    <parameter>
+    <name>maxIntervals</name>
+    <type>integer</type>
+    <default>5</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>initialTheoryLengthRatio</name>
+    <type>real</type>
+    <default>0.075</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>iterationMDL</name>
+    <type>integer</type>
+    <default>25</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>weightRelaxFactor</name>
+    <type>real</type>
+    <default>0.9</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>sizePenaltyMinRules</name>
+    <type>integer</type>
+    <default>3</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>popSize</name>
+    <type>integer</type>
+    <default>300</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>probCrossover</name>
+    <type>real</type>
+    <default>0.6</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>probMutationInd</name>
+    <type>real</type>
+    <default>0.6</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>probMerge</name>
+    <type>real</type>
+    <default>0.05</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>probOne</name>
+    <type>real</type>
+    <default>0.9</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>probReinitializeBegin</name>
+    <type>real</type>
+    <default>0.03</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>probReinitializeEnd</name>
+    <type>real</type>
+    <default>0</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>probSplit</name>
+    <type>real</type>
+    <default>0.05</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>iterationRuleDeletion</name>
+    <type>integer</type>
+    <default>5</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>ruleDeletionMinRules</name>
+    <type>integer</type>
+    <default>6</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>seed</name>
+    <type>integer</type>
+    <default>12345678</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>tournamentSize</name>
+    <type>integer</type>
+    <default>3</default>
+    <disabled/>
+  </parameter>
+  
+  
+      <parameter>
+    <name>numStrata</name>
+    <type>integer</type>
+    <default>2</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>initMethod</name>
+    <type>text</type>
+    <default>smart</default>
+    <disabled/>
+  </parameter>
+  
+  
+      <parameter>
+    <name>probLocalSearch</name>
+    <type>real</type>
+    <default>0.05</default>
+    <disabled/>
+  </parameter>
+  
+  
+      <parameter>
+    <name>doRuleCleaning</name>
+    <type>list</type>
+    <domain>
+      <item>false</item>
+      <item>true</item>
+    </domain>
+    <default>true</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>doRuleSplitting</name>
+    <type>list</type>
+    <domain>
+      <item>false</item>
+      <item>true</item>
+    </domain>
+    <default>true</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>doRuleGeneralizing</name>
+    <type>list</type>
+    <domain>
+      <item>false</item>
+      <item>true</item>
+    </domain>
+    <default>true</default>
+    <disabled/>
+  </parameter>
+  
+        <parameter>
+    <name>probRSWcrossover</name>
+    <type>real</type>
+    <default>0.1</default>
+    <disabled/>
+  </parameter>
+  
+        <parameter>
+    <name>numParentsRSWcrossover</name>
+    <type>integer</type>
+    <default>10</default>
+    <disabled/>
+  </parameter>
+  
+        <parameter>
+    <name>repetitionsRuleOrdering</name>
+    <type>integer</type>
+    <default>5</default>
+    <disabled/>
+  </parameter>
+  
+        <parameter>
+    <name>filterSmartCrossover</name>
+    <type>real</type>
+    <default>0.05</default>
+    <disabled/>
+  </parameter>
+  
+  
+</algorithm_specification>

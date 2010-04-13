@@ -1,0 +1,171 @@
+<method>
+
+	<name>Fuzzy Rule Learning, grammar-based GP algorithm</name>
+
+	<reference>  
+
+<ref>L. S&#xE1;nchez, I. Couso. Learning with Imprecise Examples with GA-P Algorithms. Mathware &amp; Soft Computing 5 (1998) 305-319</ref>
+
+<ref>L. S&#xE1;nchez, I. Couso. Fuzzy random variables-based modeling with GA-P Algorithms. In R. Yager, B. Bouchon-Menier, L. Zadeh (Eds) Information, Uncertainty and Fusion,  Kluwer Editors (2000) 245 - 256.</ref>
+
+<ref>L. S&#xE1;nchez, I. Couso. Combining GP operators with SA search to evolve fuzzy rule based classifiers. Information Sciences  136, pg. 175 - 192 (2001)</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression fuzzy model.</type>
+
+		<objective>To obtain regression fuzzy models by means of learning fuzzy rule throught GP algorithms.</objective>
+
+		<howWork>A GP algorithm is used to learn a fuzzy regrssion model. For each hypothesis, the number of labels and number of rules must be given. In same way, as it is possible to manage any combination of conjuntion and/or disjuntions in the antecedent part of a fuzzy rule, a maximum deep tree size must be given too.
+
+Those parameters are, in conjuntion with GP typical parameters, of capital importance in the evolution of this method.
+</howWork>
+
+		<parameterSpec>  
+<param>numlabes: the number of possible fuzzy values for each variable.</param>
+<param>numrules: the number of rules for each model.</param> 
+<param>popsize: the number of individuals in the population, GA-P parameter.</param>
+<param>numisland: the number	of islands or subpopulations, GAP parameter.</param>
+<param>steady: indicates how population evolves. A value of 1 forces a steady, while a value of 0 indicates that new individuals substitute old ones. GP parameter.</param>
+<param>numitera: number of iterations to reach the objectives, GP parameter.</param>
+<param>toursize: number of individuals selected to tournament selection procedure. GP parameter.</param>
+<param>probmuta: indicates the probability that a mutation operation takes place, GP parameter.</param>
+<param>amplmuta	: the maximum bias that a mutation operation can introduce. GP Parameter.</param>
+<param>probmigra: probability that an individual of an island is used in a tournament of another island, GP parameter.</param>
+<param>proboptimlocal: indicates the probability to improve GP with local search GP parameter.</param>
+<param>numoptimlocal: the number of local search steps, GP parameter.</param>
+<param>idoptimlocal: the local search method used, GP parameter.</param>
+<param>nichingap: value 1 if niches are going to be used, , GP parameter.</param>
+<param>maxindniche: maximum number of individual per niche, , GP parameter.</param>
+<param>probintraniche: probability that a genetic operation can take place with individual of different niches, GP parameter.</param>
+<param>probcrossga: probability of genetic algorithm (parametric) operations to take place, GP parameter.</param>
+<param>probmutaga: probability of genetic algorithm (structural) operations to take place, GP parameter.</param>
+<param>maxtreeheight: maximum deep of a fuzzy tree.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: ModelFuzzyGP
+Dataset: daily-electric-energy
+Training set: daily-electric-energy-10-1tra.dat
+Test set: daily-electric-energy-10-1tst.dat
+Test Show results: StatChekMO
+Parameters: default parameters but numlabels = 3, numrules = 8, maxtreehight = 6
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTModelFuzzyGP/ folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.15308916634036904 
+Fold 1 : 0.21444503150394698 
+Fold 2 : 0.19944636130297677 
+Fold 3 : 0.16464261032298547 
+Fold 4 : 0.26003322515133603 
+Fold 5 : 0.15878808162412136 
+Fold 6 : 0.22035794246237836 
+Fold 7 : 0.1803217096978929 
+Fold 8 : 0.251827231966426 
+Fold 9 : 0.24038710209540676 
+Global MSE:
+0.20433384624678394 
+Global stdev:
+0.037273564083994314 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.19375227445599505 
+Fold 1 : 0.17935429608410036 
+Fold 2 : 0.17202261620034046 
+Fold 3 : 0.1970110882061437 
+Fold 4 : 0.16713204497542378 
+Fold 5 : 0.14956311691183208 
+Fold 6 : 0.17454146016677266 
+Fold 7 : 0.16054293949380663 
+Fold 8 : 0.20150381554375973 
+Fold 9 : 0.17609387381997052 
+Global MSE:
+0.17715175258581448 
+Global stdev:
+0.015618788400975525 
+
+We can see too the output and target classes for each case of the test set (result0s0.tra) in experiment/results/ModelFuzzyGP/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.31615 2.40458983095298
+2.37613 1.813397827701672
+2.25221 2.6475423045770285
+2.1057 2.3762580775628397
+4.05117 3.5969530972237815
+2.50409 2.4749138133991426
+4.4184 4.122552283205693
+3.07069 3.4607053773078644
+1.8168 2.002101411716825
+1.1095 2.11571338454915
+1.42735 1.8540772499999998
+3.34136 4.245246004296703
+2.34377 3.0467952862494623
+...
+
+And the test results (result0s0.tst) in folder experiment/results/ModelFuzzyGP/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.21261 2.763891107741367
+3.82169 3.7358698477536643
+1.3288 1.8335836962666745
+2.53167 2.8129181354468846
+4.00095 3.9656458487054933
+2.9788 2.8653195993170124
+1.67147 1.850189738314518
+3.3829 3.150840826272144
+3.19877 2.608658293965172
+2.4381 2.4989565412390538
+0.960987 2.090003800934038
+4.14661 4.513092033068567
+2.32848 1.85407725
+...
+</example>
+
+</method>

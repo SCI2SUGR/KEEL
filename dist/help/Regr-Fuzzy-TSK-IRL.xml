@@ -1,0 +1,180 @@
+<method>
+
+    <name>Iterative Rule Learning of TSK Rules</name>
+
+    <reference>
+
+        <ref>O. Cord&#xF3;n, F. Herrera, A Two-Stage Evolutionary Process for Designing TSK Fuzzy Rule-Based Systems, IEEE Transactions on Systems, Man and Cybernetics, Part B: Cybernetics 29:6 (1999) 703-715.</ref>
+        
+    </reference>
+
+    <generalDescription>
+
+        <type>Regression model by generation of fuzzy rule-based systems</type>
+
+        <objective>To obtain a TSK (Takagi-Sugeno-Kang) fuzzy rule-based system</objective>
+
+        <howWork>This method is based on the combination of an inductive algorithm and a 
+        (mu,landa)-evolution strategy ((mu,landa)-ES). This allows us to automatically generate a 
+        preliminary TSK-type KB for a concrete problem when a training data set representing its behavior 
+        is available. 
+        It is able to decide the number of rules composing the KB and to determine their consequent 
+        parameters generating a locally optimal KB.
+        Finally it is possible to execute a refinement stage, in which both the antecedent 
+        and consequent parts of the fuzzy rules in this previous knowledge base are adapted by a
+		hybrid evolutionary process composed of a genetic algorithm and an evolution strategy 
+		to obtain the final Knowledge Base whose rules cooperate in the best possible way.
+
+        </howWork>
+
+        <parameterSpec>
+             <param>Evolutionary strategy iterations</param>
+             <param>Number of parents for the evolutionary strategy</param>
+             <param>Number of offspring for the evolutionary strategy</param>
+             <param>Size of the standar deviation string</param>
+             <param>Size of the angle string</param>
+             <param>Recombination operator for the solution string</param>
+             <param>Recombination operator for the deviation string</param>
+             <param>Recombination operator for the angle string</param>
+             <param>Number of parents to recombine the solution string</param>
+             <param>Number of parents to recombine the deviation string</param>
+             <param>Number of parents to recombine the angle string</param>
+             <param>Application of the evolution strategy (1+1)</param>
+             <param>Evolution strategy iterations (1+1)</param>
+             <param>Type of niches</param>
+             <param>Omega parameter for the matching degree of the positive instances</param>
+             <param>K parameter for the percentage of allowed negative instances</param>
+             <param>Epsilon parameter for the minimun matching degree required to the KB</param>
+             <param>Type of fitness function</param>
+             <param>Number of labels of each variable</param>
+		    <param>Tuning Application</param>
+		    <param>Number of Iterations TUNING</param>
+		    <param>Population Size TUNING</param>
+		    <param>Parameter a TUNING</param>
+		    <param>Parameter b TUNING</param>
+		    <param>Cross Probability TUNING</param>
+		    <param>Mutation Probability TUNING</param>
+		    <param>Rate of the Population to which the ES is applied TUNING</param>
+		    <param>Evolutionary Strategy Iterations TUNING</param>
+        </parameterSpec>
+
+        <properties>
+            <continuous>Yes</continuous>
+            <discretized>Yes (only with numerical)</discretized>
+            <integer>Yes</integer>
+            <nominal>No</nominal>
+            <valueLess>Yes</valueLess>
+            <impreciseValue>No</impreciseValue>
+        </properties>
+
+    </generalDescription>
+
+    <example>Problem type: Regression
+        Method: Regr-Fuzzy-TSK-IRL
+        Dataset: ele1
+        Parameters: default values
+
+        After the execution of RunKeel.jar we can see into the experiment\results\Regr-Fuzzy-TSK-IRL the results. The file 'result0s0e0.txt' contains the TSK fuzzy rule set and the approximation errors on training and test datasets:
+
+-73.73295782149837 -73.73295782149837 240.25
+-1149.9974670000001 1068.9128271236316 1068.9128271236316
+23.28633995023482 0.09101559775430144 867.7328083908219 
+
+-131.7187545272656 160.5 160.5
+-333.06903474022465 1388.0282180668205 1388.07399271593
+23.234664348505422 0.8928920550693741 596.7120893797693 
+
+-238.25 186.59506669086585 186.59506669086585
+495.7927238838927 495.7927238838927 1100.329931842123
+19.591991091944124 0.5233036401733492 1297.955233328074 
+
+-78.75 120.63708959187338 297.7073128054024
+-734.539452426028 -734.539452426028 1250.7658451678449
+18.095186864969317 0.1962676577609411 789.0338130860008 
+
+-78.75 58.54154880410728 166.58556098850522
+301.18176409808234 302.332383275014 2076.662445
+14.734716240536285 2.6287294456470627 7.868301444708955 
+
+-78.71646747742867 191.12610013563162 191.12610013563162
+481.2144379935556 1295.6191056897972 1295.6191056897972
+21.236546746029788 2.213141464508709 213.99885310633198 
+
+80.75 100.49551487230009 559.25
+-875.3298650926858 1173.8542511189114 1173.8542511189114
+4.234532524201911 4.87674273778692 7.607654694460589 
+
+87.08998416354265 198.56126021589492 438.85713436770897
+517.9629951978446 561.6255497780171 1146.7139602941759
+1.6008221750386886 1.5787503273701822 2822.3190114701392 
+
+193.50792494678285 302.35056673224693 469.0546405383041
+1191.2834829330234 1610.948347952006 2683.6177602472007
+0.27577616514140685 0.12203263255005077 279.22713458786234 
+
+
+MSEtra: 580686.6428037146  MLEtra: 581.5922163274696
+MSEtst: 644259.887595521  MLEtst: 600.0408320331729
+
+While the file 'result0s0e1.txt' contains the considered initial fuzzy semantics:
+
+Initial Data Base: 
+
+  Variable de estado 1:
+    Label 1: (-158.5,1.0,160.5)
+    Label 2: (1.0,160.5,320.0)
+    Label 3: (160.5,320.0,479.5)
+
+  Variable de estado 2:
+    Label 1: (-746.664978,60.0,866.664978)
+    Label 2: (60.0,866.664978,1673.329956)
+    Label 3: (866.664978,1673.329956,2479.9949340000003)
+
+Finally the file 'result0s0e2.txt' stores the tuned rule base:
+
+Numero de reglas: 9
+
+-73.24589008483571 193.07205764620036 193.09477255796028
+-2259.452614061816 1067.0872598077704 1068.9128271236316
+16.07226788555078 3.494353704100496 -533.1463319242221 
+
+-433.7298807987795 -631.4445359863093 -631.4445359863093
+-579.853552110337 -579.853552110337 -579.853552110337
+-0.8614430961013185 -0.17210306838721867 -0.008777712746522151 
+
+2070.4936568996422 2070.4936568996422 -10.27799409164865
+1014.193134069654 1014.193134069654 399.01760003629875
+0.17434200388866855 0.0041605896078470254 -0.01876099924446855 
+
+495.79278083095414 496.06604477494074 496.06604477494074
+29.12633481782951 1944.917844290797 1946.6711981720243
+-0.41211006559247365 -0.6956269014047425 -2.03201184293066 
+
+32.10197798510886 32.10197798510886 32.10197798510886
+-598.2401422864685 -598.2401422864685 -598.2401422864685
+2.535611872497138 0.07753128029190316 -0.04755765158078113 
+
+1222.9257196290012 127.18732320616091 127.18732320616091
+99.28745943371666 302.90769286347984 302.90769286347984
+-0.010060039237219041 0.04680734602563856 10.969388548589205 
+
+20.787709637980896 20.75924949922907 20.75924949885005
+36.70377670277447 36.70377670277447 191.12610013563162
+0.13473322194711126 0.46821834808464274 0.101214505986923 
+
+1295.6191056897972 1295.6191056897972 -615.6927243159377
+-103.67971435640293 14.12557344683401 14.12557344683401
+-1.0370850680797388 0.025765774653276997 -0.02431063051891731 
+
+1276.539932546343 1276.539932546343 1276.539932546343
+1758.664110416266 1758.664110416266 5.1978478445794245
+0.10272928268342268 0.20919573275733225 -0.4565264982865812 
+
+
+MSEtra: 350777.10586567846  MLEtra: 414.4764293051324
+MSEtst: 409511.10711617616  MLEtst: 425.201596923945
+    
+        
+    </example>
+
+</method>

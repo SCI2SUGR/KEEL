@@ -1,0 +1,114 @@
+<html>
+
+<head>
+
+<title>Experiments Design</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div align="center">
+
+  <p><b>Menu bar</b></p>
+
+</div>
+
+<p>Each item of the menu bar contains different submenus. These are the different options available:</p>
+
+<ol>
+	<li><em>File Menu</em></li> 
+	<ul>
+ 
+<p align="center"><img src="imag/experiments/menu1.jpg"></p>
+<br/><br/>
+		<li><b>New Experiment</b>: creates a new experiment.</li> 
+
+		<li><b>Load Experiment</b>: opens an existing experiment. In the open dialog box, select a filename, and click Open. Experiments files usually are saved in XML format.</li>
+		 
+		<li><b>Save Experiment</b>: saves the current experiment to a XML file. If it is the first time that the experiment is saved, you will be asked about destination path.</li> 
+
+		<li><b>Save Experiment As</b>: saves current experiment to a XML file. You will be asked about destination path.</li>
+
+		<li><b>Exit</b>: closes the experiment design tool. If the experiment has not been saved yet, you can do it at this moment. </li>
+	</ul>
+<br/><br/>
+	<li><em>View Menu</em></li> 
+
+	<p align="center"><img src="imag/experiments/menu2.jpg"></p>
+<br/><br/>
+
+	<ul>
+
+
+		<li><b>Status Bar</b>: shows/hides the status bar (at the bottom of the windows). Initially, it is active.</li> 
+
+		<li><b>Grid</b>: shows/hides the alignment grid. It helps the user to make easy the alignment of the elements inserted in the draw area.  Initially, it is inactive.</li> 
+
+		<li><b>Help Panel</b>: shows/hides the help panel. Initially, it is active.</li> 
+
+		<li><b>DataSets/Algorithm</b>: shows/hides the panel containing the datasets/algorithms. Initially, it is active.</li> 
+
+	</ul>
+<br/><br/>	
+	<li><em>Edit Menu</em></li> 
+	<p align="center"><img src="imag/experiments/menu3.jpg"></p>
+<br/><br/>
+	<ul>
+
+		<li><b>Undo</b>: with this option the user can undo some actions. </li> 
+
+		<li><b>Redo</b>: with this option user can redo some undone actions.</li> 
+
+		<li><b>Select</b>: allows users to select one or more elements in the draw area. </li> 
+
+	</ul>
+<br/><br/>	
+	<li><em>Tools Menu</em></li> 
+<p align="center"><img src="imag/experiments/menu4.jpg"></p>
+<br/><br/>
+	<ul>
+
+		<li><b>Insert Dataflow</b>: allows connecting algorithm outputs (or dataset) to the inputs of another algorithm, creating a data flow that will be run later. This option is also available from the left bar via the button <img src="imag/experiments/menu5.jpg">.</li> 
+
+		<li><b>Import algorithm KEEL packet</b>: in order to insert a user's method, select this option and explore the path to choose the method.</li> 
+
+		<li><b>Snapshot</b>: it is possible to save the experiment design into an image format file (JPEG). This way allows you to insert it in any document, article, etc...</li>  
+		
+		<li><b>Run Experiment</b>: when experiment is fully designed, use this option to create a ZIP file containing a directory structure with all the files needed to run the designed experiment in the local computer selected by the user. </li> 
+
+		<li><b>Seed</b>: sets up the value of the seed used by the random number generator. If there is any algorithm (inserted in the experiment) that needs to generate random numbers, it will take in a seed created from the initial seed value. This seed can be established automatically or you can insert a value manually. The following picture shows the dialog prompted by this option:</li> 
+
+<p align="center"><img src="imag/experiments/menu6.jpg"></p>
+<br/><br/>
+
+		<li><b>Execution Options</b>: allows selecting some performance options to apply to the experiment. In this version, the option defined is the following:</li> 
+		<ul>
+
+			<li><b>Java Heap Size</b>: Indicate the number of MB that will be allocated in each execution of the algorithm. Default value is 512MB. Please do not set a higher value than your actual amount of RAM. The minimum accepted value has been set to 32MB.</li>  
+		</ul>
+		<p align="center"><img src="imag/experiments/menu7.jpg"></p>
+<br/><br/>
+	</ul>
+
+
+	<li><em>Help Menu</em></li> 
+	<p align="center"><img src="imag/experiments/menu8.jpg"></p>
+<br/><br/>
+	<ul>
+
+		<li><b>Content</b>: show a help dialog that contains information about how to use this program. </li> 
+		<li><b>About</b>: shows a dialog with basic information about the program as name, authors, version, etc...</li>  
+
+	</ul>
+</ol>
+
+
+</body>
+
+</html>
+

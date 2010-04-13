@@ -1,0 +1,122 @@
+<method>
+
+	<name> HIDER </name>
+
+	<reference>
+			<ref>J.S. Aguilar-Ruiz, J.C. Riquelme, and M. Toro. 
+			Evolutionary learning of hierarchical decision rules. 
+			IEEE Transactions on Systems, Man, and Cybernetics - Part B: Cybernetics, 33(2):324-331.
+			</ref>
+			<ref>J.S. Aguilar-Ruiz, R. Giraldez and J.C. Riquelme. Natural Encoding for Evolutionary 
+			Supervised Learning, IEEE Transactions on Evolutionary Computation, In press.
+			</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type> Classification model by hierachical rules </type>
+
+		<objective> 
+				To extract a set of hierarchical decision rules for
+				classification in continuous and discrete domains.
+		</objective>
+
+		<howWork>
+				HIerarchical DEcision Rules (HIDER) produces a hierarchical set of rules, 
+				that is, the rules are sequentially obtained
+				and must be, therefore, tried in order until one is found whose conditions
+				are satisfied.
+
+				In order to extract the rule-list a real-coded GA is employed in the search process.
+				Two genes will define the lower and upper bounds of the rule attribute. One rule
+				is extracted in each iteration of the GA and all the examples covered by that rule
+				are deleted. A parameter epf (examples pruning factor) defines a percentage of
+				examples that can remain uncovered. Thus, the termination criterion is reached
+				when there are no more examples to cover, depending on the epf.								
+		</howWork>
+
+		<parameterSpec>  
+  			<param> populationSize: number of chromosomes in the population</param>
+  			<param> nGenerations: number of iterations of the GA process</param>
+  			<param> mutationProbability: probability to apply mutation</param>
+  			<param> crossPercent: probability to apply crossover</param>
+  			<param> extremeMutationProbability: probability to apply the extreme mutation</param>
+  			<param> pruneExamplesFactor: percentage of examples that can remain uncovered</param>
+  			<param> penaltyFactor: penalty factor</param>
+  			<param> errorCoeficient: error coeficient</param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+
+
+		Problem type: Classification 
+		Method: Clas-Hider
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat and iris-10-10tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-Hider
+		folder the classification results for the test set:
+		
+		TEST RESULTS
+		============
+		Classifier= iris_plants_database 
+		Fold 0 : CORRECT=1.0 N/C=0.0 
+		Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 2 : CORRECT=1.0 N/C=0.0 
+		Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+		Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 5 : CORRECT=1.0 N/C=0.0 
+		Fold 6 : CORRECT=1.0 N/C=0.0 
+		Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 8 : CORRECT=1.0 N/C=0.0 
+		Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+		Global Classification Error + N/C:
+		0.039999999999999994 
+		stddev Global Classification Error + N/C:
+		0.04422166387140534 
+		Correctly classified:
+		0.96 
+		Global N/C:
+		0.0 
+		
+		TRAIN RESULTS
+		============
+		Classifier= iris_plants_database 
+		Summary of data, Classifiers: iris_plants_database 
+		Fold 0 : CORRECT=0.9777777777777777 N/C=0.0 
+		Fold 1 : CORRECT=0.9777777777777777 N/C=0.0 
+		Fold 2 : CORRECT=0.9777777777777777 N/C=0.0 
+		Fold 3 : CORRECT=0.9777777777777777 N/C=0.0 
+		Fold 4 : CORRECT=0.9777777777777777 N/C=0.0 
+		Fold 5 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 6 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 7 : CORRECT=0.9777777777777777 N/C=0.0 
+		Fold 8 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 9 : CORRECT=0.9777777777777777 N/C=0.0 
+		Global Classification Error + N/C:
+		0.02444444444444445 
+		stddev Global Classification Error + N/C:
+		0.00339450051478206 
+		Correctly classified:
+		0.9755555555555555 
+		Global N/C:
+		0.0 
+
+		
+	</example>
+		
+</method>

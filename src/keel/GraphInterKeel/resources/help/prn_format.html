@@ -1,0 +1,148 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+
+<title>PRN format</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h2 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">PRN DATA 
+FILE FORMAT</span></b></h2>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">This 
+format has the same features and restrictions that the CSV format, the 
+difference is the separator between fields in PRN format are spaces. However, 
+the spaces in PRN format have a different role than in CVS files.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span><b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of these files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The first record in a PRN file may be a header record containing name of 
+		the columns.</span></li>
+		<li>
+		<p class="MsoNormal"><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		Each record in a file with headers in columns can have less fields than 
+		the number of headers. In this case, empty values are considered missing 
+		values.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Each row 
+		must have the same number of fields separated by spaces.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Several 
+		spaces together will be treated as a single space.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The spaces 
+		at the beginning or end of the line indicated null values.</span></li>
+		<li>
+		<p class="MsoNormal"><span lang="EN-GB" style="font-family: Times New Roman">
+		The separation symbol for decimals numbers is a point instead of a 
+		comma.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN" style="font-family: Times New Roman">Each record 
+is one line terminated by a newline character or a carriage return.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The blank 
+		lines will be ignored.</span></li>
+		<li>
+		<p class="MsoNormal"><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The fields can contain double quote, carriage return (or any other 
+		character).</span></li>
+		<li>
+		<p class="MsoNormal">
+	<strong><span lang="EN-GB" style="font-weight: normal">Fields that contain 
+space character as value must be surounded by double-quotes.</span></strong></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">A record 
+		with a single field without any value must have the requirements of type 
+		text to prevent that it is not ignored.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The last 
+		record in a file can be finished or not with the end of line symbol.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+files are stored by default, with the extension &quot;.prn&quot;.</span></li>
+	</ul>
+	<p class="MsoNormal">&nbsp;</p>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The PRN 
+files have the data separated by blank spaces. So, these data files must have 
+the following format:</span></b></p>
+<div align="center">
+	<table border="1" width="253" height="112">
+		<tr>
+			<td height="112" width="253">
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">attribute<sub>1</sub> attribute<sub>2</sub><span style="mso-spacerun:yes">&nbsp;
+			</span>... <span style="mso-spacerun:yes">&nbsp;</span>attribute<sub>N</sub><br>
+			value<sub>11</sub> <span style="mso-spacerun:yes">&nbsp;</span>value<sub>12</sub>
+			<span style="mso-spacerun:yes">&nbsp;</span>...
+			<span style="mso-spacerun:yes">&nbsp;</span>value<sub>1N</sub><br>
+			...<br>
+			value<sub>M1</sub> <span style="mso-spacerun:yes">&nbsp;</span>value<sub>M2</sub><span style="mso-spacerun:yes">&nbsp;
+			</span>... <span style="mso-spacerun:yes">&nbsp;</span>value<sub>MN</sub></span><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;color:#003366;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid PRN file is the following:</span></b></p>
+<i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i>&nbsp;<div align="center">
+	<table border="1" width="209" height="234">
+		<tr>
+			<td height="234" width="209">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">OBS DELL GE YAHOO<br>
+			1 26.99 48.5 22.92<br>
+			2 26 49.93 20.83<br>
+			3 26.24 49.96 20.13<br>
+			4 25.76 49.48 19.98<br>
+			5 26.73 49.43 19.74<br>
+			6 24.93 49.83 18.86<br>
+			7 25.84 49.01 18.23<br>
+			8 25.91 49.73 17.79<br>
+			9 24.6 50.15 17.1</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA">
+			</span></i>
+			<p>&nbsp;</td>
+		</tr>
+	</table>
+</div>
+
+<p class="MsoNormal" style="text-align:justify">
+<span lang="ES-TRAD" style="font-family:&quot;Times New Roman&quot;">&nbsp;</span></p>
+<p>
+  </li><br></p>
+</body>
+
+</html>

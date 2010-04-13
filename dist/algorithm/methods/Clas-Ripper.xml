@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>Ripper</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>grow_pct</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.66</default>
+  </parameter>
+  <parameter>
+    <name>K</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+</algorithm_specification>

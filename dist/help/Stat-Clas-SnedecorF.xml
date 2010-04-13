@@ -1,0 +1,69 @@
+<method>
+
+	<name>Statistical two Normal samples variance comparation F test</name>
+
+	<reference>  
+
+<ref>Snedecor, G. W., Cochran, W. G.: Statistical Methods. Iowa State University Press, Ames, IA. (1989)</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical two sample means comparation using the  F test by mean of StatTestClasF algorithm.</type>
+
+		<objective>Execution of the Snedecor F test for comparing two classifier methods performance.</objective>
+
+		<howWork>
+Stat-Clas-SnedecorF is a method for comparing the performance of two classification algorithms using statistics techniques. It can be used in k-folds and 5x2 cross validation training  experiments.
+Stat-Clas-SnedecorF is associated to the training and testing results of the two models in an experiment that are to be compared. Once those models has been trained and tested, the Stat-Clas-SnedecorF takes place. 
+The process calculates the percentage of correctly classified examples for each of the partitions results. The statistical sample includes all of those error measures for each method to be compared. Then the F-Test is executed with the Null hypothesis as true if both methods have equals variance.
+</howWork>
+
+		<parameterSpec>  
+<param>signlevel: a value in the range (0,1). Default value:  0.95. The significance level represents the probability of erroneous rejecting the NULL Hypothesis.</param>
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Methods to compare: Clas-ADLinear vs Clas-KNN
+Dataset: cleveland
+Type of partitions: k-fold, k=10
+Default parameters
+
+After the execution of RunKeel.jar we can see into the ./results/Stat-Clas-SnedecorF/TSTClas-ADLinearvsClas-KNN/ folder the results0s0.stat file:
+
+F test, Classification
+Classification error in each fold:
+Algorithm = 0
+Fold 0 : 0.36666666666666664 
+Fold 1 : 0.36666666666666664 
+Fold 2 : 0.26666666666666666 
+Fold 3 : 0.3333333333333333 
+Fold 4 : 0.5 
+Fold 5 : 0.5 
+Fold 6 : 0.45161290322580644 
+Fold 7 : 0.45161290322580644 
+Fold 8 : 0.23333333333333334 
+Fold 9 : 0.5483870967741935 
+Algorithm = 1
+Fold 0 : 0.4666666666666667 
+Fold 1 : 0.5666666666666667 
+Fold 2 : 0.4 
+Fold 3 : 0.4666666666666667 
+Fold 4 : 0.3333333333333333 
+Fold 5 : 0.5666666666666667 
+Fold 6 : 0.3870967741935484 
+Fold 7 : 0.5483870967741935 
+Fold 8 : 0.4666666666666667 
+Fold 9 : 0.4838709677419355 
+Null hypothesis, equal variances
+Output=0: There is no evidence against H0
+p-value:
+0.3971556565308336</example>
+
+</method>

@@ -1,0 +1,189 @@
+<method>
+
+	<name>Kernel Classifier</name>
+
+	<reference>  
+
+		<ref>G. J. McLachlan, Discriminant Analysis and Statistical Pattern Recognition, Wiley Series in Probability and Mathematical Statistics, 2004. </ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification by means of Kernel Method.</type>
+
+		<objective>Classify an instance as a result of majority class in the neighbourhood defined by a radius value given.</objective>
+
+		<howWork>Clas-Kernel determines the number of individuals that are of the class, and the number of them that are not. Individuals affected are those nearest to the one to be clasified in a distance lower that the radius given. If the number of individuals of the class is bigger that the number of individuals that are not of the class, then the individual is propose to be of the class.
+
+This method manage correctly high dimensional feature dimensions, while unknown data can induce poorer results. Datasets must be of small-medium size.
+		</howWork>
+
+		<parameterSpec>  
+<param>Sigma: is the value of inverse of the variance that represents the radius of neighborhood. Bigger values can produce misclassified individuals when individual to classify is near the border. Lower values may produce that an individual can not be classsified as there is no individual else in the neighborhood.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-Kernel
+Dataset: aut
+Training set: aut-10-1tra.dat
+Test set: aut-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: sigmaKernel = 0.0001
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTClas-Kernel folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= autos
+Fold 0 : CORRECT=0.38095238095238093 N/C=0.0
+...
+Global Classification Error + N/C:
+0.5810359891824423
+stddev Global Classification Error + N/C:
+0.13083464857785354
+Correctly classified:
+0.41896401081755774 Global N/C:
+0.0
+
+TRAIN RESULTS
+============
+Classifier= autos
+Summary of data, Classifiers: autos
+Fold 0 : CORRECT=1.0 N/C=0.0
+...
+Global Classification Error + N/C:
+0.00757363254964627
+stddev Global Classification Error + N/C:
+0.004328906311064884
+Correctly classified:
+0.9924263674503537
+Global N/C:
+0.0
+
+We can see too the output and target classes for each case of the training set (result0s0.tra) in experiment/results/Clas-Kernel/aut/ folder:
+
+@relation autos
+@attribute normalized-losses real[65.0,256.0]
+@attribute make{alfa-romero,audi,bmw,chevrolet,dodge,honda,isuzu,jaguar,mazda,mercedes-benz,mercury,mitsubishi,nissan,peugot,plymouth,porsche,renault,saab,subaru,toyota,volkswag
+en,volvo}
+@attribute fuel-type{diesel,gas}
+@attribute aspiration{std,turbo}
+@attribute num-of-doors{four,two}
+@attribute body-style{hardtop,wagon,sedan,hatchback,convertible}
+@attribute drive-wheels{4wd,fwd,rwd}
+@attribute engine-location{front,rear}
+@attribute wheel-base real[86.6,120.9]
+@attribute length real[141.1,208.1]
+@attribute width real[60.3,72.3]
+@attribute height real[47.8,59.8]
+@attribute curb-weight real[1488.0,4066.0]
+@attribute engine-type{dohc,dohcv,l,ohc,ohcf,ohcv,rotor}
+@attribute num-of-cylinders{eight,five,four,six,three,twelve,two}
+@attribute engine-size real[61.0,326.0]
+@attribute fuel-system{1bbl,2bbl,4bbl,idi,mfi,mpfi,spdi,spfi}
+@attribute bore real[2.54,3.94]
+@attribute stroke real[2.07,4.17]
+@attribute compression-ratio real[7.0,23.0]
+@attribute horsepower real[48.0,288.0]
+@attribute peak-rpm real[4150.0,6600.0]
+@attribute city-mpg real[13.0,49.0]
+@attribute highway-mpg real[16.0,54.0]
+@attribute price real[5118.0,45400.0]
+@attribute symboling{-2,-1,0,1,2,3}
+@inputs normalized-losses,make,fuel-type,aspiration,num-of-doors,body-style,drive-wheels,engine-location,wheel-base,length,width,height,curb-weight,engine-type,num-of-cylinders,
+engine-size,fuel-system,bore,stroke,compression-ratio,horsepower,peak-rpm,city-mpg,highway-mpg,price
+@outputs symboling
+@data
+1 1
+1 1
+1 1
+1 1
+1 1
+3 3
+3 3
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+2 2
+2 2
+2 2
+-1 -1
+...
+
+And the test results (result0s0.tst) in experiment/results/Clas-Kernel/aut/:
+
+@relation autos
+@attribute normalized-losses real[65.0,256.0]
+@attribute make{alfa-romero,audi,bmw,chevrolet,dodge,honda,isuzu,jaguar,mazda,mercedes-benz,mercury,mitsubishi,nissan,peugot,plymouth,porsche,renault,saab,subaru,toyota,volkswag
+en,volvo}
+@attribute fuel-type{diesel,gas}
+@attribute aspiration{std,turbo}
+@attribute num-of-doors{four,two}
+@attribute body-style{hardtop,wagon,sedan,hatchback,convertible}
+@attribute drive-wheels{4wd,fwd,rwd}
+@attribute engine-location{front,rear}
+@attribute wheel-base real[86.6,120.9]
+@attribute length real[141.1,208.1]
+@attribute width real[60.3,72.3]
+@attribute height real[47.8,59.8]
+@attribute curb-weight real[1488.0,4066.0]
+@attribute engine-type{dohc,dohcv,l,ohc,ohcf,ohcv,rotor}
+@attribute num-of-cylinders{eight,five,four,six,three,twelve,two}
+@attribute engine-size real[61.0,326.0]
+@attribute fuel-system{1bbl,2bbl,4bbl,idi,mfi,mpfi,spdi,spfi}
+@attribute bore real[2.54,3.94]
+@attribute stroke real[2.07,4.17]
+@attribute compression-ratio real[7.0,23.0]
+@attribute horsepower real[48.0,288.0]
+@attribute peak-rpm real[4150.0,6600.0]
+@attribute city-mpg real[13.0,49.0]
+@attribute highway-mpg real[16.0,54.0]
+@attribute price real[5118.0,45400.0]
+@attribute symboling{-2,-1,0,1,2,3}
+@inputs normalized-losses,make,fuel-type,aspiration,num-of-doors,body-style,drive-wheels,engine-location,wheel-base,length,width,height,curb-weight,engine-type,num-of-cylinders,
+engine-size,fuel-system,bore,stroke,compression-ratio,horsepower,peak-rpm,city-mpg,highway-mpg,price
+@outputs symboling
+@data
+1 1
+1 1
+1 1
+1 1
+1 1
+3 3
+3 3
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+2 2
+2 2
+2 2
+-1 -1
+...
+</example>
+
+</method>

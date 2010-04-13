@@ -1,0 +1,387 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+
+<title>UCI format</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h3 style="text-align: center">
+<span style="font-family: Times New Roman" lang="en-gb">HTML</span><b><span lang="EN-GB" style="font-family: Times New Roman; "> DATA 
+FILE FORMAT</span></b></h3>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify"><font face="Times New Roman">
+<span lang="EN">HTML&nbsp; (Hypertext Markup Language)&nbsp; is the predominant 
+markup language for web pages. It provides a means to describe the structure of 
+text-based information in a document (denoting certain text as headings, 
+paragraphs, lists, and so on) and to supplement that text with <i>interactive 
+forms</i>, embedded <i>images</i>, and other objects. HTML is written in the 
+form of labels (known as tags), surrounded by angle brackets.</span></font></p>
+<p class="MsoNormal" style="text-align: justify"><font face="Times New Roman">
+<span lang="EN">&nbsp;</span></font></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">HTML is an 
+application of SGML according to the international standard ISO 8879. XHTML is a 
+reformulation of HTML 4 as an XML application 1.0, and allows compatibility with 
+user agents already admitted HTML 4 following a set of rules. </span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black; font-weight: 700">
+The basic HTML tags &nbsp;are:</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<b>&lt;HTML&gt;</b>: is the label that defines the beginning of the document.</span></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<b>&lt;HEAD&gt;</b>: defines the header of the document, this header normally
+		</span><span lang="en-gb"><font face="Times New Roman">c</font></span><font face="Times New Roman"><span lang="EN-GB">ontains 
+		information about the page such as the TITLE, META tags for proper 
+		Search Engine indexing, STYLE tags, which determine the page layout, and 
+		JavaScript coding for special effects. </span></font>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">Within the header &lt;HEAD&gt; we find:</span><ul type="disc">
+			<li>
+			<p class="MsoNormal" style="text-align: justify">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">&lt;TITLE&gt;: defines the title of the page. 
+			</span><font face="Times New Roman"><span lang="EN-GB">This will be visible 
+			in the title bar of the viewers&#8217; browser.</span></font></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">&lt;LINK&gt;: defines some advanced features, for example style sheets 
+			used for the design of the page.</span></li>
+		</ul></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<b>&lt;BODY&gt;</b>: contains the main content or body of the paper,
+		</span><font face="Times New Roman"><span lang="EN-GB">this is where you will 
+		begin writing your document and placing your HTML codes. It defines 
+		common<b> </b></span></font>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">properties to the entire page, such as background colour and margins. 
+		Within the body can &lt;BODY&gt; you can use a great variety labels. The label 
+		which we use on our tool is &lt;TABLE&gt;: This label defines the beginning of 
+		a table (the &lt;TR&gt; represents rows and &nbsp;&lt;TD&gt; represents cells).</span></li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;<b>The 
+format explained above corresponds to an HTML page is :</b></span></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="176" height="209" id="table1">
+		<tr>
+			<td height="209" width="166">
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&lt;HTML&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;HEAD&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			...</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/HEAD&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;BODY&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			&lt;TABLE&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			...</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			&lt;/TABLE&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			...</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/BODY&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&lt;/HTML&gt;</font></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 18.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Tag 
+&lt;TABLE&gt; </span></b></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN" style="font-family: Times New Roman; color: black">The HTML 
+table model allows authors to arrange data -- text, preformatted text, images, 
+links, forms, form fields, other tables, etc. -- into rows and columns of cells.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Tables are 
+defined with the &lt;table&gt; tag. A table is divided into rows (with the &lt;tr&gt; tag), 
+and each row is divided into data cells (with the &lt;td&gt; tag). The letters td 
+stands for &quot;table data,&quot; which is the content of a data cell. A data cell can 
+contain text, images, lists, paragraphs, forms, horizontal rules, tables, etc.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Different 
+Tags which will define the structure of the table for obtaining a valid data 
+file are:</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">TR: 
+	The label &lt;TR&gt; will allow us to insert rows in the table. </span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">TH: 
+	The label &lt;TH&gt; will allow us to define the table head table.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">TD: 
+	The label &lt;TD&gt; will allow us to insert cells in each row. We can insert any 
+	element: pictures, lists, formatted text and even other tables.</span></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<p class="MsoNormal"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The HTML 
+format valid to Keel is the following:</span></b></p>
+<p class="MsoNormal">&nbsp;</p>
+<div align="center">
+	<table border="1" width="295" height="354" id="table2">
+		<tr>
+			<td height="354" width="285">
+			<p style="margin-top: 0; margin-bottom: 0">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			&lt;table&gt;</span></p>
+			<blockquote>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;tr&gt;</span></p>
+				<blockquote>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;th&gt;Header 1&lt;/th&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;th&gt;Header 2&lt;/th&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;th&gt;Header 3&lt;/th&gt;</span></p>
+				</blockquote>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;/tr&gt;</span></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;tr&gt;</span></p>
+				<blockquote>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 1&lt;/td&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 2&lt;/td&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 3&lt;/td&gt;</span></p>
+				</blockquote>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;/tr&gt;</span></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;tr&gt;</span></p>
+				<blockquote>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 4&lt;/td&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 5&lt;/td&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 6&lt;/td&gt;</span></p>
+				</blockquote>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;/tr&gt;</span></p>
+			</blockquote>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			&lt;/table&gt;</span></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-indent: 18.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid HTML file is the following:</span></b></p>
+<p class="MsoNormal" style="margin-left: 70.9pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="760" height="597" id="table3">
+		<tr>
+			<td height="597" width="750">
+			<p class="MsoNormal" style="margin-left: 70.9pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			<i>&lt;html&gt;</i></span></p>
+			<blockquote>
+				<p class="MsoNormal" style="margin-left: 70.9pt">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				<i>&lt;head&gt;</i></span></p>
+				<blockquote>
+					<p class="MsoNormal" style="margin-left: 70.9pt">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					<i>&lt;h1 align=&quot;center&quot;&gt;VEHICLES&lt;/h1&gt;</i></span></p>
+				</blockquote>
+				<p class="MsoNormal" style="margin-left: 70.9pt">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				<i>&lt;/head&gt;</i></span></p>
+				<p class="MsoNormal" style="margin-left: 70.9pt">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				<i>&lt;body&gt;</i></span></p>
+				<blockquote>
+					<p class="MsoNormal" style="margin-left: 70.9pt">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					<i>&lt;table border=&quot;1&quot; cellspacing=&quot;1&quot; cellpadding=&quot;0&quot;&gt;</i></span></p>
+					<blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr align=&quot;center&quot;&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Month&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Week&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Vehicle&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Amount&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;January&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Car&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;105.0&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;January&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Truck&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1.05&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;January&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;MotorBike&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1.575&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;January&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Car&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;2.1&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+					</blockquote>
+					<p class="MsoNormal" style="margin-left: 70.9pt">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					<i>&lt;/table&gt;</i></span></p>
+				</blockquote>
+				<p class="MsoNormal" style="margin-left: 70.9pt">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				<i>&lt;/body&gt;</i></span></p>
+			</blockquote>
+			<p class="MsoNormal" style="margin-left: 70.9pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			<i>&lt;/html&gt;</i></span></p>
+			<p>&nbsp;</td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="margin-left: 70.9pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+&nbsp;</span></p>
+</body>
+
+</html>

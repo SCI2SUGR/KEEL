@@ -1,0 +1,36 @@
+<html>
+
+<head>
+
+<title>Run KEEL</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div align="center">
+
+  <p><b>View results</b></p>
+
+</div>
+
+<p>Once the run of experiment has finished, the result files are can be found at the <b>results\</b> directory.</p> 
+
+<p>Depending of the type of methods used in the experiment, the following directories and files will be available:</p>
+<ul>
+	<li><b>Methods</b>: For each combination of a method and a data set, there will be a directory, named <b>&lt;methodName&gt;.&lt;datasetName&gt;</b>. 
+Inside, it is possible to find the output files of the method (generally, a training and a test output file for each partition, plus every additional output file defined by the method). For further reference, see the <a href="http://sci2s.ugr.es/keel/development.php">KEEL Reference Manual</a>, http://sci2s.ugr.es/keel/development.php.</li>
+	<li><b>Tests</b>: For each test module employed, a new directory named with the name of the test will be available. This directory will contain the output files obtained as a result of the application of the test method.</li>
+</ul>
+<p>On the other hand, note that the new data sets obtained as the result of the execution of a preprocessing method will be placed in the <b>datasets\</b> directory of the experiment, to allow a further employment of them with linked methods in the same experiment.</p>
+
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>AVQ</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+      <name>percentage_in_T_set</name>
+    <type>real</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>80</default>
+  </parameter>
+  <parameter>
+      <name>iterations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>epsilon_in_LBG_partition</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+</algorithm_specification>

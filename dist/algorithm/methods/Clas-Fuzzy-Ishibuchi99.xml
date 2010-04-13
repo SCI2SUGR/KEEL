@@ -1,0 +1,69 @@
+<algorithm_specification>
+  <name>Fuzzy Rule Learning Algorithm Proposed by Ishibuchi et al. in 1999</name>
+  <nParameters>7</nParameters>
+  <seed>1</seed>
+  <nOutput>4</nOutput>
+  <parameter>
+    <name>Number of Labels</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>  
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>Number of Evaluations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000000</upperB>
+    </domain>
+    <default>10000</default>
+  </parameter>
+  <parameter>
+    <name>Number of Individuals to be Replaced in the Population</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>20</default>
+  </parameter>  
+  <parameter>
+    <name>Crossover Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter>
+  <parameter>
+    <name>Mutation Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>"Don't Care" Label Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.9</default>
+  </parameter>     
+</algorithm_specification>

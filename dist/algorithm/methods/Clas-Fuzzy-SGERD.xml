@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>Steady-state Genetic Algorithm for Extracting fuzzy classification Rules from Data</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of Q rules per class (0 to calculate heuristically)</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>40</upperB>
+    </domain>
+    <default>0</default>
+  </parameter>
+  <parameter>
+    <name>Rule evaluation criteria</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>2</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+</algorithm_specification>

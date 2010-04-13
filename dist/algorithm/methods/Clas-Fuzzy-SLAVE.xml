@@ -1,0 +1,51 @@
+<algorithm_specification>
+  <name>Fuzzy Rule Learning, SLAVE Algorithm</name>
+  <nParameters>5</nParameters>
+  <seed>1</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of Labels</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>  
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>Number of Iterations Allowed without Change</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>500</default>
+  </parameter>
+  <parameter>
+    <name>Mutation Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>
+  <parameter>
+    <name>Use Rule Weigths</name>
+    <type>list</type>
+    <domain>
+      <item>Yes</item>
+      <item>No</item>
+    </domain>
+    <default>Yes</default>
+  </parameter>  
+</algorithm_specification>

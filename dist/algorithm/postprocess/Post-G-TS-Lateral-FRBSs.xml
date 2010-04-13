@@ -1,0 +1,36 @@
+<algorithm_specification>
+  <name>Global Genetic Lateral Tuning with Rule Selection of FRBSs</name>
+  
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  
+  <parameter>
+    <name>Number of Iterations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>50000</default>
+  </parameter>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  <parameter>
+    <name>Bits of Gen</name>
+    <type>real</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>30</default>
+  </parameter>
+  
+  </algorithm_specification>

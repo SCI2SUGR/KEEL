@@ -1,0 +1,148 @@
+<method>
+
+	<name>Fuzzy Rule Learning, Wang-Mendel algorithm</name>
+
+	<reference>  
+
+<ref>L.X. Wang, J.M. Mendel, Generating fuzzy rules by learning from examples, IEEE Transactions on Systems, Man and Cybernetics 22:6 (1992) 1414-1427.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression model by the method of wang and mendel.</type>
+
+		<objective>To obtain fuzzy regression models as a set of fuzzy rules that better fits the training data.</objective>
+
+		<howWork>The Wang and Mendel method propose a fuzzy regression model for which the rules are a simgle combination of antecedents. Each antecedent has numlabels different possible labels.
+
+Then, the combination of rules that better fits the training data is selected to be part of the fuzzy system.
+		</howWork>
+
+		<parameterSpec>  
+<param>numlabes: the number of possible fuzzy values for each variable.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-Fuzzy-WangMendel
+Dataset: daily-electric-energy
+Training set: daily-electric-energy-10-1tra.dat
+Test set: daily-electric-energy-10-1tst.dat
+Test Show results: StatChekMO
+Parameters: numlabels = 5
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTRegr-Fuzzy-WangMendel/ folder the regression results for the test set:
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.25863780516376944 
+Fold 1 : 0.22950779637342722 
+Fold 2 : 0.24141681536481385 
+Fold 3 : 0.16864824558305047 
+Fold 4 : 0.29896566866312146 
+Fold 5 : 0.26097788611904005 
+Fold 6 : 0.15222268915558904 
+Fold 7 : 0.2472093216070145 
+Fold 8 : 0.22158850611916514 
+Fold 9 : 0.2610582933337954 
+Global MSE:
+0.23402330274827868 
+Global stdev:
+0.04201144185946204 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.1446017529150319 
+Fold 1 : 0.1360294410749179 
+Fold 2 : 0.12295595744285792 
+Fold 3 : 0.1568999958875671 
+Fold 4 : 0.1463475989417294 
+Fold 5 : 0.1504748519106279 
+Fold 6 : 0.14088426478538757 
+Fold 7 : 0.14646652159167442 
+Fold 8 : 0.1495206757725723 
+Fold 9 : 0.14794851364090536 
+Global MSE:
+0.14421295739632717 
+Global stdev:
+0.008843048752394963 
+
+We can see too the output and target classes for each case of the test set (result0s0.tra) in experiment/results/Regr-Fuzzy-WangMendel/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.31615 2.3717424385570913
+2.37613 2.3133472682747938
+2.25221 3.365077944152118
+2.1057 1.9200769381531158
+4.05117 3.9069938316937836
+2.50409 2.6871175400035865
+4.4184 4.057408831523369
+3.07069 3.027156695716412
+1.8168 1.8674374085122565
+1.1095 2.19566445508795
+1.42735 2.1583777081990068
+3.34136 4.464276087654459
+2.34377 2.9423015
+...
+
+And the test results (result0s0.tst) in folder experiment/results/Regr-Fuzzy-WangMendel/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.21261 2.80931666654195
+3.82169 3.448710522318391
+1.3288 1.8540772499999998
+2.53167 2.594239380932528
+4.00095 3.6986932054182056
+2.9788 2.482232947686785
+1.67147 2.1052154985275298
+3.3829 3.442236008347936
+3.19877 2.833862503628744
+2.4381 3.0275851402492036
+0.960987 1.8215291784514003
+4.14661 4.919719887298802
+2.32848 1.8846605922736845
+...
+</example>
+
+</method>

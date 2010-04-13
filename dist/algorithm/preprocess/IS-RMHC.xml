@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>Random Mutation Hill Climbing</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Number of Neighbors</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Size of S Respect to T</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>Number of Mutations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1000000</upperB>
+    </domain>
+    <default>10000</default>
+  </parameter>
+  <parameter>
+    <name>Distance Function</name>
+    <type>list</type>
+    <domain>
+      <item>Euclidean</item>
+      <item>HVDM</item>
+    </domain>
+    <default>Euclidean</default>   
+  </parameter>
+</algorithm_specification>

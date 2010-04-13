@@ -1,0 +1,104 @@
+<method>
+
+	<name>PSO/ACO</name>
+
+	<reference>
+
+		<ref>T. Sousa, A. Silva, A. Neves. Particle Swarm based Data Mining Algorithms for classification tasks.
+		Parallel Computing 30, pp. 767-783, 2004</ref>
+
+	</reference>
+
+	<generalDescription>
+
+		<type>Classification model by an hybridization of Particle Swarm Optimization and Ant Colony Optimization</type>
+
+		<objective>To determine a set of rules that predicts correctly the value of the target attribute</objective>
+
+		<howWork>
+		</howWork>
+
+		<parameterSpec>
+
+			<param>Max_number_of_uncovered_samples: Number of instances than can remain uncovered</param>
+			<param>Min_number_of_samples_by_rule: Minimum number of instances that a rule should cover</param>
+			<param>Max_Iterations_without_converge: Maximum number of iterations without getting any
+			better solution in order to stop the search</param>
+			<param>Enviroment_Size: Number of maximum near particles</param>
+            <param>Number_of_particles: Total number of particles in the system</param>
+            <param>X: Location of the particle</param>
+            <param>C1: Movement parameter</param>
+            <param>C2: Movement parameter</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: PSO_ACO
+Dataset: wisconsin
+Training set: wisconsin.dat
+Test set: wisconsin.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9707174231332357 N/C=0.0 
+Global Classification Error + N/C:
+0.029282576866764276 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9707174231332357 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9707174231332357 N/C=0.0 
+Global Classification Error + N/C:
+0.029282576866764276 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9707174231332357 
+Global N/C:
+0.0 
+
+We can also see the output the rule set (result0e0.txt) in Experiment\Results\Clas-PSO_ACO:
+
+Rule Set: 
+clumpThickness = [ 1.0 , 10.0 ] AND cellSize = [ 4.307829 , 10.0 ] AND cellShape = [ 1.0 , 10.0 ] AND marginalAdhesion = [ 1.1908778 , 10.0 ] AND epithelialSize = [ 1.0116291 , 10.0 ] AND bareNuclei = [ 1.0 , 10.0 ] AND blandChromatin = [ 1.0 , 10.0 ] AND normalNucleoli = [ 1.0 , 10.0 ] AND mitoses = [ 1.0 , 10.0 ] ==&gt; positive   ( 1.976048 )
+clumpThickness = [ 1.0 , 5.566168 ] AND cellSize = [ 1.0 , 9.051828 ] AND cellShape = [ 1.0 , 2.9472573 ] AND marginalAdhesion = [ 1.0 , 7.3760138 ] AND epithelialSize = [ 1.5617899 , 10.0 ] AND bareNuclei = [ 1.0 , 10.0 ] AND blandChromatin = [ 1.0 , 10.0 ] AND normalNucleoli = [ 1.0 , 10.0 ] AND mitoses = [ 1.0 , 10.0 ] ==&gt; negative   ( 1.9913793 )
+clumpThickness = [ 1.0 , 3.0368376 ] AND cellSize = [ 1.0 , 2.0072699 ] AND cellShape = [ 1.0 , 10.0 ] AND marginalAdhesion = [ 1.0 , 9.931504 ] AND epithelialSize = [ 1.0 , 10.0 ] AND bareNuclei = [ 1.0 , 10.0 ] AND blandChromatin = [ 1.0 , 10.0 ] AND normalNucleoli = [ 1.0 , 10.0 ] AND mitoses = [ 1.0 , 10.0 ] ==&gt; negative   ( 1.9387755 )
+clumpThickness = [ 8.887801 , 10.0 ] AND cellSize = [ 1.0 , 10.0 ] AND cellShape = [ 1.0 , 10.0 ] AND marginalAdhesion = [ 1.0 , 10.0 ] AND epithelialSize = [ 1.0 , 10.0 ] AND bareNuclei = [ 1.0 , 10.0 ] AND blandChromatin = [ 1.0 , 10.0 ] AND normalNucleoli = [ 1.0 , 10.0 ] AND mitoses = [ 1.0 , 10.0 ] ==&gt; positive   ( 1.90625 )
+clumpThickness = [ 1.0 , 9.571465 ] AND cellSize = [ 1.295027 , 9.700018 ] AND cellShape = [ 1.1355524 , 10.0 ] AND marginalAdhesion = [ 5.601994 , 10.0 ] AND epithelialSize = [ 1.0 , 10.0 ] AND bareNuclei = [ 1.0 , 10.0 ] AND blandChromatin = [ 1.0 , 10.0 ] AND normalNucleoli = [ 1.0 , 10.0 ] AND mitoses = [ 1.0 , 10.0 ] ==&gt; positive   ( 1.7857143 )
+clumpThickness = [ 3.709384 , 8.5090685 ] AND cellSize = [ 1.0 , 1.5800263 ] AND cellShape = [ 1.0 , 10.0 ] AND marginalAdhesion = [ 1.0 , 10.0 ] AND epithelialSize = [ 1.0 , 10.0 ] AND bareNuclei = [ 1.0 , 10.0 ] AND blandChromatin = [ 1.0 , 10.0 ] AND normalNucleoli = [ 1.0 , 10.0 ] AND mitoses = [ 1.0 , 10.0 ] ==&gt; negative   ( 1.84375 )
+clumpThickness = [ 3.4989815 , 6.8130283 ] AND cellSize = [ 1.8304658 , 8.317044 ] AND cellShape = [ 1.0 , 10.0 ] AND marginalAdhesion = [ 1.0 , 10.0 ] AND epithelialSize = [ 1.0 , 10.0 ] AND bareNuclei = [ 1.0 , 10.0 ] AND blandChromatin = [ 1.0 , 10.0 ] AND normalNucleoli = [ 1.0 , 10.0 ] AND mitoses = [ 1.0 , 10.0 ] ==&gt; negative   ( 1.5428572 )
+clumpThickness = [ 1.2212672 , 9.903561 ] AND cellSize = [ 1.0 , 10.0 ] AND cellShape = [ 3.7650907 , 10.0 ] AND marginalAdhesion = [ 1.0 , 10.0 ] AND epithelialSize = [ 1.0 , 10.0 ] AND bareNuclei = [ 1.0 , 10.0 ] AND blandChromatin = [ 1.0 , 10.0 ] AND normalNucleoli = [ 1.0 , 10.0 ] AND mitoses = [ 1.0 , 10.0 ] ==&gt; positive   ( 1.7692308 )
+Default ==&gt; negative
+
+Accuracy Train 0.97071743
+Accuracy Test 0.97071743
+
+</example>
+
+</method>

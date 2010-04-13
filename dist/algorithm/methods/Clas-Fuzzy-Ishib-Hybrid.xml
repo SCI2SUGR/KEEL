@@ -1,0 +1,60 @@
+<algorithm_specification>
+  <name>Hybrid Fuzzy GBML</name>
+  <nParameters>6</nParameters>
+  <seed>1</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of Fuzzy Rules (0 for 5*n_var)</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>Number of Rule Sets</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>200</default>
+  </parameter>
+  <parameter>
+    <name>Crossover probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.9</default>
+  </parameter>
+  <parameter>
+    <name>Number of Generations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>1000</default>
+  </parameter>  
+   <parameter>
+    <name>Do not Care Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+   </parameter>
+   <parameter>
+    <name>Probability for a Michigan Iteration</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+   </parameter>
+</algorithm_specification>

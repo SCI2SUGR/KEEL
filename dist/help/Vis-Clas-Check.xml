@@ -1,0 +1,130 @@
+<method>
+
+	<name>StatCheckCL</name>
+
+	<reference>  
+
+		<ref>A. Mart&#xED;nez, C. Rodr&#xED;guez and R. Guti&#xE9;rrez, Inferencia Estad&#xED;stica, un enfoque cl&#xE1;sico,  Ed. Pir&#xE1;mide.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical method for analysing a classifier performance.</type>
+
+		<objective>Statistical analysis of the performance of a classifier method. Train and test results for each dataset are analysed, and statistical measures based on the error in the classification are calculated and shown. </objective>
+
+		<howWork>
+StatCheckCL is a method for analysing the performance of classification methods. It can be used in k-folds and 5x2 cross validation training  experiments.
+
+StatCheckCL is associated to the training and testing results of a classifier in an experiment. Once the classifier has been trained and tested, the StatCheckCL takes place. 
+
+The process compares the outcome of the classifier to the desire output, and calculates the percentage of correct decisions. This is done for each of the training or testing output files of the method. Measures as the mean error, the standard deviation  of the error, and the mean percentage of corrected classified examples are given.
+		</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: C4.5
+Dataset: iris
+Type of partitions: k-fold, k=10
+
+After the execution of RunKeel.jar we can see into the ./results/StatCheckCL folder the classification results for the tested classifier method:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 2 : CORRECT=1.0 N/C=0.0 
+Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 4 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 5 : CORRECT=1.0 N/C=0.0 
+Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.06 
+stddev Global Classification Error + N/C:
+0.04666666666666666 
+Correctly classified:
+0.94 Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 1 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 2 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 3 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 4 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 5 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 6 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 7 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 8 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 9 : CORRECT=0.9777777777777777 N/C=0.0 
+Global Classification Error + N/C:
+0.01925925925925926 
+stddev Global Classification Error + N/C:
+0.0036288736930121038 
+Correctly classified:
+0.9807407407407407 
+Global N/C:
+0.0 
+
+
+EXAMPLE 2
+
+Problem type: Classification 
+Method: C4.5
+Dataset: iris
+Type of partitions: 5x2cv
+
+After the execution of RunKeel.jar we can see into the ./results/StatCheckCL folder the classification results for the tested classifier method:
+
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9733333333333334 N/C=0.0 
+Fold 1 : CORRECT=0.92 N/C=0.0 
+Fold 2 : CORRECT=0.96 N/C=0.0 
+Fold 3 : CORRECT=0.9466666666666667 N/C=0.0 
+Fold 4 : CORRECT=0.96 N/C=0.0 
+Global Classification Error + N/C:
+0.048 
+stddev Global Classification Error + N/C:
+0.018086213288334055 
+Correctly classified:
+0.952 Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9866666666666667 N/C=0.0 
+Fold 1 : CORRECT=0.96 N/C=0.0 
+Fold 2 : CORRECT=0.9866666666666667 N/C=0.0 
+Fold 3 : CORRECT=1.0 N/C=0.0 
+Fold 4 : CORRECT=0.9733333333333334 N/C=0.0 
+Global Classification Error + N/C:
+0.018666666666666668 
+stddev Global Classification Error + N/C:
+0.013597385369580758 
+Correctly classified:
+0.9813333333333333 
+Global N/C:
+0.0 
+</example>
+
+</method>

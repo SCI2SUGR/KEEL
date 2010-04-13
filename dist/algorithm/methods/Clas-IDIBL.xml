@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>Integrated Decremental Instance Based Learning</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+   <parameter>
+    <name>MAX K</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>3</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>30</default>
+  </parameter>
+   <parameter>
+    <name>First tune iterations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>4</default>
+  </parameter>
+    <parameter>
+    <name>Second tune iterations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>8</default>
+  </parameter> 
+</algorithm_specification>

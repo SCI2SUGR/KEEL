@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>LMS Quadratic Regression</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>ModelPolQuadraticLMS</item>
+    </domain>
+    <default>ModelPolQuadraticLMS</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>MPQLMS</item>
+    </domain>
+    <default>MPQLMS</default>
+    <disabled/>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,157 @@
+<method>
+
+	<name>Repeated Incremental Pruning to Produce Error Reduction</name>
+
+	<reference>
+
+		<ref>William W. Cohen. Fast Effective Rule Induction. In Machine Learning: Proceedings of the Twelfth International Conference. Lake Tahoe, California. Morgan Kaufmann, 1995.</ref>
+
+	</reference>
+
+	<generalDescription>
+
+		<type>Classification model by covering rules (separate and conquer)</type>
+
+		<objective>To determine a decision list of rules (if-elsif-elseif-...else) that predicts correctly the value of the target attribute</objective>
+
+		<howWork>
+The list of rules is grown one by one and inmediatly pruned. Once a decision list for a given class is completly learned, an optimization stage is performe. This stage can be reiterate K times.
+
+RIPPER is based on IREP algorithm. The extensions or improvements of IREP are: a new metric for pruning, a new stopping condition (that makes use of the MDL heuristic) and the aforementioned optimization stage.
+</howWork>
+
+		<parameterSpec>
+
+			<param>grow_pct: before the generation of a rule, the dataset is splited into to subset: one for growing and one for pruning the rule. This parameter is the size of growing subset, expressed as a fraction of the dataset </param>
+			<param>k: the times that the optimization stage is performed for each class decision list</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: Ripper
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier=
+Fold 0 : CORRECT=1.0 N/C=0.0
+Fold 1 : CORRECT=1.0 N/C=0.0
+Fold 2 : CORRECT=1.0 N/C=0.0
+Fold 3 : CORRECT=0.9333333333333333 N/C=0.0
+Fold 4 : CORRECT=1.0 N/C=0.0
+Fold 5 : CORRECT=1.0 N/C=0.0
+Fold 6 : CORRECT=1.0 N/C=0.0
+Fold 7 : CORRECT=0.9333333333333333 N/C=0.0
+Fold 8 : CORRECT=1.0 N/C=0.0
+Fold 9 : CORRECT=0.8666666666666667 N/C=0.0
+Global Classification Error + N/C:
+0.026666666666666665
+stddev Global Classification Error + N/C:
+0.04422166387140533
+Correctly classified:
+0.9733333333333334
+Global N/C:
+0.0
+
+TRAIN RESULTS
+============
+Classifier=
+Summary of data, Classifiers:
+Fold 0 : CORRECT=0.9851851851851852 N/C=0.0
+Fold 1 : CORRECT=0.962962962962963 N/C=0.0
+Fold 2 : CORRECT=0.9925925925925926 N/C=0.0
+Fold 3 : CORRECT=0.9703703703703703 N/C=0.0
+Fold 4 : CORRECT=0.9777777777777777 N/C=0.0
+Fold 5 : CORRECT=0.9555555555555556 N/C=0.0
+Fold 6 : CORRECT=0.9777777777777777 N/C=0.0
+Fold 7 : CORRECT=0.9851851851851852 N/C=0.0
+Fold 8 : CORRECT=0.9555555555555556 N/C=0.0
+Fold 9 : CORRECT=0.9703703703703703 N/C=0.0
+Global Classification Error + N/C:
+0.026666666666666665
+stddev Global Classification Error + N/C:
+0.012035612451312542
+Correctly classified:
+0.9733333333333334
+Global N/C:
+0.0
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-Ripper:
+
+@relation  Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+
+And the rule decision list (result0e0.txt) in Experiment\Results\Clas-Ripper:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+
+@decisiontree
+
+if(petalLength&gt;4.7 &amp;&amp; petalWidth&gt;1.8) (31/31)
+	output=Iris-virginica
+else if(petalWidth&gt;1.5 &amp;&amp; sepalWidth&lt;=3.1) (31/33)
+	output=Iris-virginica
+else if(petalLength&gt;4.9) (40/42)
+	output=Iris-virginica
+else if(petalLength&gt;1.9) (45/90)
+	output=Iris-versicolor
+else
+	output=Iris-setosa
+</example>
+
+</method>

@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Chi2 Discretizer</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>inconsistencyThreshold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.02</default>
+  </parameter>
+</algorithm_specification>

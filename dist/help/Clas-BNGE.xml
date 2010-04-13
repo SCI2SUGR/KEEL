@@ -1,0 +1,104 @@
+<method>
+
+	<name>BNGE</name>
+
+	<reference>  
+
+		<ref>Dietrich Wettschereck, Thomas G. Dietterich, An Experimental Comparison of the Nearest-Neighbor and Nearest-Hyperrectangle Algorithms, Machine Learning, 19, 5-27 (1995)</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model combining rule induction and instance-based learning.</type>
+
+		<objective>The algorithm tries to show that is enough to consider a small neighbourhood to achieve classification accuracy comparable to an algorithm considering the whole learning set, combining this k-nearest neighbours method and a rule-based algorithm.</objective>
+
+		<howWork>
+			
+		BNGE considers all training instances as hyperectangles, and tries to growth them by randomly merging the nearest rectangles of one class. The merge is performed
+		only if the resulting hyperectangle does not overlap with any other. 
+		
+		When no more merges can be done, the set of hyperrectangles obtained is employed to perform the classification process.
+			
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>Seed: Initial seed of the random number generator.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+	
+			Problem type: Classification 
+			 Method: BNGE
+			 Dataset: iris
+			 Training set: iris-10-1tra.dat
+			 Test set: iris-10-1tst.dat
+			 Type of test: 10-fold cross validation
+			 Test Show results: Vis-Clas-Check
+			 Parameters: 
+			 Seed: 1958741091
+
+			After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test set:
+
+			TEST RESULTS
+			============
+			Classifier= iris 
+			Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+			Global Classification Error + N/C:
+			0.066666666666666 
+			Correctly classified:
+			0.933333333333333 
+			Global N/C:
+			0.0 
+
+			We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-BNGE:
+
+			@relation  Iris_Plants_Database
+			@attribute sepalLength real [4.3, 7.9]
+			@attribute sepalWidth real [2.0, 4.4]
+			@attribute petalLength real [1.0, 6.9]
+			@attribute petalWidth real [0.1, 2.5]
+			@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+			@data
+			Iris-setosa Iris-setosa 
+			Iris-setosa Iris-setosa 
+			Iris-setosa Iris-setosa 
+			Iris-setosa Iris-setosa 
+			Iris-setosa Iris-setosa 
+			Iris-versicolor Iris-versicolor 
+			Iris-versicolor Iris-versicolor 
+			Iris-versicolor Iris-versicolor 
+			Iris-versicolor Iris-versicolor 
+			Iris-versicolor Iris-versicolor 
+			Iris-virginica Iris-virginica 
+			Iris-virginica Iris-virginica 
+			Iris-virginica Iris-versicolor 
+			Iris-virginica Iris-virginica 
+			Iris-virginica Iris-virginica 
+
+			Accuracy Training: 1.0
+			Accuracy Test: 0.9333333333333333333
+</example>
+
+</method>

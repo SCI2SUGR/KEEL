@@ -1,0 +1,643 @@
+<method>
+
+	<name>Radial Basis Function Neural Network for Regression Problems</name>
+
+	<reference>  
+
+		<ref>D.S. Broomhead, D. Lowe. Multivariable Functional Interpolation and Adaptative Networks. Complex Systems 11 (1988) 321-355</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression model by means of a Radial Basis Function Neural network</type>
+
+		<objective>Builds a Radial Basis Function Neural Network composed of one hidden layer and one output layer. This hidden layer contains neurons, each one being activated when the input to the network falls close to a point that is considered the ?centre? of that neuron. The final result of the network is provided by the neurons of the output layer, that perform a weighted sum using the outputs coming from hidden neurons.
+</objective>
+
+<howWork>The network output depends on the values yielded by every hidden neuron as well as the weight of the link connecting every hidden neuron with every output neuron. 
+	
+The output of every hidden neuron is the output of its function activation, and this function depends on the centre of the neuron and a parameter call radius. Thus, the value provided by the neuron changes depending on the distance from the system input to the neuron centre, and according to the radius value. This way, one function can get its maximum when the input is equal to the centre, but another function can reach minimum at the same point. Although many functions can be used as activation function for hidden neurons, the most commonly used is the Gaussian function.
+	
+In order to build the network, the algorithm needs to know hay many neurons will form the hidden layer. Then, it chooses such number of points from the training set by means of K-Means clustering algorithm to be the centres of the neurons; finally, it establishes a single radius for all the neurons as half the average distance between the set of centres. 
+	
+Once fixed the centres and radii of the network, the set of weights can be analytically computed using any method suitable to find the values that minimize the mean square error, typically Singular Value Decomposition or Least Mean Square (as in this implementation). Thus, the raduis and center of every neuron are adjusted with delta-rule method.
+
+</howWork>
+
+		<parameterSpec>  
+
+			<param>neurons:  an integer indicating the number of hidden neurons the network will have. This number must change from one problem to other, thus the default value, set to 50, can be inadequate for many problems, as any other value would be.
+			</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+		Problem type: Regression 
+		Method: RBFN for regression
+		Dataset: autoMpg
+		Training set: autoMpg-10-1tra.dat
+		Test set: autoMpg-10-1tst.dat
+		Test Show results: StatChekMO
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the  folder experiment/results/StatCheckMO/Regr-RBFN the regression results for the test set:
+		TEST RESULTS
+		============
+		Model =
+		MSE of all folds:
+		Fold 0 : 20.317073170731707
+		Global MSE:
+		20.317073170731707
+		Global stdev:
+		0.0
+		TRAIN RESULTS
+		============
+		Model =
+		MSE of all folds:
+		Fold 0 : 21.801120448179272
+		Global MSE:
+		21.801120448179272
+		Global stdev:
+		0.0
+
+
+		We can see too the output and desired output for each case of the test set in Experiment\Results\Regr-RBFN\autoMpg:
+		
+		@relation  autompg
+		@attribute cylinders{8,4,6,3,5}
+		@attribute displacement real[68.0,455.0]
+		@attribute horsepower real[46.0,230.0]
+		@attribute weight real[1613.0,5140.0]
+		@attribute acceleration real[8.5,24.6]
+		@attribute model{70,71,72,73,74,75,76,77,78,79,80,81,82}
+		@attribute origin{1,3,2}
+		@attribute class real[9.0,46.6]
+		@inputs cylinders,displacement,horsepower,weight,acceleration,model,origin
+		@outputs class
+		@data
+		22 24
+		14 11
+		37 32
+		14 20
+		15 19
+		30 29
+		15 23
+		18 21
+		14 14
+		28 23
+		21 22
+		27 22
+		32 24
+		34 32
+		19 25
+		31 23
+		40 30
+		20 23
+		21 27
+		21 22
+		26 23
+		22 23
+		25 30
+		38 32
+		36 31
+		25 22
+		21 22
+		27 28
+		19 21
+		13 11
+		13 18
+		13 11
+		27 23
+		38 32
+		32 31
+		25 23
+		18 24
+		30 23
+		28 29
+		30 31
+		36 32
+
+		And the neural network model (result0e0.txt) in Experiment\Results\Regr-RBFN:
+		Neuron: 29
+		Radius 549.7630878087683
+		Center 2.0
+		Center 250.0
+		Center 100.0
+		Center 3282.0
+		Center 15.0
+		Center 1.0
+		Center 0.0
+		Weigth 1.4995912172290697
+		Neuron: 28
+		Radius 549.7630878087683
+		Center 1.0
+		Center 140.0
+		Center 72.0
+		Center 2401.0
+		Center 19.5
+		Center 3.0
+		Center 0.0
+		Weigth -0.052818433155777125
+		Neuron: 27
+		Radius 549.7630878087683
+		Center 0.0
+		Center 429.0
+		Center 198.0
+		Center 4341.0
+		Center 10.0
+		Center 0.0
+		Center 0.0
+		Weigth 0.26827312371051687
+		Neuron: 26
+		Radius 549.7630878087683
+		Center 0.0
+		Center 302.0
+		Center 139.0
+		Center 3205.0
+		Center 11.2
+		Center 8.0
+		Center 0.0
+		Weigth 1.0850171561599096
+		Neuron: 25
+		Radius 549.7630878087683
+		Center 1.0
+		Center 91.0
+		Center 53.0
+		Center 1795.0
+		Center 17.5
+		Center 5.0
+		Center 1.0
+		Weigth 5.055928283557208
+		Neuron: 24
+		Radius 549.7630878087683
+		Center 2.0
+		Center 198.0
+		Center 95.0
+		Center 3102.0
+		Center 16.5
+		Center 4.0
+		Center 0.0
+		Weigth 1.0682960665880306
+		Neuron: 23
+		Radius 549.7630878087683
+		Center 1.0
+		Center 135.0
+		Center 84.0
+		Center 2295.0
+		Center 11.6
+		Center 12.0
+		Center 0.0
+		Weigth -0.3479049624098114
+		Neuron: 22
+		Radius 549.7630878087683
+		Center 2.0
+		Center 225.0
+		Center 95.0
+		Center 3264.0
+		Center 16.0
+		Center 5.0
+		Center 0.0
+		Weigth 1.4199205633633956
+		Neuron: 21
+		Radius 549.7630878087683
+		Center 2.0
+		Center 250.0
+		Center 88.0
+		Center 3302.0
+		Center 15.5
+		Center 1.0
+		Center 0.0
+		Weigth 1.6182755109076554
+		Neuron: 20
+		Radius 549.7630878087683
+		Center 2.0
+		Center 200.0
+		Center 0.0
+		Center 2875.0
+		Center 17.0
+		Center 4.0
+		Center 0.0
+		Weigth 1.55547740434294
+		Neuron: 9
+		Radius 549.7630878087683
+		Center 1.0
+		Center 90.0
+		Center 70.0
+		Center 1937.0
+		Center 14.0
+		Center 5.0
+		Center 2.0
+		Weigth 3.097745156715626
+		Neuron: 8
+		Radius 549.7630878087683
+		Center 1.0
+		Center 121.0
+		Center 115.0
+		Center 2795.0
+		Center 15.7
+		Center 8.0
+		Center 2.0
+		Weigth 1.7141871038760703
+		Neuron: 19
+		Radius 549.7630878087683
+		Center 1.0
+		Center 140.0
+		Center 83.0
+		Center 2639.0
+		Center 17.0
+		Center 5.0
+		Center 0.0
+		Weigth 1.3788914307856488
+		Neuron: 7
+		Radius 549.7630878087683
+		Center 4.0
+		Center 131.0
+		Center 103.0
+		Center 2830.0
+		Center 15.9
+		Center 8.0
+		Center 2.0
+		Weigth 1.6904325310990025
+		Neuron: 18
+		Radius 549.7630878087683
+		Center 4.0
+		Center 131.0
+		Center 103.0
+		Center 2830.0
+		Center 15.9
+		Center 8.0
+		Center 2.0
+		Weigth 1.6904325310990025
+		Neuron: 49
+		Radius 549.7630878087683
+		Center 0.0
+		Center 350.0
+		Center 155.0
+		Center 4360.0
+		Center 14.9
+		Center 9.0
+		Center 0.0
+		Weigth 0.27894501773277386
+		Neuron: 6
+		Radius 549.7630878087683
+		Center 0.0
+		Center 350.0
+		Center 180.0
+		Center 3664.0
+		Center 11.0
+		Center 3.0
+		Center 0.0
+		Weigth 3.352972574672063
+		Neuron: 17
+		Radius 549.7630878087683
+		Center 1.0
+		Center 151.0
+		Center 90.0
+		Center 2950.0
+		Center 17.3
+		Center 12.0
+		Center 0.0
+		Weigth 1.4155247444696308
+		Neuron: 48
+		Radius 549.7630878087683
+		Center 0.0
+		Center 305.0
+		Center 130.0
+		Center 3840.0
+		Center 15.4
+		Center 9.0
+		Center 0.0
+		Weigth 3.0482521912076677
+		Neuron: 5
+		Radius 549.7630878087683
+		Center 1.0
+		Center 89.0
+		Center 71.0
+		Center 1990.0
+		Center 14.9
+		Center 8.0
+		Center 2.0
+		Weigth 2.3044750243426875
+		Neuron: 16
+		Radius 549.7630878087683
+		Center 1.0
+		Center 79.0
+		Center 67.0
+		Center 1963.0
+		Center 15.5
+		Center 4.0
+		Center 2.0
+		Weigth 2.7228916658571056
+		Neuron: 47
+		Radius 549.7630878087683
+		Center 1.0
+		Center 91.0
+		Center 67.0
+		Center 1850.0
+		Center 13.8
+		Center 10.0
+		Center 1.0
+		Weigth 4.359521898114955
+		Neuron: 4
+		Radius 549.7630878087683
+		Center 0.0
+		Center 360.0
+		Center 215.0
+		Center 4615.0
+		Center 14.0
+		Center 0.0
+		Center 0.0
+		Weigth 1.6733587937812024
+		Neuron: 15
+		Radius 549.7630878087683
+		Center 1.0
+		Center 85.0
+		Center 52.0
+		Center 2035.0
+		Center 22.2
+		Center 6.0
+		Center 0.0
+		Weigth 1.6983559354129691
+		Neuron: 46
+		Radius 549.7630878087683
+		Center 0.0
+		Center 350.0
+		Center 155.0
+		Center 4360.0
+		Center 14.9
+		Center 9.0
+		Center 0.0
+		Weigth 0.27894501773277386
+		Neuron: 3
+		Radius 549.7630878087683
+		Center 0.0
+		Center 302.0
+		Center 140.0
+		Center 4294.0
+		Center 16.0
+		Center 2.0
+		Center 0.0
+		Weigth 0.26787806804343706
+		Neuron: 14
+		Radius 549.7630878087683
+		Center 0.0
+		Center 302.0
+		Center 139.0
+		Center 3205.0
+		Center 11.2
+		Center 8.0
+		Center 0.0
+		Weigth 1.0850171561599096
+		Neuron: 45
+		Radius 549.7630878087683
+		Center 1.0
+		Center 89.0
+		Center 62.0
+		Center 1845.0
+		Center 15.3
+		Center 10.0
+		Center 2.0
+		Weigth 4.436871369734065
+		Neuron: 2
+		Radius 549.7630878087683
+		Center 1.0
+		Center 98.0
+		Center 83.0
+		Center 2075.0
+		Center 15.9
+		Center 7.0
+		Center 0.0
+		Weigth 1.0972120497003275
+		Neuron: 13
+		Radius 549.7630878087683
+		Center 2.0
+		Center 181.0
+		Center 110.0
+		Center 2945.0
+		Center 16.4
+		Center 12.0
+		Center 0.0
+		Weigth 1.3562044226756094
+		Neuron: 44
+		Radius 549.7630878087683
+		Center 1.0
+		Center 107.0
+		Center 75.0
+		Center 2205.0
+		Center 14.5
+		Center 12.0
+		Center 1.0
+		Weigth -0.07702940929906879
+		Neuron: 1
+		Radius 549.7630878087683
+		Center 0.0
+		Center 360.0
+		Center 215.0
+		Center 4615.0
+		Center 14.0
+		Center 0.0
+		Center 0.0
+		Weigth 1.6733587937812024
+		Neuron: 12
+		Radius 549.7630878087683
+		Center 0.0
+		Center 400.0
+		Center 180.0
+		Center 4220.0
+		Center 11.1
+		Center 7.0
+		Center 0.0
+		Weigth 0.46328452332881803
+		Neuron: 43
+		Radius 549.7630878087683
+		Center 0.0
+		Center 302.0
+		Center 140.0
+		Center 4294.0
+		Center 16.0
+		Center 2.0
+		Center 0.0
+		Weigth 0.26787806804343706
+		Neuron: 0
+		Radius 549.7630878087683
+		Center 0.0
+		Center 318.0
+		Center 150.0
+		Center 3777.0
+		Center 12.5
+		Center 3.0
+		Center 0.0
+		Weigth 3.2893358816150937
+		Neuron: 11
+		Radius 549.7630878087683
+		Center 2.0
+		Center 231.0
+		Center 110.0
+		Center 3907.0
+		Center 21.0
+		Center 5.0
+		Center 0.0
+		Weigth 2.5878503042646988
+		Neuron: 42
+		Radius 549.7630878087683
+		Center 1.0
+		Center 105.0
+		Center 75.0
+		Center 2230.0
+		Center 14.5
+		Center 8.0
+		Center 0.0
+		Weigth -0.194941658588927
+		Neuron: 10
+		Radius 549.7630878087683
+		Center 1.0
+		Center 91.0
+		Center 67.0
+		Center 1965.0
+		Center 15.7
+		Center 12.0
+		Center 1.0
+		Weigth 2.6860917831629014
+		Neuron: 41
+		Radius 549.7630878087683
+		Center 1.0
+		Center 107.0
+		Center 72.0
+		Center 2290.0
+		Center 17.0
+		Center 10.0
+		Center 1.0
+		Weigth -0.3107805723411244
+		Neuron: 40
+		Radius 549.7630878087683
+		Center 1.0
+		Center 97.0
+		Center 71.0
+		Center 1825.0
+		Center 12.2
+		Center 6.0
+		Center 2.0
+		Weigth 4.666146729618596
+		Neuron: 39
+		Radius 549.7630878087683
+		Center 0.0
+		Center 360.0
+		Center 215.0
+		Center 4615.0
+		Center 14.0
+		Center 0.0
+		Center 0.0
+		Weigth 1.6733587937812024
+		Neuron: 38
+		Radius 549.7630878087683
+		Center 0.0
+		Center 400.0
+		Center 150.0
+		Center 4997.0
+		Center 14.0
+		Center 3.0
+		Center 0.0
+		Weigth 4.613101905375806
+		Neuron: 37
+		Radius 549.7630878087683
+		Center 1.0
+		Center 121.0
+		Center 110.0
+		Center 2660.0
+		Center 14.0
+		Center 3.0
+		Center 2.0
+		Weigth 1.4573914565195742
+		Neuron: 36
+		Radius 549.7630878087683
+		Center 0.0
+		Center 400.0
+		Center 150.0
+		Center 4464.0
+		Center 12.0
+		Center 3.0
+		Center 0.0
+		Weigth 0.6631576752109611
+		Neuron: 35
+		Radius 549.7630878087683
+		Center 2.0
+		Center 225.0
+		Center 110.0
+		Center 3360.0
+		Center 16.6
+		Center 9.0
+		Center 0.0
+		Weigth 1.9448070431837292
+		Neuron: 34
+		Radius 549.7630878087683
+		Center 1.0
+		Center 140.0
+		Center 75.0
+		Center 2542.0
+		Center 17.0
+		Center 4.0
+		Center 0.0
+		Weigth 0.8237499888991906
+		Neuron: 33
+		Radius 549.7630878087683
+		Center 0.0
+		Center 400.0
+		Center 175.0
+		Center 4464.0
+		Center 11.5
+		Center 1.0
+		Center 0.0
+		Weigth 0.6438147803929677
+		Neuron: 32
+		Radius 549.7630878087683
+		Center 2.0
+		Center 173.0
+		Center 110.0
+		Center 2725.0
+		Center 12.6
+		Center 11.0
+		Center 0.0
+		Weigth 1.5925109711992365
+		Neuron: 31
+		Radius 549.7630878087683
+		Center 2.0
+		Center 200.0
+		Center 95.0
+		Center 3155.0
+		Center 18.2
+		Center 8.0
+		Center 0.0
+		Weigth 1.1001120646112288
+		Neuron: 30
+		Radius 549.7630878087683
+		Center 2.0
+		Center 156.0
+		Center 122.0
+		Center 2807.0
+		Center 13.5
+		Center 3.0
+		Center 1.0
+		Weigth 1.6449853106658792
+
+</example>
+
+</method>

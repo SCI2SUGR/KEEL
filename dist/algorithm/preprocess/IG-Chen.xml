@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Chen Algorithm</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>percentage_respect_training_size</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+</algorithm_specification>

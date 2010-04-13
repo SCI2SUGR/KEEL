@@ -1,0 +1,173 @@
+<method>
+
+	<name>M5Rules</name>
+
+	<reference>  
+
+		<ref>J. R. Quinlan, Learning with Continuous Classes. In Proceedings of the 5th Australian Joint Conference on Artificial Intelligence, Singapore, 343-348, 1992.</ref>
+		<ref>I. Wang, I.H. Witten. Induction of model trees for predicting continuous classes. In: Poster papers of the 9th European Conference on Machine Learning, Prague (Czech Republic, 1997) 128-137.</ref>
+    <ref>Geoffrey Holmes,Mark Hall, Eibe Frank. Generating Rule Sets from Model Trees. In: Proceedings of the 12th Australian Joint Conference on Artificial Intelligence: Advanced Topics in Artificial Intelligence, Lecture Notes In Computer Science 1747, 1999 1-12</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules and functions (based on model trees)</type>
+
+		<objective>To determine a decision list of rules (if-elsif-elseif-...else) and functions that predicts correctly the value of the target attribute</objective>
+
+		<howWork>
+		 M5 uses the following idea: split the parameter space into areas (subspaces) and build in each of them a linear regression model. In fact the resulting model can be seen as a modular model, or a committee machine, with the linear models being specialized on the particular subsets of the input space. The splitting in MT follows the idea of a decision tree, but instead of the class labels it has linear regression functions at the leaves, which can predict continuous numeric attributes. Model trees generalize the concepts of regression trees, which have constant values at their leaves.
+	   M5 implements three different models, namely: Linear Regression, Regression Trees, Model Trees. Linear Regression produces a function that models the output based on N different input attributes. Regression Trees and Model Trees are both similar in that they produce decision trees with numeric output for leaf nodes rather than categorical output. The two only differ in the exact nature of this output; Regression Trees produce an averaged numeric value for the ouput whereas Model Trees produce a linear equation equation at each leaf node.
+	   It is important to notice that M5 is limited to predicting numeric output.
+	   
+    M5Rules is based on M5 algorithm. In each iteration, a M5 Tree is generated and its best rule extracted (according to a given heuristic). The algorithm ends when all the examples are covered.
+
+</howWork>
+
+		<parameterSpec>  
+
+			<param>pruningFactor: How much to prune the tree. The higher the pruning factor, the more pruning that will occur. Integer, by default 2.</param>
+				
+			<param>verbosity: Level of verbosity 0, 1 or 2. By default 0.</param>
+					
+			<param>heuristic: wich heuristic the algorithm will use to select the rules: (Coverage) selects the one that covers more example, (RMS) favour the accuracy over the coverage, (MAE) normalises the mean absolute error with the coverage and (CC) makes use of the correlation between the predicted values and the real ones</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: M5Rules
+Dataset: 
+Training set: ele1-10-10tra.dat
+Test set: ele1-10-10tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Regr-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 1394615.0401210291 
+Fold 1 : 231180.72195255398 
+Fold 2 : 482786.3423457942 
+Fold 3 : 259596.19919191688 
+Fold 4 : 346697.27411413094 
+Fold 5 : 620083.6998412957 
+Fold 6 : 340469.4631228174 
+Fold 7 : 501344.115484767 
+Fold 8 : 455034.5901601432 
+Fold 9 : 551609.9376972539 
+Global MSE:
+518341.73840317025 
+Global stdev:
+315497.2379217539 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 330018.9780382083 
+Fold 1 : 421251.2386762591 
+Fold 2 : 396116.8260672214 
+Fold 3 : 418182.0841602185 
+Fold 4 : 361572.42241694534 
+Fold 5 : 377864.80188120116 
+Fold 6 : 409146.1623986926 
+Fold 7 : 351216.6428874728 
+Fold 8 : 396882.93462590256 
+Fold 9 : 340813.5966087736 
+Global MSE:
+380306.5687760895 
+Global stdev:
+31239.676448343187 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-PART:
+
+@relation  Estimation_of_the_Low_Voltage_Electrical_Line_Length_in_Rural_Towns
+@attribute inhabitants integer[1,320]
+@attribute distance real[60.0,1673.329956]
+@attribute length real[80.0,7675.0]
+@inputs inhabitants,distance
+@outputs length
+@data
+365.0 489.2894132147631
+1003.0 919.8524652140525
+1855.0 3413.7658760134464
+2134.0 2676.666446850352
+2610.0 2701.5753514938488
+2930.0 2631.0611173716356
+1011.0 1314.0127507857676
+466.0 364.5154434482646
+150.0 213.30984059017493
+2160.0 3214.3136369685344
+2136.0 3604.971378282581
+2216.0 1863.7626032588173
+1478.0 1396.7896037632645
+1972.0 2036.614201663119
+1019.0 955.7350389881149
+1192.0 1861.983577489437
+2120.0 3201.6989813284513
+1679.0 1168.63043878246
+468.0 634.6509390969395
+3090.0 10148.488545292857
+1167.0 1408.4568782007775
+1360.0 1386.6935137268558
+432.0 644.3203539219719
+710.0 556.3029543836461
+2765.0 2677.159242661721
+860.0 670.2837395599245
+592.0 718.4995232465684
+1736.0 1923.9869208316268
+1982.0 2035.797709872496
+2810.0 4435.1190785749295
+1776.0 2319.205478962642
+1370.0 1542.8274847747125
+4820.0 2994.5686574793835
+1276.0 1075.6118463401801
+1979.0 1730.1861274458904
+1532.0 1866.7522349571452
+1113.0 971.1757060748732
+991.0 1033.7603789795528
+2300.0 1325.2326105873642
+1174.0 1158.336660724621
+980.0 898.7446697482712
+1092.0 1344.7484355309102
+3552.0 3336.394181129174
+1285.0 1243.506702660868
+1599.0 1423.3460534655078
+390.0 364.1199740122219
+2891.0 1719.6426227735653
+1500.0 1345.3935381882568
+1409.0 2404.6965543245396
+
+
+And the rule decision list (result0e0.txt) in Experiment\Results\Regr-M5Rules:
+
+if(distance&lt;=505.0)
+	length = -264 + 10.4inhabitants + 3.11distance
+else if(distance&lt;=793.3349915)
+	length = 28.5 + 12.7inhabitants + 2.8distance
+else 
+	length = 2340 + 24.4inhabitants
+</example>
+
+</method>

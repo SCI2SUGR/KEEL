@@ -1,0 +1,221 @@
+<method>
+
+	<name>XCS</name>
+
+	<reference>  
+		<ref>S. W. Wilson, Classifier Fitness Based on Accuracy. Evolutionary Computation 3:2 (1995) 149-175.</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type> Classification model by rules </type>
+
+		<objective>To extract a set of maximally accurate rules that completely defines the feature space.
+		</objective>
+
+		<howWork>XCS is a Learning Classifier System (LCS) that evolves online a set of rules that describe the feature space accurately. It inherits part of its behavior 
+from ZCS, and  differs in several ways from more traditional LCSs. 
+Firstly, the classifier fitness is based on the payoff prediction instead of the prediction itself. Secondly, XCS has no message list. 
+Finally, the GA is applied over niches instead of the whole population.
+			
+The set of rules is initially build by generalizing some of the input examples, and further, they are evolved online. The result is that the knowledge is 
+represented by a set of rules or classifiers with a certain fitness. 
+
+When classifying unseen examples, each rule that matches the input votes according its prediction and fitness. 
+The most voted class is chosen to be the output.	
+		</howWork>
+
+		<parameterSpec>  
+
+				<param> numberOfExplores: Number of iterations that the system will be trained (positive integer) </param>
+				<param> popSize: Maximum size of the population (positive integer) </param>
+				<param> alpha: To calculate the fitness of a classifier. Real [0,1]. Typical value is 0.1.  </param>
+				<param> beta: Is the learning rate. Real [0,1]. Typical value is 0.2 </param>
+				<param> delta: specifies the number fo the mean fitness in [P] below which the fitness of a classifier may be considered in its probability of deletion. Real[0,1]. Typical value 0.1. </param>
+				<param> nu: It is used to calculated the fitness. A high value implies more pressure towards classifiers with high fitness. Integer. Typical value 5 </param>
+				<param> theta_mna: specifies the minimal number of classes that must be present in a match set [M], or else covering will occur. Integer [1, number of classes]. </param>
+				<param> theta_del: is the deletion threshold. If the experience of a classifier is greater than theta_del, its fitness is to be considered in the deletion vote. Positive integer. </param>
+				<param> theta_sub: subsumption threshold. Is the minimum experience that a classifier must have to be considered as a subsumer. Positive integer. </param>
+				<param> Epsilon_0: Maximum error achievable by a classifier to be considered as accurate. Real [0,1000] </param>
+				<param> DoASSubsumption: is a boolean flag that indicates if subsumption has to be applied on the action set. </param>
+				<param> FitReduction: Fitness reduction applied to a new classifier created by the GA. Real [0,1] </param>
+				<param> InitialPrediction: Initial prediction given to a new classifier created by covering. Real [0,1000] </param>
+				<param> InitialFitness: Initial fitness given to a new classifier created by covering. Real [0,1]. </param>
+				<param> initialPredictionError: Initial error given to a new classifier created by covering. Real [0,1000].  </param>
+				<param> predictionErrorReduction: Error reduction applied to a new classifier created by a GA. Real [0,1] </param>
+				<param> pX: Probability of crossover. Real [0,1] </param>
+				<param> pM: Probability of mutation. Real [0,1] </param>
+				<param> theta_GA: GA threshold. The GA is applied when the average time since the last GA application is greater than theta_GA. Positive integer. </param>
+				<param> doGASubsumption: A flag that indicates if subsumption has to be made in the GA. </param>
+				<param> TypeOfSelection: Type of selection used. List {RWS, tournament} </param>
+				<param> tournamentSize: Size of the tournament in case of using tournament selection. Real [0, 1] </param>
+				<param> TypeOfMutation: Type of mutation. List {niched, free}. </param>
+				<param> TypeOfCrossover: Type of crossover: two point or uniform crossover. List {2PT, uniform}. </param>
+				<param> PdontCare: Probability of don?t care. Real[0,1]. </param>
+				<param> R_0: covering deviation. Real [0,1] </param>
+				<param> m_0: mutation deviation. Real [0,1] </param>
+				<param> l_0: specify deviation. Real [0,1] </param>
+				<param> doSpecify: A flag that indicates if the specify operator has to be applied. </param>
+				<param> Nspecify: Minimum experience of a classifier to be specified.  </param>
+				<param> Pspecify: Probability of specify a classifier bit </param>
+				
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+
+
+		Problem type: Classification 
+		Method: XCS
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat and iris-10-10tst.dat
+		Test Show results: StatChekCL
+		Parameters: default values except from
+			numberOfExplores = 100.000
+			nu = 10.0
+			epsilon_0 = 1.0
+		
+		After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTClas-XCS
+		folder the classification results for the test set:
+		
+		TEST RESULTS
+		============
+		Classifier=
+		Fold 0 : CORRECT=1.0 N/C=0.0
+		Fold 1 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 2 : CORRECT=1.0 N/C=0.0
+		Fold 3 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 4 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 5 : CORRECT=1.0 N/C=0.0
+		Fold 6 : CORRECT=1.0 N/C=0.0
+		Fold 7 : CORRECT=0.8666666666666667 N/C=0.0
+		Fold 8 : CORRECT=1.0 N/C=0.0
+		Fold 9 : CORRECT=0.9333333333333333 N/C=0.0
+		Global Classification Error + N/C:
+		0.04
+		stddev Global Classification Error + N/C:
+		0.04422166387140534
+		Correctly classified:
+		0.96 Global N/C:
+		0.0
+		
+		TRAIN RESULTS
+		============
+		Classifier=
+		Summary of data, Classifiers:
+		Fold 0 : CORRECT=0.9703703703703703 N/C=0.0
+		Fold 1 : CORRECT=0.9925925925925926 N/C=0.0
+		Fold 2 : CORRECT=1.0 N/C=0.0
+		Fold 3 : CORRECT=0.9851851851851852 N/C=0.0
+		Fold 4 : CORRECT=0.9851851851851852 N/C=0.0
+		Fold 5 : CORRECT=0.9925925925925926 N/C=0.0
+		Fold 6 : CORRECT=0.9925925925925926 N/C=0.0
+		Fold 7 : CORRECT=0.9851851851851852 N/C=0.0
+		Fold 8 : CORRECT=0.9777777777777777 N/C=0.0
+		Fold 9 : CORRECT=0.9777777777777777 N/C=0.0
+		Global Classification Error + N/C:
+		0.014074074074074076
+		stddev Global Classification Error + N/C:
+		0.008413197549333735
+		Correctly classified:
+		0.9859259259259259
+		Global N/C:
+		0.0
+		
+		
+		We can see too the output and target classes for each case of the test set 
+		in experiment/results/XCS. For each fold, 5 files are generated:
+		
+		File result0s0e0.txt: 
+			It contains run time information
+		
+ 		============ RUN TIME INFORMATION ============
+		TIMES IN SECONDS
+		Total time:                      25.781
+         		Time of TRAIN:                  25.656
+         		Time of TEST:                   0.029
+         		Time of WILSON REDUCTION:       0.0
+         		Time of WEAK   DIXON REDUCTION: 0.0
+         		Time of STRONG DIXON REDUCTION: 0.0
+		
+		
+ 		TIMES IN MINUTES
+		Total time:                      0.4296833333333333
+         		Time of TRAIN:                  0.4276
+         		Time of TEST:                   4.8333333333333334E-4
+         		Time of WILSON REDUCTION:       0.0
+         		Time of WEAK   DIXON REDUCTION: 0.0
+         		Time of STRONG DIXON REDUCTION: 0.0
+		==============================================
+		
+		File result0s0e1.txt:
+		It contains the ruleset evolved by XCS. First line is the number of macroclassifiers, 
+		and second the number of microclassifiers. The third line reports in which order the 
+		parameters are written. From fourth line to the end of the file, each line is a 
+		classifier or rule. Only 2 of the 980 macroclassifiers are shown in the example.
+		
+		980
+		6400
+		Cond - Action     - prediction - predError - fitness - Numerosity - Experience - aSetSize - Generality - timeStamp
+  		0.0 0.795  0.0 1.0  0.0 0.297  0.0 0.686   0  1000.0  0.0 0.214 171 8684  798.230  2.779  99942
+  		
+  		0.0 1.0  0.0 0.985  0.0 1.0  0.231 1.0      0  0.0 0.0 0.181 161 9297  895.088 3.753 99974
+  
+		
+		File result0s0.tra:
+			It contains the results of testing the model with the train set
+		@relation  iris_plants_database
+		@attribute sepalLength real[4.3,7.9]
+		@attribute sepalWidth real[2.0,4.4]
+		@attribute petalLength real[1.0,6.9]
+		@attribute petalWidth real[0.1,2.5]
+		@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		...
+		
+		File result0s0.tst:
+			It contains the results of testing the population with the test set.
+		@relation  iris_plants_database
+		@attribute sepalLength real[4.3,7.9]
+		@attribute sepalWidth real[2.0,4.4]
+		@attribute petalLength real[1.0,6.9]
+		@attribute petalWidth real[0.1,2.5]
+		@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-versicolor  Iris-versicolor
+		Iris-versicolor  Iris-versicolor
+		Iris-versicolor  Iris-versicolor
+		Iris-versicolor  Iris-versicolor
+		Iris-versicolor  Iris-versicolor
+		Iris-virginica  Iris-virginica
+		Iris-virginica  Iris-virginica
+		Iris-virginica  Iris-virginica
+		Iris-virginica  Iris-virginica
+		Iris-virginica  Iris-virginica
+		Iris-setosa  Iris-setosa
+	</example>
+		
+</method>

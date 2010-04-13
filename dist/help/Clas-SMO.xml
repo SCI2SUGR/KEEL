@@ -1,0 +1,447 @@
+<method>
+
+	<name>SMO for Classification</name>
+
+	<reference>  
+
+	<ref>J. Platt: Machines using Sequential Minimal Optimization. In B. Schoelkopf and C. Burges and A. Smola, editors, Advances in Kernel Methods - Support Vector Learning, 1998.</ref>
+	<ref>S.S. Keerthi, S.K. Shevade, C. Bhattacharyya, K.R.K. Murthy (2001). Improvements to Platt's SMO Algorithm for SVM Classifier Design. Neural Computation. 13(3):637-649.</ref>
+	<ref>Trevor Hastie, Robert Tibshirani: Classification by Pairwise Coupling. In: Advances in Neural Information Processing Systems, 1998.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Implements John Platt's sequential minimal optimization algorithm for training a support vector classifier. Implementation from Weka.</type>
+
+		<objective>It builds a SVM model with the training data, and then classifies all test data by means of the trained SVM using the SMO procedure</objective>
+
+		<howWork>
+Following the Statistical Learning Theory from Vapnik et al., we construct an SVM model, but using the SMO training
+algorithm proposed by John Platt. The main task in training SVMs is to solve a quadratic optimization problem,
+then SVM finds a linear separating hyperplane with the maximal margin in this higher dimensional space.
+
+The data is transformed by means of a Kernel function, which augments the dimensionality of the data. This augmentation
+provokes that the data can be separated with an hyperplane with much higher probability, and establish a minimun
+prediction probability error measure.
+		
+This implementation globally replaces all missing values and transforms nominal attributes into binary ones. 
+It also normalizes all attributes by default. 
+(In that case the coefficients in the output are based on the normalized data, not the original data --- this is important for interpreting the classifier.)
+We recommend linearly scaling each attribute to the range [-1, +1] or [0, 1].
+
+Multi-class problems are solved using pairwise classification (1-vs-1 and if logistic models are built pairwise coupling according to Hastie and Tibshirani, 1998).
+To obtain proper probability estimates, use the option that fits logistic regression models to the outputs of the support vector machine. 
+In the multi-class case the predicted probabilities are coupled using the one-versus-one method.
+
+We propose that beginners try the following procedure:
+1- Transform data to the format of the SVM software
+2- Conduct simple scaling on the data
+3- Consider the RBF kernel
+4- Use cross-validation to find the best parameter C and gamma
+5- Use the best parameter C and gamma to train the whole training set
+6- Test
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>C: cost;it is the penalty parameter of the error term. Their optimous value is find by TRIAL and ERROR.</param>
+			<param>toleranceParameter: The tolerance parameter (shouldn't be changed).</param>
+			<param>epsilon: The epsilon for round-off error (shouldn't be changed).</param>
+			<param>RBFKernel_gamma: The gamma value of the RBF Kernel.</param>
+			<param>-Normalized-PolyKernel_exponent: set the exponent in the Polynomial and Normalized Polynominal kernel function.</param>
+			<param>-Normalized-PolyKernel_useLowerOrder: Whether to use lower-order terms in the Polynomial and Normalized Polynominal kernel function.</param>
+			<param>PukKernel_omega: set the parameter omega in the Puk Kernel.</param>
+			<param>PukKernel_sigma: set the parameter sigma in the Puk Kernel.</param>
+			<param>StringKernel_lambda: Penalizes non-continuous subsequence matches, from (0,1) for the String Kernel.</param>
+			<param>StringKernel_subsequenceLength: The subsequence length in the String Kernel.</param>
+			<param>StringKernel_maxSubsequenceLength: The maximum subsequence length (theta in the paper) in the String Kernel.</param>
+			<param>StringKernel_normalize: Whether to use normalization for the String Kernel.</param>
+			<param>StringKernel_pruning: set the pruning method in the String Kernel.</param>
+			<param>KERNELtype: set the type of Kernel to be used: RBF, Polynomial, Normalized Polynomial, Puk or StringKernel.</param>
+			<param>FitLogisticModels: Whether to fit logistic models to the outputs (for proper probability estimates).</param>
+			<param>ConvertNominalAttributesToBinary: Whether to convert the Nominal Attributes to binary ones if needed.</param>
+			<param>PreprocessType: Whether to apply any kind of normalization or standardization to the data, previous to the SVM training.</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+Problem type: Classification 
+Method: CMO
+Dataset: Iris
+Parameters: default values
+
+Input data:
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+
+
+Output data:
+Training set: result0s0.tra
+Test set: result0s0.tst 
+
+Input data: Training set: iris-10-1tra.dat
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+@data
+5.1, 3.5, 1.4, 0.2, Iris-setosa
+4.9, 3.0, 1.4, 0.2, Iris-setosa
+4.6, 3.1, 1.5, 0.2, Iris-setosa
+5.0, 3.6, 1.4, 0.2, Iris-setosa
+5.4, 3.9, 1.7, 0.4, Iris-setosa
+4.6, 3.4, 1.4, 0.3, Iris-setosa
+5.0, 3.4, 1.5, 0.2, Iris-setosa
+4.4, 2.9, 1.4, 0.2, Iris-setosa
+5.4, 3.7, 1.5, 0.2, Iris-setosa
+4.8, 3.4, 1.6, 0.2, Iris-setosa
+4.8, 3.0, 1.4, 0.1, Iris-setosa
+4.3, 3.0, 1.1, 0.1, Iris-setosa
+5.7, 4.4, 1.5, 0.4, Iris-setosa
+5.4, 3.9, 1.3, 0.4, Iris-setosa
+5.1, 3.5, 1.4, 0.3, Iris-setosa
+5.7, 3.8, 1.7, 0.3, Iris-setosa
+5.1, 3.8, 1.5, 0.3, Iris-setosa
+5.4, 3.4, 1.7, 0.2, Iris-setosa
+5.1, 3.7, 1.5, 0.4, Iris-setosa
+4.6, 3.6, 1.0, 0.2, Iris-setosa
+5.1, 3.3, 1.7, 0.5, Iris-setosa
+4.8, 3.4, 1.9, 0.2, Iris-setosa
+5.0, 3.0, 1.6, 0.2, Iris-setosa
+5.0, 3.4, 1.6, 0.4, Iris-setosa
+5.2, 3.5, 1.5, 0.2, Iris-setosa
+5.2, 3.4, 1.4, 0.2, Iris-setosa
+4.7, 3.2, 1.6, 0.2, Iris-setosa
+4.8, 3.1, 1.6, 0.2, Iris-setosa
+5.4, 3.4, 1.5, 0.4, Iris-setosa
+5.2, 4.1, 1.5, 0.1, Iris-setosa
+5.5, 4.2, 1.4, 0.2, Iris-setosa
+4.9, 3.1, 1.5, 0.1, Iris-setosa
+5.0, 3.2, 1.2, 0.2, Iris-setosa
+5.5, 3.5, 1.3, 0.2, Iris-setosa
+4.9, 3.1, 1.5, 0.1, Iris-setosa
+4.4, 3.0, 1.3, 0.2, Iris-setosa
+5.1, 3.4, 1.5, 0.2, Iris-setosa
+5.0, 3.5, 1.3, 0.3, Iris-setosa
+4.5, 2.3, 1.3, 0.3, Iris-setosa
+5.1, 3.8, 1.9, 0.4, Iris-setosa
+4.8, 3.0, 1.4, 0.3, Iris-setosa
+5.1, 3.8, 1.6, 0.2, Iris-setosa
+4.6, 3.2, 1.4, 0.2, Iris-setosa
+5.3, 3.7, 1.5, 0.2, Iris-setosa
+5.0, 3.3, 1.4, 0.2, Iris-setosa
+7.0, 3.2, 4.7, 1.4, Iris-versicolor
+6.4, 3.2, 4.5, 1.5, Iris-versicolor
+6.9, 3.1, 4.9, 1.5, Iris-versicolor
+5.5, 2.3, 4.0, 1.3, Iris-versicolor
+5.7, 2.8, 4.5, 1.3, Iris-versicolor
+6.3, 3.3, 4.7, 1.6, Iris-versicolor
+4.9, 2.4, 3.3, 1.0, Iris-versicolor
+5.2, 2.7, 3.9, 1.4, Iris-versicolor
+5.0, 2.0, 3.5, 1.0, Iris-versicolor
+5.9, 3.0, 4.2, 1.5, Iris-versicolor
+6.0, 2.2, 4.0, 1.0, Iris-versicolor
+6.1, 2.9, 4.7, 1.4, Iris-versicolor
+5.6, 2.9, 3.6, 1.3, Iris-versicolor
+6.7, 3.1, 4.4, 1.4, Iris-versicolor
+5.6, 3.0, 4.5, 1.5, Iris-versicolor
+5.8, 2.7, 4.1, 1.0, Iris-versicolor
+6.2, 2.2, 4.5, 1.5, Iris-versicolor
+5.6, 2.5, 3.9, 1.1, Iris-versicolor
+5.9, 3.2, 4.8, 1.8, Iris-versicolor
+6.1, 2.8, 4.0, 1.3, Iris-versicolor
+6.3, 2.5, 4.9, 1.5, Iris-versicolor
+6.1, 2.8, 4.7, 1.2, Iris-versicolor
+6.4, 2.9, 4.3, 1.3, Iris-versicolor
+6.6, 3.0, 4.4, 1.4, Iris-versicolor
+6.7, 3.0, 5.0, 1.7, Iris-versicolor
+5.7, 2.6, 3.5, 1.0, Iris-versicolor
+5.5, 2.4, 3.8, 1.1, Iris-versicolor
+5.5, 2.4, 3.7, 1.0, Iris-versicolor
+5.8, 2.7, 3.9, 1.2, Iris-versicolor
+6.0, 2.7, 5.1, 1.6, Iris-versicolor
+5.4, 3.0, 4.5, 1.5, Iris-versicolor
+6.7, 3.1, 4.7, 1.5, Iris-versicolor
+6.3, 2.3, 4.4, 1.3, Iris-versicolor
+5.6, 3.0, 4.1, 1.3, Iris-versicolor
+5.5, 2.5, 4.0, 1.3, Iris-versicolor
+5.5, 2.6, 4.4, 1.2, Iris-versicolor
+6.1, 3.0, 4.6, 1.4, Iris-versicolor
+5.8, 2.6, 4.0, 1.2, Iris-versicolor
+5.0, 2.3, 3.3, 1.0, Iris-versicolor
+5.6, 2.7, 4.2, 1.3, Iris-versicolor
+5.7, 3.0, 4.2, 1.2, Iris-versicolor
+5.7, 2.9, 4.2, 1.3, Iris-versicolor
+6.2, 2.9, 4.3, 1.3, Iris-versicolor
+5.1, 2.5, 3.0, 1.1, Iris-versicolor
+5.7, 2.8, 4.1, 1.3, Iris-versicolor
+6.3, 3.3, 6.0, 2.5, Iris-virginica
+5.8, 2.7, 5.1, 1.9, Iris-virginica
+7.1, 3.0, 5.9, 2.1, Iris-virginica
+6.3, 2.9, 5.6, 1.8, Iris-virginica
+6.5, 3.0, 5.8, 2.2, Iris-virginica
+7.6, 3.0, 6.6, 2.1, Iris-virginica
+4.9, 2.5, 4.5, 1.7, Iris-virginica
+7.3, 2.9, 6.3, 1.8, Iris-virginica
+6.7, 2.5, 5.8, 1.8, Iris-virginica
+7.2, 3.6, 6.1, 2.5, Iris-virginica
+6.5, 3.2, 5.1, 2.0, Iris-virginica
+6.4, 2.7, 5.3, 1.9, Iris-virginica
+6.8, 3.0, 5.5, 2.1, Iris-virginica
+5.7, 2.5, 5.0, 2.0, Iris-virginica
+5.8, 2.8, 5.1, 2.4, Iris-virginica
+6.4, 3.2, 5.3, 2.3, Iris-virginica
+7.7, 3.8, 6.7, 2.2, Iris-virginica
+5.6, 2.8, 4.9, 2.0, Iris-virginica
+7.7, 2.8, 6.7, 2.0, Iris-virginica
+6.3, 2.7, 4.9, 1.8, Iris-virginica
+6.7, 3.3, 5.7, 2.1, Iris-virginica
+7.2, 3.2, 6.0, 1.8, Iris-virginica
+6.1, 3.0, 4.9, 1.8, Iris-virginica
+6.4, 2.8, 5.6, 2.1, Iris-virginica
+7.2, 3.0, 5.8, 1.6, Iris-virginica
+7.4, 2.8, 6.1, 1.9, Iris-virginica
+7.9, 3.8, 6.4, 2.0, Iris-virginica
+6.4, 2.8, 5.6, 2.2, Iris-virginica
+6.3, 2.8, 5.1, 1.5, Iris-virginica
+6.1, 2.6, 5.6, 1.4, Iris-virginica
+7.7, 3.0, 6.1, 2.3, Iris-virginica
+6.3, 3.4, 5.6, 2.4, Iris-virginica
+6.4, 3.1, 5.5, 1.8, Iris-virginica
+6.0, 3.0, 4.8, 1.8, Iris-virginica
+6.9, 3.1, 5.4, 2.1, Iris-virginica
+6.7, 3.1, 5.6, 2.4, Iris-virginica
+6.9, 3.1, 5.1, 2.3, Iris-virginica
+5.8, 2.7, 5.1, 1.9, Iris-virginica
+6.8, 3.2, 5.9, 2.3, Iris-virginica
+6.7, 3.3, 5.7, 2.5, Iris-virginica
+6.7, 3.0, 5.2, 2.3, Iris-virginica
+6.3, 2.5, 5.0, 1.9, Iris-virginica
+6.5, 3.0, 5.2, 2.0, Iris-virginica
+6.2, 3.4, 5.4, 2.3, Iris-virginica
+5.9, 3.0, 5.1, 1.8, Iris-virginica
+
+
+
+Output data: Training set: result0s0.tra
+@relation relation
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-virginica
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-virginica
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-virginica
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+
+
+
+Input data: Test set: iris-10-1tst.dat
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+@data
+4.7, 3.2, 1.3, 0.2, Iris-setosa
+4.9, 3.1, 1.5, 0.1, Iris-setosa
+5.8, 4.0, 1.2, 0.2, Iris-setosa
+4.4, 3.2, 1.3, 0.2, Iris-setosa
+5.0, 3.5, 1.6, 0.6, Iris-setosa
+6.5, 2.8, 4.6, 1.5, Iris-versicolor
+6.6, 2.9, 4.6, 1.3, Iris-versicolor
+6.8, 2.8, 4.8, 1.4, Iris-versicolor
+6.0, 2.9, 4.5, 1.5, Iris-versicolor
+6.0, 3.4, 4.5, 1.6, Iris-versicolor
+6.5, 3.0, 5.5, 1.8, Iris-virginica
+7.7, 2.6, 6.9, 2.3, Iris-virginica
+6.0, 2.2, 5.0, 1.5, Iris-virginica
+6.9, 3.2, 5.7, 2.3, Iris-virginica
+6.2, 2.8, 4.8, 1.8, Iris-virginica
+
+
+Output data: Test set: result0s0.tst
+@relation relation
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+</example>
+
+</method>

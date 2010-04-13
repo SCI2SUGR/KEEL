@@ -1,0 +1,269 @@
+<method>
+
+	<name>CART</name>
+
+	<reference>  
+
+		<ref>L. Breiman, J.H. Friedman, R.A. Olshen, C.J. Stone. Classification and Regression Trees. Chapman and Hall (Wadsworth, Inc.): New York, 1984.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification and Regression Tree.</type>
+
+		<objective>CART analysis is a form of binary recursive partitioning. The term binary implies that each group of data/individuals, represented by a node in a decision tree, can only be split into two groups.</objective>
+
+		<howWork>CART analysis consists of four basic steps:
+	The first step consists of tree building, during which a tree is built using recursive splitting of nodes. Each resulting node is assigned a predicted class, based on the distribution of classes in the learning dataset which would occur in that node and the decision cost matrix. The assignment of a predicted class to each node occurs whether or not that node is subsequently split into child nodes. 
+	The second step consists of stopping the tree building process. At this point a maximal tree has been produced, which probably greatly overfits the information contained within the learning dataset. 
+	The third step consists of tree pruning, which results in the creation of a sequence of simpler and simpler trees, through the cutting off of increasingly important nodes. 
+	The fourth step consists of optimal tree selection, during which the tree which fits the information in the learning dataset, but does not overfit the information, is selected from among the sequence of pruned trees. 
+    </howWork>
+
+		<parameterSpec>  
+				
+				<param>minInformationFunction: The minimum Gini index of purity for each node to stop the algoritm.</param>
+				
+				<param>minNodeCardinality: The minimum cardinality of elements for each node to stop the algoritm.</param>
+				
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: CART
+Dataset: Cleveland
+Training set: cleveland-10-10tra.dat
+Test set: cleveland-10-10tst.dat
+Test Show results: StatChekCL
+
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test and training set:
+
+TEST RESULTS
+============
+Classifier= heart_disease_cleveland 
+Fold 0 : CORRECT=0.5161290322580645 N/C=0.0 
+Global Classification Error + N/C:
+0.4838709677419355 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.5161290322580645 Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= heart_disease_cleveland 
+Summary of data, Classifiers: heart_disease_cleveland 
+Fold 0 : CORRECT=0.9624060150375939 N/C=0.0 
+Global Classification Error + N/C:
+0.03759398496240601 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9624060150375939 
+Global N/C:
+0.0
+
+
+We can see too the output and target classes for each case of the test set (result0.tst) in Experiment\Results\CART:
+
+@relation Heart_Disease_Cleveland
+@attribute age real [29.0, 77.0]
+@attribute sex real [0.0, 1.0]
+@attribute cp real [1.0, 4.0]
+@attribute trestbps real [94.0, 200.0]
+@attribute chol real [126.0, 564.0]
+@attribute fbs real [0.0, 1.0]
+@attribute restecg real [0.0, 2.0]
+@attribute thalach real [71.0, 202.0]
+@attribute exang real [0.0, 1.0]
+@attribute oldpeak real [0.0, 6.2]
+@attribute slope real [1.0, 3.0]
+@attribute ca real [0.0, 3.0]
+@attribute thal real [3.0, 7.0]
+@attribute num {0, 1, 2, 3, 4}
+@inputs age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal
+@outputs num
+@data
+0 0
+0 0
+3 3
+2 3
+0 0
+1 0
+0 0
+2 0
+1 0
+1 1
+2 1
+3 4
+0 0
+0 0
+1 4
+0 0
+3 1
+0 0
+2 1
+0 0
+0 0
+1 0
+0 0
+0 0
+3 3
+4 1
+3 0
+0 3
+2 2
+3 2
+3 2
+
+
+
+And the decision tree model (result0e0.txt) in Experiment\Results\CART:
+
+@relation Heart_Disease_Cleveland
+@attribute age real [29.0, 77.0]
+@attribute sex real [0.0, 1.0]
+@attribute cp real [1.0, 4.0]
+@attribute trestbps real [94.0, 200.0]
+@attribute chol real [126.0, 564.0]
+@attribute fbs real [0.0, 1.0]
+@attribute restecg real [0.0, 2.0]
+@attribute thalach real [71.0, 202.0]
+@attribute exang real [0.0, 1.0]
+@attribute oldpeak real [0.0, 6.2]
+@attribute slope real [1.0, 3.0]
+@attribute ca real [0.0, 3.0]
+@attribute thal real [3.0, 7.0]
+@attribute num {0, 1, 2, 3, 4}
+@inputs age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal
+@outputs num
+
+@Decision Tree:
+<!--
+ If thal <= 4.5  If ca <= 0.5  If trestbps <= 157.0  If thalach <= 83.5  Then num =  2
+					 Else If thalach > 83.5  If oldpeak <= 3.55  If age <= 59.5  If chol <= 241.5  Then num =  0
+								 Else If chol > 241.5  If sex <= 0.5  Then num =  0
+									 Else If sex > 0.5  If cp <= 3.5  If slope <= 1.5  If restecg <= 1.0  Then num =  0 **
+												 Else If restecg > 1.0  Then num =  0
+											 Else If slope > 1.5  If fbs <= 0.5  If restecg <= 1.0  Then num =  0
+													 Else If restecg > 1.0  Then num =  1 *
+												 Else If fbs > 0.5  Then num =  0
+										 Else If cp > 3.5  Then num =  0
+							 Else If age > 59.5  If chol <= 316.0  If exang <= 0.5  If sex <= 0.5  Then num =  0
+										 Else If sex > 0.5  If cp <= 2.5  Then num =  0
+											 Else If cp > 2.5  Then num =  1 **
+									 Else If exang > 0.5  If sex <= 0.5  Then num =  1
+										 Else If sex > 0.5  Then num =  0
+								 Else If chol > 316.0  If slope <= 1.5  Then num =  1
+									 Else If slope > 1.5  Then num =  0
+						 Else If oldpeak > 3.55  Then num =  1
+				 Else If trestbps > 157.0  If chol <= 315.0  Then num =  1
+					 Else If chol > 315.0  If age <= 59.5  Then num =  2
+						 Else If age > 59.5  Then num =  0
+			 Else If ca > 0.5  If cp <= 3.5  If chol <= 237.5  If age <= 60.0  If trestbps <= 127.5  If sex <= 0.5  Then num =  0
+								 Else If sex > 0.5  If thalach <= 125.5  Then num =  0
+									 Else If thalach > 125.5  Then num =  1
+							 Else If trestbps > 127.5  Then num =  1
+						 Else If age > 60.0  If trestbps <= 137.0  Then num =  2
+							 Else If trestbps > 137.0  Then num =  0
+					 Else If chol > 237.5  If thalach <= 173.5  Then num =  0
+						 Else If thalach > 173.5  If age <= 56.5  Then num =  0
+							 Else If age > 56.5  Then num =  1
+				 Else If cp > 3.5  If thalach <= 165.5  If chol <= 301.0  If oldpeak <= 2.05  If trestbps <= 111.0  If age <= 50.5  Then num =  1
+									 Else If age > 50.5  Then num =  3
+								 Else If trestbps > 111.0  Then num =  2
+							 Else If oldpeak > 2.05  If age <= 61.5  If trestbps <= 130.0  Then num =  3
+									 Else If trestbps > 130.0  Then num =  4
+								 Else If age > 61.5  Then num =  3
+						 Else If chol > 301.0  If age <= 67.0  Then num =  0
+							 Else If age > 67.0  If trestbps <= 127.5  Then num =  4
+								 Else If trestbps > 127.5  Then num =  1
+					 Else If thalach > 165.5  Then num =  1
+		 Else If thal > 4.5  If oldpeak <= 0.85  If chol <= 240.5  If age <= 41.5  If cp <= 3.0  Then num =  0
+						 Else If cp > 3.0  Then num =  1
+					 Else If age > 41.5  If ca <= 0.5  If trestbps <= 147.0  Then num =  0
+							 Else If trestbps > 147.0  If thalach <= 152.5  Then num =  1
+								 Else If thalach > 152.5  Then num =  0
+						 Else If ca > 0.5  If slope <= 1.5  If cp <= 3.5  Then num =  0
+								 Else If cp > 3.5  If fbs <= 0.5  Then num =  2
+									 Else If fbs > 0.5  Then num =  0
+							 Else If slope > 1.5  Then num =  1
+				 Else If chol > 240.5  If cp <= 3.5  If exang <= 0.5  If trestbps <= 122.0  Then num =  0
+							 Else If trestbps > 122.0  If age <= 61.5  Then num =  1
+								 Else If age > 61.5  Then num =  0
+						 Else If exang > 0.5  Then num =  2
+					 Else If cp > 3.5  If fbs <= 0.5  If thalach <= 111.5  If age <= 61.0  Then num =  3
+								 Else If age > 61.0  Then num =  0
+							 Else If thalach > 111.5  If ca <= 2.5  If age <= 50.0  If slope <= 1.5  Then num =  1
+										 Else If slope > 1.5  Then num =  3
+									 Else If age > 50.0  Then num =  1
+								 Else If ca > 2.5  Then num =  3
+						 Else If fbs > 0.5  Then num =  3
+			 Else If oldpeak > 0.85  If cp <= 1.5  If age <= 39.0  Then num =  4
+					 Else If age > 39.0  If trestbps <= 115.0  Then num =  1
+						 Else If trestbps > 115.0  Then num =  0
+				 Else If cp > 1.5  If thalach <= 133.5  If trestbps <= 144.5  If exang <= 0.5  If chol <= 272.0  Then num =  2
+								 Else If chol > 272.0  Then num =  3
+							 Else If exang > 0.5  If age <= 63.5  If chol <= 282.5  If ca <= 2.5  If sex <= 0.5  Then num =  3
+											 Else If sex > 0.5  If slope <= 2.5  If restecg <= 1.0  Then num =  3 *
+													 Else If restecg > 1.0  Then num =  3 *
+												 Else If slope > 2.5  Then num =  3
+										 Else If ca > 2.5  Then num =  1
+									 Else If chol > 282.5  If ca <= 2.5  Then num =  2
+										 Else If ca > 2.5  Then num =  3
+								 Else If age > 63.5  Then num =  1
+						 Else If trestbps > 144.5  If chol <= 256.0  If fbs <= 0.5  Then num =  4
+								 Else If fbs > 0.5  Then num =  3
+							 Else If chol > 256.0  If exang <= 0.5  Then num =  4
+								 Else If exang > 0.5  If age <= 56.5  Then num =  3
+									 Else If age > 56.5  Then num =  3 **
+					 Else If thalach > 133.5  If ca <= 1.5  If age <= 64.5  If slope <= 1.5  Then num =  1
+								 Else If slope > 1.5  If chol <= 234.5  If trestbps <= 115.0  If restecg <= 1.0  Then num =  1
+											 Else If restecg > 1.0  Then num =  4
+										 Else If trestbps > 115.0  If fbs <= 0.5  Then num =  3
+											 Else If fbs > 0.5  If restecg <= 1.0  Then num =  2
+												 Else If restecg > 1.0  Then num =  1
+									 Else If chol > 234.5  If trestbps <= 122.5  Then num =  2
+										 Else If trestbps > 122.5  If fbs <= 0.5  If restecg <= 1.0  Then num =  2
+												 Else If restecg > 1.0  If sex <= 0.5  Then num =  1
+													 Else If sex > 0.5  Then num =  2 *
+											 Else If fbs > 0.5  Then num =  2
+							 Else If age > 64.5  If trestbps <= 170.0  Then num =  0
+								 Else If trestbps > 170.0  Then num =  3
+						 Else If ca > 1.5  If chol <= 190.5  Then num =  3
+							 Else If chol > 190.5  If trestbps <= 115.5  Then num =  4
+								 Else If trestbps > 115.5  If sex <= 0.5  If age <= 59.0  Then num =  2
+										 Else If age > 59.0  Then num =  3
+									 Else If sex > 0.5  If age <= 59.0  Then num =  3
+										 Else If age > 59.0  Then num =  2 -->
+
+@TotalNumberOfNodes:190
+@NumberOfLeafs: 96
+@PercentageOfCorrectlyClassifiedTraining:93.233086
+@PercentageOfCorrectlyClassifiedTest:51.6129
+@ElapsedTime 0:0:0
+
+</example>
+
+</method>
+

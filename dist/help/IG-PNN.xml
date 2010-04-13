@@ -1,0 +1,58 @@
+<method>
+
+	<name>Prototype Nearest Neighbor</name>
+
+	<reference>  
+
+		<ref>Chin-Liang, Chang. Finding Prototypes for Nearest Neighbor Classifiers. IEEE Transactions on Computers, vol. c-23, No. 11, November 1974 1179-1184.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+		This algorithm merge nearest prototypes of the set, if classification accuracy of the original training data set
+		does not decrease and if they have got the same class. If not, they are removed from the set.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Percentage of prototypes: Real value. Desired size of the resulting set as percentage of training set size. This parameters is optional.</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>
+Problem type: Classification 
+Method: PG-PNN
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-PNN:
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+5.897777777777778, 2.746666666666667, 4.235555555555553, 1.32, Iris-versicolor
+6.571111111111112, 2.953333333333333, 5.5555555555555545, 2.0222222222222213, Iris-virginica
+5.006666666666667, 3.395555555555555, 1.4577777777777776, 0.24222222222222226, Iris-setosa
+</example>
+
+</method>

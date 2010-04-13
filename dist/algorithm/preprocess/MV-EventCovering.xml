@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>Event Covering synthesizing</name>
+  <nParameters>3</nParameters>
+  <seed>0</seed>
+  <nOutput>0</nOutput>
+   <parameter>
+    <name>T</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter>
+  <parameter>
+    <name>minChangeNum</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>0</default>
+  </parameter>
+  <parameter>
+    <name>Cfactor</name>
+    <type>real</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>Multilayer Perceptron for modeling</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>ModelMLPerceptron</item>
+    </domain>
+    <default>ModelMLPerceptron</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>MMLP</item>
+    </domain>
+    <default>MMLP</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>topologymlp</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+</algorithm_specification>

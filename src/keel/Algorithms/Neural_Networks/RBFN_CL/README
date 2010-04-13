@@ -1,0 +1,23 @@
+# Compiling RBFN for Keel project
+javac -classpath .:../../../org/core/ -encoding iso-8859-1 -nowarn doRbfnCl.java
+
+# Creating jar file (rbfn.jar)
+# Requires ./../../org/core/Fichero.class, ./../../org/core/Dataset.class  and ../../../org/core/Randomize.class
+jar -cfmv rbfncl.jar manifest *.class -C ../../../org/core/ Fichero.class -C ../../../org/core/ Dataset.class  -C ../../../org/core/ Randomize.class
+
+# Excuting jar file
+java -jar rbfncl.jar param_file.txt
+
+# Asking for help
+java -jar rbfncl.jar --help
+
+# Pattern file for Keel project
+rbfncl.txt
+
+# Anyway, following is what pattern file contains. Remove # to use it
+#algorithm = Incremental Radial Basis Function Neural Network 
+#nParameters = 3
+#seed = 1
+#nOutput = 1
+#neurons = integer [] 5
+

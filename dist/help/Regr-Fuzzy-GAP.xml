@@ -1,0 +1,168 @@
+<method>
+
+	<name>Fuzzy Rule Learning, Grammar-based GAP Algorithm</name>
+
+	<reference>  
+
+<ref>L. S&#xE1;nchez, I. Couso. Combining GP operators with SA search to evolve fuzzy rule based classifiers. Information Sciences  136:(1-4) (2001) 175 - 192</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression fuzzy model.</type>
+
+		<objective>To obtain fuzzy regression model by means of learning fuzzy rule throught GA-P algorithms.</objective>
+
+		<howWork>A GA-P algorithm is used to learn a fuzzy regression model. For each hypothesis, the number of labels and number of rules must be given. In same way, as it is possible to manage any combination of conjuntion and/or disjuntions in the antecedent part of a fuzzy rule, a maximum deep tree size must be given too.
+
+Those parameters are, in conjuntion with GA-P typical parameters, of capital importance in the evolution of this method.
+</howWork>
+
+		<parameterSpec>  
+<param>numlabes: the number of possible fuzzy values for each variable.</param> 
+<param>numrules: the number of rules for each model.</param>  
+<param>popsize: the number of individuals in the population, GA-P parameter.</param> 
+<param>numisland: the number of islands or subpopulations, GAP parameter.</param> 
+<param>steady: indicates how population evolves. A value of 1 forces a steady, while a value of 0 indicates that new individuals substitute old ones. GA-P parameter.</param> 
+<param>numitera: number of iterations to reach the objectives, GA-P parameter.</param> 
+<param>toursize: number of individuals selected to tournament selection procedure. GAP parameter.</param> 
+<param>probmuta: indicates the probability that a mutation operation takes place, GA-P parameter.</param> 
+<param>amplmuta	: the maximum bias that a mutation operation can introduce. GA-P Parameter.</param> 
+<param>probmigra: probability that an individual of an island is used in a tournament of another island, GA-P parameter.</param> 
+<param>proboptimlocal: indicates the probability to improve GA-P with local search GA-P parameter.</param> 
+<param>numoptimlocal: the number of local search steps, GA-P parameter.</param> 
+<param>idoptimlocal: the local search method used, GA-P parameter.</param> 
+<param>nichingap: value 1 if niches are going to be used, , GA-P parameter.</param> 
+<param>maxindniche: maximum number of individual per niche, , GA-P parameter.</param> 
+<param>probintraniche: probability that a genetic operation can take place with individual of different niches, GA-P parameter.</param> 
+<param>probcrossga: probability of genetic algorithm (parametric) operations to take place, GA-P parameter.</param> 
+<param>probmutaga: probability of genetic algorithm (structural) operations to take place, GA-P parameter.</param> 
+<param>lenchaingap: length of GA-P chain, GA-P parameter.</param> 
+<param>maxtreeheight: maximum deep of a fuzzy tree.</param> 
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-Fuzzy-GAP
+Dataset: daily-electric-energy
+Training set: daily-electric-energy-10-1tra.dat
+Test set: daily-electric-energy-10-1tst.dat
+Test Show results: StatChekMO
+Parameters: default parameters but numlabels = 5, numrules = 8, maxtreehight = 8
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTRegr-Fuzzy-GAP/ folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.19991114757037118 
+Fold 1 : 0.2505510066074378 
+Fold 2 : 0.310441067953518 
+Fold 3 : 0.164645414722218 
+Fold 4 : 0.30182772441162375 
+Fold 5 : 0.17277696158786124 
+Fold 6 : 0.19599277101163898 
+Fold 7 : 0.1551039485887109 
+Fold 8 : 0.25200695398137724 
+Fold 9 : 0.23290973524133268 
+Global MSE:
+0.22361667316760897 
+Global stdev:
+0.05230160836093351 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.18650547052669178 
+Fold 1 : 0.20566667427843763 
+Fold 2 : 0.19146000303979568 
+Fold 3 : 0.20462861563216872 
+Fold 4 : 0.16703007491609137 
+Fold 5 : 0.16161495281043592 
+Fold 6 : 0.18088133846785895 
+Fold 7 : 0.17517267485123006 
+Fold 8 : 0.20159503708934715 
+Fold 9 : 0.19953685869226645 
+Global MSE:
+0.1874091700304324 
+Global stdev:
+0.0150611583366059 
+
+We can see too the output and target classes for each case of the test set (result0s0.tra) in experiment/results/Regr-Fuzzy-GAP/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.31615 2.4866894769347914
+2.37613 1.8540772500000002
+2.25221 2.8956307595466697
+2.1057 2.0147029897861857
+4.05117 3.5362051420869585
+2.50409 2.7700600306932013
+4.4184 4.555276978828091
+3.07069 2.7134715084397505
+1.8168 1.85407725
+1.1095 1.8540772500000002
+1.42735 1.8540772499999998
+3.34136 4.372828514894793
+2.34377 2.6599522425433193
+...
+
+And the test results (result0s0.tst) in folder experiment/results/Regr-Fuzzy-GAP/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.21261 2.9423015
+3.82169 3.4247194050834713
+1.3288 1.85407725
+2.53167 2.7538884587026073
+4.00095 3.8145408314589266
+2.9788 2.9423014999999997
+1.67147 1.8540772500000002
+3.3829 3.2969925598259
+3.19877 2.9423015
+2.4381 2.7468810468275766
+0.960987 1.85407725
+4.14661 4.40566805137137
+2.32848 1.8697328878748305
+...
+</example>
+
+</method>

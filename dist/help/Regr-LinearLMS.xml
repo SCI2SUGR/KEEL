@@ -1,0 +1,139 @@
+<method>
+
+	<name>Least Mean Square Linear Regression</name>
+
+	<reference>  
+
+<ref>J. S. Rustagi, Optimization Techniques in Statistics. Academic Press, San Diego, 1994.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regresion model by means of a linear combination fo features.</type>
+
+		<objective>To obtain a regression model as a result of a linear combination of its features. The weigths of such combination are fitted as a linear discriminatn using LMS.</objective>
+
+		<howWork>The desire output is modelled by means of a linear combination of its features. The method uses the LMS to produce a linear  discriminat. Unknown data induces poorer results.
+		</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-LinearLMS
+Dataset: diabetes_numeric
+Training set: diabetes_numeric-10-1tra.dat 
+Test set: diabetes_numeric-10-1tst.dat
+Test Show results: StatChekMO
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckMO/TSTRegr-LinearLMS/ folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.47083531570651826 
+...
+Global MSE:
+0.3338221539412699 
+Global stdev:
+0.19575136848157199 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.2874600830526046 
+...
+Global MSE:
+0.3164042555020716 
+Global stdev:
+0.022152021827752427
+
+
+We can see too the output and target classes for each case of the test set (result0s0.tra) in experiment/results/Regr-LinearLMS/diabetes_numeric:
+
+@relation  diabetes_real
+@attribute age real[1.0,15.6]
+@attribute deficit real[-29.0,-0.2]
+@attribute c_peptide real[3.4,6.6]
+@inputs age,deficit
+@outputs c_peptide
+@data
+4.8 4.534702689382003
+4.9 5.130593288432551
+4.8 4.547894388675435
+4.9 5.440328133739197
+4.9 5.000567187698342
+5.6 4.755344966250071
+5.5 4.920493874006782
+4.5 4.792914498898823
+5.1 4.2000147710799824
+3.9 4.477710962699624
+3.9 4.277143854591732
+5.0 4.211822785833822
+4.8 5.061249401390874
+5.3 5.010363793310299
+3.7 4.97441699437096
+5.5 4.9014759024229235
+4.8 4.914667601716356
+3.9 4.516430974628487
+4.6 5.159920917199226
+4.7 4.987608693664392
+5.1 4.645959570809134
+4.6 4.637313444477288
+5.1 5.08017409087094
+4.9 4.6628417571127185
+4.5 4.531991664461675
+5.1 5.1694843175517
+4.1 4.837320859962423
+6.0 5.293808522133873
+3.7 3.7980565629473633
+6.6 5.2587479031805655
+5.1 4.732216738188993
+4.1 4.5217908363999495
+4.4 4.719413714328031
+3.4 3.9768791275337696
+5.7 5.383009919693542
+5.2 4.940180367334488
+5.2 5.239652196510213
+4.6 5.255492732654779
+...
+
+And the test results (result0s0.tst) in folder experiment/results/Regr-LinearLMS/diabetes_numeric:
+
+@relation  diabetes_real
+@attribute age real[1.0,15.6]
+@attribute deficit real[-29.0,-0.2]
+@attribute c_peptide real[3.4,6.6]
+@inputs age,deficit
+@outputs c_peptide
+@data
+3.4 4.680833625554857
+4.9 4.722933184147896
+3.4 4.168582451067632
+5.1 4.809454650821834
+5.2 5.115421274031833
+...
+</example>
+
+</method>

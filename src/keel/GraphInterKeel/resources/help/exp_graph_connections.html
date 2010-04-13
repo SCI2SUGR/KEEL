@@ -1,0 +1,47 @@
+<html>
+
+<head>
+
+<title>Experiments Design</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div align="center">
+
+  <p><b>Connections</b></p>
+
+</div>
+
+<p>The connections allow finishing the designing of the experiment, by connecting the included modules with flows which represent the data flow in the experiment. They can be used both as inputs or outputs of the modules.</p>
+
+<ol>
+	<li><b>Insert connection</b>: to make a connection, select the connections button from the left tool bar. Then, click on the source node and finally click on the target node.</li>
+
+<p align="center"><img src="imag/experiments/connections1.jpg"></p>  
+ <br/>
+	<li><b>Restrictions</b>: there are some restrictions that must be considered when making connections between the different elements:</li>
+
+	<ul>
+		<li>A dataset cannot have inputs.</li>
+		<li>The pre-processing algorithms can only receive inputs from a data set or another pre-process method.</li>
+		<li>Knowledge extraction methods can receive a flow from a data set, from a pre-processing algorithm or from a previous method.</li>
+		<li>The test and visualization modules must receive input data from a method or from a post-processing algorithm.</li> 
+		<li>Test and visualization modules cannot have outputs.</li> 
+		<li>The graph cannot have any cycle.</li> 
+	</ul>
+</ol> 
+
+<p>All these restrictions are verified in execution time when a connection is been created. If one of these connections is not allowed, the application will show an error message. In next figures some examples of incorrect graphs are shown:</p> 
+
+<p align="center"><img src="imag/experiments/connections2.jpg"></p>  
+
+</body>
+
+</html>
+

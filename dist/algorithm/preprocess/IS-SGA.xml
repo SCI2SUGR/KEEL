@@ -1,0 +1,87 @@
+<algorithm_specification>
+  <name>Steady-State Genetic Algorithm for Instance Selection</name>
+  <nParameters>9</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>1 to 0 Mutation Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>
+  <parameter>
+    <name>0 to 1 Mutation Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.001</default>
+  </parameter>
+  <parameter>
+    <name>Cross Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  <parameter>
+    <name>Number of Evaluations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000000</upperB>
+    </domain>
+    <default>10000</default>
+  </parameter>
+  <parameter>
+    <name>Alfa Equilibrate Factor</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  <parameter>
+    <name>Selection Type</name>
+    <type>list</type>
+    <domain>
+      <item>orden_based</item>
+      <item>binary_tournament</item>
+    </domain>
+    <default>orden_based</default>
+  </parameter>
+  <parameter>
+    <name>Number of Neighbours</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Distance Function</name>
+    <type>list</type>
+    <domain>
+      <item>Euclidean</item>
+      <item>HVDM</item>
+    </domain>
+    <default>Euclidean</default>   
+  </parameter>
+</algorithm_specification>

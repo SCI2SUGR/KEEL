@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>K Star Classifier</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Selection method</name>
+    <type>list</type>
+    <domain>
+      <item>Fixed</item>
+      <item>Random</item>
+    </domain>
+    <default>Fixed</default>   
+  </parameter>
+  <parameter>
+    <name>Blend</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.00</lowerB>
+      <upperB>1.00</upperB>
+    </domain>
+    <default>0.20</default>
+  </parameter>
+</algorithm_specification>

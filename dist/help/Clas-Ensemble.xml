@@ -1,0 +1,118 @@
+<method>
+
+	<name>Ensemble Neural Network for Classification Problems</name>
+
+	<reference>
+			<ref>N. Garcia-Pedrajas, C. Garcia-Osorio and C. Fyfe. 
+			Nonlinear Boosting Projections for Ensemble Construction. 
+			Journal of Machine Learning Research 8 (2007) 1-33.
+			</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type> Classification model by a ensemble method.</type>
+
+		<objective> 
+		To perform a classification task by means of a combination of different classifiers, homogeneous or heterogeneous.
+		</objective>
+
+		<howWork>This methods employs an ensemble construction based on the use of nonlinear
+		projections to achieve both accuracy and diversity of individual classifiers. Specificially it
+		combines the philosophy of boosting, putting more effort on difficult instances, with the basis of
+		the random subspace method. Instead of using a random subspace, this methods constructs a projection 
+		taking into account the instances which have posed most difficulties to
+		previous classifiers. In this way, consecutive nonlinear projections are created by a neural network
+		trained using only incorrectly classified instances. The feature subspace induced by the hidden layer
+		of this network is used as the input space to a new classifier.		
+		</howWork>
+
+		<parameterSpec>  
+  			<param> Hidden_layers: number of hidden layers in the neural network</param>
+  			<param> Hidden_nodes: number of nodes in each hidden layer of the neural network</param>
+  			<param> Transfer: Transfer function. May be the Logarithmic function, the Hypertangent or a Lineal function</param>
+			<param> Eta: Learning coefficient</param>
+  			<param> Alpha: Momentum coefficient</param>
+  			<param> Lambda: </param>
+  			<param> Cycles: Epochs in the training step</param>
+  			<param> Improve: </param>
+  			<param> Sampling: Sampling type. May have any of this types: Ada, Arcing (Adaptively resampling and combining), Bagging or None</param>
+  			<param> Ensemble_method: </param>
+  			<param> Combination: </param>
+  			<param> Networks: Number of Neural networks used </param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+
+
+		Problem type: Classification 
+		Method: Clas-Ensemble
+		Dataset: pima (10 fold cross validation run)
+		Training set: pima-10-1tra.dat to pima-10-10tra.dat 
+		Test set: pima-10-1tst.dat and pima-10-10tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-Ensemble
+		folder the classification results for the test set:
+
+		TEST RESULTS
+		============
+		Classifier= 
+		Fold 0 : CORRECT=0.7012987012987013 N/C=0.0 
+		Fold 1 : CORRECT=0.7051282051282051 N/C=0.0 
+		Fold 2 : CORRECT=0.7631578947368421 N/C=0.0 
+		Fold 3 : CORRECT=0.7012987012987013 N/C=0.0 
+		Fold 4 : CORRECT=0.7272727272727273 N/C=0.0 
+		Fold 5 : CORRECT=0.7236842105263157 N/C=0.0 
+		Fold 6 : CORRECT=0.7662337662337663 N/C=0.0 
+		Fold 7 : CORRECT=0.7894736842105263 N/C=0.0 
+		Fold 8 : CORRECT=0.6623376623376623 N/C=0.0 
+		Fold 9 : CORRECT=0.7532467532467533 N/C=0.0 
+		Global Classification Error + N/C:
+		0.2706867693709799 
+		stddev Global Classification Error + N/C:
+		0.03657430840470734 
+		Correctly classified:
+		0.7293132306290201 
+		Global N/C:
+		0.0 
+		
+		TRAIN RESULTS
+		============
+		Classifier= 
+		Summary of data, Classifiers: 
+		Fold 0 : CORRECT=0.7481910274963821 N/C=0.0 
+		Fold 1 : CORRECT=0.7405797101449275 N/C=0.0 
+		Fold 2 : CORRECT=0.7254335260115607 N/C=0.0 
+		Fold 3 : CORRECT=0.7626628075253257 N/C=0.0 
+		Fold 4 : CORRECT=0.7322720694645442 N/C=0.0 
+		Fold 5 : CORRECT=0.7355491329479769 N/C=0.0 
+		Fold 6 : CORRECT=0.7380607814761215 N/C=0.0 
+		Fold 7 : CORRECT=0.7341040462427746 N/C=0.0 
+		Fold 8 : CORRECT=0.7510853835021708 N/C=0.0 
+		Fold 9 : CORRECT=0.7424023154848046 N/C=0.0 
+		Global Classification Error + N/C:
+		0.2589659199703412 
+		stddev Global Classification Error + N/C:
+		0.010145105242193898 
+		Correctly classified:
+		0.7410340800296589 
+		Global N/C:
+		0.0 
+				
+		
+	</example>
+		
+</method>

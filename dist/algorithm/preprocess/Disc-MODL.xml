@@ -1,0 +1,16 @@
+<algorithm_specification>
+  <name>MODL Discretizer</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>processType</name>
+    <type>list</type>
+    <domain>
+      <item>optimal</item>
+      <item>greedy</item>
+      <item>optimized</item>
+    </domain>
+    <default>optimized</default>
+  </parameter>
+</algorithm_specification>

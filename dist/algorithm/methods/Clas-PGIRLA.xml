@@ -1,0 +1,44 @@
+<algorithm_specification>
+  <name>Genetic Algorithm with real-valued genes</name>
+  <nParameters>5</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Number_of_Generations</name>
+    <type>integer</type>
+    <default>5000</default>
+  </parameter>
+  <parameter>
+    <name>Population_Size</name>
+    <type>integer</type>
+    <default>61</default>
+  </parameter>
+  <parameter>
+    <name>Cross_Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.7</default>
+  </parameter>
+  <parameter>
+    <name>Mutation_Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  <parameter>
+    <name>Number_of_Rules</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>80</upperB>
+    </domain>
+    <default>20</default>
+  </parameter>
+</algorithm_specification>
+

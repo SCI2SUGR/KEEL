@@ -1,0 +1,139 @@
+<method>
+
+	<name>Least Mean Square Quadratic Regression</name>
+
+	<reference>  
+
+<ref>J. S. Rustagi, Optimization Techniques in Statistics. Academic Press, San Diego, 1994.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regresion model by means of a cuadratic combination fo features.</type>
+
+		<objective>To obtain a regression model as a result of a cuadratic combination of its features. The weigths of such combination are fitted as a cuadratic discriminatn using LMS.</objective>
+
+		<howWork>The desire output is modelled by means of a linear combination of its features. The method uses the LMS to produce a cuadratic  discriminat. Unknown data induces poorer results.
+		</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-PolQuadraticLMS
+Dataset: diabetes_numeric
+Training set: diabetes_numeric-10-1tra.dat 
+Test set: diabetes_numeric-10-1tst.dat
+Test Show results: StatChekMO
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckMO/TSTRegr-PolQuadraticLMS/ folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.283499496631185 
+...
+Global MSE:
+0.2670638871581691 
+Global stdev:
+0.15543973644290549 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.23297560308158682 
+...
+Global MSE:
+0.23889224712904408 
+Global stdev:
+0.015946532166426712
+
+
+We can see too the output and target classes for each case of the test set (result0s0.tra) in experiment/results/Regr-PolQuadraticLMS/diabetes_numeric:
+
+@relation  diabetes_real
+@attribute age real[1.0,15.6]
+@attribute deficit real[-29.0,-0.2]
+@attribute c_peptide real[3.4,6.6]
+@inputs age,deficit
+@outputs c_peptide
+@data
+4.8 4.534702689238391
+4.9 5.1305932882541905
+4.8 4.547894388527867
+4.9 5.440328133538219
+4.9 5.000567187523101
+5.6 4.755344966088095
+5.5 4.920493873839136
+4.5 4.792914498739447
+5.1 4.200014770956582
+3.9 4.477710962556712
+3.9 4.277143854459174
+5.0 4.211822785716447
+4.8 5.061249401211112
+5.3 5.010363793132791
+3.7 4.974416994201949
+5.5 4.90147590225566
+4.8 4.914667601545135
+3.9 4.516430974479874
+4.6 5.1599209170145155
+4.7 4.987608693491425
+5.1 4.645959570660991
+4.6 4.637313444323111
+5.1 5.080174090691468
+4.9 4.662841756956798
+4.5 4.531991664314818
+5.1 5.169484317366406
+4.1 4.83732085980193
+6.0 5.2938085219409885
+3.7 3.7980565628506153
+6.6 5.258747902989784
+5.1 4.732216738034249
+4.1 4.521790836258275
+4.4 4.719413714174439
+3.4 3.976879127423917
+5.7 5.38300991949562
+5.2 4.940180367161636
+5.2 5.2396521963203755
+4.6 5.255492732464678
+...
+
+And the test results (result0s0.tst) in folder experiment/results/Regr-PolQuadraticLMS/diabetes_numeric:
+
+@relation  diabetes_real
+@attribute age real[1.0,15.6]
+@attribute deficit real[-29.0,-0.2]
+@attribute c_peptide real[3.4,6.6]
+@inputs age,deficit
+@outputs c_peptide
+@data
+3.4 4.680833625405956
+4.9 4.722933183991717
+3.4 4.168582450942961
+5.1 4.809454650657148
+5.2 5.115421273848913
+...
+</example>
+
+</method>

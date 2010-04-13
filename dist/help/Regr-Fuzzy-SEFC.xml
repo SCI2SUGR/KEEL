@@ -1,0 +1,84 @@
+<method>
+
+    <name>SEFC: Symbiotic-Evolution-based Fuzzy Controller design method</name>
+
+    <reference>
+
+        <ref>C.-F. Juang, J.-Y. Lin, C.-T. Lin. Genetic reinforcement learning through symbiotic evolution for fuzzy controller design. IEEE Transactions on Systems, Man, and Cybernetics, Part B: Cybernetics 30:2 (2000) 290-302.</ref>
+        
+    </reference>
+
+    <generalDescription>
+
+        <type>Regression model by generation of fuzzy rule-based systems</type>
+
+        <objective>To obtain a TSK fuzzy rule-based system</objective>
+
+        <howWork>Juang et al. propose an efficient genetic reinforcement learning algorithm
+         for designing fuzzy controller based upon Symbiotic Evolution which, when applied to
+         fuzzy controller design, complements the local mapping property of a fuzzy rule.
+         The free parameters (centers and widths) of the membership functions and fuzzy rules
+         are all tuned automatically. Regarding the output of the rules, only the significant
+         input variables are selected to participate in the consequent of a rule.
+        </howWork>
+
+        <parameterSpec>
+    <param>Population Size</param>
+    <param>Number of Generations</param>
+    <param>Number of generations to migration</param>
+    <param>Number of fuzzy rules that constitute a fuzzy system</param>
+    <param>Number of fuzzy systems to be formed and evaluated per generation</param>
+    <param>Parameter K</param>
+    <param>Mutation Probability</param>
+        </parameterSpec>
+        
+
+        <properties>
+            <continuous>Yes</continuous>
+            <discretized>Yes (only with numerical)</discretized>
+            <integer>Yes</integer>
+            <nominal>No</nominal>
+            <valueLess>Yes</valueLess>
+            <impreciseValue>No</impreciseValue>
+        </properties>
+
+    </generalDescription>
+
+    <example>Problem type: Regression
+        Method: Regr-Fuzzy-SEFC
+        Dataset: ele1
+        Parameters: default values
+
+
+        After the execution of RunKeel.jar we can see into the experiment\results\Regr-Fuzzy-SEFC the results. The file 'result0s0e0.txt' contains the TSK fuzzy rule set and the approximation errors on training and test datasets:
+
+Rule Base with 50 rules
+
+Rule 1: IF X(1) is Gaussian(5.7603411920742, 95.7) and X(2) is Gaussian(1178.092087389001, 645.3319824) THEN Y = (3420.695619396445)
+
+Rule 2: IF X(1) is Gaussian(31.49850100406876, 95.7) and X(2) is Gaussian(1178.092087389001, 645.3319824) THEN Y = (3420.695619396445)
+
+Rule 3: IF X(1) is Gaussian(5.7603411920742, 191.4) and X(2) is Gaussian(338.4529356999553, 483.9989868) THEN Y = (0.8145152548827499 * X(2))
+
+Rule 4: IF X(1) is Gaussian(260.4626249865309, 191.4) and X(2) is Gaussian(1535.8297765560242, 483.9989868) THEN Y = (0.8145152548827499 * X(2))
+
+Rule 5: IF X(1) is Gaussian(216.4610022756879, 127.60000000000001) and X(2) is Gaussian(338.4529356999553, 645.3319824) THEN Y = (3420.695619396445)
+
+Rule 6: IF X(1) is Gaussian(5.7603411920742, 95.7) and X(2) is Gaussian(1178.092087389001, 483.9989868) THEN Y = (3420.695619396445)
+
+
+. . .
+
+
+Rule 48: IF X(1) is Gaussian(5.7603411920742, 191.4) and X(2) is Gaussian(338.4529356999553, 483.9989868) THEN Y = (0.8145152548827499 * X(2))
+
+Rule 49: IF X(1) is Gaussian(107.48571332927926, 191.4) and X(2) is Gaussian(1457.9677911090057, 645.3319824) THEN Y = (3420.695619396445)
+
+Rule 50: IF X(1) is Gaussian(5.7603411920742, 191.4) and X(2) is Gaussian(338.4529356999553, 483.9989868) THEN Y = (0.8145152548827499 * X(2))
+
+MSE Training:	504461.3091049961%
+MSE Test:	412485.798519144%
+	
+    </example>
+
+</method>

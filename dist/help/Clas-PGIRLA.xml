@@ -1,0 +1,126 @@
+<method>
+
+	<name>Pittsburgh Genetic Intervalar Rule Learning Algorithm</name>
+
+	<reference>  
+
+		<ref>A.L. Corcoran and S. Sen. Using Real-Valued Genetic Algorithms to Evolve Rule Sets for Classification. 1st IEEE Conference on Evolutionary Computation. Orlando (Florida, 1994) 120-124.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification algorithm based on GA.</type>
+
+		<objective>Use a genetic algorithm to evolve a set of classification rules with real-valued attributes.</objective>
+
+		<howWork>The main structure of this algorithm is a generational GA, in which each generation are applied the steps of selection, crossover, mutation and replacement. 
+
+Each chromosome represents a set of intervalar classification rules. Each of the classification rules is composed of a set of A attributes and a class value. Each attribute in the rule has two 
+real variables which indicate the minimum and maximum in the range of valid values for that attribute. 
+A &apos;don&apos;t care&apos; condition occurs when the maximum value is less than the minimum value. We use a fixed-length chromosome, where each chromosome is made up of a fixed number (n) of rules. The length of a chromosome is thus n(2A+1).
+
+We initialize all the cromosomes at random, with values between the range of each variable. The selection mechanism is to choose two indiviuals at random between all the chromomes of the population. 
+
+In the crossover part we apply a simple random 2-point crossover. There are two mutation operators that are used in this algorithm. First creep mutation is applied to each attribute&apos;s minimum and maximum value with a probability denoted as the creep rate; then simple random mutation replaces randomly selected attribute range values or class values with random values form the appropriate valid range.
+
+In the evaluation part, when each attribute value in an input instance is either contained in the range specified for the corresponding attribute of a rule or the rule attribute is a don&apos;t care, the rule matches the instance and the class value indicates the membership class of the instance.
+
+The fitness of a particular chromosome is simply the percentage of test instances correctly classified by the chromosome&apos;s rule set (accuracy).
+
+We always maintain the best chromosome of the population as in the elitist scheme. 
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Number_of_Generations: Is the number of Generations It is an integer value  which indicates the maximum number of generations (or iterations) for the algorithm. </param>
+			<param>Population_Size: Is the population size. It is an integer value that determines the number of chromosomes in each generation.</param>
+			<param>Cross_Probability: Is the probability to apply the modified simple crossover.  It is a float value between 0 and 1.</param>
+			<param>Mutation_Probability: Is the probability to apply the creep mutation. It is a float value between 0 and 1 and it should have a high value, because creep mutation is intented to occur often.</param>
+			<param>Number_of_Rules: Is the number of rules in each chromosome. It is an integer value that should be fixed before launching the algorithm. It is not easy to adjust it.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Pittsburgh Genetic Intervalar Rule Learning Algorithm
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: 
+	Number_of_Generations = 5000
+	Population_Size = 61
+	Cross_Probability = 0.7
+	Mutation_Probability = 0.5
+	Number_of_Rules = 20
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Global Classification Error + N/C:
+0.0666666666666667
+Correctly classified:
+0.9333333333333333 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-PGIRLA:
+
+@relation  iris
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+
+And some Statistics (result0e0.txt) in Experiment\Results\Clas-PGIRLA:
+
+Fichero de datos=../datasets/iris/iris-10-1tra.dat
+Semilla=1646155802
+Porcentaje de entrenamiento=0.9629629629629629
+Porcentaje de validacion=0.9629629629629629
+Porcentaje de test=0.9333333333333333
+Numero de reglas=20
+Tiempo transcurrido (ms)= 0
+</example>
+
+</method>

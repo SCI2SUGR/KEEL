@@ -1,0 +1,57 @@
+<method>
+
+	<name>Local Genetic Lateral Tuning with Rule Selection of FRBSs</name>
+
+	<reference>  
+
+		<ref>R. Alcala, J. Alcala-Fdez, F. Herrera, A Proposal for the Genetic Lateral Tuning of Linguistic Fuzzy Systems and Its Interaction With Rule Selection, 
+		IEEE Transactions on Fuzzy Systems 15(4):616-635, 2007.
+		</ref>
+		
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression model by generation of fuzzy rule-based systems</type>
+
+		<objective>A Genetic Algorithm is used to tune the support of the fuzzy rules.</objective>
+
+		<howWork>Given a Mamdani Fuzzy Rule Set obtained by a Fuzzy Rule Base System this method adapts the Data Base (fuzzy partitions). 
+		This genetic tuning process is based on a linguistic 2-tuples representation that allows the lateral displacement of the labels by considering only one parameter, maintaining the interpretability associated with the final linguistic model at a reasonable level.
+		The tuning is applied to the level of the rules, the pair of (Xi,label) is tuned in a different way in each rule, based on the quality measures associated to the tunning method. That is, different displacement parameters are considered for each label on the rule which this label is considered.
+		This combination, rule selection and tuning approach, can present a positive synergy, reducing the tuning search space, easing system readability and even improving system accuracy. This involves obtaining an optimal subset of fuzzy rules from a previous fuzzy rule set by selecting some of them. It could result in importatnt improvements in the system accuracy, maintaining the interpretability at an acceptable level.
+		It uses the genetic model of CHC, it is a genetic algorithm that presents a good trade-off between exploration and explotation, being a dood choice in problems with complex search spaces. The mutation is not considered in CHC.
+		This way to work involves a simplification of the search space that eases the derivation of optimal models and therefore improves the desired tradeoff, especially in complex or high-dimensional problems.
+		</howWork>
+
+		<parameterSpec>  
+			
+			<param>Number of Iterations</param>
+			<param>Population Size</param>
+			<param>Bits of Gen</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes (only with numerical)</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+	
+</example>
+
+</method>

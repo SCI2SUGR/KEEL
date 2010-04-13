@@ -1,0 +1,85 @@
+<method>
+
+	<name>Apriori</name>
+
+	<reference>  
+
+		<ref>R. Agrawal, H. Mannila, R. Srikant, H. Toivonen and A.I. Verkamo. Fast Discovery of Association Rules. Advances in Knowledge Discovery and Data Mining 12 (1996) 307-328</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Discovery/Learning of association rule</type>
+
+		<objective>To discover elements that co-occur frequently within a data set consisting of multiple independent selections of elements (such as purchasing transactions), and to discover rules, such as implication or correlation, which relate co-occurring elements. Questions such as "if a customer purchases product A, how likely is he to purchase product B?" and "What products will a customer buy if he buys products C and D?" are answered by association-finding algorithms. This application of association rule learners is also known as market basket analysis.</objective>
+
+		<howWork>As is common in association rule mining, given a set of itemsets (for instance, sets of retail transactions each listing individual items purchased), the algorithm attempts to find subsets which are common to at least a minimum number C (the cutoff, or confidence threshold) of the itemsets. Apriori uses a "bottom up" approach, where frequent subsets are extended one item at a time (a step known as candidate generation, and groups of candidates are tested against the data. The algorithm terminates when no further successful extensions are found. Apriori uses breadth-first search and a hash tree structure to count candidate item sets efficiently. It generates candidate item sets of length k from item sets of length k - 1. Then it prunes the candidates which have an infrequent sub pattern. According to the downward closure lemma, the candidate set contains all frequent k-length item sets. After that, it scans the transaction database to determine frequent item sets among the candidates. For determining frequent items quickly, the algorithm uses a hash tree to store candidate itemsets. This hash tree has item sets at the leaves and hash tables at internal nodes. Note that this is not the same kind of hash tree used in for instance p2p systems.Apriori, while historically significant, suffers from a number of inefficiencies or trade-offs, which have spawned other algorithms. Candidate generation generates large numbers of subsets (the algorithm attempts to load up the candidate set with as many as possible before each scan). Bottom-up subset exploration (essentially a breadth-first traversal of the subset lattice) finds any maximal subset S only after all 2 | S | - 1 of its proper subsets.</howWork>
+
+		<parameterSpec>  
+
+			<param> minSupport: Minimal support threshold of itemset. Only itemset with a value of support greather than the minSupport (in number) are used.</param>
+			<param> minConfidence: Minimal condifence threshold of itemset. Only rules with a value of confidence greather than the minConfidence (in percentage from 1 to 0) are used.</param>
+			<param> antecedentMaxSize: Maximum number of items that can contain the antecedent of the rules.</param>
+			<param> consecuentMaxSize: Maximum number of items that can contain the consecuent of the rules.</param>
+			
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>No</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example> Association
+Method: Apriori
+Dataset: weather
+Parameters: default values (minSupport = 5, minConfidence = 0.5, antecedentMaxSize = 1, consecuentMaxSize = 1)
+ 
+
+After the execution of RunKeel.jar we can see the output (association rules discovered) in Experiment\Results\Asso-Apriori\weather\result0e0.txt:
+
+@relation	weather 
+@attribute	outlook	{ sunny, overcast, rainy }
+@attribute	temperature	{ hot, mild, cool }
+@attribute	humidity	{ high, normal }
+@attribute	windy		{ true, false }
+@attribute	play		{ yes, no }
+
+@Rules ( Confidence / Support)
+
+1. if ( humidity = "normal" ) then
+				play = "yes" ( 0.8571428571428571 / 6 )
+
+2. if ( play = "yes" ) then
+				humidity = "normal" ( 0.6666666666666666 / 6 )
+
+3. if ( windy = "false" ) then
+				play = "yes" ( 0.75 / 6 )
+
+4. if ( play = "yes" ) then
+				windy = "false" ( 0.6666666666666666 / 6 )
+
+
+@NumberOfRulesGenerated: 4
+
+@FrequentItemsetsOfSize 1: 12
+@TotalNumberOfFrequentItemsets: 11
+
+@ElapsedTime 0:0:0
+</example>
+
+</method>

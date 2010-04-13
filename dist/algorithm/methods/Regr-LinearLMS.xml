@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>LMS Linear Regression</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>ModelLinearLMS</item>
+    </domain>
+    <default>ModelLinearLMS</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>MLLMS</item>
+    </domain>
+    <default>MLLMS</default>
+    <disabled/>
+  </parameter>
+</algorithm_specification>

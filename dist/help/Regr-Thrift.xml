@@ -1,0 +1,100 @@
+<method>
+
+	<name>Genetic Fuzzy Rule Learning, Thrift Algorithm</name>
+
+	<reference>  
+
+<ref>P. Thrift, Fuzzy logic synthesis with genetic algorithms. In Proceedings of the Fourth International Conference on Genetic Algorithms (ICGA'91). San Diego (USA, 1991) 509-513.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutive Fuzzy Rule Base System for the generation of a Linguistic Rule Base</type>
+
+		<objective>To obtain fuzzy regression models as a set of fuzzy rules that better fits the training data.</objective>
+
+		<howWork>This method learns the consequent of the fuzzy rules in the Rule Base by means of a decision table 
+		representation of the fuzzy rule base, following a Pittsburgh approach. This method has also the ability to
+		learn the optimal number of rules for the base, due to the inclusion of a special value for the allele that
+		represents the absence of that rule. 
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of labels: the number of possible fuzzy values for each variable.</param>
+			<param>Population Size: Number of chromosomes for the genetic algorithm</param>
+			<param>Number of Evaluations: Number of maximum calls to the evaluation function in order to stop the search</param>
+			<param>Crossover Probability: Probability to perform crossover to a chromosome pair</param>
+			<param>Mutation Probability: Probability to perform mutation to a chromosome</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+			<discretized>No</discretized>
+			<integer>Yes</integer>
+			<nominal>No</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-Thrift
+Dataset: daily-electric-energy
+Training set: 10-fcv (daily-electric-energy-10-1tra.dat to daily-electric-energy-10-10tra.dat)
+Test set: 10-fcv (daily-electric-energy-10-1tst.dat to daily-electric-energy-10-10tst.dat)
+Test Show results: Vis-Regr-Check
+
+Number of labels = 3
+Population Size = 61
+Number of Evaluations = 1000
+Crossover Probability = 0.6
+Mutation Probability = 0.1
+
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Regr-Check/TSTRegr-Thrift/ folder the regression results for the test set:
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.3493124753284984 
+Fold 1 : 0.4132336457519774 
+Fold 2 : 0.5256357158949969 
+Fold 3 : 0.33430395440915617 
+Fold 4 : 0.5607873034176587 
+Fold 5 : 0.2804184183401456 
+Fold 6 : 0.3451035076242189 
+Fold 7 : 0.31100819016181597 
+Fold 8 : 0.4264078260907107 
+Fold 9 : 0.2572051271419556 
+Global MSE:
+0.3803416164161134 
+Global stdev:
+0.09547427156047847 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.41202718139883643 
+Fold 1 : 0.3252499566600521 
+Fold 2 : 0.3521010501160665 
+Fold 3 : 0.39359180019571716 
+Fold 4 : 0.37080460887601874 
+Fold 5 : 0.3294663074497858 
+Fold 6 : 0.4058245483191627 
+Fold 7 : 0.4024242615577672 
+Fold 8 : 0.3837898049928123 
+Fold 9 : 0.40254977360929434 
+Global MSE:
+0.3777829293175513 
+Global stdev:
+0.030443490308855414 
+
+We can also see the convergence of the algorithm in the result0s0e0.txt file and the Rule Base and Data Base in 
+the result1s0e0.txt file.
+</example>
+
+</method>

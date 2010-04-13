@@ -1,0 +1,85 @@
+<method>
+
+	<name>Genetic Algorithm with Neural Network</name>
+
+	<reference>  
+
+		<ref>G.F. Miller, P.M. Todd, S.U. Hedge. Designing neural networks using genetic algorithms. III International Conference on Genetic Algorithm and Their applications. George Mason University (USA, 1989) 379-384.</ref>
+<ref>X. Yao. Evolving Artificial Neural Networks. Proceedings of the IEEE 9:87 (1999) 1423-1447.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutionary neural network using a standard genetic algorithm</type>
+
+		<objective>Building a neural network using a standard genetic algorithm</objective>
+
+		<howWork>Each network is codified using two matrices. A binary one that stores whether each connection is active, a real one corresponding to the connection weights of the network. Standard two point crossover is used. Two mutation operators are used. Parametric mutation consists on two different operations: i) randomly modifying the weights of the network by the addition of a random number following a N(0, 1) to each connection, or ii) a back-propagation algorithm. Structural mutation consists of flipping the status of a randomly chosen connection.</howWork>
+
+		<parameterSpec>  
+
+			<param>Hidden_layers: Number of hidden layers</param>
+			<param>Hidden_nodes: List of nodes per hidden layer</param>
+			<param>Transfer: List of transfer functions per layer</param>
+			<param>Eta: Learning coefficient</param>
+			<param>Alpha: Momentum coefficient</param>
+			<param>Lambda: Regularisation coefficient</param>
+			<param>BP_cycles: Backprop iterations</param>
+			<param>Improve: Minimum improvement to consider the population not converged</param>
+			<param>Elite: Elitism percentage</param>
+			<param>Individuals: Number of individuals</param>
+			<param>W_range: Range for weight initialisation</param>
+			<param>Connectivity: Percentage of initial connectivity</param>
+			<param>P_bp: Percentage of backprop mutation</param>
+			<param>P_param: Percentage of random mutation</param>
+			<param>P_struct: Percentage of structural mutation</param>
+			<param>Max_generations: Maximum number of generations</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>No</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: GANN
+Dataset: Daily Electric Energy
+Training set: daily-electric-energy.dat
+Test set: daily-electric-energy.dat
+Test Show results: Vis-Regr-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Regr-Check folder the regression results for the training and test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 16.14768908792681 
+Global MSE:
+16.14768908792681 
+Global stdev:
+0.0 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 16.14768908792681 
+Global MSE:
+16.14768908792681 
+Global stdev:
+0.0 
+
+</example>
+
+</method>

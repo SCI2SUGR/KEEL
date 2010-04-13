@@ -1,0 +1,30 @@
+/**
+ * <p>
+ * @author Written by Alberto Fernández (University of Granada)  01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
+
+
+package keel.Algorithms.Genetic_Rule_Learning.Ripper;
+
+import java.util.Vector;
+import java.io.FileWriter;
+
+class Principal {
+/**
+ * Main class of Ripper Genetic Rule Learning
+ */
+
+  public static void main(String[] args){
+    String param=args[0];
+
+    parseParameters par=new parseParameters();
+    par.parseConfigurationFile(param);
+    Ripper rip=new Ripper(par);
+    rip.execute();
+
+  }
+}

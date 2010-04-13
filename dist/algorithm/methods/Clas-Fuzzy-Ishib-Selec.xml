@@ -1,0 +1,69 @@
+<algorithm_specification>
+  <name>Grid RB Generation and Genetic Rule Selection</name>
+  <nParameters>7</nParameters>
+  <seed>1</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of Maximum Fuzzy Partitions</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>7</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Weight for the Number of Classified Patterns</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>50.0</upperB>
+    </domain>
+    <default>10.0</default>
+  </parameter>
+  <parameter>
+    <name>Weight for the Size of the Rule Set</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10.0</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>  
+   <parameter>
+    <name>Probability to include a rule in the initial population</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+   </parameter>
+   <parameter>
+    <name>Mutation Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+   </parameter>
+  <parameter>
+    <name>Number of Total Generations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>1000</default>
+  </parameter>   
+</algorithm_specification>

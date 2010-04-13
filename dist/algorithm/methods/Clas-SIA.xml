@@ -1,0 +1,43 @@
+<algorithm_specification>
+  <name>Supervised Inductive Algorithm</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Number_of_Iterations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>200</default>
+  </parameter>
+  <parameter>
+    <name>Alfa</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>150</default>
+  </parameter>
+  <parameter>
+    <name>Beta</name>
+    <type>list</type>
+    <domain>
+      <item>-0.001</item>
+      <item>0</item>
+      <item>0.001</item>
+    </domain>
+    <default>0</default>
+  </parameter>
+  <parameter>
+    <name>Threshold_Strength</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>0</default>
+  </parameter>
+</algorithm_specification>

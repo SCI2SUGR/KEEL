@@ -1,0 +1,78 @@
+<algorithm_specification>
+  <name>Genetic Tuning of FRBSs Weights</name>
+  <nParameters>8</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Number of Iterations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>200</default>
+  </parameter>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>61</default>
+  </parameter>
+  <parameter>
+    <name>Tau parameter for the minimun maching degree required to the KB</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Parameter a</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.35</default>
+  </parameter>
+  <parameter>
+    <name>Parameter b</name>
+    <type>real</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Type of Fitness Function</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>2</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Cross Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.6</default>
+  </parameter>
+  <parameter>
+    <name>Mutation Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+</algorithm_specification>

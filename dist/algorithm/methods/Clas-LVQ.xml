@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>Learning Vector Quantization</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>iterations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+	<parameter>
+    <name>neurons</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>20</default>
+  </parameter>
+  <parameter>
+    <name>alpha</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.3</default>
+  </parameter>
+  <parameter>
+    <name>nu</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>
+</algorithm_specification>

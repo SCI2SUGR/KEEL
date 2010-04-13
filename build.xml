@@ -1,0 +1,2251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="keel" default="jar" basedir=".">
+
+	<!-- Properties of the project-->
+    <property name="src" location="src"/>
+    <property name="bin" location="bin"/>
+    <property name="lib" location="lib"/>
+    <property name="distGraph" location="dist"/>
+    <property name="lib_graf" location="lib/Interfaz"/>
+    <property name="lib_xml" location="lib/XML"/>
+    <property name="lib_nnep" location="lib/nnep"/>
+    <property name="dirjavacc" location="resources/javacc.jar"/>
+    <property name="dist"	location="${src}/keel/GraphInterKeel/resources/listAlgorithms"/>
+    <property name="distMet" location="${distGraph}/algorithm/methods"/>
+    <property name="distPre" location="${distGraph}/algorithm/preprocess"/>
+    <property name="distPost" location="${distGraph}/algorithm/postprocess"/>
+    <property name="distTest" location="${distGraph}/algorithm/tests"/>
+
+	<!-- Libraries filesets-->
+    <fileset id="lib_graph.jars" dir="${lib_graf}">
+        <include name="**/*.jar"/>
+    </fileset>
+	
+    <fileset id="lib_xml.jars" dir="${lib_xml}">
+        <include name="**/*.jar"/>
+    </fileset>
+
+    <fileset id="lib_nnep.jars" dir="${lib_nnep}">
+        <include name="**/*.jar"/>
+    </fileset>
+	
+	<!-- Libraries path-->
+    <path id="lib.path">
+        <fileset refid="lib_graph.jars"/>
+        <fileset refid="lib_xml.jars"/>
+        <fileset refid="lib_nnep.jars"/>
+    </path>
+	
+	<!-- Define a classpath for use throughout the buildfile -->
+  <path id="GUI.classpath">
+    <pathelement location="${src}"/>
+    <pathelement location="${bin}"/>
+    <pathelement location="${lib}"/>
+    <pathelement location="${distGraph}"/>
+    <!-- include our own libraries -->
+	<fileset refid="lib_graph.jars"/>
+    <fileset refid="lib_xml.jars"/>
+    <fileset refid="lib_nnep.jars"/>
+  </path>
+  
+
+	
+	<target name="clean" description="Remove build directory">
+        <delete dir="${bin}"/>
+     </target>
+	 
+	<target name="run" depends="jar-methods" description="Run keel GUI">
+        
+        <copy todir="${bin}">
+        <!-- Copy the images to their final path -->
+    			<fileset dir="${src}"	includes="keel/GraphInterKeel/resources/ico/**/*.gif">
+    	          </fileset>
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/imag/**/*.gif">
+    	          </fileset>
+    	          
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/ico/**/*.png">
+    	          </fileset>
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/imag/**/*.png">
+    	          </fileset>
+
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/ico/**/*.jpg">
+    	          </fileset>
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/imag/**/*.jpg">
+    	          </fileset>
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/**/*.properties"/>
+    	          <!-- Copy the help files, and XML mapping -->
+    	          <fileset dir="${src}/keel/GraphInterKeel/resources">
+									<exclude name="imag/"/>
+									<exclude name="ico/"/>
+    	          </fileset>
+    	          <!-- Copy the method JARs and XML files (Datasets, etc.) -->
+    	          <fileset dir="${distGraph}">
+    	          </fileset>
+  			</copy>
+
+        <java classname="keel.GraphInterKeel.menu.GraphInterKeel" fork="true" dir="${bin}">
+        <classpath>
+      		<pathelement path="${bin};${lib_graf}"/>
+      		<fileset dir="${lib_graf}">
+        		<include name="**/*.jar"/>
+      		</fileset>
+    		</classpath>
+				</java>
+    </target>
+
+    <target name="debug" depends="jar-methods" description="Debug keel GUI">
+
+        <copy todir="${bin}">
+            <!-- Copy the images to their final path -->
+            <fileset dir="${src}" includes="keel/GraphInterKeel/resources/ico/**/*.gif"/>
+            <fileset dir="${src}" includes="keel/GraphInterKeel/resources/imag/**/*.gif"/>
+            <fileset dir="${src}" includes="keel/GraphInterKeel/resources/ico/**/*.png"/>
+            <fileset dir="${src}" includes="keel/GraphInterKeel/resources/imag/**/*.png"/>
+            <fileset dir="${src}" includes="keel/GraphInterKeel/resources/ico/**/*.jpg"/>
+            <fileset dir="${src}" includes="keel/GraphInterKeel/resources/imag/**/*.jpg"/>
+            <fileset dir="${src}" includes="keel/GraphInterKeel/**/*.properties"/>
+            <!-- Copy the help files, and XML mapping -->
+            <fileset dir="${src}/keel/GraphInterKeel/resources">
+                <exclude name="imag/"/>
+                <exclude name="ico/"/>
+            </fileset>
+            <!-- Copy the method JARs and XML files (Datasets, etc.) -->
+            <fileset dir="${distGraph}"/>
+        </copy>
+        <nbjpdastart addressproperty="jpda.address" name="keel" transport="dt_socket">
+            <classpath>
+                <pathelement path="${bin};${lib_graf}"/>
+                <fileset dir="${lib_graf}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </nbjpdastart>
+        <java classname="keel.GraphInterKeel.menu.GraphInterKeel" dir="${bin}" fork="true">
+            <classpath>
+                <pathelement path="${bin};${lib_graf}"/>
+                <fileset dir="${lib_graf}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+            <jvmarg value="-Xdebug"/>
+            <jvmarg value="-Xrunjdwp:transport=dt_socket,address=${jpda.address}"/>
+        </java>
+    </target>
+	
+    <target name="compile" description="Compile code">
+        <mkdir dir="${bin}"/>
+        <mkdir dir="${lib}"/>
+        <mkdir dir="${lib_graf}"/>
+        <mkdir dir="${lib_xml}"/>
+        <mkdir dir="${lib_nnep}"/>
+        <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no"
+               debug="true" classpathref="lib.path" encoding="ISO-8859-1" 
+			   fork="true" memoryinitialsize="256m"  memorymaximumsize="512m">
+        </javac>
+    </target>
+
+    <target name="jar" depends="jar-methods,jar-gui" description="Build jars"></target>
+
+    <target name="jar-methods" depends="compile" description="Build method jars">
+		
+		
+	<!-- Discretizers -->
+	
+	<jar
+      jarfile="${distPre}/Disc-Fayyad.jar"
+      manifest="${src}/keel/Algorithms/Discretizers/Fayyad_Discretizer/Manifest">
+      <fileset dir="${bin}"
+      includes="keel/Algorithms/Discretizers/Fayyad_Discretizer/**/*.class
+          keel/Algorithms/Discretizers/Basic/**/*.class
+      keel/Dataset/**/*.class
+      keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+    </jar>
+        <jar
+      jarfile="${distPre}/Disc-UniformWidth.jar"
+      manifest="${src}/keel/Algorithms/Discretizers/UniformWidth_Discretizer/Manifest">
+      <fileset dir="${bin}"
+      includes="keel/Algorithms/Discretizers/UniformWidth_Discretizer/**/*.class
+          keel/Algorithms/Discretizers/Basic/**/*.class
+      keel/Dataset/**/*.class
+      keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+    </jar>
+        <jar
+      jarfile="${distPre}/Disc-UniformFrequency.jar"
+      manifest="${src}/keel/Algorithms/Discretizers/UniformFrequency_Discretizer/Manifest">
+      <fileset dir="${bin}"
+      includes="keel/Algorithms/Discretizers/UniformFrequency_Discretizer/**/*.class
+          keel/Algorithms/Discretizers/Basic/**/*.class
+      keel/Dataset/**/*.class
+      keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+    </jar>
+        <jar
+      jarfile="${distPre}/Disc-ID3.jar"
+      manifest="${src}/keel/Algorithms/Discretizers/Id3_Discretizer/Manifest">
+      <fileset dir="${bin}"
+      includes="keel/Algorithms/Discretizers/Id3_Discretizer/**/*.class
+          keel/Algorithms/Discretizers/Basic/**/*.class
+      keel/Dataset/**/*.class
+      keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+    </jar>
+
+    <jar
+      jarfile="${distPre}/Disc-USD.jar"
+      manifest="${src}/keel/Algorithms/Discretizers/USD_Discretizer/Manifest">
+      <fileset dir="${bin}"
+      includes="keel/Algorithms/Discretizers/USD_Discretizer/**/*.class
+          keel/Algorithms/Discretizers/Basic/**/*.class
+      keel/Dataset/**/*.class
+      keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+    </jar>
+        <jar
+      jarfile="${distPre}/Disc-ChiMerge.jar"
+      manifest="${src}/keel/Algorithms/Discretizers/ChiMerge_Discretizer/Manifest">
+      <fileset dir="${bin}"
+      includes="keel/Algorithms/Discretizers/ChiMerge_Discretizer/**/*.class
+          keel/Algorithms/Discretizers/Basic/**/*.class
+      keel/Dataset/**/*.class
+      keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+    </jar>
+		
+	
+	<!-- Feature selection -->
+		
+	<jar
+          jarfile="${distPre}/FS-GGA-Binary-Inconsistency.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Feature_Selection/evolutionary_algorithms/GA_Gen_BinCod/filter/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Feature_Selection/evolutionary_algorithms/GA_Gen_BinCod/filter/**/*.class
+                       org/core/**/*.class
+                       keel/Algorithms/Preprocess/Basic/**/*.class
+                       keel/Algorithms/Preprocess/Feature_Selection/Datos.class
+                       keel/Algorithms/Preprocess/Feature_Selection/evolutionary_algorithms/**/*.class"/>
+	  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distPre}/FS-SSGA-Integer-knn.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Feature_Selection/evolutionary_algorithms/GA_SS_IntCod/wrapper/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Feature_Selection/evolutionary_algorithms/GA_SS_IntCod/wrapper/**/*.class
+                       org/core/**/*.class
+                       keel/Algorithms/Preprocess/Basic/**/*.class
+                       keel/Algorithms/Preprocess/Feature_Selection/Datos.class
+                       keel/Algorithms/Preprocess/Feature_Selection/evolutionary_algorithms/**/*.class"/>
+	  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<jar
+          jarfile="${distPre}/FS-LVF.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/LVF/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/LVF/**/*.class
+                       org/core/**/*.class
+                       keel/Algorithms/Preprocess/Basic/**/*.class
+                       keel/Algorithms/Preprocess/Feature_Selection/Datos.class"/>
+	  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distPre}/FS-LVW.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/LVW/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/LVW/**/*.class
+                       org/core/**/*.class
+                       keel/Algorithms/Preprocess/Basic/**/*.class
+                       keel/Algorithms/Preprocess/Feature_Selection/Datos.class"/>
+	  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distPre}/FS-Focus.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/FOCUS/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/FOCUS/**/*.class
+                       org/core/**/*.class
+                       keel/Algorithms/Preprocess/Basic/**/*.class
+                       keel/Algorithms/Preprocess/Feature_Selection/Datos.class"/>
+	  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<jar
+          jarfile="${distPre}/FS-Relief.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/RELIEF/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/RELIEF/**/*.class
+                       org/core/**/*.class
+                       keel/Algorithms/Preprocess/Basic/**/*.class
+                       keel/Algorithms/Preprocess/Feature_Selection/Datos.class"/>
+	  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distPre}/FS-MIFS.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/GRASP/filter/im/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Feature_Selection/nonevolutionary_algorithms/GRASP/filter/im/**/*.class
+                       org/core/**/*.class
+                       keel/Algorithms/Preprocess/Basic/**/*.class
+                       keel/Algorithms/Preprocess/Feature_Selection/Datos.class"/>
+	  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<!-- Instance Selection -->
+		
+	<jar
+          jarfile="${distPre}/IS-CNN.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/CNN/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Instance_Selection/CNN/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>	
+		
+	<jar
+          jarfile="${distPre}/IS-ENN.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/ENN/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Instance_Selection/ENN/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+    </jar>	
+		
+	<jar
+          jarfile="${distPre}/IS-CHC.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/CHC/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Instance_Selection/CHC/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+    </jar>
+	
+    <jar
+          jarfile="${distPre}/IS-SSMA.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/SSMA/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Instance_Selection/SSMA/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>
+		
+	<jar
+          jarfile="${distPre}/IS-GGA.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/GGA/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Instance_Selection/GGA/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+    </jar>	
+		
+	<jar
+          jarfile="${distPre}/IS-PBIL.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/PBIL/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Instance_Selection/PBIL/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distPre}/IS-SGA.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/SGA/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Preprocess/Instance_Selection/SGA/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+    </jar>	
+	
+	<!-- Instance Generation -->
+	
+	<jar
+          jarfile="${distPre}/IG-PNN.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Generation/PNN/PNNAlgorithm.mf">
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+    </jar>
+	
+	 <jar
+          jarfile="${distPre}/IG-LVQ1.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Generation/LVQ/LVQ1Algorithm.mf">
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+      </jar>
+      <jar
+          jarfile="${distPre}/IG-LVQ2.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Generation/LVQ/LVQ2Algorithm.mf">
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+      </jar>
+      <jar
+          jarfile="${distPre}/IG-LVQ2_1.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Generation/LVQ/LVQ2_1Algorithm.mf">
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+      </jar>
+        <jar
+          jarfile="${distPre}/IG-LVQ3.jar"
+          manifest="${src}/keel/Algorithms/Preprocess/Instance_Generation/LVQ/LVQ3Algorithm.mf">
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+      </jar>
+		
+	<!-- Transformation -->	
+		
+	<jar jarfile="${distPre}/Trns-MinMax.jar" manifest="${src}/keel/Algorithms/Preprocess/Transformations/min_max/Manifest">
+		  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Transformations/min_max/**/*.class" />
+		  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+
+	<jar jarfile="${distPre}/Trns-ZScore.jar" manifest="${src}/keel/Algorithms/Preprocess/Transformations/z_score/Manifest">
+		  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Transformations/z_score/**/*.class" />
+		  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+
+    <jar jarfile="${distPre}/Trns-DecimalScaling.jar" manifest="${src}/keel/Algorithms/Preprocess/Transformations/decimal_scaling/Manifest">
+		  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Transformations/decimal_scaling/**/*.class" />
+		  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>	
+	 
+	<!-- Missing Values -->
+		
+		
+	<jar jarfile="${distPre}/MV-Ignore.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/ignore_missing/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/ignore_missing/**/*.class" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+
+    <jar jarfile="${distPre}/MV-MostCommon.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/MostCommonValue/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/MostCommonValue/**/*.class" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+
+	<jar jarfile="${distPre}/MV-ConceptMostCommon.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/ConceptMostCommonValue/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/ConceptMostCommonValue/**/*.class" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+	
+    <jar jarfile="${distPre}/MV-AllPossible.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/AllPossibleValues/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/AllPossibleValues/**/*.class" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+
+    <jar jarfile="${distPre}/MV-ConceptAllPossible.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/ConceptAllPossibleValues/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/ConceptAllPossibleValues/**/*.class" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+
+    <jar jarfile="${distPre}/MV-EventCovering.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/EventCovering/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/EventCovering/**/*.class keel/Algorithms/Preprocess/Missing_Values/EventCovering/**/*.jar" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+
+	<jar jarfile="${distPre}/MV-KNN.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/knnImpute/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/knnImpute/**/*.class keel/Algorithms/Preprocess/Missing_Values/knnImpute/**/*.jar" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+
+	<jar jarfile="${distPre}/MV-KMeans.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/kmeansImpute/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/kmeansImpute/**/*.class keel/Algorithms/Preprocess/Missing_Values/kmeansImpute/**/*.jar" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class org/core/**/*.class" />
+	</jar>
+
+	<jar jarfile="${distPre}/MV-FKMeans.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/fkmeans/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/fkmeans/**/*.class keel/Algorithms/Preprocess/Missing_Values/fkmeans/**/*.jar" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class org/core/**/*.class" />
+	</jar>	
+  
+	<jar jarfile="${distPre}/MV-svmImpute.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/svmImpute/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/svmImpute/**/*.class keel/Algorithms/Preprocess/Missing_Values/svmImpute/**/*.jar" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class org/libsvm/**/*.class" />
+	</jar>
+
+	<jar jarfile="${distPre}/MV-wknnImpute.jar" manifest="${src}/keel/Algorithms/Preprocess/Missing_Values/wknnImpute/Manifest">
+		<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Missing_Values/wknnImpute/**/*.class keel/Algorithms/Preprocess/Missing_Values/wknnImpute/**/*.jar" />
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+	</jar>
+
+    <!--Neural networks for classification -->
+	
+	<jar
+		 jarfile="${distMet}/RBFN_decremental_CL.jar"
+		 manifest="${src}/keel/Algorithms/Neural_Networks/RBFN_decremental_CL/manifest">
+		<fileset dir="${bin}"
+		 includes="keel/Algorithms/Neural_Networks/RBFN_decremental_CL/**/*.class
+		 org/core/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+	</jar>
+	
+	<jar
+          jarfile="${distMet}/Clas-Ensemble.jar"
+          manifest="${src}/keel/Algorithms/Neural_Networks/ensemble/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Neural_Networks/ensemble/**/*.class
+             keel/Algorithms/Neural_Networks/net/*.class
+                       org/core/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar
+		 jarfile="${distMet}/EvRBF_CL.jar"
+		 manifest="${src}/keel/Algorithms/Neural_Networks/EvRBF_CL/manifest">
+		<fileset dir="${bin}"
+			includes="keel/Algorithms/Neural_Networks/EvRBF_CL/**/*.class
+				org/core/*.class">
+		</fileset>
+		 <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar
+    	   jarfile="${distMet}/Gann.jar"
+    	   manifest="${src}/keel/Algorithms/Neural_Networks/gann/Manifest">
+    	   <fileset dir="${bin}"
+    	     includes="keel/Algorithms/Neural_Networks/gann/**/*.class
+                       org/core/**/*.class"/>
+    	   <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar
+		 jarfile="${distMet}/RBFN_incremental_CL.jar"
+		 manifest="${src}/keel/Algorithms/Neural_Networks/RBFN_incremental_CL/manifest">
+		<fileset dir="${bin}"
+		 includes="keel/Algorithms/Neural_Networks/RBFN_incremental_CL/**/*.class
+		 org/core/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+	</jar>
+	
+	<!-- iRProp+ Classification -->
+	<jar
+		       jarfile="${distMet}/IRPropPlus_Clas.jar"
+		       manifest="${src}/keel/Algorithms/Neural_Networks/IRPropPlus_Clas/Manifest">
+		       <fileset dir="${bin}"
+		             includes="keel/Algorithms/Neural_Networks/IRPropPlus_Clas/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Clas/neuralnet/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Clas/problem/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/algorithm/NeuralNetAlgorithm.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/neuralnet/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/initiators/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/data/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/problem/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/util/**/*.class"/>
+		       <zipgroupfileset refid="lib_nnep.jars"/>
+		</jar>
+	<!-- iRProp+ -->
+	
+	<jar
+		   jarfile="${distMet}/LVQ.jar"
+		   manifest="${src}/keel/Algorithms/Neural_Networks/LVQ/Manifest">
+   		   <fileset dir="${bin}"
+		 includes="keel/Algorithms/Neural_Networks/LVQ/**/*.class
+		 org/core/*.class
+		 keel/Algorithms/Preprocess/Basic/*.class
+		 keel/Dataset/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar
+          jarfile="${distMet}/Clas-MLP-BackProp.jar"
+          manifest="${src}/keel/Algorithms/Neural_Networks/net/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Neural_Networks/net/**/*.class
+                       org/core/**/*.class"/>
+        	<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+        </jar>
+		
+		<jar
+          jarfile="${distMet}/ClassifierMLPerceptron.jar"
+          manifest="${src}/keel/Algorithms/Neural_Networks/ClassifierMLPerceptron/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Neural_Networks/ClassifierMLPerceptron/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<!-- NNEP Classification -->
+		<jar
+		       jarfile="${distMet}/NNEP_Clas.jar"
+		       manifest="${src}/keel/Algorithms/Neural_Networks/NNEP_Clas/Manifest">
+		       <fileset dir="${bin}"
+		             includes="keel/Algorithms/Neural_Networks/NNEP_Clas/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/**/*.class"/>
+		       <zipgroupfileset refid="lib_nnep.jars"/>
+		</jar>
+	        <!-- NNEP -->
+			
+	<jar
+		   jarfile="${distMet}/RBFN_CL.jar"
+		   manifest="${src}/keel/Algorithms/Neural_Networks/RBFN_CL/manifest">
+   		   <fileset dir="${bin}"
+		 includes="keel/Algorithms/Neural_Networks/RBFN_CL/**/*.class
+		 org/core/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+        </jar>	
+			
+		<jar
+    	   jarfile="${distMet}/Gmdh.jar"
+    	   manifest="${src}/keel/Algorithms/Neural_Networks/gmdh/Manifest">
+    	   <fileset dir="${bin}"
+    	     includes="keel/Algorithms/Neural_Networks/gmdh/**/*.class
+                       org/core/**/*.class"/>
+    	   <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    	</jar>
+
+	<!--Statistical classifiers -->
+	
+	<jar
+          jarfile="${distMet}/ClassifierKernel.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Classifiers/ClassifierKernel/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Classifiers/ClassifierKernel/**/*.class
+					keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar
+          jarfile="${distMet}/ClassifierADLinear.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Classifiers/ClassifierADLinear/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Classifiers/ClassifierADLinear/**/*.class
+					keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distMet}/ClassifierLinearLMS.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Classifiers/ClassifierLinearLMS/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Classifiers/ClassifierLinearLMS/**/*.class
+					keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<jar
+		 jarfile="${distMet}/Logistic.jar"
+		 manifest="${src}/keel/Algorithms/Statistical_Classifiers/Logistic/Manifest">
+		<fileset dir="${bin}"
+		 includes="keel/Algorithms/Statistical_Classifiers/Logistic/**/*.class
+		 org/core/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+	</jar>	
+	
+	<jar
+          jarfile="${distMet}/ClassifierPolQuadraticLMS.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Classifiers/ClassifierPolQuadraticLMS/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Classifiers/ClassifierPolQuadraticLMS/**/*.class
+					keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>	
+		
+	<jar
+          jarfile="${distMet}/ClassifierADQuadratic.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Classifiers/ClassifierADQuadratic/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Classifiers/ClassifierADQuadratic/**/*.class
+					keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distMet}/Naive_Bayes.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Classifiers/Naive_Bayes/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Statistical_Classifiers/Naive_Bayes/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+    </jar>	
+
+		<!-- Rule Learning -->
+
+        <jar
+          jarfile="${distMet}/Ritio.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Ritio/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/Ritio/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/LEM1.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/LEM1/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/LEM1/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/LEM2.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/LEM2/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/LEM2/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/Rules6.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Rules6/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/Rules6/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/SRI.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/SRI/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/SRI/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+
+        <jar
+          jarfile="${distMet}/Corcoran.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Corcoran/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/Corcoran/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/AQ.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/AQ/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/AQ/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/SIA.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/SIA/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/SIA/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+		  jarfile="${distMet}/CN2.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/CN2/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/CN2/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		  jarfile="${distMet}/Ripper.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Ripper/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/Ripper/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		  jarfile="${distMet}/Slipper.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Slipper/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/Slipper/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		  jarfile="${distMet}/C45Rules.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/C45Rules/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/C45Rules/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		  jarfile="${distMet}/C45RulesSA.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/C45RulesSA/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/C45RulesSA/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		  jarfile="${distMet}/PART.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/PART/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/PART/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		  jarfile="${distMet}/Prism.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Prism/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/Prism/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		  jarfile="${distMet}/1R.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/UnoR/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/UnoR/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		  jarfile="${distMet}/Riona.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Riona/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/Riona/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+
+        <jar jarfile="${distMet}/LogenPro.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/LogenPro/Manifest">
+          <fileset dir="${bin}"
+            includes="keel/Algorithms/Genetic_Rule_Learning/LogenPro/**/*.class
+		org/core/**/*.class
+		keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar jarfile="${distMet}/Ant_Miner.jar"
+              manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Ant_Miner/Manifest">
+              <fileset dir="${bin}"
+              includes="keel/Algorithms/Genetic_Rule_Learning/Ant_Miner/**/*.class
+              org/core/**/*.class
+              keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar jarfile="${distMet}/Advanced_Ant_Miner.jar"
+              manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Advanced_Ant_Miner/Manifest">
+              <fileset dir="${bin}"
+              includes="keel/Algorithms/Genetic_Rule_Learning/Advanced_Ant_Miner/**/*.class
+              org/core/**/*.class
+              keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar jarfile="${distMet}/Ant_Miner_Plus.jar"
+              manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Ant_Miner_Plus/Manifest">
+              <fileset dir="${bin}"
+              includes="keel/Algorithms/Genetic_Rule_Learning/Ant_Miner_Plus/**/*.class
+              org/core/**/*.class
+              keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar jarfile="${distMet}/Advanced_Ant_Miner_Plus.jar"
+              manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Advanced_Ant_Miner_Plus/Manifest">
+              <fileset dir="${bin}"
+              includes="keel/Algorithms/Genetic_Rule_Learning/Advanced_Ant_Miner_Plus/**/*.class
+              org/core/**/*.class
+              keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar jarfile="${distMet}/PSO_ACO.jar"
+              manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/PSO_ACO/Manifest">
+              <fileset dir="${bin}"
+              includes="keel/Algorithms/Genetic_Rule_Learning/PSO_ACO/**/*.class
+              org/core/**/*.class
+              keel/Dataset/**/*.class"/>
+        </jar>
+		
+		<jar jarfile="${distMet}/OCEC.jar"
+			manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/OCEC/Manifest">
+			<fileset dir="${bin}"
+			includes="keel/Algorithms/Genetic_Rule_Learning/OCEC/**/*.class
+			org/core/**/*.class
+			keel/Dataset/**/*.class"/>
+		</jar>	
+		
+		<jar 
+		  jarfile="${distMet}/BioHEL.jar" 
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/BioHEL/Manifest">
+		  <fileset dir="${bin}" 
+			 includes="keel/Algorithms/Genetic_Rule_Learning/BioHEL/**/*.class"/>
+		  <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/PSO_Learning/*.class"/>
+		</jar>
+
+    <jar
+          jarfile="${distMet}/XCS.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/XCS/Manifest">
+          <fileset dir="${bin}"
+             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/XCS/**/*.class keel/Dataset/**/*.class"/>
+    </jar>
+
+
+    <jar
+          jarfile="${distMet}/UCS.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/UCS/Manifest">
+          <fileset dir="${bin}"
+             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/UCS/**/*.class keel/Dataset/**/*.class"/>
+    </jar>
+
+    <jar
+      jarfile="${distMet}/GAssist_ADI.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/GAssist/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/GAssist/**/*.class
+          keel/Dataset/**/*.class
+          keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+          keel/Algorithms/Discretizers/**/*Discretizer.class"/>
+     </jar>
+    <jar
+      jarfile="${distMet}/GAssist_Intervalar.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/GAssist/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/GAssist/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+          keel/Algorithms/Discretizers/**/*Discretizer.class"/>
+     </jar>
+
+    <jar
+      jarfile="${distMet}/Hider.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Hider/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/Hider/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class
+          keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+          keel/Algorithms/Discretizers/**/*Discretizer.class"/>
+     </jar>
+
+    <jar
+          jarfile="${distMet}/GIL.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/GIL/Manifest">
+          <fileset dir="${bin}"
+             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/GIL/**/*.class keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distMet}/DMEL.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/DMEL/Manifest">
+          <fileset dir="${bin}"
+             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/DMEL/**/*.class keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+      jarfile="${distMet}/OIGA.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/OIGA/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/OIGA/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class"/>
+    </jar>
+
+    <jar
+      jarfile="${distMet}/ILGA.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/ILGA/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/ILGA/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class"/>
+    </jar>
+
+    <jar
+      jarfile="${distMet}/CORE.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/CORE/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/CORE/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class"/>
+    </jar>
+
+    <jar
+      jarfile="${distMet}/COGIN.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/COGIN/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/COGIN/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class"/>
+    </jar>
+
+	
+	<!-- Decision Trees for classification-->
+	
+	<jar
+          jarfile="${distMet}/C45.jar"
+          manifest="${src}/keel/Algorithms/Decision_Trees/C45/Manifest">
+          <fileset dir="${bin}"
+             includes="keel//Algorithms/Decision_Trees/C45/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+        </jar>
+
+ 	<jar
+          jarfile="${distMet}/Clas-CART.jar"
+          manifest="${src}/keel/Algorithms/Decision_Trees/CART/classification/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Decision_Trees/CART/**/*.class
+             			keel/Algorithms/Neural_Networks/NNEP_Common/**/*.class"/>
+          <zipgroupfileset refid="lib_nnep.jars"/>
+    </jar>
+	
+	<jar jarfile="${distMet}/DT_GA.jar"
+			manifest="${src}/keel/Algorithms/Decision_Trees/DT_GA/Manifest">
+			<fileset dir="${bin}"
+			includes="keel/Algorithms/Decision_Trees/DT_GA/**/*.class
+			org/core/**/*.class
+			keel/Dataset/**/*.class"/>
+	</jar>
+
+	<jar jarfile="${distMet}/DT_oblique.jar"
+			manifest="${src}/keel/Algorithms/Decision_Trees/DT_oblicuo/Manifest">
+			<fileset dir="${bin}"
+			includes="keel/Algorithms/Decision_Trees/DT_oblicuo/**/*.class
+			org/core/**/*.class
+			keel/Dataset/**/*.class"/>
+	</jar>
+	
+	<jar
+          jarfile="${distMet}/ID3.jar"
+          manifest="${src}/keel/Algorithms/Decision_Trees/ID3/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Decision_Trees/ID3/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<jar
+          jarfile="${distMet}/FunctionalTrees.jar"
+          manifest="${src}/keel/Algorithms/Decision_Trees/FunctionalTrees/Manifest">
+          <fileset dir="${bin}"
+             includes="keel//Algorithms/Decision_Trees/FunctionalTrees/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar
+          jarfile="${distMet}/PUBLIC.jar"
+          manifest="${src}/keel/Algorithms/Decision_Trees/PUBLIC/Manifest">
+          <fileset dir="${bin}"
+             includes="keel//Algorithms/Decision_Trees/PUBLIC/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar jarfile="${distMet}/Target.jar"
+			manifest="${src}/keel/Algorithms/Decision_Trees/Target/Manifest">
+			<fileset dir="${bin}"
+			includes="keel/Algorithms/Decision_Trees/Target/**/*.class
+			org/core/**/*.class
+			keel/Dataset/**/*.class"/>
+	</jar>
+       
+	<!-- SVM for classification -->
+	
+	<jar
+		   jarfile="${distMet}/C_SVM.jar"
+		   manifest="${src}/keel/Algorithms/SVM/C_SVM/Manifest">
+   		   <fileset dir="${bin}"
+		 includes="keel/Algorithms/SVM/C_SVM/**/*.class
+		 org/core/*.class
+		 org/libsvm/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+
+    <jar
+		   jarfile="${distMet}/NU_SVM.jar"
+		   manifest="${src}/keel/Algorithms/SVM/NU_SVM/Manifest">
+   		   <fileset dir="${bin}"
+		 includes="keel/Algorithms/SVM/NU_SVM/**/*.class
+		 org/core/*.class
+		 org/libsvm/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar
+		jarfile="${distMet}/SMO.jar"
+		manifest="${src}/keel/Algorithms/SVM/SMO/Manifest">
+		<fileset dir="${bin}"
+		includes="keel/Algorithms/SVM/SMO/**/*.class
+		keel/Algorithms/Statistical_Classifiers/Logistic/**/*.class
+		org/core/*.class
+		">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+	</jar>
+	
+	    <!-- Lazy Learning -->
+
+		
+		<jar 
+          jarfile="${distMet}/KNN.jar" 
+          manifest="${src}/keel/Algorithms/Lazy_Learning/KNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Lazy_Learning/KNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class"/>
+        </jar>		
+		
+		<jar 
+          jarfile="${distMet}/KNNAdaptive.jar" 
+          manifest="${src}/keel/Algorithms/Lazy_Learning/KNNAdaptive/Manifest">
+		  <fileset dir="${bin}" 
+             includes="keel/Algorithms/Lazy_Learning/KNNAdaptive/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class"/>
+        </jar>	
+
+		<jar 
+          jarfile="${distMet}/KStar.jar" 
+          manifest="${src}/keel/Algorithms/Lazy_Learning/KStar/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Lazy_Learning/KStar/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class"/>
+        </jar>
+
+		<jar 
+          jarfile="${distMet}/LazyDT.jar" 
+          manifest="${src}/keel/Algorithms/Lazy_Learning/LazyDT/Manifest">
+		  		<fileset dir="${bin}" 
+             includes="keel/Algorithms/Lazy_Learning/LazyDT/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  			keel/Dataset/**/*.class
+		  			keel/Algorithms/Lazy_Learning/*.class"/>
+        </jar>
+	
+	<!-- PSO Learning -->
+
+	<jar 
+	  jarfile="${distMet}/CPSO.jar" 
+	  manifest="${src}/keel/Algorithms/PSO_Learning/CPSO/Manifest">
+	  <fileset dir="${bin}" 
+		 includes="keel/Algorithms/PSO_Learning/CPSO/**/*.class"/>
+	  <fileset dir="${bin}" includes="org/core/**/*.class
+	  keel/Dataset/**/*.class
+	  keel/Algorithms/PSO_Learning/*.class"/>
+	</jar>
+
+
+	<jar 
+	  jarfile="${distMet}/LDWPSO.jar" 
+	  manifest="${src}/keel/Algorithms/PSO_Learning/LDWPSO/Manifest">
+	  <fileset dir="${bin}" 
+		 includes="keel/Algorithms/PSO_Learning/LDWPSO/**/*.class"/>
+	  <fileset dir="${bin}" includes="org/core/**/*.class
+	  keel/Dataset/**/*.class
+	  keel/Algorithms/PSO_Learning/*.class"/>
+	</jar>
+
+	<jar 
+	  jarfile="${distMet}/REPSO.jar" 
+	  manifest="${src}/keel/Algorithms/PSO_Learning/REPSO/Manifest">
+	  <fileset dir="${bin}" 
+		 includes="keel/Algorithms/PSO_Learning/REPSO/**/*.class"/>
+	  <fileset dir="${bin}" includes="org/core/**/*.class
+	  keel/Dataset/**/*.class
+	  keel/Algorithms/PSO_Learning/*.class"/>
+	</jar>
+
+
+	<jar 
+	  jarfile="${distMet}/PSOLDA.jar" 
+	  manifest="${src}/keel/Algorithms/PSO_Learning/PSOLDA/Manifest">
+	  <fileset dir="${bin}" 
+		 includes="keel/Algorithms/PSO_Learning/PSOLDA/**/*.class"/>
+	  <fileset dir="${bin}" includes="org/core/**/*.class
+	  keel/Dataset/**/*.class
+	  keel/Algorithms/Statistical_Classifiers/Shared/MatrixCalcs/**/*.class
+	  keel/Algorithms/PSO_Learning/*.class"/>
+	</jar>
+  
+	<!-- Decision Trees for regression-->
+	
+    <jar
+          jarfile="${distMet}/Regr-CART.jar"
+          manifest="${src}/keel/Algorithms/Decision_Trees/CART/regression/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Decision_Trees/CART/**/*.class
+             			keel/Algorithms/Neural_Networks/NNEP_Common/**/*.class"/>
+          <zipgroupfileset refid="lib_nnep.jars"/>
+    </jar>
+	
+	<jar
+          jarfile="${distMet}/M5.jar"
+          manifest="${src}/keel/Algorithms/Decision_Trees/M5/Manifest">
+          <fileset dir="${bin}"
+             includes="keel//Algorithms/Decision_Trees/M5/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar
+		  jarfile="${distMet}/M5Rules.jar"
+		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/M5Rules/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Genetic_Rule_Learning/M5Rules/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+	</jar>  
+	  
+	  
+	<!-- Statistical Regression -->  
+	
+	<jar
+          jarfile="${distMet}/ModelLinearLMS.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Models/ModelLinear/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+					keel/Algorithms/Statistical_Models/ModelLinear/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distMet}/ModelPolQuadraticLMS.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Models/ModelQuad/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+					keel/Algorithms/Statistical_Models/ModelQuad/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<!-- Fuzzy Rule PostProcessing -->
+
+	<jar
+          jarfile="${distPost}/Mam-GlobalTunDB.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Postprocess/MamGlobalTunDB/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Postprocess/MamGlobalTunDB/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<jar
+          jarfile="${distPost}/Mam-LocalTunRules.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Postprocess/MamLocalTunRules/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Postprocess/MamLocalTunRules/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+    </jar>
+
+    <jar
+          jarfile="${distPost}/Mam-Select.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Postprocess/MamSelect/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Postprocess/MamSelect/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<jar
+          jarfile="${distPost}/Mam-WSelect.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Postprocess/MamWSelect/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Postprocess/MamWSelect/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+    </jar>
+
+    <jar
+          jarfile="${distPost}/Mam-WTuning.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Postprocess/MamWTuning/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Postprocess/MamWTuning/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distPost}/Genetic_NFRM.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Postprocess/Genetic_NFRM/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/RE_SL_Postprocess/Genetic_NFRM/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<!-- Symbolic Regression -->
+	
+	<jar
+          jarfile="${distMet}/crispSymRegGAP.jar"
+          manifest="${src}/keel/Algorithms/Symbolic_Regression/crispSymRegGAP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Symbolic_Regression/crispSymRegGAP/**/*.class
+					keel/Algorithms/Symbolic_Regression/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distMet}/crispSymRegSAP.jar"
+          manifest="${src}/keel/Algorithms/Symbolic_Regression/crispSymRegSAP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Symbolic_Regression/crispSymRegSAP/**/*.class
+					keel/Algorithms/Symbolic_Regression/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distMet}/fuzzySymRegGAP.jar"
+          manifest="${src}/keel/Algorithms/Symbolic_Regression/fuzzySymRegGAP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Symbolic_Regression/fuzzySymRegGAP/**/*.class
+					keel/Algorithms/Symbolic_Regression/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distMet}/fuzzySymRegSAP.jar"
+          manifest="${src}/keel/Algorithms/Symbolic_Regression/fuzzySymRegSAP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Symbolic_Regression/fuzzySymRegSAP/**/*.class
+					keel/Algorithms/Symbolic_Regression/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<!--Neural networks for regression -->
+	
+	<jar
+          jarfile="${distMet}/RBFN_decremental.jar"
+          manifest="${src}/keel/Algorithms/Neural_Networks/RBFN_decremental/manifest">
+           <fileset dir="${bin}"
+           includes="keel/Algorithms/Neural_Networks/RBFN_decremental/**/*.class
+           org/core/*.class">
+          </fileset>
+		  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<jar
+          jarfile="${distMet}/RBFN_incremental.jar"
+          manifest="${src}/keel/Algorithms/Neural_Networks/RBFN_incremental/manifest">
+          <fileset dir="${bin}"
+           includes="keel/Algorithms/Neural_Networks/RBFN_incremental/**/*.class
+           org/core/*.class">
+          </fileset>
+		  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+
+	<!-- iRProp+ Regression -->
+	<jar
+		       jarfile="${distMet}/IRPropPlus_Regr.jar"
+		       manifest="${src}/keel/Algorithms/Neural_Networks/IRPropPlus_Regr/Manifest">
+		       <fileset dir="${bin}"
+		             includes="keel/Algorithms/Neural_Networks/IRPropPlus_Regr/**/*.class
+                                       keel/Algorithms/Neural_Networks/IRPropPlus_Clas/IRPropPlus.class
+                                       keel/Algorithms/Neural_Networks/IRPropPlus_Clas/IOptimizableFunc.class
+                                       keel/Algorithms/Neural_Networks/IRPropPlus_Clas/FullRandomInitiator.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Regr/neuralnet/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Regr/problem/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/algorithm/NeuralNetAlgorithm.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/neuralnet/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/initiators/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/data/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/problem/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/util/**/*.class"/>
+		       <zipgroupfileset refid="lib_nnep.jars"/>
+	</jar>
+	<!-- iRProp+ -->    
+		
+	<jar
+          jarfile="${distMet}/ModelMLPerceptron.jar"
+          manifest="${src}/keel/Algorithms/Neural_Networks/ModelMLPerceptron/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Neural_Networks/ModelMLPerceptron/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<jar
+          jarfile="${distMet}/Regr-MLP-BackProp.jar"
+          manifest="${src}/keel/Algorithms/Neural_Networks/net/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Neural_Networks/net/**/*.class
+                       org/core/**/*.class"/>
+        	<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+
+	<!-- NNEP Regression -->
+		<jar
+		       jarfile="${distMet}/NNEP_Regr.jar"
+		       manifest="${src}/keel/Algorithms/Neural_Networks/NNEP_Regr/Manifest">
+		       <fileset dir="${bin}"
+		             includes="keel/Algorithms/Neural_Networks/NNEP_Regr/**/*.class
+                                       keel/Algorithms/Neural_Networks/NNEP_Common/**/*.class"/>
+		       <zipgroupfileset refid="lib_nnep.jars"/>
+		</jar>
+	<!-- NNEP -->	
+	
+	<jar
+          jarfile="${distMet}/RBFN.jar"
+          manifest="${src}/keel/Algorithms/Neural_Networks/RBFN/manifest">
+          <fileset dir="${bin}"
+           includes="keel/Algorithms/Neural_Networks/RBFN/**/*.class
+           org/core/*.class">
+          </fileset>
+		  <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+
+	<!-- SVM for regression -->
+	
+	<jar
+		   jarfile="${distMet}/NU_SVR.jar"
+		   manifest="${src}/keel/Algorithms/SVM/NU_SVR/Manifest">
+   		   <fileset dir="${bin}"
+		 includes="keel/Algorithms/SVM/NU_SVR/**/*.class
+		 org/core/*.class
+		 org/libsvm/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+		   jarfile="${distMet}/EPSILON_SVR.jar"
+		   manifest="${src}/keel/Algorithms/SVM/EPSILON_SVR/Manifest">
+   		   <fileset dir="${bin}"
+		 includes="keel/Algorithms/SVM/EPSILON_SVR/**/*.class
+		 org/core/*.class
+		 org/libsvm/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<!-- Clustering Algorithms -->	
+		
+	<jar
+          jarfile="${distMet}/ClusterKMeans.jar"
+          manifest="${src}/keel/Algorithms/Clustering_Algorithms/ClusterKMeans/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Clustering_Algorithms/ClusterKMeans/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>	
+		
+	<!-- Subgroup discovery -->
+
+	<jar jarfile="${distMet}/CN2SD.jar"
+		  manifest="${src}/keel/Algorithms/Subgroup_Discovery/CN2SD/Manifest">
+	      <fileset dir="${bin}"
+		  includes="keel/Algorithms/Subgroup_Discovery/CN2SD/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+	</jar>	
+	
+	<jar jarfile="${distMet}/aprioriSD.jar"
+			manifest="${src}/keel/Algorithms/Subgroup_Discovery/aprioriSD/Manifest">
+	        <fileset dir="${bin}"
+			includes="keel/Algorithms/Subgroup_Discovery/aprioriSD/**/*.class
+            org/core/**/*.class
+            keel/Dataset/**/*.class"/>
+    </jar>
+		
+		
+	<!-- Association Rules-->	
+	
+	<jar
+          jarfile="${distMet}/Apriori.jar"
+          manifest="${src}/keel/Algorithms/Association_Rules/Apriori/Manifest">
+          <fileset dir="${bin}"
+             includes="keel//Algorithms/Association_Rules/Apriori/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>	
+	
+	<!-- Statistical Tests for classification -->
+		 
+	<jar
+        jarfile="${distTest}/ClasifTest_5x2cv.jar"
+        manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ClasifTest_5x2cv/Manifest">
+        <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Classification/ClasifTest_5x2cv/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ClasifTest_f.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ClasifTest_f/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Classification/ClasifTest_f/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ClasifTest_rs.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ClasifTest_rs/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Classification/ClasifTest_rs/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ClasifTest_sw.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ClasifTest_sw/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Classification/ClasifTest_sw/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ClasifTest_t.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ClasifTest_t/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Classification/ClasifTest_t/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ClasifTest_u.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ClasifTest_u/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Classification/ClasifTest_u/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+    <jar
+          jarfile="${distTest}/Clas_Wilcoxon.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Wilcoxon/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Classification/Wilcoxon/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<jar
+          jarfile="${distTest}/Clas_Friedman.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Friedman/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Classification/Friedman/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+    </jar>
+		
+	<!-- Statistical Tests for regression -->	
+		
+	<jar
+          jarfile="${distTest}/ModelTest_5x2cv.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/ModelTest_5x2cv/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Regression/ModelTest_5x2cv/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ModelTest_f.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/ModelTest_f/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Regression/ModelTest_f/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ModelTest_rs.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/ModelTest_rs/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Regression/ModelTest_rs/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ModelTest_sw.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/ModelTest_sw/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Regression/ModelTest_sw/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ModelTest_t.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/ModelTest_t/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Regression/ModelTest_t/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ModelTest_u.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/ModelTest_u/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Regression/ModelTest_u/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+	
+    <jar
+          jarfile="${distTest}/Regr_Wilcoxon.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/Wilcoxon/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Regression/Wilcoxon/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+    </jar>
+        
+    <jar
+          jarfile="${distTest}/Regr_Friedman.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/Friedman/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Regression/Friedman/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+    </jar>
+	
+	<!-- Visualization modules -->
+	
+	<jar
+          jarfile="${distTest}/ClasifTest_General.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Clasif_General/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Classification/Clasif_General/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ClasifTest_Tabular.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Clasif_Tabular/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Classification/Clasif_Tabular/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ClasifTest_Summary.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Clasif_Summary/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Classification/Clasif_Summary/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ModelTest_General.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/Model_General/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Regression/Model_General/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ModelTest_Tabular.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/Model_Tabular/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Regression/Model_Tabular/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+
+	<jar
+          jarfile="${distTest}/ModelTest_Summary.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/Model_Summary/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Statistical_Tests/Regression/Model_Summary/**/*.class
+					keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+    </jar>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+        
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+		
+		
+		
+		
+		
+	<!-- Fuzzy Rule Learning -->
+
+		<jar
+          jarfile="${distMet}/Thrift.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Thrift/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Thrift/**/*.class
+                    keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+          jarfile="${distMet}/COR_GA.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/COR_GA/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/COR_GA/**/*.class
+                    keel/Dataset/**/*.class"/>
+        </jar>
+
+
+		<jar
+          jarfile="${distMet}/Chi_RW.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/AdHoc/Chi_RW/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/AdHoc/Chi_RW/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+          jarfile="${distMet}/Ishib_Weighted.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/AdHoc/Fuzzy_Ish_Weighted/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/AdHoc/Fuzzy_Ish_Weighted/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>        
+        
+		<jar
+          jarfile="${distMet}/Ishib_Hybrid.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Fuzzy_Ish_Hybrid/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Fuzzy_Ish_Hybrid/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+		<jar
+          jarfile="${distMet}/Ishib_Selec.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Fuzzy_Ish_Selec/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Fuzzy_Ish_Selec/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+		<jar
+          jarfile="${distMet}/GFS_RB_MF.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/GFS_RB_MF/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/GFS_RB_MF/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+          jarfile="${distMet}/Clas-Fuzzy-SGERD.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzySGERD/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzySGERD/**/*.class
+					keel/Algorithms/Preprocess/Basic/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+		
+		
+
+		<jar
+          jarfile="${distMet}/ClassifierFuzzyGP.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyGP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyGP/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+
+		<jar
+          jarfile="${distMet}/ClassifierFuzzyGAP.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyGAP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyGAP/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+
+		<jar
+          jarfile="${distMet}/ClassifierFuzzySAP.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzySAP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzySAP/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+          jarfile="${distMet}/ClassifierFuzzyAdaBoost.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyAdaBoost/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyAdaBoost/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/Boosting/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+          jarfile="${distMet}/ClassifierFuzzyLogitBoost.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyLogitBoost/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyLogitBoost/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/Boosting/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+          jarfile="${distMet}/ClassifierFuzzyMaxLogitBoost.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyMaxLogitBoost/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierFuzzyMaxLogitBoost/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/Boosting/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+          jarfile="${distMet}/ModelFuzzyGP.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ModelFuzzyGP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ModelFuzzyGP/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+
+		<jar
+          jarfile="${distMet}/ModelFuzzyGAP.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ModelFuzzyGAP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ModelFuzzyGAP/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+
+		<jar
+          jarfile="${distMet}/ModelFuzzySAP.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ModelFuzzySAP/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ModelFuzzySAP/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Shared/**/*.class
+					keel/Algorithms/Fuzzy_Rule_Learning/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+          jarfile="${distMet}/ModelFSS98.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Random_Sets/FSS98/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Random_Sets/FSS98/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+		 jarfile="${distMet}/SLAVE.jar"
+		 manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierSLAVE/Manifest">
+		<fileset dir="${bin}"
+		 includes="keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierSLAVE/**/*.class
+		 org/core/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		 jarfile="${distMet}/Clas-Fuzzy-MOGUL.jar"
+		 manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierMOGUL/Manifest">
+		<fileset dir="${bin}"
+		 includes="keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierMOGUL/**/*.class
+		 org/core/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		 jarfile="${distMet}/Clas-Fuzzy-Ishibuchi99.jar"
+		 manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierIshibuchi99/Manifest">
+		<fileset dir="${bin}"
+		 includes="keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierIshibuchi99/**/*.class
+		 org/core/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+		 jarfile="${distMet}/Clas-Fuzzy-Shi-Eberhart-Chen.jar"
+		 manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierShi_Eberhart_Chen/Manifest">
+		<fileset dir="${bin}"
+		 includes="keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierShi_Eberhart_Chen/**/*.class
+		 org/core/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+		jarfile="${distMet}/PDFC.jar"
+		manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Hybrid/PDFCS/Manifest">
+		<fileset dir="${bin}"
+		includes="keel/Algorithms/Fuzzy_Rule_Learning/Hybrid/PDFCS/**/*.class
+		keel/Algorithms/SVM/SMO/**/*.class
+		keel/Algorithms/Statistical_Classifiers/Logistic/**/*.class
+		org/core/*.class
+		">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+		</jar>
+
+	<!-- Other RE_SL Methods -->
+
+        <jar
+          jarfile="${distMet}/LEL_TSK.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Methods/LEL_TSK/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Methods/LEL_TSK/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/mogulHC.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Methods/mogulHC/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Methods/mogulHC/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+		<jar
+          jarfile="${distMet}/mogulSC.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Methods/mogulSC/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Methods/mogulSC/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+        <jar
+          jarfile="${distMet}/mogulIRL.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Methods/mogulIRL/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Methods/mogulIRL/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+        <jar
+          jarfile="${distMet}/mogulTSK_IRL.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Methods/mogulTSK_IRL/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Methods/mogulTSK_IRL/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+        <jar
+          jarfile="${distMet}/Mam-WM.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Methods/MamWM/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Methods/MamWM/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/P_FCS1.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Methods/P_FCS1/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Methods/P_FCS1/**/*.class
+			 org/core/**/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/SEFC.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Methods/SEFC/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RE_SL_Methods/SEFC/**/*.class
+			 org/core/**/*.class">
+		</fileset>
+		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+        </jar>
+
+	 
+<!--RunKeel.jar -->
+
+		<jar
+          jarfile="${src}/keel/GraphInterKeel/resources/runkeel/runkeel.jar"
+          manifest="${src}/keel/RunKeelTxt/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/RunKeelTxt/**/*.class"/>
+          <zipgroupfileset refid="lib_xml.jars"/>
+        </jar>
+        
+    </target>
+    
+    <!-- Graphical Interface -->    
+    <target name="jar-gui" depends="compile" description="Build jars">
+
+		<!-- Graphical Interface -->
+
+        <!-- Remove comment to use the graphical version of runkeel
+        <jar
+          jarfile="${src}/keel/GraphInterKeel/resources/runkeel/runkeel.jar"
+          manifest="${src}/keel/RunKeelGraph/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/RunKeelGraph/**/*.class"/>
+          <zipgroupfileset refid="lib_graph.jars"/>
+          <fileset dir="${src}/keel/RunKeelGraph/resources"/>
+        </jar>
+        -->
+
+
+
+<!--  Comment for Educational Keel Version
+        <jar
+          jarfile="${distGraph}/GraphInterKeel.jar"
+          manifest="${src}/keel/GraphInterKeel/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/GraphInterKeel/**/*.class"/>
+          <zipgroupfileset refid="lib_graph.jars"/>
+          <fileset dir="${src}/keel/GraphInterKeel/resources"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+        </jar>
+-->
+
+<!-- RunKeelTxtDocente for Educational Keel Version -->
+    	<jar
+    	          jarfile="${distGraph}/GraphInterKeel.jar"
+    	          manifest="${src}/keel/GraphInterKeel/Manifest">
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/**/*.properties"/>
+    	          <fileset dir="${bin}"	includes="keel/GraphInterKeel/**/*.class org/core/**/*.class"/>
+    	          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+
+    	          <!--<fileset dir="${src}/keel/GraphInterKeel/resources/contextualHelp/">
+    	          	<include name="**/*.html"/>
+									<include name="**/*.jpg"/>
+									<include name="**/*.jpeg"/>
+    	          </fileset>-->
+
+    	          <!--<fileset dir="/" includes="/keel/GraphInterKeel/resources/contextualHelpDocente/"/>-->
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/ico/**/*.gif">
+    	          </fileset>
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/imag/**/*.gif">
+    	          </fileset>
+    	          
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/ico/**/*.png">
+    	          </fileset>
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/imag/**/*.png">
+    	          </fileset>
+
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/ico/**/*.jpg">
+    	          </fileset>
+    	          <fileset dir="${src}"	includes="keel/GraphInterKeel/resources/imag/**/*.jpg">
+    	          </fileset>
+    	          
+    	          <!--<fileset dir="${src}/keel/GraphInterKeel/resources">
+    	          	<include name="**/*.html"/>
+									<include name="**/*.jpg"/>
+									<include name="**/*.jpeg"/>
+									<exclude name="imag/"/>
+									<exclude name="ico/"/>
+    	          </fileset>-->       
+    	          <fileset dir="${src}/keel/GraphInterKeel/resources">
+									<exclude name="imag/"/>
+									<exclude name="ico/"/>
+    	          </fileset>
+    	          
+    	          
+				  			<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Converter/**/*.class"/>
+
+    	        		<!-- for RunKeelTxtDocente -->
+    	          		<fileset dir="${bin}"	includes="keel/RunKeelTxtDocente/**/*.class"/>
+    	        		<!-- for RunKeelTxtDocente -->
+    	          		<zipgroupfileset refid="lib_graph.jars"/>
+    	        		<!-- for RunKeelTxtDocente -->
+    	          		<zipgroupfileset refid="lib_xml.jars"/>
+
+      </jar>
+			<!-- RunKeelTxtDocente for Educational Keel Version -->
+    </target>
+
+</project>

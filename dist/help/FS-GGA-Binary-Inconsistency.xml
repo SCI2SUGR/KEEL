@@ -1,0 +1,147 @@
+<method>
+
+	<name>Generational GA with binary coding scheme for filter feature selection with the inconsistency rate</name>
+
+	<reference>  
+
+	<ref>H. Liu and R. Setiono. A Probabilistic Approach to Feature Selection: A Filter Solution. 13th International Conference on Machine Learning (ICML'96). Bari (Italy, 1996) 319-327.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutionary Filter method</type>
+
+		<objective>Feature Selection. This method allows search to follow feature subsets. </objective>
+
+		<howWork>FS-GGA-Binary-Inconsistency is a generational genetic algorithm with binary representation
+
+This method uses a k-tournament selection, the one point crossover operator and one point binary mutation operator.
+
+The stopping criteria used is the number of evaluations and the fitness function: (1-alfa)*inconsistency_rate + alfa*features_selected
+
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>paramKNN: is the number of nearest neighbours used by the k-NN classifier</param>
+			<param>nEval: is the number of evaluations that performs the genetic algorithm</param>
+			<param>alfa: is a real value used in the fitness function. This parameter weigh up the precision rate and the feature reduction</param>
+			<param>popLength: is the size of the population</param>
+			<param>crossProb: is the crossover probability</param>
+			<param>mutProb: is the mutation probability</param>
+			<param>k: is the number of best features selected before applying the random tournament to selected one of them</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+
+Problem type: Preprocess
+Method: Generational GA with binary coding scheme for filter feature selection with the inconsistency rate
+Dataset: pima
+Training set: pim-10-1tra.dat
+Test set: pim-10-1tst.dat
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see the training and test datasets modified only with the selected features (result0.tra and result0.tst) in experiment\results\FS-GGA-Binary-Inconsistency
+
+result0.tra
+
+@relation pima_diabetes
+@attribute 'preg'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'plas'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'pres'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'insu'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'mass'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'pedi'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'age'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'preg','plas','pres','insu','mass','pedi','age'
+@outputs 'class'
+@data
+8,8,5,0,5,0,2,tested_positive
+2,7,6,0,5,1,7,tested_positive
+8,6,5,1,5,0,3,tested_positive
+1,5,5,0,3,2,0,tested_positive
+1,8,6,1,4,0,1,tested_positive
+
+...........................
+ 
+1,5,6,1,5,0,0,tested_negative
+0,5,5,0,3,0,0,tested_negative
+1,4,4,1,5,0,0,tested_negative
+2,6,5,0,5,1,1,tested_negative
+2,7,6,0,4,0,8,tested_positive
+
+
+result0.tst
+
+@relation pima_diabetes
+@attribute 'preg'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'plas'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'pres'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'insu'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'mass'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'pedi'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'age'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'preg','plas','pres','insu','mass','pedi','age'
+@outputs 'class'
+@data
+5,5,5,0,4,0,3,tested_positive
+4,5,6,0,4,0,1,tested_positive
+0,8,7,0,6,2,0,tested_positive
+5,6,5,1,4,0,3,tested_positive
+5,8,6,0,5,1,2,tested_positive
+
+...........................
+
+2,5,7,0,5,1,2,tested_negative
+2,4,7,0,4,1,2,tested_negative
+4,5,0,0,3,0,2,tested_negative
+0,4,5,0,2,1,0,tested_negative
+0,9,5,2,5,1,2,tested_positive
+
+
+And the extra file with the classification error in test validation (result0e0.txt) in Experiment\Results\FS-GGA-Binary-Inconsistency
+
+result0e0.txt
+RESULTS generated at Sun Oct 23 20:39:02 CEST 2005 
+--------------------------------------------------
+Algorithm Name:Generational GA with binary coding scheme for filter feature selection with the inconsistency rate
+
+PARTITION Filename: ../results/UniformWidthDiscretizer/pim/result0.tra
+---------------
+
+Features selected: 
+'preg' - 'plas' - 'pres' - 'insu' - 'mass' - 'pedi' - 'age' - 
+ Best individual find at 4evaluation. 
+
+7 features of 8
+
+Error in test (using train for prediction): 0.36363636363636365
+Error in test (using test for prediction): 0.12987012987012986
+---------------
+
+</example>
+
+</method>

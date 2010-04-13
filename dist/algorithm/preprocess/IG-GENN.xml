@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>GENN</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>k</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,73 @@
+<algorithm_specification>
+
+  <name>LDWPSO Classifier</name>
+  <nParameters>9</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  
+  <parameter>
+    <name>Seed</name>
+    <type>integer</type>
+    <default>12345678</default>
+    <disabled/>
+  </parameter>
+  
+  <parameter>
+    <name>Number of particles</name>
+    <type>integer</type>
+    <default>25</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>Max iterations</name>
+    <type>integer</type>
+    <default>150</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>WeightsUpperLimit</name>
+    <type>real</type>
+    <default>2.05</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>Maximun uncovered instances</name>
+    <type>real</type>
+    <default>0.1</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>Indifference Threshold</name>
+    <type>real</type>
+    <default>0.1</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>Constriction coefficient</name>
+    <type>real</type>
+    <default>0.73</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>Wmax</name>
+    <type>real</type>
+    <default>0.9</default>
+    <disabled/>
+  </parameter>
+  
+      <parameter>
+    <name>Wmin</name>
+    <type>real</type>
+    <default>0.4</default>
+    <disabled/>
+  </parameter>
+ 
+
+  
+</algorithm_specification>

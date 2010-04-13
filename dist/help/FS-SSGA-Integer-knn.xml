@@ -1,0 +1,142 @@
+<method>
+
+    <name>Steady-state GA with integer coding scheme for wrapper feature selection with k-nn</name>
+
+    <reference>  
+
+        <ref>J. Casillas, O. Cord&#xF3;n, M.J. del Jes&#xFA;s and F. Herrera. Genetic Feature Selection in a Fuzzy Rule-Based Classification System Learning Process. Information Sciences 136 (2001) 135-157.</ref>
+        	
+    </reference>
+
+    <generalDescription>  
+
+        <type>Evolutionary Wrapper method</type>
+
+        <objective>Feature Selection. This method allows search to follow feature subsets. </objective>
+
+        <howWork>FS-SSGA-Integer-knn is a steady state genetic algorithm with Integer codification.
+
+This method don't use a selection operator: the two best individual of the population are selected.
+            
+Crossower operator: in one point.
+            
+Replacement: The couple of descendants replaces the two worst elements of the population.
+
+The stopping criteria used is the number of evaluations and the fitness function only uses the precision rate.
+
+        </howWork>
+
+        <parameterSpec>  
+
+            <param>paramKNN: is the number of nearest neighbours used by the k-NN classifier</param>
+            <param>seed: is the seed used for the random number generator</param>
+            <param>nEval: is the number of evaluations that performs the genetic algorithm</param>
+            <param>numberOfFeatures: is the number of features to be selected</param>
+            <param>popLength: is the size of the population</param>
+
+        </parameterSpec>
+
+        <properties>
+
+            <continuous>Yes</continuous>
+
+            <discretized>Yes</discretized>
+
+            <integer>Yes</integer>
+
+            <nominal>Yes</nominal>
+
+            <valueLess>No</valueLess>
+
+            <impreciseValue>No</impreciseValue>
+
+        </properties>
+
+    </generalDescription>
+
+    <example>
+
+Problem type: Preprocess
+Method: Steady-state GA with integer coding scheme for wrapper feature selection with k-nn
+Dataset: pima
+Training set: pim-10-1tra.dat
+Test set: pim-10-1tst.dat
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see the training and test datasets modified only with the selected features (result0.tra and result0.tst) in experiment\results\FS-SSGA-Integer-knn
+
+result0.tra
+
+@relation pima_diabetes
+@attribute 'preg' real[0.0,17.0]
+@attribute 'plas' real[0.0,199.0]
+@attribute 'age' real[21.0,81.0]
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'preg','plas','age'
+@outputs 'class'
+@data
+14.0,175.0,38.0,tested_positive
+4.0,146.0,67.0,tested_positive
+15.0,136.0,43.0,tested_positive
+3.0,107.0,23.0,tested_positive
+3.0,169.0,31.0,tested_positive
+ 
+...........................
+ 
+2.0,112.0,24.0,tested_negative
+1.0,107.0,24.0,tested_negative
+2.0,98.0,22.0,tested_negative
+4.0,122.0,29.0,tested_negative
+4.0,145.0,70.0,tested_positive
+
+result0.tst
+
+@relation pima_diabetes
+@attribute 'preg' real[0.0,17.0]
+@attribute 'plas' real[0.0,199.0]
+@attribute 'age' real[21.0,81.0]
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'preg','plas','age'
+@outputs 'class'
+@data
+10.0,108.0,42.0,tested_positive
+7.0,107.0,31.0,tested_positive
+0.0,179.0,23.0,tested_positive
+10.0,125.0,41.0,tested_positive
+10.0,168.0,34.0,tested_positive
+
+
+...........................
+
+5.0,117.0,38.0,tested_negative
+4.0,83.0,34.0,tested_negative
+7.0,119.0,37.0,tested_negative
+1.0,95.0,25.0,tested_negative
+1.0,181.0,38.0,tested_positive
+
+
+And the extra file with the classification error in test validation (result0e0.txt) in Experiment\Results\FS-SSGA-Integer-knn
+
+result0e0.txt
+
+RESULTS generated at Sun Oct 23 12:02:47 CEST 2005 
+--------------------------------------------------
+Algorithm Name: Steady-state GA with integer coding scheme for wrapper feature selection with k-nn
+
+PARTITION Filename: ../datasets/pim/pim-10-1tra.dat
+---------------
+
+Features selected: 
+'preg' - 'plas' - 'age' - 
+ Best individual find at 133evaluation. 
+
+3 features of 8
+
+Error in test (using train for prediction): 0.2597402597402597
+Error in test (using test for prediction): 0.2077922077922078
+---------------
+
+</example>
+
+</method>

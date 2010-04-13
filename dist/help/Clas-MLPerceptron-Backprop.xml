@@ -1,0 +1,107 @@
+<method>
+
+	<name>Multilayer perceptron for classification problems</name>
+
+	<reference>
+
+	<ref>R. Rojas and J. Feldman, Neural Networks: A Systematic Introduction (Springer, 1996).</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification algorithm based on Neural Networks</type>
+
+		<objective>Use a multilayer Perceptron to classify a dataset of examples with minimal error</objective>
+
+		<howWork>This class of networks consists of multiple layers of computational units, usually interconnected in a feed-forward way. Each neuron in one layer has directed connections to the neurons of the subsequent layer. In many applications the units of these networks apply a sigmoid function as an activation function.
+
+We use back-propagation as learning technique. Here the output values are compared with the correct answer to compute the value of some predefined error-function. By various techniques the error is then fed back through the network. Using this information, the algorithm adjusts the weights of each connection in order to reduce the value of the error function by some small amount. After repeating this process for a sufficiently large number of training cycles the network will usually converge to some state where the error of the calculations is small. 
+
+To adjust weights we use a Backpropagation method. It works by the following:
+   1. Present a training sample to the neural network.
+   2. Compare the network's output to the desired output from that sample. Calculate the error in each output neuron.
+   3. For each neuron, calculate what the output should have been, and a scaling factor, how much lower or higher the output must be adjusted to match the desired output. This is the local error.
+   4. Adjust the weights of each neuron to lower the local error.
+   5. Assign "blame" for the local error to neurons at the previous level, giving greater responsibility to neurons connected by stronger weights.
+   6. Repeat the steps above on the neurons at the previous level, using each one's "blame" as its error.
+
+As the algorithm's name implies, the errors (and therefore the learning) propagate backwards from the output nodes to the inner nodes. So technically speaking, backpropagation is used to calculate the gradient of the error of the network with respect to the network's modifiable weights. This gradient is then used in a simple stochastic gradient descent algorithm to find weights that minimize the error. 
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Hidden_layers: The number of hidden layers of the network</param>
+			<param>Hidden_nodes: The number of neurons in each hidden layer of the network</param>
+			<param>Transfer: Transfer function used by the neurons</param>
+			<param>Eta: Eta parameter used by each neuron, momentum term</param>
+			<param>Alpha: Alpha parameter used by each neuron, momentum term</param>
+			<param>Lambda: Lambda parameter used by each neuron, decay term</param>
+			<param>Test_data: if test partition is supplied to the network to evaluate it</param>
+			<param>Validation_data: if validation partition is supplied to the network to evaluate it, instead of training one</param>
+			<param>Cross_validation: Perform a 10-fcv on the train data supplied</param>
+			<param>Cycles: Iterations of the gradient descent algorithm</param>
+			<param>Improve: Minimum improve in crossvalidation training</param>
+			<param>Problem: Type of problem (Classification or Regression)</param>
+			<param>Tipify_inputs: if it is going to be tipified</param>
+			<param>Verbose: Verbose output</param>
+			<param>SaveAll: Save at the end of the output</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-MLPerceptron-Backprop
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Parameters: default.
+
+
+
+We can also see the output and target classes for each case of the test set in Experiment\Results\Clas-MLPerceptron-Backprop:
+
+@relation  iris
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-virginica
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-virginica
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-setosa
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+</example>
+
+</method>

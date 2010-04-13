@@ -1,0 +1,11 @@
+<algorithm_specification>
+  <name>Regr-CART</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>maxDepth</name>
+    <type>integer</type>
+    <default>90</default>
+  </parameter>
+</algorithm_specification>
