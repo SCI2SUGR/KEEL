@@ -710,169 +710,144 @@
 
 		<!-- Rule Learning -->
 
-        <jar
-          jarfile="${distMet}/Ritio.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Ritio/Manifest">
+		<jar
+		  jarfile="${distMet}/1R.jar"
+		  manifest="${src}/keel/Algorithms/Rule_Learning/UnoR/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Rule_Learning/UnoR/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+          jarfile="${distMet}/AQ.jar"
+          manifest="${src}/keel/Algorithms/Rule_Learning/AQ/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/Genetic_Rule_Learning/Ritio/**/*.class
+             includes="keel/Algorithms/Rule_Learning/AQ/**/*.class
 			 org/core/**/*.class
 			 keel/Dataset/**/*.class"/>
         </jar>
-
-        <jar
+		
+		<jar
+		  jarfile="${distMet}/CN2.jar"
+		  manifest="${src}/keel/Algorithms/Rule_Learning/CN2/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Rule_Learning/CN2/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
           jarfile="${distMet}/LEM1.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/LEM1/Manifest">
+          manifest="${src}/keel/Algorithms/Rule_Learning/LEM1/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/Genetic_Rule_Learning/LEM1/**/*.class
+             includes="keel/Algorithms/Rule_Learning/LEM1/**/*.class
 			 org/core/**/*.class
 			 keel/Dataset/**/*.class"/>
         </jar>
 
         <jar
           jarfile="${distMet}/LEM2.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/LEM2/Manifest">
+          manifest="${src}/keel/Algorithms/Rule_Learning/LEM2/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/Genetic_Rule_Learning/LEM2/**/*.class
+             includes="keel/Algorithms/Rule_Learning/LEM2/**/*.class
 			 org/core/**/*.class
 			 keel/Dataset/**/*.class"/>
         </jar>
-
-        <jar
-          jarfile="${distMet}/Rules6.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Rules6/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/Genetic_Rule_Learning/Rules6/**/*.class
-			 org/core/**/*.class
-			 keel/Dataset/**/*.class"/>
-        </jar>
-
-        <jar
-          jarfile="${distMet}/SRI.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/SRI/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/Genetic_Rule_Learning/SRI/**/*.class
-			 org/core/**/*.class
-			 keel/Dataset/**/*.class"/>
-        </jar>
-
-
-        <jar
-          jarfile="${distMet}/Corcoran.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Corcoran/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/Genetic_Rule_Learning/Corcoran/**/*.class
-			 org/core/**/*.class
-			 keel/Dataset/**/*.class"/>
-        </jar>
-
-        <jar
-          jarfile="${distMet}/AQ.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/AQ/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/Genetic_Rule_Learning/AQ/**/*.class
-			 org/core/**/*.class
-			 keel/Dataset/**/*.class"/>
-        </jar>
-
-        <jar
-          jarfile="${distMet}/SIA.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/SIA/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/Genetic_Rule_Learning/SIA/**/*.class
-			 org/core/**/*.class
-			 keel/Dataset/**/*.class"/>
-        </jar>
-
-		<jar
-		  jarfile="${distMet}/CN2.jar"
-		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/CN2/Manifest">
-		  <fileset dir="${bin}"
-			 includes="keel/Algorithms/Genetic_Rule_Learning/CN2/**/*.class
-                         org/core/**/*.class
-                         keel/Dataset/**/*.class"/>
-		</jar>
-
-		<jar
-		  jarfile="${distMet}/Ripper.jar"
-		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Ripper/Manifest">
-		  <fileset dir="${bin}"
-			 includes="keel/Algorithms/Genetic_Rule_Learning/Ripper/**/*.class
-                         org/core/**/*.class
-                         keel/Dataset/**/*.class"/>
-		</jar>
-
-		<jar
-		  jarfile="${distMet}/Slipper.jar"
-		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Slipper/Manifest">
-		  <fileset dir="${bin}"
-			 includes="keel/Algorithms/Genetic_Rule_Learning/Slipper/**/*.class
-                         org/core/**/*.class
-                         keel/Dataset/**/*.class"/>
-		</jar>
-
+		
 		<jar
 		  jarfile="${distMet}/C45Rules.jar"
-		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/C45Rules/Manifest">
+		  manifest="${src}/keel/Algorithms/Rule_Learning/C45Rules/Manifest">
 		  <fileset dir="${bin}"
-			 includes="keel/Algorithms/Genetic_Rule_Learning/C45Rules/**/*.class
+			 includes="keel/Algorithms/Rule_Learning/C45Rules/**/*.class
                          org/core/**/*.class
                          keel/Dataset/**/*.class"/>
 		</jar>
 
 		<jar
 		  jarfile="${distMet}/C45RulesSA.jar"
-		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/C45RulesSA/Manifest">
+		  manifest="${src}/keel/Algorithms/Rule_Learning/C45RulesSA/Manifest">
 		  <fileset dir="${bin}"
-			 includes="keel/Algorithms/Genetic_Rule_Learning/C45RulesSA/**/*.class
+			 includes="keel/Algorithms/Rule_Learning/C45RulesSA/**/*.class
                          org/core/**/*.class
                          keel/Dataset/**/*.class"/>
 		</jar>
-
+		
 		<jar
 		  jarfile="${distMet}/PART.jar"
-		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/PART/Manifest">
+		  manifest="${src}/keel/Algorithms/Rule_Learning/PART/Manifest">
 		  <fileset dir="${bin}"
-			 includes="keel/Algorithms/Genetic_Rule_Learning/PART/**/*.class
+			 includes="keel/Algorithms/Rule_Learning/PART/**/*.class
                          org/core/**/*.class
                          keel/Dataset/**/*.class"/>
 		</jar>
 
 		<jar
 		  jarfile="${distMet}/Prism.jar"
-		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Prism/Manifest">
+		  manifest="${src}/keel/Algorithms/Rule_Learning/Prism/Manifest">
 		  <fileset dir="${bin}"
-			 includes="keel/Algorithms/Genetic_Rule_Learning/Prism/**/*.class
-                         org/core/**/*.class
-                         keel/Dataset/**/*.class"/>
-		</jar>
-
-		<jar
-		  jarfile="${distMet}/1R.jar"
-		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/UnoR/Manifest">
-		  <fileset dir="${bin}"
-			 includes="keel/Algorithms/Genetic_Rule_Learning/UnoR/**/*.class
+			 includes="keel/Algorithms/Rule_Learning/Prism/**/*.class
                          org/core/**/*.class
                          keel/Dataset/**/*.class"/>
 		</jar>
 
 		<jar
 		  jarfile="${distMet}/Riona.jar"
-		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Riona/Manifest">
+		  manifest="${src}/keel/Algorithms/Rule_Learning/Riona/Manifest">
 		  <fileset dir="${bin}"
-			 includes="keel/Algorithms/Genetic_Rule_Learning/Riona/**/*.class
+			 includes="keel/Algorithms/Rule_Learning/Riona/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+		  jarfile="${distMet}/Ripper.jar"
+		  manifest="${src}/keel/Algorithms/Rule_Learning/Ripper/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Rule_Learning/Ripper/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+          jarfile="${distMet}/Ritio.jar"
+          manifest="${src}/keel/Algorithms/Rule_Learning/Ritio/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Rule_Learning/Ritio/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+
+        <jar
+          jarfile="${distMet}/Rules6.jar"
+          manifest="${src}/keel/Algorithms/Rule_Learning/Rules6/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Rule_Learning/Rules6/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+		
+		<jar
+		  jarfile="${distMet}/Slipper.jar"
+		  manifest="${src}/keel/Algorithms/Rule_Learning/Slipper/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Rule_Learning/Slipper/**/*.class
                          org/core/**/*.class
                          keel/Dataset/**/*.class"/>
 		</jar>
 
-        <jar jarfile="${distMet}/LogenPro.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/LogenPro/Manifest">
+        <jar
+          jarfile="${distMet}/SRI.jar"
+          manifest="${src}/keel/Algorithms/Rule_Learning/SRI/Manifest">
           <fileset dir="${bin}"
-            includes="keel/Algorithms/Genetic_Rule_Learning/LogenPro/**/*.class
-		org/core/**/*.class
-		keel/Dataset/**/*.class"/>
+             includes="keel/Algorithms/Rule_Learning/SRI/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
         </jar>
-
-        <jar jarfile="${distMet}/Ant_Miner.jar"
+		
+		<!-- Genetic Rule Learning -->
+		
+		<jar jarfile="${distMet}/Ant_Miner.jar"
               manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Ant_Miner/Manifest">
               <fileset dir="${bin}"
               includes="keel/Algorithms/Genetic_Rule_Learning/Ant_Miner/**/*.class
@@ -903,23 +878,7 @@
               org/core/**/*.class
               keel/Dataset/**/*.class"/>
         </jar>
-
-        <jar jarfile="${distMet}/PSO_ACO.jar"
-              manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/PSO_ACO/Manifest">
-              <fileset dir="${bin}"
-              includes="keel/Algorithms/Genetic_Rule_Learning/PSO_ACO/**/*.class
-              org/core/**/*.class
-              keel/Dataset/**/*.class"/>
-        </jar>
-		
-		<jar jarfile="${distMet}/OCEC.jar"
-			manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/OCEC/Manifest">
-			<fileset dir="${bin}"
-			includes="keel/Algorithms/Genetic_Rule_Learning/OCEC/**/*.class
-			org/core/**/*.class
-			keel/Dataset/**/*.class"/>
-		</jar>	
-		
+        
 		<jar 
 		  jarfile="${distMet}/BioHEL.jar" 
 		  manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/BioHEL/Manifest">
@@ -929,6 +888,94 @@
 		  keel/Dataset/**/*.class
 		  keel/Algorithms/PSO_Learning/*.class"/>
 		</jar>
+
+        <jar
+          jarfile="${distMet}/Corcoran.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Corcoran/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/Corcoran/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+		</jar>
+
+		<jar
+      jarfile="${distMet}/COGIN.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/COGIN/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/COGIN/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class"/>
+		</jar>
+	
+		<jar
+      jarfile="${distMet}/CORE.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/CORE/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/CORE/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class"/>
+		</jar>
+		
+		<jar
+          jarfile="${distMet}/DMEL.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/DMEL/Manifest">
+          <fileset dir="${bin}"
+             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/DMEL/**/*.class keel/Dataset/**/*.class"/>
+		</jar>
+	
+		<jar
+      jarfile="${distMet}/GAssist_ADI.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/GAssist/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/GAssist/**/*.class
+          keel/Dataset/**/*.class
+          keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+          keel/Algorithms/Discretizers/**/*Discretizer.class"/>
+		</jar>
+		<jar
+      jarfile="${distMet}/GAssist_Intervalar.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/GAssist/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/GAssist/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+          keel/Algorithms/Discretizers/**/*Discretizer.class"/>
+		</jar>
+		<jar
+          jarfile="${distMet}/GIL.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/GIL/Manifest">
+          <fileset dir="${bin}"
+             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/GIL/**/*.class keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+      jarfile="${distMet}/Hider.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Hider/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/Hider/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class
+          keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+          keel/Algorithms/Discretizers/**/*Discretizer.class"/>
+		</jar>
+		
+		<jar
+      jarfile="${distMet}/ILGA.jar"
+      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/ILGA/Manifest">
+      <fileset dir="${bin}"
+          includes="keel/Algorithms/Genetic_Rule_Learning/ILGA/**/*.class
+          keel/Dataset/**/*.class
+          org/core/**/*.class"/>
+		</jar>
+	
+        <jar jarfile="${distMet}/LogenPro.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/LogenPro/Manifest">
+          <fileset dir="${bin}"
+            includes="keel/Algorithms/Genetic_Rule_Learning/LogenPro/**/*.class
+		org/core/**/*.class
+		keel/Dataset/**/*.class"/>
+        </jar>
 		
 		<jar 
 			jarfile="${distMet}/MPLCS.jar" 
@@ -942,101 +989,87 @@
 			keel/Algorithms/PSO_Learning/*.class"/>
 		</jar>
 
-    <jar
-          jarfile="${distMet}/XCS.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/XCS/Manifest">
-          <fileset dir="${bin}"
-             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/XCS/**/*.class keel/Dataset/**/*.class"/>
-    </jar>
-
-
-    <jar
-          jarfile="${distMet}/UCS.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/UCS/Manifest">
-          <fileset dir="${bin}"
-             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/UCS/**/*.class keel/Dataset/**/*.class"/>
-    </jar>
-
-    <jar
-      jarfile="${distMet}/GAssist_ADI.jar"
-      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/GAssist/Manifest">
-      <fileset dir="${bin}"
-          includes="keel/Algorithms/Genetic_Rule_Learning/GAssist/**/*.class
-          keel/Dataset/**/*.class
-          keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
-          keel/Algorithms/Discretizers/**/*Discretizer.class"/>
-     </jar>
-    <jar
-      jarfile="${distMet}/GAssist_Intervalar.jar"
-      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/GAssist/Manifest">
-      <fileset dir="${bin}"
-          includes="keel/Algorithms/Genetic_Rule_Learning/GAssist/**/*.class
-          keel/Dataset/**/*.class
-          org/core/**/*.class
-		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
-          keel/Algorithms/Discretizers/**/*Discretizer.class"/>
-     </jar>
-
-    <jar
-      jarfile="${distMet}/Hider.jar"
-      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/Hider/Manifest">
-      <fileset dir="${bin}"
-          includes="keel/Algorithms/Genetic_Rule_Learning/Hider/**/*.class
-          keel/Dataset/**/*.class
-          org/core/**/*.class
-          keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
-          keel/Algorithms/Discretizers/**/*Discretizer.class"/>
-     </jar>
-
-    <jar
-          jarfile="${distMet}/GIL.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/GIL/Manifest">
-          <fileset dir="${bin}"
-             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/GIL/**/*.class keel/Dataset/**/*.class"/>
-    </jar>
-
-	<jar
-          jarfile="${distMet}/DMEL.jar"
-          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/DMEL/Manifest">
-          <fileset dir="${bin}"
-             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/DMEL/**/*.class keel/Dataset/**/*.class"/>
-    </jar>
-
-	<jar
+		<jar jarfile="${distMet}/OCEC.jar"
+			manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/OCEC/Manifest">
+			<fileset dir="${bin}"
+			includes="keel/Algorithms/Genetic_Rule_Learning/OCEC/**/*.class
+			org/core/**/*.class
+			keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
       jarfile="${distMet}/OIGA.jar"
       manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/OIGA/Manifest">
       <fileset dir="${bin}"
           includes="keel/Algorithms/Genetic_Rule_Learning/OIGA/**/*.class
           keel/Dataset/**/*.class
           org/core/**/*.class"/>
-    </jar>
+		</jar>
 
-    <jar
-      jarfile="${distMet}/ILGA.jar"
-      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/ILGA/Manifest">
-      <fileset dir="${bin}"
-          includes="keel/Algorithms/Genetic_Rule_Learning/ILGA/**/*.class
-          keel/Dataset/**/*.class
-          org/core/**/*.class"/>
-    </jar>
+        <jar jarfile="${distMet}/PSO_ACO.jar"
+              manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/PSO_ACO/Manifest">
+              <fileset dir="${bin}"
+              includes="keel/Algorithms/Genetic_Rule_Learning/PSO_ACO/**/*.class
+              org/core/**/*.class
+              keel/Dataset/**/*.class"/>
+        </jar>
+		
+        <jar
+          jarfile="${distMet}/SIA.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/SIA/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Genetic_Rule_Learning/SIA/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
 
-    <jar
-      jarfile="${distMet}/CORE.jar"
-      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/CORE/Manifest">
-      <fileset dir="${bin}"
-          includes="keel/Algorithms/Genetic_Rule_Learning/CORE/**/*.class
-          keel/Dataset/**/*.class
-          org/core/**/*.class"/>
-    </jar>
+		<jar
+          jarfile="${distMet}/XCS.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/XCS/Manifest">
+          <fileset dir="${bin}"
+             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/XCS/**/*.class keel/Dataset/**/*.class"/>
+		</jar>
 
-    <jar
-      jarfile="${distMet}/COGIN.jar"
-      manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/COGIN/Manifest">
-      <fileset dir="${bin}"
-          includes="keel/Algorithms/Genetic_Rule_Learning/COGIN/**/*.class
-          keel/Dataset/**/*.class
-          org/core/**/*.class"/>
-    </jar>
+		<jar
+          jarfile="${distMet}/UCS.jar"
+          manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/UCS/Manifest">
+          <fileset dir="${bin}"
+             includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/UCS/**/*.class keel/Dataset/**/*.class"/>
+		</jar>
+
+		
+
+		
+
+		
+
+		
+
+        
+        
+		
+			
+		
+		
+		
+		
+
+    
+
+    
+    
+
+    
+
+	
+
+	
+
+    
+
+    
+
+    
 
 	
 	<!-- Decision Trees for classification-->
