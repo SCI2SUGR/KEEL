@@ -266,7 +266,7 @@
   </method>  
   <method>
     <name>Clas-Fuzzy-Ishib-Hybrid</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>Ishib_Hybrid.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -290,7 +290,7 @@
   </method>
   <method>
     <name>Clas-Fuzzy-Ishib-Selec</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>Ishib_Selec.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -314,7 +314,7 @@
   </method>
   <method>
     <name>Clas-Fuzzy-SLAVE</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>SLAVE.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -338,7 +338,7 @@
   </method>
   <method>
     <name>Clas-Fuzzy-Ishibuchi99</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>Clas-Fuzzy-Ishibuchi99.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -362,13 +362,13 @@
   </method>
   <method>
     <name>Clas-Fuzzy-Shi-Eberhart-Chen</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>Clas-Fuzzy-Shi-Eberhart-Chen.jar</jar_file>
     <problem_type>classification</problem_type>
   </method>
   <method>
     <name>Clas-Fuzzy-MOGUL</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>Clas-Fuzzy-MOGUL.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -392,7 +392,7 @@
   </method>
   <method>
     <name>Clas-Fuzzy-SGERD</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>Clas-Fuzzy-SGERD.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -416,7 +416,7 @@
   </method>  
   <method>
     <name>Clas-Fuzzy-AdaBoost</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>ClassifierFuzzyAdaBoost.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -440,7 +440,7 @@
   </method>
   <method>
     <name>Clas-Fuzzy-LogitBoost</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>ClassifierFuzzyLogitBoost.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -464,7 +464,7 @@
   </method>
   <method>
     <name>Clas-Fuzzy-GAP</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>ClassifierFuzzyGAP.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -488,7 +488,7 @@
   </method>
   <method>
     <name>Clas-Fuzzy-GP</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>ClassifierFuzzyGP.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -512,7 +512,7 @@
   </method>
   <method>
     <name>Clas-Fuzzy-MaxLogitBoost</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>ClassifierFuzzyMaxLogitBoost.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -536,7 +536,7 @@
   </method>
   <method>
     <name>Clas-Fuzzy-SAP</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>ClassifierFuzzySAP.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1064,7 +1064,7 @@
   </method>
   <method>
     <name>Regr-Fuzzy-GAP</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>ModelFuzzyGAP.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
@@ -1088,7 +1088,7 @@
   </method>
   <method>
     <name>Regr-Fuzzy-SAP</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>ModelFuzzySAP.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
@@ -1208,7 +1208,7 @@
   </method>
   <method>
   	<name>Regr-COR_GA</name>
-  	<family>Fuzzy Rule Learning</family>
+  	<family>Genetic Fuzzy Rule Learning</family>
   	<jar_file>COR_GA.jar</jar_file>
   	<problem_type>regression</problem_type>
   	<input>
@@ -1232,7 +1232,7 @@
   </method>
   <method>
   	<name>Regr-Thrift</name>
-  	<family>Fuzzy Rule Learning</family>
+  	<family>Genetic Fuzzy Rule Learning</family>
   	<jar_file>Thrift.jar</jar_file>
   	<problem_type>regression</problem_type>
   	<input>
@@ -1400,7 +1400,7 @@
   </method>
   <method>
     <name>Clas-GAssist-Intervalar</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>GAssist_Intervalar.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1424,7 +1424,7 @@
   </method>
   <method>
     <name>Clas-GAssist-ADI</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>GAssist_ADI.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1448,7 +1448,7 @@
   </method>
   <method>
     <name>Clas-XCS</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>XCS.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1472,7 +1472,7 @@
   </method>
   <method>
     <name>Clas-UCS</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>UCS.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1496,7 +1496,7 @@
   </method>
 <method>
     <name>Clas-GIL</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>GIL.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1520,7 +1520,7 @@
   </method>
  <method>
     <name>Clas-DMEL</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>DMEL.jar</jar_file>
     <problem_type>classification</problem_type>
 	<input>
@@ -1544,7 +1544,7 @@
   </method>
     <method>
     <name>Clas-OIGA</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>OIGA.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1568,7 +1568,7 @@
   </method>
   <method>
     <name>Clas-ILGA</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>ILGA.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1592,7 +1592,7 @@
   </method>
   <method>
     <name>Clas-CORE</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>CORE.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1616,7 +1616,7 @@
   </method>
   <method>
     <name>Clas-COGIN</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>COGIN.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1640,7 +1640,7 @@
   </method>
   <method>
     <name>Clas-OCEC</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>OCEC.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1736,7 +1736,7 @@
   </method>        
   <method>
     <name>Clas-LogenPro</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>LogenPro.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1912,7 +1912,7 @@
   </method>
   <method>
     <name>Clas-PGIRLA</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>Corcoran.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1936,7 +1936,7 @@
   </method>
   <method>
     <name>Clas-Hider</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>Hider.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -1984,7 +1984,7 @@
   </method>
   <method>
     <name>Clas-SIA</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>SIA.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -2350,7 +2350,7 @@
   </method>
   <method>
     <name>Clas-Ant_Miner</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>Ant_Miner.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -2374,7 +2374,7 @@
     </method>
   <method>
     <name>Clas-Advanced_Ant_Miner</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>Advanced_Ant_Miner.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -2398,7 +2398,7 @@
     </method>
   <method>
     <name>Clas-Ant_Miner_Plus</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>Ant_Miner_Plus.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -2422,7 +2422,7 @@
     </method>
   <method>
     <name>Clas-Advanced_Ant_Miner_Plus</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>Advanced_Ant_Miner_Plus.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -2446,7 +2446,7 @@
     </method>
   <method>
     <name>Clas-PSO_ACO</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>PSO_ACO.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -2518,13 +2518,13 @@
   </method>
   <method>
     <name>Regr-Fuzzy-MOGUL-IRL</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>mogulIRL.jar</jar_file>
     <problem_type>regression</problem_type>
   </method>
   <method>
     <name>Regr-Fuzzy-MOGUL-IRLHC</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>mogulHC.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
@@ -2548,7 +2548,7 @@
   </method>
   <method>
     <name>Regr-Fuzzy-MOGUL-IRLSC</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>mogulSC.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
@@ -2572,13 +2572,13 @@
   </method>
   <method>
     <name>Regr-Fuzzy-SEFC</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>SEFC.jar</jar_file>
     <problem_type>regression</problem_type>
   </method>
   <method>
     <name>Regr-Fuzzy-P_FCS1</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>P_FCS1.jar</jar_file>
     <problem_type>regression</problem_type>
   </method>
@@ -2608,7 +2608,7 @@
   </method>
   <method>
     <name>Regr-Fuzzy-TSK-IRL</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>mogulTSK_IRL.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
@@ -2632,7 +2632,7 @@
   </method>
   <method>
     <name>Regr-Fuzzy-MOGUL-TSK</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>LEL_TSK.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
@@ -2656,7 +2656,7 @@
   </method>
    <method>
     <name>Regr-GFS-RB-MF</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>GFS_RB_MF.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
@@ -2896,7 +2896,7 @@
 </method>
 <method>
   <name>Clas-BioHEL</name>
-  <family>Rule Learning</family>
+  <family>Genetic Rule Learning</family>
   <jar_file>BioHEL.jar</jar_file>
   <problem_type>classification</problem_type>
   <input>
@@ -2920,7 +2920,7 @@
 </method>
  <method>
   <name>Clas-MPLCS</name>
-  <family>Rule Learning</family>
+  <family>Genetic Rule Learning</family>
   <jar_file>MPLCS.jar</jar_file>
   <problem_type>classification</problem_type>
   <input>
