@@ -2060,6 +2060,78 @@
       <multioutput>No</multioutput>
     </output>
   </method>
+    <method>
+    <name>Clas-Swap1</name>
+    <family>Rule Learning</family>
+    <jar_file>Swap1.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>No</continuous>
+      <integer>No</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>No</continuous>
+      <integer>No</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
+  <method>
+    <name>Clas-ART</name>
+    <family>Rule Learning</family>
+    <jar_file>ART.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>No</continuous>
+      <integer>No</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>No</continuous>
+      <integer>No</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
+  <method>
+    <name>Clas-DataSqueezer</name>
+    <family>Rule Learning</family>
+    <jar_file>DataSqueezer.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>No</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>No</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
   <method>
     <name>Clas-Riona</name>
     <family>Rule Learning</family>
@@ -2942,7 +3014,30 @@
       <multioutput>No</multioutput>
     </output>
   </method>
-  
+  <method>
+    <name>Clas-SLIQ</name>
+    <family>Decision Trees</family>
+    <jar_file>SLIQ.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>No</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>No</continuous>
+      <integer>No</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
   <method>	
     <name>Clas-FunctionalTrees</name>
     <family>Decision Trees</family>

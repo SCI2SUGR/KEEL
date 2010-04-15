@@ -729,10 +729,27 @@
         </jar>
 		
 		<jar
+          jarfile="${distMet}/ART.jar"
+          manifest="${src}/keel/Algorithms/Rule_learning/ART/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Rule_Learning/ART/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+        </jar>
+		
+		<jar
 		  jarfile="${distMet}/CN2.jar"
 		  manifest="${src}/keel/Algorithms/Rule_Learning/CN2/Manifest">
 		  <fileset dir="${bin}"
 			 includes="keel/Algorithms/Rule_Learning/CN2/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+		  jarfile="${distMet}/DataSqueezer.jar"
+		  manifest="${src}/keel/Algorithms/Rule_Learning/DataSqueezer/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Rule_Learning/DataSqueezer/**/*.class
                          org/core/**/*.class
                          keel/Dataset/**/*.class"/>
 		</jar>
@@ -841,6 +858,15 @@
           manifest="${src}/keel/Algorithms/Rule_Learning/SRI/Manifest">
           <fileset dir="${bin}"
              includes="keel/Algorithms/Rule_Learning/SRI/**/*.class
+			 org/core/**/*.class
+			 keel/Dataset/**/*.class"/>
+        </jar>
+		
+		<jar
+          jarfile="${distMet}/Swap1.jar"
+          manifest="${src}/keel/Algorithms/Rule_Learning/Swap1/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Rule_Learning/Swap1/**/*.class
 			 org/core/**/*.class
 			 keel/Dataset/**/*.class"/>
         </jar>
@@ -1131,6 +1157,14 @@
           <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
     </jar>
 	
+	<jar
+          jarfile="${distMet}/SLIQ.jar"
+          manifest="${src}/keel/Algorithms/Decision_Trees/SLIQ/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Decision_Trees/SLIQ/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+    </jar>
+		
 	<jar jarfile="${distMet}/Target.jar"
 			manifest="${src}/keel/Algorithms/Decision_Trees/Target/Manifest">
 			<fileset dir="${bin}"
