@@ -73,75 +73,11 @@ public class HelpFrame
         this.getClass().getResource("/help/intro.html")));
     top.add(hoja);
     temas.add(new HelpSheet("Introduction",
-                            this.getClass().getResource("/help/intro.html")));
-
-    
-/*
-    
-    //Data file formats
-    categ = new DefaultMutableTreeNode("Data file formats");
-    top.add(categ);
-    hoja = new DefaultMutableTreeNode(new HelpSheet("KEEL format",
-        this.getClass().getResource("/help/keel_format.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("KEEL format",
-                            this.getClass().getResource("/help/keel_format.html")));
-    hoja = new DefaultMutableTreeNode(new HelpSheet("CSV format",
-        this.getClass().getResource("/help/csv_format.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("CSV format",
-                            this.getClass().getResource("/help/csv_format.html")));
-    hoja = new DefaultMutableTreeNode(new HelpSheet("TXT and TSV format",
-        this.getClass().getResource("/help/txt_tsv_format.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("TXT and TSV format",
-                            this.getClass().getResource("/help/txt_tsv_format.html")));
-    
-    hoja = new DefaultMutableTreeNode(new HelpSheet("PRN format",
-            this.getClass().getResource("/help/prn_format.html")));
-        categ.add(hoja);
-        temas.add(new HelpSheet("PRN format",
-                                this.getClass().getResource("/help/prn_format.html")));
-    
-    hoja = new DefaultMutableTreeNode(new HelpSheet("C4.5 format",
-        this.getClass().getResource("/help/uci_format.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("C45 format",
-                            this.getClass().getResource("/help/uci_format.html")));
-    hoja = new DefaultMutableTreeNode(new HelpSheet("WEKA format",
-        this.getClass().getResource("/help/weka_format.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("WEKA format",
-                            this.getClass().getResource("/help/weka_format.html")));
-    hoja = new DefaultMutableTreeNode(new HelpSheet("Excel format",
-        this.getClass().getResource("/help/excel_format.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("Excel format",
-                            this.getClass().getResource("/help/excel_format.html")));
-    hoja = new DefaultMutableTreeNode(new HelpSheet("DIF format",
-    		this.getClass().getResource("/help/dif_format.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("DIF format",
-    		this.getClass().getResource("/help/dif_format.html")));
-    hoja = new DefaultMutableTreeNode(new HelpSheet("XML format",
-    		this.getClass().getResource("/help/xml_format.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("XML format",
-    		this.getClass().getResource("/help/xml_format.html")));
-    hoja = new DefaultMutableTreeNode(new HelpSheet("HTML format",
-    		this.getClass().getResource("/help/html_format.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("HTML format",
-    		this.getClass().getResource("/help/html_format.html")));
- */   
+                            this.getClass().getResource("/help/intro.html")));  
     //Data preparation
     categ = new DefaultMutableTreeNode("Data preparation");
     top.add(categ);
-    hoja = new DefaultMutableTreeNode(new HelpSheet("New",
-        this.getClass().getResource("/help/data_new.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("New",
-                            this.getClass().getResource("/help/data_new.html")));
+
     hoja = new DefaultMutableTreeNode(new HelpSheet("View",
         this.getClass().getResource("/help/data_view.html")));
     categ.add(hoja);
@@ -169,16 +105,6 @@ public class HelpFrame
     categ.add(hoja);
     temas.add(new HelpSheet("Edit",
                             this.getClass().getResource("/help/data_edit.html")));
-    hoja = new DefaultMutableTreeNode(new HelpSheet("Preparation",
-        this.getClass().getResource("/help/data_trans.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("Preparation",
-                            this.getClass().getResource("/help/data_trans.html")));
-   /* hoja = new DefaultMutableTreeNode(new HelpSheet("Download",
-        this.getClass().getResource("/help/data_download.html")));
-    categ.add(hoja);
-    temas.add(new HelpSheet("Download",
-                            this.getClass().getResource("/help/data_download.html")));*/
 
     // Experiment design
     //Introduction

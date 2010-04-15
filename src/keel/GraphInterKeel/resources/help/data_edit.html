@@ -5,7 +5,6 @@
 <title>Data preparation : Edit</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-
 </head>
 
 
@@ -14,64 +13,69 @@
 
 <div align="center"> 
 
-  <p><b>EDIT</b></p>
+  <p><b>EDIT DATA</b></p>
 
 </div>
 
   
 
-<p>This feature allows you to modify any existing DataSet in order to 
-
-  add new attributes, to correct some errors, etc.</p>
-
-<p>Once the DataSet file is loaded (always in KEEL's format) by pressing the 'Browser' button its content appears 
-
-  on the table. Using the table view facilitates navigation across the content 
-
-  of the file. Using the table, its cells and the buttons situated over it 
-
-  you can perform some operations:</p>
-
-<ul>
-
-  <li><i><b>Modify the cell content</b></i>: you only have to write the new value, and if it is 
-
-    valid, the cell content is modified. Otherwise an error dialog is shown.</li>
-
-  <li><i><b>Change the rank values</b></i>: only if the attribute selected is &quot;Integer&quot; 
-
-    or &quot;Real&quot; you can write the new rank values.</li>
-
-  <li><i><b>Change nominal values</b></i>: only if the attribute selected is nominal. Using 
-
-    the buttons '+' and '-' and the list, you can add or remove the values allowed for the 
-
-    attribute.</li>
-
-  <li><i><b>Change attribute 'function'</b></i>: you can modify the attribute 'function' by specifying if it is &quot;input&quot; 
-
-    or &quot;output&quot;.</li>
-
-  <li><i><b>Delete a row</b></i>: pressing the button <img src="imag/botonBorrarFila.jpg">, an instance is removed from DataSet.</li>
-
-  <li><i><b>Delete a colum</b></i>: pressing the button <img src="imag/botonBorrarCol.jpg">, the attribute in the column 
-
-    selected is removed from all the instances.</li>
-
-  <li><i><b>Insert a row</b></i>: you can add an instance to the DataSet. To do this, you only have to press 
-
-    the button <img src="imag/botonInsertarFila.jpg"> and a new row is added to the bottom of the table. The row has 
-
-    all its cells in blank.</li>
-
+<p>Edit data allows you to edit any existing KEEL format data  sets in order to add new attributes, to delete others, to correct some errors,  etc. </p>
+<p align="center"><img src="imag/edit/image001.jpg" alt="Process of Editing Data." width="378" height="213"><br>
+  <br>
+  Figure 1. Process  of Editing Data.</p>
+<p><br>
+  Figure 1  shows the main window of this option. First of all, you must select the path of  source data set (in KEEL format) that you want to edit (see Figure 2). </p>
+<p align="center"><br>
+  <img src="imag/edit/image002.jpg" alt="Load Dataset" width="480" height="30">  <br>
+  Figure 2. Load  Dataset to edit its content.</p>
+<p><br>
+  Once the  file is loaded, its content appears on the table. The  modifications could be carried out both in instances and in variables. In  following, the two options are shown.</p>
+<blockquote>
+  <p><br>
+    <strong>Option 1: Data  Edition</strong>. In this option new instances could be added or existing instances  could be deleted or modified (see Figure 3). </p>
+  <p align="center"><br>
+    <img src="imag/edit/image003.jpg" alt="Data Edition. " width="380" height="212"><br>
+    Figure 3. Data  Edition. </p>
+</blockquote>
+<ul type="disc">
+    <blockquote>
+      <p><br>
+        Using the table and the buttons situated over it you  can perform the next operations: </p>
+      <ul>
+        <li><strong><em>Modify the cell content</em></strong>: if you want to modify the cell content you have to click on       the cell that you want to change. Then, you only have to write the new       value, and if it is valid, the cell content is modified. Otherwise an       error dialog is shown. </li>
+        <li><strong><em>Delete an instance</em></strong>: if you want to delete an instance, you have to click       on any cell which corresponds with the instance (row) that you want to       delete. Then, a &ldquo;Delete       Instace&rdquo; button is activated. When you click on it, the full instance will       be deleted.</li>
+        <li><strong><em>Add a new instance: </em></strong>if you want to add  a new instance, you have to click the &ldquo;Add Instance&rdquo; button.  Then, a new instance is added, if a cell was selected, the new instance is added at  top of the instance where you had the cell selected. If no cell was selected,  a new instance is added at the bottom of the table. The new instance has empty values  and the different variables can be filled out clicking on the different cells.</li>
+      </ul>
+    </blockquote>
 </ul>
-
-<p align="center"><img src="imag/data_edit.jpg"></p>
-
-<p>When you have made all the changes, you can save them to a file pressing the 
-
-  &quot;Save&quot; button.<br></p>
-
+<blockquote>
+  <p><strong>Option 2: Variable Edition.</strong> In this option different modifications  on the variables can be carried out (see Figure 4). &nbsp;</p>
+</blockquote>
+<p align="center"><br>
+  <img src="imag/edit/image004.jpg" alt="Variable Edition" width="419" height="232"><br>
+  Figure 4. Variable  Edition. </p>
+<ul type="disc">
+    <blockquote>
+      <p><br>
+        Using the table and the buttons situated over it you  can perform the next operations: </p>
+      <ul>
+        <li><strong><em>Add new variables</em></strong>: if you want to   add new variables, the &ldquo;Add Variable&rdquo; button has to be clicked on. Then, a       new row is added to the bottom of the table and the different features can       be filled out.</li>
+        <li><strong><em>Add new variables</em></strong>: if you want to    delete a variable, first a variable has to be selected and then the &ldquo;Delete       Variable&rdquo; button has to be clicked. </li>
+        <li><strong><em>Change the rank values</em></strong>: if you want to change the rank values, a real or integer       variable has to be selected. If the variable selected is       &quot;Integer&quot; or &quot;Real&quot;, you can modify the rank values       and then click on  &ldquo;Change Range&rdquo; button to change the information. </li>
+        <li><strong><em>Change nominal values</em></strong>: if you want to change the nominal values, a nominal variable       has to be selected. If the variable selected is nominal, you can add or remove       the values allowed for that variable        using the list and &ldquo;Delete&rdquo; and &ldquo;Add&rdquo; button. </li>
+        <li><strong><em>Change attribute type</em></strong>: if you want to change the variable type, you have to click       on the cell that you want to change of &ldquo;Type&rdquo; column. Then, you can modify       the variable type by means of the list specifying any other type. </li>
+        <li><strong><em>Change attribute 'function'</em></strong>: if you want to change the attribute function, you have to click       on the cell that you want to change of &ldquo;Function&rdquo; column. Then, you can modify       the variable 'function' by means of the list specifying if it is       &quot;input&quot; or &quot;output&quot;. </li>
+      </ul>
+    </blockquote>
+</ul>
+<blockquote>
+  <p align="left">&nbsp;</p>
+  <p align="left">When you have made all the changes, you can save them  to a file pressing the &quot;Save&quot; button.</p>
+</blockquote>
+<p>&nbsp;</p>
+<div>
+  <div> </div>
+</div>
 </body>
 
 </html>

@@ -14,50 +14,44 @@
 
 <div align="center"> 
 
-  <p><b>PARTITION</b></p>
+  <p><b>DATA PARTITION</b></p>
 
 </div>
 
-  <p>All the DataSets created by the user or transformed from UCI 
-
-    files, are called &quot;Complete DataSets&quot; and cannot be used in 
-
-    experiments. First it's necessary to divide the whole file in pairs of 
-
-    training and test files. </p>
-
-  
-
-<p>To divide a file, you must select the &quot;Complete DataSet&quot; and indicate 
-
-  the root name of a directory that will contain all the files generated during the
-
-  partition process. The name of the files is given automatically and depends 
-
-  on the type of the partition selected. Viewing the name it is very easy to recognize 
-
-  the type of the partition applied.<br><br>
-
-    <div align="center"><img src="imag/data_partition.jpg"></div>
-
-<p>There are four partition types available:</p>
-
-<ul>
-
-  <li>K - Fold Cross Validation.</li>
-
-  <li>Partitions by defined percentages.</li>
-
-  <li>5x2 Cross Validation.</li>
-
-  <li>Stratification.</li>
-
-</ul>
-
-<p>Depending the one you select, differents parameters of partitions are 
-
-  shown. You can modify them to customize the partition process.<br></p>
-
+<p>Data partition allows  you to make partitions of any existing KEEL format data set. &nbsp;Figure 1 shows the main window of this option. </p>
+  <p align="center"><br>
+    <img src="imag/partition/image001.jpg" alt="Process of Making Partitions." width="284" height="161"><br>
+    Figure 1. Process  of Making Partitions.</p>
+  <p><br>
+    The  partition process consists of the next parts:</p>
+  <blockquote>
+    <p><br>
+      <strong>Step 1: Choose File.</strong> First of all, you must choose the  path of complete data set (in KEEL format) that you want to make partitions of  it (see Figure 2). </p>
+  </blockquote>
+  <p align="center"><br>
+    <img src="imag/partition/image002.jpg" alt="Process of Making Partitions." width="255" height="112">    <br>
+    Figure 2. Choose  data set to make partitions.</p>
+  <blockquote>
+    <p><br>
+      <strong>Step 2: Type of partition</strong>. Once the file is selected, you have to choose the type of partition. The  different types considered are:</p>
+    <ol>
+      <li><em>K-fold cross validation:</em> this partition allows you to  configure the number of fold to the partitions (if you want to configure the  different options, you have to click on &ldquo;Options&rdquo; button).</li>
+      <li><em>5x2 cross validation:</em> this partition does not allow you to  configure options.</li>
+      <li><em>Hold-Out:</em> this partition allows you to  configure the number of partitions and the percentages of training and test  sets (if you want to configure the different options, you have to click on  &ldquo;Options&rdquo; button). &nbsp; </li>
+    </ol>
+  </blockquote>
+  <p align="center"><img src="imag/partition/image003.jpg" alt="Type of Partition." width="442" height="65"><br>
+  Figure 3.  Type of Partition.</p>
+  <blockquote>
+    <p><br>
+      <strong>Step 3: Seed</strong>. To make the partitions of the data set, it is  necessary to specify the random generator see to perform the process of  division. </p>
+  </blockquote>
+  <p align="center"><img src="imag/partition/image004.jpg" alt="Select Seed." width="545" height="44"><br>
+    Figure 4.&nbsp; Select Seed.</p>
+  <blockquote>
+    <p><strong>Step 4: Make the partitions</strong>. Once that the previous steps have  been configured, the partitions will be carried out when you click on &ldquo;Divide&rdquo;  button. The files generated during the partition process are stored in the  directory specified in Step 1 and the name of these files is given  automatically and depends on the type of the partition selected.</p>
+  </blockquote>
+  <p>&nbsp;</p>
 </body>
 
 </html>
