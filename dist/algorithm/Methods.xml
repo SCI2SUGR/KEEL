@@ -1207,30 +1207,6 @@
     </output>
   </method>
   <method>
-  	<name>Regr-COR_GA</name>
-  	<family>Genetic Fuzzy Rule Learning</family>
-  	<jar_file>COR_GA.jar</jar_file>
-  	<problem_type>regression</problem_type>
-  	<input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </output>
-  </method>
-  <method>
   	<name>Regr-Thrift</name>
   	<family>Genetic Fuzzy Rule Learning</family>
   	<jar_file>Thrift.jar</jar_file>

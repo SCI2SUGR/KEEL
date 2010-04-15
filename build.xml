@@ -1821,69 +1821,7 @@
 					keel/Dataset/**/*.class"/>
     </jar>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-        
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-		
-		
-		
-		
 		
 	<!-- Fuzzy Rule Learning -->
 
@@ -1895,16 +1833,6 @@
                     keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Thrift/**/*.class
                     keel/Dataset/**/*.class"/>
         </jar>
-
-		<jar
-          jarfile="${distMet}/COR_GA.jar"
-          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/COR_GA/Manifest">
-          <fileset dir="${bin}"
-                    includes="org/core/**/*.class
-                    keel/Algorithms/Fuzzy_Rule_Learning/Genetic/COR_GA/**/*.class
-                    keel/Dataset/**/*.class"/>
-        </jar>
-
 
 		<jar
           jarfile="${distMet}/Chi_RW.jar"
