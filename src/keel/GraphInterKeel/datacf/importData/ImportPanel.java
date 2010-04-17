@@ -1075,8 +1075,8 @@ private void nextPreviewButtonActionPerformed(java.awt.event.ActionEvent evt) {/
                     testOutputFileName[i] = outputPath + rootName + "-" + partition + "-" + (i + 1) + "tst.dat";
 
                 } else {
-                    trainingOutputFileName[i] = outputPath + (new File((String) trainingModel.getElementAt(i))).getName().replaceAll("." + ext, ".dat");
-                    testOutputFileName[i] = outputPath + (new File((String) testingModel.getElementAt(i))).getName().replaceAll("." + ext, ".dat");
+                    trainingOutputFileName[i] = outputPath + (new File((String) trainingModel.getElementAt(i))).getName().replaceAll("." + ext, "tra.dat");
+                    testOutputFileName[i] = outputPath + (new File((String) testingModel.getElementAt(i))).getName().replaceAll("." + ext, "tst.dat");
                 }
             }
 
@@ -2984,8 +2984,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         while (it.hasNext()) {
             Element element = (Element) it.next();
             if (element.getChild("nameAbr").getValue().equals(lowerCaseName)) {
-                do {
-                    rootName = (String) JOptionPane.showInputDialog(
+                rootName = (String) JOptionPane.showInputDialog(
                             parent,
                             "The name of the dataset is also included in the experiment section.\n" + "Please insert another name:",
                             "Existing name",
@@ -2993,7 +2992,9 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                             null,
                             null,
                             rootName);
-                } while ((rootName == null) || (rootName.length() == 0));
+                if( ((rootName == null) || (rootName.length() == 0))){
+                    return null;
+                }
                 it = data.getRootElement().getChildren().iterator();
             }
         }
@@ -3233,7 +3234,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                     options[1]);
                 if (n == 1) {
 
-                    do {
+                    
                         rootName = (String) JOptionPane.showInputDialog(
                                 parent,
                                 "The name of the dataset is also included in the experiment section.\n" + "Please insert another name:",
@@ -3242,7 +3243,9 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                                 null,
                                 null,
                                 rootName);
-                    } while ((rootName == null) || (rootName.length() == 0));
+                    if( ((rootName == null) || (rootName.length() == 0))){
+                        return null;
+                    }
                     it = data.getRootElement().getChildren().iterator();
                 }
                 else{

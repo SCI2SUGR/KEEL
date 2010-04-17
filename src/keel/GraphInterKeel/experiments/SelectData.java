@@ -439,7 +439,8 @@ public class SelectData extends JPanel implements Scrollable {
     public void remove_actionPerformed(ActionEvent e) {
         boolean anySelected = false;
 
-        for (int i = 0; i < this.actualList.size(); i++) {
+        try{
+        for (int i = this.actualList.size()-1; i > 0; i--) {
             if (((JCheckBox) checks.elementAt(i)).isSelected()) {
                 for (int j = 0; j < datasetList.size(); j++) {
                     if (datasetList.elementAt(j).equals(actualList.elementAt(i)) && ((DatasetXML) datasetXML.elementAt(j)).user == true) {
@@ -450,16 +451,18 @@ public class SelectData extends JPanel implements Scrollable {
                         String nameData=((DatasetXML)datasetXML.elementAt(j)).nameAbr;
                         FileUtils.rmdir("./data/"+nameData);
                         datasetList.remove(j);
-                        datasetXML.remove(j);
-                        this.reload(this.cadParent);
-                        this.reloadPreviousActiveDataSets();
+                        datasetXML.remove(j);   
                         anySelected = true;
-                        i = -1;
-                        break;
                     }
                 }
             }
         }
+        }catch(Exception as){
+
+        }
+        this.reload(this.cadParent);
+        this.reloadPreviousActiveDataSets();
+
         if (anySelected == false) {
             JOptionPane.showMessageDialog(null, "Check one or more user datasets", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
