@@ -252,7 +252,7 @@ public class Poblacion {
   private void mutate() {
     for (int i = 0; i < this.nMut; i++) {
       //Selecciono un arbol
-      int tipo = Randomize.RandintClosed(0, 4);
+      int tipo = Randomize.RandintClosed(0, 3);
       Tree hijo = bosque.get(seleccion( -1)).copia(null);
       hijo.n_e = true;
       if (tipo == 0) { //Split set mutation

@@ -42,7 +42,7 @@ public class Nodo {
 
   public void nuevo(double prob1,double prob2) {
     //primero elijo la variable:
-    int atributo = Randomize.RandintClosed(0, train.getnInputs());
+    int atributo = Randomize.RandintClosed(0, train.getnInputs()-1);
     nominal = train.esNominal(atributo);
     splitSet(atributo,prob1,prob2);
   }
@@ -51,14 +51,14 @@ public class Nodo {
     if (nominal) { //el atributo es cualitativo
       //hago una división en dos conjuntos (aunque solo necesito guardar uno)
       int totalNominales = train.totalNominales(atributo);
-      int nominalesEscogidos = Randomize.RandintClosed(1, totalNominales + 1);
+      int nominalesEscogidos = Randomize.RandintClosed(1, totalNominales);
       valoresNom = new String[nominalesEscogidos];
       int[] noSeleccionados = new int[totalNominales];
       for (int i = 0; i < totalNominales; i++) {
         noSeleccionados[i] = i;
       }
       for (int i = 0; i < valoresNom.length; i++) {
-        int seleccion = Randomize.RandintClosed(0, totalNominales);
+        int seleccion = Randomize.RandintClosed(0, totalNominales-1);
         double aux = 1.0 * noSeleccionados[seleccion];
         valoresNom[i] = train.valorNominal(atributo, aux);
         noSeleccionados[seleccion] = noSeleccionados[totalNominales - 1];
@@ -71,7 +71,7 @@ public class Nodo {
     else { //es cuantitativo
       //Hay dos opciones: a) At <= valor, b) Combinacion lineal: b.1) w1·X1 + w2·X2 <= w1·s1+w2·s2, b.2) 3 atributos
       if (Randomize.Rand() <= prob1) { //At <= valor
-        int ejemplo = Randomize.RandintClosed(0, train.size());
+        int ejemplo = Randomize.RandintClosed(0, train.size()-1);
         this.valor = train.getExample(ejemplo)[atributo];
         numAtributos = 1;
         atributos = new int[1];
@@ -86,14 +86,14 @@ public class Nodo {
           atributos[0] = atributo;
           int att2;
           do {
-            att2 = Randomize.RandintClosed(0, train.getnInputs());
+            att2 = Randomize.RandintClosed(0, train.getnInputs()-1);
             //System.err.println("Mira -> "+att2+"/"+train.getnInputs());
           }
           while ( (att2 == atributo) || (train.esNominal(att2)));
           atributos[1] = att2;
-          int ejemplo = Randomize.RandintClosed(0, train.size());
+          int ejemplo = Randomize.RandintClosed(0, train.size()-1);
           double valor1 = train.getExample(ejemplo)[atributo];
-          ejemplo = Randomize.RandintClosed(0, train.size());
+          ejemplo = Randomize.RandintClosed(0, train.size()-1);
           double valor2 = train.getExample(ejemplo)[att2];
           pesos = new double[2];
           asignaPesos(1.0);
@@ -105,23 +105,23 @@ public class Nodo {
           atributos[0] = atributo;
           int att2, att3;
           do {
-            att2 = Randomize.RandintClosed(0, train.getnInputs());
+            att2 = Randomize.RandintClosed(0, train.getnInputs()-1);
             //System.err.println("Mira -> "+att2+"/"+train.getnInputs());
           }
           while ( (att2 == atributo) || (train.esNominal(att2)));
           atributos[1] = att2;
           do {
-            att3 = Randomize.RandintClosed(0, train.getnInputs());
+            att3 = Randomize.RandintClosed(0, train.getnInputs()-1);
             //System.err.println("Mira -> "+att2+"/"+train.getnInputs());
           }
           while ( (att3 == atributo) || (att3 == att2) ||
                  (train.esNominal(att3)));
           atributos[2] = att3;
-          int ejemplo = Randomize.RandintClosed(0, train.size());
+          int ejemplo = Randomize.RandintClosed(0, train.size()-1);
           double valor1 = train.getExample(ejemplo)[atributo];
-          ejemplo = Randomize.RandintClosed(0, train.size());
+          ejemplo = Randomize.RandintClosed(0, train.size()-1);
           double valor2 = train.getExample(ejemplo)[att2];
-          ejemplo = Randomize.RandintClosed(0, train.size());
+          ejemplo = Randomize.RandintClosed(0, train.size()-1);
           double valor3 = train.getExample(ejemplo)[att3];
           pesos = new double[3];
           asignaPesos(1.0);

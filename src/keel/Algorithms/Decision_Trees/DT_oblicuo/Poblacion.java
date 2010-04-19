@@ -122,9 +122,9 @@ public class Poblacion {
     int aleatorio1, aleatorio2, i, inicio;
     inicio = 0;
     for (i = inicio; i < cromosomas.size(); i++) { //Generamos la otra mitad por los operadores geneticos, Cojo numIndividuos nuevos individuos...
-      aleatorio1 = Randomize.RandintClosed(0, cromosomas.size()); //Elijo uno aleatoriamente
+      aleatorio1 = Randomize.RandintClosed(0, cromosomas.size()-1); //Elijo uno aleatoriamente
       do {
-        aleatorio2 = Randomize.RandintClosed(0, cromosomas.size()); //Elijo otro aleatoriamente
+        aleatorio2 = Randomize.RandintClosed(0, cromosomas.size()-1); //Elijo otro aleatoriamente
       }
       while (aleatorio1 == aleatorio2); //pero que no coincida con el anterior
       torneo(i, aleatorio1, aleatorio2); //Inserto en la posicion 'i' el mejor de los 2
@@ -135,7 +135,7 @@ public class Poblacion {
     for (int i = 0; i < selectos.length / 2; i++) {
       Individuo padre = cromosomas.get(selectos[i]);
       Individuo madre = cromosomas.get(selectos[i + 1]);
-      int puntoCorte = Randomize.RandintClosed(1, padre.size() - 1);
+      int puntoCorte = Randomize.RandintClosed(1, padre.size() - 2);
       Individuo hijo1 = new Individuo(padre, madre, puntoCorte);
       Individuo hijo2 = new Individuo(madre, padre, puntoCorte);
       hijos.add(hijo1);
@@ -164,7 +164,7 @@ public class Poblacion {
     Individuo mejor = cromosomas.get(0).clone();
     cromosomas.clear();
     cromosomas.add(mejor);
-    int posicion = Randomize.RandintClosed(0, hijos.size());
+    int posicion = Randomize.RandintClosed(0, hijos.size()-1);
     hijos.remove(posicion);
     for (int i = 0; i < hijos.size(); i++) {
       Individuo nuevo = hijos.get(i).clone();

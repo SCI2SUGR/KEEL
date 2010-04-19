@@ -130,9 +130,11 @@ public class Nodo {
     pesos[atributo] = -1;
     valor = mi_valor;
     calculaImpureza(); //esto solo me vale para recalcular n_ejemplos
-    System.out.println("Escogido atributo[" + atributo + "] y valor[" + valor +
+    /*
+     System.out.println("Escogido atributo[" + atributo + "] y valor[" + valor +
                        "]: " + impureza + " (" + n_ejemplos_i + "/" +
                        n_ejemplos_d + ")");
+    */
     //System.out.println("FIN -> "+impureza+" ("+n_ejemplos_i+"/"+n_ejemplos_d+")");
     //System.exit(0);
   }

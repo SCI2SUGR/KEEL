@@ -170,7 +170,7 @@ public class Tree
   public int elijeNodo() {
     nodos = 0;
     this.calculaNodos();
-    int nodo = Randomize.RandintClosed(0, nodos - 1);
+    int nodo = Randomize.RandintClosed(0, nodos - 2);
     return nodo;
   }
 
