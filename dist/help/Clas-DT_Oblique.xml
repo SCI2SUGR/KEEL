@@ -1,0 +1,129 @@
+<method>
+
+	<name>Oblique Decision Tree</name>
+
+	<reference>  
+<ref>E. Cantu-Paz and C. Kamath. Inducing oblique decision trees with evolutionary algorithms. 
+IEEE Transactions on Evolutionary Computation 7:1 (2003) 54-68</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Hybrid Decision Tree/GA</type>
+
+		<objective>To obtain a Fuzzy Rule Base that better suits the training data</objective>
+
+		<howWork>It extends the classical OC1 method (a greedy optimizer for oblique-type decision trees) 
+		to find oblique partitions by means of a standard generational GA.
+
+		Each chromosome encodes the coefficient of the linear combination that defines the oblique-hyperplane. To initialise
+		the population, it first computes the best axis-parallel hyperplane using an impurity measure defined below, and it copies
+		it to 10% of the initial population. The remainder of the population is initialised randomly with coefficients a_i in 
+		[-200,200]. The fitness value is computed as the impurity of a split at each tree node using the twoing rule, 
+		which is based on the balance of the number of examples on the left and right of the split.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of Total Generations for the GA.</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-DT_Oblique
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-DT_Oblique folder the classification results for the training and test sets:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.0 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+1.0 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.0 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+1.0 
+Global N/C:
+0.0 
+
+We can see also the Tree Rule generated in the file "result0e0.txt" in the folder experiment/results/Clas-DT_Oblique.iris/:
+
+if ( -1.0*petalLength + 1.9 &gt;= 0  ) then{
+	class = Iris-setosa (45) 
+}
+else{ 
+	if ( -1.0*petalWidth + 1.7 &gt;= 0  ) then{
+		if ( 41.80454198313049*sepalLength + 146.53757995612398*sepalWidth + -185.97193611459153*petalLength + 100.71137042267048*petalWidth + 88.38592746490286 &gt;= 0  ) then{
+			class = Iris-versicolor (41) 
+		}
+		else{ 
+			if ( -1.0*sepalWidth + 2.7 &gt;= 0  ) then{
+				if ( -1.0*sepalLength + 6.1 &gt;= 0  ) then{
+					if ( -1.0*sepalWidth + 2.6 &gt;= 0  ) then{
+						class = Iris-virginica (2) 
+					}
+					else{ 
+						class = Iris-versicolor (1) 
+					}
+				}
+				else{ 
+					class = Iris-versicolor (2) 
+				}
+			}
+			else{ 
+				class = Iris-virginica (2) 
+			}
+		}
+	}
+	else{ 
+		if ( -1.0*petalLength + 4.8 &gt;= 0  ) then{
+			if ( -1.0*sepalLength + 5.9 &gt;= 0  ) then{
+				class = Iris-versicolor (1) 
+			}
+			else{ 
+				class = Iris-virginica (1) 
+			}
+		}
+		else{ 
+			class = Iris-virginica (40) 
+		}
+	}
+}
+}
+
+
+Accuracy in training: 1.0
+Accuracy in test: 1.0 
+
+</example>
+
+</method>

@@ -1,0 +1,109 @@
+<method>
+
+	<name>Hybrid Decision Tree - Genetic Algorithm</name>
+
+	<reference>  
+<ref>D. R. Carvalho and A. A. Freitas. A hybrid decision tree/genetic algorithm method for data mining. 
+Information Sciences 163:1-3 (2004) 13-35.</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Hybrid Decision Tree/GA</type>
+
+		<objective>To obtain a Rule Base that better suits the training data by means of a GA search</objective>
+
+		<howWork>The Hybrid Decision Tree - Genetic Algorithm (DT-GA) method discovers rules in two training phases.
+In the first phase, it runs C4.5 with the whole training set and transforms the resulting tree into an "IF-THEN" set
+of rules. The examples covered by each rule are considered either as a small disjunct or as a large disjunct, depending
+on whether their number is smaller than or equal to a given threshold. The second phase consists of using a GA with the
+joint of the instances in the small disjuncts as a "second training set". To predict the output class of an example,
+it is pushed down the decision tree until it reaches a leaf node, as usual. If the leaf node is a large disjunct, the
+example is assigned the class predicted by that leaf node. Otherwise, the example is assigned the class of one of the
+small-disjunct rules discovered by the GA.
+
+The rules from the GA are randomly initialised selecting a value for each attribute from the examples of the "second
+training set". The chromosome representation encodes the conditions for all attributes (nominal and numerical),
+together with a bit that specifies the "don't care" condition. The rule consequent is not encoded into the genome,
+but dynamically chosen as the most frequent class in the set of examples covered by that rule's antecedent. The fitness
+function is given by a quadratic version of the geometric mean of the true rates.  It also uses a specific rule pruning
+operator that transforms a condition into a "don't care" based on the accuracy rate associated with each attribute.
+The stopping criterion is given by a threshold value of the remaining examples in the "second training set".
+
+		</howWork>
+
+		<parameterSpec>  
+			<param>Confidence (for C4.5)</param>
+			<param>instancesPerLeaf (for C4.5)</param>
+			<param>Genetic Algorithm Approach: LARGE or SMALL</param>
+			<param>Threshold S to consider a Small Disjunt</param>
+			<param>Number of Total Generations for the GA</param>
+			<param>Number of chromosomes in the population</param>
+			<param>Crossover Probability</param>
+			<param>Mutation Probability</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-DT_GA
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-DT_GA folder the classification results for the training and test sets:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.13333333333333333 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.8666666666666667 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9777777777777777 N/C=0.0 
+Global Classification Error + N/C:
+0.022222222222222223 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9777777777777777 
+Global N/C:
+0.0 
+
+We can see also the Rule Base generated in the file "result0e0.txt" in the folder experiment/results/Clas-DT_GA.iris/:
+
+Number of Rules: 4
+Rule[1]: IF  petalWidth &lt;= 0.5  THEN Class = Iris-setosa (45/45)
+Rule[2]: IF  petalWidth &gt; 0.5 AND  petalWidth &lt;= 1.7 AND  petalLength &lt;= 5.0  THEN Class = Iris-versicolor (43/44)
+Rule[3]: IF  petalWidth &gt; 0.5 AND  petalWidth &lt;= 1.7 AND  petalLength &gt; 5.0  THEN Class = Iris-virginica (3/4)
+Rule[4]: IF  petalWidth &gt; 0.5 AND  petalWidth &gt; 1.7  THEN Class = Iris-virginica (41/42)
+
+Number of Rules: 0
+
+Accuracy in training: 0.9777777777777777
+Accuracy in test: 0.8666666666666667
+
+</example>
+
+</method>

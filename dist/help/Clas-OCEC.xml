@@ -1,0 +1,88 @@
+<method>
+
+	<name>Organizational Co-Evolutionary algorithm for Classification</name>
+
+	<reference>  
+<ref>L. Jiao, J. Liu, and W. Zhong. An organizational coevolutionary algorithm for classification. IEEE Transactions on Evolutionary Computation 10:1 (2006) 67-80.</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Genetics-Based Rule Based System</type>
+
+		<objective>To obtain a Rule Base that better suits the training data by means of a GA search</objective>
+
+		<howWork>Organizational Co-Evolutionary algorithm for Classification (OCEC) creates groups of similar examples
+with the same class label and then builds a rule for each group discovered. Thus the chromosome has a variable length
+and it stores the position of the example in the training set. At classification time, the most general rule that
+covers the example defines its class.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of Total Generations</param>
+			<param>Number of migrating/exchanging members</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>No</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-OCEC
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-Target folder the classification results for the training and test sets:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.13333333333333333 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.8666666666666667 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9407407407407408 N/C=0.0 
+Global Classification Error + N/C:
+0.05925925925925926 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9407407407407408 
+Global N/C:
+0.0 
+
+
+We can see also the Rule Base generated in the file "result0e0.txt" in the folder experiment/results/Clas-OCEC.iris/:
+
+Number of Rules: 7
+Rule(1):  IF petalLength = 0 AND petalWidth = 0 THEN Class =  Iris-setosa (RS: 1.0)
+Rule(2):  IF petalWidth = 2 THEN Class =  Iris-versicolor (RS: 0.7555555555555555)
+Rule(3):  IF petalLength = 2 THEN Class =  Iris-versicolor (RS: 0.6888888888888889)
+Rule(4):  IF petalWidth = 3 THEN Class =  Iris-virginica (RS: 0.4888888888888889)
+Rule(5):  IF petalWidth = 4 THEN Class =  Iris-virginica (RS: 0.4)
+Rule(6):  IF petalLength = 4 THEN Class =  Iris-virginica (RS: 0.3333333333333333)
+Rule(7):  IF petalWidth = 1 THEN Class =  Iris-versicolor (RS: 0.15555555555555556) 
+
+</example>
+
+</method>
