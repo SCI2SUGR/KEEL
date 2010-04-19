@@ -14,8 +14,22 @@ public final class Parameters {
 
 	public static double confidenceThreshold;
 	public static double inconsistencyThreshold;
+	public static double alpha;
+	public static double beta;
 	public static int numIntervals;
+	public static boolean amevaR;
+	public static String numIntrvls;
+	public static int Neighborhood;    
+	public static int WindowsSize;
+	public static String DistanceFunction;
+	public static int minIntervals;
+	public static String mapType;
+	public static int minSupport;
+	public static double mergedThreshold;
+	public static double scalingFactor;
+	public static boolean useDiscrete;
 	public static int frequencySize;
+	public static boolean setConfig;
 
 	public static int numClasses;
 	public static int numAttributes;
