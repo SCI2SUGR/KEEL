@@ -14,8 +14,13 @@ import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 import keel.Dataset.HeaderFormatException;
+
+import org.core.Files;
+
+
 
 /**
  *
@@ -33,6 +38,14 @@ public class swap1{
     private ArrayList<Attr_pos> atributos_entrada; //Lista con todos los atributos_entrada nominales de entrada
     private ArrayList<String> atributos_salida; //Lista con todos los atributos_entrada nominales de salida
 
+    private String trainPrediction[];
+    private String testPrediction[];
+    private String trainReal[];
+    private String testReal[];
+    private String relation;
+    protected Attribute[] inputs;
+	protected Attribute output;
+    
     BufferedWriter bw_output;
 
     /**
@@ -477,7 +490,7 @@ public class swap1{
 	    tstSet = new rule();
 	    tstSet.readSet(testName, false);
 
-	    File archivo = new File (Parameters.testOutputFile);
+	    File archivo = new File (Parameters.logOutputFile);
 	    FileWriter fw;
 
 	    try {
@@ -502,12 +515,21 @@ public class swap1{
      */
     public void train(){
 
+    	StringTokenizer  tokens;
 	boolean changed;
 	rule b = null;
 	String curr_class;
 
 	curr_class=atributos_salida.remove(0);
 
+	//Information for KEEL output files
+	tokens = new StringTokenizer (S.getHeader()," \n\r");
+    tokens.nextToken();
+    relation = tokens.nextToken();
+    
+    inputs = Attributes.getInputAttributes();
+    output = Attributes.getOutputAttribute(0);
+    
         do{
 	    int ins_counter=0;
 
@@ -554,6 +576,160 @@ public class swap1{
 
     }
 
+	/**
+	 * Classifies the training set
+	 */
+	public void classifyTrainSet(){
+				
+		trainPrediction=new String[S.getNumInstances()];
+		trainReal=new String[S.getNumInstances()];
+		
+		for(int i=0;i<S.getNumInstances();i++){
+			
+			trainPrediction[i]=classify(S.getInstance(i));
+			trainReal[i]=(S.getInstance(i)).getOutputNominalValues(0);
+		}
+
+	}
+	
+	/**
+	 * Classifies the test set
+	 */
+	public void classifyTestSet(){
+
+		testPrediction=new String[tstSet.getNumInstances()];
+		testReal=new String[tstSet.getNumInstances()];
+		
+		for(int i=0;i<tstSet.getNumInstances();i++){
+			
+			testPrediction[i]=classify(tstSet.getInstance(i));
+			testReal[i]=(tstSet.getInstance(i)).getOutputNominalValues(0);
+		}
+
+	}
+	
+	public String classify(Instance ins){
+
+    	boolean covered = false;
+    	String val="Unclassified";
+    	
+    	for(int j=1;j<R.size() && !covered;j++){
+
+    		boolean correct = true;
+    		rule rR = R.get(j);
+
+    		for(int k=0;k<rR.getNumInstances() && correct ;k++){
+
+    			Instance rR_i = rR.getInstance(k);
+
+    			if(!ins.getInputNominalValues(rR.posInstance(k)).equals(rR_i.getInputNominalValues(0))){
+    				correct = false;
+    			}
+    		}
+
+    		if(correct){
+    			covered = true;
+
+    			val= rR.get_clase();
+
+    			
+
+
+    		}
+    	}
+    	
+    	return val;
+	}
+	
+	/**
+	 * Reports the results obtained
+	 */
+	public void writeResults(){
+		
+		writeOutput(Parameters.trainOutputFile, trainReal, trainPrediction);
+		writeOutput(Parameters.testOutputFile, testReal, testPrediction);
+
+	}
+	
+	/**
+	 * Prints KEEL standard output files.
+	 * 
+	 * @param filename Name of output file
+	 * @param realClass Real output of instances
+	 * @param prediction Predicted output for instances
+	 */
+	protected void writeOutput(String filename, String [] realClass, String [] prediction) {
+	
+		String text = "";
+		
+		/*Printing input attributes*/
+		text += "@relation "+ relation +"\n";
+
+		for (int i=0; i<inputs.length; i++) {
+			
+			text += "@attribute "+ inputs[i].getName()+" ";
+			
+		    if (inputs[i].getType() == Attribute.NOMINAL) {
+		    	text += "{";
+		        for (int j=0; j<inputs[i].getNominalValuesList().size(); j++) {
+		        	text += (String)inputs[i].getNominalValuesList().elementAt(j);
+		        	if (j < inputs[i].getNominalValuesList().size() -1) {
+		        		text += ", ";
+		        	}
+		        }
+		        text += "}\n";
+		    } else {
+		    	if (inputs[i].getType() == Attribute.INTEGER) {
+		    		text += "integer";
+		        } else {
+		        	text += "real";
+		        }
+		        text += " ["+String.valueOf(inputs[i].getMinAttribute()) + ", " +  String.valueOf(inputs[i].getMaxAttribute())+"]\n";
+		    }
+		}
+
+		/*Printing output attribute*/
+		text += "@attribute "+ output.getName()+" ";
+
+		if (output.getType() == Attribute.NOMINAL) {
+			text += "{";
+			
+			for (int j=0; j<output.getNominalValuesList().size(); j++) {
+				text += (String)output.getNominalValuesList().elementAt(j);
+		        if (j < output.getNominalValuesList().size() -1) {
+		        	text += ", ";
+		        }
+			}		
+			text += "}\n";	    
+		} else {
+		    text += "integer ["+String.valueOf(output.getMinAttribute()) + ", " + String.valueOf(output.getMaxAttribute())+"]\n";
+		}
+
+		/*Printing data*/
+		text += "@data\n";
+
+		Files.writeFile(filename, text);
+			
+		text = "";
+			
+		for (int i=0; i<realClass.length; i++) {
+			            
+			text += "" + realClass[i] + " ";
+			text += "" + prediction[i] + " ";
+		    
+			text += "\n"; 
+			if((i%10)==9){
+			    Files.addToFile(filename, text);
+			    text = ""; 
+			}			
+			
+		}
+		
+		if((realClass.length%10)!=0){
+			Files.addToFile(filename, text);
+		}
+	}
+		
     /**
      * Pruebas
      */
@@ -561,6 +737,12 @@ public class swap1{
 
 	int acertados=0;
 
+		// Perform classification of training and test sets in KEEL Format
+		classifyTrainSet();
+		classifyTestSet();
+		writeResults();
+	
+	
 	try{
 	    bw_output.write("\n\n");
 	    bw_output.write("---------------------------------------------\n");
@@ -568,51 +750,49 @@ public class swap1{
 	    bw_output.write("---------------------------------------------\n");
 
 	    for(int i=0;i<tstSet.getNumInstances();i++){
-		Instance tst_i = tstSet.getInstance(i);
+	    	
+	    	Instance tst_i = tstSet.getInstance(i);
 
-		boolean covered = false;
+	    	boolean covered = false;
 
-		for(int j=1;j<R.size() && !covered;j++){
+	    	for(int j=1;j<R.size() && !covered;j++){
 
-		    boolean correct = true;
-		    rule rR = R.get(j);
+	    		boolean correct = true;
+	    		rule rR = R.get(j);
 
-		    for(int k=0;k<rR.getNumInstances() && correct ;k++){
+	    		for(int k=0;k<rR.getNumInstances() && correct ;k++){
 
-			Instance rR_i = rR.getInstance(k);
+	    			Instance rR_i = rR.getInstance(k);
 
-			if(!tst_i.getInputNominalValues(rR.posInstance(k)).equals(rR_i.getInputNominalValues(0))){
-				correct = false;
-			}
-		    }
+	    			if(!tst_i.getInputNominalValues(rR.posInstance(k)).equals(rR_i.getInputNominalValues(0))){
+	    				correct = false;
+	    			}
+	    		}
 
-		    if(correct){
-			covered = true;
+	    		if(correct){
+	    			covered = true;
 
-    //		    try{
-			for(int k=0;k<Attributes.getInputNumAttributes();k++){
-			    System.out.print(tst_i.getInputNominalValues(k)+" ");
-			    bw_output.write(tst_i.getInputNominalValues(k)+" ");
-			}
+	    			for(int k=0;k<Attributes.getInputNumAttributes();k++){
+	    				System.out.print(tst_i.getInputNominalValues(k)+" ");
+	    				bw_output.write(tst_i.getInputNominalValues(k)+" ");
+	    			}
 
-			System.out.print(" :");
-			bw_output.write(" :");
+	    			System.out.print(" :");
+	    			bw_output.write(" :");
 
-			String swap_res = rR.get_clase(), real_res = tst_i.getOutputNominalValues(0);
+	    			String swap_res = rR.get_clase(), real_res = tst_i.getOutputNominalValues(0);
 
-			System.out.println(" Segun SWAP-1 es: "+swap_res+" y en verdad es: "+real_res);
-			bw_output.write(" Segun SWAP-1 es: "+swap_res+" y en verdad es: "+real_res+"\n");
+	    			System.out.println(" Segun SWAP-1 es: "+swap_res+" y en verdad es: "+real_res);
+	    			bw_output.write(" Segun SWAP-1 es: "+swap_res+" y en verdad es: "+real_res+"\n");
 
-			if(real_res.equalsIgnoreCase(swap_res))
-			    acertados++;
-    //		    }
-    //		    catch(IOException ex){
-    //			System.out.println("Error en la escritora del ficehro de salida");
-    //		    }
+	    			if(real_res.equalsIgnoreCase(swap_res)){
+	    				acertados++;
+	    			}
 
-		    }
 
-		}
+	    		}
+
+	    	}
 	    }
 
 	    double total_ins = tstSet.getNumInstances();

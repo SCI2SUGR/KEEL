@@ -56,9 +56,18 @@ public class DataSqueezer extends Algorithm {
          */
         public boolean check(Itemset i) {
             for(int index = 0; index < attribute.size(); index++) {
-                if(i.isMissing(attribute.get(index)) ||
-                   (int )i.getValue(attribute.get(index)) != value.get(index))
-                    return false;
+            	if(i.isMissing(attribute.get(index)) ||
+                (int )i.getValue(attribute.get(index)) != value.get(index))
+                 return false;
+            }
+            return true;
+        }
+
+        public boolean check2(Itemset i) {
+            for(int index = 0; index < attribute.size(); index++) {
+            	if(!i.isMissing(attribute.get(index)) &&
+                (int )i.getValue(attribute.get(index)) != value.get(index))
+                 return false;
             }
             return true;
         }
@@ -130,6 +139,9 @@ public class DataSqueezer extends Algorithm {
     /** Number of items not classified by the algorithm */
 	int notClassified;
 	int testNotClassified;
+	
+	double pruneT;
+	double generalizationT;
 
     /** Constructor.
 	 * 
@@ -161,42 +173,6 @@ public class DataSqueezer extends Algorithm {
     		if (!salir){
 	    		trainDataset = new Dataset( trainFileName, false  );    		    	
 	    		testDataset = new Dataset( testFileName, false  );
-
-             /*
-              *  Francisco Charte - 21-ene-2010
-              *
-              * Opcionalmente podría realizarse un preprocesamiento para evitar aquellas
-              * muestras en las que todos los atributos, a excepción de la clase, son nulos.
-              * Con este trabajo se acelera el funcionamiento del algoritmo, al no tener
-              * que tratar esas muestras que son las más difíciles de clasificar
-              *
-
-                for(int i = 0; i < trainDataset.numItemsets(); i++) {
-                    int count = 0;
-
-                    for(int j = 0; j < trainDataset.numAttributes(); j++)
-                        if(trainDataset.itemset(i).isMissing(j))
-                            count++; 
-
-                    if(count >= trainDataset.numAttributes() - 2) { // Descontar el atributo de clase y uno más, es decir, que no todos los valores sean nulos
-                        trainDataset.delete(i);
-                        i--;
-                    }
-                }
-                
-                for(int i = 0; i < testDataset.numItemsets(); i++) {
-                    int count = 0;
-
-                    for(int j = 0; j < testDataset.numAttributes(); j++)
-                        if(testDataset.itemset(i).isMissing(j))
-                            count++; 
-
-                    if(count >= testDataset.numAttributes() - 2) { // Descontar el atributo de clase y uno más, es decir, que no todos los valores sean nulos
-                        testDataset.delete(i);
-                        i--;
-                    }
-                }
-                */
 
                 notClassified = 0;
 		        testNotClassified = 0;
@@ -285,7 +261,22 @@ public class DataSqueezer extends Algorithm {
 				options.nextToken();
 				
 				resultFileName = options.sval;
+
 				
+				options.nextToken();
+				options.nextToken();
+				options.nextToken();
+				options.nextToken();
+				options.nextToken();
+				options.nextToken();
+				pruneT = Double.parseDouble(options.sval);
+				options.nextToken();
+				options.nextToken();
+				options.nextToken();
+				options.nextToken();
+				options.nextToken();
+				generalizationT = Double.parseDouble(options.sval);
+
 		}
 		else
 			throw new Exception( "The file must start with the word algorithm followed of the name of the algorithm." );
@@ -328,9 +319,9 @@ public class DataSqueezer extends Algorithm {
         }
 
         // Iterate over the training dataset rows
-        for(int index = 0; index < trainDataset.numItemsets(); index++) {
+        for(int index = 0; index < modelDataset.numItemsets(); index++) {
             // For every sample
-            Itemset sample = trainDataset.itemset(index);
+            Itemset sample = modelDataset.itemset(index);
             // add his index to the list of their class
             classList[(int ) sample.getClassValue()].add(index);
         }
@@ -348,7 +339,7 @@ public class DataSqueezer extends Algorithm {
 
         // The samples of index class to the POS table
         for(int index = 0; index < classList[classIndex].size(); index++) {
-            POS.add((Itemset )trainDataset.itemset(classList[classIndex].get(index)).copy());
+            POS.add((Itemset)modelDataset.itemset(classList[classIndex].get(index)).copy());
         }
 
         // Every other sample to NEG table
@@ -359,7 +350,7 @@ public class DataSqueezer extends Algorithm {
 
             // Add all the samples of this class to NEG table
             for(int index = 0; index < classList[classI].size(); index++) {
-                NEG.add((Itemset )trainDataset.itemset(classList[classI].get(index)).copy());
+                NEG.add((Itemset )modelDataset.itemset(classList[classI].get(index)).copy());
             }
         }
     }
@@ -380,6 +371,7 @@ public class DataSqueezer extends Algorithm {
         int i = 0; // Rule index
 
         boolean notChange;
+        long pruneNumber = Math.round(pruneT*POS.size());
 
         do {
             // Generate de list of columns in POS
@@ -393,6 +385,7 @@ public class DataSqueezer extends Algorithm {
             rules.add(new Rule(C));
 
             notChange = true; // Gpos not changed
+            boolean prune = false;
 
             do {
                 int maxWeight = 0, maxJ = -1, maxA = -1;
@@ -435,15 +428,20 @@ public class DataSqueezer extends Algorithm {
 
                 // Add "j = a" selector to rules[i]
                 if(maxA != -1 && maxJ != -1)  {
-                    rules.get(i).addCondition(
-                            LIST.get(maxJ),
-                            (int )Gpos.get(maxA).getValue(LIST.get(maxJ)), maxWeight);
+                	if ((maxWeight / Gpos.get(maxA).getAttribute(LIST.get(maxJ)).numValues()) > pruneNumber) {
+                		rules.get(i).addCondition(
+                				LIST.get(maxJ),
+                				(int )Gpos.get(maxA).getValue(LIST.get(maxJ)), maxWeight);
 
-                    // Remove j from LIST
-                    LIST.remove(maxJ);
+                		// Remove j from LIST
+                		LIST.remove(maxJ);
+                	}
+                	else {
+                		prune = true;
+                	}
                 }
 
-            } while(rulesDescribeNeg(i) && !LIST.isEmpty());
+            } while(rulesDescribeNeg(i,k) && !LIST.isEmpty() && !prune);
 
             Rule l = rules.get(i); // Current rule
             if(!l.isEmpty()) {
@@ -452,7 +450,7 @@ public class DataSqueezer extends Algorithm {
                 while(e.hasMoreElements()) {
                     Itemset r = (Itemset )e.nextElement();
 
-                    if(l.check(r)) {
+                    if(l.check2(r)) {
                         Gpos.remove(r);
                         e = Gpos.elements(); // Forzar reexploración *** Quebradero de cabeza
                         notChange = false; // Gpos has changed
@@ -475,13 +473,20 @@ public class DataSqueezer extends Algorithm {
      * @param i Index of current rule in rules vector
      * @return true or false
      */
-    private boolean rulesDescribeNeg(int i) {
+    private boolean rulesDescribeNeg(int i, int k) {
+    	
+    	int cont = 0;
+    	
         for(int index = 0; index < Gneg.size(); index++)
             if(rules.get(i).check(Gneg.get(index))) {
-                return true;
+                cont += Gneg.get(index).getValue(k);
             }
         
-        return false;
+        if (cont > Math.round(generalizationT*POS.size())) {
+        	return true;
+        } else {
+            return false;        	
+        }        
     }
 
     /** Apply generalization to the data tables as described by Kurgan
@@ -674,8 +679,8 @@ public class DataSqueezer extends Algorithm {
 					correct++;
 
 				text += 
-                        (cl == -1 ? "<null>" : trainDataset.getClassAttribute().value( cl )) + " " +
-				trainDataset.getClassAttribute().value( ( (int) itemset.getClassValue()) ) + "\n";
+					trainDataset.getClassAttribute().value( ( (int) itemset.getClassValue()) ) + " " +
+					(cl == -1 ? "not classified" : trainDataset.getClassAttribute().value( cl )) + "\n";
 			}
 			catch ( Exception e )
 			{
@@ -717,7 +722,7 @@ public class DataSqueezer extends Algorithm {
 					testCorrect++;
 			
 				text += testDataset.getClassAttribute().value( ( (int) itemset.getClassValue()) ) + " " + 
-					(cl == -1 ? "<null>" : testDataset.getClassAttribute().value( cl ))+ "\n";
+					(cl == -1 ? "not classified" : testDataset.getClassAttribute().value( cl ))+ "\n";
 			}
 			catch ( Exception e )
 			{
@@ -753,4 +758,4 @@ public class DataSqueezer extends Algorithm {
 		}
    	}
    	
-}//id3
+}

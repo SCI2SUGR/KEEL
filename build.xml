@@ -730,7 +730,7 @@
 		
 		<jar
           jarfile="${distMet}/ART.jar"
-          manifest="${src}/keel/Algorithms/Rule_learning/ART/Manifest">
+          manifest="${src}/keel/Algorithms/Rule_Learning/ART/Manifest">
           <fileset dir="${bin}"
              includes="keel/Algorithms/Rule_Learning/ART/**/*.class"/>
           <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>

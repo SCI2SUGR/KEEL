@@ -150,8 +150,10 @@ public class Parameters {
 			String file1 = st2.nextToken();
 			st2.nextToken();
 			String file2 = st2.nextToken();
+			st2.nextToken();
+			String file3 = st2.nextToken();
 			insertStringParameter("trainInputFile",file1);
-			insertStringParameter("testInputFile",file2);
+			insertStringParameter("testInputFile",file3);
 		}catch(NoSuchElementException e){
 			System.err.println("Parse error processing inputs " + files);
 			System.exit(1);

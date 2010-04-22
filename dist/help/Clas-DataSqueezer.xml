@@ -1,0 +1,129 @@
+<method>
+
+	<name>Data Squeezer</name>
+
+	<reference>
+
+		<ref>L.A. Kurgan, K.J. Cios, S. Dick. Highly Scalable and Robust Rule Learner: Performance Evaluation and Comparison. IEEE Transactions on Systems, Man and Cybernetics,Part B: Cybernetics 36:1 (2006) 32-53.</ref>
+
+	</reference>
+
+	<generalDescription>
+
+		<type>Classification model by covering rules (separate and conquer)</type>
+
+		<objective>To determine a set of rules for all concepts or classes with possibility of overlapping. Overlapping conflicts are solved by using the goodness of the rules (number of positive examples covered)</objective>
+
+		<howWork>DataSqueezer is a simple algorithm for rule induction composed by two main phases. In the first one, a data reduction technique is applied in order to condensate both the positive and negative examples of each rule. The second stage uses a hill climbing methods to build effective rules that covers the maximum number of positive examples with no cover of negative examples. Two threshold can be used for alleviate specialization of rules, pruning or generalizing them.</howWork>
+
+		<parameterSpec>
+
+			<param>Prune Threshold:  Given as fraction of the number of positive examples (for each type of rule), it indicates the minimum number of positive examples that the rules must cover in order to considerate the addition of a new condition.</param>
+			<param>Generalization Threshold: Given as fraction of the number of positive examples (for each type of rule), it indicates the maximum number of negative examples allowed to be described by the rules in order to accept and add the rule in the rule base.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: DataSqueezer
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+We can see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-Ripper:
+
+@relation   iris
+@attribute sepalLength{0,1,2,3,4,5,6,7}
+@attribute sepalWidth{0,1,2,3,4,5,6,7}
+@attribute petalLength{0,1,2,3,4,5,6,7}
+@attribute petalWidth{0,1,2,3,4,5,6,7}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor not classified
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+
+And the rule decision list (result0e0.txt) in Experiment\Results\Clas-Ripper:
+
+@relation   iris
+@attribute sepalLength{0,1,2,3,4,5,6,7}
+@attribute sepalWidth{0,1,2,3,4,5,6,7}
+@attribute petalLength{0,1,2,3,4,5,6,7}
+@attribute petalWidth{0,1,2,3,4,5,6,7}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+
+@rule list
+
+IF petalLength=0  THEN class=Iris-setosa
+IF petalWidth=4  THEN class=Iris-versicolor
+IF petalWidth=3  THEN class=Iris-versicolor
+IF petalLength=5 AND petalWidth=5  THEN class=Iris-versicolor
+IF sepalLength=4 AND sepalWidth=3  THEN class=Iris-virginica
+IF petalWidth=5 AND sepalWidth=2  THEN class=Iris-virginica
+IF sepalWidth=3 AND sepalLength=5  THEN class=Iris-virginica
+IF petalLength=7  THEN class=Iris-virginica
+IF petalLength=6  THEN class=Iris-virginica
+IF petalLength=5 AND petalWidth=5 AND sepalLength=3  THEN class=Iris-virginica
+
+
+@NumberOfRules 10.0
+@TotalNumberOfSelectors 16.0
+@MeanNumberOfSelectorsPerRule 1.6
+
+@NumberOfItemsetsTraining 135
+@NumberOfCorrectlyClassifiedTraining 120
+@PercentageOfCorrectlyClassifiedTraining 88.888885%
+@NumberOfItemsNotClassifiedTraining 7
+@PercentageOfItemsNotClassifiedTraining 5.185185%
+@NumberOfInCorrectlyClassifiedTraining 8
+@PercentageOfInCorrectlyClassifiedTraining 5.9259257%
+
+@NumberOfItemsetsTest 15
+@NumberOfCorrectlyClassifiedTest 13
+@PercentageOfCorrectlyClassifiedTest 86.666664%
+@ItemsNotClassifiedTest 1
+@PercentageOfItemsNotClassifiedTest 6.6666665%
+@NumberOfInCorrectlyClassifiedTest 1
+@PercentageOfInCorrectlyClassifiedTest 6.6666665%
+
+@ElapsedTime 0:0:0
+</example>
+
+</method>

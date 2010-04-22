@@ -1,0 +1,104 @@
+<method>
+
+	<name>Genetic-based Inductive Learning</name>
+
+	<reference>
+
+		<ref>C.Z. Janikow. A knowledge-intensive genetic algorithm for supervised learning. Machine Learning 13:2 (1993) 189-228.</ref>
+
+	</reference>
+
+	<generalDescription>
+
+		<type>Classification model by Genetic Rule induction</type>
+
+		<objective>To determine a set of rules that predicts correctly the value of the target attribute</objective>
+
+		<howWork>The Genetic-based Inductive Learning (GIL) learns rules for each class sequentially, starting for the minority class, leaving the majority class as a default rule. Thus, it runs the GIL algorithm n-1 times, where n is the number of classes. For a given run i, class i is the positive class and all the other classes represent the negative class. Thus, a multiple class problem is converted into n-1  different concept learning problems.
+
+The initialisation of the chromosomes is carried out randomly for half of the population and using some of the training examples for the other half. The fitness of each individual is based on four conditions: accuracy rate, completeness (covering all positive examples), correctness (minimization of the number of negative examples covered) and complexity of the rule (computed as the number of rules and conditions). GIL implements 14 genetic operators belonging to three kinds of levels. Six of them work at the rule set level and consist in adding and exchanging rules to the rule set, and generalising or specialising the rule set. Five operators work at the rule level by adding, removing or exchanging conditions. The final three operators work at the condition level by adding or removing values. All these operators have an associated probability which is auto-adapted according to the needs of the learning process, that is, to favour the generalisation or specialisation of the rule set. 
+		</howWork>
+
+		<parameterSpec>
+
+			<parameter>Population_Size: Size of the population</parameter>
+			<parameter>W_1: First weighting parameter</parameter>
+			<parameter>W_2: Second weighting parameter</parameter>
+			<parameter>W_3: Third weighting parameter</parameter>
+			<parameter>Probability_Application_Rules_Exchange: Probability of exchange rules application</parameter>
+			<parameter>Probability_Selection_Rules_Exchange: Probability of exchange rules selection</parameter>
+			<parameter>Probability_Application_Rules_Copy: Probability of copy application rules</parameter>
+			<parameter>Probability_Application_New_Event: Probability of application of a new event</parameter>
+			<parameter>Probability_Application_Rules_Generalization: Probability of generalization of rules</parameter>
+			<parameter>Probability_Application_Rules_Drop: Probability of dropping rules</parameter>
+			<parameter>Probability_Application_Rules_Specialization: Probability of specialization of rules</parameter>
+			<parameter>Probability_Application_Rule_Split: Probability of splitting rules</parameter>
+			<parameter>Probability_Type_Rule_Split_Nominal: Probability of splitting nominal rules</parameter>
+			<parameter>Probability_Type_Rule_Split_Linear:  Probability of splitting rules linearly</parameter>
+			<parameter>Probability_Application_Condition_Drop: Probability of dropping conditions</parameter>
+			<parameter>Probability_Application_Turning_Conjunction_Into_Disjunction: Probability of turning conjunctions into disjunctions</parameter>
+			<parameter>Probability_Application_Condition_Introduce: Probability of introducing conditions</parameter>
+			<parameter>Probability_Application_Rule_Directed_Split: Probability of splitting rules directly</parameter>
+			<parameter>Probability_Application_Reference_Change: Probability of change references</parameter>
+			<parameter>Probability_Application_Reference_Extension: Probability of extension of references</parameter>
+			<parameter>Probability_Application_Reference_Restriction: Probability of restriction of references</parameter>
+			<parameter>Number_Generations: Maximun number of generations allowed</parameter>
+			<parameter>Condition_Level_Probabilities: Condition level probabilities</parameter>
+			<parameter>Lower_Threshold_of_Probabilities_Change: Lower threshold for changes in probabilities</parameter>
+			<parameter>Upper_Threshold_of_Probabilities_Change: Upper threshold for changes in probabilities</parameter>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: GIL
+Dataset: wisconsin
+Training set: wisconsin.dat
+Test set: wisconsin.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier=
+Fold 0 : CORRECT=0.9692532942898975 N/C=0.0
+Global Classification Error + N/C:
+0.03074670571010249
+stddev Global Classification Error + N/C:
+0.0
+Correctly classified:
+0.9692532942898975
+Global N/C:
+0.0
+
+TRAIN RESULTS
+============
+Classifier=
+Summary of data, Classifiers:
+Fold 0 : CORRECT=0.9692532942898975 N/C=0.0
+Global Classification Error + N/C:
+0.03074670571010249
+stddev Global Classification Error + N/C:
+0.0
+Correctly classified:
+0.9692532942898975
+Global N/C:
+0.0
+
+</example>
+
+</method>
