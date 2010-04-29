@@ -1,9 +1,11 @@
 /**
-* <p>
-* @author Written by Joaquín Derrac (University of Granada)26/04/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
+ * File: Contrast.java
+ * 
+ * This class obtains the contrast estimation from several methods
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
 */
 package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
 
@@ -14,10 +16,22 @@ import org.core.*;
 
 public class Contrast {
 	
+	/**
+	* Builder
+	*/
 	public Contrast(){
 		
-	}
+	}//end-method
 	
+	/**
+     * <p>
+     * In this method, all possible post hoc statistical test between more than three algorithms results 
+     * are executed, according to the configuration file
+     * @param nfold A vector of int with fold number by algorithm
+     * @param algorithms A vector of String with the names of the algorithms
+     * @param fileName A String with the name of the output file
+     * </p>
+     */
 	public void compute(int nfold[], String algorithms[],String fileName) {
 		
 		 int nAlgorithm = algorithms.length;
@@ -77,12 +91,15 @@ public class Contrast {
 	        }
 	        outputFileName += "output.tex";
 	        Files.writeFile(outputFileName, outputString);
-		
-		
-		
-	}
+	}//end-method
 	
-	 private String header() {
+	/**
+	* <p>
+	* This method composes the header of the LaTeX file where the results are saved
+	* </p>
+	* @return A string with the header of the LaTeX file
+	*/   
+	private String header() {
 	        String output = new String("");
 	        output += "\\documentclass[a4paper,10pt]{article}\n";
 	        output += "\\usepackage{graphicx}\n";
@@ -94,8 +111,17 @@ public class Contrast {
 	        		
 	        return output;
 
-	}
+	}//end-method
 	 
+	/**
+     * <p>
+     * In this method, the contrast estimation is computed
+	 *
+	 * @param results Array with the results of the methods
+	 * @param algorithmName Array with the name of the methods employed
+	 *
+	 * @return A string with the contents of the test in LaTeX format
+     */
 	private String computeBody(double[][] results, String algorithmName[]) {
 		
 		String output="";
@@ -166,6 +192,7 @@ public class Contrast {
 
 		output += "\n\\end{landscape}\n\\end{document}";
         return output;
-	}
-	
-}
+		
+    }//end-method
+
+}//end-class

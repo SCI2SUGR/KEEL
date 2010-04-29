@@ -5,6 +5,7 @@
 * @author Modified by Amelia Zafra (University of Granada) 01/01/2006
 * @author Modified by Alberto Fernandez (University of Granada)01/01/2008
 * @author Modified by Salvador Garcia (University of Granada) 01/01/2007
+* @author Modified by Joaquin Derrac (University of Granada)29/04/2010
 * @version 1.0
 * @since JDK1.5
 * </p>

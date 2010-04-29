@@ -1462,7 +1462,7 @@ public class ProcessConfig {
     /**
      * <p>
      * Sets the class member Hommel with true if the next tokens in configuration file is 1; false otherwise. 
-     * parNivelSignifica is incremented in 2. 
+     * parNivelSignifica is incremented in 32. 
      * </p>
      * @param tokens tokens recover class connected to the configuration file.
      * @throws SyntaxError
@@ -1483,7 +1483,7 @@ public class ProcessConfig {
     /**
      * <p>
      * Sets the class member Schaffer with true if the next tokens in configuration file is 1; false otherwise. 
-     * parNivelSignifica is incremented in 2. 
+     * parNivelSignifica is incremented in 64. 
      * </p>
      * @param tokens tokens recover class connected to the configuration file.
      * @throws SyntaxError
@@ -1504,7 +1504,7 @@ public class ProcessConfig {
     /**
      * <p>
      * Sets the class member Bergman with true if the next tokens in configuration file is 1; false otherwise. 
-     * parNivelSignifica is incremented in 2. 
+     * parNivelSignifica is incremented in 128. 
      * </p>
      * @param tokens tokens recover class connected to the configuration file.
      * @throws SyntaxError
@@ -1525,7 +1525,7 @@ public class ProcessConfig {
     /**
      * <p>
      * Sets the class member Holland with true if the next tokens in configuration file is 1; false otherwise. 
-     * parNivelSignifica is incremented in 2. 
+     * parNivelSignifica is incremented in 256. 
      * </p>
      * @param tokens tokens recover class connected to the configuration file.
      * @throws SyntaxError
@@ -1546,7 +1546,7 @@ public class ProcessConfig {
     /**
      * <p>
      * Sets the class member Rom with true if the next tokens in configuration file is 1; false otherwise. 
-     * parNivelSignifica is incremented in 2. 
+     * parNivelSignifica is incremented in 512. 
      * </p>
      * @param tokens tokens recover class connected to the configuration file.
      * @throws SyntaxError
@@ -1567,7 +1567,7 @@ public class ProcessConfig {
     /**
      * <p>
      * Sets the class member Finner with true if the next tokens in configuration file is 1; false otherwise. 
-     * parNivelSignifica is incremented in 2. 
+     * parNivelSignifica is incremented in 1024. 
      * </p>
      * @param tokens tokens recover class connected to the configuration file.
      * @throws SyntaxError
@@ -1588,7 +1588,7 @@ public class ProcessConfig {
     /**
      * <p>
      * Sets the class member Li with true if the next tokens in configuration file is 1; false otherwise. 
-     * parNivelSignifica is incremented in 2. 
+     * parNivelSignifica is incremented in 2048. 
      * </p>
      * @param tokens tokens recover class connected to the configuration file.
      * @throws SyntaxError

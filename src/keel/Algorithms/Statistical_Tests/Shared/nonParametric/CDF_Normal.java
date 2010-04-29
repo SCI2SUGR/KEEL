@@ -1,15 +1,13 @@
-package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
-
 /**
-*
-*This class contains routines to calculate the
-*normal cumulative distribution function (CDF) and
-*its inverse.
-*
-*@version .5 --- June 7, 1996
-*@version .6 --- January 10, 2001 (normcdf added)
-*
+ * File: Main.java
+ * 
+ * This class contains routines to calculate the normal cumulative distribution function (CDF) and its inverse.
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
 */
+package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
 
 public class CDF_Normal extends Object {
 

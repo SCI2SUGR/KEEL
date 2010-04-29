@@ -1,3 +1,12 @@
+/**
+ * File: Multiple.java
+ * 
+ * This class performs several statistical comparisons between NxN methods
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
+*/
 package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
 
 import java.text.NumberFormat;
@@ -7,11 +16,14 @@ import org.core.*;
 
 public class Multiple {
 	
-	private boolean Iman, Nemenyi, Bonferroni, Holm, Hoch, Hommel, Scha, Berg;
+	private boolean Iman, Nemenyi, Bonferroni, Holm, Hoch, Hommel, Scha, Berg; //post-hoc methods to apply
 	
+	/**
+	* Builder
+	*/
 	public Multiple(){
 		
-	}
+	}//end-method
 	
     /**
      * <p>
@@ -23,8 +35,7 @@ public class Multiple {
      * @param fileName A String with the name of the output file
      * </p>
      */
-    public void runPostHoc(double code, int nfold[], String algorithms[],
-                         String fileName) {
+    public void runPostHoc(double code, int nfold[], String algorithms[], String fileName) {
 
         int nAlgorithm = algorithms.length;
         String outputFileName = new String(""); //Final output file
@@ -83,17 +94,26 @@ public class Multiple {
         }
 
         outputFileName += "output.tex";
-        Fichero.escribeFichero(outputFileName, outputString);
+        Files.writeFile(outputFileName, outputString);
 
-    }
+    }//end-method
     
+	/**
+	* This method runs the multiple comparison tests
+	*
+	* @param code A value to codify which post-hoc methods apply
+	* @param results Array with the results of the methods
+	* @param algorithmName Array with the name of the methods employed
+	*
+	* @return A string with the contents of the test in LaTeX format
+	*/
     private String runMultiple(double code, double[][] results,String algorithmName[]) {
     	
     	int i, j, k;
     	int posicion;
     	double mean[][];
-    	ParejaMultiple orden[][];
-    	ParejaMultiple rank[][];
+    	MultiplePair orden[][];
+    	MultiplePair rank[][];
     	boolean encontrado;
     	int ig;
     	double sum;
@@ -149,16 +169,16 @@ public class Multiple {
     	}
 
     	/*We use the pareja structure to compute and order rankings*/
-    	orden = new ParejaMultiple[nDatasets][algorithmName.length];
+    	orden = new MultiplePair[nDatasets][algorithmName.length];
     	for (i=0; i<nDatasets; i++) {
     		for (j=0; j<algorithmName.length; j++){
-    			orden[i][j] = new ParejaMultiple (j,mean[i][j]);
+    			orden[i][j] = new MultiplePair (j,mean[i][j]);
     		}
     		Arrays.sort(orden[i]);
     	}
 
     	/*building of the rankings table per algorithms and data sets*/
-    	rank = new ParejaMultiple[nDatasets][algorithmName.length];
+    	rank = new MultiplePair[nDatasets][algorithmName.length];
     	posicion = 0;
     	for (i=0; i<nDatasets; i++) {
     		for (j=0; j<algorithmName.length; j++){
@@ -169,7 +189,7 @@ public class Multiple {
     		    		posicion = k+1;
     		    	}
     		    }
-    		    rank[i][j] = new ParejaMultiple(posicion,orden[i][posicion-1].valor);
+    		    rank[i][j] = new MultiplePair(posicion,orden[i][posicion-1].valor);
     		}
     	}
 
@@ -695,8 +715,16 @@ public class Multiple {
     	
     	return out;
     	
-    }
+    }//end-method
     
+	
+	/**
+	* Obtain all exhaustive comparisons possible from an array of indexes
+	*
+	* @param indices A verctos of indexes.
+	*
+	* @return A vector with vectors containing all the possible relations between the indexes 
+	*/
     @SuppressWarnings("unchecked")
 	public static Vector<Vector<Relation>> obtainExhaustive (Vector<Integer> indices) {
 		
@@ -786,8 +814,16 @@ public class Multiple {
 			}
 		}
 		return result;		
-	}
-
+	}//end-method
+	
+	/**
+	* Computes the (N/M) combinatory number
+	*
+	* @param n N value
+	* @param m M value
+	*
+	* @return The (N/M) combinatory number
+	*/
     public static double combinatoria (int m, int n) {
 
 		double result = 1;
@@ -800,8 +836,16 @@ public class Multiple {
 			result = 0;
 		}
 		return result;
-	}
+	}//end-method
     
+	/**
+	* Computes the trueHShaffer distribution from a given parameter.
+	*
+	* @param k K parameter
+	* @param n M value
+	*
+	* @return The trueHShaffer distribution
+	*/
     public static Vector<Integer> trueHShaffer (int k) {
 		
 		Vector<Integer> number;
@@ -825,8 +869,16 @@ public class Multiple {
 		}
 		
 		return number;
-	}
+	}//end-method
 	
+	/**
+	* Joins two vectors 
+	*
+	* @param a First vector
+	* @param b Second vector
+	*
+	* @return The joint of both vectors
+	*/
 	public static Vector<Integer> unionVectores (Vector<Integer> a, Vector<Integer> b) {
 
 		int i;
@@ -838,8 +890,15 @@ public class Multiple {
 		}
 		
 		return a;		
-	}
+	}//end-method
 	
+	/**
+	* Prints as many "c" as desired
+	*
+	* @param n Number of "c" to print
+	*
+	* @return A string with all the "c"s
+	*/
 	public String printC(int n){
 		
 		String out="";
@@ -849,7 +908,7 @@ public class Multiple {
 		}
 		
 		return out;
-	}
+	}//end-method
     
 	/**
 	* <p>
@@ -875,10 +934,11 @@ public class Multiple {
         Scha = (code % 2 > 0);
         code /= 2;
         Berg = (code % 2 > 0);
-    }
+    }//end-method
+	
 	/**
 	* <p>
-	* This method decodes composes the header of the LaTeX file where the results are saved
+	* This method composes the header of the LaTeX file where the results are saved
 	* </p>
 	* @return A string with the header of the LaTeX file
 	*/    
@@ -894,7 +954,6 @@ public class Multiple {
         
         return output;
 
-    }
-	
-	
-}
+    }//end-method
+
+}//end-class

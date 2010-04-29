@@ -1,3 +1,12 @@
+/**
+ * File: Multiple.java
+ * 
+ * This class performs several statisticla comparisons between 1xN methods
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
+*/
 package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
 
 import java.text.NumberFormat;
@@ -9,13 +18,16 @@ import org.core.*;
 
 public class Friedman {
 	
-	private boolean Iman, Nemenyi, Bonferroni, Holm, Hoch, Hommel, Scha, Berg, Holland, Rom, Finner, Li;
+	private boolean Iman, Nemenyi, Bonferroni, Holm, Hoch, Hommel, Scha, Berg, Holland, Rom, Finner, Li; //post-hoc methods to apply
 	
-	private boolean Friedman, Alligned, Quade;
+	private boolean Friedman, Alligned, Quade; //Main methods to apply
 	
+	/**
+	* Builder
+	*/
 	public Friedman(){
 		
-	}
+	}//end-method
 	
     /**
      * <p>
@@ -25,6 +37,7 @@ public class Friedman {
      * @param nfold A vector of int with fold number by algorithm
      * @param algorithms A vector of String with the names of the algorithms
      * @param fileName A String with the name of the output file
+	 * @param type Type of test to carry out
      * </p>
      */
     public void runPostHoc(double code, int nfold[], String algorithms[],
@@ -127,10 +140,19 @@ public class Friedman {
         }
 
         outputFileName += "output.tex";
-        Fichero.escribeFichero(outputFileName, outputString);
+        Files.writeFile(outputFileName, outputString);
 
-    }
+    }//end-method
     
+	/**
+	* This method runs the multiple comparison tests
+	*
+	* @param code A value to codify which post-hoc methods apply
+	* @param results Array with the results of the methods
+	* @param algorithmName Array with the name of the methods employed
+	*
+	* @return A string with the contents of the test in LaTeX format
+	*/
     private String runMultiple(double code, double[][] results,String algorithmName[]) {
     	
     	String out="";
@@ -140,12 +162,12 @@ public class Friedman {
 		int counter;
 		double mean[][];
 		double meanAR[][];
-		Pareja orden[][];
-		Pareja rank[][];
-		Pareja ordenAR[];
-		Pareja rankAR[];
-		Pareja bRank[];
-		Pareja bOrden[];
+		Pair orden[][];
+		Pair rank[][];
+		Pair ordenAR[];
+		Pair rankAR[];
+		Pair bRank[];
+		Pair bOrden[];
 		double diffBlocks[];
 		boolean encontrado;
 		int ig;
@@ -215,17 +237,17 @@ public class Friedman {
 
 		/** FRIEDMAN PROCEDURE ****************************************************************************************/
 
-	    /*We use the pareja structure to compute and order rankings*/
-	    orden = new Pareja[nDatasets][nAlgorithms];
+	    /*We use the Pair structure to compute and order rankings*/
+	    orden = new Pair[nDatasets][nAlgorithms];
 	    for (i=0; i<nDatasets; i++) {
 	    	for (j=0; j<nAlgorithms; j++){
-	    		orden[i][j] = new Pareja (j,mean[i][j]);
+	    		orden[i][j] = new Pair (j,mean[i][j]);
 	    	}
 	    	Arrays.sort(orden[i]);
 	    }
 
 	    /*building of the rankings table per algorithms and data sets*/
-	    rank = new Pareja[nDatasets][nAlgorithms];
+	    rank = new Pair[nDatasets][nAlgorithms];
 	    posicion = 0;
 	    for (i=0; i<nDatasets; i++) {
 	    	for (j=0; j<nAlgorithms; j++){
@@ -236,7 +258,7 @@ public class Friedman {
 	    				posicion = k+1;
 	    			}
 	    		}
-	    		rank[i][j] = new Pareja(posicion,orden[i][posicion-1].valor);
+	    		rank[i][j] = new Pair(posicion,orden[i][posicion-1].valor);
 	    	}
 	    }
 
@@ -291,15 +313,15 @@ public class Friedman {
 			}
 		}
 
-	    /*We use the pareja structure to compute and order rankings*/
-	    ordenAR = new Pareja[nDatasets * nAlgorithms];
+	    /*We use the Pair structure to compute and order rankings*/
+	    ordenAR = new Pair[nDatasets * nAlgorithms];
 	    for (i=0; i<nDatasets * nAlgorithms; i++) {
-	    		ordenAR[i] = new Pareja (i,meanAR[i/nAlgorithms][i%nAlgorithms]);
+	    		ordenAR[i] = new Pair (i,meanAR[i/nAlgorithms][i%nAlgorithms]);
 	    }
 	    Arrays.sort(ordenAR);
 		
 	    /*building of the rankings table per algorithms and data sets*/
-	    rankAR = new Pareja[nDatasets * nAlgorithms];
+	    rankAR = new Pair[nDatasets * nAlgorithms];
 	    posicion = 0;
 	    for (i=0; i<nDatasets * nAlgorithms; i++) {
 	    	encontrado = false;
@@ -309,7 +331,7 @@ public class Friedman {
 	    			posicion = k+1;
 	    		}
 	    	}
-	    	rankAR[i] = new Pareja(posicion,ordenAR[posicion-1].valor);
+	    	rankAR[i] = new Pair(posicion,ordenAR[posicion-1].valor);
 	    }
 	    
 	    /*In the case of having the same performance, the rankings are equal*/
@@ -362,15 +384,15 @@ public class Friedman {
 	    	diffBlocks[i] = max - min;
 	    }
 	    
-	    /*We use the pareja structure to compute and order rankings*/
-	    bOrden = new Pareja[nDatasets];
+	    /*We use the Pair structure to compute and order rankings*/
+	    bOrden = new Pair[nDatasets];
 	    for (i=0; i<nDatasets; i++) {
-	    	bOrden[i] = new Pareja (i,diffBlocks[i]);
+	    	bOrden[i] = new Pair (i,diffBlocks[i]);
 	    }
     	Arrays.sort(bOrden);
 
 	    /*building of the rankings table per algorithms and data sets*/
-	    bRank = new Pareja[nDatasets];
+	    bRank = new Pair[nDatasets];
 	    posicion = 0;
 	    for (i=0; i<nDatasets; i++){
 	    	encontrado = false;
@@ -380,7 +402,7 @@ public class Friedman {
 	    			posicion = j+1;
 	    		}
 	    	}
-	    	bRank[i] = new Pareja(nDatasets+1-posicion,bOrden[posicion-1].valor);
+	    	bRank[i] = new Pair(nDatasets+1-posicion,bOrden[posicion-1].valor);
 	    }
 
 	    /*In the case of having the same performance, the rankings are equal*/
@@ -1686,12 +1708,20 @@ public class Friedman {
 	    out+="\\hline\n" + "\\end{tabular}\n\\caption{Adjusted $p$-values (QUADE) (II)}\n" + "\\end{table}\n";
 	}
 	
-	    out+="\\end{landscape}\\end{document}";  
+	out+="\\end{landscape}\\end{document}";  
     	
-    	return out;
+    return out;
     	
-	}
+	}//end-method
     
+	/**
+	* Computes ROM adjusted p-values
+	*
+	* @param alpha Alpha value
+	* @param vector Array with the unadjusted p-values
+	* @param adjusted Array to store the p-values
+	*
+	*/
     public static void calcularROM(double alpha, double vector[], double adjusted[]) {
 		
 		int i, j;
@@ -1717,10 +1747,16 @@ public class Friedman {
 			adjusted[m-i] = vector[m-1] / vector[m-i];
 		}		
 		
-	}
+	}//end-method
 
-
-
+	/**
+	* Computes the (N/M) combinatory number
+	*
+	* @param n N value
+	* @param n M value
+	*
+	* @return The (N/M) combinatory number
+	*/
 	public static double combinatoria (int m, int n) {
 
 		double result = 1;
@@ -1733,9 +1769,17 @@ public class Friedman {
 			result = 0;
 		}
 		return result;
-	}
+		
+	}//end-method
 	
-	
+	/**
+	* Computes the Chi Square distribution
+	*
+	* @param x X value
+	* @param n N value
+	*
+	* @return The Chi Square value
+	*/
 	private static double ChiSq(double x, int n) {
         if (n == 1 & x > 1000) {
             return 0;
@@ -1766,8 +1810,16 @@ public class Friedman {
             p = p + t;
         }
         return 1 - p;
-    }
+    }//end-method
 
+	/**
+	* Computes the Fisher distribution
+	* @param f  F value
+	* @param n1 N1 value
+	* @param n2 N2 value
+	*
+	* @return The Fisher value
+	*/
     private static double FishF(double f, int n1, int n2) {
         double x = n2 / (n1 * f + n2);
         if ((n1 % 2) == 0) {
@@ -1800,8 +1852,17 @@ public class Friedman {
             k = k + 1;
         }
         return 1 - a + c;
-    }
+    }//end-method
     
+	/**
+	* Computes the statCom distribution
+	* @param q  Q value
+	* @param i  I value
+	* @param j  J value
+	* @param b  B value
+	*
+	* @return The statCom value
+	*/
     private static double StatCom(double q, int i, int j, int b) {
         double zz = 1;
         double z = zz;
@@ -1812,8 +1873,15 @@ public class Friedman {
             k = k + 2;
         }
         return z;
-    }
+    }//end-method
 	
+	/**
+	* Prints as many "c" as desired
+	*
+	* @param n Number of "c" to print
+	*
+	* @return A string with all the "c"s
+	*/
 	public String printC(int n){
 		
 		String out="";
@@ -1823,7 +1891,7 @@ public class Friedman {
 		}
 		
 		return out;
-	}
+	}//end-method
     
 	/**
 	* <p>
@@ -1858,7 +1926,7 @@ public class Friedman {
         Finner = (code % 2 > 0);
         code /= 2;
         Li = (code % 2 > 0);
-    }
+    }//end-method
     
 	/**
 	* <p>
@@ -1878,7 +1946,6 @@ public class Friedman {
         
         return output;
 
-    }
-	
-	
-}
+    }//end-method
+
+}//end-class

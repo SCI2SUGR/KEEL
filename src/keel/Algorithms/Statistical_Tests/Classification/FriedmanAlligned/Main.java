@@ -1,9 +1,11 @@
 /**
-* <p>
-* @author Written by Joaquín Derrac (University of Granada)26/04/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
+ * File: Main.java
+ * 
+ * A Main class to process the paramethers of the method and launch the test
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
 */
 package keel.Algorithms.Statistical_Tests.Classification.FriedmanAlligned;
 
@@ -12,6 +14,11 @@ import keel.Algorithms.Shared.Parsing.*;
 
 public class Main {
 	
+	/**
+	* Main method
+	*
+	* @param args Arguments of the program
+	*/
     public static void main(String args[]) {
 
         boolean tty = false;
@@ -25,5 +32,6 @@ public class Main {
 
         pl.statisticalTest(StatTest.FriedmanAlignedC, tty, pc);
 
-    }
-}
+    }//end-method
+	
+}//end-class
