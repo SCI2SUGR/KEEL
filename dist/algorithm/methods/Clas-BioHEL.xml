@@ -1,147 +1,247 @@
 <algorithm_specification>
 
-  <name>BioHEL Classifier</name>
-  <nParameters>19</nParameters>
-  <seed>0</seed>
-  <nOutput>1</nOutput>
-  
-  <parameter>
-    <name>seed</name>
-    <type>integer</type>
-    <default>12345678</default>
-    <disabled/>
-  </parameter>
-  
-  <parameter>
-    <name>Population Size</name>
-    <type>integer</type>
-    <default>500</default>
-    <disabled/>
-  </parameter>
-  
-  <parameter>
-    <name>Tournament Size</name>
-    <type>integer</type>
-    <default>4</default>
-    <disabled/>
-  </parameter>
-  
-    <parameter>
-    <name>Expected Rule Size</name>
-    <type>integer</type>
-    <default>15</default>
-    <disabled/>
-  </parameter>
-  
-    <parameter>
-    <name>Crossover Probability</name>
-    <type>real</type>
-    <default>0.6</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name> Mutation Probability</name>
-    <type>real</type>
-    <default>0.6</default>
-    <disabled/>
-  </parameter>
-  
-  
-    <parameter>
-    <name>Elitism Enabled</name>
-    <type>list</type>
-    <domain>
-      <item>false</item>
-      <item>true</item>
-    </domain>
-    <default>true</default>
-    <disabled/>
-  </parameter>
-  
-    <parameter>
-    <name>Number of Generations</name>
-    <type>integer</type>
-    <default>100</default>
-    <disabled/>
-  </parameter>
+	<name>BioHEL Classifier</name>
+  	<nParameters>25</nParameters>
+  	<seed>1</seed>
+  	<nOutput>1</nOutput>
 
-    <parameter>
-    <name>Number of Repetitions for Rule Learning</name>
-    <type>integer</type>
-    <default>2</default>
-    <disabled/>
-  </parameter>
 
-    <parameter>
-    <name>Coverage breakpoint</name>
-    <type>real</type>
-    <default>0.1</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name>Coverage ratio</name>
-    <type>real</type>
-    <default>0.9</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name>Generalize Probability</name>
-    <type>real</type>
-    <default>0.25</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name>Specialize Probability</name>
-    <type>real</type>
-    <default>0.25</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name>Default class</name>
-    <type>text</type>
-    <default>major</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name>initialTheoryLenghtRatio</name>
-    <type>real</type>
-    <default>0.25</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name>mdlWeightRelaxFactor</name>
-    <type>real</type>
-    <default>0.9</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name>Number of strata of ILAS</name>
-    <type>integer</type>
-    <default>2</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name>Number of stages</name>
-    <type>integer</type>
-    <default>2</default>
-    <disabled/>
-  </parameter>
-  
-      <parameter>
-    <name>Number of iterations of MDL</name>
-    <type>integer</type>
-    <default>10</default>
-    <disabled/>
-  </parameter>
+	<parameter>
+    	<name>defClass</name>
+    	<type>list</type>
+    	<domain>
+      		<item>major</item>
+      		<item>minor</item>
+      		<item>disabled</item>
+    	</domain>
+    	<default>disabled</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>popSize</name>
+    	<type>integer</type>
+    	<default>500</default>
+  	</parameter>
+ 
+
+	<parameter>
+    	<name>selectAlg</name>
+    	<type>list</type>
+    	<domain>
+      		<item>tournament</item>
+      		<item>tournamentWOR</item>
+    	</domain>
+    	<default>tournamentWOR</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>tournamentSize</name>
+    	<type>integer</type>
+    	<default>4</default>
+  	</parameter>
+
+	<parameter>
+    	<name>crossoverProbability</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.6</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>mutationProbability</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.6</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>elitismEnabled</name>
+    	<type>list</type>
+    	<domain>
+      		<item>true</item>
+      		<item>false</item>
+    	</domain>
+    	<default>true</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>numIterations</name>
+    	<type>integer</type>
+    	<domain>
+      		<lowerB>1</lowerB>
+      		<upperB>10000</upperB>
+    	</domain>
+    	<default>100</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>numRepetitionsLearning</name>
+    	<type>integer</type>
+    	<default>2</default>
+  	</parameter>
+
+	<parameter>
+    	<name>generalizeProbability</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.1</default>
+  	</parameter>
+
+	<parameter>
+    	<name>specializeProbability</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.1</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>winMethod</name>
+    	<type>list</type>
+    	<domain>
+      		<item>ilas</item>
+      		<item>gws</item>
+      		<item>none</item>
+    	</domain>
+    	<default>ilas</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>numStrataWindowing</name>
+    	<type>integer</type>
+    	<default>2</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>numStages</name>
+    	<type>integer</type>
+    	<default>2</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>optMethod</name>
+    	<type>list</type>
+    	<domain>
+      		<item>minimize</item>
+      		<item>maximize</item>
+    	</domain>
+    	<default>minimize</default>
+		<disabled/>
+  	</parameter>
+
+
+	<parameter>
+    	<name>smartInitMethod</name>
+    	<type>list</type>
+    	<domain>
+      		<item>true</item>
+      		<item>false</item>
+    	</domain>
+    	<default>true</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>classWiseInit</name>
+    	<type>list</type>
+    	<domain>
+      		<item>true</item>
+      		<item>false</item>
+    	</domain>
+    	<default>true</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>expectedRuleSize</name>
+    	<type>integer</type>
+    	<default>15</default>
+    	<disabled/>
+  	</parameter>
+
+
+	<parameter>
+    	<name>probOne</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.75</default>
+  	</parameter>
+
+	<parameter>
+    	<name>useMDL</name>
+    	<type>list</type>
+    	<domain>
+      		<item>true</item>
+      		<item>false</item>
+    	</domain>
+    	<default>true</default>
+  	</parameter>
+
+	<parameter>
+    	<name>numIterationsMDL</name>
+    	<type>integer</type>
+    	<default>10</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>initialTheoryLengthRatio</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.01</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>mdlWeightRelaxFactor</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.9</default>
+  	</parameter>
+
+
+	<parameter>
+  		<name>coverageBreakpoint</name>
+  		<type>real</type>
+  		<default>0.1</default>
+	</parameter>
+	
+	<parameter>
+    	<name>coverageRatio</name>
+    	<type>real</type>
+    	<default>0.9</default>
+  	</parameter>
+
 
   
 </algorithm_specification>
