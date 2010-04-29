@@ -1,6 +1,6 @@
 <method>
 
-	<name>Friedman Test and Post-Hoc Procedures</name>
+	<name>Friedman Alligned Test and Post-Hoc Procedures</name>
 
 	<reference>  
 
@@ -17,10 +17,15 @@
 		<objective>Execution of the non-parametric Friedman test and post-hoc tests for comparison of the global performance of several regression methods.</objective>
 
 		<howWork>
-		Friedman test is a non-parametric equivalent of the test of repeated-measures ANOVA. It computes the ranking of the observed results for algorithm 
-		for each data-set, assigning to the best of them the ranking 1, and to the worst the ranking k. We may apply different post-hoc test in order to detect
-		significant differences between the algorithms. Specifically we may choose among Iman and Davenport test, Bonferroni-Dunn test, Holm test, Hochbergh test,
-		Hommel test, Holland test, Rom test, Finner test or Li test.
+		The Friedman test is based on n sets of ranks, one set for each data set in our case; and the performances of the algorithms analyzed are ranked separately
+		for each data set. Such a ranking scheme allows for intra-set comparisons only, since inter-set comparisons are not meaningful. When the number of algorithms
+		for comparison is small, this may pose a disadvantage. In such cases, comparability among data sets is desirable and we can employ the method of aligned ranks.
+		
+		In this technique, a value of location is computed as the average performance achieved by all algorithms in each data set. Then, it calculates the difference 
+		between the performance obtained by an algorithm and the value of location. This step is repeated for algorithms and data sets. The resulting differences,
+		called aligned observations, which keep their identities with respect to the data set and the combination of algorithms to which they belong, are then ranked
+		from 1 to kn relative to each other. Then, the ranking scheme is the same as that employed by a multiple comparison procedure which employs independent
+		samples; such as the Kruskal-Wallis test. The ranks assigned to the aligned observations are called aligned ranks.
 		</howWork>
 
 		<parameterSpec>  
@@ -46,9 +51,9 @@ Datasets: daily-electric-energy, Ele1, friedman, machine-cpu
 Default Parameters (all the post-hoc tests are applied)
 Type of partitions: k-fold, k=10
 
-After the execution of RunKeel.jar we can see into the ./results/Stat-Regr-Friedman/TSTRegr-MLPerceptronConj-GradvsRegr-LinearLMSvsRegr-Fuzzy-WM folder the results0s0.stat file:
+After the execution of RunKeel.jar we can see into the ./results/Stat-Regr-FriedmanAlligned/TSTRegr-MLPerceptronConj-GradvsRegr-LinearLMSvsRegr-Fuzzy-WM folder the results0s0.stat file:
 
-Friedman Test, Regression
+FriedmanAlligned Test, Regression
 Regression error in each foldfold:
 Algorithm = Regr-MLPerceptronConj-Grad
 Fold 0 : 0.13358883028152593 

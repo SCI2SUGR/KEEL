@@ -1,6 +1,6 @@
 <method>
 
-	<name>Friedman Test and Post-Hoc Procedures</name>
+	<name>Quade Test and Post-Hoc Procedures</name>
 
 	<reference>  
 
@@ -17,10 +17,9 @@
 		<objective>Execution of the non-parametric Friedman test and post-hoc tests for comparison of the global performance of several regression methods.</objective>
 
 		<howWork>
-		Friedman test is a non-parametric equivalent of the test of repeated-measures ANOVA. It computes the ranking of the observed results for algorithm 
-		for each data-set, assigning to the best of them the ranking 1, and to the worst the ranking k. We may apply different post-hoc test in order to detect
-		significant differences between the algorithms. Specifically we may choose among Iman and Davenport test, Bonferroni-Dunn test, Holm test, Hochbergh test,
-		Hommel test, Holland test, Rom test, Finner test or Li test.
+		The Friedman test considers all data sets to be equal in terms of importance. An alternative to this could take into account the fact that some data sets are 
+		more difficult or the differences registered on the run of various algorithms over them are larger. The rankings computed on each data set could be scaled 
+		depending on the differences observed in the algorithms performances. The Quade test conducts a weighted ranking analysis of the sample of results.
 		</howWork>
 
 		<parameterSpec>  
@@ -46,9 +45,9 @@ Datasets: daily-electric-energy, Ele1, friedman, machine-cpu
 Default Parameters (all the post-hoc tests are applied)
 Type of partitions: k-fold, k=10
 
-After the execution of RunKeel.jar we can see into the ./results/Stat-Regr-Friedman/TSTRegr-MLPerceptronConj-GradvsRegr-LinearLMSvsRegr-Fuzzy-WM folder the results0s0.stat file:
+After the execution of RunKeel.jar we can see into the ./results/Stat-Regr-Quade/TSTRegr-MLPerceptronConj-GradvsRegr-LinearLMSvsRegr-Fuzzy-WM folder the results0s0.stat file:
 
-Friedman Test, Regression
+Quade Test, Regression
 Regression error in each foldfold:
 Algorithm = Regr-MLPerceptronConj-Grad
 Fold 0 : 0.13358883028152593 
