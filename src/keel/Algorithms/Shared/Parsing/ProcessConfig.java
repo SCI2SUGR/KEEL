@@ -147,7 +147,13 @@ public class ProcessConfig {
     public static boolean Holm;
     public static boolean Hoch;
     public static boolean Hommel;
-
+    public static boolean Scha;
+    public static boolean Berg;
+    public static boolean Holland;
+    public static boolean Rom;
+    public static boolean Finner;
+    public static boolean Li;
+    
     private int nl;
 
     /**
@@ -159,12 +165,13 @@ public class ProcessConfig {
                 On an unsuccessful call, a negative value is returned. 
      */
     public int fileProcess(String nfconfig) {
-
+    	
         try {
-
+        	
             File f1 = new File(nfconfig);
             System.out.println(f1.getAbsolutePath());
             System.out.println(f1.getParent());
+
             numDataset = (new File(f1.getParent())).listFiles().length;
 
             StringTokenizer tokens_name;
@@ -182,7 +189,7 @@ public class ProcessConfig {
             String linea;
             nl = 0;
             StringTokenizer tokens;
-
+           
             BufferedReader in = new BufferedReader(new FileReader(nfconfig));
             do {
                 //next line file
@@ -329,6 +336,18 @@ public class ProcessConfig {
                     doHoch(tokens); 			//Every post-hoc is read for Friedman test
                 } else if (tmp.equalsIgnoreCase("Apply-Hommel")) {
                     doHommel(tokens); 			//Every post-hoc is read for Friedman test
+                } else if (tmp.equalsIgnoreCase("Apply-Holland")) {
+                    doHolland(tokens); 			//Every post-hoc is read for Friedman test
+                } else if (tmp.equalsIgnoreCase("Apply-Rom")) {
+                    doRom(tokens); 			//Every post-hoc is read for Friedman test
+                } else if (tmp.equalsIgnoreCase("Apply-Finner")) {
+                    doFinner(tokens); 			//Every post-hoc is read for Friedman test
+                } else if (tmp.equalsIgnoreCase("Apply-Li")) {
+                    doLi(tokens); 			//Every post-hoc is read for Friedman test
+                } else if (tmp.equalsIgnoreCase("Apply-Shaffer")) {
+                    doSchaffer(tokens); 	//Every post-hoc is read for Friedman test
+                } else if (tmp.equalsIgnoreCase("Apply-Bergman")) {
+                    doBergman(tokens); 		//Every post-hoc is read for Friedman test
                 }else {
                     throw new SyntaxError("Parametro desconocido " + tmp);
                 }
@@ -480,7 +499,9 @@ public class ProcessConfig {
             parAlgorithmType = 50;
         } else if (tmp.equalsIgnoreCase("Friedman")) {
             parAlgorithmType = 51;
-        } else {
+        } else if (tmp.equalsIgnoreCase("Multiple")) {
+            parAlgorithmType = 51;
+        }else {
             throw new SyntaxError("TipoAlgoritmo " + tmp + " no reconocido");
         }
 
@@ -1456,6 +1477,132 @@ public class ProcessConfig {
         if (tmp.equalsIgnoreCase("YES")) {
             Hommel = true;
             parSignificanceLevel += 32;
+        }
+    }
+    
+    /**
+     * <p>
+     * Sets the class member Schaffer with true if the next tokens in configuration file is 1; false otherwise. 
+     * parNivelSignifica is incremented in 2. 
+     * </p>
+     * @param tokens tokens recover class connected to the configuration file.
+     * @throws SyntaxError
+     */ 
+    void doSchaffer(StringTokenizer tokens) throws SyntaxError {
+        if (!tokens.hasMoreTokens()) {
+            throw new SyntaxError(
+                    "No value selected for 'Apply Shaffer Method'");
+        }
+        String tmp = tokens.nextToken();
+        Scha = false;
+        if (tmp.equalsIgnoreCase("YES")) {
+        	Scha = true;
+            parSignificanceLevel += 64;
+        }
+    }
+    
+    /**
+     * <p>
+     * Sets the class member Bergman with true if the next tokens in configuration file is 1; false otherwise. 
+     * parNivelSignifica is incremented in 2. 
+     * </p>
+     * @param tokens tokens recover class connected to the configuration file.
+     * @throws SyntaxError
+     */ 
+    void doBergman(StringTokenizer tokens) throws SyntaxError {
+        if (!tokens.hasMoreTokens()) {
+            throw new SyntaxError(
+                    "No value selected for 'Apply Bergman Method'");
+        }
+        String tmp = tokens.nextToken();
+        Scha = false;
+        if (tmp.equalsIgnoreCase("YES")) {
+        	Scha = true;
+            parSignificanceLevel += 128;
+        }
+    }
+    
+    /**
+     * <p>
+     * Sets the class member Holland with true if the next tokens in configuration file is 1; false otherwise. 
+     * parNivelSignifica is incremented in 2. 
+     * </p>
+     * @param tokens tokens recover class connected to the configuration file.
+     * @throws SyntaxError
+     */ 
+    void doHolland(StringTokenizer tokens) throws SyntaxError {
+        if (!tokens.hasMoreTokens()) {
+            throw new SyntaxError(
+                    "No value selected for 'Apply Holland Method'");
+        }
+        String tmp = tokens.nextToken();
+        Holland = false;
+        if (tmp.equalsIgnoreCase("YES")) {
+        	Holland = true;
+            parSignificanceLevel += 256;
+        }
+    }
+    
+    /**
+     * <p>
+     * Sets the class member Rom with true if the next tokens in configuration file is 1; false otherwise. 
+     * parNivelSignifica is incremented in 2. 
+     * </p>
+     * @param tokens tokens recover class connected to the configuration file.
+     * @throws SyntaxError
+     */ 
+    void doRom(StringTokenizer tokens) throws SyntaxError {
+        if (!tokens.hasMoreTokens()) {
+            throw new SyntaxError(
+                    "No value selected for 'Apply Rom Method'");
+        }
+        String tmp = tokens.nextToken();
+        Rom = false;
+        if (tmp.equalsIgnoreCase("YES")) {
+        	Rom = true;
+            parSignificanceLevel += 512;
+        }
+    }
+    
+    /**
+     * <p>
+     * Sets the class member Finner with true if the next tokens in configuration file is 1; false otherwise. 
+     * parNivelSignifica is incremented in 2. 
+     * </p>
+     * @param tokens tokens recover class connected to the configuration file.
+     * @throws SyntaxError
+     */ 
+    void doFinner(StringTokenizer tokens) throws SyntaxError {
+        if (!tokens.hasMoreTokens()) {
+            throw new SyntaxError(
+                    "No value selected for 'Apply Finner Method'");
+        }
+        String tmp = tokens.nextToken();
+        Finner = false;
+        if (tmp.equalsIgnoreCase("YES")) {
+        	Finner = true;
+            parSignificanceLevel += 1024;
+        }
+    }
+    
+    /**
+     * <p>
+     * Sets the class member Li with true if the next tokens in configuration file is 1; false otherwise. 
+     * parNivelSignifica is incremented in 2. 
+     * </p>
+     * @param tokens tokens recover class connected to the configuration file.
+     * @throws SyntaxError
+     */ 
+    void doLi(StringTokenizer tokens) throws SyntaxError {
+        if (!tokens.hasMoreTokens()) {
+            throw new SyntaxError(
+                    "No value selected for 'Apply Li Method'");
+        }
+        String tmp = tokens.nextToken();
+        Li = false;
+        if (tmp.equalsIgnoreCase("YES")) {
+        	Li = true;
+            parSignificanceLevel += 2048;
         }
     }
 

@@ -1687,6 +1687,17 @@
     </jar>
 		
 	<jar
+          jarfile="${distTest}/Clas_Contrast.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Contrast/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Classification/Contrast/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+    </jar>
+		
+		<jar
           jarfile="${distTest}/Clas_Friedman.jar"
           manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Friedman/Manifest">
           <fileset dir="${bin}"
@@ -1696,6 +1707,43 @@
                     keel/Algorithms/Shared/**/*.class
                     keel/Dataset/**/*.class"/>
     </jar>
+		
+		<jar
+          jarfile="${distTest}/Clas_FriedmanAlligned.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/FriedmanAlligned/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Classification/FriedmanAlligned/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+    </jar>
+		
+		<jar
+          jarfile="${distTest}/Clas_Quade.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Quade/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Classification/Quade/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+    </jar>
+		
+		
+		
+	<jar
+          jarfile="${distTest}/Clas_Multiple.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Multiple/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Classification/Multiple/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+    </jar>
+		
+	
 		
 	<!-- Statistical Tests for regression -->	
 		
@@ -1776,7 +1824,7 @@
                     keel/Dataset/**/*.class"/>
     </jar>
         
-    <jar
+    	<jar
           jarfile="${distTest}/Regr_Friedman.jar"
           manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/Friedman/Manifest">
           <fileset dir="${bin}"
@@ -1785,7 +1833,51 @@
                     keel/Algorithms/Statistical_Tests/Shared/**/*.class
                     keel/Algorithms/Shared/**/*.class
                     keel/Dataset/**/*.class"/>
-    </jar>
+        </jar>
+		
+		<jar
+          jarfile="${distTest}/Regr_FriedmanAlligned.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/FriedmanAlligned/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Regression/FriedmanAlligned/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+        </jar>
+		
+		<jar
+          jarfile="${distTest}/Regr_Quade.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/Quade/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Regression/Quade/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+        </jar>
+		
+		<jar
+          jarfile="${distTest}/Regr_Multiple.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/Multiple/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Regression/Multiple/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+        </jar>
+		
+		<jar
+          jarfile="${distTest}/Regr_Contrast.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Regression/Contrast/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Regression/Contrast/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+        </jar>
 	
 	<!-- Visualization modules -->
 	

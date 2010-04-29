@@ -5,7 +5,7 @@
 * @since JDK1.5
 * </p>
 */
-package keel.Algorithms.Statistical_Tests.Classification.Friedman;
+package keel.Algorithms.Statistical_Tests.Regression.Quade;
 
 import keel.Algorithms.Statistical_Tests.Shared.*;
 import keel.Algorithms.Shared.Parsing.*;
@@ -23,7 +23,7 @@ public class Main {
 
         ParseFileList pl = new ParseFileList();
 
-        pl.statisticalTest(StatTest.FriedmanC, tty, pc);
+        pl.statisticalTest(StatTest.QuadeR, tty, pc);
 
     }
 }

@@ -20,8 +20,7 @@ import java.text.DecimalFormatSymbols;
 import keel.Algorithms.Shared.Parsing.ProcessConfig;
 import keel.GraphInterKeel.experiments.Experiments;
 import org.core.Fichero;
-import keel.Algorithms.Statistical_Tests.Shared.Test_Friedman.Friedman;
-
+import keel.Algorithms.Statistical_Tests.Shared.nonParametric.*;
 
 public class StatTest {
 	/**
@@ -62,12 +61,23 @@ public class StatTest {
     // Summary of data, train & test, one algorithm
     public final static int trainTestR = 18;
     public final static int trainTestC = 19;
-    //Non-parametric Test
+    //Wilcoxon Test
     public final static int globalWilcoxonC = 20;
     public final static int globalWilcoxonR = 21;
     //Friedman
     public final static int FriedmanC = 22;
     public final static int FriedmanR = 23;
+    public final static int FriedmanAlignedC = 24;
+    public final static int FriedmanAlignedR = 25;
+    public final static int QuadeC = 26;
+    public final static int QuadeR = 27;   
+    //Constrast
+    public final static int ContrastC = 28;
+    public final static int ContrastR = 29;
+    //Multiple test
+    public final static int MultipleC = 30;
+    public final static int MultipleR = 31;
+    
     Friedman stat;
     double[] mean;
     int[] nResults;
@@ -1507,7 +1517,9 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
      * @return Nothing, some local variables of this module are modified instead
      */   
     private void doRMS2(double[][][][] d) {
+
         nOutputs = d[0][0][0].length / 2; //All the algorithms solve the same problem
+
         differences = new double[nAlgorithms][][];
         totals = new double[nAlgorithms][][];
         nResults = new int[nAlgorithms];
@@ -1525,6 +1537,7 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
                 }
             }
         }
+
         for (int i = 0; i < d.length; i++) { //for each algorithm
             for (int j = 0; j < d[i].length; j++) { //for each fold 
                 for (int k = 0; k < d[i][j].length; k++) { //for all the results in the file
@@ -1536,6 +1549,7 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
                 }
             }
         }
+        
         for (int i = 0; i < nAlgorithms; i++) {
             for (int j = 0; j < differences[i].length; j++) {
                 for (int k = 0; k < differences[i][j].length; k++) {
@@ -2160,6 +2174,7 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
                     }
                     algs.add(algAux);
                     pos += 2;
+                    algAux = new String("");
                 } while (pos < aux[3].length());
 
                 algorithm = new String[algs.size()];
@@ -2180,7 +2195,7 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
                 }
 
                 p.println("Friedman Test, Regression");
-                p.println("Regression error in each foldfold:");
+                p.println("Regression error in each fold:");
                 for (int i = 0; i < nAlgorithms; i++) {
                     p.println("Algorithm = " + algorithm[i]);
                     for (int j = 0; j < nResults[i]; j++) {
@@ -2195,7 +2210,7 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
 
                 stat = new Friedman();
                //Workaround: in this context, significance is a code identify which post hoc test will be done
-                stat.runPostHoc(significance, nResults, algorithm, nres); 
+                stat.runPostHoc(significance, nResults, algorithm, nres,StatTest.FriedmanR); 
                 break;
 
             case StatTest.FriedmanC:
@@ -2238,7 +2253,7 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
                 }
 
                 p.println("Friedman Test, Classification");
-                p.println("Classification error in each foldfold:");
+                p.println("Classification error in each fold:");
                 for (int i = 0; i < nAlgorithms; i++) {
                     p.println("Algorithm = " + algorithm[i]);
                     for (int j = 0; j < nResults[i]; j++) {
@@ -2253,9 +2268,497 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
 
                 stat = new Friedman();
                 //Workaround: in this context, significance is a code identify which post hoc test will be done
-                stat.runPostHoc(significance, nResults, algorithm, nres);
+                stat.runPostHoc(significance, nResults, algorithm, nres,StatTest.FriedmanC);
+                break;
+            
+            case StatTest.FriedmanAlignedR:
+            	
+                out = new FileOutputStream(nres);
+                p = new PrintStream(out);
+
+                //The number of algorithms is unknown
+                aux = null;
+                aux = nres.split("/");
+
+                algAux = new String("" + aux[3].charAt(3)); //After TST
+
+                pos = 4;
+                do {
+                    for (;
+                         (pos < aux[3].length()) &&
+                         ((aux[3].charAt(pos) != 'v') ||
+                          (aux[3].charAt(pos + 1) != 's'));
+                         pos++) { //until "vs" is not found
+                        algAux += aux[3].charAt(pos);
+                    }
+                    algs.add(algAux);
+                    pos += 2;
+                    algAux = new String("");
+                } while (pos < aux[3].length());
+
+                algorithm = new String[algs.size()];
+                for (int i = 0; i < algs.size(); i++) {
+                    algorithm[i] = (String) algs.get(i);
+                }
+
+                nAlgorithms = algorithm.length;
+
+                doRMS2(d);
+
+                mean = new double[nAlgorithms];
+                for (int i = 0; i < mean.length; i++) {
+                    for (int j = 0; j < nResults[i]; j++) {
+                        mean[i] += differences[i][j][0];
+                    }
+                    mean[i] /= nResults[i];
+                }
+
+                p.println("Friedman Test, Regression");
+                p.println("Regression error in each fold:");
+                for (int i = 0; i < nAlgorithms; i++) {
+                    p.println("Algorithm = " + algorithm[i]);
+                    for (int j = 0; j < nResults[i]; j++) {
+                        p.print("Fold " + j + " : ");
+                        for (int k = 0; k < nOutputs; k++) {
+                            p.print(differences[i][j][k] + " ");
+                        }
+                        p.println();
+                    }
+                    p.println("Mean Value: " + mean[i]);
+                }
+
+                stat = new Friedman();
+               //Workaround: in this context, significance is a code identify which post hoc test will be done
+                stat.runPostHoc(significance, nResults, algorithm, nres,StatTest.FriedmanAlignedR); 
+            break;
+
+            case StatTest.FriedmanAlignedC:
+            	
+                out = new FileOutputStream(nres);
+                p = new PrintStream(out);
+
+                aux = null;
+                aux = nres.split("/");
+
+                algAux = new String("" + aux[3].charAt(3)); //Despues de TST
+
+                pos = 4;
+                do {
+                    for (;
+                         (pos < aux[3].length()) &&
+                         ((aux[3].charAt(pos) != 'v') ||
+                          (aux[3].charAt(pos + 1) != 's'));
+                         pos++) { //until "vs" is not found
+                        algAux += aux[3].charAt(pos);
+                    }
+                    algs.add(algAux);
+                    pos += 2;
+                    algAux = new String("");
+                } while (pos < aux[3].length());
+
+                algorithm = new String[algs.size()];
+                for (int i = 0; i < algs.size(); i++) {
+                    algorithm[i] = (String) algs.get(i);
+                }
+
+                nAlgorithms = algorithm.length;
+                doErrClass2(d);
+
+                mean = new double[nAlgorithms];
+                for (int j = 0; j < nAlgorithms; j++) {
+                    for (int i = 0; i < nResults[j]; i++) {
+                        mean[j] += differences[j][i][0];
+                    }
+                    mean[j] /= nResults[j];
+                }
+
+                p.println("Friedman Test, Classification");
+                p.println("Classification error in each fold:");
+                for (int i = 0; i < nAlgorithms; i++) {
+                    p.println("Algorithm = " + algorithm[i]);
+                    for (int j = 0; j < nResults[i]; j++) {
+                        p.print("Fold " + j + " : ");
+                        for (int k = 0; k < nOutputs; k++) {
+                            p.print(differences[i][j][k] + " ");
+                        }
+                        p.println();
+                    }
+                    p.println("Mean Value: " + mean[i]);
+                }
+
+                stat = new Friedman();
+                //Workaround: in this context, significance is a code identify which post hoc test will be done
+                stat.runPostHoc(significance, nResults, algorithm, nres,StatTest.FriedmanAlignedC); 
+            break;
+            
+            case StatTest.QuadeR:
+            	
+                out = new FileOutputStream(nres);
+                p = new PrintStream(out);
+
+                //The number of algorithms is unknown
+                aux = null;
+                aux = nres.split("/");
+
+                algAux = new String("" + aux[3].charAt(3)); //After TST
+
+                pos = 4;
+                do {
+                    for (;
+                         (pos < aux[3].length()) &&
+                         ((aux[3].charAt(pos) != 'v') ||
+                          (aux[3].charAt(pos + 1) != 's'));
+                         pos++) { //until "vs" is not found
+                        algAux += aux[3].charAt(pos);
+                    }
+                    algs.add(algAux);
+                    pos += 2;
+                    algAux = new String("");
+                } while (pos < aux[3].length());
+
+                algorithm = new String[algs.size()];
+                for (int i = 0; i < algs.size(); i++) {
+                    algorithm[i] = (String) algs.get(i);
+                }
+
+                nAlgorithms = algorithm.length;
+
+                doRMS2(d);
+
+                mean = new double[nAlgorithms];
+                for (int i = 0; i < mean.length; i++) {
+                    for (int j = 0; j < nResults[i]; j++) {
+                        mean[i] += differences[i][j][0];
+                    }
+                    mean[i] /= nResults[i];
+                }
+
+                p.println("Friedman Test, Regression");
+                p.println("Regression error in each fold:");
+                for (int i = 0; i < nAlgorithms; i++) {
+                    p.println("Algorithm = " + algorithm[i]);
+                    for (int j = 0; j < nResults[i]; j++) {
+                        p.print("Fold " + j + " : ");
+                        for (int k = 0; k < nOutputs; k++) {
+                            p.print(differences[i][j][k] + " ");
+                        }
+                        p.println();
+                    }
+                    p.println("Mean Value: " + mean[i]);
+                }
+
+                stat = new Friedman();
+               //Workaround: in this context, significance is a code identify which post hoc test will be done
+                stat.runPostHoc(significance, nResults, algorithm, nres,StatTest.QuadeR); 
                 break;
 
+            case StatTest.QuadeC:
+            	
+                out = new FileOutputStream(nres);
+                p = new PrintStream(out);
+
+                aux = null;
+                aux = nres.split("/");
+
+                algAux = new String("" + aux[3].charAt(3)); //Despues de TST
+
+                pos = 4;
+                do {
+                    for (;
+                         (pos < aux[3].length()) &&
+                         ((aux[3].charAt(pos) != 'v') ||
+                          (aux[3].charAt(pos + 1) != 's'));
+                         pos++) { //until "vs" is not found
+                        algAux += aux[3].charAt(pos);
+                    }
+                    algs.add(algAux);
+                    pos += 2;
+                    algAux = new String("");
+                } while (pos < aux[3].length());
+
+                algorithm = new String[algs.size()];
+                for (int i = 0; i < algs.size(); i++) {
+                    algorithm[i] = (String) algs.get(i);
+                }
+
+                nAlgorithms = algorithm.length;
+                doErrClass2(d);
+
+                mean = new double[nAlgorithms];
+                for (int j = 0; j < nAlgorithms; j++) {
+                    for (int i = 0; i < nResults[j]; i++) {
+                        mean[j] += differences[j][i][0];
+                    }
+                    mean[j] /= nResults[j];
+                }
+
+                p.println("Friedman Test, Classification");
+                p.println("Classification error in each fold:");
+                for (int i = 0; i < nAlgorithms; i++) {
+                    p.println("Algorithm = " + algorithm[i]);
+                    for (int j = 0; j < nResults[i]; j++) {
+                        p.print("Fold " + j + " : ");
+                        for (int k = 0; k < nOutputs; k++) {
+                            p.print(differences[i][j][k] + " ");
+                        }
+                        p.println();
+                    }
+                    p.println("Mean Value: " + mean[i]);
+                }
+
+                stat = new Friedman();
+                //Workaround: in this context, significance is a code identify which post hoc test will be done
+                stat.runPostHoc(significance, nResults, algorithm, nres,StatTest.QuadeC); 
+            break;
+                
+            case StatTest.MultipleC:
+                out = new FileOutputStream(nres);
+                p = new PrintStream(out);
+
+                aux = null;
+                aux = nres.split("/");
+
+                algAux = new String("" + aux[3].charAt(3)); //Despues de TST
+
+                pos = 4;
+                do {
+                    for (;
+                         (pos < aux[3].length()) &&
+                         ((aux[3].charAt(pos) != 'v') ||
+                          (aux[3].charAt(pos + 1) != 's'));
+                         pos++) { //until "vs" is not found
+                        algAux += aux[3].charAt(pos);
+                    }
+                    algs.add(algAux);
+                    pos += 2;
+                    algAux = new String("");
+                } while (pos < aux[3].length());
+
+                algorithm = new String[algs.size()];
+                for (int i = 0; i < algs.size(); i++) {
+                    algorithm[i] = (String) algs.get(i);
+                }
+
+                nAlgorithms = algorithm.length;
+                doErrClass2(d);
+
+                mean = new double[nAlgorithms];
+                for (int j = 0; j < nAlgorithms; j++) {
+                    for (int i = 0; i < nResults[j]; i++) {
+                        mean[j] += differences[j][i][0];
+                    }
+                    mean[j] /= nResults[j];
+                }
+
+                p.println("Multiple Test, Classification");
+                p.println("Classification error in each fold:");
+                for (int i = 0; i < nAlgorithms; i++) {
+                    p.println("Algorithm = " + algorithm[i]);
+                    for (int j = 0; j < nResults[i]; j++) {
+                        p.print("Fold " + j + " : ");
+                        for (int k = 0; k < nOutputs; k++) {
+                            p.print(differences[i][j][k] + " ");
+                        }
+                        p.println();
+                    }
+                    p.println("Mean Value: " + mean[i]);
+                }
+
+                Multiple multipleStat = new Multiple();
+                //Workaround: in this context, significance is a code identify which post hoc test will be done
+                multipleStat.runPostHoc(significance, nResults, algorithm, nres);
+                break;
+             
+            case StatTest.MultipleR:
+            	
+            	 out = new FileOutputStream(nres);
+                 p = new PrintStream(out);
+
+                 //The number of algorithms is unknown
+                 aux = null;
+                 aux = nres.split("/");
+
+                 algAux = new String("" + aux[3].charAt(3)); //After TST
+
+                 pos = 4;
+                 do {
+
+                     for (;
+                          (pos < aux[3].length()) &&
+                          ((aux[3].charAt(pos) != 'v') ||
+                           (aux[3].charAt(pos + 1) != 's'));
+                          pos++) { //until "vs" is not found
+                         algAux += aux[3].charAt(pos);
+                     }
+                     algs.add(algAux);
+                     pos += 2;
+                     algAux = new String("");
+                 } while (pos < aux[3].length());
+
+                 algorithm = new String[algs.size()];
+
+                 for (int i = 0; i < algs.size(); i++) {
+                     algorithm[i] = (String) algs.get(i);
+                 }
+
+                 nAlgorithms = algorithm.length;
+                 
+                 doRMS2(d);
+                 
+                 mean = new double[nAlgorithms];
+
+                 for (int i = 0; i < mean.length; i++) {
+                     for (int j = 0; j < nResults[i]; j++) {
+                         mean[i] += differences[i][j][0];
+                     }
+                     mean[i] /= nResults[i];
+                 }
+
+                 p.println("Multiple test, Regression");
+                 p.println("Regression error in each fold:");
+                 for (int i = 0; i < nAlgorithms; i++) {
+                     p.println("Algorithm = " + algorithm[i]);
+                     for (int j = 0; j < nResults[i]; j++) {
+                         p.print("Fold " + j + " : ");
+                         for (int k = 0; k < nOutputs; k++) {
+                             p.print(differences[i][j][k] + " ");
+                         }
+                         p.println();
+                     }
+                     p.println("Mean Value: " + mean[i]);
+                 }
+
+
+                Multiple multipleRStat = new Multiple();
+                //Workaround: in this context, significance is a code identify which post hoc test will be done
+                multipleRStat.runPostHoc(significance, nResults, algorithm, nres);
+                
+            break;
+                
+            case StatTest.ContrastC:
+            	
+            	Contrast module= new Contrast();
+                out = new FileOutputStream(nres);
+                p = new PrintStream(out);
+
+                aux = null;
+                aux = nres.split("/");
+
+                algAux = new String("" + aux[3].charAt(3)); //Despues de TST
+
+                pos = 4;
+                do {
+                    for (;
+                         (pos < aux[3].length()) &&
+                         ((aux[3].charAt(pos) != 'v') ||
+                          (aux[3].charAt(pos + 1) != 's'));
+                         pos++) { //until "vs" is not found
+                        algAux += aux[3].charAt(pos);
+                    }
+                    algs.add(algAux);
+                    pos += 2;
+                    algAux = new String("");
+                } while (pos < aux[3].length());
+
+                algorithm = new String[algs.size()];
+                for (int i = 0; i < algs.size(); i++) {
+                    algorithm[i] = (String) algs.get(i);
+                }
+
+                nAlgorithms = algorithm.length;
+                doErrClass2(d);
+
+                mean = new double[nAlgorithms];
+                for (int j = 0; j < nAlgorithms; j++) {
+                    for (int i = 0; i < nResults[j]; i++) {
+                        mean[j] += differences[j][i][0];
+                    }
+                    mean[j] /= nResults[j];
+                }
+
+                p.println("Contrast Estimation, Classification");
+                p.println("Classification error in each fold:");
+                for (int i = 0; i < nAlgorithms; i++) {
+                    p.println("Algorithm = " + algorithm[i]);
+                    for (int j = 0; j < nResults[i]; j++) {
+                        p.print("Fold " + j + " : ");
+                        for (int k = 0; k < nOutputs; k++) {
+                            p.print(differences[i][j][k] + " ");
+                        }
+                        p.println();
+                    }
+                    p.println("Mean Value: " + mean[i]);
+                }
+
+                module.compute(nResults, algorithm, nres);
+
+                break;
+
+            case StatTest.ContrastR:
+
+            	Contrast moduleR= new Contrast();
+
+            	 out = new FileOutputStream(nres);
+                 p = new PrintStream(out);
+
+                 //The number of algorithms is unknown
+                 aux = null;
+                 aux = nres.split("/");
+
+                 algAux = new String("" + aux[3].charAt(3)); //After TST
+
+                 pos = 4;
+                 do {
+
+                     for (;
+                          (pos < aux[3].length()) &&
+                          ((aux[3].charAt(pos) != 'v') ||
+                           (aux[3].charAt(pos + 1) != 's'));
+                          pos++) { //until "vs" is not found
+                         algAux += aux[3].charAt(pos);
+                     }
+
+                     algs.add(algAux);
+                     pos += 2;
+                     algAux = new String("");
+                 } while (pos < aux[3].length());
+
+                 algorithm = new String[algs.size()];
+
+                 for (int i = 0; i < algs.size(); i++) {
+                     algorithm[i] = (String) algs.get(i);
+                 }
+
+                 nAlgorithms = algorithm.length;
+                 
+                 doRMS2(d);
+                 
+                 mean = new double[nAlgorithms];
+
+                 for (int i = 0; i < mean.length; i++) {
+                     for (int j = 0; j < nResults[i]; j++) {
+                         mean[i] += differences[i][j][0];
+                     }
+                     mean[i] /= nResults[i];
+                 }
+
+                 p.println("Contrast Estimation, Regression");
+                 p.println("Regression error in each fold:");
+                 for (int i = 0; i < nAlgorithms; i++) {
+                     p.println("Algorithm = " + algorithm[i]);
+                     for (int j = 0; j < nResults[i]; j++) {
+                         p.print("Fold " + j + " : ");
+                         for (int k = 0; k < nOutputs; k++) {
+                             p.print(differences[i][j][k] + " ");
+                         }
+                         p.println();
+                     }
+                     p.println("Mean Value: " + mean[i]);
+                 }
+
+                moduleR.compute(nResults, algorithm, nres);
+                break;
+                
             case StatTest.MannWhitneyR:
                 out = new FileOutputStream(nres);
                 p = new PrintStream(out);

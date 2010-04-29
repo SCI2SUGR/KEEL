@@ -209,7 +209,12 @@ public class ParseFileList {
         //If the test to be run is not the Global Wilcoxon Test or the Friedman test we
         //check if the number of results is different among the executed algorithms
         if ((selector != StatTest.globalWilcoxonC) && (selector != StatTest.globalWilcoxonR) &&
-            (selector != StatTest.FriedmanC) && (selector != StatTest.FriedmanR)) {
+            (selector != StatTest.FriedmanC) && (selector != StatTest.FriedmanR)&& 
+            (selector != StatTest.FriedmanAlignedC) && (selector != StatTest.FriedmanAlignedR)&& 
+            (selector != StatTest.QuadeC) && (selector != StatTest.QuadeR)&& 
+            (selector != StatTest.ContrastC) && (selector != StatTest.ContrastR)&& 
+            (selector != StatTest.MultipleC) && (selector != StatTest.MultipleR)) {
+        	
             for (int i = 0; i < indexes.size(); i++) {
                 if (nFolds != ((Vector) indexes.get(i)).size() / 2) {
                     System.out.println("Error: different number of folds");
@@ -256,7 +261,7 @@ public class ParseFileList {
                         }
                         i++;
                     }
-    }
+               }
         } else {
             int i, it, cumulated;
             i = it = cumulated = 0;
