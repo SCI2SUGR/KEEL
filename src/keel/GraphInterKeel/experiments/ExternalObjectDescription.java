@@ -9,13 +9,16 @@ Copyright 2004 Universidad de Oviedo. All rights reserved.
 package keel.GraphInterKeel.experiments;
 
 import java.io.*;
+import java.util.Vector;
 
 public class ExternalObjectDescription implements Serializable, Comparable {
 
     public String[] name;
     public String[] path;
     public String[] nameJar;
+    public Vector<Joint> arg= new Vector<Joint>();
     private int subtype;
+    private int subtypelqd;
 
     /**
      * Default builder
@@ -28,9 +31,14 @@ public class ExternalObjectDescription implements Serializable, Comparable {
      * @param d Object to be copied
      */
     public ExternalObjectDescription(ExternalObjectDescription d) {
+        
+        
+       
+        
         if (d.name == null) {
             name = null;
-        } else {
+        } 
+        else {
             name = new String[d.name.length];
             //System.out.println (" >>>Length of Nombre: "+d.nombre.length );
             for (int i = 0; i < d.name.length; i++) {
@@ -39,7 +47,7 @@ public class ExternalObjectDescription implements Serializable, Comparable {
                 } else {
                     name[i] = new String(d.name[i]);
                 }
-            //System.out.println ("   >>>Nombre["+i+"] = "+nombre[i] );
+          //  System.out.println ("   >>>Nombre["+i+"] = "+name[i] );
             }
         }
         if (d.path == null) {
@@ -52,10 +60,12 @@ public class ExternalObjectDescription implements Serializable, Comparable {
                 } else {
                     path[i] = new String(d.path[i]);
                 }
-            //System.out.println ("   >>>Path["+i+"] = "+path[i] );
+           // System.out.println ("   >>>Path["+i+"] = "+path[i] );
             }
         }
         subtype = d.subtype;
+        subtypelqd = d.subtypelqd;
+        
         if (d.nameJar == null) {
             nameJar = null;
         } else {
@@ -66,7 +76,7 @@ public class ExternalObjectDescription implements Serializable, Comparable {
                 } else {
                     nameJar[i] = new String(d.nameJar[i]);
                 }
-            //System.out.println ("   >>>nombreJar["+i+"] = "+nombreJar[i] );
+           // System.out.println ("   >>>nombreJar["+i+"] = "+nameJar[i] );
             }
         }
     }
@@ -99,6 +109,7 @@ public class ExternalObjectDescription implements Serializable, Comparable {
             }
         }
         subtype = d.subtype;
+        subtypelqd = d.subtypelqd;
         if (d.nameJar == null) {
             nameJar = null;
         } else {
@@ -116,6 +127,7 @@ public class ExternalObjectDescription implements Serializable, Comparable {
      * @param n Name
      * @param p Path
      * @param s Subtype
+     * * @param s Subtypelqd
      */
     public ExternalObjectDescription(String n, String p, int s) {
 
@@ -141,6 +153,7 @@ public class ExternalObjectDescription implements Serializable, Comparable {
             }
         }
         subtype = s;
+        //subtypelqd = lqd;
     }
 
     /**
@@ -148,9 +161,10 @@ public class ExternalObjectDescription implements Serializable, Comparable {
      * @param n Name
      * @param p Path
      * @param s Subtype
+     * * @param s Subtypelqd
      * @param j Jar
      */
-    public ExternalObjectDescription(String n, String p, int s, String j) {
+    public ExternalObjectDescription(String n, String p, int s,String j) {
         //  System.out.println("Creating dsc " + n + " " + p + " " + s + " " + j);
         name = null;
         path = null;
@@ -174,6 +188,7 @@ public class ExternalObjectDescription implements Serializable, Comparable {
             }
         }
         subtype = s;
+        //subtypelqd = lqd;
     }
 
     /**
@@ -217,6 +232,12 @@ public class ExternalObjectDescription implements Serializable, Comparable {
         }
     }
 
+     public Vector getArg() {
+        return arg;
+    }
+     public void setArg(Vector<Joint> join) {
+        arg=join;
+    }
     void insert(ExternalObjectDescription d) {
 
         // insert fields of a new layer in the object
@@ -421,7 +442,11 @@ public class ExternalObjectDescription implements Serializable, Comparable {
     public int getSubtype() {
         return subtype;
     }
-
+    
+     public int getSubtypelqd() {
+        return subtypelqd;
+    }
+    
     /**
      * Gets the JAR name (i.e. the name with the extesion ".jar") of
      * the active layer
@@ -488,6 +513,9 @@ public class ExternalObjectDescription implements Serializable, Comparable {
      */
     public void setSubtype(int s) {
         subtype = s;
+    }
+    public void setSubtypelqd(int s) {
+        subtypelqd = s;
     }
 
     @Override

@@ -11,6 +11,7 @@ package keel.GraphInterKeel.experiments;
  * @author Julian Luengo Martin (modifications 19/04/2009)
  * @author joaquín Derrac Rus (modifications 6/05/2009)
  * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of Córdoba) 7/07/2009
+ * @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
  */
 
 
@@ -47,6 +48,7 @@ public class Parameters implements Serializable {
     public Vector tst_val = new Vector(); // original test files
     public Vector configs = new Vector(); // config files generated  by method
     public Vector additional_outputs = new Vector(); // Additional output files
+    public Vector<String> dataset_used=new Vector<String>();
 
     /**
      * Default builder
@@ -395,6 +397,9 @@ public class Parameters implements Serializable {
     public Vector getTestFiles() {
         return tst_val;
     }
+     public Vector getdataset_used() {
+        return dataset_used;
+    }
 
     /**
      * return additional output files
@@ -431,6 +436,7 @@ public class Parameters implements Serializable {
         defaultValue = (Vector) param.getDefaultValues().clone();
         value = (Vector) param.getValues().clone();
         hidden = (Vector) param.getHidden().clone();
+        dataset_used= (Vector) param.getdataset_used().clone();
     }
 
     /**
@@ -454,6 +460,7 @@ public class Parameters implements Serializable {
             value = (Vector) param.getValues().clone();
             hidden = (Vector) param.getHidden().clone();
         }
+        dataset_used= (Vector) param.getdataset_used().clone();
     }
 
     /**
@@ -489,6 +496,16 @@ public class Parameters implements Serializable {
 
             specification = doc.getRootElement();
 
+            int con=0;
+         String va = specification.getChildText("dataset"+con);
+        while(va!=null)
+        {
+            dataset_used.addElement(va);
+            con++;
+            va = specification.getChildText("dataset"+con);
+        }
+            
+            
             algorithmType = specification.getChildText("name");
             nParameters = Integer.parseInt(specification.getChildText("nParameters"));
             if (Integer.parseInt(specification.getChildText("seed")) == 1) {

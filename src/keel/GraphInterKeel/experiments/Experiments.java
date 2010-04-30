@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -11,6 +12,7 @@
  * @author Ignacio Robles
  * @author Julian Luengo
  * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of Córdoba) 7/07/2009
+ * @author Modified by Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
  */
 package keel.GraphInterKeel.experiments;
 
@@ -59,14 +61,23 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     String lastDirectory;
     int cursorAction;
     ExternalObjectDescription dsc;
+    ExternalObjectDescription dscLQD;
+    ExternalObjectDescription dscCRISP;
+    ExternalObjectDescription dscLQD_C;
+    ExternalObjectDescription dscC_LQD;
+    ExternalObjectDescription dscC;
     Random rnd;
-    DatasetXML listData[];
+    public DatasetXML listData[];
+      public DatasetXML listDataLQD_C[];
+     public DatasetXML listDataC_LQD[];
+     public DatasetXML listDataC[];
     DefaultMutableTreeNode node;
     JTree tree;
     //FATHER FRAME
     keel.GraphInterKeel.menu.Frame father;
     //STATIC VARIABLES
     public static final int INVESTIGATION = 0;
+    public static final int LQD = 2;
     public static final int TEACHING = 1;
     static final int CLASSIFICATION = 0;
     static final int REGRESSION = 1;
@@ -80,10 +91,11 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     public boolean notSelectedDataset = true;
     public String root;
     public int objType;
+    public int RamaLqd; 
+    
     protected int expType = 0;
     protected int cvType = 0;
-    private String lastPathChosen;
-   
+    private String lastPathChosen;;
 
     //Absolute names array
     private String fullName[];
@@ -120,12 +132,14 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
      * can be disposed, and the father set visible again on closing)
      * @param parent the frame that will be shown when the Experiments frame is closed
      */
-    public Experiments(keel.GraphInterKeel.menu.Frame parent) {
+    public Experiments(keel.GraphInterKeel.menu.Frame parent, int type) 
+    {
         initComponents();
       
         this.father = parent;
         this.root = parent.raiz;
-        experimentGraph.objective = this.objType;
+        experimentGraph.objective = type;
+        objType=type;
         //set frame icon
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(Experiments.class.getResource("/keel/GraphInterKeel/resources/ico/logo/logo.gif")));
         //at start, upper and left menus are disabled
@@ -133,6 +147,10 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         deactivateLeftMenu();
         startHelpPanel();
         this.setVisible(true);
+        if(objType==LQD)
+            lqd();
+        
+        
     }
 
     /** This method is called from within the constructor to
@@ -1100,11 +1118,11 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
         graphDiagramINNER.setName("graphDiagramINNER"); // NOI18N
         graphDiagramINNER.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                graphDiagramINNERMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 graphDiagramINNERMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                graphDiagramINNERMouseExited(evt);
             }
         });
 
@@ -1467,8 +1485,25 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     }// </editor-fold>//GEN-END:initComponents
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
-        newExperiment();
+        int salvar=newExperiment();
         deactivateUpperMenu();
+        
+        if(objType==LQD && salvar != JOptionPane.CANCEL_OPTION)
+        {
+            
+            panelDatasets.clear();
+            dinDatasets.clear();
+            
+            mainSplitPane1.setDividerLocation(-1);
+            statusBarItem.setSelected(true);
+        
+        }
+        if(objType==LQD)
+        {
+            openButton.setEnabled(true);
+            newButton.setEnabled(true);
+        }
+     
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
@@ -1516,8 +1551,14 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         **************************************************************/
         if (Frame.buttonPressed == 0) //Button Experiments pressed
 		{
-            regeneratePartitions();
-            generateExperimentDirectories();
+            if(objType!=LQD)
+            {
+             regeneratePartitions();
+             generateExperimentDirectories();
+            }
+            else
+                generateExperimentDirectoriesLQD();
+            
         }
         else	//Button Teaching pressed
 		{
@@ -1552,7 +1593,8 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         if (helpPanelItem.isSelected()) {
             divider1.setDividerLocation(divider1.getHeight());
             helpPanelItem.setSelected(false);
-        } else {
+        } 
+        else {
             divider1.setDividerLocation(-1);
             helpPanelItem.setSelected(true);
         }
@@ -1579,6 +1621,8 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         graphDiagramINNER.setToolTipText("Click twice to see node properties");
         statusBarItem.setSelected(true);
         showAlgButton.setEnabled(true);
+       
+        
     //selectionPanel1.setVisible(true);
 }//GEN-LAST:event_selecDatasetsActionPerformed
 
@@ -1587,6 +1631,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             mainSplitPane1.setDividerLocation(-1);
             statusBarItem.setSelected(true);
         }
+        
         ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "preprocessCard");
         cursorAction = GraphPanel.SELECTING;
         status.setText("Preprocess selection");
@@ -1599,6 +1644,14 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
     private void classificationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classificationButtonActionPerformed
         numberKFoldCross = Integer.valueOf(kValueField.getText());
+        
+        //Control of this variables because of they could be
+        //modified in experiments
+        if(objType==LQD)
+        {
+            numberKFoldCross=10;
+            cvType = Experiments.PK;
+        }
         if (kfoldButton.isSelected() && numberKFoldCross < 1) {
             JOptionPane.showMessageDialog(this, "Number of folds must be at least 1",
                     "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
@@ -1607,10 +1660,18 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             status.setText("Select an initial set of dataset and then click on the drawing panel");
             selectButton.setEnabled(true);
             enableMainToolBar(true);
-            activateUpperMenu();
-            helpContent.muestraURL(this.getClass().getResource("/contextualHelp/data_set_exp.html"));
+           
+            if(objType!=LQD)
+                activateUpperMenu();
+            else
+                quicktools.getComponent(quicktools.getComponentCount()-1).setEnabled(true);
+            
+            if(objType==LQD)
+                 helpContent.muestraURL(this.getClass().getResource("/contextualHelp/data_set_exp_lqd.html"));
+            else
+                helpContent.muestraURL(this.getClass().getResource("/contextualHelp/data_set_exp.html"));
 
-            this.expType = Experiments.CLASSIFICATION;
+            this.expType = Experiments.CLASSIFICATION;     
             if (kfoldButton.isSelected()) {
                 cvType = Experiments.PK;
             } else if (fivetwoButton.isSelected()) {
@@ -1630,6 +1691,14 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 }//GEN-LAST:event_classificationButtonActionPerformed
 
     private void regressionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regressionButtonActionPerformed
+        
+        if(objType==LQD)
+        {
+            JOptionPane.showMessageDialog(this, "No exist regression with Low Quality Data",
+                    "Regression LQD", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
         activateUpperMenu();
         selectButton.setEnabled(true);
         enableMainToolBar(true);
@@ -1665,7 +1734,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         }
         deleteItem.setEnabled(false);
 
-
+        }
 
 
 }//GEN-LAST:event_regressionButtonActionPerformed
@@ -1716,12 +1785,22 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void cursorFluxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cursorFluxActionPerformed
-        if (statusBarItem.isSelected()) {
-            mainSplitPane1.setDividerLocation(mainToolBar1.getWidth());
-            statusBarItem.setSelected(false);
-        } else {
-            mainSplitPane1.setDividerLocation(-1);
-            statusBarItem.setSelected(true);
+        if(objType==LQD)
+        {
+            if (statusBarItem.isSelected()) {
+                mainSplitPane1.setDividerLocation(mainToolBar1.getWidth());
+                statusBarItem.setSelected(false);
+            } 
+        }
+        else
+        {
+            if (statusBarItem.isSelected()) {
+                mainSplitPane1.setDividerLocation(mainToolBar1.getWidth());
+                statusBarItem.setSelected(false);
+            } else {
+                mainSplitPane1.setDividerLocation(-1);
+                statusBarItem.setSelected(true);
+            }
         }
 
         flujo_actionPerformed(evt);
@@ -1734,7 +1813,11 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         // remove an element
 		if (Frame.buttonPressed == 0) //Button Experiments pressed
 		{
-			  	delete();
+			  
+                    if(objType==LQD)
+                        deletelqd();
+                    else
+                        delete();
 		}
 		else	//Button Teaching pressed
 		{
@@ -1984,11 +2067,20 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) (evt.getPath().getLastPathComponent());
 
-        if (preprocessTree.getSelectionPath() != null) {
-            if (node.isLeaf() && ((ExternalObjectDescription) node.getUserObject()).getName().charAt(0) != '(') {
+        //System.out.println (evt.getPath().getLastPathComponent()+" GSTRG "+preprocessTree.getSelectionPath());
+        if(objType!=LQD)
+        {
+         if (preprocessTree.getSelectionPath() != null) 
+         {
+            if (node.isLeaf() && ((ExternalObjectDescription) node.getUserObject()).getName().charAt(0) != '(') 
+            {
                 cursorAction = GraphPanel.PAINT_ALGORITHM;
-                dsc = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
-                dsc.setSubtype(Node.type_Preprocess);
+                
+                    dsc = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
+                    dsc.setSubtype(Node.type_Preprocess);
+                    dsc.setSubtypelqd(Node.CRISP);
+                    
+                
                 UseCase casoUso = readXMLUseCase("./help/" + dsc.getName());
                 if (casoUso == null) {
                     this.useCaseTextArea.setText("Use Case not found for this method");
@@ -2007,11 +2099,13 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
                 visualizeSelectionTree.setSelectionPath(null);
                 invisible.setSelected(true);
 
-            } else {
+            } 
+            else {
                 cursorAction = GraphPanel.SELECTING;
 
                 dsc = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
                 dsc.setSubtype(Node.type_Method);
+                 dsc.setSubtypelqd(Node.CRISP);  
 
                 UseCase casoUso = readXMLUseCase("./help/" + dsc.getName());
                 if (casoUso == null) {
@@ -2033,27 +2127,133 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
                 status.setText("Click in a node to select it");
             }
         }
+        }
+        else
+        {
+            if (preprocessTree.getSelectionPath() != null) 
+             {
+                if (node.isLeaf()) 
+                {
+                    cursorAction = GraphPanel.PAINT_ALGORITHM;
+                
+                  
+                    if(preprocessTree.getSelectionPath().toString().contains("LQD")==true)
+                    {
+                        dscLQD = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
+                        dscLQD.setSubtype(Node.type_Preprocess);
+                        dscLQD.setSubtypelqd(Node.LQD);
+                        RamaLqd=1;
+                    }
+                    else
+                    {
+                       dscCRISP = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
+                       dscCRISP.setSubtype(Node.type_Preprocess);
+                       dscCRISP.setSubtypelqd(Node.CRISP2);   
+                       RamaLqd=0;
+                    }
+                           
+                
+                status.setText("Click on the draw area to insert a new node");
+                cursorDraw = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+                graphDiagramINNER.setToolTipText("Click on the draw area to insert an algorithm node");
+
+                methodsSelectionTree.setSelectionPath(null);
+                postprocessSelectionTree.setSelectionPath(null);
+                testSelectionTree.setSelectionPath(null);
+                visualizeSelectionTree.setSelectionPath(null);
+                invisible.setSelected(true);
+
+            } 
+           
+                
+            }
+        }
     }//GEN-LAST:event_preprocessTree_valueChanged
 
     private void methodSelectionTree_valueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_methodSelectionTree_valueChanged
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) (evt.getPath().getLastPathComponent());
 
-        if (methodsSelectionTree.getSelectionPath() != null) {
-            if (node.isLeaf() && ((ExternalObjectDescription) node.getUserObject()).getName().charAt(0) != '(') {
+        if(objType!=LQD)
+        {
+            if (methodsSelectionTree.getSelectionPath() != null) 
+            {
+                if (node.isLeaf() && ((ExternalObjectDescription) node.getUserObject()).getName().charAt(0) != '(') {
                 cursorAction = GraphPanel.PAINT_ALGORITHM;
 
-                dsc = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
+                
+                    dsc = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
 
-                dsc.setSubtype(Node.type_Method);
+                    dsc.setSubtype(Node.type_Method);
+                    dsc.setSubtypelqd(Node.CRISP);
+                
+                    UseCase casoUso = readXMLUseCase("./help/" + dsc.getName());
+                    if (casoUso == null) {
+                        this.useCaseTextArea.setText("Use Case not found for this method");
+                    } else {
+                        this.useCaseTextArea.setText(casoUso.toString());
+                        this.useCaseTextArea.setCaretPosition(0);
+                    }
+                
+                    status.setText("Click on the draw area to insert a new node");
+                    cursorDraw = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+                    graphDiagramINNER.setToolTipText("Click on the draw area to insert an algorithm node");
 
-                UseCase casoUso = readXMLUseCase("./help/" + dsc.getName());
-                if (casoUso == null) {
-                    this.useCaseTextArea.setText("Use Case not found for this method");
-                } else {
-                    this.useCaseTextArea.setText(casoUso.toString());
-                    this.useCaseTextArea.setCaretPosition(0);
+                    preprocessTree.setSelectionPath(null);
+                    postprocessSelectionTree.setSelectionPath(null);
+                    testSelectionTree.setSelectionPath(null);
+                    visualizeSelectionTree.setSelectionPath(null);
+                    invisible.setSelected(true);
                 }
+                else 
+                {
+                    cursorAction = GraphPanel.SELECTING;
 
+                    dsc = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
+                    dsc.setSubtype(Node.type_Method);
+                    dsc.setSubtypelqd(Node.CRISP);
+
+                    UseCase casoUso = readXMLUseCase("./help/" + dsc.getName());
+                    if (casoUso == null) {
+                        this.useCaseTextArea.setText("Use Case not found for this method");
+                    } else {
+                        this.useCaseTextArea.setText(casoUso.toString());
+                        this.useCaseTextArea.setCaretPosition(0);
+                    }
+
+                    cursorDraw = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
+                    
+                    graphDiagramINNER.setToolTipText("Click twice into a node to view its properties");
+                    methodsSelectionTree.setSelectionPath(null);
+                    preprocessTree.setSelectionPath(null);
+                    postprocessSelectionTree.setSelectionPath(null);
+                    testSelectionTree.setSelectionPath(null);
+                    visualizeSelectionTree.setSelectionPath(null);
+                    //selectButton.setSelected(true);
+                    status.setText("Click in a node to select it");
+                }
+            }
+        }
+        else
+        {
+            if (methodsSelectionTree.getSelectionPath() != null) 
+            {
+            if (node.isLeaf()) {
+                cursorAction = GraphPanel.PAINT_ALGORITHM;
+                if(methodsSelectionTree.getSelectionPath().toString().contains("LQD")==true)
+                    {
+                        dscLQD = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
+                        dscLQD.setSubtype(Node.type_Method);
+                        dscLQD.setSubtypelqd(Node.LQD);
+                        RamaLqd=1;
+                    }
+                    else
+                    {
+                       dscCRISP = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
+                       dscCRISP.setSubtype(Node.type_Method);
+                       dscCRISP.setSubtypelqd(Node.CRISP2);   
+                       RamaLqd=0;
+                    }
+                         
                 status.setText("Click on the draw area to insert a new node");
                 cursorDraw = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
                 graphDiagramINNER.setToolTipText("Click on the draw area to insert an algorithm node");
@@ -2063,32 +2263,10 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
                 testSelectionTree.setSelectionPath(null);
                 visualizeSelectionTree.setSelectionPath(null);
                 invisible.setSelected(true);
-
-            } else {
-                cursorAction = GraphPanel.SELECTING;
-
-                dsc = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
-                dsc.setSubtype(Node.type_Method);
-
-                UseCase casoUso = readXMLUseCase("./help/" + dsc.getName());
-                if (casoUso == null) {
-                    this.useCaseTextArea.setText("Use Case not found for this method");
-                } else {
-                    this.useCaseTextArea.setText(casoUso.toString());
-                    this.useCaseTextArea.setCaretPosition(0);
-                }
-
-                cursorDraw = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
-
-                graphDiagramINNER.setToolTipText("Click twice into a node to view its properties");
-                methodsSelectionTree.setSelectionPath(null);
-                preprocessTree.setSelectionPath(null);
-                postprocessSelectionTree.setSelectionPath(null);
-                testSelectionTree.setSelectionPath(null);
-                visualizeSelectionTree.setSelectionPath(null);
-                //selectButton.setSelected(true);
-                status.setText("Click in a node to select it");
+                
             }
+            }
+
         }
     }//GEN-LAST:event_methodSelectionTree_valueChanged
 
@@ -2101,6 +2279,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
                 dsc = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
                 dsc.setSubtype(Node.type_Postprocess);
+                  dsc.setSubtypelqd(Node.CRISP);  
 
                 UseCase casoUso = readXMLUseCase("./help/" + dsc.getName());
                 if (casoUso == null) {
@@ -2125,6 +2304,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
                 dsc = new ExternalObjectDescription((ExternalObjectDescription) (node.getUserObject()));
                 dsc.setSubtype(Node.type_Method);
+                dsc.setSubtypelqd(Node.CRISP);  
 
                 UseCase casoUso = readXMLUseCase("./help/" + dsc.getName());
                 if (casoUso == null) {
@@ -2434,7 +2614,10 @@ private void selectItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_selectItemActionPerformed
 
 private void runExpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runExpItemActionPerformed
-    generateExperimentDirectories();
+    if(objType!=LQD)
+        generateExperimentDirectories();
+    else
+        generateExperimentDirectoriesLQD();
 }//GEN-LAST:event_runExpItemActionPerformed
 
 private void executionOptItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_executionOptItemActionPerformed
@@ -2612,12 +2795,45 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     //*****************************************************************
     //*****************************************************************
     //OWN METHODS
+    
+  
+    private void lqd()
+    {
+        //Rename the type of experiments
+        experimentLabel.setText("Type of experiments with Low Quality Datasets");
+        unsupervisedButton.setText("Unsupervised Learning LQD");
+        regressionButton.setText("Regression LQD");
+        classificationButton.setText("Classification LQD");
+        
+        experimentGraph.objective=objType;
+        partitionPanel1.setVisible(false); 
+        setTitle("Experiments Design of Low Quality Data");
+        activateUpperMenu_principals();
+        status.setText("Select the type of experiment able to use Low Quality Data");
+        helpContent.muestraURL(this.getClass().getResource("/contextualHelp/exp_intro_lqd.html"));
+        unsupervisedButton.setEnabled(false);
+        regressionButton.setEnabled(false);
+        
+        
+        //We don't want the help
+        helpUseCaseTabbedPanel.setVisible(false);
+    }
+    
+    
     private void activateUpperMenu() {
         for (int i = 0; i < quicktools.getComponentCount(); i++) {
             quicktools.getComponent(i).setEnabled(true);
         }
     }
-
+    
+     private void activateUpperMenu_principals() {
+        
+            quicktools.getComponent(0).setEnabled(true);
+            quicktools.getComponent(1).setEnabled(true);
+            //showHelpButton.setEnabled(true);
+        
+    }
+ 
     private void deactivateUpperMenu() {
         for (int i = 0; i < quicktools.getComponentCount(); i++) {
             quicktools.getComponent(i).setEnabled(false);
@@ -2639,6 +2855,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         for (int i = 0; i < mainToolBar1.getComponentCount(); i++) {
             mainToolBar1.getComponent(i).setEnabled(state);
         }
+        if(objType==LQD)
+            selectPostprocessMethods.setEnabled(false);
     }
 
     /**
@@ -2646,6 +2864,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
      * @return the user's option (if accepted to save or declined to save) 
      */
     public int saveExperiment() {
+        
+                 
         experimentGraph.objective = this.objType;
         int opcion = 0;
         Mapping mapping = new Mapping();
@@ -2680,14 +2900,24 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     if (f.exists()) {
                         f.delete();
                     }
+                    
+                    if(objType==LQD)
                     mapping.loadMapping(this.getClass().getResource(
+                            "/mapping/mapeoExperimentoLQD.xml"));
+                    else
+                        mapping.loadMapping(this.getClass().getResource(
                             "/mapping/mapeoExperimento.xml"));
+                        
                     FileOutputStream file = new FileOutputStream(f);
                     Marshaller marshaller = new Marshaller(new OutputStreamWriter(file));
                     marshaller.setMapping(mapping);
                     marshaller.marshal(experimentGraph);
                     experimentGraph.setModified(false);
                     status.setText("Experiment saved successfully");
+                    if(objType==LQD)
+                        JOptionPane.showMessageDialog(this, "Experiment saved successfully",
+                            "Saved", JOptionPane.INFORMATION_MESSAGE);
+                        
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, "Error saving experiment",
                             "Error", JOptionPane.ERROR_MESSAGE);
@@ -2703,30 +2933,39 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
     }
 
-    private int nextNode(Vector visitados) {
+    private int nextNode(Vector visitados) 
+    {
         // check node dependencies
         boolean valido = false;
         int valor = 0;
-        for (int i = 0; i < experimentGraph.numNodes() && !valido; i++) {
+        for (int i = 0; i < experimentGraph.numNodes() && !valido; i++) 
+        {
             valor = i;
             valido = true;
             // it hasn't been processed
-            if (visitados.contains(new Integer(valor)) == false) {
+            if (visitados.contains(new Integer(valor)) == false) //therefore is a node != type_dataset
+            {
                 // Check dependencies
-                for (int j = 0; j < experimentGraph.numArcs() && valido; j++) {
+                for (int j = 0; j < experimentGraph.numArcs() && valido; j++) 
+                {
                     Arc arco = experimentGraph.getArcAt(j);
-                    if (arco.getDestination() == i) {
-                        if (visitados.contains(new Integer(arco.getSource())) == false) {
+                    if (arco.getDestination() == i) 
+                    {
+                        if (visitados.contains(new Integer(arco.getSource())) == false) 
+                        {
                             valido = false;
                         }
                     }
                 }
-            } else {
+            } 
+            else 
+            {
                 valido = false;
             }
         }
 
-        if (valido) {
+        if (valido) 
+        {
             visitados.addElement(new Integer(valor));
             return valor;
         } else {
@@ -2837,6 +3076,30 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             experimentGraph.setType(expType);
             panelDatasets.reload(expType);
             dinDatasets.reload(expType);
+            if(objType==LQD)
+            {
+                panelDatasets.lqd_crisp.setVisible(true);
+                panelDatasets.crisp_lqd.setVisible(true);
+                panelDatasets.selectAll.setText("Select All LQD");
+                panelDatasets.invertSelection.setText("Invert LQD");
+                panelDatasets.importB.setVisible(false);
+                panelDatasets.selectAllUser.setVisible(false);
+                panelDatasets.invertSelectionUser.setVisible(false);
+                
+                dinDatasets.lqd_crisp.setVisible(true);
+                dinDatasets.crisp_lqd.setVisible(true);
+                dinDatasets.selectAll.setText("Select All LQD");
+                dinDatasets.invertSelection.setText("Invert LQD");
+                dinDatasets.importB.setVisible(false);
+                dinDatasets.selectAllUser.setVisible(false);
+                dinDatasets.invertSelectionUser.setVisible(false);
+                
+                dinDatasets.reload_lqd_crisp();
+                int position=dinDatasets.reload_crisp_lqd();
+                dinDatasets.reload_crisp(position);
+                
+            }
+            
         } catch (java.net.MalformedURLException ex) {
             ex.printStackTrace();
         }
@@ -2898,15 +3161,16 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         g.setSeed(aux.getSeed());
         g.setId(aux.getId());
         g.setType(aux.getType());
-
+      
         String dirInterno = new String("/listAlgorithms");
 
         java.net.URL raizJar = getClass().getResource(dirInterno);
 
         for (int i = 0; i < aux.numNodes(); i++) {
 
-            Node a = aux.getNodeAt(i);
-            for (int ly = 0; ly < a.dsc.getNamesLength(); ly++) {
+            Node a = aux.getNodeAt(i);        
+            for (int ly = 0; ly < a.dsc.getNamesLength(); ly++) 
+            {
                 String pathCorregido = a.dsc.getPath(ly);
                 if (pathCorregido != null) {
                     if (pathCorregido.startsWith("jar:") && pathCorregido.indexOf(dirInterno) >= 0) {
@@ -2918,12 +3182,25 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 }
             }
 
-            if (a.type == Node.type_Algorithm) {
+           
+             if(aux.objective==LQD)
+             {
+                continueExperimentGeneration();
+                
+             }
+             
+            if (a.type == Node.type_Algorithm) 
+            {
+               /* for(int ar=0;ar<a.dsc.arg.size();ar++)
+                    System.out.println("necesito SABER EL TYPE_LQD "+ a.dsc.arg.get(ar).type_lqd);*/
                 g.insertNode(new Algorithm(a.dsc, a.getPosicion(), graphDiagramINNER,
-                        ((Algorithm) a).par, a.id));
-            } else if (a.type == Node.type_Dataset) {
-                g.insertNode(new DataSet(a.dsc, a.getPosicion(), graphDiagramINNER,
-                        ((DataSet) a).tableVector, ((DataSet) a).modified, a.id));
+                        ((Algorithm) a).par, a.id,a.getTypelqd(),a.dsc.arg));
+                
+            } 
+            else if (a.type == Node.type_Dataset) 
+            {
+                  g.insertNode(new DataSet(a.dsc, a.getPosicion(), graphDiagramINNER,
+                        ((DataSet) a).tableVector, ((DataSet) a).modified, a.id,a.getTypelqd()));
             } else if (a.type == Node.type_Jclec) {
                 g.insertNode(new Jclec(a.dsc, a.getPosicion(), graphDiagramINNER,
                         ((Jclec) a).param, a.id));
@@ -2937,12 +3214,12 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 mu.patternFile = ((UserMethod) a).patternFile;
                 g.insertNode(mu);
             }
-        }
+        } 
         for (int i = 0; i < aux.numArcs(); i++) {
             Arc a = aux.getArcAt(i);
             Arc b = new Arc(a.getSource(), a.getDestination(), graphDiagramINNER);
             g.insertArc(b);
-        }
+        }  
         g.setModified(false);
         return g;
     }
@@ -2968,10 +3245,10 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             Node a = aux.getNodeAt(i);
             if (a.type == Node.type_Algorithm) {
                 g.insertNode(new Algorithm(a.dsc, a.getPosicion(), graphDiagramINNER,
-                        ((Algorithm) a).par, a.id));
+                        ((Algorithm) a).par, a.id,a.type_lqd,a.dsc.arg));
             } else if (a.type == Node.type_Dataset) {
                 g.insertNode(new DataSet(a.dsc, a.getPosicion(), graphDiagramINNER,
-                        ((DataSet) a).tableVector, ((DataSet) a).modified, a.id));
+                        ((DataSet) a).tableVector, ((DataSet) a).modified, a.id,a.getTypelqd()));
             } else if (a.type == Node.type_Jclec) {
                 g.insertNode(new Jclec(a.dsc, a.getPosicion(), graphDiagramINNER,
                         ((Jclec) a).param, a.id));
@@ -3265,6 +3542,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         }
 
         List metodos = doc.getRootElement().getChildren();
+        //System.out.println("el valor de nListAlgor "+nListAlgor+" y el numero de metodos "+metodos.size());
         for (int i = nListAlgor; i < nListAlgor + metodos.size(); i++) {
             listAlgor[i] = new AlgorithmXML((Element) metodos.get(i - nListAlgor));
         }
@@ -3290,18 +3568,75 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     break;
             }
 
-            if ((type.compareTo(cad) == 0) || (type.compareTo("unspecified") == 0) || ((expType != UNSUPERVISED) && (type.compareTo("supervised") == 0))) {
+            DefaultMutableTreeNode sep = new DefaultMutableTreeNode();
+            DefaultMutableTreeNode sepC = new DefaultMutableTreeNode();
+             if(objType==LQD)
+             {
+                sep = findNode(
+                        (DefaultMutableTreeNode) actual.getRoot(),
+                        new ExternalObjectDescription("LQD", null, 0));
+                if (sep == null) {
+                    // Doesn't exist: insert
+                    sep = new DefaultMutableTreeNode(new ExternalObjectDescription(
+                            "LQD", null, 0));
+                    actual.add(sep); 
+                }
+                sepC = findNode(
+                        (DefaultMutableTreeNode) actual.getRoot(),
+                        new ExternalObjectDescription("CRISP", null, 0));
+                if (sepC == null) {
+                    // Doesn't exist: insert
+                    sepC = new DefaultMutableTreeNode(new ExternalObjectDescription(
+                            "CRISP", null, 0));
+                    actual.add(sepC); 
+                }
+             }
+            if ((type.compareTo(cad) == 0) || (type.compareTo("unspecified") == 0) || ((expType != UNSUPERVISED) && (type.compareTo("supervised") == 0))) 
+            {
                 // Check if directory exists
-                DefaultMutableTreeNode dir = findNode(
+                DefaultMutableTreeNode dir= new DefaultMutableTreeNode();
+                
+                 if(objType!=LQD)
+                 {
+                    dir = findNode(
                         (DefaultMutableTreeNode) actual.getRoot(),
                         new ExternalObjectDescription(directorio, null, 0));
-                if (dir == null) {
-                    // Doesn't exist: insert
-                    dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
+                    if (dir == null) {
+                        // Doesn't exist: insert
+                        dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
                             directorio, null, 0));
-                    actual.add(dir);
+                        actual.add(dir);
+                    }
+                 }
+                 else
+                 {
+                    if(RamaLqd==1)
+                    {
+                      dir = findNode(
+                        (DefaultMutableTreeNode) sep.getRoot(),
+                        new ExternalObjectDescription(directorio, null, 0));
+                      if (dir == null) {
+                        // Doesn't exist: insert
+                        dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
+                            directorio, null, 0));
+                        sep.add(dir);
                     
-                }
+                      }
+                    }
+                    else if(RamaLqd==0)
+                    {
+                      dir = findNode(
+                        (DefaultMutableTreeNode) sepC.getRoot(),
+                        new ExternalObjectDescription(directorio, null, 0));
+                      if (dir == null) {
+                        // Doesn't exist: insert
+                        dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
+                            directorio, null, 0));
+                        sepC.add(dir);
+                    
+                      }
+                    }
+                 }
 
                 String mipath = listado.toString();
                 String mitipo;
@@ -3341,16 +3676,50 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 DefaultMutableTreeNode fich = new DefaultMutableTreeNode(
                         new ExternalObjectDescription(nombre, mipath, 0, nombrejar));
                 dir.add(fich);
-            } else {
+            } 
+            else {
                 // Check if directory exists
-                DefaultMutableTreeNode dir = findNode(
+                DefaultMutableTreeNode dir= new DefaultMutableTreeNode();
+                if(objType!=LQD)
+                {
+                     dir = findNode(
                         (DefaultMutableTreeNode) actual.getRoot(),
                         new ExternalObjectDescription(directorio, null, 0));
-                if (dir == null) {
-                    // Doesn't exist: insert
-                    dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
+                    if (dir == null) {
+                        // Doesn't exist: insert
+                        dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
                             directorio, null, 0));
-                    actual.add(dir);
+                        actual.add(dir);
+                    }
+                }
+                else
+                {
+                    if(RamaLqd==1)
+                    {
+                       dir = findNode(
+                        (DefaultMutableTreeNode) sep.getRoot(),
+                        new ExternalObjectDescription(directorio, null, 0));
+                      if (dir == null) {
+                        // Doesn't exist: insert
+                        dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
+                            directorio, null, 0));
+                        sep.add(dir);
+                    
+                      }
+                    }
+                    else if(RamaLqd==0)
+                    {
+                       dir = findNode(
+                        (DefaultMutableTreeNode) sepC.getRoot(),
+                        new ExternalObjectDescription(directorio, null, 0));
+                      if (dir == null) {
+                        // Doesn't exist: insert
+                        dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
+                            directorio, null, 0));
+                        sepC.add(dir);
+                    
+                      }
+                    }
                 }
 
                 String mipath = listado.toString();
@@ -3430,6 +3799,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     cad = "unsupervised";
                     break;
             }
+            
+           
 
             if ((type.compareTo(cad) == 0) || (type.compareTo("unspecified") == 0) || ((expType != UNSUPERVISED) && (type.compareTo("supervised") == 0))) {
                 // Check if directory exists
@@ -3527,16 +3898,19 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         createTestAlgorithmNodes((DefaultMutableTreeNode) visualizeSelectionTree.getModel().getRoot(), "." + File.separatorChar + "algorithm" + File.separatorChar + "Visualize.xml");
         visualizeSelectionTree.updateUI();
     }
-
-    boolean check() {
+     boolean check() {
         // Last validation
-        for (int i = 0; i < experimentGraph.numNodes(); i++) {
+        for (int i = 0; i < experimentGraph.numNodes(); i++) 
+        {
             // Check that each dataset have selected a training-test pair
             // minimum
-            if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) {
+            if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) 
+            {
 
-                for (int k = 0; k < ((DataSet) experimentGraph.getNodeAt(i)).tableVector.size(); k++) {
-                    if (((Vector) ((DataSet) experimentGraph.getNodeAt(i)).tableVector.elementAt(k)).size() == 0) {
+                for (int k = 0; k < ((DataSet) experimentGraph.getNodeAt(i)).tableVector.size(); k++) 
+                {
+                    if (((Vector) ((DataSet) experimentGraph.getNodeAt(i)).tableVector.elementAt(k)).size() == 0) 
+                    {
                         String mensaje = "Dataset " + experimentGraph.getNodeAt(i).dsc.getName(k) + " has no training and test files selected";
                         JOptionPane.showMessageDialog(this, mensaje, "Error", 2);
                         return false;
@@ -3551,7 +3925,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     JOptionPane.showMessageDialog(this, mensaje, "Error", 2);
                     return false;
                 }
-            } else if (experimentGraph.getNodeAt(i).type == Node.type_Test) {
+            }
+            else if (experimentGraph.getNodeAt(i).type == Node.type_Test) {
                 Test t = (Test) experimentGraph.getNodeAt(i);
 
                 // count test's inputs
@@ -3568,6 +3943,196 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     return false;
                 }
             }
+        }
+        return true;
+    }
+
+     Vector<String> type_file(String type, String[] ficheros,String dataset)
+     {
+         boolean found;
+         Vector<String> files = new Vector<String>();
+         int contador=0;
+         if(type.compareTo("10")==0)
+             contador=10;
+         else if(type.compareTo("100")==0)
+             contador=100;
+         else if(type.compareTo("O")==0)
+         {
+             
+             contador=0;
+             for (int j = 0; j < ficheros.length; j++) 
+             {
+                if (ficheros[j].compareTo(dataset+ ".dat")==0) 
+                {
+                     files.addElement(ficheros[j]);
+                     break;
+                }
+             }
+             
+         }
+         for (int l = 1; l <= contador; l++) 
+         {
+
+             found = false;             
+             for (int j = 0; j < ficheros.length && !found; j++) 
+             {          
+                 if (ficheros[j].indexOf(type+"-" + l + "tra.dat") != -1) 
+                 {
+                     files.addElement(ficheros[j]);
+                     found = true;
+                 }
+             }              
+             if (!found) 
+             { //One file is missing                             
+                 JOptionPane.showMessageDialog(this, "The dataset "+dataset+" is missing one file ("+type+"-"+l+"-tra.dat",       
+                         "Dataset invalid", JOptionPane.ERROR_MESSAGE);                
+                 files.clear();
+                 files.addElement("-1");                
+                 return files;
+             }
+                 
+                         
+             found = false;          
+             for (int j = 0; j < ficheros.length && !found; j++) 
+             {          
+                 if (ficheros[j].indexOf(type+"-" + l + "tst.dat") != -1) {             
+                     files.addElement(ficheros[j]);                      
+                     found = true;
+                 }
+             }
+              
+             if (!found) { //One file is missing         
+                  JOptionPane.showMessageDialog(this, "The dataset "+dataset+" is missing one file ("+type+"-"+l+"-tst.dat",             
+                         "Dataset invalid", JOptionPane.ERROR_MESSAGE);    
+                 files.clear();
+                 files.addElement("-1");                
+                 return files;
+             }
+              
+         }
+         return files;
+     }
+     Vector<String> obtain_files(String type, String dataset, Node before)
+     {
+         File dir;
+         String[] ficheros;
+         Vector<String> files = new Vector<String>();
+        
+             for(int i=0; i<before.dsc.getNamesLength();i++)
+            {
+                 if(before.dsc.getName(i).compareTo(dataset)==0)
+                {
+                     dir = new File("." + before.dsc.getPath(i) + before.dsc.getName(i));
+                    ficheros = dir.list();
+                    if(type.compareTo("10cv")==0)
+                    {
+                          files=type_file("10", ficheros,dataset);        
+                    }
+                    else if(type.compareTo("100boost")==0)
+                    {
+                          files=type_file("100", ficheros,dataset);        
+                     }
+                     else if(type.compareTo("O-100boost")==0 || type.compareTo("O-10cv")==0)
+                     {
+                          files=type_file("O", ficheros,dataset);        
+                    }
+                    break;
+                }
+            }
+        
+         
+         System.out.println("Files are "+ files);
+          
+         return files;
+                                
+     }
+    boolean checkLQD() {
+        
+        
+        // Last validation
+        for (int i = 0; i < experimentGraph.numNodes(); i++) 
+        {
+            // Check that each dataset have selected a training-test pair
+            // minimum         
+            //if (experimentGraph.getNodeAt(i).type == Node.type_Dataset)          
+            //{
+                for (int j = 0; j < experimentGraph.numNodes(); j++) 
+                {         
+                    if(experimentGraph.getNodeAt(j).type == Node.type_Algorithm)
+                    {          
+                        for (int a = 0; a < experimentGraph.getNodeAt(j).dsc.arg.size(); a++) 
+                        {
+                            if(experimentGraph.getNodeAt(j).dsc.arg.get(a).before.id==experimentGraph.getNodeAt(i).id)
+                            {
+                                    experimentGraph.getNodeAt(j).dsc.arg.get(a).tableVector.clear();
+                                    experimentGraph.getNodeAt(j).dsc.arg.get(a).times.clear();
+                                   for (int data = 0; data < experimentGraph.getNodeAt(j).dsc.arg.get(a).data_selected.size(); data++) 
+                                   {     
+                                        if(experimentGraph.getNodeAt(j).dsc.arg.get(a).parameters.get(data).parameter_data.get(experimentGraph.getNodeAt(j).dsc.arg.get(a).parameters.get(data).parameter_data.size()-1).get(0).compareTo("10cv")==0)
+                                        {
+                                            Vector<String> files = obtain_files("10cv",experimentGraph.getNodeAt(j).dsc.arg.get(a).data_selected.get(data),experimentGraph.getNodeAt(j).dsc.arg.get(a).before);
+                                            experimentGraph.getNodeAt(j).dsc.arg.get(a).tableVector.addElement(files);
+                                            experimentGraph.getNodeAt(j).dsc.arg.get(a).times.addElement(10);
+                                        }
+                                        else if(experimentGraph.getNodeAt(j).dsc.arg.get(a).parameters.get(data).parameter_data.get(experimentGraph.getNodeAt(j).dsc.arg.get(a).parameters.get(data).parameter_data.size()-1).get(0).compareTo("100boost")==0)
+                                        {
+                                            Vector<String> files = obtain_files("100boost",experimentGraph.getNodeAt(j).dsc.arg.get(a).data_selected.get(data),experimentGraph.getNodeAt(j).dsc.arg.get(a).before);
+                                            experimentGraph.getNodeAt(j).dsc.arg.get(a).tableVector.addElement(files);
+                                            experimentGraph.getNodeAt(j).dsc.arg.get(a).times.addElement(2);
+                                        }
+                                        else if(experimentGraph.getNodeAt(j).dsc.arg.get(a).parameters.get(data).parameter_data.get(experimentGraph.getNodeAt(j).dsc.arg.get(a).parameters.get(data).parameter_data.size()-1).get(0).compareTo("O-100boost")==0)
+                                        {
+                                             Vector<String> files = obtain_files("O-100boost",experimentGraph.getNodeAt(j).dsc.arg.get(a).data_selected.get(data),experimentGraph.getNodeAt(j).dsc.arg.get(a).before);
+                                            experimentGraph.getNodeAt(j).dsc.arg.get(a).tableVector.addElement(files);
+                                            experimentGraph.getNodeAt(j).dsc.arg.get(a).times.addElement(1);
+                                        }
+                                        else if(experimentGraph.getNodeAt(j).dsc.arg.get(a).parameters.get(data).parameter_data.get(experimentGraph.getNodeAt(j).dsc.arg.get(a).parameters.get(data).parameter_data.size()-1).get(0).compareTo("O-10cv")==0)
+                                        {
+                                             Vector<String> files = obtain_files("0-10cv",experimentGraph.getNodeAt(j).dsc.arg.get(a).data_selected.get(data),experimentGraph.getNodeAt(j).dsc.arg.get(a).before);
+                                            experimentGraph.getNodeAt(j).dsc.arg.get(a).tableVector.addElement(files);
+                                            experimentGraph.getNodeAt(j).dsc.arg.get(a).times.addElement(1);
+                                        }
+                                   }
+                            }
+                        }
+                    }
+                }                
+            //}
+                 
+            
+          
+                
+                
+                
+            
+            
+            // check user's method
+           /* else if (experimentGraph.getNodeAt(i).type == Node.type_userMethod) {
+                UserMethod mu = (UserMethod) experimentGraph.getNodeAt(i);
+                File f = new File(mu.dsc.getPath() + mu.dsc.getName());
+                if (mu.parametersUser == null || f.exists() == false) {
+                    String mensaje = "User's Method " + "\"" + mu.dsc.getName() + "\"" + " incorrect";
+                    JOptionPane.showMessageDialog(this, mensaje, "Error", 2);
+                    return false;
+                }
+            }*/
+          /* else if (experimentGraph.getNodeAt(i).type == Node.type_Test) {
+                Test t = (Test) experimentGraph.getNodeAt(i);
+
+                // count test's inputs
+                int numEntradas = 0;
+                for (int j = 0; j < experimentGraph.numArcs(); j++) {
+                    if (experimentGraph.getArcAt(j).getDestination() == i) {
+                        numEntradas++;
+                    }
+                }
+
+                if (!t.chkNumEntradas(numEntradas)) {
+                    String mensaje = "Number of inputs in test " + "\"" + t.dsc.getName() + "\"" + " incorrect";
+                    JOptionPane.showMessageDialog(this, mensaje, "Error", 2);
+                    return false;
+                }
+            }*/
         }
         return true;
     }
@@ -3591,8 +4156,10 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         Arrays.fill(v, false);
         Vector visitados = new Vector();
         int i = -1;
-        while ((i = nextNode(visitados)) != -1) {
-            if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) {
+        while ((i = nextNode(visitados)) != -1) 
+        {
+            if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) 
+            {
                 boolean para = false;
                 for (int j = 0; j < experimentGraph.numArcs() && !para; j++) {
                     if (experimentGraph.getArcAt(j).getSource() == i) {
@@ -3600,7 +4167,9 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                         para = true;
                     }
                 }
-            } else {
+            }
+            else 
+            {
                 boolean para = false;
                 for (int j = 0; j < experimentGraph.numArcs() && !para; j++) {
                     if (experimentGraph.getArcAt(j).getDestination() == i) {
@@ -3650,6 +4219,55 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             }
         }
     }
+    
+    public void createDatasetDirsLQD(Joint ds, String path) {
+        // creates directories for dataset and copy training-test files selected
+
+       for(int data=0;data<ds.data_selected.size();data++)
+       {
+           String path_destino =""; //path + "datasets/";
+           if(ds.type_lqd.compareTo("LQD")==0)
+           {
+               FileUtils.mkdir(path.concat("datasets/LQD")); 
+               path_destino =path + "datasets/LQD/"+ ds.data_selected.get(data)+"-"+ds.parameters.get(data).parameter_data.get(ds.parameters.get(data).parameter_data.size()-1).get(0);
+           }
+          /* else if(ds.before.type_lqd==Node.C_LQD)
+           {
+               FileUtils.mkdir(path.concat("datasets/C_LQD")); 
+               path_destino =path + "datasets/C_LQD/"+ ds.data_selected.get(data)+"-"+ds.parameters.get(data).parameter_data.get(ds.parameters.get(data).parameter_data.size()-1).get(0);
+           }
+           else if(ds.before.type_lqd==Node.LQD_C)
+           {
+               FileUtils.mkdir(path.concat("datasets/LQD_C")); 
+               path_destino =path + "datasets/LQD_C/"+ ds.data_selected.get(data)+"-"+ds.parameters.get(data).parameter_data.get(ds.parameters.get(data).parameter_data.size()-1).get(0);
+           }*/
+           else if(ds.type_lqd.compareTo("CRISP")==0)
+           {
+               FileUtils.mkdir(path.concat("datasets/CRISP")); 
+               path_destino =path + "datasets/CRISP/"+ ds.data_selected.get(data)+"-"+ds.parameters.get(data).parameter_data.get(ds.parameters.get(data).parameter_data.size()-1).get(0);
+
+           }
+           
+          FileUtils.mkdir(path_destino); 
+          for (int i = 0; i < ds.tableVector.get(data).size(); i++) 
+          {
+              String fichero = ds.tableVector.get(data).get(i);
+              String origen="";
+              for(int or=0;or<ds.before.dsc.getNamesLength();or++)
+              {
+                  if(ds.before.dsc.getName(or).compareTo(ds.data_selected.get(data))==0)
+                  {
+                    origen = ds.before.dsc.getPath(or) + ds.before.dsc.getName(or) + "/" + fichero; 
+                    break;
+                  }
+              }
+              String destino = path_destino + "/" + fichero;
+              FileUtils.copy("." + origen, destino);
+          }
+          
+       }
+  
+    }
 
     private void dirAlgorithmAlgorithm(Algorithm al, int origen, String path_scripts, String path_results, int numNode, String problema) {
 
@@ -3697,6 +4315,260 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             al.getActivePair().writeScripts(path_scripts, "config", fullName[numNode], problema, conj, "result", false, cvType, numberKFoldCross,expType);
         }
     }
+    
+    
+    private void dirAlgorithmDatasetLQD(Algorithm al,Joint destin, String path_scripts,  int numNode, int position,
+            String type_lqd, int type_algorithm,Vector sentencias,String problema) 
+    {
+
+        if (al.dsc.getSubtype() == Node.type_Preprocess) 
+        {
+            writeConfig(al,path_scripts, "config",(al.id+"."+al.dsc.getName()), true,destin,position,type_lqd, type_algorithm,sentencias,problema);
+        } 
+        else //deja en results
+        {
+            writeConfig(al,path_scripts, "config",(al.id+"."+al.dsc.getName()), false,destin,position,type_lqd,type_algorithm,sentencias,problema);
+        }
+    }
+    
+    /* Write a configuration script for the method, employing its parameters*/
+     public void writeConfig(Algorithm al,String path, String baseName, String methodName,
+            boolean pre, Joint destin, int position,String type_lqd, int type_algorithm,
+            Vector sentencias,String problema) 
+    {
+
+        String fichero, nombre, aux;
+        int cont = 0;
+        
+      
+       
+        // Check that script doesn't exist ()
+       String cadRutaParcial ="";
+        if(type_algorithm==0)
+            cadRutaParcial = "../datasets/"+type_lqd+"/"+destin.data_selected.get(position)+
+                "-"+destin.parameters.get(position).parameter_data.get(destin.parameters.get(position).parameter_data.size()-1).get(0)+"/";
+           
+           
+        else
+        {
+           // cadRutaParcial = "../datasets/"+type_lqd+"/"+fullName[destin.before.id]+
+             //   "."+destin.data_selected.get(position)+"-"+destin.parameters.get(position).parameter_data.get(destin.parameters.get(position).parameter_data.size()-1).get(0)+"/";
+            int pos = problema.indexOf('-');           
+             String direction = problema.substring(0,pos)+"/"+problema.substring(pos+1);
+             cadRutaParcial = "../datasets/"+type_lqd+"/"+direction+"/";
+        }
+            
+        //System.out.println(" la ruta es "+cadRutaParcial+" y estamos con el nodo "+methodName);
+        //destin.information();
+        
+        for(int i=0;i<destin.times.get(position);i++)
+        {  
+            nombre = (new File(path))+ File.separator +baseName + i + ".txt";        
+        
+            fichero="";
+            fichero = "algorithm = " + al.dsc.getName() + "\n";
+            fichero += "inputData = ";
+            
+                       
+                if(destin.times.get(position)==10 && destin.before.type==Node.type_Dataset)
+                {
+                    fichero += "\""+cadRutaParcial +destin.tableVector.get(position).get(cont)+"\" ";       
+                    cont++;
+                    fichero += "\""+cadRutaParcial+destin.tableVector.get(position).get(cont) +"\" ";       
+                    cont--;
+                }
+                else if (destin.times.get(position)==10)
+                {
+                    fichero += "\""+cadRutaParcial +destin.data_selected.get(position)+"-10-"+(i+10)+"tra.dat"+"\" ";       
+                    fichero += "\""+cadRutaParcial +destin.data_selected.get(position)+"-10-"+(i+10)+"tst.dat"+"\" ";       
+                }
+                else if(destin.times.get(position)==2)
+                {
+                    fichero +="\"" +cadRutaParcial+destin.data_selected.get(position)+"\" ";       
+                    fichero += "\""+cadRutaParcial +destin.data_selected.get(position)+"\" ";       
+                    
+                }
+                else
+                     fichero += "\"" +cadRutaParcial+destin.data_selected.get(position)+"\" ";       
+                              
+           
+            fichero += "\n";
+            
+              if (pre) {      
+                  if(destin.times.get(position)==10 && destin.before.type==Node.type_Dataset)
+                  {
+                   
+                    aux = "../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.tableVector.get(position).get(cont)+"\" ";       
+                    cont++;
+                     aux += "\""+"../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.tableVector.get(position).get(cont);       
+                     cont--;
+                        
+                    
+                  }
+                  else if (destin.times.get(position)==10)
+                  {
+                      aux = "../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position)+"-10-"+(i+10)+"tra.dat"+"\" ";       
+                     aux += "\""+"../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position)+"-10-"+(i+10)+"tst.dat";       
+                  }
+                  else                      
+                   aux = "../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position);       
+                  fichero += "outputData = \"" + aux + "\" ";
+
+              }
+
+              else 
+              {     
+                if(destin.times.get(position)==10 && destin.before.type==Node.type_Dataset)
+                  {
+                    aux = "../results/" +type_lqd+"/"+ methodName + "." +problema + "/R"+destin.tableVector.get(position).get(cont)+"\" ";         
+                    cont++;
+                    aux += "\""+"../results/" +type_lqd+"/"+ methodName + "." +problema + "/R"+destin.tableVector.get(position).get(cont);       
+                    cont--;
+                }
+                else if(destin.times.get(position)==10)
+                {
+                    aux = "../results/" +type_lqd+"/"+ methodName + "." +problema + "/R"+destin.data_selected.get(position)+"-10-"+(i+10)+"tra.dat"+"\" ";         
+                    cont++;
+                    aux += "\""+"../results/" +type_lqd+"/"+ methodName + "." +problema + "/R"+destin.data_selected.get(position)+"-10-"+(i+10)+"tst.dat";       
+                    cont--;
+                }
+                else
+                    aux = "../results/" +type_lqd+"/"+ methodName + "/" +problema+"/";
+                fichero += "outputData = \"" + aux + "\" ";
+              }
+            
+            fichero += "\n\n";
+            
+            Parameters parameterData = (Parameters) (al.par.elementAt(0));
+            
+            //Now the parameters
+            
+            for (int p=0;p<4;p++)
+            {
+                for(int c=0;c<destin.parameters.get(position).get(p).size();c++)
+                {
+                    if(p==0)
+                        fichero +="Instances = ";
+                    else if (p==1)
+                        fichero +="Nclases = "    ;        
+                    else if (p==2)
+                        fichero +="attributes = ";
+                    else if (p==3)
+                        fichero +="Class = " ;                               
+                                
+                    
+                    /*else if (p==destin.parameters.get(position).size()-1)
+                        fichero +="Partitions_Data = ";*/
+                    
+                    fichero+=destin.parameters.get(position).get(p).get(c);
+                    fichero += "\n";
+                    
+                }
+            }
+             fichero +="Partitions_Data = ";
+            fichero+=destin.parameters.get(position).get(destin.parameters.get(position).size()-1).get(0);
+            fichero += "\n";
+            
+            
+            for(int pa=0+4;pa<parameterData.getNumParameters()+4;pa++ )
+            {
+                for(int c=0;c<destin.parameters.get(position).get(pa).size();c++)
+                {
+                    fichero+= parameterData.descriptions.get(pa-4)+" = "; 
+                    fichero+=destin.parameters.get(position).get(pa).get(c);
+                    fichero += "\n";
+                }
+                
+            }
+            
+            
+           
+            
+            Files.writeFile(nombre, fichero);
+            cont=cont+2;
+            
+            
+            boolean emitir = false;
+
+            try {
+                if (al.dsc.getPath().substring(0, 4).equals("jar:") || al.dsc.getPath().substring(0, 5).equals("file:")) 
+                {
+                    //System.out.println("Debug ERR 1915 " + al.dsc.getPath() + al.dsc.getJarName());
+                    java.net.URL miurl = new java.net.URL(al.dsc.getPath() + al.dsc.getJarName());
+                    if (miurl.openStream() != null) {
+                        emitir = true;
+                    }
+                //System.out.println("resource emits=" + emitir);
+                } 
+                else {
+                    File f = new File(al.dsc.getPath() + al.dsc.getJarName());
+                    if (f.isFile()) {
+                        emitir = true;
+                    }
+                //System.out.println("file emits=" + emitir);
+                }
+
+                if (emitir) 
+                {
+                  String linea = "";  
+                  linea = new String("java -Xmx" + this.heapSize + "000000 " + " -jar" + " ../exe/" + al.dsc.getJarName() + " ./" +methodName+"/"+problema+"/"+baseName + i + ".txt");          
+                  sentencias.addElement(linea);
+                  
+                  if(destin.times.get(position)==1 && destin.parameters.get(position).parameter_data.get(destin.parameters.get(position).parameter_data.size()-1).get(0).compareTo("O-100boost")==0)//crear el boostrap y los 1000 test
+                  {
+                      
+                      String nombre1 = (new File(path))+ File.separator +baseName+"_boost" + i + ".txt";        
+                      String fichero1= "inputData = "+"\""+"../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position)+"\"";       
+                      //fichero1=fichero1+"../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position)+"\n";
+                      Files.writeFile(nombre1, fichero1);
+                      linea = new String("java -Xmx" + this.heapSize + "000000 " + " -jar" + " ../exe/" + "100boost.jar" + " ./" +methodName+"/"+problema+"/"+baseName+"_boost" + i + ".txt");          
+                      sentencias.addElement(linea);
+                      
+                      nombre1 = (new File(path))+ File.separator +baseName+"_test" + i + ".txt";        
+                       fichero1= "inputData = "+"\""+"../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position)+"\"";       
+                      //fichero1=fichero1+"../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position)+"\n";
+                      Files.writeFile(nombre1, fichero1);
+                      linea = new String("java -Xmx" + this.heapSize + "000000 " + " -jar" + " ../exe/" + "test.jar" + " ./" +methodName+"/"+problema+"/"+baseName+"_test" + i + ".txt");          
+                      sentencias.addElement(linea);
+                      
+                      
+                  }
+                  if(methodName.contains("FGFS_Cost_Instances")==true)
+                  {
+                      String nombre1 = (new File(path))+ File.separator +baseName+"_Crisp" + i + ".txt";        
+                      String fichero1= "inputData = "+"\"" +cadRutaParcial+destin.data_selected.get(position)+"\" ";       
+                      fichero1 += "\""+cadRutaParcial +destin.data_selected.get(position)+"\" ";       
+                      fichero1 += "\n";
+                      aux = "../results/" +type_lqd+"/"+ methodName + "/" +problema+"_Crisp"+"/Crisp";
+                      fichero1 += "outputData = \"" + aux + "\" ";
+                      
+                      Files.writeFile(nombre1, fichero1);
+                      linea = new String("java -Xmx" + this.heapSize + "000000 " + " -jar" + " ../exe/" + al.dsc.getJarName() + " ./" +methodName+"/"+problema+"/"+baseName +"_Crisp"+ i + ".txt");          
+                      sentencias.addElement(linea);
+                  
+                  }
+			
+                    //System.out.println("add line " + linea);
+                    //if (sentencias.contains(linea) == false) {
+                        //sentencias.addElement(linea);
+                    //}
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if(destin.times.get(position)==2)
+                i=2;
+        }
+            
+            
+        
+              
+      
+
+                
+                    
+    }
+
 
     private void dirAlgorithmDataset(Algorithm al, int origen, String path_scripts, String path_results, int numNode, String problema) {
 
@@ -3789,6 +4661,168 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     al.dsc.getName(), problema, conj, "result", false, cvType, numberKFoldCross,expType);
         }
     }
+    
+    private void copy_jar(String origen1, String destino1)
+    {
+        if (origen1.substring(0, 4).equals("jar:") || origen1.substring(0, 5).equals("file:")) 
+            {   
+                try {
+                    java.net.URL recurso = new java.net.URL(origen1);
+                    FileUtils.copy(recurso, destino1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                // search in external directories
+                //System.out.println("Copiando fichero " + origen + " a " + destino);
+                FileUtils.copy(origen1, destino1);
+            }
+    }
+
+     private void dirAlgorithmLQD(Algorithm al, int nodo, String path, Vector sentencias) 
+     {
+
+        // creates directories and files for an algorithm    
+        // Copy algorithm executable
+        String destino = path.concat("exe/" + al.dsc.getJarName());
+        String origen = al.dsc.getPath() + al.dsc.getJarName();
+        /*System.out.println("origen: " + origen);
+        System.out.println("destino: " + destino);*/
+
+        if (origen.substring(0, 4).equals("jar:") || origen.substring(0, 5).equals("file:")) 
+        {
+            try {
+                java.net.URL recurso = new java.net.URL(origen);
+                FileUtils.copy(recurso, destino);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            // search in external directories
+            //System.out.println("Copiando fichero " + origen + " a " + destino);
+            FileUtils.copy(origen, destino);
+        }
+        
+        
+        if (al.dsc.getSubtype() == Node.type_Preprocess && (al.dsc.getName().contains("Prelabelling") ||al.dsc.getName().contains("Expert") ))
+                
+        {
+            String destino1 = path.concat("exe/" + "100boost.jar");
+            String origen1 = al.dsc.getPath() + "100boost.jar";
+           
+            copy_jar(origen1, destino1);
+           
+            destino1 = path.concat("exe/" + "test.jar");
+            origen1 = al.dsc.getPath() + "test.jar";
+           
+            copy_jar(origen1, destino1);
+            
+        }
+
+       
+        
+        // creates scripts and results directories
+        Node way= experimentGraph.getNodeAt(nodo);
+          String problema="";
+         String path_scripts = "";
+         String path_results = "";
+         String crisp="";
+         String type_lqd="";
+        
+        for(int i=0;i<way.dsc.arg.size();i++)
+        {
+           for(int data=0;data<way.dsc.arg.get(i).data_selected.size();data++)
+           {   
+               /*if(way.dsc.arg.get(i).before.type==Node.type_Dataset)
+                   problema = way.dsc.arg.get(i).data_selected.get(data)+"-"+way.dsc.arg.get(i).parameters.get(data).parameter_data.get(way.dsc.arg.get(i).parameters.get(data).parameter_data.size()-1).get(0);
+               else if(way.dsc.arg.get(i).before.type==Node.type_Algorithm)
+               {
+                   problema =fullName[way.dsc.arg.get(i).before.id]+"-"+way.dsc.arg.get(i).data_selected.get(data)+"-"+way.dsc.arg.get(i).parameters.get(data).parameter_data.get(way.dsc.arg.get(i).parameters.get(data).parameter_data.size()-1).get(0);                   
+               }*/
+               problema=way.dsc.arg.get(i).problem.get(data);
+               
+                //path_scripts = path + "scripts/" + fullName[nodo] + "/" + problema;   
+                path_scripts = path + "scripts/" +way.id+"."+way.dsc.getName() + "/" + problema;   
+                FileUtils.mkdirs(path_scripts);
+                  
+               //preprocess methods drops its results on data directory
+               if (al.dsc.getSubtype() == Node.type_Preprocess) 
+               {
+                   //aqui es donde varios con el mismo
+                       if(way.dsc.arg.get(i).type_lqd.compareTo("LQD")==0)
+                       {
+                           path_results =path + "datasets/LQD/"+ way.id+"."+way.dsc.getName() ;
+                           FileUtils.mkdirs(path_results);
+                           path_results =path_results + "/" + problema;
+                           type_lqd="LQD";
+                           
+                       }
+                       /*else if(way.dsc.arg.get(i).type_lqd.compareTo("C_LQD")==0)
+                       {
+                           path_results =path + "datasets/C_LQD/"+ fullName[nodo] + "." + problema;
+                           type_lqd="C_LQD";
+                       }
+                       else if(way.dsc.arg.get(i).type_lqd.compareTo("LQD_C")==0)
+                       {
+                           path_results =path + "datasets/LQD_C/"+ fullName[nodo] + "." + problema;
+                           type_lqd="LQD_C";
+                       }*/
+                       else if(way.dsc.arg.get(i).type_lqd.compareTo("CRISP")==0)
+                       {
+                           path_results =path + "datasets/CRISP/"+ way.id+"."+way.dsc.getName() ;
+                           FileUtils.mkdirs(path_results);
+                           path_results =path_results + "/" + problema;
+                           type_lqd="CRISP";
+                       }
+         
+                   FileUtils.mkdir(path_results);
+               }
+               else {
+                   if(way.dsc.arg.get(i).type_lqd.compareTo("LQD")==0)
+                   {
+                       FileUtils.mkdir(path.concat("results/LQD")); 
+                       path_results = path + "results/LQD/" + way.id+"."+way.dsc.getName() ;
+                       FileUtils.mkdirs(path_results);
+                       crisp = path_results+ "/" + problema+"_Crisp";        
+                       FileUtils.mkdir(crisp);
+                       path_results =path_results + "/" + problema;
+                       type_lqd="LQD";
+                   }
+                  /* else if(way.dsc.arg.get(i).type_lqd.compareTo("C_LQD")==0)
+                   {
+                       FileUtils.mkdir(path.concat("results/C_LQD")); 
+                       path_results = path + "results/C_LQD" + fullName[nodo] + "." + problema;
+                       type_lqd="C_LQD";
+                   }
+                   else if(way.dsc.arg.get(i).type_lqd.compareTo("LQD_C")==0)
+                   {
+                       FileUtils.mkdir(path.concat("results/LQD_C")); 
+                       path_results = path + "results/LQD_C" + fullName[nodo] + "." + problema;
+                       type_lqd="LQD_C";
+                   }*/
+                   else if(way.dsc.arg.get(i).type_lqd.compareTo("CRISP")==0)
+                   {
+                       FileUtils.mkdir(path.concat("results/CRISP")); 
+                       path_results = path + "results/CRISP/" + way.id+"."+way.dsc.getName() ;
+                       FileUtils.mkdirs(path_results);
+                       path_results =path_results + "/" + problema;
+                       type_lqd="CRISP";
+                   }
+                   FileUtils.mkdir(path_results);
+               }
+                
+                if(way.dsc.arg.get(i).before.type==Node.type_Dataset)
+                    dirAlgorithmDatasetLQD(al,way.dsc.arg.get(i), path_scripts,nodo,data,type_lqd,0,sentencias,problema);
+                else if(way.dsc.arg.get(i).before.type==Node.type_Algorithm)
+                   dirAlgorithmDatasetLQD(al,way.dsc.arg.get(i), path_scripts,nodo,data,type_lqd,1,sentencias,problema);
+                
+                
+           }
+
+        }
+        
+      
+    }
 
     private void dirAlgorithm(Algorithm al, int nodo, String path, Vector sentencias, int root) {
 
@@ -3803,9 +4837,11 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
 
         // creates directories and files for an algorithm
-        if (al.getActivePair().isProbabilistic()) {
+        if (al.getActivePair().isProbabilistic()) 
+        {
             // add seeds
-            for (int i = 0; i < al.getActivePair().getExe(); i++) {
+            for (int i = 0; i < al.getActivePair().getExe(); i++) 
+            {
                 al.getActivePair().addSeed(Integer.toString(Math.abs(rnd.nextInt())));
 		        /***************************************************************
 		         ***************  EDUCATIONAL KEEL  ****************************
@@ -4557,10 +5593,12 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             name = name.substring(0, 39);
         }
 
-        if (actual.getType() == Node.type_Test) {
+        if (actual.getType() == Node.type_Test) 
+        {
             fullName[node] = name;
         }
-        if (actual.getType() == Node.type_Algorithm) {
+        if (actual.getType() == Node.type_Algorithm) 
+        {
 
             if (prefix.equals("")) {
                 fullName[node] = name;
@@ -4592,7 +5630,9 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     /**
      * Compute absolute names of every element of the graph
      */
-    private void absoluteNames() {
+    
+    private void absoluteNames() 
+    {
 
         int root = 0;
         boolean dup;
@@ -4615,7 +5655,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         fullName[root] = "Datasets";
 
         //Get the names
-        for (int i = 0; i < experimentGraph.numArcs(); i++) {
+        for (int i = 0; i < experimentGraph.numArcs(); i++) 
+        {
             if (experimentGraph.getArcAt(i).getSource() == root) {
                 applyAbsoluteName(experimentGraph.getArcAt(i).getDestination(), "");
             }
@@ -4634,6 +5675,71 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             }
 
             duplicates[i] = dup;
+        }
+
+    }
+    private void absoluteNamesLQD() 
+    {
+
+        Vector<Integer> rooters = new Vector<Integer>();
+        
+      /*  boolean dup;
+
+        duplicates = new boolean[experimentGraph.numNodes()];*/
+
+        
+        //Initialize array of full names
+        fullName = new String[experimentGraph.numNodes()];
+
+        for (int i = 0; i < experimentGraph.numNodes(); i++) {
+            fullName[i] = "";
+        }
+        
+        //Find root nodeS (datasets)
+        for (int i = 0; i < experimentGraph.numNodes(); i++) {
+            if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) 
+            {
+                rooters.addElement(i);
+                if(experimentGraph.getNodeAt(i).type_lqd==Node.LQD)
+                    fullName[i] = "DatasetsLQD";
+                else if(experimentGraph.getNodeAt(i).type_lqd==Node.LQD_C)
+                    fullName[i] = "DatasetsLQD_C";
+                else if(experimentGraph.getNodeAt(i).type_lqd==Node.C_LQD)
+                    fullName[i] = "DatasetsC_LQD";
+                else if(experimentGraph.getNodeAt(i).type_lqd==Node.CRISP2)
+                    fullName[i] = "DatasetsCRISP";
+            }
+        }
+
+        //Get the names
+        for (int i = 0; i < experimentGraph.numArcs(); i++) 
+        {
+            for(int r=0;r<rooters.size();r++)
+            {
+                if (experimentGraph.getArcAt(i).getSource() ==rooters.get(r)) 
+                {
+                    applyAbsoluteName(experimentGraph.getArcAt(i).getDestination(), "");
+                }
+            }
+        }
+
+        //Check for duplicates
+        boolean dupli=false;
+        int cont=1;
+        for (int i = 1; i < experimentGraph.numNodes(); i++) 
+        {
+            dupli=false;
+            for (int j = i - 1; j > -1; j--) 
+            {
+                if (fullName[i].equals(fullName[j])) 
+                {
+                   dupli=true; 
+                   fullName[j]=cont+"-"+fullName[j];
+                   cont++;
+                }
+            }
+            if(dupli==true)
+                fullName[i]="0-"+fullName[i];
         }
 
     }
@@ -4666,7 +5772,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         int countJobs = 0;
         int indexRoot;
 
-        if (check()) {
+        if (check()) 
+        {
             // start random number generator
             rnd = new Random(experimentGraph.getSeed());
 
@@ -4695,7 +5802,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 /***************************************************************
                 *********************  EDUCATIONAL KEEL  **********************
                 **************************************************************/
-            }
+            }//if nodes not conected
 
             if (isFlowCorrect())
             {
@@ -4743,7 +5850,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                             }
                         }
                     }
-                }
+                } //experiments
                 /***************************************************************
                 *********************  EDUCATIONAL KEEL  **********************
                 **************************************************************/
@@ -4772,16 +5879,20 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
                     // for each layer
                     int saveLayer = Layer.layerActivo;
-
-                    for (int nl = 0; nl < Layer.numLayers; nl++) {
+                    
+                    for (int nl = 0; nl < Layer.numLayers; nl++) 
+                    {
                         Layer.layerActivo = nl;
                         Vector visitados = new Vector();
 
                         // STEP 1: dataset directories
                         indexRoot = 0;
-                        for (int i = 0; i < experimentGraph.numNodes(); i++) {
-                            if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) {
-                                if (sueltos.contains(new Integer(i)) == false) {
+                        for (int i = 0; i < experimentGraph.numNodes(); i++) 
+                        {
+                            if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) 
+                            {
+                                if (sueltos.contains(new Integer(i)) == false) 
+                                {
 
                                     DataSet ds = (DataSet) experimentGraph.getNodeAt(i);
                                     createDatasetDirs(ds, path);
@@ -4793,8 +5904,10 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
                         // STEP 2: directories for algorithms
                         int i = -1;
-                        while ((i = nextNode(visitados)) != -1) {
-                            if (sueltos.contains(new Integer(i)) == false) {
+                        while ((i = nextNode(visitados)) != -1) 
+                        {
+                            if (sueltos.contains(new Integer(i)) == false) 
+                            {
                                 if ((experimentGraph.getNodeAt(i).type == Node.type_Algorithm) && (duplicated(i) == false)) {
                                     Algorithm al = (Algorithm) experimentGraph.getNodeAt(i);
                                     dirAlgorithm(al, i, path, sentencias, indexRoot);
@@ -4946,6 +6059,230 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 JOptionPane.showMessageDialog(this, "The flow chart is not correct!\n Verify or try another flow", "Alert", JOptionPane.ERROR_MESSAGE);
             }
         }//Comprobar
+    }//generateExperimentDirectories
+
+    private void generateExperimentDirectoriesLQD() 
+    {
+        String nameExp = "";
+        String comprimio = "";        
+        int opcion1 = 0; //JFileChooser.APPROVE_OPTION
+        int opcion2 = 0; //JOptionPane.YES_OPTION
+
+        /***************************************************************
+	    *********************  EDUCATIONAL KEEL  **********************
+	    **************************************************************/
+        if (Frame.buttonPressed == 1) //Button Teaching pressed
+			nameExp = "experiment";
+        /***************************************************************
+	    *********************  EDUCATIONAL KEEL  **********************
+	    **************************************************************/
+
+        //List with number of partitons in each experiment
+        List<Integer> partitionList = new ArrayList<Integer>();
+        int countJobs = 0;
+        Vector<Integer> indexRoot= new Vector<Integer>();
+
+        if (checkLQD()) 
+        {
+            // start random number generator
+            rnd = new Random(experimentGraph.getSeed());
+
+            // warning: some nodes are not conected
+            Vector sueltos = isolatedNodes();
+            if (sueltos.size() != 0) 
+            {
+                JOptionPane.showMessageDialog(this,"Some nodes are not connected. Connect the nodes or remove them",
+                        "Warning", JOptionPane.WARNING_MESSAGE);
+                 return;
+            }
+	  
+           
+                    
+            JFileChooser fc;
+            if (lastDirectory == null) {
+                fc = new JFileChooser();
+            } else {
+                fc = new JFileChooser(lastDirectory);
+            }
+                    
+            fc.setDialogTitle("Create experiment as ...");
+            String exten[] = {"zip"};        
+            fc.setFileFilter(new ArchiveFilter2(exten, "Experiments (.zip)"));        
+            opcion1 = fc.showSaveDialog(this);        
+            if (opcion1 == JFileChooser.APPROVE_OPTION) //Eleccion de fichero(fileName) y aceptar. Valor == 0        
+            {        
+                lastDirectory = fc.getCurrentDirectory().getAbsolutePath();             
+                comprimio = fc.getSelectedFile().getAbsolutePath();        
+                nameExp = fc.getSelectedFile().getName();        
+                if (!comprimio.toLowerCase().endsWith(".zip")) {        
+                    // Add correct extension        
+                    comprimio += ".zip";        
+                } else {        
+                    nameExp = nameExp.substring(0, nameExp.length() - 4);
+                } 
+                File tmp = new File(comprimio); 
+                if (tmp.exists()) 
+                {
+                    opcion2 = JOptionPane.showConfirmDialog(this, "File " + comprimio +
+                            " already exists. Do you want to replace it?",        
+                            "Confirm", JOptionPane.YES_NO_OPTION, 3);        
+                    if (opcion2 == JOptionPane.YES_OPTION) //El archivo escogido existe y se acepta
+                    {
+                        // if file exists, we replace it
+                        if (fc.getSelectedFile().exists()) {        
+                            fc.getSelectedFile().delete();
+                        }
+ 
+                        if (new File("./" + nameExp).exists()) {
+                            FileUtils.rmdir("./" + nameExp);
+                        }
+                    }
+                }
+            }
+              
+       
+                
+            if ((opcion1 == JFileChooser.APPROVE_OPTION) && (opcion2 == JOptionPane.YES_OPTION)) 
+            {                  
+                String path = "./" + nameExp + "/";    
+                FileUtils.mkdir(path);    
+                FileUtils.mkdir(path.concat("datasets"));    
+                FileUtils.mkdir(path.concat("exe"));    
+                FileUtils.mkdir(path.concat("scripts"));    
+                FileUtils.mkdir(path.concat("results"));
+                    
+                Vector sentencias = new Vector();
+
+
+                    
+                //Compute absolute names
+                absoluteNamesLQD();
+
+                
+                      
+               //tenemso que recorres todos los nodos que estan conecteados
+                //con un nodo dataset.
+                //Dentro de cada nodo vemos sus datasets y apuntamos en vistado
+                //este dataset que puede ser usado por otro
+                
+                 // STEP 1: dataset directories
+                
+                Vector visitados = new Vector();
+                 for (int i = 0; i < experimentGraph.numNodes(); i++) 
+                 {
+                     if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) 
+                     {
+                         for (int j = 0; j < experimentGraph.numNodes(); j++) 
+                         {
+                             if(experimentGraph.getNodeAt(j).type == Node.type_Algorithm)
+                             {
+                                  for (int a = 0; a < experimentGraph.getNodeAt(j).dsc.arg.size(); a++) 
+                                  {
+                                      if(experimentGraph.getNodeAt(j).dsc.arg.get(a).before.id==experimentGraph.getNodeAt(i).id)
+                                      {
+                                         createDatasetDirsLQD(experimentGraph.getNodeAt(j).dsc.arg.get(a), path);
+                                         visitados.addElement(new Integer(i));
+                                         indexRoot.addElement(i); 
+                                      }
+                                  }
+                             }
+                         }        
+                     }
+                 } //for 1 setp
+    
+                
+                  
+                // STEP 2: directories for algorithms
+                int i = -1;        
+                while ((i = nextNode(visitados)) != -1) 
+                {   
+                    if (experimentGraph.getNodeAt(i).type == Node.type_Algorithm) 
+                    {            
+                        Algorithm al = (Algorithm) experimentGraph.getNodeAt(i);            
+                        dirAlgorithmLQD(al, i, path, sentencias);
+                    } 
+                   /* else if (experimentGraph.getNodeAt(i).type == Node.type_Test) 
+                    {
+                     
+                        Test t = (Test) experimentGraph.getNodeAt(i);
+                        dirTest(t, i, path, sentencias);
+                        tests.addElement(t.dsc.getName());
+                    }*/                            
+                }
+               
+                    
+
+                    // generating script
+                   
+                try {
+                    Document doc = new Document(new Element("execution")); 
+                    Element root = doc.getRootElement();    
+                    Element job = new Element("job");    
+                    String tokens[];    
+                    int  j;    
+                    for (i = 0; i < sentencias.size(); i++)
+                    {
+                        Element comando = new Element("command");
+                        Element opciones[] = new Element[10];    
+                        for (j = 0; j < 5; j++) {    
+                            opciones[j] = new Element("option");
+                        } 
+                        Element exe = new Element("executableFile"); 
+                        Element script = new Element("scriptFile");
+                                    
+                        tokens = ((String) sentencias.elementAt(i)).split(" ");    
+                        comando.setText(tokens[0]);        
+                        for (j = 1; j < tokens.length - 2; j++) {        
+                            opciones[j - 1].setText(tokens[j]);
+                        } 
+                        exe.setText(tokens[j]); 
+                        script.setText(tokens[j + 1]);                                
+                        Element sentencia = new Element("sentence");        
+                        sentencia.addContent(comando).addContent(
+                                        opciones[0]).addContent(opciones[1]).addContent(opciones[2]).addContent(opciones[3]).addContent(opciones[4]).addContent(exe).addContent(script);        
+                        //Insert elements "sentence" in file RunKeel.xm
+                        root.addContent(sentencia);
+                          
+                    }
+                        
+                    //for each sentence
+                    //below is executed if "Experiments button" is pressed or "Teaching button" is pressed    
+                    //always is executed    
+                    File f = new File("./" + nameExp + "/scripts/RunKeel.xml");    
+                    FileOutputStream file = new FileOutputStream(f);    
+                    XMLOutputter fmt = new XMLOutputter();    
+                    fmt.setFormat(Format.getPrettyFormat());    
+                    fmt.output(doc, file);   
+                    file.close();    
+                } catch (Exception exc) {    
+                    // Remove temporaly folder    
+                    FileUtils.rmdir("./" + nameExp);    
+                    exc.printStackTrace();
+                }  // crate .JAR
+
+                
+                       
+                // LSR search runkeel graph into KEEL .jar
+                FileUtils.copy(this.getClass().getResource(
+                                "/runkeel/runkeel.jar"), "./" + nameExp + "/scripts/RunKeel.jar");
+
+                       
+                // Compress folder into a .zip file
+                Vector ficheros = new Vector();        
+                FileUtils.listDir("./" + nameExp, ficheros) ;                       
+                FileUtils.ZipFiles(comprimio, ficheros);
+        
+                // Remove temporaly folder
+                FileUtils.rmdir("./" + nameExp);
+
+                // Info for executing script
+                JOptionPane.showMessageDialog(this,"Experiment created.\n\nUnzip generated file,\ngo to '" + nameExp + "/scripts/' directory\nand execute 'java -jar RunKeel.jar'",
+                                "Experiment created",JOptionPane.INFORMATION_MESSAGE);
+
+                   
+                } //if
+           
+        } //Check
     }//generateExperimentDirectories
 
 
@@ -5110,15 +6447,19 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
                     Mapping mapping = new Mapping();
 
-                    mapping.loadMapping(this.getClass().getResource("/mapping/mapeoExperimento.xml"));
+                    if(objType==LQD)
+                        mapping.loadMapping(this.getClass().getResource("/mapping/mapeoExperimentoLQD.xml"));
+                    else
+                        mapping.loadMapping(this.getClass().getResource("/mapping/mapeoExperimento.xml"));
                     Unmarshaller unmar = new Unmarshaller(mapping);
-                    Graph aux = (Graph) unmar.unmarshal(new InputSource(file));
-                    if (aux.objective == this.objType) {
+                    Graph aux = (Graph) unmar.unmarshal(new InputSource(file));                    
+                    if (aux.objective == this.objType) 
+                    {                       
                         experimentGraph = restoreGraph(aux);
-                        this.expType = experimentGraph.getType();
+                        this.expType = experimentGraph.getType();                        
                         dinDatasets.removeAllData();
                         panelDatasets.removeAllData();
-                        continueExperimentGeneration();
+                            continueExperimentGeneration();                   
                         experimentGraph.setName(f.getSelectedFile().getAbsolutePath());
                         graphDiagramINNER.setToolTipText("Click twice into a node to view its properties");
                         //selectButton.setSelected(true);
@@ -5129,14 +6470,28 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                         selectButton.setEnabled(true);
 
                         selectItem.setEnabled(true);
-
+                        
                         showAlgButton.setEnabled(true);
                         selecDatasets.setEnabled(true);
                         selectMethods.setEnabled(true);
-                        selectPostprocessMethods.setEnabled(true);
                         selectPreprocessMethods.setEnabled(true);
-                        selectTestMethods.setEnabled(true);
-                        selectVisualizeMethods.setEnabled(true);
+                        saveButton.setEnabled(true);
+                        if(objType!=LQD)
+                        {
+                            selectPostprocessMethods.setEnabled(true);
+                            selectTestMethods.setEnabled(true);
+                            selectVisualizeMethods.setEnabled(true);
+                        }
+                        else
+                        {
+                             selectPostprocessMethods.setEnabled(false);
+                            selectTestMethods.setEnabled(false);
+                            selectVisualizeMethods.setEnabled(false);
+                        }
+                       /* System.out.println("antes de llama a la repaint");
+                          for (i = 0; i < experimentGraph.numNodes(); i++) {
+                                 System.out.println("EL NODO ES "+experimentGraph.getNodeAt(i).dsc.getName()+ " el tipo es "+experimentGraph.getNodeAt(i).type_lqd);
+                          }*/
                         graphDiagramINNER.repaint();
                         vector_undo.clear();
                         vector_redo.clear();
@@ -5147,7 +6502,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                         selectButton.setEnabled(true);
                         runButton.setEnabled(true);
                         cursorFlux.setEnabled(true);
-                        reload_algorithms();
+                        if(objType!=LQD)
+                            reload_algorithms();
                         notSelectedDataset = false;
                         ExternalObjectDescription dsc = experimentGraph.getExternalObjectDescription();
 
@@ -5157,30 +6513,48 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                         //the layer used is always zero
                         Layer.layerActivo = 0;
                         cursorAction = GraphPanel.SELECTING;
-
+                        
                         /*Code that updates the panel of data set selection*/
                         for (i = 0; i < experimentGraph.numNodes(); i++) {
-                            if (experimentGraph.getNodeAt(i).getType() == Node.type_Dataset) {
-                                ExternalObjectDescription dsctmp = experimentGraph.getNodeAt(i).dsc;
+                            if (experimentGraph.getNodeAt(i).getType() == Node.type_Dataset) 
+                            {
+                                if(objType!=LQD)
+                                {
+                                    ExternalObjectDescription dsctmp = experimentGraph.getNodeAt(i).dsc;
 
-                                int c = 0;
-                                for (j = 0; j < dinDatasets.checks.size(); j++) {
-                                    ExternalObjectDescription dataTemp = (ExternalObjectDescription) (dinDatasets.actualList.elementAt(j));
-                                    for (k = 0; k < Layer.numLayers; k++) {
-                                        if (dsctmp.getName(k).compareToIgnoreCase(dataTemp.getName(0)) == 0) {
-                                            ((JButton) (dinDatasets.checks.elementAt(j))).setText("Del");
-                                            ((JButton) (dinDatasets.edits.elementAt(j))).setVisible(true);
-                                            dinDatasets.add((JButton) (dinDatasets.edits.elementAt(j)));
-                                            c++;
+                                    int c = 0;
+                                    for (j = 0; j < dinDatasets.checks.size(); j++) {
+                                        ExternalObjectDescription dataTemp = (ExternalObjectDescription) (dinDatasets.actualList.elementAt(j));
+                                        for (k = 0; k < Layer.numLayers; k++) {
+                                            if (dsctmp.getName(k).compareToIgnoreCase(dataTemp.getName(0)) == 0) {
+                                                ((JButton) (dinDatasets.checks.elementAt(j))).setText("Del");
+                                                ((JButton) (dinDatasets.edits.elementAt(j))).setVisible(true);
+                                                dinDatasets.add((JButton) (dinDatasets.edits.elementAt(j)));
+                                                c++;
+                                            }
+                                        }
+                                    }
+                                    if (c == 1) {
+                                        for (j = 0; j < dinDatasets.checks.size(); j++) {
+                                            if (((JButton) dinDatasets.checks.elementAt(j)).getText() == "Del") {
+                                                ((JButton) dinDatasets.checks.elementAt(j)).setEnabled(false);
+                                            }
                                         }
                                     }
                                 }
-                                if (c == 1) {
-                                    for (j = 0; j < dinDatasets.checks.size(); j++) {
-                                        if (((JButton) dinDatasets.checks.elementAt(j)).getText() == "Del") {
-                                            ((JButton) dinDatasets.checks.elementAt(j)).setEnabled(false);
-                                        }
-                                    }
+                                else // is LQD
+                                {
+                                      ExternalObjectDescription dsctmp = experimentGraph.getNodeAt(i).dsc;
+                                      if(experimentGraph.getNodeAt(i).getTypelqd()==Node.LQD)
+                                      {
+                                        load_data(dsctmp,dinDatasets.checks,dinDatasets.actualList);
+                                      }
+                                      else if(experimentGraph.getNodeAt(i).getTypelqd()==Node.LQD_C)
+                                        load_data(dsctmp,dinDatasets.checksLQD_C,dinDatasets.actualListLQD_C);
+                                      else if(experimentGraph.getNodeAt(i).getTypelqd()==Node.C_LQD)
+                                        load_data(dsctmp,dinDatasets.checksC_LQD,dinDatasets.actualListC_LQD);
+                                      else if(experimentGraph.getNodeAt(i).getTypelqd()==Node.CRISP2)
+                                        load_data(dsctmp,dinDatasets.checksC,dinDatasets.actualListC);
                                 }
                             }
                         }
@@ -5191,9 +6565,19 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                         dinDatasetsScrollPane.setVisible(true);
                         status.setText("Experiment loaded successfully");
                     } else {
+                        if(objType==INVESTIGATION)
                         JOptionPane.showMessageDialog(this,
-                                "The experiment loaded doesn?t correspond with this option", "Error",
+                                "The experiment loaded doesn't correspond with this option (Experiments)", "Error",
                                 JOptionPane.ERROR_MESSAGE);
+                        else if(objType==LQD)
+                            JOptionPane.showMessageDialog(this,
+                                "The experiment loaded doesn't correspond with this option (Experiments LQD)", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                        else if(objType==TEACHING)
+                            JOptionPane.showMessageDialog(this,
+                                "The experiment loaded doesn't correspond with this option (Educational)", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                            
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(this,
@@ -5205,11 +6589,38 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         }
     }
 
+    public void load_data(ExternalObjectDescription dsctmp, Vector check, Vector List)
+    {
+          int c = 0;                              
+          for (int j = 0; j < check.size(); j++) 
+          {
+              ExternalObjectDescription dataTemp = (ExternalObjectDescription) (List.elementAt(j));
+              for (int k = 0; k < dsctmp.getNamesLength(); k++) 
+              {
+                  if (dsctmp.getName(k).compareToIgnoreCase(dataTemp.getName(0)) == 0) 
+                  {                              
+                      ((JButton) (check.elementAt(j))).setText("Del");
+                      c++;
+                  }
+              }
+          } 
+          if (c == 1) {                              
+              for (int j = 0; j <check.size(); j++) {     
+                  if (((JButton) check.elementAt(j)).getText() == "Del") {                              
+                      ((JButton) check.elementAt(j)).setEnabled(false);
+                  }
+              }
+          }
+          
+          
+    }
     /**
      * This function creates a new experiment.
      * If the user wants to, the previous experiment is saved.
      */
-    private void newExperiment() {
+    private int newExperiment() {
+        
+        
         int salvar = JOptionPane.YES_OPTION;
 
 		/***************************************************************
@@ -5217,8 +6628,9 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 		**************************************************************/
         if (Frame.buttonPressed == 0)  //Button Experiments pressed
 		{
-            if (experimentGraph.getModified())
+            if(objType==LQD)
             {
+                
                 salvar = JOptionPane.showConfirmDialog(this,
                     "Save Modified Experiment?", "Save Changes",
                     JOptionPane.YES_NO_CANCEL_OPTION);
@@ -5226,6 +6638,19 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 {
                     saveExperiment();
                 }
+            }
+            else
+            {
+             if (experimentGraph.getModified())
+                {
+                salvar = JOptionPane.showConfirmDialog(this,
+                    "Save Modified Experiment?", "Save Changes",
+                    JOptionPane.YES_NO_CANCEL_OPTION);
+                if (salvar == JOptionPane.YES_OPTION)
+                {
+                    saveExperiment();
+                }
+             }
             }
         }
         else //Button Teaching pressed
@@ -5321,6 +6746,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             panelDatasets.repaint();
             ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "initialCard");
         }
+        return salvar;
     }
 
 
@@ -5380,12 +6806,67 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         undoItem.setEnabled(true);
     }
 
+    
+        /**
+     * Deletes a selected element in the graph
+     */
+        
+    private void deletelqd() 
+    {
+       if (!graphDiagramINNER.multipleSelection) 
+        {
+            if (graphDiagramINNER.elementSelected) 
+            {
+                // remove connection
+                if (graphDiagramINNER.typeSelected == 1)
+                {
+                    experimentGraph.dropArcLQD(experimentGraph.numArcs() - 1);
+                // remove node
+                }
+                if (graphDiagramINNER.typeSelected == 0) // is a node
+                {
+                    for (int i = experimentGraph.numArcs() - 1; i >= 0; i--) 
+                    {
+                        Arc a = experimentGraph.getArcAt(i);
+                        if (a.getSource() == (experimentGraph.numNodes() - 1)) {
+                            experimentGraph.dropArcLQD(i);
+                        } else if (a.getDestination() == (experimentGraph.numNodes() - 1)) {
+                            experimentGraph.dropArcLQD(i);
+                        }
+                    }
+                    experimentGraph.dropNodeLQD(experimentGraph.numNodes() - 1);
+                }
+                graphDiagramINNER.elementSelected = false;
+                deleteItem.setEnabled(false);
+
+
+                graphDiagramINNER.repaint();
+            }
+        
+      
+
+        
+            // remove tree selection       
+            methodsSelectionTree.setSelectionPath(null);
+            preprocessTree.setSelectionPath(null);
+            postprocessSelectionTree.setSelectionPath(null);
+            testSelectionTree.setSelectionPath(null);
+            visualizeSelectionTree.setSelectionPath(null);
+       }
+       else
+             JOptionPane.showMessageDialog(this, "Several elements are selected, select the element that you want to remove",
+                    "Select only one element", JOptionPane.ERROR_MESSAGE);
+           
+    }
+    
+    
     /**
      * Deletes a selected element in the graph
      */
         private void delete() {
         insertUndo();
-        if (!graphDiagramINNER.multipleSelection) {
+        if (!graphDiagramINNER.multipleSelection) 
+        {
             if (graphDiagramINNER.elementSelected) {
                 // remove connection
                 if (graphDiagramINNER.typeSelected == 1) {
@@ -5411,7 +6892,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
                 graphDiagramINNER.repaint();
             }
-        } else { // multiple selection
+        } 
+        else { // multiple selection
             for (int j = 0; j < graphDiagramINNER.selectedN.size(); j++) {
                 int el = ((Integer) (graphDiagramINNER.selectedN.elementAt(j))).intValue();
                 Node n = experimentGraph.getNodeAt(el - j);
@@ -5484,6 +6966,11 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
      */
     public void continueExperimentGeneration() {
 
+        if(objType==LQD)
+        {
+          listAlgor = new AlgorithmXML[1000];
+          nListAlgor=0;
+        }
         statusBarItem.setEnabled(true);
         showAlgButton.setEnabled(false);
         graphDiagramINNER.setBackground(Color.white);
@@ -5495,7 +6982,10 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         selectPostprocessMethods.setEnabled(false);
         selectTestMethods.setEnabled(false);
         selectVisualizeMethods.setEnabled(false);
-        createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "Datasets.xml");
+        if(objType==LQD)
+            createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsLQD.xml");
+        else
+            createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "Datasets.xml");
 
 
         status.setText("Select an initial set of dataset and then click on the drawing panel");
@@ -5503,15 +6993,25 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         cursorAction = GraphPanel.PAINT_DATASET;
         graphDiagramINNER.setToolTipText("Select an initial set of dataset and then click on the drawing panel");
 
-        //preprocess Tree generation
-        top4 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
-
+       
         /***************************************************************
 	     ***************  EDUCATIONAL KEEL  ****************************
 	     **************************************************************/
         if(Frame.buttonPressed == 0)	//Button Experiments pressed
 		{
-            createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar + "PreProcess.xml");
+            if(objType==LQD)
+            {
+                top4 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms the preprocessing", null, 0));
+                RamaLqd=1;
+                createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar + "PreProcessLQD.xml");
+                RamaLqd=0;
+                createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar + "PreProcess.xml");
+            }
+            else
+            {
+                top4 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
+                createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar + "PreProcess.xml");
+            }
         }
         else	//Button Teaching pressed
 		{         
@@ -5543,6 +7043,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         }
         preprocessScroll.setViewportView(preprocessTree);
 
+        
         //methods Tree generation
         top2 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
         
@@ -5553,6 +7054,15 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 	     **************************************************************/
 		if(Frame.buttonPressed == 0)	//Button Experiments pressed
 		{
+                    if(objType==LQD)
+                    {
+                        top2 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms of classification", null, 0));
+                        RamaLqd=1;
+                        createAlgorithmNodes(top2, "." + File.separatorChar + "algorithm" + File.separatorChar + "MethodsLQD.xml");
+                        RamaLqd=0;
+                        createAlgorithmNodes(top2, "." + File.separatorChar + "algorithm" + File.separatorChar + "Methods.xml");
+                    }
+                    else
 			createAlgorithmNodes(top2, "." + File.separatorChar + "algorithm" + File.separatorChar + "Methods.xml");
 
 		}
@@ -5588,11 +7098,22 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         }
         methodsScrollPanel.setViewportView(methodsSelectionTree);
 
-        // Postprocess tree generation
-        top5 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
-
+        
         // LSR - internal algorithm's list
-        createAlgorithmNodes(top5, "." + File.separatorChar + "algorithm" + File.separatorChar + "PostProcess.xml");
+        if(objType==LQD)
+        {         
+            top5 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms the postprocessing", null, 0));
+            RamaLqd=1;
+           createAlgorithmNodes(top5, "." + File.separatorChar + "algorithm" + File.separatorChar + "PostProcess.xml");
+           RamaLqd=0;
+           createAlgorithmNodes(top5, "." + File.separatorChar + "algorithm" + File.separatorChar + "PostProcess.xml");
+        }
+         
+        else
+        {
+            top5 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
+            createAlgorithmNodes(top5, "." + File.separatorChar + "algorithm" + File.separatorChar + "PostProcess.xml");
+        }
        
         
         postprocessSelectionTree = new JTree(top5);
@@ -5683,16 +7204,18 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         DataSet ds;
 
         //Look for the dataset node
-        for (int i = 0; i < experimentGraph.numNodes() && !stop; i++) {
-            if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) {
+        for (int i = 0; i < experimentGraph.numNodes() && !stop; i++) 
+        {
+            if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) 
+            {
                 //fill the missing vector
-                ds = new DataSet(((DataSet) experimentGraph.getNodeAt(i)).dsc, ((DataSet) experimentGraph.getNodeAt(i)).getPosition(), graphDiagramINNER, null);
+                ds = new DataSet(((DataSet) experimentGraph.getNodeAt(i)).dsc, ((DataSet) experimentGraph.getNodeAt(i)).getPosition(), graphDiagramINNER, null,0);
                 //experimentGraph.replaceNode(i, ds);
                 //regenerate partitions
                 this.graphDiagramINNER.regenerateDatasetPartitions(ds);
                 stop = true;
                 //fill the data sets tables with the regenerated partitions
-                ds = new DataSet(((DataSet) experimentGraph.getNodeAt(i)).dsc, ((DataSet) experimentGraph.getNodeAt(i)).getPosition(), graphDiagramINNER, null);
+                ds = new DataSet(((DataSet) experimentGraph.getNodeAt(i)).dsc, ((DataSet) experimentGraph.getNodeAt(i)).getPosition(), graphDiagramINNER, null,0);
                 //replace the old node
                 //fill the structures from the values of the previous dataset node
                 ds.figure = ((DataSet) experimentGraph.getNodeAt(i)).figure;

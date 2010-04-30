@@ -16,6 +16,7 @@ import java.awt.Rectangle;
  * <p>Company: Universidad de Granada</p>
  * @author Jes?s Alcal? Fern?ndez
  * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of Córdoba) 7/07/2009
+ * @author Modified by Ana Palacios Jimenez and Luciano Sanchez Ramos (Univerity of Oviedo)
  * @version 0.0
  */
 
@@ -30,6 +31,10 @@ public class Frame
   JLabel labelJclec = new JLabel();
   JButton datos = new JButton();
   JButton experimentos = new JButton();
+  
+  //Expermiments with LQD
+  JLabel labelExperimentLQD= new JLabel();
+  JLabel experimental = new JLabel();
 
 //  JLabel jclec = new JLabel();
   JButton exit = new JButton();
@@ -53,6 +58,8 @@ public class Frame
     JLabel teaching = new JLabel();
     JLabel labelTeaching = new JLabel();
     JLabel labelhelp = new JLabel();
+    //Expermiments with LQD
+    JLabel experimentsLQD = new JLabel();
 
 
 
@@ -116,7 +123,8 @@ public class Frame
     experimentos.setFont(new java.awt.Font("Arial", 0, 11));
     experimentos.addMouseListener(new Inicio_experimentos_mouseAdapter(this));
  //   experimentos.setIcon(iexperiment);
-
+    
+ //   experimentos.setIcon(iexperiment);
 /*    jclec.setText("");
     jclec.setBounds(new Rectangle(15, 270, 129, 36));
     jclec.addMouseListener(new Inicio_jclec_mouseAdapter(this));
@@ -129,6 +137,14 @@ public class Frame
 //    exit.setDebugGraphicsOptions(0);
  //   exit.setIcon(iexit);
 
+  // LSR Button "Extra" temporarily commented out
+ //   this.experimental.setText("Extra");
+ //   experimental.setBounds(new Rectangle(440, 412, 70, 27));
+ //   experimental.setFont(new java.awt.Font("Arial", 0, 16));
+ //   experimental.setForeground(Color.GREEN);
+ //    experimental.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/browser.gif")));
+ //   experimental.addMouseListener(new Inicio_experimental_mouseAdapter(this));
+    
     // labels associated to buttons
     labelSalir.setFont(new java.awt.Font("Arial", 1, 18));
     labelSalir.setForeground(Color.white);
@@ -147,6 +163,12 @@ public class Frame
     labelExperiment.setText("Experiments Design with available models");
     labelExperiment.setBounds(new Rectangle(40, 412, 465, 27));
     labelExperiment.setVisible(false);
+    
+    labelExperimentLQD.setFont(new java.awt.Font("Arial", 1, 18));
+    labelExperimentLQD.setForeground(Color.white);
+    labelExperimentLQD.setText("Experiments Design with Low Quality Data");
+    labelExperimentLQD.setBounds(new Rectangle(40, 412, 465, 27));
+    labelExperimentLQD.setVisible(false);
 
     labelTeaching.setFont(new java.awt.Font("Arial", 1, 18));
     labelTeaching.setForeground(Color.white);
@@ -184,11 +206,15 @@ public class Frame
         dataManagement.addMouseListener(new Frame_dataManagement_mouseAdapter(this));
         experiments.setBounds(new Rectangle(50, 216, 171, 38));
         experiments.addMouseListener(new Frame_experiments_mouseAdapter(this));
+        experimentsLQD.setBounds(new Rectangle(350, 216, 250, 38));
+        experimentsLQD.setVisible(false);
+        experimentsLQD.addMouseListener(new Frame_experimentsLQD_mouseAdapter(this));
         teaching.setBounds(new Rectangle(50, 274, 175, 42));
         teaching.addMouseListener(new Frame_teaching_mouseAdapter(this));
         help.setBounds(new Rectangle(48, 332, 99, 39));
         help.addMouseListener(new Frame_help_mouseAdapter(this));
         experiments.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/experiments.gif")));
+        experimentsLQD.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/experimentsLQD.gif")));
     dataManagement.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/dataManagement.gif")));
     teaching.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/teaching.gif")));
     help.setIcon(new ImageIcon(this.getClass().getResource(
@@ -196,6 +222,8 @@ public class Frame
     contentPane.add(labelSalir, null);
     contentPane.add(labelDatos, null);
     contentPane.add(labelExperiment, null);
+    contentPane.add(labelExperimentLQD, null);
+    contentPane.add(experimental);
     contentPane.add(labelTeaching);
     contentPane.add(labelhelp);
 //    contentPane.add(labelJclec, null);
@@ -204,6 +232,7 @@ public class Frame
     contentPane.add(barraExit);
     contentPane.add(dataManagement);
     contentPane.add(experiments);
+    contentPane.add(experimentsLQD);
     contentPane.add(teaching);
     contentPane.add(help);
     contentPane.add(fondo, null);
@@ -255,7 +284,7 @@ public class Frame
   void experimentos_mouseReleased(MouseEvent e) {
     experimentos.setBounds(new Rectangle(15, 200, 129, 36));
   }
-
+  
   // Jclec button
 /*  void jclec_mouseEntered(MouseEvent e) {
     jclec.setIcon(ijclec_select);
@@ -291,6 +320,20 @@ public class Frame
   void exit_mousePressed(MouseEvent e) {
     exit.setBounds(new Rectangle(16, 341, 129, 36));
   }
+  
+  void experimental_mousePressed(MouseEvent e) {
+        experimentsLQD.setVisible(true);
+      
+  }
+  void experimental_mouseEntered(MouseEvent e) {
+        this.setCursor(Cursor.HAND_CURSOR);
+      
+  }
+    void experimental_mouseExited(MouseEvent e) {
+        this.setCursor(Cursor.DEFAULT_CURSOR);
+      
+  }
+  
 
   void exit_mouseReleased(MouseEvent e) {
     exit.setBounds(new Rectangle(15, 340, 129, 36));
@@ -342,10 +385,22 @@ public class Frame
         labelExperiment.setVisible(true);
         this.setCursor(Cursor.HAND_CURSOR);
     }
-
+    
     public void experiments_mouseExited(MouseEvent e) {
         experiments.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/experiments.gif")));
         labelExperiment.setVisible(false);
+        this.setCursor(Cursor.DEFAULT_CURSOR);
+    }
+    
+         public void experimentsLQD_mouseEntered(MouseEvent e) {
+        experimentsLQD.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/experimentsLQD2.gif")));
+        labelExperimentLQD.setVisible(true);
+        this.setCursor(Cursor.HAND_CURSOR);
+    }
+         
+    public void experimentsLQD_mouseExited(MouseEvent e) {
+        experimentsLQD.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/experimentsLQD.gif")));
+        labelExperimentLQD.setVisible(false);
         this.setCursor(Cursor.DEFAULT_CURSOR);
     }
 
@@ -421,8 +476,27 @@ public class Frame
 	**************************************************************/
     public void experiments_mouseReleased(MouseEvent e) {
     	buttonPressed = 0;
-        Experiments frame = new Experiments(this);
-        frame.objType = Experiments.INVESTIGATION;
+        Experiments frame = new Experiments(this,Experiments.INVESTIGATION);
+       // frame.objType = Experiments.INVESTIGATION;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = frame.getSize();
+        if (frameSize.height > screenSize.height) {
+          frameSize.height = screenSize.height;
+        }
+        if (frameSize.width > screenSize.width) {
+          frameSize.width = screenSize.width;
+        }
+        frame.setLocation( (screenSize.width - frameSize.width) / 2,
+                           (screenSize.height - frameSize.height) / 2);
+        this.setVisible(false);
+
+    }
+    
+    public void experimentsLQD_mouseReleased(MouseEvent e) {
+    	buttonPressed = 0;
+        experimentsLQD.setVisible(false);
+        Experiments frame = new Experiments(this,Experiments.LQD); //LUEGO SERA LA MIA
+       // frame.objType = Experiments.INVESTIGATIONLQD;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = frame.getSize();
         if (frameSize.height > screenSize.height) {
@@ -447,8 +521,8 @@ public class Frame
     {
 
     	 buttonPressed = 1;
-    	 Experiments frame = new Experiments(this);
-         frame.objType = Experiments.TEACHING;
+    	 Experiments frame = new Experiments(this,Experiments.TEACHING);
+         //frame.objType = Experiments.TEACHING;
          Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
          Dimension frameSize = frame.getSize();
          if (frameSize.height > screenSize.height) {
@@ -537,6 +611,25 @@ class Frame_experiments_mouseAdapter extends MouseAdapter {
     }
 }
 
+
+class Frame_experimentsLQD_mouseAdapter extends MouseAdapter {
+    private Frame adaptee;
+    Frame_experimentsLQD_mouseAdapter(Frame adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void mouseEntered(MouseEvent e) {
+        adaptee.experimentsLQD_mouseEntered(e);
+    }
+
+    public void mouseExited(MouseEvent e) {
+        adaptee.experimentsLQD_mouseExited(e);
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        adaptee.experimentsLQD_mouseReleased(e);
+    }
+}
 
 class Frame_logotipo_mouseAdapter extends MouseAdapter {
     private Frame adaptee;
@@ -629,6 +722,28 @@ class Inicio_exit_mouseAdapter
     adaptee.exit_mouseReleased(e);
   }
 }
+
+class Inicio_experimental_mouseAdapter
+    extends java.awt.event.MouseAdapter {
+  Frame adaptee;
+
+  Inicio_experimental_mouseAdapter(Frame adaptee) {
+    this.adaptee = adaptee;
+  }
+
+  public void mousePressed(MouseEvent e) {
+    adaptee.experimental_mousePressed(e);
+  }
+   public void mouseEntered(MouseEvent e) {
+    adaptee.experimental_mouseEntered(e);
+  }
+
+  public void mouseExited(MouseEvent e) {
+    adaptee.experimental_mouseExited(e);
+  }
+ 
+}
+
 
 class Inicio_datos_mouseAdapter
     extends java.awt.event.MouseAdapter {

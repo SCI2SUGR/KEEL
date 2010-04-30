@@ -20,16 +20,22 @@ public final class DataSet extends Node {
     protected boolean complete;
     /** stores the missing partitions*/
     protected Vector missing;
+   
+   
+ 
 
     public DataSet() {
         super();
     }
 
     public DataSet(ExternalObjectDescription dsc, Point position, GraphPanel p,
-            Vector newTable) {
+            Vector newTable,int lqd) {
         super(dsc, position, p.mainGraph.getId());
-
+        
+        //image.addActionListener(new DataSet_image_actionAdapter(this));
+        
         File dir;
+        
         String ficheros[];
         boolean metido, cont;
         Vector listas = new Vector();
@@ -54,8 +60,39 @@ public final class DataSet extends Node {
         p.mainGraph.setId(p.mainGraph.getId() + 1);
         type = type_Dataset;
         pd = p;
-        image = Toolkit.getDefaultToolkit().getImage(
-                this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/dataset.gif"));
+        
+        if(lqd==0) //Is not LQD
+        {    
+            image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/dataset.gif"));    
+            type_lqd=CRISP;
+        }
+        else if (lqd==GraphPanel.NODELQD)
+        {
+            image = Toolkit.getDefaultToolkit().getImage(
+                this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/datasetLQD.gif"));
+            type_lqd=LQD;
+        }
+        else if (lqd==GraphPanel.NODELQD_c)
+        {
+            image = Toolkit.getDefaultToolkit().getImage(
+                this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/datasetLQD_C.gif"));
+            type_lqd=LQD_C;
+        }
+         else if (lqd==GraphPanel.NODEC_LQD)
+        {
+            image = Toolkit.getDefaultToolkit().getImage(
+                this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/datasetC_LQD.gif"));
+            type_lqd=C_LQD;
+        }
+         else if (lqd==GraphPanel.NODEC)
+        {
+             image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/dataset.gif"));    
+            type_lqd=CRISP2;
+        }
+        
+        
         modified = false;
         complete = true;
         if (newTable == null) {
@@ -202,14 +239,44 @@ public final class DataSet extends Node {
     }
 
     public DataSet(ExternalObjectDescription dsc, Point position, GraphPanel p,
-            Vector table, boolean modified, int id) {
+            Vector table, boolean modified, int id, int lqd) {
         super(dsc, position, id);
 
         actInputOutput(dsc, p);
         type = type_Dataset;
         pd = p;
-        image = Toolkit.getDefaultToolkit().getImage(
-                this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/dataset.gif"));
+          
+       
+         if (lqd==LQD)
+        {
+            image = Toolkit.getDefaultToolkit().getImage(
+                this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/datasetLQD.gif"));
+            type_lqd=LQD;
+        }
+        else if (lqd==LQD_C)
+        {
+            image = Toolkit.getDefaultToolkit().getImage(
+                this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/datasetLQD_C.gif"));
+            type_lqd=LQD_C;
+        }
+         else if (lqd==C_LQD)
+        {
+            image = Toolkit.getDefaultToolkit().getImage(
+                this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/datasetC_LQD.gif"));
+            type_lqd=C_LQD;
+        }
+         else if (lqd==CRISP2)
+        {
+             image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/dataset.gif"));    
+            type_lqd=CRISP2;
+        }
+         else
+        {    
+            image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/dataset.gif"));    
+            type_lqd=CRISP;
+        }
         this.modified = modified;
 
         if (table == null) {
@@ -245,6 +312,36 @@ public final class DataSet extends Node {
         dialog.setVisible(true);
     }
 
+        public void contain(String title,int show,Node destino,Experiments parent) {
+
+            
+         //dialog = new Container(title,this.dsc.name,this);
+            if(show==1)
+            {
+                dialog = new Container(pd.parent,true,title,this.dsc.name,this.type_lqd);
+                dialog.setSize(257, 250);
+            }
+            else 
+                dialog = new Container_Selected(pd.parent,true,title,this,destino,parent);
+            
+
+        // Center dialog
+        
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = dialog.getSize();
+        if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+        }
+        if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+        }
+        dialog.setLocation((screenSize.width - frameSize.width) / 2,
+                (screenSize.height - frameSize.height) / 2);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
+        
+       
+    }
     public void actInputOutput(ExternalObjectDescription dsc, GraphPanel p) {
 
         // Initializing all variables to erase the last value (useful in case
@@ -266,13 +363,10 @@ public final class DataSet extends Node {
         for (int iname = 0; iname < dsc.name.length; iname++) {
             for (int i = 0; i < p.parent.listData.length; i++) {
 
-                //System.out.println (" Data: "+p.padre.listData[i].nameAbr + " - " +  dsc.nombre[0] );
-                if (p.parent.listData[i].nameAbr.equalsIgnoreCase(dsc.name[iname])) {
-                    //System.out.println (" \n\nALGORISME TROBAT");
-                    //System.out.println ("  > Continuous: "+p.padre.listAlgor[i].m_bInputContinuous );
-                    //System.out.println ("  > Integer: "+p.padre.listAlgor[i].m_bInputInteger );
-                    //System.out.println ("  > NOminal: "+p.padre.listAlgor[i].m_bInputNominal );
-                    //System.out.println ("  > Missing: "+p.padre.listAlgor[i].m_bInputMissing );
+                System.out.println (" Data: "+p.parent.listData[i].nameAbr + " - " +  dsc.name[iname] );
+                if (p.parent.listData[i].nameAbr.equalsIgnoreCase(dsc.name[iname]))
+                {
+                    
 
                     m_bInputContinuous |= p.parent.listData[i].m_bContinuous;
                     m_bInputInteger |= p.parent.listData[i].m_bInteger;
@@ -312,32 +406,122 @@ public final class DataSet extends Node {
                     if (p.parent.listData[i].m_bMultiOutput) {
                         m_sDatasetHasMultiOutput = m_sDatasetHasMultiOutput + " " + p.parent.listData[i].nameAbr;
                     }
-                    /*
+                    
                     System.out.println("m_sDatasetHasContinuous = " + m_sDatasetHasContinuous);
                     System.out.println("m_sDatasetHasInteger =    " + m_sDatasetHasInteger);
                     System.out.println("m_sDatasetHasNominal =    " + m_sDatasetHasNominal);
                     System.out.println("m_sDatasetHasMissing =    " + m_sDatasetHasMissing);
                     System.out.println("m_sDatasetHasImprecise =  " + m_sDatasetHasImprecise);
                     System.out.println("m_sDatasetHasMultiClass = " + m_sDatasetHasMultiClass);
-                    System.out.println("m_sDatasetHasMultiOutput = " + m_sDatasetHasMultiOutput);*/
+                    System.out.println("m_sDatasetHasMultiOutput = " + m_sDatasetHasMultiOutput);
 
 
                     break;
                 }
             }
         }
-    //System.out.println ("####################################");
-    //System.out.println ("  > Continuous: "+m_bInputContinuous );
-    //System.out.println ("  > Integer: "+m_bInputInteger );
-    //System.out.println ("  > Nominal: "+m_bInputNominal );
-    //System.out.println ("  > Missing: "+m_bInputMissing );
-    //System.out.println ("  > Imprecise: "+m_bOutputImprecise );
-    //System.out.println ("  > MultiClass: "+m_bOutputMultiClass );
-    //System.out.println ("  > MultiOutput: "+m_bOutputMultiOutput );
+    System.out.println ("####################################");
+    System.out.println ("  > Continuous: "+m_bInputContinuous );
+    System.out.println ("  > Integer: "+m_bInputInteger );
+    System.out.println ("  > Nominal: "+m_bInputNominal );
+    System.out.println ("  > Missing: "+m_bInputMissing );
+    System.out.println ("  > Imprecise: "+m_bOutputImprecise );
+    System.out.println ("  > MultiClass: "+m_bOutputMultiClass );
+    System.out.println ("  > MultiOutput: "+m_bOutputMultiOutput );
 
     }// end copyInputOutput
 
+       public void actInputOutputLQD(ExternalObjectDescription dsc, GraphPanel p,DatasetXML[] list_dataset) {
+
+        // Initializing all variables to erase the last value (useful in case
+        // that we have erased a data set
+
+        m_bInputContinuous = m_bInputInteger = m_bInputNominal = m_bInputMissing = m_bInputImprecise = m_bInputMultiClass = m_bInputMultiOutput = false;
+        m_bOutputContinuous = m_bOutputInteger = m_bOutputNominal = m_bOutputMissing = m_bOutputImprecise = m_bOutputMultiClass = m_bOutputMultiOutput = false;
+        m_sDatasetHasContinuous = "";
+        m_sDatasetHasInteger = "";
+        m_sDatasetHasNominal = "";
+        m_sDatasetHasMissing = "";
+        m_sDatasetHasImprecise = "";
+        m_sDatasetHasMultiClass = "";
+        m_sDatasetHasMultiOutput = "";
+
+
+        //Un Nodo puede contener m�s de un DataSet
+        //lo busco y calculo el tipo de datos de este nodo
+        for (int iname = 0; iname < dsc.name.length; iname++) {
+            for (int i = 0; i < list_dataset.length; i++) {
+
+                System.out.println (" Data: "+list_dataset[i].nameAbr + " - " +  dsc.name[iname] );
+                if (list_dataset[i].nameAbr.equalsIgnoreCase(dsc.name[iname]))
+                {
+                    
+
+                    m_bInputContinuous |= list_dataset[i].m_bContinuous;
+                    m_bInputInteger |= list_dataset[i].m_bInteger;
+                    m_bInputNominal |= list_dataset[i].m_bNominal;
+                    m_bInputMissing |= list_dataset[i].m_bMissing;
+                    m_bInputImprecise |= list_dataset[i].m_bImprecise;
+                    m_bInputMultiClass |= list_dataset[i].m_bMultiClass;
+                    m_bInputMultiOutput |= list_dataset[i].m_bMultiOutput;
+
+                    m_bOutputContinuous |= list_dataset[i].m_bContinuous;
+                    m_bOutputInteger |= list_dataset[i].m_bInteger;
+                    m_bOutputNominal |= list_dataset[i].m_bNominal;
+                    m_bOutputMissing |= list_dataset[i].m_bMissing;
+                    m_bOutputImprecise |= list_dataset[i].m_bImprecise;
+                    m_bOutputMultiClass |= list_dataset[i].m_bMultiClass;
+                    m_bOutputMultiOutput |= list_dataset[i].m_bMultiOutput;
+
+
+                    if (list_dataset[i].m_bContinuous) {
+                        m_sDatasetHasContinuous = m_sDatasetHasContinuous + " " + list_dataset[i].nameAbr;
+                    }
+                    if (list_dataset[i].m_bInteger) {
+                        m_sDatasetHasInteger = m_sDatasetHasInteger + " " + list_dataset[i].nameAbr;
+                    }
+                    if (list_dataset[i].m_bNominal) {
+                        m_sDatasetHasNominal = m_sDatasetHasNominal + " " + list_dataset[i].nameAbr;
+                    }
+                    if (list_dataset[i].m_bMissing) {
+                        m_sDatasetHasMissing = m_sDatasetHasMissing + " " + list_dataset[i].nameAbr;
+                    }
+                    if (list_dataset[i].m_bImprecise) {
+                        m_sDatasetHasImprecise = m_sDatasetHasImprecise + " " + list_dataset[i].nameAbr;
+                    }
+                    if (list_dataset[i].m_bMultiClass) {
+                        m_sDatasetHasMultiClass = m_sDatasetHasMultiClass + " " + list_dataset[i].nameAbr;
+                    }
+                    if (list_dataset[i].m_bMultiOutput) {
+                        m_sDatasetHasMultiOutput = m_sDatasetHasMultiOutput + " " + list_dataset[i].nameAbr;
+                    }
+                    
+                    System.out.println("m_sDatasetHasContinuous = " + m_sDatasetHasContinuous);
+                    System.out.println("m_sDatasetHasInteger =    " + m_sDatasetHasInteger);
+                    System.out.println("m_sDatasetHasNominal =    " + m_sDatasetHasNominal);
+                    System.out.println("m_sDatasetHasMissing =    " + m_sDatasetHasMissing);
+                    System.out.println("m_sDatasetHasImprecise =  " + m_sDatasetHasImprecise);
+                    System.out.println("m_sDatasetHasMultiClass = " + m_sDatasetHasMultiClass);
+                    System.out.println("m_sDatasetHasMultiOutput = " + m_sDatasetHasMultiOutput);
+
+
+                    break;
+                }
+            }
+        }
+    System.out.println ("####################################");
+    System.out.println ("  > Continuous: "+m_bInputContinuous );
+    System.out.println ("  > Integer: "+m_bInputInteger );
+    System.out.println ("  > Nominal: "+m_bInputNominal );
+    System.out.println ("  > Missing: "+m_bInputMissing );
+    System.out.println ("  > Imprecise: "+m_bOutputImprecise );
+    System.out.println ("  > MultiClass: "+m_bOutputMultiClass );
+    System.out.println ("  > MultiOutput: "+m_bOutputMultiOutput );
+
+    }// end copyInputOutput
+       
     public void draw(Graphics2D g2, boolean select) {
+          //System.out.println (" entraaaaaaaaaaaaa");
         Point pinit = new Point(centre.x - 25, centre.y - 25);
         Point pfin = new Point(centre.x + 25, centre.y + 25);
         figure = new RoundRectangle2D.Float(pinit.x, pinit.y,
@@ -359,9 +543,42 @@ public final class DataSet extends Node {
 
         g2.setFont(new Font("Courier", Font.BOLD + Font.ITALIC, 12));
         FontMetrics metrics = g2.getFontMetrics();
-        int width = metrics.stringWidth("data");
+        int width;
         int height = metrics.getHeight();
-        g2.drawString("data", centre.x - width / 2, centre.y + 40);
+        if(type_lqd==LQD)
+        {
+          width = metrics.stringWidth("Low quality data");
+          g2.drawString("Low quality data", centre.x - width / 2, centre.y + 40);      
+        }
+        else if(type_lqd==LQD_C)
+        {
+             //g2.setColor(new Color(255, 253, 202));
+          width = metrics.stringWidth("LQD_C");
+          g2.drawString("LQD_C", centre.x - width / 2, centre.y + 40);
+              
+        }
+        else if(type_lqd==C_LQD)
+        {
+             //g2.setColor(new Color(255, 253, 202));
+          width = metrics.stringWidth("C_LQD");
+          g2.drawString("C_LQD", centre.x - width / 2, centre.y + 40);
+              
+        }
+         else if(type_lqd==CRISP2)
+        {
+             //g2.setColor(new Color(255, 253, 202));
+          width = metrics.stringWidth("Crisp");
+          g2.drawString("Crisp", centre.x - width / 2, centre.y + 40);
+              
+        }
+
+        else
+        {
+            width = metrics.stringWidth("data");
+            g2.drawString("data", centre.x - width / 2, centre.y + 40);
+        }
+        
+        
     }
 
     /**
@@ -428,3 +645,4 @@ public final class DataSet extends Node {
         Collections.sort((Vector) tableVector.get(k));
     }
 }
+

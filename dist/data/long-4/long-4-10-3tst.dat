@@ -1,0 +1,11 @@
+@relation Long4
+@attribute Indicator1 interval [0, 20]
+@attribute Indicator2 interval [0, 100]
+@attribute Indicator3 interval [0, 10]
+@attribute Indicator4 interval [0, 10]
+@attribute Class subset {0, 1}
+@inputs Indicator1, Indicator2, Indicator3, Indicator4
+@outputs Class
+@data
+[8.7,9.7],[47,52],[2.5,2.62],[4.77,4.83],{1}
+[0,0.8],[46,50],[2.04,2.14],[5,5.04],{0}

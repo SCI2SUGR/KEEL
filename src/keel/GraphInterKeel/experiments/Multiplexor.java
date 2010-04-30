@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.util.Vector;
 
+/*@author Modified Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)*/
+
 public final class Multiplexor extends Node {
 
     protected transient Vector inputs;
@@ -28,6 +30,8 @@ public final class Multiplexor extends Node {
     public void showDialog() {
     }
 
+    public void contain(String title,int show,Node n,Experiments exp) {
+    }
     public void draw(Graphics2D g2, boolean select) {
         Point pinit = new Point(centre.x - 25, centre.y - 25);
         Point pfin = new Point(centre.x + 25, centre.y + 25);

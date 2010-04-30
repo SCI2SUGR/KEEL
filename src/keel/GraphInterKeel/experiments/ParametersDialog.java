@@ -17,6 +17,7 @@ import keel.GraphInterKeel.menu.Frame;
  * @author Ignacio Robles
  * @author Julian Luengo
  * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of Córdoba) 7/07/2009
+ * @authos Modified Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
  */
 
 public class ParametersDialog
@@ -63,14 +64,32 @@ public class ParametersDialog
     ExternalObjectDescription dsc;
     JComboBox jComboBox1 = new JComboBox();
     JLabel jLabel5 = new JLabel();
+    //JLabel jLabel6 = new JLabel();
+    //ExternalObjectDescription dsc1;
 
     public ParametersDialog(Experiments frame, String title, boolean modal,
             Vector parametersVector, ExternalObjectDescription dsc) {
         super(frame, title, modal);
+        
+      /*   if(dsc_al.getSubtypelqd()==Node.CRISP2 ||dsc_al.getSubtypelqd()==Node.LQD )
+        {
+             jComboBox1.setEditable(false);
+             jComboBox1.setVisible(false);
+              jLabel6.setText("Algorithm without datasets");
+              jLabel6.setBounds(new Rectangle(185, 76, 155, 22));
+            jLabel6.setForeground(Color.black);
+            jLabel6.setBackground(new Color(225, 225, 225));
+            jLabel6.setFont(new java.awt.Font("Arial", 1, 11));
+            jLabel5.setVisible(false);
+            panel1.add(jLabel6, null);
+         }*/
+        
         try {
             this.dsc = frame.experimentGraph.getExternalObjectDescription();
             all = parametersVector;
+            
             parameterData = (Parameters) (parametersVector.elementAt(Layer.layerActivo));
+            System.out.println("numero de parametros "+parameterData.getNumParameters());
             undoParameters = new Parameters((Parameters) (parametersVector.elementAt(Layer.layerActivo)));
             paramTable = new ParametersTable(undoParameters, this);
             /***************************************************************
@@ -250,16 +269,17 @@ public class ParametersDialog
             jSpinner1.setEnabled(false);
             jLabel2.setEnabled(false);
         }
-        jComboBox1.setBounds(new Rectangle(184, 103, 185, 22));
-        jComboBox1.addActionListener(new ParametrosDialog_jComboBox1_actionAdapter(this));
-        String valores[] = dsc.getAllNames();
-        for (int i = 0; i < valores.length; i++) {
+            
+            jComboBox1.setBounds(new Rectangle(184, 103, 185, 22));
+            jComboBox1.addActionListener(new ParametrosDialog_jComboBox1_actionAdapter(this));
+            String valores[] = dsc.getAllNames();
+            for (int i = 0; i < valores.length; i++) {
             jComboBox1.addItem(valores[i]);
-        }
-        jComboBox1.addItem("All Datasets");
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 11));
-        jComboBox1.setSelectedIndex(valores.length);
-
+            }
+            jComboBox1.addItem("All Datasets");
+            jComboBox1.setFont(new java.awt.Font("Arial", 0, 11));
+            jComboBox1.setSelectedIndex(valores.length);
+        
         jLabel5.setBounds(new Rectangle(185, 76, 135, 22));
         jLabel5.setText("Applied to Dataset:");
         jLabel5.setForeground(Color.black);

@@ -1,5 +1,6 @@
 /**
  * @author Julian Luengo Martin (modifications 19/04/2009)
+ * @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010)
  */
 package keel.GraphInterKeel.experiments;
 
@@ -12,6 +13,13 @@ public abstract class Node implements Serializable {
 
     public ExternalObjectDescription dsc;
     public int type;
+    
+    public int type_lqd;
+    static final int CRISP=11;
+    static final int LQD=12;
+    static final int LQD_C=13;
+    static final int C_LQD=14;
+    static final int CRISP2=15;
     public Vector par;
     protected int id;
     protected Point centre;
@@ -76,6 +84,7 @@ public abstract class Node implements Serializable {
         dsc = new ExternalObjectDescription(mydsc);
         centre = new Point(position);
         this.id = id;
+      
     }
 
     /**
@@ -101,6 +110,10 @@ public abstract class Node implements Serializable {
     public int getType() {
         return type;
     }
+    
+    public int getTypelqd() {
+        return type_lqd;
+    }
 
     /**
      * Sets the type of the node
@@ -108,6 +121,10 @@ public abstract class Node implements Serializable {
      */
     public void setType(int _type) {
         type = _type;
+    }
+    
+     public void setTypelqd(int _type) {
+        type_lqd = _type;
     }
 
     /**
@@ -148,9 +165,17 @@ public abstract class Node implements Serializable {
      * Draws the node in a 2D component
      * @param g2 the 2D graphic element
      * @param select if the node is selected
+     * @param objective is the type of data in the Node
      */
     public abstract void draw(Graphics2D g2, boolean select);
-
+    
+    /**
+     * Show the datasets introduced in the Node
+     * @param title is the title of the new form showed
+     * */
+     
+    public abstract void contain(String title,int show, Node n,Experiments exp);
+    
     /**
      * Test if the provided point is inside of this node
      * @param point Point to be tested
@@ -174,13 +199,16 @@ public abstract class Node implements Serializable {
         String errorMessage = "";
         boolean errorOccurred = false;
 
-        if (dest.type != Node.type_Test && dest.type != Node.type_Visor) {
+        if (dest.type != Node.type_Test && dest.type != Node.type_Visor) 
+        {
 
 
-            if (type == Node.type_Dataset) {
+            if (type == Node.type_Dataset) 
+            {
 
 
-                if (!dest.m_bInputContinuous && m_bOutputContinuous) {
+                if (!dest.m_bInputContinuous && m_bOutputContinuous) 
+                {
                     errorMessage = errorMessage + "The data sets '" + m_sDatasetHasContinuous + "' have continuous data and the destination node does not accept it.\n";
                     errorOccurred = true;
                 }
@@ -209,11 +237,22 @@ public abstract class Node implements Serializable {
                     errorOccurred = true;
                 }
 
+                if(dest.m_bOutputMultiClass && !m_bOutputMultiClass)
+                {  
+                    errorMessage = errorMessage + "The data sets  have not multiclass data and the destination node does not accept it.\n";
+                    errorOccurred = true;
+                }
+               /* if(dest.m_bOutputMultiClass && m_bOutputMultiClass)
+                {  
+                    errorMessage = errorMessage + "Lo hace bien los dataset" + m_bOutputMultiClass + "' itiene imprecisos salidas.\n";
+                    errorOccurred = true;
+                }*/
 
                 if (errorOccurred) {
                     errorMessage = "Conflict with this connection.\n" + errorMessage;
                 }
-            } else {
+            } 
+            else { //origen is not dataset
 
                 if (!dest.m_bInputContinuous && m_bOutputContinuous) {
                     errorMessage = errorMessage + "The source may generate continuous data and the destination node does not accept it.\n";
@@ -288,4 +327,6 @@ public abstract class Node implements Serializable {
      */
     public void actInputOutput(ExternalObjectDescription dsc, GraphPanel p) {
     }
+    
+ 
 }

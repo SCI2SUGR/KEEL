@@ -127,10 +127,10 @@ public class MiDataset {
                         }
                         k++;
                     }
-                //}
+                }
 
                 long_tabla = k;
-            }
+            //}
         } catch (Exception e) {
             System.out.println("DBG: Exception in readSet");
             e.printStackTrace();

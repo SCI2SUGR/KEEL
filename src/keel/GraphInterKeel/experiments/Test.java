@@ -1,3 +1,4 @@
+/*@author Modified Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)*/
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -54,7 +55,8 @@ public final class Test extends Node {
     public Parameters getActivePair() {
         return (Parameters) par.elementAt(Layer.layerActivo);
     }
-
+public void contain(String title, int show,Node n,Experiments exp) {
+    }
     public void showDialog() {
 //    dialogo = new ParametrosDialog(pd.padre, "Test Parameters", true, (Parametros)par.elementAt(Layer.layerActivo));
 

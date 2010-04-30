@@ -183,7 +183,7 @@
     <nominal>No</nominal>
     <imprecise>No</imprecise>
     <missing>No</missing>
-    <multiclass>No</multiclass>
+    <multiclass>Yes</multiclass>
     <multioutput>No</multioutput>
     <percMissingValues>0</percMissingValues>
     <nAttributes>6</nAttributes>
@@ -204,7 +204,7 @@
     <nominal>No</nominal>
     <imprecise>No</imprecise>
     <missing>No</missing>
-    <multiclass>No</multiclass>
+     <multiclass>Yes</multiclass>
     <multioutput>No</multioutput>
     <percMissingValues>0</percMissingValues>
     <nAttributes>8</nAttributes>
@@ -225,7 +225,7 @@
     <nominal>No</nominal>
     <imprecise>No</imprecise>
     <missing>No</missing>
-    <multiclass>No</multiclass>
+     <multiclass>Yes</multiclass>
     <multioutput>No</multioutput>
     <percMissingValues>0</percMissingValues>
     <nAttributes>6</nAttributes>
@@ -267,7 +267,7 @@
     <nominal>No</nominal>
     <imprecise>No</imprecise>
     <missing>No</missing>
-    <multiclass>No</multiclass>
+     <multiclass>Yes</multiclass>
     <multioutput>No</multioutput>
     <percMissingValues>0</percMissingValues>
     <nAttributes>3</nAttributes>
@@ -349,6 +349,7 @@
     <continuosValues>No</continuosValues>
     <discreteValues>Yes</discreteValues>
     <nominalValues>No</nominalValues>
+	<multiclass>Yes</multiclass>
     <impreciseValues>No</impreciseValues>
     <percMissingValues>0</percMissingValues>
     <nAttributes>9</nAttributes>

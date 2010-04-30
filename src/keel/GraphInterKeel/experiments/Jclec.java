@@ -1,3 +1,5 @@
+
+/* @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)*/
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -7,7 +9,8 @@ public final class Jclec extends Node {
 
     protected Parameters param;
 
-    public Jclec(ExternalObjectDescription dsc, Point position, GraphPanel p) {
+    public Jclec(ExternalObjectDescription dsc, Point position, GraphPanel p) 
+    {
         super(dsc, position, p.mainGraph.getId());
         p.mainGraph.setId(p.mainGraph.getId() + 1);
         type = type_Jclec;
@@ -26,6 +29,8 @@ public final class Jclec extends Node {
         param = new Parameters(parameters);
     }
 
+    public void contain(String title, int show,Node n,Experiments exp) {
+    }
     public void showDialog() {
         /*    dialogo = new ParametrosDialog(pd.padre, "Algorithm Parameters", true, param);
 

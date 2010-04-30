@@ -24,6 +24,7 @@ public class DatasetXML implements Comparable {
     public int nAttributes;
     public int nClasses;
     public int nInstances;
+    public Vector<String> classes;
     public String field;
     public boolean user;
 
@@ -36,6 +37,7 @@ public class DatasetXML implements Comparable {
         Element temporal;
         int i;
         String value;
+        
 
         nameAbr = dataset.getChildText("nameAbr");
         //System.out.println (" \n > Reading dataset: "+nameAbr );
@@ -117,18 +119,30 @@ public class DatasetXML implements Comparable {
             nInstances = Integer.parseInt(dataset.getChildText("nInstances"));
         }
 
-        if (problemType == "Classification") {
+        if (problemType.compareTo("Classification")==0) {
             if (dataset.getChild("nClasses") != null) {
                 nClasses = Integer.parseInt(dataset.getChildText("nClasses"));
             }
         }
 
+         classes = new Vector<String>();
+         int con=0;
+        value = dataset.getChildText("classes"+con);
+        while(value!=null)
+        {
+            classes.addElement(value);
+            con++;
+            value = dataset.getChildText("classes"+con);
+        }
+        
         field = dataset.getChildText("field");
         if (dataset.getChild("userDataset") == null) {
             user = false;
         } else {
             user = true;
         }
+        
+       
     }
 
     /**

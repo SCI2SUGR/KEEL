@@ -1,5 +1,6 @@
 /**
  * @author Juli�n Luengo Mart�n (modifications 19/04/2009)
+ * @author Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
  */
 package keel.GraphInterKeel.experiments;
 
@@ -83,7 +84,8 @@ public class Graph implements Serializable {
     public int getType() {
         return type;
     }
-
+    
+  
     /**
      * Sets the seed of the graph (i.e. the seed of the experiment)
      * @param _seed the new seed
@@ -154,6 +156,9 @@ public class Graph implements Serializable {
         nodes.removeElementAt(i);
         modified = true;
     }
+     public void dropNodeLQD(int i) {
+        nodes.removeElementAt(i);
+    }
 
     /**
      * Restore the data set node from a previous backup
@@ -180,6 +185,50 @@ public class Graph implements Serializable {
         Arc a = (Arc) arcs.elementAt(i);
         arcs.removeElementAt(i);
         modified = true;
+        
+    }
+    
+    public void dropArcLQD(int ar) 
+    {
+        Arc a = (Arc) arcs.elementAt(ar);
+        //We have to erase the connection between the source node 
+        //and destination node
+        int index_origen = a.getSource();
+        int iden_origen=-1;
+        int index_destino = a.getDestination();
+        
+         for (int i = this.numNodes() - 1; (i >= 0); i--) 
+         {
+             if(index_origen==i)
+             {
+                iden_origen = this.getNodeAt(i).id;
+                System.out.println("The source node is "+ iden_origen);
+                break;
+             }
+         }
+        
+         for (int i = this.numNodes() - 1; (i >= 0); i--) 
+         {
+            if(index_destino==i)
+            {
+                Node destination = this.getNodeAt(i);
+                System.out.println("The destination node is "+ destination.dsc.getName(0));
+                //we have to remove the information of the source node in this node.
+                for(int n=0;n<destination.dsc.arg.size();n++)
+                {
+                    if(destination.dsc.arg.get(n).before.id == iden_origen)
+                    {
+                        destination.dsc.arg.remove(n);
+                        break;
+                    }
+                }
+                
+                break;
+            }           
+         }
+        
+        arcs.removeElementAt(ar);
+        
     }
 
     /**

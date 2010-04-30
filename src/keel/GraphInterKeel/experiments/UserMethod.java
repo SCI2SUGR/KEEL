@@ -1,3 +1,4 @@
+/*@author Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)*/
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -35,7 +36,8 @@ public final class UserMethod extends Node {
             parametersUser = new Parameters(parameters);
         }
     }
-
+public void contain(String title, int show,Node n,Experiments exp) {
+    }
     public void showDialog() {
 
         dialog = new DialogUser(pd.parent, "Algorithm Files", true, this);

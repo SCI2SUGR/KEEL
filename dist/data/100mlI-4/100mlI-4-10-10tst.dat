@@ -1,0 +1,14 @@
+@relation 100mlI4
+@attribute Indicator1 interval [0, 10]
+@attribute Indicator2 interval [0, 10]
+@attribute Indicator3 interval [0, 10]
+@attribute Indicator4 interval [0, 10]
+@attribute Class {0, 1}
+@inputs Indicator1, Indicator2, Indicator3, Indicator4
+@outputs Class
+@data
+[8.1,9.6],[1.01,1.08],[2.88,3],[4.81,4.98],{1}
+[8.1,9.3],[1.15,1.27],[3.36,3.5],[5.8,6.03],{0}
+[7.7,8.9],[0.95,1.02],[2.9,3.03],[4.86,5.01],{1}
+[6,7.3],[1.17,1.22],[3.12,3.26],[5.25,5.43],{0}
+[8,9.5],[1.02,1.2],[2.77,2.86],[4.87,5.1],{1}

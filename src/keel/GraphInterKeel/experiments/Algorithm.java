@@ -11,6 +11,7 @@ public final class Algorithm extends Node {
     //public Vector par;
     // public Algoritmo(String nombre, String path, int subtipo, Point position, GraphPanel p) {
     //  super(nombre, path, position, p.grafo.getId());
+    //Node[] data;
     public Algorithm() {
         super();
     }
@@ -30,44 +31,161 @@ public final class Algorithm extends Node {
         p.mainGraph.setId(p.mainGraph.getId() + 1);
         type = type_Algorithm;
         //this.subtipo = subtipo;
+       // System.out.println ("el subtype es "+dsc.getSubtypelqd());
         if (dsc.getSubtype() == type_Preprocess) {
-            image = Toolkit.getDefaultToolkit().getImage(
+                  
+            if(dsc.getSubtypelqd()!=CRISP )
+            {
+                image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/preprocessLQD.gif"));
+                if(dsc.getSubtypelqd()==LQD)
+                    type_lqd=LQD;
+                else 
+                    type_lqd=CRISP2;
+            }
+            else
+                image = Toolkit.getDefaultToolkit().getImage(
                     this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/preprocess.gif"));
-        } else if (dsc.getSubtype() == type_Postprocess) {
-            image = Toolkit.getDefaultToolkit().getImage(
+        }
+        else if (dsc.getSubtype() == type_Postprocess) {
+            if(dsc.getSubtypelqd()!=CRISP)
+            {
+                image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/postprocessLQD.gif"));
+                 if(dsc.getSubtypelqd()==LQD)
+                    type_lqd=LQD;
+                else 
+                    type_lqd=CRISP2;
+            }
+            else
+                image = Toolkit.getDefaultToolkit().getImage(
                     this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/postprocess.gif"));
-        } else if (dsc.getSubtype() == type_Method) {
+        } 
+        else if (dsc.getSubtype() == type_Method) 
+        {
+            if(dsc.getSubtypelqd()!=CRISP)
+            {
             image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/method_nodeLQD.gif"));
+               if(dsc.getSubtypelqd()==LQD)
+                 type_lqd=LQD;
+                else 
+                 type_lqd=CRISP2;
+            }
+            else
+                image = Toolkit.getDefaultToolkit().getImage(
                     this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/method_node.gif"));
+            
         }
         pd = p;
 
         // search pattern file
         par = new Vector();
-        for (int i = 0; i < Layer.numLayers; i++) {
-            par.addElement(new Parameters(dsc.getPath(i) + dsc.getName(i) + ".xml", false));
+        if(dsc.getSubtypelqd()==CRISP)
+        {
+            for (int i = 0; i < Layer.numLayers; i++) {
+                par.addElement(new Parameters(dsc.getPath(i) + dsc.getName(i) + ".xml", false));
+                System.out.println(dsc.getPath(i) + dsc.getName(i) + ".xml");
+            }
         }
+        else
+        {
+                par.addElement(new Parameters(dsc.getPath(0) + dsc.getName(0) + ".xml", false));
+                System.out.println(dsc.getPath(0) + dsc.getName(0) + ".xml");
+        }
+        
+            
     }
 
     // public Algoritmo(String nombre, String path, int subtipo, Point position, GraphPanel p,
     //                 Parametros parameters, int id) {
     //  super(nombre, path, position, id);
     public Algorithm(ExternalObjectDescription dsc, Point position, GraphPanel p,
-            Vector vparameters, int id) {
+            Vector vparameters, int id,int lqd,Vector<Joint> join) {
         super(dsc, position, id);
 
         actInputOutput(dsc, p);
 
         type = type_Algorithm;
+        
+        this.dsc.setArg(join);
+        for(int ar=0;ar<dsc.arg.size();ar++)
+        {
+            if(lqd==LQD)
+                dsc.arg.get(ar).type_lqd = "LQD";
+            else if(lqd==CRISP2 )
+                dsc.arg.get(ar).type_lqd = "CRISP";
+            
+            dsc.arg.get(ar).times.clear();
+            dsc.arg.get(ar).tableVector.clear();
+            
+            dsc.arg.get(ar).information();
+        }
+      
         // this.subtipo = subtipo;
         if (dsc.getSubtype() == type_Preprocess) {
-            image = Toolkit.getDefaultToolkit().getImage(
+            if(lqd==LQD)
+            {
+                image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/preprocessLQD.gif"));                
+                type_lqd=LQD;
+                this.dsc.setSubtypelqd(LQD);
+                 
+            }
+            else if(lqd==CRISP2 )
+            {
+                image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/preprocessLQD.gif"));                
+                type_lqd=CRISP2;
+                this.dsc.setSubtypelqd(CRISP2);
+                 
+            }
+            
+            else
+                image = Toolkit.getDefaultToolkit().getImage(
                     this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/preprocess.gif"));
-        } else if (dsc.getSubtype() == type_Postprocess) {
+        } 
+        else if (dsc.getSubtype() == type_Postprocess) 
+        {
+             if(lqd==CRISP2)
+             {
             image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/postprocessLQD.gif"));
+                     type_lqd=CRISP2;
+                     dsc.setSubtypelqd(CRISP2);
+            
+             }
+             else if(lqd==LQD)
+             {
+            image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/postprocessLQD.gif"));
+                     type_lqd=LQD;
+                     dsc.setSubtypelqd(LQD);
+            
+             }
+             
+            else
+                image = Toolkit.getDefaultToolkit().getImage(
                     this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/postprocess.gif"));
-        } else if (dsc.getSubtype() == type_Method) {
+        }
+        else if (dsc.getSubtype() == type_Method) {
+            
+            if(lqd==CRISP2)
+            {
             image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/method_nodeLQD.gif"));
+                type_lqd=CRISP2;
+                this.dsc.setSubtypelqd(CRISP2);
+            }
+            else if(lqd==LQD)
+            {
+            image = Toolkit.getDefaultToolkit().getImage(
+                    this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/method_nodeLQD.gif"));
+                type_lqd=LQD;
+                this.dsc.setSubtypelqd(LQD);
+            }
+            else
+                image = Toolkit.getDefaultToolkit().getImage(
                     this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/method_node.gif"));
         }
         pd = p;
@@ -78,6 +196,30 @@ public final class Algorithm extends Node {
         }
     }
 
+    public void contain(String title,int show,Node destino,Experiments parent) {
+            
+         //dialog = new Container(title,this.dsc.name,this);
+        if(show==1)
+         dialog = new Container_Selected(pd.parent,true,title,destino,parent);
+        else
+             dialog = new Container_Selected(pd.parent,true,this,destino);
+
+        // Center dialog
+        //dialog.setSize(257, 250);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = dialog.getSize();
+        if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+        }
+        if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+        }
+        dialog.setLocation((screenSize.width - frameSize.width) / 2,
+                (screenSize.height - frameSize.height) / 2);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
+        
+    }
     /**
      * Check the constraints defined by the node described by 'dsc' contained
      * in the graph
@@ -117,18 +259,28 @@ public final class Algorithm extends Node {
             }
 
         }
+        
+  
+    
+    
+    
+  
     }//end copyInputOutput
 
     Parameters getActivePair() {
-        return (Parameters) par.elementAt(Layer.layerActivo);
+        
+        return (Parameters) par.elementAt(0);
     }
 
     /**
      * Shows the parameter dialog
      */
     public void showDialog() {
-        dialog = new ParametersDialog(pd.parent, "Algorithm Parameters", true, par, dsc);
+        
+      
+            dialog = new ParametersDialog(pd.parent, "Algorithm Parameters", true, par, dsc);
 
+         
         // Center dialog
         dialog.setSize(400, 580);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -149,6 +301,7 @@ public final class Algorithm extends Node {
      * Draws this component
      */
     public void draw(Graphics2D g2, boolean select) {
+       
         Point pinit = new Point(centre.x - 25, centre.y - 25);
         Point pfin = new Point(centre.x + 25, centre.y + 25);
         figure = new RoundRectangle2D.Float(pinit.x, pinit.y,
@@ -170,8 +323,24 @@ public final class Algorithm extends Node {
 
         g2.setFont(new Font("Courier", Font.BOLD + Font.ITALIC, 12));
         FontMetrics metrics = g2.getFontMetrics();
-        int width = metrics.stringWidth(dsc.getName());
+        
+        int width;
         int height = metrics.getHeight();
-        g2.drawString(dsc.getName(), centre.x - width / 2, centre.y + 40);
+         if(dsc.getSubtypelqd()==CRISP2 || type_lqd==CRISP2)
+        {
+            width = metrics.stringWidth(id+"."+dsc.getName()+" (Crisp)");
+            g2.drawString(id+"."+dsc.getName()+" (Crisp)", centre.x - width / 2, centre.y + 40);
+         }
+        else if(dsc.getSubtypelqd()==LQD || type_lqd==LQD)
+        {
+            width = metrics.stringWidth(id+"."+dsc.getName()+" (Low Quality)");
+            g2.drawString(id+"."+dsc.getName()+" (Low Quality)", centre.x - width / 2, centre.y + 40);
+         }
+         else 
+        {
+            width = metrics.stringWidth(dsc.getName());        
+            g2.drawString(dsc.getName(), centre.x - width / 2, centre.y + 40);
+         }
+        
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<method_list>
+  <method>
+    <name>GFS_Cost_Instances</name>
+    <family>Instances with costs</family>
+    <jar_file>imprecisos_prelabelling.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>Yes</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>Yes</multioutput>
+      <cost_instances>Yes</cost_instances>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>Yes</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>Yes</multioutput>
+	<cost_instances>No</cost_instances>
+    </output>
+  </method>
+ -->
+</method_list>

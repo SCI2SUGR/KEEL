@@ -16,8 +16,9 @@ import java.io.*;
 
 /**
  * Class to implement the C4.5 algorithm
-   @author Cristóbal Romero Morales (UCO)
-   @version 1.0 (30-03-06)
+   @author Cristóbal Romero Morales (UCO) (30-03-06)
+   @author modified by Alberto Fernandez (UGR)
+   @version 1.2 (29-04-10)
  */
 public class C45 extends Algorithm {
     /** Decision tree. */
@@ -421,8 +422,12 @@ public class C45 extends Algorithm {
         tree += "\n@TotalNumberOfNodes " + root.NumberOfNodes;
         tree += "\n@NumberOfLeafs " + root.NumberOfLeafs;
         tree += "\n@TotalNumberOfNodes " + root.NumberOfNodes;
-        tree += "\n@NumberOfAntecedentsByRule "+(1.0*root.getAttributesPerRule())/root.NumberOfLeafs;
-
+        int atts = root.getAttributesPerRule();
+        if (atts > 0){
+        	tree += "\n@NumberOfAntecedentsByRule "+(1.0*atts)/root.NumberOfLeafs;
+        }else{
+        	tree += "\n@NumberOfAntecedentsByRule 0";
+        }
 
         tree += "\n\n@NumberOfItemsetsTraining " + trainDataset.numItemsets();
         tree += "\n@NumberOfCorrectlyClassifiedTraining " + correct;

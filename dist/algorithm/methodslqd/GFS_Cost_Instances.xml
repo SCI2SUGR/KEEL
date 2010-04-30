@@ -1,0 +1,12 @@
+<algorithm_specification>
+  <name>GFS_Cost_Instances</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <dataset0>100boost</dataset0>
+  <parameter>
+    <name>maxDepth</name>
+    <type>integer</type>
+    <default>90</default>
+  </parameter>
+</algorithm_specification>

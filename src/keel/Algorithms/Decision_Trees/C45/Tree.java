@@ -1,7 +1,8 @@
 /**
 * <p>
 * @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
-* @version 0.1
+* @author Modified by Alberto Fernandez (UGR) 
+* @version 1.2 (29-04-10)
 * @since JDK 1.5
 *</p>
 */
@@ -287,7 +288,7 @@ public class Tree {
     private void printTree(int depth, StringBuffer text) throws Exception {
         int i, j;
         String aux = "";
-
+        
         for (int k = 0; k < depth; k++) {
             aux += "\t";
         }
@@ -341,10 +342,11 @@ public class Tree {
      */
     public int getAttributesPerRule(){
       global = 0;
-      this.attributesPerRule(0);
+      if (!isLeaf) {
+    	  this.attributesPerRule(0);
+      }
       return global;
     }
-
 
     /** Returns the son with the given index.
      *
