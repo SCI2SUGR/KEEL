@@ -9,7 +9,8 @@
 */
 package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
 
-import java.text.NumberFormat;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.*;
 
 import org.core.*;
@@ -145,13 +146,19 @@ public class Multiple {
     	Vector<Integer> T;
     	int Tarray[];
     	
-    	NumberFormat nf4 = NumberFormat.getInstance();
+		DecimalFormat nf4 = (DecimalFormat) DecimalFormat.getInstance();
 		nf4.setMaximumFractionDigits(4);
 		nf4.setMinimumFractionDigits(0);
+
+		DecimalFormatSymbols dfs = nf4.getDecimalFormatSymbols();
+		dfs.setDecimalSeparator('.');
+		nf4.setDecimalFormatSymbols(dfs);
 		
-		NumberFormat nf6 = NumberFormat.getInstance();
+		DecimalFormat nf6 = (DecimalFormat) DecimalFormat.getInstance();
 		nf6.setMaximumFractionDigits(6);
 		nf6.setMinimumFractionDigits(0);
+
+		nf6.setDecimalFormatSymbols(dfs); 
     	
     	String out="";
         int nDatasets = results[0].length;

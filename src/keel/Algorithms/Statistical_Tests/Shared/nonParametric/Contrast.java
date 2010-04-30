@@ -9,7 +9,8 @@
 */
 package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
 
-import java.text.NumberFormat;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.*;
 
 import org.core.*;
@@ -105,7 +106,7 @@ public class Contrast {
 	        output += "\\usepackage{graphicx}\n";
 	        output += "\\usepackage{lscape}\n";
 	        output += "\\title{Contrast estimation.}\n";
-	        output += "\\date{\\today}\n\\begin{document}\n\\begin{landscape}\n\\pagestyle{empty}\n\\maketitle\n\\thispagestyle{empty}\n\\section{Results.}\n\n";
+	        output ="\\date{\\today}\n\\author{}\n\\begin{document}\n\\begin{landscape}\n\\pagestyle{empty}\n\\maketitle\n\\thispagestyle{empty}\n\\section{Results.}\n\n";
 
 	        output += "Estimation of the contrast between medians of samples of results considering all pairwise comparisons:\n\n";
 	        		
@@ -129,9 +130,13 @@ public class Contrast {
 		double medians [][];
 		double estimators [];
 		
-		NumberFormat nf = NumberFormat.getInstance();
+		DecimalFormat nf = (DecimalFormat) DecimalFormat.getInstance();
 		nf.setMaximumFractionDigits(3);
-		nf.setMinimumFractionDigits(3);
+		nf.setMinimumFractionDigits(0);
+
+		DecimalFormatSymbols dfs = nf.getDecimalFormatSymbols();
+		dfs.setDecimalSeparator('.');
+		nf.setDecimalFormatSymbols(dfs);
 
 		int numAlg= algorithmName.length;
 		int nDatasets = results[0].length;
