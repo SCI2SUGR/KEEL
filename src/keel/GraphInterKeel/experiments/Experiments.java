@@ -146,11 +146,21 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         deactivateUpperMenu();
         deactivateLeftMenu();
         startHelpPanel();
+        System.out.println("Empieza");
         this.setVisible(true);
-        if(objType==LQD)
+        if(objType==LQD){
             lqd();
-        
-        
+        }
+        if(objType==INVESTIGATION){
+            showHelpButton.setEnabled(true);
+            selectItem.setEnabled(false);
+            insertDataflowItem.setEnabled(false);
+            importItem.setEnabled(false);
+            snapshotItem.setEnabled(false);
+            runExpItem.setEnabled(false);
+            seedItem.setEnabled(false);
+            executionOptItem.setEnabled(false);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -1486,24 +1496,41 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         int salvar=newExperiment();
-        deactivateUpperMenu();
-        
-        if(objType==LQD && salvar != JOptionPane.CANCEL_OPTION)
-        {
-            
-            panelDatasets.clear();
-            dinDatasets.clear();
-            
-            mainSplitPane1.setDividerLocation(-1);
-            statusBarItem.setSelected(true);
-        
-        }
+
         if(objType==LQD)
         {
+            deactivateUpperMenu();
+            if(salvar != JOptionPane.CANCEL_OPTION){
+                panelDatasets.clear();
+                dinDatasets.clear();
+
+                mainSplitPane1.setDividerLocation(-1);
+                statusBarItem.setSelected(true);
+            }
+
             openButton.setEnabled(true);
             newButton.setEnabled(true);
         }
-     
+        else{
+
+            if(salvar != JOptionPane.CANCEL_OPTION){
+                deactivateUpperMenu();
+                deactivateOther();
+                panelDatasets.clear();
+                dinDatasets.clear();
+
+                mainSplitPane1.setDividerLocation(-1);
+                statusBarItem.setSelected(true);
+
+                divider1.setDividerLocation(-1);
+                helpPanelItem.setSelected(true);
+
+                openButton.setEnabled(true);
+                newButton.setEnabled(true);
+                status.setText("Select a type of partition and then the type of experiment");
+            }
+        }
+
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
@@ -1642,6 +1669,35 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     //selectionPanel1.setVisible(true);
 }//GEN-LAST:event_selectPreprocessMethodsActionPerformed
 
+   private void activateMenuItems(){
+
+       if(objType==INVESTIGATION){
+            selectItem.setEnabled(true);
+            insertDataflowItem.setEnabled(true);
+            importItem.setEnabled(true);
+            snapshotItem.setEnabled(true);
+            runExpItem.setEnabled(true);
+            seedItem.setEnabled(true);
+            executionOptItem.setEnabled(true);
+        }
+   }
+
+    private void deactivateOther (){
+
+        if(objType==INVESTIGATION){
+            selectItem.setEnabled(false);
+            insertDataflowItem.setEnabled(false);
+            importItem.setEnabled(false);
+            snapshotItem.setEnabled(false);
+            runExpItem.setEnabled(false);
+            seedItem.setEnabled(false);
+            executionOptItem.setEnabled(false);
+            saveExpItem.setEnabled(false);
+            saveAsExpItem.setEnabled(false);
+        }
+
+    }
+
     private void classificationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classificationButtonActionPerformed
         numberKFoldCross = Integer.valueOf(kValueField.getText());
         
@@ -1688,6 +1744,9 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "datasetsChecksPanel");
         }
         deleteItem.setEnabled(false);
+        activateMenuItems();
+        runExpItem.setEnabled(false);
+        saveButton.setEnabled(false);
 }//GEN-LAST:event_classificationButtonActionPerformed
 
     private void regressionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regressionButtonActionPerformed
@@ -1733,7 +1792,9 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "datasetsChecksPanel");
         }
         deleteItem.setEnabled(false);
-
+        activateMenuItems();
+        runExpItem.setEnabled(false);
+        saveButton.setEnabled(false);
         }
 
 
@@ -1773,9 +1834,9 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "datasetsChecksPanel");
         }
         deleteItem.setEnabled(false);
-
-
-
+        activateMenuItems();
+        runExpItem.setEnabled(false);
+        saveButton.setEnabled(false);
 
 }//GEN-LAST:event_unsupervisedButtonActionPerformed
 
@@ -2739,7 +2800,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     private javax.swing.JButton regressionButton;
     private javax.swing.JPanel regressionPanel;
     public javax.swing.JButton runButton;
-    private javax.swing.JMenuItem runExpItem;
+    public javax.swing.JMenuItem runExpItem;
     public javax.swing.JMenuItem saveAsExpItem;
     public javax.swing.JButton saveButton;
     public javax.swing.JMenuItem saveExpItem;
@@ -2826,7 +2887,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         }
     }
     
-     private void activateUpperMenu_principals() {
+     public void activateUpperMenu_principals() {
         
             quicktools.getComponent(0).setEnabled(true);
             quicktools.getComponent(1).setEnabled(true);
@@ -5796,8 +5857,9 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 				{
                         JOptionPane.showMessageDialog(
 								this,
-								"Some nodes are not connected. They will not be included in the experiment.",
+								"Some nodes are not connected. Please, connect it correctly to generate the experiment.",
 								"Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
 				}
                 /***************************************************************
                 *********************  EDUCATIONAL KEEL  **********************
@@ -6454,12 +6516,13 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     Unmarshaller unmar = new Unmarshaller(mapping);
                     Graph aux = (Graph) unmar.unmarshal(new InputSource(file));                    
                     if (aux.objective == this.objType) 
-                    {                       
+                    {
+                        continueExperimentGeneration();
                         experimentGraph = restoreGraph(aux);
-                        this.expType = experimentGraph.getType();                        
+                        this.expType = experimentGraph.getType();
                         dinDatasets.removeAllData();
                         panelDatasets.removeAllData();
-                            continueExperimentGeneration();                   
+                        continueExperimentGeneration();                   
                         experimentGraph.setName(f.getSelectedFile().getAbsolutePath());
                         graphDiagramINNER.setToolTipText("Click twice into a node to view its properties");
                         //selectButton.setSelected(true);
@@ -6481,10 +6544,15 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                             selectPostprocessMethods.setEnabled(true);
                             selectTestMethods.setEnabled(true);
                             selectVisualizeMethods.setEnabled(true);
+
+                            showHelpButton.setEnabled(true);
+                            newButton.setEnabled(true);
+                            openButton.setEnabled(true);
+                            snapshotButton.setEnabled(true);
                         }
                         else
                         {
-                             selectPostprocessMethods.setEnabled(false);
+                            selectPostprocessMethods.setEnabled(false);
                             selectTestMethods.setEnabled(false);
                             selectVisualizeMethods.setEnabled(false);
                         }
@@ -6502,6 +6570,9 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                         selectButton.setEnabled(true);
                         runButton.setEnabled(true);
                         cursorFlux.setEnabled(true);
+                        saveAsExpItem.setEnabled(true);
+                        saveExpItem.setEnabled(true);
+                        activateMenuItems();
                         if(objType!=LQD)
                             reload_algorithms();
                         notSelectedDataset = false;
@@ -6541,6 +6612,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                                             }
                                         }
                                     }
+                                    experimentGraph.setModified(true);
                                 }
                                 else // is LQD
                                 {
@@ -6622,6 +6694,12 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         
         
         int salvar = JOptionPane.YES_OPTION;
+
+        
+        if(initialPanel1.isVisible()){
+            return salvar;
+        }
+
 
 		/***************************************************************
 		*********************  EDUCATIONAL KEEL  **********************
@@ -6966,13 +7044,12 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
      */
     public void continueExperimentGeneration() {
 
-        if(objType==LQD)
-        {
-          listAlgor = new AlgorithmXML[1000];
-          nListAlgor=0;
-        }
+        listAlgor = new AlgorithmXML[1000];
+        nListAlgor=0;
+
         statusBarItem.setEnabled(true);
         showAlgButton.setEnabled(false);
+        runButton.setEnabled(false);
         graphDiagramINNER.setBackground(Color.white);
         cursorFlux.setEnabled(false);
         selecDatasets.setEnabled(false);

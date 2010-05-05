@@ -490,6 +490,8 @@ public class Frame
                            (screenSize.height - frameSize.height) / 2);
         this.setVisible(false);
 
+        frame.activateUpperMenu_principals();
+
     }
     
     public void experimentsLQD_mouseReleased(MouseEvent e) {

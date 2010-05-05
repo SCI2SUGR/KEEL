@@ -237,12 +237,12 @@ public abstract class Node implements Serializable {
                     errorOccurred = true;
                 }
 
-                if(dest.m_bOutputMultiClass && !m_bOutputMultiClass)
+                /*if((dest.m_bOutputMultiClass && !m_bOutputMultiClass)&&())
                 {  
                     errorMessage = errorMessage + "The data sets  have not multiclass data and the destination node does not accept it.\n";
                     errorOccurred = true;
                 }
-               /* if(dest.m_bOutputMultiClass && m_bOutputMultiClass)
+                if(dest.m_bOutputMultiClass && m_bOutputMultiClass)
                 {  
                     errorMessage = errorMessage + "Lo hace bien los dataset" + m_bOutputMultiClass + "' itiene imprecisos salidas.\n";
                     errorOccurred = true;

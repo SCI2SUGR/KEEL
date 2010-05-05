@@ -2,22 +2,12 @@ package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.geom.*;
 import java.awt.image.*;
 import java.util.*;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
-
-import java.io.File;
-import java.io.IOException;
 import java.awt.event.*;
-import keel.GraphInterKeel.datacf.partitionData.PartitionGenerator;
 
 import keel.GraphInterKeel.menu.Frame;
 
@@ -706,7 +696,9 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             /***************************************************************
                             *********************  EDUCATIONAL KEEL  **********************
                             **************************************************************/
-                        }
+                            parent.runButton.setEnabled(true);
+                            parent.runExpItem.setEnabled(true);
+                       }
                     } //parent.objtype
                     else if(parent.objType==parent.LQD)
                     {
@@ -740,8 +732,10 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             //show the dinamic data set panel
                             ((CardLayout) parent.selectionPanel1.getLayout()).show(parent.selectionPanel1, "dinDatasetsCard");
                            }
-                      
+                        parent.runButton.setEnabled(true);
+                        parent.runExpItem.setEnabled(true);
                     }
+                    
                     break;
                 case PAINT_ALGORITHM:
                     punto = e.getPoint();
@@ -1004,13 +998,23 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
 
                                     if (errorType.length() > 1) {
                                         JOptionPane.showMessageDialog(this, errorType, "Alert", JOptionPane.ERROR_MESSAGE);
-                                        
+
+                                        if(parent.objType==parent.INVESTIGATION)
+                                            cont = false;
+
                                         if(parent.objType==parent.LQD)
                                             cont = false;
                                     }
                                 }
                                 
-
+                                if (mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() == Node.type_Method)
+                                {
+                                    if (mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() == Node.type_Method){
+                                        JOptionPane.showMessageDialog(parent,
+                                                "Two methods can not be joined.", "Error", 2);
+                                        cont = false;
+                                    }
+                                }
                                 if (mainGraph.getNodeAt(nodo_destino).type == Node.type_Dataset) 
                                 {
                                     JOptionPane.showMessageDialog(parent,

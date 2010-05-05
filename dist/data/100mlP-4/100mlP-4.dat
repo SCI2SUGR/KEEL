@@ -1,4 +1,4 @@
-@relation 100mlP4
+@relation 100mlP-4
 @attribute Indicator1 interval [0, 10]
 @attribute Indicator2 interval [0, 10]
 @attribute Indicator3 interval [0, 10]
