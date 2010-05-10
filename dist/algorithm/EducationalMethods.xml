@@ -2,7 +2,7 @@
 <method_list>
   <method>
     <name>Clas-Fuzzy-SLAVE</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>SLAVE.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -26,7 +26,7 @@
   </method>  
   <method>
     <name>Clas-Fuzzy-GP</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>ClassifierFuzzyGP.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -50,7 +50,7 @@
   </method>
   <method>
     <name>Clas-KNN</name>
-    <family>Statistical Classifiers</family>
+    <family>Lazy Learning</family>
     <jar_file>KNN.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -146,7 +146,7 @@
   </method>
   <method>
     <name>Clas-PGIRLA</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>Corcoran.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -338,7 +338,7 @@
   </method>  
   <method>
     <name>Clas-XCS</name>
-    <family>Rule Learning</family>
+    <family>Genetic Rule Learning</family>
     <jar_file>XCS.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -434,7 +434,7 @@
   </method>
   <method>
     <name>Regr-LinearLMS</name>
-    <family>Statistical Models</family>
+    <family>Statistical Regression</family>
     <jar_file>ModelLinearLMS.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
@@ -506,7 +506,7 @@
   </method>
   <method>
   	<name>Regr-Thrift</name>
-  	<family>Fuzzy Rule Learning</family>
+  	<family>Genetic Fuzzy Rule Learning</family>
   	<jar_file>Thrift.jar</jar_file>
   	<problem_type>regression</problem_type>
   	<input>
@@ -554,7 +554,7 @@
   </method>
   <method>
     <name>Regr-Fuzzy-MOGUL-IRLSC</name>
-    <family>Fuzzy Rule Learning</family>
+    <family>Genetic Fuzzy Rule Learning</family>
     <jar_file>Mam-IRLSC.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>

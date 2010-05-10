@@ -7091,7 +7091,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             }
         }
         else	//Button Teaching pressed
-		{         
+		{
+            top4 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
 			createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm"+ File.separatorChar + "EducationalPreProcess.xml");
 		}
         /***************************************************************
