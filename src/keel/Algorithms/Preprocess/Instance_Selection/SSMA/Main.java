@@ -1,16 +1,26 @@
-//
-//  Main.java
-//
-//  Salvador García López
-//
-//  Created by Salvador García López 3-10-2005.
-//  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
-//
-
+/**
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the algorithm and executes it.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 package keel.Algorithms.Preprocess.Instance_Selection.SSMA;
 
 public class Main {
-
+	/** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
   public static void main (String args[]) {
 
     SSMA ssma;
@@ -21,5 +31,7 @@ public class Main {
       ssma = new SSMA (args[0]);
       ssma.ejecutar();
     }
-  }
-}
+	
+  } //end-method 
+  
+}//end-class
