@@ -1468,6 +1468,7 @@ public class DinamicDataset extends JPanel implements Scrollable {
                 activos[i] = true;
                 some_active=1;
             } else {
+System.out.println("Entra para "+i+" de "+datasetsNoUser);
                 activos[i] = false;
             }
         }
@@ -1481,6 +1482,12 @@ public class DinamicDataset extends JPanel implements Scrollable {
         //    activos[id] = !activos[id];
 
         if (((JButton) (checks.elementAt(id))).getText() == "Del") {
+
+            if(id<datasetsNoUser){
+                    invertSelection.setEnabled(true);
+                }else{
+                    invertSelectionUser.setEnabled(true);
+            }
             ((JButton) (checks.elementAt(id))).setText("Add");
            if(parent.objType!=parent.LQD)
             {
@@ -1520,8 +1527,11 @@ public class DinamicDataset extends JPanel implements Scrollable {
               }
             loadDatasetInfo(checks,actualList,activos,parent.dsc,Node.LQD);          
         }
-        else        
+        else{
+            parent.dsc=new ExternalObjectDescription((ExternalObjectDescription) actualList.elementAt(id), true);
             loadDatasetInfo(checks,actualList,activos,parent.dsc,Node.CRISP);
+        
+        }
 
         this.repaint();
         //System.out.println("  > Final checks_actionPerformed");
@@ -1533,7 +1543,87 @@ public class DinamicDataset extends JPanel implements Scrollable {
          
 
     }
-    
+
+    /**
+     * Adds or remove a given data set
+     * @param n identifier of the data set
+     */
+    void checks_actionPerformedNumber(int n) {
+
+        int i;
+        int id = 0;
+        int some_active=0;
+
+        for (i = 0; i < checks.size(); i++) {
+            if (((JButton) checks.elementAt(i)).getText() == "Del") {
+                activos[i] = true;
+                some_active=1;
+            } else {
+                activos[i] = false;
+            }
+        }
+
+        //search the checkbutton clicked
+        id=n;
+
+        //    activos[id] = !activos[id];
+
+        if (((JButton) (checks.elementAt(id))).getText() == "Del") {
+            ((JButton) (checks.elementAt(id))).setText("Add");
+           if(parent.objType!=parent.LQD)
+            {
+                ((JButton) (edits.elementAt(id))).setVisible(false);
+                this.remove(((JButton) (edits.elementAt(id))));
+            }
+        } else {
+            ((JButton) (checks.elementAt(id))).setText("Del");
+            if(parent.objType!=parent.LQD)
+            {
+                ((JButton) (edits.elementAt(id))).setVisible(true);
+                this.add((JButton) (edits.elementAt(id)));
+             }
+        }
+
+        //at least there must be a dataset selected
+        if (Layer.numLayers == 1 && ((JButton) (checks.elementAt(id))).getText() == "Add") {
+            ((JButton) (checks.elementAt(id))).setText("Del");
+            if(parent.objType!=parent.LQD)
+            {
+                ((JButton) (edits.elementAt(id))).setVisible(true);
+                this.add((JButton) (edits.elementAt(id)));
+             }
+        }
+
+        if(parent.objType==parent.LQD)
+        {
+              if(some_active==0)
+              {
+                  parent.dsc=new ExternalObjectDescription((ExternalObjectDescription) actualList.elementAt(id), true);
+                 ((JButton) checks.elementAt(id)).setEnabled(false);
+                  Point punto = new Point(125,125);
+                  parent.graphDiagramINNER.new_dataset(punto,parent.dsc,GraphPanel.NODELQD);
+                  parent.cursorAction = GraphPanel.SELECTING;
+                  ((CardLayout) parent.selectionPanel1.getLayout()).show(parent.selectionPanel1, "dinDatasetsCard");
+                  parent.graphDiagramINNER.repaint();
+              }
+            loadDatasetInfo(checks,actualList,activos,parent.dsc,Node.LQD);
+        }
+        else{
+            parent.dsc=new ExternalObjectDescription((ExternalObjectDescription) actualList.elementAt(id), true);
+            loadDatasetInfo(checks,actualList,activos,parent.dsc,Node.CRISP);
+
+        }
+
+        this.repaint();
+        //System.out.println("  > Final checks_actionPerformed");
+
+         if(parent.objType==parent.LQD)
+            actDatasetIO(Node.LQD);
+         else
+             actDatasetIO(Node.CRISP);
+
+
+    }
     
      void checksLQD_C_actionPerformed(ActionEvent e) {
 
@@ -1739,9 +1829,25 @@ public class DinamicDataset extends JPanel implements Scrollable {
          
                 
     }
+
+
+
+
+
+
     public void selectAll_actionPerformed(ActionEvent e) {
 
         int i;
+
+        for (i = 0; i < checks.size() && i < datasetsNoUser; i++) {
+            if (((JButton) (checks.elementAt(i))).getText() == "Add") {
+                checks_actionPerformedNumber(i);
+            }
+        }
+
+        invertSelection.setEnabled(false);
+
+        /*int i;
 
         //System.out.println("Tamanio "+ checks.size());
          
@@ -1769,6 +1875,7 @@ public class DinamicDataset extends JPanel implements Scrollable {
             }
         }
 
+
         if(parent.objType==parent.LQD)
             loadDatasetInfo(checks,actualList,activos,parent.dsc,Node.LQD);
         else        
@@ -1780,7 +1887,9 @@ public class DinamicDataset extends JPanel implements Scrollable {
         if(parent.objType==parent.LQD)
             actDatasetIO(Node.LQD);
          else
-             actDatasetIO(Node.CRISP);
+             actDatasetIO(Node.CRISP);*/
+
+
     }
 
     public void invertSelection_actionPerformed(ActionEvent e) {
@@ -1863,10 +1972,19 @@ public class DinamicDataset extends JPanel implements Scrollable {
 
     public void selectAllUser_actionPerformed(ActionEvent e) {
 
-        for (int i = datasetsNoUser; i < checks.size(); i++) {
+        
+
+       for (int i = datasetsNoUser; i < checks.size() ; i++) {
+            if (((JButton) (checks.elementAt(i))).getText() == "Add") {
+                checks_actionPerformedNumber(i);
+            }
+        }
+       invertSelectionUser.setEnabled(false);
+
+/*
+       for (int i = datasetsNoUser; i < checks.size(); i++) {
             activos[i] = true;
         }
-
 
         for (int i = datasetsNoUser; i < checks.size(); i++) {
             if (((JButton) (checks.elementAt(i))).getText() == "Add") {
@@ -1882,7 +2000,7 @@ public class DinamicDataset extends JPanel implements Scrollable {
         //System.out.println("  > Final selectAll_actionPerformed");
 
         actDatasetIO(Node.CRISP);
-
+*/
     }
     
     public void selectAllLQD_C_actionPerformed(ActionEvent e) {

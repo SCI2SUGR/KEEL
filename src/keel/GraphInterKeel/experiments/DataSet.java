@@ -360,6 +360,7 @@ public final class DataSet extends Node {
 
         //Un Nodo puede contener m�s de un DataSet
         //lo busco y calculo el tipo de datos de este nodo
+        
         for (int iname = 0; iname < dsc.name.length; iname++) {
             for (int i = 0; i < p.parent.listData.length; i++) {
 
@@ -406,28 +407,10 @@ public final class DataSet extends Node {
                     if (p.parent.listData[i].m_bMultiOutput) {
                         m_sDatasetHasMultiOutput = m_sDatasetHasMultiOutput + " " + p.parent.listData[i].nameAbr;
                     }
-                    
-                    System.out.println("m_sDatasetHasContinuous = " + m_sDatasetHasContinuous);
-                    System.out.println("m_sDatasetHasInteger =    " + m_sDatasetHasInteger);
-                    System.out.println("m_sDatasetHasNominal =    " + m_sDatasetHasNominal);
-                    System.out.println("m_sDatasetHasMissing =    " + m_sDatasetHasMissing);
-                    System.out.println("m_sDatasetHasImprecise =  " + m_sDatasetHasImprecise);
-                    System.out.println("m_sDatasetHasMultiClass = " + m_sDatasetHasMultiClass);
-                    System.out.println("m_sDatasetHasMultiOutput = " + m_sDatasetHasMultiOutput);
-
-
                     break;
                 }
             }
         }
-    System.out.println ("####################################");
-    System.out.println ("  > Continuous: "+m_bInputContinuous );
-    System.out.println ("  > Integer: "+m_bInputInteger );
-    System.out.println ("  > Nominal: "+m_bInputNominal );
-    System.out.println ("  > Missing: "+m_bInputMissing );
-    System.out.println ("  > Imprecise: "+m_bOutputImprecise );
-    System.out.println ("  > MultiClass: "+m_bOutputMultiClass );
-    System.out.println ("  > MultiOutput: "+m_bOutputMultiOutput );
 
     }// end copyInputOutput
 

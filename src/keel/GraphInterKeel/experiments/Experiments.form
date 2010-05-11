@@ -1718,6 +1718,9 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTree" name="preprocessTree">
                                   <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="d8" green="e9" red="ec" type="rgb"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="preprocessTree" noResource="true"/>
                                   </Properties>
                                   <Events>

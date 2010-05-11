@@ -353,8 +353,15 @@ public class ParametersDialog
                 ((Parameters) (all.elementAt(i))).setExe(ejecuciones.intValue());
             }
         } else {
+            //Apply results in specified layer
+            jTable1.getColumnModel().getColumn(1).getCellEditor().stopCellEditing();
+            ejecuciones = (Integer) jSpinner1.getValue();
             parameterData.copyParameters(undoParameters);
             parameterData.setExe(ejecuciones.intValue());
+
+            parameterData.copyParameters(undoParameters);
+            parameterData.setExe(ejecuciones.intValue());
+
         }
         /***************************************************************
          ***************  EDUCATIONAL KEEL  ****************************

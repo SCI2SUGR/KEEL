@@ -99,7 +99,6 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
     //Absolute names array
     private String fullName[];
-    private boolean duplicates[];
 
 
     /***************************************************************
@@ -1088,6 +1087,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
         preprocessScroll.setName("preprocessScroll"); // NOI18N
 
+        preprocessTree.setBackground(new java.awt.Color(236, 233, 216));
         preprocessTree.setName("preprocessTree"); // NOI18N
         preprocessTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
             public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
@@ -3928,6 +3928,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         /***************************************************************
 	     ***************  EDUCATIONAL KEEL  ****************************
 	     **************************************************************/
+        Color bg=new Color(236,233,216);
+        preprocessTree.setBackground(bg);
         preprocessTree.updateUI();
 
 
@@ -3947,16 +3949,19 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         /***************************************************************
 		***************  EDUCATIONAL KEEL  ***************************
 		**************************************************************/
-
+        methodsSelectionTree.setBackground(bg);
         methodsSelectionTree.updateUI();
         ((DefaultMutableTreeNode) postprocessSelectionTree.getModel().getRoot()).removeAllChildren();
         createAlgorithmNodes((DefaultMutableTreeNode) postprocessSelectionTree.getModel().getRoot(), "." + File.separatorChar + "algorithm" + File.separatorChar + "PostProcess.xml");
+        postprocessSelectionTree.setBackground(bg);
         postprocessSelectionTree.updateUI();
         ((DefaultMutableTreeNode) testSelectionTree.getModel().getRoot()).removeAllChildren();
         createTestAlgorithmNodes((DefaultMutableTreeNode) testSelectionTree.getModel().getRoot(), "." + File.separatorChar + "algorithm" + File.separatorChar + "Tests.xml");
+        testSelectionTree.setBackground(bg);
         testSelectionTree.updateUI();
         ((DefaultMutableTreeNode) visualizeSelectionTree.getModel().getRoot()).removeAllChildren();
         createTestAlgorithmNodes((DefaultMutableTreeNode) visualizeSelectionTree.getModel().getRoot(), "." + File.separatorChar + "algorithm" + File.separatorChar + "Visualize.xml");
+        visualizeSelectionTree.setBackground(bg);
         visualizeSelectionTree.updateUI();
     }
      boolean check() {
@@ -5678,32 +5683,19 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     }
 
     /**
-     * Checks its a given node is duplicated on the experiment
-     * @param numNode Identifier of the node to be checked
-     *
-     */
-    private boolean duplicated(int numNode) {
-
-        return duplicates[numNode];
-
-    }
-
-    /**
      * Compute absolute names of every element of the graph
      */
     
     private void absoluteNames() 
     {
 
-        int root = 0;
+        int roots = 0;
         boolean dup;
-
-        duplicates = new boolean[experimentGraph.numNodes()];
 
         //Find root node (datasets)
         for (int i = 0; i < experimentGraph.numNodes(); i++) {
             if (experimentGraph.getNodeAt(i).type == Node.type_Dataset) {
-                root = i;
+                roots = i;
             }
         }
 
@@ -5713,29 +5705,33 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         for (int i = 0; i < experimentGraph.numNodes(); i++) {
             fullName[i] = "";
         }
-        fullName[root] = "Datasets";
+        fullName[roots] = "Datasets";
 
         //Get the names
         for (int i = 0; i < experimentGraph.numArcs(); i++) 
         {
-            if (experimentGraph.getArcAt(i).getSource() == root) {
+            if (experimentGraph.getArcAt(i).getSource() == roots) {
                 applyAbsoluteName(experimentGraph.getArcAt(i).getDestination(), "");
             }
         }
 
         //Check for duplicates
-        for (int i = 1; i < experimentGraph.numNodes(); i++) {
-
-            dup = false;
-
-            for (int j = i - 1; j > -1 && !dup; j--) {
-
-                if (fullName[i].equals(fullName[j])) {
-                    dup = true;
+        boolean dupli=false;
+        int cont=1;
+        for (int i = 1; i < experimentGraph.numNodes(); i++)
+        {
+            dupli=false;
+            for (int j = i - 1; j > -1; j--)
+            {
+                if (fullName[i].equals(fullName[j]))
+                {
+                   dupli=true;
+                   fullName[j]=cont+"-"+fullName[j];
+                   cont++;
                 }
             }
-
-            duplicates[i] = dup;
+            if(dupli==true)
+                fullName[i]="0-"+fullName[i];
         }
 
     }
@@ -5970,7 +5966,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                         {
                             if (sueltos.contains(new Integer(i)) == false) 
                             {
-                                if ((experimentGraph.getNodeAt(i).type == Node.type_Algorithm) && (duplicated(i) == false)) {
+                                if (experimentGraph.getNodeAt(i).type == Node.type_Algorithm) {
                                     Algorithm al = (Algorithm) experimentGraph.getNodeAt(i);
                                     dirAlgorithm(al, i, path, sentencias, indexRoot);
                                     /***************************************************************
@@ -6652,10 +6648,12 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                             
                     }
                 } catch (Exception ex) {
+                    //volver a nuevo experimento
+                    newExperimentNoPrompt();
                     JOptionPane.showMessageDialog(this,
                             "Error loading experiment", "Error",
                             JOptionPane.ERROR_MESSAGE);
-                    ex.printStackTrace();
+                    //ex.printStackTrace();
                 }
             }
         }
@@ -6825,6 +6823,73 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "initialCard");
         }
         return salvar;
+    }
+
+    /**
+     * This function creates a new experiment.
+     * If the user wants to, the previous experiment is saved.
+     */
+    private void newExperimentNoPrompt() {
+
+        this.selectButton.setEnabled(false);
+
+        this.cursorFlux.setEnabled(false);
+        this.runButton.setEnabled(false);
+        runExpItem.setEnabled(false);
+        insertDataflowItem.setEnabled(false);
+        selectItem.setEnabled(false);
+
+        this.setCursor(Cursor.getDefaultCursor());
+        this.cursorAction = 0;
+        experimentGraph = new Graph();
+        graphDiagramINNER.mainGraph = experimentGraph;
+        graphDiagramINNER.repaint();
+        vector_undo.clear();
+        vector_redo.clear();
+
+        undoButton.setEnabled(false);
+        undoItem.setEnabled(false);
+        redoButton.setEnabled(false);
+        redoItem.setEnabled(false);
+        deleteItem.setEnabled(false);
+        reload_algorithms();
+
+        notSelectedDataset = true;
+        Layer.layerActivo = 0;
+        status.setText("Click on the draw area to insert a new node");
+        cursorDraw = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+        cursorAction = GraphPanel.PAINT_DATASET;
+        graphDiagramINNER.setToolTipText("Click on the draw area to insert a dataset node");
+
+           /***************************************************************
+            *********************  EDUCATIONAL KEEL  **********************
+            **************************************************************/
+            if(Frame.buttonPressed==0){
+				this.helpContent.muestraURL(this
+					.getClass().getResource("/contextualHelp/exp_intro.html"));
+			}
+			else{
+				this.helpContent.muestraURL(this
+						.getClass().getResource("/contextualHelpDocente/exp_intro.html"));
+			}
+           /***************************************************************
+            *********************  EDUCATIONAL KEEL  **********************
+            **************************************************************/
+            graphDiagramINNER.setBackground(Color.gray);
+            cursorFlux.setEnabled(false);
+            selecDatasets.setEnabled(false);
+            selectPreprocessMethods.setEnabled(false);
+            selectMethods.setEnabled(false);
+            selectPostprocessMethods.setEnabled(false);
+            selectTestMethods.setEnabled(false);
+            selectVisualizeMethods.setEnabled(false);
+            panelDatasets.removeAllData();
+            dinDatasets.removeAllData();
+            panelDatasets.deselectAll();
+            panelDatasets.repaint();
+            ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "initialCard");
+
+
     }
 
 

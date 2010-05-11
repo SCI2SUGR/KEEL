@@ -269,7 +269,7 @@ public final class Algorithm extends Node {
 
     Parameters getActivePair() {
         
-        return (Parameters) par.elementAt(0);
+        return (Parameters) par.elementAt(Layer.layerActivo);
     }
 
     /**
