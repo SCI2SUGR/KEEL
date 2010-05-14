@@ -133,6 +133,12 @@ public class LazyDT extends LazyAlgorithm {
 			done=true;
 		}
 		
+		// Check if data has more than one attribute
+		if(data[0].length==1){
+			result=majority2(example[0],data,output);
+			done=true;
+		}
+		
 		// Check if the data available is at least the minimum data necessary
 		if(data.length <MIN_DATA){
 			result=majority(output);
@@ -299,6 +305,58 @@ public class LazyDT extends LazyAlgorithm {
 		
 		for(int i=0;i<vector.length;i++){
 			values[vector[i]]++;
+		}
+		
+		selected=-1;
+		max=-1;
+
+		for(int i=0;i<values.length;i++){
+			if(max<values[i]){
+				max=values[i];
+				selected=i;
+			}
+		}
+		
+		result= new MyPair(selected,max);
+		
+		return result;	
+	}
+	
+	/**
+	 * Gets the most frequent value stored in the output array from the correct instances
+	 * 
+	 * @param value   Value to find
+	 * @param data   Data matrix
+	 * @param vector   Array whose most frequent value is going to be found
+	 * @return a pair with the most frequent value and its value   
+	 */	
+	private MyPair majority2(double value,double data [][], int vector[]){
+
+		boolean mask[];
+		
+		//prune data
+		
+		mask=new boolean [data.length];
+		
+		Arrays.fill(mask, false);
+
+		for(int i=0;i<data.length;i++){
+			if(value==data[i][0]){
+				mask[i]=true;
+			}
+		}
+
+		int values[]=new int [nClasses];
+		int max;
+		int selected;
+		MyPair result;
+		
+		Arrays.fill(values, 0);
+		
+		for(int i=0;i<vector.length;i++){
+			if(mask[i]){
+				values[vector[i]]++;
+			}
 		}
 		
 		selected=-1;
