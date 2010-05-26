@@ -1032,6 +1032,15 @@ public class DinamicDataset extends JPanel implements Scrollable {
             }
         }
     }
+
+    public void update(){
+
+        if(parent.objType==parent.LQD)
+            loadDatasetInfo(checks,actualList,activos,parent.dsc,Node.LQD);
+        else
+            loadDatasetInfo(checks,actualList,activos,parent.dsc,Node.CRISP);
+    }
+    
     private void loadDatasetInfo(Vector check,Vector List,boolean actives[], ExternalObjectDescription exobj,
           int node_type) {
 

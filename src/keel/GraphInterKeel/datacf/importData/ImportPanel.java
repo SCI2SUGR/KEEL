@@ -2978,9 +2978,17 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                 file.getName().replaceAll(".dat", ""));
 
         //minusculas
-        String lowerCaseName= rootName.toLowerCase();
+        String lowerCaseName;
+        try{
+            lowerCaseName = rootName.toLowerCase();
+
+        }catch(Exception e){
+            rootName="Unknown";
+            lowerCaseName="unknown";
+        }
 
         Iterator it = data.getRootElement().getChildren().iterator();
+
         while (it.hasNext()) {
             Element element = (Element) it.next();
             if (element.getChild("nameAbr").getValue().equals(lowerCaseName)) {
@@ -2993,8 +3001,10 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                             null,
                             rootName);
                 if( ((rootName == null) || (rootName.length() == 0))){
+                    JOptionPane.showMessageDialog(this, "A new name for the data set is needed", "Error", JOptionPane.ERROR_MESSAGE);
                     return null;
                 }
+                lowerCaseName = rootName.toLowerCase();
                 it = data.getRootElement().getChildren().iterator();
             }
         }
@@ -3215,7 +3225,14 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                 file.getName().replaceAll(".dat", ""));
 
         //minusculas
-        String lowerCaseName= rootName.toLowerCase();
+        String lowerCaseName;
+        try{
+            lowerCaseName = rootName.toLowerCase();
+
+        }catch(Exception e){
+            rootName="Unknown";
+            lowerCaseName="unknown";
+        }
 
         Iterator it = data.getRootElement().getChildren().iterator();
         while (it.hasNext()) {
@@ -3232,9 +3249,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                     null,
                     options,
                     options[1]);
-                if (n == 1) {
-
-                    
+                if (n == 1) {                    
                         rootName = (String) JOptionPane.showInputDialog(
                                 parent,
                                 "The name of the dataset is also included in the experiment section.\n" + "Please insert another name:",
@@ -3244,8 +3259,11 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                                 null,
                                 rootName);
                     if( ((rootName == null) || (rootName.length() == 0))){
+                        JOptionPane.showMessageDialog(this, "A new name for the data set is needed", "Error", JOptionPane.ERROR_MESSAGE);
                         return null;
+
                     }
+                    lowerCaseName = rootName.toLowerCase();
                     it = data.getRootElement().getChildren().iterator();
                 }
                 else{

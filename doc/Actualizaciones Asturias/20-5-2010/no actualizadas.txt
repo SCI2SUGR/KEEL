@@ -1,0 +1,5 @@
+-todo dist/algorithm/LQD
+- build
+- datasets
+- Graph inter keel: Parameters+ Frame Menu
+resources/imag, menu LQD

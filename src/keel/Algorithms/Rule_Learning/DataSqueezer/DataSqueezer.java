@@ -298,11 +298,13 @@ public class DataSqueezer extends Algorithm {
             // Obtain the POS and NEG tables assuming the index class as positive
             obtainPosNegTables(index);
 
-            // Process POS and NEG tables
-            dataSqueezer(index);
+            if (POS.size() > 0) {
+            	// Process POS and NEG tables
+            	dataSqueezer(index);
 
-            // Save the rules that classify the current class
-            saveRules();
+            	// Save the rules that classify the current class
+            	saveRules();
+            }
         }
     }
 

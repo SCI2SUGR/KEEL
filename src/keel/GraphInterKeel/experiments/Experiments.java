@@ -4384,23 +4384,23 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     
     
     private void dirAlgorithmDatasetLQD(Algorithm al,Joint destin, String path_scripts,  int numNode, int position,
-            String type_lqd, int type_algorithm,Vector sentencias,String problema) 
+            String type_lqd, int type_algorithm,Vector sentencias,String problema,boolean crisp_version)
     {
 
         if (al.dsc.getSubtype() == Node.type_Preprocess) 
         {
-            writeConfig(al,path_scripts, "config",(al.id+"."+al.dsc.getName()), true,destin,position,type_lqd, type_algorithm,sentencias,problema);
+            writeConfig(al,path_scripts, "config",(al.id+"."+al.dsc.getName()), true,destin,position,type_lqd, type_algorithm,sentencias,problema,crisp_version);
         } 
         else //deja en results
         {
-            writeConfig(al,path_scripts, "config",(al.id+"."+al.dsc.getName()), false,destin,position,type_lqd,type_algorithm,sentencias,problema);
+            writeConfig(al,path_scripts, "config",(al.id+"."+al.dsc.getName()), false,destin,position,type_lqd,type_algorithm,sentencias,problema,crisp_version);
         }
     }
     
-    /* Write a configuration script for the method, employing its parameters*/
+       /* Write a configuration script for the method, employing its parameters*/
      public void writeConfig(Algorithm al,String path, String baseName, String methodName,
             boolean pre, Joint destin, int position,String type_lqd, int type_algorithm,
-            Vector sentencias,String problema) 
+            Vector sentencias,String problema,boolean crisp_version) 
     {
 
         String fichero, nombre, aux;
@@ -4449,11 +4449,8 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     fichero += "\""+cadRutaParcial +destin.data_selected.get(position)+"-10-"+(i+10)+"tst.dat"+"\" ";       
                 }
                 else if(destin.times.get(position)==2)
-                {
-                    fichero +="\"" +cadRutaParcial+destin.data_selected.get(position)+"\" ";       
-                    fichero += "\""+cadRutaParcial +destin.data_selected.get(position)+"\" ";       
-                    
-                }
+                    fichero +="\"" +cadRutaParcial+destin.data_selected.get(position)+"-100-"+"\" ";       
+                
                 else
                      fichero += "\"" +cadRutaParcial+destin.data_selected.get(position)+"\" ";       
                               
@@ -4477,7 +4474,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                      aux += "\""+"../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position)+"-10-"+(i+10)+"tst.dat";       
                   }
                   else                      
-                   aux = "../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position);       
+                   aux = "../datasets/"+type_lqd+"/" + methodName + "/" + problema+"/"+destin.data_selected.get(position)+"-100-";       
                   fichero += "outputData = \"" + aux + "\" ";
 
               }
@@ -4502,8 +4499,10 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     aux = "../results/" +type_lqd+"/"+ methodName + "/" +problema+"/";
                 fichero += "outputData = \"" + aux + "\" ";
               }
-            
+                        
+            String Icrisp_parameters="\n\n";
             fichero += "\n\n";
+            
             
             Parameters parameterData = (Parameters) (al.par.elementAt(0));
             
@@ -4514,25 +4513,40 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 for(int c=0;c<destin.parameters.get(position).get(p).size();c++)
                 {
                     if(p==0)
+                    {
                         fichero +="Instances = ";
+                        Icrisp_parameters +="Instances = ";
+                    }
                     else if (p==1)
-                        fichero +="Nclases = "    ;        
+                    {
+                        fichero +="Nclases = ";        
+                        Icrisp_parameters +="Nclases = ";        
+                    }
                     else if (p==2)
+                    {
                         fichero +="attributes = ";
+                        Icrisp_parameters +="attributes = ";
+                    }
                     else if (p==3)
+                    {
                         fichero +="Class = " ;                               
+                        Icrisp_parameters +="Class = " ;                               
+                    }
                                 
                     
                     /*else if (p==destin.parameters.get(position).size()-1)
                         fichero +="Partitions_Data = ";*/
                     
                     fichero+=destin.parameters.get(position).get(p).get(c);
+                    Icrisp_parameters +=destin.parameters.get(position).get(p).get(c)+"\n";
                     fichero += "\n";
                     
                 }
             }
              fichero +="Partitions_Data = ";
+             Icrisp_parameters +="Partitions_Data = ";
             fichero+=destin.parameters.get(position).get(destin.parameters.get(position).size()-1).get(0);
+            Icrisp_parameters +=destin.parameters.get(position).get(destin.parameters.get(position).size()-1).get(0)+"\n";
             fichero += "\n";
             
             
@@ -4541,7 +4555,9 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 for(int c=0;c<destin.parameters.get(position).get(pa).size();c++)
                 {
                     fichero+= parameterData.descriptions.get(pa-4)+" = "; 
+                     Icrisp_parameters +=parameterData.descriptions.get(pa-4)+" = "; 
                     fichero+=destin.parameters.get(position).get(pa).get(c);
+                    Icrisp_parameters +=destin.parameters.get(position).get(pa).get(c)+"\n";
                     fichero += "\n";
                 }
                 
@@ -4580,6 +4596,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                   linea = new String("java -Xmx" + this.heapSize + "000000 " + " -jar" + " ../exe/" + al.dsc.getJarName() + " ./" +methodName+"/"+problema+"/"+baseName + i + ".txt");          
                   sentencias.addElement(linea);
                   
+                  //File with 0-100boost must create new file of datasets (100 boost and the 1000 test)
                   if(destin.times.get(position)==1 && destin.parameters.get(position).parameter_data.get(destin.parameters.get(position).parameter_data.size()-1).get(0).compareTo("O-100boost")==0)//crear el boostrap y los 1000 test
                   {
                       
@@ -4599,14 +4616,19 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                       
                       
                   }
-                  if(methodName.contains("FGFS_Cost_Instances")==true)
+                  //These files contains a crisp approach with the same estruct that the LQD. (same main, only
+                  //we need the word "Crisp" in the name of the file of results
+                  if(methodName.contains("FGFS_Cost_Instances")==true && crisp_version==true)
                   {
-                      String nombre1 = (new File(path))+ File.separator +baseName+"_Crisp" + i + ".txt";        
-                      String fichero1= "inputData = "+"\"" +cadRutaParcial+destin.data_selected.get(position)+"\" ";       
+                      String nombre1 = (new File(path))+ File.separator +baseName+"_Crisp" + i + ".txt";  
+                      String fichero1 = "algorithm = " + al.dsc.getName() + "\n";
+                      fichero1+= "inputData = "+"\"" +cadRutaParcial+destin.data_selected.get(position)+"\" ";       
                       fichero1 += "\""+cadRutaParcial +destin.data_selected.get(position)+"\" ";       
                       fichero1 += "\n";
                       aux = "../results/" +type_lqd+"/"+ methodName + "/" +problema+"_Crisp"+"/Crisp";
                       fichero1 += "outputData = \"" + aux + "\" ";
+                      
+                      fichero1+=Icrisp_parameters;
                       
                       Files.writeFile(nombre1, fichero1);
                       linea = new String("java -Xmx" + this.heapSize + "000000 " + " -jar" + " ../exe/" + al.dsc.getJarName() + " ./" +methodName+"/"+problema+"/"+baseName +"_Crisp"+ i + ".txt");          
@@ -4634,7 +4656,6 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 
                     
     }
-
 
     private void dirAlgorithmDataset(Algorithm al, int origen, String path_scripts, String path_results, int numNode, String problema) {
 
@@ -4745,7 +4766,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             }
     }
 
-     private void dirAlgorithmLQD(Algorithm al, int nodo, String path, Vector sentencias) 
+         private void dirAlgorithmLQD(Algorithm al, int nodo, String path, Vector sentencias) 
      {
 
         // creates directories and files for an algorithm    
@@ -4794,6 +4815,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
          String path_results = "";
          String crisp="";
          String type_lqd="";
+         boolean crisp_version=false;
         
         for(int i=0;i<way.dsc.arg.size();i++)
         {
@@ -4849,8 +4871,19 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                        FileUtils.mkdir(path.concat("results/LQD")); 
                        path_results = path + "results/LQD/" + way.id+"."+way.dsc.getName() ;
                        FileUtils.mkdirs(path_results);
-                       crisp = path_results+ "/" + problema+"_Crisp";        
-                       FileUtils.mkdir(crisp);
+                       
+                       if(way.dsc.getName().contains("FGFS_Cost_Instances")==true)
+                       {
+                            if (JOptionPane.showConfirmDialog(this,
+                        way.dsc.getName() + " contains a crisp version. Do you want to include it in the results?",
+                        "Insert in the results", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION) 
+                            {
+                                crisp = path_results+ "/" + problema+"_Crisp";        
+                                FileUtils.mkdir(crisp);
+                                crisp_version=true;
+                            }
+                       }
+                       
                        path_results =path_results + "/" + problema;
                        type_lqd="LQD";
                    }
@@ -4878,9 +4911,9 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                }
                 
                 if(way.dsc.arg.get(i).before.type==Node.type_Dataset)
-                    dirAlgorithmDatasetLQD(al,way.dsc.arg.get(i), path_scripts,nodo,data,type_lqd,0,sentencias,problema);
+                    dirAlgorithmDatasetLQD(al,way.dsc.arg.get(i), path_scripts,nodo,data,type_lqd,0,sentencias,problema,crisp_version);
                 else if(way.dsc.arg.get(i).before.type==Node.type_Algorithm)
-                   dirAlgorithmDatasetLQD(al,way.dsc.arg.get(i), path_scripts,nodo,data,type_lqd,1,sentencias,problema);
+                   dirAlgorithmDatasetLQD(al,way.dsc.arg.get(i), path_scripts,nodo,data,type_lqd,1,sentencias,problema,crisp_version);
                 
                 
            }
@@ -7145,7 +7178,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             {
                 top4 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms the preprocessing", null, 0));
                 RamaLqd=1;
-                createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar + "PreProcessLQD.xml");
+                createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar +"LQD"+File.separatorChar+ "PreProcessLQD.xml");
                 RamaLqd=0;
                 createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar + "PreProcess.xml");
             }
@@ -7201,7 +7234,7 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                     {
                         top2 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms of classification", null, 0));
                         RamaLqd=1;
-                        createAlgorithmNodes(top2, "." + File.separatorChar + "algorithm" + File.separatorChar + "MethodsLQD.xml");
+                        createAlgorithmNodes(top2, "." + File.separatorChar + "algorithm" + File.separatorChar +"LQD"+File.separatorChar+"MethodsLQD.xml");
                         RamaLqd=0;
                         createAlgorithmNodes(top2, "." + File.separatorChar + "algorithm" + File.separatorChar + "Methods.xml");
                     }
@@ -7367,8 +7400,12 @@ private void statusBarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
                 ds.tableVector = (Vector)((DataSet) experimentGraph.getNodeAt(i)).tableVector.clone();
 
+
+
                 //rplace the old node
                 experimentGraph.replaceNode(i, ds);
+
+                dinDatasets.update();
             }
         }
 
