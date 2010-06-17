@@ -1065,41 +1065,42 @@
           <fileset dir="${bin}"
              includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/UCS/**/*.class keel/Dataset/**/*.class"/>
 		</jar>
-
 		
+		<!-- Associative classification-->
 
-		
+		<jar
+         jarfile="${distMet}/Clas-CBA.jar"
 
-		
+manifest="${src}/keel/Algorithms/Associative_Classification/ClassifierCBA/Manifest">
+         <fileset dir="${bin}"
+                           includes="org/core/**/*.class
+                                   keel/Algorithms/Associative_Classification/ClassifierCBA/**/*.class
+                                       keel/Algorithms/Preprocess/Basic/**/*.class
+                                       keel/Dataset/**/*.class"/>
+       </jar>
 
-		
+               <jar
+         jarfile="${distMet}/Clas-CBA2.jar"
 
-        
-        
-		
-			
-		
-		
-		
-		
+manifest="${src}/keel/Algorithms/Associative_Classification/ClassifierCBA2/Manifest">
+         <fileset dir="${bin}"
+                           includes="org/core/**/*.class
+                                   keel/Algorithms/Associative_Classification/ClassifierCBA2/**/*.class
+                                       keel/Algorithms/Preprocess/Basic/**/*.class
+                                       keel/Dataset/**/*.class"/>
+       </jar>
 
-    
 
-    
-    
+        <jar
+         jarfile="${distMet}/Clas-CPAR.jar"
 
-    
-
-	
-
-	
-
-    
-
-    
-
-    
-
+manifest="${src}/keel/Algorithms/Associative_Classification/ClassifierCPAR/Manifest">
+         <fileset dir="${bin}"
+                           includes="org/core/**/*.class
+                                   keel/Algorithms/Associative_Classification/ClassifierCPAR/**/*.class
+                                       keel/Algorithms/Preprocess/Basic/**/*.class
+                                       keel/Dataset/**/*.class"/>
+       </jar>
 	
 	<!-- Decision Trees for classification-->
 	

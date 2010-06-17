@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>Classification based on Predictive Association Rules (CPAR)</name>
+  <nParameters>4</nParameters>
+  <seed>0</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of rules combining for every example (delta)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter>
+  <parameter>
+    <name>Minimum Gain</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.7</default>
+  </parameter>
+  <parameter>
+    <name>Weight decay factor (alfa)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.66</default>
+  </parameter>
+  <parameter>
+    <name>Number of rules used in prediction</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+</algorithm_specification>

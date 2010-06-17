@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>Classification Based on Associations (CBA)</name>
+  <nParameters>4</nParameters>
+  <seed>0</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Minimum support</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>
+  <parameter>
+    <name>Minimum confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  <parameter>
+    <name>Wether pruning rules or not? (1:yes, 0:no)</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Maximum candidate rules (0: no limited)</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10000000</upperB>
+    </domain>
+    <default>80000</default>
+  </parameter>
+</algorithm_specification>

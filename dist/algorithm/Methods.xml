@@ -3062,4 +3062,76 @@
       <multioutput>No</multioutput>
     </output>
   </method> 
+  <method>	
+    <name>Clas-CBA</name>
+    <family>Associative classification</family>
+    <jar_file>Clas-CBA.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>no</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+		<multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>   
+  <method>	
+    <name>Clas-CBA2</name>
+    <family>Associative classification</family>
+    <jar_file>Clas-CBA2.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>no</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+		<multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method> 
+  <method>	
+    <name>Clas-CPAR</name>
+    <family>Associative classification</family>
+    <jar_file>Clas-CPAR.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>no</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+		<multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method> 
 </method_list>
