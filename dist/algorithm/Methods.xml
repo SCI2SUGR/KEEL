@@ -3134,4 +3134,28 @@
       <multioutput>No</multioutput>
     </output>
   </method> 
+    <method>
+	  <name>Clas-CMAR</name>
+	  <family>Associative Classification</family>
+	  <jar_file>Clas-CMAR.jar</jar_file>
+	  <problem_type>classification</problem_type>
+	  <input>
+		<continuous>No</continuous>
+		<integer>No</integer>
+		<nominal>Yes</nominal>
+		<missing>No</missing>
+		<imprecise>No</imprecise>
+		<multiclass>Yes</multiclass>
+		<multioutput>No</multioutput>
+	  </input>
+	  <output>
+		<continuous>No</continuous>
+		<integer>No</integer>
+		<nominal>Yes</nominal>
+		<missing>No</missing>
+		<imprecise>No</imprecise>
+		<multiclass>Yes</multiclass>
+		<multioutput>No</multioutput>
+	  </output>
+ </method> 
 </method_list>
