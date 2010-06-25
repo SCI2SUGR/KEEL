@@ -3064,7 +3064,7 @@
   </method> 
   <method>	
     <name>Clas-CBA</name>
-    <family>Associative classification</family>
+    <family>Associative Classification</family>
     <jar_file>Clas-CBA.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -3088,7 +3088,7 @@
   </method>   
   <method>	
     <name>Clas-CBA2</name>
-    <family>Associative classification</family>
+    <family>Associative Classification</family>
     <jar_file>Clas-CBA2.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -3112,7 +3112,7 @@
   </method> 
   <method>	
     <name>Clas-CPAR</name>
-    <family>Associative classification</family>
+    <family>Associative Classification</family>
     <jar_file>Clas-CPAR.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
