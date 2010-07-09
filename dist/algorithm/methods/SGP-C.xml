@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>SGP</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Method</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>2</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Rmin</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Rmis</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+</algorithm_specification>

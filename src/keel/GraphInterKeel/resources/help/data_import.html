@@ -1,0 +1,2753 @@
+<html>
+
+<head>
+
+<title>Data import</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<!------------------------------------------------------------------------>
+<!----------------------------------- DATA IMPORT ------------------------>
+<!------------------------------------------------------------------------>
+
+<div align="center"> 
+
+  <p><b>DATA IMPORT</b></p>
+
+</div>
+
+  <p>This feature allows you to transform your files 
+
+    in different formats (txt, excel, xml, etc.) to KEEL format. Notice that if you want to use your 
+
+    own DataSets, the design of the experiments will only use DataSets according to
+
+    KEEL format. This conversion is done in a semi-authomatic way.<br><br>
+	
+	<div align="center"><img src="imag/data_import.jpg"></div>
+
+</p>
+
+<p>First of all, you must select the source file of the dataset and the destination directory for the transformed dataset, with the only exception that if you choose to convert from a Database, you only need to specify the destination directory.</p>
+
+<p>Depending on the format you choosed, you must provide some information:</p>
+
+<ul>
+
+  <li><b>Separator:</b> This field request you the character used as a separator in your file. <br>
+  <li><b>Null Value:</b> This field ask you about how your file represents the null values. <br>
+  <li><b>Main Label Name:</b> This field request you the name of the main label in an xml file. <br>
+  <li><b>Driver:</b> This field request you the driver used by your database. <br>
+  <li><b>Database URL:</b> This field request you the URL to your database. <br>
+  <li><b>Table Name:</b> This field ask you about the name of table in the database. <br>
+  <li><b>User:<b> This field request you the user name in the database. <br>
+  <li><b>Password:<b> This field ask you for the user password in the database. <br>
+
+</ul>
+
+<p>Once all the information requested is provided, push the 'Convert' button and your dataset will be transformed into the keel format.</p>
+
+
+
+
+<!------------------------------------------------------------------------>
+<!-----------------------------------  KEEL DATA FILE FORMAT-------------->
+<!------------------------------------------------------------------------>
+
+
+
+<div align="center"> 
+	
+  <p><b>KEEL DATA FILE FORMAT</b></p>
+
+</div>
+
+  <p>The KEEL data files must have the following format:</p>
+
+
+<ul>
+	<li><b>Name of the data set (mandatory):</b> <span lang="EN-GB">The relation name is defined as the first line in 
+	the file. The format is:</span></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>@relation</b> &lt;name&gt; </li></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span lang="EN-GB">where &lt;name&gt; is a string. The string must be 
+	quoted if the name includes spaces.</span><br></p>
+<ul>
+	<li><b>Attributes (mandatory):</b> <span lang="EN-GB">Attribute declarations take the form of an ordered 
+	sequence of <i>@attribute</i> statements. Each attribute in the data set has 
+	its own <i>@attribute</i> statement which uniquely defines the name of that 
+	attribute and it's data type. The order the attributes are declared 
+	indicates the column position in the data section of the file. For example, 
+	if an attribute is the third one declared then Keel expects that all that 
+	attributes values will be found in the third comma delimited column. </span>
+	</li>
+</ul>
+<p style="text-indent:18.0pt"><span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The format for the
+<i>@attribute</i> statement is: </span></p>
+<blockquote>
+	<ul>
+		<li>@attribute &lt;name&gt; integer [{min,max}]</li>
+		<li>@attribute &lt;name&gt; real [{min,max}]</li>
+		<li>@attribute &lt;name&gt; {&lt;value 1&gt;, &lt;value 2&gt;, ..., &lt;value N&gt;}</li>
+	</ul>
+</blockquote>
+<p>
+  </li><br></p>
+<ul>
+	<li><b>Input/Output (optional):</b> <span lang="en-gb">The type of attribute 
+	with respect to it is a input attribute or output attribute can be 
+	especified with these</span><span lang="EN-GB"> statements.</span></li>
+</ul>
+<blockquote>
+	<ul>
+		<li>@inputs &lt;name1&gt;, &lt;name2&gt;, ..., &lt;nameN&gt;</li>
+		<li>@outputs &lt;name1&gt;, &lt;name2&gt;, ..., &lt;nameM&gt;<br></li>
+	</ul>
+</blockquote>
+<p>
+  </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where &lt;name&gt; is a string. The 
+string must be an attribute defined with statements before.</p>
+<p><br></p>
+<ul>
+	<li><b>Data (Mandatory):</b> The order of the columns must be the same than the order in which the attributes were defined.
+	<span lang="EN-GB">The <b>@data</b> declaration 
+	is a single line denoting the start of the data segment in the file. The 
+	format is:</span></li>
+</ul>
+<blockquote>
+	<blockquote>
+		<blockquote>
+			<p>@data<br>x11, x12, ..., x1N<br>x21, x22, ..., x2N<br>..., ..., ..., ...<br>xM1, xM2, ..., xMN<br>
+  </li><br></p>
+		</blockquote>
+	</blockquote>
+</blockquote>
+<ul>
+	<li>We will use the string '&lt;null&gt;' if we need to denote a null value. Lastly, the identifiers can have white spaces and 12 characters at the most.  </li>
+	<br></li>
+	<li>
+	<p style="margin-top: 0; margin-bottom: 0">The files will be saved, by default, with the '.dat' extension.  </li>
+	<br>
+</ul>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid KEEL file is:</span></b></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<div align="center">
+	<table border="1" width="294" height="243">
+		<tr>
+			<td height="237" width="284">
+			<p style="margin-top: 0; margin-bottom: 0"><i>@relation paint </i>
+			</p>
+			<p style="margin-top: 0; margin-bottom: 0"><i><br>@attribute colour {yellow, white, black}
+			<br>@attribute amount integer [1, 10]<br>@attribute density real [0.1, 2.5]</i></p>
+			<p style="margin-top: 0; margin-bottom: 0"><i><br>@inputs colour, amount<br>@outputs density</i></p>
+			<p style="margin-top: 0; margin-bottom: 0"><i><br>@data<br>yellow, 4, 1.2
+			<br>black, 1, 2.1<br>yellow, 2, 0.8<br>white, 8, 0.9 
+  </li></i></td>
+		</tr>
+	</table>
+</div>
+<p><br></p>
+
+
+
+
+<!------------------------------------------------------------------------>
+<!----------------------------------- CVS DATA FILE FORMAT --------------->
+<!------------------------------------------------------------------------>
+
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">CVS DATA 
+FILE FORMAT</span></b></h3>
+<!--<p class="MsoNormal" style="text-align: justify; text-indent: 35.45pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman">&nbsp;</span></p>-->
+<p class="MsoNormal" style="text-align: justify; text-indent: 35.45pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman">The CSV file 
+(comma-separated-values). </span>
+<span lang="EN" style="font-family: Times New Roman">CSV is one implementation 
+of a
+delimited text 
+file, which uses a
+comma to 
+separate values.&nbsp; The CSV file format is very simple and supported by almost all
+spreadsheets 
+and
+database management systems<a href="http://en.wikipedia.org/wiki/Database_management_system"><span style="color: #000000; text-decoration: none">.</span></a></span></p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt; margin: 6.0pt 0cm">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of these files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The first record in a CSV file may be a header record containing name of 
+		the columns.</span></li>
+		<li>
+		<p class="MsoNormal"><span lang="EN-GB">Each record in a file can have 
+		less fields that the number of header columns. In this case, empty 
+		values are considered missing values.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman">Each row must 
+		have the same number of fields separated by commas.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">Two commas 
+adjacent, or comma at the beginning or end of the line (</span><strong><span lang="EN-GB" style="font-weight: normal">space-characters</span></strong><span lang="EN-GB" style="font-family: Times New Roman; color: black">) 
+		indicate null values.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The separation of the whole and fractional part in the actual numbers is 
+		done through a point instead of a comma.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman">The separation 
+		symbol for decimals numbers is a point instead of a comma.</span></li>
+		<li>
+		<p class="MsoNormal"><strong>
+		<span lang="EN-GB" style="font-weight: normal">Leading and 
+trailing space-characters adjacent to comma field separators are ignored.</span></strong></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN" style="font-family: Times New Roman">Each record 
+is one line terminated by a newline character or a carriage return</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The blank lines will be ignored.</span></li>
+		<li>
+		<p class="MsoNormal"><strong>
+		<span lang="EN-GB" style="font-weight: normal">Fields that contain 
+double quote characters must be surrounded by double-quotes, and the embedded 
+		double-quotes must each be represented by a pair of consecutive double 
+		quotes.</span></strong></li>
+		<li>
+		<p class="MsoNormal"><strong>
+		<span lang="EN-GB" style="font-weight: normal">Fields with leading or 
+		trailing spaces or commas must be delimited with double-quote 
+		characters.</span></strong></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN" style="font-family: Times New Roman">The delimiter 
+of values can be other character different to comma. Many implementations of CSV 
+allow an alternate separator to be used, such as tab character and the resulting 
+format is TSV (Tab Separated Values).</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The last record in a file can be finished or not with the character end 
+		of line.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+files are stored, by default, with the extension &quot;.csv&quot;.</span></li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt"><b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+CSV (Comma-Separated Values) data files must have the following format:<i><br>
+&nbsp;</i></span></b></p>
+<div align="center">
+	<table border="1" width="281" height="106">
+		<tr>
+			<td height="106" width="271" align="left">
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">attribute<sub>1</sub>, attribute<sub>2</sub>, 
+			..., attribute<sub>N</sub><br>
+			value<sub>11</sub>, value<sub>12</sub>, ..., value<sub>1N</sub><br>
+			...<br>
+			value<sub>M1</sub>, value<sub>M2</sub>, ..., value<sub>MN</sub></span><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;color:#003366;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of valid CSV file is:</span></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="462" height="96">
+		<tr>
+			<td height="96" width="452"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">FirstName, LastName, Company, EmailAddress<br>
+			Johnathan,Doe,&quot;ABC Company&quot;,&quot;johndoe@abccompany.com&quot;<br>
+			Harrie,Wong,&quot;Company Inc.&quot;,&quot;hwong@myprovider.com&quot;<br>
+			Mary,&quot;Jo Smith&quot;,&quot;Any Corp.&quot;,&quot;mjsmith@myprovider.com&quot;</span></i></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; text-indent: 35.45pt; margin-left: 35.45pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">In this 
+example we can see the use of certain rules explained before, such as null value 
+expressed in two consecutive commas, the use of the decimal point as a separator 
+for real numbers and the use of double quotes to use the value of the comma 
+simple as part of the data and not as a separator.</span></p>
+<p class="MsoNormal" style="text-align:justify"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Another 
+example of valid CSV file is:<i><br>
+&nbsp;</i></span></b></p>
+<div align="center">
+	<table border="1" width="425" height="212">
+		<tr>
+			<td height="212" width="425">
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">OBS,CAREXPEND,DISPOSINC,DOLLARVALUE,WAGES<br>
+			&quot;1960:1&quot;,14.2,362,,270.7<br>
+			&quot;1960:2&quot;,14.1,365.9,,273.4<br>
+			&quot;1960:3&quot;,14.6,367.6,,273.9<br>
+			&quot;1960:4&quot;,13.2,369.2,,273.3<br>
+			&quot;1961:1&quot;,10.8,72.9,,273.7<br>
+			&quot;1961:2&quot;,11.7,378.4,,277.6<br>
+			&quot;1961:3&quot;,12.2,385.1,,282.2<br>
+			&quot;1961:4&quot;,13.7,393.2,,288.4</span></i></td>
+		</tr>
+	</table>
+</div>
+<!--<div align="center">
+	<p class="MsoNormal" style="margin-left: 18.55pt">&nbsp;</div>
+<p class="MsoNormal" style="margin-left: 18.55pt"><b><i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+<br>
+&nbsp;</span></i></b></p>
+<p><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p>&nbsp;</p>
+<p class="MsoNormal" style="margin-left: 18.55pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-left: 18.55pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p><br clear="ALL">
+&nbsp;</p>
+<p class="MsoNormal" style="margin-left: 18.55pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<br>
+&nbsp;</span></p>
+<p class="MsoNormal" style="text-align:justify"><span lang="EN-GB">&nbsp;</span></p>-->
+
+<p><br></p>
+
+<!------------------------------------------------------------------------>
+<!-------------------------- TXT and TVS DATA FILE FORMAT  --------------->
+<!------------------------------------------------------------------------>
+
+
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; font-style:normal">TXT and 
+TVS DATA FILE FORMAT</span></b></h3>
+<!--<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>-->
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The TXT 
+(Text Separated by Tabs) or TSV (Tab Separated Values), is a simple text data 
+that allows tabular data to be exchanged between applications with a different 
+internal format. Values separated by tabs have been officially registered as a 
+MIME type (Multipurpose Internet Mail Extensions) under the name 
+text/tab-separated-values.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt; margin: 6.0pt 0cm">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of these files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">A 
+		file in TXT format consists of lines. Each line contains fields 
+		separated from one another by the tab character (horizontal tab, HT, 
+		code control 9 in ASCII).</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		Fields can be any string of characters, excluding tabs. </span>
+		<span lang="EN-US" style="font-family: Times New Roman; color: black">
+		However, tabs usually don't appear in data items that you wish to 
+		tabulate, so this is seldom a restriction. There are various other 
+		formats which are very similar to TSV but use a different separator, 
+		such as Comma Separated Values (CVS) </span>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		which uses the comma as separator</span><span lang="EN-US" style="font-family: Times New Roman; color: black">. 
+		Commas, spaces, and other characters often used as separators in such 
+		formats appear rather often in data to be tabulated, at least in header 
+		fields.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		Each line must contain the same number of fields.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The first line contains the name of the fields or attributes, i.e. the 
+		column headers.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">An 
+		empty value is displayed as an empty field between tabs.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		Such files can be read and edited by any text editors.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-US" style="font-family: Times New Roman; color: black">Although 
+TSV is a text format, this type of format is </span><em style="color: #400000">
+		<span lang="EN-US" style="font-family: Times New Roman">not</span></em><span lang="EN-US" style="font-family: Times New Roman; color: black"> 
+expected appearing with a nice tabular format when it is printed with an editor 
+or</span><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+		left on the screen.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+extension for this type of file is &quot;.txt&quot; or &quot;.tsv&quot;.</span></li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 71.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN-GB">&nbsp;
+</span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+TXT (Text Separated by Tabulators) or TSV (Tab/Text Separated Values) data files 
+must have the following format:</span></b></p>
+<div align="center">
+	<table border="1" width="397" height="112">
+		<tr>
+			<td height="112" width="387">
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">attribute<sub>1</sub>&lt;TAB&gt;attribute</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">...</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">attribute<sub>N</sub><br>
+			value<sub>11</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">value<sub>12</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold"> ...<sub> </sub></span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold"> 
+			value<sub>1N</sub><br>
+			...<br>
+			value<sub>M1</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">value<sub>M2</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold"> ...<sub> </sub></span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">value<sub>MN</sub></span><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;color:#003366;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></td>
+		</tr>
+	</table>
+</div>
+
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><i>&nbsp;</i>One 
+example of valid TXT or TSV file is the following:</span></b></p>
+<div align="center">
+	<table border="1" width="579" height="117">
+		<tr>
+			<td height="117" width="569"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">FirstName </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"> LastName </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"> Company </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"> EmailAddress<br>
+			Johnathan </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>Doe </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>ABC Company </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub>
+			</sub>johndoe@abccompany.com<br>
+			Harrie </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">Wong </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">Company </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub>
+			</sub><span style="mso-spacerun:yes">&nbsp;</span>Inc. 
+			hwong@myprovider.com<br>
+			Mary </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>Jo Smith </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>Any </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>
+			Corp </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>mjsmith@myprovider.com&quot;</span></i></td>
+		</tr>
+	</table>
+</div>
+</p>
+<!--
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoBodyText" style="text-align:justify">
+<span lang="EN-GB" style="font-family: Times New Roman">&nbsp;</span></p>
+<h2 style="margin-left:0cm;text-align:justify;text-indent:0cm">
+<span lang="ES-TRAD" style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;">
+&nbsp;</span></h2>
+<p class="MsoNormal" style="text-align:justify"><span lang="ES-TRAD">&nbsp;</span></p>
+-->
+<p><br></p>
+
+
+
+
+<!------------------------------------------------------------------------>
+<!------------------------------ PRN DATA FILE FORMAT  ------------------->
+<!------------------------------------------------------------------------>
+
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; font-style:normal">PRN DATA 
+FILE FORMAT</span></b></h3>
+<!--<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>-->
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">This 
+format has the same features and restrictions that the CSV format, the 
+difference is the separator between fields in PRN format are spaces. However, 
+the spaces in PRN format have a different role than in CVS files.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span><b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of these files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The first record in a PRN file may be a header record containing name of 
+		the columns.</span></li>
+		<li>
+		<p class="MsoNormal"><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		Each record in a file with headers in columns can have less fields than 
+		the number of headers. In this case, empty values are considered missing 
+		values.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Each row 
+		must have the same number of fields separated by spaces.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Several 
+		spaces together will be treated as a single space.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The spaces 
+		at the beginning or end of the line indicated null values.</span></li>
+		<li>
+		<p class="MsoNormal"><span lang="EN-GB" style="font-family: Times New Roman">
+		The separation symbol for decimals numbers is a point instead of a 
+		comma.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN" style="font-family: Times New Roman">Each record 
+is one line terminated by a newline character or a carriage return.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The blank 
+		lines will be ignored.</span></li>
+		<li>
+		<p class="MsoNormal"><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The fields can contain double quote, carriage return (or any other 
+		character).</span></li>
+		<li>
+		<p class="MsoNormal">
+	<strong><span lang="EN-GB" style="font-weight: normal">Fields that contain 
+space character as value must be surounded by double-quotes.</span></strong></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">A record 
+		with a single field without any value must have the requirements of type 
+		text to prevent that it is not ignored.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The last 
+		record in a file can be finished or not with the end of line symbol.</span></li>
+		<li>
+		<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+files are stored by default, with the extension &quot;.prn&quot;.</span></li>
+	</ul>
+	<p class="MsoNormal">&nbsp;</p>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The PRN 
+files have the data separated by blank spaces. So, these data files must have 
+the following format:</span></b></p>
+<div align="center">
+	<table border="1" width="253" height="112">
+		<tr>
+			<td height="112" width="253">
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">attribute<sub>1</sub> attribute<sub>2</sub><span style="mso-spacerun:yes">&nbsp;
+			</span>... <span style="mso-spacerun:yes">&nbsp;</span>attribute<sub>N</sub><br>
+			value<sub>11</sub> <span style="mso-spacerun:yes">&nbsp;</span>value<sub>12</sub>
+			<span style="mso-spacerun:yes">&nbsp;</span>...
+			<span style="mso-spacerun:yes">&nbsp;</span>value<sub>1N</sub><br>
+			...<br>
+			value<sub>M1</sub> <span style="mso-spacerun:yes">&nbsp;</span>value<sub>M2</sub><span style="mso-spacerun:yes">&nbsp;
+			</span>... <span style="mso-spacerun:yes">&nbsp;</span>value<sub>MN</sub></span><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;color:#003366;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid PRN file is the following:</span></b></p>
+<i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i>&nbsp;<div align="center">
+	<table border="1" width="209" height="234">
+		<tr>
+			<td height="234" width="209">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">OBS DELL GE YAHOO<br>
+			1 26.99 48.5 22.92<br>
+			2 26 49.93 20.83<br>
+			3 26.24 49.96 20.13<br>
+			4 25.76 49.48 19.98<br>
+			5 26.73 49.43 19.74<br>
+			6 24.93 49.83 18.86<br>
+			7 25.84 49.01 18.23<br>
+			8 25.91 49.73 17.79<br>
+			9 24.6 50.15 17.1</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA">
+			</span></i>
+			<p>&nbsp;</td>
+		</tr>
+	</table>
+</div>
+
+
+<p><br></p>
+
+
+
+
+<!------------------------------------------------------------------------>
+<!------------------------------ C4.5 DATA FILE FORMAT  ------------------->
+<!------------------------------------------------------------------------>
+
+
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">C4.5 DATA 
+FILE FORMAT</span></b></h3>
+<!--<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>-->
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Files are 
+encoded according to C4.5 format. This format consists of two files, one of them 
+it is a name file with extension &quot;.names&quot;, the other one it is a data file with 
+extension &quot;.data&quot;.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of name files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">The .names file contains a series of entries 
+that describe the classes, attributes and values of the dataset.&nbsp; Each record is 
+terminated with a point, but the point can be omitted if it would have been the 
+		last character on a line). Each name consists of a string of characters 
+		without commas, quotes or colon (unless escaped by a vertical bar, |).</span></p>
+		</li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">&nbsp;A 
+		name can contain a point, but this point must be followed by a white 
+		space</span></p></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">
+		Embedded white spaces is permitted but multiple white spaces are 
+		replaced by a single space.</span></p></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">The 
+		first record in the file lists the names of the classes, separated by 
+		commas (and terminated by a point).&nbsp;&nbsp; </span>
+<span lang="EN-GB" style="font-family: Times New Roman">Each successive line 
+		then defines an attribute, in the order in which they will appear in the 
+		.data &nbsp;files, with the following format:</span></p></li>
+	</ul>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 72.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Symbol">&nbsp; </span>
+		<span lang="EN-GB" style="font-family: Times New Roman">&lt;attribute-name : attribute-type&gt;</span></p>
+	</blockquote>
+</blockquote>
+<p class="MsoNormal" style="margin-left: 106.2pt">
+<span lang="EN-GB" style="font-family: Times New Roman">The attribute-name is an 
+identifier &nbsp;followed by a colon. The attribute type which must be one of: </span>
+</p>
+<p class="MsoNormal" style="margin-left: 106.2pt; margin-top:0; margin-bottom:0">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continuous</span></i></b><span lang="EN-GB" style="font-family: Times New Roman">: 
+if the attribute has a continuous values. </span>
+</p>
+<p class="MsoNormal" style="margin-left: 106.2pt; margin-top:0; margin-bottom:0">
+<span style="font-family: Times New Roman" lang="en-gb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><b><i><span lang="EN-GB" style="font-family: Times New Roman">discrete &lt;n&gt;:</span></i></b><span lang="EN-GB" style="font-family: Times New Roman"> 
+	the word 'discrete' followed by an integer which indicates how many values 
+	the attribute can take.</span></p>
+<p class="MsoNormal" style="margin-left: 106.2pt; margin-top:0; margin-bottom:0">
+<span style="font-family: Times New Roman" lang="en-gb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN-GB">&nbsp;</span><b><i><span lang="EN-GB" style="font-family: Times New Roman">ignore:</span></i></b><span lang="EN-GB" style="font-family: Times New Roman"> 
+indicates that this attribute should be ignored.</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">A | (vertical bar) means that the remainder of 
+the line should be considered as a comment.</span></p></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">&nbsp;</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+		files are stored, by default, with the extension &quot;.names&quot;</span></p>
+		</li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 124.2pt">
+&nbsp;</p>
+<p class="MsoNormal"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </i>&nbsp;The 
+format of the '.name' file is the following:</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+&nbsp;</span></p>
+<div align="center">
+<table border="1" width="222" height="120">
+	<tr>
+		<td height="114" width="222"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">class-1, class-2, ..., class-N.<br>
+			characteristic-1: domain.<br>
+			characteristic-2: domain.<br>
+			...<br>
+			characteristic-M: domain.</span></i><span lang="EN-GB" style="color:#003366;
+    mso-ansi-language:EN-GB"><o:p></o:p></span></td>
+	</tr>
+</table>
+</div>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+<br>
+</span><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of data &nbsp;files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The file 
+contains one line by object. Each line contains values of the attributes sorted 
+according to .names file, followed by the class of object, with all entries 
+separated by commas. </span></p></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The format 
+	is same than CVS file (comma separated values), explained in CVS Data File 
+	Format.</span></p></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">A missing 
+	values are indicated by '?'.</span></p></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+	files are stored, by default, with the extension &quot;.data&quot;.</span></p>
+		</li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+format of the '.data' file is the following:</span></b></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="243" height="114">
+		<tr>
+			<td height="114" width="243">
+			<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+    auto;mso-pagination:widow-orphan;mso-hyphenate:auto">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">value<sub>11</sub>, 
+			value<sub>12</sub>, ..., value<sub>1N</sub><br>
+			value<sub>21</sub>, value<sub>22</sub>, ..., value<sub>2N</sub><br>
+			...<br>
+			value<sub>M1</sub>, value<sub>M2</sub>, ..., value<sub>MN</sub></span></i></p>
+			</td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-indent: 18.55pt">&nbsp;</p>
+<p class="MsoNormal" style="margin-left: 18.55pt; margin-bottom: 12.0pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> 
+An example of an C4.5 data file is the following</span></b></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 72.55pt"><i>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Content of 
+the '.name' file:</span></i></p></li>
+</ul>
+<div align="center">
+<table border="1" width="271" height="409">
+	<tr>
+		<td height="409" width="271">
+			<p class="MsoNormal"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="mso-ansi-language:EN-GB;mso-bidi-font-weight:bold">
+			<font color="#008000">| Firstly the name of classes</font><o:p></o:p></span></i></p>
+			<p class="MsoNormal"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="mso-ansi-language:EN-GB;mso-bidi-font-weight:bold">
+			good, bad.<o:p></o:p></span></i></p>
+			<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="mso-ansi-language:EN-GB;mso-bidi-font-weight:bold">
+			<font color="#008000">|Then the attributes</font><br>
+			dur: continuous.<br>
+			wage1: continuous.<br>
+			wage2: continuous.<br>
+			wage3: continuous.<br>
+			cola: tc, none, tcf.<br>
+			hours: continuous.<br>
+			pension: empl contr, ret allw, none.<br>
+			stby_pay: continuous.<br>
+			shift_diff: continuous.<br>
+			educ_allw: yes, no.<br>
+			holidays: continuous.<br>
+			vacation: average, generous, below average.<br>
+			lngtrm_disabil: yes, no.<br>
+			dntl_ins: half, none, full.</span></i></p>
+		<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+		<i style="mso-bidi-font-style:normal">
+			<span style="mso-ansi-language:EN-GB; mso-bidi-font-weight:bold" lang="EN-GB">bereavement: yes, no.<br>
+			empl_hplan: half, full, none.</span></i></p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+</div>
+<p>&nbsp;</p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 72.55pt">
+	<span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN-GB">&nbsp;</span><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">Content of 
+the '.data' file:</span></i></p></li>
+</ul>
+<div align="center">
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 72.55pt">&nbsp;</p>
+	<table border="1" width="481" height="103">
+		<tr>
+			<td height="103" width="481"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="mso-ansi-language:EN-GB;mso-bidi-font-weight:bold">
+			2,5.0,4.0,?,none,37,?,?,5,no,11,below average,yes,full,yes,full,good<br>
+			3,2.0,2.5,?,?,35,none,?,?,?,10,average,?,?,yes,full,bad<br>
+			3,4.5,4.5,5.0,none,40,?,?,?,no,11,average,?,half,?,?,good<br>
+			3,3.0,2.0,2.5,tc,40,none,?,5,no,10,below 
+			average,yes,half,yes,full,bad</span></i></td>
+		</tr>
+	</table>
+</div>
+&nbsp;
+
+<!--<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 72.55pt">
+<i><span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+</span></i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<br>
+&nbsp;</span></p>-->
+
+
+
+
+
+
+<!------------------------------------------------------------------------>
+<!------------------------------ WEKA DATA FILE FORMAT  ------------------>
+<!------------------------------------------------------------------------>
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">WEKA 
+DATA FILE FORMAT</span></b></h3>
+<!--<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>-->
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The weak 
+data files must have in the following format: &nbsp;</span></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Headline</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">.
+	</span><span lang="EN-GB">The relation name is defined as the first line in 
+	the ARFF file. </span><span lang="ES-TRAD">The format is:</span></p></li>
+</ul>
+<blockquote>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<b><span lang="EN-GB" style="font-family: Times New Roman">@ relation</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	&lt;name-of-relation&gt; </span></p>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB">where &lt;relation-name&gt; is a string. The string must be 
+	quoted if the name includes spaces.</span></p>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Declaration of attributes</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">.
+	</span><span lang="EN-GB">Attribute declarations take the form of an ordered 
+	sequence of <i>@attribute</i> statements. Each attribute in the data set has 
+	its own <i>@attribute</i> statement which uniquely defines the name of that 
+	attribute and it's data type. The order the attributes are declared 
+	indicates the column position in the data section of the file. For example, 
+	if an attribute is the third one declared then Weka expects that all that 
+	attributes values will be found in the third comma delimited column. </span>
+	</p></li>
+</ul>
+<p style="text-indent:18.0pt"><span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The format for the 
+	<i>@attribute</i> statement is: </span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @ attribute</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	&lt;attribute-name&gt; &lt;datatype&gt;</span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where the <i>&lt;attribute-name&gt;</i> must start with an 
+	alphabetic character. If spaces are to be included in the name then the 
+	entire name must be quoted.</span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The <i>&lt;datatype&gt;</i> can be any of the four types 
+	currently (version 3.2.1) supported by Weka:</span></p>
+<blockquote>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">1)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">NUMERIC or REAL.</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+		Numeric attribute can be real numbers.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">2)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">INTEGER.</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+		Integer attribute can be integer numbers.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">3)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">DATE</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">. 
+		Date attribute </span><span lang="EN-GB">is an optional string 
+		specifying how date values should be parsed and printed. The default 
+		format string accepts the ISO-8601 combined date and time format: &quot;yyyy-MM-dd'T'HH:mm:ss&quot;.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">4)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">STRING.</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		</span><span lang="EN-GB">String attributes allow us to create 
+		attributes containing arbitrary textual values.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 53.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">5)<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">ENUMERATE.</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+		Enumerate attribute consists of a set of possible values separated by 
+		commas (Characters or strings), which can take the attribute. For 
+		example, if we have an attribute that indicates the time podr'&#305;a 
+		Express: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @ attribute time {sunny, rainy, cloudy}</span></p>
+	</blockquote>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Section data</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">. 
+	The </span><span lang="EN-GB">data section of the file contains the data 
+	declaration line and the actual instance lines. The <b>@data</b> declaration 
+	is a single line denoting the start of the data segment in the file. The 
+	format is:</span></p></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">@ 
+	data </span></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">X11, 
+	x12, ... , X1N </span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">X21, 
+	x22, ... , X2N </span></p>
+<blockquote>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify"><span lang="EN-GB">Each instance is represented on a single line, with carriage returns 
+			denoting the end of the instance. Attribute values for each instance 
+			are delimited by commas. They must appear in the order that they 
+			were declared in the header section (i.e. the data corresponding to 
+			the nth @attribute declaration is always the nth field of the 
+			attribute). </span></p>
+	</blockquote>
+</blockquote>
+<p style="text-align:justify;text-indent:35.4pt"><span lang="EN-GB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	Missing values are represented by a single question mark, as in: </span></p>
+<blockquote>
+	<pre style="text-align: justify; tab-stops: 45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt; font-size: 10.0pt; font-family: Courier New; margin-left: 0cm; margin-right: 0cm; margin-top: 0cm; margin-bottom: .0001pt"><span lang="EN-GB" style="font-size: 12.0pt; font-family: Times New Roman">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;">@data</span></pre>
+	<pre style="text-align: justify; tab-stops: 45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt; font-size: 10.0pt; font-family: Courier New; margin-left: 0cm; margin-right: 0cm; margin-top: 0cm; margin-bottom: .0001pt"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;4.4,?,1.5,?,Iris-setosa</span></pre>
+	<pre style="text-align: justify; tab-stops: 45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt; font-size: 10.0pt; font-family: Courier New; margin-left: 0cm; margin-right: 0cm; margin-top: 0cm; margin-bottom: .0001pt">&nbsp;</pre>
+	<pre style="text-align: justify; tab-stops: 45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt; font-size: 10.0pt; font-family: Courier New; margin-left: 0cm; margin-right: 0cm; margin-top: 0cm; margin-bottom: .0001pt">&nbsp;</pre>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Some of 
+the specifications of this format are:</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<blockquote>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	name of the relationship and the attributes are string type. This string 
+	type is same than string type used on Java.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">If any 
+	name contains spaces it is necessary to include double quote.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">If you 
+	need to indicate a missing values, you have to use symbol '?'.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span><span lang="EN-GB" style="font-family: Times New Roman">The 
+	separation symbol for decimals numbers is a point instead of a comma.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	separation symbol for data in section @ data is comma.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span><span lang="EN-GB">A % symbol means that the remainder of the 
+	line should be considered as a comment.</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 35.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+	files are stores, by default, with the extension &quot;.arff&#8221;.</span></p>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The WEKA 
+data files must have the following format:</span></b></p>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<div align="center">
+<table border="1" width="307" height="196">
+	<tr>
+		<td height="196" width="307">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">@relation 
+			&lt;relation-name&gt;<br>
+			@attribute &lt;attribute-name-1&gt; &lt;datatype&gt;<br>
+			...<br>
+			@attribute &lt;attribute-name-N&gt; &lt;datatype&gt;<br>
+			@data<br>
+			value<sub>11</sub>,value<sub>12</sub>,value<sub>1N</sub><br>
+			...<br>
+			value<sub>M1</sub>,value<sub>M2</sub>,value<sub>MN</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;color:#003366;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></td>
+	</tr>
+</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.9pt">
+&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid WEKA file is:</span></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 70.9pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="309" height="301">
+		<tr>
+			<td height="295" width="309">
+			<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+    auto;mso-pagination:widow-orphan;mso-hyphenate:auto">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;
+    mso-bidi-language:AR-SA;mso-bidi-font-weight:bold"><font color="#008000">% Comment</font><o:p></o:p></span></i></p>
+			<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+    auto;mso-pagination:widow-orphan;mso-hyphenate:auto">
+			<i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">@relation weather<br>
+			@attribute outlook sunny, overcast, rainy<br>
+			@attribute temperature real<br>
+			@attribute humidity real<br>
+			@attribute windy TRUE, FALSE<br>
+			@attribute play yes, no<br>
+			@data<br>
+			sunny,85,85,FALSE,no<br>
+			sunny,80,90,TRUE,no<br>
+			overcast,83,86,FALSE,yes<br>
+			rainy,70,96,FALSE,yes<br>
+			rainy,68,80,FALSE,yes</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;color:#003366;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></p>
+			</td>
+		</tr>
+	</table>
+</div>
+<!--<p class="MsoNormal" style="text-align: justify; margin-left: 70.9pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<br>
+&nbsp;</span></p>-->
+
+<p><br></p>
+
+<!------------------------------------------------------------------------>
+<!------------------------------ EXCELL DATA FILE FORMAT  ---------------->
+<!------------------------------------------------------------------------>
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">EXCEL 
+DATA FILE FORMAT</span></b></h3>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman">Microsoft Excel is a 
+spreadsheet program written and distributed by Microsoft. It is currently the 
+most widely used spreadsheet for operative systems Microsoft Windows and Apple 
+Macintosh. It is integrated as part of Microsoft Office.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman">A spreadsheet is a 
+program that allows you to manipulate numerical and alphanumeric data. 
+Spreadsheets are arranged in rows and columns. The intersection of a row/column 
+is called cell</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Each cell 
+can contain data or a formula that can refer to the contents of other cells. A 
+spreadsheet contains 256 columns, which are labelled with letters (from A to IV) 
+and the rows with numbers (from 1 to 65.536), making a total of 16.777.216 cells 
+by spreadsheet. <br>
+<br>
+Because of the versatility of modern spreadsheets, they are used to sometimes to 
+make smaller databases, reports, and other uses. </span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+<br>
+Microsoft Excel format has extension&nbsp; &quot;.xls&quot;.</span></p>
+<p class="MsoNormal" style="text-align: justify; margin-bottom: 12.0pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid EXCEL file is:</span></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-bottom: 12.0pt">
+<img border="0" src="imag/excel_img.jpg" width="220" height="274"></p>
+
+
+
+<!------------------------------------------------------------------------>
+<!-------------------------------- DIFF DATA FILE FORMAT  ---------------->
+<!------------------------------------------------------------------------>
+
+
+<div class="Section1">
+	<h3 style="text-align: center"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; ">DIF 
+	DATA FILE FORMAT</span></b></h3>
+	<p class="MsoBodyText" style="text-align:justify"><b><i>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: #003366">&nbsp;</span></i></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">DIF 
+	(Data Interchange Format) is a text file that is used to import/export 
+	between different spreadsheet programs such as Excel, StarCalc, dBase, and 
+	so on. </span></p>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">This 
+	type of format is stored with the extension &quot;. dif&quot;</span></p>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+	<b>The characteristics of these files are the following</b>:</span></p>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt">
+		<span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN-GB">&nbsp;</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	format consist of a header followed by a data block. The header starts with 
+	a file with ASCII text format.</span></p></li>
+	</ul>
+	<p class="MsoNormal" style="margin-left: 70.9pt">
+	<img border="0" src="imag/dif_img1.gif" width="128" height="272" align="middle"><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">string</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	is any string, it is often the filename or another information. </span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">columns</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	is the number of columns of a excel spreadsheet by means of name. </span>
+		</p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">rows</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	indicates the number of rows of a excel spreadsheet by means of name.</span></p>
+	</blockquote>
+	<p class="MsoNormal">
+	<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+	&nbsp;</span></p>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	header ends with the following:</span></p></li>
+	</ul></div><i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border="0" src="imag/dif_img2.gif" width="92" height="86"><div class="Section1">
+	</p>
+
+	<p class="MsoNormal">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This 
+	header is followed by the cells and records of the spreadsheet with the 
+	information. </span></p>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	structure of the data record has the following format:</span></p></li>
+	</ul>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt"><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<img border="0" src="imag/dif_img3.gif" width="176" height="86"></span></p>
+	<p class="MsoNormal" style="margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span><span style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">where
+	<b>data-type</b> admits various types: SPECIAL, NUMERIC, and STRING, 
+	represented &nbsp;by -1, 0 and 1 respectively. <br>
+	&nbsp;</span></p><p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 71.4pt">
+	<span lang="EN-GB" style="font-family: Courier New">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; font-weight:700">
+	SPECIAL type</span></p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img border="0" src="imag/dif_img4.gif" width="80" height="224"></p>
+
+	<p class="MsoNormal" style="margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where BOT and EOD are strings without quotation marks. BOT represents the 
+	start of the table and EOD the end of data section.</span></p>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; margin-left: 71.4pt">
+	<span style="font-family: Courier New">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span><span style="font-family: Times New Roman; font-weight:700">NUMERIC type</span></p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img border="0" src="imag/dif_img5.gif" width="176" height="80"></p>
+
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	where value-indicator indicates the data type stored in data:</span></p>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>TRUE:1.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>FALSE: 0.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>V: any numerical value.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>NA: missing value.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>ERROR: 0.</span></p>
+	</blockquote>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; margin-left: 71.4pt">
+	<span style="font-family: Courier New">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-style:normal; font-variant:normal; font-size:7.0pt; font-family:Times New Roman; font-weight:700">
+	</span></span><span style="font-family: Times New Roman; font-weight:700">STRING type</span></p></p>
+
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<img border="0" src="imag/dif_img6.gif" width="176" height="80"></span></p>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where string is any text characters.</span></p>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></div>
+<div class="Section2">
+	<p class="MsoNormal" style="margin-bottom: 12.0pt"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+	example of a valid DIF file is the following:</span></b><p class="MsoNormal" style="margin-bottom: 12.0pt">&nbsp;</div>
+<div align="center">
+	<table border="1" width="201" id="table11">
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">Month</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">Week</font></span></td>
+			<td width="45"><span lang="EN-GB"><font size="3">Vehicle</font></span></td>
+			<td width="51"><span lang="EN-GB"><font size="3">Quantity</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45"><span lang="EN-GB"><font size="3">Auto</font></span></td>
+			<td width="51"><span lang="EN-GB"><font size="3">105.000</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45">Truck</td>
+			<td width="51"><span lang="EN-GB"><font size="3">1.050</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45">Bus</td>
+			<td width="51"><span lang="EN-GB"><font size="3">1.575</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45">Truck</td>
+			<td width="51"><span lang="EN-GB"><font size="3">2.100</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45">Motorbike</td>
+			<td width="51"><span lang="EN-GB"><font size="3">583</font></span></td>
+		</tr>
+	</table>
+	<p>&nbsp;</div>
+<p class="MsoNormal" style="margin-bottom: 12.0pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The internal format of DIF file generated is the following:</span></b></p>
+<p class="MsoNormal" style="margin-bottom: 12.0pt">&nbsp;</p>
+<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table9">
+	<tr>
+		<td width="185" valign="top" style="width: 138.45pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">TABLE</font></span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><font size="3"><br>
+		0,1<br>
+		&#8221;EXCEL&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">VECTORS</font></span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><font size="3"><br>
+		0,6<br>
+		&#8221;&#8221;<br>
+		<b>TUPLES</b><br>
+		0,4<br>
+		&#8221;&#8221;<br>
+		<b>DATA</b><br>
+		0,0<i><br>
+		</i>&#8221;&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><b><span lang="EN-GB"><font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b><span lang="EN-GB"><font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;Month&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;Wek&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;Vehicle&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;Cantity&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><b><span lang="EN-GB"><font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b><span lang="EN-GB"><font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&nbsp;</font></span></b></td>
+		<td width="185" valign="top" style="width: 138.45pt; border-left: medium none; border-right: medium none; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Car&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,105.000</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Truck&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1.050</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Bus&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1.575</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&nbsp;</font></span></b></td>
+		<td width="185" valign="top" style="width: 138.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Truck&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,2.100</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font><b><font size="3"> </font></b></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Motorbike&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,583</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">EOD</font></span></b></td>
+	</tr>
+</table>
+<!--<p class="MsoNormal" style="margin-bottom: 12.0pt">&nbsp;</p>
+<![if !mso]><![endif]>&nbsp;<p><b><i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+&nbsp;</p>-->
+<!--
+<p class="MsoNormal" style="margin-bottom: 12.0pt">
+<span style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-left: 36.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+-->
+
+<p><br></p>
+
+
+<!------------------------------------------------------------------------>
+<!------------------------------- XML DATA FILE FORMAT  ------------------>
+<!------------------------------------------------------------------------>
+
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">XML DATA 
+FILE FORMAT</span></b></h3>
+<!--<p class="MsoNormal">&nbsp;</p>-->
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">XML </span>
+<span lang="EN-GB">(Extensible Markup Language) is</span><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+a set of rules to define semantic labels that organize a document in different 
+parts. XML is a meta-language that defines the syntax to define other structured 
+&nbsp;label languages. </span></p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">We will 
+explain the XML format to be followed to convert data file correctly:</span></p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	first line must follow the next structure:</span></p></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<font color="#008000">
+<span lang="EN-GB" style="font-family: Times New Roman; font-style:italic">&nbsp;&nbsp;&nbsp; &lt;? Xml version = 
+	&quot;1.0&quot; encoding = &quot;UTF-8&quot; standalone = &quot;yes&quot;&gt; 
+</span></font></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>&nbsp;&nbsp;&nbsp;
+	You can have several attributes, some mandatory and others are not:</span></p>
+<blockquote>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<i>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black; font-weight:700">version</span></i><span lang="EN-GB" style="font-family: Times New Roman; color: black">: 
+		indicates XML version used in the document. This field is compulsory.</span></p>
+		<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span style="font-family: Times New Roman" lang="en-gb"><i><b>encoding:</b></i> 
+		indicates the way that has been encoded document. The default option is 
+		UTF-8, but could be others, as UTF-16, US-ASCII, ISO-8859-1, etc. This 
+		field is not obligatory.</span></p>
+		<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<i>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<b>standalone</b>:</span></i><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		</span><span lang="EN-GB">specifies whether further documents, such as a DTD, 
+		are required to process the document. The default value is &quot;no&quot;.</span></p>
+	</blockquote>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="color: black">XML documents must follow a 
+		hierarchical structure by means of labels. XML elements can contain 
+		other elements. Elements may also have <b>attributes</b>, these are 
+		always expressed as name-value pairs in the element's open tag.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN">A well-formed document must conform to the 
+	following rules</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">:</span></li>
+</ul>
+<blockquote>
+	<blockquote>
+		<ul>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			Element names are case sensitive, that is, the following is a 
+			well-formed matching pair: &lt;step&gt;&#8230;&lt;step&gt;, whereas this is not 
+			&lt;step&gt;&#8230;&lt;/step&gt;.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN">Non-empty elements are delimited by both a start-tag 
+			and an end-tag.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN">Attribute values must always be 
+			quoted, using single or double quotes, and each attribute name 
+			should appear only once in any element.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			All spaces and carriage returns are taken into account in the 
+			elements.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			The element names must not begin with the letters &#8220;xml&#8221;.</span></p>
+			</li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			The element names should not use character &quot;:&quot;.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">Although it is permissible to use the characters &quot;.&quot; And &quot;-&quot; in 
+			element names, it is not recommended because the application 
+			processing &nbsp;XML file may interpret these signs as operators. 
+			&nbsp;Therefore these characters will be replaced in our tool <br>by 
+			the character &quot;_&#8221;.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span style="font-style:normal; font-variant:normal; font-weight:normal; font-size:7.0pt; font-family:Times New Roman; color:black" lang="EN-GB">&nbsp;</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">It 
+			should not be used characters &quot;\&quot; in the names of elements.</span></p>
+			</li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			The names may contain any alphanumeric character, but they can not 
+			start with a numerical or punctuation character.</span></p></li>
+		</ul>
+	</blockquote>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN">Special characters can be represented either 
+	using entity references, or by means of numeric character references. An 
+	example of a numeric character reference is &quot;</span><code style="font-family: Courier New"><span lang="EN" style="font-size: 10.0pt">&amp;#x20AC;</span></code><span lang="EN">&quot;, 
+	which refers to the Euro symbol by means of its Unicode codepoint in 
+	hexadecimal.</span></li>
+</ul>
+<blockquote>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.0pt; background: #F8FCFF">
+	<span lang="EN" style="font-family: Times New Roman">An entity reference is 
+	a
+	placeholder 
+	that represents that entity. It consists of the entity's name preceded by an
+			ampersand 
+	(&quot;</span><span lang="EN" style="font-size: 10.0pt; font-family: Courier New">&amp;</span><span lang="EN" style="font-family: Times New Roman">&quot;) 
+	and followed by a
+			semicolon 
+	(&quot;</span><span lang="EN" style="font-size: 10.0pt; font-family: Courier New">;</span><span lang="EN" style="font-family: Times New Roman">&quot;). 
+	XML has five
+			predeclared 
+	entities:</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">&amp; (ampersand) is &amp;amp;</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">&lt; (less than) is &amp;lt;</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">&gt; (greater than) is &amp;gt;</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">' (apostrophe) is &amp;apos;</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">&quot; (quotation mark) is &amp;quot;</span></p>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN">Comments can be placed 
+		anywhere in the tree, including in the text if the content of the 
+		element is text. XML comments start with <b>&lt;!-</b> and end with <b>-&gt;.</b></span></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify"><i>
+<span lang="EN" style="color: gray">&nbsp;</span><span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><font color="#003366"><span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman">
+</span></font></i><font color="#008000"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;!- This a comment -&gt;</span></i></font></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN">XML requires that elements be properly nested, that is, 
+		elements may never overlap. For example, the code below is not 
+		well-formed XML, because the &lt;<i>em&gt;</i> and &lt;<i>strong&gt;</i> elements 
+		overlap:</span></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<font color="#008000"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!- WRONG! NOT WELL-FORMED XML !-&gt;</span></i></font></p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="en-gb"><font color="#008000"><i>
+<span style="font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;p&gt;Normal&lt;em&gt;emphasized&lt;strong&gt;strong emphasized&lt;/em&gt;strong&lt;/strong&gt;&lt;/p&gt;</span></i></font></span><span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN">&nbsp;&nbsp;
+	</span><i>
+<span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><font color="#008000"><span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman; ">
+</span></font>
+<span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman; color: #008000">
+	</span></i></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">All 
+	XML documents must contain a single tag pair to define the root element. All 
+	other elements must be nested within the root element. All elements can have 
+	sub (children) elements. Sub elements must be in pairs and correctly nested 
+	within their parent element.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	label &lt;root&gt; indicates the begin of the data. This label can have any name. 
+	If all the children of &lt;root&gt; do not have the same name on the label &lt;row&gt;, 
+	the user must enter the name of this tag, otherwise it is assumed that all 
+	children have the same value.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Each 
+	label &lt;row&gt; is parent of as labels as attributes exist. The name on the 
+	label of each of these children will be the attribute name, and the value of 
+	the label is the data value of the attribute.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">There 
+	are as labels &lt;row&gt; as rows of data.</span></li>
+</ul>
+<p>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<b>One XML format valid to Keel is the following:</b></span></p>
+<p>
+&nbsp;</p>
+<div align="center">
+<table border="1" width="513" height="307">
+	<tr>
+		<td height="307" width="513">
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; 
+standalone=&quot;yes&quot;?&gt;<br>
+&lt;root&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;row1&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-1&gt; attribute-value-11 
+&lt;/attribute-name-1&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-2&gt; attribute-value-12 
+&lt;/attribute-name-2&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-N&gt; attribute-value-1N 
+&lt;/attribute-name-N&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/row1&gt;<br>
+...<br>
+&lt;rowM&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-1&gt; attribute-value-M1 
+&lt;/attribute-name-1&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-2&gt; attribute-value-M2 
+&lt;/attribute-name-2&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-N&gt; attribute-value-MN 
+&lt;/attribute-name-N&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/rowM&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;/root&gt;</span></i><i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;color:#003366;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+</div>
+</p>
+
+<p class="MsoNormal">&nbsp;</p>
+<![if !mso]><![endif]>&nbsp;<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">Another 
+XML format valid to Keel is the following:</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<br>
+&nbsp;</span><div align="center">
+	<table border="1" width="538" height="300">
+	<tr>
+		<td height="300" width="538">
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; 
+standalone=&quot;yes&quot;?&gt;<br>
+&lt;root&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;row1&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-1&quot;&gt;attribute-value-11 &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-2&quot;&gt;attribute-value-12 &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-N&quot;&gt;attribute-value-1N &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/row1&gt;<br>
+...<br>
+&lt;rowM&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-1&quot;&gt;attribute-value-M1 &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-2&quot;&gt;attribute-value-M2 &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-N&quot;&gt;attribute-value-MN &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/rowM&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+    auto;mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;/root&gt;</span></i><span lang="ES-TRAD"><o:p>&nbsp;</o:p></span></p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+</div>
+<p><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+<br>
+</span><b><i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid XML file is the following:</span></i></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+&nbsp;</span></p>
+<p><span lang="EN-GB" style="font-family: Times New Roman; color: black">In this 
+example there are:</span></p>
+<ul>
+	<li><span lang="EN-GB" style="font-family: Times New Roman">9 attributes: id, 
+	course, name, summary, numbering, disableprintg, customtitles, timecreated 
+	and timemodified.</span></li>
+	<li class="MsoNormal" style="color: black; text-align: justify; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman">2 instances with 
+	these 9 attributes.</span></li>
+	<li class="MsoNormal" style="color: black; text-align: justify; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman">The main label is 
+	&lt;root&gt;</span></li>
+	<li class="MsoNormal" style="color: black; text-align: justify; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman">The label &lt;customer&gt; 
+	contains each instance. In xml data file export to our tool, the name of 
+	this label will be the same than the name of data relation stores in keel 
+	format.</span></li>
+</ul>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>
+<div align="center">
+<table border="1" width="467" height="446">
+	<tr>
+		<td height="446" width="467">
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>
+&lt;root&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;customer&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;id&gt;5&lt;/id&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;course&gt;66&lt;/course&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;name&gt;My book&lt;/name&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;summary&gt;Book summary&lt;/summary&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;numbering&gt;2&lt;/numbering&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;disableprinting&gt;0&lt;/disableprinting&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;customtitles&gt;1&lt;/customtitles&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;timecreated&gt;1114095924&lt;/timecreated&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;timemodified&gt;1114097355&lt;/timemodified&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/customer&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;customer&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;id&gt;6&lt;/id&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;course&gt;207&lt;/course&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;name&gt;My book&lt;/name&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;summary&gt;A test summary&lt;/summary&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;numbering&gt;1&lt;/numbering&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;disableprinting&gt;0&lt;/disableprinting&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;customtitles&gt;0&lt;/customtitles&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;timecreated&gt;1114095966&lt;/timecreated&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;timemodified&gt;1114095966&lt;/timemodified&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/customer&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;/root&gt;</span></i><i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;color:#003366;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></p>
+		</td>
+	</tr>
+</table>
+</div>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+following example has another xml structure, but the same data than the previous 
+example. You can see that there are 9 attributes and 2 instances of this.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+&nbsp;</p>
+<div align="center">
+<table border="1" width="488" height="457">
+	<tr>
+		<td height="457" width="488">
+<p class="MsoNormal" style="margin-left:18.45pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>
+&lt;root&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:18.45pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;row&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;id&quot;&gt;5&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;course&quot;&gt;66&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field name=&quot;name&quot;&gt;My 
+book&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;summary&quot;&gt;Book summary&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;numbering&quot;&gt;2&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;disableprinting&quot;&gt;0&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;customtitles&quot;&gt;1&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;timecreated&quot;&gt;1114095924&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;timemodified&quot;&gt;1114097355&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:18.45pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;/row&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:18.45pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;row&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;id&quot;&gt;6&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;course&quot;&gt;207&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field name=&quot;name&quot;&gt;My 
+book&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;summary&quot;&gt;A test summary&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;numbering&quot;&gt;1&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;disableprinting&quot;&gt;0&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;customtitles&quot;&gt;0&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;timecreated&quot;&gt;1114095966&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;timemodified&quot;&gt;1114095966&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:18.45pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;/row&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="text-indent:18.45pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/root&gt;</span></i></p></td>
+	</tr>
+</table>
+</div>
+
+<!--<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal">&nbsp;</p>-->
+
+<p><br></p>
+
+<!------------------------------------------------------------------------>
+<!------------------------------ HTML DATA FILE FORMAT  ------------------>
+<!------------------------------------------------------------------------>
+
+<h3 style="text-align: center">
+<span style="font-family: Times New Roman" lang="en-gb">HTML</span><b><span lang="EN-GB" style="font-family: Times New Roman; "> DATA 
+FILE FORMAT</span></b></h3>
+<!--<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>-->
+<p class="MsoNormal" style="text-align: justify"><font face="Times New Roman">
+<span lang="EN">HTML&nbsp; (Hypertext Markup Language)&nbsp; is the predominant 
+markup language for web pages. It provides a means to describe the structure of 
+text-based information in a document (denoting certain text as headings, 
+paragraphs, lists, and so on) and to supplement that text with <i>interactive 
+forms</i>, embedded <i>images</i>, and other objects. HTML is written in the 
+form of labels (known as tags), surrounded by angle brackets.</span></font></p>
+<p class="MsoNormal" style="text-align: justify"><font face="Times New Roman">
+<span lang="EN">&nbsp;</span></font></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">HTML is an 
+application of SGML according to the international standard ISO 8879. XHTML is a 
+reformulation of HTML 4 as an XML application 1.0, and allows compatibility with 
+user agents already admitted HTML 4 following a set of rules. </span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black; font-weight: 700">
+The basic HTML tags &nbsp;are:</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<b>&lt;HTML&gt;</b>: is the label that defines the beginning of the document.</span></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<b>&lt;HEAD&gt;</b>: defines the header of the document, this header normally
+		</span><span lang="en-gb"><font face="Times New Roman">c</font></span><font face="Times New Roman"><span lang="EN-GB">ontains 
+		information about the page such as the TITLE, META tags for proper 
+		Search Engine indexing, STYLE tags, which determine the page layout, and 
+		JavaScript coding for special effects. </span></font>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">Within the header &lt;HEAD&gt; we find:</span><ul type="disc">
+			<li>
+			<p class="MsoNormal" style="text-align: justify">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">&lt;TITLE&gt;: defines the title of the page. 
+			</span><font face="Times New Roman"><span lang="EN-GB">This will be visible 
+			in the title bar of the viewers&#8217; browser.</span></font></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">&lt;LINK&gt;: defines some advanced features, for example style sheets 
+			used for the design of the page.</span></li>
+		</ul></li>
+		<li>
+		<p class="MsoNormal" style="text-align: justify">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<b>&lt;BODY&gt;</b>: contains the main content or body of the paper,
+		</span><font face="Times New Roman"><span lang="EN-GB">this is where you will 
+		begin writing your document and placing your HTML codes. It defines 
+		common<b> </b></span></font>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">properties to the entire page, such as background colour and margins. 
+		Within the body can &lt;BODY&gt; you can use a great variety labels. The label 
+		which we use on our tool is &lt;TABLE&gt;: This label defines the beginning of 
+		a table (the &lt;TR&gt; represents rows and &nbsp;&lt;TD&gt; represents cells).</span></li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;<b>The 
+format explained above corresponds to an HTML page is :</b></span></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="176" height="209" id="table1">
+		<tr>
+			<td height="209" width="166">
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&lt;HTML&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;HEAD&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			...</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/HEAD&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;BODY&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			&lt;TABLE&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			...</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			&lt;/TABLE&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			...</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/BODY&gt;</font></p>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<font face="Times New Roman">&lt;/HTML&gt;</font></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 18.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Tag 
+&lt;TABLE&gt; </span></b></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN" style="font-family: Times New Roman; color: black">The HTML 
+table model allows authors to arrange data -- text, preformatted text, images, 
+links, forms, form fields, other tables, etc. -- into rows and columns of cells.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Tables are 
+defined with the &lt;table&gt; tag. A table is divided into rows (with the &lt;tr&gt; tag), 
+and each row is divided into data cells (with the &lt;td&gt; tag). The letters td 
+stands for &quot;table data,&quot; which is the content of a data cell. A data cell can 
+contain text, images, lists, paragraphs, forms, horizontal rules, tables, etc.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Different 
+Tags which will define the structure of the table for obtaining a valid data 
+file are:</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">TR: 
+	The label &lt;TR&gt; will allow us to insert rows in the table. </span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">TH: 
+	The label &lt;TH&gt; will allow us to define the table head table.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">TD: 
+	The label &lt;TD&gt; will allow us to insert cells in each row. We can insert any 
+	element: pictures, lists, formatted text and even other tables.</span></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<p class="MsoNormal"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The HTML 
+format valid to Keel is the following:</span></b></p>
+<p class="MsoNormal">&nbsp;</p>
+<div align="center">
+	<table border="1" width="295" height="354" id="table2">
+		<tr>
+			<td height="354" width="285">
+			<p style="margin-top: 0; margin-bottom: 0">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			&lt;table&gt;</span></p>
+			<blockquote>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;tr&gt;</span></p>
+				<blockquote>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;th&gt;Header 1&lt;/th&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;th&gt;Header 2&lt;/th&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;th&gt;Header 3&lt;/th&gt;</span></p>
+				</blockquote>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;/tr&gt;</span></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;tr&gt;</span></p>
+				<blockquote>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 1&lt;/td&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 2&lt;/td&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 3&lt;/td&gt;</span></p>
+				</blockquote>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;/tr&gt;</span></p>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;tr&gt;</span></p>
+				<blockquote>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 4&lt;/td&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 5&lt;/td&gt;</span></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					&lt;td&gt;Value 6&lt;/td&gt;</span></p>
+				</blockquote>
+				<p style="margin-top: 0; margin-bottom: 0">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				&lt;/tr&gt;</span></p>
+			</blockquote>
+			<p style="margin-top: 0; margin-bottom: 0">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			&lt;/table&gt;</span></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-indent: 18.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid HTML file is the following:</span></b></p>
+<p class="MsoNormal" style="margin-left: 70.9pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="760" height="597" id="table3">
+		<tr>
+			<td height="597" width="750">
+			<p class="MsoNormal" style="margin-left: 70.9pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			<i>&lt;html&gt;</i></span></p>
+			<blockquote>
+				<p class="MsoNormal" style="margin-left: 70.9pt">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				<i>&lt;head&gt;</i></span></p>
+				<blockquote>
+					<p class="MsoNormal" style="margin-left: 70.9pt">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					<i>&lt;h1 align=&quot;center&quot;&gt;VEHICLES&lt;/h1&gt;</i></span></p>
+				</blockquote>
+				<p class="MsoNormal" style="margin-left: 70.9pt">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				<i>&lt;/head&gt;</i></span></p>
+				<p class="MsoNormal" style="margin-left: 70.9pt">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				<i>&lt;body&gt;</i></span></p>
+				<blockquote>
+					<p class="MsoNormal" style="margin-left: 70.9pt">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					<i>&lt;table border=&quot;1&quot; cellspacing=&quot;1&quot; cellpadding=&quot;0&quot;&gt;</i></span></p>
+					<blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr align=&quot;center&quot;&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Month&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Week&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Vehicle&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Amount&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;January&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Car&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;105.0&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;January&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Truck&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1.05&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;January&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;MotorBike&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1.575&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;tr&gt;</i></span></p>
+						<blockquote>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;January&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;1&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;Car&lt;/td&gt;</i></span></p>
+							<p class="MsoNormal" style="margin-left: 70.9pt">
+							<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+							<i>&lt;td&gt;2.1&lt;/td&gt;</i></span></p>
+						</blockquote>
+						<p class="MsoNormal" style="margin-left: 70.9pt">
+						<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+						<i>&lt;/tr&gt;</i></span></p>
+					</blockquote>
+					<p class="MsoNormal" style="margin-left: 70.9pt">
+					<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+					<i>&lt;/table&gt;</i></span></p>
+				</blockquote>
+				<p class="MsoNormal" style="margin-left: 70.9pt">
+				<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+				<i>&lt;/body&gt;</i></span></p>
+			</blockquote>
+			<p class="MsoNormal" style="margin-left: 70.9pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			<i>&lt;/html&gt;</i></span></p>
+			<p>&nbsp;</td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="margin-left: 70.9pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+&nbsp;</span></p>
+
+</body>
+
+</html>

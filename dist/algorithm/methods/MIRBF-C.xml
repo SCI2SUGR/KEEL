@@ -1,0 +1,16 @@
+<algorithm_specification>
+  <name>MIRBF</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Method</name>
+    <type>list</type>
+    <domain>
+      <item>Arithmetic Average</item>
+      <item>Geometric Average</item>
+      <item>Max Probability of Positive Bag</item>
+    </domain>
+    <default>Arithmetic Average</default>
+  </parameter>
+</algorithm_specification>

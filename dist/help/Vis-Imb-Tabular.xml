@@ -1,0 +1,163 @@
+<method>
+
+	<name>StatTabularImb</name>
+
+	<reference>  
+
+<ref>A. Mart&#xED;nez, C. Rodr&#xED;guez and R. Guti&#xE9;rrez, Inferencia Estad&#xED;stica, un enfoque cl&#xE1;sico,  Ed. Piramide.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical method for comparing classification methods performance.</type>
+
+		<objective>Statistical comparing of the performance of a classification model method. Statistical tests, like Wilcoxon signed ranks or Mann-Whitney u, are executed for comparing methods purposes.</objective>
+
+		<howWork>
+StatTabularImb is a method for comparing the performance of classification algorithms using statistics techniques. It can be used in k-folds cross validation training experiments.
+StatTabularImb is associated to the training and testing results of all of the models in an experiment that are to be compared. Once those models has been trained and tested, the StatGeneralImb takes place. 
+The process calculates the corresponding imbalanced measure for each of the partitions results. The statistical sample includes all of those imbalanced measures for each method to be compared.  
+</howWork>
+
+		<parameterSpec>  
+		Parameters:
+<param>Classification rate by algorithm and fold: YES or NO, this table is produced or not.</param>
+<param>Header size in previous table: number of lines in the title of each column. Null value means no header at all.</param>
+<param>Data used in previous table: TEST-TRAIN or ONLY-TEST, a table for test data and train data has to be produced or only for test data.</param>
+<param>Classification rate by algorithm, fold and class: YES or NO, this table is produced or not.</param>
+<param>Header size in previous table: number of lines in the title of each column. Null value means no header at all.</param>
+<param>Data used in previous table: TEST-TRAIN or ONLY-TEST, a table for test data and train data has to be produced or only for test data.</param>
+<param>Global Average and Variance: YES or NO, this table is produced or not.</param>
+<param>Header size in previous table: number of lines in the title of each column. Null value means no header at all.</param>
+<param>Data used in previous table: TEST-TRAIN or ONLY-TEST, a table for test data and train data has to be produced or only for test data.</param>
+<param>Confusion Matrix: YES or NO, this table is produced or not.</param>
+<param>Data used in previous table: TEST-TRAIN or ONLY-TEST, a table for test data and train data has to be produced or only for test data.</param>
+<param>imbalancedMeasure: The measure used in the method, usually coming from the imbalanced classification area</param>
+
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: ImbalancedClassification 
+Methods to compare: ClasC45 vs ClasKNN
+Dataset: pima
+Type of partitions: k-fold, k=5
+
+After the execution of RunKeel.jar we can see into the ./results/Vis-Imb-Tabular/TSTClas-C45vsClas-KNN/ folder the classification results for the tested classification method. There are the following files: pima_ByFoldByClassifier_s0.stat, pima_ByFoldByClassifierByClass_s0.stat, pima_ClasifADLinear_ConfussionMatrix_s0.stat, pima_ClasifADQuadratic_ConfussionMatrix_s0.stat, and Summary_s0.stat.
+
+File  pima_ByFoldByClassifier_s0.stat
+------------------------------------------------------
+Table: Classification rate by algorithm and by fold
+Dataset used: pima
+------------------------------------------------------
+
+TEST RESULTS
+
+pimaimb ,Clas-C45.pimaImb,Clas-C45.pimaImb,Clas-KNN.pimaImb,Clas-KNN.pimaImb
+,Area Under the ROC Curve,Not Classified,Area Under the ROC Curve,Not Classified
+Fold0,0.7240740741,0.0000000000,0.7240740741,0.0000000000
+Fold1,0.7120370370,0.0000000000,0.7120370370,0.0000000000
+Fold2,0.7105555556,0.0000000000,0.7105555556,0.0000000000
+Fold3,0.6785849057,0.0000000000,0.6785849057,0.0000000000
+Fold4,0.6808490566,0.0000000000,0.6808490566,0.0000000000
+
+TRAIN RESULTS
+
+pimaimb ,Clas-C45.pimaImb,Clas-C45.pimaImb,Clas-KNN.pimaImb,Clas-KNN.pimaImb
+,Area Under the ROC Curve,Not Classified,Area Under the ROC Curve,Not Classified
+Fold0,0.8667523364,0.0000000000,0.8667523364,0.0000000000
+Fold1,0.8424766355,0.0000000000,0.8424766355,0.0000000000
+Fold2,0.7876985981,0.0000000000,0.7876985981,0.0000000000
+Fold3,0.8408720930,0.0000000000,0.8408720930,0.0000000000
+Fold4,0.8207848837,0.0000000000,0.8207848837,0.0000000000
+
+
+
+
+File pima_ByFoldByClassifierByClass_s0.stat:
+--------------------------------------------------------------
+Table: Classification rate by fold, by algorithm and by class
+Dataset used: pimaimb 
+--------------------------------------------------------------
+
+TEST RESULTS
+
+pimaimb ,Clas-C45.pimaImb,Clas-C45.pimaImb,Clas-KNN.pimaImb,Clas-KNN.pimaImb
+,positive,negative,positive,negative
+Fold0,0.6481481481,0.8000000000,0.5370370370,0.7900000000
+Fold1,0.5740740741,0.8500000000,0.4629629630,0.7700000000
+Fold2,0.6111111111,0.8100000000,0.5555555556,0.8600000000
+Fold3,0.5471698113,0.8100000000,0.5471698113,0.8000000000
+Fold4,0.4716981132,0.8900000000,0.4905660377,0.8300000000
+
+TRAIN RESULTS
+
+pimaimb ,Clas-C45.pimaImb,Clas-C45.pimaImb,Clas-KNN.pimaImb,Clas-KNN.pimaImb
+,positive,negative,positive,negative
+Fold0,0.8785046729,0.8550000000,0.5280373832,0.7850000000
+Fold1,0.7149532710,0.9700000000,0.5420560748,0.7725000000
+Fold2,0.6728971963,0.9025000000,0.5560747664,0.7700000000
+Fold3,0.7767441860,0.9050000000,0.5581395349,0.8025000000
+Fold4,0.6790697674,0.9625000000,0.5348837209,0.8075000000
+
+
+
+File pima_Clas-KNN_ConfussionMatrix_s0.stat:
+---------------------------------------------------------
+CONFUSSION MATRIX. ALGORITHM: Clas-KNN.pimaImb
+---------------------------------------------------------
+
+TEST RESULTS
+,positive,negative
+positive,139,129
+negative,95,405
+
+TRAIN RESULTS
+,positive,negative
+positive,583,489
+negative,425,1575
+
+
+
+
+File pima_Clas-C45_ConfussionMatrix_s0.stat:
+---------------------------------------------------------
+CONFUSSION MATRIX. ALGORITHM: Clas-C45.pimaImb
+---------------------------------------------------------
+
+TEST RESULTS
+,positive,negative
+positive,153,115
+negative,84,416
+
+TRAIN RESULTS
+,positive,negative
+positive,798,274
+negative,162,1838
+
+
+
+File Summary_s0.stat:
+------------------------------------------------------
+Global Average and Variance
+------------------------------------------------------
+
+
+TEST RESULTS
+
+Dataset,Clas-C45.pimaImb,Clas-C45.pimaImb,Clas-C45.pimaImb,Clas-KNN.pimaImb,Clas-KNN.pimaImb,Clas-KNN.pimaImb
+,Average (Area Under the ROC Curve),Variance (Area Under the ROC Curve),Not Classified,Average (Area Under the ROC Curve),Variance (Area Under the ROC Curve),Not Classified
+pimaimb ,0.6827746331,0.0009336034,0.0000000000,0.6827746331,0.0009336034,0.0000000000
+
+TRAIN RESULTS
+
+Dataset,Clas-C45.pimaImb,Clas-C45.pimaImb,Clas-C45.pimaImb,Clas-KNN.pimaImb,Clas-KNN.pimaImb,Clas-KNN.pimaImb
+,Average (Area Under the ROC Curve),Variance (Area Under the ROC Curve),Not Classified,Average (Area Under the ROC Curve),Variance (Area Under the ROC Curve),Not Classified
+pimaimb ,0.7486930287,0.0072820048,0.0000000000,0.7486930287,0.0072820048,0.0000000000
+</example>
+
+</method>

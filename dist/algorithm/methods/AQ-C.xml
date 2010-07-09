@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>AQ</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Star_Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>disjuntSelector</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>NO</default>
+  </parameter>
+</algorithm_specification>

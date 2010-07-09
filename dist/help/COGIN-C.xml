@@ -1,0 +1,817 @@
+<method>
+
+	<name>Coverage-based genetic induction</name>
+
+	<reference>
+
+		<ref>D. P. Greene and S. F. Smith, "Competition-based induction of decision models from examples," Machine Learning 13(2-3), 229-257, 1993.</ref>
+	
+	</reference>	
+	
+	<generalDescription>
+
+		<type> In this approach, each individual codifies a rule, and the whole rule set is evolved simultaneously. Thus, rules should
+cooperate among them to get an optimal rule set jointly, and at
+the same time, rules compete against each other to survive in the population.</type>
+
+		<objective>It builds a set of rules by means of a genetic algorithm by means of a coevolutionary approach</objective>
+
+		<howWork>
+COGIN manages a variable number of
+rules, which are initialized randomly until they cover
+all the examples of the training set, making half of the
+conditions "don't care." It generates a new offspring
+population by randomly selecting two parents and ap545
+plying a one-point crossover. Then it applies a token
+competition to remove those rules that do not match any
+example already covered by better rules. The fitness is
+based on a linear combination of the entropy and the
+generality of the rule (number of active bits).
+
+		</howWork>
+
+		<parameterSpec>
+
+			<param>ProbMutation: Mutation probability</param>
+			<param>CrossoverRate: Frequency of crossover application</param>
+			<param>popSize: population size</param>
+			<param>ruleNumber: number of rules of each individual</param>
+			<param>stagnationLimit: maximum number of generations without improvement before restarting the process</param>
+			<param>generationLimit: maximum number of possible generations </param>
+			<param>SurvivorsPercent: percentage of survivors of the previous population when restarting</param>
+			<param>mutationRedRate: mutation reduced rate for the already generated part of the chromosome</param>
+			<param>crossoverRedRate: crossover reduced rate for the already generated part of the chromosome</param>
+			<param>AttributeOrder: considereder order for the attributes in the incremental learning process</param>
+			<param>incrementalStrategy: type of strategy used to add new features to the chromosomes</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+		Problem type: Classification
+		Method: COGIN
+		Dataset: wisconsin
+		Parameters: default values
+
+		Input data:
+		Training set: wisconsin-10-1tra.dat
+		Test set: wisconsin-10-1tst.dat
+
+
+		Output data:
+		Training set: result0.tra
+		Test set: result0.tst
+
+
+
+		Output data: Training set: result0.tra
+		@relation  wisconsin
+@attribute clumpThickness integer [1, 10]
+@attribute cellSize integer [1, 10]
+@attribute cellShape integer [1, 10]
+@attribute marginalAdhesion integer [1, 10]
+@attribute epithelialSize integer [1, 10]
+@attribute bareNuclei integer [1, 10]
+@attribute blandChromatin integer [1, 10]
+@attribute normalNucleoli integer [1, 10]
+@attribute mitoses integer [1, 10]
+@attribute class {2, 4}
+@data
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+4 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 2
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 2
+4 4
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+
+
+
+
+		Output data: Test set: result0.tst
+		@relation  wisconsin
+@attribute clumpThickness integer [1, 10]
+@attribute cellSize integer [1, 10]
+@attribute cellShape integer [1, 10]
+@attribute marginalAdhesion integer [1, 10]
+@attribute epithelialSize integer [1, 10]
+@attribute bareNuclei integer [1, 10]
+@attribute blandChromatin integer [1, 10]
+@attribute normalNucleoli integer [1, 10]
+@attribute mitoses integer [1, 10]
+@attribute class {2, 4}
+@data
+2 2
+2 2
+4 2
+2 2
+4 4
+2 2
+4 4
+4 2
+4 4
+2 2
+2 2
+2 ?
+4 4
+4 4
+2 2
+2 4
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+4 2
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+
+
+
+
+	</example>
+
+</method>

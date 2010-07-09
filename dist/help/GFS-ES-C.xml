@@ -1,0 +1,239 @@
+<method>
+
+	<name>Fuzzy Rule Learning Algorithm Proposed by Shi, Eberhart and Chen in 1999</name>
+
+	<reference>  
+
+<ref>Y. Shi, R. Eberhart, Y. Chen. Implementation of evolutionary fuzzy systems. IEEE Transactions on Fuzzy Systems 7:2 (1999) 109-119.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by generation of fuzzy rule-based systems.</type>
+
+		<objective>To obtain fuzzy classifiers as a set of fuzzy rules that better fits the training data.</objective>
+
+		<howWork>Shi et al. study the learning of evolutionary fuzzy systems
+		in which the membership function shapes and types and the fuzzy rule set,
+		including the number of rules inside it, are evolved using a genetic
+		(evolutionary) algorithm.
+		Six different types of membership functions (Left triangle, right triangle, triangle,
+		gaussian, sigmoid and reverse sigmoid) are used for representing both the input
+		and output variables. The classification is done by using the centroid method. 
+		</howWork>
+
+		<parameterSpec>  
+		    <param>Number of Labels</param>
+		    <param>Population Size</param>
+		    <param>Number of Generations</param>
+		    <param>Maximum number of rules</param>			
+		    <param>Crossover Probability</param>
+		    <param>Mutation Probability</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+        Method: Clas-Fuzzy-Shi-Eberhart-Chen
+		Dataset: iris
+		Training set: iris-10-1tra.dat
+		Test set: iris-10-1tst.dat		
+		Test Show results: Vis-Clas-Check		
+        Parameters: default values
+
+		After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-Fuzzy-Shi-Eberhart-Chen folder the classification results for the test set:
+		
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 1 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 2 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 4 : CORRECT=0.8 N/C=0.0 
+Fold 5 : CORRECT=1.0 N/C=0.0 
+Fold 6 : CORRECT=0.8 N/C=0.0 
+Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 8 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 9 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.11333333333333333 
+stddev Global Classification Error + N/C:
+0.06000000000000002 
+Correctly classified:
+0.8866666666666667 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.8888888888888888 N/C=0.0 
+Fold 1 : CORRECT=0.946969696969697 N/C=0.0 
+Fold 2 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 3 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 4 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 5 : CORRECT=0.9259259259259259 N/C=0.0 
+Fold 6 : CORRECT=0.8962962962962963 N/C=0.0 
+Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 8 : CORRECT=0.9259259259259259 N/C=0.0 
+Fold 9 : CORRECT=0.8962962962962963 N/C=0.0 
+Global Classification Error + N/C:
+0.07345117845117846 
+stddev Global Classification Error + N/C:
+0.024343230599293584 
+Correctly classified:
+0.9265488215488216 
+Global N/C:
+0.0 
+
+	
+			We can see too the output and target classes for each case of the train set (result0s0.tra) in experiment/results/Clas-Fuzzy-Shi-Eberhart-Chen/iris/:
+	
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+...
+
+
+		And the test results (result0s0.tst) in experiment/results/Clas-Fuzzy-Shi-Eberhart-Chen/iris/:
+
+		
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+
+	
+	Finally, the file 'experiment/results/Clas-Fuzzy-MOGUL/iris/result0s0e0.txt' contains the considered fuzzy partition and the fuzzy rule set obtained:	
+		
+16
+4	 1
+
+input_1		5	4.3	7.9
+
+	Triangle	4.42	5.35
+	Triangle	5.17	5.890000000000001
+	Gaussian	5.65	6.550000000000001
+	leftTriangle	6.220000000000001	7.0
+	leftTriangle	6.73	7.630000000000001
+
+input_2		5	4.3	4.4
+
+	leftTriangle	2.12	2.7800000000000002
+	leftTriangle	2.46	3.18
+	Gaussian	2.98	3.5
+	reverseSigmoid	3.22	3.9000000000000004
+	leftTriangle	3.74	4.200000000000001
+
+input_3		5	4.3	6.9
+
+	Triangle	1.3933333333333333	2.8683333333333336
+	Triangle	2.229166666666667	3.95
+	Gaussian	3.2125000000000004	4.54
+	leftTriangle	4.195833333333334	5.523333333333333
+	leftTriangle	5.2283333333333335	6.801666666666667
+
+input_4		5	4.3	2.5
+
+	Gaussian	0.26	0.82
+	leftTriangle	0.6799999999999999	1.2
+	rightTriangle	0.9	1.62
+	Triangle	1.42	2.04
+	rightTriangle	1.9	2.34
+
+output	5	 0 	 1 
+
+	Triangle	0.016666666666666663	0.29166666666666663
+	Sigmoid		0.19166666666666665	0.425
+	rightTriangle	0.3666666666666667	0.6333333333333333
+	rightTriangle	0.5666666666666667	0.8333333333333333
+	Sigmoid		0.6916666666666667	0.9416666666666665
+
+
+2	-4	1	0	-2
+-2	2	2	5	-3
+-1	0	-1	3	4
+0	-2	4	0	-2
+2	3	1	-2	3
+-2	3	3	0	2
+-2	-1	-2	-2	5
+-1	1	-1	4	5
+2	-3	0	-2	-2
+-4	-2	3	-4	-2
+1	-3	-3	5	3
+-4	-3	-2	-2	4
+1	-2	5	2	1
+0	5	0	2	-3
+2	0	-2	5	4
+3	0	0	1	1
+
+
+Training Accuracy:	88.88888888888889%
+Test Accuracy:		93.33333333333333%	
+	
+</example>
+
+</method>

@@ -1,0 +1,188 @@
+<method>
+
+	<name>EvRBF_for_classification</name>
+
+	<reference>  
+
+		<ref>V.M. Rivas, J.J. Merelo, P.A. Castillo, M.G. Arenas, J.G. Castellano. Evolving RBF neural networks for time-series forecasting with EvRBF. Information Sciences 165:3-4 (2004) 207-220</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by means of a Evolutionary Radial Basis Function Neural networks</type>
+
+		<objective>
+			Evolutionary algorithm that build a Radial Basis Function Neural Network composed of one hidden layer and one output layer. This hidden layer contains neurons, each one being activated when the input to the network falls close to a point that is considered the *centre* of that neuron. The final result of the network is provided by the neuron of the output layer, that performs a weighted sum using the outputs coming from hidden neurons. To build this network, the evolutionary algorithms applies crossover and mutation operators, as well as tournament selection, and elitism.
+
+</objective>
+
+<howWork>
+	The network output depends on the values yielded by every hidden neuron as well as the weight of the link connecting every hidden neuron with the output neuron. 
+	
+	The output of every hidden neuron is the output of its function activation, and this function depends on the centre of the neuron and a parameter call radius. Thus, the value provided by the neuron changes depending on the distance from the system input to the neuron centre, and according to the radius value. This way, one function can get its maximum when the input is equal to the centre, but another function can reach minimum at the same point. Although many functions can be used as activation function for hidden neurons, the most commonly used is the Gaussian function.
+	
+	In order to build the network, the algorithm needs to know hay many neurons will form the hidden layer, as well as their centres and radii. Then, it randomly chooses such number of points from the training set to be the centres of the neurons; finally, it establishes a single radius for all the neurons as half the average distance between the set of centres. 
+	
+	Once fixed the centres and radii of the network, the set of weights can be analytically computed using any method suitable to find the values that minimize the mean square error, typically Singular Value Decomposition or Least Mean Square (as in this implementation)
+	
+	At the main loop, an evolutionary algorithms performs crossover and mutation (by means of specifically-designed operators), as well as  selection and reemplacement, in order to get better nets in every new generation.
+	The final condition of the loop is that a given number of generations is reached.
+
+</howWork>
+
+		<parameterSpec>  
+			<param>
+				<name>neuronsRate:  Maximum number of hidden neurons the networks will have at the beginning. The effective number of neurons is taken as neuronsRate multiplied by patterns in the training set.
+				</name>
+				<type>real</type>
+				<domain>
+					<lowerB>0</lowerB>
+					<upperB>1</upperB>
+				</domain>
+				<default>0.1</default>
+			</param>
+			<param>
+				<name>
+					validationRate: Rate of patters in the training set that will not be used to train, but to compute the fitness of the individuals along the evolutionary method.
+				</name>
+				<type>real</type>
+				<domain>
+					<lowerB>0</lowerB>
+					<upperB>1</upperB>
+				</domain>
+				<default>0.15</default>
+			</param>
+			<param>
+				<name>
+				popSize: Integer indicating the number of individuals in the population.
+				</name>
+				<type>integer</type>
+				<default>100</default>
+			</param>
+
+			<param>
+				<name>
+					tournamentSize: Integer indicating the number of individuals that will be used every time tournament selection be applied.
+				</name>
+				<type>integer</type>
+				<default>2</default>
+			</param>
+			<param>
+				<name>reemplacementRate: Float indicating the rate of (worst) individuals that will be removed in every new generation.
+				</name>
+				<domain>
+					<lowerB>0</lowerB>
+					<upperB>1</upperB>
+				</domain>
+				<default>0.3</default>
+			</param>
+			<param>	
+				<name>
+				maxGenerations: Integer that sets the maximun number of generations to create.
+				</name>
+				<type>integer</type>
+				<default>2</default>
+			</param>
+			<param>
+				<name>
+					xOverRate: Probability of application of XOver operators.
+				</name>
+				<domain>
+					<lowerB>0</lowerB>
+					<upperB>1</upperB>
+				</domain>
+				<default>0.9</default>
+
+			</param>
+			<param>
+				<name>
+					mutatorRate: Probability of application of mutation operators.
+				</name>
+				<domain>
+					<lowerB>0</lowerB>
+					<upperB>1</upperB>
+				</domain>
+				<default>0.1</default>
+			</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+		Problem type: Classification 
+		Method: Ev_RBF for Classification
+		Dataset: zoo
+		Training set: zoo-10-1tra.dat
+		Test set: zoo-10-1tst.dat
+		Test Show results: StatChekCL
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+		
+		Classifier= zoo 
+		Fold 0 : CORRECT=0.75 N/C=0.0 
+		Global Classification Error + N/C:
+		0.25 
+		stddev Global Classification Error + N/C:
+		0.0 
+		Correctly classified:
+		0.75 
+		Global N/C:
+		0.0 
+		
+		We can see too the output and target classes for each case of the test set in Experiment\Results\RBFN_Decremental:
+		
+		@relation zoo
+		@attribute hair{0,1}
+		@attribute feathers{0,1}
+		@attribute eggs{0,1}
+		@attribute milk{0,1}
+		@attribute airborne{0,1}
+		@attribute aquatic{0,1}
+		@attribute predator{0,1}
+		@attribute toothed{0,1}
+		@attribute backbone{0,1}
+		@attribute breathes{0,1}
+		@attribute venomous{0,1}
+		@attribute fins{0,1}
+		@attribute legs{0,2,4,5,6,8}
+		@attribute tail{0,1}
+		@attribute domestic{0,1}
+		@attribute catsize{0,1}
+		@attribute type{1,2,3,4,5,6,7}
+		@inputs hair,feathers,eggs,milk,airborne,aquatic,predator,toothed,backbone,breathes,venomous,fins,legs,tail,domestic,catsize
+		@outputs type
+		@data
+		1 1
+		1 1
+		1 1
+		1 1
+		4 7
+		7 7
+		2 2
+		2 2
+		6 3
+		6 2
+		5 5
+		5 5
+
+</example>
+
+</method>

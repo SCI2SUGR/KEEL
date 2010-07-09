@@ -1,0 +1,78 @@
+<algorithm_specification>
+
+	<name>ClassificationFilter</name>
+	<nParameters>7</nParameters>
+  	<seed>1</seed>
+  	<nOutput>1</nOutput>
+
+	<parameter>
+    	<name>numPartitions</name>
+    	<type>integer</type>
+    	<domain>
+      		<lowerB>2</lowerB>
+      		<upperB>100</upperB>
+    	</domain>
+    	<default>10</default>
+  	</parameter>
+
+	<parameter>
+	  	<name>classifier</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>knn</item>
+	    	<item>c45</item>
+	  	</domain>
+	  	<default>knn</default>   
+	</parameter>
+	
+	<parameter>
+    	<name>numNeighbors</name>
+    	<type>integer</type>
+    	<domain>
+      		<lowerB>1</lowerB>
+      		<upperB>100</upperB>
+    	</domain>
+    	<default>1</default>
+  	</parameter>
+
+	<parameter>
+	  	<name>distanceType</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>hvdm</item>
+			<item>manhattan</item>
+			<item>euclidean</item>
+	  	</domain>
+	  	<default>hvdm</default>   
+	</parameter>
+	
+	<parameter>
+	  	<name>prune</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>true</item>
+		   	<item>false</item>
+	  	</domain>
+	  	<default>true</default>
+	 	<disabled/>
+	</parameter>
+	
+	<parameter>
+    	<name>confidence</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.25</default>
+		<disabled/>
+  	</parameter>
+
+  	<parameter>
+    	<name>itemsetsPerLeaf</name>
+    	<type>integer</type>
+    	<default>2</default>
+		<disabled/>
+  	</parameter>
+
+</algorithm_specification>

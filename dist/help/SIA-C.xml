@@ -1,0 +1,143 @@
+<method>
+
+	<name>Supervised Inductive Algorithm</name>
+
+	<reference>  
+
+		<ref>G. Venturini. SIA: A Supervised Inductive Algorithm with Genetic Search for Learning Attributes Based Concepts. 6th European Conference on Machine Learning (ECML'93). Lecture Notes in Artificial Intelligence 667, Springer 1993, Viena (Austria, 1993) 280-296.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules using a GA.</type>
+
+		<objective>Find a set of rules that maximize a noise tolerant rule evaluation criterion using a genetic process.</objective>
+
+		<howWork>SIA learns production rules from a set Ex of examples of events in a given domain. The rules are represented as follows:
+
+R: IF cond1 ^...^ condn THEN Class = C1, Strength
+
+In R condition part, condi involves attribute Ai and equals either:
+
+*	&quot;*&quot; meaning that Ai is not taken into account (the condition is always true), or
+*	&quot;Ai = value&quot;, where Ai is a symbolic attribute and value is an observed value of Ai, or
+*	&quot;B   Ai   B&apos;&quot; where Ai is a numeric attribute and where the lower and upper bounds B and B&apos; are such that B&apos; >= B.
+
+The structure of the algorithm is:
+
+1.	Let R be an empty set of rules
+2.	Label &quot;uncovered&quot; all classes in the class lists of all examples in Ex
+3.	Let ex= (e,CL,w) be an example of Ex such that there exists a class Ci   CL labelled &quot;uncovered&quot;.
+4.	Let Rinit be the most specific rule that matches ex and conclude &quot;Class= Ci&quot;
+5.	Using a GA, generalize the condition part of Rinit to find the optimal rule(s) R* that match(es) ex (rules that maximize the rule evaluation criterion Cq(R)),
+6.	Label &quot;covered&quot; all classes Ci in the class list of examples matched by R* rule(s)
+7.	Add R* to R
+8.	If some examples remain such that a class in their class list is labelled &quot;uncovered&quot;, then go to 3,
+9.	Possibly, eliminate rules in R using the rule filtering algorithm
+10.	Output R.
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Number_of_Iterations: is the number of iterations. It is an integer value indicating when the optimization process stops when no better rules where generated during this number of iterations.</param>
+			<param>alfa: is a variable for the rule evaluation criterion. It is a float value greater or equal than zero.</param>
+			<param>beta: is another variable for the rule evaluation criterion. It is a float value that can only have the values 0,-0.001 or +0.001.</param>
+			<param>Threshold_Strength: is the threshold of strength during the rule filtering algorithm. It is a float value used in the post-processing method which eliminates some redundant rules in a fast way.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: SIA
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: 
+	Number_of_Iterations = 600
+	Alfa = 50
+	Beta = 0.001
+	Threshold_Strength = 0
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Global Classification Error + N/C:
+0.0666666666666667
+Correctly classified:
+0.9333333333333333 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-SIA:
+
+@relation  iris
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+And the Rule Set and Statistics (result0e0.txt) in Experiment\Results\Clas-SIA:
+
+Rule_1: IF 6.05 &lt;= sepalLength &lt;= 7.65 ^ 2.45 &lt;= sepalWidth &lt;= 3.55 ^ 5.05 &lt;= petalLength &lt;= 5.95 ^ *  THEN class = Iris-virginica, 0.5333555555555556
+Rule_2: IF 5.45 &lt;= sepalLength &lt;= 7.9 ^ * ^ 3.75 &lt;= petalLength &lt;= 5.05 ^ 1.05 &lt;= petalWidth &lt;= 1.75 THEN class = Iris-versicolor, 0.7111333333333333
+Rule_3: IF * ^ 2.6500000000000004 &lt;= sepalWidth &lt;= 4.300000000000001 ^ 1.0 &lt;= petalLength &lt;= 3.55 ^ *  THEN class = Iris-setosa, 0.9556
+Rule_4: IF 5.65 &lt;= sepalLength &lt;= 6.55 ^ 2.8499999999999996 &lt;= sepalWidth &lt;= 3.1500000000000004 ^ 4.15 &lt;= petalLength &lt;= 5.65 ^ 1.55 &lt;= petalWidth &lt;= 2.05 THEN class = Iris-virginica, 0.13333333333333333
+Rule_5: IF * ^ * ^ 5.65 &lt;= petalLength &lt;= 6.7 ^ *  THEN class = Iris-virginica, 0.3778444444444444
+Rule_6: IF * ^ * ^ 2.45 &lt;= petalLength &lt;= 3.75 ^ *  THEN class = Iris-versicolor, 0.15562222222222222
+Rule_7: IF * ^ 2.55 &lt;= sepalWidth &lt;= 3.45 ^ 3.95 &lt;= petalLength &lt;= 5.05 ^ 1.25 &lt;= petalWidth &lt;= 1.75 THEN class = Iris-versicolor, 0.46668888888888893
+Rule_8: IF 4.85 &lt;= sepalLength &lt;= 6.55 ^ * ^ 4.85 &lt;= petalLength &lt;= 5.15 ^ 1.65 &lt;= petalWidth &lt;= 2.3499999999999996 THEN class = Iris-virginica, 0.2000222222222222
+Rule_9: IF * ^ * ^ 3.15 &lt;= petalLength &lt;= 4.45 ^ 0.75 &lt;= petalWidth &lt;= 1.85 THEN class = Iris-versicolor, 0.6222666666666666
+Rule_10: IF 4.75 &lt;= sepalLength &lt;= 5.05 ^ * ^ 4.35 &lt;= petalLength &lt;= 4.65 ^ 1.45 &lt;= petalWidth &lt;= 1.95 THEN class = Iris-virginica, 0.02224444444444444
+Rule_11: IF * ^ * ^ 1.15 &lt;= petalLength &lt;= 2.45 ^ *  THEN class = Iris-setosa, 0.9556222222222223
+Rule_12: IF 5.75 &lt;= sepalLength &lt;= 6.05 ^ 3.1500000000000004 &lt;= sepalWidth &lt;= 3.25 ^ 4.75 &lt;= petalLength &lt;= 4.85 ^ 1.75 &lt;= petalWidth &lt;= 1.85 THEN class = Iris-versicolor, 0.022222222222222223
+Rule_13: IF 5.65 &lt;= sepalLength &lt;= 5.95 ^ 2.45 &lt;= sepalWidth &lt;= 3.1500000000000004 ^ 4.65 &lt;= petalLength &lt;= 5.55 ^ *  THEN class = Iris-virginica, 0.11113333333333333
+Rule_14: IF 5.95 &lt;= sepalLength &lt;= 6.05 ^ 2.6500000000000004 &lt;= sepalWidth &lt;= 2.75 ^ 5.05 &lt;= petalLength &lt;= 5.15 ^ 1.45 &lt;= petalWidth &lt;= 1.75 THEN class = Iris-versicolor, 0.022222222222222223
+
+Accuracy in Training: 1.0
+Accuracy in Test: 0.9333333333333333
+
+Execution Time -> 2seconds.
+</example>
+
+</method>

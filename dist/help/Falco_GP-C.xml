@@ -1,0 +1,108 @@
+<method>
+
+	<name>Falco_GP</name>
+
+	<reference>  
+
+		<ref>I. D. Falco, A. D. Cioppa and E. Tarantino. Descovering interesting classification rules with genetic programming. Applies of computing. 2002, 1, pp 257-269.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by grammar guided genetic programming.</type>
+
+		<objective>To determine a set of rules that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.</objective>
+
+		<howWork>
+		Falco-GP is a GGGP algorithm for classification rule mining which has demonstrated that reports good accuracy and comprehensibility results. It was run using the implementation present in 
+		the evolutionary computation framework JCLEC. It is a grammar guided genetic programming algorithm which represents the rules by defining a context-free grammar. The genetic operators 
+		considered by this algorithm are crossover, mutation and reproduction. For the sake of evolving comprehensible rules, the fitness is:
+		
+		fitness = 2 * fails + alpha * n
+		
+		where fails is the number of instances misclassified, alpha is an user-defined parameter and n is the number of nodes of the syntax-tree.
+		 		
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>population-size: number of individuals in the population</param>
+			<param>max-of-generations: number of generations of the algorithm</param>
+			<param>derivation-size: maximum number of derivations allowed for the grammar</param>
+			<param>rec-prob: recombination probability</param>
+			<param>mut-prob: mutation probability</param>
+			<param>copy-prob: likelihood of copying an individual into the next generation</param>
+			<param>alpha: alpha user-defined parameter</param>
+
+		</parameterSpec>
+
+		<properties>
+		    <input>
+		      <continuous>Yes</continuous>
+		      <integer>Yes</integer>
+		      <nominal>Yes</nominal>
+		      <missing>No</missing>
+		      <imprecise>No</imprecise>
+		      <multiclass>Yes</multiclass>
+		      <multioutput>No</multioutput>
+		    </input>
+		    <output>
+		      <continuous>Yes</continuous>
+		      <integer>Yes</integer>
+		      <nominal>Yes</nominal>
+		      <missing>No</missing>
+		      <imprecise>No</imprecise>
+		      <multiclass>Yes</multiclass>
+		      <multioutput>No</multioutput>
+		    </output>
+		</properties>
+
+	</generalDescription>
+
+
+	<example>Problem type: Classification 
+Method: Falco_GP
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Parameters: default parameters
+
+After the execution of RunKeel.jar we can see into the experiment\results\Clas-Falco_GP folder the classification results for the test set:
+
+Reglas:
+IF (&lt;= petalLength 2.191979569974265 ) THEN (class = Iris-setosa)
+IF (IN petalWidth 0.9983136447988175 1.727274441741779 ) THEN (class = Iris-versicolor)
+IF (&gt;= petalWidth 1.5420281874043085 ) THEN (class = Iris-virginica)
+Generica ==&gt; Iris-setosa
+Accuracy Train 0.9407407407407408
+Accuracy Test 1.0
+
+We can also see the output and target classes for each case of the test set (result2.tst) in Experiment\Results\Clas-Falco_GP:
+@relation .a/iris/iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+</example>
+
+</method>

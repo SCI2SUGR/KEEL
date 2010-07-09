@@ -1,0 +1,81 @@
+<method>
+
+	<name>Learning Vector Quantization With Pruning</name>
+
+	<reference>  
+    <ref>Li, J., Manry, M.T., Yu, C., Wilson, D.R. Prototype classifier design with pruning (2005) International Journal on Artificial Intelligence Tools, 14:1‐2, pp. 261‐280.</ref>
+		<ref>Kohonen, T. Self-Organizing Maps Self-Organizing Maps New Springer Series in Information Sciences, Vol. 30, Springer, Berlin, Heidelberg, New York, 1995, 1997, 2001. Third Extended Edition, 501 pages. ISBN 3-540-67921-9, ISSN 0720-678X </ref>
+		<ref>Kohonen, T. The self organizing map (1990) Proceeding of the IEEE, 78:9, pp. 1464‐1480.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+		This algorithm reduces the class-partitions using the LVQ1 algorithm. Later, join all the parts in reducing set.
+		Take reducing set, and aply KNN algorithm to each prototype. If there are not other prototype with same class, relabel prototype with nearest neighbor class. Else, keep prototoype.
+		Reduce the resulting set using LVQ2.1 algorithm. Reduce also by CNN method.
+		Pruning of the resulting set:
+		Remove prototypes which are the nearest neighbors of others with different classes. Id est, remove noisy prototype (those which are surrounded of prototypes with other label).
+		Process of pruning noisy prototypes ends when number of iterations is reached or when the accuracy decreases.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of iterations: Integer value. Number of iterations of the algorithm.</param>
+			<param>Percentage of prototypes per class: Real value. Desired size of the partition set as percentage of training set size. Used in initial per-class reducion.</param>
+			<param>Percentage of prototypes: Real value. Desired size of the resulting set as percentage of training set size.</param>
+			<param>Number of iterations of LVQ2.1: Integer value. Number of iterations of the algorithm LVQ2.1.</param>
+			<param>Alpha0: Double value. Alpha constant in [0, 1].</param>
+			<param>Window width: Double value. Window width constant in [0, 1].</param>			
+			<param>Size of neighborhood used in KNN (k): Integer value. K value in KNN rule.</param>						
+		</parameterSpec>
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: PG-LVQPRU
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-LVQPRU:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+4.4692399246995, 2.3184560451803, 1.1646556686778, 0.2569358945793, Iris-setosa
+4.9038165051535065, 3.1001357799209774, 1.4955004806985472, 0.10395365658883651, Iris-setosa
+5.82478873132094, 2.6118721678561174, 3.9750373049858867, 1.1875074374645256, Iris-versicolor
+5.85974511667849, 2.890313168697475, 4.248892148188254, 1.2692572256223038, Iris-versicolor
+6.346092469392135, 2.318699629408938, 4.3247074732577095, 1.3035144400029512, Iris-versicolor
+6.1876841588644025, 2.7731772462743347, 5.866900550228583, 2.0393408943875513, Iris-virginica
+6.227570540159631, 3.399649669527217, 5.4792607852682105, 2.347417416279809, Iris-virginica
+6.845785494448695, 3.187964655222663, 5.712497254446455, 2.3163182426155675, Iris-virginica
+6.7, 3.141277143271269, 5.620638571635636, 2.420638571635634, Iris-virginica
+
+</example>
+
+</method>

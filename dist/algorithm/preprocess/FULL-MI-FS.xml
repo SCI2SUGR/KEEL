@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Full Exploration (Mutual Information)</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>beta</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+</algorithm_specification>

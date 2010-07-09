@@ -1,0 +1,156 @@
+<method>
+
+	<name>Fuzzy Rule Learning, AdaBoost algorithm</name>
+
+	<reference>  
+
+<ref>M. J. del Jes&#xFA;s, F. Hoffmann, L. Junco, and L. S&#xE1;nchez. Induction of Fuzzy-Rule-Based Classifiers With Evolutionary Boosting Algorithms. IEEE Transactions on Fuzzy Systems 12:3 (2004) 296-308.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by boosting fuzzy classifiers.</type>
+
+		<objective>To obtain fuzzy weak classifiers to boost. Then, the overall classifier outperforms any of the fuzzy classifiers.</objective>
+
+		<howWork>Boosting algorithms are statistical additive modeling techniques that combine different low-quality classifiers to obtain a compound classifier that performs better than any of its components. Adaboost is a boosting algorithm, which repeatedly invokes a learning algorithm to successively generate a committee of simple, low-quality classifiers. 
+
+Each time a new simple classifier is added to the compound one, the examples in the training set are re-weighted (so that future classifiers will focus on the most difficult examples,) and a voting strength is assigned to the classifier. 
+
+The number of votes a classifier is given depends on the confidence in its classification accuracy, as measured on the training set. Adaboost generates a compound classifier which decision is a linear threshold of the outputs of the simple classifiers.		
+
+In this algorithm, each of the weak hypothesis is a Fuzzy rule extracted from data.
+</howWork>
+
+		<parameterSpec>  
+<param>numlabes: the number of possible fuzzy values for each variable.</param>
+<param>numrules: the number of rules for each classifier.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-Fuzzy-AdaBoost
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: numero de etiquetas 2, numero de reglas 8
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTClas-Fuzzy-AdaBoost folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= iris_plants_database 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+...
+Global Classification Error + N/C:
+0.039999999999999994 
+stddev Global Classification Error + N/C:
+0.03265986323710905 
+Correctly classified:
+0.96 Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris_plants_database 
+Summary of data, Classifiers: iris_plants_database 
+Fold 0 : CORRECT=0.962962962962963 N/C=0.0 
+...
+Global Classification Error + N/C:
+0.04 
+stddev Global Classification Error + N/C:
+0.0036288736930120817 
+Correctly classified:
+0.96 
+Global N/C:
+0.0
+
+
+
+
+We can see too the output and target classes for each case of the train set (result0s0.tra) in experiment/results/Clas-Fuzzy-AdaBoost/iris:
+
+@relation Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+...
+
+And the test results (result0s0.tst) in experiment/results/Clas-Fuzzy-AdaBoost/iris:
+
+@relation Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+</example>
+
+</method>

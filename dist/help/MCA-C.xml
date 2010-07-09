@@ -1,0 +1,68 @@
+<method>
+
+	<name>Modified Chang's Algorithm</name>
+
+	<reference>  
+
+		<ref>Bezdek, J.C., Reichherzer, T.R., Lim, G.S., Attikiouzel, Y. Multiple prototype classifier design (1998) IEEE Transactions on Systems, Man and Cybernetics C, 28:1, 67‐79.</ref>
+		<ref>Chin-Liang, Chang. Finding Prototypes for Nearest Neighbor Classifiers. IEEE Transactions on Computers, vol. c-23, No. 11, November 1974 1179-1184.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+		This algorithm is a modified version of the PNN. PNN and MCA shares the same idea, init resulting set with original set, and merge prototypes while classification accuracy does not decrease.
+		MCA, uses a distance matrix by classes to merge prototypes of the same class, and avoid removing of nearest prototypes of different classes.
+		That distance matrix is recomputed each time that it makes a merge.
+		When one pass has produced no merge, algorithm ends.
+		</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Generation
+Method: PG-MCA
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-MCA:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+7.703125, 3.2984375, 6.5359375, 2.15625, Iris-virginica
+5.85859375, 2.7534423828125, 5.1507568359375, 2.0364257812499997, Iris-virginica
+4.873486328125, 3.03564453125, 1.380517578125, 0.3021484375, Iris-setosa
+5.8060546875, 2.725048828125, 4.204931640625, 1.3623046875000002, Iris-versicolor
+
+</example>
+
+</method>

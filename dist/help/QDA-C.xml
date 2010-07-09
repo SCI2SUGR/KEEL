@@ -1,0 +1,198 @@
+<method>
+
+	<name>Quadratic Discriminant Analysis</name>
+
+	<reference>  
+
+		<ref>G. J. McLachlan, Discriminant Analysis and Statistical Pattern Recognition, Wiley Series in Probability and Mathematical Statistics, 2004. </ref>
+
+		<ref>R. A. Fisher. The Use of Multiple Measurements in Taxonomic Problems. Annals of Eugenics, 7 (1936) 179-188.</ref>
+
+		<ref>J. H. Friedman. Regularized discriminant analysis. Journal of the American Statistical Association, 84 (1989)165-175.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by linear discriminant analysis.</type>
+
+		<objective>To determine if an instance is of a class or not using linear classification based on Linear Discriminant Analysis.</objective>
+
+		<howWork>Clas-ADQuadratic is a linear classification method. Clas-ADQuadratic uses the Linear Discriminant Analisis described by Fisher. Doing so, it computes the covariance matrix, then the weigth vector for linear classification.
+
+As stated in the LDA method, it is asumed  the probability density functions to be or not of the class are normally distributed with identical covariances. 
+
+This method manage correctly high dimensional feature dimensions. Unknown data induce poorer results. Datasets must be of small size.
+		</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-ADQuadratic
+Dataset: aut
+Training set: aut-10-1tra.dat
+Test set: aut-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTClas-ADQuadratic folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= autos
+Fold 0 : CORRECT=0.5714285714285714 N/C=0.0
+...
+Global Classification Error + N/C:
+0.3941063957654346
+stddev Global Classification Error + N/C:
+0.07941108971229496
+Correctly classified:
+0.6058936042345654 Global N/C:
+0.0
+
+TRAIN RESULTS
+============
+Classifier= autos
+Summary of data, Classifiers: autos
+Fold 0 : CORRECT=0.7771739130434783 N/C=0.0
+...
+Global Classification Error + N/C:
+0.22765461782991311
+stddev Global Classification Error + N/C:
+0.0061729568730954434
+Correctly classified:
+0.7723453821700869
+Global N/C:
+0.0 
+
+
+
+
+We can see too the output and target classes for each case of the training set (result0s0.tra) in experiment/results/Clas-ADQuadratic/aut:
+
+@relation autos
+@attribute normalized-losses real[65.0,256.0]
+@attribute make{alfa-romero,audi,bmw,chevrolet,dodge,honda,isuzu,jaguar,mazda,mercedes-benz,mercury,mitsubishi,nissan,peugot,plymouth,porsche,renault,saab,subaru,toyota,volkswag
+en,volvo}
+@attribute fuel-type{diesel,gas}
+@attribute aspiration{std,turbo}
+@attribute num-of-doors{four,two}
+@attribute body-style{hardtop,wagon,sedan,hatchback,convertible}
+@attribute drive-wheels{4wd,fwd,rwd}
+@attribute engine-location{front,rear}
+@attribute wheel-base real[86.6,120.9]
+@attribute length real[141.1,208.1]
+@attribute width real[60.3,72.3]
+@attribute height real[47.8,59.8]
+@attribute curb-weight real[1488.0,4066.0]
+@attribute engine-type{dohc,dohcv,l,ohc,ohcf,ohcv,rotor}
+@attribute num-of-cylinders{eight,five,four,six,three,twelve,two}
+@attribute engine-size real[61.0,326.0]
+@attribute fuel-system{1bbl,2bbl,4bbl,idi,mfi,mpfi,spdi,spfi}
+@attribute bore real[2.54,3.94]
+@attribute stroke real[2.07,4.17]
+@attribute compression-ratio real[7.0,23.0]
+@attribute horsepower real[48.0,288.0]
+@attribute peak-rpm real[4150.0,6600.0]
+@attribute city-mpg real[13.0,49.0]
+@attribute highway-mpg real[16.0,54.0]
+@attribute price real[5118.0,45400.0]
+@attribute symboling{-2,-1,0,1,2,3}
+@inputs normalized-losses,make,fuel-type,aspiration,num-of-doors,body-style,drive-wheels,engine-location,wheel-base,length,width,height,curb-weight,engine-type,num-of-cylinders,
+engine-size,fuel-system,bore,stroke,compression-ratio,horsepower,peak-rpm,city-mpg,highway-mpg,price
+@outputs symboling
+@data
+1 1
+1 1
+1 1
+1 0
+1 1
+3 3
+3 3
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+2 2
+2 2
+2 1
+-1 0
+...
+
+And the test results (result0s0.tst) in experiment/results/Clas-ADQuadratic/aut folder:
+
+@relation autos
+@attribute normalized-losses real[65.0,256.0]
+@attribute make{alfa-romero,audi,bmw,chevrolet,dodge,honda,isuzu,jaguar,mazda,mercedes-benz,mercury,mitsubishi,nissan,peugot,plymouth,porsche,renault,saab,subaru,toyota,volkswag
+en,volvo}
+@attribute fuel-type{diesel,gas}
+@attribute aspiration{std,turbo}
+@attribute num-of-doors{four,two}
+@attribute body-style{hardtop,wagon,sedan,hatchback,convertible}
+@attribute drive-wheels{4wd,fwd,rwd}
+@attribute engine-location{front,rear}
+@attribute wheel-base real[86.6,120.9]
+@attribute length real[141.1,208.1]
+@attribute width real[60.3,72.3]
+@attribute height real[47.8,59.8]
+@attribute curb-weight real[1488.0,4066.0]
+@attribute engine-type{dohc,dohcv,l,ohc,ohcf,ohcv,rotor}
+@attribute num-of-cylinders{eight,five,four,six,three,twelve,two}
+@attribute engine-size real[61.0,326.0]
+@attribute fuel-system{1bbl,2bbl,4bbl,idi,mfi,mpfi,spdi,spfi}
+@attribute bore real[2.54,3.94]
+@attribute stroke real[2.07,4.17]
+@attribute compression-ratio real[7.0,23.0]
+@attribute horsepower real[48.0,288.0]
+@attribute peak-rpm real[4150.0,6600.0]
+@attribute city-mpg real[13.0,49.0]
+@attribute highway-mpg real[16.0,54.0]
+@attribute price real[5118.0,45400.0]
+@attribute symboling{-2,-1,0,1,2,3}
+@inputs normalized-losses,make,fuel-type,aspiration,num-of-doors,body-style,drive-wheels,engine-location,wheel-base,length,width,height,curb-weight,engine-type,num-of-cylinders,
+engine-size,fuel-system,bore,stroke,compression-ratio,horsepower,peak-rpm,city-mpg,highway-mpg,price
+@outputs symboling
+@data
+1 1
+1 1
+1 1
+1 3
+1 1
+3 1
+3 3
+0 1
+0 0
+0 0
+0 0
+0 1
+0 0
+2 1
+2 0
+2 -1
+-1 -1
+...
+</example>
+
+</method>

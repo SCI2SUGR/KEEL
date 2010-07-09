@@ -1,0 +1,301 @@
+<method>
+
+	<name>Interval Distance-Based Method for Discretization</name>
+
+	<reference>  
+
+		<ref>Francisco J. Ruiz, Cecilio Angulo, Nuria Agell, "IDD: A Supervised Interval Distance-Based Method for Discretization," IEEE Transactions on Knowledge and Data Engineering, pp. 1230-1238, September, 2008</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Discretization of real attributes</type>
+
+		<objective>To transform a set of numerical variables into nominal variables. Input variables may be either real or integer.</objective>
+
+		<howWork>
+			
+			The present algorithm, IDD, is characterized by following features:
+
+			- supervised, because it uses the decision attribute information.
+			- static, because discretization is completed prior to the learning task.
+			- local, because it discretizes a single attribute at same time.
+			- direct, because, in this case, the number of intervals can either be set by the user or obtained directly using the concept of Delta-neighborhood. 
+
+			A Delta-neighborhood is the set of Delta (by the left or by the right) nearest possible cutpoints, with respect to the input cutpoint variable, considered for analyzing. This concept is highly related to the granularity of discretization (when first is large, second will be small). The IDD tries that the distribution of the classes of two contiguous intervals are as different as possible, allowing classes of the same interval to be distributed with a broad deviation.
+
+			The IDD is based on interval distances by using the concept of Delta-neighborhood in the target space. This takes into consideration the order of the class attribute, if exists, so that it can be used with ordinal discrete classes as well as continuous classes, in the case of regression problems. In addition, the IDD is also applicable when there is no order in the class variable, using a suitable distance in the output variable distribution. The IDD is neither a bottom-up nor a top-down method and unlike the usual supervised discretization techniques, finds the cutpoints in a single step.
+
+			Firstly, the IDD sorts the distinct values of the attribute to discretize. These are the possible cutpoints of the discretization scheme. Then, when it is possible, it creates for each cutpoint its left and its right intervals based on in his Delta-neighborhood for each side. Last, the IDD calculates the distance between these two intervals and assing it to the concrete cutpoint. The cutpoints with higher values are selected as cutpoints.
+
+			With discrete no ordered classes, it is necessary to define a distance function between intervals. For example, it can find the majority class at left interval and counts the number of instances at right interval that are not of this class. Then do the same by changing the intervals. At last, returns the minimum of these two values. Another way to do this, can be to compute the number of instances of each class into each interval and then, compute the euclidean distance between these arrays of number of instances per class.
+			
+		</howWork>
+
+		<parameterSpec>  
+
+			<param> Neighborhood: size of the neighborhood. </param>
+
+			<param> WindowsSize: size of the windows to compute votes. </param>
+
+			<param> DistanceFunction: distance fuction type. </param>
+
+			<param> numIntrvls: maximal number of intervals in order to discretize each continuous attribute.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Interval Distance-Based Method for Discretization
+Dataset: Iris Plants
+
+Input Training set: Iris-5x2-1tra.dat
+Input Test set: Iris-5x2-1tst.dat
+Output Training set: result0.tra
+Output Test set: result0.tst
+Descriptor: result0e0.txt
+
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Disc-IDD/iris folder the discretization results; 3 files are generated in this folder:
+
+
+File result0.tra:
+	It contains the discretization result of training set.
+
+@relation Iris_Plants_Database
+@attribute sepalLength {0,1,2,3,4,5,6,7,8,9}
+@attribute sepalWidth {0,1,2,3,4,5,6,7,8,9}
+@attribute petalLength {0,1,2,3,4,5,6,7,8,9}
+@attribute petalWidth {0,1,2,3,4,5,6,7,8,9}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@data
+2,5,0,0,Iris-setosa
+1,4,0,0,Iris-setosa
+0,4,0,0,Iris-setosa
+3,7,1,1,Iris-setosa
+0,5,0,0,Iris-setosa
+2,5,0,0,Iris-setosa
+3,6,0,0,Iris-setosa
+1,5,1,0,Iris-setosa
+0,3,0,0,Iris-setosa
+4,9,0,1,Iris-setosa
+3,7,0,1,Iris-setosa
+4,7,1,0,Iris-setosa
+3,5,1,0,Iris-setosa
+2,6,0,1,Iris-setosa
+0,6,0,0,Iris-setosa
+2,5,1,1,Iris-setosa
+2,5,0,0,Iris-setosa
+2,8,0,0,Iris-setosa
+3,9,0,0,Iris-setosa
+2,4,0,0,Iris-setosa
+2,5,0,0,Iris-setosa
+2,5,0,0,Iris-setosa
+0,4,0,0,Iris-setosa
+2,5,1,2,Iris-setosa
+2,7,1,1,Iris-setosa
+7,4,6,5,Iris-versicolor
+7,4,6,5,Iris-versicolor
+3,0,5,5,Iris-versicolor
+4,2,6,5,Iris-versicolor
+5,4,6,6,Iris-versicolor
+1,0,4,3,Iris-versicolor
+5,3,6,5,Iris-versicolor
+7,4,5,5,Iris-versicolor
+4,2,5,3,Iris-versicolor
+5,0,6,5,Iris-versicolor
+4,4,6,7,Iris-versicolor
+5,2,5,5,Iris-versicolor
+5,2,6,4,Iris-versicolor
+6,3,5,5,Iris-versicolor
+7,2,6,5,Iris-versicolor
+3,3,6,5,Iris-versicolor
+7,4,6,5,Iris-versicolor
+5,0,5,5,Iris-versicolor
+3,1,5,5,Iris-versicolor
+4,1,5,4,Iris-versicolor
+2,0,4,3,Iris-versicolor
+4,3,5,5,Iris-versicolor
+5,3,5,5,Iris-versicolor
+2,1,3,4,Iris-versicolor
+4,2,5,5,Iris-versicolor
+5,4,8,9,Iris-virginica
+4,2,7,7,Iris-virginica
+8,3,8,8,Iris-virginica
+6,3,8,8,Iris-virginica
+9,3,9,8,Iris-virginica
+8,3,9,7,Iris-virginica
+6,4,7,7,Iris-virginica
+4,2,7,9,Iris-virginica
+5,0,7,5,Iris-virginica
+9,2,9,7,Iris-virginica
+7,4,8,8,Iris-virginica
+8,4,8,7,Iris-virginica
+5,2,6,7,Iris-virginica
+6,2,8,8,Iris-virginica
+5,1,8,5,Iris-virginica
+9,3,8,9,Iris-virginica
+5,3,6,7,Iris-virginica
+7,4,7,8,Iris-virginica
+7,4,8,9,Iris-virginica
+7,4,8,9,Iris-virginica
+7,3,7,9,Iris-virginica
+5,1,7,7,Iris-virginica
+6,3,7,7,Iris-virginica
+5,5,7,9,Iris-virginica
+4,3,7,7,Iris-virginica
+
+
+File result0.tst:
+	It contains the discretization result of testing set.
+
+@relation Iris_Plants_Database
+@attribute sepalLength {0,1,2,3,4,5,6,7,8,9}
+@attribute sepalWidth {0,1,2,3,4,5,6,7,8,9}
+@attribute petalLength {0,1,2,3,4,5,6,7,8,9}
+@attribute petalWidth {0,1,2,3,4,5,6,7,8,9}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@data
+1,3,0,0,Iris-setosa
+2,6,0,0,Iris-setosa
+0,3,0,0,Iris-setosa
+1,4,0,0,Iris-setosa
+1,3,0,0,Iris-setosa
+4,8,0,0,Iris-setosa
+2,5,0,0,Iris-setosa
+2,7,0,0,Iris-setosa
+2,4,1,1,Iris-setosa
+1,5,1,0,Iris-setosa
+2,3,1,0,Iris-setosa
+2,5,0,0,Iris-setosa
+1,4,1,0,Iris-setosa
+1,4,1,0,Iris-setosa
+3,5,0,1,Iris-setosa
+1,4,0,0,Iris-setosa
+3,5,0,0,Iris-setosa
+1,4,0,0,Iris-setosa
+0,3,0,0,Iris-setosa
+0,0,0,0,Iris-setosa
+1,3,0,0,Iris-setosa
+2,7,1,0,Iris-setosa
+0,4,0,0,Iris-setosa
+2,6,0,0,Iris-setosa
+2,4,0,0,Iris-setosa
+6,4,6,5,Iris-versicolor
+6,2,6,5,Iris-versicolor
+6,3,6,5,Iris-versicolor
+2,2,5,5,Iris-versicolor
+2,0,4,3,Iris-versicolor
+4,3,5,5,Iris-versicolor
+5,0,5,3,Iris-versicolor
+3,3,4,5,Iris-versicolor
+3,3,6,5,Iris-versicolor
+3,1,5,4,Iris-versicolor
+5,1,6,5,Iris-versicolor
+6,3,5,5,Iris-versicolor
+7,3,7,6,Iris-versicolor
+5,3,6,5,Iris-versicolor
+4,1,4,3,Iris-versicolor
+3,0,4,4,Iris-versicolor
+3,0,4,3,Iris-versicolor
+4,2,5,4,Iris-versicolor
+5,2,7,6,Iris-versicolor
+5,5,6,6,Iris-versicolor
+3,3,5,5,Iris-versicolor
+3,1,5,4,Iris-versicolor
+5,3,6,5,Iris-versicolor
+3,2,5,5,Iris-versicolor
+4,3,5,4,Iris-versicolor
+5,3,8,7,Iris-virginica
+1,1,6,6,Iris-virginica
+7,1,8,7,Iris-virginica
+8,6,8,9,Iris-virginica
+6,2,7,7,Iris-virginica
+7,3,7,8,Iris-virginica
+4,1,7,7,Iris-virginica
+6,4,7,9,Iris-virginica
+6,3,7,7,Iris-virginica
+9,7,9,8,Iris-virginica
+9,1,9,9,Iris-virginica
+7,4,8,9,Iris-virginica
+3,2,6,7,Iris-virginica
+5,2,6,7,Iris-virginica
+5,3,6,7,Iris-virginica
+8,3,8,6,Iris-virginica
+9,2,8,7,Iris-virginica
+9,7,9,7,Iris-virginica
+6,2,8,8,Iris-virginica
+5,2,7,5,Iris-virginica
+5,5,8,9,Iris-virginica
+6,4,7,7,Iris-virginica
+7,4,8,9,Iris-virginica
+7,4,7,9,Iris-virginica
+4,2,7,7,Iris-virginica
+
+
+File result0e0.txt:
+	It contains the descriptor of cutting points used in the discretization.
+
+Cut point 0 of attribute 0 : 4.64
+Cut point 1 of attribute 0 : 4.9799999999999995
+Cut point 2 of attribute 0 : 5.319999999999999
+Cut point 3 of attribute 0 : 5.659999999999999
+Cut point 4 of attribute 0 : 5.999999999999999
+Cut point 5 of attribute 0 : 6.339999999999999
+Cut point 6 of attribute 0 : 6.679999999999999
+Cut point 7 of attribute 0 : 7.019999999999999
+Cut point 8 of attribute 0 : 7.3599999999999985
+Number of cut points of attribute 0 : 9
+Cut point 0 of attribute 1 : 2.4200000000000004
+Cut point 1 of attribute 1 : 2.6400000000000006
+Cut point 2 of attribute 1 : 2.8600000000000008
+Cut point 3 of attribute 1 : 3.080000000000001
+Cut point 4 of attribute 1 : 3.300000000000001
+Cut point 5 of attribute 1 : 3.5200000000000014
+Cut point 6 of attribute 1 : 3.7400000000000015
+Cut point 7 of attribute 1 : 3.9600000000000017
+Cut point 8 of attribute 1 : 4.1800000000000015
+Number of cut points of attribute 1 : 9
+Cut point 0 of attribute 2 : 1.57
+Cut point 1 of attribute 2 : 2.14
+Cut point 2 of attribute 2 : 2.71
+Cut point 3 of attribute 2 : 3.2800000000000002
+Cut point 4 of attribute 2 : 3.8500000000000005
+Cut point 5 of attribute 2 : 4.420000000000001
+Cut point 6 of attribute 2 : 4.990000000000001
+Cut point 7 of attribute 2 : 5.560000000000001
+Cut point 8 of attribute 2 : 6.130000000000002
+Number of cut points of attribute 2 : 9
+Cut point 0 of attribute 3 : 0.33999999999999997
+Cut point 1 of attribute 3 : 0.58
+Cut point 2 of attribute 3 : 0.82
+Cut point 3 of attribute 3 : 1.06
+Cut point 4 of attribute 3 : 1.3
+Cut point 5 of attribute 3 : 1.54
+Cut point 6 of attribute 3 : 1.78
+Cut point 7 of attribute 3 : 2.02
+Cut point 8 of attribute 3 : 2.26
+Number of cut points of attribute 3 : 9
+
+</example>
+
+</method>

@@ -1,0 +1,65 @@
+<method>
+
+	<name>PANDA Filter</name>
+
+	<reference>  
+
+		<ref>Hulse, J.D., Khoshgoftaar, T.M., Huang, H. (2007). The pairwise attribute noise detection algorithm. Knowledge and Information Systems 11 (2), pp. 171-190.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Noise Filter.</type>
+
+		<objective>To remove noisy instances from the training data.</objective>
+
+		<howWork>
+			It removes noisy instances from the training data by means of distance between values of attributes.
+		</howWork>
+
+		<parameterSpec>
+			
+			<param>
+				function: type of agregation fuction: sum or max.
+			</param>
+			
+			<param>
+				estimatedNoiseLevel: level of noise estimated.
+			</param>
+			
+			<param>
+				minIntervals: initial number of intervals.
+			</param>
+			
+			<param>
+				maxIntervals: final number of intervals.
+			</param>
+			
+			<param>
+				numExecutions: number of executions of the algorithm.
+			</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+</method>
+
+

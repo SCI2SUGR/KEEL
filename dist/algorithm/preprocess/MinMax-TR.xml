@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>Min max Normalization</name>
+  <nParameters>2</nParameters>
+  <seed>0</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>newMin</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>0.0</default>
+  </parameter>
+  <parameter>
+    <name>newMax</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0001</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter>
+</algorithm_specification>

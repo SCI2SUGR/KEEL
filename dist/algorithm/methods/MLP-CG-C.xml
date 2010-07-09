@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>Multilayer perceptron for classification problems, Conjugate Gradient based training</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>ClasifMLPerceptron</item>
+    </domain>
+    <default>ClasifMLPerceptron</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>CMLP</item>
+    </domain>
+    <default>CMLP</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>topologymlp</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,260 @@
+//
+//  GG.java
+//
+//  Salvador García López
+//
+//  Created by Salvador García López 22-2-2005.
+//  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
+//
+
+package keel.Algorithms.Preprocess.Instance_Selection.GG;
+
+import keel.Algorithms.Preprocess.Basic.*;
+
+import java.util.StringTokenizer;
+import java.util.Arrays;
+import org.core.*;
+
+public class GG extends Metodo {
+
+ /*Own parameters of the algorithm*/
+  private boolean orden;
+  private boolean type;
+
+
+  public GG (String ficheroScript) {
+    super (ficheroScript);
+  }
+
+  public void ejecutar () {
+
+    int i, j, k, l;
+    boolean grafo[][];
+    int nClases;
+    boolean marcas[];
+    int votos[], votada, votaciones;
+    int nSel = 0;
+    double conjS[][];
+    double conjR[][];
+    int conjN[][];
+    boolean conjM[][];
+    int clasesS[];
+
+    long tiempo = System.currentTimeMillis();
+
+    /*Getting the number of differents classes*/
+    nClases = 0;
+    for (i=0; i<clasesTrain.length; i++)
+      if (clasesTrain[i] > nClases)
+        nClases = clasesTrain[i];
+    nClases++;
+
+    /*Inicialization of the flagged instances vector for a posterior copy*/
+    marcas = new boolean[datosTrain.length];
+    for (i=0; i<datosTrain.length; i++)
+      marcas[i] = true;
+    nSel = datosTrain.length;
+
+    /*Inicialization of the graph without edges and votes container*/
+    grafo = new boolean[datosTrain.length][datosTrain.length];
+    for (i=0; i<datosTrain.length; i++) {
+      Arrays.fill(grafo[i], true);
+      grafo[i][i] = false;
+    }
+    votos = new int[nClases];
+
+    /*Get the proximity graph using Gabriel Graph (GG)*/
+    for (i=0; i<datosTrain.length; i++) {
+      for (j=0; j<datosTrain.length; j++) {
+        for (k=0; k<datosTrain.length && grafo[i][j]; k++) {
+          if (j!=k && i!=k) {
+            if (KNN.distancia2(datosTrain[i], realTrain[i], nominalTrain[i], nulosTrain[i], datosTrain[j], realTrain[j], nominalTrain[j], nulosTrain[j], distanceEu) > (KNN.distancia2 (datosTrain[i], realTrain[i], nominalTrain[i], nulosTrain[i], datosTrain[k], realTrain[k], nominalTrain[k], nulosTrain[k], distanceEu) + KNN.distancia2 (datosTrain[j], realTrain[j], nominalTrain[j], nulosTrain[j], datosTrain[k], realTrain[k], nominalTrain[k], nulosTrain[k], distanceEu))) {
+              grafo[i][j] = false;
+            }
+          }
+        }
+      }
+    }
+
+    /*Check the order graph*/
+    if (!orden) {
+      for (i=0; i<datosTrain.length; i++) {
+        Arrays.fill(votos,0);
+        for (j=0; j<grafo[i].length; j++) {
+          if (grafo[i][j]) {
+            votos[clasesTrain[j]]++;
+          }
+        }
+
+        /*count of votes for this instance finalized*/
+        votada = 0;
+        votaciones = votos[0];
+        for (j=1; j<nClases; j++) {
+          if (votaciones < votos[j]) {
+            votaciones = votos[j];
+            votada = j;
+          }
+        }
+        if (type) {
+        	if (votada != clasesTrain[i]) {
+        		marcas[i] = false;
+        		nSel--;
+        	}
+        } else {
+        	if (votada == clasesTrain[i]) {
+        		marcas[i] = false;
+        		nSel--;
+        	}        	
+        }
+      }
+    } else { //2nd order
+      for (i=0; i<datosTrain.length; i++) {
+        Arrays.fill(votos,0);
+        for (j=0; j<grafo[i].length; j++) {
+          if (grafo[i][j]) {
+            votos[clasesTrain[j]]++;
+          }
+        }
+
+        /*count of votes for this instance finalized*/
+        votada = 0;
+        votaciones = votos[0];
+        for (j=1; j<nClases; j++) {
+          if (votaciones < votos[j]) {
+            votaciones = votos[j];
+            votada = j;
+          }
+        }
+        if (votada != clasesTrain[i]) {
+          /*Using 2nd order graph*/
+          for (j=0; j<grafo[i].length; j++) {
+            if (grafo[i][j] && clasesTrain[i] == clasesTrain[j]) {
+              for (k=0; k<grafo[j].length; k++) {
+                if (grafo[j][k]) {
+                  votos[clasesTrain[k]]++;
+                }
+              }
+            }
+          }
+
+          /*count of votes for this instance finalized*/
+          votada = 0;
+          votaciones = votos[0];
+          for (j=1; j<nClases; j++) {
+            if (votaciones < votos[j]) {
+              votaciones = votos[j];
+              votada = j;
+            }
+          }
+          if (type) {
+          	if (votada != clasesTrain[i]) {
+          		marcas[i] = false;
+          		nSel--;
+          	}
+          } else {
+          	if (votada == clasesTrain[i]) {
+          		marcas[i] = false;
+          		nSel--;
+          	}        	
+          }
+        }
+      }
+    }
+
+
+    /*Building of the S set from the flags*/
+
+    conjS = new double[nSel][datosTrain[0].length];
+    conjR = new double[nSel][datosTrain[0].length];
+    conjN = new int[nSel][datosTrain[0].length];
+    conjM = new boolean[nSel][datosTrain[0].length];
+    clasesS = new int[nSel];
+    for (i=0, l=0; i<datosTrain.length; i++) {
+      if (marcas[i]) { //the instance will be copied to the solution
+        for (j=0; j<datosTrain[0].length; j++) {
+          conjS[l][j] = datosTrain[i][j];
+          conjR[l][j] = realTrain[i][j];
+          conjN[l][j] = nominalTrain[i][j];
+          conjM[l][j] = nulosTrain[i][j];
+        }
+        clasesS[l] = clasesTrain[i];
+        l++;
+      }
+    }
+
+    System.out.println("GG "+ relation + " " + (double)(System.currentTimeMillis()-tiempo)/1000.0 + "s");
+
+    OutputIS.escribeSalida(ficheroSalida[0], conjR, conjN, conjM, clasesS, entradas, salida, nEntradas, relation);
+    OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
+  }
+
+
+  public void leerConfiguracion (String ficheroScript) {
+
+    String fichero, linea, token;
+    StringTokenizer lineasFichero, tokens;
+    byte line[];
+    int i, j;
+
+    ficheroSalida = new String[2];
+
+    fichero = Fichero.leeFichero (ficheroScript);
+    lineasFichero = new StringTokenizer (fichero,"\n\r");
+
+    lineasFichero.nextToken();
+    linea = lineasFichero.nextToken();
+
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    token = tokens.nextToken();
+
+    /*Getting the names of the training and test files*/
+    line = token.getBytes();
+    for (i=0; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroTraining = new String (line,i,j-i);
+    for (i=j+1; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroTest = new String (line,i,j-i);
+
+    /*Getting the path and base name of the results files*/
+    linea = lineasFichero.nextToken();
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    token = tokens.nextToken();
+
+    /*Getting the names of output files*/
+    line = token.getBytes();
+    for (i=0; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroSalida[0] = new String (line,i,j-i);
+    for (i=j+1; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroSalida[1] = new String (line,i,j-i);
+
+    /*Getting the order of the graph*/
+    linea = lineasFichero.nextToken();
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    token = tokens.nextToken();
+    token = token.substring(1);
+    if (token.equalsIgnoreCase("2nd_order")) orden = true;
+    else orden = false;
+
+    /*Get the type of selection*/
+    linea = lineasFichero.nextToken();
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    type = tokens.nextToken().substring(1).equalsIgnoreCase("Edition")?true:false;    
+
+    /*Getting the type of distance function*/
+    linea = lineasFichero.nextToken();
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    distanceEu = tokens.nextToken().substring(1).equalsIgnoreCase("Euclidean")?true:false;    
+}
+}

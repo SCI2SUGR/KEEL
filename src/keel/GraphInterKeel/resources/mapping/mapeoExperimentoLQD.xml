@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN"
+                         "http://castor.org/mapping.dtd">
+
+<mapping>
+	
+	<description>XML Castor de mapeo para guardar experimentos en KEEL</description>
+
+        <class name="keel.GraphInterKeel.experiments.Graph">
+                <map-to xml="Graph"/>
+
+                <field name="objective"
+                       type="integer" direct="true">
+                        <bind-xml name="objective" node="attribute"/>
+                </field>
+
+                <field name="Id"
+                       type="integer">
+                        <bind-xml name="IDExperiment" node="attribute"/>
+                </field>
+
+                <field name="Type"
+                       type="integer">
+                        <bind-xml name="typeExperiment" node="attribute"/>
+                </field>
+
+	
+
+                <field name="Seed"
+                       type="long">
+                        <bind-xml name="experimentSeed" node="element"/>
+                </field>
+
+                <field name="name"
+                       type="java.lang.String">
+                        <bind-xml name="nameGraph" node="element"/>
+                </field>
+
+                <field name="Nodes"
+                       type="keel.GraphInterKeel.experiments.Node" collection="vector">
+                        <bind-xml name="Node"/>
+                </field>
+
+                <field name="Arcs"
+                       type="keel.GraphInterKeel.experiments.Arc" collection="vector">
+                        <bind-xml name="Edge"/>
+                </field>
+		</class>
+
+        <class name="keel.GraphInterKeel.experiments.Arc">
+                <field name="Source2"
+                       type="integer">
+                        <bind-xml name="originNode" node="element"/>
+                </field>
+
+                <field name="Destination2"
+                       type="integer">
+                        <bind-xml name="destinyNode" node="element"/>
+                </field>
+        </class>
+
+        <class name="keel.GraphInterKeel.experiments.Node">
+                <field name="Id"
+                       type="integer">
+                        <bind-xml name="IDNode" node="attribute"/>
+                </field>
+
+                <field name="type"
+                       type="integer">
+                        <bind-xml name="typeNode" node="attribute"/>
+                </field>
+
+	   	<field name="Typelqd"
+                       type="integer">
+                        <bind-xml name="typelqd" node="attribute"/>
+                </field>
+
+                <field name="Position"
+                       type="java.awt.Point">
+                        <bind-xml name="positionNode" node="element"/>
+                </field>
+
+                <field name="dsc"
+                       type="keel.GraphInterKeel.experiments.ExternalObjectDescription" direct="true">
+                        <bind-xml name="Description" node="element"/>
+                </field>
+
+		</class>
+
+		<class name="java.awt.Point">
+
+                <field name="x"
+                       type="integer" direct="true">
+                        <bind-xml name="positionX" node="attribute"/>
+                </field>
+
+                <field name="y"
+                       type="integer" direct="true">
+                        <bind-xml name="positionY" node="attribute"/>
+                </field>
+
+		</class>
+
+		<class name="keel.GraphInterKeel.experiments.DataSet" extends="keel.GraphInterKeel.experiments.Node">
+
+                <field name="tableVector"
+                       type="java.util.Vector" collection="vector" direct="true">
+                        <bind-xml name="Files"/>
+                </field>
+		</class>
+
+		<class name="keel.GraphInterKeel.experiments.Algorithm" extends="keel.GraphInterKeel.experiments.Node">
+
+                <field name="par"
+                       type="keel.GraphInterKeel.experiments.Parameters" collection="vector" direct="true">
+                        <bind-xml name="Parameters"/>
+                </field>
+		</class>
+
+		<class name="keel.GraphInterKeel.experiments.Test" extends="keel.GraphInterKeel.experiments.Node">
+
+                <field name="par"
+                       type="keel.GraphInterKeel.experiments.Parameters" collection="vector" direct="true">
+                        <bind-xml name="Parameters"/>
+                </field>
+		</class>
+
+        <class name="keel.GraphInterKeel.experiments.ExternalObjectDescription">
+                <field name="Subtype"
+                       type="integer">
+                        <bind-xml name="subType" node="element"/>
+                </field>
+
+                <field name="name"
+                       type="java.lang.String" collection="array" direct="true">
+                        <bind-xml name="name"/>
+                </field>
+
+                <field name="path"
+                       type="java.lang.String" collection="array" direct="true">
+                        <bind-xml name="path"/>
+                </field>
+
+                <field name="nameJar"
+                       type="java.lang.String" collection="array" direct="true">
+                        <bind-xml name="jarName"/>
+                </field>
+
+<field name="arg" type="keel.GraphInterKeel.experiments.Joint" collection="vector" direct="true">
+                        <bind-xml name="Arg"/>
+                </field>
+
+
+				</class>
+
+
+        <class name="keel.GraphInterKeel.experiments.Parameters">
+
+                <field name="AlgorithmType"
+                       type="java.lang.String">
+                        <bind-xml name="AlgorithmType" node="element"/>
+                </field>
+
+                <field name="NumParameters"
+                       type="integer">
+                        <bind-xml name="numParameters" node="element"/>
+                </field>
+
+                <field name="IfSeed"
+                       type="boolean">
+                        <bind-xml name="Probabilistic" node="element"/>
+                </field>
+
+                <field name="NumOutputs"
+                       type="integer">
+                        <bind-xml name="numOutputs" node="element"/>
+                </field>
+
+                <field name="NumInputs"
+                       type="integer">
+                        <bind-xml name="numInputs" node="element"/>
+                </field>
+
+
+                <field name="Exe"
+                       type="integer">
+                        <bind-xml name="numExecutions" node="element"/>
+                </field>
+
+                <field name="descriptions"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="descriptions"/>
+                </field>
+
+                <field name="parameterType"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="parameterType"/>
+                </field>
+
+                <field name="domain"
+                       type="java.util.Vector" collection="vector" direct="true">
+                        <bind-xml name="domain"/>
+                </field>
+
+                <field name="defaultValue"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="defaultValue"/>
+                </field>
+
+                <field name="value"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="value"/>
+                </field>
+
+                <field name="hidden"
+                       type="java.lang.Integer" collection="vector" direct="true">
+                        <bind-xml name="hidden"/>
+                </field>
+
+                <field name="outputs_tra"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="trainingOutputs"/>
+                </field>
+
+                <field name="outputs_tst"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="testOutputs"/>
+                </field>
+
+                <field name="tra_val"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="trainingValues"/>
+                </field>
+
+                <field name="tst_val"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="testValues"/>
+                </field>
+
+                <field name="configs"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="configurations"/>
+                </field>
+
+                <field name="additional_outputs"
+                       type="java.lang.String" collection="vector" direct="true">
+                        <bind-xml name="additionalOutputs"/>
+                </field>
+
+		</class>
+
+</mapping>

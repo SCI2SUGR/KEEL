@@ -1,0 +1,283 @@
+<method>
+
+	<name>Uniform Frequency Discretizer</name>
+
+	<reference>  
+
+		<ref>H. Liu, F. Hussain, C. Lim, M. Dash. Discretization: An Enabling Technique. Data Mining and Knowledge Discovery 6:4 (2002) 393-423</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Discretization of real attributes</type>
+
+		<objective>To transform a set of numerical variables into nominal variables. Input variables may be either real or integer.</objective>
+
+		<howWork>Uniform Frequency Discretizer is an algorithm that discretizes the non nominal attributes (real or integer) of a group of instances.
+
+The task of a discretization algorithm is to build a set of intervals for each non nominal attribute. The value of the attribute is translated to the interval number to which the value belongs.
+
+Uniform Frequency Discretizer builds a number of equal-density-intervals (each interval has the same number of instances). The number of discrete intervals is specified by the parameter numIntervals.
+</howWork>
+
+		<parameterSpec>  
+
+			<param>numIntervals: This integer indicates the number of discrete intervals. All non-nominal attributes are discretized with the same number of intervals. This value, 10 by default, can be determined by the user.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Uniform Frequency Discretizer
+Dataset: Iris Plants
+
+Input Training set: Iris-5x2-1tra.dat
+Input Test set: Iris-5x2-1tst.dat
+Output Training set: result0.tra
+Output Test set: result0.tst
+Descriptor: result0e0.txt
+
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Disc-UniformFrequency/iris folder the discretization results; 3 files are generated in this folder:
+
+
+File result0.tra:
+	It contains the discretization result of training set.
+
+@relation Iris_Plants_Database
+@attribute sepalLength {0,1,2,3,4,5,6,7,8,9}
+@attribute sepalWidth {0,1,2,3,4,5,6,7,8,9}
+@attribute petalLength {0,1,2,3,4,5,6,7,8,9}
+@attribute petalWidth {0,1,2,3,4,5,6,7,8,9}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@data
+2,8,1,1,Iris-setosa
+0,6,1,1,Iris-setosa
+0,6,1,1,Iris-setosa
+2,9,2,2,Iris-setosa
+0,7,1,2,Iris-setosa
+2,7,1,1,Iris-setosa
+2,8,1,1,Iris-setosa
+0,7,2,1,Iris-setosa
+0,5,0,0,Iris-setosa
+4,9,1,2,Iris-setosa
+2,9,1,2,Iris-setosa
+4,9,2,2,Iris-setosa
+2,7,2,1,Iris-setosa
+2,8,1,2,Iris-setosa
+0,8,0,1,Iris-setosa
+2,7,2,2,Iris-setosa
+2,7,1,1,Iris-setosa
+2,9,1,0,Iris-setosa
+4,9,1,1,Iris-setosa
+2,6,0,1,Iris-setosa
+2,7,1,1,Iris-setosa
+2,8,1,2,Iris-setosa
+0,6,1,1,Iris-setosa
+2,8,2,3,Iris-setosa
+2,9,3,2,Iris-setosa
+9,6,5,5,Iris-versicolor
+8,6,6,6,Iris-versicolor
+4,0,3,4,Iris-versicolor
+4,3,5,4,Iris-versicolor
+6,6,5,7,Iris-versicolor
+0,0,3,3,Iris-versicolor
+5,4,5,5,Iris-versicolor
+8,6,4,5,Iris-versicolor
+4,2,4,3,Iris-versicolor
+6,0,5,6,Iris-versicolor
+5,6,6,7,Iris-versicolor
+5,3,3,4,Iris-versicolor
+5,3,5,3,Iris-versicolor
+8,5,4,5,Iris-versicolor
+8,3,6,5,Iris-versicolor
+2,5,5,6,Iris-versicolor
+8,6,5,6,Iris-versicolor
+6,0,4,4,Iris-versicolor
+4,0,3,4,Iris-versicolor
+4,1,3,3,Iris-versicolor
+2,0,3,3,Iris-versicolor
+4,4,4,4,Iris-versicolor
+6,4,4,4,Iris-versicolor
+2,0,3,3,Iris-versicolor
+4,3,4,4,Iris-versicolor
+6,6,9,9,Iris-virginica
+4,2,7,7,Iris-virginica
+9,5,8,8,Iris-virginica
+7,5,8,8,Iris-virginica
+9,5,9,8,Iris-virginica
+9,4,9,7,Iris-virginica
+7,6,7,8,Iris-virginica
+4,3,7,9,Iris-virginica
+5,0,6,6,Iris-virginica
+9,3,9,8,Iris-virginica
+8,6,8,8,Iris-virginica
+9,6,9,7,Iris-virginica
+6,3,6,7,Iris-virginica
+7,3,8,8,Iris-virginica
+5,1,8,5,Iris-virginica
+9,5,9,9,Iris-virginica
+5,5,6,7,Iris-virginica
+8,6,8,8,Iris-virginica
+8,6,8,9,Iris-virginica
+8,6,8,9,Iris-virginica
+8,5,7,9,Iris-virginica
+6,0,6,7,Iris-virginica
+7,5,7,8,Iris-virginica
+6,7,8,9,Iris-virginica
+5,5,7,7,Iris-virginica
+
+
+File result0.tst:
+	It contains the discretization result of testing set.
+
+@relation Iris_Plants_Database
+@attribute sepalLength {0,1,2,3,4,5,6,7,8,9}
+@attribute sepalWidth {0,1,2,3,4,5,6,7,8,9}
+@attribute petalLength {0,1,2,3,4,5,6,7,8,9}
+@attribute petalWidth {0,1,2,3,4,5,6,7,8,9}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@data
+0,5,1,1,Iris-setosa
+2,8,1,1,Iris-setosa
+0,4,1,1,Iris-setosa
+0,6,1,0,Iris-setosa
+0,5,1,0,Iris-setosa
+4,9,0,1,Iris-setosa
+2,8,1,2,Iris-setosa
+2,9,1,2,Iris-setosa
+2,6,2,3,Iris-setosa
+0,7,3,1,Iris-setosa
+2,5,2,1,Iris-setosa
+2,8,1,1,Iris-setosa
+0,6,2,1,Iris-setosa
+0,6,2,1,Iris-setosa
+2,7,1,2,Iris-setosa
+0,6,1,0,Iris-setosa
+4,8,1,1,Iris-setosa
+0,6,1,0,Iris-setosa
+0,5,1,1,Iris-setosa
+0,0,1,2,Iris-setosa
+0,5,1,2,Iris-setosa
+2,9,2,1,Iris-setosa
+0,6,1,1,Iris-setosa
+2,8,1,1,Iris-setosa
+2,6,1,1,Iris-setosa
+7,6,5,6,Iris-versicolor
+7,3,5,6,Iris-versicolor
+8,4,5,4,Iris-versicolor
+2,2,3,5,Iris-versicolor
+2,0,3,3,Iris-versicolor
+5,5,4,6,Iris-versicolor
+5,0,3,3,Iris-versicolor
+4,4,3,4,Iris-versicolor
+4,5,5,6,Iris-versicolor
+4,0,3,3,Iris-versicolor
+6,0,6,6,Iris-versicolor
+7,4,4,4,Iris-versicolor
+8,5,6,7,Iris-versicolor
+5,4,5,6,Iris-versicolor
+4,1,3,3,Iris-versicolor
+4,0,3,3,Iris-versicolor
+4,0,3,3,Iris-versicolor
+4,2,3,3,Iris-versicolor
+5,2,7,7,Iris-versicolor
+5,7,5,7,Iris-versicolor
+4,5,4,4,Iris-versicolor
+4,1,4,3,Iris-versicolor
+5,5,5,5,Iris-versicolor
+4,2,4,4,Iris-versicolor
+4,5,4,3,Iris-versicolor
+6,4,8,7,Iris-virginica
+0,0,5,7,Iris-virginica
+8,0,8,7,Iris-virginica
+9,8,9,9,Iris-virginica
+7,2,7,7,Iris-virginica
+8,5,8,8,Iris-virginica
+4,0,6,8,Iris-virginica
+7,6,7,9,Iris-virginica
+7,5,8,7,Iris-virginica
+9,9,9,8,Iris-virginica
+9,1,9,9,Iris-virginica
+8,6,8,9,Iris-virginica
+4,3,6,8,Iris-virginica
+6,2,6,7,Iris-virginica
+5,5,6,7,Iris-virginica
+9,5,8,7,Iris-virginica
+9,3,9,7,Iris-virginica
+9,9,9,8,Iris-virginica
+7,3,8,8,Iris-virginica
+6,3,7,6,Iris-virginica
+6,7,8,9,Iris-virginica
+7,6,8,7,Iris-virginica
+8,6,8,9,Iris-virginica
+8,6,7,9,Iris-virginica
+4,2,7,7,Iris-virginica
+
+
+File result0e0.txt:
+	It contains the descriptor of cutting points used in the discretization.
+
+Cut point 0 of attribute 0 : 4.95
+Cut point 1 of attribute 0 : 5.0
+Cut point 2 of attribute 0 : 5.45
+Cut point 3 of attribute 0 : 5.5
+Cut point 4 of attribute 0 : 5.85
+Cut point 5 of attribute 0 : 6.15
+Cut point 6 of attribute 0 : 6.35
+Cut point 7 of attribute 0 : 6.55
+Cut point 8 of attribute 0 : 6.95
+Number of cut points of attribute 0 : 9
+Cut point 0 of attribute 1 : 2.55
+Cut point 1 of attribute 1 : 2.7
+Cut point 2 of attribute 1 : 2.8
+Cut point 3 of attribute 1 : 2.9
+Cut point 4 of attribute 1 : 3.0
+Cut point 5 of attribute 1 : 3.1
+Cut point 6 of attribute 1 : 3.3499999999999996
+Cut point 7 of attribute 1 : 3.45
+Cut point 8 of attribute 1 : 3.75
+Number of cut points of attribute 1 : 9
+Cut point 0 of attribute 2 : 1.3
+Cut point 1 of attribute 2 : 1.55
+Cut point 2 of attribute 2 : 1.7999999999999998
+Cut point 3 of attribute 2 : 4.05
+Cut point 4 of attribute 2 : 4.45
+Cut point 5 of attribute 2 : 4.75
+Cut point 6 of attribute 2 : 5.05
+Cut point 7 of attribute 2 : 5.300000000000001
+Cut point 8 of attribute 2 : 5.95
+Number of cut points of attribute 2 : 9
+Cut point 0 of attribute 3 : 0.15000000000000002
+Cut point 1 of attribute 3 : 0.25
+Cut point 2 of attribute 3 : 0.5
+Cut point 3 of attribute 3 : 1.25
+Cut point 4 of attribute 3 : 1.35
+Cut point 5 of attribute 3 : 1.45
+Cut point 6 of attribute 3 : 1.55
+Cut point 7 of attribute 3 : 1.95
+Cut point 8 of attribute 3 : 2.25
+Number of cut points of attribute 3 : 9
+
+</example>
+
+</method>

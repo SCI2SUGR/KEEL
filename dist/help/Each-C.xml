@@ -1,0 +1,132 @@
+<method>
+
+	<name>EACH</name>
+
+	<reference>  
+
+		<ref>Steven Salzberg, A Nearest Hyperrectangle Learning Method, Machine Learning 6 (1991) 251-276.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules.</type>
+
+		<objective>The EACH algorithm induces a list of classification rules by storing objects in Euclidean n-space as hyperrectangles and using the information based on the examples it has seen in the past.</objective>
+
+		<howWork>
+			Memory is initialized with an example chosen at random from the training set. After initialization, the algorithm operates incrementally, processing one example at a time (the examples will be presented in random order), comparing the examples to those it has seen before, and finding the closest example in memory.
+
+			Every new example is matched to memory using a matching process to determine what is closest. The best match is used for classification in the obvious way: the system predicts that the new example will fall into the same category as the best match exemplar.
+
+			The matching process computes the Euclidean distance between a new data point (an example) and an exemplar memory object (a hyperrectangle). The best match is the one with the smallest distance.
+
+			A point will belong only to the innermost rectangle if it is internal to several nested rectangles. In the case of overlapping rectangles, a point falling in the area of overlap belongs to the smaller rectangle.
+
+			Learning only occurs when EACH gets feedback about its classification.  Exemplars have properties such as weights, shapes and sizes- all of which can be adjusted based on the results of the prediction.
+
+			If EACH makes the correct prediction,makes a generalization of the selected hyperrectangle with the example. Also, the hyperrectangle weight is decreased, the system strengthens the exemplar used to make the prediction.
+
+			If the system makes the wrong prediction, it has one more chance to make the right one. Previously, the hyperrectangle weight is adjusted for failure (is increased), EACH weakens the exemplar. This second chance heuristic is used to avoid creating more memory objects than necessary. If this second hyperrectangle will give the correct prediction, then the system tries to adjust hyperrectangle shapes to make the second closest exemplar into the closest exemplar, and the hyperrectangle weight is decreased, too. A very important consequence of this "second chance" heuristic is that it allows the formation of nested huperrectangles (hyperrectangles within other hyperrectangles).
+
+			If the second best match also makes the wrong prediction, then the system simply stores the new example as a point in memory. This point is made into an exemplar that can inmediately be used to predict future examples, and can be generalized and specialized if necessary, changing from point to hyperrectangle. The system adjusts the weights on the features, increasing the weights for those features where the value on the example matchs the value on the hyperrectangle, and decreasing when not.
+
+			
+
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Seed: it is the seed to initialize the random method.</param>
+			<param>FeatureAdjustmentRate: it is the rate used to adjust the weight of the features.</param>
+			<param>Use_SecondChance: is a code to use the "second chance" heuristic or not. If used, the system has one more chance to make the right prediction when has made the wrong prediction, comparing with the second best match in memory. A very important consequence of this "second chance" heuristic is that it allows the formation of nested huperrectangles (hyperrectangles within other hyperrectangles). If this option is not selected, the system always creates a new exemplar after making a mistake, without checking the second closest match.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: EACH
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: 
+	Seed: 12345678
+	FeatureAdjustmentRate: 0.2
+	Use_SecondChance: YES.
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.1333333333333333
+Correctly classified:
+0.8666666666666667 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-EACH:
+
+@relation  Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-virginica
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+
+
+And the Rule Set and Statistics (result0e0.txt) in Experiment\Results\Clas-Each:
+
+
+Rule 1: IF  sepalLength in [4.9 , 6.9] AND sepalWidth in [2.0 , 3.4] AND petalLength in [3.0 , 5.1] AND petalWidth in [1.0 , 1.8] THEN class -> Iris-versicolor      [ Hyperrectangle weight = 1.2 ]     [ Volumen = 0.039112388250319256 ] 
+
+Rule 2: IF  sepalLength in [4.9 , 7.9] AND sepalWidth in [2.2 , 3.8] AND petalLength in [4.5 , 6.9] AND petalWidth in [1.4 , 2.5] THEN class -> Iris-virginica      [ Hyperrectangle weight = 1.1333333333333333 ]     [ Volumen = 0.10536398467432949 ] 
+
+Rule 3: IF  sepalLength in [4.3 , 5.8] AND sepalWidth in [2.3 , 4.4] AND petalLength in [1.1 , 1.9] AND petalWidth in [0.1 , 0.6] THEN class -> Iris-setosa      [ Hyperrectangle weight = 1.0 ]     [ Volumen = 0.010476532567049807 ] 
+
+Attributes Weights: sepalLength = 0.6400000000000001   sepalWidth = 0.6400000000000001   petalLength = 0.6400000000000001   petalWidth = 0.6400000000000001   
+
+Accuracy Training: 0.9481481481481482
+Accuracy Test: 0.8666666666666667
+
+</example>
+
+</method>

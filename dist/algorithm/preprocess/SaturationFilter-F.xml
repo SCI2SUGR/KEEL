@@ -1,0 +1,20 @@
+<algorithm_specification>
+
+	<name>SaturationFilter</name>
+	<nParameters>1</nParameters>
+  	<seed>1</seed>
+  	<nOutput>1</nOutput>
+
+	
+	<parameter>
+    	<name>noiseSensitivity</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>100</upperB>
+    	</domain>
+    	<default>0.75</default>
+		<disabled/>
+  	</parameter>
+
+</algorithm_specification>

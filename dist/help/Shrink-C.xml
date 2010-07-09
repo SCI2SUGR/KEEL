@@ -1,0 +1,74 @@
+<method>
+
+	<name>Shrink</name>
+
+	<reference>  
+
+		<ref>D. Kibler and D. W. Aha. Learning representative exemplars of concepts: An initial case study. Proceedings of the Fourth International Workshop on Machine Learning, Morgan Kaufmann, (1987) 24-30.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Instance Selection. Decremental</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>This algorithm starts with S = T, and then removes any instances
+		that would still be classified correctly by the remaining subset. This is similar
+		to RNN, except that it only considers whether the removed instance would be
+		3 classified correctly, whereas RNN consideres whether the classification of other
+		instances would be affected by the instance's removal.</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to classify an example using the K-Nearest Neighbor Rule</param>
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Shrink
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\IS-Shrink:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+5.0,3.3,1.4,0.2,Iris-setosa
+5.9,3.2,4.8,1.8,Iris-versicolor
+6.3,2.5,4.9,1.5,Iris-versicolor
+6.0,2.7,5.1,1.6,Iris-versicolor
+6.3,2.8,5.1,1.5,Iris-virginica
+6.1,2.6,5.6,1.4,Iris-virginica
+6.3,2.5,5.0,1.9,Iris-virginica
+6.2,3.4,5.4,2.3,Iris-virginica
+5.9,3.0,5.1,1.8,Iris-virginica
+</example>
+
+</method>

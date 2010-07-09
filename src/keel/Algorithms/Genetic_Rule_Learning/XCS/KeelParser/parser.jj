@@ -1,0 +1,495 @@
+
+
+//// PARSER OPTIONS 
+
+options {
+	// The lookahead is set to 1. 
+	LOOKAHEAD=1;
+	// The language is not case-sensitive
+	IGNORE_CASE=true;
+	// An action has to be made for each token
+	COMMON_TOKEN_ACTION=true;
+}
+
+//// SOURCE CODE OF PARSER 
+
+PARSER_BEGIN(Parser)
+package keel.Algorithms.Genetic_Rule_Learning.XCS.KeelParser;
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+
+public class Parser {
+
+	
+	static Parser keelParser = null;
+		
+	Parser() {
+	}
+	
+	/**
+	  * Main function 
+	  * It receives as parameters:
+	  *	. Name of input file 
+	  */
+	
+  public static void doParse(String fileName) {
+    try {
+        FileInputStream f = null;
+        try {
+            f = new FileInputStream(fileName);
+        }catch (FileNotFoundException e){
+            System.out.println ("The input file '"+fileName+"' doesn't exist.");
+            System.exit(0);	
+        }
+
+        if (keelParser == null){
+            keelParser = new Parser(f);	
+        }
+
+        // Calling the axiom symbol 
+        keelParser.ReInit(f);  // We have to reInit the parser.
+        keelParser.ppal();
+                
+        // Closing the input file 
+        f.close();
+
+    } catch(Exception e) {
+        // If any exception occurs, an error mesage is printed 
+        e.printStackTrace(System.err);
+    }
+  }//end doParse
+
+}
+
+PARSER_END(Parser)
+
+//// TOKEN DEFINITIONS 
+
+// Characters we want ignore 
+SKIP: { " " | "\t" | "\b" | "\n" | "\r" | <COMENT: "//"([" "-"z"]|"\t")*> | <COM2: "%" ([" "-"z"]|"\t")*>}
+
+// The token order is important: The key words have to be set before <identificator>. It's very important defining the identifier
+// before the <lletra> and <digit>
+
+// Reserved words
+TOKEN: {
+	<PROBLEM: "problem">
+	| <CLASSIFIER : "classifier">
+	| <PARAMETERS: "parameters">
+	| <INIT: "init">	
+	| <GA: "GA">
+	| <REPRESENTATION: "representation">
+	| <STATISTICS: "statistics">
+	| <REDUCTION: "reduction">
+	| <BEGIN: "begin">
+	| <END: "end">
+	| <XCSI: "XCSI">
+	| <TEST: "test">
+	| <ALGORITHM: "algorithm">
+	| <INPUTDATA: "inputData">
+	| <OUTPUTDATA: "outputData">
+}
+
+// Parameters
+TOKEN: {
+	
+	///////////////////////////////////////////////////////////////
+	///////////////////// PROBLEM CONFIGURATION ///////////////////
+	///////////////////////////////////////////////////////////////
+	  <TYPEOFPROBLEM: "typeOfProblem">
+	| <NUMBEROFEXPLORES: "numberOfExplores"> 
+	| <SEED: "seed">
+	| <EXPLORESBETWEENEXPLOITS: "exploresBetweenExploits">
+	| <XCSRUN: "XCSRun">
+	| <TRAINFILE: "trainFile">
+	| <POPULATIONFILE: "populationFile">
+	
+	// Problem types
+	| <PROBLEMTYPE: "FP" | "MUX" | "DEC" | "PAR" | "POS">
+	| <RUNTYPE: "train" | "reduct">
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	
+	
+	///////////////////////////////////////////////////////////////
+	///////////////////// XCS PARAMETERS CONFIG ///////////////////
+	///////////////////////////////////////////////////////////////
+	| <POPSIZE: "popsize">
+	| <ALPHA: "alpha">
+	| <BETA: "beta">
+	| <GAMMA: "gamma">
+	| <DELTA: "delta">
+	| <NU: "nu">
+	| <THETA_MNA: "theta_mna">
+	| <THETA_DEL: "theta_del">
+	| <THETA_SUB: "theta_sub">
+	| <EPSILON_0: "epsilon_0">
+	| <DOASSUBSUMPTION: "doASSubsumption">
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	
+	
+	///////////////////////////////////////////////////////////////
+	////////////////// REDUCTION IN INITIALIZATION ////////////////
+	///////////////////////////////////////////////////////////////
+	| <PREDICTIONERRORREDUCTION: "predictionErrorReduction">
+	| <FITREDUCTION: "fitReduction">
+	| <INITIALPREDICITON: "initialPrediction">
+	| <INITIALFITNESS: "initialFitness">
+	| <INITIALPERROR: "initialPredictionError">
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	
+	
+	
+	///////////////////////////////////////////////////////////////
+	////////////////////// GENETIC PARAMETERS /////////////////////
+	///////////////////////////////////////////////////////////////
+	| <PX: "px">
+	| <PM: "pm">
+	| <THETA_GA: "theta_ga">
+	| <DOGASUBSUMPTION: "doGASubsumption">
+	| <TOURNAMENTSIZE: "tournamentSize">
+	| <TYPEOFMUTATION: "typeOfMutation">
+	| <TYPEOFSELECTION: "typeOfSelection">
+	| <TYPEOFCROSSOVER: "typeOfCrossover">
+	| <PERMITWITHINCROSSOVER: "permitWithinCrossover">
+	
+	/// Genetic types
+	| <SELECTIONTYPE: "RWS" | "Tournament">
+	| <CROSSOVERTYPE: "2PT" | "Uniform">
+	| <MUTATIONTYPE: "Niched" | "Free">
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	
+	
+	
+	///////////////////////////////////////////////////////////////
+	///////////////////// REPRESENTATION PARAMS ///////////////////
+	///////////////////////////////////////////////////////////////
+	| <PDONTCARE: "pdontcare">
+	| <CLLENGTH: "clLength">
+	| <R_0: "r_0">
+	| <L_0: "l_0">
+	| <M_0: "m_0">
+	
+	//XCSI
+	| <XCSI_L0: "XCSI_l0">
+	| <XCSI_M0: "XCSI_m0">
+	| <XCSI_R0: "XCSI_r0">
+	| <INTEGER: "integer">
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+
+
+	
+	///////////////////////////////////////////////////////////////
+	/////////////////////// SPECIFY PARAMETERS ////////////////////
+	///////////////////////////////////////////////////////////////
+	| <SPECIFY: "specify">
+	| <DOSPECIFY: "dospecify">
+	| <PSPECIFY: "pspecify">
+	| <NSPECIFY: "nspecify">
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+
+
+
+	///////////////////////////////////////////////////////////////
+	///////////////////// STATISTICS PARAMETERS ///////////////////
+	///////////////////////////////////////////////////////////////
+	| <DOSTATISTICS: "doStatistics">
+	| <STATISTICFILEOUTNAME: "statisticFileOutName">
+	| <STATISTICWINDOWSIZE: "statisticWindowSize">
+	| <GETOPTIMALPOPULATION: "getOptimalPopulation">
+	| <OPTIMALPOPULATIONFILE: "optimalPopulationFile">
+	| <REALDRAWNPRECISION: "realDrawnPrecision">
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	
+
+	///////////////////////////////////////////////////////////////
+	////////////////////// TEST PARAMETERS ////////////////////////
+	///////////////////////////////////////////////////////////////
+	| <DOTEST: "doTest">
+	| <TESTWINDOW: "testWindow">
+	| <SEQUENTIALTEST: "sequentialTest">  //It can only be defined in FP problems
+	| <TESTFILE: "testFile"> // Is the file from where the test examples will be read.
+	| <NUMBEROFTESTEXAMPLES: "numberOfTestExamples"> // Defined in no FP Problems
+	
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	
+
+
+	///////////////////////////////////////////////////////////////
+	////////////////////// REDUCTION PARAMETERS ///////////////////
+	///////////////////////////////////////////////////////////////
+	| <DOREDUCTION: "doReduction">
+	| <TYPEOFREDUCTION: "typeOfReduction">
+	| <INITREDUCTIONITERATION: "initReductionIteration">
+	| <REDUCTWINDOW: "reductWindow">
+	
+	| <REDUCTEDRULESFILE: "reductedRulesFile">
+	| <THETA_REDUCT: "theta_reduct">
+	| <EPSILON_REDUCT: "epsilon_reduct">
+	| <P_REDUCT: "Preduct">
+	
+	/////Reduction Types
+	| <REDUCTIONTYPE: "eW" | "nW" | "SD" | "WD" | "NA">
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	
+
+}
+
+
+
+// S�mbols
+TOKEN: {
+	<EQUALS: "=">
+	| <PCOMA: ";">
+	| <COBERT: "[">
+	| <CTANCAT: "]">
+	| <COLON: ",">
+	
+	
+}
+
+// Constants
+TOKEN: {
+	<INT_CONST: (<DIGIT>)+>
+	| <BOOLEAN_CONST: "true" | "false">
+	| <CAR_CONST: "'"([" "-"z"]|<LLETRA>|<DIGIT>)"'">
+	| <REAL_CONST: ((<DIGIT>)+ "." (<DIGIT>)*)| (<DIGIT>)+>
+//| <CAD_CONST: "\"" (<LLETRA>|"."|"/"|"_"|"\\")* "\""> 
+	
+	| <CAD_CONST: "\"" (["$"-"z"]|<LLETRA>|"_"|"\\")* "\"">
+}
+
+
+// Identifier
+TOKEN: {
+	<IDENT: <LLETRA>(<LLETRA>|<DIGIT>|"_")*>
+	| <LLETRA: ["A"-"Z","a"-"z"]>  //Si no es sensitiu no cal
+	| <DIGIT: ["0"-"9"]>
+}
+
+// If is not any, there is an error
+TOKEN: {
+	<ERR_LEX: ~[]> 
+}
+
+
+
+// This function will be exectuted for each token in the entry.
+TOKEN_MGR_DECLS: {
+	
+		
+  public static void CommonTokenAction(Token t) {	
+    //System.out.println ("Token: "+t.image);	
+    if (Parser.tokenImage[t.kind].toString().equals("<IDENT>") || Parser.tokenImage[t.kind].toString().equals("<TIPUS_SIMPLE>") || Parser.tokenImage[t.kind].toString().equals("<BOOLEAN_CONST>")){
+        t.image = t.image.toLowerCase();
+    }
+    if (Parser.tokenImage[t.kind].toString().equals("<ERR_LEX>")){
+        System.out.println("ERR_LEX:  Caracter ["+t.image+"] desconegut en la linia "+t.beginLine+" columna "+t.beginColumn);
+    }
+
+  }//end CommonTokenAction
+}
+
+//// PRODUCTIONS OF OUR GRAMAR
+	
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// INITIAL PRODUCTION OF THE GRAMMAR /////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+  void ppal() : {} {	
+	readAlgorithm()
+		readInputData()
+			readOutputData()
+				readParameters()
+  }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void readAlgorithm () :{} {
+	<ALGORITHM> <EQUALS> <IDENT>  	
+  }
+  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void readInputData() :{}{
+  	<INPUTDATA> <EQUALS> <CAD_CONST>  {Config.trainFile = getToken(0).image.substring (1, getToken(0).image.length() -1);}
+  		moreInputData(1)
+  }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void moreInputData(int num) :{}{
+  	<CAD_CONST> {
+  					if (num == 2)	Config.testFile = getToken(0).image.substring (1, getToken(0).image.length() -1);
+  					else if (num == 3) Config.populationFile = getToken(0).image.substring (1, getToken(0).image.length() -1);
+  				}
+  			moreInputData(num+1)
+  	
+  	|{}	
+  }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void readOutputData() :{}{
+  	<OUTPUTDATA> <EQUALS> <CAD_CONST>  {Config.statisticFileOutName = getToken(0).image.substring (1, getToken(0).image.length() -1);
+  										Config.fOTrainFileName = getToken(0).image.substring (1, getToken(0).image.length() -1);
+  										}
+  		moreOutputData(1)
+  }
+  
+  void moreOutputData(int num) : {}{
+  	<CAD_CONST> {
+  				 setOutputFile(num, getToken(0).image.substring (1, getToken(0).image.length() -1));
+  				}	
+  				moreOutputData(num+1)
+  	|{}
+  }
+  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void readParameters() :{}{
+  	readOneParameter() readParameters()
+  	| {}
+  	
+  }
+  
+  void readOneParameter ():{}{
+  	<TYPEOFPROBLEM> <EQUALS> <PROBLEMTYPE>	{Config.typeOfProblem = getToken(0).image;}
+	| <NUMBEROFEXPLORES><EQUALS><INT_CONST>	{Config.numberOfExplores = new Integer(getToken(0).image).intValue();}
+	| <SEED> <EQUALS> <INT_CONST>			{Config.seed = new Long(getToken(0).image).longValue();}
+	| <EXPLORESBETWEENEXPLOITS> <EQUALS> 
+							<INT_CONST>		{Config.exploresBetweenExploits = (new Integer(getToken(0).image)).intValue();}
+	| <XCSRUN> <EQUALS> RunType()			{Config.XCSRun = getToken(0).image.toLowerCase();}
+	
+	/////////////////////////////////////////////	
+	| <POPSIZE> 	<EQUALS>  <INT_CONST> 	{Config.popSize = new Integer(getToken(0).image).intValue();}
+	| <ALPHA> 	<EQUALS>  RealConst()	{Config.alpha = new Double(getToken(0).image).doubleValue();}
+	| <BETA> 	<EQUALS>  RealConst()	{Config.beta 	= new Double(getToken(0).image).doubleValue();}
+	| <GAMMA> 	<EQUALS>  RealConst()	{Config.gamma = new Double(getToken(0).image).doubleValue();}
+	| <DELTA> 	<EQUALS>  RealConst()	{Config.delta = new Double(getToken(0).image).doubleValue();}
+	| <NU> 		<EQUALS>  RealConst()	{Config.nu = new Double(getToken(0).image).doubleValue();}
+	| <THETA_MNA> 	<EQUALS>  <INT_CONST>	{Config.theta_mna = new Integer(getToken(0).image).intValue();}
+	| <THETA_DEL> 	<EQUALS>  RealConst()	{Config.theta_del = new Double(getToken(0).image).doubleValue();}
+	| <THETA_SUB> 	<EQUALS>  RealConst()	{Config.theta_sub = new Double(getToken(0).image).doubleValue();}
+	| <EPSILON_0> 	<EQUALS>  RealConst()	{Config.epsilon_0 = new Double(getToken(0).image).doubleValue();}
+	| <DOASSUBSUMPTION> <EQUALS>  
+							<BOOLEAN_CONST> {if (getToken(0).image.toLowerCase().equals("true")) 
+																				Config.doASSubsumption = true;
+		    						        else Config.doASSubsumption = false;
+							       			}
+	
+	/////////////////////////////////////////////
+	| <PX>			<EQUALS>  RealConst() 		{Config.pX = new Double(getToken(0).image).doubleValue();}
+	| <PM>			<EQUALS>  RealConst()		{Config.pM = new Double(getToken(0).image).doubleValue();}
+	| <THETA_GA>	<EQUALS>  RealConst()		{Config.theta_GA = new Double(getToken(0).image).doubleValue();}
+	| <DOGASUBSUMPTION>	<EQUALS>  
+								<BOOLEAN_CONST>	{if (getToken(0).image.toLowerCase().equals("true")) Config.doGASubsumption = true;
+												 else Config.doGASubsumption = false;}
+												 
+	| <TOURNAMENTSIZE>	<EQUALS>  RealConst()		{Config.tournamentSize = new Double(getToken(0).image).doubleValue();}
+	| <TYPEOFMUTATION>	<EQUALS>  <MUTATIONTYPE>	{Config.typeOfMutation = getToken(0).image;}
+	| <TYPEOFSELECTION>	<EQUALS>  <SELECTIONTYPE>	{Config.typeOfSelection = getToken(0).image;}
+	| <TYPEOFCROSSOVER>	<EQUALS>  <CROSSOVERTYPE>	{Config.typeOfCrossover = getToken(0).image;}
+	| <PERMITWITHINCROSSOVER> <EQUALS>  
+									<BOOLEAN_CONST>	{if (getToken(0).image.toLowerCase().equals("true")) Config.permitWithinCrossover = true;
+								 					 else Config.permitWithinCrossover = false;}	
+	
+	/////////////////////////////////////////////
+	| <PREDICTIONERRORREDUCTION>
+                                <EQUALS> RealConst() {Config.predictionErrorReduction = new Double(getToken(0).image).doubleValue();}
+	| <FITREDUCTION>	<EQUALS> RealConst() {Config.fitReduction = new Double(getToken(0).image).doubleValue();}
+	| <INITIALPREDICITON>	<EQUALS> RealConst() {Config.initialPrediction = new Double(getToken(0).image).doubleValue();}
+	| <INITIALFITNESS>	<EQUALS> RealConst() {Config.initialFitness = new Double(getToken(0).image).doubleValue();}
+	| <INITIALPERROR>	<EQUALS> RealConst() {Config.initialPError = new Double(getToken(0).image).doubleValue();}	
+	
+	/////////////////////////////////////////////
+	| <PDONTCARE> 	<EQUALS> RealConst() {Config.pDontCare = new Double(getToken(0).image).doubleValue();}
+	| <R_0>		<EQUALS> RealConst() {Config.r_0 = new Double(getToken(0).image).doubleValue();}
+	| <M_0>         <EQUALS> RealConst() {Config.m_0 = new Double(getToken(0).image).doubleValue();}
+	| <L_0>         <EQUALS> RealConst() {Config.l_0 = new Double(getToken(0).image).doubleValue();}
+  
+  	/////////////////////////////////////////////
+	| <DOSPECIFY><EQUALS> <BOOLEAN_CONST> {if (getToken(0).image.toLowerCase().equals("true")) Config.doSpecify = true;
+										   else Config.doSpecify = false;}
+	| <PSPECIFY> <EQUALS> RealConst() {Config.Pspecify = new Double(getToken(0).image).doubleValue();}
+	| <NSPECIFY> <EQUALS> RealConst() {Config.Nspecify = new Double(getToken(0).image).doubleValue();}  	
+  	
+  	/////////////////////////////////////////////
+	| <DOSTATISTICS> <EQUALS> <BOOLEAN_CONST> {if (getToken(0).image.toLowerCase().equals("true")) Config.doStatistics = true;
+						else Config.doStatistics = false;}
+	| <STATISTICWINDOWSIZE>	<EQUALS>  <INT_CONST> {Config.statisticWindowSize = new Integer(getToken(0).image).intValue();}
+
+	| <REALDRAWNPRECISION> <EQUALS> <INT_CONST>	{Config.realDrawnPrecision= new Integer(getToken(0).image).intValue();}  	
+  	
+  	/////////////////////////////////////////////
+	| <DOTEST> <EQUALS> <BOOLEAN_CONST> {System.out.println ("Parsing doTest = "+getToken(0).image);
+                                             if (getToken(0).image.toLowerCase().equals("true")) Config.doTest = true;
+					     else Config.doTest = false;}
+	| <SEQUENTIALTEST> <EQUALS> <BOOLEAN_CONST> {if (getToken(0).image.toLowerCase().equals("true")) Config.sequentialTest = true;
+						else Config.sequentialTest = false;}
+	| <TESTWINDOW> <EQUALS> <INT_CONST>	{Config.testWindow = new Integer(getToken(0).image).intValue(); }
+	| <IDENT> { Token t = getToken(0);
+                    System.err.println("Token '"+t.image+"' unrecognized. Line: "+t.beginLine+", Col: "+t.beginColumn);
+                    System.err.println("The configuration parameters parsing is stopped");
+                    System.exit(0);
+                  }
+  }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  void RunType() : {}{
+    <RUNTYPE> | <TEST>	
+  }//end RunType
+
+  void RealConst() : {}{
+    <INT_CONST> | <REAL_CONST>
+  }//end realValue
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////// JAVA CODE  ///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+JAVACODE void write(String s){
+	System.out.println(s);
+}
+
+
+JAVACODE void setOutputFile (int num, String fName){
+	switch (num){
+		case 1:
+				Config.fOTestFileName = fName;
+				break;
+		case 2:
+				Config.fTimeFileName = fName;
+				break;
+
+		case 3:
+				Config.fPopFileName = fName;
+				break;
+		case 4:
+				Config.fPopNormFileName = fName;
+				break;			
+		case 5:
+				Config.fTrainFileName = fName;
+				break;
+		case 6:
+				Config.fTestFileName = fName;
+				break;		
+		case 7:
+				Config.fIncFileName = fName;
+				break;
+		case 8:
+				Config.fDrawFileName = fName;
+				break;
+		
+	}
+}

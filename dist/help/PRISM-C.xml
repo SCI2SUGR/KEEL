@@ -1,0 +1,148 @@
+<method>
+
+	<name>Prism</name>
+
+	<reference>  
+
+		<ref>J. Cendrowska (1987). PRISM: An algorithm for inducing modular rules. International Journal of Man-Machine Studies. Vol.27, No.4, pp.349-370.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules (separate and conquer).</type>
+
+		<objective>The PRISM algorithm induces a list of classification perfect rules from examples taking each class in turn and identifying rules that "covers" some of the instances.</objective>
+
+		<howWork>The PRISM method can be described as separate-and-conquer algorithms: you identify a rule that covers many instances in the class (and excludes ones not in the class), separate out the covered instances because they are already taken care of by the rule, and continue the process on those that are left.
+		
+		The algorithm iterates over the classes, generating rules for each class in turn. We reinitialize to the full set of examples each time round. Then we create rules for that class and remove the examples from the set until there are none of that class left. Whenever we create a rule, start with an empty rule (which covers all the examples), and then restrict it by adding tests until it covers only examples of the desired class. At each stage choose the most promising test, that is, the one that maximizes the accuracy of the rule. Finally, break ties by selecting the test with greatest coverage.
+		
+		This method for constructing rules generates only correct or "perfect" rules. It continues adding clauses to each rule until it is perfect: its accuracy is 100%.
+		As said, each class is considered in turn, and rules are generated that distinguish instances in that class from the others. No ordering is implied between the rules for one class and those for another. Consequently, the rules that are produced can be executed independent of order.
+		</howWork>
+
+		<parameterSpec>  
+
+				<param>It has no parameters.</param>
+				
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Prism
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 2 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 6 : CORRECT=1.0 N/C=0.0 
+Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.06666666666666667 
+stddev Global Classification Error + N/C:
+0.042163702135578386 
+Correctly classified:
+0.9333333333333333 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 1 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 2 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 3 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 4 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 5 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 6 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 7 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 8 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 9 : CORRECT=0.9777777777777777 N/C=0.0 
+Global Classification Error + N/C:
+0.03037037037037037 
+stddev Global Classification Error + N/C:
+0.009041893048691635 
+Correctly classified:
+0.9696296296296296 
+Global N/C:
+0.0 
+
+
+We can also see the output and target classes for each case of the test set (result0s0.tst) in Experiment\results\Clas-Prism:
+
+@relation   Iris_Plants_Database
+@attribute sepalLength{0,1,2}
+@attribute sepalWidth{0,1}
+@attribute petalLength{0,1,2}
+@attribute petalWidth{0,1,2}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+
+
+And the Rule Set (result0e0.txt) in Experiment\results\Clas-Prism:
+  
+  
+Rule 1: IF  petalLength = 0 THEN class -> Iris-setosa  
+Rule 2: IF  petalLength = 1 AND sepalLength = 1 THEN class -> Iris-versicolor  
+Rule 3: IF  petalLength = 1 AND sepalLength = 2 THEN class -> Iris-versicolor  
+Rule 4: IF  petalWidth = 1 AND sepalWidth = 1 THEN class -> Iris-versicolor  
+Rule 5: IF  sepalLength = 1 AND sepalWidth = 1 AND petalLength = 2 THEN class -> Iris-versicolor  
+Rule 6: IF  petalWidth = 2 AND sepalLength = 2 THEN class -> Iris-virginica  
+Rule 7: IF  petalWidth = 2 AND sepalWidth = 0 THEN class -> Iris-virginica  
+Rule 8: IF  petalLength = 2 AND sepalLength = 1 AND sepalWidth = 0 AND petalWidth = 1 THEN class -> Iris-virginica  
+Rule 9: IF  petalLength = 2 AND sepalWidth = 0 AND sepalLength = 2 AND petalWidth = 1 THEN class -> Iris-virginica  
+Rule 10: IF  petalLength = 1 AND sepalLength = 0 AND sepalWidth = 0 AND petalWidth = 1 THEN class -> Iris-virginica  
+</example>
+
+</method>

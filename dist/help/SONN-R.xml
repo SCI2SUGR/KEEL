@@ -1,0 +1,81 @@
+<method>
+
+	<name>SONN Neural Networks</name>
+
+	<reference>  
+
+		<ref>I.G. Smotroff, D.H. Friedman, D. Connolly. Self organizing modular neural networks. IEEE International Joint Conference on Neural Networks (IJCNN'91). Seattle (USA, 1991) 187-192.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression model by means of a constructive neural network</type>
+
+		<objective>Building a constructive neural network made up of polynomial functions</objective>
+
+		<howWork>Starting an empty networks new nodes are sequentially added. Each new node has a polynomial transfer function and its inputs are the input variables or the outputs of previously added nodes.
+The connection weights of each new added node are optimised using a Levemberg - Marquard algorithm.
+The model is useful for regression and two-class classification.</howWork>
+
+		<parameterSpec>  
+
+			<param>Tend: Final temperature</param>
+			<param>Omega: Maximum number of nodes added per iteration</param>
+			<param>MaxNodes: Maximum number of nodes</param>
+			<param>To: Initial temperature</param>
+			<param>alpha: Parameters for L-M algorithm</param>
+			<param>a_Range: Maximum value for the randomly initialised weights</param>
+			<param>LM_convergence: Tolerance for L-M algorithm convergence</param>
+			<param>w_mse: Weight of the MSE term in the performance measure.</param>
+			<param>w_k: Weight of the number of nodes in the performance measure.</param>
+			<param>Threshold_0: Threshold for a value to be taken as 0.</param>
+			<param>Threshold_1: Threshold for a value to be taken as 1.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>No</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-SONN
+Dataset: daily electric energy
+Training set: daily electric energy.dat
+Test set: daily electric energy.dat
+Test Show results: Vis-Regr-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Regr-Check folder the regression results for the training test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.2405652874600036 
+Global MSE:
+0.2405652874600036 
+Global stdev:
+0.0 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.2405652874600036 
+Global MSE:
+0.2405652874600036 
+Global stdev:
+0.0 
+
+</example>
+
+</method>

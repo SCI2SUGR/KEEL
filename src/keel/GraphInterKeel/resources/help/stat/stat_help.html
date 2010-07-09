@@ -1,0 +1,132 @@
+<html>
+
+<head>
+
+<title>KEEL Tool for Statistical Analysis</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+  <div align="center"><h1>KEEL Tool for Statistical Analysis</h1></div>
+
+  <h2>Statistical procedures</h2>
+  
+  <p>This module allows to perform several non-parametric statistical test over a given set of results.Further information about them can be found in  the SCI2S thematic Web Site of Statistical Inference in Computational Intelligence and Data Mining: <a href="http://sci2s.ugr.es/sicidm/">http://sci2s.ugr.es/sicidm/</a></p>
+  
+  <p>In this version, the available procedures are the following:</p>  
+  
+  <ul>
+	<li>Friedman test.</li>
+	<li>Quade test.</li>
+	<li>Friedman Alligned test.</li>
+	<li>Friedman test NxN (Multiple test).</li>
+	<li>Contrast estimation (contrast estimation based on medians).</li>
+  </ul>	
+  
+  <p>They can be selected through the <i>Statistical procedures</i> box:</p>
+		
+  <br/>
+  <div align="center"><img src="stat1.jpg"></div></li><br/><br/>
+
+  <h2>Post hoc methods</h2>
+  
+  <p>In order to characterize the differences detected by the statistical test, this module also provides a set of well-known post hoc methods.</p>
+  
+  <p>For Friedman, Quade and Friedman alligned tests, it is possible to employ the following post hoc tests:</p>
+  
+  <ul>
+	<li>Iman-Davenport.</li>
+	<li>Bonferroni-Dunn.</li>
+	<li>Holm.</li>
+	<li>Hochberg.</li>
+	<li>Hommel.</li>
+	<li>Holland.</li>
+	<li>Rom.</li>
+	<li>Finner.</li>
+	<li>Li.</li>
+  </ul>	
+  
+  <div align="center"><img src="stat2.jpg"></div></li><br/><br/>
+  
+  <p>For Multiple tests, it is possible to employ the following post hoc tests:</p>
+  
+  <ul>
+	<li>Iman-Davenport.</li>
+	<li>Holm.</li>
+	<li>Nemenyi.</li>
+	<li>Shaffer.</li>
+	<li>Bergman.</li>
+  </ul>	
+  
+  <div align="center"><img src="stat3.jpg"></div></li><br/><br/>
+  
+  <h2>Performance measure</h2>
+  
+  <p>Depending on the charasteristics of the problem considered, it is posible to perform the statiscal test for maximization and minimization problems.</p>
+  
+  <p>This feature, avalaible only for Friedman, Quade and Friedman alligned tests, allows to determine if the results have been obtained from a maximization problem (e.g. using accuracy in supervised classification problems) or from a minimization problem (e.g. using MS Error in regression problems).</p>
+  <br/><br/>
+  <div align="center"><img src="stat4.jpg"></div></li><br/><br/>
+  
+  <h2>Working with data</h2>
+  
+  <h3>Data table</h3>
+
+  <p>The data table stores the average results achieved by each algorithm in each data set (problem):</p>
+  
+<br/><br/>
+  <div align="center"><img src="table1.jpg"></div></li><br/><br/>
+
+  <p>It is possible to input the values directly on the cells of the table, updating both results and the names of the data sets (however, algorithms' names can only be updated through reading a CSV results file, see the next section).</p>
+  
+  <br/><br/>
+  <div align="center"><img src="table2.jpg"></div></li><br/><br/>
+  
+  <h3>Table controls</h3>
+  
+  <p>The following operations are defined to manage the data table:</p>
+  
+  <br/><br/>
+  <div align="center"><img src="controls.jpg"></div></li><br/><br/>
+  
+  <ul>
+
+	<li><b>Load data:</b> Load data in the table from a CSV file. The format defined is the following:
+	
+	<br/><br/>
+  <div align="center"><img src="format.jpg"></div></li><br/><br/>
+	
+	That is, algorithms are expressed in columns, whereas problems are defined in rows. Note that, if desired, this is the way to change algorithms' names in the table.
+	
+	
+	</li>
+	<li><b>Export data:</b> Exports the data stored in the table in a CSV file (in the same format that has been explained in the Load data section).</li>
+	<li><b>Clear data:</b> Cleans the data table, setting all values to default.</li>
+	<li><b>Set dimensions:</b> Defines the number of rows (data sets) and columns (algorithms) of the table. When this option is used, the data table is also cleaned completely.</li>
+  
+  
+  </ul>
+  
+  <h2>Generation of analysis</h2>
+
+  <p>Finally, when the data table has been filled with the results to analyze, and all the relevant options have been selected, the analysis can be performed through the <i>Perform Analysis</i> button: </p>
+  
+  <br/><br/>
+  <div align="center"><img src="buttonPerformed.jpg"></div></li><br/><br/>
+  
+  <p>The name for a .tex (a LaTeX file) will be needed to store the results of the analysis. Then, if the data introduced is correct, the analysis will be performed.</p>
+  
+  <br/><br/>
+  <div align="center"><img src="performed.jpg"></div></li><br/><br/>
+  
+  <p>This .tex file contains all the information offered  by the tests. To revise it, just compile the file with your favourite LaTeX processor, in order to obtain a PDF/PS/DVI file containing the results.</p>
+  <br/><br/>
+</body>
+
+</html>
+

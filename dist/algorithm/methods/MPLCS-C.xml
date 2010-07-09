@@ -1,0 +1,423 @@
+<algorithm_specification>
+
+    <name>MPLCS</name>
+    <nParameters>42</nParameters>
+    <seed>1</seed>
+    <nOutput>1</nOutput>
+  
+    <parameter>
+        <name>defaultClass</name>
+        <type>list</type>
+        <domain>
+            <item>auto</item>
+            <item>major</item>
+            <item>minor</item>
+            <item>disabled</item>
+        </domain>
+        <default>auto</default>
+    </parameter>
+  
+    
+    <parameter>
+        <name>discretizer1</name>
+        <type>text</type>
+        <default>UniformWidth_4</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>discretizer2</name>
+        <type>text</type>
+        <default>UniformWidth_5</default>
+        <disabled/>
+    </parameter>
+  
+    
+    <parameter>
+        <name>discretizer3</name>
+        <type>text</type>
+        <default>UniformWidth_6</default>
+        <disabled/>
+    </parameter>
+    
+    
+    <parameter>
+        <name>discretizer4</name>
+        <type>text</type>
+        <default>UniformWidth_7</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>discretizer5</name>
+        <type>text</type>
+        <default>UniformWidth_8</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>discretizer6</name>
+        <type>text</type>
+        <default>UniformWidth_10</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>discretizer7</name>
+        <type>text</type>
+        <default>UniformWidth_15</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>discretizer8</name>
+        <type>text</type>
+        <default>UniformWidth_20</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>discretizer9</name>
+        <type>text</type>
+        <default>UniformWidth_25</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>discretizer10</name>
+        <type>text</type>
+        <default>Disabled</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>maxIntervals</name>
+        <type>integer</type>
+        <domain>
+            <lowerB>5</lowerB>
+            <upperB>100</upperB>
+        </domain>
+        <default>5</default>
+        <disabled/>
+    </parameter>
+
+
+    <parameter>
+        <name>useMDL</name>
+        <type>list</type>
+        <domain>
+            <item>false</item>
+            <item>true</item>
+        </domain>
+        <default>true</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>iterationHierarchicalSelection</name>
+        <type>integer</type>
+        <default>24</default>
+        <disabled/>
+    </parameter>
+
+  
+    <parameter>
+        <name>hierarchicalSelectionThreshold</name>
+        <type>real</type>
+        <default>0</default>
+        <disabled/>
+    </parameter>
+
+
+    <parameter>
+        <name>initialNumberOfRules</name>
+        <type>integer</type>
+        <default>20</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>numIterations</name>
+        <type>integer</type>
+        <domain>
+            <lowerB>1</lowerB>
+            <upperB>10000</upperB>
+        </domain>
+        <default>750</default>
+    </parameter>
+  
+  
+    <parameter>
+        <name>initialTheoryLengthRatio</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.075</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>iterationMDL</name>
+        <type>integer</type>
+        <domain>
+            <lowerB>5</lowerB>
+            <upperB>100</upperB>
+        </domain>
+        <default>25</default>
+        <disabled/>
+    </parameter>
+    
+  
+    <parameter>
+        <name>weightRelaxFactor</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.90</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>sizePenaltyMinRules</name>
+        <type>integer</type>
+        <domain>
+            <lowerB>2</lowerB>
+            <upperB>10</upperB>
+        </domain>
+        <default>4</default>
+    </parameter>
+  
+  
+    <parameter>
+        <name>popSize</name>
+        <type>integer</type>
+        <default>400</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>probCrossover</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.6</default>
+        <disabled/>
+    </parameter>
+  
+
+    <parameter>
+        <name>probMutationInd</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.6</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>probMerge</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.05</default>
+        <disabled/>
+    </parameter>
+    
+    
+    <parameter>
+        <name>probOne</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.90</default>
+        <disabled/>
+    </parameter>
+    
+  
+    <parameter>
+        <name>probReinitializeBegin</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.03</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>probReinitializeEnd</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0</default>
+        <disabled/>
+    </parameter>  
+   
+    
+    <parameter>
+        <name>probSplit</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.05</default>
+        <disabled/>
+    </parameter>
+  
+  
+    <parameter>
+        <name>iterationRuleDeletion</name>
+        <type>integer</type>
+        <default>5</default>
+        <disabled/>
+    </parameter>
+  
+
+    <parameter>
+        <name>ruleDeletionMinRules</name>
+        <type>integer</type>
+        <domain>
+            <lowerB>2</lowerB>
+            <upperB>30</upperB>
+        </domain>
+        <default>12</default>
+    </parameter>
+  
+  
+    <parameter>
+        <name>tournamentSize</name>
+        <type>integer</type>
+        <default>3</default>
+        <disabled/>
+    </parameter>
+    
+    
+    <parameter>
+        <name>numStrata</name>
+        <type>integer</type>
+        <domain>
+            <lowerB>1</lowerB>
+            <upperB>100000</upperB>
+        </domain>
+        <default>2</default>
+    </parameter>
+  
+  
+    <parameter>
+        <name>initMethod</name>
+        <type>list</type>
+        <domain>
+            <item>smart</item>
+            <item>cwInit</item>
+            <item>random</item>
+        </domain>
+        <default>cwInit</default>
+    </parameter>  
+  
+  
+    <parameter>
+        <name>probLocalSearch</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.05</default>
+    </parameter>
+
+
+    <parameter>
+        <name>doRuleCleaning</name>
+        <type>list</type>
+        <domain>
+            <item>false</item>
+            <item>true</item>
+        </domain>
+        <default>true</default>
+    </parameter>
+  
+  
+    <parameter>
+        <name>doRuleSplitting</name>
+        <type>list</type>
+        <domain>
+            <item>false</item>
+            <item>true</item>
+        </domain>
+        <default>true</default>
+    </parameter>
+  
+    <parameter>
+        <name>doRuleGeneralizing</name>
+        <type>list</type>
+        <domain>
+            <item>false</item>
+            <item>true</item>
+        </domain>
+        <default>true</default>
+    </parameter>
+  
+  
+    <parameter>
+        <name>probRSWcrossover</name>
+        <type>real</type>
+        <domain>
+            <lowerB>0</lowerB>
+            <upperB>1</upperB>
+        </domain>
+        <default>0.1</default>
+    </parameter>
+  
+    
+    <parameter>
+        <name>numParentsRSWcrossover</name>
+        <type>integer</type>
+        <default>10</default>
+    </parameter>
+  
+    
+    <parameter>
+        <name>repetitionsRuleOrdering</name>
+        <type>integer</type>
+        <default>5</default>
+    </parameter>
+  
+
+    <parameter>
+        <name>filterSmartCrossover</name>
+        <type>real</type>
+        <default>0.05</default>
+    </parameter>
+  
+</algorithm_specification>

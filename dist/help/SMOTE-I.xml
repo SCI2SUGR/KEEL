@@ -1,0 +1,100 @@
+<method>
+
+	<name>SMOTE: Synthetic Minority Over-sampling Technique</name>
+
+	<reference>  
+
+		<ref>N.V. Chawla, K.W. Bowyer, L.O. Hall, W.P. Kegelmeyer. SMOTE: synthetic minority over-sampling technique. Journal of Artificial Intelligence Research 16 (2002) 321-357</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Rebalancing. Oversampling Method</type>
+
+		<objective>Balance the class distribution for changing the data space when applying usual classifiers in imbalanced domains</objective>
+
+		<howWork>SMOTE generate positive data instances from other instances in the original dataset selecting k nearest neighbors and using them to perform arithmetical
+		operations to generate the new instance</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to generate a new positive example using the K-Nearest Neighbor Rule</param>
+			<param>Type of SMOTE: both if we consider as neighbors instances from both classes, minority if we consider as neighbors instances from the minority class and ASMO if we consider as neighbors instances from the majority class</param>
+			<param>Balancing: YES, if we want de data class distribution completely balanced, NO otherwise</param>
+			<param>Quantity of generated examples: if the Balancing option is not selected, proportion of examples from the majority class that the minority class has to reach</param>
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>
+			<param>Type of Interpolation: way of interpolating the neighbors instances to create a synthetic instance. Standard is the original interpolation proposed.</param>
+			<param>Alpha: alpha parameter for the BLX-alpha interpolation</param>
+			<param>Mu: mu parameter for the SBX interpolation</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: SMOTE
+Dataset: pimaImb
+Training set: pimaImb-5-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\datasets\Reb-SMOTEs0.pimaImb-5-1tra.dat:
+
+@relation pimaImb
+@attribute Preg real [0.0, 17.0]
+@attribute Plas real [0.0, 199.0]
+@attribute Pres real [0.0, 122.0]
+@attribute Skin real [0.0, 99.0]
+@attribute Insu real [0.0, 846.0]
+@attribute Mass real [0.0, 67.1]
+@attribute Pedi real [0.078, 2.42]
+@attribute Age real [21.0, 81.0]
+@attribute Class {positive, negative}
+@data
+14.0,175.0,62.0,30.0,0.0,33.6,0.212,38.0,positive
+4.0,146.0,78.0,0.0,0.0,38.5,0.52,67.0,positive
+15.0,136.0,70.0,32.0,110.0,37.1,0.153,43.0,positive
+5.0,116.0,74.0,29.0,0.0,32.3,0.66,35.0,positive
+6.0,0.0,68.0,41.0,0.0,39.0,0.727,41.0,positive
+3.0,173.0,78.0,39.0,185.0,33.8,0.97,31.0,positive
+3.0,162.0,52.0,38.0,0.0,37.2,0.652,24.0,positive
+4.0,146.0,92.0,0.0,0.0,31.2,0.539,61.0,positive
+2.0,155.0,52.0,27.0,540.0,38.7,0.24,25.0,positive
+9.0,145.0,80.0,46.0,130.0,37.9,0.637,40.0,positive
+6.0,162.0,62.0,0.0,0.0,24.3,0.178,50.0,positive
+9.0,112.0,82.0,32.0,175.0,34.2,0.26,36.0,positive
+10.0,101.0,86.0,37.0,0.0,45.6,1.136,38.0,positive
+1.0,144.0,82.0,46.0,180.0,46.1,0.335,46.0,positive
+1.0,168.0,88.0,29.0,0.0,35.0,0.905,52.0,positive
+0.0,146.0,70.0,0.0,0.0,37.9,0.334,28.0,positive
+2.0,102.0,86.0,36.0,120.0,45.5,0.127,23.0,positive
+...
+3.056544889754705,158.0813291915345,78.51588029398745,28.48411970601255,307.9434551102453,40.78903983635881,0.7942533501036054,28.5123921508899,positive
+3.4528011377640104,131.87733428147,86.98132574823993,32.76426230523796,130.0,48.857700655480144,0.44732910895356237,27.726400568882006,positive
+7.056255468042391,118.58438320206359,90.71872265978804,0.0,0.0,28.54156167979364,0.21086902887016193,25.774978127830437,positive
+2.664773907717609,140.6647739077176,0.0,0.0,0.0,30.703974793793023,0.7802196292908571,26.776515938478404,positive
+2.497251006960953,120.144227114618,85.90384859025467,24.29945020139219,144.8502748993039,34.73956016111375,0.4260576655071987,41.49725100696095,positive
+3.687450817608646,128.49960654086917,101.14575136268108,33.73967350105082,240.0,55.936555878409514,0.861782553333371,25.666404360579445,positive
+5.392520080196624,109.73831994653558,68.26168005346442,0.0,0.0,26.588780120294935,0.3787469377234538,30.392520080196626,positive
+5.77223068871003,137.96443089806397,70.0711382038721,27.71887703580596,135.0,27.375101628644767,0.5917503809919513,44.61559958129215,positive
+8.591243266437267,158.89772894113293,76.72994613149814,44.36497306574907,130.0,35.77446498547379,0.6705180521521441,38.36497306574907,positive
+1.1825651081021764,146.0,80.81743489189782,0.0,0.0,39.90871744594891,1.408196349670789,50.79974937158751,positive
+</example>
+
+</method>

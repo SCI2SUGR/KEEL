@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<visors_list>
+  <method>
+    <name>Results</name>
+    <family>Show Results (classification)</family>
+    <jar_file>results.jar</jar_file>
+<problem_type>classification</problem_type>
+		<input>
+			<continuous>Yes</continuous>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<missing>Yes</missing>
+			<imprecise>Yes</imprecise>
+			<multiclass>Yes</multiclass>
+			<multioutput>Yes</multioutput>
+			<nonBalanced>Yes</nonBalanced>
+  	</input>
+  	<output>
+			<continuous>Yes</continuous>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<missing>Yes</missing>
+			<imprecise>Yes</imprecise>
+			<multiclass>Yes</multiclass>
+			<multioutput>Yes</multioutput>
+			<nonBalanced>Yes</nonBalanced>
+  	</output>
+	<property>unspecified</property>
+  </method>
+
+  </visors_list>

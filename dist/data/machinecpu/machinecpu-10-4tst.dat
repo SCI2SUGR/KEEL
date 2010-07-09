@@ -1,0 +1,45 @@
+%The problem concerns Relative CPU Performance Data. More information can be obtained in the UCI Machine
+% Learning repository (http://www.ics.uci.edu/~mlearn/MLSummary.html).
+% The used attributes are :
+% MYCT: machine cycle time in nanoseconds (integer)
+% MMIN: minimum main memory in kilobytes (integer)
+% MMAX: maximum main memory in kilobytes (integer)
+% CACH: cache memory in kilobytes (integer)
+% CHMIN: minimum channels in units (integer)
+% CHMAX: maximum channels in units (integer)
+% PRP: published relative performance (integer) (target variable)
+% 
+% Original source: UCI machine learning repository. 
+% Source: collection of regression datasets by Luis Torgo (ltorgo@ncc.up.pt) at
+% http://www.ncc.up.pt/~ltorgo/Regression/DataSets.html
+% Characteristics: 209 cases; 6 continuous variables 
+
+@relation machine_cpu
+@attribute MYCT real
+@attribute MMIN real
+@attribute MMAX real
+@attribute CACH real
+@attribute CHMIN real
+@attribute CHMAX real
+@attribute class real
+@data
+56,4000,12000,0,1,8,42
+29,8000,32000,32,8,32,172
+160,1000,8000,16,1,14,60
+240,512,2000,8,1,5,11
+140,2000,32000,32,1,54,141
+200,1000,4000,0,1,4,30
+56,2000,8000,0,1,8,24
+1100,512,1500,0,1,1,7
+300,768,4500,0,1,24,45
+810,1000,5000,0,1,1,20
+133,1000,8000,9,3,12,72
+105,1000,4000,0,3,24,32
+125,256,6000,256,16,128,198
+50,2620,10480,30,12,24,63
+300,192,768,6,6,24,36
+72,2000,8000,16,6,8,105
+50,4000,16000,65,1,8,138
+250,512,4000,0,1,7,25
+25,1310,2620,131,12,24,368
+50,2000,32000,24,6,26,114

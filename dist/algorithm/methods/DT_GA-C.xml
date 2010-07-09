@@ -1,0 +1,74 @@
+<algorithm_specification>
+  <name>Hybrid Decision Tree/Genetic Algorithm</name>
+  <nParameters>8</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.25</default>
+  </parameter>
+  <parameter>
+    <name>instancesPerLeaf</name>
+    <type>integer</type>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Genetic Algorithm Approach</name>
+    <type>list</type>
+    <domain>
+      <item>GA-SMALL</item>
+      <item>GA-LARGE-SN</item>
+    </domain>
+    <default>GA-LARGE-SN</default>
+  </parameter>
+  <parameter>
+    <name>Threshold S to consider a Small Disjunt</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>Number of Total Generations for the GA</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  <parameter>
+    <name>Number of chromosomes in the population</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>200</default>
+  </parameter>
+  <parameter>
+    <name>Crossover Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>
+  <parameter>
+    <name>Mutation Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>  
+</algorithm_specification>

@@ -1,0 +1,42 @@
+<method>
+
+	<name>Automatic Noise Remover</name>
+
+	<reference>  
+
+		<ref>Zeng, X., Martinez, T. (2003) A Noise Filtering Method Using Neural Networks. lnternational Workshop on Soft Computing Techniques in Instrumentation, Measurement and Related Applications Provo. Utah. USA, pp. 26-31.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Filtering method.</type>
+
+		<objective>To remove noisy instances from the training data.</objective>
+
+		<howWork>
+			It removes noisy instances from the training data by means a Neural Network algorithm.
+		</howWork>
+
+		<parameterSpec>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+</method>

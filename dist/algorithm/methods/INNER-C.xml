@@ -1,0 +1,62 @@
+<algorithm_specification>
+  <name>INNER</name>
+  <nParameters>6</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Initial Instances</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>MaxCycles</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Min Coverage</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.01</lowerB>
+      <upperB>1.00</upperB>
+    </domain>
+    <default>0.95</default>
+  </parameter>
+  <parameter>
+    <name>Min Presentations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>100</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>3000</default>
+  </parameter>
+  <parameter>
+    <name>Regularize</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  <parameter>
+    <name>Select Threshold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>-1000.0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>0.0</default>
+  </parameter>
+</algorithm_specification>
+
+

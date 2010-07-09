@@ -1,0 +1,158 @@
+<method>
+
+	<name>1R</name>
+
+	<reference>  
+
+		<ref>Robert C. Holte, Very simple classification rules perform well on most commonly used datasets, Machine Learning Journal 11 (1993) 63-91.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules (separate and conquer).</type>
+
+		<objective>The 1R algorithm induces a list of rules that classify examples on the basis of a single attribute, where the best of these very simple rules is as accurate as more complex rules induced by the majority of machine learning systems.</objective>
+
+		<howWork>In the training set, count the number of examples in class C having value V for attribute A.
+		As it works with continuous, integer and nominal attributes, for each numerical attribute, create a nominal version of it by defining a finite number of intervals of values. These intervals become the values of the nominal version of the attribute.
+		A class C is optimal for an attribute A and a value V if the majority of examples in the training set having value V for the attribute A are in class C.
+		Values are partitioned into intervals so that every interval satisfies the following constraints:
+		-There is at least one class that is optimal for more than SMALL of the values in the interval (this constraint does not apply to the rightmost interval) and
+		- if V[i] is the smallest value for attribute A in the training set that is larger than the values in interval I, then there is no class C that is optimal both for V[i] and for the interval I.
+		For each attribute A (use the nominal version of numerical attributes), construct a rule for each value V of A; the consecuent of the rule will be the optimal class for V (if several classes are optimal for a value, choose among them randomly). Add each of these rules to the set of rules for this attribute.
+		Choose the set of rules having the highest accuracy on the training set (if there are several "best" rules, chooose among them at random). The algorithm returns this set of rules, corresponding to a determined attribute.
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>SMALL: Is the small disjunct threshold. For each interval, there is at least one class that is optimal for more than SMALL of the values in these interval, although this constraint does not apply to the rightmost interval.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: 1R
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: 
+	SMALL: 6
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 2 : CORRECT=0.7333333333333334 N/C=0.0 
+Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 4 : CORRECT=0.8 N/C=0.0 
+Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 7 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 8 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 9 : CORRECT=0.7333333333333334 N/C=0.0 
+Global Classification Error + N/C:
+0.12666666666666665 
+stddev Global Classification Error + N/C:
+0.08666666666666671 
+Correctly classified:
+0.8733333333333333 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 1 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 2 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 3 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 4 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 5 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 6 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 7 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 8 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 9 : CORRECT=0.9703703703703703 N/C=0.0 
+Global Classification Error + N/C:
+0.04518518518518519 
+stddev Global Classification Error + N/C:
+0.007733560376970754 
+Correctly classified:
+0.9548148148148148 
+Global N/C:
+0.0 
+
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-1R:
+
+@relation  Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+
+And the Rule Set (result0e0.txt) in Experiment\results\Clas-1R:
+
+
+Rule 1: IF  petalLength in [1.1, 1.9] THEN class -> Iris-setosa  
+Rule 2: IF  petalLength in [3.0, 4.7] THEN class -> Iris-versicolor  
+Rule 3: IF  petalLength in [4.8, 6.9] THEN class -> Iris-virginica  
+
+####Average results for test data####
+Avg. Rule length: 3
+Avg. Number of attributes by rule: 1.0
+Avg. Coverage: 0.3111111111111111
+Avg. Support: 0.9333333333333333
+Avg. Significance: -10.253714694235692
+Avg. Unusualness: -2.0
+
+Accuracy Training: 0.9481481481481482
+Accuracy Test: 1.0
+
+Time (seconds); 
+
+</example>
+
+</method>

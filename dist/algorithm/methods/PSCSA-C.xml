@@ -1,0 +1,67 @@
+<algorithm_specification>
+  <name>PSCSA</name>
+  <nParameters>6</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  
+  <parameter>
+    <name>Number of neighbors k</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  
+  <parameter>
+    <name>HyperMutation Rate</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+    <parameter>
+    <name>Clonal Rate</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  
+    <parameter>
+    <name>Mutation Rate</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>
+  
+      <parameter>
+    <name>Stimulation Threshold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.89</default>
+  </parameter>
+  
+ 
+        <parameter>
+    <name>Alpha</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.4</default>
+  </parameter>
+  
+</algorithm_specification>

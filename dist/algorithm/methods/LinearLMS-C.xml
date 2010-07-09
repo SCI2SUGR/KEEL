@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>Least Mean Square Linear Classifier</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>ClasifLinearLMS</item>
+    </domain>
+    <default>ClasifLinearLMS</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>CLLMS</item>
+    </domain>
+    <default>CLLMS</default>
+    <disabled/>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,190 @@
+<method>
+
+	<name>Simple Learner with Iterative Pruning to Produce Error Reduction</name>
+
+	<reference>
+
+		<ref>William W. Cohen, Yoram Singer. A Simple, Fast, and Effective Rule Learner. 
+		Proceedings of the Sixteenth National Conference on Artificial Intelligence,  Orlando, Florida, United States. 335-342, 1999.</ref>
+
+	</reference>
+
+	<generalDescription>
+
+		<type>Classification model by weighted rules (separate and conquer)</type>
+
+		<objective>To determine a set of weighted rules that predicts correctly the value of the target attribute</objective>
+
+		<howWork>Slipper is a rule learner that it induces a set of rules to determine the instances of a given class. An instance is labeled with the target class if the sum of the confidece of all the rules that "fire" it is smaller than the default rule's confidence.
+
+The list of rules is grown one by one and inmediatly pruned. After a given number of iteration the instances of the target class are removed from the training set and the process is repeated for the next class.
+
+SLIPPER is based on RIPPER algorithm.
+</howWork>
+
+		<parameterSpec>
+
+			<param>grow_pct: before the generation of a rule, the dataset is splited into to subset: one for growing and one for pruning the rule. This parameter is the size of growing subset, expressed as a fraction of the dataset </param>
+			<param>numBoostings: the times that the weaker learner is boosted for each class</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: Slipper
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier=
+Fold 0 : CORRECT=1.0 N/C=0.0
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0
+Fold 2 : CORRECT=1.0 N/C=0.0
+Fold 3 : CORRECT=0.8666666666666667 N/C=0.0
+Fold 4 : CORRECT=0.9333333333333333 N/C=0.0
+Fold 5 : CORRECT=1.0 N/C=0.0
+Fold 6 : CORRECT=1.0 N/C=0.0
+Fold 7 : CORRECT=0.9333333333333333 N/C=0.0
+Fold 8 : CORRECT=1.0 N/C=0.0
+Fold 9 : CORRECT=0.9333333333333333 N/C=0.0
+Global Classification Error + N/C:
+0.039999999999999994
+stddev Global Classification Error + N/C:
+0.04422166387140534
+Correctly classified:
+0.96
+Global N/C:
+0.0
+
+TRAIN RESULTS
+============
+Classifier=
+Summary of data, Classifiers:
+Fold 0 : CORRECT=1.0 N/C=0.0
+Fold 1 : CORRECT=1.0 N/C=0.0
+Fold 2 : CORRECT=1.0 N/C=0.0
+Fold 3 : CORRECT=1.0 N/C=0.0
+Fold 4 : CORRECT=1.0 N/C=0.0
+Fold 5 : CORRECT=1.0 N/C=0.0
+Fold 6 : CORRECT=1.0 N/C=0.0
+Fold 7 : CORRECT=1.0 N/C=0.0
+Fold 8 : CORRECT=1.0 N/C=0.0
+Fold 9 : CORRECT=1.0 N/C=0.0
+Global Classification Error + N/C:
+0.0
+stddev Global Classification Error + N/C:
+0.0
+Correctly classified:
+1.0
+Global N/C:
+0.0
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-Slipper:
+
+@relation  Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+And the rule decision list (result0e0.txt) in Experiment\Results\Clas-Ripper:
+
+Ruleset 0:=Iris-virginica
+	(petalLength&gt;5.0) w: 2.1418796737915327
+	(petalWidth&gt;1.6) w: 3.416509486181798
+	(petalWidth&gt;1.7) w: 2.7589589124858844
+	(petalLength&gt;4.9) w: 1.3906509744153734
+	(petalLength&gt;5.0 &amp;&amp; sepalLength&gt;6.0) w: 3.823902323175809
+	(sepalWidth&lt;=2.2) w: 2.646694434340184
+	(petalLength&gt;4.8 &amp;&amp; sepalLength&lt;=6.0) w: 0.6595669628367807
+	(petalWidth&gt;1.8) w: 2.747544869221649
+	(sepalWidth&lt;=2.6 &amp;&amp; petalWidth&gt;1.3) w: 1.4441550297240182
+	(sepalWidth&lt;=2.8 &amp;&amp; petalLength&gt;4.7 &amp;&amp; sepalLength&lt;=6.7 &amp;&amp; petalWidth&lt;=2.1) w: 0.7736790483642497
+	(sepalLength&lt;=4.9 &amp;&amp; petalWidth&gt;0.3) w: 2.6305126539174273
+	(petalLength&gt;5.1) w: 1.2366828903497344
+	(sepalLength&gt;5.9) w: 0.33047025689765036
+	(sepalWidth&lt;=2.8) w: 0.7807753747549105
+	(petalWidth&gt;1.7 &amp;&amp; sepalWidth&lt;=3.1) w: 6.460286093306785
+	(sepalLength&lt;=4.9 &amp;&amp; petalWidth&gt;1.0) w: 5.07102848830638
+	(sepalWidth&lt;=2.6 &amp;&amp; petalLength&gt;4.9) w: 1.9702921193160965
+	(sepalLength&gt;6.2) w: 0.47937104560085936
+	(sepalLength&gt;6.2 &amp;&amp; petalLength&gt;5.0) w: 1.870932797809946
+	(petalLength&gt;4.8 &amp;&amp; petalWidth&lt;=1.5 &amp;&amp; sepalLength&lt;=6.1) w: 2.0281201429535662
+	(petalLength&gt;4.7) w: 0.409834759370478
+	(sepalLength&lt;=4.9 &amp;&amp; petalLength&gt;3.3) w: 1.1540803493848228
+	(sepalWidth&gt;2.7) w: 0.3194967565919648
+	(petalWidth&lt;=1.5 &amp;&amp; petalLength&gt;4.9) w: 2.1661285643100068
+	(sepalWidth&lt;=3.0) w: 0.16278738861012168
+	(sepalLength&lt;=6.3) w: 0.12242774399764805
+	(sepalWidth&lt;=3.0 &amp;&amp; petalLength&lt;=5.0 &amp;&amp; sepalLength&lt;=6.0 &amp;&amp; petalWidth&gt;1.3) w: 1.9800235560183022
+	(sepalWidth&gt;3.2 &amp;&amp; petalWidth&gt;1.6) w: 0.9088170493973283
+Default Rule Weight=10.980168359615085
+Ruleset 1:=Iris-versicolor
+	(petalLength&gt;1.7) w: 6.234466826386011
+	(petalLength&gt;1.9) w: 51.56235124113966
+	(petalWidth&gt;0.4) w: 2.355835598356401
+	(petalLength&gt;1.6 &amp;&amp; petalWidth&gt;0.2) w: 1.2247603929343525
+	(sepalWidth&lt;=2.8) w: 3.004757747091497
+	(petalWidth&gt;0.5) w: 1.4589247999112933
+	(sepalLength&gt;5.7 &amp;&amp; petalWidth&gt;0.2) w: 2.0351853398659836
+	(sepalLength&gt;5.4 &amp;&amp; petalWidth&gt;0.4) w: 2.128066810610604
+	(sepalWidth&lt;=3.0 &amp;&amp; petalWidth&gt;0.3) w: 1.8386116313413234
+	(petalWidth&gt;0.3 &amp;&amp; petalLength&gt;1.6) w: 1.7715756248561538
+	(sepalWidth&lt;=3.1 &amp;&amp; petalWidth&gt;0.3) w: 2.1983368579811775
+	(petalLength&gt;1.6 &amp;&amp; sepalWidth&lt;=3.2) w: 1.9202779205944978
+	(sepalWidth&lt;=2.8 &amp;&amp; sepalLength&gt;4.5) w: 3.0276217061865034
+	(sepalLength&gt;5.2 &amp;&amp; petalWidth&gt;0.4) w: 4.392173298370854
+	(sepalLength&gt;5.5 &amp;&amp; petalWidth&gt;0.3) w: 1.7524166106375298
+	(sepalLength&gt;5.2 &amp;&amp; sepalWidth&lt;=3.4 &amp;&amp; petalWidth&gt;0.4) w: 2.1338795947074174
+	(petalWidth&gt;0.5 &amp;&amp; sepalWidth&lt;=3.4) w: 2.2269596188168608
+	(petalLength&gt;1.6) w: 0.09346481653860046
+	(sepalWidth&lt;=3.0) w: 1.4004474553491757
+	(sepalLength&gt;5.1 &amp;&amp; petalWidth&gt;0.4) w: 2.0367262194129108
+Default Rule Weight=42.52358436194437
+
+Default Class=Iris-setosa
+</example>
+
+</method>

@@ -1,0 +1,76 @@
+<method>
+
+	<name>Association Rule Tree </name>
+
+	<reference>
+
+		<ref>F. Berzal, J.C. Cubero, D. Sanchez, J.M. Serrano. Serrano.ART: A Hybrid Classification Model. Machine Learning 54 (2004) 67-92.</ref>
+
+	</reference>
+
+	<generalDescription>
+
+		<type>Classification model by Rule induction</type>
+
+		<objective>To determine a set of rules that predicts correctly the value of the target attribute</objective>
+
+		<howWork>
+		This method induces a set of rules based on ideas from the association rule mining context. It builds decision lists that can be viewed as degenerate, 
+		polythetic decision trees, by means of a Separate and Conquer strategy.
+		</howWork>
+
+		<parameterSpec>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+			<discretized>Yes</discretized>
+			<integer>No</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: ART
+Dataset: wisconsin
+Training set: wisconsin.dat
+Test set: wisconsin.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier=
+Fold 0 : CORRECT=0.9692532942898975 N/C=0.0
+Global Classification Error + N/C:
+0.03074670571010249
+stddev Global Classification Error + N/C:
+0.0
+Correctly classified:
+0.9692532942898975
+Global N/C:
+0.0
+
+TRAIN RESULTS
+============
+Classifier=
+Summary of data, Classifiers:
+Fold 0 : CORRECT=0.9692532942898975 N/C=0.0
+Global Classification Error + N/C:
+0.03074670571010249
+stddev Global Classification Error + N/C:
+0.0
+Correctly classified:
+0.9692532942898975
+Global N/C:
+0.0
+
+</example>
+
+</method>

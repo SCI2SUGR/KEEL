@@ -1,0 +1,38 @@
+<algorithm_specification>
+  <name>C4.5 Decision Tree</name>
+  <nParameters>4</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>pruned</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+  <parameter>
+    <name>confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.25</default>
+  </parameter>
+  <parameter>
+    <name>instancesPerLeaf</name>
+    <type>integer</type>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>minimumExpectedCost</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+</algorithm_specification>

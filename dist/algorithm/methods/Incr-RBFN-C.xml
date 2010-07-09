@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>Incremental Radial Basis Function Neural Network for Classification Problems</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>epsilon</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.01</lowerB>
+      <upperB>0.99</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>alfa</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.1</lowerB>
+      <upperB>0.9</upperB>
+    </domain>
+    <default>0.3</default>
+  </parameter>
+  <parameter>
+    <name>delta</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.01</lowerB>
+      <upperB>0.99</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+</algorithm_specification>

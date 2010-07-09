@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Radial Basis Function Neural Network for Regression Problems</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>neurons</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+</algorithm_specification>

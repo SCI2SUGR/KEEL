@@ -1,0 +1,29 @@
+<algorithm_specification>
+  <name>Las Vegas Filter (IEP)</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>paramKNN</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>7</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>maxLoops</name>
+    <type>integer</type>
+    <default>770</default>
+  </parameter>
+  <parameter>
+    <name>inconAllow</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0</default>
+  </parameter>
+</algorithm_specification>

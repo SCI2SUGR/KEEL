@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Ameva Discretizer</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>amevaR</name>
+    <type>list</type>
+    <domain>
+      <item>true</item>
+      <item>false</item>
+    </domain>
+    <default>true</default>
+  </parameter>
+</algorithm_specification>

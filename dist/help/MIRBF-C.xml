@@ -1,0 +1,779 @@
+<method>
+
+	<name>Radial basis function network for multiple instance learning</name>
+
+	<reference>  
+
+		<ref>E. T. Frank, X. Xu. Applying propositional learning algorithms to multi-instance data. Technical Report. Department of Computer Science, University of Waikato, Hamilton, NZ, (2003).</ref>
+		<ref>D.S. Broomhead, D. Lowe. Multivariable Functional Interpolation and Adaptive Networks. Complex Systems  2, 1988, pp. 321-355.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Radial basis function network for multiple Instance learning</type>
+
+		<objective>To determine a classification model for multiple instance learning based on radial basis function network.</objective>
+
+		<howWork> This algorithm extends radial basis function network to work on a multiple instance learning scenario. A simple Wrapper method for applying standard propositional learners to multi-instance data is used. It uses the k-means clustering algorithm to provide the basis functions and learns either a logistic regression (discrete class problems) or linear regression (numeric class problems) on top of that. Symmetric multivariate Gaussians are fit to the data from each cluster. If the class is nominal it uses the given number of clusters per class. It standardizes all numeric attributes to zero mean and unit variance.
+				</howWork>
+
+
+		<parameterSpec>  
+			<param>method: The method used for testing.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+	Method: Clas-MIRBF
+Dataset: elephant
+Training set: elephant-10-1tra.dat
+Test set: elephant-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: method = "Arithmetic Average"
+
+After the execution of RunKeel.jar we can see into the Experiment\results\Vis-Clas-Check\TSTClas-MIRBF folder the classification results for the test/train set:
+
+TEST RESULTS
+============
+Classifier= elephant.svm 
+Fold 0 : CORRECT=0.7 N/C=0.0 
+Fold 1 : CORRECT=0.75 N/C=0.0 
+Fold 2 : CORRECT=0.6 N/C=0.0 
+Fold 3 : CORRECT=0.8 N/C=0.0 
+Fold 4 : CORRECT=0.75 N/C=0.0 
+Fold 5 : CORRECT=0.8 N/C=0.0 
+Fold 6 : CORRECT=0.8 N/C=0.0 
+Fold 7 : CORRECT=0.7 N/C=0.0 
+Fold 8 : CORRECT=0.7 N/C=0.0 
+Fold 9 : CORRECT=0.75 N/C=0.0 
+Global Classification Error + N/C:
+0.265 
+stddev Global Classification Error + N/C:
+0.05937171043518959 
+Correctly classified:
+0.735 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= elephant.svm 
+Summary of data, Classifiers: elephant.svm 
+Fold 0 : CORRECT=0.7777777777777778 N/C=0.0 
+Fold 1 : CORRECT=0.7222222222222222 N/C=0.0 
+Fold 2 : CORRECT=0.75 N/C=0.0 
+Fold 3 : CORRECT=0.8277777777777777 N/C=0.0 
+Fold 4 : CORRECT=0.7666666666666666 N/C=0.0 
+Fold 5 : CORRECT=0.8222222222222222 N/C=0.0 
+Fold 6 : CORRECT=0.7777777777777778 N/C=0.0 
+Fold 7 : CORRECT=0.7444444444444445 N/C=0.0 
+Fold 8 : CORRECT=0.8388888888888889 N/C=0.0 
+Fold 9 : CORRECT=0.7388888888888889 N/C=0.0 
+Global Classification Error + N/C:
+0.22333333333333338 
+stddev Global Classification Error + N/C:
+0.038473977095956895 
+Correctly classified:
+0.7766666666666666 
+Global N/C:
+0.0 
+
+
+We can see too the output and target classes for each case of the train set in the results/Class-MIRBF.elephant/result0s0.tra:
+
+@relation elephant.svm
+@attribute numeroBolsa {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199}
+@attribute bag relational
+@attribute atr-1 numeric 
+@attribute atr-2 numeric 
+@attribute atr-3 numeric 
+@attribute atr-4 numeric 
+@attribute atr-5 numeric 
+@attribute atr-6 numeric 
+@attribute atr-7 numeric 
+@attribute atr-8 numeric 
+@attribute atr-9 numeric 
+@attribute atr-10 numeric 
+@attribute atr-11 numeric 
+@attribute atr-12 numeric 
+@attribute atr-13 numeric 
+@attribute atr-14 numeric 
+@attribute atr-15 numeric 
+@attribute atr-16 numeric 
+@attribute atr-17 numeric 
+@attribute atr-18 numeric 
+@attribute atr-19 numeric 
+@attribute atr-20 numeric 
+@attribute atr-21 numeric 
+@attribute atr-22 numeric 
+@attribute atr-23 numeric 
+@attribute atr-24 numeric 
+@attribute atr-25 numeric 
+@attribute atr-26 numeric 
+@attribute atr-27 numeric 
+@attribute atr-28 numeric 
+@attribute atr-29 numeric 
+@attribute atr-30 numeric 
+@attribute atr-31 numeric 
+@attribute atr-32 numeric 
+@attribute atr-33 numeric 
+@attribute atr-34 numeric 
+@attribute atr-35 numeric 
+@attribute atr-36 numeric 
+@attribute atr-37 numeric 
+@attribute atr-38 numeric 
+@attribute atr-39 numeric 
+@attribute atr-40 numeric 
+@attribute atr-41 numeric 
+@attribute atr-42 numeric 
+@attribute atr-43 numeric 
+@attribute atr-44 numeric 
+@attribute atr-45 numeric 
+@attribute atr-46 numeric 
+@attribute atr-47 numeric 
+@attribute atr-48 numeric 
+@attribute atr-49 numeric 
+@attribute atr-50 numeric 
+@attribute atr-51 numeric 
+@attribute atr-52 numeric 
+@attribute atr-53 numeric 
+@attribute atr-54 numeric 
+@attribute atr-55 numeric 
+@attribute atr-56 numeric 
+@attribute atr-57 numeric 
+@attribute atr-58 numeric 
+@attribute atr-59 numeric 
+@attribute atr-60 numeric 
+@attribute atr-61 numeric 
+@attribute atr-62 numeric 
+@attribute atr-63 numeric 
+@attribute atr-64 numeric 
+@attribute atr-65 numeric 
+@attribute atr-66 numeric 
+@attribute atr-67 numeric 
+@attribute atr-68 numeric 
+@attribute atr-69 numeric 
+@attribute atr-70 numeric 
+@attribute atr-71 numeric 
+@attribute atr-72 numeric 
+@attribute atr-73 numeric 
+@attribute atr-74 numeric 
+@attribute atr-75 numeric 
+@attribute atr-76 numeric 
+@attribute atr-77 numeric 
+@attribute atr-78 numeric 
+@attribute atr-79 numeric 
+@attribute atr-80 numeric 
+@attribute atr-81 numeric 
+@attribute atr-82 numeric 
+@attribute atr-83 numeric 
+@attribute atr-84 numeric 
+@attribute atr-85 numeric 
+@attribute atr-86 numeric 
+@attribute atr-87 numeric 
+@attribute atr-88 numeric 
+@attribute atr-89 numeric 
+@attribute atr-90 numeric 
+@attribute atr-91 numeric 
+@attribute atr-92 numeric 
+@attribute atr-93 numeric 
+@attribute atr-94 numeric 
+@attribute atr-95 numeric 
+@attribute atr-96 numeric 
+@attribute atr-97 numeric 
+@attribute atr-98 numeric 
+@attribute atr-99 numeric 
+@attribute atr-100 numeric 
+@attribute atr-101 numeric 
+@attribute atr-102 numeric 
+@attribute atr-103 numeric 
+@attribute atr-104 numeric 
+@attribute atr-105 numeric 
+@attribute atr-106 numeric 
+@attribute atr-107 numeric 
+@attribute atr-108 numeric 
+@attribute atr-109 numeric 
+@attribute atr-110 numeric 
+@attribute atr-111 numeric 
+@attribute atr-112 numeric 
+@attribute atr-113 numeric 
+@attribute atr-114 numeric 
+@attribute atr-115 numeric 
+@attribute atr-116 numeric 
+@attribute atr-117 numeric 
+@attribute atr-118 numeric 
+@attribute atr-119 numeric 
+@attribute atr-120 numeric 
+@attribute atr-121 numeric 
+@attribute atr-122 numeric 
+@attribute atr-123 numeric 
+@attribute atr-124 numeric 
+@attribute atr-125 numeric 
+@attribute atr-126 numeric 
+@attribute atr-127 numeric 
+@attribute atr-128 numeric 
+@attribute atr-129 numeric 
+@attribute atr-130 numeric 
+@attribute atr-131 numeric 
+@attribute atr-132 numeric 
+@attribute atr-133 numeric 
+@attribute atr-134 numeric 
+@attribute atr-135 numeric 
+@attribute atr-136 numeric 
+@attribute atr-137 numeric 
+@attribute atr-138 numeric 
+@attribute atr-139 numeric 
+@attribute atr-140 numeric 
+@attribute atr-141 numeric 
+@attribute atr-142 numeric 
+@attribute atr-143 numeric 
+@attribute atr-144 numeric 
+@attribute atr-145 numeric 
+@attribute atr-146 numeric 
+@attribute atr-147 numeric 
+@attribute atr-148 numeric 
+@attribute atr-149 numeric 
+@attribute atr-150 numeric 
+@attribute atr-151 numeric 
+@attribute atr-152 numeric 
+@attribute atr-153 numeric 
+@attribute atr-154 numeric 
+@attribute atr-155 numeric 
+@attribute atr-156 numeric 
+@attribute atr-157 numeric 
+@attribute atr-158 numeric 
+@attribute atr-159 numeric 
+@attribute atr-160 numeric 
+@attribute atr-161 numeric 
+@attribute atr-162 numeric 
+@attribute atr-163 numeric 
+@attribute atr-164 numeric 
+@attribute atr-165 numeric 
+@attribute atr-166 numeric 
+@attribute atr-167 numeric 
+@attribute atr-168 numeric 
+@attribute atr-169 numeric 
+@attribute atr-170 numeric 
+@attribute atr-171 numeric 
+@attribute atr-172 numeric 
+@attribute atr-173 numeric 
+@attribute atr-174 numeric 
+@attribute atr-175 numeric 
+@attribute atr-176 numeric 
+@attribute atr-177 numeric 
+@attribute atr-178 numeric 
+@attribute atr-179 numeric 
+@attribute atr-180 numeric 
+@attribute atr-181 numeric 
+@attribute atr-182 numeric 
+@attribute atr-183 numeric 
+@attribute atr-184 numeric 
+@attribute atr-185 numeric 
+@attribute atr-186 numeric 
+@attribute atr-187 numeric 
+@attribute atr-188 numeric 
+@attribute atr-189 numeric 
+@attribute atr-190 numeric 
+@attribute atr-191 numeric 
+@attribute atr-192 numeric 
+@attribute atr-193 numeric 
+@attribute atr-194 numeric 
+@attribute atr-195 numeric 
+@attribute atr-196 numeric 
+@attribute atr-197 numeric 
+@attribute atr-198 numeric 
+@attribute atr-199 numeric 
+@attribute atr-200 numeric 
+@attribute atr-201 numeric 
+@attribute atr-202 numeric 
+@attribute atr-203 numeric 
+@attribute atr-204 numeric 
+@attribute atr-205 numeric 
+@attribute atr-206 numeric 
+@attribute atr-207 numeric 
+@attribute atr-208 numeric 
+@attribute atr-209 numeric 
+@attribute atr-210 numeric 
+@attribute atr-211 numeric 
+@attribute atr-212 numeric 
+@attribute atr-213 numeric 
+@attribute atr-214 numeric 
+@attribute atr-215 numeric 
+@attribute atr-216 numeric 
+@attribute atr-217 numeric 
+@attribute atr-218 numeric 
+@attribute atr-219 numeric 
+@attribute atr-220 numeric 
+@attribute atr-221 numeric 
+@attribute atr-222 numeric 
+@attribute atr-223 numeric 
+@attribute atr-224 numeric 
+@attribute atr-225 numeric 
+@attribute atr-226 numeric 
+@attribute atr-227 numeric 
+@attribute atr-228 numeric 
+@attribute atr-229 numeric 
+@attribute atr-230 numeric 
+@attribute output {0,1}
+@data
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 0
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 0
+1 1
+1 1
+1 1
+1 1
+1 1
+0 1
+0 0
+0 1
+0 1
+0 1
+0 1
+0 1
+0 0
+0 0
+0 1
+0 1
+0 0
+0 0
+0 0
+0 0
+0 0
+0 1
+0 0
+0 1
+0 0
+0 1
+0 0
+0 1
+0 1
+0 0
+0 0
+0 1
+0 0
+0 0
+0 1
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 1
+0 1
+0 0
+0 1
+0 0
+0 1
+0 0
+0 1
+0 0
+0 1
+0 0
+0 0
+0 0
+0 1
+0 1
+0 1
+0 0
+0 1
+0 1
+0 1
+0 1
+0 1
+0 1
+0 0
+0 0
+0 0
+0 0
+0 0
+0 1
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 1
+0 0
+0 0
+0 1
+0 1
+0 0
+0 1
+0 0
+0 1
+0 0
+0 1
+0 0
+0 1
+0 0
+0 0
+0 0
+0 0
+
+
+We can see too the output and target classes for each case of the test set in the results/Class-MIRBF.elephant/result0s0.tst:
+
+@relation elephant.svm
+@attribute numeroBolsa {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199}
+@attribute bag relational
+@attribute atr-1 numeric 
+@attribute atr-2 numeric 
+@attribute atr-3 numeric 
+@attribute atr-4 numeric 
+@attribute atr-5 numeric 
+@attribute atr-6 numeric 
+@attribute atr-7 numeric 
+@attribute atr-8 numeric 
+@attribute atr-9 numeric 
+@attribute atr-10 numeric 
+@attribute atr-11 numeric 
+@attribute atr-12 numeric 
+@attribute atr-13 numeric 
+@attribute atr-14 numeric 
+@attribute atr-15 numeric 
+@attribute atr-16 numeric 
+@attribute atr-17 numeric 
+@attribute atr-18 numeric 
+@attribute atr-19 numeric 
+@attribute atr-20 numeric 
+@attribute atr-21 numeric 
+@attribute atr-22 numeric 
+@attribute atr-23 numeric 
+@attribute atr-24 numeric 
+@attribute atr-25 numeric 
+@attribute atr-26 numeric 
+@attribute atr-27 numeric 
+@attribute atr-28 numeric 
+@attribute atr-29 numeric 
+@attribute atr-30 numeric 
+@attribute atr-31 numeric 
+@attribute atr-32 numeric 
+@attribute atr-33 numeric 
+@attribute atr-34 numeric 
+@attribute atr-35 numeric 
+@attribute atr-36 numeric 
+@attribute atr-37 numeric 
+@attribute atr-38 numeric 
+@attribute atr-39 numeric 
+@attribute atr-40 numeric 
+@attribute atr-41 numeric 
+@attribute atr-42 numeric 
+@attribute atr-43 numeric 
+@attribute atr-44 numeric 
+@attribute atr-45 numeric 
+@attribute atr-46 numeric 
+@attribute atr-47 numeric 
+@attribute atr-48 numeric 
+@attribute atr-49 numeric 
+@attribute atr-50 numeric 
+@attribute atr-51 numeric 
+@attribute atr-52 numeric 
+@attribute atr-53 numeric 
+@attribute atr-54 numeric 
+@attribute atr-55 numeric 
+@attribute atr-56 numeric 
+@attribute atr-57 numeric 
+@attribute atr-58 numeric 
+@attribute atr-59 numeric 
+@attribute atr-60 numeric 
+@attribute atr-61 numeric 
+@attribute atr-62 numeric 
+@attribute atr-63 numeric 
+@attribute atr-64 numeric 
+@attribute atr-65 numeric 
+@attribute atr-66 numeric 
+@attribute atr-67 numeric 
+@attribute atr-68 numeric 
+@attribute atr-69 numeric 
+@attribute atr-70 numeric 
+@attribute atr-71 numeric 
+@attribute atr-72 numeric 
+@attribute atr-73 numeric 
+@attribute atr-74 numeric 
+@attribute atr-75 numeric 
+@attribute atr-76 numeric 
+@attribute atr-77 numeric 
+@attribute atr-78 numeric 
+@attribute atr-79 numeric 
+@attribute atr-80 numeric 
+@attribute atr-81 numeric 
+@attribute atr-82 numeric 
+@attribute atr-83 numeric 
+@attribute atr-84 numeric 
+@attribute atr-85 numeric 
+@attribute atr-86 numeric 
+@attribute atr-87 numeric 
+@attribute atr-88 numeric 
+@attribute atr-89 numeric 
+@attribute atr-90 numeric 
+@attribute atr-91 numeric 
+@attribute atr-92 numeric 
+@attribute atr-93 numeric 
+@attribute atr-94 numeric 
+@attribute atr-95 numeric 
+@attribute atr-96 numeric 
+@attribute atr-97 numeric 
+@attribute atr-98 numeric 
+@attribute atr-99 numeric 
+@attribute atr-100 numeric 
+@attribute atr-101 numeric 
+@attribute atr-102 numeric 
+@attribute atr-103 numeric 
+@attribute atr-104 numeric 
+@attribute atr-105 numeric 
+@attribute atr-106 numeric 
+@attribute atr-107 numeric 
+@attribute atr-108 numeric 
+@attribute atr-109 numeric 
+@attribute atr-110 numeric 
+@attribute atr-111 numeric 
+@attribute atr-112 numeric 
+@attribute atr-113 numeric 
+@attribute atr-114 numeric 
+@attribute atr-115 numeric 
+@attribute atr-116 numeric 
+@attribute atr-117 numeric 
+@attribute atr-118 numeric 
+@attribute atr-119 numeric 
+@attribute atr-120 numeric 
+@attribute atr-121 numeric 
+@attribute atr-122 numeric 
+@attribute atr-123 numeric 
+@attribute atr-124 numeric 
+@attribute atr-125 numeric 
+@attribute atr-126 numeric 
+@attribute atr-127 numeric 
+@attribute atr-128 numeric 
+@attribute atr-129 numeric 
+@attribute atr-130 numeric 
+@attribute atr-131 numeric 
+@attribute atr-132 numeric 
+@attribute atr-133 numeric 
+@attribute atr-134 numeric 
+@attribute atr-135 numeric 
+@attribute atr-136 numeric 
+@attribute atr-137 numeric 
+@attribute atr-138 numeric 
+@attribute atr-139 numeric 
+@attribute atr-140 numeric 
+@attribute atr-141 numeric 
+@attribute atr-142 numeric 
+@attribute atr-143 numeric 
+@attribute atr-144 numeric 
+@attribute atr-145 numeric 
+@attribute atr-146 numeric 
+@attribute atr-147 numeric 
+@attribute atr-148 numeric 
+@attribute atr-149 numeric 
+@attribute atr-150 numeric 
+@attribute atr-151 numeric 
+@attribute atr-152 numeric 
+@attribute atr-153 numeric 
+@attribute atr-154 numeric 
+@attribute atr-155 numeric 
+@attribute atr-156 numeric 
+@attribute atr-157 numeric 
+@attribute atr-158 numeric 
+@attribute atr-159 numeric 
+@attribute atr-160 numeric 
+@attribute atr-161 numeric 
+@attribute atr-162 numeric 
+@attribute atr-163 numeric 
+@attribute atr-164 numeric 
+@attribute atr-165 numeric 
+@attribute atr-166 numeric 
+@attribute atr-167 numeric 
+@attribute atr-168 numeric 
+@attribute atr-169 numeric 
+@attribute atr-170 numeric 
+@attribute atr-171 numeric 
+@attribute atr-172 numeric 
+@attribute atr-173 numeric 
+@attribute atr-174 numeric 
+@attribute atr-175 numeric 
+@attribute atr-176 numeric 
+@attribute atr-177 numeric 
+@attribute atr-178 numeric 
+@attribute atr-179 numeric 
+@attribute atr-180 numeric 
+@attribute atr-181 numeric 
+@attribute atr-182 numeric 
+@attribute atr-183 numeric 
+@attribute atr-184 numeric 
+@attribute atr-185 numeric 
+@attribute atr-186 numeric 
+@attribute atr-187 numeric 
+@attribute atr-188 numeric 
+@attribute atr-189 numeric 
+@attribute atr-190 numeric 
+@attribute atr-191 numeric 
+@attribute atr-192 numeric 
+@attribute atr-193 numeric 
+@attribute atr-194 numeric 
+@attribute atr-195 numeric 
+@attribute atr-196 numeric 
+@attribute atr-197 numeric 
+@attribute atr-198 numeric 
+@attribute atr-199 numeric 
+@attribute atr-200 numeric 
+@attribute atr-201 numeric 
+@attribute atr-202 numeric 
+@attribute atr-203 numeric 
+@attribute atr-204 numeric 
+@attribute atr-205 numeric 
+@attribute atr-206 numeric 
+@attribute atr-207 numeric 
+@attribute atr-208 numeric 
+@attribute atr-209 numeric 
+@attribute atr-210 numeric 
+@attribute atr-211 numeric 
+@attribute atr-212 numeric 
+@attribute atr-213 numeric 
+@attribute atr-214 numeric 
+@attribute atr-215 numeric 
+@attribute atr-216 numeric 
+@attribute atr-217 numeric 
+@attribute atr-218 numeric 
+@attribute atr-219 numeric 
+@attribute atr-220 numeric 
+@attribute atr-221 numeric 
+@attribute atr-222 numeric 
+@attribute atr-223 numeric 
+@attribute atr-224 numeric 
+@attribute atr-225 numeric 
+@attribute atr-226 numeric 
+@attribute atr-227 numeric 
+@attribute atr-228 numeric 
+@attribute atr-229 numeric 
+@attribute atr-230 numeric 
+@attribute output {0,1}
+@data
+0 1
+0 0
+0 1
+0 0
+0 1
+0 0
+0 0
+0 1
+0 1
+0 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+
+</example>
+
+</method>

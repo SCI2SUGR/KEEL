@@ -1,0 +1,123 @@
+<method>
+
+	<name>
+        Bioinformatics-oriented hierarchical evolutionary learning
+    </name>
+
+	<reference>
+    <ref>
+    Jaume Bacardit, Edmund K. and Burke Natalio Krasnogor
+    Improving the scalability of rule-based evolutionary learning 
+    Memetic Computing manuscript
+	</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>
+            GA-based classifier
+        </type>
+        
+		<objective> 
+            To perform a classification task by means of a GA-based algorithm.
+        </objective>
+
+		<howWork>
+            This methods is a GA algorithm whose uses the Mitchigan approach.
+		</howWork>        
+        
+		<parameterSpec>  
+            <param>     1st parameter: seed of the random numbers generator</param>
+            <param>     2nd parameter: Population size</param>
+            <param>     3rd parameter: Tournament size</param>
+            <param>     4th parameter: Expected rule size</param>
+            <param>     5th parameter: Crossover probability</param>
+            <param>     6th parameter: Mutation probability</param>
+            <param>     7th parameter: Elitism enabled</param>
+            <param>     8th parameter: Number of generations</param>
+            <param>     9th parameter: Number of repetitions for rule learning</param>
+            <param>     10th parameter: Coverage breakpoint</param>
+            <param>     11th parameter: Coverage ratio</param>
+            <param>     12th parameter: Generalize probability</param>
+            <param>     13th parameter: Specialize probability</param>
+            <param>     14th parameter: Default class</param>
+            <param>     15th parameter: initial theory lenght ratio</param>
+            <param>     16th parameter: mdl weight relax factor</param>
+            <param>     17th parameter: Number of strata of ILAS</param>
+            <param>     18th parameter: Number of stages</param>
+            <param>     19th parameter: Number of iterations of MDL</param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+        
+	</generalDescription>
+
+	<example>
+
+        Problem type: Classification
+        Method: Clas-BioHEL
+        Dataset: iris (10 fold cross validation run)
+        Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+        Test set: iris-10-1tst.dat to iris-10-10tst.dat
+        Test Show results: Vis-Clas-Check
+        Parameters: default values
+		
+        After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-BioHEL
+        folder the classification results for the test set:
+        
+        
+        TEST RESULTS
+        ============
+        Classifier= 
+        Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 2 : CORRECT=0.8666666666666667 N/C=0.0 
+        Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+        Fold 4 : CORRECT=0.8666666666666667 N/C=0.0 
+        Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 6 : CORRECT=1.0 N/C=0.0 
+        Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 8 : CORRECT=1.0 N/C=0.0 
+        Fold 9 : CORRECT=1.0 N/C=0.0 
+        Global Classification Error + N/C:
+        0.06666666666666667 
+        stddev Global Classification Error + N/C:
+        0.051639777949432225 
+        Correctly classified:
+        0.9333333333333333 
+        Global N/C:
+        0.0 
+
+        TRAIN RESULTS
+        ============
+        Classifier= 
+        Summary of data, Classifiers: 
+        Fold 0 : CORRECT=0.962962962962963 N/C=0.0 
+        Fold 1 : CORRECT=0.9407407407407408 N/C=0.0 
+        Fold 2 : CORRECT=0.9481481481481482 N/C=0.0 
+        Fold 3 : CORRECT=0.9481481481481482 N/C=0.0 
+        Fold 4 : CORRECT=0.9555555555555556 N/C=0.0 
+        Fold 5 : CORRECT=0.9185185185185185 N/C=0.0 
+        Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 7 : CORRECT=0.962962962962963 N/C=0.0 
+        Fold 8 : CORRECT=0.9555555555555556 N/C=0.0 
+        Fold 9 : CORRECT=0.9555555555555556 N/C=0.0 
+        Global Classification Error + N/C:
+        0.05185185185185185 
+        stddev Global Classification Error + N/C:
+        0.013250773199998749 
+        Correctly classified:
+        0.9481481481481482 
+        Global N/C:
+        0.0
+
+	</example>
+		
+</method>

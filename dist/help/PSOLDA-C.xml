@@ -1,0 +1,112 @@
+<method>
+
+	<name>
+        PSO - Linear Discriminant Analysis
+    </name>
+
+	<reference>
+    <ref>
+    Shih-Wei Lin and Shih-Chieh
+    PSOLDA: A particle swarm optimization approach for enhancing classiﬁcation accuracy rate of linear discriminant analysis 
+    Applied Soft Computing 9 (2009) 1008–1015 
+	</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>
+            PSO and LDA-based classifier
+        </type>
+        
+		<objective> 
+            To perform a classification task by means of a PSO and LDA-based algorithm.
+        </objective>
+
+		<howWork>
+            This methods is a PSO-LDA algorithm whose uses PSO to select features and LDA to learn the training data.
+		</howWork>
+        
+		<parameterSpec>  
+  			<param>     1st parameter: seed of the random numbers generator</param>
+            <param>     2nd parameter: Maximum iterations</param>
+            <param>     3rd parameter: Iterations without improving</param>
+            <param>     4th parameter: Number of particles</param>
+            <param>     5th parameter: Maximum velocity</param>
+            <param>     6th parameter: Cognitive weight</param>
+            <param>     7th parameter: Social weight</param>
+            <param>     8th parameter: Inertia factor</param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+        
+	</generalDescription>
+
+	<example>
+
+        Problem type: Classification
+        Method: Clas-PSOLDA
+        Dataset: iris (10 fold cross validation run)
+        Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+        Test set: iris-10-1tst.dat to iris-10-10tst.dat
+        Test Show results: Vis-Clas-Check
+        Parameters: default values
+		
+        After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-PSOLDA
+        folder the classification results for the test set:
+        
+        TEST RESULTS
+        ============
+        Classifier= 
+        Fold 0 : CORRECT=1.0 N/C=0.0 
+        Fold 1 : CORRECT=1.0 N/C=0.0 
+        Fold 2 : CORRECT=1.0 N/C=0.0 
+        Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 5 : CORRECT=1.0 N/C=0.0 
+        Fold 6 : CORRECT=1.0 N/C=0.0 
+        Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 8 : CORRECT=1.0 N/C=0.0 
+        Fold 9 : CORRECT=1.0 N/C=0.0 
+        Global Classification Error + N/C:
+        0.02 
+        stddev Global Classification Error + N/C:
+        0.030550504633038933 
+        Correctly classified:
+        0.98 
+        Global N/C:
+        0.0 
+
+        TRAIN RESULTS
+        ============
+        Classifier= 
+        Summary of data, Classifiers: 
+        Fold 0 : CORRECT=0.9555555555555556 N/C=0.0 
+        Fold 1 : CORRECT=0.962962962962963 N/C=0.0 
+        Fold 2 : CORRECT=0.9703703703703703 N/C=0.0 
+        Fold 3 : CORRECT=0.9481481481481482 N/C=0.0 
+        Fold 4 : CORRECT=0.9555555555555556 N/C=0.0 
+        Fold 5 : CORRECT=0.9555555555555556 N/C=0.0 
+        Fold 6 : CORRECT=0.9407407407407408 N/C=0.0 
+        Fold 7 : CORRECT=0.962962962962963 N/C=0.0 
+        Fold 8 : CORRECT=0.9555555555555556 N/C=0.0 
+        Fold 9 : CORRECT=0.9555555555555556 N/C=0.0 
+        Global Classification Error + N/C:
+        0.0437037037037037 
+        stddev Global Classification Error + N/C:
+        0.0077335603769707675 
+        Correctly classified:
+        0.9562962962962963 
+        Global N/C:
+        0.0 
+        
+
+    </example>
+		
+</method>

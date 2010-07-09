@@ -1,0 +1,135 @@
+<method>
+
+	<name>Multilayer perceptron for Cost-Sensitive classification problems</name>
+
+	<reference>
+
+	<ref>Zhou, Z.-H., Liu, X.-Y. Training cost-sensitive neural networks with methods addressing the class imbalance problem (2006) IEEE Transactions on Knowledge and Data Engineering, 18 (1), pp. 63-77 </ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification algorithm based on Neural Networks Cost Sensitive</type>
+
+		<objective>Use a multilayer Perceptron to classify a dataset of examples with minimal cost</objective>
+
+		<howWork>This class of networks consists of multiple layers of computational units, usually interconnected in a feed-forward way. Each neuron in one layer has directed connections to the neurons of the subsequent layer. In many applications the units of these networks apply a sigmoid function as an activation function.
+
+We use back-propagation as learning technique. Here the output values are compared with the correct answer to compute the value of some predefined error-function. By various techniques the error is then fed back through the network. Using this information, the algorithm adjusts the weights of each connection in order to reduce the value of the error function by some small amount. After repeating this process for a sufficiently large number of training cycles the network will usually converge to some state where the error of the calculations is small. 
+
+To adjust weights we use a Backpropagation method. It works by the following:
+   1. Present a training sample to the neural network.
+   2. Compare the network's output to the desired output from that sample. Calculate the error in each output neuron.
+   3. For each neuron, calculate what the output should have been, and a scaling factor, how much lower or higher the output must be adjusted to match the desired output. This is the local error.
+   4. Adjust the weights of each neuron to lower the local error.
+   5. Assign "blame" for the local error to neurons at the previous level, giving greater responsibility to neurons connected by stronger weights.
+   6. Repeat the steps above on the neurons at the previous level, using each one's "blame" as its error.
+
+As the algorithm's name implies, the errors (and therefore the learning) propagate backwards from the output nodes to the inner nodes. So technically speaking, backpropagation is used to calculate the gradient of the error of the network with respect to the network's modifiable weights. This gradient is then used in a simple stochastic gradient descent algorithm to find weights that minimize the error. 
+
+At the end we add a thershold adjust to classify according to the class distribution, taking the cost into account in this step.
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Hidden_layers: The number of hidden layers of the network</param>
+			<param>Hidden_nodes: The number of neurons in each hidden layer of the network</param>
+			<param>Transfer: Transfer function used by the neurons</param>
+			<param>Eta: Eta parameter used by each neuron, momentum term</param>
+			<param>Alpha: Alpha parameter used by each neuron, momentum term</param>
+			<param>Lambda: Lambda parameter used by each neuron, decay term</param>
+			<param>Test_data: if test partition is supplied to the network to evaluate it</param>
+			<param>Validation_data: if validation partition is supplied to the network to evaluate it, instead of training one</param>
+			<param>Cross_validation: Perform a 10-fcv on the train data supplied</param>
+			<param>Cycles: Iterations of the gradient descent algorithm</param>
+			<param>Improve: Minimum improve in crossvalidation training</param>
+			<param>Problem: Type of problem (Classification or Regression)</param>
+			<param>Tipify_inputs: if it is going to be tipified</param>
+			<param>Verbose: Verbose output</param>
+			<param>SaveAll: Save at the end of the output</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: Neural Network Cost Sensitive
+Dataset: pimaImb
+Training set: pimaImb-5-1tra.dat
+Test set: pimaImb-5-1tst.dat
+Test Show results: TSTImb-NNCS
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Imb-Check folder the classification results for the test set:
+
+Summary of data, Classifiers: pimaImb
+Fold 0 : AUC=0.7261111111111112 N/C=0.0 
+Global Classification Area Under the ROC Curve:
+0.7124703004891685 
+stddev Global Classification Area Under the ROC Curve:
+0.015200853099105974 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-NNCS.pimaImb:
+
+@relation pimaImb
+@attribute Preg real [0.0, 17.0]
+@attribute Plas real [0.0, 199.0]
+@attribute Pres real [0.0, 122.0]
+@attribute Skin real [0.0, 99.0]
+@attribute Insu real [0.0, 846.0]
+@attribute Mass real [0.0, 67.1]
+@attribute Pedi real [0.078, 2.42]
+@attribute Age real [21.0, 81.0]
+@attribute Class {positive,negative}
+@inputs Preg, Plas, Pres, Skin, Insu, Mass, Pedi, Age
+@outputs Class
+@data
+positive negative
+positive positive
+positive positive
+positive positive
+positive negative
+positive negative
+negative negative
+negative negative
+negative negative
+negative positive
+negative positive
+negative negative
+negative negative
+negative negative
+negative positive
+negative negative
+negative negative
+negative positive
+negative negative
+negative negative
+negative negative
+negative positive
+positive positive
+positive positive
+positive positive
+positive positive
+...
+</example>
+
+</method>

@@ -1,0 +1,80 @@
+<method>
+
+	<name>Variable Similarity Metric</name>
+
+	<reference>  
+
+		<ref>D. G. Lowe, Similarity metric learning for a variable-kernel classifier, Neural Computation 7:1 (1995) 72-85.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Instance Selection. Decremental</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>In order to reduce storage and
+		remove noisy instances, an instance t is removed if all k of its neighbors are of
+		the same class, even if they are of a different class than t. The instance is only
+		removed if its neighbors are at least 60% sure of their classification. The VSM
+		method typically uses a fairly large k (i.e., k = 10).</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to classify an example using the K-Nearest Neighbor Rule</param>
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: VSM
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\IS-VSM:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+4.8,3.0,1.4,0.1,Iris-setosa
+4.8,3.1,1.6,0.2,Iris-setosa
+5.9,3.2,4.8,1.8,Iris-versicolor
+6.7,3.0,5.0,1.7,Iris-versicolor
+6.0,2.7,5.1,1.6,Iris-versicolor
+4.9,2.5,4.5,1.7,Iris-virginica
+6.4,2.7,5.3,1.9,Iris-virginica
+6.8,3.0,5.5,2.1,Iris-virginica
+7.7,2.8,6.7,2.0,Iris-virginica
+6.3,2.7,4.9,1.8,Iris-virginica
+6.1,3.0,4.9,1.8,Iris-virginica
+6.3,2.8,5.1,1.5,Iris-virginica
+6.1,2.6,5.6,1.4,Iris-virginica
+6.4,3.1,5.5,1.8,Iris-virginica
+6.0,3.0,4.8,1.8,Iris-virginica
+</example>
+
+</method>

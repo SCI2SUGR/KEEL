@@ -1,0 +1,82 @@
+<method>
+
+	<name>Relief-F</name>
+
+	<reference>  
+
+		<ref>Igor Kononenko. Estimating Attributes: Analysis and Extensions of RELIEF. European Conference on Machine Learning, 171-182, 1994</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Non Evolutionary Filter method</type>
+
+		<objective>Feature Selection. This method allows search to follow feature subsets</objective>
+
+		<howWork>Relief-F selects features that are statistically relevant. Therefore, nearest neighbours (one instance per each class) are sought for each given instance (I), one is near-hit (H), and the others are near-misses (J).
+Ideally, a feature is relevant if each value are the same between I and near-hit, and different between I and near-mis.
+The relevant feature are those having theirs weight exceeding a relevant threshold (relevanceThreshold). This relevanceThreshold can be determine by a statistical method of interval estimation. The sample size numInstancesSampled can be varied and a large number numInstancesSampled implies more reliable approximation.
+		</howWork>
+
+		<parameterSpec>  
+			<param>paramKNN: is the number of nearest neighbours used by the k-NN classifier</param>
+			<param>relevanceThreshold is a final threshold that selects the features (its weights must improve this value)</param>
+			<param>numInstancesSampled is the number of instances that the method needs</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+
+Problem type: Preprocess
+Method: Relief-F
+Dataset: Car
+Training set: car-10-1tra.dat
+Test set: car-10-1tst.dat
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see the training and test datasets modified only with the selected features.
+
+And the extra file with the classification error in test validation result0e0.txt:
+
+result0e0.txt
+
+RESULTS generated at Fri Jul 02 19:44:58 CEST 2010 
+--------------------------------------------------
+Algorithm Name: Relief-F
+
+PARTITION Filename: ../datasets/car/car-10-1tra.dat
+---------------
+
+Features selected: 
+Persons - Lug_boot - Safety - 
+
+3 features of 6
+
+Error in test (using train for prediction): 0.30057803468208094
+Error in test (using test for prediction): 0.2774566473988439
+---------------
+
+
+</example>
+
+</method>

@@ -1,0 +1,26 @@
+<algorithm_specification>
+  <name>Statistical two samples mean comparation Wilcoxon signed rank test</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>  
+  <nOutput>0</nOutput>
+  <nInput>2</nInput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>ImbWilcoxon</item>
+    </domain>
+    <default>ImbWilcoxon</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>imbalancedMeasure</name>
+    <type>list</type>
+    <domain>
+      <item>AreaUndertheROCCurve</item>
+      <item>GeometricMean</item>
+      <item>StandardAccuracy</item>
+    </domain>
+    <default>AreaUndertheROCCurve</default>
+  </parameter>
+</algorithm_specification>

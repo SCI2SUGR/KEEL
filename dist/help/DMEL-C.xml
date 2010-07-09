@@ -1,0 +1,93 @@
+<method>
+
+	<name>Data Mining for Evolutionary Learning </name>
+
+	<reference>
+
+		<ref>W.H. Au, K.C.C. Chan, X. Yao. A novel evolutionary data mining algorithm with applications to churn prediction. IEEE Transactions on Evolutionary Computation 7:6 (2003) 532-545.</ref>
+
+	</reference>
+
+	<generalDescription>
+
+		<type>Classification model by Genetic Rule induction</type>
+
+		<objective>To determine a set of rules that predicts correctly the value of the target attribute</objective>
+
+		<howWork>DMEL searches through the possible rule space using an evolutionary approach
+that has the following characteristics: 1) the evolutionary
+process begins with the generation of an initial set of first-order
+rules (i.e., rules with one conjunct/condition) using a probabilistic
+induction technique and based on these rules, rules of higher order
+(two or more conjuncts) are obtained iteratively; 2) when identifying
+interesting rules, an objective interestingness measure is
+used; 3) the fitness of a chromosome is defined in terms of the
+probability that the attribute values of a record can be correctly
+determined using the rules it encodes; and 4) the likelihood of predictions
+(or classifications) made are estimated so that subscribers
+can be ranked according to their likelihood to churn.
+		</howWork>
+
+		<parameterSpec>
+
+			<param>Population size: Total number of individuals in the population</param>
+			<param>Probability_choice_crossover_operator: Probability of application of the crossover operator</param>
+			<param>Mutation_probability: Probability of application of the mutation operator</param>
+			<param>Number_generations: Maximum number of iterations allowed</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: DMEL
+Dataset: wisconsin
+Training set: wisconsin.dat
+Test set: wisconsin.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier=
+Fold 0 : CORRECT=0.9692532942898975 N/C=0.0
+Global Classification Error + N/C:
+0.03074670571010249
+stddev Global Classification Error + N/C:
+0.0
+Correctly classified:
+0.9692532942898975
+Global N/C:
+0.0
+
+TRAIN RESULTS
+============
+Classifier=
+Summary of data, Classifiers:
+Fold 0 : CORRECT=0.9692532942898975 N/C=0.0
+Global Classification Error + N/C:
+0.03074670571010249
+stddev Global Classification Error + N/C:
+0.0
+Correctly classified:
+0.9692532942898975
+Global N/C:
+0.0
+
+</example>
+
+</method>

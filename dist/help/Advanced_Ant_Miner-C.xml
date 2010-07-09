@@ -1,0 +1,124 @@
+<method>
+
+	<name>Advanced Ant Miner</name>
+
+	<reference>
+
+		<ref>Rafael S. Parpinelli, Heitor S. Lopes and Alex A. Freitas. Data Mining With an Ant Colony Optimization Algorithm".
+		IEEE Transactions on Evolutionary Computation 6:4 (2002) 321-332.</ref>
+                <ref>R.S. Parpinelli, H.S. Lopes and A.A. Freitas. An Ant Colony Algorithm for Classification
+                  Rule Discovery. In: H.A. Abbass, R.A. Sarker, C.S. Newton. (Eds.) Data Mining: a Heuristic Approach,
+                  pp. 191-208. London: Idea Group Publishing, 2002</ref>
+
+	</reference>
+
+	<generalDescription>
+
+		<type>Classification model by Ant Colony Optimization</type>
+
+		<objective>To determine a set of rules that predicts correctly the value of the target attribute</objective>
+
+		<howWork>This algorithm is based in an ant colony system and it is an extension of the Ant Miner approach.
+                The basic model works as follows: each ant starts with an empty rule and
+		the decision of adding a new term depends on a heurstic function and a pheromone value.
+		The heuristic funtion is the entropy measure for each attribute-value. There is also a
+		prune step that removes one bye one a term of the rule while this process
+		improves the quality of that rule.
+		Once the antecedent of the rule is totally built, the system chooses the as consequent
+		class the majority class of the covered examples. The algorithm then selects the best ant/rule
+		of the current iteration and add it to the rule-set. This process iterates until all examples are covered
+		(depending on the paremeters of the user).
+
+                The differences of this approach with its antecesor are the following ones:
+                * Selection of the output class of the rule before its contruction
+                * New heuristic function which is class-dependent.
+                * New rule quality measure
+                * New pheromone update method
+                * This approach works with ordered discretized attributes.
+		</howWork>
+
+		<parameterSpec>
+
+			<param>Number_of_Ants: Total number of ants in the system</param>
+			<param>Max_number_of_uncovered_samples: Number of instances than can remain uncovered</param>
+			<param>Min_number_of_samples_by_rule: Minimum number of instances that a rule should cover</param>
+			<param>Max_Iterations_without_converge: Maximum number of iterations without getting any
+			better solution in order to stop the search</param>
+                        <param>Max_Pheromona: Maximum value for the pheromone function</param>
+                        <param>Min_Pheromona: Minimum value for the pheromone function</param>
+                        <param>Alpha: parameter for the pheromone function</param>
+                        <param>Beta: parameter for the pheromone function</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: Advanced_Ant_Miner
+Dataset: wisconsin
+Training set: wisconsin.dat
+Test set: wisconsin.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9458272327964861 N/C=0.0 
+Global Classification Error + N/C:
+0.05417276720351391 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9458272327964861 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9458272327964861 N/C=0.0 
+Global Classification Error + N/C:
+0.05417276720351391 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9458272327964861 
+Global N/C:
+0.0 
+
+We can also see the output the rule set (result0e0.txt) in Experiment\Results\Clas-Advanced_Ant_Miner:
+
+Rule0: &lt; clumpThickness &gt; 8 &gt; AND &lt; clumpThickness &lt; 10 &gt; AND &lt; cellSize &gt; 9 &gt; AND &lt; cellSize &lt; 10 &gt; AND &lt; cellShape &gt; 1 &gt; AND &lt; cellShape &lt; 10 &gt; AND &lt; marginalAdhesion &gt; 1 &gt; AND &lt; marginalAdhesion &lt; 10 &gt; AND &lt; epithelialSize &gt; 1 &gt; AND &lt; epithelialSize &lt; 10 &gt; AND &lt; bareNuclei &gt; 1 &gt; AND &lt; bareNuclei &lt; 10 &gt; AND &lt; blandChromatin &gt; 1 &gt; AND &lt; blandChromatin &lt; 10 &gt; AND &lt; normalNucleoli &gt; 1 &gt; AND &lt; normalNucleoli &lt; 10 &gt; AND &lt; mitoses &gt; 1 &gt; AND &lt; mitoses &lt; 10 &gt; ==&gt; positive (1.0644217 )
+Rule1: &lt; clumpThickness &gt; 9 &gt; AND &lt; clumpThickness &lt; 10 &gt; AND &lt; cellSize &gt; 1 &gt; AND &lt; cellSize &lt; 10 &gt; AND &lt; cellShape &gt; 1 &gt; AND &lt; cellShape &lt; 10 &gt; AND &lt; marginalAdhesion &gt; 1 &gt; AND &lt; marginalAdhesion &lt; 10 &gt; AND &lt; epithelialSize &gt; 1 &gt; AND &lt; epithelialSize &lt; 10 &gt; AND &lt; bareNuclei &gt; 1 &gt; AND &lt; bareNuclei &lt; 10 &gt; AND &lt; blandChromatin &gt; 1 &gt; AND &lt; blandChromatin &lt; 10 &gt; AND &lt; normalNucleoli &gt; 1 &gt; AND &lt; normalNucleoli &lt; 10 &gt; AND &lt; mitoses &gt; 1 &gt; AND &lt; mitoses &lt; 10 &gt; ==&gt; positive (1.084507 )
+Rule2: &lt; clumpThickness &gt; 8 &gt; AND &lt; clumpThickness &lt; 9 &gt; AND &lt; cellSize &gt; 6 &gt; AND &lt; cellSize &lt; 10 &gt; AND &lt; cellShape &gt; 1 &gt; AND &lt; cellShape &lt; 10 &gt; AND &lt; marginalAdhesion &gt; 1 &gt; AND &lt; marginalAdhesion &lt; 10 &gt; AND &lt; epithelialSize &gt; 1 &gt; AND &lt; epithelialSize &lt; 10 &gt; AND &lt; bareNuclei &gt; 1 &gt; AND &lt; bareNuclei &lt; 10 &gt; AND &lt; blandChromatin &gt; 1 &gt; AND &lt; blandChromatin &lt; 10 &gt; AND &lt; normalNucleoli &gt; 1 &gt; AND &lt; normalNucleoli &lt; 10 &gt; AND &lt; mitoses &gt; 1 &gt; AND &lt; mitoses &lt; 10 &gt; ==&gt; positive (1.0239316 )
+Rule3: &lt; clumpThickness &gt; 2 &gt; AND &lt; clumpThickness &lt; 6 &gt; AND &lt; cellSize &gt; 4 &gt; AND &lt; cellSize &lt; 8 &gt; AND &lt; cellShape &gt; 7 &gt; AND &lt; cellShape &lt; 10 &gt; AND &lt; marginalAdhesion &gt; 3 &gt; AND &lt; marginalAdhesion &lt; 10 &gt; AND &lt; epithelialSize &gt; 1 &gt; AND &lt; epithelialSize &lt; 10 &gt; AND &lt; bareNuclei &gt; 1 &gt; AND &lt; bareNuclei &lt; 10 &gt; AND &lt; blandChromatin &gt; 1 &gt; AND &lt; blandChromatin &lt; 10 &gt; AND &lt; normalNucleoli &gt; 1 &gt; AND &lt; normalNucleoli &lt; 10 &gt; AND &lt; mitoses &gt; 1 &gt; AND &lt; mitoses &lt; 10 &gt; ==&gt; positive (1.033275 )
+Rule4: &lt; clumpThickness &gt; 7 &gt; AND &lt; clumpThickness &lt; 7 &gt; AND &lt; cellSize &gt; 5 &gt; AND &lt; cellSize &lt; 10 &gt; AND &lt; cellShape &gt; 1 &gt; AND &lt; cellShape &lt; 10 &gt; AND &lt; marginalAdhesion &gt; 1 &gt; AND &lt; marginalAdhesion &lt; 10 &gt; AND &lt; epithelialSize &gt; 1 &gt; AND &lt; epithelialSize &lt; 10 &gt; AND &lt; bareNuclei &gt; 1 &gt; AND &lt; bareNuclei &lt; 10 &gt; AND &lt; blandChromatin &gt; 1 &gt; AND &lt; blandChromatin &lt; 10 &gt; AND &lt; normalNucleoli &gt; 1 &gt; AND &lt; normalNucleoli &lt; 10 &gt; AND &lt; mitoses &gt; 1 &gt; AND &lt; mitoses &lt; 10 &gt; ==&gt; positive (1.0253624 )
+Rule5: &lt; clumpThickness &gt; 3 &gt; AND &lt; clumpThickness &lt; 8 &gt; AND &lt; cellSize &gt; 6 &gt; AND &lt; cellSize &lt; 10 &gt; AND &lt; cellShape &gt; 1 &gt; AND &lt; cellShape &lt; 10 &gt; AND &lt; marginalAdhesion &gt; 1 &gt; AND &lt; marginalAdhesion &lt; 10 &gt; AND &lt; epithelialSize &gt; 1 &gt; AND &lt; epithelialSize &lt; 10 &gt; AND &lt; bareNuclei &gt; 1 &gt; AND &lt; bareNuclei &lt; 10 &gt; AND &lt; blandChromatin &gt; 1 &gt; AND &lt; blandChromatin &lt; 10 &gt; AND &lt; normalNucleoli &gt; 1 &gt; AND &lt; normalNucleoli &lt; 10 &gt; AND &lt; mitoses &gt; 1 &gt; AND &lt; mitoses &lt; 10 &gt; ==&gt; positive (0.99746126 )
+Rule6: &lt; clumpThickness &gt; 7 &gt; AND &lt; clumpThickness &lt; 10 &gt; AND &lt; cellSize &gt; 1 &gt; AND &lt; cellSize &lt; 10 &gt; AND &lt; cellShape &gt; 1 &gt; AND &lt; cellShape &lt; 10 &gt; AND &lt; marginalAdhesion &gt; 1 &gt; AND &lt; marginalAdhesion &lt; 10 &gt; AND &lt; epithelialSize &gt; 1 &gt; AND &lt; epithelialSize &lt; 10 &gt; AND &lt; bareNuclei &gt; 1 &gt; AND &lt; bareNuclei &lt; 10 &gt; AND &lt; blandChromatin &gt; 1 &gt; AND &lt; blandChromatin &lt; 10 &gt; AND &lt; normalNucleoli &gt; 1 &gt; AND &lt; normalNucleoli &lt; 10 &gt; AND &lt; mitoses &gt; 1 &gt; AND &lt; mitoses &lt; 10 &gt; ==&gt; positive (0.8298961 )
+Rule7: &lt; clumpThickness &gt; 5 &gt; AND &lt; clumpThickness &lt; 7 &gt; AND &lt; cellSize &gt; 4 &gt; AND &lt; cellSize &lt; 9 &gt; AND &lt; cellShape &gt; 1 &gt; AND &lt; cellShape &lt; 10 &gt; AND &lt; marginalAdhesion &gt; 1 &gt; AND &lt; marginalAdhesion &lt; 10 &gt; AND &lt; epithelialSize &gt; 1 &gt; AND &lt; epithelialSize &lt; 10 &gt; AND &lt; bareNuclei &gt; 1 &gt; AND &lt; bareNuclei &lt; 10 &gt; AND &lt; blandChromatin &gt; 1 &gt; AND &lt; blandChromatin &lt; 10 &gt; AND &lt; normalNucleoli &gt; 1 &gt; AND &lt; normalNucleoli &lt; 10 &gt; AND &lt; mitoses &gt; 1 &gt; AND &lt; mitoses &lt; 10 &gt; ==&gt; positive (0.85447496 )
+Default Rule: &lt; ALL &gt; ==&gt; negative
+
+Train Accuracy: 0.94582725
+Test Accuracy: 0.94582725
+Number of Rules: 9
+Average Number of Antecedents in the rule: 16.11111111111111
+
+</example>
+
+</method>

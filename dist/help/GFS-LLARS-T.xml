@@ -1,0 +1,58 @@
+<method>
+
+	<name>Local Genetic LA-Tuning with Rule Selection of FRBSs</name>
+
+	<reference>  
+
+		<ref>Rule Base Reduction and Genetic Tuning of Fuzzy Systems based on the Linguistic 3-Tuples Representation. Soft Computing 11:5 (2007) 401-419
+		</ref>
+		
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression model by generation of fuzzy rule-based systems</type>
+
+		<objective>A Genetic Algorithm is used to tune the support of the fuzzy rules.</objective>
+
+		<howWork>
+		This approach is an extension of the lateral tuning to also perform a tuning of the support amplitude of the membership functions. 
+		To adjust the displacements and amplitudes of the membership function supports it proposes a new rule representation that considers two parameters, one of the represents the lateral displacement and the other the amplitude variation of the label.
+		Each label can be represented by a 3-tuples representation, the first parameter is like in the 2-tuples representation, an the other allows to increase or reduce the support amplitude of a label until a 50% of its original size.
+		It reduces the search space respect to the classical tuning of approximate fuzzy rules. The tuning is applied to the level of the rules, the pair of (Xi,label) is tuned in a different way in each rule, based on the quality measures associated to the tunning method. That is, different displacement parameters are considered for each label on the rule which this label is considered.
+		This combination, rule selection and tuning approach, can present a positive synergy, reducing the tuning search space, easing system readability and even improving system accuracy. This involves obtaining an optimal subset of fuzzy rules from a previous fuzzy rule set by selecting some of them. It could result in importatnt improvements in the system accuracy, maintaining the interpretability at an acceptable level.
+		It uses the genetic model of CHC, it is a genetic algorithm that presents a good trade-off between exploration and explotation, being a dood choice in problems with complex search spaces. The mutation is not considered in CHC.
+		This way to work involves a simplification of the search space that eases the derivation of optimal models and therefore improves the desired tradeoff, especially in complex or high-dimensional problems.
+		</howWork>
+
+		<parameterSpec>  
+			
+			<param>Number of Iterations</param>
+			<param>Population Size</param>
+			<param>Bits of Gen</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes (only with numerical)</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+	
+</example>
+
+</method>

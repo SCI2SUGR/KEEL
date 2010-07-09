@@ -1,0 +1,6 @@
+<algorithm_specification>
+  <name>ExtendedChi2 Discretizer</name>
+  <nParameters>0</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+</algorithm_specification>

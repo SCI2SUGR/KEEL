@@ -1,0 +1,90 @@
+<method>
+
+	<name>Las Vegas Filter using Inconsistent Examples Pairs Measure</name>
+
+	<reference>  
+
+		<ref>H. Liu and L. Yu. "Toward Integrating Feature Selection Algorithms for Classification and Clustering", 
+			IEEE Trans. onKnowledge and Data Engineering,17(4), 491-502, 2005.</ref>
+		<ref>H. Liu y H. Motoda, Feature Selection for Knowledge Discovery and Data Mining, Kluwer Academic Publishers, 1998.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Non Evolutionary Filter Stochastic method</type>
+
+		<objective>Feature Selection. This method allows search to follow feature subsets that are randomly generated</objective>
+
+		<howWork>Las Vegas Filter  initializes a set to the empty set. It will load the subset of features selected 
+			and set the cardinality of the best subset to N (the number of the features of the data set) Next, it starts 
+			a loop MaxLoops times. First it generates a random subset of features. Secondly, if the cardinality 
+			of this subset is less than the cardinality of the best subset selected and it satisfies the 
+			inconsistency measure, the new best subset will be this subset (the last generated).
+</howWork>
+
+		<parameterSpec>  
+
+			<param>maxLoops: is the maximum number of loops. Generally, it is a number linked to the number of original features N.  The rule of thumb is that the more features in the data, the more difficult it is for feature selection. Normally the value chosen is c*N, where c is a constant.
+				We can start c whit some number (e.g. 77) or simply make it as N2. In general, the larger maxLoops is, the better solution can expect.
+				Another more reasonable way os setting maxLoops is to link to the space the user wants to cover. The complete space is 2N, if the user wants to cover p% of the space, he can set maxLoops = 2N * p%.</param>
+			<param>inconAllow: is the allowed inconsistency rate. It can be estimated by the inconsistency rate of the data with all features.</param>
+			<param>paramKNN: is the number of nearest neighbours used by the k-NN classifier</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+
+Problem type: Preprocess
+Method: LVF-IEP-FS
+Dataset: Car
+Training set: car-10-1tra.dat
+Test set: car-10-1tst.dat
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see the training and test datasets modified only with the selected features.
+
+And the extra file with the classification error in test validation result0e0.txt:
+
+result0e0.txt
+
+RESULTS generated at Sun Jul 04 19:45:05 CEST 2010 
+--------------------------------------------------
+Algorithm Name: Las Vegas Filter (IEP)
+
+PARTITION Filename: ../datasets/car/car-10-1tra.dat
+---------------
+
+Features selected: 
+Buying - Maint - Doors - Persons - Lug_boot - Safety - 
+
+6 features of 6
+
+Error in test (using train for prediction): 0.2023121387283237
+Error in test (using test for prediction): 0.19653179190751446
+---------------
+
+
+
+</example>
+
+</method>

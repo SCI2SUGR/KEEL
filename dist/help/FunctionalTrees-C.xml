@@ -1,0 +1,188 @@
+<method>
+
+	<name>Functional Trees</name>
+
+	<reference>  
+
+		<ref>J. Gama, Functional Trees, Machine Learning, 55: 219-250, 2004</ref>
+			
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by decision trees</type>
+
+		<objective>To determine a decision tree that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute</objective>
+
+		<howWork>Functional Trees is a framework to build decision trees and hybrid them with other classifiers.
+			The decision tree is constructed top-down. In each step a test for the actual node is chosen (starting with the root node), which best separates the given examples by classes. 
+			After the building phase comes a pruning phase that prunes the tree and adds the other classifiers at the leaves of the tree. 
+		</howWork>
+
+		<parameterSpec>  
+			<param>MinNumInstancesToSplit: Number of instances that a node should have in order to be considered a partitionable node</param>
+			<param>Split Criteria: Information measure that is going to be computed to chose the best separation of the classes</param>
+			<param>Prune Criteria: Way of pruning the tree and adding the classifiers at leaves</param>
+			<param>Classifier on leaves: Classifier that is going to be used at the leaves of the tree</param>
+			<param>K: the number of neighbours to be tested. If this value is too high (similar to the data size), then it is the near the majority class classifier. When it is too low, then it is the same as its very nearest instance.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Functional Trees
+Dataset: zoo
+Training set: zoo-10-1tra.dat
+Test set: zoo-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTClas-FunctionalTrees folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= zoo
+Fold 0 : CORRECT=0.8264984227129337 N/C=0.0
+...
+Global Classification Error + N/C:
+0.16661409043112516 
+stddev Global Classification Error + N/C:
+0.004325653663947413 
+Correctly classified:
+0.8333859095688748 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= zoo
+Summary of data, Classifiers: autos
+Fold 0 : CORRECT=0.8911087743895315 N/C=0.0 
+...
+Global Classification Error + N/C:
+0.11406122210538613 
+stddev Global Classification Error + N/C:
+0.0049334198639462805 
+Correctly classified:
+0.8859387778946138 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-FunctionalTrees:
+
+@relation   zoo
+@attribute hair {0,1}
+@attribute feathers {0,1}
+@attribute eggs {0,1}
+@attribute milk {0,1}
+@attribute airborne {0,1}
+@attribute aquatic {0,1}
+@attribute predator {0,1}
+@attribute toothed {0,1}
+@attribute backbone {0,1}
+@attribute breathes {0,1}
+@attribute venomous {0,1}
+@attribute fins {0,1}
+@attribute legs {0,2,4,5,6,8}
+@attribute tail {0,1}
+@attribute domestic {0,1}
+@attribute catsize {0,1}
+@attribute type {1,2,3,4,5,6,7}
+@data
+1 1
+1 1
+1 1
+1 1
+4 4
+7 7
+2 2
+2 2
+6 6
+6 6
+5 4
+5 4
+
+And the decision tree model (result0e0.txt) in Experiment\Results\Clas-FunctionalTrees:
+
+@relation   zoo
+@attribute hair {0,1}
+@attribute feathers {0,1}
+@attribute eggs {0,1}
+@attribute milk {0,1}
+@attribute airborne {0,1}
+@attribute aquatic {0,1}
+@attribute predator {0,1}
+@attribute toothed {0,1}
+@attribute backbone {0,1}
+@attribute breathes {0,1}
+@attribute venomous {0,1}
+@attribute fins {0,1}
+@attribute legs {0,2,4,5,6,8}
+@attribute tail {0,1}
+@attribute domestic {0,1}
+@attribute catsize {0,1}
+@attribute type {1,2,3,4,5,6,7}
+@inputs
+hair feathers eggs milk airborne aquatic predator toothed backbone breathes venomous fins legs tail domestic catsize 
+@outputs type
+@data
+
+@decisiontree
+
+if (milk in 0) then {
+	if (feathers in 0) then {
+		if (backbone in 0) then {
+			Naive Bayes: 7 0.6% 6 0.4% 
+		}
+		else { 
+			Naive Bayes: 4 0.631578947368421% 3 0.2631578947368421% 5 0.10526315789473684% 
+		}
+	}
+	else { 
+		2 
+	}
+}
+else { 
+	1 
+}
+}
+
+@TotalNumberOfNodes 3
+@NumberOfLeafs 4
+
+@NumberOfItemsetsTraining 89
+@NumberOfCorrectlyClassifiedTraining 79
+@PercentageOfCorrectlyClassifiedTraining 88.76404494382022%
+@NumberOfIncorrectlyClassifiedTraining 10
+@PercentageOfIncorrectlyClassifiedTraining 11.235955056179776%
+
+@NumberOfItemsetsTest 12
+@NumberOfCorrectlyClassifiedTest 10
+@PercentageOfCorrectlyClassifiedTest 83.33333333333333%
+@NumberOfIncorrectlyClassifiedTest 2
+@PercentageOfIncorrectlyClassifiedTest 16.666666666666668%
+
+@TotalElapsedTime 0.19s
+@BuildingElapsedTime 0.074s
+@ClassificationTrainElapsedTime 0.001s
+@ClassificationTestElapsedTime 0.001s
+
+</example>
+
+</method>

@@ -1,0 +1,20 @@
+<algorithm_specification>
+  <name>FOCUS</name>
+  <nParameters>2</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>paramKNN</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>7</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>inconAllow</name>
+    <type>real</type>
+    <default>0</default>
+  </parameter>
+</algorithm_specification>

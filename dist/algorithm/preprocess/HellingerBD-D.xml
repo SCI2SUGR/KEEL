@@ -1,0 +1,29 @@
+<algorithm_specification>
+  <name>HellingerBD</name>
+  <nParameters>3</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>numIntrvls</name>
+    <type>text</type>
+	<default>10_10_10_10</default>
+  </parameter>
+      <parameter>
+    <name>numIntervals</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>setConfig</name>
+    <type>list</type>
+    <domain>
+      <item>true</item>
+      <item>false</item>
+    </domain>
+    <default>true</default>
+  </parameter>
+</algorithm_specification>

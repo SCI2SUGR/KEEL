@@ -1,0 +1,10 @@
+algorithm = rbfn_incremental_cl
+epsilon = 0.1
+delta = 0.5
+alfa = 0.3
+#verbose
+#inputData = "machine_cpu-5x2-1tra.dat" "machine_cpu-5x2-1tra.dat" "machine_cpu-5x2-1tst.dat"
+#inputData = "sintetica.trn" "sintetica.trn" "sintetica.tst"
+inputData = "zoo-5x2-1tra.dat" "zoo-5x2-1tra.dat" "zoo-5x2-1tst.dat"
+#inputData = "aut-5x2-1tra.dat" "aut-5x2-1tra.dat" "aut-5x2-1tst.dat"
+outputData = "result1.trn" "result1.tst" "result1.rbf"

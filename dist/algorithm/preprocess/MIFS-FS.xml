@@ -1,0 +1,34 @@
+<algorithm_specification>
+  <name>MIFS</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>paramKNN</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>7</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>numberOfFeatures</name>
+    <type>integer</type>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>k</name>
+    <type>integer</type>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>beta</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,84 @@
+<method>
+
+	<name>Swap1 </name>
+
+	<reference>  
+
+		<ref>M. Sholom, N. Indurkhya. Optimized Rule Induction. IEEE Expert 1 (1993) 61-70.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by rule induction</type>
+
+		<objective>To determine a rule set able to classify correctly new test patterns</objective>
+
+		<howWork>The algorithm tries to find rules that are 100 percent predictive by iteratively adding or swapping components to the rules.When the full set of rules has been found, a cleaning process is performed to avoid overfitting. 
+		</howWork>
+
+		<parameterSpec>  
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>No</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Swap1
+Dataset: zoo
+Training set: zoo-10-1tra.dat
+Test set: zoo-10-1tst.dat
+Test Show results: StatChekCL
+
+After the execution of RunKeel.jar we can see into the experiment\results\ folder the classification results for the test set:
+
+@relation zoo
+@attribute hair {0, 1, 2, 4, 5, 6, 8}
+@attribute feathers {0, 1}
+@attribute eggs {0, 1}
+@attribute milk {0, 1}
+@attribute airborne {0, 1}
+@attribute aquatic {0, 1}
+@attribute predator {0, 1}
+@attribute toothed {0, 1}
+@attribute backbone {0, 1}
+@attribute breathes {0, 1}
+@attribute venomous {0, 1}
+@attribute fins {0, 1}
+@attribute legs {0, 2, 4, 5, 6, 8}
+@attribute tail {0, 1}
+@attribute domestic {0, 1}
+@attribute catsize {0, 1}
+@attribute type {1, 2, 3, 4, 5, 6, 7}
+@data
+1 1 
+1 1 
+1 1 
+2 2 
+4 4 
+1 1 
+1 1 
+7 6 
+2 2 
+6 7 
+5 3 
+
+</example>
+
+</method>

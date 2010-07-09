@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Local Least Squares Imputation</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>0</nOutput>
+   <parameter>
+    <name>Mink</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>200</default>
+  </parameter>
+</algorithm_specification>

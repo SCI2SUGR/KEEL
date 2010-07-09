@@ -1,0 +1,16 @@
+<algorithm_specification>
+  <name>Statistical two samples mean comparation Wilcoxon signed rank test</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>  
+  <nOutput>0</nOutput>
+  <nInput>2</nInput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>Wilcoxon</item>
+    </domain>
+    <default>Wilcoxon</default>
+    <disabled/>
+  </parameter>
+</algorithm_specification>

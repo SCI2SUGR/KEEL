@@ -1,0 +1,4 @@
+algorithm = Min max Normalization
+inputData = "C:\ASIGNATURAS\proyecto\protoKEELalpha0.1\Datasets\pru.dat" "C:\ASIGNATURAS\proyecto\protoKEELalpha0.1\Datasets\pru.dat" "C:\ASIGNATURAS\proyecto\protoKEELalpha0.1\Datasets\pru.dat"
+outputData = "C:\Documents and Settings\Julián Luengo Martín\Mis documentos\new.dat" "salida_tmp.txt"
+

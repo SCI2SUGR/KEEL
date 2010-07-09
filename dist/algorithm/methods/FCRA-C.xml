@@ -1,0 +1,105 @@
+<algorithm_specification>
+  <name>Finding fuzzy classification rules based on the Apriori algorithm</name>
+  <nParameters>11</nParameters>
+  <seed>1</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of Generations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>150</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  <parameter>
+    <name>Population size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>30</default>
+  </parameter>
+  <parameter>
+    <name>Length of S and C</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+   <parameter>
+    <name>Weight of the classification accuracy rate (WCAR)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>50.0</upperB>
+    </domain>
+    <default>10.0</default>
+   </parameter>
+   <parameter>
+    <name>Weight of the number of fuzzy rules (WV)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>50.0</upperB>
+    </domain>
+    <default>1.0</default>
+   </parameter>
+   <parameter>
+    <name>Crossover Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1.0</default>
+   </parameter>
+   <parameter>
+    <name>Mutation Probability (per gen)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+   </parameter>
+   <parameter>
+    <name>Learning rate n1 (Nozaki method)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.001</default>
+   </parameter>
+   <parameter>
+    <name>Learning rate n2 (Nozaki method)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+   </parameter>
+   <parameter>
+    <name>Number of iterations Jmax (Nozaki method)</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+   </parameter>
+  <parameter>
+    <name>Number of Linguistic Values</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+</algorithm_specification>

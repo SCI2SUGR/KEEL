@@ -1,0 +1,25 @@
+<algorithm_specification>
+  <name>Regr-iRProp+</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+ <parameter>
+    <name>Hidden_nodes</name>
+    <type>integer</type>
+    <default>4</default>
+  </parameter>
+ <parameter>
+    <name>Epochs</name>
+    <type>integer</type>
+    <default>1500</default>
+  </parameter>
+  <parameter>
+    <name>Transfer</name>
+    <type>list</type>
+    <domain>
+      <item>Product_Unit</item>
+      <item>Sigmoidal</item>
+    </domain>
+    <default>Product_Unit</default>
+  </parameter>
+</algorithm_specification>

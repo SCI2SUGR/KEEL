@@ -1,0 +1,66 @@
+<algorithm_specification>
+
+  <name>PSOLDA Classifier</name>
+  <nParameters>8</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  
+  <parameter>
+    <name>Seed</name>
+    <type>integer</type>
+    <default>12345678</default>
+    <disabled/>
+  </parameter>
+  
+  <parameter>
+    <name>Maximum iterations</name>
+    <type>integer</type>
+    <default>400</default>
+    <disabled/>
+  </parameter>
+  
+  <parameter>
+    <name>Iterations without improving</name>
+    <type>integer</type>
+    <default>150</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>Number of particles</name>
+    <type>integer</type>
+    <default>150</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>Maximum velocity</name>
+    <type>real</type>
+    <default>1</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>Cognitive weight</name>
+    <type>real</type>
+    <default>0.8</default>
+    <disabled/>
+  </parameter>
+  
+    <parameter>
+    <name>Social weight</name>
+    <type>real</type>
+    <default>1.2</default>
+    <disabled/>
+  </parameter>
+
+    <parameter>
+    <name>Inertia factor</name>
+    <type>real</type>
+    <default>0.9</default>
+    <disabled/>
+  </parameter>
+
+
+  
+</algorithm_specification>

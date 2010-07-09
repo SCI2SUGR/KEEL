@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>Each</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>FeatureAdjustmentRate</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.2</default>
+  </parameter>
+  <parameter>
+    <name>UseSecondChance</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>YES</default>
+  </parameter>
+</algorithm_specification>

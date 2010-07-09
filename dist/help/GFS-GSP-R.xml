@@ -1,0 +1,161 @@
+<method>
+
+	<name>Fuzzy Rule Learning, Grammar-GP based operators and Simulated Annealing-based algorithm</name>
+
+	<reference>  
+
+<ref>L. S&#xE1;nchez, I. Couso. Combining GP operators with SA search to evolve fuzzy rule based classifiers. Information Sciences 136 (2001) 175 - 192.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression fuzzy model.</type>
+
+		<objective>To obtain fuzzy regression models by means of learning fuzzy rule throught Simulated Annealing algorithms with genetic operators.</objective>
+
+		<howWork>A Simulated Annealing algorithm is used to learn a fuzzy regression model. For each hypothesis, the number of labels and number of rules must be given. In same way, as it is possible to manage any combination of conjuntion and/or disjuntions in the antecedent part of a fuzzy rule, a maximum deep tree size must be given too.
+
+Those parameters are, in conjuntion with Simulated Annealing typical parameters, of capital importance in the evolution of this method.
+</howWork>
+
+		<parameterSpec>  
+<param>numlabes: the number of possible fuzzy values for each variable.</param>
+<param>numrules: the number of rules for each model.</param>
+<param>p0sap:initial probability to accept a worse than current individial, SAP parameter.</param>
+<param>p1sap:  final probability to accept a worse than current individual, SAP parameter.</param>
+<param>numitera: number of iterations to reach the objectives, SAP parameter.</param>
+<param>amplmuta	: the maximum bias that a mutation operation can introduce. SAP Parameter.</param>
+<param>nsubsap: number of suppopulations in the SAP algorithm.</param>
+<param>proboptimlocal: indicates the probability to improve SAP with local search SAP parameter.</param>
+<param>numoptimlocal: the number of local search steps, SAP parameter.</param>
+<param>idoptimlocal: the local search method used, SAP parameter.</param>
+<param>probcrossga: probability of genetic algorithm (parametric) operations to take place, SAP  parameter.</param>
+<param>probmutaga: probability of genetic algorithm (structural) operations to take place, SAP parameter.</param>
+<param>lenchaingap: length of SAP chain, genetic parameter.</param>
+<param>maxtreeheight: maximum deep of a fuzzy tree.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-Fuzzy-SAP
+Dataset: daily-electric-energy
+Training set: daily-electric-energy-10-1tra.dat
+Test set: daily-electric-energy-10-1tst.dat
+Test Show results: StatChekMO
+Parameters: default parameters but lenchaingap = 8, maxtreehight = 6, deltafit = 1, p0 = 0.5, p1 = 0.001, numitera = 3500
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTRegr-Fuzzy-SAP/ folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.6326730659823835 
+Fold 1 : 0.582946042976241 
+Fold 2 : 0.553586126691361 
+Fold 3 : 0.3362710599398041 
+Fold 4 : 0.49129777677981884 
+Fold 5 : 0.3086107834611493 
+Fold 6 : 0.3875805785667376 
+Fold 7 : 0.3104590491916703 
+Fold 8 : 0.5927779386260994 
+Fold 9 : 0.47500060143812695 
+Global MSE:
+0.46712030236533925 
+Global stdev:
+0.11741050088188051 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.537954013685275 
+Fold 1 : 0.42500517537540894 
+Fold 2 : 0.42821780581087454 
+Fold 3 : 0.4519969692214723 
+Fold 4 : 0.4350335594760602 
+Fold 5 : 0.4559191194064733 
+Fold 6 : 0.454889182586855 
+Fold 7 : 0.4635888673531252 
+Fold 8 : 0.5423194378744824 
+Fold 9 : 0.43670042550070054 
+Global MSE:
+0.46316245562907277 
+Global stdev:
+0.04034098201505593 
+
+We can see too the output and target classes for each case of the test set (result0s0.tra) in experiment/results/Regr-Fuzzy-SAP/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.31615 2.756786180509008
+2.37613 2.8562695978075765
+2.25221 3.1171310062519164
+2.1057 2.195326312454511
+4.05117 3.486256519260993
+2.50409 3.3388662555675106
+4.4184 3.898025111788468
+3.07069 3.1027023225900496
+1.8168 2.1994632622616574
+1.1095 3.3413864861249922
+1.42735 2.9314845257412654
+3.34136 3.8143397327360464
+2.34377 3.199636559107268
+...
+
+And the test results (result0s0.tst) in folder experiment/results/Regr-Fuzzy-SAP/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.21261 2.9633803953127598
+3.82169 3.620300899987755
+1.3288 2.3310693000448137
+2.53167 3.455718916024957
+4.00095 3.725753573068404
+2.9788 2.8468753724593805
+1.67147 2.95273527040234
+3.3829 3.4870014974020007
+3.19877 2.925874678656944
+2.4381 2.9666555081017725
+0.960987 2.9488778221169842
+4.14661 3.8960232972486026
+2.32848 3.2284188634254662
+...
+</example>
+
+</method>

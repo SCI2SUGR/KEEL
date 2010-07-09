@@ -1,0 +1,144 @@
+<method>
+
+	<name>Las Vegas Wrapper (LVW)</name>
+
+	<reference>  
+
+<ref>H. Liu and R. Setiono. Feature Selection and Classification: A Probabilistic Wrapper Approach. 9th International Conference on Industrial and Engineering Applications of Artificial Intelligence and Expert Systems, (IEA-AIE'96). Fukuoka (Japan, 1996) 419-424.</ref>
+<ref>H. Liu and H. Motoda. Feature Selection for Knowledge Discovery and Data Mining. Kluwer Academic Publishers (1998).</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Non Evolutionary Wrapper Stochastic method</type>
+
+		<objective>Feature Selection. This method allows search to follow feature subsets that are randomly generated</objective>
+
+		<howWork>LVW initializes a set to the empty set. It will load the subset of features selected and obtain a precision rate classifying using all features of the input dataset
+
+Next, it starts a loop MaxLoops times.
+
+Firstable it generates a random subset of features. Secondly, if the precision rate obtained classifying using only the selected features is better than the previously best, the new best subset will be this subset (the last generated).
+</howWork>
+
+		<parameterSpec>  
+			<param>maxLoops: is the maximum number of loops. Generally, it is a number linked to the number of original features N.  The rule of thumb is that the more features in the data, the more difficult it is for feature selection. Normally the value chosen is c*N, where c is a constant.
+				We can start c whit some number (e.g. 77) or simply make it as N2. In general, the larger maxLoops is, the better solution can expect.
+				Another more reasonable way os setting maxLoops is to link to the space the user wants to cover. The complete space is 2N, if the user wants to cover p% of the space, he can set maxLoops = 2N * p%.</param>
+			<param>paramKNN: is the number of nearest neighbours used by the k-NN classifier</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+
+Problem type: Preprocess
+Method: Las Vegas Wrapper (LVW)
+Dataset: pima
+Training set: pim-10-1tra.dat
+Test set: pim-10-1tst.dat
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see the training and test datasets modified only with the selected features (result0.tra and result0.tst) in experiment\results\FS-LVW
+
+result0.tra
+
+@relation pima_diabetes
+@attribute 'preg' real[0.0,17.0]
+@attribute 'plas' real[0.0,199.0]
+@attribute 'pres' real[0.0,122.0]
+@attribute 'skin' real[0.0,99.0]
+@attribute 'insu' real[0.0,846.0]
+@attribute 'mass' real[0.0,67.1]
+@attribute 'pedi' real[0.078,2.42]
+@attribute 'age' real[21.0,81.0]
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'preg','plas','pres','skin','insu','mass','pedi','age'
+@outputs 'class'
+@data
+14.0,175.0,62.0,30.0,0.0,33.6,0.212,38.0,tested_positive
+4.0,146.0,78.0,0.0,0.0,38.5,0.52,67.0,tested_positive
+15.0,136.0,70.0,32.0,110.0,37.1,0.153,43.0,tested_positive
+3.0,107.0,62.0,13.0,48.0,22.9,0.678,23.0,tested_positive
+3.0,169.0,74.0,19.0,125.0,29.9,0.268,31.0,tested_positive
+
+........................................................
+
+2.0,112.0,78.0,50.0,140.0,39.4,0.175,24.0,tested_negative
+1.0,107.0,68.0,19.0,0.0,26.5,0.165,24.0,tested_negative
+2.0,98.0,60.0,17.0,120.0,34.7,0.198,22.0,tested_negative
+4.0,122.0,68.0,0.0,0.0,35.0,0.394,29.0,tested_negative
+4.0,145.0,82.0,18.0,0.0,32.5,0.235,70.0,tested_positive
+
+
+result0.tst
+
+@relation pima_diabetes
+@attribute 'preg' real[0.0,17.0]
+@attribute 'plas' real[0.0,199.0]
+@attribute 'pres' real[0.0,122.0]
+@attribute 'skin' real[0.0,99.0]
+@attribute 'insu' real[0.0,846.0]
+@attribute 'mass' real[0.0,67.1]
+@attribute 'pedi' real[0.078,2.42]
+@attribute 'age' real[21.0,81.0]
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'preg','plas','pres','skin','insu','mass','pedi','age'
+@outputs 'class'
+@data
+10.0,108.0,66.0,0.0,0.0,32.4,0.272,42.0,tested_positive
+7.0,107.0,74.0,0.0,0.0,29.6,0.254,31.0,tested_positive
+0.0,179.0,90.0,27.0,0.0,44.1,0.686,23.0,tested_positive
+10.0,125.0,70.0,26.0,115.0,31.1,0.205,41.0,tested_positive
+10.0,168.0,74.0,0.0,0.0,38.0,0.537,34.0,tested_positive
+
+........................................................
+
+5.0,117.0,92.0,0.0,0.0,34.1,0.337,38.0,tested_negative
+4.0,83.0,86.0,19.0,0.0,29.3,0.317,34.0,tested_negative
+7.0,119.0,0.0,0.0,0.0,25.2,0.209,37.0,tested_negative
+1.0,95.0,66.0,13.0,38.0,19.6,0.334,25.0,tested_negative
+1.0,181.0,64.0,30.0,180.0,34.1,0.328,38.0,tested_positive
+
+And the extra file with the classification error in test validation (result0e0.txt) in Experiment\Results\FS-LVW:
+
+result0e0.txt
+
+RESULTS generated at Sun Oct 23 00:57:43 CEST 2005 
+--------------------------------------------------
+Algorithm Name: Las Vegas Wrapper
+
+PARTITION Filename: ../datasets/pim/pim-10-1tra.dat
+---------------
+
+Features selected: 
+'preg' - 'plas' - 'pres' - 'skin' - 'insu' - 'mass' - 'pedi' - 'age' - 
+
+8 features of 8
+
+Error in test (using train for prediction): 0.35064935064935066
+Error in test (using test for prediction): 0.2857142857142857
+---------------
+
+</example>
+
+</method>

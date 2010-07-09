@@ -1,0 +1,88 @@
+<method>
+
+	<name>Contrast estimation</name>
+
+	<reference>  
+
+	<ref>J. Zar, Biostatistical Analysis, Prentice Hall, Upper Saddle River, New Jersey, 1999.</ref>
+	<ref>D. Sheskin, Handbook of parametric and nonparametric statistical procedures. Chapman and Hall/CRC, 2003. </ref>
+	<ref>J. Demsar, Statistical comparisons of classifiers over multiple data sets. Journal of Machine Learning Research 7 (2006) 1-30</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Application of non-parametric tests.</type>
+
+		<objective>Execution of the contrast estimation for comparison of the global performance of several classification methods.</objective>
+
+		<howWork>Using the data resulting from the run of various classifiers over multiple data sets in an experiment, the researcher could be interested in the
+		estimation of the difference between two classifiers performance. A procedure for this purpose assumes that the expected differences between performances of
+		algorithms are the same across data sets. We assume that the performance is reflected by the magnitudes of the differences between the performances of the 
+		algorithms. Consequently, we are interested in estimating the contrast between medians of samples of results considering all pairwise comparisons. It obtains 
+		a quantitative difference computed through medians between two algorithms over multiple data sets, but the value obtained will change when using other data
+		sets in the experiment.
+		</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Methods to compare: Clas-KNN vs Clas-C45 vs Clas-Fuzzy-Chi
+Datasets: cleveland, glass, iris, monks-2, pima
+Default Parameters (all the post-hoc tests are applied)
+Type of partitions: k-fold, k=10
+
+After the execution of RunKeel.jar we can see into the ./results/Stat-Clas-Contrast/TSTClas-KNNvsClas-C45vsClas-Fuzzy-Chi folder the results0s0.stat file:
+
+------------------------------------------------------------
+Contrast Test, Classification
+Classification error in each foldfold:
+Algorithm = Clas-KNN
+Fold 0 : 0.4666666666666667 
+Fold 1 : 0.5666666666666667 
+Fold 2 : 0.4 
+Fold 3 : 0.4666666666666667 
+Fold 4 : 0.3333333333333333 
+Fold 5 : 0.5666666666666667 
+Fold 6 : 0.3870967741935484 
+Fold 7 : 0.5483870967741935 
+Fold 8 : 0.4666666666666667 
+Fold 9 : 0.4838709677419355 
+Mean Value: 0.4686021505376344
+Algorithm = Clas-C45
+Fold 0 : 0.4 
+Fold 1 : 0.5333333333333333 
+Fold 2 : 0.36666666666666664 
+Fold 3 : 0.5 
+Fold 4 : 0.4666666666666667 
+Fold 5 : 0.4666666666666667 
+Fold 6 : 0.45161290322580644 
+Fold 7 : 0.41935483870967744 
+Fold 8 : 0.5333333333333333 
+Fold 9 : 0.41935483870967744 
+Mean Value: 0.4556989247311828
+Algorithm = Clas-Fuzzy-Chi
+Fold 0 : 0.4 
+Fold 1 : 0.4 
+Fold 2 : 0.4666666666666667 
+Fold 3 : 0.36666666666666664 
+Fold 4 : 0.36666666666666664 
+Fold 5 : 0.5 
+Fold 6 : 0.5161290322580645 
+Fold 7 : 0.4838709677419355 
+Fold 8 : 0.4 
+Fold 9 : 0.45161290322580644 
+Mean Value: 0.43516129032258066
+--------------------------------------------------------------
+
+and a LaTeX output file "output.tex" where the results of the application of the test are provided.
+
+</example>
+
+</method>

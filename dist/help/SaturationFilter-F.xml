@@ -1,0 +1,48 @@
+<method>
+
+	<name>Saturation Filter</name>
+
+	<reference>  
+
+		<ref>GGamberger, D., Lavrac, N., Dzroski, S. (2000). Noise detection and elimination in data preprocessing: Experiments in medical domains. Applied Artificial Intelligence, 14(2), 205-223.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Saturation Filter.</type>
+
+		<objective>To remove noisy instances from the training data.</objective>
+
+		<howWork>
+			It removes noisy instances from the training data by means of MDL principe.
+		</howWork>
+
+		<parameterSpec>
+			
+			<param>
+				noiseSensitivity: to specify the noise sensitivity.
+			</param>
+
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+</method>

@@ -1,0 +1,129 @@
+<method>
+
+	<name>CN2</name>
+
+	<reference>  
+
+		<ref>Peter Clark and Tim Niblett, The CN2 induction algorithm, Machine Learning Journal 3:4 (1989) 261-283.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules (separate &amp; conquer).</type>
+
+		<objective>The CN2 algorithm induces an ordered list of classification rules from examples using entropy as its search heuristic.</objective>
+
+		<howWork>It works in an iterative fashion, each iteration searching form a complex that covers a large number of examples of a single class C and few of other classes. The complex must be both predictive and reliable, as determined by CN2&apos;s evaluation functions. Having found a good complex, the algorithm removes those examples it covers form the training set and adds the rule &quot;if &lt;complex&gt; then predict C&quot; to the end of the rule list. This process iterates until no more satisfactory complexes can be found.
+
+The system searches for complexes by carrying out a pruned general-to-specific search. 
+At each stage in the search, CN2 retains a size-limited set or star S of &apos;best complexes so far&apos;. 
+The system examines only specializations of this set, carrying out a beam search of the space of complexes. A complex is specialized by either adding a new conjunctive term or removing a disjunctive element in one of its selectors. Each complex can be specialized in several ways, and CN2 generates and evaluates all such specializations. The star is trimmed after completion of this step by removing its lowest ranking elements as measured by an evaluation function (laplacian).
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Percentage_Examples_To_Cover: Is the percentage of examples we would like to cover. It can be the total examples (100%) which will make the algorithm slower and maybe we will get over-fitting, or another percentage (95% for example).</param>
+			<param>Star_Size: is the maximum size for the learning STAR. It is an int value that determines the maximum number of rules of the STAR when searching for the best rule in each step.</param>
+			<param>Use_Disjunct_Selectors: is a code to use selectors with disjunctive values or not. It is a list value to make the method more efficient (without using disjunctive selectors) or more effective, increasing the search space.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: CN2
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: 
+	Percentage_Examples_To_Cover: 0.95 (95%)
+	starSize: 5
+	Use_Disjunct_Selectors: NO.
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.1333333333333333
+Correctly classified:
+0.8666666666666667 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-CN2:
+
+@relation  iris
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+And the Rule Set and Statistics (result0e0.txt) in Experiment\Results\Clas-CN2:
+
+
+Rule 1: IF  petalLength &lt;= 1.9 THEN class -&gt; Iris-setosa     [ 45 0 0]
+Rule 2: IF  petalWidth = 1.3 THEN class -&gt; Iris-versicolor     [ 0 12 0]
+Rule 3: IF  petalWidth = 1.5 AND sepalWidth &lt;&gt; 2.8 THEN class -&gt; Iris-versicolor     [ 0 8 0]
+Rule 4: IF  petalWidth = 1.0 THEN class -&gt; Iris-versicolor     [ 0 7 0]
+Rule 5: IF  petalWidth = 1.4 AND sepalWidth &gt; 2.6 THEN class -&gt; Iris-versicolor     [ 0 6 0]
+Rule 6: IF  petalWidth = 1.2 THEN class -&gt; Iris-versicolor     [ 0 5 0]
+Rule 7: IF  petalWidth = 1.1 THEN class -&gt; Iris-versicolor     [ 0 3 0]
+Rule 8: IF  petalWidth = 1.6 AND sepalLength &lt;= 7.0 THEN class -&gt; Iris-versicolor     [ 0 2 0]
+Rule 9: IF  petalWidth &gt; 1.7 AND sepalLength &lt;&gt; 5.9 THEN class -&gt; Iris-virginica     [ 0 0 40]
+Rule 10: IF  petalLength &gt; 5.0 AND sepalLength &lt;&gt; 6.0 THEN class -&gt; Iris-virginica     [ 0 0 4]
+
+####Average results for test data####
+Avg. Rule length: 10
+Avg. Number of attributes by rule: 1.5
+Avg. Coverage: 0.11333333333333333
+Avg. Support: 0.8666666666666667
+Avg. Significance: 3.4580229092475947
+Avg. Unusualness: 1.1400000000000001
+
+Accuracy Training: 0.9777777777777777
+Accuracy Test: 0.8666666666666667
+
+  Time (seconds); 1
+</example>
+
+</method>

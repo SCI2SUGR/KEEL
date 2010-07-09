@@ -1,0 +1,102 @@
+﻿<method>
+
+	<name>GENAR</name>
+
+	<reference>  
+
+		<ref>J. Mata, J.L. Alvarez, and J.C. Riquelme. Mining numeric association rules with genetic algorithms. In 5th International Conference on Artificial Neural Networks and Genetic Algorithms, pages 264–267, Taipei, Taiwan (2001).</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Association Rules Mining by means of Genetic Algorithms</type>
+
+		<objective>GENAR (GENetic Association Rules) searches quantitative association rules of a fixed length in the way that only the last attribute of the database acts as the consequent, whereas all the previous ones represent the antecedent part.</objective>
+
+		<howWork>GENAR employs a fitness function which considers the support count for the rules by punishing those having already covered the same records in the database.
+By following the Iterative Rule Learning (IRL) approach, its genetic scheme consists in executing a main loop as many times as rules we want to obtain.
+An initial population is generated paying attention to not overcome the maximum amplitude of the intervals of each attribute.
+Within an internal loop, the algorithm evaluates the fitness for all the individuals of the current population and builds the next one by carrying out the usual operations of selection, crossover and mutation.
+This loop will be executed until a given number of generations is reached.
+At the end, the best individual is chosen from the population formed in the last generation and added to the set of the final association rules.</howWork>
+
+		<parameterSpec>  
+			
+			<param>Number of Association Rules: the number of association rules to mine.</param>
+			<param>Number of Generations: the maximum number of generations to accomplish.</param>
+			<param>Population Size: the population size to handle after each generation.</param>
+			<param>Probability of Selection: the probability of selection.</param>
+			<param>Probability of Crossover: the probability of crossover.</param>
+			<param>Probability of Mutation: the probability of mutation.</param>
+			<param>Penalization Factor: the factor for tuning the importance of the number of records already covered.</param>
+			<param>Amplitude Factor: the amplitude factor related to each attribute of the database.</param>
+			<param>Minimum Support: the minimum support to be fullfilled by the mined association rules.</param>
+			<param>Minimum Confidence: the minimum confidence to be fullfilled by the mined association rules.</param>
+		
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+Problem type: Association Rules
+Method: GENAR
+Dataset: weather
+Parameters: default values (seed = 1343278692)
+
+
+After the execution of RunKeel.jar we can see XML representations of the mined association rules along with the values concerning the measures of interest, respectively, in:
+
+
+&quot;results/Asso-GENAR.weather/result0s0.tra&quot;
+
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rules&gt;
+&lt;/rules&gt;
+
+
+&quot;results/Asso-GENAR.weather/result0s0.tst&quot;
+
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;values&gt;
+&lt;/values&gt;
+
+
+We can also see some relevant information on-screen:
+
+
+Initializing Population... done.
+Computing Generation #1... done.
+... ... ... ...
+Computing Generation #100... done.
+
+
+Average Amplitude of Intervals: 0.0
+
+Number of Association Rules generated: 0
+
+Algorithm Finished
+
+1.025 seconds
+
+</example>
+
+</method>

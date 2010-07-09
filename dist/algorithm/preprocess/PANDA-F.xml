@@ -1,0 +1,65 @@
+<algorithm_specification>
+
+	<name>PANDA</name>
+	<nParameters>5</nParameters>
+  	<seed>1</seed>
+  	<nOutput>1</nOutput>
+	
+	
+	<parameter>
+	  	<name>function</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>sum</item>
+	    	<item>max</item>
+	  	</domain>
+	  	<default>sum</default>   
+	</parameter>
+	
+	
+	<parameter>
+    	<name>estimatedNoiseLevel</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.2</default>
+		<disabled/>
+  	</parameter>
+	
+	
+	<parameter>
+    	<name>minIntervals</name>
+    	<type>integer</type>
+    	<domain>
+      		<lowerB>2</lowerB>
+      		<upperB>100</upperB>
+    	</domain>
+    	<default>5</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>maxIntervals</name>
+    	<type>integer</type>
+    	<domain>
+      		<lowerB>2</lowerB>
+      		<upperB>100</upperB>
+    	</domain>
+    	<default>25</default>
+  	</parameter>
+
+
+	<parameter>
+    	<name>numExecutions</name>
+    	<type>integer</type>
+    	<domain>
+      		<lowerB>1</lowerB>
+      		<upperB>100</upperB>
+    	</domain>
+    	<default>5</default>
+  	</parameter>
+
+
+</algorithm_specification>

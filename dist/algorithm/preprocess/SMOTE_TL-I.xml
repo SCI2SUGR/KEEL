@@ -1,0 +1,52 @@
+<algorithm_specification>
+  <name>SMOTE Tomek Links</name>
+  <nParameters>5</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Number of Neighbors</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Type of SMOTE</name>
+    <type>list</type>
+    <domain>
+      <item>both</item>
+      <item>minority</item>
+      <item>ASMO</item>
+    </domain>
+    <default>both</default>   
+  </parameter>
+  <parameter>
+    <name>Balancing</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>YES</default>   
+  </parameter>
+  <parameter>
+    <name>Quantity of generated examples</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>  
+  <parameter>
+    <name>Distance Function</name>
+    <type>list</type>
+    <domain>
+      <item>Euclidean</item>
+      <item>HVDM</item>
+    </domain>
+    <default>HVDM</default>   
+  </parameter>
+</algorithm_specification>

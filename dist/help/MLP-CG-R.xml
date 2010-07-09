@@ -1,0 +1,129 @@
+<method>
+
+	<name>Multilayer perceptron for modeling problems, Conjugate Gradient based training</name>
+
+	<reference>
+
+		<ref>F. Moller, A scaled conjugate gradient algorithm for fast supervised learning. Neural Networks 6 (1990) 525-533.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression algorithm based on Neural Networks</type>
+
+		<objective>Use a multilayer Perceptron to compute an approximate function for a regression problem</objective>
+
+		<howWork>This class of networks consists of multiple layers of computational units, usually interconnected in a feed-forward way. Each neuron in one layer has directed connections to the neurons of the subsequent layer. In many applications the units of these networks apply a sigmoid function as an activation function.
+
+We use back-propagation as learning technique. Here the output values are compared with the correct answer to compute the value of some predefined error-function. By various techniques the error is then fed back through the network. Using this information, the algorithm adjusts the weights of each connection in order to reduce the value of the error function by some small amount. After repeating this process for a sufficiently large number of training cycles the network will usually converge to some state where the error of the calculations is small. 
+
+To adjust weights we use a method for non-linear optimization that is called conjugate gradient. It works by iteratively computing search directions, along with a search line procedure that minimize the function, producing a new approximation to the (local) minimum of the objective function. An iteration is defined as a computation of a search direction and the following line search. An epoch is defined as the computation of the function value and gradient f(x) and g(x) = ?f(x). The function and gradients are always computed as a pair. An iteration might involve many epochs (because of the line search)
+</howWork>
+
+		<parameterSpec>  
+
+			<param>topologymlp: The topology of the neural network. It is an integer value which indicates the number of neurons in the hidden layer of the network. We use only one hidden layer in this method</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-MLPerceptronConj-Grad-ConjGrad 
+Dataset: daily-electric-energy
+Training set: daily-electric-energy -10-1tra.dat
+Test set: daily-electric-energy -10-1tst.dat
+Test Show results: StatChekMO
+Parameters: default.
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckMO folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.1359432423579274 
+Global MSE:
+0.1359432423579274 
+Global stdev:
+0.0 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.13789791884440927 
+Global MSE:
+0.13789791884440927 
+Global stdev:
+0.0  
+
+
+We can also see the output and target values for each case of the test set in Experiment\Results\Regr-MLPerceptronConj-Grad:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.21261 2.7996927400520786
+3.82169 3.9312587556491803
+1.3288 1.4603715709238507
+2.53167 2.4594415963261587
+4.00095 3.925706624478033
+2.9788 2.8037551954382147
+1.67147 2.0969263710756616
+3.3829 3.5414549990936637
+3.19877 2.8525442884753134
+2.4381 2.731398016842112
+0.960987 1.6236160154635957
+4.14661 4.518020272420437
+2.32848 1.8102954574406769
+1.79736 2.073336206327771
+4.1939 3.605918053722414
+1.81792 2.1150739846951327
+2.5444 2.405295025121622
+3.38268 3.7423922733515673
+4.23803 4.581008804891873
+1.8952 2.3796002870439117
+2.06576 1.6714079597912619
+3.98641 4.52027212156066
+2.14667 2.6503736015698953
+1.43698 1.9013565497672706
+2.47629 2.748269764280808
+3.97221 4.063690267896214
+2.66678 3.0448286684484307
+4.02099 3.9125959649950657
+1.81688 1.8906671821645662
+1.96609 1.9433503395972704
+4.03702 3.6916820444405656
+2.06716 2.0976091188391095
+2.59703 2.8012373234061947
+4.0713 3.5990084440885752
+1.87965 1.6639283970605814
+2.06879 2.8595624832439372
+</example>
+
+</method>

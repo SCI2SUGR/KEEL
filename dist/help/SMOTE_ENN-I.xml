@@ -1,0 +1,100 @@
+<method>
+
+	<name>SMOTE (Synthetic Minority Over-sampling Technique) + ENN (Edited Nearest Neighbor)</name>
+
+	<reference>  
+
+		<ref>G.E.A.P.A. Batista, R.C. Prati, M.C. Monard. A study of the behavior of several methods for balancing machine learning training data. SIGKDD Explorations 6:1 (2004) 20-29</ref>
+		<ref>N.V. Chawla, K.W. Bowyer, L.O. Hall, W.P. Kegelmeyer. SMOTE: synthetic minority over-sampling technique. Journal of Artificial Intelligence Research 16 (2002) 321-357</ref>
+		<ref>D. L. Wilson, Asymptotic properties of nearest neighbor rules using edited data, IEEE Transactions on Systems, Man and Cybernetics 2:3 (1972) 408-421.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Rebalancing. Oversampling Method</type>
+
+		<objective>Balance the class distribution for changing the data space when applying usual classifiers in imbalanced domains</objective>
+
+		<howWork>SMOTE generate positive data instances from other instances in the original dataset selecting k nearest neighbors and using them to perform arithmetical
+		operations to generate the new instance. Some of the examples are removed with ENN.</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of neighbors for ENN: Integer value. Number of nearest instances considered to compute the ENN rule</param>
+			<param>Number of neighbors for SMOTE: Integer value. Number of nearest instances considered to generate a new positive example using the K-Nearest Neighbor Rule</param>
+			<param>Type of SMOTE: both if we consider as neighbors instances from both classes, minority if we consider as neighbors instances from the minority class and ASMO if we consider as neighbors instances from the majority class</param>
+			<param>Balancing: YES, if we want de data class distribution completely balanced, NO otherwise</param>
+			<param>Quantity of generated examples: if the Balancing option is not selected, proportion of examples from the majority class that the minority class has to reach</param>
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: SMOTE ENN
+Dataset: pimaImb
+Training set: pimaImb-5-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\datasets\Reb-SMOTE_ENNs0.pimaImb-5-1tra.dat:
+
+@relation pimaImb
+@attribute Preg real [0.0, 17.0]
+@attribute Plas real [0.0, 199.0]
+@attribute Pres real [0.0, 122.0]
+@attribute Skin real [0.0, 99.0]
+@attribute Insu real [0.0, 846.0]
+@attribute Mass real [0.0, 67.1]
+@attribute Pedi real [0.078, 2.42]
+@attribute Age real [21.0, 81.0]
+@attribute Class {positive, negative}
+@data
+14.0,175.0,62.0,30.0,0.0,33.6,0.212,38.0,positive
+4.0,146.0,78.0,0.0,0.0,38.5,0.52,67.0,positive
+15.0,136.0,70.0,32.0,110.0,37.1,0.153,43.0,positive
+3.0,173.0,78.0,39.0,185.0,33.8,0.97,31.0,positive
+4.0,146.0,92.0,0.0,0.0,31.2,0.539,61.0,positive
+9.0,145.0,80.0,46.0,130.0,37.9,0.637,40.0,positive
+10.0,101.0,86.0,37.0,0.0,45.6,1.136,38.0,positive
+1.0,144.0,82.0,46.0,180.0,46.1,0.335,46.0,positive
+1.0,168.0,88.0,29.0,0.0,35.0,0.905,52.0,positive
+8.0,167.0,106.0,46.0,231.0,37.6,0.165,43.0,positive
+12.0,92.0,62.0,7.0,258.0,27.6,0.926,44.0,positive
+3.0,129.0,92.0,49.0,155.0,36.4,0.968,32.0,positive
+1.0,97.0,68.0,21.0,0.0,27.2,1.095,22.0,negative
+7.0,133.0,88.0,15.0,155.0,32.4,0.262,37.0,negative
+2.0,108.0,52.0,26.0,63.0,32.5,0.318,22.0,negative
+0.0,137.0,70.0,38.0,0.0,33.2,0.17,22.0,negative
+7.0,62.0,78.0,0.0,0.0,32.6,0.391,41.0,negative
+...
+3.55773483364183,173.79739995635194,0.0,0.0,0.0,28.98924785050891,0.5418682875524024,32.0193661896631,positive
+8.604398658299667,109.56135667140518,84.0748535772986,28.817088025498524,0.0,31.065549127869442,1.0877748961384224,45.0885636377406,positive
+8.815223385477704,163.1496578019798,62.90748668989219,37.46157785900998,0.0,33.583434607559525,0.6875040147321564,27.739910819951387,positive
+7.593379350079146,100.0684731778281,76.0,29.333742764858773,0.0,33.69643888420494,0.45417656134667767,48.83434225820366,positive
+5.89877596566811,130.49988515125636,76.93840040659752,0.0,0.0,34.39131681362269,0.5261387036437717,44.67446760314121,positive
+4.9105595863179445,129.80772845225647,62.30169243932828,31.9540010131806,190.0,30.9138109845437,0.5636904245622184,60.885062701741425,positive
+4.820235524352964,96.04160221950465,77.13199027959145,37.88226286524465,0.0,36.376434080493404,0.37420985298926274,49.51206953618717,positive
+8.467684994437686,29.95817746595629,70.33383672947883,39.056967873363284,0.0,38.83471240948323,0.2687505213959818,41.0,positive
+8.748934457782683,115.33892762001139,0.0,0.0,0.0,22.563731225156797,0.1871877734718712,23.1057167230572,positive
+4.621002030933214,119.89341324666944,81.9384166029317,16.63080776955446,266.7736781026234,28.853738058165547,0.31159769900351086,29.425911000952006,positive
+</example>
+
+</method>

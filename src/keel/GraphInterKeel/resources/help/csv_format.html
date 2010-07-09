@@ -1,0 +1,197 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+
+<title>CSV format</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">CVS DATA 
+FILE FORMAT</span></b></h3>
+<p class="MsoNormal" style="text-align: justify; text-indent: 35.45pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: 35.45pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman">The CSV file 
+(comma-separated-values). </span>
+<span lang="EN" style="font-family: Times New Roman">CSV is one implementation 
+of a
+delimited text 
+file, which uses a
+comma to 
+separate values.&nbsp; The CSV file format is very simple and supported by almost all
+spreadsheets 
+and
+database management systems<a href="http://en.wikipedia.org/wiki/Database_management_system"><span style="color: #000000; text-decoration: none">.</span></a></span></p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt; margin: 6.0pt 0cm">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of these files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The first record in a CSV file may be a header record containing name of 
+		the columns.</span></li>
+		<li>
+		<p class="MsoNormal"><span lang="EN-GB">Each record in a file can have 
+		less fields that the number of header columns. In this case, empty 
+		values are considered missing values.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman">Each row must 
+		have the same number of fields separated by commas.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">Two commas 
+adjacent, or comma at the beginning or end of the line (</span><strong><span lang="EN-GB" style="font-weight: normal">space-characters</span></strong><span lang="EN-GB" style="font-family: Times New Roman; color: black">) 
+		indicate null values.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The separation of the whole and fractional part in the actual numbers is 
+		done through a point instead of a comma.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman">The separation 
+		symbol for decimals numbers is a point instead of a comma.</span></li>
+		<li>
+		<p class="MsoNormal"><strong>
+		<span lang="EN-GB" style="font-weight: normal">Leading and 
+trailing space-characters adjacent to comma field separators are ignored.</span></strong></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN" style="font-family: Times New Roman">Each record 
+is one line terminated by a newline character or a carriage return</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The blank lines will be ignored.</span></li>
+		<li>
+		<p class="MsoNormal"><strong>
+		<span lang="EN-GB" style="font-weight: normal">Fields that contain 
+double quote characters must be surrounded by double-quotes, and the embedded 
+		double-quotes must each be represented by a pair of consecutive double 
+		quotes.</span></strong></li>
+		<li>
+		<p class="MsoNormal"><strong>
+		<span lang="EN-GB" style="font-weight: normal">Fields with leading or 
+		trailing spaces or commas must be delimited with double-quote 
+		characters.</span></strong></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN" style="font-family: Times New Roman">The delimiter 
+of values can be other character different to comma. Many implementations of CSV 
+allow an alternate separator to be used, such as tab character and the resulting 
+format is TSV (Tab Separated Values).</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The last record in a file can be finished or not with the character end 
+		of line.</span></li>
+		<li>
+		<p class="MsoNormal">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">These 
+files are stored, by default, with the extension &quot;.csv&quot;.</span></li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt"><b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+CSV (Comma-Separated Values) data files must have the following format:<i><br>
+&nbsp;</i></span></b></p>
+<div align="center">
+	<table border="1" width="281" height="106">
+		<tr>
+			<td height="106" width="271" align="left">
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">attribute<sub>1</sub>, attribute<sub>2</sub>, 
+			..., attribute<sub>N</sub><br>
+			value<sub>11</sub>, value<sub>12</sub>, ..., value<sub>1N</sub><br>
+			...<br>
+			value<sub>M1</sub>, value<sub>M2</sub>, ..., value<sub>MN</sub></span><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;color:#003366;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of valid CSV file is:</span></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt">&nbsp;</p>
+<div align="center">
+	<table border="1" width="462" height="96">
+		<tr>
+			<td height="96" width="452"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">FirstName, LastName, Company, EmailAddress<br>
+			Johnathan,Doe,&quot;ABC Company&quot;,&quot;johndoe@abccompany.com&quot;<br>
+			Harrie,Wong,&quot;Company Inc.&quot;,&quot;hwong@myprovider.com&quot;<br>
+			Mary,&quot;Jo Smith&quot;,&quot;Any Corp.&quot;,&quot;mjsmith@myprovider.com&quot;</span></i></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" style="text-align: justify; text-indent: 35.45pt; margin-left: 35.45pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">In this 
+example we can see the use of certain rules explained before, such as null value 
+expressed in two consecutive commas, the use of the decimal point as a separator 
+for real numbers and the use of double quotes to use the value of the comma 
+simple as part of the data and not as a separator.</span></p>
+<p class="MsoNormal" style="text-align:justify"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-left: 18.55pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">Another 
+example of valid CSV file is:<i><br>
+&nbsp;</i></span></b></p>
+<div align="center">
+	<table border="1" width="425" height="212">
+		<tr>
+			<td height="212" width="425">
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">OBS,CAREXPEND,DISPOSINC,DOLLARVALUE,WAGES<br>
+			&quot;1960:1&quot;,14.2,362,,270.7<br>
+			&quot;1960:2&quot;,14.1,365.9,,273.4<br>
+			&quot;1960:3&quot;,14.6,367.6,,273.9<br>
+			&quot;1960:4&quot;,13.2,369.2,,273.3<br>
+			&quot;1961:1&quot;,10.8,72.9,,273.7<br>
+			&quot;1961:2&quot;,11.7,378.4,,277.6<br>
+			&quot;1961:3&quot;,12.2,385.1,,282.2<br>
+			&quot;1961:4&quot;,13.7,393.2,,288.4</span></i></td>
+		</tr>
+	</table>
+</div>
+<div align="center">
+	<p class="MsoNormal" style="margin-left: 18.55pt">&nbsp;</div>
+<p class="MsoNormal" style="margin-left: 18.55pt"><b><i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+<br>
+&nbsp;</span></i></b></p>
+<p><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p>&nbsp;</p>
+<p class="MsoNormal" style="margin-left: 18.55pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-left: 18.55pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p><br clear="ALL">
+&nbsp;</p>
+<p class="MsoNormal" style="margin-left: 18.55pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<br>
+&nbsp;</span></p>
+<p class="MsoNormal" style="text-align:justify"><span lang="EN-GB">&nbsp;</span></p>
+<p><br></p>
+</body>
+
+</html>

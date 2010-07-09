@@ -1,0 +1,96 @@
+<method>
+
+	<name>Friedman Test and Post-Hoc Procedures</name>
+
+	<reference>  
+
+	<ref>J. Zar, Biostatistical Analysis, Prentice Hall, Upper Saddle River, New Jersey, 1999.</ref>
+	<ref>D. Sheskin, Handbook of parametric and nonparametric statistical procedures. Chapman and Hall/CRC, 2003. </ref>
+	<ref>J. Demsar, Statistical comparisons of classifiers over multiple data sets. Journal of Machine Learning Research 7 (2006) 1-30</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Application of non-parametric tests.</type>
+
+		<objective>Execution of the non-parametric Friedman test and post-hoc tests for comparison of the global performance of several classification methods.</objective>
+
+		<howWork>
+		Friedman test is a non-parametric equivalent of the test of repeated-measures ANOVA. It computes the ranking of the observed results for algorithm 
+		for each data-set, assigning to the best of them the ranking 1, and to the worst the ranking k. We may apply different post-hoc test in order to detect
+		significant differences between the algorithms. Specifically we may choose among Iman and Davenport test, Bonferroni-Dunn test, Holm test, Hochbergh test,
+		Hommel test, Holland test, Rom test, Finner test or Li test.
+		</howWork>
+
+		<parameterSpec>  
+		<param>Apply-Iman-Davenport: It can takes the value YES or NO if the user desires to apply the Iman and Davenport test</param>
+		<param>Apply-Bonferroni-Dunn: It can takes the value YES or NO if the user desires to apply the Bonferroni-Dunn test</param>
+		<param>Apply-Holm: It can takes the value YES or NO if the user desires to apply the Holm test</param>
+		<param>Apply-Hochberg: It can takes the value YES or NO if the user desires to apply the Hochberg test</param>
+		<param>Apply-Hommel: It can takes the value YES or NO if the user desires to apply the Hommel test</param>
+		<param>Apply-Holland: It can takes the value YES or NO if the user desires to apply the Holland test</param>
+		<param>Apply-Rom: It can takes the value YES or NO if the user desires to apply the Rom test</param>
+		<param>Apply-Finner: It can takes the value YES or NO if the user desires to apply the Finner test</param>
+		<param>Apply-Li: It can takes the value YES or NO if the user desires to apply the Li test</param>
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Methods to compare: Clas-KNN vs Clas-C45 vs Clas-Fuzzy-Chi
+Datasets: cleveland, glass, iris, monks-2, pima
+Default Parameters (all the post-hoc tests are applied)
+Type of partitions: k-fold, k=10
+
+After the execution of RunKeel.jar we can see into the ./results/Stat-Clas-Friedman/TSTClas-KNNvsClas-C45vsClas-Fuzzy-Chi folder the results0s0.stat file:
+
+------------------------------------------------------------
+Friedman Test, Classification
+Classification error in each foldfold:
+Algorithm = Clas-KNN
+Fold 0 : 0.4666666666666667 
+Fold 1 : 0.5666666666666667 
+Fold 2 : 0.4 
+Fold 3 : 0.4666666666666667 
+Fold 4 : 0.3333333333333333 
+Fold 5 : 0.5666666666666667 
+Fold 6 : 0.3870967741935484 
+Fold 7 : 0.5483870967741935 
+Fold 8 : 0.4666666666666667 
+Fold 9 : 0.4838709677419355 
+Mean Value: 0.4686021505376344
+Algorithm = Clas-C45
+Fold 0 : 0.4 
+Fold 1 : 0.5333333333333333 
+Fold 2 : 0.36666666666666664 
+Fold 3 : 0.5 
+Fold 4 : 0.4666666666666667 
+Fold 5 : 0.4666666666666667 
+Fold 6 : 0.45161290322580644 
+Fold 7 : 0.41935483870967744 
+Fold 8 : 0.5333333333333333 
+Fold 9 : 0.41935483870967744 
+Mean Value: 0.4556989247311828
+Algorithm = Clas-Fuzzy-Chi
+Fold 0 : 0.4 
+Fold 1 : 0.4 
+Fold 2 : 0.4666666666666667 
+Fold 3 : 0.36666666666666664 
+Fold 4 : 0.36666666666666664 
+Fold 5 : 0.5 
+Fold 6 : 0.5161290322580645 
+Fold 7 : 0.4838709677419355 
+Fold 8 : 0.4 
+Fold 9 : 0.45161290322580644 
+Mean Value: 0.43516129032258066
+--------------------------------------------------------------
+
+and a LaTeX output file "output.tex" where the results of the application of the test is provided.
+
+</example>
+
+</method>

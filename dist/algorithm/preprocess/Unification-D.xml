@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>Unification Discretizer</name>
+  <nParameters>2</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>alpha</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.3</default>
+  </parameter>
+  <parameter>
+    <name>beta</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.001</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.3</default>
+  </parameter>
+</algorithm_specification>

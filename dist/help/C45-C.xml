@@ -1,0 +1,157 @@
+<method>
+
+	<name>C4.5 Decision Tree</name>
+
+	<reference>  
+
+		<ref>J.R. Quinlan. C4.5: Programs for Machine Learning. Morgan Kauffman Publishers, San Mateo-California, 1993.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by decision trees</type>
+
+		<objective>To determine a decision tree that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute</objective>
+
+		<howWork>C45 is a decision tree generating algorithm that it induces classification rules in the form of decision trees from a set of given examples.		
+
+The decision tree is constructed top-down. In each step a test for the actual node is chosen (starting with the root node), which best separates the given examples by classes. 
+
+C45 is based on ID3 algorithm. The extensions or improvements of ID3 are that it accounts for unavailable or missing values in data, it handled continuous attribute value ranges, it chooses an appropriate attribute selection measure (maximizing gain) and it prunes the result decision trees
+</howWork>
+
+		<parameterSpec>  
+
+			<param>prune: is to prune or not prune the tree. It is a boolean value that determines if the algorithm applies a prune process after building the tree</param>
+			<param>confidence: is the confidence level. It is a float value that determines what is the minimal confidence that must has a leaf in order to can be considered in the tree</param>
+			<param>minItemsets is the minimum number of item-sets per leaf. It is an integer value that determines how much data instances must contain a leaf in order to can be created</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: C4.5
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+Summary of data, Classifiers: iris
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Global Classification Error + N/C:
+0.06666666666666667 
+Correctly classified:
+0.9333333333333333 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-C4.5:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-versicolor Iris-virginica
+
+And the decision tree model (result0e0.txt) in Experiment\Results\Clas-C4.5:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+
+@decisiontree
+
+if ( petalWidth &lt;= 0.600000 ) then
+{
+	class = "Iris-setosa"
+}
+elseif ( petalWidth &gt; 0.600000 ) then
+{
+	if ( petalWidth &lt;= 1.700000 ) then
+	{
+		if ( petalLength &lt;= 4.900000 ) then
+		{
+			class = "Iris-versicolor"
+		}
+		elseif ( petalLength &gt; 4.900000 ) then
+		{
+			if ( petalWidth &lt;= 1.500000 ) then
+			{
+				class = "Iris-virginica"
+			}
+			elseif ( petalWidth &gt; 1.500000 ) then
+			{
+				class = "Iris-versicolor"
+			}
+		}
+	}
+	elseif ( petalWidth &gt; 1.700000 ) then
+	{
+		class = "Iris-virginica"
+	}
+}
+@TotalNumberOfNodes 4
+@NumberOfLeafs 5
+
+@NumberOfItemsetsTraining 135
+@NumberOfCorrectlyClassifiedTraining 133
+@PercentageOfCorrectlyClassifiedTraining 98.51852%
+@NumberOfInCorrectlyClassifiedTraining 2
+@PercentageOfInCorrectlyClassifiedTraining 1.4814814%
+
+@NumberOfItemsetsTest 15
+@NumberOfCorrectlyClassifiedTest 14
+@PercentageOfCorrectlyClassifiedTest 93.333336%
+@NumberOfInCorrectlyClassifiedTest 1
+@PercentageOfInCorrectlyClassifiedTest 6.6666665%
+
+@ElapsedTime 0:0:0
+</example>
+
+</method>

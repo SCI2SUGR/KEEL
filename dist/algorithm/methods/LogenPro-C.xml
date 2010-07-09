@@ -1,0 +1,78 @@
+<algorithm_specification>
+  <name>LogenPro</name>
+  <nParameters>8</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>25</lowerB>
+      <upperB>1500</upperB>
+    </domain>
+    <default>200</default>
+  </parameter>
+  <parameter>
+    <name>Number of Generations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>500</default>
+  </parameter>
+  <parameter>
+    <name>Crossover Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  <parameter>
+    <name>Mutation Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.4</default>
+  </parameter>
+  <parameter>
+    <name>Dropping Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Minimum Support</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>
+  <parameter>
+    <name>Fitness Weight 1</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter>
+  <parameter>
+    <name>Fitness Weight 2</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter>  
+</algorithm_specification>

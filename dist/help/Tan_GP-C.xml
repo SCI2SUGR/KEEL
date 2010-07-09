@@ -1,0 +1,111 @@
+<method>
+
+	<name>Tan_GP</name>
+
+	<reference>  
+
+		<ref>K. C. Tan, A. Tay, T. H. Lee and C. M. Heng. Mining multiple comprehensible classification rules using genetic programming. Evolutionary Computation. CEC 2002, 2. pp 1302-1307.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by grammar guided genetic programming.</type>
+
+		<objective>To determine a set of rules that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.</objective>
+
+		<howWork>
+		Tan-GP is a GGGP algorithm for classification rule mining which has demonstrated that reports good accuracy and comprehensibility results. It was run using the implementation present in 
+		the evolutionary computation framework JCLEC. It is a grammar guided genetic programming algorithm which represents the rules by defining a context-free grammar. The genetic operators 
+		considered by this algorithm are crossover, mutation and reproduction. For the sake of evolving comprehensible rules, the fitness is:
+		
+		fitness = (tp/(tp+w1*fn)) * (tn / (tn+w2*fp))
+		
+		where tp, fp, tn, fn states for true positives, false positives, true negatives and false negatives, respectively. w1 and w2 are weigth parameter.
+		 		
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>population-size: number of individuals in the population</param>
+			<param>max-of-generations: number of generations of the algorithm</param>
+			<param>derivation-size: maximum number of derivations allowed for the grammar</param>
+			<param>rec-prob: recombination probability</param>
+			<param>mut-prob: mutation probability</param>
+			<param>copy-prob: likelihood of copying an individual into the next generation</param>
+			<param>w1: weigth parameter for the fitness fuction</param>
+			<param>w2: weigth parameter for the fitness fuction</param>
+			<param>elitist-prob: probability of an individual to be selected as parent</param>
+			<param>minimum-support: minimum support for the token competition</param>
+
+		</parameterSpec>
+
+		<properties>
+		    <input>
+		      <continuous>Yes</continuous>
+		      <integer>Yes</integer>
+		      <nominal>Yes</nominal>
+		      <missing>No</missing>
+		      <imprecise>No</imprecise>
+		      <multiclass>Yes</multiclass>
+		      <multioutput>No</multioutput>
+		    </input>
+		    <output>
+		      <continuous>Yes</continuous>
+		      <integer>Yes</integer>
+		      <nominal>Yes</nominal>
+		      <missing>No</missing>
+		      <imprecise>No</imprecise>
+		      <multiclass>Yes</multiclass>
+		      <multioutput>No</multioutput>
+		    </output>
+		</properties>
+
+	</generalDescription>
+
+
+	<example>Problem type: Classification 
+Method: Tan_GP
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Parameters: default parameters
+
+After the execution of RunKeel.jar we can see into the experiment\results\Clas-Tan_GP folder the classification results for the test set:
+
+Reglas:
+IF (AND &lt;= petalWidth 1.7564161070410815 NOT AND &lt;= petalWidth 0.8392492849707004 &lt; petalWidth 2.202709934430817 ) THEN (class = Iris-versicolor)
+IF (NOT AND &lt; petalLength 5.6417700546772345 AND &lt;= sepalLength 7.471879222457632 &lt;= petalWidth 1.6732026320341178 ) THEN (class = Iris-virginica)
+IF (AND &lt;= petalLength 3.350713016415772 NOT AND &lt; sepalLength 6.865887714823888 AND &gt; petalLength 2.1577288507786667 NOT &gt; petalLength 3.5174513319289655 ) THEN (class = Iris-setosa)
+Generica ==&gt; Iris-setosa
+Accuracy Train 0.9777777777777777
+Accuracy Test 0.8666666666666667
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-Tan_GP:
+@relation .a/iris/iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-versicolor
+</example>
+
+</method>

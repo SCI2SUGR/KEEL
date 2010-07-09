@@ -1,0 +1,137 @@
+<method>
+
+	<name>MIFS</name>
+
+	<reference>  
+
+		<ref>R. Battiti. Using Mutual Information For Selection Features In Supervised Neural Net Learning. IEEE Transactions on Neural Networks 5:4 (1994) 537-550.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Non Evolutionary Greedy Filter method</type>
+
+		<objective>Feature Selection. This method allows search to follow feature subsets </objective>
+		<howWork>Firstly, MIFS obtain the k best features according to a mutual information measure between the features and the class. Next, it selects randomly one of them. (If k=1 the method will be deterministic).
+This process is repeated until the method selects the numberOfFeatures features given as an input parameter, using: 
+	- the mutual information measure between the candidate feature and the selected features
+	- and the mutual information between the candidate feature and the class
+
+This values are weighs up by the beta parameter
+
+		</howWork>
+
+		<parameterSpec>  
+
+				<param>paramKNN: is the number of nearest neighbours used by the k-NN classifier</param>
+				<param>numberOfFeatures:  is the number of desired features</param>
+				<param>k: is the number of best features selected before applying the random tournament to selected one of them</param>
+				<param>beta: is a real value [0,..,1] that weighs up the mutual information </param>
+
+		</parameterSpec>
+
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>No</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+
+Problem type: Preprocess
+Method: MIFS
+Dataset: pima
+Training set: pim-10-1tra.dat
+Test set: pim-10-1tst.dat
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see the training and test datasets modified only with the selected features (result0.tra and result0.tst) in experiment\results\FS-MIFS
+
+result0.tra
+
+@relation pima_diabetes
+@attribute 'plas'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'mass'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'age'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'plas','mass','age'
+@outputs 'class'
+@data
+8,5,2,tested_positive
+7,5,7,tested_positive
+6,5,3,tested_positive
+5,3,0,tested_positive
+8,4,1,tested_positive
+
+......................
+
+5,5,0,tested_negative
+5,3,0,tested_negative
+4,5,0,tested_negative
+6,5,1,tested_negative
+7,4,8,tested_positive
+
+
+result0.tst
+
+@relation pima_diabetes
+@attribute 'plas'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'mass'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'age'{0,1,2,3,4,5,6,7,8,9}
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'plas','mass','age'
+@outputs 'class'
+@data
+5,4,3,tested_positive
+5,4,1,tested_positive
+8,6,0,tested_positive
+6,4,3,tested_positive
+8,5,2,tested_positive
+
+......................
+
+5,5,2,tested_negative
+4,4,2,tested_negative
+5,3,2,tested_negative
+4,2,0,tested_negative
+9,5,2,tested_positive
+
+
+And the extra file with the classification error in test validation (result0e0.txt) in Experiment\Results\FS-MIFS
+
+result0e0.txt
+
+RESULTS generated at Sun Oct 23 16:53:34 CEST 2005 
+--------------------------------------------------
+Algorithm Name: MIFS
+
+PARTITION Filename: ../results/UniformWidthDiscretizer/pim/result0.tra
+---------------
+
+Features selected: 
+'plas' - 'mass' - 'age' - 
+
+3 features of 8
+
+Error in test (using train for prediction): 0.33766233766233766
+Error in test (using test for prediction): 0.2857142857142857
+---------------
+
+</example>
+
+</method>

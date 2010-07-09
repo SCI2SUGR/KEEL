@@ -1,0 +1,86 @@
+<method>
+
+	<name>Data Complexity Metrics calculation</name>
+
+	<reference>  
+
+	<ref> T.K. Ho and M. Basu. Complexity measures of supervised classification problems, IEEE Transactions on Pattern Analysis and Machine Intelligence, 24(3) pp. 289-300, 2002.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Estimation of the inherent complexity of the data for the classification task</type>
+
+		<objective>Calculate twelve indicators of the source of complexity for the considered data set</objective>
+
+		<howWork>Twelve measures are computed over the TRAINING data, which provide a hint about the complexity of the data,
+i.e the problematics that this data set would pose for the classification task. These measures are of three different types:
+- Measures of overlaps in feature values from different classes: F1, F2, F3
+- Measures of separability of classes: L1, L2, N1, N2, N3
+- Measures of geometry, topology and density of manifolds: L3, N4, T1, T2	
+	</howWork>
+
+		<parameterSpec>  
+			<param>seed: seed to be used for the random number generator</param>
+			<param>runF1: whether to run the F1 measure or not</param>
+			<param>runF2: whether to run the F2 measure or not</param>
+			<param>runF3: whether to run the F3 measure or not</param>
+			<param>runN1: whether to run the N1 measure or not</param>
+			<param>runN2: whether to run the N2 measure or not</param>
+			<param>runN3: whether to run the N3 measure or not</param>
+			<param>runN4: whether to run the N4 measure or not</param>
+			<param>runL1: whether to run the L1 measure or not</param>
+			<param>runL2: whether to run the L2 measure or not</param>
+			<param>runL3: whether to run the L3 measure or not</param>
+			<param>runT1: whether to run the T1 measure or not</param>
+			<param>runT2: whether to run the T2 measure or not</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+Problem type: Classification 
+Method: Data Complexity Metrics
+Dataset: Iris
+Parameters: default values
+
+Input data:
+Training set: iris10-1tra.dat
+Test set: iris10-1tst.dat
+
+
+Output data: DC-Metrics.iris-10-1tra.dat
+
+
+ F1: 29.048368043421046
+ F2: 0.00974192748463432
+ F3: 0.5925925925925926
+ N1: 0.08888888888888889
+ N2: 0.2099144718010419
+ N3: 0.0444444444444444
+ N4: 0.01666666666666672
+ L1: -1.0
+ L2: -1.0
+ L3: -1.0
+ T1: 0.8814814814814815
+ T2: 33.75
+
+</example>
+
+</method>

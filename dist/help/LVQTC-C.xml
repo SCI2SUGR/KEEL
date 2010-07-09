@@ -1,0 +1,83 @@
+<method>
+
+	<name>Learning Vector Quantization with Training Counter</name>
+
+	<reference>  
+ 		<ref>Odorico, R. Learning vector quantization with training count (LVQTC) (1997) Neural Networks, 10:6, pp. 1083‐1088.</ref> 
+		<ref>Kohonen, T. Self-Organizing Maps Self-Organizing Maps New Springer Series in Information Sciences, Vol. 30, Springer, Berlin, Heidelberg, New York, 1995, 1997, 2001. Third Extended Edition, 501 pages. ISBN 3-540-67921-9, ISSN 0720-678X </ref>
+		<ref>Kohonen, T. The self organizing map (1990) Proceeding of the IEEE, 78:9, pp. 1464‐1480.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+		This algorithm is performed by epoches, in which there are a reset of the set, a correction, a prune, and a creation of prototypes.
+		In the reset, the counters (counter, and wrong counter) of each prototypes are set to zero.
+		In correction, a LVQ1 correction is performed. It rewards nearest-same-class prototypes, and penalizes other-class prototypes.
+		Later, in pruning, the worst prototypes (those which has been penalized most times).
+		Finally in creation, create an average prototype of the wrong prototypes.
+		Start another epoch.
+				</howWork>
+
+		<parameterSpec>  
+			<param>Number of iterations per epoch: Integer value. Number of iterations of the correction performed in each epoch.</param>
+			<param>Percentage of prototypes: Real value. Desired size of the resulting set as percentage of training set size.</param>
+			<param>Alpha_R: Double value. Alpha constant in [0, 1].</param>
+			<param>Alpha_W: Double value. Alpha constant in [0, 1].</param>			
+			<param>Retention Threshold: Integer value. Window width constant in [0, 1].</param>			
+			<param>Number of epoches: Integer value. Number of general iterations performed.</param>			
+		</parameterSpec>
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: PG-LVQTC
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-LVQTC:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+5.375534977111995, 3.8278621927337952, 1.4500332434978969, 0.2594510633087126, Iris-setosa
+4.978093822864512, 3.3322774611181085, 1.480850311040774, 0.23366384648589036, Iris-setosa
+4.615632104345126, 3.0412515619098413, 1.3734694079480143, 0.20698657795116843, Iris-setosa
+6.2095238769128684, 2.852071324379014, 4.497769963539277, 1.4015585032498006, Iris-versicolor
+5.36465196583371, 2.365841652873154, 3.5947922274596307, 1.058668522435017, Iris-versicolor
+5.634325655948086, 2.7641389878752367, 4.0886222198649165, 1.2428859580832239, Iris-versicolor
+5.887860919694233, 2.7719188899272726, 5.037291104599105, 1.9412387040067134, Iris-virginica
+6.760223600616018, 3.2096239708110215, 5.6792714998922085, 2.286693484589055, Iris-virginica
+6.414175953865872, 2.9733261428283955, 5.415815055027062, 2.0247417121887263, Iris-virginica
+7.56692765555445, 3.1547343973738897, 6.370346519133827, 2.038271409070634, Iris-virginica
+6.29397904896918, 2.597520219643699, 5.270192292544869, 1.6882130487337759, Iris-virginica
+6.507567934437056, 3.144260356290154, 4.627697029530254, 1.5266660465852298, Iris-versicolor
+6.217737151881227, 2.5048180213244455, 4.639970732144717, 1.4600262619756978, Iris-versicolor
+</example>
+
+</method>

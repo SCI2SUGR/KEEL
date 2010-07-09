@@ -1,0 +1,25 @@
+<algorithm_specification>
+  <name>POC</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Method</name>
+    <type>list</type>
+    <domain>
+      <item>selecting</item>
+      <item>replacing</item>
+    </domain>
+    <default>replacing</default>
+  </parameter>
+  <parameter>
+    <name>Alpha ratio</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.2</default>   
+  </parameter>
+  
+</algorithm_specification>

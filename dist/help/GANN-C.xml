@@ -1,0 +1,172 @@
+<method>
+
+	<name>Genetic Algorithm with Neural Network</name>
+
+	<reference>  
+
+		<ref>G.F. Miller, P.M. Todd and S.U. Hedge. Designing Neural Networks Using Genetic Algorithms. 3rd International Conference on Genetic Algorithm and Their Applications. George Mason University (USA, 1989) 379-384.</ref>
+<ref>X. Yao. Evolving Artificial Neural Networks. Proceedings of the IEEE 9:87 (1999) 1423-1447.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutionary neural network using a standard genetic algorithm</type>
+
+		<objective>Building a neural network using a standard genetic algorithm</objective>
+
+		<howWork>Each network is codified using two matrices. A binary one that stores whether each connection is active, a real one corresponding to the connection weights of the network. Standard two point crossover is used. Two mutation operators are used. Parametric mutation consists on two different operations: i) randomly modifying the weights of the network by the addition of a random number following a N(0, 1) to each connection, or ii) a back-propagation algorithm. Structural mutation consists of flipping the status of a randomly chosen connection.</howWork>
+
+		<parameterSpec>  
+
+			<param>Hidden_layers: Number of hidden layers</param>
+			<param>Hidden_nodes: List of nodes per hidden layer</param>
+			<param>Transfer: List of transfer functions per layer</param>
+			<param>Eta: Learning coefficient</param>
+			<param>Alpha: Momentum coefficient</param>
+			<param>Lambda: Regularisation coefficient</param>
+			<param>BP_cycles: Backprop iterations</param>
+			<param>Improve: Minimum improvement to consider the population not converged</param>
+			<param>Elite: Elitism percentage</param>
+			<param>Individuals: Number of individuals</param>
+			<param>W_range: Range for weight initialisation</param>
+			<param>Connectivity: Percentage of initial connectivity</param>
+			<param>P_bp: Percentage of backprop mutation</param>
+			<param>P_param: Percentage of random mutation</param>
+			<param>P_struct: Percentage of structural mutation</param>
+			<param>Max_generations: Maximum number of generations</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: GANN
+Dataset: pima
+Training set: pima-10-1tra.dat
+Test set: pima-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.7012987012987013 N/C=0.0 
+Global Classification Error + N/C:
+0.2987012987012987 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.7012987012987013 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0so.tst) in Experiment\Results\Clas-GANN:
+
+@relation  pima_diabetes
+@attribute preg real[0.0,17.0]
+@attribute plas real[0.0,199.0]
+@attribute pres real[0.0,122.0]
+@attribute skin real[0.0,99.0]
+@attribute insu real[0.0,846.0]
+@attribute mass real[0.0,67.1]
+@attribute pedi real[0.078,2.42]
+@attribute age real[21.0,81.0]
+@attribute class{tested_negative,tested_positive}
+@inputs preg,plas,pres,skin,insu,mass,pedi,age
+@outputs class
+@data
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_negative
+tested_positive tested_positive
+
+</example>
+
+</method>

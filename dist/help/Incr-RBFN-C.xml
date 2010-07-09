@@ -1,0 +1,125 @@
+<method>
+
+	<name>Incremental Radial Basis Function neural Network for Classification Problems</name>
+
+	<reference>  
+
+		<ref>J. Plat, A resource allocating network for function interpolation, Neural Computation 3:2 (1991) 213-225.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by means of a Radial Basis Function Neural network build using an incremenal approach.</type>
+
+		<objective>Builds a Radial Basis Function Neural Network composed of one hidden layer and one output layer. This hidden layer contains neurons, each one being activated when the input to the network falls close to a point that is considered the ?centre? of that neuron. The final result of the network is provided by the neuron of the output layer, that performs a weighted sum using the outputs coming from hidden neurons. To build this network an incremental algorithm is applied (RAN algorithm).
+		</objective>
+
+<howWork>
+	The network output depends on the values yielded by every hidden neuron as well as the weight of the link connecting every hidden neuron with the output neuron. 
+	
+	The output of every hidden neuron is the output of its function activation, and this function depends on the centre of the neuron and a parameter call radius. Thus, the value provided by the neuron changes depending on the distance from the system input to the neuron centre, and according to the radius value. This way, one function can get its maximum when the input is equal to the centre, but another function can reach minimum at the same point. Although many functions can be used as activation function for hidden neurons, the most commonly used is the Gaussian function.
+	
+	The network begins with no hidden units. 
+	In the main loop as observations are received, the network grows by using some of them as new RBFs. Two criteria must be met for an observation (x,y)  to add a new hidden unit to the network:
+	* the euclidean distance between x and its closest RBF must be greater than delta.
+	* the error between the output of the net and y must be greater than delta
+	
+	When a new hidden neuron is added to the network, the centre is set to x, the radius is set to the distance between x and its closest RBF with an overlap, and the weight is set to the error between the output of the net and y.
+	
+	If any of these two criteria are not met the LMS algorithm (used to adjust the weights) is applied to a random RBF.
+
+</howWork>
+
+		<parameterSpec>  
+
+			<param>epsilon: minimun error allowed to introduce a new RBF. If this value is lower, the probability to add a RBF is greater.
+			</param>
+			<param>delta: minimun distance allowed to introduce a new RBF. If this value is lower, the probability to add a RBF is greater.
+			</param>
+			<param>alfa: learning factor used when a new unit is not allocated. This value must be between 0.1 and 1.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+		
+		Problem type: Classification 
+		Method: RBFN Incremental for Classification
+		Dataset: zoo
+		Training set: zoo-10-1tra.dat
+		Test set: zoo-10-1tst.dat
+		Test Show results: StatChekCL
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+		
+		Classifier= zoo 
+		Fold 0 : CORRECT=0.9166666666666666 N/C=0.0 
+		Global Classification Error + N/C:
+		0.08333333333333333 
+		stddev Global Classification Error + N/C:
+		0.0 
+		Correctly classified:
+		0.9166666666666666 
+		Global N/C:
+		0.0 
+		
+		
+		We can see too the output and target classes for each case of the test set in Experiment\Results\Clas-Incremental-RBFN:
+		
+		@relation zoo
+		@attribute hair{0,1}
+		@attribute feathers{0,1}
+		@attribute eggs{0,1}
+		@attribute milk{0,1}
+		@attribute airborne{0,1}
+		@attribute aquatic{0,1}
+		@attribute predator{0,1}
+		@attribute toothed{0,1}
+		@attribute backbone{0,1}
+		@attribute breathes{0,1}
+		@attribute venomous{0,1}
+		@attribute fins{0,1}
+		@attribute legs{0,2,4,5,6,8}
+		@attribute tail{0,1}
+		@attribute domestic{0,1}
+		@attribute catsize{0,1}
+		@attribute type{1,2,3,4,5,6,7}
+		@inputs hair,feathers,eggs,milk,airborne,aquatic,predator,toothed,backbone,breathes,venomous,fins,legs,tail,domestic,catsize
+		@outputs type
+		@data
+		1 1
+		1 1
+		1 1
+		1 1
+		4 4
+		7 7
+		2 2
+		2 2
+		6 6
+		6 6
+		5 5
+		5 4
+
+
+</example>
+
+</method>

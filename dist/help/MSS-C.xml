@@ -1,0 +1,67 @@
+<method>
+
+	<name>Modified Selective Subset</name>
+
+	<reference>  
+
+		<ref>R. Barandela, F.J. Ferri, J.S. Sanchez. Decision boundary preserving prototype selection for nearest neighbor classification. International Journal of Pattern Recognition and Artificial Intelligence, 19:6, (2005), 787-806.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Instance Selection. Decremental</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>MSS is an algorithm to reduce the training sample size while preserving the original decision boundaries as much as possible. Consequently, the algorithm tends to obtain classification accuracy close to that of the whole training sample.</howWork>
+
+		<parameterSpec>  
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>		
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: MSS
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\IS-MSS:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+5.0,3.3,1.4,0.2,Iris-setosa
+6.4,3.2,4.5,1.5,Iris-versicolor
+5.7,2.6,3.5,1.0,Iris-versicolor
+5.4,3.0,4.5,1.5,Iris-versicolor
+6.3,2.9,5.6,1.8,Iris-virginica
+4.9,2.5,4.5,1.7,Iris-virginica
+5.8,2.8,5.1,2.4,Iris-virginica
+6.1,2.6,5.6,1.4,Iris-virginica
+7.7,3.0,6.1,2.3,Iris-virginica
+</example>
+
+</method>

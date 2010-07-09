@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>CN2</name>
+  <nParameters>3</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Percentage_Examples_To_Cover</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.95</default>
+  </parameter>
+  <parameter>
+    <name>Star_Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>25</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Use_Disjunt_Selectors</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>NO</default>
+  </parameter>
+</algorithm_specification>

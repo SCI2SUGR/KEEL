@@ -1,0 +1,65 @@
+<method>
+
+	<name>Wilcoxon Signed-Rank Test</name>
+
+	<reference>  
+
+<ref>Wilcoxon, F. Individual Comparisons by Ranking Methods. Biometrics 1 (1945) 80-83</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical two sample means comparation using the  Wilcoxon Signed Rank Test</type>
+
+		<objective>Execution of the non-parametric test for pair-wise comparison of the global performance of two classification methods.</objective>
+
+		<howWork>
+The ImbWilcoxon Signed-Rank Test is a method for comparing the performance of two algorithms using statistics techniques. It can be used in k-folds cross validation training experiments.
+The ImbWilcoxon Signed-Rank Test is associated to testing results of the two models in an experiment that are to be compared. Once those models has been trained and tested, the ImbWilcoxon Signed-Rank Test takes place. 
+The process calculates the corresponding imbalanced measure for the whole partition results in each dataset (average performance). The statistical sample includes all of those average imbalanced measures for each method to be compared. 
+Then the ImbWilconxon signed rank test is executed in order to obtain the p-value associated to check if the Null hypothesis is rejected and there are statistical differences between both methods.
+</howWork>
+
+		<parameterSpec>  
+			<param>imbalancedMeasure: The measure used in the method, one of the measures used imbalanced classification area</param>
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Methods to compare: Clas-C45 vs Clas-MLPerceptron-BackProp
+Datasets: haberman, pima, wisconsin, ecoli1, glass1
+Type of partitions: k-fold, k=5
+
+After the execution of RunKeel.jar we can see into the ./results/Stat-Imb-Wilcoxon/TSTClas-C45vsClas-MLPerceptron-BackProp folder the results0s0.stat file:
+
+Wilcoxon signed rank test, Imbalanced Classification
+Area Under the ROC Curve in each fold:
+Algorithm = Clas-C45
+Fold 0 : 0.7002314814814815
+Fold 1 : 0.7285714285714286
+Fold 2 : 0.7333333333333334
+Fold 3 : 0.7928571428571429
+Fold 4 : 0.7444444444444445
+Mean Value: 0.7398875661375662
+Algorithm = Clas-MLPerceptron-BackProp
+Fold 0 : 0.5231481481481481
+Fold 1 : 0.7523809523809524
+Fold 2 : 0.6345238095238095
+Fold 3 : 0.5988095238095239
+Fold 4 : 0.5814814814814815
+Mean Value: 0.618068783068783
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+p-values:
+0.09189221109700552 
+
+and a LaTeX output file "output.tex" where the results of the application of the test is provided.
+
+</example>
+
+</method>

@@ -1,0 +1,69 @@
+<algorithm_specification>
+  <name>Generational Genetic Algorithm for Feature Selection</name>
+  <nParameters>7</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Cross Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.7</default>
+  </parameter>
+  <parameter>
+    <name>Mutation Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  <parameter>
+    <name>Number of Evaluations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000000</upperB>
+    </domain>
+    <default>10000</default>
+  </parameter>
+  <parameter>
+    <name>Beta Equilibrate Factor</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.99</default>
+  </parameter>
+  <parameter>
+    <name>Number of Neighbours</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Use Elitism</name>
+    <type>list</type>
+    <domain>
+      <item>Yes</item>
+      <item>No</item>
+    </domain>
+    <default>Yes</default>   
+  </parameter>
+</algorithm_specification>

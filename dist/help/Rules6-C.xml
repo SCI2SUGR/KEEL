@@ -1,0 +1,113 @@
+<method>
+
+	<name>RULe Extraction System version 6</name>
+
+	<reference>  
+
+		<ref>D.T. Pham, A.A. Afify. RULES-6: A Simple Rule Induction Algorithm for Supporting Decision Making. 31st Annual Conference of IEEE Industrial Electronics Society, 2005. IECON 2005, pp. 2184-2189.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules.</type>
+
+		<objective>The Rules-6 algorithm induces a list of classification rules.</objective>
+
+		<howWork>Rules-6 is derived from Rules-3+ algorithm. The algorithm employs a fast a noise-tolerant search method for extracting IF-THEN rules from examples. The method generates the best candidate rules for each example of the training data. The best is that one which covers the seed example and as many positive examples and as less negative examples as possible. 
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>BeamWidth: Size of the partial lists of rules.</param>
+			<param>MinPositives: Minimal number of positive examples which must be covered by a rule</param>
+			<param>MinNegatives: Minimal number of negative examples which can differ between a parent rule and specification rule.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Rules6
+Dataset: haberman
+Training set: haberman-10-1tra.dat
+Test set: haberman-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: 
+	Star_Size = 5
+	disjuntSelector = NO
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.7741935483870968 N/C=0.0 
+Global Classification Error + N/C:
+0.2258064516129032
+Correctly classified:
+0.7741935483870968
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-Rules6-15:
+
+@relation  haberman
+@attribute Age integer[30,83]
+@attribute Year integer[58,69]
+@attribute Positive integer[0,52]
+@attribute class{positive,negative}
+@inputs Age,Year,Positive
+@outputs class
+@data
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative positive
+negative negative
+positive negative
+negative negative
+positive negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+positive positive
+negative positive
+negative negative
+positive positive
+positive positive
+positive positive
+negative negative
+negative negative
+negative negative
+positive negative
+positive negative
+negative negative
+positive negative
+
+</example>
+
+</method>

@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>CitationKNN</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Citers</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>References</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+</algorithm_specification>

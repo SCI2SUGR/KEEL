@@ -1,0 +1,358 @@
+<method>
+
+	<name>Learning Vector Quantization for Classification Problems</name>
+
+	<reference>  
+
+		<ref>J.C. Bezdek, L.I. Kuncheva. Nearest prototype classifier designs: An experimental study. International Journal of Intelligent Systems 16:12 (2001) 1445-1473</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by means of a Learning Vector Quantization network</type>
+
+		<objective>Builds a Learning Vector Quantization Network composed of a set of neurons.
+		The set of neurons represents the most indicative prototypes for each class after training, so
+		the class of each instance will be predicted as the class of the nearest neuron, following a KNN model.
+</objective>
+
+<howWork>
+An initial set of n_p labeled prototypes is picked. The initial n_p elements 
+are selected randomly from the training partition to be the initial prototypes, so each class is represented by at least one 
+prototype. then the algorithm iterates, updating the neurons. In each iteration, the trainin data is shuffled, and 
+the examples are picked one by one. if the nearest neuron for the actual instance has got the same class, the neuron
+is migrated toward the input vector, and if different, is repelled away from it. The update is done weightd by an alpha
+factor. This alfa is decreased along the execution. The algorithms ends when no change is produced on the neurons, or a maximun
+T iterations is reached.
+</howWork>
+
+		<parameterSpec>  
+			
+			<param>iterations: maximun number of passes over the training data</param>
+			<param>n_p:  an integer indicating the number of neurons the network will have</param>
+			<param>alpha: factor of migration of the neuron (towards or move away from the example)</param>
+			<param>nu: multiplier of the alpha factor after each iteration</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+		Problem type: Classification 
+		Method: LVQ
+		Dataset: Clevleand
+		Training set: cleveland-10-1tra.dat
+		Test set: cleveland-10-1tst.dat
+		Parameters: default values
+		
+		We can see too the output and target classes for each case of the test set in Experiment\Results\Clas-LVQ:
+		
+@relation unknow
+@attribute age real [29.0, 77.0]
+@attribute sex real [0.0, 1.0]
+@attribute cp real [1.0, 4.0]
+@attribute trestbps real [94.0, 200.0]
+@attribute chol real [126.0, 564.0]
+@attribute fbs real [0.0, 1.0]
+@attribute restecg real [0.0, 2.0]
+@attribute thalach real [71.0, 202.0]
+@attribute exang real [0.0, 1.0]
+@attribute oldpeak real [0.0, 6.2]
+@attribute slope real [1.0, 3.0]
+@attribute ca real [0.0, 3.0]
+@attribute thal real [3.0, 7.0]
+@attribute num {0, 1, 2, 3, 4}
+@data
+0 0
+2 4
+1 4
+0 0
+0 0
+0 0
+3 0
+0 0
+2 4
+1 3
+0 1
+0 0
+2 4
+0 1
+0 1
+0 0
+1 1
+0 0
+0 0
+0 0
+0 1
+0 0
+1 0
+3 4
+4 3
+0 0
+0 0
+0 0
+3 1
+0 0
+2 4
+1 0
+0 1
+0 0
+0 0
+3 3
+1 4
+3 1
+0 2
+4 0
+0 4
+0 0
+0 0
+1 0
+4 1
+0 0
+4 3
+0 1
+0 0
+0 1
+2 0
+0 0
+1 2
+1 4
+1 0
+1 1
+0 1
+0 1
+2 3
+1 4
+0 0
+2 4
+1 1
+0 0
+2 4
+1 0
+0 0
+3 2
+1 4
+1 0
+1 0
+0 0
+1 4
+0 0
+0 1
+3 1
+0 3
+0 0
+0 0
+3 4
+0 0
+0 1
+0 0
+0 0
+0 0
+0 0
+0 1
+0 1
+0 0
+0 0
+1 2
+2 4
+3 3
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+3 1
+1 1
+2 4
+1 3
+1 4
+0 1
+2 3
+2 1
+0 1
+0 0
+0 0
+3 2
+2 4
+3 2
+4 3
+0 0
+3 3
+1 1
+0 0
+3 4
+3 4
+0 0
+0 0
+0 1
+0 0
+0 0
+0 0
+0 0
+0 0
+3 0
+1 3
+0 1
+0 0
+1 0
+0 0
+1 4
+0 3
+0 0
+0 0
+0 0
+0 1
+0 0
+0 0
+4 4
+3 4
+1 3
+1 3
+2 4
+0 1
+0 1
+4 3
+0 0
+0 0
+0 0
+0 0
+0 0
+1 3
+0 0
+3 4
+0 1
+1 0
+4 4
+1 4
+1 4
+0 0
+0 0
+3 1
+2 4
+0 0
+0 1
+1 0
+0 0
+0 1
+2 3
+1 0
+2 4
+0 0
+3 4
+1 3
+2 3
+0 0
+0 1
+0 0
+0 0
+1 1
+0 0
+0 1
+0 1
+0 1
+3 4
+3 4
+3 3
+1 0
+4 0
+0 1
+3 2
+1 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+3 4
+0 0
+0 0
+0 0
+3 3
+2 4
+2 0
+1 0
+0 0
+0 0
+3 4
+2 3
+1 1
+0 0
+0 0
+0 0
+0 0
+2 0
+0 0
+2 0
+1 3
+3 1
+0 0
+0 3
+1 1
+0 4
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+1 1
+0 0
+3 0
+4 4
+2 3
+2 2
+0 0
+1 4
+0 0
+2 4
+0 0
+1 0
+0 0
+0 0
+0 0
+1 0
+0 0
+2 4
+0 0
+3 4
+2 1
+4 1
+2 4
+0 1
+0 0
+0 0
+1 0
+0 0
+2 3
+2 4
+0 0
+3 4
+1 3
+1 1
+2 2
+3 4
+1 0
+
+</example>
+
+</method>

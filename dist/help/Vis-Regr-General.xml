@@ -1,0 +1,178 @@
+<method>
+
+	<name>StatGeneralMO</name>
+
+	<reference>  
+
+<ref>Test de Wilconxon, http://www.fon.hum.uva.nl/Service/Statistics/Wilcoxon_Test.html</ref>
+<ref>Test de Mann-Whitney, http://www.fact-index.com/m/ma/mann_whitney_u.html</ref>
+<ref>Wilcoxon signed ranks, http://faculty.vassar.edu/lowry/ch12a.html</ref>
+<ref>A. Mart&#xED;nez, C. Rodr&#xED;guez and R. Guti&#xE9;rrez, Inferencia Estad&#xED;stica, un enfoque cl&#xE1;sico,  Ed. Piramide.</ref>
+<ref>J.P. Royston, Algorithm AS 181, Applied Statistics 31(2):176-180, 1982</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical method for comparing  regression models performance.</type>
+
+		<objective>Statistical comparing of the performance of a regression model method. Statistical tests, like Wilcoxon signed ranks or Mann-Whitney u, are executed for comparing methods purposes.</objective>
+
+		<howWork>
+StatGeneralMO is a method for comparing the performance of regression modelling algorithms using statistics techniques. It can be used in k-folds and 5x2 cross validation training  experiments.
+
+StatGeneralMO is associated to the training and testing results of all of the models in an experiment that are to be compared. Once those models has been trained and tested, the StatGeneralMO takes place. 
+
+The process calculates the mean square error for each of the partitions results. The statistical sample includes all of those error measures for each method to be compared.  
+
+With the Royston implementation of the W test it is contrasted if error distributions are  normal for the samples to be compare. If the distributions are normal, then if the samples are of equal variance the t test is executed. If distributions are normal but they have different variances then the tvar test. Finally, if the samples are not normal, then the Wilcoxon test is executed. 
+
+The statistical test are executed in order to find evidence to assert that the error distribution of the different regression methods are different or not. If they are different, then it can be stated which one is  of better performance.
+</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Methods to compare: ModelLinearLMS vs ModelFuzzyWangMendel
+Dataset: MachineCPU
+Type of partitions: k-fold, k=10
+
+After the execution of RunKeel.jar we can see into the ./results/StatGeneralMO/TSTModelLinearLMSvsModelFuzzyWangMendel/ folder the classification results for the tested regression method:
+
+Results:
+Detected 2 methods
+Folds=10 10 
+Results: Test-Dataset ModelLinearLMS ModelFuzzyWangMendel 
+Fold=0
+318,0000 325,5508 142,1333 
+12,0000 36,8573 6,0000 
+23,0000 15,9661 6,0097 
+24,0000 5,0609 6,4635 
+...
+...
+24,0000 -8,5479 6,0232 
+136,0000 205,1678 133,0407 
+Sample #0 = 6269.121643564491 2147.230910972645 1995.3648161815602 8429.333677837989 3752.9449714139996 1265.7506453865049 1378.2416180169002 10369.87180963981 13447.201924611296 3784.3728516946185 
+Sample #1 = 22410.319638419827 3639.4704404632625 5080.9083303242 10027.636443158864 20477.79009869617 8806.768057709642 893.0178702819003 68590.16398661592 3047.5560397716117 6650.378912568549 
+Expected error: 
+ModelLinearLMS ModelFuzzyWangMendel 
+5283,9435 14962,4010 
+Median of errors: 
+ModelLinearLMS ModelFuzzyWangMendel 
+3768,6589 7728,5735 
+***** CONFIDENCE LEVEL=0.99
+Pv normality test: 0.11699267770322908
+Output of algorithm 0 is normal 0.8776439745985208 0.11699267770322908
+Pv normality test: 4.705998626150549E-4
+Output of algorithm 1 is NOT normal 0.6662807992443921 4.705998626150549E-4
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.04974599072342878
+p-values matrix
+0,0000 0,0497 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.95
+Pv normality test: 0.11699267770322908
+Output of algorithm 0 is normal 0.8776439745985208 0.11699267770322908
+Pv normality test: 4.705998626150549E-4
+Output of algorithm 1 is NOT normal 0.6662807992443921 4.705998626150549E-4
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is evidence against H0
+Pv wilcoxon test: 0.04974599072342878
+p-values matrix
+0,0000 0,0497 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.9
+Pv normality test: 0.11699267770322908
+Output of algorithm 0 is normal 0.8776439745985208 0.11699267770322908
+Pv normality test: 4.705998626150549E-4
+Output of algorithm 1 is NOT normal 0.6662807992443921 4.705998626150549E-4
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is evidence against H0
+Pv wilcoxon test: 0.04974599072342878
+p-values matrix
+0,0000 0,0497 
+0,0000 0,0000 
+
+
+EXAMPLE 2
+
+Problem type: Regression
+Methods to compare: ModelLinearLMS vs ModelFuzzyWangMendel
+Dataset: machineCPU
+Type of partitions: 5x2cv
+
+After the execution of RunKeel.jar we can see into the ./results/StatGeneralMO/TSTModelLinearLMSvsModelFuzzyWangMendel/ folder the classification results for the tested regression method:
+
+
+Results:
+Detected 2 methods
+Folds=5 5 
+Results: Test-Dataset ModelFuzzyWangMendel ModelLinearLMS 
+Fold=0
+54,0000 73,7615 108,8009 
+42,0000 16,8048 31,0288 
+50,0000 36,7571 44,4690 
+27,0000 14,1775 -5,1169 
+20,0000 30,0042 -10,7720 
+...
+...
+34,0000 10,4550 37,6544 
+16,0000 6,0698 13,0934 
+109,0000 27,5041 65,6133 
+Sample #0 = 14125.719188098126 7212.023057975769 9725.202615233711 9193.128674064796 10342.810945097084 
+Sample #1 = 3024.466632140766 4857.1275434019635 1417.886452983288 4281.132657648532 2461.7727389625393 
+Expected error: 
+ModelFuzzyWangMendel ModelLinearLMS 
+10119,7769 3208,4772 
+Median of errors: 
+ModelFuzzyWangMendel ModelLinearLMS 
+9725,2026 3024,4666 
+***** CONFIDENCE LEVEL=0.99
+Pv normality test: 0.0
+Output of algorithm 0 is NOT normal 0.0 0.0
+Pv normality test: 0.0
+Output of algorithm 1 is NOT normal 0.0 0.0
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.05056187540372988
+p-values matrix
+0,0000 0,0506 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.95
+Pv normality test: 0.0
+Output of algorithm 0 is NOT normal 0.0 0.0
+Pv normality test: 0.0
+Output of algorithm 1 is NOT normal 0.0 0.0
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.05056187540372988
+p-values matrix
+0,0000 0,0506 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.9
+Pv normality test: 0.0
+Output of algorithm 0 is NOT normal 0.0 0.0
+Pv normality test: 0.0
+Output of algorithm 1 is NOT normal 0.0 0.0
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is evidence against H0
+Pv wilcoxon test: 0.05056187540372988
+p-values matrix
+0,0000 0,0506 
+0,0000 0,0000 
+</example>
+
+</method>

@@ -1,0 +1,78 @@
+<method>
+
+	<name>Instance Based 3</name>
+
+	<reference>  
+
+		<ref>D. W. Aha, D. Kibler, M. K. Albert, Instance-based learning algorithms, Machine Learning 6 (1991) 37-66</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Instance Selection. Incremental</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>It starts with S initially empty, and each instance in T is added to
+		S if it is not classified correctly by the instances already in S (with the first
+		instance always added). IB3 is similar to IB2, but it uses the acceptability and dropability concepts.</howWork>
+
+		<parameterSpec>  
+
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>			<param>Confidence level for acceptance: Real value. Level of confidence for accepting an instance as important</param>
+			<param>Confidence level for dropping: Real value. Level of confidence for rejecting and instance as important</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: IB3
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\IS-IB3:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+4.7,3.2,1.6,0.2,Iris-setosa
+6.7,3.3,5.7,2.1,Iris-virginica
+6.4,2.8,5.6,2.2,Iris-virginica
+6.2,2.2,4.5,1.5,Iris-versicolor
+6.7,3.0,5.0,1.7,Iris-versicolor
+6.3,2.8,5.1,1.5,Iris-virginica
+6.1,2.8,4.7,1.2,Iris-versicolor
+7.4,2.8,6.1,1.9,Iris-virginica
+6.0,2.7,5.1,1.6,Iris-versicolor
+4.9,2.5,4.5,1.7,Iris-virginica
+6.3,2.7,4.9,1.8,Iris-virginica
+6.4,3.1,5.5,1.8,Iris-virginica
+5.8,2.7,5.1,1.9,Iris-virginica
+5.1,2.5,3.0,1.1,Iris-versicolor
+6.3,2.5,4.9,1.5,Iris-versicolor
+</example>
+
+</method>

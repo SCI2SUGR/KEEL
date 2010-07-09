@@ -1,0 +1,133 @@
+<algorithm_specification>
+  <name>Table with summary of the algorithm, Classification probs.</name>
+  <nParameters>14</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <nInput>0</nInput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>StatTabularCL</item>
+    </domain>
+    <default>StatTabularCL</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>CHK</item>
+    </domain>
+    <default>CHK</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>1-Classification rate by algorithm and fold</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>YES</default>
+  </parameter>
+  <parameter>
+    <name>1-Header size in previous table</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>2</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>1-Data used in previous table</name>
+    <type>list</type>
+    <domain>
+      <item>TEST-TRAIN</item>
+      <item>ONLY-TEST</item>
+    </domain>
+    <default>TEST-TRAIN</default>
+  </parameter>
+  <parameter>
+    <name>2-Classification rate by algorithm, fold and class</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>YES</default>
+  </parameter>
+  <parameter>
+    <name>2-Header size in previous table</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>2</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>2-Data used in previous table</name>
+    <type>list</type>
+    <domain>
+      <item>TEST-TRAIN</item>
+      <item>ONLY-TEST</item>
+    </domain>
+    <default>TEST-TRAIN</default>
+  </parameter>
+  <parameter>
+    <name>3-Global Average and Variance</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>YES</default>
+  </parameter>
+  <parameter>
+    <name>3-Header size in previous table</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>2</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>3-Data used in previous table</name>
+    <type>list</type>
+    <domain>
+      <item>TEST-TRAIN</item>
+      <item>ONLY-TEST</item>
+    </domain>
+    <default>TEST-TRAIN</default>
+  </parameter>
+  <parameter>
+    <name>4-Confussion Matrix</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>YES</default>
+  </parameter>
+  <parameter>
+    <name>4-Data used in previous table</name>
+    <type>list</type>
+    <domain>
+      <item>TEST-TRAIN</item>
+      <item>ONLY-TEST</item>
+    </domain>
+    <default>TEST-TRAIN</default>
+  </parameter>
+</algorithm_specification>

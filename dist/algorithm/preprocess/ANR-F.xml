@@ -1,0 +1,55 @@
+<algorithm_specification>
+
+	<name>ANR</name>
+	<nParameters>4</nParameters>
+  	<seed>1</seed>
+  	<nOutput>1</nOutput>
+
+	
+	<parameter>
+	  	<name>subAlgorithm</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>ClasifMLPerceptron</item>
+	  	</domain>
+	  	<default>ClasifMLPerceptron</default>
+	 	<disabled/>
+	</parameter>
+	
+	
+	<parameter>
+	  	<name>dataformat</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>keel</item>
+	  	</domain>
+	  	<default>keel</default>
+	 	<disabled/>
+	</parameter>
+	
+	
+	<parameter>
+	  	<name>outlabel</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>CMLP</item>
+	  	</domain>
+	  	<default>CMLP</default>
+	 	<disabled/>
+	</parameter>
+	
+
+	
+	<parameter>
+    	<name>topologymlp</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>1</default>
+		<disabled/>
+  	</parameter>
+
+
+</algorithm_specification>

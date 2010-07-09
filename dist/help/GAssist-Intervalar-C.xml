@@ -1,0 +1,265 @@
+<method>
+
+	<name> GAssist Intervalar</name>
+
+	<reference>  
+			<ref>J. Bacardit and J.M. Garrell. Bloat control and generalization pressure using 
+			the minimum description length principle for a pittsburgh approach learning 
+			classifier system. In Kovacs, T., Llora, X., and Takadama, K., editors, 
+			Advances at the frontier of Learning Classifier Systems, Lecture Notes on Computer Science 4399, 61-80.
+			</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type> Classification model by rules </type>
+
+		<objective> 
+				To extract a set of maximally accurate 
+				rules that completely defines the feature space.
+		</objective>
+
+		<howWork>
+				GAssist is a Pittsburgh-style Learning Classifier System originally inspired
+				in GABIL. The core of the system consists of a Genetic Algorithm which evolve
+				individuals formed by a set of production rules. 
+				The individuals are evaluated according to the proportion of correct classified
+				training examples. 
+				To represent continuous attributes, GAssist-Intervalar  uses intervalar rules. 
+		</howWork>
+
+		<parameterSpec>  
+  			<param> hierarchicalSelectionThreshold: Threshold of Hierarchical Selection </param>
+  			<param> iterationRuleDeletion: Iteration of activation of the rule deletion operator </param>
+  			<param> iterationHierarchicalSelection: Iteration of activation of the hierarchical selection.  </param>
+  			<param> ruleDeletionMinRules: Minimum number of rules considered by the deletion operator.  </param>
+  			<param> sizePenaltyMinRules: Penalty applied to the rules of minimum size.  </param>
+  			<param> numIterations: Number of iterations of the GA </param>
+  			<param> initialNumberOfRules: Initial number of rules.  </param>
+  			<param> popSize: Population size.  </param>
+  			<param> probCrossover: Probability of crossover.  </param>
+  			<param> probMutationInd: Probability of mutating an individual.  </param>
+  			<param> probOne: Probability to initialize an allele to 1.  </param>
+  			<param> tournamentSize: Size of the tournament selection.  </param>
+  			<param> numStrata: Number of stratas.  </param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+
+
+		Problem type: Classification 
+		Method: Clas-GAssist-ADI
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat and iris-10-10tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values except from:
+				numIterations = 100
+		
+		After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-GAssist-ADI
+		folder the classification results for the test set:
+		
+		TEST RESULTS
+		============
+		Classifier= iris_plants_database
+		Fold 0 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 1 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 2 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 3 : CORRECT=0.8666666666666667 N/C=0.0
+		Fold 4 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 5 : CORRECT=1.0 N/C=0.0
+		Fold 6 : CORRECT=1.0 N/C=0.0
+		Fold 7 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 8 : CORRECT=1.0 N/C=0.0
+		Fold 9 : CORRECT=0.9333333333333333 N/C=0.0
+		Global Classification Error + N/C:
+		0.05333333333333333
+		stddev Global Classification Error + N/C:
+		0.04
+		Correctly classified:
+		0.9466666666666667
+		Global N/C:
+		0.0
+
+		TRAIN RESULTS
+		============
+		Classifier= iris_plants_database
+		Summary of data, Classifiers: iris_plants_database
+		Fold 0 : CORRECT=0.962962962962963 N/C=0.0
+		Fold 1 : CORRECT=0.9703703703703703 N/C=0.0
+		Fold 2 : CORRECT=0.9703703703703703 N/C=0.0
+		Fold 3 : CORRECT=0.9777777777777777 N/C=0.0
+		Fold 4 : CORRECT=0.962962962962963 N/C=0.0
+		Fold 5 : CORRECT=0.962962962962963 N/C=0.0
+		Fold 6 : CORRECT=0.962962962962963 N/C=0.0
+		Fold 7 : CORRECT=0.9703703703703703 N/C=0.0
+		Fold 8 : CORRECT=0.962962962962963 N/C=0.0
+		Fold 9 : CORRECT=0.9703703703703703 N/C=0.0
+		Global Classification Error + N/C:
+		0.03259259259259259
+		stddev Global Classification Error + N/C:
+		0.004913518207933949
+		Correctly classified:
+		0.9674074074074074
+		Global N/C:
+		0.0
+
+		
+		We can see too the output and target classes for each case of the test set 
+		in results/Clas-GAssist-ADI/iris. For each fold, the following file is generated:
+		
+		File result0s0e0.txt: 
+	
+		Best of iteration 0 : 0.9402985074626866 10.970149253731336 20(4)
+		Best of iteration 1 : 0.9558823529411765 9.411764705882348 20(5)
+		Best of iteration 2 : 0.9402985074626866 10.970149253731336 20(4)
+		Best of iteration 3 : 0.9705882352941176 7.941176470588232 11(5)
+		Best of iteration 4 : 0.9402985074626866 10.970149253731336 11(4)
+		Best of iteration 5 : 0.9705882352941176 7.941176470588232 9(5)
+		Best of iteration 6 : 0.9402985074626866 10.970149253731336 9(4)
+		Best of iteration 7 : 0.9705882352941176 7.941176470588232 9(5)
+		Best of iteration 8 : 0.9402985074626866 10.970149253731336 9(4)
+		Best of iteration 9 : 0.9852941176470589 6.470588235294116 9(4)
+		Best of iteration 10 : 0.9402985074626866 10.970149253731336 9(4)
+		Best of iteration 11 : 0.9852941176470589 6.470588235294116 9(5)
+		Best of iteration 12 : 0.9402985074626866 10.970149253731336 9(4)
+		Best of iteration 13 : 0.9852941176470589 6.470588235294116 9(5)
+		Best of iteration 14 : 0.9402985074626866 10.970149253731336 9(4)
+		Best of iteration 15 : 0.9852941176470589 6.470588235294116 7(5)
+		Best of iteration 16 : 0.9402985074626866 10.970149253731336 9(4)
+		Best of iteration 17 : 0.9852941176470589 6.470588235294116 7(5)
+		Best of iteration 18 : 0.9402985074626866 10.970149253731336 6(4)
+		Best of iteration 19 : 0.9852941176470589 6.470588235294116 9(6)
+		Best of iteration 20 : 0.9402985074626866 10.970149253731336 9(4)
+		Best of iteration 21 : 0.9852941176470589 6.470588235294116 9(5)
+		Best of iteration 22 : 0.9402985074626866 10.970149253731336 9(4)
+		Best of iteration 23 : 0.9852941176470589 6.470588235294116 7(4)
+		Best of iteration 24 : 0.9402985074626866 10.970149253731336 9(4)
+		Iteration 25 :MDL fitness activated
+		Best of iteration 25 : 0.9852941176470589 7.600741655067457 6(4)
+		Best of iteration 26 : 0.9402985074626866 12.100302673504677 6(4)
+		Best of iteration 27 : 0.9852941176470589 7.600741655067457 6(4)
+		Best of iteration 28 : 0.9402985074626866 12.100302673504677 6(4)
+		Best of iteration 29 : 0.9852941176470589 7.600741655067457 6(4)
+		Best of iteration 30 : 0.9402985074626866 12.097292445665886 9(4)
+		Best of iteration 31 : 0.9852941176470589 7.600741655067457 7(4)
+		Best of iteration 32 : 0.9402985074626866 12.097292445665886 9(4)
+		Best of iteration 33 : 0.9852941176470589 7.593918572110973 7(4)
+		Best of iteration 34 : 0.9402985074626866 12.093479590548192 7(4)
+		Best of iteration 35 : 0.9852941176470589 7.593918572110973 7(4)
+		Best of iteration 36 : 0.9402985074626866 12.087992976993668 9(4)
+		Best of iteration 37 : 0.9852941176470589 7.588431958556448 9(4)
+		Best of iteration 38 : 0.9402985074626866 12.087992976993668 9(4)
+		Best of iteration 39 : 0.9852941176470589 7.584783920390891 8(4)
+		Best of iteration 40 : 0.9402985074626866 12.08635884282092 9(4)
+		Best of iteration 41 : 0.9852941176470589 7.584233092239801 9(4)
+		Best of iteration 42 : 0.9402985074626866 12.078884676319003 6(4)
+		Best of iteration 43 : 0.9852941176470589 7.574124029234583 9(4)
+		Best of iteration 44 : 0.9402985074626866 12.073685047671802 7(4)
+		Best of iteration 45 : 0.9852941176470589 7.574124029234583 9(4)
+		Best of iteration 46 : 0.9402985074626866 12.073685047671802 7(4)
+		Best of iteration 47 : 0.9852941176470589 7.574124029234583 9(4)
+		Best of iteration 48 : 0.9402985074626866 12.073685047671802 9(4)
+		Best of iteration 49 : 0.9852941176470589 7.574124029234583 9(4)
+		Best of iteration 50 : 0.9402985074626866 12.073685047671802 9(4)
+		Best of iteration 51 : 0.9852941176470589 7.563395885799097 5(4)
+		Best of iteration 52 : 0.9402985074626866 12.062956904236316 5(4)
+		Best of iteration 53 : 0.9852941176470589 7.563395885799097 5(4)
+		Best of iteration 54 : 0.9402985074626866 12.062956904236316 5(4)
+		Best of iteration 55 : 0.9852941176470589 7.561129525556536 9(4)
+		Best of iteration 56 : 0.9402985074626866 12.052824067136912 5(4)
+		Best of iteration 57 : 0.9852941176470589 7.558121052982797 8(4)
+		Best of iteration 58 : 0.9402985074626866 12.057682071420016 8(4)
+		Best of iteration 59 : 0.9852941176470589 7.558121052982797 8(4)
+		Best of iteration 60 : 0.9402985074626866 12.055315444527526 9(4)
+		Best of iteration 61 : 0.9852941176470589 7.555754426090306 9(4)
+		Best of iteration 62 : 0.9402985074626866 12.055315444527526 8(4)
+		Best of iteration 63 : 0.9852941176470589 7.551624520640503 9(4)
+		Best of iteration 64 : 0.9552238805970149 10.561144314580936 7(4)
+		Best of iteration 65 : 0.9852941176470589 7.551624520640503 9(4)
+		Best of iteration 66 : 0.9552238805970149 10.564152787154676 9(4)
+		Best of iteration 67 : 0.9852941176470589 7.549913089384031 9(4)
+		Best of iteration 68 : 0.9402985074626866 12.04947410782125 9(4)
+		Best of iteration 69 : 0.9852941176470589 7.549913089384031 9(4)
+		Best of iteration 70 : 0.9402985074626866 12.04947410782125 9(4)
+		Best of iteration 71 : 0.9852941176470589 7.549913089384031 9(4)
+		Best of iteration 72 : 0.9402985074626866 12.04947410782125 9(4)
+		Best of iteration 73 : 0.9852941176470589 7.548855030964412 9(4)
+		Best of iteration 74 : 0.9402985074626866 12.048393979520444 5(4)
+		Best of iteration 75 : 0.9852941176470589 7.5488329610832245 5(4)
+		Best of iteration 76 : 0.9402985074626866 12.048393979520444 5(4)
+		Best of iteration 77 : 0.9852941176470589 7.546885907474504 9(4)
+		Best of iteration 78 : 0.9402985074626866 12.046446925911724 9(4)
+		Best of iteration 79 : 0.9852941176470589 7.546885907474504 9(4)
+		Best of iteration 80 : 0.9402985074626866 12.046446925911724 9(4)
+		Best of iteration 81 : 0.9852941176470589 7.546885907474504 9(4)
+		Best of iteration 82 : 0.9402985074626866 12.046446925911724 9(4)
+		Best of iteration 83 : 0.9852941176470589 7.546885907474504 9(4)
+		Best of iteration 84 : 0.9552238805970149 10.550251151090729 9(4)
+		Best of iteration 85 : 0.9852941176470589 7.546589489025363 9(4)
+		Best of iteration 86 : 0.9552238805970149 10.551538966857898 7(4)
+		Best of iteration 87 : 0.9852941176470589 7.546589489025363 9(4)
+		Best of iteration 88 : 0.9402985074626866 12.046150507462583 5(4)
+		Best of iteration 89 : 0.9852941176470589 7.545585975765182 9(4)
+		Best of iteration 90 : 0.9402985074626866 12.044655383064864 9(4)
+		Best of iteration 91 : 0.9852941176470589 7.545094364627645 9(4)
+		Best of iteration 92 : 0.9402985074626866 12.043691102701764 7(4)
+		Best of iteration 93 : 0.9852941176470589 7.545094364627645 9(4)
+		Best of iteration 94 : 0.9402985074626866 12.044509201873883 9(4)
+		Best of iteration 95 : 0.9852941176470589 7.544948183436663 9(4)
+		Best of iteration 96 : 0.9402985074626866 12.044509201873883 9(4)
+		Best of iteration 97 : 0.9852941176470589 7.544948183436663 9(4)
+		Best of iteration 98 : 0.9402985074626866 12.044509201873883 9(4)
+		Best of iteration 99 : 0.9629629629629629 9.778063651846256 4(4)
+
+		Best individual of population
+		[4.3,7.9]|[2.0,4.4]|[1.9258083485406516,6.9]|[0.1,1.6472555741211568]|1
+		[4.3,7.9]|[2.0,4.4]|[1.9238547174208613,6.9]|[0.1,2.5]|2
+		[4.3,7.9]|[2.0,4.4]|[1.0,6.9]|[0.10680487157463525,2.5]|0
+		[4.3,7.9]|[2.0,4.4]|[1.0,6.9]|[0.1,2.5]|0
+
+		Statistics on training file
+		Accuracy 130.0/135.0=0.9629629629629629
+		Rules 4(4)
+		Accuracy of class 0 : 45/45=1.0
+		Accuracy of class 1 : 43/45=0.9555555555555556
+		Accuracy of class 2 : 42/45=0.9333333333333333
+		Confusion matrix. Rows=real, columns=predicted
+		45      0       0
+		0       43      2
+		0       3       42
+
+
+		Statistics on test file
+		Accuracy 14.0/15.0=0.9333333333333333
+		Rules 4(4)
+		Accuracy of class 0 : 5/5=1.0
+		Accuracy of class 1 : 5/5=1.0
+		Accuracy of class 2 : 4/5=0.8
+		Confusion matrix. Rows=real, columns=predicted
+		5       0       0
+		0       5       0
+		0       1       4
+
+		Evaluation time: 1.61
+		Selection time: 0.638
+		Crossover time: 0.479
+		Mutation time: 0.021
+		Replacement time: 0.014
+
+		Total time: 3.209
+		
+	</example>
+		
+</method>

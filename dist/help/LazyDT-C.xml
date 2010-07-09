@@ -1,0 +1,118 @@
+<method>
+
+	<name>Lazy Decision Tree</name>
+
+	<reference>  
+
+		<ref>J. Friedman, R. Kohavi and Y. Yun, Lazy decision trees, Proceedings of the Thirteenth National Conference on Artificial Intellgence (pp. 717.724), Cambridge, MA: AAAI Press/MIT Press, 1996</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Lazy Learning based on a decision tree classifier</type>
+
+		<objective>To perform a classification task by means of a decision tree classifier, where a path is created for each classification instance</objective>
+
+		<howWork>Similar to other lazy learning algorithms, the great computation of this algorithm is postponed to the classification step.
+			When classifying a path is created for each classification instance looking at the specific attribute values of the instance and choosing the attribute separation accordingly.
+		</howWork>
+
+		<parameterSpec>  
+			<param>It has no parameters.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>No</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Lazy DT
+Dataset: zoo
+Training set: zoo-10-1tra.dat
+Test set: zoo-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTClas-LazyDT folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= zoo 
+Fold 0 : CORRECT=0.9166666666666666 N/C=0.0 
+...
+Global Classification Error + N/C:
+0.08166666666666668 
+stddev Global Classification Error + N/C:
+0.07644896627453143 
+Correctly classified:
+0.9183333333333333 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= zoo 
+Summary of data, Classifiers: zoo 
+Fold 0 : CORRECT=0.9775280898876404 N/C=0.0 
+...
+Global Classification Error + N/C:
+0.02305108042875533 
+stddev Global Classification Error + N/C:
+0.010240780783439759 
+Correctly classified:
+0.9769489195712446 
+Global N/C:
+0.0   
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-LazyDT:
+
+@relation zoo
+@attribute hair {0, 1}
+@attribute feathers {0, 1}
+@attribute eggs {0, 1}
+@attribute milk {0, 1}
+@attribute airborne {0, 1}
+@attribute aquatic {0, 1}
+@attribute predator {0, 1}
+@attribute toothed {0, 1}
+@attribute backbone {0, 1}
+@attribute breathes {0, 1}
+@attribute venomous {0, 1}
+@attribute fins {0, 1}
+@attribute legs {0, 2, 4, 5, 6, 8}
+@attribute tail {0, 1}
+@attribute domestic {0, 1}
+@attribute catsize {0, 1}
+@attribute type {1, 2, 3, 4, 5, 6, 7}
+@data
+1 1 
+1 1 
+1 1 
+1 1 
+4 4 
+7 7 
+2 2 
+2 2 
+6 6 
+6 6 
+5 5 
+5 3
+
+</example>
+
+</method>

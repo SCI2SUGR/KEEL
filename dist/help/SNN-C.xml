@@ -1,0 +1,70 @@
+<method>
+
+	<name>Selective Nearest Neighbor</name>
+
+	<reference>  
+
+		<ref>G. L. Ritter, H. B. Woodruff, S. R. Lowry, T. L. Isenhour, An algorithm for a selective nearest neighbor decision rule, IEEE Transactions on Information Theory 21:6 (1975) 665-669.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Instance Selection. Decremental</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>Selective Nearest Neighbor (SNN) extends CNN such that
+		every member of T must be closer to a member of S of the same class than
+		to anoy memeber of T (instead of S) of a different class. Further, the method
+		ensures a minimal subset satisfying theses conditions.</howWork>
+
+		<parameterSpec>  
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>		
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: SNN
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\IS-SNN:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+5.0,3.3,1.4,0.2,Iris-setosa
+6.4,3.2,4.5,1.5,Iris-versicolor
+5.7,2.6,3.5,1.0,Iris-versicolor
+5.4,3.0,4.5,1.5,Iris-versicolor
+6.3,2.9,5.6,1.8,Iris-virginica
+4.9,2.5,4.5,1.7,Iris-virginica
+5.8,2.8,5.1,2.4,Iris-virginica
+6.1,2.6,5.6,1.4,Iris-virginica
+7.7,3.0,6.1,2.3,Iris-virginica
+</example>
+
+</method>

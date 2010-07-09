@@ -1,0 +1,43 @@
+<algorithm_specification>
+  <name>Statistical Normality Shapiro Wilk test</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <nInput>2</nInput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>StatTestClasSW</item>
+    </domain>
+    <default>StatTestClasSW</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>TSTCSW</item>
+    </domain>
+    <default>TSTCSW</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>signlevel</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.95</default>
+  </parameter>
+</algorithm_specification>

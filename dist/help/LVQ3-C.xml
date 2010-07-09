@@ -1,0 +1,76 @@
+<method>
+
+	<name>Learning Vector Quantization 3</name>
+
+	<reference>  
+		<ref>Kohonen, T. Self-Organizing Maps Self-Organizing Maps New Springer Series in Information Sciences, Vol. 30, Springer, Berlin, Heidelberg, New York, 1995, 1997, 2001. Third Extended Edition, 501 pages. ISBN 3-540-67921-9, ISSN 0720-678X </ref>
+		<ref>Kohonen, T. The self organizing map (1990) Proceeding of the IEEE, 78:9, pp. 1464‐1480.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+		This algorithm use same adjustments as in LVQ2, but there is also an extra weight update for the case where all m_c, m_d and x represent the same class.
+		That is, m_i = m_i + epsilon * alpha [x - m_i].
+		Where epsilon in [0, 1] is a stabilizing constant factor and i is c or d.
+				</howWork>
+
+		<parameterSpec>  
+			<param>Number of iterations: Integer value. Number of iterations of the algorithm.</param>
+			<param>Percentage of prototypes: Real value. Desired size of the resulting set as percentage of training set size.</param>
+			<param>Alpha0: Double value. Alpha constant in [0, 1].</param>
+			<param>Window width: Double value. Window width constant in [0, 1].</param>			
+			<param>Epsilon: Double value. Stabilizing factor in [0, 1].</param>			
+		</parameterSpec>
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: PG-LVQ3
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-LVQ3:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+5.283662388183885, 3.6431646393767023, 1.4738737676799953, 0.2834145072106958, Iris-setosa
+4.921421587244885, 3.264356726669814, 1.4705932757412645, 0.257930481702375, Iris-setosa
+4.77059077214258, 3.1384252086416122, 1.4706678867293932, 0.2487527438669728, Iris-setosa
+6.026994162247548, 2.9005409899145307, 4.233808744237507, 1.3568693118452302, Iris-versicolor
+5.422764381652485, 2.4359362120000165, 3.6911420246127427, 1.1008980968597584, Iris-versicolor
+5.590733434681687, 2.582442999406565, 3.946446280738536, 1.2112247129234606, Iris-versicolor
+6.169570484527616, 2.757942870503583, 5.57955306045713, 2.032901288770629, Iris-virginica
+7.012260169332389, 3.223431893366939, 5.942429319220025, 2.2282385523584485, Iris-virginica
+6.431749548387281, 3.0430361719401042, 5.565818051218905, 2.249788864626337, Iris-virginica
+7.501976751746226, 3.1899606883813996, 6.332613008607062, 2.0550588434254777, Iris-virginica
+
+</example>
+
+</method>

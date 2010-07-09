@@ -1,0 +1,97 @@
+<method>
+
+	<name>Nearest Mean Classifier</name>
+
+	<reference>
+			<ref>T. Hastie, R. Tibshirani, J. Friedman (2001). The elements of statistical learning: Data mining, inference, and prediction. 
+			Springer.
+			</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type>Lazy Learning based classifier</type>
+
+		<objective> 
+		To perform a classification task by means of the centroids of each class, using the 1-NN rule.
+		</objective>
+
+		<howWork> It employs the class means to classify new instances, computing their distances and selecting the nearest class mean, using the 1-NN rule 	
+		</howWork>
+
+		<parameterSpec>  
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+	
+		Problem type: Classification 
+		Method: Clas-NM
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat to iris-10-10tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-NM
+		folder the classification results for the test set:
+
+		TEST RESULTS
+		============
+		Classifier= iris 
+		Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 1 : CORRECT=0.7333333333333334 N/C=0.0 
+		Fold 2 : CORRECT=1.0 N/C=0.0 
+		Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 5 : CORRECT=1.0 N/C=0.0 
+		Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 8 : CORRECT=0.8666666666666667 N/C=0.0 
+		Fold 9 : CORRECT=1.0 N/C=0.0 
+		Global Classification Error + N/C:
+		0.07333333333333333 
+		stddev Global Classification Error + N/C:
+		0.07571877794400365 
+		Correctly classified:
+		0.9266666666666666 
+		Global N/C:
+		0.0 
+
+		TRAIN RESULTS
+		============
+		Classifier= iris 
+		Summary of data, Classifiers: iris 
+		Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 1 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 2 : CORRECT=0.9259259259259259 N/C=0.0 
+		Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 6 : CORRECT=0.9407407407407408 N/C=0.0 
+		Fold 7 : CORRECT=0.9407407407407408 N/C=0.0 
+		Fold 8 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 9 : CORRECT=0.9407407407407408 N/C=0.0 
+		Global Classification Error + N/C:
+		0.06296296296296296 
+		stddev Global Classification Error + N/C:
+		0.007590333900710937 
+		Correctly classified:
+		0.937037037037037 
+		Global N/C:
+		0.0 
+				
+		
+	</example>
+		
+</method>

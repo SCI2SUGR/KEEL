@@ -1,0 +1,68 @@
+<method>
+
+	<name>Statistical two samples mean comparation Mann-Whitney U test</name>
+
+	<reference>  
+
+<ref>H.B. Mann and D.R. Whitney. On a test of whether one of two random variables is stochastically larger than the other. Annals of Mathematical Statistics 18 (1947) 50-60.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical two sample means comparation using the Mann-Whitney test by means of Stat-Regr-MannWhitneyU algorithm.</type>
+
+		<objective>Execution of StatTestModU test for comparing two regression methods performance.</objective>
+
+		<howWork>
+Stat-Regr-MannWhitneyU is a method for comparing the performance of two regression algorithms using statistics techniques. It can be used in k-folds and 5x2 cross validation training  experiments.
+Stat-Regr-MannWhitneyU is associated to the training and testing results of the two models in an experiment that are to be compared. Once those models has been trained and tested, the Stat-Regr-MannWhitneyU takes place. 
+The process calculates the mean cuadratic error for each partition results. The statistical sample includes all of those error measures for each method to be compared. Then the Mann-Whitney test is executed with the Null hypothesis as true if difference in means is equal to 0.
+</howWork>
+
+		<parameterSpec>  
+<param>signlevel: a value in the range (0,1). Default value:  0.95. The significance level represents the probability of erroneous rejecting the NULL Hypothesis.</param>
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Methods to compare: Regr-LinearLMS vs Regr-PolQuadraticLMS
+Dataset: machine-cpu
+Type of partitions: k-fold, k=10
+
+After the execution of RunKeel.jar we can see into the ./results/Stat-Regr-MannWhitneyU/TSTRegr-LinearLMSvsRegr-PolQuadraticLMS/ folder the results0s0.stat file:
+
+Mann-Whitney test, Modeling
+Mean cuadratic error in each fold:
+Algorithm = 0
+Fold 0 : 6269.340047889225 
+Fold 1 : 2147.2024593503747 
+Fold 2 : 1995.8867100647303 
+Fold 3 : 8429.461050092124 
+Fold 4 : 3752.8946186462886 
+Fold 5 : 1265.75194457092 
+Fold 6 : 1378.2443444675362 
+Fold 7 : 10369.871521593977 
+Fold 8 : 13447.477062000205 
+Fold 9 : 3784.308766572497 
+Algorithm = 1
+Fold 0 : 19883.17406264338 
+Fold 1 : 923.086212825497 
+Fold 2 : 1782.6768777295042 
+Fold 3 : 40347.29384309221 
+Fold 4 : 2902.9903279394525 
+Fold 5 : 1706.9056645604135 
+Fold 6 : 445.70708214385405 
+Fold 7 : 4560.977759698817 
+Fold 8 : 5227.39838633173 
+Fold 9 : 1143.2328230123044 
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+p-valores:
+0.49629170222402397 </example>
+
+</method>

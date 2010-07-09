@@ -1,0 +1,67 @@
+<method>
+
+	<name>Chen Algorithm</name>
+
+	<reference>  
+		<ref>Chen, C.H., Józwik, A. A sample set condensation algorithm for the class sensitive artificial neural network (1996) Pattern Recognition Letters, 17, pp. 819‐823.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+		1. It takes the two farthest prototypes (a, b), and make partition of the set in order of distance to a and b.
+		2. Add that sets to C.
+		2. Find the least homogeneus part. It is, the part which its prototypes has more class-similarity.
+		3. Take the set with two farthest points of that least homogeneus set. It will be used in 1.
+		4. Make the average prototype of each prototype set present in C.
+		5. Add them to the reduced set.
+		</howWork>
+
+		<parameterSpec>  
+				<param>Percentage of prototypes: Real value. Desired size of the resulting set as percentage of training set size.</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+	<example>
+Problem type: Classification
+Method: PG-Chen
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-Chen:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+5.173134328358209, 3.1268656716417915, 2.243283582089552, 0.5447761194029851, Iris-setosa
+6.467647058823529, 2.9382352941176473, 5.233823529411765, 1.8352941176470587, Iris-virginica
+5.053658536585366, 3.453658536585366, 1.468292682926829, 0.2414634146341464, Iris-setosa
+5.361538461538462, 2.6115384615384616, 3.465384615384615, 1.0230769230769232, Iris-versicolor
+5.053658536585366, 3.453658536585366, 1.468292682926829, 0.2414634146341464, Iris-setosa
+5.361538461538462, 2.6115384615384616, 3.465384615384615, 1.0230769230769232, Iris-versicolor
+5.053658536585366, 3.453658536585366, 1.468292682926829, 0.2414634146341464, Iris-setosa
+5.361538461538462, 2.6115384615384616, 3.465384615384615, 1.0230769230769232, Iris-versicolor
+5.053658536585366, 3.453658536585366, 1.468292682926829, 0.2414634146341464, Iris-setosa
+5.361538461538462, 2.6115384615384616, 3.465384615384615, 1.0230769230769232, Iris-versicolor
+</example>
+
+</method>

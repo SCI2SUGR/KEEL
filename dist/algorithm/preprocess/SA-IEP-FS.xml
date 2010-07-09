@@ -1,0 +1,25 @@
+<algorithm_specification>
+  <name>Simulated Annealing (IEP)</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>tInit</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100000000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>maxLoops</name>
+    <type>integer</type>
+    <default>770</default>
+  </parameter>
+  <parameter>
+    <name>neighbors</name>
+    <type>integer</type>
+    <default>20</default>
+  </parameter>
+</algorithm_specification>

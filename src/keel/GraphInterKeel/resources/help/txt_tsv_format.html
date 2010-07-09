@@ -1,0 +1,290 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+
+<title>TXT and TSV format</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+<style>
+<!--
+h2
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	page-break-after:avoid;
+	tab-stops:list 0cm;
+	font-size:14.0pt;
+	font-family:"Nimbus Sans L";
+	font-style:italic}
+-->
+</style>
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; font-style:normal">TXT and 
+TVS DATA FILE FORMAT</span></b></h3>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The TXT 
+(Text Separated by Tabs) or TSV (Tab Separated Values), is a simple text data 
+that allows tabular data to be exchanged between applications with a different 
+internal format. Values separated by tabs have been officially registered as a 
+MIME type (Multipurpose Internet Mail Extensions) under the name 
+text/tab-separated-values.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: 18.0pt; margin: 6.0pt 0cm">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+characteristics of these files are the following</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">:&nbsp;</span></p>
+<blockquote>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">A 
+		file in TXT format consists of lines. Each line contains fields 
+		separated from one another by the tab character (horizontal tab, HT, 
+		code control 9 in ASCII).</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		Fields can be any string of characters, excluding tabs. </span>
+		<span lang="EN-US" style="font-family: Times New Roman; color: black">
+		However, tabs usually don't appear in data items that you wish to 
+		tabulate, so this is seldom a restriction. There are various other 
+		formats which are very similar to TSV but use a different separator, 
+		such as Comma Separated Values (CVS) </span>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		which uses the comma as separator</span><span lang="EN-US" style="font-family: Times New Roman; color: black">. 
+		Commas, spaces, and other characters often used as separators in such 
+		formats appear rather often in data to be tabulated, at least in header 
+		fields.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		Each line must contain the same number of fields.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		The first line contains the name of the fields or attributes, i.e. the 
+		column headers.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">An 
+		empty value is displayed as an empty field between tabs.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		Such files can be read and edited by any text editors.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-US" style="font-family: Times New Roman; color: black">Although 
+TSV is a text format, this type of format is </span><em style="color: #400000">
+		<span lang="EN-US" style="font-family: Times New Roman">not</span></em><span lang="EN-US" style="font-family: Times New Roman; color: black"> 
+expected appearing with a nice tabular format when it is printed with an editor 
+or</span><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+		left on the screen.</span></li>
+		<li>
+		<p class="MsoNormal" style="margin-top: 0px; margin-bottom: 0px">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+extension for this type of file is &quot;.txt&quot; or &quot;.tsv&quot;.</span></li>
+	</ul>
+</blockquote>
+<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 71.7pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN-GB">&nbsp;
+</span></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+TXT (Text Separated by Tabulators) or TSV (Tab/Text Separated Values) data files 
+must have the following format:</span></b></p>
+<div align="center">
+	<table border="1" width="397" height="112">
+		<tr>
+			<td height="112" width="387">
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">attribute<sub>1</sub>&lt;TAB&gt;attribute</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">...</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">attribute<sub>N</sub><br>
+			value<sub>11</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">value<sub>12</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold"> ...<sub> </sub></span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold"> 
+			value<sub>1N</sub><br>
+			...<br>
+			value<sub>M1</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">value<sub>M2</sub></span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold"> ...<sub> </sub></span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">value<sub>MN</sub></span><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;color:#003366;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></td>
+		</tr>
+	</table>
+</div>
+
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><i>&nbsp;</i>One 
+example of valid TXT or TSV file is the following:</span></b></p>
+<div align="center">
+	<table border="1" width="579" height="117">
+		<tr>
+			<td height="117" width="569"><i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">FirstName </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"> LastName </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"> Company </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"> EmailAddress<br>
+			Johnathan </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>Doe </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>ABC Company </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub>
+			</sub>johndoe@abccompany.com<br>
+			Harrie </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">Wong </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">Company </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub>
+			</sub><span style="mso-spacerun:yes">&nbsp;</span>Inc. 
+			hwong@myprovider.com<br>
+			Mary </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>Jo Smith </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>Any </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>
+			Corp </span></i>
+			<i style="mso-bidi-font-style:normal">
+			<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;TAB&gt;</span></i><i style="mso-bidi-font-style:normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold"><sub> </sub>mjsmith@myprovider.com&quot;</span></i></td>
+		</tr>
+	</table>
+</div>
+</p>
+
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+<b><i><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+<p class="MsoBodyText" style="text-align:justify">
+<span lang="EN-GB" style="font-family: Times New Roman">&nbsp;</span></p>
+<h2 style="margin-left:0cm;text-align:justify;text-indent:0cm">
+<span lang="ES-TRAD" style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;">
+&nbsp;</span></h2>
+<p class="MsoNormal" style="text-align:justify"><span lang="ES-TRAD">&nbsp;</span></p>
+</body>
+
+</html>

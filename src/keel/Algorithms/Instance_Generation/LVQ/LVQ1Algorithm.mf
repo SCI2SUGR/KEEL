@@ -1,0 +1,1 @@
+Main-Class: keel.Algorithms.Instance_Generation.LVQ.LVQ1Algorithm

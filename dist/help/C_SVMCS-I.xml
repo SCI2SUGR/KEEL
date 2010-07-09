@@ -1,0 +1,138 @@
+<method>
+
+	<name>C-SVM for Classification Cost-Sensitive</name>
+
+	<reference>  
+
+		<ref>Tang, Y., Zhang, Y.-Q., Chawla, N.V. SVMs modeling for highly imbalanced classification (2009) IEEE Transactions on Systems, Man, and Cybernetics, Part B: Cybernetics, 39 (1), pp. 281-288. </ref>
+		<ref>K. Veropoulos, N. Cristianini, and C. Campbell, Controlling the sensitivity of support vector machines, in Proc. IJCAI (1999), pp. 281-288. </ref>
+		
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by means of C-Support Vector Machine Cost Sensitive</type>
+
+		<objective>It builds a SVM model with the training data taking into account the cost associated to the class distribution, and then classifies all test data by means of the trained SVM</objective>
+
+		<howWork>
+Following the Statistical Learning Theory from Vapnik et al., we construct an SVM model, but using the SMO training
+algorithm proposed by Chih-Chung Chang and Chih-Jen Lin in their libSVM. The main task in training SVMs is to solve a quadratic optimization problem,
+then SVM finds a linear separating hyperplane with the maximal margin in this higher dimensional space.
+
+The data is transformed by means of a Kernel function, which augments the dimensionality of the data. This augmentation
+provokes that the data can be separated with an hyperplane with much higher probability, and establish a minimun
+prediction probability error measure.
+		
+This method is also prepared to classify problems with more than two classes with a voting-scheme. Notice that the separation
+of the data must be measured, so it is convenient performs a previous transformation on the data,
+to avoid attributes in greater numeric ranges dominate those in smaller numeric ranges. Because kernel values usually depend on the inner products of
+feature vectors, e.g. the linear kernel and the polynomial kernel, large attribute values might cause numerical problems. 
+We recommend linearly scaling each attribute to the range [-1, +1] or [0, 1].
+
+We propose that beginners try the following procedure:
+1- Transform data to the format of this SVM software
+2- Conduct simple scaling on the data
+3- Consider the RBF kernel
+4- Use cross-validation to find the best parameter C and gamma
+5- Use the best parameter C and gamma to train the whole training set
+6- Test
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>KernelType: Which kernel will be used to transform the data</param>
+			<param>C: cost;it is the penalty parameter of the error term. Their optimous value is find by TRIAL and ERROR.</param>
+			<param>eps: set tolerance of termination criterion (not used)</param>
+			<param>degree: set degree in kernel function</param>
+			<param>gamma: set gamma in kernel function</param>
+			<param>coef0: set coef0 in kernel function</param>
+			<param>nu: : set the parameter nu (not used in this model)</param>
+			<param>p: set the epsilon in loss function of epsilon-SVR (not used here)</param>
+			<param>shrinking: reduces the size of the optimization problem without considering
+some bounded variables. The decomposition method then works on a smaller problem which is less
+time consuming and requires less memory</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: C_SVM Cost Sensitive
+Dataset: pimaImb
+Training set: pimaImb-5-1tra.dat
+Test set: pimaImb-5-1tst.dat
+Test Show results: TSTImb-C_SVMCS
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Imb-Check folder the classification results for the test set:
+
+Summary of data, Classifiers: pimaImb
+Fold 0 : AUC=0.7261111111111112 N/C=0.0 
+Global Classification Area Under the ROC Curve:
+0.7124703004891685 
+stddev Global Classification Area Under the ROC Curve:
+0.015200853099105974 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-C_SVMCS.pimaImb:
+
+@relation pimaImb
+@attribute Preg real [0.0, 17.0]
+@attribute Plas real [0.0, 199.0]
+@attribute Pres real [0.0, 122.0]
+@attribute Skin real [0.0, 99.0]
+@attribute Insu real [0.0, 846.0]
+@attribute Mass real [0.0, 67.1]
+@attribute Pedi real [0.078, 2.42]
+@attribute Age real [21.0, 81.0]
+@attribute Class {positive,negative}
+@inputs Preg, Plas, Pres, Skin, Insu, Mass, Pedi, Age
+@outputs Class
+@data
+positive negative
+positive positive
+positive positive
+positive positive
+positive negative
+positive negative
+negative negative
+negative negative
+negative negative
+negative positive
+negative positive
+negative negative
+negative negative
+negative negative
+negative positive
+negative negative
+negative negative
+negative positive
+negative negative
+negative negative
+negative negative
+negative positive
+positive positive
+positive positive
+positive positive
+positive positive
+...
+</example>
+
+</method>

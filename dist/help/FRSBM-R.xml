@@ -1,0 +1,148 @@
+<method>
+
+	<name>Fuzzy and Random Sets based Modeling</name>
+
+	<reference>  
+
+<ref>L. S&#xE1;nchez. A random sets-based method for identifying fuzzy models. Fuzzy Sets and Systems 98:3 (1998) 343-354 </ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression model by the method of fuzzy random sets.</type>
+
+		<objective>To obtain fuzzy regression models as a set of fuzzy rules that better that represents the better partition for the  domain.</objective>
+
+		<howWork>A fuzzy regression model is set by means of recursively partition the domain. The thechique used is fuzzy random sets, where the partitions are propose randomly.
+</howWork>
+
+		<parameterSpec>  
+<param>numrules: the number of rules for each model.</param>
+<param>sigmafss98: the wide of each partition.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-FSS98
+Dataset: daily-electric-energy
+Training set: daily-electric-energy-10-1tra.dat
+Test set: daily-electric-energy-10-1tst.dat
+Test Show results: StatChekMO
+Parameters: numrules = 4, sigmafss98 = 1
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTRegr-FSS98/ folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.15778734642030373 
+Fold 1 : 0.1631045608000141 
+Fold 2 : 0.16756942572160327 
+Fold 3 : 0.16718378189199443 
+Fold 4 : 0.2421404319127896 
+Fold 5 : 0.11495825634874653 
+Fold 6 : 0.10357858578110417 
+Fold 7 : 0.13972237240099059 
+Fold 8 : 0.209019165178968 
+Fold 9 : 0.171644368486979 
+Global MSE:
+0.16367082949434936 
+Global stdev:
+0.03859731134633371 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.1478141147086902 
+Fold 1 : 0.14594632374087432 
+Fold 2 : 0.14215974739112883 
+Fold 3 : 0.14040569967582203 
+Fold 4 : 0.13599462759427833 
+Fold 5 : 0.15250281659613668 
+Fold 6 : 0.15204248609891877 
+Fold 7 : 0.15149214239662123 
+Fold 8 : 0.13199272161040737 
+Fold 9 : 0.15636718597530883 
+Global MSE:
+0.14567178657881863 
+Global stdev:
+0.007490074425441334 
+
+We can see too the output and target classes for each case of the test set (result0s0.tra) in experiment/results/Regr-FSS98/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.31615 2.5525613152004816
+2.37613 2.219634833815617
+2.25221 2.8112615177333034
+2.1057 2.199624439575564
+4.05117 3.6483469394284938
+2.50409 2.426088086100616
+4.4184 3.6780117613200596
+3.07069 2.8081085095678855
+1.8168 2.0656892866518133
+1.1095 2.0710562089570734
+1.42735 1.8885324883341696
+3.34136 4.224814702718175
+2.34377 2.706161823638568
+...
+
+And the test results (result0s0.tst) in folder experiment/results/Regr-FSS98/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.21261 2.671879087614209
+3.82169 3.8600698020815334
+1.3288 1.6598132363871694
+2.53167 2.5685191949803508
+4.00095 3.8327302543843267
+2.9788 2.677100717118594
+1.67147 1.9611325531540718
+3.3829 3.3843191307001215
+3.19877 2.840468687242676
+2.4381 2.7186172944693103
+0.960987 1.8790590609045457
+4.14661 4.485717480905451
+2.32848 1.999158956982598
+...
+</example>
+
+</method>

@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>Scalable Rule Induction</name>
+  <nParameters>3</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>BeamWidth</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>8</default>
+  </parameter>
+  <parameter>
+    <name>MinPositives</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>MinNegatives</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,93 @@
+<method>
+
+	<name>Approximative Genetic Tuning of FRBSs</name>
+
+	<reference>  
+
+		<ref>F. Herrera, M. Lozano, J.L. Verdegay. Tuning Fuzzy Logic Controllers by Genetic Algorithms, International Journal of Approximate Reasoning 12 (1995) 299-315</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression model by generation of fuzzy rule-based systems</type>
+
+		<objective>A Genetic Algorithm is used to tune the support of the fuzzy rules.</objective>
+
+		<howWork>Given a Mamdani Fuzzy Rule Set obtained by a Fuzzy Rule Base System this method adapts
+		the membership functions of each fuzzy rule. 
+		This genetic tuning process is based on a real coding GA so, the real-valued membership 
+         function parameters used for each variable in each rule are encoded. The fitness function 
+         is composed only of the mean square criterion.
+
+         The GA uses the Michalewicz&apos;s non-uniform mutation, the Herrera et al.&apos;s max-min-arithmetical 
+         crossover, and the Baker&apos;s stochastic universal sampling as selection procedure together
+         with the elitist selection. The initial gene pool is created with the first chromosome 
+         encoding the provided FRB, and the remaining chromosomes with each membership function parameter 
+         initiated at random in a specific previously calculated interval.
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of Iterations</param>
+			<param>Population Size</param>
+			<param>Tau parameter for the minimun maching degree required to the KB</param>
+			<param>Parameter a</param>
+			<param>Parameter b</param>
+			<param>Cross Probability</param>
+			<param>Mutation Probability</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes (only with numerical)</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression
+        Method: Post-A-G-Tuning-FRBSs
+        Dataset: ele1
+        Training set: ele1-10-1tra.dat
+        Test set: ele1-10-1tst.dat
+        Test Show results: StatChekMO
+        Parameters: default values
+
+        After the execution of RunKeel.jar we can see into the experiment\results\StatCheckMO folder the regression results for the test set:
+
+		TEST RESULTS
+		============
+		Model = daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003 
+		MSE of all folds:
+		Fold 0 : 0.24798714824831178 
+		Global MSE:
+		0.24798714824831178 
+		Global stdev:
+		0.0 
+		TRAIN RESULTS
+		============
+		Model = daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003 
+		MSE of all folds:
+		Fold 0 : 0.14363437297456402 
+		Global MSE:
+		0.14363437297456402 
+		Global stdev:
+		0.0 
+
+		We can also see the output rule base in Experiment\Results\Post-A-G-Tuning-FRBSs\Regr-Fuzzy-WangMendel.
+
+</example>
+
+</method>

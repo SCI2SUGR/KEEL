@@ -1,0 +1,63 @@
+<method>
+
+	<name>Modified Condensed Nearest Neighbor</name>
+
+	<reference>  
+
+		<ref>V. S. Devi, M. N. Murty. An incremental prototype set building technique. Pattern Recognition 35 (2002) 505-513.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Instance Selection. Incremental.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>Prototypes are added in an incremental fashion, where at each step of the algorithm, the number of prototypes selected keeps on increasing. The number of patterns in the training data classified correctly also keeps on increasing till all patterns are classified properly. After this, a deletion operator is used where some prototypes which are not so useful are removed.</howWork>
+
+		<parameterSpec>  
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: IS-MCNN
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\IS-MCNN:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+5.4,3.4,1.7,0.2,Iris-setosa
+5.9,3.0,4.2,1.5,Iris-versicolor
+6.1,2.8,4.0,1.3,Iris-versicolor
+5.8,2.7,5.1,1.9,Iris-virginica
+5.7,2.5,5.0,2.0,Iris-virginica
+</example>
+
+</method>

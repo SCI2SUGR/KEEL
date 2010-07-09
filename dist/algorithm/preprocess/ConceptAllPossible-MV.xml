@@ -1,0 +1,6 @@
+<algorithm_specification>
+  <name>Assign all possible values of the attribute restricted to given concept</name>
+  <nParameters>0</nParameters>
+  <seed>0</seed>
+  <nOutput>0</nOutput>
+</algorithm_specification>

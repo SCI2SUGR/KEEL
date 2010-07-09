@@ -1,0 +1,81 @@
+<method>
+
+	<name>Sequential Forward Search using Mutual Information measure</name>
+
+	<reference>  
+
+		<ref>P. Scanlon and G. Potamianos and V. Libal and S. M. Chu. Mutual Information Based Visual Feature 
+			Selection for Lipreading. Int. Conf. on Spoken Language Processing, 2004.
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Non Evolutionary Filter Stochastic method</type>
+
+		<objective>Feature Selection. This method allows search to follow feature subsets that are randomly generated</objective>
+
+		<howWork>Sequential Forward Search is a greedy algorithm that starts with zero selected features and selects the most
+			promising feature according to the measure in each step. The algorithm stops when an inconsistency threshold is
+			reached (and no additional features can be added) or when all features are selected.
+</howWork>
+
+		<parameterSpec>  
+
+			<param>threshold: inconsistency threshold. This measures the maximum inconsistency allowed in the final dataset.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+
+Problem type: Preprocess
+Method: SFS-MI-FS
+Dataset: Car
+Training set: car-10-1tra.dat
+Test set: car-10-1tst.dat
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see the training and test datasets modified only with the selected features.
+
+And the extra file with the classification error in test validation result0e0.txt:
+
+result0e0.txt
+
+RESULTS generated at Sun Jul 04 20:03:52 CEST 2010 
+--------------------------------------------------
+Algorithm Name: SFS (MI)
+
+PARTITION Filename: ../datasets/car/car-10-1tra.dat
+---------------
+
+Features selected: 
+Buying - 
+
+1 features of 6
+
+Error in test (using train for prediction): 0.30057803468208094
+Error in test (using test for prediction): 0.34104046242774566
+---------------
+
+</example>
+
+</method>

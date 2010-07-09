@@ -1,0 +1,102 @@
+<method>
+
+	<name>Nearest subclass classifier </name>
+
+	<reference>
+			<ref>C.J. Veenman, M.J.T. Reinders. The nearest subclass classifier: A compromise between the nearest mean and nearest neighbor classifier.
+			IEEE Transactions on Pattern Analysis and Machine Intelligence 27:9 (2005) 1417-1429.
+			</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type>Prototype generation based on clutering</type>
+
+		<objective> 
+		To perform a classification task by means of prototype generation based on the minimun variance clustering method.
+		</objective>
+
+		<howWork>A method of prototype generation, based on the minimun variance clustering method, where centroids of each cluster assigned to each class are designed as final prototypes.
+		They are used to enhance the classification accuracy of the 1-NN rule 	
+		</howWork>
+
+		<parameterSpec>  
+  			<param> K Value: K value for cluster generation.</param>
+			<param> Q Value: Q value for cluster generation.</param>
+			<param> No change: Maximun number of iterations without changes allowed.</param>
+			<param> Epoch: Epoch length.</param>
+			<param> Variance: Maximun variance allowed for clusters.</param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+
+		Problem type: Classification 
+		Method: Clas-NSC
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat to iris-10-10tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-KSNN
+		folder the classification results for the test set:
+
+		TEST RESULTS
+		============
+		Classifier= iris 
+		Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 2 : CORRECT=1.0 N/C=0.0 
+		Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 7 : CORRECT=1.0 N/C=0.0 
+		Fold 8 : CORRECT=1.0 N/C=0.0 
+		Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+		Global Classification Error + N/C:
+		0.04666666666666666 
+		stddev Global Classification Error + N/C:
+		0.030550504633038947 
+		Correctly classified:
+		0.9533333333333334 
+		Global N/C:
+		0.0 
+
+		TRAIN RESULTS
+		============
+		Classifier= iris 
+		Summary of data, Classifiers: iris 
+		Fold 0 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 1 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 2 : CORRECT=0.962962962962963 N/C=0.0 
+		Fold 3 : CORRECT=0.962962962962963 N/C=0.0 
+		Fold 4 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 5 : CORRECT=0.9777777777777777 N/C=0.0 
+		Fold 6 : CORRECT=0.962962962962963 N/C=0.0 
+		Fold 7 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 8 : CORRECT=0.962962962962963 N/C=0.0 
+		Fold 9 : CORRECT=0.962962962962963 N/C=0.0 
+		Global Classification Error + N/C:
+		0.034074074074074076 
+		stddev Global Classification Error + N/C:
+		0.005925925925925913 
+		Correctly classified:
+		0.965925925925926 
+		Global N/C:
+		0.0 
+
+	</example>
+		
+</method>

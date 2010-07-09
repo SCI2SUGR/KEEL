@@ -1,0 +1,44 @@
+<algorithm_specification>
+  <name>Summary of the algorithm, Imbalanced classification probs.</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <nInput>1</nInput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>StatCheckImb</item>
+    </domain>
+    <default>StatCheckImb</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>CHK</item>
+    </domain>
+    <default>CHK</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>imbalancedMeasure</name>
+    <type>list</type>
+    <domain>
+      <item>AreaUndertheROCCurve</item>
+      <item>GeometricMean</item>
+      <item>StandardAccuracy</item>
+    </domain>
+    <default>AreaUndertheROCCurve</default>
+  </parameter>
+</algorithm_specification>

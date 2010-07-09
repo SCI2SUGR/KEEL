@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>SBS (LIU)</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>threshold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.005</default>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,114 @@
+<method>
+
+	<name>Particle swarm optimization for prototype reduction</name>
+
+	<reference>  
+
+		<ref> Loris Nanni, Alessandra Lumini. Particle swarm optimization for prototype reduction. Neurocompting(2008), doi:10.1016/j.neucom.2008.03.008</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Instance Generation. Evolutionary algorithm.</type>
+
+		<objective> Generation of optimal training set of prototypes, with a prefixed cardinality K</objective>
+
+		<howWork>
+            This algorithm can be applied to generate (not to select) an optimal set of prototypes. It is based in the social behavior of biological organisms, like the movement of bird flocking. The basic idea for applying PSO to prototype reduction is the following: a random small set of K training patterns is selected as initial solution. For example K = 5%, to obtain a substanctial reduction. Then the position of these pattern, the particles of the optimization problem , is adjusted using PSO so that the classification error rate on the training set is minimized.
+				</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to classify an example using the K-Nearest Neighbor Rule (k)</param>
+			<param>Swarm Size: Number of random solutions (number of particles), they will be the population, default P = 20 </param>
+            <param>Particle size: K % training patterns is selected as initial solution for each particle, default k = 5%.</param>
+            <param>MaxIter: The training phase ends after MaxIter iterations, default MaxIter  = 250  </param>
+            <param>C1: Acceration constants, represent the weighting of the stochastic acceleration terms, default C1  =  1  </param>
+            <param>C2: Acceration constants, represent the weighting of the stochastic acceleration terms, default C2  =  3  </param>
+            <param>VMax: Maximum velocity of particles, default VMax  = 0.25 </param>
+            <param>Wstart: Inertia weight varies between Wstart, Wend, default Wstart  = 1.5 </param>
+            
+            <param>Wend: Inertia weight varies between Wstart, Wend, default Wend  = 0.5</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Generation
+Method: IG-PSO
+Dataset: ecoli
+Training set: ecoli-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\IG-PSO:
+
+@relation  ecoli
+@attribute mcg real[0.0,0.89]
+@attribute gvh real[0.16,1.0]
+@attribute lip real[0.48,1.0]
+@attribute chg real[0.5,1.0]
+@attribute aac real[0.0,0.88]
+@attribute alm1 real[0.03,1.0]
+@attribute alm2 real[0.0,0.99]
+@attribute class{cp,im,pp,imU,om,omL,imL,imS}
+@inputs mcg,gvh,lip,chg,aac,alm1,alm2
+@outputs class
+@data
+0.24, 0.43, 0.48, 0.5, 0.37, 0.28, 0.38, cp
+0.38, 0.3, 0.48, 0.5, 0.43, 0.29, 0.39, cp
+0.32, 0.33, 0.48, 0.5, 0.6, 0.06, 0.2, cp
+0.23, 0.58, 0.48, 0.5, 0.37, 0.53, 0.59, cp
+0.29, 0.41, 0.48, 0.5, 0.48, 0.38, 0.46, cp
+0.0, 0.38, 0.48, 0.5, 0.42, 0.48, 0.55, cp
+0.52, 0.44, 0.48, 0.5, 0.37, 0.36, 0.42, cp
+0.22, 0.36, 0.48, 0.5, 0.35, 0.39, 0.47, cp
+0.25, 0.4, 0.48, 0.5, 0.46, 0.44, 0.52, cp
+0.24, 0.57, 0.48, 0.5, 0.63, 0.34, 0.43, cp
+0.61, 0.45, 0.48, 0.5, 0.48, 0.35, 0.41, cp
+0.18, 0.3, 0.48, 0.5, 0.46, 0.24, 0.35, cp
+0.45, 0.4, 0.48, 0.5, 0.61, 0.74, 0.77, im
+0.0, 0.51, 0.48, 0.5, 0.35, 0.67, 0.44, im
+0.11, 0.5, 0.48, 0.5, 0.58, 0.72, 0.68, im
+0.58, 0.55, 0.48, 0.5, 0.57, 0.7, 0.74, im
+0.31, 0.44, 0.48, 0.5, 0.5, 0.79, 0.82, im
+0.52, 0.39, 0.48, 0.5, 0.65, 0.71, 0.73, im
+0.61, 0.6, 0.48, 0.5, 0.44, 0.39, 0.38, pp
+0.7, 0.64, 0.48, 0.5, 0.47, 0.51, 0.47, pp
+0.69, 0.66, 0.48, 0.5, 0.41, 0.5, 0.25, pp
+0.69, 0.59, 0.48, 0.5, 0.46, 0.44, 0.52, pp
+0.79, 0.41, 0.48, 0.5, 0.66, 0.81, 0.83, imU
+0.64, 0.45, 0.48, 0.5, 0.67, 0.61, 0.66, imU
+0.57, 0.38, 0.48, 0.5, 0.06, 0.49, 0.33, imU
+0.68, 0.76, 0.48, 0.5, 0.84, 0.45, 0.27, om
+0.39, 0.31, 0.48, 0.5, 0.38, 0.34, 0.43, cp
+0.33, 0.45, 0.48, 0.5, 0.45, 0.88, 0.89, im
+0.66, 0.74, 0.48, 0.5, 0.31, 0.38, 0.43, pp
+0.78, 0.68, 0.48, 0.5, 0.83, 0.4, 0.29, om
+
+
+Results (one execution)):
+Reduction =  90%
+Training success = 82.45033112582782 %
+Test success =
+Time = 137.425 s.
+
+</example>
+
+</method>

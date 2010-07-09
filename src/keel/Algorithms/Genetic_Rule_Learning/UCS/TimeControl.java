@@ -1,0 +1,149 @@
+
+/**
+ * <p>
+ * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
+
+package keel.Algorithms.Genetic_Rule_Learning.UCS;
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+public class TimeControl {
+/**
+ * <p>
+ * This class makes the UCS time control
+ * </p>
+ */
+	
+    /* Time control of general execution: Training, Test, Wilson, Strong Dixon and Weak Dixon reduction*/
+    private long t_totalTime=0, t_Train=0, t_Test=0, t_Wilson=0, t_StrongDixon=0, t_WeakDixon=0;
+    
+    private long t_CVTrain=0, t_CVTest=0, t_CVTrainTest=0;
+
+
+
+
+
+    public TimeControl(){
+    }
+
+
+/**
+ * <p>
+ * It initilizes the time averages to zero.
+ * </p>
+ */
+   
+   public void initTimeAverages(){
+   	t_Train = 0;
+   	t_Test = 0;
+   	t_Wilson = 0;
+   	t_StrongDixon = 0;
+   	t_WeakDixon  = 0;	
+   	t_totalTime = 0;
+   	t_CVTrain = 0;
+   	t_CVTest = 0; 
+   	t_CVTrainTest = 0;
+   }    
+   
+   
+
+/**
+ * Updates the training time
+ * @param iTestTime is the time at the beginning of training
+ */
+   public void updateTrainTime (long iTrainTime){
+   	t_Train += System.currentTimeMillis() - iTrainTime; 	
+   }
+   
+
+
+/**
+ * Update the test time
+ * @param iTestTime is the time at the beginning of the test 
+ */
+   
+   public void updateTestTime(long iTestTime){
+	t_Test += System.currentTimeMillis() - iTestTime;   
+   }
+  
+
+   public void updateTotalTime(long iTime){
+	t_totalTime += iTime;
+   }  
+
+
+/**
+ * <p>  
+ * It prints the average time wasted in every kind of run
+ * </p>
+ * <p>
+ * @param pW is the PrintWriter associated to the file where the time
+ * averages have to be printed. 
+ * </p>
+ */
+    public void printTimes(PrintWriter pW){
+    	System.out.println ("The time statistics are made");
+    	pW.println (" ============================= RUN TIME INFORMATION ============================= ");
+    	pW.println ("TIMES IN SECONDS ");
+    	pW.println ("Total time:	                 "+ ((double)t_totalTime/1000.0));
+        pW.println ("\t Time of TRAIN:                  "+ ((double)t_Train/1000.0));
+        pW.println ("\t Time of TEST:                   "+ ((double)t_Test/1000.0));
+        pW.println ("\t Time of WILSON REDUCTION:       "+ ((double)t_Wilson/1000.0));
+        pW.println ("\t Time of WEAK   DIXON REDUCTION: "+ ((double)t_WeakDixon/1000.0));
+        pW.println ("\t Time of STRONG DIXON REDUCTION: "+ ((double)t_StrongDixon/1000.0));
+        //pW.println ("Temps Total del FOLD:               "+ ((double)(t_CVTest+t_CVTrain+t_CVTrainTest)/1000.0));
+        //pW.println ("\t Time of TRAIN:		         "+ ((double)t_CVTrain/1000.0));
+        //pW.println ("\t Time of TEST AMB Training set:  "+ ((double)t_CVTrainTest/1000.0));
+        //pW.println ("\t Time of TEST AMB Test set: 	 "+ ((double)t_CVTest/1000.0));
+        
+        
+        pW.println ("\n\n TIMES IN MINUTES ");
+        pW.println ("Total time:			 "+ ((double)t_totalTime/60000));
+        pW.println ("\t Time of TRAIN:                  "+ ((double)t_Train/60000));
+        pW.println ("\t Time of TEST:                   "+ ((double)t_Test/60000));
+        pW.println ("\t Time of WILSON REDUCTION:       "+ ((double)t_Wilson/60000));
+        pW.println ("\t Time of WEAK   DIXON REDUCTION: "+ ((double)t_WeakDixon/60000));
+        pW.println ("\t Time of STRONG DIXON REDUCTION: "+ ((double)t_StrongDixon/60000));
+        //pW.println ("Temps Total del FOLD:               "+ ((double)(t_CVTest+t_CVTrain+t_CVTrainTest)/60000.0));
+        //pW.println ("\t Time of TRAIN:		         "+ ((double)t_CVTrain/60000.0));
+        //pW.println ("\t Time of TEST AMB Training set:  "+ ((double)t_CVTrainTest/60000.0));
+        //pW.println ("\t Time of TEST AMB Test set: 	 "+ ((double)t_CVTest/60000.0));
+    	pW.println ("================================================================================ ");
+    }
+
+
+
+/**
+ * <p>  
+ * It prints the average time wasted in every kind of run
+ * </p>
+ */
+    public void printTimes(){
+    	System.out.println ("============================= RUN TIME INFORMATION ============================= ");
+    	System.out.println ("TIMES IN SECONDS ");
+    	System.out.println ("Total time:	                "+ ((double)t_totalTime/1000.0));
+        System.out.println ("\t Time of TRAIN:                  "+ ((double)t_Train/1000.0));
+        System.out.println ("\t Time of TEST:                   "+ ((double)t_Test/1000.0));
+        System.out.println ("\t Time of WILSON REDUCTION:       "+ ((double)t_Wilson/1000.0));
+        System.out.println ("\t Time of WEAK   DIXON REDUCTION: "+ ((double)t_WeakDixon/1000.0));
+        System.out.println ("\t Time of STRONG DIXON REDUCTION: "+ ((double)t_StrongDixon/1000.0));
+        
+        //System.out.println ("\n\n TIMES IN MINUTES ");
+        //System.out.println ("Total time:	                "+ ((double)t_totalTime/60000.0));
+        //System.out.println ("\t Time of TRAIN:                  "+ ((double)t_Train/60000.0));
+        //System.out.println ("\t Time of TEST:                   "+ ((double)t_Test/60000.0));
+        //System.out.println ("\t Time of WILSON REDUCTION:       "+ ((double)t_Wilson/60000.0));
+        //System.out.println ("\t Time of WEAK   DIXON REDUCTION: "+ ((double)t_WeakDixon/60000.0));
+        //System.out.println ("\t Time of STRONG DIXON REDUCTION: "+ ((double)t_StrongDixon/60000.0));
+    	System.out.println ("================================================================================ ");
+    }
+
+} // end TimeControl

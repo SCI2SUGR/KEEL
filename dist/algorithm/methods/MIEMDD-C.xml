@@ -1,0 +1,16 @@
+<algorithm_specification>
+  <name>MIEMDD</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Filter</name>
+    <type>list</type>
+    <domain>
+      <item>Normalize Training Data</item>
+      <item>Standardize Training Data</item>
+      <item>No normalization/standardization</item>
+    </domain>
+    <default>Normalize Training Data</default>
+  </parameter>
+</algorithm_specification>

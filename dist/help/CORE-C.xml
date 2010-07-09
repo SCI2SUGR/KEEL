@@ -1,0 +1,807 @@
+<method>
+
+	<name>CO-evolutionary Rule Extractor</name>
+
+	<reference>
+
+		<ref>K. C. Tan, Q. Yu and J. H. Ang, "A coevolutionary algorithm for rules discovery in data mining," Int. J. Syst. Sci. 37(12) 835-864, 2006.</ref>
+	
+	</reference>	
+	
+	<generalDescription>
+
+		<type> In this approach, each individual codifies a rule, and the whole rule set is evolved simultaneously. Thus, rules should
+cooperate among them to get an optimal rule set jointly, and at
+the same time, rules compete against each other to survive in the population.</type>
+
+		<objective>It builds a set of rules by means of a genetic algorithm by means of a coevolutionary approach</objective>
+
+		<howWork>
+CORE evolves a set of rules, which are
+initialized randomly, using as fitness a combination of
+the true positive rate and the false positive rate, together
+with a token competition that reduces the size of the
+rule-set. It uses a specific regeneration operator that re
+initializes those chromosomes that have a fitness below
+the average. For nominal attributes it uses the one-point
+crossover, whereas for the numerical attributes it applies
+a linear combination of the parents.
+
+		</howWork>
+
+		<parameterSpec>
+			<param>popSize: population size (number of rules)</param>
+			<param>popSize: size of the co-population</param>
+			<param>generationLimit: maximum number of possible generations </param>
+			<param>numberOfCopopulations: number of copopulations</param>
+			<param>CrossoverRate: Frequency of crossover application</param>
+			<param>ProbMutation: Mutation probability</param>
+			<param>regenerationProbability: probability of regenerate chromosomes with fitness below the average </param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+		Problem type: Classification
+		Method: CORE
+		Dataset: Wisconsin
+		Parameters: default values
+
+		Input data:
+		Training set: wisconsin-10-1tra.dat
+		Test set: wisconsin-10-1tst.dat
+
+
+		Output data:
+		Training set: result0.tra
+		Test set: result0.tst
+
+		Input data: Training set: wisconsin-10-1tra.dat
+		@relation  wisconsin
+@attribute clumpThickness integer [1, 10]
+@attribute cellSize integer [1, 10]
+@attribute cellShape integer [1, 10]
+@attribute marginalAdhesion integer [1, 10]
+@attribute epithelialSize integer [1, 10]
+@attribute bareNuclei integer [1, 10]
+@attribute blandChromatin integer [1, 10]
+@attribute normalNucleoli integer [1, 10]
+@attribute mitoses integer [1, 10]
+@attribute class {2, 4}
+@data
+2 2
+2 4
+2 2
+2 4
+2 2
+4 4
+2 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 2
+4 4
+4 2
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+4 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 4
+4 2
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+4 2
+4 2
+4 2
+4 4
+4 4
+4 4
+4 4
+4 2
+4 4
+4 2
+4 2
+4 4
+4 2
+2 2
+4 2
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 2
+4 2
+2 2
+4 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 2
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 4
+4 4
+4 4
+2 2
+2 2
+2 4
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+4 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+4 4
+2 2
+4 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 4
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 2
+4 4
+2 2
+4 4
+2 2
+4 2
+4 4
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 4
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+4 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+
+
+
+		Output data: Training set: result0.tra
+		@relation  wisconsin
+@attribute clumpThickness integer [1, 10]
+@attribute cellSize integer [1, 10]
+@attribute cellShape integer [1, 10]
+@attribute marginalAdhesion integer [1, 10]
+@attribute epithelialSize integer [1, 10]
+@attribute bareNuclei integer [1, 10]
+@attribute blandChromatin integer [1, 10]
+@attribute normalNucleoli integer [1, 10]
+@attribute mitoses integer [1, 10]
+@attribute class {2, 4}
+@data
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+4 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 4
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+
+
+
+	</example>
+
+</method>

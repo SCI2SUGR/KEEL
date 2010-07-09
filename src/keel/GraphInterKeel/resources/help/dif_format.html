@@ -1,0 +1,386 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+
+<title>DIF format</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+div.Section2
+	{page:Section2;}
+-->
+</style>
+<!--[if !mso]>
+<style>table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+</style>
+<![endif]-->
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div class="Section1">
+	<h3 style="text-align: center"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; ">DIF 
+	DATA FILE FORMAT</span></b></h3>
+	<p class="MsoBodyText" style="text-align:justify"><b><i>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: #003366">&nbsp;</span></i></b><span lang="EN-GB" style="font-family: Times New Roman; color: black">DIF 
+	(Data Interchange Format) is a text file that is used to import/export 
+	between different spreadsheet programs such as Excel, StarCalc, dBase, and 
+	so on. </span></p>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">This 
+	type of format is stored with the extension &quot;. dif&quot;</span></p>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+	<b>The characteristics of these files are the following</b>:</span></p>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt">
+		<span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN-GB">&nbsp;</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	format consist of a header followed by a data block. The header starts with 
+	a file with ASCII text format.</span></p></li>
+	</ul>
+	<p class="MsoNormal" style="margin-left: 70.9pt">
+	<img border="0" src="imag/dif_img1.gif" width="128" height="272" align="middle"><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">string</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	is any string, it is often the filename or another information. </span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">columns</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	is the number of columns of a excel spreadsheet by means of name. </span>
+		</p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -17.85pt; margin-left: 53.3pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span lang="EN-GB" style="font-family: Courier New; color: black">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span></span><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">rows</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+	indicates the number of rows of a excel spreadsheet by means of name.</span></p>
+	</blockquote>
+	<p class="MsoNormal">
+	<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+	&nbsp;</span></p>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 18.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	header ends with the following:</span></p></li>
+	</ul></div><i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border="0" src="imag/dif_img2.gif" width="92" height="86"><div class="Section1">
+	</p>
+
+	<p class="MsoNormal">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This 
+	header is followed by the cells and records of the spreadsheet with the 
+	information. </span></p>
+	<p class="MsoNormal" style="text-align: justify">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+	<ul>
+		<li>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	structure of the data record has the following format:</span></p></li>
+	</ul>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt"><span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<img border="0" src="imag/dif_img3.gif" width="176" height="86"></span></p>
+	<p class="MsoNormal" style="margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span><span style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">where
+	<b>data-type</b> admits various types: SPECIAL, NUMERIC, and STRING, 
+	represented &nbsp;by -1, 0 and 1 respectively. <br>
+	&nbsp;</span></p><p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 71.4pt">
+	<span lang="EN-GB" style="font-family: Courier New">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span>
+	<span lang="EN-GB" style="font-family: Times New Roman; font-weight:700">
+	SPECIAL type</span></p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img border="0" src="imag/dif_img4.gif" width="80" height="224"></p>
+
+	<p class="MsoNormal" style="margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where BOT and EOD are strings without quotation marks. BOT represents the 
+	start of the table and EOD the end of data section.</span></p>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; margin-left: 71.4pt">
+	<span style="font-family: Courier New">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span></span><span style="font-family: Times New Roman; font-weight:700">NUMERIC type</span></p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img border="0" src="imag/dif_img5.gif" width="176" height="80"></p>
+
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	where value-indicator indicates the data type stored in data:</span></p>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>TRUE:1.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>FALSE: 0.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>V: any numerical value.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>NA: missing value.</span></p>
+		<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 125.4pt; margin-top:0; margin-bottom:0">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>ERROR: 0.</span></p>
+	</blockquote>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; margin-left: 71.4pt">
+	<span style="font-family: Courier New">o<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-style:normal; font-variant:normal; font-size:7.0pt; font-family:Times New Roman; font-weight:700">
+	</span></span><span style="font-family: Times New Roman; font-weight:700">STRING type</span></p></p>
+
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<img border="0" src="imag/dif_img6.gif" width="176" height="80"></span></p>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 70.8pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where string is any text characters.</span></p>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.55pt; margin-bottom: 12.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></div>
+<div class="Section2">
+	<p class="MsoNormal" style="margin-bottom: 12.0pt"><b>
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+	example of a valid DIF file is the following:</span></b><p class="MsoNormal" style="margin-bottom: 12.0pt">&nbsp;</div>
+<div align="center">
+	<table border="1" width="201" id="table11">
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">Month</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">Week</font></span></td>
+			<td width="45"><span lang="EN-GB"><font size="3">Vehicle</font></span></td>
+			<td width="51"><span lang="EN-GB"><font size="3">Quantity</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45"><span lang="EN-GB"><font size="3">Auto</font></span></td>
+			<td width="51"><span lang="EN-GB"><font size="3">105.000</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45">Truck</td>
+			<td width="51"><span lang="EN-GB"><font size="3">1.050</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45">Bus</td>
+			<td width="51"><span lang="EN-GB"><font size="3">1.575</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45">Truck</td>
+			<td width="51"><span lang="EN-GB"><font size="3">2.100</font></span></td>
+		</tr>
+		<tr>
+			<td width="46"><span lang="EN-GB"><font size="3">January</font></span></td>
+			<td width="37"><span lang="EN-GB"><font size="3">1</font></span></td>
+			<td width="45">Motorbike</td>
+			<td width="51"><span lang="EN-GB"><font size="3">583</font></span></td>
+		</tr>
+	</table>
+	<p>&nbsp;</div>
+<p class="MsoNormal" style="margin-bottom: 12.0pt"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The internal format of DIF file generated is the following:</span></b></p>
+<p class="MsoNormal" style="margin-bottom: 12.0pt">&nbsp;</p>
+<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table9">
+	<tr>
+		<td width="185" valign="top" style="width: 138.45pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">TABLE</font></span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><font size="3"><br>
+		0,1<br>
+		&#8221;EXCEL&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">VECTORS</font></span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><font size="3"><br>
+		0,6<br>
+		&#8221;&#8221;<br>
+		<b>TUPLES</b><br>
+		0,4<br>
+		&#8221;&#8221;<br>
+		<b>DATA</b><br>
+		0,0<i><br>
+		</i>&#8221;&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><b><span lang="EN-GB"><font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b><span lang="EN-GB"><font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;Month&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;Wek&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;Vehicle&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;Cantity&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><b><span lang="EN-GB"><font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b><span lang="EN-GB"><font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><span lang="EN-GB"><font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&nbsp;</font></span></b></td>
+		<td width="185" valign="top" style="width: 138.45pt; border-left: medium none; border-right: medium none; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Car&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,105.000</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Truck&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1.050</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Bus&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1.575</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&nbsp;</font></span></b></td>
+		<td width="185" valign="top" style="width: 138.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Truck&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,2.100</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></b></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">BOT</font></span></b></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;January&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,1</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">1,0</font><b><font size="3"> </font></b></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">&#8220;Motorbike&#8221;</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">0,583</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">V</font></span></p>
+		<p class="MsoNormal" align="left">
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">-1,0</font></span></p>
+		<p class="MsoNormal" align="left"><b>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<font size="3">EOD</font></span></b></td>
+	</tr>
+</table>
+<p class="MsoNormal" style="margin-bottom: 12.0pt">&nbsp;</p>
+<![if !mso]><![endif]>&nbsp;<p><b><i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></i></b></p>
+&nbsp;</p>
+
+<p class="MsoNormal" style="margin-bottom: 12.0pt">
+<span style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-left: 36.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+</body>
+
+</html>

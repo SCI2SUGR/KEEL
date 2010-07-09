@@ -1,0 +1,338 @@
+<method>
+
+	<name>SD Algorithm for Subgroup Discovery</name>
+
+	<reference>  
+<ref>Expert-Guided Subgroup Discovery: Methodology and Application. D. Gambergr and N. Lavrac. Journal of Artificial Intelligence Research, 17 (2002) 501-227.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Supervised Descriptive Rule Discovery System</type>
+
+		<objective>To obtain subgroups to describe data</objective>
+
+		<howWork>
+		The goal of the subgroup discovery algorithm SD is to search for rules that maximise Qg = TP/(FP+g), where TP are true positives,
+		FP are false positives and g is a generalization parameter. High quality rules cover many target class examples and a low number
+		of non-target examples. The number of tolerated non-target class cases relative to the number of covered target class cases, is determined 
+		by parameter g.
+		</howWork>
+
+		<parameterSpec>  
+			<param>g: Generalization parameter.</param>
+			<param>minSupp: Minimum support which must satisfy the rules.</param>
+			<param>beamWidth: Width for the beam.</param>
+			<param>numRules: Number of rules for each value of the class.</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>No</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Unspecified 
+Method: SDAlgorithm
+Dataset: car
+Training set: car-10-1tra.dat
+Test set: car-10-1tst.dat
+Parameters: default values
+
+
+CAR-10-1TRA.DAT
+===============
+@relation  car
+@attribute buying{v_high,high,med,low}
+@attribute maint{v_high,high,med,low}
+@attribute doors{2,3,4,5_more}
+@attribute persons{2,4,more}
+@attribute lug_boot{small,med,big}
+@attribute safety{low,med,high}
+@attribute class{unacc,acc,good,v_good}
+@inputs buying,maint,doors,persons,lug_boot,safety
+@outputs class
+@data
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+good good
+v_good v_good
+unacc unacc
+acc good
+good v_good
+unacc unacc
+good good
+v_good v_good
+unacc unacc
+v_good v_good
+
+
+
+
+
+CAR-10-1TST.DAT
+===============
+@relation  car
+@attribute buying{v_high,high,med,low}
+@attribute maint{v_high,high,med,low}
+@attribute doors{2,3,4,5_more}
+@attribute persons{2,4,more}
+@attribute lug_boot{small,med,big}
+@attribute safety{low,med,high}
+@attribute class{unacc,acc,good,v_good}
+@inputs buying,maint,doors,persons,lug_boot,safety
+@outputs class
+@data
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+acc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+acc unacc
+acc unacc
+acc unacc
+acc unacc
+unacc unacc
+acc unacc
+acc unacc
+unacc unacc
+acc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc v_good
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc v_good
+acc v_good
+acc unacc
+acc v_good
+acc unacc
+unacc unacc
+unacc unacc
+unacc good
+acc good
+unacc unacc
+unacc unacc
+unacc v_good
+unacc v_good
+unacc unacc
+unacc unacc
+acc v_good
+acc good
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc v_good
+acc v_good
+acc good
+unacc v_good
+acc v_good
+acc v_good
+acc v_good
+acc v_good
+unacc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc v_good
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc v_good
+unacc unacc
+unacc unacc
+acc v_good
+acc unacc
+acc v_good
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc v_good
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc v_good
+unacc v_good
+acc good
+unacc unacc
+acc good
+unacc unacc
+acc good
+unacc unacc
+unacc v_good
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc v_good
+unacc unacc
+unacc unacc
+good good
+unacc v_good
+unacc unacc
+v_good v_good
+unacc unacc
+acc good
+v_good v_good
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc v_good
+unacc v_good
+unacc unacc
+unacc v_good
+unacc v_good
+acc v_good
+v_good v_good
+unacc v_good
+acc good
+v_good v_good
+unacc v_good
+unacc unacc
+good v_good
+unacc unacc
+good v_good
+unacc unacc
+v_good v_good
+good good
+good v_good
+v_good v_good
+good good
+
+
+
+CAR-10-1-RULES.TXT
+==================
+Rule 1: IF  buying = v_high THEN class -> unacc  
+[  1,00  0,00  0,00  0,00  ]
+
+Rule 2: IF  maint = v_high THEN class -> unacc  
+[  1,00  0,00  0,00  0,00  ]
+
+Rule 3: IF  doors = 2 THEN class -> unacc  
+[  1,00  0,00  0,00  0,00  ]
+
+Rule 4: IF  safety = low THEN class -> unacc  
+[  1,00  0,00  0,00  0,00  ]
+
+Rule 5: IF  persons = 2 THEN class -> unacc  
+[  1,00  0,00  0,00  0,00  ]
+
+Rule 6: IF  buying > v_high AND safety != low THEN class -> good  
+[  0,00  0,14  0,43  0,43  ]
+
+Rule 7: IF  buying > v_high THEN class -> good  
+[  0,30  0,10  0,30  0,30  ]
+
+Rule 8: IF  maint > v_high THEN class -> good  
+[  0,30  0,10  0,30  0,30  ]
+
+Rule 9: IF  doors > 2 THEN class -> good  
+[  0,30  0,10  0,30  0,30  ]
+
+Rule 10: IF  safety > med AND buying != v_high AND lug_boot != small THEN class -> v_good  
+[  0,00  0,00  0,00  1,00  ]
+
+Rule 11: IF  safety > med AND buying != v_high THEN class -> v_good  
+[  0,00  0,00  0,25  0,75  ]
+
+Rule 12: IF  safety > med THEN class -> v_good  
+[  0,50  0,00  0,12  0,38  ]
+
+Rule 13: IF  buying > v_high THEN class -> v_good  
+[  0,30  0,10  0,30  0,30  ]
+
+
+
+####Average results for test data####
+Avg. Rule length: 13,0000
+Avg. Number of attributes by rule: 1,3077
+Avg. Coverage: 0,4347
+Avg. Significance: 12,7846
+Avg. Unusualness: 0,0307
+Avg. Support: 0,7674
+Avg. Confidence: 0,1358
+Accuracy Training: 0,9000
+Accuracy Test: 0,6453
+Time: 0,027
+
+
+
+CAR-10-1-QUAC.TXT
+=================
+#Rule 	 #Vars 	 Cov 	 Sign 	 Unus 	 Acc 	 Supp 	 Cnf
+13,0000	1,3077	0,4347	12,7846	0,0307	0,6453	0,7674	0,1358
+
+</example>
+
+</method>

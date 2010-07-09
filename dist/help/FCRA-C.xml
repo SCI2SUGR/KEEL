@@ -1,0 +1,145 @@
+<method>
+
+	<name>A two-phase data mining technique to discover fuzzy rules for classification problems based on the Apriori algorithm</name>
+
+	<reference>  
+<ref>Yi-Chung Hu, Ruey-Shun Chen and Gwo-Hshiung Tzeng. Finding fuzzy classification rules using data mining techniques. Pattern Recognition Letters 24 (2003) 509-519</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutionary Fuzzy Association Rule Based on Classification System</type>
+
+		<objective>To extract a compact set of good fuzzy association rules from numerical data</objective>
+
+		<howWork>FCRA is a two-phase data mining technique to discover fuzzy rules for classification problems based on the Apriori algorithm. The first phase finds frequent fuzzy grids by dividing each quantitative attribute with a prespecified number of various linguistic values. The second phase generates effective fuzzy classification rules from those frequent fuzzy grids. The fuzzy support and the fuzzy confidence, which have been defined previously, are employed to determine which fuzzy grids are frequent and which rules are effective by comparison with the minimum fuzzy support (min FS) and the minimum fuzzy confidence (min FC), respectively. However, both min FS and min FC are not easily user-specified for each classification problem. To solve this problem, a is thus incorporated into this algorithm to automatically  determine those two parameters. A binary chromosome with sufficiently large length used in this paper is composed of two substrings: one for the min FS, and the other for the min FC. Each generation of the GA can obtain the fitness value of each chromosome, which maximizes the classification accuracy rate and minimizes the number of fuzzy rules. When reaching the termination condition, a chromosome with the maximum fitness value is used to test the performance of the proposed method.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of Generations</param>
+			<param>Population size</param>
+			<param>Length of S and C</param>
+			<param>Weight of the classification accuracy rate (WCAR)</param>
+			<param>Weight of the number of fuzzy rules (WV)</param>
+			<param>Crossover Probability</param>
+			<param>Mutation Probability (per gen)</param>
+			<param>Learning rate n1 (Nozaki method)</param>
+			<param>Learning rate n2 (Nozaki method)</param>
+			<param>Number of iterations Jmax (Nozaki method)</param>
+			<param>Number of Linguistic Values</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-Fuzzy-FCRA
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-Fuzzy-FCRA folder the classification results for the training and test sets:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9733333333333334 N/C=0.0 
+Global Classification Error + N/C:
+0.02666666666666667 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9733333333333334 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9733333333333334 N/C=0.0 
+Global Classification Error + N/C:
+0.02666666666666667 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9733333333333334 
+Global N/C:
+0.0 
+
+We can see also the Data Base and Rule Base generated in the files "result0e0.txt" and "result0e1.txt" 
+respectively in the folder experiment/results/Clas-Fuzzy-FCRA.iris:
+
+@Using Triangular Membership Functions as antecedent fuzzy sets
+
+@Number of Labels in Variable 1: 5
+sepalLength:
+L_0(5): (3.3999999999999995,4.3,5.2)
+L_1(5): (4.3,5.2,6.1)
+L_2(5): (5.2,6.1,7.0)
+L_3(5): (6.1,7.0,7.9)
+L_4(5): (7.0,7.9,8.8)
+
+
+@Number of Labels in Variable 2: 5
+sepalWidth:
+L_0(5): (1.4,2.0,2.6)
+L_1(5): (2.0,2.6,3.2)
+L_2(5): (2.6,3.2,3.8000000000000003)
+L_3(5): (3.2,3.8000000000000003,4.4)
+L_4(5): (3.8000000000000003,4.4,5.0)
+
+
+@Number of Labels in Variable 3: 5
+petalLength:
+L_0(5): (-0.4750000000000001,1.0,2.475)
+L_1(5): (1.0,2.475,3.95)
+L_2(5): (2.475,3.95,5.425000000000001)
+L_3(5): (3.95,5.425000000000001,6.9)
+L_4(5): (5.425000000000001,6.9,8.375)
+
+
+@Number of Labels in Variable 4: 5
+petalWidth:
+L_0(5): (-0.5,0.1,0.7)
+L_1(5): (0.1,0.7,1.3)
+L_2(5): (0.7,1.3,1.9)
+L_3(5): (1.3,1.9,2.5)
+L_4(5): (1.9,2.5,3.1)
+
+
+@Number of rules: 6 Number of Antecedents by rule: 1.0
+
+1: petalLength IS L_0(5): Iris-setosa CF: 1.0
+2: petalLength IS L_2(5): Iris-versicolor CF: 0.2742252046047694
+3: petalLength IS L_3(5): Iris-virginica CF: 0.14144797625711686
+4: petalWidth IS L_0(5): Iris-setosa CF: 1.0
+5: petalWidth IS L_2(5): Iris-versicolor CF: 0.11863055050087025
+6: petalWidth IS L_3(5): Iris-virginica CF: 0.150443961579386
+
+
+@supp and CF:
+
+1: supp: 0.22847457627118653 AND CF: 1.0
+2: supp: 0.22666666666666663 AND CF: 0.2742252046047694
+3: supp: 0.23186440677966108 AND CF: 0.14144797625711686
+4: supp: 0.25333333333333335 AND CF: 1.0
+5: supp: 0.2477777777777777 AND CF: 0.11863055050087025
+6: supp: 0.1988888888888888 AND CF: 0.150443961579386
+
+
+@Minimum Support: 0.1279296875  Minimum Confidence: 0.6513671875
+ 
+</example>
+
+</method>

@@ -1,0 +1,214 @@
+<method>
+
+	<name>Multilayer perceptron for regression problems</name>
+
+	<reference>
+
+	<ref>R. Rojas and J. Feldman, Neural Networks: A Systematic Introduction (Springer, 1996).</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression algorithm based on Neural Networks</type>
+
+		<objective>Use a multilayer Perceptron to aproximate a dataset of examples with minimal error</objective>
+
+		<howWork>This class of networks consists of multiple layers of computational units, usually interconnected in a feed-forward way. Each neuron in one layer has directed connections to the neurons of the subsequent layer. In many applications the units of these networks apply a sigmoid function as an activation function.
+
+We use back-propagation as learning technique. Here the output values are compared with the correct answer to compute the value of some predefined error-function. By various techniques the error is then fed back through the network. Using this information, the algorithm adjusts the weights of each connection in order to reduce the value of the error function by some small amount. After repeating this process for a sufficiently large number of training cycles the network will usually converge to some state where the error of the calculations is small. 
+
+To adjust weights we use a Backpropagation method. It works by the following:
+   1. Present a training sample to the neural network.
+   2. Compare the network's output to the desired output from that sample. Calculate the error in each output neuron.
+   3. For each neuron, calculate what the output should have been, and a scaling factor, how much lower or higher the output must be adjusted to match the desired output. This is the local error.
+   4. Adjust the weights of each neuron to lower the local error.
+   5. Assign "blame" for the local error to neurons at the previous level, giving greater responsibility to neurons connected by stronger weights.
+   6. Repeat the steps above on the neurons at the previous level, using each one's "blame" as its error.
+
+As the algorithm's name implies, the errors (and therefore the learning) propagate backwards from the output nodes to the inner nodes. So technically speaking, backpropagation is used to calculate the gradient of the error of the network with respect to the network's modifiable weights. This gradient is then used in a simple stochastic gradient descent algorithm to find weights that minimize the error. 
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Hidden_layers: The number of hidden layers of the network</param>
+			<param>Hidden_nodes: The number of neurons in each hidden layer of the network</param>
+			<param>Transfer: Transfer function used by the neurons</param>
+			<param>Eta: Eta parameter used by each neuron, momentum term</param>
+			<param>Alpha: Alpha parameter used by each neuron, momentum term</param>
+			<param>Lambda: Lambda parameter used by each neuron, decay term</param>
+			<param>Test_data: if test partition is supplied to the network to evaluate it</param>
+			<param>Validation_data: if validation partition is supplied to the network to evaluate it, instead of training one</param>
+			<param>Cross_validation: Perform a 10-fcv on the train data supplied</param>
+			<param>Cycles: Iterations of the gradient descent algorithm</param>
+			<param>Improve: Minimum improve in crossvalidation training</param>
+			<param>Problem: Type of problem (Classification or Regression)</param>
+			<param>Tipify_inputs: if it is going to be tipified</param>
+			<param>Verbose: Verbose output</param>
+			<param>SaveAll: Save at the end of the output</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Clas-MLPerceptron-Backprop
+Dataset: friedman
+Training set: friedman-10-1tra.dat
+Test set: friedman-10-1tst.dat
+Parameters: default.
+
+
+
+We can also see the output and target classes for each case of the test set in Experiment\Results\Clas-MLPerceptron-Backprop:
+
+@relation  friedman_benchmark_problem
+@attribute input1 real[0.001211673,0.99971881]
+@attribute input2 real[1.60284E-4,0.999677453]
+@attribute input3 real[6.54566E-4,0.999061886]
+@attribute input4 real[2.12289E-4,0.999480216]
+@attribute input5 real[4.29891E-4,0.999539431]
+@attribute output real[0.664014955,28.5903858]
+@inputs input1,input2,input3,input4,input5
+@outputs output
+@data
+0.04908136372633631 0.027080765353800086 
+-0.5304957952906536 -0.3702219519731436 
+-0.23137115777995398 -0.3174084306950971 
+0.060499384412582735 0.34944829839134334 
+-0.2083104441779463 -0.19643926353980457 
+-0.3946558236360769 -0.09384642500560639 
+0.30046555607143355 0.5474738208949409 
+-0.33028369515659484 -0.21276215825987135 
+-2.777186854334701E-4 0.11027349897245071 
+-0.8888235232127957 -0.5709024259048741 
+-0.2046971869967661 -0.3813980307690984 
+-0.2552663743730358 -0.20060738000807687 
+0.06804721012792236 0.43384339552009077 
+0.16801607237268645 0.06758843214360694 
+-0.21184089289064223 -0.05611392187051126 
+-0.2795006282170569 -5.969308963853061E-4 
+-0.4290887168085231 0.008062245997991229 
+-0.20621786149599486 -0.14263924635509143 
+0.11960171278746778 0.3548287678474289 
+0.31461769356876834 0.058629138725710135 
+-0.45695092612740096 -0.11428524834835818 
+-0.04885741948257072 -0.003855878865270202 
+0.34577773096961106 0.5619852094951766 
+-0.34521944539478533 -0.408310971945469 
+-0.10056832699773599 0.07910440103887255 
+0.16597595909351304 -0.023629314376286292 
+0.5418309378251758 0.5810346447190793 
+0.0500538817864431 -0.32843310275833765 
+0.036395662388117866 -0.1551813052805069 
+0.012776251772216307 -0.027148398111447498 
+-0.21215150467933985 -0.18041977263942435 
+0.12880300863167893 0.14613633169378554 
+0.02169483418961593 0.031056141989641226 
+0.09807617825466153 0.08838324782656051 
+0.7021646777461892 0.658272447853226 
+0.1779223162428789 0.2730555830549497 
+0.19391748877994974 0.09018574264867314 
+-0.398078267122575 -0.19194696658974442 
+0.2307397993375031 0.3997515740390616 
+-0.5882690391881458 -0.4649588725529229 
+0.6211936452926523 0.5079513612238151 
+0.44341123570007523 0.5195429037405003 
+0.38209861368042697 0.08384747281226533 
+0.3293745849058962 0.09254170526545863 
+-0.024766960191099585 -0.0734346062057016 
+-0.10487112884287852 -0.3536250277983634 
+0.20778572186149002 0.24819093624750357 
+-0.17463490770313161 -0.15233968245839252 
+-0.15799382166372578 -0.04837949169150445 
+0.7472288691151627 0.6458091856283522 
+-0.6683824926124231 -0.6014056654304547 
+0.09815153140425892 0.039305453545330514 
+-0.1640425911561012 -0.31704336646854164 
+-0.8881752091837194 -0.694562288027521 
+-0.25841524754700007 -0.3042990174460384 
+0.1566255826536489 0.32470480807978325 
+-0.4629834695944718 -0.5794529310409835 
+-0.10120376867751935 -0.1991617850319428 
+-0.10435196292330828 -0.06459607743162422 
+0.058594355639052464 -0.1385372383229786 
+0.1482360671917089 0.1805248156780459 
+-0.8936676024077198 -0.560758491410562 
+-0.3220039791389514 -0.022697401994196374 
+0.7352473530829815 0.4077048088065099 
+-0.1035606205708538 -0.10123605709014334 
+0.2919392029222334 0.10494418606061051 
+0.05282351484865844 0.38921625209391575 
+0.6304574956309543 0.5398872186004406 
+0.7620456772960968 0.7137210808402097 
+-0.19807591132058533 -0.08596514373132431 
+-0.14043356785481376 0.016372546076764603 
+-0.06331358216266647 -0.2141549533508849 
+0.1176686309595556 -0.17110062942677462 
+-0.17274823219157176 -0.08445486856180341 
+-0.3071353582821763 -0.40913491793787204 
+0.03195615534697316 0.16089104867272727 
+0.7296347347850312 0.5657553475312204 
+-0.19842245688691462 -0.19555123434739832 
+0.14084148945920805 0.525562273811699 
+0.020362906020128912 -0.006161426732137156 
+-0.3106336166324013 -0.586896827463361 
+0.1469750669638077 0.26971314344462854 
+0.37523373456440967 0.1262687350905483 
+0.08682890513982211 -0.0755430054186022 
+0.12119921216350926 0.04663484237289875 
+-0.2515804224614421 -0.15281316036711137 
+0.7219064058446938 0.6257663061374278 
+0.014709894360424913 0.31592911243671823 
+-0.14422716139362357 -0.17295481969917192 
+-0.4605723621013528 -0.4098593877825454 
+-0.34437281143252685 -0.473321541208579 
+-0.9787109942319466 -0.7194456412026169 
+0.09046073902768881 -0.11917546403850653 
+-0.2226130043715674 -0.23841893881731144 
+0.0700319234409279 0.127957306052759 
+-0.19657527451272383 -0.08620784309642951 
+0.06715486360218459 -0.15651759221061365 
+-0.008814047352095233 0.07972737229473205 
+0.39448211176972214 0.3537694801813817 
+0.7066702119847179 0.6351044987594526 
+0.5746949051875629 0.47374708541741234 
+0.10317498972537908 -0.15064455630152768 
+0.46443266176572173 0.6779774350982434 
+0.5083931923629081 0.6405857628062585 
+-0.5381541799474732 -0.5422156183531566 
+0.06592254307650625 -0.0774621143731925 
+-0.45512267431898024 -0.6535203815700948 
+0.36417554867573765 0.042596960595479426 
+-0.04583485487979799 -0.07009407925082918 
+-0.05921058286368974 -0.13155749612196388 
+0.5491027455773227 0.504524453871329 
+-0.07069899722947692 0.04094311897359608 
+0.2207672138717527 0.4558787369444438 
+-0.06080111248340048 -0.2117476491418276 
+0.4745562586186447 0.5943164505749207 
+-0.11871304343126143 0.13012251490592142 
+0.09110816006568712 0.34873209731277965 
+0.5167058213575046 0.4981210389941922 
+-0.0061906774768392125 -0.14869852649822873 
+0.15307858614093384 -0.14429620030806536 
+
+</example>
+
+</method>

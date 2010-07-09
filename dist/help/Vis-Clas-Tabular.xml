@@ -1,0 +1,187 @@
+<method>
+
+	<name>StatTabularCL</name>
+
+	<reference>  
+
+<ref>Test de Wilconxon, http://www.fon.hum.uva.nl/Service/Statistics/Wilcoxon_Test.html</ref>
+<ref>Test de Mann-Whitney, http://www.fact-index.com/m/ma/mann_whitney_u.html</ref>
+<ref>Wilcoxon signed ranks, http://faculty.vassar.edu/lowry/ch12a.html</ref>
+<ref>A. Mart&#xED;nez, C. Rodr&#xED;guez and R. Guti&#xE9;rrez, Inferencia Estad&#xED;stica, un enfoque cl&#xE1;sico,  Ed. Piramide.</ref>
+<ref>J.P. Royston, Algorithm AS 181, Applied Statistics 31(2):176-180, 1982</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical method for comparing  classification methods  performance.</type>
+
+		<objective>Statistical comparing of the performance of a classification model method. Statistical tests, like Wilcoxon signed ranks or Mann-Whitney u, are executed for comparing methods purposes.</objective>
+
+		<howWork>
+StatTabularCL is a method for comparing the performance of classification algorithms using statistics techniques. It can be used in k-folds and 5x2 cross validation training  experiments.
+StatTabularCL is associated to the training and testing results of all of the models in an experiment that are to be compared. Once those models has been trained and tested, the StatGeneralCL takes place. 
+The process calculates the percentage of correctly classified examples for each of the partitions results. The statistical sample includes all of those error measures for each method to be compared.  
+With the Royston implementation of the W test it is contrasted if error distributions are  normal for the samples to be compare. If the distributions are normal, then if the samples are of equal variance the t test is executed. If distributions are normal but they have different variances then the tvar test. Finally, if the samples are not normal, then the Wilcoxon test is executed. 
+The statistical test are executed in order to find evidence to assert that the error distribution of the different classification methods are different or not. If they are different, then it can be stated which one is  of better performance.
+</howWork>
+
+		<parameterSpec>  
+		Parameters:
+<param>Classification rate by algorithm and fold: YES or NO, this table is produced or not.</param>
+<param>Header size in previous table: number of lines in the title of each column. Null value means no header at all.</param>
+<param>Data used in previous table: TEST-TRAIN or ONLY-TEST, a table for test data and train data has to be produced or only for test data.</param>
+<param>Classification rate by algorithm, fold and class: YES or NO, this table is produced or not.</param>
+<param>Header size in previous table: number of lines in the title of each column. Null value means no header at all.</param>
+<param>Data used in previous table: TEST-TRAIN or ONLY-TEST, a table for test data and train data has to be produced or only for test data.</param>
+<param>Global Average and Variance: YES or NO, this table is produced or not.</param>
+<param>Header size in previous table: number of lines in the title of each column. Null value means no header at all.</param>
+<param>Data used in previous table: TEST-TRAIN or ONLY-TEST, a table for test data and train data has to be produced or only for test data.</param>
+<param>Confusion Matrix: YES or NO, this table is produced or not.</param>
+<param>Data used in previous table: TEST-TRAIN or ONLY-TEST, a table for test data and train data has to be produced or only for test data.</param>
+
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Methods to compare: ClasifADLinear vs ClasifADCuadratic
+Dataset: pima
+Type of partitions: k-fold, k=10
+
+After the execution of RunKeel.jar we can see into the ./results/StatTabularCL/TSTClasifADLinearvsClasifADQuadratic/ folder the classification results for the tested classification method. There are the following files: pima_ByFoldByClassifier_s0.stat, pima_ByFoldByClassifierByClass_s0.stat, pima_ClasifADLinear_ConfussionMatrix_s0.stat, pima_ClasifADQuadratic_ConfussionMatrix_s0.stat, and Summary_s0.stat.
+
+File  pima_ByFoldByClassifier_s0.stat
+------------------------------------------------------
+Table: Classification rate by algorithm and by fold
+Dataset used: pima
+------------------------------------------------------
+
+TEST RESULTS
+
+pima,ClasifADLinear,ClasifADLinear,ClasifADQuadratic,ClasifADQuadratic
+,Correctly Classified,Not Classified,Correctly Classified,Not Classified
+Fold0,0.6753246753,0.0000000000,0.6623376623,0.0000000000
+Fold1,0.7564102564,0.0000000000,0.6923076923,0.0000000000
+Fold2,0.7763157895,0.0000000000,0.7894736842,0.0000000000
+Fold3,0.7662337662,0.0000000000,0.6753246753,0.0000000000
+Fold4,0.8311688312,0.0000000000,0.7272727273,0.0000000000
+Fold5,0.8289473684,0.0000000000,0.8157894737,0.0000000000
+Fold6,0.7532467532,0.0000000000,0.7402597403,0.0000000000
+Fold7,0.8157894737,0.0000000000,0.8421052632,0.0000000000
+Fold8,0.7532467532,0.0000000000,0.7142857143,0.0000000000
+Fold9,0.7532467532,0.0000000000,0.7792207792,0.0000000000
+
+TRAIN RESULTS
+
+pima,ClasifADLinear,ClasifADLinear,ClasifADQuadratic,ClasifADQuadratic
+,Correctly Classified,Not Classified,Correctly Classified,Not Classified
+Fold0,0.7829232996,0.0000000000,0.7727930535,0.0000000000
+Fold1,0.7826086957,0.0000000000,0.7695652174,0.0000000000
+Fold2,0.7702312139,0.0000000000,0.7586705202,0.0000000000
+Fold3,0.7800289436,0.0000000000,0.7713458755,0.0000000000
+Fold4,0.7698986975,0.0000000000,0.7655571635,0.0000000000
+Fold5,0.7774566474,0.0000000000,0.7514450867,0.0000000000
+Fold6,0.7829232996,0.0000000000,0.7670043415,0.0000000000
+Fold7,0.7789017341,0.0000000000,0.7673410405,0.0000000000
+Fold8,0.7843704776,0.0000000000,0.7510853835,0.0000000000
+Fold9,0.7814761216,0.0000000000,0.7597684515,0.0000000000
+
+
+
+File pima_ByFoldByClassifierByClass_s0.stat:
+--------------------------------------------------------------
+Table: Classification rate by fold, by algorithm and by class
+Dataset used: pima
+--------------------------------------------------------------
+
+TEST RESULTS
+
+pima,ClasifADLinear,ClasifADLinear,ClasifADQuadratic,ClasifADQuadratic
+,tested_negative,tested_positive,tested_negative,tested_positive
+Fold0,0.8400000000,0.3703703704,0.8400000000,0.3333333333
+Fold1,0.8600000000,0.5714285714,0.7800000000,0.5357142857
+Fold2,0.9200000000,0.5000000000,0.8800000000,0.6153846154
+Fold3,0.9600000000,0.4074074074,0.8400000000,0.3703703704
+Fold4,0.8600000000,0.7777777778,0.8000000000,0.5925925926
+Fold5,0.8600000000,0.7692307692,0.8600000000,0.7307692308
+Fold6,0.8800000000,0.5185185185,0.8600000000,0.5185185185
+Fold7,0.9400000000,0.5769230769,0.9000000000,0.7307692308
+Fold8,0.8800000000,0.5185185185,0.8400000000,0.4814814815
+Fold9,0.8000000000,0.6666666667,0.8400000000,0.6666666667
+
+TRAIN RESULTS
+
+pima,ClasifADLinear,ClasifADLinear,ClasifADQuadratic,ClasifADQuadratic
+,tested_negative,tested_positive,tested_negative,tested_positive
+Fold0,0.8888888889,0.5850622407,0.8711111111,0.5892116183
+Fold1,0.8933333333,0.5750000000,0.8733333333,0.5750000000
+Fold2,0.8822222222,0.5619834711,0.8555555556,0.5785123967
+Fold3,0.8800000000,0.5933609959,0.8622222222,0.6016597510
+Fold4,0.8844444444,0.5560165975,0.8666666667,0.5767634855
+Fold5,0.8933333333,0.5619834711,0.8533333333,0.5619834711
+Fold6,0.8933333333,0.5767634855,0.8666666667,0.5809128631
+Fold7,0.8888888889,0.5743801653,0.8688888889,0.5785123967
+Fold8,0.8911111111,0.5850622407,0.8422222222,0.5809128631
+Fold9,0.9000000000,0.5601659751,0.8666666667,0.5601659751
+
+
+
+File pima_ClasifADLinear_ConfussionMatrix_s0.stat:
+---------------------------------------------------------
+CONFUSSION MATRIX. ALGORITHM: ClasifADLinear
+---------------------------------------------------------
+
+TEST RESULTS
+,tested_negative,tested_positive
+tested_negative,440,60
+tested_positive,116,152
+
+TRAIN RESULTS
+,tested_negative,tested_positive
+tested_negative,4003,497
+tested_positive,1030,1382
+
+
+
+
+File pima_ClasifADQuadratic_ConfussionMatrix_s0.stat:
+---------------------------------------------------------
+CONFUSSION MATRIX. ALGORITHM: ClasifADQuadratic
+---------------------------------------------------------
+
+TEST RESULTS
+,tested_negative,tested_positive
+tested_negative,422,78
+tested_positive,119,149
+
+TRAIN RESULTS
+,tested_negative,tested_positive
+tested_negative,3882,618
+tested_positive,1017,1395
+
+
+
+File Summary_s0.stat:
+------------------------------------------------------
+Global Average and Variance
+------------------------------------------------------
+
+
+TEST RESULTS
+
+Dataset,ClasifADLinear,ClasifADLinear,ClasifADLinear,ClasifADQuadratic,ClasifADQuadratic,ClasifADQuadratic
+,Average (Correctly Classified),Variance (Correctly Classified),Not Classified,Average (Correctly Classified),Variance (Correctly Classified),Not Classified
+pima,0.7709930420,0.0019347419,0.0000000000,0.7438377412,0.0033320329,0.0000000000
+
+TRAIN RESULTS
+
+Dataset,ClasifADLinear,ClasifADLinear,ClasifADLinear,ClasifADQuadratic,ClasifADQuadratic,ClasifADQuadratic
+,Average (Correctly Classified),Variance (Correctly Classified),Not Classified,Average (Correctly Classified),Variance (Correctly Classified),Not Classified
+pima,0.7790819130,0.0000241889,0.0000000000,0.7634576134,0.0000552645,0.0000000000
+</example>
+
+</method>

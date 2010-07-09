@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  author Written by Ana Palacios Jimenez (University of Oviedo) 05/04/2010
+-->
+
+<algorithm_specification>
+  <name>Fuzzy_SMOTE</name>
+  <nParameters>4</nParameters>
+  <seed>0</seed>
+  <nOutput>0</nOutput>
+  <dataset0>100boost</dataset0>
+  <cost_instances>No</cost_instances>
+  <fuzzy>Yes</fuzzy>
+  <parameter>
+    <name>NP</name>
+    <type>Integer</type>
+    <default>[-1]</default>
+  </parameter>
+  <parameter>
+    <name>MP</name>
+    <type>Integer</type>
+    <default>[-1]</default>
+  </parameter>
+  <parameter>
+    <name>k</name>
+    <type>Integer</type>
+    <default>3</default>
+  </parameter>
+<parameter>
+    <name>Files</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+</algorithm_specification>

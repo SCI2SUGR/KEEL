@@ -1,0 +1,134 @@
+<algorithm_specification>
+  <name>Complexity_Metrics_Library</name>
+  <nParameters>13</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+
+  <parameter>
+    <name>seed</name>
+    <type>real</type>
+    <default>1</default>
+  </parameter>
+
+  <parameter>
+    <name>runF1</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runF2</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runF3</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runN1</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runN2</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runN3</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runN4</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runL1</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runL2</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runL3</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runT1</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+  <parameter>
+    <name>runT2</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+
+
+</algorithm_specification>

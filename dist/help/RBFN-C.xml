@@ -1,0 +1,110 @@
+<method>
+
+	<name>Radial Basis Function Neural Network for Classification Problems</name>
+
+	<reference>  
+
+		<ref>D.S. Broomhead, D. Lowe. Multivariable Functional Interpolation and Adaptative Networks. Complex Systems 11 (1988) 321-355</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by means of a Radial Basis Function Neural network</type>
+
+		<objective>Builds a Radial Basis Function Neural Network composed of one hidden layer and one output layer. This hidden layer contains neurons, each one being activated when the input to the network falls close to a point that is considered the centre of that neuron. The final result of the network is provided by the neurons of the output layer, that perform a weighted sum using the outputs coming from hidden neurons.
+</objective>
+
+<howWork>The network output depends on the values yielded by every hidden neuron as well as the weight of the link connecting every hidden neuron with every output neuron. 
+	
+The output of every hidden neuron is the output of its function activation, and this function depends on the centre of the neuron and a parameter call radius. Thus, the value provided by the neuron changes depending on the distance from the system input to the neuron centre, and according to the radius value. This way, one function can get its maximum when the input is equal to the centre, but another function can reach minimum at the same point. Although many functions can be used as activation function for hidden neurons, the most commonly used is the Gaussian function.
+	
+In order to build the network, the algorithm needs to know hay many neurons will form the hidden layer. Then, it chooses such number of points from the training set by K-Means clustering to be the centres of the neurons; finally, it establishes a single radius for all the neurons as half the average distance between the set of centres. 
+	
+Once fixed the centres and radii of the network, the set of weights can be analytically computed using any method suitable to find the values that minimize the mean square error, typically Singular Value Decomposition or Least Mean Square (as in this implementation). Thus, the centers and radius are adjusted by means of delta-rule.
+</howWork>
+
+		<parameterSpec>  
+
+			<param>neurons:  an integer indicating the number of hidden neurons the network will have. This number must change from one problem to other, thus the default value, set to 50, can be inadequate for many problems, as any other value would be.
+			</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+		Problem type: Classification 
+		Method: RBFN for classification
+		Dataset: zoo
+		Training set: zoo-10-1tra.dat
+		Test set: zoo-10-1tst.dat
+		Test Show results: StatChekCL
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+		Classifier= zoo 
+		Fold 0 : CORRECT=0.75 N/C=0.0 
+		Global Classification Error + N/C:
+		0.25 
+		stddev Global Classification Error + N/C:
+		0.0 
+		Correctly classified:
+		0.75 Global N/C:
+		0.0 
+
+		We can see too the output and target classes for each case of the test set in Experiment\Results\Clas-RBFN:
+		
+		@relation zoo
+		@attribute hair{0,1}
+		@attribute feathers{0,1}
+		@attribute eggs{0,1}
+		@attribute milk{0,1}
+		@attribute airborne{0,1}
+		@attribute aquatic{0,1}
+		@attribute predator{0,1}
+		@attribute toothed{0,1}
+		@attribute backbone{0,1}
+		@attribute breathes{0,1}
+		@attribute venomous{0,1}
+		@attribute fins{0,1}
+		@attribute legs{0,2,4,5,6,8}
+		@attribute tail{0,1}
+		@attribute domestic{0,1}
+		@attribute catsize{0,1}
+		@attribute type{1,2,3,4,5,6,7}
+		@inputs hair,feathers,eggs,milk,airborne,aquatic,predator,toothed,backbone,breathes,venomous,fins,legs,tail,domestic,catsize
+		@outputs type
+		@data
+		1 2
+		1 1
+		1 1
+		1 1
+		4 4
+		7 7
+		2 2
+		2 2
+		6 6
+		6 6
+		5 3
+		5 3
+</example>
+
+</method>

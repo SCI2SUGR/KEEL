@@ -1,0 +1,118 @@
+<method>
+
+	<name>
+        Real Encoding - Particle Swarm Optimization
+    </name>
+
+	<reference>
+    <ref>
+    Yu Liu, Zheng Qin, Zhewen Shi and Junying Chen
+	Rule Discovery with Particle Swarm Optimization
+    School of Software, Tsinghua University, Beijing 100084, P.R. China
+	</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>
+            PSO-based classifier
+        </type>
+        
+		<objective> 
+            To perform a classification task by means of a PSO-based algorithm.
+        </objective>
+
+		<howWork>
+            This methods is a PSO algorithm whose uses a real enconding approach.
+		</howWork>
+        
+		<parameterSpec>  
+  			<param>     1st parameter: seed of the random numbers generator</param>
+            <param>     2nd parameter: Number of particles</param>
+            <param>     3rd parameter: Maximun uncovered instances</param>
+            <param>     4th parameter: Constriction coefficient</param>
+            <param>     5th parameter: ConvergencePlatformWidth</param>
+            <param>     6th parameter: vmax</param>
+            <param>     7th parameter: vmin</param>
+            <param>     8th parameter: w1</param>
+            <param>     9th parameter: w2</param>
+            <param>     10th parameter: w3</param>
+            <param>     11th parameter: interesting</param>
+            <param>     12th parameter: wmax</param>
+            <param>     13th parameter: wmin</param>
+            <param>     14th parameter: maximal interations</param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+        
+	</generalDescription>
+
+	<example>
+
+        Problem type: Classification
+        Method: Clas-REPSO
+        Dataset: iris (10 fold cross validation run)
+        Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+        Test set: iris-10-1tst.dat to iris-10-10tst.dat
+        Test Show results: Vis-Clas-Check
+        Parameters: default values
+		
+        After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-REPSO
+        folder the classification results for the test set:
+        
+        
+        TEST RESULTS
+        ============
+        Classifier= 
+        Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 2 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+        Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+        Fold 5 : CORRECT=1.0 N/C=0.0 
+        Fold 6 : CORRECT=1.0 N/C=0.0 
+        Fold 7 : CORRECT=0.8666666666666667 N/C=0.0 
+        Fold 8 : CORRECT=1.0 N/C=0.0 
+        Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+        Global Classification Error + N/C:
+        0.06 
+        stddev Global Classification Error + N/C:
+        0.04666666666666666 
+        Correctly classified:
+        0.94 
+        Global N/C:
+        0.0 
+
+        TRAIN RESULTS
+        ============
+        Classifier= 
+        Summary of data, Classifiers: 
+        Fold 0 : CORRECT=0.962962962962963 N/C=0.0 
+        Fold 1 : CORRECT=0.962962962962963 N/C=0.0 
+        Fold 2 : CORRECT=0.962962962962963 N/C=0.0 
+        Fold 3 : CORRECT=0.9703703703703703 N/C=0.0 
+        Fold 4 : CORRECT=0.962962962962963 N/C=0.0 
+        Fold 5 : CORRECT=0.9555555555555556 N/C=0.0 
+        Fold 6 : CORRECT=0.9555555555555556 N/C=0.0 
+        Fold 7 : CORRECT=0.962962962962963 N/C=0.0 
+        Fold 8 : CORRECT=0.9555555555555556 N/C=0.0 
+        Fold 9 : CORRECT=0.9851851851851852 N/C=0.0 
+        Global Classification Error + N/C:
+        0.0362962962962963 
+        stddev Global Classification Error + N/C:
+        0.008413197549333732 
+        Correctly classified:
+        0.9637037037037037 
+        Global N/C:
+        0.0
+                    
+    </example>
+		
+</method>

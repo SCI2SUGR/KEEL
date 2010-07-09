@@ -1,0 +1,278 @@
+<method>
+
+	<name>Hybrid Fuzzy GBML</name>
+
+	<reference>  
+<ref>H. Ishibuchi, T. Yamamoto and T. Nakashima. Hybridization of Fuzzy GBML Approaches 
+for Pattern Classification Problems. IEEE Transactions on Systems, Man and Cybernetics - Part B: Cybernetics
+35:2 (2005) 359-365</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutionary Fuzzy Rule Based Classification System</type>
+
+		<objective>To obtain a Fuzzy Rule Base that better suits the training data</objective>
+
+		<howWork>This process includes a combination between the Pittsburgh and Michigan approches in order
+		to build a Fuzzy Rule Base for a classification problem. Firstly a population of rule sets is generated
+		(Pittsburgh approach) and one iteration is run including selection, crossover and mutation. Then a 
+		pre-specified probability is applied to each rule set in order to perform a single Michigan iteration
+		for the whole rule set. Those new rules generated in the michigan search step replace the rule set and
+		finally all the rules sets generated during the Pittsburgh process replace the whole population by an 
+		elitist approach (the best rule set is mantained).
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of Fuzzy Rules: Number of rules in a single rule set (size of the population in the Michigan approach)</param>
+			<param>Number of Rule Sets: Number of rule sets considered (size of the population in the Pittsburgh approach)</param>
+			<param>Crossover probability: Probality to cross and individual (both in the Pittsburgh and Michigan approaches)</param>
+			<param>Number of Generations: Number of generations applied to the Pittsburgh process</param>
+			<param>Do not Care Probability: Probality to set a Do not Care Fuzzy Partition in the initial population</param>
+			<param>Probability for a Michigan Iteration: Probability to perform a single run of the Michigan approach on a rule set</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-Fuzzy-Ishib-Hybrid
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-Fuzzy-Ishib-Hybrid folder the classification results for the training and test sets:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+...
+Global Classification Error + N/C:
+0.05333333333333333 
+stddev Global Classification Error + N/C:
+0.049888765156985884 
+Correctly classified:
+0.9466666666666667 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9777777777777777 N/C=0.0 
+...
+Global Classification Error + N/C:
+0.017777777777777774 
+stddev Global Classification Error + N/C:
+0.0036288736930121337 
+Correctly classified:
+0.9822222222222222 
+Global N/C:
+0.0 
+
+We can see also the Data Base and Rule Base generated in the files "result0e0.txt" and "result0e1.txt" 
+respectively in the folder experiment/results/Clas-Fuzzy-Ishib-Hybrid/iris/:
+
+Particion[2]: 
+
+Variable 1:
+ Label 1: (0.6999999999999993,4.3,7.9)
+ Label 2: (4.3,7.9,11.5)
+
+Variable 2:
+ Label 1: (-0.40000000000000036,2.0,4.4)
+ Label 2: (2.0,4.4,6.800000000000001)
+
+Variable 3:
+ Label 1: (-4.9,1.0,6.9)
+ Label 2: (1.0,6.9,12.8)
+
+Variable 4:
+ Label 1: (-2.3,0.1,2.5)
+ Label 2: (0.1,2.5,4.8999999999999995)
+
+
+Particion[3]: 
+
+Variable 1:
+ Label 1: (2.4999999999999996,4.3,6.1)
+ Label 2: (4.3,6.1,7.9)
+ Label 3: (6.1,7.9,9.7)
+
+Variable 2:
+ Label 1: (0.7999999999999998,2.0,3.2)
+ Label 2: (2.0,3.2,4.4)
+ Label 3: (3.2,4.4,5.6000000000000005)
+
+Variable 3:
+ Label 1: (-1.9500000000000002,1.0,3.95)
+ Label 2: (1.0,3.95,6.9)
+ Label 3: (3.95,6.9,9.850000000000001)
+
+Variable 4:
+ Label 1: (-1.0999999999999999,0.1,1.3)
+ Label 2: (0.1,1.3,2.5)
+ Label 3: (1.3,2.5,3.6999999999999997)
+
+
+Particion[4]: 
+
+Variable 1:
+ Label 1: (3.0999999999999996,4.3,5.5)
+ Label 2: (4.3,5.5,6.7)
+ Label 3: (5.5,6.7,7.9)
+ Label 4: (6.7,7.9,9.100000000000001)
+
+Variable 2:
+ Label 1: (1.1999999999999997,2.0,2.8000000000000003)
+ Label 2: (2.0,2.8000000000000003,3.6000000000000005)
+ Label 3: (2.8000000000000003,3.6000000000000005,4.4)
+ Label 4: (3.6000000000000005,4.4,5.200000000000001)
+
+Variable 3:
+ Label 1: (-0.9666666666666668,1.0,2.966666666666667)
+ Label 2: (1.0,2.966666666666667,4.933333333333334)
+ Label 3: (2.966666666666667,4.933333333333334,6.9)
+ Label 4: (4.933333333333334,6.9,8.866666666666667)
+
+Variable 4:
+ Label 1: (-0.7,0.1,0.8999999999999999)
+ Label 2: (0.1,0.8999999999999999,1.7)
+ Label 3: (0.8999999999999999,1.7,2.5)
+ Label 4: (1.7,2.5,3.3)
+
+
+Particion[5]: 
+
+Variable 1:
+ Label 1: (3.3999999999999995,4.3,5.2)
+ Label 2: (4.3,5.2,6.1)
+ Label 3: (5.2,6.1,7.0)
+ Label 4: (6.1,7.0,7.9)
+ Label 5: (7.0,7.9,8.8)
+
+Variable 2:
+ Label 1: (1.4,2.0,2.6)
+ Label 2: (2.0,2.6,3.2)
+ Label 3: (2.6,3.2,3.8000000000000003)
+ Label 4: (3.2,3.8000000000000003,4.4)
+ Label 5: (3.8000000000000003,4.4,5.0)
+
+Variable 3:
+ Label 1: (-0.4750000000000001,1.0,2.475)
+ Label 2: (1.0,2.475,3.95)
+ Label 3: (2.475,3.95,5.425000000000001)
+ Label 4: (3.95,5.425000000000001,6.9)
+ Label 5: (5.425000000000001,6.9,8.375)
+
+Variable 4:
+ Label 1: (-0.5,0.1,0.7)
+ Label 2: (0.1,0.7,1.3)
+ Label 3: (0.7,1.3,1.9)
+ Label 4: (1.3,1.9,2.5)
+ Label 5: (1.9,2.5,3.1)
+
+ + Don't Care
+
+
+Number of rules: 14
+
+L1: 	4.3	6.1	7.9
+L1: 	2.0	4.4	6.800000000000001
+L1: 	1.0	6.9	12.8
+L2: 	0.8999999999999999	1.7	2.5
+Class: 2 with RW: 0.06227264832736687
+
+L1: 	4.3	7.9	11.5
+L2: 	2.6	3.2	3.8000000000000003
+L2: 	2.475	3.95	5.425000000000001
+L1: 	0.1	2.5	4.8999999999999995
+Class: 1 with RW: 0.5895260529170859
+
+L4: 	7.0	7.9	8.8
+L3: 	3.2	3.8000000000000003	4.4
+L1: 	1.0	6.9	12.8
+D.C.: 	0.1	0.1	2.5
+Class: 2 with RW: 1.0
+
+L2: 	5.5	6.7	7.9
+L3: 	3.2	3.8000000000000003	4.4
+D.C.: 	1.0	1.0	6.9
+D.C.: 	0.1	0.1	2.5
+Class: 2 with RW: 0.2758620689655166
+
+L4: 	7.0	7.9	8.8
+L2: 	2.8000000000000003	3.6000000000000005	4.4
+L2: 	3.95	6.9	9.850000000000001
+L4: 	1.9	2.5	3.1
+Class: 2 with RW: 1.0
+
+L0: 	3.0999999999999996	4.3	5.5
+L2: 	3.2	4.4	5.6000000000000005
+L1: 	1.0	3.95	6.9
+L1: 	0.1	0.7	1.3
+Class: 0 with RW: 1.0
+
+D.C.: 	4.3	4.3	7.9
+D.C.: 	2.0	2.0	4.4
+L0: 	-0.4750000000000001	1.0	2.475
+L0: 	-1.0999999999999999	0.1	1.3
+Class: 0 with RW: 1.0
+
+D.C.: 	4.3	4.3	7.9
+L3: 	3.6000000000000005	4.4	5.200000000000001
+L1: 	1.0	2.966666666666667	4.933333333333334
+L0: 	-2.3	0.1	2.5
+Class: 0 with RW: 1.0
+
+D.C.: 	4.3	4.3	7.9
+L0: 	0.7999999999999998	2.0	3.2
+L2: 	2.475	3.95	5.425000000000001
+L1: 	0.1	0.8999999999999999	1.7
+Class: 1 with RW: 0.9795254893823061
+
+L1: 	4.3	7.9	11.5
+L1: 	2.0	2.8000000000000003	3.6000000000000005
+D.C.: 	1.0	1.0	6.9
+L3: 	1.7	2.5	3.3
+Class: 2 with RW: 0.9928045421327789
+
+L2: 	6.1	7.9	9.7
+L3: 	3.2	3.8000000000000003	4.4
+L1: 	1.0	3.95	6.9
+L0: 	-2.3	0.1	2.5
+Class: 2 with RW: 0.8055009823182717
+
+L0: 	2.4999999999999996	4.3	6.1
+L2: 	2.6	3.2	3.8000000000000003
+L2: 	2.475	3.95	5.425000000000001
+L1: 	0.1	2.5	4.8999999999999995
+Class: 1 with RW: 0.7820368590071385
+
+L0: 	3.0999999999999996	4.3	5.5
+L0: 	1.1999999999999997	2.0	2.8000000000000003
+L1: 	1.0	6.9	12.8
+L0: 	-1.0999999999999999	0.1	1.3
+Class: 1 with RW: 0.6411912450663795
+
+L2: 	5.2	6.1	7.0
+L0: 	1.4	2.0	2.6
+L1: 	1.0	2.966666666666667	4.933333333333334
+L1: 	0.1	0.8999999999999999	1.7
+Class: 1 with RW: 1.0
+
+</example>
+
+</method>

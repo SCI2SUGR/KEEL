@@ -1,0 +1,43 @@
+<algorithm_specification>
+  <name>MSE</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Number of Neighbors</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+   <parameter>
+    <name>Number of Initial Centroid</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>Gradient Step</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>   
+  </parameter>
+    <parameter>
+    <name>Initial Temperature</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>200</upperB>
+    </domain>
+    <default>100</default>   
+  </parameter>
+  
+</algorithm_specification>

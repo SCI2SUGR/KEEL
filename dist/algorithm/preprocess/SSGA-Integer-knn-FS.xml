@@ -1,0 +1,38 @@
+<algorithm_specification>
+  <name>Steady-state GA with integer coding scheme for wrapper feature selection with k-nn</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>paramKNN</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>7</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>nEval</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1000</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>5000</default>
+  </parameter>
+  <parameter>
+    <name>popLength</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>20</lowerB>
+      <upperB>500</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>numberOfFeatures</name>
+    <type>integer</type>
+    <default>3</default>
+  </parameter>
+</algorithm_specification>

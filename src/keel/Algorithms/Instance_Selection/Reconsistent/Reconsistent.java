@@ -1,0 +1,332 @@
+//
+//  Reconsistent.java
+//
+//  Salvador Garc�a L�pez
+//
+//  Created by Salvador Garc�a L�pez 7-5-2008.
+//  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
+//
+
+package keel.Algorithms.Instance_Selection.Reconsistent;
+
+import keel.Algorithms.Preprocess.Basic.*;
+
+import java.util.StringTokenizer;
+import java.util.Vector;
+import java.util.Arrays;
+import org.core.*;
+
+public class Reconsistent extends Metodo {
+
+  public Reconsistent (String ficheroScript) {
+    super (ficheroScript);
+  }
+
+  public void ejecutar () {
+
+    int i, j, l;
+    boolean marcas[];
+    boolean marcas2[];
+    boolean marcastmp[];
+    boolean incorrect[];
+    int nSel;
+    double conjS[][];
+    double conjR[][];
+    int conjN[][];
+    boolean conjM[][];
+    int clasesS[];
+    Vector <Integer> vecinos[];
+    int next;
+    int maxneigh;
+    int pos;
+    int borrado;
+    int claseObt;
+    int nClases;
+
+    long tiempo = System.currentTimeMillis();
+    
+    /*Getting the number of differents classes*/
+    nClases = 0;
+    for (i=0; i<clasesTrain.length; i++)
+      if (clasesTrain[i] > nClases)
+        nClases = clasesTrain[i];
+    nClases++;    
+
+    /*Inicialization of the flagged instances vector for a posterior copy*/
+    marcas = new boolean[datosTrain.length];
+    marcas2 = new boolean[datosTrain.length];
+    incorrect = new boolean[datosTrain.length];
+    marcastmp = new boolean[datosTrain.length];
+    Arrays.fill(marcas, true);
+    Arrays.fill(marcas2, true);
+    Arrays.fill(incorrect, false);
+    Arrays.fill(marcastmp, true);
+    vecinos = new Vector [datosTrain.length];
+    for (i=0; i<datosTrain.length; i++)
+        vecinos[i] = new Vector <Integer>();
+
+    for (i=0; i<datosTrain.length; i++) {
+        next = nextNeighbour (marcas,datosTrain,i,vecinos[i]);
+        for (j=0; j<datosTrain.length; j++)
+            marcastmp[j] = marcas[j];
+        while (next >= 0 && clasesTrain[next] == clasesTrain[i]) {
+        	vecinos[i].add(new Integer(next));
+        	marcastmp[next] = false;
+        	next = nextNeighbour(marcastmp,datosTrain,i,vecinos[i]);
+        }    	
+    }
+    
+    maxneigh = vecinos[0].size();
+    pos = 0;
+    for (i=1; i<datosTrain.length; i++) {
+      if (vecinos[i].size() > maxneigh) {
+        maxneigh = vecinos[i].size();
+        pos = i;
+      }
+    }
+    
+    while (maxneigh > 0) {
+      for (i=0; i<vecinos[pos].size(); i++) {
+        borrado = vecinos[pos].elementAt(i).intValue();
+        marcas[borrado] = false;
+        for (j=0; j<datosTrain.length; j++) {
+          vecinos[j].removeElement(new Integer(borrado));
+        }
+        vecinos[borrado].clear();
+      }
+      vecinos[pos].clear();
+
+      maxneigh = vecinos[0].size();
+      pos = 0;
+      for (i=1; i<datosTrain.length; i++) {
+        if (vecinos[i].size() > maxneigh) {
+          maxneigh = vecinos[i].size();
+          pos = i;
+        }
+      }
+    }
+
+    /*Building of the S set from the flags*/
+    nSel = 0;
+    for (i=0; i<datosTrain.length; i++)
+      if (marcas[i]) nSel++;
+    
+    conjS = new double[nSel][datosTrain[0].length];
+    conjR = new double[nSel][datosTrain[0].length];
+    conjN = new int[nSel][datosTrain[0].length];
+    conjM = new boolean[nSel][datosTrain[0].length];
+    clasesS = new int[nSel];
+    for (i=0, l=0; i<datosTrain.length; i++) {
+      if (marcas[i]) { //the instance will be copied to the solution
+        for (j=0; j<datosTrain[0].length; j++) {
+          conjS[l][j] = datosTrain[i][j];
+          conjR[l][j] = realTrain[i][j];
+          conjN[l][j] = nominalTrain[i][j];
+          conjM[l][j] = nulosTrain[i][j];
+        }
+        clasesS[l] = clasesTrain[i];
+        l++;
+      }
+    }
+
+    for (i=0; i<datosTrain.length; i++) {
+        /*Apply 1-NN to the instance*/
+        claseObt = KNN.evaluacionKNN2 (1, conjS, conjR, conjN, conjM, clasesTrain, datosTrain[i], realTrain[i], nominalTrain[i], nulosTrain[i], nClases, true);
+        if (claseObt != clasesTrain[i]) {
+          incorrect[i] = true;
+        }
+    }
+    
+    for (i=0; i<datosTrain.length; i++)
+        vecinos[i] = new Vector <Integer>();
+
+    for (i=0; i<datosTrain.length; i++) {
+    	if (incorrect[i]) {
+    		next = nextNeighbour (marcas2,datosTrain,i,vecinos[i]);
+    		for (j=0; j<datosTrain.length; j++)
+    			marcastmp[j] = marcas2[j];
+    		while (next >= 0 && clasesTrain[next] == clasesTrain[i]) {
+    			vecinos[i].add(new Integer(next));
+    			marcastmp[next] = false;
+    			next = nextNeighbour(marcastmp,datosTrain,i,vecinos[i]);
+    		}    	
+    	}
+    }
+    
+    maxneigh = vecinos[0].size();
+    pos = 0;
+    for (i=1; i<datosTrain.length; i++) {
+      if (vecinos[i].size() > maxneigh) {
+        maxneigh = vecinos[i].size();
+        pos = i;
+      }
+    }
+    
+    while (maxneigh > 0) {
+      for (i=0; i<vecinos[pos].size(); i++) {
+        borrado = vecinos[pos].elementAt(i).intValue();
+        marcas2[borrado] = false;
+        for (j=0; j<datosTrain.length; j++) {
+          vecinos[j].removeElement(new Integer(borrado));
+        }
+        vecinos[borrado].clear();
+      }
+      vecinos[pos].clear();
+
+      maxneigh = vecinos[0].size();
+      pos = 0;
+      for (i=1; i<datosTrain.length; i++) {
+        if (vecinos[i].size() > maxneigh) {
+          maxneigh = vecinos[i].size();
+          pos = i;
+        }
+      }
+    }
+    
+    for (i=0; i<marcas.length; i++)
+    	marcas[i] |= (marcas2[i] & incorrect[i]);
+    
+
+    /*Building of the S set from the flags*/
+    nSel = 0;
+    for (i=0; i<datosTrain.length; i++)
+      if (marcas[i]) nSel++;
+    
+    conjS = new double[nSel][datosTrain[0].length];
+    conjR = new double[nSel][datosTrain[0].length];
+    conjN = new int[nSel][datosTrain[0].length];
+    conjM = new boolean[nSel][datosTrain[0].length];
+    clasesS = new int[nSel];
+    for (i=0, l=0; i<datosTrain.length; i++) {
+      if (marcas[i]) { //the instance will be copied to the solution
+        for (j=0; j<datosTrain[0].length; j++) {
+          conjS[l][j] = datosTrain[i][j];
+          conjR[l][j] = realTrain[i][j];
+          conjN[l][j] = nominalTrain[i][j];
+          conjM[l][j] = nulosTrain[i][j];
+        }
+        clasesS[l] = clasesTrain[i];
+        l++;
+      }
+    }
+
+    System.out.println("Reconsistent "+ relation + " " + (double)(System.currentTimeMillis()-tiempo)/1000.0 + "s");
+
+                 // COn conjS me vale.
+                 int trainRealClass[][];
+                 int trainPrediction[][];
+                
+                 trainRealClass = new int[conjS.length][1];
+		 trainPrediction = new int[conjS.length][1];	
+                
+                 //Working on training
+                 for ( i=0; i<conjS.length; i++) {
+                     trainRealClass[i][0] = clasesS[i];
+                     trainPrediction[i][0] = KNN.evaluate(conjS[i],datosTrain, nClases, clasesTrain, 1);
+                 }
+                 
+                 KNN.writeOutput(ficheroSalida[0], trainRealClass, trainPrediction,  entradas, salida, relation);
+                 
+                 
+                //Working on test
+		int realClass[][] = new int[datosTest.length][1];
+		int prediction[][] = new int[datosTest.length][1];	
+		
+		//Check  time		
+				
+		for (i=0; i<realClass.length; i++) {
+			realClass[i][0] = clasesTest[i];
+			prediction[i][0]= KNN.evaluate(datosTest[i],conjS, nClases, clasesS, 1);
+		}
+                
+                KNN.writeOutput(ficheroSalida[1], realClass, prediction,  entradas, salida, relation);
+
+  }
+
+  int nextNeighbour (boolean marcas[], double datos[][], int ej, Vector <Integer> vecinos) {
+
+	  int i, j, k;
+	  int pos = -1;
+	  double distmin = Double.POSITIVE_INFINITY;
+	  double distancia;
+	  double centroid[];
+	  double prototipo[];
+
+	  /*Computation of the previous centroid*/
+	  centroid = new double[datos[0].length];
+	  prototipo = new double[datos[0].length];
+	  
+      for (j=0; j<datos[0].length; j++) {
+          centroid[j] = 0;
+          for (k=0; k<vecinos.size(); k++) {
+        	  centroid[j] += datos[vecinos.elementAt(k).intValue()][j];
+          }
+      }	  
+
+	  for (i=0; i<datos.length; i++) {
+	      if (marcas[i] && i != ej) {
+	    	  for (j=0; j<datos[0].length; j++) {
+	              prototipo[j] = centroid[j] + datos[i][j];	    		  
+	              prototipo[j] /= (vecinos.size()+1);
+	    	  }
+	          distancia = KNN.distancia (datos[ej], prototipo);
+	          if (distancia < distmin) {
+	              distmin = distancia;
+	              pos = i;
+	          }
+	      }
+	  }
+	    
+	  return pos;
+  }
+
+
+  public void leerConfiguracion (String ficheroScript) {
+
+    String fichero, linea, token;
+    StringTokenizer lineasFichero, tokens;
+    byte line[];
+    int i, j;
+
+    ficheroSalida = new String[2];
+
+    fichero = Fichero.leeFichero (ficheroScript);
+    lineasFichero = new StringTokenizer (fichero,"\n\r");
+
+    lineasFichero.nextToken();
+    linea = lineasFichero.nextToken();
+
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    token = tokens.nextToken();
+
+    /*Getting the names of the training and test files*/
+    line = token.getBytes();
+    for (i=0; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroTraining = new String (line,i,j-i);
+    for (i=j+1; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroTest = new String (line,i,j-i);
+
+    /*Getting the path and base name of the results files*/
+    linea = lineasFichero.nextToken();
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    token = tokens.nextToken();
+
+    /*Getting the names of output files*/
+    line = token.getBytes();
+    for (i=0; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroSalida[0] = new String (line,i,j-i);
+    for (i=j+1; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroSalida[1] = new String (line,i,j-i);
+  }
+
+}

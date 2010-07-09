@@ -1,0 +1,145 @@
+<method>
+
+	<name>PART</name>
+
+	<reference>  
+
+		<ref>Eibe Frank, Ian H. Witten. Generating Accurate Rule Sets Without Global Optimization. In Proceedings of the Fifteenth International Conference on Machine Learning, pages 144-151. Morgan Kaufmann, 1998</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules (based on decision trees)</type>
+
+		<objective>To determine a decision list of rules (if-elsif-elseif-...else) that predicts correctly the value of the target attribute</objective>
+
+		<howWork>
+PART is based on C45 algorithm. In each iteration, a partial C45 Tree is generated and its best rule extracted (the one wich cover more examples). The algorithm ends 
+when all the examples are covered.
+
+A partial tree is one whose braches are not fully explored. When a node has grown 
+all its children, the node is eligible to prune. If the node is not pruned, 
+all the exploration ends.
+
+</howWork>
+
+		<parameterSpec>  
+
+			<param>confidence: is the confidence level. It is a float value that determines what is the minimal confidence that must has a leaf in order to can be considered in the tree</param>
+			
+			<param>minItemsets: is the minimum number of item-sets per leaf. It is an integer value that determines how much data instances must contain a leaf in order to can be created</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: PART
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 2 : CORRECT=1.0 N/C=0.0 
+Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 5 : CORRECT=1.0 N/C=0.0 
+Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.04666666666666667 
+stddev Global Classification Error + N/C:
+0.04268749491621899 
+Correctly classified:
+0.9533333333333334 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 1 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 2 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 3 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 4 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 5 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 6 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 7 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 8 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 9 : CORRECT=0.9925925925925926 N/C=0.0 
+Global Classification Error + N/C:
+0.02222222222222222 
+stddev Global Classification Error + N/C:
+0.008114408259335805 
+Correctly classified:
+0.9777777777777777 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-PART:
+
+@relation  Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+And the rule decision list (result0e0.txt) in Experiment\Results\Clas-PART:
+
+if(petalWidth&lt;=0.6) (45/45)
+	output=Iris-setosa
+else if(petalWidth&lt;=1.7 &amp;&amp; petalLength&lt;=4.9) (42/88)
+	output=Iris-versicolor
+else 
+	output=Iris-virginica
+</example>
+
+</method>

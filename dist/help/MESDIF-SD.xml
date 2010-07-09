@@ -1,0 +1,92 @@
+<method>
+
+	<name>MESDIF for Subgroup Discovery</name>
+
+	<reference>  
+<ref>F.J. Berlanga, M.J. del Jesus, P. Gonzalez, F. Herrera and M. Mesonero (2006). Multiobjective Evolutionary Induction of Subgroup Discovery Fuzzy Rules: A Case Study in Marketing. In: Proceedings of the 6th Industrial Conference on Data Mining, Springer, LNCS, vol 4065, pp 337–349</ref>
+<ref>M.J. del Jesus, P. Gonzalez and F. Herrera (2007). Multiobjective Genetic Algorithm for Extracting Subgroup Discovery Fuzzy Rules. In: Proceedings of the IEEE Symposium on Computational Intelligence in Multicriteria Decision Making, IEEE Press, pp 50–57.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Supervised Descriptive Rule Discovery System for Subgroup Discovery</type>
+
+		<objective>To obtain subgroups to describe data through an algorithm based on a multi-objective evolutionary fuzzy approach</objective>
+
+		<howWork>
+This algorithm is a multi-objective genetic algorithm for the extraction of fuzzy rules which describe subgroups. The algorithm extracts a variable number of different rules expressing information on a single value of the target variable. The search is based on the multi-objective SPEA2 approach, and so applies the concepts of elitism in the rule selection (using a secondary or elite population) and the search for optimal solutions in the Pareto front. It can use several quality measures at a time to evaluate the rules obtained, like confidence, support, significance or unusualness.		
+		</howWork>
+
+		<parameterSpec>  
+			<param>RulesRep: Representation of the rule.</param>
+			<param>nLabels: Number of labels for continuous variables.</param>
+			<param>nEval: Number of evaluations in the evolutionary algorithm.</param>
+			<param>popLength: Length of the population.</param>
+			<param>crossProb: Probability for the crossover.</param>
+			<param>mutProb: Probability for the mutation.</param>
+			<param>eliteLength: Size of the elite population</param>
+			<param>Obj1: Objective number ONE. The user can be chosen between: Support based on the examples of the class (COMP), 
+			Crisp Support (CSUP), Fuzzy Support (FSUP), Crisp Confidence (CCNF), Fuzzy Confidence (FCNF), Coverage (COVE),
+			Accuracy (ACCU), Significance (SIGN) and Unusualness (UNUS).</param>
+			<param>Obj2: Objective number TWO. The user can be chosen between: Support based on the examples of the class (COMP), 
+			Crisp Support (CSUP), Fuzzy Support (FSUP), Crisp Confidence (CCNF), Fuzzy Confidence (FCNF), Coverage (COVE),
+			Accuracy (ACCU), Significance (SIGN) and Unusualness (UNUS).</param>
+			<param>Obj3: Objective number THREE. The user can be chosen NULL to indicate the absence of this objective or
+			between: Support based on the examples of the class (COMP), Crisp Support (CSUP), Fuzzy Support (FSUP), 
+			Crisp Confidence (CCNF), Fuzzy Confidence (FCNF), Coverage (COVE), Accuracy (ACCU), Significance (SIGN) 
+			and Unusualness (UNUS).</param>
+			<param>Obj4: Objective number FOUR. The user can be chosen NULL to indicate the absence of this objective or
+			between: Support based on the examples of the class (COMP), Crisp Support (CSUP), Fuzzy Support (FSUP), 
+			Crisp Confidence (CCNF), Fuzzy Confidence (FCNF), Coverage (COVE), Accuracy (ACCU), Significance (SIGN) 
+			and Unusualness (UNUS).</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Unspecified 
+Method: MESDIF
+Dataset: IRIS
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Parameters: default values
+
+
+IRIS-10-1TRA.DAT
+===============
+
+
+
+IRIS-10-1TST.DAT
+===============
+
+
+
+RULES FILE
+==========
+
+QUALITY FILE IN TRAINING
+========================
+
+
+
+
+TRACK FILE
+==========
+
+
+
+QUALITY FILE IN TEST DATA
+=========================
+
+</example>
+
+</method>

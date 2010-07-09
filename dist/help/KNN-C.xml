@@ -1,0 +1,191 @@
+<method>
+
+	<name>K-Nearest Neighbors Classifier</name>
+
+	<reference>  
+
+		<ref>G. J. McLachlan, Discriminant Analysis and Statistical Pattern Recognition, Wiley Series in Probability and Mathematical Statistics, 2004.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification by means of a K-Nearest Neighbour method.</type>
+
+		<objective>Classify an instance with the class with higher value of the number of neighbours to the instance that belongs to such class. </objective>
+
+		<howWork>For an instance to be classified, the K nearest neighbours method is applied. So the class to be propose for the instance is the one the majority class in the very next vecinity of the instance. Vecinity is defined as the K instances with lower distance to instace to classify.
+		</howWork>
+
+		<parameterSpec>  
+<param>K: the number of neighbours to be tested. If this value is too high (similar to the data size), then it is the near the majority class classifier. When it is too low, then it is the same as its very nearest instance.</param>
+<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-KNN
+Dataset: aut
+Training set: aut-10-1tra.dat
+Test set: aut-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: K=2
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTClas-KNN folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= autos
+Fold 0 : CORRECT=0.7142857142857143 N/C=0.0
+...
+Global Classification Error + N/C:
+0.35013239620791115
+stddev Global Classification Error + N/C:
+0.09226145121607808
+Correctly classified:
+0.6498676037920889 Global N/C:
+0.0
+
+TRAIN RESULTS
+============
+Classifier= autos
+Summary of data, Classifiers: autos
+Fold 0 : CORRECT=0.5923913043478262 N/C=0.0
+...
+Global Classification Error + N/C:
+0.37717346923534933
+stddev Global Classification Error + N/C:
+0.026247312803855755
+Correctly classified:
+0.6228265307646507
+Global N/C:
+0.0
+
+
+We can see too the output and target classes for each case of the train set (result0.tra) in experiment/results/Clas-KNN/aut:
+
+@relation autos
+@attribute normalized-losses real [65.0, 256.0]
+@attribute make {alfa-romero, audi, bmw, chevrolet, dodge, honda, isuzu, jaguar, mazda, mercedes-benz, mercury, mitsubishi, nissan, peugot, plymouth, porsche, renault, saab, sub
+aru, toyota, volkswagen, volvo}
+@attribute fuel-type {diesel, gas}
+@attribute aspiration {std, turbo}
+@attribute num-of-doors {four, two}
+@attribute body-style {hardtop, wagon, sedan, hatchback, convertible}
+@attribute drive-wheels {4wd, fwd, rwd}
+@attribute engine-location {front, rear}
+@attribute wheel-base real [86.6, 120.9]
+@attribute length real [141.1, 208.1]
+@attribute width real [60.3, 72.3]
+@attribute height real [47.8, 59.8]
+@attribute curb-weight real [1488.0, 4066.0]
+@attribute engine-type {dohc, dohcv, l, ohc, ohcf, ohcv, rotor}
+@attribute num-of-cylinders {eight, five, four, six, three, twelve, two}
+@attribute engine-size real [61.0, 326.0]
+@attribute fuel-system {1bbl, 2bbl, 4bbl, idi, mfi, mpfi, spdi, spfi}
+@attribute bore real [2.54, 3.94]
+@attribute stroke real [2.07, 4.17]
+@attribute compression-ratio real [7.0, 23.0]
+@attribute horsepower real [48.0, 288.0]
+@attribute peak-rpm real [4150.0, 6600.0]
+@attribute city-mpg real [13.0, 49.0]
+@attribute highway-mpg real [16.0, 54.0]
+@attribute price real [5118.0, 45400.0]
+@attribute symboling {-2, -1, 0, 1, 2, 3}
+@data
+1 1
+1 1
+1 1
+1 0
+1 1
+3 3
+3 3
+0 0
+0 0
+0 -1
+0 1
+0 0
+0 0
+2 1
+2 -1
+2 1
+-1 -1
+-1 -1
+3 3
+0 0
+0 -2
+...
+
+And the test results (result0.tst) in experiment/results/Clas-KNN/aut:
+
+@relation autos
+@attribute normalized-losses real[65.0,256.0]
+@attribute make{alfa-romero,audi,bmw,chevrolet,dodge,honda,isuzu,jaguar,mazda,mercedes-benz,mercury,mitsubishi,nissan,peugot,plymouth,porsche,renault,saab,subaru,toyota,volkswag
+en,volvo}
+@attribute fuel-type{diesel,gas}
+@attribute aspiration{std,turbo}
+@attribute num-of-doors{four,two}
+@attribute body-style{hardtop,wagon,sedan,hatchback,convertible}
+@attribute drive-wheels{4wd,fwd,rwd}
+@attribute engine-location{front,rear}
+@attribute wheel-base real[86.6,120.9]
+@attribute length real[141.1,208.1]
+@attribute width real[60.3,72.3]
+@attribute height real[47.8,59.8]
+@attribute curb-weight real[1488.0,4066.0]
+@attribute engine-type{dohc,dohcv,l,ohc,ohcf,ohcv,rotor}
+@attribute num-of-cylinders{eight,five,four,six,three,twelve,two}
+@attribute engine-size real[61.0,326.0]
+@attribute fuel-system{1bbl,2bbl,4bbl,idi,mfi,mpfi,spdi,spfi}
+@attribute bore real[2.54,3.94]
+@attribute stroke real[2.07,4.17]
+@attribute compression-ratio real[7.0,23.0]
+@attribute horsepower real[48.0,288.0]
+@attribute peak-rpm real[4150.0,6600.0]
+@attribute city-mpg real[13.0,49.0]
+@attribute highway-mpg real[16.0,54.0]
+@attribute price real[5118.0,45400.0]
+@attribute symboling{-2,-1,0,1,2,3}
+@inputs normalized-losses,make,fuel-type,aspiration,num-of-doors,body-style,drive-wheels,engine-location,wheel-base,length,width,height,curb-weight,engine-type,num-of-cylinders,
+engine-size,fuel-system,bore,stroke,compression-ratio,horsepower,peak-rpm,city-mpg,highway-mpg,price
+@outputs symboling
+@data
+1 1
+1 1
+1 2
+1 1
+1 3
+3 0
+3 0
+0 -1
+0 -1
+0 0
+0 0
+0 -2
+0 0
+2 1
+2 3
+2 3
+-1 -1
+-1 3
+...
+</example>
+
+</method>

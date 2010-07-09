@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>Kernel Classifier</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>subAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>ClasifKernel</item>
+    </domain>
+    <default>ClasifKernel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>dataformat</name>
+    <type>list</type>
+    <domain>
+      <item>keel</item>
+    </domain>
+    <default>keel</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>outlabel</name>
+    <type>list</type>
+    <domain>
+      <item>CK</item>
+    </domain>
+    <default>CK</default>
+    <disabled/>
+  </parameter>
+  <parameter>
+    <name>sigmaKernel</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0001</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>
+</algorithm_specification>

@@ -1,0 +1,35 @@
+<algorithm_specification>
+  <name>Data Mining Evolutionary Algorithm</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Population_Size</name>
+    <type>integer</type>
+    <default>30</default>
+  </parameter>
+  <parameter>
+    <name>Probability_Choice_Crossover_Operator</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  <parameter>
+    <name>Mutation_Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.0001</default>
+  </parameter>
+  <parameter>
+    <name>Number_Generations</name>
+    <type>integer</type>
+    <default>1000</default>
+  </parameter>
+</algorithm_specification>
+

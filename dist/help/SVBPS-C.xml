@@ -1,0 +1,74 @@
+<method>
+
+	<name>Support Vector based Prototype Selection</name>
+
+	<reference>  
+
+	<ref>Y. Li, Z. Hu, Y. Cai, W. Zhang. Support vector vased prototype selection method for nearest neighbor rules. Lecture Notes in Computer Science, 3610, 528-535.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Instance Selection. Decremental.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>This method trains a C_SVM and obtaines the support vectors of the model. Then, it proceeds with a selection stage based on the DROP2 algorithm to select definitively the most relevant instances. DROP2 is a prior version of DROP3 withouth a noise reduction phase.
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>KernelType: Which kernel will be used to transform the data</param>
+			<param>C: cost;it is the penalty parameter of the error term. Their optimous value is find by TRIAL and ERROR.</param>
+			<param>eps: set tolerance of termination criterion (not used)</param>
+			<param>degree: set degree in kernel function</param>
+			<param>gamma: set gamma in kernel function</param>
+			<param>nu: : set the parameter nu (not used in this model)</param>
+			<param>p: set the epsilon in loss function of epsilon-SVR (not used here)</param>
+			<param>shrinking: reduces the size of the optimization problem without considering
+some bounded variables. The decomposition method then works on a smaller problem which is less
+time consuming and requires less memory</param>
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to classify an example using the K-Nearest Neighbor Rule</param>
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: IS-SVBPS
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\IS-SVBPS:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+5.4,3.4,1.7,0.2,Iris-setosa
+5.9,3.0,4.2,1.5,Iris-versicolor
+6.1,2.8,4.0,1.3,Iris-versicolor
+5.8,2.7,5.1,1.9,Iris-virginica
+5.7,2.5,5.0,2.0,Iris-virginica
+</example>
+</method>

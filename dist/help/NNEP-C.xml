@@ -1,0 +1,172 @@
+<method>
+
+	<name>Clas-NNEP</name>
+
+	<reference>  
+
+		<ref>F.J. Martinez-Estudillo, C. Hervas-Martinez, P.A. Gutierrez, A.C. Martinez-Estudillo. Evolutionary Product-Unit Neural Networks Classifiers. Neurocomputing (2008) In press.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by means of Product Unit or Sigmoidal Unit Neural Networks</type>
+
+		<objective>To determine a classification model with neural networks based on product unit or sigmoidal unit basis functions.</objective>
+
+		<howWork>The method consists of obtaining the neural network architecture and simultaneously estimating the weights of the model
+coefficients with an algorithm of evolutionary computation. In this way a neural network model is obtained from the training set and then checked
+against the patterns of the generalization set.
+            </howWork>
+
+		<parameterSpec>  
+
+				<param>Hidden nodes: It's the number of neurons in hidden layer</param>
+				<param>Transfer: It's the transfer function in each neuron of the hidden layer</param>
+				<param>Generations: It's the number of generations of the evolutionary algorithm</param>
+				
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-NNEP
+Dataset: pima
+Training set: pima-10-1tra.dat
+Test set: pima-10-1tst.dat
+Test Show results: Vis-Clas-Check
+
+After the execution of RunKeel.jar we can see into the Experiment\results\Vis-Clas-Check\TSTClas-NNEP folder the classification results for the test set:
+
+Global Classification Error + N/C:
+0.22077399836842412 
+stddev Global Classification Error + N/C:
+0.007992591277936308 
+Correctly classified:
+0.7792260016315758 
+Global N/C:
+0.0 
+
+We can see too the output and target classes for each case of the test set (result0s0.tst) in Experiment\results\Clas-NNEP\pima:
+
+@relation pima_diabetes
+@attribute preg real[0.0,17.0]
+@attribute plas real[0.0,199.0]
+@attribute pres real[0.0,122.0]
+@attribute skin real[0.0,99.0]
+@attribute insu real[0.0,846.0]
+@attribute mass real[0.0,67.1]
+@attribute pedi real[0.078,2.42]
+@attribute age real[21.0,81.0]
+@attribute class {tested_negative,tested_positive}
+@data
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_positive tested_positive
+
+And the best model (result0s0e0.txt) in Experiment\results\Clas-NNEP\friedman:
+
+Generation 130
+=> Best CCR Individual:
+-7.615935788264663 * ( x2^3.2697760042392825 * x3^-0.3511316080610815 )
+-6.0309123042272414 * ( x2^-0.557283769043267 * x6^2.899381028301708 )
++3.7315209802293103 * (1)
+Fitness: 0.676343106997229
+Number of hidden neurons: 2 Number of effective links: 7
+Train CCR: 78.58176555716354
+Test  CCR: 66.23376623376623
+AlphaInput 0.05362077562389768 AlphaOutput 0.10724155124779536 Success Ratio 0.12037037037037036
+
+</example>
+
+</method>

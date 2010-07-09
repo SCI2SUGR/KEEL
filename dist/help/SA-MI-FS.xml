@@ -1,0 +1,84 @@
+<method>
+
+	<name>Simulated Annealing using Mutual Information measure</name>
+
+	<reference>  
+
+		<ref>H. Liu and L. Yu. "Toward Integrating Feature Selection Algorithms for Classification and Clustering", 
+			IEEE Trans. onKnowledge and Data Engineering,17(4), 491-502, 2005.</ref>
+		<ref>H. Liu y H. Motoda, Feature Selection for Knowledge Discovery and Data Mining, Kluwer Academic Publishers, 1998.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Non Evolutionary Filter Stochastic method</type>
+
+		<objective>Feature Selection. This method allows search to follow feature subsets that are randomly generated</objective>
+
+		<howWork>Simulated Annealing method starts from a randomly generated solution and moves to neighbor solutions. This
+			movement can reach worse solutions than the previous one according to a probability that decreases over time. The cooling
+			scheme used is Cauchy's.
+</howWork>
+
+		<parameterSpec>  
+			<param>tinit: initial temperature.</param>
+			<param>neighbors: number of neighbors generated per cooldown.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+
+Problem type: Preprocess
+Method: SA-MI-FS
+Dataset: Car
+Training set: car-10-1tra.dat
+Test set: car-10-1tst.dat
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see the training and test datasets modified only with the selected features.
+
+And the extra file with the classification error in test validation result0e0.txt:
+
+result0e0.txt
+
+RESULTS generated at Sun Jul 04 19:45:16 CEST 2010 
+--------------------------------------------------
+Algorithm Name: Simulated Annealing (MI)
+
+PARTITION Filename: ../datasets/car/car-10-1tra.dat
+---------------
+
+Features selected: 
+Doors - Persons - Lug_boot - 
+
+3 features of 6
+
+Error in test (using train for prediction): 0.30057803468208094
+Error in test (using test for prediction): 0.3352601156069364
+---------------
+
+
+
+</example>
+
+</method>

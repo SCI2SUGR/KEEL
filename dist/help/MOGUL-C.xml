@@ -1,0 +1,344 @@
+<method>
+
+ 	<name>MOGUL: A Methodology to Obtain Genetic Fuzzy Rule-Based Systems under the Iterative Learning Approach</name>
+
+	<reference>  
+
+<ref>O. Cordon, M.J. del Jesus, F. Herrera. Genetic learning of fuzzy rule-based classification systems cooperating with fuzzy reasoning methods. International Journal of Intelligent Systems 13:10-11 (1998) 1025-1053.</ref>
+<ref>O. Cordon, M.J. del Jesus, F. Herrera, M. Lozano, MOGUL: A Methodology to Obtain Genetic fuzzy rule-based systems Under the iterative rule Learning approach. International Journal of Intelligent Systems 14:11 (1999) 1123-1153.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by generation of fuzzy rule-based systems.</type>
+
+		<objective>To obtain fuzzy classifiers as a set of fuzzy rules that better fits the training data.</objective>
+
+		<howWork>This learning algorithm learns a set of fuzzy rules from a set of examples. The method consists of three stages: generation of an initial set of rules, simplification and tuning.
+
+        1. Generation of fuzzy rules: This process may be briefly summarized in the following steps:
+
+              - Define a strong fuzzy partition for each variable (triangular-shaped membership functions uniformly distributed).
+
+              - Generate for each example the global fuzzy rule best covering it. Then, evaluate all the global fuzzy rules and select the most promising rule.
+
+              - Finally, the obtained rule is added to the final set of fuzzy rules. The data covered by this set to a certain degree are removed and not considered for future iterations. The iterative process ends up when no more uncovered training data remains.
+
+         2. Genetic simplification process: The simplification process is based on a binary-coded GA with fixed-length chromosomes. Considering the rules contained in the rule set derived from the previous step counted from 1 to m, an m-bit string C = (c1, ..., cm) represents a subset of candidate rules to form the fuzzy rule base finally obtained as this stage output such that if ci = 1 then Ri is included in the selected rule set.
+
+         3. Genetic tuning process: It is based on a real-coded GA algorithm in which each individual represents a complete data base.		
+		</howWork>
+
+		<parameterSpec> 
+		    <param>Number of Labels</param>
+		    <param>Omega parameter for the maching degree of the positive instances</param>
+		    <param>K parameter for the percentage of allowed negative instances</param>
+		    <param>Epsilon parameter for the minimun maching degree required to the KB</param>
+		    <param>Repeated rules</param>
+		    <param>Type of Rules</param>
+		    <param>Way of obtaining the matching degree of an example with the antedecent of a rule</param>
+		    <param>Type of FRM</param>
+		    <param>Alfa parameter for the FRM</param>
+		    <param>p parameter for the FRM</param>
+		    <param>a parameter for the FRM</param>
+		    <param>b parameter for the FRM</param>
+		    <param>Type of Linguistic Hedges</param>
+		    <param>Number of Iterations SELECTION</param>
+		    <param>Tau parameter for the minimun maching degree required to the KB SELECTION</param>
+		    <param>Rate of rules to estimate the niche radio SELECTION</param>
+		    <param>Beta parameter for the Power Law SELECTION</param>
+		    <param>Cross Probability SELECTION</param>
+		    <param>Mutation Probability SELECTION</param>
+		    <param>Number of Iterations TUNING</param>
+		    <param>Population Size TUNING</param>
+		    <param>Parameter a TUNING</param>
+		    <param>Parameter b TUNING</param>
+		    <param>Cross Probability TUNING</param>
+		    <param>Mutation Probability TUNING</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+        Method: Clas-Fuzzy-MOGUL
+		Dataset: iris
+		Training set: iris-10-1tra.dat
+		Test set: iris-10-1tst.dat		
+		Test Show results: Vis-Clas-Check		
+        Parameters: default values
+
+		After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-Fuzzy-MOGUL folder the classification results for the test set:
+		
+TEST RESULTS
+============
+Classifier= iris_plants_database 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 1 : CORRECT=1.0 N/C=0.0 
+Fold 2 : CORRECT=1.0 N/C=0.0 
+Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 5 : CORRECT=1.0 N/C=0.0 
+Fold 6 : CORRECT=1.0 N/C=0.0 
+Fold 7 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 8 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 9 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.06 
+stddev Global Classification Error + N/C:
+0.055377492419453826 
+Correctly classified:
+0.94 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris_plants_database 
+Summary of data, Classifiers: iris_plants_database 
+Fold 0 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 1 : CORRECT=0.9925925925925926 N/C=0.0 
+Fold 2 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 3 : CORRECT=0.9925925925925926 N/C=0.0 
+Fold 4 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 5 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 6 : CORRECT=0.9925925925925926 N/C=0.0 
+Fold 7 : CORRECT=0.9925925925925926 N/C=0.0 
+Fold 8 : CORRECT=0.9925925925925926 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.009629629629629629 
+stddev Global Classification Error + N/C:
+0.004743054990691002 
+Correctly classified:
+0.9903703703703703 
+Global N/C:
+0.0 
+
+		We can see too the output and target classes for each case of the train set (result0s0.tra) in experiment/results/Clas-Fuzzy-MOGUL/iris/:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+...
+
+
+		And the test results (result0s0.tst) in experiment/results/Clas-Fuzzy-MOGUL/iris/:
+
+@relation Iris_Plants_Database
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa 
+Iris-setosa Iris-setosa 
+Iris-setosa Iris-setosa 
+Iris-setosa Iris-setosa 
+Iris-setosa Iris-setosa 
+Iris-versicolor Iris-versicolor 
+Iris-versicolor Iris-versicolor 
+Iris-versicolor Iris-versicolor 
+Iris-versicolor Iris-versicolor 
+Iris-versicolor Iris-versicolor 
+Iris-virginica Iris-virginica 
+Iris-virginica Iris-virginica 
+Iris-virginica Iris-virginica 
+Iris-virginica Iris-virginica 
+Iris-virginica Iris-versicolor 
+
+				
+        The file 'experiment/results/Clas-Fuzzy-MOGUL/iris/result0s0e0.txt' contains the fuzzy rule set obtained after the first MOGUL stage (generation of rules):
+		 
+Number of rules: 83
+
+E2 4.3 5.2 6.1
+E3 2.6 3.2 3.8000000000000003
+E1 -0.3500000000000001 1.1 2.5500000000000003
+E1 -0.5 0.1 0.7
+Class 0 CertaintyDegree 1.0
+
+E2 4.3 5.2 6.1
+E3 2.6 3.2 3.8000000000000003
+E1 -0.3500000000000001 1.1 2.5500000000000003
+E1 -0.5 0.1 0.7
+Class 0 CertaintyDegree 1.0
+
+E2 4.3 5.2 6.1
+E3 2.6 3.2 3.8000000000000003
+E1 -0.3500000000000001 1.1 2.5500000000000003
+E1 -0.5 0.1 0.7
+Class 0 CertaintyDegree 1.0
+
+...
+
+E3 5.2 6.1 7.0
+E3 2.6 3.2 3.8000000000000003
+E4 4.0 5.450000000000001 6.9
+E4 1.3 1.9 2.5
+Class 2 CertaintyDegree 0.6446138708365982
+
+
+%Tra: 96.29629629629629 %Tst: 93.33333333333333
+Minimun C_R: 0.23024611480580967 MSE CV_R: 1.5
+
+
+		The file 'experiment/results/Clas-Fuzzy-MOGUL/iris/result0s0e1.txt' contains the initial considered fuzzy semantics (used in the generation stage):
+		
+Initial Data Base: 
+
+  Variable 1:
+    Label 1: (3.3999999999999995,4.3,5.2)
+    Label 2: (4.3,5.2,6.1)
+    Label 3: (5.2,6.1,7.0)
+    Label 4: (6.1,7.0,7.9)
+    Label 5: (7.0,7.9,8.8)
+
+  Variable 2:
+    Label 1: (1.4,2.0,2.6)
+    Label 2: (2.0,2.6,3.2)
+    Label 3: (2.6,3.2,3.8000000000000003)
+    Label 4: (3.2,3.8000000000000003,4.4)
+    Label 5: (3.8000000000000003,4.4,5.0)
+
+  Variable 3:
+    Label 1: (-0.3500000000000001,1.1,2.5500000000000003)
+    Label 2: (1.1,2.5500000000000003,4.0)
+    Label 3: (2.5500000000000003,4.0,5.450000000000001)
+    Label 4: (4.0,5.450000000000001,6.9)
+    Label 5: (5.450000000000001,6.9,8.350000000000001)
+
+  Variable 4:
+    Label 1: (-0.5,0.1,0.7)
+    Label 2: (0.1,0.7,1.3)
+    Label 3: (0.7,1.3,1.9)
+    Label 4: (1.3,1.9,2.5)
+    Label 5: (1.9,2.5,3.1)
+
+
+        The file 'experiment/results/Clas-Fuzzy-MOGUL/iris/result0s0e2.txt' contains the fuzzy rule set obtained after the second MOGUL stage (simplification):
+
+Number of rules: 72
+
+E2 4.3 5.2 6.1
+E3 2.6 3.2 3.8000000000000003
+E1 -0.3500000000000001 1.1 2.5500000000000003
+E1 -0.5 0.1 0.7
+Class 0 CertaintyDegree 1.0
+
+E2 4.3 5.2 6.1
+E3 2.6 3.2 3.8000000000000003
+E1 -0.3500000000000001 1.1 2.5500000000000003
+E1 -0.5 0.1 0.7
+Class 0 CertaintyDegree 1.0
+
+E2 4.3 5.2 6.1
+E3 2.6 3.2 3.8000000000000003
+E1 -0.3500000000000001 1.1 2.5500000000000003
+E1 -0.5 0.1 0.7
+Class 0 CertaintyDegree 1.0
+
+...
+
+E3 5.2 6.1 7.0
+E3 2.6 3.2 3.8000000000000003
+E4 4.0 5.450000000000001 6.9
+E4 1.3 1.9 2.5
+Class 2 CertaintyDegree 0.6446138708365982
+
+
+Minimum of C_R: 0.33333333333333287 Minimum covering degree: 1.5
+Average covering degree: 3.7312899106002546 %Tra: 97.03703703703704 %Tst: 93.33333333333333
+
+
+        Finally, the file 'experiment/results/Clas-Fuzzy-MOGUL/iris/result0s0e3.txt' contains the fuzzy rule set obtained after the third (and last) MOGUL stage (tuning):
+
+
+Number of rules: 72
+
+E1 4.382009204515479 5.286269376378706 6.234421623141916
+E2 2.759759128980455 3.2913909388349962 3.8524779129981606
+E3 -0.21941049951532843 1.3698787609953527 3.1381851159864804
+E4 -0.43669865440903816 0.20079405216813118 0.7214643665579343
+Class 0 CertaintyDegree 1.0
+
+E1 4.382009204515479 5.286269376378706 6.234421623141916
+E2 2.759759128980455 3.2913909388349962 3.8524779129981606
+E3 -0.21941049951532843 1.3698787609953527 3.1381851159864804
+E4 -0.43669865440903816 0.20079405216813118 0.7214643665579343
+Class 0 CertaintyDegree 1.0
+
+E1 4.382009204515479 5.286269376378706 6.234421623141916
+E2 2.759759128980455 3.2913909388349962 3.8524779129981606
+E3 -0.21941049951532843 1.3698787609953527 3.1381851159864804
+E4 -0.43669865440903816 0.20079405216813118 0.7214643665579343
+Class 0 CertaintyDegree 1.0
+
+...
+
+E1 5.223805760909312 6.159895073431795 7.171420308518801
+E2 2.759759128980455 3.2913909388349962 3.8524779129981606
+E3 4.147752221886092 5.513832356801595 7.010384316558396
+E4 1.3465187898772197 1.9941743859586858 2.5887404826101217
+Class 2 CertaintyDegree 0.6446138708365982
+
+
+%Tra: 98.51851851851852 %Tst: 93.33333333333333	
+
+</example>
+
+</method>
+

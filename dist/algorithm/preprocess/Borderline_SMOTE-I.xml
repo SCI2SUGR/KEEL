@@ -1,0 +1,101 @@
+<algorithm_specification>
+  <name>Borderline SMOTE</name>
+  <nParameters>10</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Number of Neighbors for SMOTE</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Number of Neighbors for considering a instance BORDER</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>Type of Borderline SMOTE</name>
+    <type>list</type>
+    <domain>
+      <item>1</item>
+      <item>2</item>
+    </domain>
+    <default>1</default>   
+  </parameter>
+  <parameter>
+    <name>Type of SMOTE</name>
+    <type>list</type>
+    <domain>
+      <item>both</item>
+      <item>minority</item>
+      <item>ASMO</item>
+    </domain>
+    <default>both</default>   
+  </parameter>
+  <parameter>
+    <name>Balancing</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>YES</default>   
+  </parameter>
+  <parameter>
+    <name>Quantity of generated examples</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>  
+  <parameter>
+    <name>Distance Function</name>
+    <type>list</type>
+    <domain>
+      <item>Euclidean</item>
+      <item>HVDM</item>
+    </domain>
+    <default>HVDM</default>   
+  </parameter>
+  <parameter>
+    <name>Type of Interpolation</name>
+    <type>list</type>
+    <domain>
+      <item>standard</item>
+      <item>uniform</item>
+      <item>arithmetical</item>
+      <item>blx-alpha</item>
+      <item>sbx</item>
+      <item>fuzzy</item>
+    </domain>
+    <default>standard</default>   
+  </parameter>
+  <parameter>
+    <name>Alpha</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>  
+  <parameter>
+    <name>Mu</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>  
+</algorithm_specification>

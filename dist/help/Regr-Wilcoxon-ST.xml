@@ -1,0 +1,121 @@
+<method>
+
+	<name>Wilcoxon Signed-Rank Test</name>
+
+	<reference>  
+
+<ref>Wilcoxon, F. Individual Comparisons by Ranking Methods. Biometrics 1 (1945) 80-83</ref>
+<ref>J. Demsar, Statistical comparisons of classifiers over multiple data sets. Journal of Machine Learning Research 7 (2006) 1-30</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical two sample means comparation using the  Wilconxon Signed Rank Test</type>
+
+		<objective>Execution of the non-parametric test for pair-wise comparison of the global performance of two regression methods.</objective>
+
+		<howWork>
+The Wilcoxon Signed-Rank Test is a method for comparing the performance of two algorithms using statistics techniques. It can be used in k-folds and 5x2 cross validation training  experiments.
+The Wilcoxon Signed-Rank Test is associated to testing results of the two models in an experiment that are to be compared. Once those models has been trained and tested, the Wilcoxon Signed-Rank Test takes place. 
+The process calculates the mean square error for the whole partition results in each dataset (average performance). The statistical sample includes all of those average error measures for each method to be compared. 
+Then the Wilconxon signed rank test is executed in order to obtain the p-value associated to check if the Null hypothesis is rejected and there are statistical differences between both methods.
+</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Methods to compare: Regr-Fuzzy-WM vs Regr-Regr-LinearLMS
+Datasets: daily-electric-energy, Ele1, friedman, machine-cpu
+Type of partitions: k-fold, k=10
+
+After the execution of RunKeel.jar we can see into the ./results/Stat-Regr-Wilcoxon/TSTRegr-Fuzzy-WMvsRegr-LinearLMS/ folder the results0s0.stat file:
+
+Wilcoxon signed rank test, Regression
+Regression error in each foldfold:
+Algorithm = Regr-Fuzzy-WM
+Fold 0 : 0.25075271468396515 
+Fold 1 : 0.2818377224596541 
+Fold 2 : 0.302755945842815 
+Fold 3 : 0.13328313725389387 
+Fold 4 : 0.27549722538369426 
+Fold 5 : 0.17672332649230282 
+Fold 6 : 0.1941539042725541 
+Fold 7 : 0.16673710401211578 
+Fold 8 : 0.19748037076941652 
+Fold 9 : 0.19001148599258205 
+Mean Value: 0.21692329371629934
+Algorithm = Regr-LinearLMS
+Fold 0 : 0.13276224210953563 
+Fold 1 : 0.18120381885508868 
+Fold 2 : 0.182370405802494 
+Fold 3 : 0.16173335412244483 
+Fold 4 : 0.22907270759939843 
+Fold 5 : 0.1523434941533297 
+Fold 6 : 0.11773693421451363 
+Fold 7 : 0.14663031088893072 
+Fold 8 : 0.221371320386903 
+Fold 9 : 0.17624151293476897 
+Mean Value: 0.17014661010674076
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is evidence against H0
+p-valores:
+0.04974599072342876 
+
+and a LaTeX output file "output.tex" with the following information:
+
+\documentclass[a4paper,12pt]{article}
+\usepackage [english] {babel}
+\usepackage [latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyfoot[C]{Page \thepage}
+\fancyhead[L]{Wilcoxon Signed Ranks Test.}
+\textwidth=17cm \topmargin=-0.5cm \oddsidemargin=-0.5cm \textheight=23cm
+\title{Output Tables for the Wilcoxon Signed Ranks Test.}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Tables.}
+
+	\begin{table}[!th]
+	\caption{Ranks for the algorithms selected. Positive Ranks correspond to Regr-Fuzzy-WM. Negative Ranks correspond to Regr-LinearLMS.}\label{ranks}
+	\centering
+	\begin{tabular}{|ll|c|c|c|}
+	\hline
+	&amp;&amp;N&amp;Mean Rank&amp;Sum of Ranks\\
+	\hline
+	Regr-Fuzzy-WM vs. Regr-LinearLMS&amp;Positive Ranks&amp;1&amp;2.0&amp;2.0\\
+	&amp;Negative Ranks&amp;3&amp;2.6666666666666665&amp;8.0\\
+	&amp;Ties&amp;0&amp;&amp;\\
+	&amp;Total&amp;4&amp;&amp;\\
+	\hline
+	\end{tabular}
+	\end{table}
+
+	\begin{table}[!th]
+	\caption{Test statistics for the algorithms selected. Positive Ranks ($R^+$) correspond to Regr-Fuzzy-WM. Negative Ranks ($R^-$) correspond to Regr-LinearLMS.}\label{wcx}
+	\centering
+	\begin{tabular}{|l|c|c|c|}
+	\hline
+	Comparison&amp;$R^+$&amp;$R^-$&amp;p-value\\
+	\hline
+
+	Regr-Fuzzy-WM vs. Regr-LinearLMS&amp;1.0&amp;3.0&amp;0.3153024520752091\\
+	\hline
+	\end{tabular}
+	\end{table}
+
+
+
+\end{document}
+
+</example>
+
+</method>

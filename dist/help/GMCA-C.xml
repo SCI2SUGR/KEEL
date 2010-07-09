@@ -1,0 +1,87 @@
+<method>
+
+	<name>Generalized Modified Chang's Algorithm</name>
+
+	<reference>  
+		<ref>Mollineda, R.A., Ferri, F.J., Vidal, E. A merge‐based condensing strategy for multiple prototype classifiers (2002) IEEE Transactions on Systems, Man and Cybernetics B, 32:5, pp. 662‐668.</ref>
+		<ref>Bezdek, J.C., Reichherzer, T.R., Lim, G.S., Attikiouzel, Y. Multiple prototype classifier design (1998) IEEE Transactions on Systems, Man and Cybernetics C, 28:1, 67‐79.</ref>
+		<ref>Chin-Liang, Chang. Finding Prototypes for Nearest Neighbor Classifiers. IEEE Transactions on Computers, vol. c-23, No. 11, November 1974 1179-1184.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+		This algorithm merges the prototypes of the same class whose clusters are nearest.
+		The list of clusters is recomputed each time that it makes a merge.
+		The centroids are added to resulting set.
+	  The initial clustering algorithm consist on clustering in groups of 4 prototoypes with same class.
+	  The algorithm stops when one pass has produced no merge.
+				</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Generation
+Method: PG-GMCA
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-GMCA:
+
+@@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+6.75, 3.1, 4.675000000000001, 1.4750000000000003, Iris-versicolor
+6.675, 2.8499999999999996, 4.6499999999999995, 1.4249999999999998, Iris-versicolor
+6.0, 2.925, 4.475, 1.4750000000000003, Iris-versicolor
+6.275, 2.325, 4.55, 1.4000000000000001, Iris-versicolor
+6.275, 2.875, 4.3999999999999995, 1.275, Iris-versicolor
+6.025, 3.2750000000000004, 4.7, 1.7000000000000002, Iris-versicolor
+6.275, 2.9000000000000004, 4.925000000000001, 1.6, Iris-versicolor
+7.45, 2.8249999999999997, 6.3, 1.9, Iris-virginica
+6.25, 2.725, 5.175, 1.5500000000000003, Iris-virginica
+6.4, 3.0250000000000004, 5.525, 1.8, Iris-virginica
+6.425000000000001, 2.8499999999999996, 5.6499999999999995, 2.1500000000000004, Iris-virginica
+6.0, 2.35, 5.0, 1.725, Iris-virginica
+6.025, 2.95, 4.875, 1.8, Iris-virginica
+6.475, 2.975, 5.199999999999999, 1.9749999999999996, Iris-virginica
+7.5, 2.925, 6.05, 2.3, Iris-virginica
+6.25, 2.6, 5.45, 1.8500000000000003, Iris-virginica
+7.550000000000001, 3.5999999999999996, 6.175, 2.125, Iris-virginica
+5.3, 2.65, 4.75, 1.9499999999999997, Iris-virginica
+7.190909090909091, 3.045454545454546, 5.881818181818182, 2.1818181818181817, Iris-virginica
+6.5285714285714285, 3.2857142857142856, 5.7, 2.414285714285714, Iris-virginica
+5.648387096774194, 2.670967741935484, 4.029032258064516, 1.2290322580645163, Iris-versicolor
+4.995652173913044, 3.371739130434783, 1.4543478260869562, 0.24347826086956528, Iris-setosa
+
+</example>
+
+</method>

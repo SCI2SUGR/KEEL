@@ -1,0 +1,53 @@
+@relation new-thyroid2
+@attribute T3resin integer [65, 144]
+@attribute Thyroxin real [0.5, 25.3]
+@attribute Triiodothyronine real [0.2, 10.0]
+@attribute Thyroidstimulating real [0.1, 56.4]
+@attribute TSH_value real [-0.7, 56.3]
+@attribute Class {positive, negative}
+@inputs T3resin, Thyroxin, Triiodothyronine, Thyroidstimulating, TSH_value
+@outputs Class
+@data
+107, 10.1, 2.2, 0.9, 2.7, negative
+105, 6.1, 2.1, 1.4, 7.0, negative
+116, 10.1, 2.2, 1.6, 0.8, negative
+116, 11.1, 2.0, 1.2, 2.3, negative
+110, 9.2, 1.6, 1.5, 0.3, negative
+100, 11.3, 2.5, 0.7, -0.3, negative
+115, 8.1, 1.7, 0.6, 2.2, negative
+106, 9.4, 1.7, 0.9, 3.1, negative
+120, 10.4, 2.1, 1.1, 1.8, negative
+115, 10.4, 1.8, 1.6, 2.0, negative
+113, 8.5, 1.8, 0.8, 0.5, negative
+109, 9.7, 1.4, 1.1, 2.1, negative
+117, 6.7, 2.2, 1.8, 6.7, negative
+119, 11.4, 2.3, 2.2, 1.6, negative
+120, 7.1, 1.2, 1.5, 4.3, negative
+114, 8.1, 1.6, 1.6, 0.5, negative
+116, 11.5, 1.8, 1.4, 5.4, negative
+111, 8.5, 1.6, 1.1, 3.9, negative
+111, 9.1, 1.7, 1.2, 4.1, negative
+130, 10.0, 1.6, 0.9, 4.6, negative
+103, 9.5, 2.9, 1.4, -0.1, negative
+113, 7.8, 2.0, 1.1, 3.0, negative
+109, 9.2, 1.8, 1.1, 4.4, negative
+127, 7.7, 1.8, 1.9, 6.4, negative
+118, 12.2, 1.5, 1.0, 2.3, negative
+94, 7.5, 1.2, 1.3, 4.4, negative
+126, 10.4, 1.7, 1.2, 3.5, negative
+102, 6.6, 1.2, 1.4, 1.3, negative
+113, 17.2, 1.8, 1.0, 0.0, positive
+89, 23.8, 5.4, 0.5, 0.1, positive
+99, 13.0, 3.1, 0.5, -0.1, positive
+99, 17.5, 1.9, 1.4, 0.3, positive
+110, 15.2, 1.9, 0.7, -0.2, positive
+88, 16.5, 4.9, 0.8, 0.1, positive
+92, 11.1, 2.0, 0.7, -0.2, positive
+120, 3.0, 2.5, 1.2, 4.5, negative
+119, 0.8, 0.7, 56.4, 21.6, negative
+126, 0.5, 0.2, 12.2, 8.8, negative
+131, 2.7, 0.8, 9.9, 4.7, negative
+134, 2.0, 0.5, 12.2, 2.2, negative
+113, 5.1, 0.7, 5.8, 19.6, negative
+119, 5.1, 1.1, 7.0, 40.8, negative
+118, 6.5, 1.3, 1.7, 11.5, negative

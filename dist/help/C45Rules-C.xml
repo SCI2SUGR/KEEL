@@ -1,0 +1,148 @@
+<method>
+
+	<name>C4.5Rules</name>
+
+	<reference>  
+
+		<ref>J.R. Quinlan. C4.5: Programs for Machine Learning. Morgan Kauffman Publishers, San Mateo-California, 1993.</ref>
+		<ref>J.R. Quinlan. MDL and Categorical Theories (Continued). In Machine Learning: Proceedings of the Twelfth International Conference. Lake Tahoe, California. Morgan Kaufmann, 1995, 464-470.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules (based on decision trees)</type>
+
+		<objective>To determine a decision list of rules (if-elsif-elseif-...else) that predicts correctly the value of the target attribute</objective>
+
+		<howWork>C45 is a decision tree generating algorithm that it induces classification rules in the form of decision trees from a set of given examples.		
+
+The decision tree is constructed top-down. In each step a test for the actual node is chosen (starting with the root node), which best separates the given examples by classes. 
+
+C45Rules is based on C45 algorithm. A C45 Tree is generated and its rules extracted. A hill climbing algorithm is then performed in order to find the best subset of rules (acording to the MDL heuristic).
+</howWork>
+
+		<parameterSpec>  
+
+			<param>confidence: is the confidence level. It is a float value that determines what is the minimal confidence that must has a leaf in order to can be considered in the tree</param>
+			<param>minItemsets: is the minimum number of item-sets per leaf. It is an integer value that determines how much data instances must contain a leaf in order to can be created</param>
+
+			<param>threshold: determines wich algorithm to use in order to find the best subset of rules. For rulesets with seizes under the treshold, an exhaustive algorithm is performed; for sets above the threshold, a hill climbing algorithm is used. .</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: C4.5Rules
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 2 : CORRECT=1.0 N/C=0.0 
+Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 5 : CORRECT=1.0 N/C=0.0 
+Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 7 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+Global Classification Error + N/C:
+0.039999999999999994 
+stddev Global Classification Error + N/C:
+0.03265986323710905 
+Correctly classified:
+0.96 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Summary of data, Classifiers: 
+Fold 0 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 1 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 2 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 3 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 4 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 5 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 6 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 7 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 8 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 9 : CORRECT=0.9777777777777777 N/C=0.0 
+Global Classification Error + N/C:
+0.025185185185185182 
+stddev Global Classification Error + N/C:
+0.004913518207933949 
+Correctly classified:
+0.9748148148148148 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-C45Rules:
+
+@relation  Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+And the rule decision list (result0e0.txt) in Experiment\Results\Clas-C45Rules:
+
+if(petalWidth&lt;=0.6) (45/45)
+	output=Iris-setosa
+else if(petalLength&gt;4.9) (40/42)
+	output=Iris-virginica
+else if(petalWidth&gt;1.7) (41/42)
+	output=Iris-virginica
+else if(petalWidth&gt;0.6 &amp;&amp; petalWidth&lt;=1.7) (44/48)
+	output=Iris-versicolor
+else 
+	output=Iris-setosa
+</example>
+
+</method>

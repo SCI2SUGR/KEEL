@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>Fuzzy Rule Learning, Wang-Mendel Algorithm</name>
+  <nParameters>2</nParameters>
+  <seed>0</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of labels</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>KB Output File Format with Weight values to 1? (0/1)</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0</default>
+  </parameter>
+</algorithm_specification>

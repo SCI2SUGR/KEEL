@@ -1,0 +1,109 @@
+<method>
+
+	<name>Rule Induction Two In One</name>
+
+	<reference>  
+
+		<ref>X. Wu, D. Urpani. Induction By Attribute Elimination. IEEE Transactions on Knowledge and Data Engineering, 11:5 (1999), 805-812.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules (separate &amp; conquer).</type>
+
+		<objective>To determine a set of rules (inductive rules) that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.</objective>
+
+		<howWork>RITIO eliminates attributes in the order of decreasing irrelevancy. Like ID3-like decision tree construction algorithms, RITIO makes use of the entropy measure as a means of constraining the hypothesis search space; but, unlike ID3-like algorithms, the hypotheses language is the rule structure and RITIO generates rules without constructing decision trees. The final concept description produced by RITIO is shown to be largely based on only the most relevant attributes.
+		</howWork>
+
+		<parameterSpec>  
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>No</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Ritio
+Dataset: haberman
+Training set: haberman-10-1tra.dat
+Test set: haberman-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: 
+	Star_Size = 5
+	disjuntSelector = NO
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.7741935483870968 N/C=0.0 
+Global Classification Error + N/C:
+0.2258064516129032
+Correctly classified:
+0.7741935483870968
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-AQ-15:
+
+@relation  haberman
+@attribute Age integer[30,83]
+@attribute Year integer[58,69]
+@attribute Positive integer[0,52]
+@attribute class{positive,negative}
+@inputs Age,Year,Positive
+@outputs class
+@data
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative positive
+negative negative
+positive negative
+negative negative
+positive negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+positive positive
+negative positive
+negative negative
+positive positive
+positive positive
+positive positive
+negative negative
+negative negative
+negative negative
+positive negative
+positive negative
+negative negative
+positive negative
+
+</example>
+
+</method>

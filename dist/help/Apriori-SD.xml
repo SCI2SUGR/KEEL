@@ -1,0 +1,134 @@
+<method>
+
+	<name>Apriori Algorithm for Subgroup Discovery</name>
+
+	<reference>  
+
+		<ref>B. Kavsek, N. Lavrac. APRIORI-SD: Adapting Association Rule Learning to Subgroup Discovery. Applied Artificial Intelligence 20:7 (2006) 543-583.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by subgroup discovery.</type>
+
+		<objective>Adapting association rule learning to subgroup discovery.</objective>
+
+		<howWork>We first create the 1-items that are items with only one pair variable-value (an attribute value or a class value). Then we check the support of all the itemsets created and delete the unsupported itemsets. Support may be defined as the number of examples which contain a item divided between the total number of examples. 
+Then we start a loop in order to create the rules. We start creating the 2-items from the 1-items, and check their support deleting those which support is below the desired threshold. After that we select all items that have one target item at their right-hand side, that is, a value belonging to a class. We check their confidence (accuracy for the covered examples by the rule) and if it is above a selected threshold we create the rule and delete the itemset. We repite the loop while there are itemsets remaining, creating the 3-items from the 2-items, 4-items from 3-items and so on.
+
+Finally we prune the number of rules, selecting the best rules globally or the best rules for each class. Here we use a weighted relative accuracy measure in order to create rules that classify subgroups of the dataset.
+</howWork>
+
+		<parameterSpec>  
+
+			<param>MinSupport = Is the threshold for the support value to create the items.</param>
+			<param>MinConfidence = Is the threshold for the confidecen value to creat the rules.</param>
+			<param>Number_of_Rules = Is the maximum number of rules permited. </param>
+			<param>Postpruning_type = We can either select the maximum number of rules regardless its class or the maximum number of rules for each class indepently. </param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: SD-Apriori
+Dataset: haberman
+Training set: haberman-10-1tra.dat
+Test set: haberman-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: 
+	MinSupport = 0.03
+	MinConfidence = 0.9
+	Number_of_Rules = 5
+	Postpruning_type = SELECT_N_RULES_PER_CLASS
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.7096774193548387 N/C=0.0 
+Global Classification Error + N/C:
+0.2903225806451613
+Correctly classified:
+0.7096774193548387 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\SD-Apriori:
+
+@relation  haberman
+@attribute Age integer[30,83]
+@attribute Year integer[58,69]
+@attribute Positive integer[0,52]
+@attribute class{positive,negative}
+@inputs Age,Year,Positive
+@outputs class
+@data
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+positive negative
+negative negative
+positive negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+positive negative
+negative negative
+negative negative
+positive negative
+positive negative
+positive negative
+negative negative
+negative negative
+negative negative
+positive negative
+positive negative
+negative negative
+positive negative
+
+
+And the Rule Set and Statistics (result0e0.txt) in Experiment\Results\SD-Apriori:
+
+
+
+Rule 1: IF  Year =  60  THEN class -&gt; negative  -- Support: 22 [ 2 22]
+
+#### Final Results (on test) ####
+Avg. Rule length: 1
+Avg. Number of attributes by rule: 1.0
+Avg. Coverage; 0.12903225806451613
+Avg. Significance; 0.7736520686234669
+Accuracy Training: 0.7381818181818182
+Accuracy Test: 0.7096774193548387
+ TIME (sec): 0
+</example>
+
+</method>

@@ -1,0 +1,92 @@
+<method>
+
+	<name>Genetic-Based Fuzzy Rule Base Construction and Membership Functions Tuning</name>
+
+	<reference>  
+
+		<ref>A. Homaifar, E. McCormick. Simultaneous Design of Membership Functions and Rule Sets
+		for Fuzzy Controllers Using Genetic Algorithms. IEEE Transactions on Fuzzy Systems 3:2 (1995) 129-139</ref>
+		<ref>O. Cord&#xF3;n, F. Herrera, A three-stage evolutionary process for learning descriptive and approximate fuzzy logic controller knowledge bases, International Journal of Approximate Reasoning 17:4 (1997) 369-407.</ref>		
+		
+	</reference>
+
+	<generalDescription>  
+
+		<type>Genetic Fuzzy Rule Learning</type>
+
+		<objective>A Genetic Algorithm is used to compute the best consequent labels
+		for each rule, and to tune the membership functions of the variables.</objective>
+
+		<howWork>This method computes the consequent labels for all the possible rules
+		given a specific number of fuzzy partitions. The objective is to achieve the lower 
+		mean square error (MSE). It also includes a tuning of the fuzzy membership functions for the variables
+		of the problem, based on the global data base tuning proposed by Cordon and Herrera.
+		The genetic process is a simple genetic algorithm, with tournament selection, one-point crossover 
+		(rule base generation) and parent centered BLX crossover (membership function tuning),
+		uniform mutation of the current value, and a generational approach with elitism.
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of Labels: Is the number of fuzzy partitions of the input and output variables</param>
+			<param>Population Size: Is the number of chromosomes.</param>
+			<param>Number Generations: Is the number of generations of the GA</param>
+			<param>Cross Probability: Is the probability to apply the one-point crossover.  It is a float value between 0 and 1.</param>
+			<param>Mutation Probability: Is the probability to apply the mutation. It is a float value between 0 and 1.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes (only with numerical)</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression
+        Method: Regr-GFS-RB-MF
+        Dataset: daily-electric-energy
+        Training set: daily-electric-energy-10-1tra.dat
+        Test set: daily-electric-energy-10-1tst.dat
+        Test Show results: Vis-Regr-Check
+        Parameters: default values
+
+        After the execution of RunKeel.jar we can see into the experiment\results\Vis-Regr-Check folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.458981044709702 
+... 
+Global MSE:
+0.3219398800491313 
+Global stdev:
+0.06876671580637425 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.2766039155247016 
+... 
+Global MSE:
+0.265841259898457 
+Global stdev:
+0.01663737763251144 
+
+We can also see the output data base and rule base in Experiment\Results\Regr-GFS-RB-MF.
+
+</example>
+
+</method>

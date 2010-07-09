@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <name>keel</name>
+        </general-data>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
+            <!-- Do not use Project Properties customizer when editing this file manually. -->
+            <name>keel</name>
+            <properties/>
+            <folders>
+                <source-folder>
+                    <label>keel</label>
+                    <location>.</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src</label>
+                    <type>java</type>
+                    <location>src</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build">
+                    <target>compile</target>
+                </action>
+                <action name="clean">
+                    <target>clean</target>
+                </action>
+                <action name="run">
+                    <target>run</target>
+                </action>
+                <action name="test">
+                    <target>debug</target>
+                </action>
+                <action name="rebuild">
+                    <target>clean</target>
+                    <target>compile</target>
+                </action>
+                <action name="debug">
+                    <target>debug</target>
+                </action>
+            </ide-actions>
+            <export>
+                <type>folder</type>
+                <location>bin</location>
+                <build-target>compile</build-target>
+            </export>
+            <view>
+                <items>
+                    <source-folder style="packages">
+                        <label>src</label>
+                        <location>src</location>
+                    </source-folder>
+                    <source-file>
+                        <location>build.xml</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="build"/>
+                    <ide-action name="rebuild"/>
+                    <ide-action name="clean"/>
+                    <ide-action name="run"/>
+                    <ide-action name="test"/>
+                    <ide-action name="debug"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/1">
+            <compilation-unit>
+                <package-root>src</package-root>
+                <classpath mode="compile">lib/Interfaz/appframework-1.0.3.jar;lib/Interfaz/com.lowagie.text.jar;lib/Interfaz/com.Ostermiller.util.jar;lib/Interfaz/commons-logging-1.1.jar;lib/Interfaz/iText.jar;lib/Interfaz/javolution.xml.jar;lib/Interfaz/jcommon-1.0.12.jar;lib/Interfaz/jdom.jar;lib/Interfaz/jfreechart-1.0.9.jar;lib/Interfaz/junit-4.5.jar;lib/Interfaz/jxl.jar;lib/Interfaz/libs-nnep.jar;lib/Interfaz/net.sf.jclec.jar;lib/Interfaz/org-netbeans-modules-java-j2seproject-copylibstask.jar;lib/Interfaz/org.apache.commons.configuration.jar;lib/Interfaz/org.exolab.castor.jar;lib/Interfaz/org.jdom.jar;lib/Interfaz/org.jfree.jar;lib/Interfaz/org.w3c.tidy.jar;lib/Interfaz/swing-layout-1.0.3.jar;lib/Interfaz/swing-worker-1.1.jar;lib/Interfaz/Tidy.jar;lib/Interfaz/xerces.jar</classpath>
+                <built-to>bin</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+        </java-data>
+        <swingapp xmlns="http://www.netbeans.org/ns/form-swingapp/1">
+            <application-class name="keel.GraphInterKeel.datacf.DataCFApp"/>
+        </swingapp>
+    </configuration>
+</project>

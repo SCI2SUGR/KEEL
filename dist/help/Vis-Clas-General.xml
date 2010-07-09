@@ -1,0 +1,178 @@
+<method>
+
+	<name>StatGeneralCL</name>
+
+	<reference>  
+
+<ref>Test de Wilconxon, http://www.fon.hum.uva.nl/Service/Statistics/Wilcoxon_Test.html</ref>
+<ref>Test de Mann-Whitney, http://www.fact-index.com/m/ma/mann_whitney_u.html</ref>
+<ref>Wilcoxon signed ranks, http://faculty.vassar.edu/lowry/ch12a.html</ref>
+<ref>A. Mart&#xED;nez, C. Rodr&#xED;guez and R. Guti&#xE9;rrez, Inferencia Estad&#xED;stica, un enfoque cl&#xE1;sico,  Ed. Piramide.</ref>
+<ref>J.P. Royston, Algorithm AS 181, Applied Statistics 31(2):176-180, 1982</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical method for comparing  classification methods  performance.</type>
+
+		<objective>Statistical comparing of the performance of a classification model method. Statistical tests, like Wilcoxon signed ranks or Mann-Whitney u, are executed for comparing methods purposes.</objective>
+
+		<howWork>
+StatGeneralCL is a method for comparing the performance of classification algorithms using statistics techniques. It can be used in k-folds and 5x2 cross validation training  experiments.
+StatGeneralCL is associated to the training and testing results of all of the models in an experiment that are to be compared. Once those models has been trained and tested, the StatGeneralCL takes place. 
+The process calculates the percentage of correctly classified examples for each of the partitions results. The statistical sample includes all of those error measures for each method to be compared.  
+With the Royston implementation of the W test it is contrasted if error distributions are  normal for the samples to be compare. If the distributions are normal, then if the samples are of equal variance the t test is executed. If distributions are normal but they have different variances then the tvar test. Finally, if the samples are not normal, then the Wilcoxon test is executed. 
+The statistical test are executed in order to find evidence to assert that the error distribution of the different classification methods are different or not. If they are different, then it can be stated which one is  of better performance.
+</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Methods to compare: C45 vs ClassifKNN
+Dataset: iris
+Type of partitions: k-fold, k=10
+
+After the execution of RunKeel.jar we can see into the ./results/StatGeneralCL/TSTC45vsClassifKNN/ folder the classification results for the tested classification method:
+
+Results:
+Detected 2 methods
+Folds=10 10 
+Results: Test-Dataset ClasifKNN C45 
+Fold=0
+iris-setosa iris-setosa iris-setosa 
+iris-setosa iris-setosa iris-setosa 
+iris-setosa iris-setosa iris-setosa 
+iris-setosa iris-setosa iris-setosa 
+...
+...
+iris-virginica iris-virginica iris-virginica 
+iris-virginica iris-virginica iris-virginica 
+iris-virginica iris-virginica iris-virginica 
+Sample #0 = 0.0 0.06666666666666667 0.06666666666666667 0.06666666666666667 0.13333333333333333 0.0 0.0 0.06666666666666667 0.0 0.06666666666666667 
+Sample #1 = 0.06666666666666667 0.06666666666666667 0.0 0.06666666666666667 0.13333333333333333 0.0 0.06666666666666667 0.06666666666666667 0.0 0.13333333333333333 
+Expected error: 
+ClasifKNN C45 
+0,0467 0,0600 
+Median of errors: 
+ClasifKNN C45 
+0,0667 0,0667 
+***** CONFIDENCE LEVEL=0.99
+Pv normality test: 0.016110863506083255
+Output of algorithm 0 is normal 0.8034303301475103 0.016110863506083255
+Pv normality test: 0.03772995922352512
+Output of algorithm 1 is normal 0.8352312022987733 0.03772995922352512
+f-test between 0 and 1
+Null hypothesis, equal variances
+Output=0: There is no evidence against H0
+Pv F test: 0.7949700781223998
+t-test between 0 and 1 equal variances
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv t test (eq. var): 0.36755806190072304
+p-values matrix
+0,0000 0,3676 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.95
+Pv normality test: 0.016110863506083255
+Output of algorithm 0 is NOT normal 0.8034303301475103 0.016110863506083255
+Pv normality test: 0.03772995922352512
+Output of algorithm 1 is NOT normal 0.8352312022987733 0.03772995922352512
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.4113137917745697
+p-values matrix
+0,0000 0,4113 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.9
+Pv normality test: 0.016110863506083255
+Output of algorithm 0 is NOT normal 0.8034303301475103 0.016110863506083255
+Pv normality test: 0.03772995922352512
+Output of algorithm 1 is NOT normal 0.8352312022987733 0.03772995922352512
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.4113137917745697
+p-values matrix
+0,0000 0,4113 
+0,0000 0,0000  
+
+
+EXAMPLE 2
+
+Problem type: Classification
+Methods to compare: C45 vs ClassifKNN
+Dataset: iris
+Type of partitions: 5x2cv
+
+After the execution of RunKeel.jar we can see into the ./results/StatGeneralCL/TSTC45vsClassifKNN/ folder the classification results for the tested classification method:
+
+
+Results:
+Detected 2 methods
+Folds=5 5 
+Results: Test-Dataset C45 ClasifKNN 
+Fold=0
+iris-setosa iris-setosa iris-setosa 
+iris-setosa iris-setosa iris-setosa 
+iris-setosa iris-setosa iris-setosa 
+iris-setosa iris-setosa iris-setosa 
+...
+...
+iris-virginica iris-virginica iris-virginica 
+iris-virginica iris-virginica iris-virginica 
+iris-virginica iris-virginica iris-versicolor 
+Sample #0 = 0.02666666666666667 0.08 0.04 0.05333333333333334 0.04 
+Sample #1 = 0.05333333333333334 0.02666666666666667 0.04 0.05333333333333334 0.05333333333333334 
+Expected error: 
+C45 ClasifKNN 
+0,0480 0,0453 
+Median of errors: 
+C45 ClasifKNN 
+0,0400 0,0533 
+***** CONFIDENCE LEVEL=0.99
+Pv normality test: 0.0
+Output of algorithm 0 is NOT normal 0.0 0.0
+Pv normality test: 0.04705549272895928
+Output of algorithm 1 is normal 0.7708701124999997 0.04705549272895928
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.8936946693154
+p-values matrix
+0,0000 0,8937 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.95
+Pv normality test: 0.0
+Output of algorithm 0 is NOT normal 0.0 0.0
+Pv normality test: 0.04705549272895928
+Output of algorithm 1 is NOT normal 0.7708701124999997 0.04705549272895928
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.8936946693154
+p-values matrix
+0,0000 0,8937 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.9
+Pv normality test: 0.0
+Output of algorithm 0 is NOT normal 0.0 0.0
+Pv normality test: 0.04705549272895928
+Output of algorithm 1 is NOT normal 0.7708701124999997 0.04705549272895928
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.8936946693154
+p-values matrix
+0,0000 0,8937 
+0,0000 0,0000 
+</example>
+
+</method>

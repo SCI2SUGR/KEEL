@@ -1,0 +1,25 @@
+<algorithm_specification>
+  <name>PUBLIC</name>
+  <nParameters>2</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>nodesBetweenPrune</name>
+    <type>integer</type>
+		<domain>
+      <lowerB>1</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>25</default>
+  </parameter>
+  <parameter>
+    <name>estimateToPrune</name>
+    <type>list</type>
+    <domain>
+      <item>PUBLIC(1)</item>
+      <item>PUBLIC(S)</item>
+	  	<item>PUBLIC(V)</item>
+    </domain>
+    <default>PUBLIC(1)</default>   
+  </parameter>
+</algorithm_specification>

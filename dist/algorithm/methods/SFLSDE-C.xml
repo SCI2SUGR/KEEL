@@ -1,0 +1,136 @@
+<algorithm_specification>
+  <name>SFLSDE</name>
+  <nParameters>13</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+  <parameter>
+    <name>Number of Neighbors</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+
+   <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  
+   <parameter>
+    <name>Particle Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  
+   <parameter>
+    <name>MaxIter</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>500</default>
+  </parameter>
+  
+   <parameter>
+    <name>iterSFGSS</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>8</default>
+  </parameter>
+  
+     <parameter>
+    <name>iterSFHC</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>40</upperB>
+    </domain>
+    <default>20</default>
+  </parameter>
+  
+  <parameter>
+    <name>Fl</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  
+    <parameter>
+    <name>Fu</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.9</default>
+  </parameter>
+  
+    <parameter>
+    <name>tau1</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>  
+
+    <parameter>
+    <name>tau2</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter> 
+   
+      <parameter>
+    <name>tau3</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.03</default>
+  </parameter>  
+ 
+    <parameter>
+    <name>tau4</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.07</default>
+  </parameter>  
+  
+       <parameter>
+    <name>Strategy</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>6</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+</algorithm_specification>

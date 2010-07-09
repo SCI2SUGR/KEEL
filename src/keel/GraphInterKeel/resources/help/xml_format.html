@@ -1,0 +1,767 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+
+<title>XML format</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+<style>
+<!--
+ li.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Nimbus Roman No9 L";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h3 style="text-align: center"><b>
+<span lang="EN-GB" style="font-family: Times New Roman; ">XML DATA 
+FILE FORMAT</span></b></h3>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">XML </span>
+<span lang="EN-GB">(Extensible Markup Language) is</span><span lang="EN-GB" style="font-family: Times New Roman; color: black"> 
+a set of rules to define semantic labels that organize a document in different 
+parts. XML is a meta-language that defines the syntax to define other structured 
+&nbsp;label languages. </span></p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">We will 
+explain the XML format to be followed to convert data file correctly:</span></p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">&nbsp;</span></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	first line must follow the next structure:</span></p></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<font color="#008000">
+<span lang="EN-GB" style="font-family: Times New Roman; font-style:italic">&nbsp;&nbsp;&nbsp; &lt;? Xml version = 
+	&quot;1.0&quot; encoding = &quot;UTF-8&quot; standalone = &quot;yes&quot;&gt; 
+</span></font></p>
+<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>&nbsp;&nbsp;&nbsp;
+	You can have several attributes, some mandatory and others are not:</span></p>
+<blockquote>
+	<blockquote>
+		<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<i>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black; font-weight:700">version</span></i><span lang="EN-GB" style="font-family: Times New Roman; color: black">: 
+		indicates XML version used in the document. This field is compulsory.</span></p>
+		<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<span style="font-family: Times New Roman" lang="en-gb"><i><b>encoding:</b></i> 
+		indicates the way that has been encoded document. The default option is 
+		UTF-8, but could be others, as UTF-16, US-ASCII, ISO-8859-1, etc. This 
+		field is not obligatory.</span></p>
+		<p class="MsoNormal" style="text-align: justify; margin-left: 35.4pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+		<i>
+		<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		<b>standalone</b>:</span></i><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+		</span><span lang="EN-GB">specifies whether further documents, such as a DTD, 
+		are required to process the document. The default value is &quot;no&quot;.</span></p>
+	</blockquote>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="color: black">XML documents must follow a 
+		hierarchical structure by means of labels. XML elements can contain 
+		other elements. Elements may also have <b>attributes</b>, these are 
+		always expressed as name-value pairs in the element's open tag.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN">A well-formed document must conform to the 
+	following rules</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">:</span></li>
+</ul>
+<blockquote>
+	<blockquote>
+		<ul>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			Element names are case sensitive, that is, the following is a 
+			well-formed matching pair: &lt;step&gt;&#8230;&lt;step&gt;, whereas this is not 
+			&lt;step&gt;&#8230;&lt;/step&gt;.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN">Non-empty elements are delimited by both a start-tag 
+			and an end-tag.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN">Attribute values must always be 
+			quoted, using single or double quotes, and each attribute name 
+			should appear only once in any element.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			All spaces and carriage returns are taken into account in the 
+			elements.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			The element names must not begin with the letters &#8220;xml&#8221;.</span></p>
+			</li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			The element names should not use character &quot;:&quot;.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">Although it is permissible to use the characters &quot;.&quot; And &quot;-&quot; in 
+			element names, it is not recommended because the application 
+			processing &nbsp;XML file may interpret these signs as operators. 
+			&nbsp;Therefore these characters will be replaced in our tool <br>by 
+			the character &quot;_&#8221;.</span></p></li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span style="font-style:normal; font-variant:normal; font-weight:normal; font-size:7.0pt; font-family:Times New Roman; color:black" lang="EN-GB">&nbsp;</span><span lang="EN-GB" style="font-family: Times New Roman; color: black">It 
+			should not be used characters &quot;\&quot; in the names of elements.</span></p>
+			</li>
+			<li>
+			<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 18.0pt; margin-right: 0cm; margin-top: 6.0pt; margin-bottom: 6.0pt">
+			<span lang="EN-GB" style="font-family: Times New Roman; color: black">
+			The names may contain any alphanumeric character, but they can not 
+			start with a numerical or punctuation character.</span></p></li>
+		</ul>
+	</blockquote>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN">Special characters can be represented either 
+	using entity references, or by means of numeric character references. An 
+	example of a numeric character reference is &quot;</span><code style="font-family: Courier New"><span lang="EN" style="font-size: 10.0pt">&amp;#x20AC;</span></code><span lang="EN">&quot;, 
+	which refers to the Euro symbol by means of its Unicode codepoint in 
+	hexadecimal.</span></li>
+</ul>
+<blockquote>
+	<p class="MsoNormal" style="text-align: justify; margin-left: 18.0pt; background: #F8FCFF">
+	<span lang="EN" style="font-family: Times New Roman">An entity reference is 
+	a
+	placeholder 
+	that represents that entity. It consists of the entity's name preceded by an
+			ampersand 
+	(&quot;</span><span lang="EN" style="font-size: 10.0pt; font-family: Courier New">&amp;</span><span lang="EN" style="font-family: Times New Roman">&quot;) 
+	and followed by a
+			semicolon 
+	(&quot;</span><span lang="EN" style="font-size: 10.0pt; font-family: Courier New">;</span><span lang="EN" style="font-family: Times New Roman">&quot;). 
+	XML has five
+			predeclared 
+	entities:</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">&amp; (ampersand) is &amp;amp;</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">&lt; (less than) is &amp;lt;</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">&gt; (greater than) is &amp;gt;</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">' (apostrophe) is &amp;apos;</span></p>
+	<p class="MsoNormal" style="text-indent: -18.0pt; margin-left: 69.45pt; background: #F8FCFF; margin-top:0; margin-bottom:0">
+	<span style="font-family: Times New Roman">&quot; (quotation mark) is &amp;quot;</span></p>
+</blockquote>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN">Comments can be placed 
+		anywhere in the tree, including in the text if the content of the 
+		element is text. XML comments start with <b>&lt;!-</b> and end with <b>-&gt;.</b></span></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify"><i>
+<span lang="EN" style="color: gray">&nbsp;</span><span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><font color="#003366"><span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman">
+</span></font></i><font color="#008000"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;!- This a comment -&gt;</span></i></font></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN">XML requires that elements be properly nested, that is, 
+		elements may never overlap. For example, the code below is not 
+		well-formed XML, because the &lt;<i>em&gt;</i> and &lt;<i>strong&gt;</i> elements 
+		overlap:</span></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<font color="#008000"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!- WRONG! NOT WELL-FORMED XML !-&gt;</span></i></font></p>
+<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+<span lang="en-gb"><font color="#008000"><i>
+<span style="font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;p&gt;Normal&lt;em&gt;emphasized&lt;strong&gt;strong emphasized&lt;/em&gt;strong&lt;/strong&gt;&lt;/p&gt;</span></i></font></span><span style="font:7.0pt &quot;Times New Roman&quot;" lang="EN">&nbsp;&nbsp;
+	</span><i>
+<span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><font color="#008000"><span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman; ">
+</span></font>
+<span lang="EN" style="font-size: 12.0pt; font-family: Times New Roman; color: #008000">
+	</span></i></p>
+<ul>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">All 
+	XML documents must contain a single tag pair to define the root element. All 
+	other elements must be nested within the root element. All elements can have 
+	sub (children) elements. Sub elements must be in pairs and correctly nested 
+	within their parent element.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+	label &lt;root&gt; indicates the begin of the data. This label can have any name. 
+	If all the children of &lt;root&gt; do not have the same name on the label &lt;row&gt;, 
+	the user must enter the name of this tag, otherwise it is assumed that all 
+	children have the same value.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">Each 
+	label &lt;row&gt; is parent of as labels as attributes exist. The name on the 
+	label of each of these children will be the attribute name, and the value of 
+	the label is the data value of the attribute.</span></li>
+	<li>
+	<p class="MsoNormal" style="text-align: justify; margin: 6.0pt 0cm">
+	<span lang="EN-GB" style="font-family: Times New Roman; color: black">There 
+	are as labels &lt;row&gt; as rows of data.</span></li>
+</ul>
+<p>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<b>One XML format valid to Keel is the following:</b></span></p>
+<p>
+&nbsp;</p>
+<div align="center">
+<table border="1" width="513" height="307">
+	<tr>
+		<td height="307" width="513">
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; 
+standalone=&quot;yes&quot;?&gt;<br>
+&lt;root&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;row1&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-1&gt; attribute-value-11 
+&lt;/attribute-name-1&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-2&gt; attribute-value-12 
+&lt;/attribute-name-2&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-N&gt; attribute-value-1N 
+&lt;/attribute-name-N&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/row1&gt;<br>
+...<br>
+&lt;rowM&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-1&gt; attribute-value-M1 
+&lt;/attribute-name-1&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-2&gt; attribute-value-M2 
+&lt;/attribute-name-2&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;attribute-name-N&gt; attribute-value-MN 
+&lt;/attribute-name-N&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/rowM&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;/root&gt;</span></i><i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;color:#003366;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+</div>
+</p>
+
+<p class="MsoNormal">&nbsp;</p>
+<![if !mso]><![endif]>&nbsp;<b><span lang="EN-GB" style="font-family: Times New Roman; color: black">Another 
+XML format valid to Keel is the following:</span></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+<br>
+&nbsp;</span><div align="center">
+	<table border="1" width="538" height="300">
+	<tr>
+		<td height="300" width="538">
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; 
+standalone=&quot;yes&quot;?&gt;<br>
+&lt;root&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;row1&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-1&quot;&gt;attribute-value-11 &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-2&quot;&gt;attribute-value-12 &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-N&quot;&gt;attribute-value-1N &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/row1&gt;<br>
+...<br>
+&lt;rowM&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-1&quot;&gt;attribute-value-M1 &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-2&quot;&gt;attribute-value-M2 &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;attribute-name-N&quot;&gt;attribute-value-MN &lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/rowM&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+    auto;mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;/root&gt;</span></i><span lang="ES-TRAD"><o:p>&nbsp;</o:p></span></p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+</div>
+<p><span lang="EN-GB" style="font-family: Times New Roman; color: black">
+<br>
+</span><b><i>
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">One 
+example of a valid XML file is the following:</span></i></b><span lang="EN-GB" style="font-family: Times New Roman; color: black"><br>
+&nbsp;</span></p>
+<p><span lang="EN-GB" style="font-family: Times New Roman; color: black">In this 
+example there are:</span></p>
+<ul>
+	<li><span lang="EN-GB" style="font-family: Times New Roman">9 attributes: id, 
+	course, name, summary, numbering, disableprintg, customtitles, timecreated 
+	and timemodified.</span></li>
+	<li class="MsoNormal" style="color: black; text-align: justify; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman">2 instances with 
+	these 9 attributes.</span></li>
+	<li class="MsoNormal" style="color: black; text-align: justify; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman">The main label is 
+	&lt;root&gt;</span></li>
+	<li class="MsoNormal" style="color: black; text-align: justify; margin-top: 6.0pt; margin-bottom: 6.0pt">
+	<span lang="EN-GB" style="font-family: Times New Roman">The label &lt;customer&gt; 
+	contains each instance. In xml data file export to our tool, the name of 
+	this label will be the same than the name of data relation stores in keel 
+	format.</span></li>
+</ul>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>
+<div align="center">
+<table border="1" width="467" height="446">
+	<tr>
+		<td height="446" width="467">
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>
+&lt;root&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;customer&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;id&gt;5&lt;/id&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;course&gt;66&lt;/course&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;name&gt;My book&lt;/name&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;summary&gt;Book summary&lt;/summary&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;numbering&gt;2&lt;/numbering&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;disableprinting&gt;0&lt;/disableprinting&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;customtitles&gt;1&lt;/customtitles&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;timecreated&gt;1114095924&lt;/timecreated&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;timemodified&gt;1114097355&lt;/timemodified&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/customer&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;customer&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;id&gt;6&lt;/id&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;course&gt;207&lt;/course&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;name&gt;My book&lt;/name&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;summary&gt;A test summary&lt;/summary&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;numbering&gt;1&lt;/numbering&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;disableprinting&gt;0&lt;/disableprinting&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;customtitles&gt;0&lt;/customtitles&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;timecreated&gt;1114095966&lt;/timecreated&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:70.8pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;timemodified&gt;1114095966&lt;/timemodified&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/customer&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:
+    &quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:AR-SA;
+    mso-bidi-font-weight:bold">&lt;/root&gt;</span></i><i style="mso-bidi-font-style:
+    normal"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;color:#003366;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA"><o:p></o:p></span></i></p>
+		</td>
+	</tr>
+</table>
+</div>
+<p class="MsoNormal">
+<span lang="EN-GB" style="font-size: 10.0pt; font-family: Courier New; color: black">
+&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span lang="EN-GB" style="font-family: Times New Roman; color: black">The 
+following example has another xml structure, but the same data than the previous 
+example. You can see that there are 9 attributes and 2 instances of this.</span></p>
+<p class="MsoNormal" style="text-align: justify">
+&nbsp;</p>
+<div align="center">
+<table border="1" width="488" height="457">
+	<tr>
+		<td height="457" width="488">
+<p class="MsoNormal" style="margin-left:18.45pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>
+&lt;root&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:18.45pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;row&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;id&quot;&gt;5&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;course&quot;&gt;66&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field name=&quot;name&quot;&gt;My 
+book&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;summary&quot;&gt;Book summary&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;numbering&quot;&gt;2&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;disableprinting&quot;&gt;0&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;customtitles&quot;&gt;1&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;timecreated&quot;&gt;1114095924&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;timemodified&quot;&gt;1114097355&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:18.45pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;/row&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:18.45pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;row&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;id&quot;&gt;6&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;course&quot;&gt;207&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field name=&quot;name&quot;&gt;My 
+book&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;summary&quot;&gt;A test summary&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;numbering&quot;&gt;1&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;disableprinting&quot;&gt;0&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;customtitles&quot;&gt;0&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;timecreated&quot;&gt;1114095966&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:35.4pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;field 
+name=&quot;timemodified&quot;&gt;1114095966&lt;/field&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="margin-left:18.45pt;text-indent:16.95pt;
+    mso-pagination:widow-orphan;mso-hyphenate:auto; margin-top:0; margin-bottom:0">
+<i style="mso-bidi-font-style:
+    normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+    &quot;Times New Roman&quot;;mso-ansi-language:EN-GB;mso-fareast-language:
+    ES;mso-bidi-language:AR-SA;mso-bidi-font-weight:bold">&lt;/row&gt;<o:p></o:p></span></i></p>
+<p class="MsoNormal" style="text-indent:18.45pt;mso-pagination:widow-orphan;
+    mso-hyphenate:auto; margin-top:0; margin-bottom:0"><i style="mso-bidi-font-style:normal">
+<span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-ansi-language:EN-GB;mso-fareast-language:ES;mso-bidi-language:
+    AR-SA;mso-bidi-font-weight:bold">&lt;/root&gt;</span></i></p></td>
+	</tr>
+</table>
+</div>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-GB">&nbsp;</span></p>
+<p class="MsoNormal">&nbsp;</p>
+</body>
+
+</html>

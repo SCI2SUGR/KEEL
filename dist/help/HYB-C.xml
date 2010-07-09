@@ -1,0 +1,99 @@
+<method>
+
+	<name>Hybrid-LVQ3 Algorithm</name>
+
+	<reference>  
+		<ref>Kim, S.‐W., Oomenn, J. A brief taxonomy and ranking of creative prototype reduction schemes (2003) Pattern Analysis and Applications, 6, pp. 232‐244.</ref>
+		<ref>Kohonen, T. Self-Organizing Maps Self-Organizing Maps New Springer Series in Information Sciences, Vol. 30, Springer, Berlin, Heidelberg, New York, 1995, 1997, 2001. Third Extended Edition, 501 pages. ISBN 3-540-67921-9, ISSN 0720-678X </ref>
+		<ref>Kohonen, T. The self organizing map (1990) Proceeding of the IEEE, 78:9, pp. 1464‐1480.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+		Executes a brute-force search of the best parameters of the LVQ3 method.
+		Parts training data set in two sets. The first part is optimized by CNN, SVM selection, VQ or PNN, and the second is used as validation in the searching process.
+		performs a brute-force search on the first, and selects the window width and epsilon parameters of the LVQ3 that obtains better classification accuracy under the validation set.
+		Finally, performs an optimal LVQ3 under the training data set.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of searching iterations: Integer.  Iterations performed in the internals LVQ3.</param>
+			<param>Number of final iterations: Integer. Iterations performed in the optimal (and final) LVQ3.</param>
+      <param>Percentage of generated set by optimal LVQ3: % of size of initial set to be generated.</param>
+      <param>Alpha 0: alpha0 LVQ3 parameter.</param>
+     <param> Initial Window Width: Initial value of window width.</param>
+     <param> Final Window Width: End value of window width.</param>
+     <param> Delta Window Width: Increment of the window width in each step.</param>
+     <param> Initial Epsilon: Initial value of epsilon.</param>
+     <param> Final Epsilon: End value of epsilon.</param>
+     <param> Delta Epsilon: Increment of the epsilon in each step.</param>
+     <param> Percentage of partition used as training: % of original set used as training in the search process.</param>
+     <param> Type of initial reduction: initial reduction: CNN, VQ, SVM, PNN.</param>
+     <param> CNN-param K in KNN: Integer. Size of nearest neighbor in KNN used in CNN.</param>
+     <param> VQ-param Iterations of VQ: Integer. Number of iterations of VQ.</param>
+     <param> VQ-param Percentage of reduction in the set: Double. precentage of number of prototypes of VQ.</param>
+     <param> VQ-param Size of neighborhood: Integer. K used in KNN.</param>
+     <param> VQ-param Alpha 0: Double. Alpha 0 parameter of VQ.</param>
+     <param> SVM-param Kernel type: Kernel type of SVM.</param>
+     <param> SVM-param C: Parameter C of C-SVC, epsilon-SVR, and nu-SVR.</param>
+     <param> SVM-param Epsilon: Epsilon in loss function of epsilon-SVR.</param>
+     <param> SVM-param Degree: Degree in kernel function.</param>
+     <param> SVM-param Gamma: Gamma in kernel function.</param>
+     <param> SVM-param Nu: Parameter nu of nu-SVC, one-class SVM, and nu-SVR.</param>
+     <param> SVM-param P: P-parameter of the SVM.</param>
+     <param> SVM-param Shrinking: Whether to use the shrinking heuristics, 0 or 1.</param>                    
+		</parameterSpec>
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: PG-HYB
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-HYB:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+4.885594124574663, 3.102862800762174, 1.4941950654411142, 0.1029234081716777, Iris-setosa
+5.1258207633035475, 3.770507042693125, 1.4891390906275654, 0.2962592187015852, Iris-setosa
+5.020718935896712, 3.495460936096838, 1.5644203585521104, 0.5293770914407715, Iris-setosa
+6.5036919351379545, 2.819230496435081, 4.611448577848824, 1.5000380605332, Iris-versicolor
+5.694588169183219, 2.998397621698097, 4.212557468443464, 1.2093229105867953, Iris-versicolor
+5.562113492273326, 2.5232976926999098, 3.883281343328011, 1.1235337911291012, Iris-versicolor
+6.72730757439483, 3.1111704559717337, 5.633938488808811, 2.3824831544650635, Iris-virginica
+6.507744064930001, 2.980351693662385, 5.223451786034544, 1.992147626935184, Iris-virginica
+6.502886031331971, 2.9749794930831053, 5.5734403764878975, 1.8242722620008598, Iris-virginica
+6.7289789619864, 3.0258699102514246, 5.288557836948649, 2.2963469149489684, Iris-virginica
+5.474011449277997, 2.3229908814890243, 3.958476460886316, 1.296231621250829, Iris-versicolor
+
+</example>
+
+</method>

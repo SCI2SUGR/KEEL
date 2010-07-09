@@ -1,0 +1,28 @@
+<algorithm_specification>
+  <name>PSO</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+  <parameter>
+    <name>Number of Subsets</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>0</default>
+  </parameter>
+
+   <parameter>
+    <name>Subset choice</name>
+    <type>list</type>
+    <domain>
+      <item>diameter</item>
+      <item>overlapping</item>
+    </domain>
+    <default>diameter</default>   
+  </parameter>
+  
+
+</algorithm_specification>

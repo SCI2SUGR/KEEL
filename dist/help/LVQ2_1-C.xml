@@ -1,0 +1,76 @@
+<method>
+
+	<name>Learning Vector Quantization 2.1</name>
+
+	<reference>  
+		<ref>Kohonen, T. Self-Organizing Maps Self-Organizing Maps New Springer Series in Information Sciences, Vol. 30, Springer, Berlin, Heidelberg, New York, 1995, 1997, 2001. Third Extended Edition, 501 pages. ISBN 3-540-67921-9, ISSN 0720-678X </ref>
+		<ref>Kohonen, T. The self organizing map (1990) Proceeding of the IEEE, 78:9, pp. 1464‐1480.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+		LVQ2.1 is similar to LVQ2, initialy it extracts randomly prototypes, the it cycles applying to each prototype the following rule.
+		For each stochastic input sample x in the resulting set, the adjustments are performed for the two best-matching codebook vectors m_c and m_d, which are nearest prototype of the same and different class, resp.
+		If the sample x lie in a window between m_c and m_d, the update m_c and m_d.
+		The update rewards m_c and penalize m_d in the same way as LVQ1 does.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of iterations: Integer value. Number of iterations of the algorithm.</param>
+			<param>Percentage of prototypes: Real value. Desired size of the resulting set as percentage of training set size.</param>
+			<param>Alpha0: Double value. Alpha constant in [0, 1].</param>
+			<param>Window width: Double value. Window width constant in [0, 1].</param>			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: PG-LVQ2_1
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-LVQ2_1:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+5.1, 3.5, 1.4, 0.3, Iris-setosa
+4.8881196000000005, 3.0762392, 1.4940598, 0.10594020000000001, Iris-setosa
+4.4, 3.2, 1.3, 0.2, Iris-setosa
+6.488584678037212, 2.9216070358719297, 3.906989518386069, 1.2839933803028203, Iris-versicolor
+5.5210744554530855, 2.433245939992241, 3.457799063428444, 0.9170422414744845, Iris-versicolor
+5.691126466617101, 2.924898662856419, 4.122068067538557, 1.0359416314242489, Iris-versicolor
+5.449658802269102, 2.5800560255678198, 5.0157110078786245, 2.154524614198335, Iris-virginica
+6.968313043814954, 3.13144707735238, 5.611033066009409, 2.3215793503971542, Iris-virginica
+6.157578918531766, 2.652509085236489, 6.005491723985527, 1.9441366342720032, Iris-virginica
+7.35978968529505, 2.870105157352475, 6.50926389853267, 1.8448422639712876, Iris-virginica
+</example>
+
+</method>

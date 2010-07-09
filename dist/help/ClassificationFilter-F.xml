@@ -1,0 +1,60 @@
+<method>
+
+	<name>Classification Filter</name>
+
+	<reference>  
+
+		<ref>Gamberger, D., Lavrac, N., Groselj C. (1999). Experiments with noise filtering in a medical domain, Proc. of 16th ICML, pp. 143-151, San Francisco, CA.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification Filter.</type>
+
+		<objective>To remove noisy instances from the training data.</objective>
+
+		<howWork>
+			It removes noisy instances from the training data by means of wrong predictions of a K-NN or C45 classifier.
+		</howWork>
+
+		<parameterSpec>
+			
+			<param>
+				numPartitions: number of partitions of the training set.
+			</param>
+			
+			<param>
+				classifier: to choose between knn or c45.
+			</param>
+			
+			<param>
+				numNeighbors: for K-NN algorithm, the number of neighbors.
+			</param>
+			
+			<param>
+				distanceType: for K-NN algorithm, the distance type.
+			</param>
+
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+</method>

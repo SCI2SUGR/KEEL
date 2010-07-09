@@ -1,0 +1,966 @@
+/**
+ * File: Multiple.java
+ * 
+ * This class performs several statistical comparisons between NxN methods
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
+*/
+package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.*;
+
+import org.core.*;
+
+public class Multiple {
+	
+	private boolean Iman, Nemenyi, Bonferroni, Holm, Hoch, Hommel, Scha, Berg; //post-hoc methods to apply
+	
+	/**
+	* Builder
+	*/
+	public Multiple(){
+		
+	}//end-method
+	
+    /**
+     * <p>
+     * In this method, all possible post hoc statistical test between more than three algorithms results 
+     * are executed, according to the configuration file
+     * @param code A double that identifies which methods will be applied
+     * @param nfold A vector of int with fold number by algorithm
+     * @param algorithms A vector of String with the names of the algorithms
+     * @param fileName A String with the name of the output file
+     * </p>
+     */
+    public void runPostHoc(double code, int nfold[], String algorithms[], String fileName) {
+
+        int nAlgorithm = algorithms.length;
+        String outputFileName = new String(""); //Final output file
+        String[] aux = null;
+        aux = fileName.split("/");
+        for (int i = 0; i < 4; i++) {
+            outputFileName += aux[i] + "/";
+        }
+        String outputString = new String("");
+        outputString = header();
+        
+        //If the number of algorithms is less than three, the test cannot be applied
+        if (nAlgorithm < 3){
+          outputString +=
+              "There are few algorithms to execute the non-parametric test\n";
+          outputString +=
+              "Please select THREE or more algorithms in order to have significative results\n";
+            outputString += "\\end{document}";
+        }else{
+
+          //Number of files?
+          int nResults = Integer.parseInt("" + aux[4].charAt(6));
+          nResults++; //The first is indexed by 0
+
+          if (nResults > 3) {
+            double[][] results = new double[nAlgorithm][nResults];
+            for (int i = 0, j = 0; i < nResults; i++, j += 2) {
+              String outputFile = outputFileName + "result" + i + "s0.stat";
+              StringTokenizer line;
+              String file = Fichero.leeFichero(outputFile); //file is an string containing the whole file
+              line = new StringTokenizer(file, "\n\r\t");
+
+              line.nextToken(); //Title
+              line.nextToken(); //Subtitle
+              for (int k = 0; k < nAlgorithm; k++) {
+                line.nextToken(); //First algorithm
+                for (int h = 0; h < nfold[k]; h++) {
+                  line.nextToken(); //Todos los resultados
+                }
+                String result = line.nextToken(); //Mean Value: value
+                StringTokenizer res = new StringTokenizer(result, " ");
+                res.nextToken(); //mean
+                res.nextToken(); //value:
+                results[k][i] = 1 - Double.parseDouble(res.nextToken()); //guess
+              }
+            }
+            outputString += runMultiple(code, results, algorithms);
+          }
+          else {
+            outputString +=
+                "There are few datasets to execute the non-parametric test\n";
+            outputString +=
+                "Please select FOUR or more data-sets in order to have significative results\n";
+            outputString += "\\end{document}";
+          }
+        }
+
+        outputFileName += "output.tex";
+        Files.writeFile(outputFileName, outputString);
+
+    }//end-method
+    
+	/**
+	* This method runs the multiple comparison tests
+	*
+	* @param code A value to codify which post-hoc methods apply
+	* @param results Array with the results of the methods
+	* @param algorithmName Array with the name of the methods employed
+	*
+	* @return A string with the contents of the test in LaTeX format
+	*/
+    private String runMultiple(double code, double[][] results,String algorithmName[]) {
+    	
+    	int i, j, k;
+    	int posicion;
+    	double mean[][];
+    	MultiplePair orden[][];
+    	MultiplePair rank[][];
+    	boolean encontrado;
+    	int ig;
+    	double sum;
+    	boolean visto[];
+    	Vector<Integer> porVisitar;
+    	double Rj[];
+    	double friedman;
+    	double sumatoria=0;
+    	double termino1, termino2, termino3;
+    	double iman;
+    	boolean vistos[];
+    	int pos, tmp, counter;
+    	String cad;
+    	double maxVal;
+    	double Pi[];
+    	double ALPHAiHolm[];
+    	double ALPHAiShaffer[];
+    	String ordenAlgoritmos[];
+    	double ordenRankings[];
+    	int order[];
+    	double adjustedP[][];
+    	double SE;
+    	boolean parar;
+    	Vector<Integer> indices = new Vector<Integer>();
+    	Vector<Vector<Relation>> exhaustiveI = new Vector<Vector<Relation>>();
+    	boolean[][] cuadro;
+    	double minPi, tmpPi, maxAPi,tmpAPi;
+    	Relation[] parejitas;
+    	Vector<Integer> T;
+    	int Tarray[];
+    	
+		DecimalFormat nf4 = (DecimalFormat) DecimalFormat.getInstance();
+		nf4.setMaximumFractionDigits(4);
+		nf4.setMinimumFractionDigits(0);
+
+		DecimalFormatSymbols dfs = nf4.getDecimalFormatSymbols();
+		dfs.setDecimalSeparator('.');
+		nf4.setDecimalFormatSymbols(dfs);
+		
+		DecimalFormat nf6 = (DecimalFormat) DecimalFormat.getInstance();
+		nf6.setMaximumFractionDigits(6);
+		nf6.setMinimumFractionDigits(0);
+
+		nf6.setDecimalFormatSymbols(dfs); 
+    	
+    	String out="";
+        int nDatasets = results[0].length;
+            
+        decode(code); //obtain the code of the p-value adjustment to apply
+            
+        	
+    	mean = new double[nDatasets][algorithmName.length];
+
+    	/*Compute the average performance per algorithm for each data set*/
+    	for (i=0; i<nDatasets; i++) {
+    	    for (j=0; j<algorithmName.length; j++) {
+    	    	mean[i][j] = results[j][i];
+    	    }
+    	}
+
+    	/*We use the pareja structure to compute and order rankings*/
+    	orden = new MultiplePair[nDatasets][algorithmName.length];
+    	for (i=0; i<nDatasets; i++) {
+    		for (j=0; j<algorithmName.length; j++){
+    			orden[i][j] = new MultiplePair (j,mean[i][j]);
+    		}
+    		Arrays.sort(orden[i]);
+    	}
+
+    	/*building of the rankings table per algorithms and data sets*/
+    	rank = new MultiplePair[nDatasets][algorithmName.length];
+    	posicion = 0;
+    	for (i=0; i<nDatasets; i++) {
+    		for (j=0; j<algorithmName.length; j++){
+    			encontrado = false;
+    		    for (k=0; k<algorithmName.length && !encontrado; k++) {
+    		    	if (orden[i][k].indice == j) {
+    		    		encontrado = true;
+    		    		posicion = k+1;
+    		    	}
+    		    }
+    		    rank[i][j] = new MultiplePair(posicion,orden[i][posicion-1].valor);
+    		}
+    	}
+
+    	/*In the case of having the same performance, the rankings are equal*/
+    	for (i=0; i<nDatasets; i++) {
+    		visto = new boolean[algorithmName.length];
+    		porVisitar= new Vector<Integer>();
+
+    		Arrays.fill(visto,false);
+    		for (j=0; j<algorithmName.length; j++) {
+    			porVisitar.removeAllElements();
+    		    sum = rank[i][j].indice;
+    		    visto[j] = true;
+    		    ig = 1;
+    		    for (k=j+1;k<algorithmName.length;k++) {
+    		    	if (rank[i][j].valor == rank[i][k].valor && !visto[k]) {
+    		    		sum += rank[i][k].indice;
+    		    		ig++;
+    		    		porVisitar.add(new Integer(k));
+    		    		visto[k] = true;
+    		    	}
+    		    }
+    		    sum /= (double)ig;
+    		    rank[i][j].indice = sum;
+    		    for (k=0; k<porVisitar.size(); k++) {
+    		    	rank[i][((Integer)porVisitar.elementAt(k)).intValue()].indice = sum;
+    		    }
+    		}
+    	}
+
+    	/*compute the average ranking for each algorithm*/
+    	Rj = new double[algorithmName.length];
+    	for (i=0; i<algorithmName.length; i++){
+    		Rj[i] = 0;
+    		for (j=0; j<nDatasets; j++) {
+    		    Rj[i] += rank[j][i].indice / ((double)nDatasets);
+    		}
+    	}
+
+    	/*Print the average ranking per algorithm*/
+    	out+="\n\nAverage ranks obtained by applying the Friedman procedure\n\n";
+    	
+    	out+="\\begin{table}[!htp]\n" +
+    		"\\centering\n" +
+    	    "\\begin{tabular}{|c|c|}\\hline\n" +
+    	    "Algorithm&Ranking\\\\\\hline\n";
+    	    for (i=0; i<algorithmName.length;i++) {
+    	        out+=(String)algorithmName[i]+" & "+nf4.format(Rj[i])+"\\\\\n";
+    	    }
+    	out+="\\hline\n\\end{tabular}\n\\caption{Average Rankings of the algorithms}\n\\end{table}";
+
+    	/*Compute the Friedman statistic*/
+    	termino1 = (12*(double)nDatasets)/((double)algorithmName.length*((double)algorithmName.length+1));
+    	termino2 = (double)algorithmName.length*((double)algorithmName.length+1)*((double)algorithmName.length+1)/(4.0);
+    	for (i=0; i<algorithmName.length;i++) {
+    		 sumatoria += Rj[i]*Rj[i];
+    	}
+    	friedman = (sumatoria - termino2) * termino1;
+    	out+="\n\nFriedman statistic considering reduction performance (distributed according to chi-square with "
+    		+(algorithmName.length-1)+" degrees of freedom: "+nf6.format(friedman)+".\n\n";
+
+    	/*Compute the Iman-Davenport statistic*/
+    	if(Iman){
+    	iman = ((nDatasets-1)*friedman)/(nDatasets*(algorithmName.length-1) - friedman);
+    	out+="Iman and Davenport statistic considering reduction performance (distributed according to F-distribution with "
+    		+(algorithmName.length-1)+" and "+ (algorithmName.length-1)*(nDatasets-1) +" degrees of freedom: "+nf6.format(iman)+".\n\n";
+    	}
+    	
+    	termino3 = Math.sqrt((double)algorithmName.length*((double)algorithmName.length+1)/(6.0*(double)nDatasets));
+    		    
+    	out+="\n\n\\pagebreak\n\n";
+    		    
+    	/************ NxN COMPARISON **************/	    
+
+    	out+="\\section{Post hoc comparisons}";
+    	out+="\n\nResults achieved on post hoc comparisons for $\\alpha = 0.05$, $\\alpha = 0.10$ and adjusted p-values.\n\n";
+    	/*Compute the unadjusted p_i value for each comparison alpha=0.05*/	    
+    	Pi = new double[(int)combinatoria(2,algorithmName.length)];
+    	ALPHAiHolm = new double[(int)combinatoria(2,algorithmName.length)];
+    	ALPHAiShaffer = new double[(int)combinatoria(2,algorithmName.length)];
+    	ordenAlgoritmos = new String[(int)combinatoria(2,algorithmName.length)];
+    	ordenRankings = new double[(int)combinatoria(2,algorithmName.length)];
+    	order = new int[(int)combinatoria(2,algorithmName.length)];
+    	parejitas = new Relation[(int)combinatoria(2,algorithmName.length)];
+    	T = new Vector<Integer>();
+    	T = trueHShaffer(algorithmName.length);
+    	Tarray = new int[T.size()];
+    	for (i=0; i<T.size(); i++) {
+    		 Tarray[i] = ((Integer)T.elementAt(i)).intValue();
+    	}
+    	Arrays.sort(Tarray);
+
+    	SE = termino3;
+    	vistos = new boolean[(int)combinatoria(2,algorithmName.length)];
+    	for (i=0, k=0; i<algorithmName.length;i++) {
+    		for (j=i+1; j<algorithmName.length;j++,k++) {
+    		    ordenRankings[k] = Math.abs(Rj[i] -Rj[j]);
+    		    ordenAlgoritmos[k] = (String)algorithmName[i] + " vs. " + (String)algorithmName[j];
+    		    parejitas[k] = new Relation(i,j);
+    		}
+    	}
+    		    
+    	Arrays.fill(vistos,false);
+    	for (i=0; i<ordenRankings.length; i++) {
+    		for (j=0;vistos[j]==true;j++);
+    		pos = j;
+    		maxVal = ordenRankings[j];
+    		for (j=j+1;j<ordenRankings.length;j++) {
+    		    if (vistos[j] == false && ordenRankings[j] > maxVal) {
+    		    	pos = j;
+    		    	maxVal = ordenRankings[j];
+    		    }
+    		}
+    		vistos[pos] = true;
+    		order[i] = pos;
+    	}
+    		    
+    	/*Computing the logically related hypotheses tests (Shaffer and Bergmann-Hommel)*/
+    	
+    	pos = 0;
+    	tmp = Tarray.length-1;
+    	for (i=0; i<order.length; i++) {
+    		Pi[i] = 2*CDF_Normal.normp((-1)*Math.abs((ordenRankings[order[i]])/SE));
+    		ALPHAiHolm[i] = 0.05/((double)order.length-(double)i);
+    		ALPHAiShaffer[i] = 0.05/((double)order.length-(double)Math.max(pos,i));
+    		if (i == pos && Pi[i] <= ALPHAiShaffer[i]) {
+    		    tmp--;
+    		    pos = (int)combinatoria(2,algorithmName.length) - Tarray[tmp];
+    		}
+    	}
+    		
+    	out+="\\subsection{P-values for $\\alpha=0.05$}\n\n";
+    	
+    	int count=4;
+    	
+    	if(Holm){
+    		count++;
+    	}
+    	if(Scha){
+    		count++;
+    	}
+    	out+="\\begin{table}[!htp]\n\\centering\\scriptsize\n" +
+    	     "\\begin{tabular}{"+printC(count)+"}\n" +
+    	     "$i$&algorithms&$z=(R_0 - R_i)/SE$&$p$";
+    	if(Holm){
+    		out+="&Holm";
+    	}
+    	if(Scha){
+    		out+="&Shaffer";
+    	}
+
+    	out+="\\\\\n\\hline";
+    	        
+    	for (i=0; i<order.length; i++) {
+    	    out+=(order.length-i) + "&" + ordenAlgoritmos[order[i]] + "&" +
+    	    nf6.format(Math.abs((ordenRankings[order[i]])/SE)) + "&" +
+    	    nf6.format(Pi[i]); 
+    	    if(Holm){
+    	    	out+="&" + nf6.format(ALPHAiHolm[i]);
+    	    }
+    	    if(Scha){
+    	    	out+="&" + nf6.format(ALPHAiShaffer[i]);
+    	    }
+    	    out+="\\\\\n";
+    	}
+    		    
+    	out+="\\hline\n" + "\\end{tabular}\n\\caption{P-values Table for $\\alpha=0.05$}\n" + "\\end{table}";  	        
+    		    
+    	/*Compute the rejected hipotheses for each test*/
+    	
+    	if(Nemenyi){
+    		out+="Nemenyi's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.05/(double)(order.length))+"$.\n\n";
+    	}
+    	
+    	if(Holm){
+    		parar = false;
+    		for (i=0; i<order.length && !parar; i++) {
+    			if (Pi[i] > ALPHAiHolm[i]) {	    		
+    		    	out+="Holm's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+    		    	parar = true;
+    			}
+    		}
+    	}
+    	
+    	if(Scha){
+    		parar = false;
+    		for (i=0; i<order.length && !parar; i++) {
+    			if (Pi[i] <= ALPHAiShaffer[i]) {	    		
+    				out+="Shaffer's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiShaffer[i])+"$.\n\n";
+    				parar = true;
+    			}
+    		}
+    	}
+    		    
+    	/*For Bergmann-Hommel's procedure, 9 algorithms could suppose intense computation*/
+    	if (algorithmName.length < 9) {
+    		for (i=0; i<algorithmName.length; i++) {
+    			 indices.add(new Integer(i));
+    		}	    	
+    		exhaustiveI = obtainExhaustive(indices);
+    		cuadro = new boolean[algorithmName.length][algorithmName.length];
+    		for (i=0; i<algorithmName.length; i++) {
+    			Arrays.fill(cuadro[i], false);
+    		}
+    		        
+    		for (i=0; i<exhaustiveI.size(); i++) {	
+    	        minPi = 2*CDF_Normal.normp((-1)*Math.abs(Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(0)).i] - Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(0)).j])/SE);
+    		    
+    	        for (j=1; j<((Vector<Relation>)exhaustiveI.elementAt(i)).size(); j++) {
+    		    	tmpPi = 2*CDF_Normal.normp((-1)*Math.abs(Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(j)).i] - Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(j)).j])/SE);
+    		        if (tmpPi < minPi) {
+    		        	minPi = tmpPi;
+    		        }
+    		    }
+    		    if (minPi > (0.05/((double)((Vector<Relation>)exhaustiveI.elementAt(i)).size()))) {	        		
+    			    for (j=0; j<((Vector<Relation>)exhaustiveI.elementAt(i)).size(); j++) {
+    			        cuadro[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(j)).i][((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(j)).j] = true;
+    			    }	        		
+    		    }
+    		}
+    		
+    		if(Berg){
+    			cad="";
+	    		cad+="Bergmann's procedure rejects these hypotheses:\n\n";
+	    		cad+="\\begin{itemize}\n\n";
+	    		
+	    		counter=0;
+	    		for (i=0; i<cuadro.length;i++) {
+	    			for (j=i+1; j<cuadro.length;j++) {					
+	    				if (cuadro[i][j] == false) {
+	    					cad+="\\item "+algorithmName[i]+" vs. "+algorithmName[j]+"\n\n";
+	    					counter++;
+	    				}
+	    			}
+	    		}
+	    		cad+="\\end{itemize}\n\n";
+	    		
+	    		if(counter>0){
+	    			out+=cad;
+	    		}
+	    		else{
+	    			out+="Bergmann's procedure does not reject any hypotheses.\n\n";
+	    		}
+    		}
+    	}
+ 		
+    	out+="\\pagebreak\n\n";
+    	out+="\\subsection{P-values for $\\alpha=0.10$}\n\n";
+    	
+    	/*Compute the unadjusted p_i value for each comparison alpha=0.10*/	    
+    	Pi = new double[(int)combinatoria(2,algorithmName.length)];
+    	ALPHAiHolm = new double[(int)combinatoria(2,algorithmName.length)];
+    	ALPHAiShaffer = new double[(int)combinatoria(2,algorithmName.length)];
+    	ordenAlgoritmos = new String[(int)combinatoria(2,algorithmName.length)];
+    	ordenRankings = new double[(int)combinatoria(2,algorithmName.length)];
+    	order = new int[(int)combinatoria(2,algorithmName.length)];
+
+    	SE = termino3;
+    	vistos = new boolean[(int)combinatoria(2,algorithmName.length)];
+    	for (i=0, k=0; i<algorithmName.length;i++) {
+    		 for (j=i+1; j<algorithmName.length;j++,k++) {
+    		    ordenRankings[k] = Math.abs(Rj[i] -Rj[j]);
+    		    ordenAlgoritmos[k] = (String)algorithmName[i] + " vs. " + (String)algorithmName[j];
+    		 }
+    	}
+    		    
+    	Arrays.fill(vistos,false);
+    	for (i=0; i<ordenRankings.length; i++) {
+    		for (j=0;vistos[j]==true;j++);
+    		pos = j;
+    		maxVal = ordenRankings[j];
+    		
+    		for (j=j+1;j<ordenRankings.length;j++) {
+    		    if (vistos[j] == false && ordenRankings[j] > maxVal) {
+    		    	pos = j;
+    		    	maxVal = ordenRankings[j];
+    		    }
+    		}
+    		vistos[pos] = true;
+    		order[i] = pos;
+    	}
+    		    
+    	/*Computing the logically related hypotheses tests (Shaffer and Bergmann-Hommel)*/
+    	pos = 0;	    
+    	tmp = Tarray.length-1;
+    	for (i=0; i<order.length; i++) {
+    		Pi[i] = 2*CDF_Normal.normp((-1)*Math.abs((ordenRankings[order[i]])/SE));
+    		ALPHAiHolm[i] = 0.1/((double)order.length-(double)i);
+    		ALPHAiShaffer[i] = 0.1/((double)order.length-(double)Math.max(pos,i));
+    		if (i == pos && Pi[i] <= ALPHAiShaffer[i]) {
+    		    tmp--;
+    		    pos = (int)combinatoria(2,algorithmName.length) - Tarray[tmp];
+    		}
+    	}
+
+    	
+    	count=4;
+    	
+    	if(Holm){
+    		count++;
+    	}
+    	if(Scha){
+    		count++;
+    	}
+    	out+="\\begin{table}[!htp]\n\\centering\\scriptsize\n" +
+	     "\\begin{tabular}{"+printC(count)+"}\n" +
+	     "$i$&algorithms&$z=(R_0 - R_i)/SE$&$p$";
+    	if(Holm){
+    		out+="&Holm";
+    	}
+    	if(Scha){
+    		out+="&Shaffer";
+    	}
+    	out+="\\\\\n\\hline";
+    	        
+    	for (i=0; i<order.length; i++) {
+    		out+=(order.length-i) + "&" + ordenAlgoritmos[order[i]] + "&" +
+    		nf6.format(Math.abs((ordenRankings[order[i]])/SE)) + "&" +
+    		nf6.format(Pi[i]);
+    		if(Holm){
+    	    	out+="&" + nf6.format(ALPHAiHolm[i]);
+    	    }
+    	    if(Scha){
+    	    	out+="&" + nf6.format(ALPHAiShaffer[i]);
+    	    }
+    	    out+="\\\\\n";
+    	}
+    		    
+    	out+="\\hline\n" + "\\end{tabular}\n\\caption{P-values Table for $\\alpha=0.10$}\n" + "\\end{table}";
+    	        	    
+    	/*Compute the rejected hipotheses for each test*/
+    	
+    	if(Nemenyi){
+    		out+="Nemenyi's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.10/(double)(order.length))+"$.\n\n";
+    	}  
+    	
+    	if(Holm){
+    		parar = false;
+    	
+    		for (i=0; i<order.length && !parar; i++) {
+    			if (Pi[i] > ALPHAiHolm[i]) {	    		
+    				out+="Holm's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+    				parar = true;
+    			}
+    		}
+    	}
+
+    	if(Scha){
+    		parar = false;
+    		for (i=0; i<order.length && !parar; i++) {
+    			if (Pi[i] <= ALPHAiShaffer[i]) {	    		
+    				out+="Shaffer's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiShaffer[i])+"$.\n\n";
+    				parar = true;
+    			}
+    		}
+    	}
+    		    
+    	/*For Bergmann-Hommel's procedure, 9 algorithms could suppose intense computation*/
+    	if (algorithmName.length < 9) {
+    		
+    		indices.removeAllElements();
+    		for (i=0; i<algorithmName.length; i++) {
+    			indices.add(new Integer(i));
+    		}
+    		
+    		exhaustiveI = obtainExhaustive(indices);
+    		cuadro = new boolean[algorithmName.length][algorithmName.length];
+    		
+    		for (i=0; i<algorithmName.length; i++) {
+    			Arrays.fill(cuadro[i], false);
+    		}
+    		
+    		for (i=0; i<exhaustiveI.size(); i++) {	
+    			minPi = 2*CDF_Normal.normp((-1)*Math.abs(Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(0)).i] - Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(0)).j])/SE);
+    		    for (j=1; j<((Vector<Relation>)exhaustiveI.elementAt(i)).size(); j++) {
+    		        tmpPi = 2*CDF_Normal.normp((-1)*Math.abs(Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(j)).i] - Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(j)).j])/SE);
+    		        if (tmpPi < minPi) {
+    		        	minPi = tmpPi;
+    		        }
+    		    }
+    		        	
+    		    if (minPi > 0.1/((double)((Vector<Relation>)exhaustiveI.elementAt(i)).size())) {	        		
+    			    for (j=0; j<((Vector<Relation>)exhaustiveI.elementAt(i)).size(); j++) {
+    			        cuadro[((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(j)).i][((Relation)((Vector<Relation>)exhaustiveI.elementAt(i)).elementAt(j)).j] = true;
+    			    }	        		
+    		    }
+    		}
+    		 
+    		if(Berg){
+    			
+    			cad="";
+	    		cad+="Bergmann's procedure rejects these hypotheses:\n\n";
+	    		cad+="\\begin{itemize}\n\n";
+	    		
+	    		counter=0;
+	    		for (i=0; i<cuadro.length;i++) {
+	    			for (j=i+1; j<cuadro.length;j++) {					
+	    				if (cuadro[i][j] == false) {
+	    					cad+="\\item "+algorithmName[i]+" vs. "+algorithmName[j]+"\n\n";
+	    					counter++;
+	    				}
+	    			}
+	    		}
+	    		cad+="\\end{itemize}\n\n";
+	    		
+	    		if(counter>0){
+	    			out+=cad;
+	    		}
+	    		else{
+	    			out+="Bergmann's procedure does not reject any hypotheses.\n\n";
+	    		}
+
+    		}
+    	}
+    	
+    	out+="\\pagebreak\n\n";
+    	
+    	/************ ADJUSTED P-VALUES NxN COMPARISON **************/	    
+
+    	out+="\\subsection{Adjusted p-values}\n\n";
+    	
+    	adjustedP = new double[Pi.length][4];
+    	pos = 0;
+    	tmp = Tarray.length-1;
+    		    
+    	for (i=0; i<adjustedP.length; i++) {
+    		adjustedP[i][0] = Pi[i] * (double)(adjustedP.length);
+    		adjustedP[i][1] = Pi[i] * (double)(adjustedP.length-i);
+    		adjustedP[i][2] = Pi[i] * ((double)adjustedP.length-(double)Math.max(pos,i));
+    		    	
+    		if (i == pos) {
+    		    tmp--;
+    		    pos = (int)combinatoria(2,algorithmName.length) - Tarray[tmp];
+    		}
+    		    	
+    		if (algorithmName.length < 9) {
+    		    maxAPi = Double.MIN_VALUE;
+    		    minPi = Double.MAX_VALUE;
+    			for (j=0; j<exhaustiveI.size(); j++) {
+    			    if (exhaustiveI.elementAt(j).toString().contains(parejitas[order[i]].toString())) {
+    			        minPi = 2*CDF_Normal.normp((-1)*Math.abs(Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(j)).elementAt(0)).i] - Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(j)).elementAt(0)).j])/SE);
+    				    for (k=1; k<((Vector<Relation>)exhaustiveI.elementAt(j)).size(); k++) {
+    				        tmpPi = 2*CDF_Normal.normp((-1)*Math.abs(Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(j)).elementAt(k)).i] - Rj[((Relation)((Vector<Relation>)exhaustiveI.elementAt(j)).elementAt(k)).j])/SE);
+    				        if (tmpPi < minPi) {
+    				        	minPi = tmpPi;
+    				        }
+    				    }		        		
+    				    tmpAPi = minPi * (double)(((Vector<Relation>)exhaustiveI.elementAt(j)).size());
+    				    if (tmpAPi > maxAPi) {
+    				        maxAPi = tmpAPi;
+    				    }			     
+    			    }
+    			}	    		
+    			
+    			adjustedP[i][3] = maxAPi;
+    		}
+    	}
+    		    
+    	for (i=1; i<adjustedP.length; i++) {
+    		if (adjustedP[i][1] < adjustedP[i-1][1])
+    		    adjustedP[i][1] = adjustedP[i-1][1];
+    		if (adjustedP[i][2] < adjustedP[i-1][2])
+    		    adjustedP[i][2] = adjustedP[i-1][2];
+    		if (adjustedP[i][3] < adjustedP[i-1][3])
+    		    adjustedP[i][3] = adjustedP[i-1][3];
+    	}
+
+    			
+    	count=3;
+        
+    	if(Nemenyi){
+            count++;
+        }	
+        if(Holm){
+        	count++;
+        }
+        if(Scha){
+        	count++;
+        }
+        if(Berg){
+        	count++;
+        }
+
+    	out+="\\begin{table}[!htp]\n\\centering\\scriptsize\n" +
+    	           		"\\begin{tabular}{"+printC(count)+"}\n" +
+    	           		"i&hypothesis&unadjusted $p$";
+    	
+    	if(Nemenyi){
+    		out+="&$p_{Neme}$";
+        }	
+        if(Holm){
+        	out+="&$p_{Holm}$";
+        }
+        if(Scha){
+        	out+="&$p_{Shaf}$";
+        }
+        if(Berg){
+        	out+="&$p_{Berg}$"; 
+        }
+
+    	out+="\\\\\n\\hline";
+    	
+    	for (i=0; i<Pi.length; i++) {	    	
+    	        out+=(i+1) + "&" + algorithmName[parejitas[order[i]].i] + " vs ." + algorithmName[parejitas[order[i]].j] + "&" + nf6.format(Pi[i]);
+    	        if(Nemenyi){
+    	        	out+="&" + nf6.format(adjustedP[i][0]);
+    	        }
+    	        if(Holm){
+    	        	out+="&" + nf6.format(adjustedP[i][1]);
+    	        }
+    	        if(Scha){
+    	        	out+="&" + nf6.format(adjustedP[i][2]);
+    	        }
+    	        if(Berg){
+    	        	out+="&" + nf6.format(adjustedP[i][3]);
+    	        }
+
+    	        out+="\\\\\n";
+    	}
+    		    
+    	out+="\\hline\n" + "\\end{tabular}\n\\caption{Adjusted $p$-values}\n" + "\\end{table}\n\n";
+    	out+="\\end{landscape}\n\\end{document}";
+    	
+    	return out;
+    	
+    }//end-method
+    
+	
+	/**
+	* Obtain all exhaustive comparisons possible from an array of indexes
+	*
+	* @param indices A verctos of indexes.
+	*
+	* @return A vector with vectors containing all the possible relations between the indexes 
+	*/
+    @SuppressWarnings("unchecked")
+	public static Vector<Vector<Relation>> obtainExhaustive (Vector<Integer> indices) {
+		
+		Vector<Vector<Relation>> result = new Vector<Vector<Relation>>();
+		int i,j,k;
+		String binario;
+		boolean[] number = new boolean[indices.size()];
+		Vector<Integer> ind1, ind2;
+		Vector<Relation> set = new Vector<Relation>();
+		Vector<Vector<Relation>> res1, res2;
+		Vector<Relation> temp;
+		Vector<Relation> temp2;
+		Vector<Relation> temp3;
+
+		ind1 = new Vector<Integer>();
+		ind2 = new Vector<Integer>();
+		temp = new Vector<Relation>();
+		temp2 = new Vector<Relation>();
+		temp3 = new Vector<Relation>();
+		
+		for (i=0; i<indices.size();i++) {
+			for (j=i+1; j<indices.size();j++) {
+				set.addElement(new Relation(((Integer)indices.elementAt(i)).intValue(),((Integer)indices.elementAt(j)).intValue()));
+			}
+		}
+		if (set.size()>0)
+			result.addElement(set);
+		
+		for (i=1; i<(int)(Math.pow(2, indices.size()-1)); i++) {
+			Arrays.fill(number, false);
+			ind1.removeAllElements();
+			ind2.removeAllElements();
+			temp.removeAllElements();
+			temp2.removeAllElements();
+			temp3.removeAllElements();
+			binario = Integer.toString(i, 2);
+			for (k=0; k<number.length-binario.length();k++) {
+				number[k] = false;
+			}
+			for (j=0; j<binario.length();j++,k++) {
+				if (binario.charAt(j) == '1')
+					number[k] = true;
+			}
+			for (j=0; j<number.length; j++) {
+				if (number[j] == true) {
+					ind1.addElement(new Integer(((Integer)indices.elementAt(j)).intValue()));					
+				} else {					
+					ind2.addElement(new Integer(((Integer)indices.elementAt(j)).intValue()));					
+				}
+			}
+			res1 = obtainExhaustive (ind1);
+			res2 = obtainExhaustive (ind2);
+			for (j=0; j<res1.size();j++) {
+				result.addElement(new Vector<Relation>((Vector<Relation>)res1.elementAt(j)));
+			}
+			for (j=0; j<res2.size();j++) {
+				result.addElement(new Vector<Relation>((Vector<Relation>)res2.elementAt(j)));
+			}
+			for (j=0; j<res1.size();j++) {
+				temp = (Vector<Relation>)((Vector<Relation>)res1.elementAt(j)).clone();
+				for (k=0; k<res2.size();k++) {
+					temp2 = (Vector<Relation>)temp.clone();
+					temp3 = (Vector<Relation>) ((Vector<Relation>)res2.elementAt(k)).clone();
+					if (((Relation)temp2.elementAt(0)).i < ((Relation)temp3.elementAt(0)).i) {
+						temp2.addAll((Vector<Relation>)temp3);					
+						result.addElement(new Vector<Relation>(temp2));						
+					} else {
+						temp3.addAll((Vector<Relation>)temp2);					
+						result.addElement(new Vector<Relation>(temp3));					
+						
+					}
+				}
+			} 
+		}
+		for (i=0;i<result.size();i++) {
+			if (((Vector<Relation>)result.elementAt(i)).toString().equalsIgnoreCase("[]")) {
+				result.removeElementAt(i);
+				i--;
+			}
+		}
+		for (i=0;i<result.size();i++) {
+			for (j=i+1; j<result.size(); j++) {	
+				if (((Vector<Relation>)result.elementAt(i)).toString().equalsIgnoreCase(((Vector<Relation>)result.elementAt(j)).toString())) {
+					result.removeElementAt(j);
+					j--;
+				}
+			}
+		}
+		return result;		
+	}//end-method
+	
+	/**
+	* Computes the (N/M) combinatory number
+	*
+	* @param n N value
+	* @param m M value
+	*
+	* @return The (N/M) combinatory number
+	*/
+    public static double combinatoria (int m, int n) {
+
+		double result = 1;
+		int i;
+		
+		if (n >= m) {
+			for (i=1; i<=m; i++)
+				result *= (double)(n-m+i)/(double)i;
+		} else {
+			result = 0;
+		}
+		return result;
+	}//end-method
+    
+	/**
+	* Computes the trueHShaffer distribution from a given parameter.
+	*
+	* @param k K parameter
+	* @param n M value
+	*
+	* @return The trueHShaffer distribution
+	*/
+    public static Vector<Integer> trueHShaffer (int k) {
+		
+		Vector<Integer> number;
+		int j;
+		Vector<Integer> tmp, tmp2;
+		int p;
+		
+		number = new Vector<Integer>();
+		tmp = new Vector<Integer>();
+		if (k <= 1) {			
+			number.addElement(new Integer(0));	
+		} else {
+			for (j=1; j<=k; j++) {
+				tmp = trueHShaffer (k-j);
+				tmp2 = new Vector<Integer>();
+				for (p=0; p<tmp.size(); p++) {
+					tmp2.addElement(((Integer)(tmp.elementAt(p))).intValue() + (int)combinatoria(2,j));
+				}
+				number = unionVectores (number,tmp2);
+			}
+		}
+		
+		return number;
+	}//end-method
+	
+	/**
+	* Joins two vectors 
+	*
+	* @param a First vector
+	* @param b Second vector
+	*
+	* @return The joint of both vectors
+	*/
+	public static Vector<Integer> unionVectores (Vector<Integer> a, Vector<Integer> b) {
+
+		int i;
+		
+		for (i=0; i<b.size(); i++) {
+			if (a.contains(new Integer((Integer)(b.elementAt(i)))) == false) {
+				a.addElement(b.elementAt(i));
+			}			
+		}
+		
+		return a;		
+	}//end-method
+	
+	/**
+	* Prints as many "c" as desired
+	*
+	* @param n Number of "c" to print
+	*
+	* @return A string with all the "c"s
+	*/
+	public String printC(int n){
+		
+		String out="";
+		
+		for(int i=0;i<n;i++){
+			out+="c";
+		}
+		
+		return out;
+	}//end-method
+    
+	/**
+	* <p>
+	* This method decodes the parameter and assigns the attributes that specify  the p-value adjustment to use
+	* </p>
+	* @param cod A double with the code
+	* @return Nothing, the values of Iman, Nemenyi, Bonferroni, Holm, Hoch and Hommel are changed
+	*/
+    private void decode(double cod) {
+        int code = (int) cod; //cast a entero
+        Iman = (code % 2 > 0);
+        code /= 2;
+        Nemenyi = (code % 2 > 0);
+        code /= 2;
+        Bonferroni = (code % 2 > 0);
+        code /= 2;
+        Holm = (code % 2 > 0);
+        code /= 2;
+        Hoch = (code % 2 > 0);
+        code /= 2;
+        Hommel = (code % 2 > 0);
+        code /= 2;
+        Scha = (code % 2 > 0);
+        code /= 2;
+        Berg = (code % 2 > 0);
+    }//end-method
+	
+	/**
+	* <p>
+	* This method composes the header of the LaTeX file where the results are saved
+	* </p>
+	* @return A string with the header of the LaTeX file
+	*/    
+    private String header() {
+    	
+        String output = new String("");
+        output += "\\documentclass[a4paper,10pt]{article}\n";
+        output += "\\usepackage{graphicx}\n";
+        output += "\\usepackage{lscape}\n";
+        output += "\\title{Output tables for the test of Multiple comparisons.}\n";
+        output += "\\author{}\n\\date{\\today}\n\\begin{document}\n";
+        output += "\\begin{landscape}\n\\pagestyle{empty}\n\\maketitle\n\\thispagestyle{empty}\n\\section{Average rankings of Friedman test}\n\n";
+        
+        return output;
+
+    }//end-method
+
+}//end-class

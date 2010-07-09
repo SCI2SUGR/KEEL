@@ -1,0 +1,185 @@
+<method>
+
+	<name>AQ-15</name>
+
+	<reference>  
+
+		<ref>R.S. Michalksi, I. Mozetic and N. Lavrac. The Multipurpose Incremental Learning System AQ15 And Its Testing Application To Three Medical Domains. 5th INational Conference on Artificial Intelligence (AAAI'86). Philadelphia (Pennsylvania, 1986) 1041-1045.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules (separate &amp; conquer).</type>
+
+		<objective>To determine a set of rules (inductive rules) that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.</objective>
+
+		<howWork>AQ-15 implements the STAR method of inductive learning. When building a decision rule, AQ-15 performs a heuristic search through a space of logical expressions to determine those that account for all positive and no negative examples. 
+
+Because there are usually many such complete and consistent expressions, the goal of AQ-15 is to find the most preferred one, according to flexible extra-logical criteria. These criteria are defined by the user to reflect the needs of the application domain. 
+
+For each class C, the AQ-15 algorithm is applied in steps to generate a cover for C, each step producing one complex of the cover, until all positive examples are covered. Each step starts with one selected positive example, a seed.
+
+The STAR algorithm generates a star, a set of all maximally general complexes, which cover the seed but none of the negative examples, and then selects the best complex from the star according to the user defined criteria. The STAR procedure starts with the entire event space as initial star. As long as a complex in the star covers a negative event, the complexes in the star are specialized to exclude this negative event by adding one or several selectors. If the number of complexes kept in the star exceeds maxstar, a user-defined parameter, the star is trimmed according to the user-defined criteria. For this study, the criterion was to &quot;maximize the number of positive examples covered&quot; first and then, in case of a tie, to &quot;minimize the number of selectors.&quot;
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Star_Size: is the maximum size for the learning STAR. It is an int value that determines the maximum number of rules of the STAR when searching for the best rule in each step.</param>
+			<param>Disjunct_Selector: is a code to use selectors with disjunctive values or not. It is a list value to make the method more efficient (without using disjunctive selectors) or more effective, increasing the search space.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: AQ-15
+Dataset: haberman
+Training set: haberman-10-1tra.dat
+Test set: haberman-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: 
+	Star_Size = 5
+	disjuntSelector = NO
+
+After the execution of RunKeel.jar we can see into the experiment\results\StatCheckCL folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.7741935483870968 N/C=0.0 
+Global Classification Error + N/C:
+0.2258064516129032
+Correctly classified:
+0.7741935483870968
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-AQ-15:
+
+@relation  haberman
+@attribute Age integer[30,83]
+@attribute Year integer[58,69]
+@attribute Positive integer[0,52]
+@attribute class{positive,negative}
+@inputs Age,Year,Positive
+@outputs class
+@data
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative positive
+negative negative
+positive negative
+negative negative
+positive negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+positive positive
+negative positive
+negative negative
+positive positive
+positive positive
+positive positive
+negative negative
+negative negative
+negative negative
+positive negative
+positive negative
+negative negative
+positive negative
+
+
+And the Rule Set and Statistics (result0e0.txt) in Experiment\Results\Clas-AQ-15:
+
+
+Rule 1: IF  Age = 72.0 AND Year = 63.0 THEN class -&gt; positive     [ 1 0]
+Rule 2: IF  Year = 66.0 AND Age = 45.0 THEN class -&gt; positive     [ 1 0]
+Rule 3: IF  Year = 64.0 AND Age = 50.0 THEN class -&gt; positive     [ 1 0]
+Rule 4: IF  Positive = 0.0 AND Age = 42.0 AND Year = 59.0 THEN class -&gt; positive     [ 1 0]
+Rule 5: IF  Age &gt; 77.0 THEN class -&gt; positive     [ 2 0]
+Rule 6: IF  Positive &gt; 9.0 AND Age &gt; 45.0 AND Year &lt;= 65.0 THEN class -&gt; positive     [ 16 4]
+Rule 7: IF  Positive = 9.0 AND Age &lt;= 56.0 THEN class -&gt; positive     [ 3 0]
+Rule 8: IF  Year &gt; 67.0 AND Positive = 1.0 THEN class -&gt; positive     [ 2 0]
+Rule 9: IF  Positive = 3.0 AND Age = 56.0 THEN class -&gt; positive     [ 1 0]
+Rule 10: IF  Year = 64.0 AND Age = 41.0 THEN class -&gt; positive     [ 1 0]
+Rule 11: IF  Positive = 5.0 AND Year &lt;&gt; 64.0 AND Age &gt; 53.0 THEN class -&gt; positive     [ 3 0]
+Rule 12: IF  Positive = 6.0 AND Year &gt; 63.0 THEN class -&gt; positive     [ 2 0]
+Rule 13: IF  Year &gt; 68.0 AND Age = 46.0 THEN class -&gt; positive     [ 1 0]
+Rule 14: IF  Positive = 3.0 AND Year = 59.0 THEN class -&gt; positive     [ 2 0]
+Rule 15: IF  Year = 64.0 AND Age = 43.0 AND Positive &lt;= 1.0 THEN class -&gt; positive     [ 1 0]
+Rule 16: IF  Positive = 2.0 AND Age = 52.0 THEN class -&gt; positive     [ 1 0]
+Rule 17: IF  Positive = 6.0 AND Age &gt; 53.0 THEN class -&gt; positive     [ 1 0]
+Rule 18: IF  Year = 67.0 AND Age = 41.0 THEN class -&gt; positive     [ 1 0]
+Rule 19: IF  Positive &gt; 46.0 THEN class -&gt; positive     [ 1 0]
+Rule 20: IF  Positive = 5.0 AND Age = 46.0 THEN class -&gt; positive     [ 1 0]
+Rule 21: IF  Year = 62.0 AND Age = 47.0 THEN class -&gt; positive     [ 1 0]
+Rule 22: IF  Age = 34.0 AND Year = 59.0 THEN class -&gt; positive     [ 1 0]
+Rule 23: IF  Year = 58.0 AND Age = 70.0 THEN class -&gt; positive     [ 2 0]
+Rule 24: IF  Positive &gt; 6.0 AND Year = 68.0 THEN class -&gt; positive     [ 2 0]
+Rule 25: IF  Age = 44.0 AND Positive &gt; 18.0 THEN class -&gt; positive     [ 1 0]
+Rule 26: IF  Year = 58.0 AND Age = 62.0 THEN class -&gt; positive     [ 1 0]
+Rule 27: IF  Positive = 21.0 THEN class -&gt; positive     [ 1 0]
+Rule 28: IF  Year = 58.0 AND Age = 65.0 THEN class -&gt; positive     [ 1 0]
+Rule 29: IF  Year = 60.0 AND Age = 63.0 THEN class -&gt; positive     [ 1 0]
+Rule 30: IF  Age = 65.0 AND Year = 61.0 THEN class -&gt; positive     [ 1 0]
+Rule 31: IF  Positive = 23.0 THEN class -&gt; positive     [ 1 0]
+Rule 32: IF  Year = 58.0 AND Positive = 0.0 AND Age = 66.0 THEN class -&gt; positive     [ 1 0]
+Rule 33: IF  Age = 46.0 AND Positive = 2.0 THEN class -&gt; positive     [ 1 0]
+Rule 34: IF  Age = 67.0 AND Positive &lt;&gt; 0.0 THEN class -&gt; positive     [ 2 0]
+Rule 35: IF  Age = 52.0 AND Positive = 3.0 THEN class -&gt; positive     [ 2 0]
+Rule 36: IF  Year = 66.0 AND Age = 39.0 THEN class -&gt; positive     [ 1 0]
+Rule 37: IF  Year = 65.0 AND Age = 60.0 THEN class -&gt; positive     [ 1 0]
+Rule 38: IF  Positive = 0.0 AND Age = 49.0 AND Year = 63.0 THEN class -&gt; positive     [ 1 0]
+Rule 39: IF  Positive = 8.0 AND Age = 69.0 THEN class -&gt; positive     [ 1 0]
+Rule 40: IF  Positive = 4.0 AND Age = 53.0 THEN class -&gt; positive     [ 1 0]
+Rule 41: IF  Year = 65.0 AND Age = 53.0 THEN class -&gt; positive     [ 1 0]
+Rule 42: IF  Positive = 7.0 AND Age = 48.0 THEN class -&gt; positive     [ 1 0]
+Rule 43: IF  Year = 65.0 AND Age = 47.0 THEN class -&gt; positive     [ 1 0]
+Rule 44: IF  Positive = 15.0 AND Age = 65.0 THEN class -&gt; positive     [ 1 0]
+Rule 45: IF  Positive = 1.0 AND Age = 57.0 THEN class -&gt; positive     [ 1 0]
+Rule 46: IF  Positive &lt;&gt; 5.0 AND Year &lt;&gt; 58.0 AND Age &lt;&gt; 65.0 THEN class -&gt; negative     [ 54 177]
+Rule 47: IF  Year = 58.0 AND Age &lt;&gt; 39.0 AND Positive &lt;= 1.0 THEN class -&gt; negative     [ 4 15]
+Rule 48: IF  Year = 58.0 AND Positive = 3.0 THEN class -&gt; negative     [ 0 2]
+Rule 49: IF  Year = 67.0 AND Age = 38.0 THEN class -&gt; negative     [ 0 1]
+Rule 50: IF  Age = 65.0 AND Year &gt; 63.0 AND Positive &lt;= 1.0 THEN class -&gt; negative     [ 0 3]
+Rule 51: IF  Age = 40.0 THEN class -&gt; negative     [ 0 1]
+Rule 52: IF  Year = 60.0 AND Age = 52.0 THEN class -&gt; negative     [ 0 1]
+Rule 53: IF  Year = 59.0 AND Age = 65.0 THEN class -&gt; negative     [ 0 1]
+Rule 54: IF  Age &lt;= 39.0 AND Year = 58.0 THEN class -&gt; negative     [ 0 2]
+
+Avg. Rule length; 54 ; 
+Avg. Number of attributes by rule; 2.074074074074074 ; 
+Avg. Coverage; 0.022102747909199524 ; 
+Avg. Support Completo; 0.8387096774193549 ; 
+Avg. Significance; 0.2867790320239712 ; 
+Avg. Unusualness; 0.5661348132732107 ; 
+Acierto Train. ; 0.9709090909090909 ; 
+Acierto Test. ; 0.7741935483870968;  Time; 0
+</example>
+
+</method>

@@ -1,0 +1,180 @@
+<method>
+
+	<name>Cluster K-Means</name>
+
+	<reference>  
+
+	<ref>J. B. MacQueen. Some Methods for classification and Analysis of Multivariate Observations; Proceedings of 5-th Berkeley Symposium on Mathematical Statistics and Probability, Berkeley, University of California Press, 1 (1967) 281-297.</ref>
+		
+	</reference>
+
+	<generalDescription>  
+
+		<type>Clustering datasets by means of K-means algorithm.</type>
+
+		<objective>Execution of ClusterKMeans method for generating a partitioned dataset.</objective>
+
+		<howWork>
+ K-means is one of the simplest unsupervised clustering algorithms. Given the number k of clusters centroids, the algorithm iterates to fit the centroids so the accumulate sum of the distances between the centroids and each one of the registers of the dataset is minimized.
+The procedure starts generating the k centroids, which must be as separate as possible. In each iteration, all the registers i nthe dataset are assigned to one of the centroids.Then the centroids are recalculated as the barycenter the the associated registers to each cluster. Theiteration process finishes when no changes in the centroids is done.
+
+The same algorithms stands for classification adn for regression. The output feature of the clusterized dataset, if any, is discarded.
+
+The output of the method is the clusterized dataset.
+		</howWork>
+
+		<parameterSpec>  
+<param> nclusters: the number of clusters to be generated.There is not a fixed formulae for determining the number of clusters, so it is tipically a test and error procedure. As it is a fast algorithm, estimating the number of clusters in such a way is not cumbersome. Also, there are formulaes, like using the fourth data momentum (the Kurtosis statistical), to stablish the apriori number of clusters.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Clustering 
+Method: Clus-KMeans
+Dataset: pima
+Training set: aut-10-1tra.dat
+Test set: aut-10-1tst.dat
+Parameters: ncluster = 5
+
+The output dataset result0s0.tst, in the experiment/results/Clus-KMeans/pima folder, for the result0s0.tst dataset is:
+
+@relation  pima_diabetes
+@attribute preg real[0.0,17.0]
+@attribute plas real[0.0,199.0]
+@attribute pres real[0.0,122.0]
+@attribute skin real[0.0,99.0]
+@attribute insu real[0.0,846.0]
+@attribute mass real[0.0,67.1]
+@attribute pedi real[0.078,2.42]
+@attribute age real[21.0,81.0]
+@inputs preg,plas,pres,skin,insu,mass,pedi,age
+@attribute cluster integer
+@data
+10.0,108.0,66.0,0.0,0.0,32.4,0.272,42.0,1
+7.0,107.0,74.0,0.0,0.0,29.6,0.254,31.0,1
+0.0,179.0,90.0,27.0,0.0,44.1,0.686,23.0,1
+10.0,125.0,70.0,26.0,115.0,31.1,0.205,41.0,2
+10.0,168.0,74.0,0.0,0.0,38.0,0.537,34.0,1
+5.0,162.0,104.0,0.0,0.0,37.7,0.151,52.0,1
+7.0,187.0,50.0,33.0,392.0,33.9,0.826,34.0,0
+0.0,131.0,88.0,0.0,0.0,31.6,0.743,32.0,1
+3.0,132.0,80.0,0.0,0.0,34.4,0.402,44.0,1
+7.0,97.0,76.0,32.0,91.0,40.9,0.871,32.0,2
+6.0,125.0,76.0,0.0,0.0,33.8,0.121,54.0,1
+8.0,109.0,76.0,39.0,114.0,27.9,0.64,31.0,2
+1.0,149.0,68.0,29.0,127.0,29.3,0.349,42.0,2
+0.0,180.0,90.0,26.0,90.0,36.5,0.314,35.0,2
+0.0,109.0,88.0,30.0,0.0,32.5,0.855,38.0,1
+5.0,112.0,66.0,0.0,0.0,37.8,0.261,41.0,1
+7.0,103.0,66.0,32.0,0.0,39.1,0.344,31.0,1
+0.0,105.0,84.0,0.0,0.0,27.9,0.741,62.0,1
+8.0,108.0,70.0,0.0,0.0,30.5,0.955,33.0,1
+8.0,125.0,96.0,0.0,0.0,0.0,0.232,54.0,1
+5.0,115.0,76.0,0.0,0.0,31.2,0.343,44.0,1
+10.0,129.0,62.0,36.0,0.0,41.2,0.441,38.0,1
+4.0,115.0,72.0,0.0,0.0,28.9,0.376,46.0,1
+8.0,196.0,76.0,29.0,280.0,37.5,0.605,57.0,4
+1.0,147.0,94.0,41.0,0.0,49.3,0.358,27.0,1
+7.0,129.0,68.0,49.0,125.0,38.5,0.439,43.0,2
+4.0,92.0,80.0,0.0,0.0,42.2,0.237,29.0,1
+2.0,94.0,68.0,18.0,76.0,26.0,0.561,21.0,2
+1.0,146.0,56.0,0.0,0.0,29.7,0.564,29.0,1
+1.0,87.0,78.0,27.0,32.0,34.6,0.101,22.0,1
+8.0,194.0,80.0,0.0,0.0,26.1,0.551,67.0,1
+1.0,88.0,78.0,29.0,76.0,32.0,0.365,29.0,2
+2.0,100.0,70.0,52.0,57.0,40.5,0.677,25.0,2
+10.0,122.0,78.0,31.0,0.0,27.6,0.512,45.0,1
+7.0,105.0,0.0,0.0,0.0,0.0,0.305,24.0,3
+1.0,97.0,66.0,15.0,140.0,23.2,0.487,22.0,2
+1.0,79.0,60.0,42.0,48.0,43.5,0.678,23.0,1
+2.0,94.0,76.0,18.0,66.0,31.6,0.649,23.0,2
+1.0,112.0,80.0,45.0,132.0,34.8,0.217,24.0,2
+2.0,99.0,70.0,16.0,44.0,20.4,0.235,27.0,1
+0.0,114.0,80.0,34.0,285.0,44.2,0.167,27.0,4
+3.0,111.0,58.0,31.0,44.0,29.5,0.43,22.0,1
+0.0,165.0,76.0,43.0,255.0,47.9,0.259,26.0,4
+3.0,180.0,64.0,25.0,70.0,34.0,0.271,26.0,2
+2.0,90.0,80.0,14.0,55.0,24.4,0.249,24.0,1
+1.0,91.0,64.0,24.0,0.0,29.2,0.192,21.0,1
+2.0,100.0,64.0,23.0,0.0,29.7,0.368,21.0,1
+1.0,96.0,64.0,27.0,87.0,33.2,0.289,21.0,2
+1.0,111.0,62.0,13.0,182.0,24.0,0.138,23.0,4
+4.0,117.0,64.0,27.0,120.0,33.2,0.23,24.0,2
+8.0,110.0,76.0,0.0,0.0,27.8,0.237,58.0,1
+4.0,154.0,62.0,31.0,284.0,32.8,0.237,23.0,4
+11.0,138.0,76.0,0.0,0.0,33.2,0.42,35.0,1
+6.0,80.0,80.0,36.0,0.0,39.8,0.177,28.0,1
+3.0,111.0,62.0,0.0,0.0,22.6,0.142,21.0,1
+1.0,136.0,74.0,50.0,204.0,37.4,0.399,24.0,4
+5.0,78.0,48.0,0.0,0.0,33.7,0.654,25.0,1
+0.0,97.0,64.0,36.0,100.0,36.8,0.6,25.0,2
+1.0,140.0,74.0,26.0,180.0,24.1,0.828,23.0,4
+1.0,144.0,82.0,40.0,0.0,41.3,0.607,28.0,1
+1.0,193.0,50.0,16.0,375.0,25.9,0.655,24.0,4
+3.0,99.0,62.0,19.0,74.0,21.8,0.279,26.0,2
+1.0,131.0,64.0,14.0,415.0,23.7,0.389,21.0,0
+5.0,147.0,75.0,0.0,0.0,29.9,0.434,28.0,1
+1.0,103.0,80.0,11.0,82.0,19.4,0.491,22.0,2
+2.0,141.0,58.0,34.0,128.0,25.4,0.699,24.0,2
+4.0,147.0,74.0,25.0,293.0,34.9,0.385,30.0,4
+1.0,86.0,66.0,52.0,65.0,41.3,0.917,29.0,2
+1.0,109.0,60.0,8.0,182.0,25.4,0.947,21.0,4
+2.0,100.0,68.0,25.0,71.0,38.5,0.324,26.0,2
+6.0,114.0,88.0,0.0,0.0,27.8,0.247,66.0,1
+6.0,92.0,92.0,0.0,0.0,19.9,0.188,28.0,1
+5.0,117.0,92.0,0.0,0.0,34.1,0.337,38.0,1
+4.0,83.0,86.0,19.0,0.0,29.3,0.317,34.0,1
+7.0,119.0,0.0,0.0,0.0,25.2,0.209,37.0,3
+1.0,95.0,66.0,13.0,38.0,19.6,0.334,25.0,1
+1.0,181.0,64.0,30.0,180.0,34.1,0.328,38.0,4
+
+
+In the standard output it can be seen the partitioned features for each fold:
+...
+Number of clusters: 5
+Feature: 0, number of clusters: 5
+53.380434782608695 57.11904761904762 48.96 56.234042553191486 56.166666666666664 
+Feature: 1, number of clusters: 5
+0.7391304347826086 0.7142857142857143 0.66 0.46808510638297873 0.7857142857142857 
+Feature: 2, number of clusters: 5
+3.0 3.357142857142857 2.94 3.3191489361702127 3.4285714285714284 
+Feature: 3, number of clusters: 5
+131.52173913043478 132.95238095238096 129.22 134.5744680851064 126.04761904761905 
+Feature: 4, number of clusters: 5
+244.3586956521739 275.7857142857143 195.92 330.1489361702128 199.73809523809524 
+Feature: 5, number of clusters: 5
+0.16304347826086957 0.14285714285714285 0.18 0.1276595744680851 0.07142857142857142 
+Feature: 6, number of clusters: 5
+1.0434782608695652 1.3333333333333333 0.68 1.0212765957446808 0.9523809523809523 
+Feature: 7, number of clusters: 5
+160.75 126.35714285714286 165.52 154.2340425531915 124.83333333333333 
+Feature: 8, number of clusters: 5
+0.25 0.5714285714285714 0.14 0.3404255319148936 0.47619047619047616 
+Feature: 9, number of clusters: 5
+0.7999999999999998 1.3571428571428574 0.7859999999999999 1.074468085106383 1.4761904761904763 
+Feature: 10, number of clusters: 5
+1.5 1.8333333333333333 1.46 1.446808510638298 1.7619047619047619 
+Feature: 11, number of clusters: 5
+0.6195652173913043 1.0714285714285714 0.32 0.7446808510638298 0.7857142857142857 
+Feature: 12, number of clusters: 5
+4.554347826086956 5.142857142857143 4.1 4.659574468085107 5.190476190476191 
+...
+</example>
+
+</method>

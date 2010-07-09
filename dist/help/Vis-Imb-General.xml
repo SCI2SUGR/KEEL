@@ -1,0 +1,102 @@
+<method>
+
+	<name>StatGeneralImb</name>
+
+	<reference>  
+
+<ref>A. Mart&#xED;nez, C. Rodr&#xED;guez and R. Guti&#xE9;rrez, Inferencia Estad&#xED;stica, un enfoque cl&#xE1;sico,  Ed. Piramide.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical method for comparing  classification methods performance.</type>
+
+		<objective>Statistical comparing of the performance of a classification model method. Statistical tests, like Wilcoxon signed ranks or Mann-Whitney u, are executed for comparing methods purposes.</objective>
+
+		<howWork>
+StatGeneralImb is a method for comparing the performance of classification algorithms using statistics techniques. It can be used in k-folds cross validation training experiments.
+StatGeneralImb is associated to the training and testing results of all of the models in an experiment that are to be compared. Once those models has been trained and tested, the StatGeneralImb takes place. 
+The process calculates an imbalanced measure for each of the partitions results. The statistical sample includes all of those imbalanced measures for each method to be compared.  
+The statistical test are executed in order to find evidence to assert that the imbalanced measure of the different classification methods are different or not. If they are different, then it can be stated which one is of better performance.
+</howWork>
+
+		<parameterSpec>  
+			<param>imbalancedMeasure: The measure used in the method, usually coming from the imbalanced classification area</param>
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Methods to compare: C45 vs ClasKNN
+Dataset: pima
+Type of partitions: k-fold, k=5
+
+After the execution of RunKeel.jar we can see into the ./results/Vis-Imb-General/TSTClas-C45vsClas-KNN folder the classification results for the tested classification method:
+
+Results:
+Detected 2 methods
+Folds=5 5 
+Results: Test-Dataset Clas-C45.pimaImb Clas-KNN.pimaImb 
+Fold=0
+positive negative negative 
+positive negative positive 
+positive positive positive 
+positive positive negative 
+positive negative negative 
+...
+...
+negative negative positive 
+negative negative positive 
+negative negative negative 
+negative negative negative 
+Sample #0 = 0.2759259259259259 0.287962962962963 0.2894444444444444 0.32141509433962256 0.3191509433962264 
+Sample #1 = 0.3364814814814814 0.3835185185185185 0.29222222222222216 0.32641509433962257 0.3397169811320755 
+Expected error: 
+Clas-C45.pimaImb Clas-KNN.pimaImb 
+0,2988 0,3357 
+Median of errors: 
+Clas-C45.pimaImb Clas-KNN.pimaImb 
+0,2894 0,3365 
+***** CONFIDENCE LEVEL=0.99
+Pv normality test: 0.23275054676446943
+Output of algorithm 0 is normal 0.8621133445059117 0.23275054676446943
+Pv normality test: 0.0
+Output of algorithm 1 is NOT normal 0.0 0.0
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.050561875403729806
+p-value matrix
+0,0000 0,0506 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.95
+Pv normality test: 0.23275054676446943
+Output of algorithm 0 is normal 0.8621133445059117 0.23275054676446943
+Pv normality test: 0.0
+Output of algorithm 1 is NOT normal 0.0 0.0
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is no evidence against H0
+Pv wilcoxon test: 0.050561875403729806
+p-value matrix
+0,0000 0,0506 
+0,0000 0,0000 
+***** CONFIDENCE LEVEL=0.9
+Pv normality test: 0.23275054676446943
+Output of algorithm 0 is normal 0.8621133445059117 0.23275054676446943
+Pv normality test: 0.0
+Output of algorithm 1 is NOT normal 0.0 0.0
+Wilcoxon test between 0 and 1
+Null hypothesis, true difference in means is equal to 0
+Output=0: There is evidence against H0
+Pv wilcoxon test: 0.050561875403729806
+p-value matrix
+0,0000 0,0506 
+0,0000 0,0000 
+</example>
+
+</method>

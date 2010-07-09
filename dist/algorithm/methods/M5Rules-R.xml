@@ -1,0 +1,32 @@
+<algorithm_specification>
+  <name>M5Rules</name>
+  <nParameters>3</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>pruningFactor</name>
+    <type>integer</type>
+    <default>2</default>
+  </parameter>
+ <parameter>
+    <name>verbosity</name>
+    <type>list</type>
+    <domain>
+      <item>0</item>
+      <item>1</item>
+      <item>2</item>
+    </domain>
+    <default>0</default>
+  </parameter>
+  <parameter>
+    <name>heuristic</name>
+    <type>list</type>
+    <domain>
+      <item>Coverage</item>
+      <item>RMS</item>
+      <item>MAE</item>
+      <item>CC</item>
+    </domain>
+    <default>Coverage</default>
+  </parameter>
+</algorithm_specification>

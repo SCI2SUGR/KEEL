@@ -1,0 +1,115 @@
+<method>
+
+	<name>Bojarczuk_GP</name>
+
+	<reference>  
+
+		<ref>C. C. Bojarczuk, H. S. Lopes, A. A. Freitas, E. L. Michalkiewicz. A constrained-syntax genetic programming system for discovering classification rules: applications to medical datasets. Artificial Intelligence in Medicine. vol 30(1). pp 27-48. 2004.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by constrained-syntax genetic programming.</type>
+
+		<objective>To determine a set of rules that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.</objective>
+
+		<howWork>
+		Bojarczuk-GP is a GP algorithm for classification rule mining which has demonstrated that reports good accuracy and comprehensibility results when applying to medical data 
+		sets. It was run using the implementation present in the evolutionary computation framework JCLEC. It is a constrained syntax algorithm which represents the rules by
+		defining a set of functions consisting both of logical operators (AND, OR) and relational operators (= , != , &lt;= , &gt;). Bojarczuk-GP follows a mixed individual=rule/rule set
+ 		approach, where each individual encodes a set of rules in disjunctive form that predict the same class, and the classifier generated for a given problem consists of k
+ 		individuals, being k the number of classes in the data set. The genetic operators considered by this algorithm are crossover and reproduction, so that no mutation is performed 
+ 		during the evolution. For the sake of evolving comprehensible rules, the fitness function evolves three terms:
+		
+		fitness = sensitivity * specificity * simplicity
+		
+		where sensitivity and specificity are computed as indicated in Equation and simplicity is computed as follows:
+	
+		simplicity = (maxnodes - 0.5 * numnodes - 0.5)/(maxnodes - 1)
+
+ 		where maxnodes, is the maximum number of nodes allowed and numnodes is the current number of nodes. Thus, the goal of the fitness function is to maximize both sensitivity 
+ 		and specificity, minimizing simultaneously the complexity of the rule set. When the evolutionary process terminates, the classifier is set up with the best individual found
+ 		 for each class.
+		
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>population-size: number of individuals in the population</param>
+			<param>max-of-generations: number of generations of the algorithm</param>
+			<param>derivation-size: maximum number of derivations allowed for the grammar</param>
+			<param>rec-prob: recombination probability</param>
+			<param>copy-prob: likelihood of copying an individual into the next generation</param>
+
+		</parameterSpec>
+
+		<properties>
+		    <input>
+		      <continuous>Yes</continuous>
+		      <integer>Yes</integer>
+		      <nominal>Yes</nominal>
+		      <missing>No</missing>
+		      <imprecise>No</imprecise>
+		      <multiclass>Yes</multiclass>
+		      <multioutput>No</multioutput>
+		    </input>
+		    <output>
+		      <continuous>Yes</continuous>
+		      <integer>Yes</integer>
+		      <nominal>Yes</nominal>
+		      <missing>No</missing>
+		      <imprecise>No</imprecise>
+		      <multiclass>Yes</multiclass>
+		      <multioutput>No</multioutput>
+		    </output>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Bojarczuk_GP
+Dataset: iris
+Training set: iris-10-0tra.dat
+Test set: iris-10-0tst.dat
+Parameters: default parameters
+
+After the execution of RunKeel.jar we can see into the experiment\results\Clas-Bojarczuk_GP folder the classification results for the test set:
+
+Reglas:
+IF (petalLength &lt;= 2.297861094990438) THEN (class = Iris-setosa)
+IF (petalWidth &gt; 1.6471494153881743) THEN (class = Iris-virginica)
+IF (petalLength &lt;= 4.521949349366722 AND petalLength &gt; 2.297861094990438) THEN (class = Iris-versicolor)
+Generica ==&gt; Iris-setosa
+Accuracy Train 0.9037037037037037
+Accuracy Test 0.6
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-Bojarczuk_GP:
+@relation .a/iris/iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-setosa
+Iris-versicolor Iris-setosa
+Iris-versicolor Iris-setosa
+Iris-versicolor Iris-setosa
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-setosa
+
+</example>
+
+</method>

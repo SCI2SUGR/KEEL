@@ -1,0 +1,380 @@
+/**
+ * <p>
+ * @author Writed by Alberto Fernández (University of Granada) 15/01/2006
+ * @author Modified by Cristóbal J. Carmona (University of Jaen) 24/06/2010
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
+
+package keel.Algorithms.Subgroup_Discovery.SDAlgorithm;
+
+import java.text.DecimalFormat;
+
+public class EvaluateRules {
+
+    /**
+     * <p>
+     * Evaluate the rules obtained by the algorithm
+     * </p>
+     */
+
+    private int nClases;
+    private int nDatos;
+    private int contClases[];
+
+    private int tam;
+    private double ant;
+    private double cob;
+    private double conf;
+    private double compl;
+    private double rel;
+    private double ati;
+    private double porcAciertoTr;
+    private double porcAciertoTst;
+    private double muestCubiertas;
+
+    private SetData train;
+    private SetData test;
+    private SetRules reglas;
+    private String[] valorNombreClases;
+
+    /**
+     * <p>
+     * Calculate the quality measures of the rules obtained by the algorithm
+     * </p>
+     * @param setRul            Set of final rules
+     * @param setTra            Set of train data
+     * @param setTst            Set of test data
+     * @param examClassTra      Number of examples for each class in the train data
+     * @param examClassTst      Number of examples for each class in the test data
+     * @param valueNameClass    Name for each class
+     */
+    public EvaluateRules(SetRules setRul, SetData setTra,
+                               SetData setTst, int[] examClassTra,
+                               int[] examClassTst, String[] valueNameClass) {
+
+        reglas = setRul;
+
+        train = setTra.copiaConjDatos();
+        test = setTst.copiaConjDatos();
+
+        nClases = setRul.getUltimaRegla().getNClass();
+        nDatos = setTra.size();
+
+        this.valorNombreClases = valueNameClass;
+
+        // Calculate the train
+        calculaIndices(train, examClassTra, 0);
+        System.out.print("\n\nTrain index: ");
+        DecimalFormat d = new DecimalFormat("0.0000");
+        System.out.print("\n\n#Rules: " + d.format(tam) +
+                         "\n#Vars: " + d.format(ant) +
+                         "\nCoverage: " + d.format(cob) +
+                         "\nSignificance: " + d.format(rel) +
+                         "\nUnusualness: " + d.format(ati) +
+                         "\nAccuracy: " + d.format(porcAciertoTr) +
+                         "\nSupport: " + d.format(compl) +
+                         "\nConfidence: " + d.format(conf));
+
+
+        // Calculate test
+        for (int j = 0; j < test.size(); j++) {
+            test.getDato(j).setCovered(0);
+        }
+
+        calculaIndices(test, examClassTst, 1);
+        System.out.print("\n\n#Rules: " + d.format(tam) +
+                         "\n#Vars: " + d.format(ant) +
+                         "\nCoverage: " + d.format(cob) +
+                         "\nSignificance: " + d.format(rel) +
+                         "\nUnusualness: " + d.format(ati) +
+                         "\nAccuracy: " + d.format(porcAciertoTr) +
+                         "\nSupport: " + d.format(compl) +
+                         "\nConfidence: " + d.format(conf));
+
+    }
+
+    /**
+     * <p>
+     * Print the results in a String
+     * </p>
+     * @return          Results in a string
+     */
+    public String printString() {
+        String cad = "####Average results for test data####\n";
+
+        DecimalFormat sixDecimals = new DecimalFormat("0.0000");
+
+        cad += "Avg. Rule length: " + sixDecimals.format(tam) + "\n";
+        cad += "Avg. Number of attributes by rule: " + sixDecimals.format(ant) + "\n";
+        cad += "Avg. Coverage: " + sixDecimals.format(cob) + "\n";
+        cad += "Avg. Significance: " + sixDecimals.format(rel) + "\n";
+        cad += "Avg. Unusualness: " + sixDecimals.format(ati) + "\n";
+        cad += "Avg. Support: " + sixDecimals.format(compl) + "\n";
+        cad += "Avg. Confidence: " + sixDecimals.format(conf) + "\n";
+
+        cad += "Accuracy Training: " + sixDecimals.format(porcAciertoTr) + "\n";
+        cad += "Accuracy Test: " + sixDecimals.format(porcAciertoTst);
+
+        return cad;
+    }
+
+    /**
+     * <p>
+     * Print the quality measures in a string
+     * </p>
+     * @return          String with the quality measures
+     */
+    public String printMeasure() {
+        DecimalFormat sixDecimals = new DecimalFormat("0.0000");
+        String cad = "#Rule \t #Vars \t Cov \t Sign \t Unus \t Acc \t Supp \t Cnf\n";
+        cad += sixDecimals.format(tam) +"\t"+ sixDecimals.format(ant) +"\t"+ sixDecimals.format(cob) +"\t"+ sixDecimals.format(rel) +"\t"+ sixDecimals.format(ati) +"\t"+ sixDecimals.format(porcAciertoTst) +"\t"+ sixDecimals.format(compl) +"\t"+ sixDecimals.format(conf);
+        return cad;
+    }
+
+    /**
+     * <p>
+     * Calculate the quality measures
+     * </p>
+     * @param SetData           Set of data to study
+     * @param muestPorClase     Number of examples for each class
+     * @param code              Code to know if it is train or test
+     */
+    private void calculaIndices(SetData datos, int[] muestPorClase, int code) {
+        int i, j;
+        int aciertos;
+
+        nDatos = datos.size();
+
+        contClases = new int[nClases];
+        for (i = 0; i < nClases; i++) {
+            contClases[i] = muestPorClase[i];
+        }
+
+        tam = reglas.size(); // Calculate Tam
+
+        // Number of attributes
+        for (i = 0, ant = 0; i < reglas.size(); i++) {
+            ant += reglas.getRule(i).size();
+        }
+
+        ant = (double) ant / tam; //Nº attributes per rule
+
+        // Calculate the distrib
+        muestCubiertas = 0; //Number of covered examples
+        int muestBienCubiertas = 0;
+        int[][] instCubiertas = new int[tam][nClases];
+
+        for (j = 0; j < nDatos; j++) {
+            datos.getDato(j).setCovered(0);
+        }
+        for (i = 0; i < reglas.size(); i++) {
+            for (j = 0; j < nClases; j++) {
+                instCubiertas[i][j] = 0;
+            }
+        }
+        muestCubiertas = 0;
+        for (i = 0; i < reglas.size(); i++) {
+            for (j = 0; j < nDatos; j++) {
+                Instance m = datos.getDato(j);
+                if (reglas.getRule(i).cover(m)) {
+                    muestCubiertas++;
+                    instCubiertas[i][m.getClas()]++;
+                    if (reglas.getRule(i).getClas() == m.getClas()) {
+                        if (m.getCovered() == 0) {
+                            muestBienCubiertas++;
+                            m.addCovered();
+                        }
+                    }
+                }
+            }
+        }
+
+        //Calculate coverage
+        cob = (double) muestCubiertas / (tam*nDatos);
+
+        //Calculate support
+        compl = (double) muestBienCubiertas / nDatos;
+
+        //Calculate confidence
+        conf = (double) muestBienCubiertas / muestCubiertas;
+
+        //Calculate unusualness
+        ati = 0;
+        double val;
+        for(i = 0; i < reglas.size(); i++){
+            val = evaluateUnus(reglas.getRule(i),datos);
+            ati += val;
+        }
+        ati /= (double) reglas.size();
+
+        //Calculate significance
+        double sigParcial = 0;
+        double[] pCondi = new double[reglas.size()]; //Factor normalizador -> coverage
+        for (i = 0; i < reglas.size(); i++) {
+            pCondi[i] = 0;
+            for (j = 0; j < nClases; j++) {
+                pCondi[i] += instCubiertas[i][j];
+            }
+            pCondi[i] *= (double) 1.0 / nDatos;
+        }
+        rel = 0;
+        for (i = 0; i < reglas.size(); i++) {
+            sigParcial = 0;
+            for (j = 0; j < nClases; j++) {
+                double logaritmo = (double) instCubiertas[i][j] /
+                                   (contClases[j] * pCondi[i]);
+                if ((logaritmo != 0)&&(!Double.isNaN(logaritmo))&&(!Double.isInfinite(logaritmo))){
+                    logaritmo = Math.log(logaritmo);
+                    logaritmo *= (double) instCubiertas[i][j];
+                    sigParcial += logaritmo;
+                }
+            }
+            rel += sigParcial * 2;
+        }
+        rel /= (double) reglas.size();
+
+
+        //Correct classified examples
+        double voto[] = new double[nClases];
+        aciertos = 0;
+        int clases[] = contClases;
+
+        int clase, cl;
+        double distribucion[], max;
+        int clasePorDefecto = 0;
+        for (i = 0, clase = -1; i < nClases; i++) {
+            if (clases[i] > clase) {
+                clasePorDefecto = i;
+                clase = clases[i];
+            }
+        }
+        for (i = 0; i < datos.size(); i++) {
+            for (j = 0; j < nClases; j++) {
+                voto[j] = 0;
+            }
+            for (j = 0; j < reglas.size(); j++) {
+                if (reglas.getRule(j).cover(datos.getDato(i))) {
+                    distribucion = reglas.getRule(j).getDistrib();
+                    for (int k = 0; k < nClases; k++) {
+                        voto[k] += distribucion[k];
+                    }
+                }
+            }
+            //System.out.println("");
+            for (j = 0, max = 0, cl = 0; j < nClases; j++) {
+                if (voto[j] > max) {
+                    max = voto[j];
+                    cl = j;
+                }
+            }
+            if (max == 0) {
+                cl = clasePorDefecto;
+            }
+            if (cl == datos.getDato(i).getClas()) {
+                aciertos++;
+            }
+        }
+
+        if (code == 0) {
+            porcAciertoTr = (double) aciertos / datos.size();
+        } else {
+            porcAciertoTst = (double) aciertos / datos.size();
+        }
+    }
+
+    /**
+     * <p>
+     * Generate a string with the classification of the total examples for a data set
+     * </p>
+     * </p>
+     * @param Data      The data set to study
+     * @return          String with the result
+     */
+    public String exitResult(SetData Data) {
+
+        String cadena = new String("");
+        double voto[] = new double[nClases];
+        int clases[] = new int[nClases];
+        double distribucion[], max;
+        int j, cl, clasePorDefecto = 0;
+        for (int i = 0; i < Data.size(); i++) {
+            clases[Data.getDato(i).getClas()]++;
+        }
+        for (int i = 0, clase = -1; i < nClases; i++) {
+            if (clases[i] > clase) {
+                clasePorDefecto = i;
+                clase = clases[i];
+            }
+        }
+        for (int i = 0; i < Data.size(); i++) {
+            for (j = 0; j < nClases; j++) {
+                voto[j] = 0;
+            }
+            for (j = 0; j < reglas.size(); j++) {
+                if (reglas.getRule(j).cover(Data.getDato(i))) {
+                    distribucion = reglas.getRule(j).getDistrib();
+                    for (int k = 0; k < nClases; k++) {
+                        voto[k] += distribucion[k];
+                    }
+                }
+            }
+            for (j = 0, max = 0, cl = 0; j < nClases; j++) { 
+                if (voto[j] > max) {
+                    max = voto[j];
+                    cl = j;
+                }
+            }
+            if (max == 0) { 
+                cl = clasePorDefecto;
+            }
+            cadena += new String(valorNombreClases[Data.getDato(i).getClas()] +
+                                 " " +
+                                 valorNombreClases[cl] + "\n");
+        }
+        return cadena;
+    }
+
+    /**
+     * <p>
+     * Evaluation of the unusualness measures
+     * </p>
+     * @param c             Complex to evaluate
+     * @param e             Data set
+     */
+    private double evaluateUnus(Complex c, SetData e) {
+        double n, ncond, nclascond, nclas;
+        int cl;
+        double val = 0;
+
+        n = 0;
+        ncond = 0;
+        nclascond = 0;
+        nclas = 0;
+
+        for (int i = 0; i < e.size(); i++) {
+            cl = e.getDato(i).getClas();
+            n++;
+
+            if (c.cover(e.getDato(i))) {
+                c.incrementDistrib(cl);
+                ncond++;
+                if (cl == c.getClas()) {
+                    nclascond++;
+                }
+            }
+            if (cl == c.getClas()) {
+                nclas++;
+            }
+        }
+        if (n != 0 && ncond != 0) {
+            val = (ncond / n) * ((nclascond / ncond) - (nclas / n));
+        } else {
+            val = Double.MIN_VALUE;
+        }
+        return (val);
+    }
+
+
+}

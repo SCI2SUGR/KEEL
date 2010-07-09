@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests_list>
+  <method>
+    <name>Imb-Wilcoxon-ST</name>
+    <family>Tests for Imbalanced Classification</family>
+    <jar_file>Imb_Wilcoxon.jar</jar_file>
+    <problem_type>classification</problem_type>
+		<input>
+			<continuous>Yes</continuous>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<missing>Yes</missing>
+			<imprecise>Yes</imprecise>
+			<multiclass>No</multiclass>
+			<multioutput>Yes</multioutput>
+			<nonBalanced>Yes</nonBalanced>
+  	</input>
+  	<output>
+			<continuous>Yes</continuous>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<missing>Yes</missing>
+			<imprecise>No</imprecise>
+			<multiclass>No</multiclass>
+			<multioutput>Yes</multioutput>
+			<nonBalanced>Yes</nonBalanced>
+  	</output>
+  </method>
+  <method>
+    <name>Imb-Friedman-ST</name>
+    <family>Tests for Imbalanced Classification</family>
+    <jar_file>Imb_Friedman.jar</jar_file>
+    <problem_type>classification</problem_type>
+		<input>
+			<continuous>Yes</continuous>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<missing>Yes</missing>
+			<imprecise>Yes</imprecise>
+			<multiclass>No</multiclass>
+			<multioutput>Yes</multioutput>
+			<nonBalanced>Yes</nonBalanced>
+  	</input>
+  	<output>
+			<continuous>Yes</continuous>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<missing>Yes</missing>
+			<imprecise>No</imprecise>
+			<multiclass>No</multiclass>
+			<multioutput>Yes</multioutput>
+			<nonBalanced>Yes</nonBalanced>
+  	</output>
+  </method>
+</tests_list>

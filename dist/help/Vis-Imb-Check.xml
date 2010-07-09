@@ -1,0 +1,72 @@
+<method>
+
+	<name>StatCheckImb</name>
+
+	<reference>  
+
+		<ref>A. Mart&#xED;nez, C. Rodr&#xED;guez and R. Guti&#xE9;rrez, Inferencia Estad&#xED;stica, un enfoque cl&#xE1;sico,  Ed. Pir&#xE1;mide.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Statistical method for analysing a classifier performance.</type>
+
+		<objective>Statistical analysis of the performance of a classifier method. Train and test results for each dataset are analysed, and statistical measures based on the error, AUC or Geometric Mean in the classification are calculated and shown. </objective>
+
+		<howWork>
+StatCheckImb is a method for analysing the performance of classification methods. It can be used in k-folds cross validation training experiments.
+
+StatCheckImb is associated to the training and testing results of a classifier in an experiment. Once the classifier has been trained and tested, the StatCheckImb takes place. 
+
+The process compares the outcome of the classifier to the desire output, and calculates the imbalanced measure. This is done for each of the training or testing output files of the method. Measures as the mean imbalanced measure and the standard deviation of the imbalanced measure are given.
+		</howWork>
+
+		<parameterSpec>  
+			<param>imbalancedMeasure: The measure used in the method, usually coming from the imbalanced classification area</param>
+		</parameterSpec>
+
+		<properties>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced Classification 
+Method: C4.5
+Dataset: pima
+Type of partitions: k-fold, k=5
+
+After the execution of RunKeel.jar we can see into the ./results/Vis-Imb-Check folder the classification results for the tested classifier method:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : AUC=0.7240740740740741 N/C=0.0 
+Fold 1 : AUC=0.712037037037037 N/C=0.0 
+Fold 2 : AUC=0.7105555555555556 N/C=0.0 
+Fold 3 : AUC=0.6785849056603774 N/C=0.0 
+Fold 4 : AUC=0.6808490566037736 N/C=0.0 
+Global Classification Area Under the ROC Curve:
+0.7012201257861636 
+stddev Global Classification Area Under the ROC Curve:
+0.01818676672809955 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= 
+Fold 0 : AUC=0.8667523364485981 N/C=0.0 
+Fold 1 : AUC=0.8424766355140186 N/C=0.0 
+Fold 2 : AUC=0.7876985981308412 N/C=0.0 
+Fold 3 : AUC=0.8408720930232558 N/C=0.0 
+Fold 4 : AUC=0.8207848837209302 N/C=0.0 
+Global Classification Area Under the ROC Curve:
+0.8317169093675287 
+stddev Global Classification Area Under the ROC Curve:
+0.026397693664935554 
+Global N/C:
+0.0 
+</example>
+
+</method>

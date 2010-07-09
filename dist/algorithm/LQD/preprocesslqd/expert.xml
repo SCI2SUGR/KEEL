@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  author Written by Ana Palacios Jimenez (University of Oviedo) 05/04/2010
+-->
+
+<algorithm_specification>
+  <name>Expert</name>
+  <nParameters>3</nParameters>
+  <seed>0</seed>
+  <nOutput>0</nOutput>
+  <dataset0>O-100boost</dataset0>
+  <cost_instances>Yes</cost_instances>
+  <fuzzy>Yes</fuzzy>
+   <parameter>
+    <name>Partitions</name>
+    <type>Integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Classes</name>
+    <type>Real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>{}</default>
+  </parameter>
+<parameter>
+    <name>Costs</name>
+    <type>Integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>{}</default>
+  </parameter>
+</algorithm_specification>

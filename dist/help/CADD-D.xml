@@ -1,0 +1,240 @@
+<method>
+
+	<name>Class-Atribute Dependent Discretizer</name>
+
+	<reference>  
+
+		<ref>J.Y. Ching, A.K.C. Wong, K.C.C. Chan. Class-Dependent Discretization for Inductive Learning from Continuous and Mixed-Mode Data. IEEE Transactions on Pattern Analysis and Machine Intelligence 17:7 (1995) 641-6518</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Discretization of real attributes</type>
+
+		<objective>To transform a set of numerical variables into nominal variables. Input variables may be either real or integer.</objective>
+
+		<howWork>CADD is an algorithm that discretizes the non nominal attributes (real or integer) of a group of instances.
+
+The task of a discretization algorithm is to build a set of intervals for each non nominal attribute. The value of the attribute is translated to the interval number to which the value belongs.
+
+CADD is a statistic heuristic method for supervised discretization. It is made up of three stages: In the first one, CADD performs an equal frequency discretization given a fixed number of interval depending on the data size and number of classes. Then, it performs a Hill Climbling heuristic changing the values of the cut points and maximizing a criterion objectiven given by the mutual information measure. Finaly, it attempts to merge contiguous intervals by performing various interdependende chi-square tests.
+</howWork>
+
+		<parameterSpec>  
+
+			<param>confidenceThreshold: This real value is a significance level used to calculate the chi-square threshold. This value, 0.01 by default, can be determined by the user.</param>
+
+			<param>numIntervals: This integer value is a lower bound of number of intervals required. If its value is equal to 0, the number of
+			intervals per attribute is automatically calculated. In other case, the vale specified insicates the minimun number (if possible) of
+			values per attribute.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Class-Attribute Dependent Discretizer
+Dataset: Iris Plants
+
+Input Training set: Iris-10-1tra.dat
+Input Test set: Iris-10-1tst.dat
+Output Training set: result0.tra
+Output Test set: result0.tst
+Descriptor: result0e0.txt
+
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Disc-ChiMerge/iris folder the discretization results; 3 files are generated in this folder:
+
+
+File result0.tra:
+	It contains the discretization result of training set.
+
+@relation  Iris_Plants_Database
+@attribute sepalLength {0,1,2,3,4}
+@attribute sepalWidth {0,1}
+@attribute petalLength {0,1,2,3,4,5,6,7,8,9}
+@attribute petalWidth {0,1}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+2,1,2,1,Iris-setosa
+1,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+1,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+0,1,1,1,Iris-setosa
+2,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+1,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+1,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+0,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+2,1,2,1,Iris-setosa
+4,1,5,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+1,1,2,1,Iris-versicolor
+3,1,5,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,0,2,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,0,4,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+2,1,2,1,Iris-versicolor
+4,1,4,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,0,5,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,6,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,7,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+3,1,4,1,Iris-versicolor
+4,1,6,1,Iris-versicolor
+4,1,7,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+2,1,2,1,Iris-versicolor
+2,1,3,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+4,1,5,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,5,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,2,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,2,1,Iris-versicolor
+2,1,4,1,Iris-versicolor
+2,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+2,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+1,1,5,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+2,1,7,1,Iris-virginica
+2,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+2,1,7,1,Iris-virginica
+2,1,7,1,Iris-virginica
+2,1,8,1,Iris-virginica
+2,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,9,1,Iris-virginica
+2,0,7,1,Iris-virginica
+4,1,8,1,Iris-virginica
+2,1,7,1,Iris-virginica
+4,1,8,1,Iris-virginica
+2,1,7,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+2,1,6,1,Iris-virginica
+2,1,7,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+2,1,8,1,Iris-virginica
+2,1,7,1,Iris-virginica
+2,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+2,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,7,1,Iris-virginica
+2,1,7,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,8,1,Iris-virginica
+4,1,7,1,Iris-virginica
+2,1,7,1,Iris-virginica
+2,1,7,1,Iris-virginica
+2,1,8,1,Iris-virginica
+2,1,7,1,Iris-virginica
+
+File result0.tra:
+	It contains the cut point of the discretization
+
+Cut point 0 of attribute 0 : 4.9
+Cut point 1 of attribute 0 : 5.0
+Cut point 2 of attribute 0 : 6.6
+Cut point 3 of attribute 0 : 6.7
+Number of cut points of attribute 0 : 4
+Cut point 0 of attribute 1 : 2.3
+Number of cut points of attribute 1 : 1
+Cut point 0 of attribute 2 : 1.0
+Cut point 1 of attribute 2 : 1.1
+Cut point 2 of attribute 2 : 3.8
+Cut point 3 of attribute 2 : 3.9
+Cut point 4 of attribute 2 : 4.5
+Cut point 5 of attribute 2 : 4.8
+Cut point 6 of attribute 2 : 4.9
+Cut point 7 of attribute 2 : 5.3
+Cut point 8 of attribute 2 : 6.9
+Number of cut points of attribute 2 : 9
+Cut point 0 of attribute 3 : 0.1
+Number of cut points of attribute 3 : 1
+
+</example>
+
+</method>

@@ -1,0 +1,214 @@
+//
+//  RNN.java
+//
+//  Salvador Garc�a L�pez
+//
+//  Created by Salvador Garc�a L�pez 12-7-2004.
+//  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
+//
+
+package keel.Algorithms.Instance_Selection.RNN;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import org.core.*;
+import java.util.StringTokenizer;
+
+public class RNN extends Metodo {
+
+ /*Own parameters of the algorithm*/
+  private int k;
+  
+  public RNN (String ficheroScript) {
+    super (ficheroScript);
+  }
+
+  public void ejecutar () {
+
+    int i, j, l, m;
+    int nClases;
+    int claseObt;
+    boolean marcas[];
+    int nSel;
+    int aciertosIni=0, aciertos;
+
+    double conjS[][];
+    double conjR[][];
+    int conjN[][];
+    boolean conjM[][];
+    int clasesS[];
+
+    long tiempo = System.currentTimeMillis();
+
+    /*Getting the number of differents classes*/
+    nClases = 0;
+    for (i=0; i<clasesTrain.length; i++)
+      if (clasesTrain[i] > nClases)
+        nClases = clasesTrain[i];
+    nClases++;
+
+    /*Inicializaci�n del vector de instancias marcadas para su elminiaci�n posterior*/
+    marcas = new boolean[datosTrain.length];
+    for (i=0; i<datosTrain.length; i++)
+      marcas[i] = true;
+    nSel = datosTrain.length;
+
+    /*Calculate the number of correct clasifications considering the same train set using leave-one out.*/
+    for (i=0; i<datosTrain.length; i++) {
+      claseObt = KNN.evaluacionKNN2 (k, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[i], realTrain[i], nominalTrain[i], nulosTrain[i], nClases, distanceEu);
+      if (claseObt == clasesTrain[i])
+        aciertosIni++;
+    }
+
+    /*Body of the RNN algorithm. Eliminating instances and calculating improves. If
+     a remove of an instance not improves classification, the instance is not removed.*/
+    for (i=0; i<datosTrain.length; i++) {
+      marcas[i] = false;
+      nSel--;
+      
+      /*Building of the S set from the flags*/
+      conjS = new double[nSel][datosTrain[0].length];
+      conjR = new double[nSel][datosTrain[0].length];
+      conjN = new int[nSel][datosTrain[0].length];
+      conjM = new boolean[nSel][datosTrain[0].length];
+      clasesS = new int[nSel];
+      for (m=0, l=0; m<datosTrain.length; m++) {
+        if (marcas[m]) { //the instance must be copied to the solution
+          for (j=0; j<datosTrain[0].length; j++) {
+            conjS[l][j] = datosTrain[m][j];
+            conjR[l][j] = realTrain[m][j];
+            conjN[l][j] = nominalTrain[m][j];
+            conjM[l][j] = nulosTrain[m][j];
+          }
+          clasesS[l] = clasesTrain[m];
+          l++;
+        }
+      }
+
+      /*Get the accuracy considering the S set*/
+      aciertos = 0;
+      for (j=0; j<datosTrain.length; j++) {
+        claseObt = KNN.evaluacionKNN2 (k, conjS, conjR, conjN, conjM, clasesS, datosTrain[j], realTrain[j], nominalTrain[j], nulosTrain[j], nClases, distanceEu);
+        if (claseObt == clasesTrain[j])
+          aciertos++;
+      }
+
+      /*Is the instance removed?*/
+      if (aciertos < aciertosIni) {
+        marcas[i] = true;
+        nSel++;
+      }
+    }
+
+    /*Building the final S set from the existents flags*/
+    conjS = new double[nSel][datosTrain[0].length];
+    conjR = new double[nSel][datosTrain[0].length];
+    conjN = new int[nSel][datosTrain[0].length];
+    conjM = new boolean[nSel][datosTrain[0].length];
+    clasesS = new int[nSel];
+    for (m=0, l=0; m<datosTrain.length; m++) {
+      if (marcas[m]) {
+        for (j=0; j<datosTrain[0].length; j++) {
+          conjS[l][j] = datosTrain[m][j];
+          conjR[l][j] = realTrain[m][j];
+          conjN[l][j] = nominalTrain[m][j];
+          conjM[l][j] = nulosTrain[m][j];
+        }
+        clasesS[l] = clasesTrain[m];
+        l++;
+      }
+    }
+
+    System.out.println("RNN "+ relation + " " + (double)(System.currentTimeMillis()-tiempo)/1000.0 + "s");
+    
+                // COn conjS me vale.
+                 int trainRealClass[][];
+                 int trainPrediction[][];
+                
+                 trainRealClass = new int[conjS.length][1];
+		 trainPrediction = new int[conjS.length][1];	
+                
+                 //Working on training
+                 for ( i=0; i<conjS.length; i++) {
+                     trainRealClass[i][0] = clasesS[i];
+                     trainPrediction[i][0] = KNN.evaluate(conjS[i],datosTrain, nClases, clasesTrain, this.k);
+                 }
+                 
+                 KNN.writeOutput(ficheroSalida[0], trainRealClass, trainPrediction,  entradas, salida, relation);
+                 
+                 
+                //Working on test
+		int realClass[][] = new int[datosTest.length][1];
+		int prediction[][] = new int[datosTest.length][1];	
+		
+		//Check  time		
+				
+		for (i=0; i<realClass.length; i++) {
+			realClass[i][0] = clasesTest[i];
+			prediction[i][0]= KNN.evaluate(datosTest[i],conjS, nClases, clasesS, this.k);
+		}
+                
+                KNN.writeOutput(ficheroSalida[1], realClass, prediction,  entradas, salida, relation);
+
+  }
+
+  public void leerConfiguracion (String ficheroScript) {
+
+    String fichero, linea, token;
+    StringTokenizer lineasFichero, tokens;
+    byte line[];
+    int i, j;
+
+    ficheroSalida = new String[2];
+
+    fichero = Fichero.leeFichero (ficheroScript);
+    lineasFichero = new StringTokenizer (fichero,"\n\r");
+
+    lineasFichero.nextToken();
+    linea = lineasFichero.nextToken();
+
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    token = tokens.nextToken();
+
+    /*Getting the names of the training and test files*/
+    line = token.getBytes();
+    for (i=0; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroTraining = new String (line,i,j-i);
+    for (i=j+1; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroTest = new String (line,i,j-i);
+
+    /*Getting the path and base name of the results files*/
+    linea = lineasFichero.nextToken();
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    token = tokens.nextToken();
+
+    /*Getting the names of output files*/
+    line = token.getBytes();
+    for (i=0; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroSalida[0] = new String (line,i,j-i);
+    for (i=j+1; line[i]!='\"'; i++);
+    i++;
+    for (j=i; line[j]!='\"'; j++);
+    ficheroSalida[1] = new String (line,i,j-i);
+    
+    /*Getting the number of neighbors*/
+    linea = lineasFichero.nextToken();
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    k = Integer.parseInt(tokens.nextToken().substring(1));
+  
+    /*Getting the type of distance function*/
+    linea = lineasFichero.nextToken();
+    tokens = new StringTokenizer (linea, "=");
+    tokens.nextToken();
+    distanceEu = tokens.nextToken().substring(1).equalsIgnoreCase("Euclidean")?true:false;    
+}
+
+}

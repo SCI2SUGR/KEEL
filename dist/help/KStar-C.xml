@@ -1,0 +1,100 @@
+<method>
+
+	<name>K * Classifier</name>
+
+	<reference>
+			<ref>J. G. Cleary, L. E.Trigg
+			K*: An instance-based learner using an entropic distance measure
+			Proceedings of the 12th International Conference on Machine Learning, p. 108-114 (1995)
+			</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type>Lazy Learning based classifier</type>
+
+		<objective> 
+		To perform a classification task by means of a probabilistic classifier.
+		</objective>
+
+		<howWork>Instead of using distances, this method defines a "transformation probability" from test instance to each train instance.
+  		It accumulates all the "transformation probabilities" and select the class with the higher probability.	
+		</howWork>
+
+		<parameterSpec>  
+  			<param> Selection method: Fixed (Higher probability) or Random (use probabilities to set the final output).</param>
+  			<param> Blend factor: Expected size of the influence sphere of each test instance.</param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+
+		Problem type: Classification 
+		Method: Clas-KStar
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat to iris-10-10tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-KStar
+		folder the classification results for the test set:
+
+		TEST RESULTS
+		============
+		Classifier= iris 
+		Fold 0 : CORRECT=0.8666666666666667 N/C=0.0 
+		Fold 1 : CORRECT=0.8666666666666667 N/C=0.0 
+		Fold 2 : CORRECT=1.0 N/C=0.0 
+		Fold 3 : CORRECT=1.0 N/C=0.0 
+		Fold 4 : CORRECT=0.8 N/C=0.0 
+		Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 6 : CORRECT=0.8666666666666667 N/C=0.0 
+		Fold 7 : CORRECT=0.8666666666666667 N/C=0.0 
+		Fold 8 : CORRECT=1.0 N/C=0.0 
+		Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+		Global Classification Error + N/C:
+		0.08666666666666666 
+		stddev Global Classification Error + N/C:
+		0.06699917080747263 
+		Correctly classified:
+		0.9133333333333333 
+		Global N/C:
+		0.0 
+
+		TRAIN RESULTS
+		============
+		Classifier= iris 
+		Summary of data, Classifiers: iris 
+		Fold 0 : CORRECT=0.962962962962963 N/C=0.0 
+		Fold 1 : CORRECT=0.9703703703703703 N/C=0.0 
+		Fold 2 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 3 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 4 : CORRECT=0.962962962962963 N/C=0.0 
+		Fold 5 : CORRECT=0.962962962962963 N/C=0.0 
+		Fold 6 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 7 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 8 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 9 : CORRECT=0.9555555555555556 N/C=0.0 
+		Global Classification Error + N/C:
+		0.040740740740740744 
+		stddev Global Classification Error + N/C:
+		0.0049690399499994885 
+		Correctly classified:
+		0.9592592592592593 
+		Global N/C:
+		0.0 
+				
+	</example>
+		
+</method>

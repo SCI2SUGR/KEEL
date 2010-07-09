@@ -1,0 +1,48 @@
+<html>
+
+<head>
+
+<title>Connections</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div align="center"> 
+
+  <p><b>CONNECTIONS</b></p>
+
+</div>
+
+<p>They allow you to connect algorithm outputs (or dataset) to the inputs of another 
+
+  algorithm, creating a data flow that will be run later.</p>
+
+<ol>
+  <li><b>Insert connection:</b> to make a connection, select the <img src="imag/ico_flujo.jpg"> button  
+    from the left tool bar. Then, click on the source node and finally click on 
+    the target node.<br><br>
+    <p align="center"><img src="imag/exp_conn1.jpg"></p>
+    <br>
+  </li>
+  <li> <b>Restrictions:</b> there are some restrictions that must be considered when making connections 
+    between the different elements:<br>
+    <ul>
+      <li>A dataset cannot have inputs. </li>
+      <li>Knowledge extraction methods can receive data from a DataSet or from a previous method. </li>
+      <li>The graph cannot have any cycle. </li>
+    </ul>
+  </li>
+</ol>
+  <p>All these restrictions are verified in exectuion time when a connection is been created. 
+    If one of these connections is not permited, the application will show an error 
+    message. In next figures you can see some examples of incorrect graphs. </p>
+  <div align="center"><img src="imag/exp_conn2.jpg"></div>
+</body>
+
+</html>
+

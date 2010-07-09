@@ -1,0 +1,99 @@
+<method>
+
+	<name>SMOTE (Synthetic Minority Over-sampling Technique) + Tomek Links</name>
+
+	<reference>  
+
+		<ref>G.E.A.P.A. Batista, R.C. Prati, M.C. Monard. A study of the behavior of several methods for balancing machine learning training data. SIGKDD Explorations 6:1 (2004) 20-29</ref>
+		<ref>N.V. Chawla, K.W. Bowyer, L.O. Hall, W.P. Kegelmeyer. SMOTE: synthetic minority over-sampling technique. Journal of Artificial Intelligence Research 16 (2002) 321-357</ref>
+		<ref>I. Tomek. Two modifications of CNN. IEEE Transactions on Systems, Man and Cybernetics 6 (1976) 769-772.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Rebalancing. Oversampling Method</type>
+
+		<objective>Balance the class distribution for changing the data space when applying usual classifiers in imbalanced domains</objective>
+
+		<howWork>SMOTE generate positive data instances from other instances in the original dataset selecting k nearest neighbors and using them to perform arithmetical
+		operations to generate the new instance. Some of the examples are removed with Tomek Links.</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to generate a new positive example using the K-Nearest Neighbor Rule</param>
+			<param>Type of SMOTE: both if we consider as neighbors instances from both classes, minority if we consider as neighbors instances from the minority class and ASMO if we consider as neighbors instances from the majority class</param>
+			<param>Balancing: YES, if we want de data class distribution completely balanced, NO otherwise</param>
+			<param>Quantity of generated examples: if the Balancing option is not selected, proportion of examples from the majority class that the minority class has to reach</param>
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: SMOTE Tomek Links
+Dataset: pimaImb
+Training set: pimaImb-5-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\datasets\Reb-SMOTE_TomekLinkss0.pimaImb-5-1tra.dat:
+
+@relation pimaImb
+@attribute Preg real [0.0, 17.0]
+@attribute Plas real [0.0, 199.0]
+@attribute Pres real [0.0, 122.0]
+@attribute Skin real [0.0, 99.0]
+@attribute Insu real [0.0, 846.0]
+@attribute Mass real [0.0, 67.1]
+@attribute Pedi real [0.078, 2.42]
+@attribute Age real [21.0, 81.0]
+@attribute Class {positive, negative}
+@data
+14.0,175.0,62.0,30.0,0.0,33.6,0.212,38.0,positive
+4.0,146.0,78.0,0.0,0.0,38.5,0.52,67.0,positive
+15.0,136.0,70.0,32.0,110.0,37.1,0.153,43.0,positive
+5.0,116.0,74.0,29.0,0.0,32.3,0.66,35.0,positive
+6.0,0.0,68.0,41.0,0.0,39.0,0.727,41.0,positive
+3.0,173.0,78.0,39.0,185.0,33.8,0.97,31.0,positive
+3.0,162.0,52.0,38.0,0.0,37.2,0.652,24.0,positive
+4.0,146.0,92.0,0.0,0.0,31.2,0.539,61.0,positive
+2.0,155.0,52.0,27.0,540.0,38.7,0.24,25.0,positive
+9.0,145.0,80.0,46.0,130.0,37.9,0.637,40.0,positive
+6.0,162.0,62.0,0.0,0.0,24.3,0.178,50.0,positive
+9.0,112.0,82.0,32.0,175.0,34.2,0.26,36.0,positive
+10.0,101.0,86.0,37.0,0.0,45.6,1.136,38.0,positive
+1.0,144.0,82.0,46.0,180.0,46.1,0.335,46.0,positive
+1.0,168.0,88.0,29.0,0.0,35.0,0.905,52.0,positive
+0.0,146.0,70.0,0.0,0.0,37.9,0.334,28.0,positive
+2.0,102.0,86.0,36.0,120.0,45.5,0.127,23.0,positive
+...
+0.11177005260760042,130.16249411951725,66.69763548817991,26.027023366016625,165.6566054794349,33.86327597663701,0.1901454446890481,28.304823514045566,positive
+2.711270727909923,168.55575129636017,70.09437847707689,48.31183617651922,568.2175444252515,42.20743112182522,0.6770713605959444,33.668593711858975,positive
+0.22230321740555548,128.0386440744291,80.0,0.0,0.0,31.34033624193818,0.5986583198507395,27.682962090124466,positive
+5.805656221413664,97.07671462722858,81.51950573806623,28.077074689683503,180.0,33.13213185760878,0.2280704637383707,53.61830628708127,positive
+1.067352054577669,92.49774143096455,64.14481959465711,34.79251913434938,65.68758239130788,33.638959872439784,0.5465510496193471,23.018507973842784,positive
+0.8504634736299834,121.70394428125518,88.86500055219659,47.56175891760919,227.8421521288169,49.533180206951904,0.4440594735730631,31.0,positive
+0.6928281896316736,116.61333066343423,65.55645242742517,26.828875898818143,94.73810817678782,34.7758438341298,0.6691327581289258,23.253524439364377,positive
+0.9987282085611682,118.90348369633456,88.93993944224009,48.602370197848444,222.0824334349927,47.62186390601046,0.3324660158950202,31.0,positive
+5.35239040705199,113.30396525580475,72.0,0.0,0.0,26.49319689546154,0.45664378322252547,56.94293251941487,positive
+9.925202452734968,103.0,67.14209506552561,33.52483554908484,0.0,44.45821049966502,0.320557553213162,34.10701141670105,positive
+</example>
+
+</method>

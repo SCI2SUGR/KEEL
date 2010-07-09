@@ -1,0 +1,102 @@
+<method>
+
+	<name>Multinomial logistic regression model with a ridge estimator</name>
+
+	<reference>  
+
+		<ref>le Cessie, S., van Houwelingen, J.C. (1992). Ridge Estimators in Logistic Regression. Applied Statistics. 41(1):191-201</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by means of a Logistic Regression model</type>
+
+		<objective>Multinomial logistic regression involves nominal response variables more than two categories. Multinomial logit models are multiequation models. A response variable with k categories will generate k-1 equations. Each of these k-1 equations is a binary logistic regression comparing a group with the reference group. Multinomial logistic regression simultaneously estimates the k-1 logits. Further, it is also the case, that the model tests all possible combinations among the k groups although it only displays coefficients for the k-1 comparisons.
+</objective>
+
+<howWork>
+If there are k classes for n instances with m attributes, the parameter matrix B to be calculated will be an m*(k-1) matrix.
+
+The probability for class j with the exception of the last class is
+
+Pj(Xi) = exp(XiBj)/((sum[j=1..(k-1)]exp(Xi*Bj))+1) 
+
+The last class has probability
+
+1-(sum[j=1..(k-1)]Pj(Xi)) 
+	= 1/((sum[j=1..(k-1)]exp(Xi*Bj))+1)
+
+The (negative) multinomial log-likelihood is thus: 
+
+L = -sum[i=1..n]{
+	sum[j=1..(k-1)](Yij * ln(Pj(Xi)))
+	+(1 - (sum[j=1..(k-1)]Yij)) 
+	* ln(1 - sum[j=1..(k-1)]Pj(Xi))
+	} + ridge * (B^2)
+
+In order to find the matrix B for which L is minimised, a Quasi-Newton Method is used to search for the optimized values of the m*(k-1) variables.  Note that before we use the optimization procedure, we 'squeeze' the matrix B into a m*(k-1) vector.  For details of the optimization procedure, please check keel.Algorithms.Logistic.core.Optimization class.
+
+Although original Logistic Regression does not deal with instance weights, we modify the algorithm a little bit to handle the instance weights.
+</howWork>
+
+		<parameterSpec>  
+			
+			<param>Ridge: Set the Ridge value in the log-likelihood</param>
+			<param>MaxIter: Maximum number of iterations until convergence of the model. The -1 value lets the model estimate the convergence itself</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+		Problem type: Classification 
+		Method: Logistic
+		Dataset: Iris
+		Training set: iris-10-1tra.dat
+		Test set: iris-10-1tst.dat
+		Parameters: default values
+		
+		We can see too the output and target classes for each case of the test set in Experiment\Results\Clas-LVQ:
+		
+@relation relation
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+</example>
+
+</method>

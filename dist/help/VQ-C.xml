@@ -1,0 +1,89 @@
+<method>
+
+	<name>Vector Quantization</name>
+
+	<reference>  
+		<ref>
+		Xie, Q., Laszlo, C.A., Ward, R.K. Vector quantization technique for nonparametric classifier design (1993) IEEE Transactions on Pattern Analysis and Machine Intelligence, 15:12, pp. 1326‐1330. 
+		</ref>
+		
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Noise Filter.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+			VQ algorithm is similar to LVQ1, in the way that it applies a reward to nearest prototypes of others if they have got the same label. VQ does not apply any penalization.
+			Later, it applies post-suppervised learning by setting each prototype label equals to the one of its K nearest prototypes.
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of iterations: Integer value. Number of iterations of the rewarding cycle.</param>
+			<param>Percentage of prototypes: Real value. Desired size of the resulting set as percentage of training set size.</param>
+			<param>Alpha0: Double value in [0, 1]. Factor applied in the rewarding.</param>
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to classify an example using the K-Nearest Neighbor Rule (k)</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: PG-VQ
+Dataset: glass
+Training set: glass-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-VQ:
+
+@relation  glass_identification_database
+@attribute RI real[1.51115,1.53393]
+@attribute Na real[10.73,17.38]
+@attribute Mg real[0.0,4.49]
+@attribute Al real[0.29,3.5]
+@attribute Si real[69.81,75.41]
+@attribute K real[0.0,6.21]
+@attribute Ca real[5.43,16.19]
+@attribute Ba real[0.0,3.15]
+@attribute Fe real[0.0,0.51]
+@attribute typeGlass{1,2,3,4,5,6,7}
+@inputs RI,Na,Mg,Al,Si,K,Ca,Ba,Fe
+@outputs typeGlass
+1.5179132204613208, 12.79652203222209, 3.496621641680146, 1.1346756070764632, 73.03886875917232, 0.6338022043507332, 8.745725972949828, 0.0, 0.0013869919851182987, 1
+1.52101374, 13.6427, 4.49, 1.09892, 71.7812, 0.0621, 8.75484, 0.0, 0.0, 1
+1.5215164773522742, 13.119180328569543, 3.5804240615124625, 0.8995257074830112, 72.20077414794217, 0.2290192144048385, 9.819046767542003, 0.0, 0.08133997338190312, 1
+1.5217813034811938, 13.496732079115567, 3.746277793041627, 0.8877051806889762, 71.99744583181855, 0.17568017045516449, 9.619233527107617, 0.0, 0.035040560315415054, 1
+1.5161947081789384, 13.005217441121278, 3.4952486654753754, 1.4886569233949267, 72.91247003917135, 0.5999963207983486, 8.123038996261263, 2.8266386320348655E-4, 0.0010045426410141155, 2
+1.5182606392033566, 13.23092876533996, 3.890471925893795, 1.4051555014492134, 72.33847785185853, 0.5562848063358233, 8.323805043385256, 0.0035851724836158277, 0.055012677677840974, 2
+1.5184704406972196, 13.2527781636068, 3.761561599098427, 1.3176300737354292, 72.40716653987386, 0.5759019716849783, 8.417595387629058, 2.650396820043534E-6, 5.183340513871695E-4, 2
+1.516861877614726, 13.23104109804434, 3.5381157878485636, 1.4825130299525588, 72.83640887170992, 0.5601425873887674, 8.098676048476673, 1.836700160067619E-8, 3.5671614907504383E-6, 2
+1.5168584663074092, 13.344611727570422, 3.5354021006596, 1.6163451754188263, 72.53470801420538, 0.6854444475691376, 8.094771094265475, 0.0, 2.8530349987869707E-4, 2
+1.5161103301457057, 13.419179211131658, 3.40193294482, 1.2223838815541939, 72.69194668814636, 0.5854194559736731, 8.331434429350189, 0.0, 0.0, 3
+1.5172310137930598, 14.673280590860031, 0.0, 2.3181541522958073, 73.29130517702, 0.02566770879644637, 8.922661420701544, 0.7027179684949297, 0.004616653253644861, 7
+1.5163710697924044, 14.36167408473535, 0.0, 2.736738476991585, 72.861611957003, 0.002222678407795079, 9.445613259666596, 0.5426770175902985, 0.002436245646655208, 7
+1.5220678092572042, 14.181495598057417, 3.7765720463042745, 0.9163581263928684, 71.36667739110953, 0.23301341701363512, 9.139032457388177, 0.0, 0.1912668148698158, 3
+1.5140942504398498, 14.249950223819619, 3.0911083469084044, 2.0800119350165676, 72.27819664678415, 1.0959509727396284, 7.077240376946349, 0.0, 2.100910391642778E-4, 2
+1.518614197144221, 13.35887126946944, 3.4228301550261944, 1.429714470202266, 72.26181160800992, 0.5094256445378093, 8.611845021933792, 6.536479487182374E-4, 6.278674018488739E-4, 2
+
+</example>
+
+</method>

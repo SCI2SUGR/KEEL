@@ -1,0 +1,154 @@
+<method>
+
+	<name>Fuzzy Rule Learning with Single Winner Inference, Logitboost algorithm</name>
+
+	<reference>  
+
+<ref>L. S&#xE1;nchez, J. Otero. Boosting fuzzy rules in classification problems under single-winner inference. International Journal of Intelligent Systems (2007) In press</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by logistic regression boosting classifiers.</type>
+
+		<objective>To obtain fuzzy weak classifiers to boost. Then, the overall classifier outperforms the one obtained by FuzzyAdaBoost in fuzzy rule set&#x384;s interpretability.</objective>
+
+		<howWork>Boosting algorithms are statistical additive modeling techniques that combine different low-quality classifiers to obtain a compound classifier that performs better than any of its components. Logitboost or logistic extended additive model is a backfitting algorithm, which repeatedly invokes a learning algorithm to successively generate a committee of simple, low-quality classifiers.  In this case, the inference is done by combining the votes with the max operator instead of the arithmetic sum.
+
+In this algorithm, each of the weak hypothesis is a Fuzzy rule extracted from data. Those fuzzy rules are extracted from data by means of a genetic algorithm.
+
+Each time a new simple classifier is added to the compound one, the examples in the training set are re-weighted (so that future classifiers will focus on the most difficult examples) . 
+</howWork>
+
+		<parameterSpec>  
+<param>numlabes: the number of possible fuzzy values for each variable.</param>
+<param>numrules: the number of rules for each classifier.</param>
+ 
+</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-Fuzzy-MaxLogitBoost
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: StatChekCL
+Parameters: numlabels 2, numrules 8
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTClas-Fuzzy-MaxLogitBoost folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= iris_plants_database 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Global Classification Error + N/C:
+0.06666666666666667 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9333333333333333 Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris_plants_database 
+Summary of data, Classifiers: iris_plants_database 
+Fold 0 : CORRECT=0.9851851851851852 N/C=0.0 
+Global Classification Error + N/C:
+0.014814814814814815 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.9851851851851852 
+Global N/C:
+0.0
+
+
+
+
+
+We can see too the output and target classes for each case of the train set (result0s0.tra) in experiment/results/Clas-Fuzzy-MaxLogitBoost/iris/:
+
+@relation Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+...
+
+And the test results (result0s0.tst) in experiment/results/Clas-Fuzzy-MaxLogitBoost/iris/:
+
+@relation Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+</example>
+
+</method>

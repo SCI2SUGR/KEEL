@@ -1,0 +1,43 @@
+<algorithm_specification>
+  <name>ICPL</name>
+  <nParameters>4</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Number of algorithm</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>4</upperB>
+    </domain>
+    <default>4</default>
+  </parameter>
+  <parameter>
+    <name>Filtering Method</name>
+    <type>list</type>
+    <domain>
+      <item>ENN</item>
+      <item>RT2</item>
+      <item>ACC</item>
+    </domain>
+    <default>ENN</default>   
+  </parameter>
+  <parameter>
+    <name>Number of neighbors</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>Threshold for ACC filtering</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>5</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+</algorithm_specification>

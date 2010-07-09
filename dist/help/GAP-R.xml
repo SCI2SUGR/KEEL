@@ -1,0 +1,163 @@
+<method>
+
+	<name>Symbolic Regression, Grammar-based GAP Algorithm</name>
+
+	<reference>  
+
+<ref>L. S&#xE1;nchez, I. Couso. Fuzzy random variables-based modeling with GA-P Algorithms. In R. Yager, B. Bouchon-Menier, L. Zadeh (Eds) Information, Uncertainty and Fusion,  Kluwer Editors (2000) 245-256.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Symbolic Regression model.</type>
+
+		<objective>To obtain symbolic regression model by means of GA-P algorithms.</objective>
+
+		<howWork>A GA-P algorithm is used to learn a symbolic regression model.
+</howWork>
+
+		<parameterSpec>  
+<param>popsize: the number of individuals in the population, GA-P parameter.</param>
+<param>numisland: the number	of islands or subpopulations, GAP parameter.</param>
+<param>steady: indicates how population evolves. A value of 1 forces a steady, while a value of 0 indicates that new individuals substitute old ones. GA-P parameter.</param>
+<param>numitera: number of iterations to reach the objectives, GA-P parameter.</param>
+<param>toursize: number of individuals selected to tournament selection procedure. GAP parameter.</param>
+<param>probmuta: indicates the probability that a mutation operation takes place, GA-P parameter.</param>
+<param>amplmuta	: the maximum bias that a mutation operation can introduce. GA-P Parameter.</param>
+<param>probmigra: probability that an individual of an island is used in a tournament of another island, GA-P parameter.</param>
+<param>proboptimlocal: indicates the probability to improve GA-P with local search GA-P parameter.</param>
+<param>numoptimlocal: the number of local search steps, GA-P parameter.</param>
+<param>idoptimlocal: the local search method used, GA-P parameter.</param>
+<param>nichingap: value 1 if niches are going to be used, , GA-P parameter.</param>
+<param>maxindniche: maximum number of individual per niche, , GA-P parameter.</param>
+<param>probintraniche: probability that a genetic operation can take place with individual of different niches, GA-P parameter.</param>
+<param>probcrossga: probability of genetic algorithm (parametric) operations to take place, GA-P parameter.</param>
+<param>probmutaga: probability of genetic algorithm (structural) operations to take place, GA-P parameter.</param>
+<param>lenchaingap: length of GA-P chain, GA-P parameter.</param>
+<param>maxtreeheight: maximum deep of a tree.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>Yes</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Regression 
+Method: Regr-GAP
+Dataset: daily-electric-energy
+Training set: daily-electric-energy-10-1tra.dat
+Test set: daily-electric-energy-10-1tst.dat
+Test Show results: StatChekMO
+Parameters: default parameters but numitera = 5000, maxtreeheight = 6, lenchaingap = 10
+
+After the execution of RunKeel.jar we can see into the experiment/results/StatCheckCL/TSTRegr-GAP/ folder the regression results for the test set:
+
+TEST RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.7648268793390316 
+Fold 1 : 0.8005379589882445 
+Fold 2 : 0.8646457297397186 
+Fold 3 : 0.4877932334613665 
+Fold 4 : 0.6916876251704424 
+Fold 5 : 0.4878694897746064 
+Fold 6 : 0.717171920515642 
+Fold 7 : 0.4894509534200406 
+Fold 8 : 0.593787113386939 
+Fold 9 : 0.5733637746392812 
+Global MSE:
+0.6471134678435313 
+Global stdev:
+0.13247362620661537 
+TRAIN RESULTS
+============
+Model = 
+MSE of all folds:
+Fold 0 : 0.6860894696714795 
+Fold 1 : 0.6127036955885827 
+Fold 2 : 0.6789916463860938 
+Fold 3 : 0.6156187494981954 
+Fold 4 : 0.6054648697665468 
+Fold 5 : 0.6361765570690829 
+Fold 6 : 0.6115362303128338 
+Fold 7 : 0.6443074429293237 
+Fold 8 : 0.6182484276045077 
+Fold 9 : 0.5472041947417166 
+Global MSE:
+0.6256341283568363 
+Global stdev:
+0.037470742177145897 
+
+We can see too the output and target classes for each case of the training set (result0s0.tra) in experiment/results/Regr-GAP/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.31615 2.8867000904620035
+2.37613 2.9268884973741582
+2.25221 3.030446576218378
+2.1057 2.3252409985949734
+4.05117 3.167071629012136
+2.50409 3.1148809417820784
+4.4184 3.3013892556373694
+3.07069 3.0272431344918065
+1.8168 2.3102239595371636
+1.1095 3.1153282831251037
+1.42735 2.9543468127131414
+3.34136 3.2757607820878976
+2.34377 3.062654464862746
+...
+
+And the test results (result0s0.tst) in folder experiment/results/Regr-GAP/daily-electric-energy/:
+
+@relation  daily_average_cost_of_tkwhe_electry_energy_in_spain_in_2003
+@attribute hidraul real[27881.8,206035.0]
+@attribute nucleal real[114760.0,187105.0]
+@attribute carbon real[33537.0,234833.0]
+@attribute fuel real[0.0,67986.5]
+@attribute gas real[0.0,84452.2]
+@attribute regesp real[5307.0,16357.0]
+@attribute precio real[0.765853,5.11875]
+@inputs hidraul,nucleal,carbon,fuel,gas,regesp
+@outputs precio
+@data
+2.21261 2.9731135562638182
+3.82169 3.2128973298681043
+1.3288 2.722543734986604
+2.53167 3.156696394947283
+4.00095 3.2473751299649547
+2.9788 2.9248588308819765
+1.67147 2.96330320161963
+3.3829 3.16737053943178
+3.19877 2.957202348398799
+2.4381 2.9719563888053147
+0.960987 2.958383223840262
+4.14661 3.3011424585480764
+2.32848 3.072879061864798
+...
+</example>
+
+</method>

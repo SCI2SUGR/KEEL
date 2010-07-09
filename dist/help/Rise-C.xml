@@ -1,0 +1,132 @@
+<method>
+
+	<name>RISE</name>
+
+	<reference>  
+
+		<ref>Pedro Domingos, Unifying Instance-Based and Rule-Based Induction, Machine Learning 24 (1996) 141-168.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by covering rules.</type>
+
+		<objective>The Rise algorithm induces a list of classification rules unifying two approaches: instance-based learning and rule induction.</objective>
+
+		<howWork>
+			
+			The initial rule set is the training set itself, each instance is a candidate rule. Each rule repeatedly finds the nearest example of its class that it does not yet cover, and attempts to minimally generalize itself to cover (dropping conditions on symbolic attributes and broadening intervals for numeric ones). If the effect of this on global accuracy is positive, the change is retained. This process stops when no further change causes any improvement.
+			The accuracy of a rule set is defined as the fraction of those examples that it correctly classifies. A rule set classifies an example correctly when the nearest rule to the example has the same class as it.
+
+			In each cycle the new rule set is adopted even if its apparent accuracy is the same as the old one's (when two teories appear to perform identically, prefer the simpler one).
+
+			In the course of generalization two rules may become identical, in which case they are merged.
+
+			At each step only the change in accuracy needs to be considered (this method would not be efficient if the accuracy of the entire rule set had to be computed from scratch every time an individual change is considered, involving an unacceptable time cost). Each example memorizes the distance to the nearest rule and that rule's identification. With this information, all that is necessary when a rule is generalized is to match that single rule against all examples, and check if it wins any that it did not before. If a previously misclassified example is now correctly classified, the numerator of the accuracy is increased; if the reverse takes place, it is decremented. Otherwise there is no change. If the sum of increments and decrements is greater than or equal to 0, the new rule is adopted and the relevant structures are updated; otherwise it is rejected.
+
+			Other question is how to choose the winning rule when several are equally near. The algorithm selects the rule with the highest Laplace accuracy. In the event the accuracies are the same, the method chooses the most frequent class among those represented, and if there is still a draw, the winner is chosen at random.
+
+			
+
+</howWork>
+
+		<parameterSpec>  
+
+			<param>Seed: it is the seed to initialize the random method.</param>
+			<param>s: a natural-valued parameter used for calculating the distance between a rule and an example.</param>
+			<param>q: a natural-valued parameter used for calculating the component distance between a rule and an example for symbolic attributes.</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: RISE
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: 
+	Seed: 12345678
+	s: 2
+	q:1
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= 
+Fold 0 : CORRECT=0.8666666666666667 N/C=0.0 
+Global Classification Error + N/C:
+0.1333333333333333
+Correctly classified:
+0.8666666666666667 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-Rise:
+
+@relation  Iris_Plants_Database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-virginica
+Iris-versicolor Iris-virginica
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+
+And the Rule Set and Statistics (result0e0.txt) in Experiment\Results\Clas-Rise:
+
+
+Rule 1: IF (sepalLength in [4.3 , 4.5] AND sepalWidth in [2.3 , 4.4] AND petalLength in [1.1 , 1.3] AND petalWidth in [0.1 , 0.3]) THEN class -> Iris-setosa  
+
+Rule 2: IF (sepalLength in [4.9 , 6.0] AND sepalWidth in [2.0 , 3.4] AND petalLength in [3.0 , 4.5] AND petalWidth in [1.0 , 1.6]) THEN class -> Iris-versicolor  
+
+Rule 3: IF (sepalLength in [5.0 , 5.9] AND sepalWidth in [2.2 , 2.3] AND petalLength in [3.3 , 4.8] AND petalWidth in [1.0 , 1.0]) THEN class -> Iris-versicolor  
+
+Rule 4: IF (sepalLength in [5.6 , 7.7] AND sepalWidth in [2.2 , 3.8] AND petalLength in [4.8 , 6.7] AND petalWidth in [1.4 , 2.2]) THEN class -> Iris-virginica  
+
+Rule 5: IF (sepalLength in [4.9 , 6.0] AND sepalWidth in [2.2 , 2.5] AND petalLength in [4.5 , 5.0] AND petalWidth in [1.4 , 1.7]) THEN class -> Iris-virginica  
+
+Rule 6: IF (sepalLength in [5.6 , 7.9] AND sepalWidth in [2.2 , 3.8] AND petalLength in [4.8 , 6.4] AND petalWidth in [1.4 , 2.0]) THEN class -> Iris-virginica  
+
+Accuracy Training: 1.0
+Accuracy Test: 0.8666666666666667
+
+</example>
+
+</method>

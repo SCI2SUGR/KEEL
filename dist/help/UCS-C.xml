@@ -1,0 +1,199 @@
+<method>
+
+	<name> UCS </name>
+
+	<reference>  
+		<ref> Ester Bernadó-Mansilla and Josep M. Garrell Guiu. Accuracy-Based Learning Classifier Systems: Models, Analysis and Applications to Classification Tasks., Special Issue on Learning Classifier Systems, Evolutionary Computation, Vol. 11, (3):, pages 209-238, 2003. </ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type> Classification model by rules </type>
+
+		<objective> 
+				To extract a set of maximally accurate 
+				rules that completely defines the feature space.
+		</objective>
+
+		<howWork>
+				UCS is a Learning Classifier System (LCS) derived from XCS that evolves online 
+				a set of rules that describe the feature space accurately. 
+				It inherits part of its main components from XCS, 
+				and specializes them to be applied to supervised learning tasks.		
+	
+				The set of rules is initially built by generalizing some of the input examples, 
+				and further, they are evolved online. The result is that the knowledge is 
+				represented by a set of rules or classifiers with a certain fitness. 
+				When classifying unseen examples, each rule that matches the input votes 
+				according its prediction and fitness. 
+				The most voted class is chosen to be the output.	
+		</howWork>
+
+		<parameterSpec>  
+
+				<param> numberOfExplores: Number of iterations that the system 
+						will be trained (positive integer) </param>
+				<param> popSize: Maximum size of the population (positive integer) </param>
+				<param> nu: It is used to calculated the fitness. A high value implies 
+						more pressure towards classifiers with high fitness. Integer. 
+						Typical value 10 </param>
+				<param> delta: It indicates the deletion pressure toward classifiers with low fitness. 
+						The higher this value is, the stronger the pressure toward deletion 
+						of inaccurate classifiers. Real [0, 1]. Typical value 0.1. </param>
+				<param> acc_0: Minimum accuracy of a classifier to be considered 
+						as accurate. Real [0,1] </param>
+				<param> pX: Probability of crossover. Real [0,1] </param>
+				<param> pM: Probability of mutation. Real [0,1] </param>
+				<param> theta_GA: GA threshold. The GA is applied when the average time since 
+						the last GA application is greater than theta_GA. Positive integer. </param>
+				<param> theta_del: is the deletion threshold. If the experience of a 
+						classifier is greater than theta_del, its fitness is to be considered 
+						in the deletion vote. Positive integer. </param>
+				<param> theta_sub: subsumption threshold. Is the minimum experience that a 
+						classifier must have to be considered as a subsumer. Positive integer. </param>
+				<param> doGASubsumption: A flag that indicates if subsumption has to be made in the GA. </param>
+				<param> TypeOfSelection: Type of selection used. List {RWS, tournament} </param>
+				<param> tournamentSize: Size of the tournament in case of using tournament selection. Real [0, 1] </param>
+				<param> TypeOfMutation: Type of mutation. List {niched, free}. </param>
+				<param> TypeOfCrossover: Type of crossover: two point or uniform crossover. List {2PT, uniform}. </param>
+				<param> R_0: covering deviation. Real [0,1] </param>
+				<param> m_0: mutation deviation. Real [0,1] </param>
+				
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+
+		Problem type: Classification 
+		Method: Clas-UCS
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat and iris-10-10tst.dat
+		Test Show results: Vis-Clas-Check/
+		Parameters: default values except for numberOfExplores = 50.000
+	
+		After the execution of RunKeel.jar we can see into the 
+		experiment/results/Vis-Clas-Check//TSTClas-UCS folder 
+		the classification results for the train and the test set:
+
+		TEST RESULTS
+		============
+		Classifier=
+		Fold 0 : CORRECT=1.0 N/C=0.0
+		Fold 1 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 2 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 3 : CORRECT=0.8666666666666667 N/C=0.0
+		Fold 4 : CORRECT=0.8666666666666667 N/C=0.0
+		Fold 5 : CORRECT=1.0 N/C=0.0
+		Fold 6 : CORRECT=1.0 N/C=0.0
+		Fold 7 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 8 : CORRECT=1.0 N/C=0.0
+		Fold 9 : CORRECT=0.9333333333333333 N/C=0.0
+		Global Classification Error + N/C:
+		0.05333333333333333
+		stddev Global Classification Error + N/C:
+		0.049888765156985884
+		Correctly classified:
+		0.9466666666666667
+		Global N/C:
+		0.0
+
+		TRAIN RESULTS
+		============
+		Classifier=
+		Summary of data, Classifiers:
+		Fold 0 : CORRECT=1.0 N/C=0.0
+		Fold 1 : CORRECT=1.0 N/C=0.0
+		Fold 2 : CORRECT=0.9925925925925926 N/C=0.0
+		Fold 3 : CORRECT=1.0 N/C=0.0
+		Fold 4 : CORRECT=1.0 N/C=0.0
+		Fold 5 : CORRECT=1.0 N/C=0.0
+		Fold 6 : CORRECT=0.9925925925925926 N/C=0.0
+		Fold 7 : CORRECT=1.0 N/C=0.0
+		Fold 8 : CORRECT=1.0 N/C=0.0
+		Fold 9 : CORRECT=0.9925925925925926 N/C=0.0
+		Global Classification Error + N/C:
+		0.0022222222222222222
+		stddev Global Classification Error + N/C:
+		0.003394500514782104
+		Correctly classified:
+		0.9977777777777778
+		Global N/C:
+		0.0
+
+
+		We can see too the output and target classes for each case of the test set in 
+		experiment/results/Clas-UCS. For each fold, 3 files are generated:
+
+		File result0s0e1.txt:
+		It contains the ruleset evolved by UCS. First line is the number of macroclassifiers, 
+		and second the number of microclassifiers. The third line reports in which order the parameters are written. 
+		From fourth line to the end of the file, each line is a classifier or rule. 
+		Only 3 of the 1000 macroclassifiers are shown in the example.
+		
+		1000
+		6400
+		Cond - Action  - accuracy -  fitness - Numerosity - Experience - [C]SetSize - Generality - timeStamp
+  		0.0 0.7446571919218647  0.0 1.0  0.0 0.14049879217102665  0.0 0.41411510243336447   0     1.0 0.16958213329276747 221 31583  1237.7305427142212  2.2992710865262556  99994
+  		0.0 0.7683131387740865  0.0 1.0  0.0 0.31529487054479133  0.0 0.49609004819000946   0     1.0 0.0982197116098136  128 18219  1405.9996706553936  2.5796980575088875  99994
+  		0.0 0.7446571919218647  0.0 1.0  0.0 0.14049879217102665  0.0 0.4194129257460919   0      1.0 0.09784764284962227 128 31433  1242.9954186815974  2.3045689098389834  99994
+		...
+
+		File result0s0.tra:
+			It contains the results of testing the model with the train set
+		@relation  iris_plants_database
+		@attribute sepalLength real[4.3,7.9]
+		@attribute sepalWidth real[2.0,4.4]
+		@attribute petalLength real[1.0,6.9]
+		@attribute petalWidth real[0.1,2.5]
+		@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		...
+		
+		File result0s0.tst:
+			It contains the results of testing the population with the test set.
+		@relation  iris_plants_database
+		@attribute sepalLength real[4.3,7.9]
+		@attribute sepalWidth real[2.0,4.4]
+		@attribute petalLength real[1.0,6.9]
+		@attribute petalWidth real[0.1,2.5]
+		@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-setosa  Iris-setosa
+		Iris-versicolor  Iris-versicolor
+		Iris-versicolor  Iris-versicolor
+		Iris-versicolor  Iris-versicolor
+		Iris-versicolor  Iris-versicolor
+		Iris-versicolor  Iris-versicolor
+		Iris-virginica  Iris-virginica
+		Iris-virginica  Iris-virginica
+		Iris-virginica  Iris-virginica
+		Iris-virginica  Iris-virginica
+		Iris-virginica  Iris-virginica
+		Iris-setosa  Iris-setosa
+	
+
+	</example>
+		
+</method>

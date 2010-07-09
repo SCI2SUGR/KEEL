@@ -1,0 +1,235 @@
+<method>
+
+	<name>Decremental Radial Basis Function Neural Network for Regression Problems</name>
+
+	<reference>  
+
+		<ref>D.S. Broomhead, D. Lowe. Multivariable Functional Interpolation and Adaptative Networks. Complex Systems 11 (1988) 321-355</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Regression model by means of a Radial Basis Function Neural network</type>
+
+		<objective>
+			Builds a Radial Basis Function Neural Network composed of one hidden layer and one output layer. This hidden layer contains neurons, each one being activated when the input to the network falls close to a point that is considered the ?centre? of that neuron. The final result of the network is provided by the neuron of the output layer, that performs a weighted sum using the outputs coming from hidden neurons. To build this network a decremental algorithm is applied.
+
+</objective>
+
+<howWork>The network output depends on the values yielded by every hidden neuron as well as the weight of the link connecting every hidden neuron with the output neuron. 
+	
+The output of every hidden neuron is the output of its function activation, and this function depends on the centre of the neuron and a parameter call radius. Thus, the value provided by the neuron changes depending on the distance from the system input to the neuron centre, and according to the radius value. This way, one function can get its maximum when the input is equal to the centre, but another function can reach minimum at the same point. Although many functions can be used as activation function for hidden neurons, the most commonly used is the Gaussian function.
+	
+In order to build the network, the algorithm needs to know hay many neurons will form the hidden layer. Then, it randomly chooses such number of points from the training set to be the centres of the neurons; finally, it establishes a single radius for all the neurons as half the average distance between the set of centres. 
+	
+Once fixed the centres and radii of the network, the set of weights can be analytically computed using any method suitable to find the values that minimize the mean square error, typically Singular Value Decomposition or Least Mean Square (as in this implementation)
+	
+At the main loop, the average of the weights of RBFs is obtained. In this way any RBF with a weight lower than a percentage of the last computed average will be eliminated. Furthermore, a random mutation of the centres and radii of RBFs is applied to those neurons with weights lower than average but over that percentage that results in elimination.
+
+Once neurons have been deleted and mutated, LMS algorithm from Regr-RBFN is applied to calculate the new weights, and the loop starts again.
+The final condition of the loop is that no neuron is eliminated for ten executions.
+
+</howWork>
+
+		<parameterSpec>  
+
+			<param>nNeuronsIni:  an integer indicating the number of hidden neurons the network will have at the beginning. This number must change from one problem to other, thus the default value, set to 50, can be inadequate for many problems, as any other value would be.
+			</param>
+			<param>percent: Percentage under the average of the weights use to decide whether a neuron must me removed or not. If this value is high, the number of RBFs that will be eliminated is greater than if this value is lower.
+			</param>
+			<param>alfa: Learning factor of the LMS algorithm. This value must be between 0.1 and 1.
+			</param>
+
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>No</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+	
+		Problem type: Regression 
+		Method: RBFN Decremental for regression
+		Dataset: autoMpg
+		Training set: autoMpg-10-1tra.dat
+		Test set: autoMpg-10-1tst.dat
+		Test Show results: StatChekMO
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the  folder  experiment/results/StatCheckMO/TSTRegr-Decremental-RBFN the regression results for the test set:
+		TEST RESULTS
+		============
+		Model = 
+		MSE of all folds:
+		Fold 0 : 17.21733537087888 
+		Global MSE:
+		17.21733537087888 
+		Global stdev:
+		0.0 
+		
+		
+		We can see too the output and target classes for each case of the test set in Experiment\Results\Regr-Decremental-RBFN:
+		@relation  autompg
+		@attribute cylinders{8,4,6,3,5}
+		@attribute displacement real[68.0,455.0]
+		@attribute horsepower real[46.0,230.0]
+		@attribute weight real[1613.0,5140.0]
+		@attribute acceleration real[8.5,24.6]
+		@attribute model{70,71,72,73,74,75,76,77,78,79,80,81,82}
+		@attribute origin{1,3,2}
+		@attribute class real[9.0,46.6]
+		@inputs cylinders,displacement,horsepower,weight,acceleration,model,origin
+		@outputs class
+		@data
+		22.0 22.744017440608793
+		14.0 16.118559654692525
+		37.0 32.93877474150379
+		14.0 17.7942832497105
+		15.0 17.52906966514334
+		30.0 30.28714671851039
+		15.0 19.310831125961386
+		18.0 18.447164882802163
+		14.5 15.076030269643631
+		28.0 25.64031784032026
+		21.0 25.617406707472906
+		27.0 25.672370599043447
+		32.4 26.970055205382817
+		34.1 33.676286643781935
+		19.0 26.58912939557406
+		31.0 25.345286283411504
+		40.8 31.27566818300191
+		20.2 19.707850387010694
+		21.0 28.55724936231678
+		21.5 24.7053972912156
+		26.8 25.202364998086995
+		22.0 19.23994718786753
+		25.0 30.69988949215814
+		38.0 33.747975281977624
+		36.1 32.69375895210576
+		25.8 25.84596192933161
+		21.0 25.797261408672185
+		27.0 29.067551895486694
+		19.2 18.809798937357712
+		13.0 14.252799719887184
+		13.0 17.104835648041
+		13.0 15.77270446513743
+		27.2 20.132152099276922
+		38.0 33.41122772272385
+		32.3 32.22966363011561
+		25.5 25.12121686977631
+		18.0 22.655696319532236
+		30.0 19.718773450490897
+		28.0 29.88674753951991
+		30.0 31.91624946666201
+		36.0 33.451303415120606
+
+		And the neural network model (result0e0.txt) in Experiment\Results\Regr-Decremental-RBFN:
+		Neuron: 15
+		Radius 525.3754136658604
+		Center 1.8500313516909905
+		Center 126.17053911240419
+		Center 63.20165778681627
+		Center 2625.8113327936944
+		Center -40.5316178017226
+		Center 20.989803551081383
+		Center 45.46800483540228
+		Weigth 10.576668999723669
+		Neuron: 14
+		Radius 470.45142655895285
+		Center 0.0
+		Center 351.0
+		Center 148.0
+		Center 4657.0
+		Center 13.5
+		Center 5.0
+		Center 0.0
+		Weigth 18.660782700056757
+		Neuron: 13
+		Radius 470.45142655895285
+		Center 1.0
+		Center 85.0
+		Center 0.0
+		Center 1835.0
+		Center 17.3
+		Center 10.0
+		Center 2.0
+		Weigth 30.333092183241195
+		Neuron: 8
+		Radius 612.3838714185995
+		Center 45.84239908940829
+		Center 181.73389084195162
+		Center -8.001115356500314
+		Center 2900.576749846101
+		Center 63.39130228146173
+		Center -80.11476610155002
+		Center -10.542304594954395
+		Weigth 6.0866935014563985
+		Neuron: 5
+		Radius 620.1723036105426
+		Center 27.469918866275698
+		Center 216.80085453667277
+		Center 68.93069206816556
+		Center 3553.4219847368086
+		Center 5.665040917887044
+		Center 0.9844428376290999
+		Center -36.896688904890155
+		Weigth 11.204584878922445
+		Neuron: 4
+		Radius 456.40486731976637
+		Center 1.3219716805097406
+		Center 365.0310676187422
+		Center 132.1297499671291
+		Center 4163.9597274921625
+		Center 17.901583332778372
+		Center 16.636405934226683
+		Center -21.780716479896935
+		Weigth 9.783213725604346
+		Neuron: 3
+		Radius 488.6671474530402
+		Center 52.45484966786948
+		Center 246.71918672662744
+		Center 135.90147612281064
+		Center 3560.689112969364
+		Center -8.467489124374953
+		Center 69.81761442465603
+		Center -53.67655896407042
+		Weigth 3.5313137778128088
+		Neuron: 2
+		Radius 395.78016072744344
+		Center 155.00138247796673
+		Center 476.26465166691736
+		Center 117.7459099112481
+		Center 4439.072665670272
+		Center 75.64539905131792
+		Center -118.89874120988478
+		Center -10.417533783532262
+		Weigth -12.551037681867143
+		Neuron: 0
+		Radius 620.4182943281637
+		Center -7.6019153436594635
+		Center 198.47735920715482
+		Center -44.07625199678688
+		Center 2527.185893753119
+		Center -3.215870187430564
+		Center 32.081306293979296
+		Center -11.640580671127463
+		Weigth 8.549783892669714
+
+</example>
+
+</method>

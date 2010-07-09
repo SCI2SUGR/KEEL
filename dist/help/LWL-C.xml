@@ -1,0 +1,100 @@
+<method>
+
+	<name>Locally Weight learning Classifier</name>
+
+	<reference>
+			<ref>C.G. Atkeson, A. W. Moore, S. Schaal.
+			Locally Weighted Learning.
+			Artificial Intelligence Review 11 (1997) 11-73. 
+			</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type>Lazy Learning based classifier</type>
+
+		<objective> 
+		To apply weights locally to test instances, in order to improve the classification rate of instance based classifiers.
+		</objective>
+
+		<howWork>This methods employs some kernel functions to define weights applied to tests intances. These weights are applied 
+		to a instance based classifier (e.g. k-NN) to improve its classification accuracy.	
+		</howWork>
+
+		<parameterSpec>  
+  			<param> K: number of neighbors</param>
+  			<param> Kernel type: Constant, Linear, Inverse, Gauss, Epanechnikov, Tricube</param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+
+		Problem type: Classification 	
+		Method: Clas-LWL
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat to iris-10-10tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values
+		
+		After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-LWL
+		folder the classification results for the test set:
+
+		TEST RESULTS
+		============
+		Classifier= iris 
+		Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 1 : CORRECT=0.8666666666666667 N/C=0.0 
+		Fold 2 : CORRECT=1.0 N/C=0.0 
+		Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+		Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+		Fold 7 : CORRECT=1.0 N/C=0.0 
+		Fold 8 : CORRECT=1.0 N/C=0.0 
+		Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+		Global Classification Error + N/C:
+		0.06 
+		stddev Global Classification Error + N/C:
+		0.046666666666666676 
+		Correctly classified:
+		0.94 
+		Global N/C:
+		0.0 
+
+		TRAIN RESULTS
+		============
+		Classifier= iris 
+		Summary of data, Classifiers: iris 
+		Fold 0 : CORRECT=0.962962962962963 N/C=0.0 
+		Fold 1 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 2 : CORRECT=0.9481481481481482 N/C=0.0 
+		Fold 3 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 4 : CORRECT=0.962962962962963 N/C=0.0 
+		Fold 5 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 6 : CORRECT=0.9555555555555556 N/C=0.0 
+		Fold 7 : CORRECT=0.9407407407407408 N/C=0.0 
+		Fold 8 : CORRECT=0.9481481481481482 N/C=0.0 
+		Fold 9 : CORRECT=0.9555555555555556 N/C=0.0 
+		Global Classification Error + N/C:
+		0.045925925925925926 
+		stddev Global Classification Error + N/C:
+		0.006457628064504688 
+		Correctly classified:
+		0.9540740740740741 
+		Global N/C:
+		0.0 
+					
+	</example>
+		
+</method>

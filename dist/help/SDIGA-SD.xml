@@ -1,0 +1,494 @@
+<method>
+
+	<name>Subgroup Discovery Iterative Genetic Algorithmss</name>
+
+	<reference>  
+<ref>M.J. del Jesus, P. Gonzalez, F. Herrera, M. Mesonero, Evolutionary Fuzzy Rule Induction Process for Subgroup Discovery: A case study in marketing, IEEE Transactions on Fuzzy Systems, 15 (4), pp. 578-592, 2007.</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Supervised Descriptive Rule Discovery System</type>
+
+		<objective>To obtain Fuzzy Rules to describe data</objective>
+
+		<howWork>SDIGA is a 
+		</howWork>
+
+		<parameterSpec>  
+			<param>RulesRep: Representation of the rule.</param>
+			<param>nLabels: Number of labels for continuous variables.</param>
+			<param>nEval: Number of evaluations in the evolutionary algorithm.</param>
+			<param>popLength: Length of the population.</param>
+			<param>crossProb: Probability for the crossover.</param>
+			<param>mutProb: Probability for the mutation.</param>
+			<param>minCnf: Value of the minimum confidence to filter the rules</param>
+			<param>lSearch: This parameter indicates if the algorithm uses or not local search</param>
+			<param>Obj1: Objective number ONE. The user can be chosen between different supports: 
+			Support based on the examples of the class (COMP), Crisp Support (CSUP) and Fuzzy Support (FSUP).</param>
+			<param>Obj2: Objective number TWO. The user can be chosen between different confidence: 
+			Crisp Confidence (CCNF) and Fuzzy Confidence (FCNF).</param>
+			<param>Obj3: Objective number THREE. The user can be chosen NULL to indicate the absence of this objective or
+			between: Coverage (COVE), Accuracy (ACCU), Significance (SIGN) 
+			and Unusualness (UNUS).</param>
+			<param>w1: Weight for the Obj1. It is a value between 0.0 and 1.0</param>
+			<param>w2: Weight for the Obj2. It is a value between 0.0 and 1.0</param>
+			<param>w3: Weight for the Obj3. It is a value between 0.0 and 1.0</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: SDIGA
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Parameters: default values
+
+TRAINING FILE
+=============
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+
+TEST FILE
+=========
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-versicolor
+
+
+RULE FILE
+=========
+GENERATED RULE 0
+   Antecedent
+	Variable petalLength = Label 0 	 (-1.95 1.0 3.95)
+	Variable petalWidth = Label 0 	 (-1.1 0.1 1.3000001)
+   Consecuent: Iris-setosa
+
+GENERATED RULE 0
+   Antecedent
+	Variable petalLength = Label 1 	 (1.0 3.95 6.9)
+	Variable petalWidth = Label 1 	 (0.1 1.3000001 2.5)
+   Consecuent: Iris-versicolor
+
+GENERATED RULE 0
+   Antecedent
+	Variable petalWidth = Label 2 	 (1.3000001 2.5 3.7)
+   Consecuent: Iris-virginica
+
+MEASURE FILE OF THE RULE IN TRAINING FILE
+=========================================
+
+Measures used as objectives: COMP, FCNF, UNUS;
+Class 	COMP	FCNF	UNUS	FITNESS
+0	1,000000	0,971526	0,555556	0,858125
+1	1,000000	0,670049	0,530864	0,760274
+2	1,000000	0,904255	0,466667	0,811277
+
+
+
+TRACKING FILE
+=============
+
+--------------------------------------------
+|              Parameters Echo             |
+--------------------------------------------
+Algorithm name: sdiga
+Input file name training: ../datasets/iris/iris-10-1tra.dat
+Input file name test: ../datasets/iris/iris-10-1tra.dat
+Rules file name: ../results/sdiga.iris/result0e0.txt
+Tracking file name: ../results/sdiga.iris/result0e2.txt
+Random generator seed: 0
+Selected class of the target variable: not established
+Number of labels for the continuous variables: 3
+Number of evaluations: 10000
+Number of individuals in the Population: 100
+Cross probability: 0.6
+Mutation probability: 0.01
+Minimum confidence: 0.6
+Rules representation: CAN
+Objective 1: COMP(Weight: 0.4)
+Objective 2: FCNF(Weight: 0.3)
+Objective 3: UNUS(Weight: 0.3)
+Perform Local Search: true
+
+--------------------------------------------
+|  Semantics for the continuous variables  |
+--------------------------------------------
+Fuzzy sets parameters for variable sepalLength:
+	Label 0: 2.5000002 4.3 6.1000004
+	Label 1: 4.3 6.1000004 7.9
+	Label 2: 6.1000004 7.9 9.7
+Fuzzy sets parameters for variable sepalWidth:
+	Label 0: 0.79999995 2.0 3.2
+	Label 1: 2.0 3.2 4.4
+	Label 2: 3.2 4.4 5.6000004
+Fuzzy sets parameters for variable petalLength:
+	Label 0: -1.95 1.0 3.95
+	Label 1: 1.0 3.95 6.9
+	Label 2: 3.95 6.9 9.85
+Fuzzy sets parameters for variable petalWidth:
+	Label 0: -1.1 0.1 1.3000001
+	Label 1: 0.1 1.3000001 2.5
+	Label 2: 1.3000001 2.5 3.7
+
+
+--------------------------------------------
+|               Dataset Echo               |
+--------------------------------------------
+Number of examples: 135
+Number of variables: 4
+@relation .a/iris/iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+
+
+--------------------------------------------
+|       Computation of the info gain       |
+--------------------------------------------
+Points for computation of the info gain:
+	Variable sepalLength: 5.2000003  7.0  8.8  
+	Variable sepalWidth: 2.6  3.8  5.0  
+	Variable petalLength: 2.475  5.425  8.375  
+	Variable petalWidth: 0.70000005  1.9000001  3.1000001  
+Information Gain of the variables:
+	Variable sepalLength: 0.57011724
+	Variable sepalWidth: 0.24990666
+	Variable petalLength: 0.87453634
+	Variable petalWidth: 0.8885555
+
+--------------------------------------------
+|             Execution results            |
+--------------------------------------------
+
+Class 0:
+   # 3321 generations, 10006 evaluations
+	Rule not improved by Local search. Support = 1.0
+   # 3339 generations, 10001 evaluations
+	Rule not stored (low confidence or support)
+
+Class 1:
+   # 3269 generations, 10001 evaluations
+	Rule not improved by Local search. Support = 1.0
+   # 3290 generations, 10001 evaluations
+	Rule not stored (low confidence or support)
+
+Class 2:
+   # 3303 generations, 10005 evaluations
+	Rule not improved by Local search. Support = 1.0
+   # 3267 generations, 10005 evaluations
+	Rule not stored (low confidence or support)
+
+
+QUALITY MEASURES FOR THE TEST FILE
+==================================
+
+Number 	Class 	Size 	NVar    	Coverage 	Significance 	Unusualness 	Accuracy 	Support  	CSupport  	FSupport 	FConfidence 	CConfidence
+000   	000		-		3,000000	0,333333	98,875107		0,222222		0,958333	1,000000	0,333333	0,273446	0,971526		1,000000
+001   	001		-		3,000000	0,407407	68,692017		0,197531		0,793103	1,000000	0,333333	0,272212	0,670049		0,818182
+002   	002		-		2,000000	0,200000	59,325062		0,133333		0,933333	1,000000	0,200000	0,209877	0,904255		1,000000
+-    	- 		003		2,666667	0,313580	75,630730		0,184362		0,894923	1,000000	0,866667	0,251845	0,848610		0,939394
+
+
+
+
+
+
+</example>
+
+</method>

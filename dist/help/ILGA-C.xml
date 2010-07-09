@@ -1,0 +1,815 @@
+<method>
+
+	<name>Incremental learning with genetic algorithms</name>
+
+	<reference>
+
+		<ref>S. U. Guan and F. Zhu, "An incremental approach to genetic algorithms-based classification," IEEE Transactions on 
+			Systems, Man and Cybernetics Part B, vol. 35, no. 2, pp. 227-239, 2005.</ref>
+	
+	</reference>	
+	
+	<generalDescription>
+
+		<type> Pittsburgh Approach to learn a set of rules for classification</type>
+
+		<objective>It builds a set of rules by means of a genetic algorithm by means of an incremental approach</objective>
+
+		<howWork>
+ILGA is an evolution of the OIGA learning process. 
+ILGA expands the possibilities of the
+incremental process, by means of using, as a seed for
+all the initial population, either the best one-condition
+rule set (as OIGA does) or the whole population of
+chromosomes in the current solution. It also introduces
+a bias in the mutation and crossover operators. This
+bias affects the "old" part of the chromosome, that
+is, the genes added in the previous iterations but not
+in the current one. If the randomly chosen point for
+mutation or crossover is located in the "old" genes, the
+corresponding rates may be reduced with a reduction
+rate. The motivation behind this is that ILGA tends to
+preserve the structure of old elements and explore more
+of the combination between old and new elements.
+
+		</howWork>
+
+		<parameterSpec>
+
+			<param>ProbMutation: Mutation probability</param>
+			<param>CrossoverRate: Frequency of crossover application</param>
+			<param>popSize: population size</param>
+			<param>ruleNumber: number of rules of each individual</param>
+			<param>stagnationLimit: maximum number of generations without improvement before restarting the process</param>
+			<param>generationLimit: maximum number of possible generations </param>
+			<param>SurvivorsPercent: percentage of survivors of the previous population when restarting</param>
+			<param>mutationRedRate: mutation reduced rate for the already generated part of the chromosome</param>
+			<param>crossoverRedRate: crossover reduced rate for the already generated part of the chromosome</param>
+			<param>AttributeOrder: considereder order for the attributes in the incremental learning process</param>
+			<param>incrementalStrategy: type of strategy used to add new features to the chromosomes</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+		Problem type: Classification
+		Method: C-SVM
+		Dataset: wisconsin
+		Parameters: default values
+
+		Input data:
+		Training set: wisconsin-10-1tra.dat
+		Test set: wisconsin-10-1tst.dat
+
+
+		Output data:
+		Training set: result0.tra
+		Test set: result0.tst
+
+		Output data: Training set: result0.tra
+		@relation  wisconsin
+@attribute clumpThickness integer [1, 10]
+@attribute cellSize integer [1, 10]
+@attribute cellShape integer [1, 10]
+@attribute marginalAdhesion integer [1, 10]
+@attribute epithelialSize integer [1, 10]
+@attribute bareNuclei integer [1, 10]
+@attribute blandChromatin integer [1, 10]
+@attribute normalNucleoli integer [1, 10]
+@attribute mitoses integer [1, 10]
+@attribute class {2, 4}
+@data
+2 2
+2 4
+2 2
+2 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 4
+4 4
+4 4
+2 4
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+4 2
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+2 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 2
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 ?
+4 4
+4 4
+4 4
+2 2
+2 2
+2 4
+4 4
+2 4
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 ?
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 2
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+4 4
+4 4
+2 4
+4 4
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 4
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+2 4
+4 4
+4 2
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 2
+2 2
+4 4
+2 4
+2 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 4
+4 4
+4 4
+2 4
+2 4
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 ?
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 4
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 ?
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+2 ?
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 ?
+2 2
+2 2
+4 4
+2 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+4 2
+2 2
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 ?
+2 2
+2 2
+2 2
+2 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+4 4
+4 4
+4 4
+
+
+		Output data: Test set: result0.tst
+		@relation  wisconsin
+@attribute clumpThickness integer [1, 10]
+@attribute cellSize integer [1, 10]
+@attribute cellShape integer [1, 10]
+@attribute marginalAdhesion integer [1, 10]
+@attribute epithelialSize integer [1, 10]
+@attribute bareNuclei integer [1, 10]
+@attribute blandChromatin integer [1, 10]
+@attribute normalNucleoli integer [1, 10]
+@attribute mitoses integer [1, 10]
+@attribute class {2, 4}
+@data
+2 2
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+2 2
+2 4
+4 4
+4 4
+2 2
+2 4
+2 2
+2 2
+4 4
+4 4
+2 2
+4 4
+2 2
+2 2
+4 4
+2 2
+4 4
+4 4
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+4 4
+2 2
+2 2
+2 4
+2 2
+4 4
+2 ?
+2 2
+2 ?
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 ?
+4 4
+4 4
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+2 2
+4 4
+2 2
+2 2
+
+
+	</example>
+
+</method>

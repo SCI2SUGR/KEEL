@@ -1,0 +1,731 @@
+<method>
+
+	<name> GAssist ADI</name>
+
+	<reference>  
+			<ref>J. Bacardit and J.M. Garrell. Evolving multiple discretizations with adaptive 
+			intervals for a pittsburgh rule-based learning classifier system. In Genetic and Evolutionary 
+			Computation Conference (GECCO 2003), Lecture Notes on Computer Science 2724, 2003, 1818-1831.
+			</ref>
+			<ref>
+			J. Bacardit and J.M. Garrell. Analysis and improvements of the adaptive 
+			discretization intervals knowledge representation. In Genetic and Evolutionary 
+			Computation Conference (GECCO 2004), Lecture Notes on Computer Science 3103, 726-738.			
+			</ref>
+	</reference>
+
+
+	<generalDescription>  
+
+		<type> Classification model by rules </type>
+
+		<objective> 
+				To extract a set of maximally accurate 
+				rules that completely defines the feature space.
+		</objective>
+
+		<howWork>
+				GAssist is a Pittsburgh-style Learning Classifier System originally inspired
+				in GABIL. The core of the system consists of a Genetic Algorithm which evolve
+				individuals formed by a set of production rules. 
+				The individuals are evaluated according to the proportion of correct classified
+				training examples. 
+				To represent continuous attributes, the Adaptive Dicretization Intervals Rule Representation
+				was originally designed for GAssist.
+		</howWork>
+
+		<parameterSpec>  
+  			<param> hierarchicalSelectionThreshold: Threshold of Hierarchical Selection </param>
+  			<param> iterationRuleDeletion: Iteration of activation of the rule deletion operator </param>
+  			<param> iterationHierarchicalSelection: Iteration of activation of the hierarchical selection.  </param>
+  			<param> ruleDeletionMinRules: Minimum number of rules considered by the deletion operator.  </param>
+  			<param> sizePenaltyMinRules: Penalty applied to the rules of minimum size.  </param>
+  			<param> numIterations: Number of iterations of the GA </param>
+  			<param> initialNumberOfRules: Initial number of rules.  </param>
+  			<param> popSize: Population size.  </param>
+  			<param> probCrossover: Probability of crossover.  </param>
+  			<param> probMutationInd: Probability of mutating an individual.  </param>
+  			<param> probOne: Probability to initialize an allele to 1.  </param>
+  			<param> tournamentSize: Size of the tournament selection.  </param>
+  			<param> numStrata: Number of stratas.  </param>
+  			<param> discretizer1: Name of the discretizer 1.  </param>
+  			<param> discretizer2: Name of the discretizer 2.  </param>
+  			<param> discretizer3: Name of the discretizer 3.  </param>
+  			<param> discretizer4: Name of the discretizer 4.  </param>
+  			<param> discretizer5: Name of the discretizer 5.  </param>
+  			<param> discretizer6: Name of the discretizer 6.  </param>
+  			<param> discretizer7: Name of the discretizer 7.  </param>
+  			<param> discretizer8: Name of the discretizer 8.  </param>
+  			<param> discretizer9: Name of the discretizer 9.  </param>
+  			<param> discretizer10: Name of the discretizer 10.  </param>
+  			<param> maxIntervals: Maximum number of intervals for discretization.  </param>
+  			<param> probSplit: Probability of splitting an interval.  </param>
+  			<param> probMerge: Probability of merging an interval.  </param>
+  			<param> probReinitializeBegin: Reinitialize probability at initial iteration.  </param>
+  			<param> probReinitializeEnd: Reinitialize probability at final iteration.  </param>
+  			<param> adiKR: Use ADI knowledge representation.  </param>
+  			<param> useMDL: Use minimum description length for fitness computation.  </param>
+  			<param> iterationMDL: Iteartion of activation of the MDL fitness computation.  </param>
+  			<param> initialTheoryLengthRatio: Initial theory length ratio.  </param>
+  			<param> weightRelaxFactor: Weight relax factor for the MDL fitness computation </param>
+		</parameterSpec> 
+		
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   Yes	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+
+
+		Problem type: Classification 
+		Method: Clas-GAssist-ADI
+		Dataset: iris (10 fold cross validation run)
+		Training set: iris-10-1tra.dat to iris-10-10tra.dat 
+		Test set: iris-10-1tst.dat and iris-10-10tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values except from:
+				numIterations = 100
+		
+		After the execution of RunKeel.jar we can see into the results/Vis-Clas-Check/TSTClas-GAssist-ADI
+		folder the classification results for the test set:
+		
+		TEST RESULTS
+		============
+		Classifier= iris_plants_database
+		Fold 0 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 1 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 2 : CORRECT=1.0 N/C=0.0
+		Fold 3 : CORRECT=0.8666666666666667 N/C=0.0
+		Fold 4 : CORRECT=0.9333333333333333 N/C=0.0
+		Fold 5 : CORRECT=1.0 N/C=0.0
+		Fold 6 : CORRECT=1.0 N/C=0.0
+		Fold 7 : CORRECT=0.8666666666666667 N/C=0.0
+		Fold 8 : CORRECT=1.0 N/C=0.0
+		Fold 9 : CORRECT=0.9333333333333333 N/C=0.0
+		Global Classification Error + N/C:
+		0.05333333333333333
+		stddev Global Classification Error + N/C:
+		0.049888765156985884
+		Correctly classified:
+		0.9466666666666667
+		Global N/C:
+		0.0
+
+		TRAIN RESULTS
+		============
+		Classifier= iris_plants_database
+		Summary of data, Classifiers: iris_plants_database
+		Fold 0 : CORRECT=0.9851851851851852 N/C=0.0
+		Fold 1 : CORRECT=0.9777777777777777 N/C=0.0
+		Fold 2 : CORRECT=0.9777777777777777 N/C=0.0
+		Fold 3 : CORRECT=0.9851851851851852 N/C=0.0
+		Fold 4 : CORRECT=0.9851851851851852 N/C=0.0
+		Fold 5 : CORRECT=0.9777777777777777 N/C=0.0
+		Fold 6 : CORRECT=0.9851851851851852 N/C=0.0
+		Fold 7 : CORRECT=0.962962962962963 N/C=0.0
+		Fold 8 : CORRECT=0.9703703703703703 N/C=0.0
+		Fold 9 : CORRECT=0.9851851851851852 N/C=0.0
+		Global Classification Error + N/C:
+		0.02074074074074074
+		stddev Global Classification Error + N/C:
+		0.007257747386024234
+		Correctly classified:
+		0.9792592592592593
+		Global N/C:
+		0.0
+
+
+		
+		We can see too the output and target classes for each case of the test set 
+		in results/Clas-GAssist-ADI/iris. For each fold, the following file is generated:
+		
+		File result0s0e0.txt: 
+	
+		Cut point 0 of attribute 0 : 5.02
+		Cut point 1 of attribute 0 : 5.739999999999999
+		Cut point 2 of attribute 0 : 6.459999999999999
+		Cut point 3 of attribute 0 : 7.179999999999999
+		Number of cut points of attribute 0 : 4
+		Cut point 0 of attribute 1 : 2.48
+		Cut point 1 of attribute 1 : 2.96
+		Cut point 2 of attribute 1 : 3.44
+		Cut point 3 of attribute 1 : 3.92
+		Number of cut points of attribute 1 : 4
+		Cut point 0 of attribute 2 : 2.2600000000000002
+		Cut point 1 of attribute 2 : 3.4200000000000004
+		Cut point 2 of attribute 2 : 4.58
+		Cut point 3 of attribute 2 : 5.74
+		Number of cut points of attribute 2 : 4
+		Cut point 0 of attribute 3 : 0.58
+		Cut point 1 of attribute 3 : 1.06
+		Cut point 2 of attribute 3 : 1.54
+		Cut point 3 of attribute 3 : 2.02
+		Number of cut points of attribute 3 : 4
+		Cut point 0 of attribute 0 : 4.9
+		Cut point 1 of attribute 0 : 5.5
+		Cut point 2 of attribute 0 : 6.1
+		Cut point 3 of attribute 0 : 6.699999999999999
+		Cut point 4 of attribute 0 : 7.299999999999999
+		Number of cut points of attribute 0 : 5
+		Cut point 0 of attribute 1 : 2.4
+		Cut point 1 of attribute 1 : 2.8
+		Cut point 2 of attribute 1 : 3.1999999999999997
+		Cut point 3 of attribute 1 : 3.5999999999999996
+		Cut point 4 of attribute 1 : 3.9999999999999996
+		Number of cut points of attribute 1 : 5
+		Cut point 0 of attribute 2 : 2.066666666666667
+		Cut point 1 of attribute 2 : 3.0333333333333337
+		Cut point 2 of attribute 2 : 4.0
+		Cut point 3 of attribute 2 : 4.966666666666667
+		Cut point 4 of attribute 2 : 5.933333333333334
+		Number of cut points of attribute 2 : 5
+		Cut point 0 of attribute 3 : 0.5
+		Cut point 1 of attribute 3 : 0.8999999999999999
+		Cut point 2 of attribute 3 : 1.2999999999999998
+		Cut point 3 of attribute 3 : 1.6999999999999997
+		Cut point 4 of attribute 3 : 2.0999999999999996
+		Number of cut points of attribute 3 : 5
+		Cut point 0 of attribute 0 : 4.814285714285714
+		Cut point 1 of attribute 0 : 5.328571428571428
+		Cut point 2 of attribute 0 : 5.8428571428571425
+		Cut point 3 of attribute 0 : 6.357142857142857
+		Cut point 4 of attribute 0 : 6.871428571428571
+		Cut point 5 of attribute 0 : 7.385714285714285
+		Number of cut points of attribute 0 : 6
+		Cut point 0 of attribute 1 : 2.342857142857143
+		Cut point 1 of attribute 1 : 2.685714285714286
+		Cut point 2 of attribute 1 : 3.028571428571429
+		Cut point 3 of attribute 1 : 3.371428571428572
+		Cut point 4 of attribute 1 : 3.714285714285715
+		Cut point 5 of attribute 1 : 4.057142857142858
+		Number of cut points of attribute 1 : 6
+		Cut point 0 of attribute 2 : 1.9285714285714288
+		Cut point 1 of attribute 2 : 2.7571428571428576
+		Cut point 2 of attribute 2 : 3.5857142857142863
+		Cut point 3 of attribute 2 : 4.414285714285715
+		Cut point 4 of attribute 2 : 5.242857142857143
+		Cut point 5 of attribute 2 : 6.071428571428571
+		Number of cut points of attribute 2 : 6
+		Cut point 0 of attribute 3 : 0.44285714285714284
+		Cut point 1 of attribute 3 : 0.7857142857142857
+		Cut point 2 of attribute 3 : 1.1285714285714286
+		Cut point 3 of attribute 3 : 1.4714285714285715
+		Cut point 4 of attribute 3 : 1.8142857142857145
+		Cut point 5 of attribute 3 : 2.1571428571428575
+		Number of cut points of attribute 3 : 6
+		Cut point 0 of attribute 0 : 4.75
+		Cut point 1 of attribute 0 : 5.2
+		Cut point 2 of attribute 0 : 5.65
+		Cut point 3 of attribute 0 : 6.1000000000000005
+		Cut point 4 of attribute 0 : 6.550000000000001
+		Cut point 5 of attribute 0 : 7.000000000000001
+		Cut point 6 of attribute 0 : 7.450000000000001
+		Number of cut points of attribute 0 : 7
+		Cut point 0 of attribute 1 : 2.3
+		Cut point 1 of attribute 1 : 2.5999999999999996
+		Cut point 2 of attribute 1 : 2.8999999999999995
+		Cut point 3 of attribute 1 : 3.1999999999999993
+		Cut point 4 of attribute 1 : 3.499999999999999
+		Cut point 5 of attribute 1 : 3.799999999999999
+		Cut point 6 of attribute 1 : 4.099999999999999
+		Number of cut points of attribute 1 : 7
+		Cut point 0 of attribute 2 : 1.8250000000000002
+		Cut point 1 of attribute 2 : 2.5500000000000003
+		Cut point 2 of attribute 2 : 3.2750000000000004
+		Cut point 3 of attribute 2 : 4.0
+		Cut point 4 of attribute 2 : 4.725
+		Cut point 5 of attribute 2 : 5.449999999999999
+		Cut point 6 of attribute 2 : 6.174999999999999
+		Number of cut points of attribute 2 : 7
+		Cut point 0 of attribute 3 : 0.4
+		Cut point 1 of attribute 3 : 0.7
+		Cut point 2 of attribute 3 : 1.0
+		Cut point 3 of attribute 3 : 1.3
+		Cut point 4 of attribute 3 : 1.6
+		Cut point 5 of attribute 3 : 1.9000000000000001
+		Cut point 6 of attribute 3 : 2.2
+		Number of cut points of attribute 3 : 7
+		Cut point 0 of attribute 0 : 4.7
+		Cut point 1 of attribute 0 : 5.1000000000000005
+		Cut point 2 of attribute 0 : 5.500000000000001
+		Cut point 3 of attribute 0 : 5.900000000000001
+		Cut point 4 of attribute 0 : 6.300000000000002
+		Cut point 5 of attribute 0 : 6.700000000000002
+		Cut point 6 of attribute 0 : 7.100000000000002
+		Cut point 7 of attribute 0 : 7.500000000000003
+		Number of cut points of attribute 0 : 8
+		Cut point 0 of attribute 1 : 2.2666666666666666
+		Cut point 1 of attribute 1 : 2.533333333333333
+		Cut point 2 of attribute 1 : 2.8
+		Cut point 3 of attribute 1 : 3.0666666666666664
+		Cut point 4 of attribute 1 : 3.333333333333333
+		Cut point 5 of attribute 1 : 3.5999999999999996
+		Cut point 6 of attribute 1 : 3.8666666666666663
+		Cut point 7 of attribute 1 : 4.133333333333333
+		Number of cut points of attribute 1 : 8
+		Cut point 0 of attribute 2 : 1.7444444444444445
+		Cut point 1 of attribute 2 : 2.388888888888889
+		Cut point 2 of attribute 2 : 3.033333333333333
+		Cut point 3 of attribute 2 : 3.6777777777777776
+		Cut point 4 of attribute 2 : 4.322222222222222
+		Cut point 5 of attribute 2 : 4.966666666666667
+		Cut point 6 of attribute 2 : 5.611111111111112
+		Cut point 7 of attribute 2 : 6.255555555555556
+		Number of cut points of attribute 2 : 8
+		Cut point 0 of attribute 3 : 0.3666666666666667
+		Cut point 1 of attribute 3 : 0.6333333333333333
+		Cut point 2 of attribute 3 : 0.8999999999999999
+		Cut point 3 of attribute 3 : 1.1666666666666665
+		Cut point 4 of attribute 3 : 1.4333333333333331
+		Cut point 5 of attribute 3 : 1.6999999999999997
+		Cut point 6 of attribute 3 : 1.9666666666666663
+		Cut point 7 of attribute 3 : 2.233333333333333
+		Number of cut points of attribute 3 : 8
+		Cut point 0 of attribute 0 : 4.627272727272727
+		Cut point 1 of attribute 0 : 4.954545454545454
+		Cut point 2 of attribute 0 : 5.281818181818181
+		Cut point 3 of attribute 0 : 5.6090909090909085
+		Cut point 4 of attribute 0 : 5.936363636363636
+		Cut point 5 of attribute 0 : 6.263636363636363
+		Cut point 6 of attribute 0 : 6.59090909090909
+		Cut point 7 of attribute 0 : 6.918181818181817
+		Cut point 8 of attribute 0 : 7.245454545454544
+		Cut point 9 of attribute 0 : 7.572727272727271
+		Number of cut points of attribute 0 : 10
+		Cut point 0 of attribute 1 : 2.2181818181818183
+		Cut point 1 of attribute 1 : 2.4363636363636365
+		Cut point 2 of attribute 1 : 2.6545454545454548
+		Cut point 3 of attribute 1 : 2.872727272727273
+		Cut point 4 of attribute 1 : 3.0909090909090913
+		Cut point 5 of attribute 1 : 3.3090909090909095
+		Cut point 6 of attribute 1 : 3.527272727272728
+		Cut point 7 of attribute 1 : 3.745454545454546
+		Cut point 8 of attribute 1 : 3.9636363636363643
+		Cut point 9 of attribute 1 : 4.1818181818181825
+		Number of cut points of attribute 1 : 10
+		Cut point 0 of attribute 2 : 1.6272727272727274
+		Cut point 1 of attribute 2 : 2.1545454545454548
+		Cut point 2 of attribute 2 : 2.681818181818182
+		Cut point 3 of attribute 2 : 3.2090909090909094
+		Cut point 4 of attribute 2 : 3.7363636363636368
+		Cut point 5 of attribute 2 : 4.263636363636364
+		Cut point 6 of attribute 2 : 4.790909090909091
+		Cut point 7 of attribute 2 : 5.318181818181818
+		Cut point 8 of attribute 2 : 5.845454545454546
+		Cut point 9 of attribute 2 : 6.372727272727273
+		Number of cut points of attribute 2 : 10
+		Cut point 0 of attribute 3 : 0.3181818181818182
+		Cut point 1 of attribute 3 : 0.5363636363636364
+		Cut point 2 of attribute 3 : 0.7545454545454545
+		Cut point 3 of attribute 3 : 0.9727272727272727
+		Cut point 4 of attribute 3 : 1.190909090909091
+		Cut point 5 of attribute 3 : 1.4090909090909092
+		Cut point 6 of attribute 3 : 1.6272727272727274
+		Cut point 7 of attribute 3 : 1.8454545454545457
+		Cut point 8 of attribute 3 : 2.063636363636364
+		Cut point 9 of attribute 3 : 2.281818181818182
+		Number of cut points of attribute 3 : 10
+		Cut point 0 of attribute 0 : 4.5249999999999995
+		Cut point 1 of attribute 0 : 4.749999999999999
+		Cut point 2 of attribute 0 : 4.974999999999999
+		Cut point 3 of attribute 0 : 5.199999999999998
+		Cut point 4 of attribute 0 : 5.424999999999998
+		Cut point 5 of attribute 0 : 5.649999999999998
+		Cut point 6 of attribute 0 : 5.874999999999997
+		Cut point 7 of attribute 0 : 6.099999999999997
+		Cut point 8 of attribute 0 : 6.324999999999997
+		Cut point 9 of attribute 0 : 6.549999999999996
+		Cut point 10 of attribute 0 : 6.774999999999996
+		Cut point 11 of attribute 0 : 6.999999999999996
+		Cut point 12 of attribute 0 : 7.224999999999995
+		Cut point 13 of attribute 0 : 7.449999999999995
+		Cut point 14 of attribute 0 : 7.6749999999999945
+		Number of cut points of attribute 0 : 15
+		Cut point 0 of attribute 1 : 2.15
+		Cut point 1 of attribute 1 : 2.3
+		Cut point 2 of attribute 1 : 2.4499999999999997
+		Cut point 3 of attribute 1 : 2.5999999999999996
+		Cut point 4 of attribute 1 : 2.7499999999999996
+		Cut point 5 of attribute 1 : 2.8999999999999995
+		Cut point 6 of attribute 1 : 3.0499999999999994
+		Cut point 7 of attribute 1 : 3.1999999999999993
+		Cut point 8 of attribute 1 : 3.349999999999999
+		Cut point 9 of attribute 1 : 3.499999999999999
+		Cut point 10 of attribute 1 : 3.649999999999999
+		Cut point 11 of attribute 1 : 3.799999999999999
+		Cut point 12 of attribute 1 : 3.949999999999999
+		Cut point 13 of attribute 1 : 4.099999999999999
+		Cut point 14 of attribute 1 : 4.249999999999999
+		Number of cut points of attribute 1 : 15
+		Cut point 0 of attribute 2 : 1.4625000000000001
+		Cut point 1 of attribute 2 : 1.8250000000000002
+		Cut point 2 of attribute 2 : 2.1875
+		Cut point 3 of attribute 2 : 2.55
+		Cut point 4 of attribute 2 : 2.9124999999999996
+		Cut point 5 of attribute 2 : 3.2749999999999995
+		Cut point 6 of attribute 2 : 3.6374999999999993
+		Cut point 7 of attribute 2 : 3.999999999999999
+		Cut point 8 of attribute 2 : 4.362499999999999
+		Cut point 9 of attribute 2 : 4.724999999999999
+		Cut point 10 of attribute 2 : 5.087499999999999
+		Cut point 11 of attribute 2 : 5.449999999999998
+		Cut point 12 of attribute 2 : 5.812499999999998
+		Cut point 13 of attribute 2 : 6.174999999999998
+		Cut point 14 of attribute 2 : 6.537499999999998
+		Number of cut points of attribute 2 : 15
+		Cut point 0 of attribute 3 : 0.25
+		Cut point 1 of attribute 3 : 0.4
+		Cut point 2 of attribute 3 : 0.55
+		Cut point 3 of attribute 3 : 0.7000000000000001
+		Cut point 4 of attribute 3 : 0.8500000000000001
+		Cut point 5 of attribute 3 : 1.0
+		Cut point 6 of attribute 3 : 1.15
+		Cut point 7 of attribute 3 : 1.2999999999999998
+		Cut point 8 of attribute 3 : 1.4499999999999997
+		Cut point 9 of attribute 3 : 1.5999999999999996
+		Cut point 10 of attribute 3 : 1.7499999999999996
+		Cut point 11 of attribute 3 : 1.8999999999999995
+		Cut point 12 of attribute 3 : 2.0499999999999994
+		Cut point 13 of attribute 3 : 2.1999999999999993
+		Cut point 14 of attribute 3 : 2.349999999999999
+		Number of cut points of attribute 3 : 15
+		Cut point 0 of attribute 0 : 4.4714285714285715
+		Cut point 1 of attribute 0 : 4.642857142857143
+		Cut point 2 of attribute 0 : 4.814285714285715
+		Cut point 3 of attribute 0 : 4.985714285714287
+		Cut point 4 of attribute 0 : 5.157142857142858
+		Cut point 5 of attribute 0 : 5.32857142857143
+		Cut point 6 of attribute 0 : 5.500000000000002
+		Cut point 7 of attribute 0 : 5.6714285714285735
+		Cut point 8 of attribute 0 : 5.842857142857145
+		Cut point 9 of attribute 0 : 6.014285714285717
+		Cut point 10 of attribute 0 : 6.185714285714289
+		Cut point 11 of attribute 0 : 6.35714285714286
+		Cut point 12 of attribute 0 : 6.528571428571432
+		Cut point 13 of attribute 0 : 6.700000000000004
+		Cut point 14 of attribute 0 : 6.871428571428575
+		Cut point 15 of attribute 0 : 7.042857142857147
+		Cut point 16 of attribute 0 : 7.214285714285719
+		Cut point 17 of attribute 0 : 7.385714285714291
+		Cut point 18 of attribute 0 : 7.557142857142862
+		Cut point 19 of attribute 0 : 7.728571428571434
+		Number of cut points of attribute 0 : 20
+		Cut point 0 of attribute 1 : 2.1142857142857143
+		Cut point 1 of attribute 1 : 2.2285714285714286
+		Cut point 2 of attribute 1 : 2.342857142857143
+		Cut point 3 of attribute 1 : 2.4571428571428573
+		Cut point 4 of attribute 1 : 2.5714285714285716
+		Cut point 5 of attribute 1 : 2.685714285714286
+		Cut point 6 of attribute 1 : 2.8000000000000003
+		Cut point 7 of attribute 1 : 2.9142857142857146
+		Cut point 8 of attribute 1 : 3.028571428571429
+		Cut point 9 of attribute 1 : 3.1428571428571432
+		Cut point 10 of attribute 1 : 3.2571428571428576
+		Cut point 11 of attribute 1 : 3.371428571428572
+		Cut point 12 of attribute 1 : 3.485714285714286
+		Cut point 13 of attribute 1 : 3.6000000000000005
+		Cut point 14 of attribute 1 : 3.714285714285715
+		Cut point 15 of attribute 1 : 3.828571428571429
+		Cut point 16 of attribute 1 : 3.9428571428571435
+		Cut point 17 of attribute 1 : 4.057142857142858
+		Cut point 18 of attribute 1 : 4.171428571428572
+		Cut point 19 of attribute 1 : 4.285714285714286
+		Number of cut points of attribute 1 : 20
+		Cut point 0 of attribute 2 : 1.3761904761904762
+		Cut point 1 of attribute 2 : 1.6523809523809523
+		Cut point 2 of attribute 2 : 1.9285714285714284
+		Cut point 3 of attribute 2 : 2.2047619047619045
+		Cut point 4 of attribute 2 : 2.4809523809523806
+		Cut point 5 of attribute 2 : 2.7571428571428567
+		Cut point 6 of attribute 2 : 3.0333333333333328
+		Cut point 7 of attribute 2 : 3.309523809523809
+		Cut point 8 of attribute 2 : 3.585714285714285
+		Cut point 9 of attribute 2 : 3.861904761904761
+		Cut point 10 of attribute 2 : 4.138095238095238
+		Cut point 11 of attribute 2 : 4.414285714285714
+		Cut point 12 of attribute 2 : 4.69047619047619
+		Cut point 13 of attribute 2 : 4.966666666666666
+		Cut point 14 of attribute 2 : 5.242857142857142
+		Cut point 15 of attribute 2 : 5.519047619047618
+		Cut point 16 of attribute 2 : 5.795238095238094
+		Cut point 17 of attribute 2 : 6.07142857142857
+		Cut point 18 of attribute 2 : 6.347619047619046
+		Cut point 19 of attribute 2 : 6.6238095238095225
+		Number of cut points of attribute 2 : 20
+		Cut point 0 of attribute 3 : 0.2142857142857143
+		Cut point 1 of attribute 3 : 0.32857142857142857
+		Cut point 2 of attribute 3 : 0.44285714285714284
+		Cut point 3 of attribute 3 : 0.5571428571428572
+		Cut point 4 of attribute 3 : 0.6714285714285715
+		Cut point 5 of attribute 3 : 0.7857142857142858
+		Cut point 6 of attribute 3 : 0.9000000000000001
+		Cut point 7 of attribute 3 : 1.0142857142857145
+		Cut point 8 of attribute 3 : 1.1285714285714288
+		Cut point 9 of attribute 3 : 1.242857142857143
+		Cut point 10 of attribute 3 : 1.3571428571428574
+		Cut point 11 of attribute 3 : 1.4714285714285718
+		Cut point 12 of attribute 3 : 1.585714285714286
+		Cut point 13 of attribute 3 : 1.7000000000000004
+		Cut point 14 of attribute 3 : 1.8142857142857147
+		Cut point 15 of attribute 3 : 1.928571428571429
+		Cut point 16 of attribute 3 : 2.042857142857143
+		Cut point 17 of attribute 3 : 2.1571428571428575
+		Cut point 18 of attribute 3 : 2.271428571428572
+		Cut point 19 of attribute 3 : 2.385714285714286
+		Number of cut points of attribute 3 : 20
+		Cut point 0 of attribute 0 : 4.438461538461539
+		Cut point 1 of attribute 0 : 4.5769230769230775
+		Cut point 2 of attribute 0 : 4.715384615384616
+		Cut point 3 of attribute 0 : 4.853846153846155
+		Cut point 4 of attribute 0 : 4.992307692307694
+		Cut point 5 of attribute 0 : 5.130769230769233
+		Cut point 6 of attribute 0 : 5.269230769230772
+		Cut point 7 of attribute 0 : 5.407692307692311
+		Cut point 8 of attribute 0 : 5.5461538461538495
+		Cut point 9 of attribute 0 : 5.684615384615388
+		Cut point 10 of attribute 0 : 5.823076923076927
+		Cut point 11 of attribute 0 : 5.961538461538466
+		Cut point 12 of attribute 0 : 6.100000000000005
+		Cut point 13 of attribute 0 : 6.238461538461544
+		Cut point 14 of attribute 0 : 6.376923076923083
+		Cut point 15 of attribute 0 : 6.5153846153846215
+		Cut point 16 of attribute 0 : 6.65384615384616
+		Cut point 17 of attribute 0 : 6.792307692307699
+		Cut point 18 of attribute 0 : 6.930769230769238
+		Cut point 19 of attribute 0 : 7.069230769230777
+		Cut point 20 of attribute 0 : 7.207692307692316
+		Cut point 21 of attribute 0 : 7.346153846153855
+		Cut point 22 of attribute 0 : 7.4846153846153936
+		Cut point 23 of attribute 0 : 7.623076923076932
+		Cut point 24 of attribute 0 : 7.761538461538471
+		Number of cut points of attribute 0 : 25
+		Cut point 0 of attribute 1 : 2.0923076923076924
+		Cut point 1 of attribute 1 : 2.184615384615385
+		Cut point 2 of attribute 1 : 2.2769230769230773
+		Cut point 3 of attribute 1 : 2.3692307692307697
+		Cut point 4 of attribute 1 : 2.461538461538462
+		Cut point 5 of attribute 1 : 2.5538461538461545
+		Cut point 6 of attribute 1 : 2.646153846153847
+		Cut point 7 of attribute 1 : 2.7384615384615394
+		Cut point 8 of attribute 1 : 2.830769230769232
+		Cut point 9 of attribute 1 : 2.9230769230769242
+		Cut point 10 of attribute 1 : 3.0153846153846167
+		Cut point 11 of attribute 1 : 3.107692307692309
+		Cut point 12 of attribute 1 : 3.2000000000000015
+		Cut point 13 of attribute 1 : 3.292307692307694
+		Cut point 14 of attribute 1 : 3.3846153846153864
+		Cut point 15 of attribute 1 : 3.476923076923079
+		Cut point 16 of attribute 1 : 3.569230769230771
+		Cut point 17 of attribute 1 : 3.6615384615384636
+		Cut point 18 of attribute 1 : 3.753846153846156
+		Cut point 19 of attribute 1 : 3.8461538461538485
+		Cut point 20 of attribute 1 : 3.938461538461541
+		Cut point 21 of attribute 1 : 4.030769230769233
+		Cut point 22 of attribute 1 : 4.123076923076925
+		Cut point 23 of attribute 1 : 4.215384615384617
+		Cut point 24 of attribute 1 : 4.307692307692309
+		Number of cut points of attribute 1 : 25
+		Cut point 0 of attribute 2 : 1.3230769230769233
+		Cut point 1 of attribute 2 : 1.5461538461538464
+		Cut point 2 of attribute 2 : 1.7692307692307696
+		Cut point 3 of attribute 2 : 1.9923076923076928
+		Cut point 4 of attribute 2 : 2.215384615384616
+		Cut point 5 of attribute 2 : 2.438461538461539
+		Cut point 6 of attribute 2 : 2.6615384615384623
+		Cut point 7 of attribute 2 : 2.8846153846153855
+		Cut point 8 of attribute 2 : 3.1076923076923086
+		Cut point 9 of attribute 2 : 3.330769230769232
+		Cut point 10 of attribute 2 : 3.553846153846155
+		Cut point 11 of attribute 2 : 3.776923076923078
+		Cut point 12 of attribute 2 : 4.000000000000001
+		Cut point 13 of attribute 2 : 4.223076923076924
+		Cut point 14 of attribute 2 : 4.446153846153847
+		Cut point 15 of attribute 2 : 4.66923076923077
+		Cut point 16 of attribute 2 : 4.892307692307694
+		Cut point 17 of attribute 2 : 5.115384615384617
+		Cut point 18 of attribute 2 : 5.33846153846154
+		Cut point 19 of attribute 2 : 5.561538461538463
+		Cut point 20 of attribute 2 : 5.784615384615386
+		Cut point 21 of attribute 2 : 6.007692307692309
+		Cut point 22 of attribute 2 : 6.230769230769233
+		Cut point 23 of attribute 2 : 6.453846153846156
+		Cut point 24 of attribute 2 : 6.676923076923079
+		Number of cut points of attribute 2 : 25
+		Cut point 0 of attribute 3 : 0.1923076923076923
+		Cut point 1 of attribute 3 : 0.2846153846153846
+		Cut point 2 of attribute 3 : 0.3769230769230769
+		Cut point 3 of attribute 3 : 0.46923076923076923
+		Cut point 4 of attribute 3 : 0.5615384615384615
+		Cut point 5 of attribute 3 : 0.6538461538461539
+		Cut point 6 of attribute 3 : 0.7461538461538462
+		Cut point 7 of attribute 3 : 0.8384615384615385
+		Cut point 8 of attribute 3 : 0.9307692307692308
+		Cut point 9 of attribute 3 : 1.023076923076923
+		Cut point 10 of attribute 3 : 1.1153846153846152
+		Cut point 11 of attribute 3 : 1.2076923076923074
+		Cut point 12 of attribute 3 : 1.2999999999999996
+		Cut point 13 of attribute 3 : 1.3923076923076918
+		Cut point 14 of attribute 3 : 1.484615384615384
+		Cut point 15 of attribute 3 : 1.5769230769230762
+		Cut point 16 of attribute 3 : 1.6692307692307684
+		Cut point 17 of attribute 3 : 1.7615384615384606
+		Cut point 18 of attribute 3 : 1.8538461538461528
+		Cut point 19 of attribute 3 : 1.946153846153845
+		Cut point 20 of attribute 3 : 2.0384615384615374
+		Cut point 21 of attribute 3 : 2.13076923076923
+		Cut point 22 of attribute 3 : 2.2230769230769223
+		Cut point 23 of attribute 3 : 2.3153846153846147
+		Cut point 24 of attribute 3 : 2.407692307692307
+		Number of cut points of attribute 3 : 25
+		Best of iteration 0 : 0.7313432835820896 31.86567164179104 25(4)
+		Best of iteration 1 : 0.7352941176470589 31.470588235294116 20(5)
+		Best of iteration 2 : 0.8805970149253731 16.940298507462686 13(5)
+		Best of iteration 3 : 0.9264705882352942 12.35294117647058 13(5)
+		Best of iteration 4 : 0.8805970149253731 16.940298507462686 13(5)
+		Best of iteration 5 : 0.9264705882352942 12.35294117647058 9(5)
+		Best of iteration 6 : 0.9402985074626866 10.970149253731336 9(5)
+		Best of iteration 7 : 0.9558823529411765 9.411764705882348 9(5)
+		Best of iteration 8 : 0.9552238805970149 9.477611940298516 9(6)
+		Best of iteration 9 : 0.9558823529411765 9.411764705882348 9(6)
+		Best of iteration 10 : 0.9701492537313433 7.985074626865668 6(4)
+		Best of iteration 11 : 0.9558823529411765 9.411764705882348 9(5)
+		Best of iteration 12 : 0.9701492537313433 8.399815518070394 8(3)
+		Best of iteration 13 : 0.9852941176470589 6.470588235294116 7(5)
+		Best of iteration 14 : 0.9850746268656716 6.492537313432834 9(5)
+		Best of iteration 15 : 0.9852941176470589 6.470588235294116 7(5)
+		Best of iteration 16 : 0.9850746268656716 6.492537313432834 9(5)
+		Best of iteration 17 : 0.9852941176470589 6.470588235294116 9(4)
+		Best of iteration 18 : 0.9850746268656716 6.492537313432834 9(4)
+		Best of iteration 19 : 0.9852941176470589 6.470588235294116 9(4)
+		Best of iteration 20 : 0.9850746268656716 6.492537313432834 9(5)
+		Best of iteration 21 : 0.9852941176470589 6.470588235294116 9(4)
+		Best of iteration 22 : 0.9850746268656716 6.492537313432834 9(5)
+		Best of iteration 23 : 0.9852941176470589 6.470588235294116 9(4)
+		Best of iteration 24 : 0.9701492537313433 7.985074626865668 9(5)
+		Iteration 25 :MDL fitness activated
+		Best of iteration 25 : 0.9852941176470589 7.113434956260875 8(4)
+		Best of iteration 26 : 0.9701492537313433 9.006741736973552 8(5)
+		Best of iteration 27 : 0.9852941176470589 7.090476144797776 6(4)
+		Best of iteration 28 : 0.9701492537313433 8.811591839537215 8(4)
+		Best of iteration 29 : 0.9852941176470589 7.067517333334678 6(4)
+		Best of iteration 30 : 0.9701492537313433 8.823071245268764 8(4)
+		Best of iteration 31 : 0.9852941176470589 7.090476144797776 8(4)
+		Best of iteration 32 : 0.9701492537313433 8.673838970758624 7(4)
+		Best of iteration 33 : 1.0 5.688764343892956 7(4)
+		Best of iteration 34 : 0.9701492537313433 8.650880159295525 9(4)
+		Best of iteration 35 : 1.0 5.688764343892956 7(4)
+		Best of iteration 36 : 0.9701492537313433 8.604962536369328 9(4)
+		Best of iteration 37 : 1.0 5.677284938161407 9(4)
+		Best of iteration 38 : 0.9701492537313433 8.616441942100877 9(4)
+		Best of iteration 39 : 1.0 5.61988790950366 9(4)
+		Best of iteration 40 : 0.9701492537313433 8.627921347832427 9(4)
+		Best of iteration 41 : 1.0 5.61988790950366 8(4)
+		Best of iteration 42 : 0.9701492537313433 8.593483130637779 5(4)
+		Best of iteration 43 : 1.0 5.608408503772111 5(4)
+		Best of iteration 44 : 0.9701492537313433 8.58200372490623 9(4)
+		Best of iteration 45 : 1.0 5.596929098040562 9(4)
+		Best of iteration 46 : 0.9701492537313433 8.559044913443131 8(4)
+		Best of iteration 47 : 1.0 5.573970286577463 8(4)
+		Best of iteration 48 : 0.9701492537313433 8.547565507711582 9(4)
+		Best of iteration 49 : 1.0 5.551011475114365 9(4)
+		Best of iteration 50 : 0.9701492537313433 8.524606696248483 9(4)
+		Best of iteration 51 : 1.0 5.539532069382815 9(4)
+		Best of iteration 52 : 0.9701492537313433 8.524606696248483 9(4)
+		Best of iteration 53 : 1.0 5.562490880845914 9(4)
+		Best of iteration 54 : 0.9701492537313433 8.524606696248483 9(4)
+		Best of iteration 55 : 1.0 5.539532069382815 5(4)
+		Best of iteration 56 : 0.9701492537313433 8.524606696248483 5(4)
+		Best of iteration 57 : 1.0 5.516573257919717 9(4)
+		Best of iteration 58 : 0.9701492537313433 8.501647884785385 9(4)
+		Best of iteration 59 : 1.0 5.516573257919717 9(4)
+		Best of iteration 60 : 0.9701492537313433 8.490168479053835 9(4)
+		Best of iteration 61 : 1.0 5.505093852188168 9(4)
+		Best of iteration 62 : 0.9701492537313433 8.490168479053835 9(4)
+		Best of iteration 63 : 1.0 5.505093852188168 9(4)
+		Best of iteration 64 : 0.9701492537313433 8.478689073322286 9(4)
+		Best of iteration 65 : 1.0 5.482135040725069 9(4)
+		Best of iteration 66 : 0.9701492537313433 8.467209667590737 9(4)
+		Best of iteration 67 : 1.0 5.482135040725069 9(4)
+		Best of iteration 68 : 0.9701492537313433 8.467209667590737 9(4)
+		Best of iteration 69 : 1.0 5.482135040725069 9(4)
+		Best of iteration 70 : 0.9701492537313433 8.467209667590737 9(4)
+		Best of iteration 71 : 1.0 5.482135040725069 9(4)
+		Best of iteration 72 : 0.9701492537313433 8.467209667590737 9(4)
+		Best of iteration 73 : 1.0 5.482135040725069 9(4)
+		Best of iteration 74 : 0.9701492537313433 8.467209667590737 9(4)
+		Best of iteration 75 : 1.0 5.433921536652562 9(4)
+		Best of iteration 76 : 0.9701492537313433 8.41899616351823 9(4)
+		Best of iteration 77 : 1.0 5.433921536652562 9(4)
+		Best of iteration 78 : 0.9701492537313433 8.41899616351823 9(4)
+		Best of iteration 79 : 1.0 5.433921536652562 9(4)
+		Best of iteration 80 : 0.9701492537313433 8.41899616351823 9(4)
+		Best of iteration 81 : 1.0 5.423590071494168 7(4)
+		Best of iteration 82 : 0.9701492537313433 8.408664698359836 7(4)
+		Best of iteration 83 : 1.0 5.423590071494168 7(4)
+		Best of iteration 84 : 0.9701492537313433 8.408664698359836 7(4)
+		Best of iteration 85 : 1.0 5.423590071494168 7(4)
+		Best of iteration 86 : 0.9701492537313433 8.408664698359836 7(4)
+		Best of iteration 87 : 1.0 5.423590071494168 7(4)
+		Best of iteration 88 : 0.9701492537313433 8.408664698359836 7(4)
+		Best of iteration 89 : 1.0 5.4132586063357735 8(4)
+		Best of iteration 90 : 0.9701492537313433 8.398333233201441 8(4)
+		Best of iteration 91 : 1.0 5.4132586063357735 8(4)
+		Best of iteration 92 : 0.9701492537313433 8.398333233201441 8(4)
+		Best of iteration 93 : 1.0 5.402927141177379 8(4)
+		Best of iteration 94 : 0.9701492537313433 8.388001768043047 8(4)
+		Best of iteration 95 : 1.0 5.402927141177379 8(4)
+		Best of iteration 96 : 0.9701492537313433 8.388001768043047 8(4)
+		Best of iteration 97 : 1.0 5.392595676018985 8(4)
+		Best of iteration 98 : 0.9701492537313433 8.377670302884653 8(4)
+		Best of iteration 99 : 0.9851851851851852 6.874077157500466 4(4)
+
+		Best individual of population
+		0:Att petalWidth is [1.6999999999999997,2.5]|Iris-virginica
+
+		1:Att petalLength is [4.966666666666666,6.9]|Att petalWidth is [0.1,1.54]|Iris-virginica
+
+		2:Att petalLength is [2.7571428571428576,6.9]|Iris-versicolor
+
+		3:Iris-setosa
+
+
+		Statistics on training file
+		Accuracy 133.0/135.0=0.9851851851851852
+		Rules 4(4)
+		Accuracy of class 0 : 45/45=1.0
+		Accuracy of class 1 : 43/45=0.9555555555555556
+		Accuracy of class 2 : 45/45=1.0
+		Confusion matrix. Rows=real, columns=predicted
+		45      0       0
+		0       43      2
+		0       0       45
+
+
+		Statistics on test file
+		Accuracy 14.0/15.0=0.9333333333333333
+		Rules 4(3)
+		Accuracy of class 0 : 5/5=1.0
+		Accuracy of class 1 : 5/5=1.0
+		Accuracy of class 2 : 4/5=0.8
+		Confusion matrix. Rows=real, columns=predicted
+		5       0       0
+		0       5       0
+		0       1       4
+
+		Evaluation time: 1.945
+		Selection time: 0.607
+		Crossover time: 0.845
+		Mutation time: 0.605
+		Replacement time: 0.022
+
+Total time: 4.711		
+
+	</example>
+		
+</method>

@@ -1,0 +1,118 @@
+<algorithm_specification>
+  <name>PSO</name>
+  <nParameters>11</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+  <parameter>
+    <name>Number of Neighbors</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+
+   <parameter>
+    <name>Swarm Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>40</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  
+  
+   <parameter>
+    <name>MaxIter</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>500</upperB>
+    </domain>
+    <default>300</default>
+  </parameter>
+  
+   <parameter>
+    <name>C1</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>5</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter>
+  
+  <parameter>
+    <name>C2</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>5</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter>
+  
+   <parameter>
+    <name>C3</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>5</upperB>
+    </domain>
+    <default>0.25</default>
+  </parameter>
+   
+  <parameter>
+    <name>VMax</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  
+  <parameter>
+    <name>Winertia</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  
+  <parameter>
+    <name>Xfactor</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  
+    <parameter>
+    <name>ProbR</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+   
+     <parameter>
+    <name>ProbD</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.0</default>
+  </parameter>
+  
+</algorithm_specification>
