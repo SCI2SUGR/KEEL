@@ -1,8 +1,0 @@
-algorithm = rbfn
-neurons = 50
-# verbose = true
-#inputData = "sintetica.trn" "sintetica.trn"
-#inputData = "ann.tra" "ann.tst" "ann.tst"
-inputData = "datos.dat" "datos.dat" "datos.dat"
-outputData = "result1.trn" "result1.tst" "result1.rbf"
-
