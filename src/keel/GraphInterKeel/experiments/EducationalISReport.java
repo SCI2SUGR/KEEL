@@ -61,7 +61,6 @@ public class EducationalISReport extends EducationalReport
 	 */
 	public void running()
 	{			
-		
 		if(experimentType == CLASSIFICATION)
 		{
 			int contPart = 0;

@@ -82,7 +82,7 @@
 	<target name="clean" description="Remove build directory">
         <delete dir="${bin}"/>
 	</target>
-	
+
 	<target name="removecvs">
      <defaultexcludes remove="**/CVS"/>
      <defaultexcludes remove="**/CVS/**"/>
@@ -92,8 +92,6 @@
      </delete>
 	 <delete dir="**/CVS" includeEmptyDirs="true"/>
    </target>
-
-	
 
 	<target name="cleanAll" description="Remove jar files and build directory">
 		<delete dir="${bin}"/>
@@ -844,19 +842,19 @@
 	
 		 
 	<!-- Instance Selection  as Preprocess-->
-			
+		
 		<jar
-			  jarfile="${distMet}/IS-CNN.jar"
-			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/CNN/Manifest">
+			  jarfile="${distPre}/IS-AllKNN.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/AllKNN/Manifest">
 			  <fileset dir="${bin}"
-				 includes="keel/Algorithms/Preprocess/Instance_Selection/CNN/**/*.class"/>
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/AllKNN/**/*.class"/>
 			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
 			  org/core/**/*.class
 			  keel/Dataset/**/*.class"/>
-			</jar>	
-			
+		</jar>
+		
 		<jar
-			  jarfile="${distMet}/IS-ENN.jar"
+			  jarfile="${distPre}/IS-ENN.jar"
 			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/ENN/Manifest">
 			  <fileset dir="${bin}"
 				 includes="keel/Algorithms/Preprocess/Instance_Selection/ENN/**/*.class"/>
@@ -864,9 +862,109 @@
 			  org/core/**/*.class
 			  keel/Dataset/**/*.class"/>
 		</jar>	
+		
+		<jar
+			  jarfile="${distPre}/IS-ENNTh.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/ENNTh/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/ENNTh/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			  jarfile="${distPre}/IS-ENRBF.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/ENRBF/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/ENRBF/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			  jarfile="${distPre}/IS-MENN.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/MENN/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/MENN/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			  jarfile="${distPre}/IS-ModelCS.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/ModelCS/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/ModelCS/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			  jarfile="${distPre}/IS-Multiedit.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/Multiedit/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/Multiedit/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			  jarfile="${distPre}/IS-NCNEdit.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/NCNEdit/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/NCNEdit/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			  jarfile="${distPre}/IS-POP.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/POP/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/POP/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			  jarfile="${distPre}/IS-PSRCG.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/PSRCG/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/PSRCG/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			  jarfile="${distPre}/IS-RNG.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/RNG/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/RNG/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			  jarfile="${distPre}/IS-VSM.jar"
+			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/VSM/Manifest">
+			  <fileset dir="${bin}"
+				 includes="keel/Algorithms/Preprocess/Instance_Selection/VSM/**/*.class"/>
+			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+			  org/core/**/*.class
+			  keel/Dataset/**/*.class"/>
+		</jar>
 			
 		<jar
-			  jarfile="${distMet}/IS-CHC.jar"
+			  jarfile="${distPre}/IS-CHC.jar"
 			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/CHC/Manifest">
 			  <fileset dir="${bin}"
 				 includes="keel/Algorithms/Preprocess/Instance_Selection/CHC/**/*.class"/>
@@ -874,21 +972,11 @@
 			  org/core/**/*.class
 			  keel/Dataset/**/*.class"/>
 		</jar>
-		
-		<jar
-			  jarfile="${distMet}/IS-SSMA.jar"
-			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/SSMA/Manifest">
-			  <fileset dir="${bin}"
-				 includes="keel/Algorithms/Preprocess/Instance_Selection/SSMA/**/*.class"/>
-			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
-			  org/core/**/*.class
-			  keel/Dataset/**/*.class"/>
-			</jar>
 			
 		<jar
 
 
-			  jarfile="${distMet}/IS-GGA.jar"
+			  jarfile="${distPre}/IS-GGA.jar"
 			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/GGA/Manifest">
 			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Instance_Selection/GGA/**/*.class"/>
 			  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
@@ -897,7 +985,7 @@
 		</jar>	
 			
 		<jar
-			  jarfile="${distMet}/IS-PBIL.jar"
+			  jarfile="${distPre}/IS-PBIL.jar"
 			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/PBIL/Manifest">
 			  <fileset dir="${bin}"
 				 includes="keel/Algorithms/Preprocess/Instance_Selection/PBIL/**/*.class"/>
@@ -907,7 +995,7 @@
 		</jar>
 
 		<jar
-			  jarfile="${distMet}/IS-SGA.jar"
+			  jarfile="${distPre}/IS-SGA.jar"
 			  manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/SGA/Manifest">
 			  <fileset dir="${bin}"
 				 includes="keel/Algorithms/Preprocess/Instance_Selection/SGA/**/*.class"/>
@@ -2812,7 +2900,7 @@
         </jar>
 
 		 <!-- Métodos de MIL -->
-			 
+		<!--	 
 			<jar
 		       jarfile="${distMet}/CitationKNN_Clas.jar"
 		       manifest="${src}/keel/Algorithms/MIL/CitationKNN_Clas/Manifest">
@@ -2906,7 +2994,7 @@
            <zipgroupfileset refid="lib_weka.jars"/>
 		</jar>
 		
-		
+		-->
 		<!-- Neural Networks -->
 		
 		<jar

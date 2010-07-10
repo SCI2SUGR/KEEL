@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <preprocess_list>
   <method>
-    <name>Disc-UniformWidth</name>
-    <family>Discretizers</family>
+    <name>UniformWidth-D</name>
+    <family>Discretization</family>
     <jar_file>Disc-UniformWidth.jar</jar_file>
     <problem_type>unspecified</problem_type>
     <input>
@@ -13,7 +13,8 @@
 	    <imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>No</continuous>
 	    <integer>No</integer>
@@ -22,11 +23,12 @@
 	    <imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+		<multiinstance>No</multiinstance> 
+		</output>
   </method>
   <method>
-    <name>Disc-Fayyad</name>
-    <family>Discretizers</family>
+    <name>Fayyad-D</name>
+    <family>Discretization</family>
     <jar_file>Disc-Fayyad.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -37,7 +39,8 @@
 	    <imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>No</continuous>
 	    <integer>No</integer>
@@ -46,58 +49,63 @@
 	    <imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
-  <method>
-    <name>IS-ENN</name>
-    <family>Instance Selection</family>
+	<method>
+    <name>ENN-TSS</name>
+    <family>Training Set Selection</family>
     <jar_file>IS-ENN.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
 	    <continuous>Yes</continuous>
 	    <integer>Yes</integer>
 	    <nominal>Yes</nominal>
-	    <missing>No</missing>
+	    <missing>Yes</missing>
 	    <imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
 	    <multioutput>No</multioutput>
+	  <multiinstance>No</multiinstance> 
 	  </input>
 	  <output>
 	    <continuous>Yes</continuous>
 	    <integer>Yes</integer>
 	    <nominal>Yes</nominal>
-	    <missing>No</missing>
+	    <missing>Yes</missing>
 	    <imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
 	    <multioutput>No</multioutput>
+	  <multiinstance>No</multiinstance> 
 	  </output>
   </method>
   <method>
-    <name>IS-CHC</name>
-    <family>Instance Selection</family>
+    <name>CHC-TSS</name>
+    <family>Evolutionary Training Set Selection</family>
     <jar_file>IS-CHC.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
 	    <continuous>Yes</continuous>
 	    <integer>Yes</integer>
 	    <nominal>Yes</nominal>
-	    <missing>No</missing>
+	    <missing>Yes</missing>
 	    <imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
 	    <multioutput>No</multioutput>
+	  <multiinstance>No</multiinstance> 
 	  </input>
 	  <output>
 	    <continuous>Yes</continuous>
 	    <integer>Yes</integer>
     	<nominal>Yes</nominal>
-    	<missing>No</missing>
+    	<missing>Yes</missing>
 	    <imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
 	    <multioutput>No</multioutput>
+	  <multiinstance>No</multiinstance> 
 	  </output>
-	</method>  
+  </method>
   <method>
-    <name>FS-LVF</name>
+    <name>LVF-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-LVF.jar</jar_file>
     <problem_type>unspecified</problem_type>
@@ -109,6 +117,7 @@
     	<imprecise>No</imprecise>
     	<multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
+		<multiinstance>No</multiinstance> 
     </input>
     <output> 
       <continuous>No</continuous>
@@ -118,6 +127,7 @@
     	<imprecise>No</imprecise>
     	<multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
+		<multiinstance>No</multiinstance> 
     </output>
   </method>
  </preprocess_list>

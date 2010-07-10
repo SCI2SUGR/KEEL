@@ -211,12 +211,12 @@ public class EducationalRunKeelTxt
 		            		EducationalMethodReport inf = new EducationalMethodReport((ArrayList<Element>) sentencesAux, tipoExp);
 		            		inf.running();
 			    		}
-		            	else if (problemType.equals("Preprocess-Disc") == true)
+		            	else if (problemType.equals("Preprocess-D") == true)
 		            	{		            		
 		            		EducationalDiscretizerReport inf = new EducationalDiscretizerReport((ArrayList<Element>) sentencesAux, tipoExp);
 		            		inf.running();
 		            	}
-		            	else if (problemType.equals("Preprocess-IS") == true)
+		            	else if (problemType.equals("Preprocess-TSS") == true)
 		            	{
 		            		EducationalISReport inf = new EducationalISReport((ArrayList<Element>) sentencesAux, tipoExp);
 		            		inf.running();

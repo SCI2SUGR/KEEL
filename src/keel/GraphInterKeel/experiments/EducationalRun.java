@@ -407,18 +407,18 @@ public class EducationalRun extends javax.swing.JFrame implements WindowListener
 			{
 				List<Element> sentencias;
 				sentencias = runkeel.getActualJobSentences();
-
+				
 				if(this.actualProblemType.equals("Method"))
 				{
 					EducationalMethodReport inf = new EducationalMethodReport((ArrayList<Element>) sentencias, experiment.experimentType());
 					inf.running();
 				}
-				else if(this.actualProblemType.equals("Preprocess-Disc"))
+				else if(this.actualProblemType.equals("Preprocess-D"))
 				{
 					EducationalDiscretizerReport inf = new EducationalDiscretizerReport((ArrayList<Element>) sentencias, experiment.experimentType());
 					inf.running();
 				}
-				else if (this.actualProblemType.equals("Preprocess-IS") == true)
+				else if (this.actualProblemType.equals("Preprocess-TSS") == true)
             	{
 					EducationalISReport inf = new EducationalISReport((ArrayList<Element>) sentencias, experiment.experimentType());
 					inf.running();
@@ -534,7 +534,7 @@ public class EducationalRun extends javax.swing.JFrame implements WindowListener
 				this.totalTimeComputational = EducationalRun.round((this.totalTimeComputational + aux.getPartitionTime()),3);
 			}
 
-			else if(aux.getProblemType().equals("Preprocess-Disc") == true	|| aux.getProblemType().equals("Preprocess-IS") == true
+			else if(aux.getProblemType().equals("Preprocess-D") == true	|| aux.getProblemType().equals("Preprocess-TSS") == true
 					|| aux.getProblemType().equals("Preprocess-FS") == true)
 			{
 				String nameExp = this.runkeel.getActualNameExperiment();
@@ -543,6 +543,9 @@ public class EducationalRun extends javax.swing.JFrame implements WindowListener
 				this.partitionAreaTextArea.append("Compute time: "+ EducationalRun.round(aux.getPartitionTime(),3)
 						+ " seconds" + "\n");
 				this.totalTimeComputational = EducationalRun.round((this.totalTimeComputational + aux.getPartitionTime()),3);
+			}
+			else{
+				this.partitionAreaTextArea.append("\"" + aux.getProblemType() + "\n");
 			}
 		}
 

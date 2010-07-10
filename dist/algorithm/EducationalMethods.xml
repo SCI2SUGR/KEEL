@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <method_list>
-  <method>
-    <name>Clas-Fuzzy-SLAVE</name>
-    <family>Genetic Fuzzy Rule Learning</family>
+	<method>
+    <name>SLAVE-C</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
     <jar_file>SLAVE.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -13,7 +13,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -22,11 +23,12 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
-  </method>  
-  <method>
-    <name>Clas-Fuzzy-GP</name>
-    <family>Genetic Fuzzy Rule Learning</family>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>
+	<method>
+    <name>GFS-GP-C</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
     <jar_file>ClassifierFuzzyGP.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -37,19 +39,21 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass> 
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Clas-KNN</name>
+    <name>KNN-C</name>
     <family>Lazy Learning</family>
     <jar_file>KNN.jar</jar_file>
     <problem_type>classification</problem_type>
@@ -57,11 +61,12 @@
       <continuous>Yes</continuous>
 	    <integer>Yes</integer>
 	    <nominal>Yes</nominal>
-	    <missing>No</missing>
+	    <missing>Yes</missing>
 	    <imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -70,10 +75,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
 	</method>
-  <method>
-    <name>Clas-Fuzzy-Chi-RW</name>
+   <method>
+    <name>Chi-RW-C</name>
     <family>Fuzzy Rule Learning</family>
     <jar_file>Chi_RW.jar</jar_file>
     <problem_type>classification</problem_type>
@@ -85,7 +91,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -93,11 +100,12 @@
       <missing>No</missing>
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput> 
-    </output>
-  </method>  
-  <method>
-    <name>Clas-LDA</name>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>
+	<method>
+    <name>LDA-C</name>
     <family>Statistical Classifiers</family>
     <jar_file>ClassifierADLinear.jar</jar_file>
     <problem_type>classification</problem_type>
@@ -109,7 +117,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -118,10 +127,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Clas-LinearLMS</name>
+    <name>LinearLMS-C</name>
     <family>Statistical Classifiers</family>
     <jar_file>ClassifierLinearLMS.jar</jar_file>
     <problem_type>classification</problem_type>
@@ -133,7 +143,8 @@
      	<imprecise>No</imprecise>
      	<multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -142,11 +153,12 @@
      	<imprecise>No</imprecise>
      	<multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Clas-PGIRLA</name>
-    <family>Genetic Rule Learning</family>
+    <name>PGIRLA-C</name>
+    <family>Evolutionary Crisp Rule Learning</family>
     <jar_file>Corcoran.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -157,7 +169,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -166,10 +179,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Clas-C45</name>
+    <name>C45-C</name>
     <family>Decision Trees</family>
     <jar_file>C45.jar</jar_file>
     <problem_type>classification</problem_type>
@@ -181,7 +195,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -190,10 +205,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Clas-MLPerceptronConj-Grad</name>
+    <name>MLP-CG-C</name>
     <family>Neural Networks</family>
     <jar_file>ClassifierMLPerceptron.jar</jar_file>
     <problem_type>classification</problem_type>
@@ -205,7 +221,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -214,10 +231,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Clas-RBFN</name>
+    <name>RBFN-C</name>
     <family>Neural Networks</family>
     <jar_file>RBFN_CL.jar</jar_file>
     <problem_type>classification</problem_type>
@@ -229,7 +247,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -238,10 +257,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Clas-iRProp+</name>
+    <name>iRProp+-C</name>
     <family>Neural Networks</family>
     <jar_file>IRPropPlus_Clas.jar</jar_file>
     <problem_type>classification</problem_type>
@@ -253,7 +273,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -262,10 +283,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Clas-NaiveBayes</name>
+    <name>NB-C</name>
     <family>Statistical Classifiers</family>
     <jar_file>Naive_Bayes.jar</jar_file>
     <problem_type>classification</problem_type>
@@ -277,7 +299,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>No</continuous>
       <integer>No</integer>
@@ -286,12 +309,13 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
-  </method>  
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method> 
   <method>
-    <name>Clas-CART</name>
+    <name>CART-C</name>
     <family>Decision Trees</family>
-    <jar_file>CART.jar</jar_file>
+    <jar_file>Clas-CART.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
@@ -301,7 +325,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -310,11 +335,12 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Clas-C_SVM</name>
-    <family>SVM</family>
+    <name>C_SVM-C</name>
+    <family>Support Vector Machines</family>
     <jar_file>C_SVM.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -325,7 +351,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>No</integer>
@@ -334,11 +361,12 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
-  </method>  
-  <method>
-    <name>Clas-XCS</name>
-    <family>Genetic Rule Learning</family>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>
+	<method>
+    <name>XCS-C</name>
+    <family>Evolutionary Crisp Rule Learning</family>
     <jar_file>XCS.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -349,7 +377,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -358,11 +387,12 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
-  <method>
-    <name>Clas-NNEP</name>
-    <family>Neural Networks</family>
+	<method>
+    <name>NNEP-C</name>
+    <family>Evolutionary Neural Networks</family>
     <jar_file>NNEP_Clas.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -373,7 +403,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -382,10 +413,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Regr-RBFN</name>
+    <name>RBFN-R</name>
     <family>Neural Networks</family>
     <jar_file>RBFN.jar</jar_file>
     <problem_type>regression</problem_type>
@@ -397,7 +429,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -406,10 +439,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Regr-Fuzzy-WM</name>
+    <name>WM-R</name>
     <family>Fuzzy Rule Learning</family>
     <jar_file>Mam-WM.jar</jar_file>
     <problem_type>regression</problem_type>
@@ -421,7 +455,8 @@
      	<imprecise>No</imprecise>
      	<multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
      	<integer>Yes</integer>
@@ -430,10 +465,11 @@
      	<imprecise>No</imprecise>
      	<multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Regr-LinearLMS</name>
+    <name>LinearLMS-R</name>
     <family>Statistical Regression</family>
     <jar_file>ModelLinearLMS.jar</jar_file>
     <problem_type>regression</problem_type>
@@ -445,8 +481,9 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
-    <output> 
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
       <nominal>Yes</nominal>
@@ -454,10 +491,11 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Regr-MLPerceptronConj-Grad</name>
+    <name>MLP-CG-R</name>
     <family>Neural Networks</family>
     <jar_file>ModelMLPerceptron.jar</jar_file>
     <problem_type>regression</problem_type>
@@ -469,19 +507,21 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>  
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Regr-M5</name>
+    <name>M5-R</name>
     <family>Decision Trees</family>
     <jar_file>M5.jar</jar_file>
     <problem_type>regression</problem_type>
@@ -493,7 +533,8 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -502,35 +543,38 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-  	<name>Regr-Thrift</name>
-  	<family>Genetic Fuzzy Rule Learning</family>
+  	<name>Thrift-R</name>
+  	<family>Evolutionary Fuzzy Rule Learning</family>
   	<jar_file>Thrift.jar</jar_file>
   	<problem_type>regression</problem_type>
   	<input>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
       <nominal>Yes</nominal>
-      <missing>Yes</missing>
+      <missing>No</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
       <nominal>Yes</nominal>
-      <missing>Yes</missing>
+      <missing>No</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Regr-EPSILON_SVR</name>
-    <family>SVM</family>
+    <name>EPSILON_SVR-R</name>
+    <family>Support Vector Machines</family>
     <jar_file>EPSILON_SVR.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
@@ -539,9 +583,10 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass> 
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -550,12 +595,13 @@
       <imprecise>No</imprecise>
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
+    <multiinstance>No</multiinstance> 
+	</output>
   </method>
   <method>
-    <name>Regr-Fuzzy-MOGUL-IRLSC</name>
-    <family>Genetic Fuzzy Rule Learning</family>
-    <jar_file>Mam-IRLSC.jar</jar_file>
+    <name>MOGUL-IRLSC-R</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
+    <jar_file>mogulSC.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
       <continuous>Yes</continuous>
@@ -565,7 +611,8 @@
     	<imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </input>
+    <multiinstance>No</multiinstance> 
+	</input>
     <output>
       <continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -574,6 +621,7 @@
     	<imprecise>No</imprecise>
 	    <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
-    </output>
-  </method>  
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method> 
 </method_list>

@@ -1801,6 +1801,9 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             //numberKFoldCross=10;
            // cvType = Experiments.PK;
         }
+		else{
+			objType=INVESTIGATION;
+		}
         if (kfoldButton.isSelected() && numberKFoldCross < 1) {
             JOptionPane.showMessageDialog(this, "Number of folds must be at least 1",
                     "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
@@ -1855,6 +1858,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         }
         else
         {
+		objType=INVESTIGATION;
         activateUpperMenu();
         selectButton.setEnabled(true);
         enableMainToolBar(true);
@@ -1902,7 +1906,12 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 }//GEN-LAST:event_regressionButtonActionPerformed
 
     private void unsupervisedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unsupervisedButtonActionPerformed
-        activateUpperMenu();
+        
+		if(objType!=LQD)
+        {
+			objType=INVESTIGATION;
+		}
+		activateUpperMenu();
         selectButton.setEnabled(true);
         enableMainToolBar(true);
 
@@ -3996,9 +4005,15 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
 
                         case SUBGROUPDISCOVERY:
 
-                             mitipo = "methods";
-                             mipath = mipath.substring(0, mipath.lastIndexOf('/') + 1);
-                             mipath = mipath + mitipo + "/";
+							 if (mitipo.equals("SubgroupDiscovery")==true){
+                                    mitipo = "methods";
+									mipath = mipath.substring(0, mipath.lastIndexOf('/') + 1);
+									mipath = mipath + mitipo + "/";
+                             }else {
+                                    mitipo = mitipo.toLowerCase();
+                                    mipath = mipath.substring(0, mipath.lastIndexOf('/') + 1);
+									mipath = mipath + mitipo + "/";
+                             }
                         break;
 
                         case MULTIINSTANCE:
@@ -4008,7 +4023,8 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                                     mipath = mipath + "methods" + "/";
                                 }else {
                                     mitipo = mitipo.toLowerCase();
-                                    mipath = mipath + mitipo + "/";
+                                    mipath = mipath.substring(0, mipath.lastIndexOf('/') + 1);
+									mipath = mipath + mitipo + "/";
                                 }
                                 break;
 
@@ -4030,14 +4046,12 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                                 break;
                                 
                          default:
-                        
-                            System.out.println("Paso por aqui!"+objType);
 
                                 mitipo = mitipo.toLowerCase();
                                 mipath = mipath.substring(0, mipath.lastIndexOf('/') + 1);
                                 mipath = mipath + mitipo + "/";
    
-                            
+								break;
                     };
 
 
@@ -5763,6 +5777,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
 					     	case 4:
 					     		tipoS = "Preprocess";
 					     		StringTokenizer st = new StringTokenizer(al.dsc.getName(),"-");
+								st.nextToken();
 					     		String aux = st.nextToken();
 					     		tipoS = tipoS + "-" + aux;
 					     		break;
@@ -6776,10 +6791,10 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                                 tokens = ((String) sentencias.elementAt(i)).split(" ");
                                 comando.setText(tokens[0]);
 
-                                //for(j=1;j<tokens.length;j++)
-                                  //  System.out.println("TOKENNNNNNNNNNNNNNNNNNNN->" + tokens[j]);
-                                //System.out.println("Tipo ALGORITMO -> " + tokens[j + 2]);
-                                //System.out.println("SEMILLA -> " + tokens[j + 3]);
+                                /*for(j=1;j<tokens.length;j++){
+                                    System.out.println("TOKENNNNNNNNNNNNNNNNNNNN->" + tokens[j]);
+                                System.out.println("Tipo ALGORITMO -> " + tokens[j + 2]);
+                                System.out.println("SEMILLA -> " + tokens[j + 3]);*/
 
                                 for (j = 1; j < tokens.length - 4; j++) {
                                     opciones[j - 1].setText(tokens[j]);

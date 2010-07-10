@@ -1,0 +1,141 @@
+<algorithm_specification>
+  <name>Alatasetal</name>
+  <nParameters>15</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Number of Generations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>1000</default>
+  </parameter>
+  <parameter>
+    <name>Initial Random Chromosomes</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>6</default>
+  </parameter>
+  <parameter>
+    <name>r-Dividing Points</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>Tournament Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>Probability of Crossover</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.7</default>
+  </parameter>
+  <parameter>
+    <name>Minimum Probability of Mutation</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter>
+  <parameter>
+    <name>Maximum Probability of Mutation</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.9</default>
+  </parameter>
+  <parameter>
+    <name>Importance of Rules Support</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Importance of Rules Confidence</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>20</default>
+  </parameter>
+  <parameter>
+    <name>Importance of Number of Involved Attributes</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter>
+  <parameter>
+    <name>Importance of Intervals Amplitude</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.02</default>
+  </parameter>
+  <parameter>
+    <name>Importance of Number of Records Already Covered</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>
+  <parameter>
+    <name>Amplitude Factor</name>
+    <type>real</type>
+    <domain>
+      <lowerB>2.0</lowerB>
+      <upperB>20.0</upperB>
+    </domain>
+    <default>2.0</default>
+  </parameter>
+  <parameter>
+    <name>Minimum Support</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.0</default>
+  </parameter>
+  <parameter>
+    <name>Minimum Confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>
+</algorithm_specification>
