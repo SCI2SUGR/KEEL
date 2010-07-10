@@ -232,8 +232,8 @@ public class FrameModules extends JFrame {
     contentPane.add(labelImbalance, null);
     contentPane.add(labelNonParametric, null);
 	contentPane.add(labelMil, null);
-    contentPane.add(lqd);
-	contentPane.add(mil);
+    //contentPane.add(lqd);
+	//contentPane.add(mil);
     contentPane.add(imbalance);
     contentPane.add(nonParametric);
     contentPane.add(keel);
