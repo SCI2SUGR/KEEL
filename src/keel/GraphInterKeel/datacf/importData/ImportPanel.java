@@ -51,8 +51,6 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-import weka.core.Instances;
-
 /**
  * <p>
  * @author Written by Pedro Antonio Gutiérrez and Juan Carlos Fernández (University of Córdoba) 23/10/2008
@@ -280,7 +278,7 @@ public class ImportPanel extends javax.swing.JPanel {
         outputFormatLabel.setText("Select Input Format");
         outputFormatLabel.setName("outputFormatLabel"); // NOI18N
 
-        outputFormatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CSV to Keel", "TXT to Keel", "PRN to Keel", "C4.5 to Keel", "Excel to Keel", "Dif to Keel", "PropertyList to Keel", "Weka to Keel", "XML to Keel", "HTML Tab to Keel", "Database SQL to Keel", "Keel to Keel"}));
+        outputFormatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CSV to Keel", "TXT to Keel", "PRN to Keel", "C4.5 to Keel", "Excel to Keel", "Dif to Keel", "PropertyList to Keel", "Weka to Keel", "XML to Keel", "HTML Tab to Keel", "Database SQL to Keel", "Keel to Keel" }));
         outputFormatComboBox.setToolTipText("Select Input Format");
         outputFormatComboBox.setName("outputFormatComboBox"); // NOI18N
         importOptionsDialog = new OptionsDialog(parent, true);
@@ -800,7 +798,7 @@ public class ImportPanel extends javax.swing.JPanel {
             }
         });
 
-        outputFormatPartitionsComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CSV to Keel", "TXT to Keel", "PRN to Keel", "C4.5 to Keel", "Excel to Keel", "Dif to Keel", "PropertyList to Keel", "Weka to Keel", "XML to Keel", "HTML Tab to Keel", "Keel to Keel", "MIL Keel" }));
+        outputFormatPartitionsComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CSV to Keel", "TXT to Keel", "PRN to Keel", "C4.5 to Keel", "Excel to Keel", "Dif to Keel", "PropertyList to Keel", "Weka to Keel", "XML to Keel", "HTML Tab to Keel", "Keel to Keel" }));
         outputFormatPartitionsComboBox.setToolTipText("Select Input Format");
         outputFormatPartitionsComboBox.setName("outputFormatPartitionsComboBox"); // NOI18N
         outputFormatPartitionsComboBox.addItemListener(new java.awt.event.ItemListener() {
@@ -1009,42 +1007,21 @@ private void nextPreviewButtonActionPerformed(java.awt.event.ActionEvent evt) {/
         try {
             if (importToExperimentCheckBox.isSelected()) {
                 //rootName = addDatasetXML(tmpTrainingImportedFile, tmpTestingImportedFile);
-                
-            	if(!MILDatasets){
-	            	rootName = addDatasetXMLPartitions(tmpTrainingImportedFile, tmpTestingImportedFile);
-	
-	                if (rootName == null) {
-	                    JOptionPane.showMessageDialog(this, "Error including the file in the experiment section", "Error", JOptionPane.ERROR_MESSAGE);
-	                    return;
-	                } else {
-	                    outputPath = "." + File.separator + "data" + File.separator + rootName + File.separator;
-	                    File directory = new File(outputPath);
-	                    if (!directory.exists()) {
-	                        if (!directory.mkdirs()) {
-	                            JOptionPane.showMessageDialog(this, "Problem Creating Directory", "Error", JOptionPane.ERROR_MESSAGE);
-	                            return;
-	                        }
-	                    }
-	                }
-            	}
-            	else{
-            		rootName = addMILDatasetXMLPartitions(tmpTrainingImportedFile, tmpTestingImportedFile);
-            		
-	                if (rootName == null) {
-	                    JOptionPane.showMessageDialog(this, "Error including the file in the experiment section", "Error", JOptionPane.ERROR_MESSAGE);
-	                    return;
-	                } else {
-	                    outputPath = "." + File.separator + "data" + File.separator + rootName + File.separator;
-	                    File directory = new File(outputPath);
-	                    if (!directory.exists()) {
-	                        if (!directory.mkdirs()) {
-	                            JOptionPane.showMessageDialog(this, "Problem Creating Directory", "Error", JOptionPane.ERROR_MESSAGE);
-	                            return;
-	                        }
-	                    }
-	                }
-            		
-            	}
+                rootName = addDatasetXMLPartitions(tmpTrainingImportedFile, tmpTestingImportedFile);
+
+                if (rootName == null) {
+                    JOptionPane.showMessageDialog(this, "Error including the file in the experiment section", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                } else {
+                    outputPath = "." + File.separator + "data" + File.separator + rootName + File.separator;
+                    File directory = new File(outputPath);
+                    if (!directory.exists()) {
+                        if (!directory.mkdirs()) {
+                            JOptionPane.showMessageDialog(this, "Problem Creating Directory", "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    }
+                }
             } else {
                 JFileChooser chooser = new JFileChooser();
                 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -1280,8 +1257,7 @@ private void nextPartitionsButtonActionPerformed(java.awt.event.ActionEvent evt)
         return;
     }
     try {
-    	if(!MILDatasets)
-    		unifyHeader(trainingOutputFileName, testOutputFileName);
+        unifyHeader(trainingOutputFileName, testOutputFileName);
     } catch (IOException ex) {
         JOptionPane.showMessageDialog(this, "Error when joining training and test files:\n" + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         return;
@@ -1504,8 +1480,6 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
     private javax.swing.JPanel trainingPanel;
     private javax.swing.JScrollPane trainingScrollPanel;
     private javax.swing.JCheckBox userDatasetCheckBox;
-    
-    
     // End of variables declaration//GEN-END:variables
 
     /** Parent frame */
@@ -1547,9 +1521,6 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
     /** This is used for deciding the default option of the type of partition */
     protected boolean kfold = true;
 
-    /** This is used for deciding the type of datasets */
-    protected boolean MILDatasets = false;
-    
     /**
      * <p>
      * Gets a view of Data
@@ -1616,54 +1587,39 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         if (((String) box.getSelectedItem()).equals("CSV to Keel")) {
             ext = "csv";
             desc = "CSV Files (.csv)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("TXT to Keel")) {
             ext = "txt";
             desc = "TXT Files (.txt)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("PRN to Keel")) {
             ext = "prn";
             desc = "PRN Files (.prn)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("C4.5 to Keel")) {
             ext = "data";
             desc = "C45 Files (.data)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("Excel to Keel")) {
             ext = "xls";
             desc = "Excel Files (.xls)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("Dif to Keel")) {
             ext = "dif";
             desc = "DIF Files (.dif)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("PropertyList to Keel")) {
             ext = "plist";
             desc = "Properties' Files (.plist)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("Weka to Keel")) {
             ext = "arff";
             desc = "Weka Files (.arff)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("XML to Keel")) {
             ext = "xml";
             desc = "XML Files (.xml)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("HTML Tab to Keel")) {
             ext = "html";
             desc = "HTML Files (.html)";
-            MILDatasets = false;
         } else if (((String) box.getSelectedItem()).equals("Database SQL to Keel")) {
             ext = "DISABLE";
             desc = "Specify Options";
         } else if (((String) box.getSelectedItem()).equals("Keel to Keel")) {
             ext = "dat";
             desc = "Keel Files (.dat)";
-            MILDatasets = false;
-        } else if (((String) box.getSelectedItem()).equals("MIL Keel")) {
-            ext = "dat";
-            desc = "Keel Files (.dat)";
-            MILDatasets = true;
         }
     }
 
@@ -3022,17 +2978,9 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                 file.getName().replaceAll(".dat", ""));
 
         //minusculas
-        String lowerCaseName;
-        try{
-            lowerCaseName = rootName.toLowerCase();
-
-        }catch(Exception e){
-            rootName="Unknown";
-            lowerCaseName="unknown";
-        }
+        String lowerCaseName= rootName.toLowerCase();
 
         Iterator it = data.getRootElement().getChildren().iterator();
-
         while (it.hasNext()) {
             Element element = (Element) it.next();
             if (element.getChild("nameAbr").getValue().equals(lowerCaseName)) {
@@ -3045,191 +2993,187 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                             null,
                             rootName);
                 if( ((rootName == null) || (rootName.length() == 0))){
-                    JOptionPane.showMessageDialog(this, "A new name for the data set is needed", "Error", JOptionPane.ERROR_MESSAGE);
                     return null;
                 }
-                lowerCaseName = rootName.toLowerCase();
                 it = data.getRootElement().getChildren().iterator();
             }
         }
 
         // Loading one data set to extract statitics
-        
-            keel.Dataset.InstanceSet iSet = new keel.Dataset.InstanceSet();
-	        try {
-	            Attributes.clearAll();
-	            iSet.readSet(file.getPath(), true);
-	        } catch (Exception ex) {
-	            System.out.println(
-	                    "READING DATASET ERROR. The format of the header is not correct.");
-	            ex.printStackTrace();
-	            return null;
-	        }
-	
-	        Element root = new Element("dataset");
-	        Element nameAbr = new Element("nameAbr");
-	        nameAbr.setText(lowerCaseName);
-	        Element nameComplete = new Element("nameComplete");
-	        nameComplete.setText(rootName);
-	
-	        boolean classification = false;
-	        if (Attributes.getOutputAttribute(0).getType() == Attribute.NOMINAL) {
-	            classification = true;
-	        }
-	        Element problemType = new Element("problemType");
-	        if (classification) {
-	            problemType.setText("Classification");
-	        } else {
-	            problemType.setText("Regression");
-	        }
-	
-	
-	        Element partitions = new Element("partitions");
-	        if (!datasets) {
-	            if (partitionComboBox.getSelectedIndex() == 0) {
-	                Element partition = new Element("partition");
-	                partition.setText(trainingModel.size() + "cfv");
-	                partitions.addContent(partition);
-	            } else if (partitionComboBox.getSelectedIndex() == 1) {
-	                Element partition = new Element("partition");
-	                partition.setText("5x2cv");
-	                partitions.addContent(partition);
-	            }
-	        }
-	        Element continuosValues = new Element("continuous");
-	        if (keel.Dataset.Attributes.hasRealAttributes()) {
-	            continuosValues.setText("Yes");
-	        } else {
-	            continuosValues.setText("No");
-	        }
-	
-	        Element discreteValues = new Element("integer");
-	        if (keel.Dataset.Attributes.hasIntegerAttributes()) {
-	            discreteValues.setText("Yes");
-	        } else {
-	            discreteValues.setText("No");
-	        }
-	
-	        Element nominalValues = new Element("nominal");
-	        if (keel.Dataset.Attributes.hasNominalAttributes()) {
-	            nominalValues.setText("Yes");
-	        } else {
-	            nominalValues.setText("No");
-	        }
-	
-	        Element impreciseValues = new Element("imprecise");
-	        impreciseValues.setText("No");
-	
-	        int numMissing = 0;
-	        for (int is = 0; is < iSet.getNumInstances(); is++) {
-	            if (iSet.getInstance(is).existsAnyMissingValue()) {
-	                numMissing++;
-	            }
-	        }
-	        double percMV = (double) numMissing /
-	                (double) iSet.getNumInstances();
-	        Element percMissingValues = new Element("percMissingValues");
-	        percMissingValues.setText(String.valueOf(percMV));
-	
-	        Element missingValues = new Element("missing");
-	        if (keel.Dataset.Attributes.hasMissingValues()) {
-	            missingValues.setText("Yes");
-	        } else {
-	            missingValues.setText("No");
-	        }
-	
-	        Element multiOutput = new Element("multioutput");
-	        if (keel.Dataset.Attributes.getOutputNumAttributes() > 1) {
-	            multiOutput.setText("Yes");
-	        } else {
-	            multiOutput.setText("No");
-	        }
-	
-	        Element multiClass = new Element("multiclass");
-	        if (keel.Dataset.Attributes.getOutputNumAttributes() == 1) {
-	            keel.Dataset.Attribute att = keel.Dataset.Attributes.getOutputAttribute(0);
-	            if (att.getType() == keel.Dataset.Attribute.NOMINAL &&
-	                    att.getNumNominalValues() == 2) {
-	                multiClass.setText("No");
-	            } else {
-	                multiClass.setText("Yes");
-	            }
-	        } else {
-	            multiClass.setText("Yes");
-	        }
-	
-	        root.addContent(nameAbr).addContent(nameComplete).addContent(
-	                problemType).addContent(partitions).addContent(
-	                continuosValues).
-	                addContent(discreteValues).addContent(nominalValues).
-	                addContent(impreciseValues).addContent(missingValues).
-	                addContent(percMissingValues).addContent(multiOutput).
-	                addContent(multiClass);
-	
-	        Element field = new Element("field");
-	        if (realComboBox.getSelectedIndex() == 0) {
-	            field.setText("Real");
-	        } else if (realComboBox.getSelectedIndex() == 1) {
-	            field.setText("Laboratory");
-	        }
-	
-	        Element nAttributes = new Element("nAttributes");
-	        nAttributes.setText(Integer.toString(keel.Dataset.Attributes.getNumAttributes()));
-	        root.addContent(nAttributes);
-	
-	        Element nInstances = new Element("nInstances");
-	        int testingInstances = 0;
-	        if (fileTesting != null) {
-	            // Loading one data set to extract statitics
-	            keel.Dataset.InstanceSet iSet2 = new keel.Dataset.InstanceSet();
-	            try {
-	                System.out.println(file.getPath());
-	                iSet2.readSet(file.getPath(), false);
-	            } catch (Exception ex) {
-	                System.out.println(
-	                        "READING DATASET ERROR. The format of the header is not correct.");
-	                ex.printStackTrace();
-	                return null;
-	            }
-	            testingInstances = iSet2.getNumInstances();
-	
-	        }
-	        nInstances.setText(Integer.toString(iSet.getNumInstances() + testingInstances));
-	        root.addContent(nInstances);
-	
-	        if (classification) {
-	            int numClasses;
-	            keel.Dataset.Attribute a = keel.Dataset.Attributes.getOutputAttribute(0);
-	            if (a.getType() == keel.Dataset.Attribute.NOMINAL) {
-	                numClasses = a.getNumNominalValues();
-	            } else {
-	                numClasses = (int) (a.getMaxAttribute() - a.getMinAttribute());
-	            }
-	            Element nClasses = new Element("nClasses");
-	            nClasses.setText(Integer.toString(numClasses));
-	            root.addContent(nClasses);
-	        }
-	
-	        if (userDatasetCheckBox.isSelected()) {
-	            Element userDataset = new Element("userDataset");
-	            root.addContent(field).addContent(userDataset);
-	        }
-	
-	
-	        data.getRootElement().addContent(root);
-	
-	        try {
-	            File f = new File("./data/Datasets.xml");
-	            FileOutputStream file2 = new FileOutputStream(f);
-	            XMLOutputter fmt = new XMLOutputter();
-	            fmt.setFormat(Format.getPrettyFormat());
-	            fmt.output(data, file2);
-	        } catch (Exception ex) {
-	            ex.printStackTrace();
-	        }
-	        Attributes.clearAll();
+        keel.Dataset.InstanceSet iSet = new keel.Dataset.InstanceSet();
+        try {
+            Attributes.clearAll();
+            iSet.readSet(file.getPath(), true);
+        } catch (Exception ex) {
+            System.out.println(
+                    "READING DATASET ERROR. The format of the header is not correct.");
+            ex.printStackTrace();
+            return null;
+        }
 
-        
+        Element root = new Element("dataset");
+        Element nameAbr = new Element("nameAbr");
+        nameAbr.setText(lowerCaseName);
+        Element nameComplete = new Element("nameComplete");
+        nameComplete.setText(rootName);
+
+        boolean classification = false;
+        if (Attributes.getOutputAttribute(0).getType() == Attribute.NOMINAL) {
+            classification = true;
+        }
+        Element problemType = new Element("problemType");
+        if (classification) {
+            problemType.setText("Classification");
+        } else {
+            problemType.setText("Regression");
+        }
+
+
+        Element partitions = new Element("partitions");
+        if (!datasets) {
+            if (partitionComboBox.getSelectedIndex() == 0) {
+                Element partition = new Element("partition");
+                partition.setText(trainingModel.size() + "cfv");
+                partitions.addContent(partition);
+            } else if (partitionComboBox.getSelectedIndex() == 1) {
+                Element partition = new Element("partition");
+                partition.setText("5x2cv");
+                partitions.addContent(partition);
+            }
+        }
+        Element continuosValues = new Element("continuous");
+        if (keel.Dataset.Attributes.hasRealAttributes()) {
+            continuosValues.setText("Yes");
+        } else {
+            continuosValues.setText("No");
+        }
+
+        Element discreteValues = new Element("integer");
+        if (keel.Dataset.Attributes.hasIntegerAttributes()) {
+            discreteValues.setText("Yes");
+        } else {
+            discreteValues.setText("No");
+        }
+
+        Element nominalValues = new Element("nominal");
+        if (keel.Dataset.Attributes.hasNominalAttributes()) {
+            nominalValues.setText("Yes");
+        } else {
+            nominalValues.setText("No");
+        }
+
+        Element impreciseValues = new Element("imprecise");
+        impreciseValues.setText("No");
+
+        int numMissing = 0;
+        for (int is = 0; is < iSet.getNumInstances(); is++) {
+            if (iSet.getInstance(is).existsAnyMissingValue()) {
+                numMissing++;
+            }
+        }
+        double percMV = (double) numMissing /
+                (double) iSet.getNumInstances();
+        Element percMissingValues = new Element("percMissingValues");
+        percMissingValues.setText(String.valueOf(percMV));
+
+        Element missingValues = new Element("missing");
+        if (keel.Dataset.Attributes.hasMissingValues()) {
+            missingValues.setText("Yes");
+        } else {
+            missingValues.setText("No");
+        }
+
+        Element multiOutput = new Element("multioutput");
+        if (keel.Dataset.Attributes.getOutputNumAttributes() > 1) {
+            multiOutput.setText("Yes");
+        } else {
+            multiOutput.setText("No");
+        }
+
+        Element multiClass = new Element("multiclass");
+        if (keel.Dataset.Attributes.getOutputNumAttributes() == 1) {
+            keel.Dataset.Attribute att = keel.Dataset.Attributes.getOutputAttribute(0);
+            if (att.getType() == keel.Dataset.Attribute.NOMINAL &&
+                    att.getNumNominalValues() == 2) {
+                multiClass.setText("No");
+            } else {
+                multiClass.setText("Yes");
+            }
+        } else {
+            multiClass.setText("Yes");
+        }
+
+        root.addContent(nameAbr).addContent(nameComplete).addContent(
+                problemType).addContent(partitions).addContent(
+                continuosValues).
+                addContent(discreteValues).addContent(nominalValues).
+                addContent(impreciseValues).addContent(missingValues).
+                addContent(percMissingValues).addContent(multiOutput).
+                addContent(multiClass);
+
+        Element field = new Element("field");
+        if (realComboBox.getSelectedIndex() == 0) {
+            field.setText("Real");
+        } else if (realComboBox.getSelectedIndex() == 1) {
+            field.setText("Laboratory");
+        }
+
+        Element nAttributes = new Element("nAttributes");
+        nAttributes.setText(Integer.toString(keel.Dataset.Attributes.getNumAttributes()));
+        root.addContent(nAttributes);
+
+        Element nInstances = new Element("nInstances");
+        int testingInstances = 0;
+        if (fileTesting != null) {
+            // Loading one data set to extract statitics
+            keel.Dataset.InstanceSet iSet2 = new keel.Dataset.InstanceSet();
+            try {
+                System.out.println(file.getPath());
+                iSet2.readSet(file.getPath(), false);
+            } catch (Exception ex) {
+                System.out.println(
+                        "READING DATASET ERROR. The format of the header is not correct.");
+                ex.printStackTrace();
+                return null;
+            }
+            testingInstances = iSet2.getNumInstances();
+
+        }
+        nInstances.setText(Integer.toString(iSet.getNumInstances() + testingInstances));
+        root.addContent(nInstances);
+
+        if (classification) {
+            int numClasses;
+            keel.Dataset.Attribute a = keel.Dataset.Attributes.getOutputAttribute(0);
+            if (a.getType() == keel.Dataset.Attribute.NOMINAL) {
+                numClasses = a.getNumNominalValues();
+            } else {
+                numClasses = (int) (a.getMaxAttribute() - a.getMinAttribute());
+            }
+            Element nClasses = new Element("nClasses");
+            nClasses.setText(Integer.toString(numClasses));
+            root.addContent(nClasses);
+        }
+
+        if (userDatasetCheckBox.isSelected()) {
+            Element userDataset = new Element("userDataset");
+            root.addContent(field).addContent(userDataset);
+        }
+
+
+        data.getRootElement().addContent(root);
+
+        try {
+            File f = new File("./data/Datasets.xml");
+            FileOutputStream file2 = new FileOutputStream(f);
+            XMLOutputter fmt = new XMLOutputter();
+            fmt.setFormat(Format.getPrettyFormat());
+            fmt.output(data, file2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        Attributes.clearAll();
+
         //return name in lowerCase
         return lowerCaseName;
     }
@@ -3271,14 +3215,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                 file.getName().replaceAll(".dat", ""));
 
         //minusculas
-        String lowerCaseName;
-        try{
-            lowerCaseName = rootName.toLowerCase();
-
-        }catch(Exception e){
-            rootName="Unknown";
-            lowerCaseName="unknown";
-        }
+        String lowerCaseName= rootName.toLowerCase();
 
         Iterator it = data.getRootElement().getChildren().iterator();
         while (it.hasNext()) {
@@ -3295,7 +3232,9 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                     null,
                     options,
                     options[1]);
-                if (n == 1) {                    
+                if (n == 1) {
+
+                    
                         rootName = (String) JOptionPane.showInputDialog(
                                 parent,
                                 "The name of the dataset is also included in the experiment section.\n" + "Please insert another name:",
@@ -3305,11 +3244,8 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                                 null,
                                 rootName);
                     if( ((rootName == null) || (rootName.length() == 0))){
-                        JOptionPane.showMessageDialog(this, "A new name for the data set is needed", "Error", JOptionPane.ERROR_MESSAGE);
                         return null;
-
                     }
-                    lowerCaseName = rootName.toLowerCase();
                     it = data.getRootElement().getChildren().iterator();
                 }
                 else{
@@ -3563,403 +3499,4 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         //return name in lowerCase
         return lowerCaseName;
     }
-
-
-    /**
-     * <p>
-     * Adds a MIL dataset to the "Datasets.xml" file of the experiment section
-     * </p>
-     * @param file Training file of the dataset
-     * @param fileTesting Testing file of the dataset
-     * @return String Root name for the dataset finally added to experiment
-     *                section (null if there is any problem)
-     */
-    private String addMILDatasetXMLPartitions(File file, File fileTesting) {
-
-        boolean overwrite= false;
-
-        /*Load the previuos datasets.xml*/
-        Document data = new Document();
-        try {
-            SAXBuilder builder = new SAXBuilder();
-            data = builder.build("./data/Datasets.xml");
-        } catch (JDOMException ex) {
-            ex.printStackTrace();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("Dataset specification XML file not found");
-            return null;
-        }
-
-
-        String rootName = (String) JOptionPane.showInputDialog(
-                parent,
-                "Insert a name for the dataset to be used in the experiment section:",
-                "Insert name",
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                null,
-                file.getName().replaceAll(".dat", ""));
-
-        //minusculas
-        String lowerCaseName;
-        try{
-            lowerCaseName = rootName.toLowerCase();
-
-        }catch(Exception e){
-            rootName="Unknown";
-            lowerCaseName="unknown";
-        }
-
-        Iterator it = data.getRootElement().getChildren().iterator();
-        while (it.hasNext()) {
-            Element element = (Element) it.next();
-            if (element.getChild("nameAbr").getValue().equals(lowerCaseName)) {
-
-                // Do you want to overwrite the file?
-                 Object[] options = {"Yes", "No"};
-                 int n = JOptionPane.showOptionDialog(parent,
-                    "Data set \""+ rootName + "\" already exists.\nExisting partitions will be overwritten.\n Are you sure?",
-                    "Data set exists",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[1]);
-                if (n == 1) {                    
-                        rootName = (String) JOptionPane.showInputDialog(
-                                parent,
-                                "The name of the dataset is also included in the experiment section.\n" + "Please insert another name:",
-                                "Existing name",
-                                JOptionPane.PLAIN_MESSAGE,
-                                null,
-                                null,
-                                rootName);
-                    if( ((rootName == null) || (rootName.length() == 0))){
-                        JOptionPane.showMessageDialog(this, "A new name for the data set is needed", "Error", JOptionPane.ERROR_MESSAGE);
-                        return null;
-
-                    }
-                    lowerCaseName = rootName.toLowerCase();
-                    it = data.getRootElement().getChildren().iterator();
-                }
-                else{
-                    overwrite= true;
-                }
-            }
-        }
-
-        if(!overwrite){
-        // Loading one data set to extract statitics
-        	Instances trainData = null;
-        	try {
-				trainData = new Instances(new FileReader(file.getPath()));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				       JOptionPane.showMessageDialog(
-                        this,
-                        "READING DATASET ERROR. " + e.toString(), "Format Error.\n",
-                        JOptionPane.ERROR_MESSAGE);
-				e.printStackTrace();
-				return null;
-			}
-           
-            int cIdx = trainData.numAttributes()-1;
-        
-            trainData.setClassIndex(cIdx);
-        	keel.Algorithms.MIL.ExceptionDatasets ex = new keel.Algorithms.MIL.ExceptionDatasets(file.getPath());
-        	
-            try {
-	            ex.testDataset();
-	        } catch (Exception exp) {
-	            //System.out.println(
-	            //        "READING DATASET ERROR. The format of the header is not correct.");
-	        	JOptionPane.showMessageDialog(
-                        this,
-                        "READING DATASET ERROR. " + exp.toString(), "Format Error.\n",
-                        JOptionPane.ERROR_MESSAGE);
-	            exp.printStackTrace();
-	            return null;
-	        }
-
-	        Element root = new Element("dataset");
-	        Element nameAbr = new Element("nameAbr");
-	        nameAbr.setText(lowerCaseName);
-	        Element nameComplete = new Element("nameComplete");
-	        nameComplete.setText(rootName);
-
-	        boolean classification = false;
-		      //  if (trainData.attribute(cIdx).gAttributes.getOutputAttribute(0).getType() == Attribute.NOMINAL) {
-		            classification = true;
-		       // }
-		        Element problemType = new Element("problemType");
-		        if (classification) {
-		            problemType.setText("Classification");
-		        } else {
-		        	System.out.println(
-		    	                   "READING DATASET ERROR. Only classification problems are supported.");
-		        	
-		        	JOptionPane.showMessageDialog(
-	                        this,
-	                        "READING DATASET ERROR. Only classification problems are supported.", "Format Error.\n",
-	                        JOptionPane.ERROR_MESSAGE);
-		        }
-
-
-        Element partitions = new Element("partitions");
-        if (!datasets) {
-            if (partitionComboBox.getSelectedIndex() == 0) {
-                Element partition = new Element("partition");
-                partition.setText(trainingModel.size() + "cfv");
-                partitions.addContent(partition);
-            } else if (partitionComboBox.getSelectedIndex() == 1) {
-                Element partition = new Element("partition");
-                partition.setText("5x2cv");
-                partitions.addContent(partition);
-            }
-        }
-        
-        Element continuosValues = new Element("continuous");
-        /*if (keel.Dataset.Attributes.hasRealAttributes()) {
-            continuosValues.setText("Yes");
-        } else {
-            continuosValues.setText("No");
-        }*/
-        continuosValues.setText("Yes");
-
-        Element discreteValues = new Element("integer");
-       /* if (keel.Dataset.Attributes.hasIntegerAttributes()) {
-            discreteValues.setText("Yes");
-        } else {
-            discreteValues.setText("No");
-        }*/
-        discreteValues.setText("No");
-        
-        Element nominalValues = new Element("nominal");
-        /*if (keel.Dataset.Attributes.hasNominalAttributes()) {
-            nominalValues.setText("Yes");
-        } else {
-            nominalValues.setText("No");
-        }*/
-        nominalValues.setText("Yes");
-        
-        Element impreciseValues = new Element("imprecise");
-        impreciseValues.setText("No");
-
-      //int numMissing = 0;
-        //for (int i = 0; i < trainData.numInstances(); i++) {
-    	 //   if (trainData.instance(i).classIsMissing()) {
-    	 //   	numMissing++;
-    	 //   }
-    	//}
-        
-        //double percMV = (double) numMissing /
-         //       (double) iSet.getNumInstances();
-        Element percMissingValues = new Element("percMissingValues");
-        percMissingValues.setText(String.valueOf(0.0));
-        boolean missing = false;
-        Element missingValues = new Element("missing");
-        for (int i = 0; i < trainData.numInstances(); i++) {
-	    	  if (trainData.instance(i).hasMissingValue()) {
-	    	    	missing= true;
-	    	  }
-	    }
-        
-        if (missing) {
-            missingValues.setText("Yes");
-        } else {
-            missingValues.setText("No");
-        }
-
-        Element multiOutput = new Element("multioutput");
-       /* if (keel.Dataset.Attributes.getOutputNumAttributes() > 1) {
-            multiOutput.setText("Yes");
-        } else {
-            multiOutput.setText("No");
-        }*/
-        multiOutput.setText("No");
-        
-        Element multiClass = new Element("multiclass");
-        /*if (keel.Dataset.Attributes.getOutputNumAttributes() == 1) {
-            keel.Dataset.Attribute att = keel.Dataset.Attributes.getOutputAttribute(0);
-            if (att.getType() == keel.Dataset.Attribute.NOMINAL &&
-                    att.getNumNominalValues() == 2) {
-                multiClass.setText("No");
-            } else {
-                multiClass.setText("Yes");
-            }
-        } else {
-            multiClass.setText("Yes");
-        }*/
-        multiClass.setText("No");
-        
-        Element multiInstance = new Element("multiinstance");
-        //if (keel.Dataset.Attributes.getOutputNumAttributes() > 1) {
-        //    multiOutput.setText("Yes");
-        //} else {
-            multiInstance.setText("Yes");
-            
-            
-        root.addContent(nameAbr).addContent(nameComplete).addContent(
-                problemType).addContent(partitions).addContent(
-                continuosValues).
-                addContent(discreteValues).addContent(nominalValues).
-                addContent(impreciseValues).addContent(missingValues).
-                addContent(percMissingValues).addContent(multiOutput).
-                addContent(multiClass).addContent(multiInstance);
-
-        Element field = new Element("field");
-        if (realComboBox.getSelectedIndex() == 0) {
-            field.setText("Real");
-        } else if (realComboBox.getSelectedIndex() == 1) {
-            field.setText("Laboratory");
-        }
-
-        Element nAttributes = new Element("nAttributes");
-        weka.core.Instances m_Attributes = trainData.instance(0).relationalValue(1).stringFreeStructure();
-        nAttributes.setText(Integer.toString(m_Attributes.numAttributes()));//keel.Dataset.Attributes.getNumAttributes()));
-        root.addContent(nAttributes);
-
-        Element nInstances = new Element("nInstances");
-        int testingInstances = 0;
-        if (fileTesting != null) {
-            // Loading one data set to extract statitics
-        	Instances testData = null;
-            //keel.Dataset.InstanceSet iSet2 = new keel.Dataset.InstanceSet();
-            try {
-				testData = new Instances(new FileReader(fileTesting.getPath()));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			int cIdx1 = testData.numAttributes()-1;
-	        
-            testData.setClassIndex(cIdx1);
-        	keel.Algorithms.MIL.ExceptionDatasets ex1 = new keel.Algorithms.MIL.ExceptionDatasets(fileTesting.getPath());
-        	
-            try {
-	            ex1.testDataset();
-	        } catch (Exception exp) {
-	            System.out.println(
-	                    "READING DATASET ERROR. The format of the header is not correct.");
-	            exp.printStackTrace();
-	            return null;
-	        }
-	        
-           
-            testingInstances = testData.numInstances();
-
-        }
-        nInstances.setText(Integer.toString(trainData.numInstances() + testingInstances));
-        root.addContent(nInstances);
-
-        
-        if (classification) {
-            int numClasses = 0;
-            weka.core.Attribute a = trainData.attribute(cIdx);
-            if (a.type() == weka.core.Attribute.NOMINAL) {
-                numClasses = a.numValues();
-            } //else {
-            //    numClasses = (int) (a.getMaxAttribute() - a.getMinAttribute());
-            //}
-            Element nClasses = new Element("nClasses");
-            nClasses.setText(Integer.toString(numClasses));
-            root.addContent(nClasses);
-        }
-
-        if (userDatasetCheckBox.isSelected()) {
-            Element userDataset = new Element("userDataset");
-            root.addContent(field).addContent(userDataset);
-        }
-
-
-        data.getRootElement().addContent(root);
-
-        try {
-            File f = new File("./data/Datasets.xml");
-            FileOutputStream file2 = new FileOutputStream(f);
-            XMLOutputter fmt = new XMLOutputter();
-            fmt.setFormat(Format.getPrettyFormat());
-            fmt.output(data, file2);
-        } catch (Exception exc) {
-            exc.printStackTrace();
-        }
-        Attributes.clearAll();
-        }
-        //add new partitions to the existing ones
-        else{
-            Element partitions = new Element("partitions");
-            Element partition;
-            String newPartition="";
-            
-            if (partitionComboBox.getSelectedIndex() == 0) {         
-                newPartition=trainingModel.size() + "cfv";
-            } else if (partitionComboBox.getSelectedIndex() == 1) {
-                newPartition="5x2cv";
-            }
-            
-            List datasetsList = data.getRootElement().getChildren();
-            Element aux, ourDataset = null;
-
-            for (int i = 0; i < datasetsList.size(); i++) {
-                aux=(Element)datasetsList.get(i);
-                if(aux.getChildText("nameAbr").equals(lowerCaseName)){
-                    ourDataset=aux;
-                }
-            }
-            
-            Vector partitionsVector = new Vector();
-            Element temporal = ourDataset.getChild("partitions");
-
-            for (int i = 0; i < temporal.getChildren().size(); i++) {
-                partitionsVector.addElement(new String(((Element) (temporal.getChildren().get(i))).getText()));
-            }
-            
-            boolean found=false;
-            
-            for (int i = 0; i < partitionsVector.size() && !found; i++) {
-                if(partitionsVector.get(i).equals(newPartition)){
-                    found=true;
-                }
-            }
-
-            if(!found){
-                partitionsVector.add(newPartition);
-            }
-            for (int i = 0; i < partitionsVector.size(); i++) {
-                partition = new Element("partition");
-                partition.setText((String)partitionsVector.get(i));
-                partitions.addContent(partition);
-            }
-
-            Iterator it2 = data.getRootElement().getChildren().iterator();
-            while (it2.hasNext()) {
-                Element element = (Element) it2.next();
-                if (element.getChild("nameAbr").getValue().equals(lowerCaseName)) {
-                    element.removeChildren("partitions");
-                    element.addContent(partitions);
-                }
-            }
-
-            try {
-                File f = new File("./data/Datasets.xml");
-                FileOutputStream file2 = new FileOutputStream(f);
-                XMLOutputter fmt = new XMLOutputter();
-                fmt.setFormat(Format.getPrettyFormat());
-                fmt.output(data, file2);
-            }catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            Attributes.clearAll();
-        }
-        //return name in lowerCase
-        return lowerCaseName;
-    }
-
 }
