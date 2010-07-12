@@ -43,6 +43,7 @@ import org.exolab.castor.xml.Unmarshaller;
 import org.exolab.castor.xml.Marshaller;
 import org.xml.sax.InputSource;
 import keel.GraphInterKeel.menu.Frame;
+import keel.GraphInterKeel.menu.FrameModules;
 
 public class Experiments extends javax.swing.JFrame implements ItemListener, IEducationalRunListener {
     //----------------------------------
@@ -2046,11 +2047,11 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 }//GEN-LAST:event_loadExpItemActionPerformed
 
     private void saveExpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveExpItemActionPerformed
-        saveExperiment();
+        saveExperiment(0);
 }//GEN-LAST:event_saveExpItemActionPerformed
 
     private void saveAsExpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsExpItemActionPerformed
-        saveExpItemActionPerformed(evt);
+        saveExperiment(1);
 }//GEN-LAST:event_saveAsExpItemActionPerformed
 
     private void helpPanelItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpPanelItemActionPerformed
@@ -3116,14 +3117,14 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
      * Stores the experiment to disk
      * @return the user's option (if accepted to save or declined to save) 
      */
-    public int saveExperiment() {
+    public int saveExperiment(int option) {
         
                  
         experimentGraph.objective = this.objType;
         int opcion = 0;
         Mapping mapping = new Mapping();
         try {
-            if (experimentGraph.getName() == null) {
+            if ((experimentGraph.getName() == null)||(option==1)) {
                 JFileChooser f;
                 if (lastDirectory == null) {
                     f = new JFileChooser();
@@ -7262,7 +7263,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                     "Save Modified Experiment?", "Save Changes",
                     JOptionPane.YES_NO_CANCEL_OPTION);
             if (salvar == JOptionPane.YES_OPTION) {
-                saveExperiment();
+                saveExperiment(0);
             }
         }
 
@@ -7512,7 +7513,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                     JOptionPane.YES_NO_CANCEL_OPTION);
                 if (salvar == JOptionPane.YES_OPTION)
                 {
-                    saveExperiment();
+                    saveExperiment(0);
                 }
             }
             else
@@ -7524,7 +7525,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                     JOptionPane.YES_NO_CANCEL_OPTION);
                 if (salvar == JOptionPane.YES_OPTION)
                 {
-                    saveExperiment();
+                    saveExperiment(0);
                 }
              }
             }
@@ -7545,7 +7546,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                         deleteExecDocentWindow();
                         closedEducationalExec(null);
                       }
-                      saveExperiment();
+                      saveExperiment(0);
                 }
               else if (salvar == JOptionPane.NO_OPTION)
 		      {
@@ -8289,7 +8290,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                         JOptionPane.YES_NO_CANCEL_OPTION);
                     if (salvar == JOptionPane.YES_OPTION)
                     {
-                        opcionInterna = saveExperiment();
+                        opcionInterna = saveExperiment(0);
                     }
                 }
 
@@ -8300,6 +8301,26 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                      this.father.setEnabled(true);
                      this.father.setVisible(true);
                      Layer.layerActivo = 0;
+
+                     if(objType==IMBALANCED){
+                        this.father.setVisible(false);
+                        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                        FrameModules frame= new FrameModules();
+
+                        Dimension frameSize = frame.getSize();
+                        if (frameSize.height > screenSize.height) {
+                          frameSize.height = screenSize.height;
+                        }
+                        if (frameSize.width > screenSize.width) {
+                          frameSize.width = screenSize.width;
+                        }
+                        frame.setLocation( (screenSize.width - frameSize.width) / 2,
+                                           (screenSize.height - frameSize.height) / 2);
+
+                        frame.setParent(father);
+                        this.setVisible(false);
+                        frame.setVisible(true);
+                     }
                 }
             }
         }
@@ -8318,7 +8339,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                                 JOptionPane.YES_NO_CANCEL_OPTION);
                             if (salvar == JOptionPane.YES_OPTION)
                             {
-                                opcionInterna = saveExperiment();
+                                opcionInterna = saveExperiment(0);
                             }
                     }
                     if (salvar != JOptionPane.CANCEL_OPTION && opcionInterna != JFileChooser.CANCEL_OPTION)
@@ -8343,7 +8364,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                                 JOptionPane.YES_NO_CANCEL_OPTION);
                             if (salvar == JOptionPane.YES_OPTION)
                             {
-                                opcionInterna = saveExperiment();
+                                opcionInterna = saveExperiment(0);
                             }
                     }
 
