@@ -28,19 +28,30 @@
   
 **********************************************************************/
 
-//
-//  Main.java
-//
-//  Salvador García López
-//
-//  Created by Salvador García López 19-7-2004.
-//  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
-//
-
+/**
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the classifier and executes it.
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 package keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.GGA;
 
 public class Main {
 
+	/** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
   public static void main (String args[]) {
 
     GGA gga;
@@ -50,7 +61,9 @@ public class Main {
     else {
       gga = new GGA (args[0]);
       gga.execute();
-    }
-  }
-}
+		}
+		
+	} //end-method 
+  
+} //end-class
 

@@ -28,14 +28,17 @@
   
 **********************************************************************/
 
-//
-//  Cromosoma.java
-//
-//  Salvador García López
-//
-//  Created by Salvador García López 19-7-2004.
-//  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
-//
+/**
+ * 
+ * File: Chromosome.java
+ * 
+ * A chromosome implementation for FS algorithms
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
 
 package keel.Algorithms.Preprocess.Feature_Selection.Shared;
 
@@ -58,8 +61,11 @@ public class Chromosome implements Comparable<Object> {
 	private static double mutationProb;
 	private static int K;
 
-	//Construct a random cromosome of specified size
-  
+	/**
+	 * Builder.
+	 * 
+	 * @param size Initial size
+	 */
 	public Chromosome (int size) {
 
 		double u;
@@ -79,6 +85,11 @@ public class Chromosome implements Comparable<Object> {
 		valid=false;
 	}
 
+	/**
+	 * Builder.
+	 * 
+	 * @param info Body of the chromosome
+	 */
 	public Chromosome (int info []) {
 
 		genes = new int[info.length];
@@ -91,6 +102,12 @@ public class Chromosome implements Comparable<Object> {
 		valid=false;
 	}
 	
+	/**
+	 * Builder.
+	 * 
+	 * @param info Body of the chromosome
+	 * @param fitness Fitness of the chromosome
+	 */
 	public Chromosome (int info [],double fitness) {
 
 		genes = new int[info.length];
@@ -104,6 +121,12 @@ public class Chromosome implements Comparable<Object> {
 		valid=true;
 	}
 	
+	/**
+	 * Stores the training data
+	 *
+	 * @param trainData Training data
+	 * @param trainOutput Training output
+	 */
 	public static void setData(double trainData[][],int trainOutput []){
 		
 		nInstances=trainData.length;
@@ -119,31 +142,61 @@ public class Chromosome implements Comparable<Object> {
 		
 	}
 	
+	/**
+	 * Sets beta value
+	 *
+	 * @param value Value for beta
+	 */
 	public static void setBeta(double value){
 		
 		beta=value;
 	}
 
+	/**
+	 * Sets mutation value
+	 *
+	 * @param value Value for mutation
+	 */
 	public static void setMutationProb(double value){
 		
 		mutationProb=value;
 	}
 	
+	/**
+	 * Sets K value
+	 *
+	 * @param value Value for K
+	 */
 	public static void setK(int value){
 		
 		K=value;
 	}
 
+	/**
+	 * Sets the number of classes
+	 *
+	 * @param value Number of classes
+	 */
 	public static void setNClasses(int value){
 		
 		nClasses=value;
 	}
 	
+	/**
+	 * Get the body of a chromosome
+	 *
+	 * @return Body of a chromosome
+	 */
 	public int [] getGenes(){
 		
 		return genes;
 	}
 	
+	/**
+	 * Get the number of genes selected
+	 *
+	 * @return Number of genes selected
+	 */
 	public int getNGenes(){
 		
 		int count = 0;
@@ -156,17 +209,35 @@ public class Chromosome implements Comparable<Object> {
 		
 		return count;
 	}
-
+	
+	/**
+	 * Get the fitness value
+	 *
+	 * @return Fitness value
+	 */
 	public double getFitness(){
 		
 		return fitnessValue;
 	}
 	
+	/**
+	 * Tests if the chromosome is valid
+	 *
+	 * @return True if the chromosome is valid. False if not
+	 */
 	public boolean getValid(){
 		
 		return valid;
 	}
 	
+	/**
+	 * Computes pruned Euclidean distance
+	 *
+	 * @param indexA First instance
+	 * @param indexB Second instance
+	 *
+	 * @return Distance between instances
+	 */
 	private double prunedEuclideanDistance(int indexA,int indexB){
 		
 		double length=0.0;
@@ -182,7 +253,9 @@ public class Chromosome implements Comparable<Object> {
 		return length;
 	}
 
-	//Function that evaluates a chromosome
+	/*
+	 * Fitness function
+	 */
 	public void evaluate () {
 
 		double acc;
@@ -195,7 +268,12 @@ public class Chromosome implements Comparable<Object> {
 		  
 		valid=true;
 	}
-	  
+	
+	/**
+	 * Gets reduction rate
+	 *
+	 * @return Reduction rate
+	 */  
 	private double getReductionRate(){
 		  
 		double rate=0.0;
@@ -210,7 +288,12 @@ public class Chromosome implements Comparable<Object> {
 		return rate;
 		  
 	}
-	  
+	
+	/**
+	 * Gets accuracy rate
+	 *
+	 * @return Accuracy rate
+	 */    
 	private double classifyData(){
 		
 		double acc=0.0;
@@ -229,6 +312,14 @@ public class Chromosome implements Comparable<Object> {
 		return acc;
 	}
 
+	/**
+	 * Classify an example by means of the knn classifier
+	 *
+	 * @param example Example to classifiy
+	 * @param index Instance to avoid
+	 *
+	 * @return CLass of the example
+	 */
 	private int knnClassifier(double [] example, int index){
 			
 		double minDist[];
@@ -295,14 +386,18 @@ public class Chromosome implements Comparable<Object> {
 			    prediction = i;
 			}
 		}
-		
-		
-			
+
 		return prediction;
 
 	}
 	
-	//PMX cross operator
+	/**
+	 * PMX cross operator
+	 *
+	 * @param parent Parent chromosome
+	 *
+	 * @return Offspring
+	 */ 
 	public int [] crossPMX (int [] parent) {
 	
 		int point1,point2;
@@ -348,7 +443,9 @@ public class Chromosome implements Comparable<Object> {
 	    return offspring;
 	}
 
-	//Mutation Operator
+	/**
+	 * Mutation Operator
+	 */
 	public void mutation() {
 
 		int i;
@@ -367,7 +464,13 @@ public class Chromosome implements Comparable<Object> {
 	}	
 	
 
-	//Function that lets compare cromosomes to sort easily
+	/**
+	 * Compare to method
+	 *
+	 * @param o1 Chromosome to compare
+	 *
+	 * @return Relative order
+	 */
 	public int compareTo (Object o1) {
 		if (this.fitnessValue > ((Chromosome)o1).fitnessValue)
 			return -1;
@@ -376,7 +479,11 @@ public class Chromosome implements Comparable<Object> {
 	    else return 0;
 	}	
 	
-
+	/**
+	 * To string method
+	 *
+	 * @return String representation of the chromosome
+	 */
 	public String toString() {
 	  
 		int i;
@@ -391,4 +498,5 @@ public class Chromosome implements Comparable<Object> {
 
 		return temp;
 	}
-}
+	
+}//end-class
