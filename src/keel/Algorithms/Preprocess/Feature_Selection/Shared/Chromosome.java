@@ -5,40 +5,36 @@
 
 	Copyright (C) 2004-2010
 	
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
-    S. García (sglopez@ujaen.es)
-    F. Herrera (herrera@decsai.ugr.es)
+	F. Herrera (herrera@decsai.ugr.es)
     L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
 
-   This program is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program.  If not, see http://www.gnu.org/licenses/
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see http://www.gnu.org/licenses/
   
 **********************************************************************/
 
-/**
- * 
- * File: Chromosome.java
- * 
- * A chromosome implementation for FS algorithms
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
+//
+//  Cromosoma.java
+//
+//  Salvador García López
+//
+//  Created by Salvador García López 19-7-2004.
+//  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
+//
 
 package keel.Algorithms.Preprocess.Feature_Selection.Shared;
 
@@ -61,11 +57,8 @@ public class Chromosome implements Comparable<Object> {
 	private static double mutationProb;
 	private static int K;
 
-	/**
-	 * Builder.
-	 * 
-	 * @param size Initial size
-	 */
+	//Construct a random cromosome of specified size
+  
 	public Chromosome (int size) {
 
 		double u;
@@ -85,11 +78,6 @@ public class Chromosome implements Comparable<Object> {
 		valid=false;
 	}
 
-	/**
-	 * Builder.
-	 * 
-	 * @param info Body of the chromosome
-	 */
 	public Chromosome (int info []) {
 
 		genes = new int[info.length];
@@ -102,12 +90,6 @@ public class Chromosome implements Comparable<Object> {
 		valid=false;
 	}
 	
-	/**
-	 * Builder.
-	 * 
-	 * @param info Body of the chromosome
-	 * @param fitness Fitness of the chromosome
-	 */
 	public Chromosome (int info [],double fitness) {
 
 		genes = new int[info.length];
@@ -121,12 +103,6 @@ public class Chromosome implements Comparable<Object> {
 		valid=true;
 	}
 	
-	/**
-	 * Stores the training data
-	 *
-	 * @param trainData Training data
-	 * @param trainOutput Training output
-	 */
 	public static void setData(double trainData[][],int trainOutput []){
 		
 		nInstances=trainData.length;
@@ -142,61 +118,31 @@ public class Chromosome implements Comparable<Object> {
 		
 	}
 	
-	/**
-	 * Sets beta value
-	 *
-	 * @param value Value for beta
-	 */
 	public static void setBeta(double value){
 		
 		beta=value;
 	}
 
-	/**
-	 * Sets mutation value
-	 *
-	 * @param value Value for mutation
-	 */
 	public static void setMutationProb(double value){
 		
 		mutationProb=value;
 	}
 	
-	/**
-	 * Sets K value
-	 *
-	 * @param value Value for K
-	 */
 	public static void setK(int value){
 		
 		K=value;
 	}
 
-	/**
-	 * Sets the number of classes
-	 *
-	 * @param value Number of classes
-	 */
 	public static void setNClasses(int value){
 		
 		nClasses=value;
 	}
 	
-	/**
-	 * Get the body of a chromosome
-	 *
-	 * @return Body of a chromosome
-	 */
 	public int [] getGenes(){
 		
 		return genes;
 	}
 	
-	/**
-	 * Get the number of genes selected
-	 *
-	 * @return Number of genes selected
-	 */
 	public int getNGenes(){
 		
 		int count = 0;
@@ -209,35 +155,17 @@ public class Chromosome implements Comparable<Object> {
 		
 		return count;
 	}
-	
-	/**
-	 * Get the fitness value
-	 *
-	 * @return Fitness value
-	 */
+
 	public double getFitness(){
 		
 		return fitnessValue;
 	}
 	
-	/**
-	 * Tests if the chromosome is valid
-	 *
-	 * @return True if the chromosome is valid. False if not
-	 */
 	public boolean getValid(){
 		
 		return valid;
 	}
 	
-	/**
-	 * Computes pruned Euclidean distance
-	 *
-	 * @param indexA First instance
-	 * @param indexB Second instance
-	 *
-	 * @return Distance between instances
-	 */
 	private double prunedEuclideanDistance(int indexA,int indexB){
 		
 		double length=0.0;
@@ -253,9 +181,7 @@ public class Chromosome implements Comparable<Object> {
 		return length;
 	}
 
-	/*
-	 * Fitness function
-	 */
+	//Function that evaluates a chromosome
 	public void evaluate () {
 
 		double acc;
@@ -268,12 +194,7 @@ public class Chromosome implements Comparable<Object> {
 		  
 		valid=true;
 	}
-	
-	/**
-	 * Gets reduction rate
-	 *
-	 * @return Reduction rate
-	 */  
+	  
 	private double getReductionRate(){
 		  
 		double rate=0.0;
@@ -288,12 +209,7 @@ public class Chromosome implements Comparable<Object> {
 		return rate;
 		  
 	}
-	
-	/**
-	 * Gets accuracy rate
-	 *
-	 * @return Accuracy rate
-	 */    
+	  
 	private double classifyData(){
 		
 		double acc=0.0;
@@ -312,14 +228,6 @@ public class Chromosome implements Comparable<Object> {
 		return acc;
 	}
 
-	/**
-	 * Classify an example by means of the knn classifier
-	 *
-	 * @param example Example to classifiy
-	 * @param index Instance to avoid
-	 *
-	 * @return CLass of the example
-	 */
 	private int knnClassifier(double [] example, int index){
 			
 		double minDist[];
@@ -386,18 +294,14 @@ public class Chromosome implements Comparable<Object> {
 			    prediction = i;
 			}
 		}
-
+		
+		
+			
 		return prediction;
 
 	}
 	
-	/**
-	 * PMX cross operator
-	 *
-	 * @param parent Parent chromosome
-	 *
-	 * @return Offspring
-	 */ 
+	//PMX cross operator
 	public int [] crossPMX (int [] parent) {
 	
 		int point1,point2;
@@ -443,9 +347,7 @@ public class Chromosome implements Comparable<Object> {
 	    return offspring;
 	}
 
-	/**
-	 * Mutation Operator
-	 */
+	//Mutation Operator
 	public void mutation() {
 
 		int i;
@@ -464,13 +366,7 @@ public class Chromosome implements Comparable<Object> {
 	}	
 	
 
-	/**
-	 * Compare to method
-	 *
-	 * @param o1 Chromosome to compare
-	 *
-	 * @return Relative order
-	 */
+	//Function that lets compare cromosomes to sort easily
 	public int compareTo (Object o1) {
 		if (this.fitnessValue > ((Chromosome)o1).fitnessValue)
 			return -1;
@@ -479,11 +375,7 @@ public class Chromosome implements Comparable<Object> {
 	    else return 0;
 	}	
 	
-	/**
-	 * To string method
-	 *
-	 * @return String representation of the chromosome
-	 */
+
 	public String toString() {
 	  
 		int i;
@@ -498,5 +390,4 @@ public class Chromosome implements Comparable<Object> {
 
 		return temp;
 	}
-	
-}//end-class
+}

@@ -5,40 +5,36 @@
 
 	Copyright (C) 2004-2010
 	
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
-    S. García (sglopez@ujaen.es)
-    F. Herrera (herrera@decsai.ugr.es)
+	F. Herrera (herrera@decsai.ugr.es)
     L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
 
-   This program is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program.  If not, see http://www.gnu.org/licenses/
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see http://www.gnu.org/licenses/
   
 **********************************************************************/
 
-/**
- * 
- * File: GGA.java
- * 
- * A Generational Genetic algorithm for Feature Selection
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
+//
+//  SGA.java
+//
+//  Salvador García López
+//
+//  Created by Salvador García López 19-7-2004.
+//  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
+//
 
 package keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.GGA;
 
@@ -67,11 +63,6 @@ public class GGA extends FSAlgorithm{
 	private Chromosome population [];
 	private Chromosome newPop [];
 
-	/**
-	 * Builder.
-	 *
-	 * @param script Configuration script
-	 */
 	public GGA (String script) {
 		
 		readDataFiles(script);
@@ -111,12 +102,7 @@ public class GGA extends FSAlgorithm{
 		setInitialTime(); 
 	}
   
-    /** 
-	 * Read the parameters
-	 * 
-	 * @param script Name of the configuration script  
-	 * 
-	 */
+  
 	protected void readParameters(String script){
 		
 		String file;
@@ -181,9 +167,6 @@ public class GGA extends FSAlgorithm{
  	  
 	}
 
-	/**
-	 * Executes the GGA
-	 */
 	public void execute () {
 
 		
@@ -274,7 +257,6 @@ public class GGA extends FSAlgorithm{
 	    OutputFS.writeTrainOutput(outFile[0], trainReal, trainNominal, trainNulls, trainOutput,featSelected, inputs, output, inputAtt, relation);
 	    OutputFS.writeTestOutput(outFile[1], test, featSelected, inputs, output, inputAtt, relation);
 	    OutputIS.escribeSalidaAux(outFile[1]+".txt",((double)(System.currentTimeMillis()-initialTime)/1000.0),1.0-((double)population[0].getNGenes()/(double)trainData[0].length),relation);
-		
 	}
 
-}//end-class
+}
