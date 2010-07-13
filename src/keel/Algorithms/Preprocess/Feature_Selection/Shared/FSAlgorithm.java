@@ -31,11 +31,9 @@
  * 
  * File: FSAlgorithm.java
  * 
- * A general framework for Lazy Learning Algorithms.
+ * A general framework for FS Algorithms.
  * This class contains all common operations in the developement of a 
- * Lazy Learning algorithm. Any Lazy algorithm can extend this class and, 
- * by implementing the abstract "evaluate" and "readParameters" method,
- * getting most of its work already done.
+ * FS algorithm. 
  * 
  * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
  * @version 1.0 
@@ -383,10 +381,6 @@ public abstract class FSAlgorithm {
 		initialTime = System.currentTimeMillis();
 		
 	}//end-method
-	
-	protected void cout(String text){
-		System.out.println(text);
-	}
 
 }//end-class
 
