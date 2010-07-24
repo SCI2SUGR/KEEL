@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -299,12 +299,16 @@ public class VisualizePanelAttribute extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 private void imagejLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagejLabelMouseClicked
+
     if (this.chart != null) {
         this.chart.setTitle(((VisualizePanel) this.getParent().getParent()).getData().getAttributeIndex(
                 this.tableInfojTable.getSelectedRow()));
+
         ChartFrame frame = new ChartFrame("Attribute chart", chart, true);
+
         frame.pack();
         frame.setBackground(new Color(225, 225, 225));
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = frame.getSize();
         if (frameSize.height > screenSize.height) {
@@ -315,7 +319,7 @@ private void imagejLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST
         }
         frame.setLocation((screenSize.width - frameSize.width) / 2,
                 (screenSize.height - frameSize.height) / 2);
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/keel/GraphInterKeel/resources/ico/logo.gif")));
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/keel/GraphInterKeel/resources/ico/logo/logo.gif")));
         frame.setVisible(true);
     }
 }//GEN-LAST:event_imagejLabelMouseClicked
@@ -568,7 +572,6 @@ private void tableInfojTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-F
             this.imagejLabel.setIcon(new ImageIcon(image));
             this.clickToExpandjLabel.setVisible(true);
         } else {
-            System.out.println("Entro en NO   NOMINAL");
             this.valuesjScrollPane.setEnabled(false);
             this.valuesjScrollPane.setVisible(false);
             this.valuesjTextPane.setEnabled(false);
@@ -647,4 +650,3 @@ private void tableInfojTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-F
         }
     }
 }
-

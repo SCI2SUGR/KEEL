@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -404,7 +404,7 @@ private void imagejLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST
         }
         frame.setLocation((screenSize.width - frameSize.width) / 2,
                 (screenSize.height - frameSize.height) / 2);
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/keel/GraphInterKeel/resources/ico/logo.gif")));
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/keel/GraphInterKeel/resources/ico/logo/logo.gif")));
         frame.setVisible(true);
     }
 }//GEN-LAST:event_imagejLabelMouseClicked
@@ -593,4 +593,3 @@ private void topdfjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         this.topdfjButton.setEnabled(value);
     }
 }
-

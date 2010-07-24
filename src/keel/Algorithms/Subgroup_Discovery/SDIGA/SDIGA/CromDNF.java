@@ -37,7 +37,7 @@
  * </p>
  */
 
-package SDIGA;
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
 
 import org.core.*;
 
@@ -144,4 +144,3 @@ public class CromDNF {
     }
 
 }
-

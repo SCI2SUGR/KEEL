@@ -35,7 +35,7 @@
  * </p>
  */
 
-package NMEEFSD;
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 public class TypeDat {
     /**
@@ -131,4 +131,3 @@ public class TypeDat {
     }
 
 }
-

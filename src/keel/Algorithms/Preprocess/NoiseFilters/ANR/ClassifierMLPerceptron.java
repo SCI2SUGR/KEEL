@@ -165,7 +165,7 @@ public class ClassifierMLPerceptron {
             // Algorithm is evaluated using test set
             ProcessDataset pdt = new ProcessDataset();
             int nprueba,npentradas,npvariables;
-            line=(String)pc.parInputData.get(ProcessConfig.IndexTest);
+            line=(String)pc.parInputData.get(ProcessConfig.IndexTest-1);
             
             if (pc.parNewFormat) pdt.processClassifierDataset(line,false);
             else pdt.oldClusteringProcess(line);
@@ -206,10 +206,10 @@ public class ClassifierMLPerceptron {
             System.out.println(noisyInstances);
             System.out.println((String)pc.parInputData.get(0));
             System.out.println(pc.parResultTrainName);
-            System.out.println((String)pc.parInputData.get(2));
+            System.out.println((String)pc.parInputData.get(1));
             System.out.println(pc.parResultName);
 
-            createDatasets((String)pc.parInputData.get(0), pc.parResultTrainName, (String)pc.parInputData.get(2), pc.parResultName);
+            createDatasets((String)pc.parInputData.get(0), pc.parResultTrainName, (String)pc.parInputData.get(1), pc.parResultName);
             
             //*********************************************************
             
@@ -358,4 +358,3 @@ public class ClassifierMLPerceptron {
 	
 	
 }
-

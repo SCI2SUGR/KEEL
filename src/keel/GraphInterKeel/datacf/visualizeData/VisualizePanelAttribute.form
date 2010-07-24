@@ -88,7 +88,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="extendedInfojPanel" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="graphicsjPanel" pref="273" max="32767" attributes="0"/>
+                  <Component id="graphicsjPanel" pref="274" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -149,7 +149,7 @@
                           </Group>
                           <Component id="valuesjScrollPane" alignment="0" min="-2" pref="117" max="-2" attributes="1"/>
                       </Group>
-                      <EmptySpace pref="114" max="32767" attributes="0"/>
+                      <EmptySpace pref="115" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -178,7 +178,7 @@
                       <Component id="valuesjLabel" min="-2" max="-2" attributes="1"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="valuesjScrollPane" min="-2" pref="56" max="-2" attributes="1"/>
-                      <EmptySpace pref="57" max="32767" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

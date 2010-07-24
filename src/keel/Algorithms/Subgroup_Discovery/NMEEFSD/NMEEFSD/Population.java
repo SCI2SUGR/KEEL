@@ -35,7 +35,7 @@
  * </p>
  */
 
-package NMEEFSD;
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import java.util.Vector;
 
@@ -340,6 +340,5 @@ public class Population {
       }
       
 }
-
 
 

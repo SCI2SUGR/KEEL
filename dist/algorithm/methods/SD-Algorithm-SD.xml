@@ -4,21 +4,13 @@
   <seed>0</seed>
   <nOutput>4</nOutput>
   <parameter>
-    <name>algorithm</name>
-    <type>list</type>
-    <domain>
-      <item>SDAlgorithm</item>
-    </domain>
-    <default>SDAlgorithm</default>
-  </parameter>
-  <parameter>
     <name>g</name>
-    <type>real</type>
+    <type>integer</type>
     <domain>
-      <lowerB>0.0</lowerB>
-      <upperB>100.0</upperB>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
     </domain>
-    <default>10.0</default>
+    <default>10</default>
   </parameter>
   <parameter>
     <name>minSupp</name>
@@ -46,5 +38,13 @@
       <upperB>20</upperB>
     </domain>
     <default>1</default>
+  </parameter>
+    <parameter>
+    <name>algorithm</name>
+    <type>list</type>
+    <domain>
+      <item>SDAlgorithm</item>
+    </domain>
+    <default>SDAlgorithm</default>
   </parameter>
 </algorithm_specification>

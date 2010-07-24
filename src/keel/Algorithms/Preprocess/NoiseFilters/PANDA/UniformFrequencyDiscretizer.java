@@ -120,4 +120,3 @@ public class UniformFrequencyDiscretizer extends Discretizer {
 		return cp;
 	}
 }
-

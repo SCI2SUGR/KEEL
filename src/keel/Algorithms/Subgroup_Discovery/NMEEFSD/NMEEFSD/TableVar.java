@@ -35,7 +35,7 @@
  * </p>
  */
 
-package NMEEFSD;
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import keel.Dataset.*;
 import org.core.*;
@@ -593,4 +593,3 @@ public class TableVar {
     }
 
 }
-

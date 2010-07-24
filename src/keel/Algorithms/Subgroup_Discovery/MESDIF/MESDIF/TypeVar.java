@@ -37,7 +37,7 @@
  * </p>
  */
 
-package MESDIF;
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
 import java.util.Vector;
 
@@ -200,5 +200,4 @@ public class TypeVar {
 
 
 }
-
 

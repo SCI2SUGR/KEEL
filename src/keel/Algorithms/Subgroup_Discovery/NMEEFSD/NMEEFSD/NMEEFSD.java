@@ -40,7 +40,7 @@
  * </p>
  */
 
-package NMEEFSD;
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import keel.Algorithms.Subgroup_Discovery.NMEEFSD.Calculate.*;
 
@@ -573,4 +573,3 @@ public class NMEEFSD {
   }
 
 }
-

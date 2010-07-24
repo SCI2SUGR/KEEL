@@ -37,7 +37,7 @@
  * </p>
  */
 
-package MESDIF;
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
 public class TypeDat {
     /**
@@ -133,4 +133,3 @@ public class TypeDat {
     }
 
 }
-

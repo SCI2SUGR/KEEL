@@ -37,7 +37,7 @@
  * </p>
  */
 
-package MESDIF;
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
 public abstract class Individual {
 
@@ -300,4 +300,3 @@ public abstract class Individual {
 
 
 }
-

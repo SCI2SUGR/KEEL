@@ -35,7 +35,7 @@
  * </p>
  */
 
-package NMEEFSD;
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 public class Fuzzy {
     /**
@@ -123,4 +123,3 @@ public class Fuzzy {
     }
 
 }
-

@@ -37,7 +37,7 @@
  * </p>
  */
 
-package MESDIF;
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
 import org.core.*;
 
@@ -174,4 +174,3 @@ public class Gene {
     
     
 }
-

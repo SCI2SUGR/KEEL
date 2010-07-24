@@ -37,7 +37,7 @@
  * </p>
  */
 
-package SDIGA;
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
 
 public class TypeDat {
     /**
@@ -133,4 +133,3 @@ public class TypeDat {
     }
 
 }
-

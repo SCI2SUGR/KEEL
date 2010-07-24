@@ -35,7 +35,7 @@
  * </p>
  */
 
-package NMEEFSD;
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 public abstract class Individual {
 
@@ -267,4 +267,3 @@ public abstract class Individual {
 
     
 }
-

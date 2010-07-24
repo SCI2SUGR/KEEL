@@ -37,7 +37,7 @@
  * </p>
  */
 
-package MESDIF;
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
 import java.util.*;
 
@@ -291,4 +291,3 @@ public class Utils {
 
 
 }
-

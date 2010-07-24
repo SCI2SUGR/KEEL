@@ -37,7 +37,7 @@
  * </p>
  */
 
-package SDIGA;
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
 
 public abstract class Individual {
 
@@ -144,4 +144,3 @@ public abstract class Individual {
 
 
 }
-

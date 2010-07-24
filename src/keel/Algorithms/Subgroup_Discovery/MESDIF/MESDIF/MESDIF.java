@@ -37,7 +37,7 @@
  * </p>
  */
 
-package MESDIF;
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
 import keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate.*;
 
@@ -651,4 +651,3 @@ public class MESDIF {
 
     
 }
-

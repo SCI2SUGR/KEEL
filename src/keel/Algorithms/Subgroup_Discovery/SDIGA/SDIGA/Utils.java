@@ -37,7 +37,7 @@
  * </p>
  */
 
-package SDIGA;
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
 
 import java.util.*;
 
@@ -291,4 +291,3 @@ public class Utils {
 
 
 }
-

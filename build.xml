@@ -4472,7 +4472,13 @@
             keel/Dataset/**/*.class"/>
 		</jar>
   
-
+		<jar jarfile="${distMet}/SDMap.jar"
+			manifest="${src}/keel/Algorithms/Subgroup_Discovery/SDMap/Manifest">
+			<fileset dir="${bin}"
+			includes="keel/Algorithms/Subgroup_Discovery/SDMap/**/*.class
+                         org/core/**/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>	
 
 		<jar jarfile="${distMet}/aprioriSD.jar"
 			manifest="${src}/keel/Algorithms/Subgroup_Discovery/aprioriSD/Manifest">

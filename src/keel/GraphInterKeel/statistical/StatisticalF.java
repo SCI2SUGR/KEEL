@@ -116,6 +116,8 @@ public class StatisticalF extends javax.swing.JFrame {
 
         this.content.muestraURL(this.getClass().getResource("/help/stat/stat_help.html"));
 
+        ExcelAdapter myAd = new ExcelAdapter(dataTable);
+
         //set frame icon
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(StatisticalF.class.getResource("/keel/GraphInterKeel/resources/ico/logo/logo.gif")));
 
@@ -524,7 +526,7 @@ public class StatisticalF extends javax.swing.JFrame {
         dataTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         dataTable.setName("dataTable"); // NOI18N
         dataTable.setRowSelectionAllowed(false);
-        dataTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        dataTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         dataTable.getTableHeader().setReorderingAllowed(false);
         scrollTable.setViewportView(dataTable);
 
@@ -584,15 +586,15 @@ public class StatisticalF extends javax.swing.JFrame {
                     .addComponent(measurePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTable, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollTable, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(scrollTable, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrollTable, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
                         .addComponent(radioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -621,7 +623,9 @@ public class StatisticalF extends javax.swing.JFrame {
         );
         auxHelpPanelLayout.setVerticalGroup(
             auxHelpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(helpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+            .addGroup(auxHelpPanelLayout.createSequentialGroup()
+                .addComponent(helpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         divider.setRightComponent(auxHelpPanel);
@@ -634,7 +638,7 @@ public class StatisticalF extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(divider, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+            .addComponent(divider, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
         );
 
         pack();
@@ -701,6 +705,7 @@ public class StatisticalF extends javax.swing.JFrame {
 
         int newData;
         int newMethod;
+        int code;
 
         int salvar = JOptionPane.YES_OPTION;
 
@@ -718,8 +723,18 @@ public class StatisticalF extends javax.swing.JFrame {
                 newMethod=0;
             }
 
-            if(adequateDimensions(newMethod,newData)){
-                model.resizeTable(newData,newMethod);
+            code=adequateDimensions(newMethod,newData);
+
+            switch(code){
+                case 0: model.resizeTable(newData,newMethod);
+                       break;
+                case 1:  JOptionPane.showMessageDialog(this, "Error setting dimensions:\n" +
+                        "The number of datsets must be between "+MINDATA+ " and " +MAXDATA + " .", "Error", JOptionPane.ERROR_MESSAGE);
+                       break;
+                case 2:
+                        JOptionPane.showMessageDialog(this, "Error setting dimensions:\n" +
+                        "The number of algorithms must be between "+MINALG+ " and " +MAXALG + " .", "Error", JOptionPane.ERROR_MESSAGE);
+                       break;
             }
 
             scrollTable.repaint();
@@ -1085,22 +1100,21 @@ public class StatisticalF extends javax.swing.JFrame {
      * @param cols Columns desired
      * @param rows Rows desired
      *
-     * @return True if the dimensions selected are right, false if not
+     * @return 0 if the dimensions selected are right, > 0 if not
      */
-    private boolean adequateDimensions(int cols,int rows){
+    private int adequateDimensions(int cols,int rows){
 
         if((cols>=MINALG)&&(cols<=MAXALG)){
             if((rows>=MINDATA)&&(rows<=MAXDATA)){
-                return true;
+                return 0;
             }
             else{
-                return false;
+                return 1;
             }
         }
         else{
-            return false;
+            return 2;
         }
 
     }
 }
-

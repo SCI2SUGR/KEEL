@@ -526,4 +526,3 @@ public class Individual {
    
     
 }
-

@@ -54,4 +54,3 @@ abstract public class FUN {
 	 */
     abstract public double evaluate(double x[][][]);
 }
-

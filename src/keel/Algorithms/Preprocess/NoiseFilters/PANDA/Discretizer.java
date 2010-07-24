@@ -142,4 +142,3 @@ public abstract class Discretizer {
 		return cutPoints[attribute].length;
 	}
 }
-

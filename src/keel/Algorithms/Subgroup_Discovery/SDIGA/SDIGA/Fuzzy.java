@@ -36,7 +36,8 @@
  * @since JDK1.5
  * </p>
  */
-package SDIGA;
+ 
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
 
 public class Fuzzy {
     /**
@@ -123,4 +124,3 @@ public class Fuzzy {
     }
 
 }
-

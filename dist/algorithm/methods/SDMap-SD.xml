@@ -1,0 +1,41 @@
+<algorithm_specification>
+  <name>SDMap for Subgroup Discovery</name>
+  <nParameters>4</nParameters>
+  <seed>0</seed>
+  <nOutput>4</nOutput>
+  <parameter>
+    <name>MinimumSupport</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>MinimumConfidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>
+  <parameter>
+    <name>RulesReturn</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+    <parameter>
+    <name>algorithm</name>
+    <type>list</type>
+    <domain>
+      <item>SD-Map</item>
+    </domain>
+    <default>SD-Map</default>
+  </parameter>
+</algorithm_specification>

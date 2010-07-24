@@ -1,0 +1,313 @@
+<method>
+
+	<name>SDMap Algorithm for Subgroup Discovery</name>
+
+	<reference>  
+<ref>M. Atzmueller and F. Puppe (2006) SD-Map - A Fast Algorithm for Exhaustive Subgroup
+Discovery. In: Proceedings of the 17th European Conference on Machine Learning
+and 10th European Conference on Principles and Practice of Knowledge Discovery in
+Databases, Springer, LNCS, vol 4213, pp 6-17</ref>
+	</reference>
+
+	<generalDescription>  
+
+		<type>Supervised Descriptive Rule Discovery System</type>
+
+		<objective>To obtain subgroups to describe data</objective>
+
+		<howWork>
+		SD-Map is an exhaustive subgroup discovery algorithm that uses the well-known
+                FP-growth method for mining association rules with adaptations for the subgroup
+                discovery task. It uses an implicit depth-first search step for evaluating the subgroup
+                hypotheses, included in the divide-and-conquer frequent pattern growth (that is, by the
+                reordering/sorting optimization). SD-Map uses a modified FP-growth step that can compute
+                the subgroup quality directly without referring to other intermediate results. It can
+                use several quality functions like Piatetsky-Shaphiro, unusualness, or the
+                binomial test, among others.
+                </howWork>
+
+		<parameterSpec>  
+			<param>MinimumSupport: Minimum support which must satisfy the rules.</param>
+			<param>MinimumSupport: Minimum confidence which must satisfy the rules.</param>
+			<param>ReturnRules: Number of rules for each value of the class.</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>No</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Unspecified 
+Method: SD-Map
+Dataset: car
+Training set: car-10-1tra.dat
+Test set: car-10-1tst.dat
+Parameters: default values
+
+
+CAR-10-1TRA.DAT
+===============
+@relation car
+@attribute buying {v_high, high, med, low}
+@attribute maint {v_high,high,med,low}
+@attribute doors {2,3,4,5_more}
+@attribute persons {2,4,more}
+@attribute lug_boot {small,med,big}
+@attribute safety {low,med,high}
+@attribute class {unacc,acc, good, v_good}
+@inputs buying, maint, doors, persons, lug_boot, safety
+@outputs class
+@data
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+good unacc
+v_good unacc
+unacc unacc
+acc unacc
+good unacc
+unacc unacc
+good unacc
+v_good unacc
+unacc unacc
+v_good unacc
+
+
+
+
+
+CAR-10-1TST.DAT
+===============
+@relation car
+@attribute buying {v_high, high, med, low}
+@attribute maint {v_high,high,med,low}
+@attribute doors {2,3,4,5_more}
+@attribute persons {2,4,more}
+@attribute lug_boot {small,med,big}
+@attribute safety {low,med,high}
+@attribute class {unacc,acc, good, v_good}
+@inputs buying, maint, doors, persons, lug_boot, safety
+@outputs class
+@data
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+acc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc acc
+acc unacc
+acc unacc
+acc unacc
+acc acc
+unacc unacc
+acc unacc
+acc unacc
+unacc unacc
+acc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+acc unacc
+acc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+acc unacc
+unacc unacc
+acc unacc
+acc unacc
+acc acc
+acc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc acc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc unacc
+acc unacc
+acc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+unacc unacc
+acc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+good unacc
+unacc unacc
+unacc unacc
+v_good unacc
+unacc unacc
+acc unacc
+v_good v_good
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+unacc unacc
+acc unacc
+v_good v_good
+unacc unacc
+acc unacc
+v_good unacc
+unacc unacc
+unacc unacc
+good unacc
+unacc unacc
+good unacc
+unacc unacc
+v_good unacc
+good unacc
+good unacc
+v_good unacc
+good unacc
+
+
+
+CAR-10-1-RULES.TXT
+==================
+Rule 0: buying = low AND maint = low AND safety = high AND lug_boot = big THEN class = v_good
+[  0,00  0,00  0,00  1,00  ]
+
+
+Rule 1: maint = low AND safety = high AND lug_boot = big THEN class = v_good
+[  0,00  0,00  0,00  1,00  ]
+
+
+Rule 2: buying = low AND safety = high AND lug_boot = big THEN class = v_good
+[  0,00  0,00  0,00  1,00  ]
+
+
+Rule 3: doors = 5_more AND safety = high AND lug_boot = big THEN class = v_good
+[  0,00  0,00  0,00  1,00  ]
+
+
+Rule 4: buying = low AND maint = low AND doors = 5_more AND safety = high AND lug_boot = big THEN class = v_good
+[  0,00  0,00  0,00  1,00  ]
+
+
+CAR-10-1-QUAC.TXT
+=================
+#Rule	#Vars	Cov	Sign	Unus	Supp	Cnf
+0	5,000	0,000	0,000	0,000	0,000	0,000
+1	4,000	0,001	4,885	0,005	0,006	0,167
+2	4,000	0,001	4,323	0,005	0,006	0,250
+3	4,000	0,001	5,033	0,005	0,006	0,250
+4	6,000	0,000	0,000	0,000	0,000	0,000
+-       4,600   0,001   2,848   0,003   0,004   0,133
+</example>
+
+</method>

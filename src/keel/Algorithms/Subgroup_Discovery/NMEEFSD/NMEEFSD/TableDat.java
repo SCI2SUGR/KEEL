@@ -35,7 +35,7 @@
  * </p>
  */
 
-package NMEEFSD;
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import keel.Dataset.*;
 
@@ -250,4 +250,3 @@ public class TableDat {
     }
 
 }
-

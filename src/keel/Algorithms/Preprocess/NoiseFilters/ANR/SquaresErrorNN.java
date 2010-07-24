@@ -67,4 +67,3 @@ public class SquaresErrorNN extends FUN {
     public double evaluate(double x[][][]) { return Net.f(x); }
     
 }
-

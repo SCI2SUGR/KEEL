@@ -37,7 +37,7 @@
  * </p>
  */
 
-package MESDIF;
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
 import keel.Dataset.*;
 
@@ -273,4 +273,3 @@ public class TableDat {
     }
 
 }
-

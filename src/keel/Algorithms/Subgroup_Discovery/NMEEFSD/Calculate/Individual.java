@@ -503,4 +503,3 @@ public class Individual {
    
     
 }
-

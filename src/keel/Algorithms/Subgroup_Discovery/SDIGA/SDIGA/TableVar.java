@@ -37,7 +37,7 @@
  * </p>
  */
 
-package SDIGA;
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
 
 import keel.Dataset.*;
 import org.core.*;
@@ -594,4 +594,3 @@ public class TableVar {
     }
 
 }
-

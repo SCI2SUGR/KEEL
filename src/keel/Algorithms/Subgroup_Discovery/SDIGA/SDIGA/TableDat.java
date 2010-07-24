@@ -37,7 +37,7 @@
  * </p>
  */
 
-package SDIGA;
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
 
 import keel.Dataset.*;
 
@@ -273,4 +273,3 @@ public class TableDat {
     }
 
 }
-

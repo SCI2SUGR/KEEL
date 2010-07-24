@@ -74,4 +74,3 @@ public class Param {
         n_etiq = nlabels;
     }
 }
-
