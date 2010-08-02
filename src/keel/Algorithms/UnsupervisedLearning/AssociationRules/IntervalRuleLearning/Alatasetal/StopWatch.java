@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.UnsupervisedAlatasetal;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Alatasetal;
 
 import java.util.*;
 
@@ -124,4 +124,3 @@ public class StopWatch {
     return ((millis2.longValue() - millis1.longValue())*1.0/1000);
   }
 }
-

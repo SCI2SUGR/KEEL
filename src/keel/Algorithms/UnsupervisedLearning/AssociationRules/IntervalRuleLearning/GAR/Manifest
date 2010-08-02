@@ -1,1 +1,2 @@
-Main-Class: keel.Algorithms.Fuzzy_Rule_Learning.Genetic.UnsupervisedGAR.Main
+Main-Class: keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GAR.Main
+

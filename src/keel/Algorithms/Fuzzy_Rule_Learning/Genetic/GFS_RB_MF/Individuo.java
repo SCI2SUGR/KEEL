@@ -60,7 +60,7 @@ public class Individuo implements Comparable{
     this.cromosoma1 = new int[n_reglas];
     this.cromosoma2 = new double[n_variables*n_etiquetas*3]; //tres puntos por etiqueta
     for (int i = 0; i < cromosoma1.length; i++){
-      cromosoma1[i] = Randomize.RandintClosed(0,n_etiquetas); //para las n_posibles salidas
+      cromosoma1[i] = Randomize.RandintClosed(0,n_etiquetas-1); //para las n_posibles salidas
     }
     int k = 0;
     for (int i = 0; i < n_variables; i++){
@@ -91,7 +91,7 @@ public class Individuo implements Comparable{
     this.cromosoma1 = new int[n_reglas];
     this.cromosoma2 = new double[n_variables*n_etiquetas*3];
     for (int i = 0; i < cromosoma1.length; i++){
-      cromosoma1[i] = Randomize.RandintClosed(0,n_etiquetas); //para las n_posibles salidas
+      cromosoma1[i] = Randomize.RandintClosed(0,n_etiquetas-1); //para las n_posibles salidas
     }
     for (int i = 0; i < cromosoma2.length; i++){
       cromosoma2[i] = min[i] + (max[i] - min[i]) * Randomize.Rand();
@@ -158,12 +158,12 @@ public class Individuo implements Comparable{
   public void mutar(double probMut){
     for (int i = 0; i < cromosoma1.length; i++){
       if (Randomize.Rand() < probMut){
-        cromosoma1[i] = Randomize.RandintClosed(0,n_etiquetas);
+        cromosoma1[i] = Randomize.RandintClosed(0,n_etiquetas-1);
       }
     }
     for (int i = 0; i < cromosoma2.length; i++){
       if (Randomize.Rand() < probMut){
-        cromosoma2[i] = Randomize.RanddoubleClosed(min[i],max[i]);
+        cromosoma2[i] = Randomize.RanddoubleClosed(min[i],max[i]-1);
       }
     }
 
@@ -200,4 +200,3 @@ public class Individuo implements Comparable{
   }
 
 }
-

@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.UnsupervisedGAR;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GAR;
 
 import java.util.*;
 import org.core.Randomize;
@@ -608,4 +608,3 @@ public class GARProcess
 	  return (avg / g.length);
   }  
 }
-

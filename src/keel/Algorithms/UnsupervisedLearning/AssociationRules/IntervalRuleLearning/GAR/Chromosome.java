@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.UnsupervisedGAR;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GAR;
 
 /*
  * Note: this class has a natural ordering that is inconsistent with equals.
@@ -147,4 +147,3 @@ public class Chromosome implements Comparable {
 		}
 	}
 }
-

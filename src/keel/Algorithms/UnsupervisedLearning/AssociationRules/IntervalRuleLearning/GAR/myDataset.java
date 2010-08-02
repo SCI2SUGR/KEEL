@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.UnsupervisedGAR;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GAR;
 
 /**
  * <p>Title: Dataset</p>

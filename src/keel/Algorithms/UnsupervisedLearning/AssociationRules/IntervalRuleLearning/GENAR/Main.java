@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.UnsupervisedGENAR;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GENAR;
 
 
 /**
@@ -81,4 +81,3 @@ public class Main {
         sw.print();
     }
 }
-

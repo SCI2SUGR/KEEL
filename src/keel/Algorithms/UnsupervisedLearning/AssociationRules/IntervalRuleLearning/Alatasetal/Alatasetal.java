@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.UnsupervisedAlatasetal;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Alatasetal;
 
 /**
  * <p>
@@ -213,4 +213,3 @@ public class Alatasetal {
     }    
 
 }
-

@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.UnsupervisedGENAR;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GENAR;
 
 
 import java.util.StringTokenizer;
@@ -182,4 +182,3 @@ public class parseParameters {
     }
 
 }
-

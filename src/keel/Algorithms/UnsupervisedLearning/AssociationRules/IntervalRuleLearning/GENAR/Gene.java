@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.UnsupervisedGENAR;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GENAR;
 
 
 public class Gene {
@@ -92,4 +92,3 @@ public class Gene {
 		return "A: " + attr + "; T: " + type + "; L: " + l + "; U: " + u;
 	}
 }
-
