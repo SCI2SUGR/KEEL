@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: Randomize.java
+ *
+ * Random generator
+ *
+ * @author Written by Admin 4/8/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.util.*;
@@ -74,4 +84,3 @@ class Randomize {
         return (low + (high - low) * Rand());
     }
 }
-

@@ -28,10 +28,18 @@
 **********************************************************************/
 
 /**
- * @author Modified Joaquín Derrac 20-5-2010
+ *
+ * File: AlgorithmXML.java
+ *
+ * Management of XML algorithm sheets
+ *
+ * @author Written by Admin 4/8/2009
+ * @author Modified Joaquin Derrac 20-5-2010
  * @author Modified Amelia Zafra 28-6-2010
+ * @version 1.0
+ * @since JDK1.5
  */
- package keel.GraphInterKeel.experiments;
+package keel.GraphInterKeel.experiments;
 
 import org.jdom.Element;
 
@@ -48,7 +56,7 @@ public class AlgorithmXML implements Comparable {
     public boolean m_bInputMissing;
     public boolean m_bInputMultiClass;
     public boolean m_bInputMultiOutput;
-	public boolean m_bInputMIL;
+    public boolean m_bInputMIL;
     public boolean m_bOutputContinuous;
     public boolean m_bOutputInteger;
     public boolean m_bOutputNominal;
@@ -56,7 +64,6 @@ public class AlgorithmXML implements Comparable {
     public boolean m_bOutputMissing;
     public boolean m_bOutputMultiClass;
     public boolean m_bOutputMultiOutput;
-
 
     /**
      * Builder
@@ -85,6 +92,11 @@ public class AlgorithmXML implements Comparable {
 
     }
 
+    /**
+     * Gets input variables type
+     *
+     * @param definition Definition element
+     */
     private void getInputVariables(Element definition) {
         String value;
 
@@ -142,15 +154,20 @@ public class AlgorithmXML implements Comparable {
         } else {
             m_bInputMultiOutput = false;
         }
-    //System.out.println ("      > Input MultiOutput: "+m_bInputMultiOutput );
-		value = definition.getChildText("multiinstance");
-        if ((value!= null) && value.equalsIgnoreCase("yes")) {
+        //System.out.println ("      > Input MultiOutput: "+m_bInputMultiOutput );
+        value = definition.getChildText("multiinstance");
+        if ((value != null) && value.equalsIgnoreCase("yes")) {
             m_bInputMIL = true;
         } else {
             m_bInputMIL = false;
         }
     } // end getInputVariables
 
+    /**
+     * Gets output variables type
+     *
+     * @param definition Definition element
+     */
     private void getOutputVariables(Element definition) {
         String value;
 
@@ -211,25 +228,25 @@ public class AlgorithmXML implements Comparable {
     //System.out.println ("      > Output MultiOutput: "+m_bOutputMultiOutput );
     } //end getOutputVariables
 
-        /**
+    /**
      * Implements the lexicographic order
+     *
      * @param o Object to compare
      * @return The lexicographic order
      */
     public int compareTo(Object o) {
         AlgorithmXML alg = (AlgorithmXML) o;
 
-        String familyOwn=this.family;
-        String familyext=alg.family;
+        String familyOwn = this.family;
+        String familyext = alg.family;
 
         int result = familyOwn.toLowerCase().compareTo(familyext.toLowerCase());
 
-        if(result!=0){
+        if (result != 0) {
             return result;
-        }else{
+        } else {
             return this.name.toLowerCase().compareTo(alg.name.toLowerCase());
         }
 
     }
 }
-

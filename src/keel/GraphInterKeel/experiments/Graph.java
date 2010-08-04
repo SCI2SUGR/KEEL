@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -28,8 +28,15 @@
 **********************************************************************/
 
 /**
+ *
+ * File: Graph.java
+ *
+ * The graph of the experiment
+ *
  * @author Juli�n Luengo Mart�n (modifications 19/04/2009)
  * @author Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
+ * @version 1.0
+ * @since JDK1.5
  */
 package keel.GraphInterKeel.experiments;
 
@@ -49,6 +56,9 @@ public class Graph implements Serializable {
     private int type;
     public int objective;
 
+    /**
+     * Builder
+     */
     public Graph() {
         nodes = new Vector();
         arcs = new Vector();
@@ -57,7 +67,7 @@ public class Graph implements Serializable {
         //Old seed mode, generated from the system uptime
         /*seed = System.currentTimeMillis();
         if (seed % 2 == 0) {
-            seed += 1;
+        seed += 1;
         }*/
         //new seed mode: generated statically
         seed = 12345678;
@@ -113,8 +123,7 @@ public class Graph implements Serializable {
     public int getType() {
         return type;
     }
-    
-  
+
     /**
      * Sets the seed of the graph (i.e. the seed of the experiment)
      * @param _seed the new seed
@@ -186,21 +195,24 @@ public class Graph implements Serializable {
         modified = true;
     }
 
-  /*   public void dropNodeLQD(Vector<Integer> N) {
-         System.out.println("entramos en borrar un nodo");
+    /*   public void dropNodeLQD(Vector<Integer> N) {
+    System.out.println("entramos en borrar un nodo");
 
-         System.out.println("el tamaño de nodos es "+this.numNodes());
-         for(int i=0;i<N.size();i++)
-         {
-            nodes.removeElementAt(N.get(i));
-            System.out.println("el tamaño de nodos es "+this.numNodes());
+    System.out.println("el tamaño de nodos es "+this.numNodes());
+    for(int i=0;i<N.size();i++)
+    {
+    nodes.removeElementAt(N.get(i));
+    System.out.println("el tamaño de nodos es "+this.numNodes());
     }
 
 
 
     }*/
-
-     public void dropNodeLQD_move(int N) {
+    /**
+     * Drop node
+     * @param N Id of the node
+     */
+    public void dropNodeLQD_move(int N) {
 
         nodes.removeElementAt(N);
     }
@@ -231,141 +243,140 @@ public class Graph implements Serializable {
         arcs.removeElementAt(i);
         modified = true;
     }
-        
-      public int next_arc(int id_node)
-      {
+
+    /**
+     * Search for the next arc
+     * @param id_node Id of the initial node
+     * @return Id of the arc
+     */
+    public int next_arc(int id_node) {
 
 
-         for (int i = numArcs() - 1; i >= 0; i--)
-         {
+        for (int i = numArcs() - 1; i >= 0; i--) {
 
             Arc a = getArcAt(i);
-            if (a.getSource() == id_node)
+            if (a.getSource() == id_node) {
                 return i;
-    }
-    
-         return -1;
+            }
+        }
+
+        return -1;
     }
 
-    public void dropArcLQD(int ar) 
-    {
+    /**
+     * Drop arc
+     * @param ar Arc to remove
+     */
+    public void dropArcLQD(int ar) {
         //System.out.println("entramos en borrar un arco");
         Arc a = (Arc) arcs.elementAt(ar);
         //We have to erase the connection between the source node 
         //and destination node
         //int index_origen = a.getSource();
-        boolean more=false;
+        boolean more = false;
         //int index_destino = a.getDestination();
-        System.out.println("el numero de arcos es empieze "+numArcs());
-        System.out.println("el numero de nods es "+numNodes());
-        
+        System.out.println("el numero de arcos es empieze " + numArcs());
+        System.out.println("el numero de nods es " + numNodes());
 
-        System.out.println("el nodo origen es "+a.getSource());
-        System.out.println("el nodo destino  es "+a.getDestination());
+
+        System.out.println("el nodo origen es " + a.getSource());
+        System.out.println("el nodo destino  es " + a.getDestination());
 
         //We found the arc in the way
-        System.out.println("el arco a borrar es "+ar);
+        System.out.println("el arco a borrar es " + ar);
         //remove_arc.addElement(ar);
-         for (int i = this.numNodes() - 1; (i >= 0); i--) 
-         {
+        for (int i = this.numNodes() - 1; (i >= 0); i--) {
             //if(i== a.getDestination())
-              if(this.getNodeAt(i).id== a.getDestination())
-             {
-                System.out.println("el nodo destino del arco es "+this.getNodeAt(i).id);
+            if (this.getNodeAt(i).id == a.getDestination()) {
+                System.out.println("el nodo destino del arco es " + this.getNodeAt(i).id);
                 //Remove the data of the node due to the conection is removed
                 Node destination = this.getNodeAt(i);
-                System.out.println("The destination node is "+ destination.dsc.getName(0)+ " y tamaño de enalces "+destination.dsc.arg.size());
+                System.out.println("The destination node is " + destination.dsc.getName(0) + " y tamaño de enalces " + destination.dsc.arg.size());
                 //we have to remove the information of the source node in this node.
-                int eliminated=-1;
-                for(int n=0;n<destination.dsc.arg.size();n++)
-                {
-                    System.out.println("realacion con "+destination.dsc.arg.get(n).before.id+" POSCIION "+n);
+                int eliminated = -1;
+                for (int n = 0; n < destination.dsc.arg.size(); n++) {
+                    System.out.println("realacion con " + destination.dsc.arg.get(n).before.id + " POSCIION " + n);
                     //destination.dsc.arg.get(n).information();
-                    System.out.println("el id del nodo "+  a.getSource());
+                    System.out.println("el id del nodo " + a.getSource());
                     //if(destination.dsc.arg.get(n).before.id == this.getNodeAt(a.getSource()).id)
-                    if(destination.dsc.arg.get(n).before.id == a.getSource())
-                    {
-                        eliminated=n;
+                    if (destination.dsc.arg.get(n).before.id == a.getSource()) {
+                        eliminated = n;
                         System.out.println("entra en esto de false");
-                        //break;
-                    }
-                    else
-                    {
+                    //break;
+                    } else {
                         System.out.println("entra en esto de true");
-                        more=true;
+                        more = true;
                     }
 
                 }
-                if(eliminated!=-1)
+                if (eliminated != -1) {
                     destination.dsc.arg.remove(eliminated);
+                }
 
 
                 //the next arc from the destination node
 
                 arcs.removeElementAt(ar);
-                System.out.println("el numero de arcos es final "+numArcs());
+                System.out.println("el numero de arcos es final " + numArcs());
                 //int n_ar=next_arc(i);
-                int n_ar=next_arc(this.getNodeAt(i).id);
-                if(n_ar!=-1)
+                int n_ar = next_arc(this.getNodeAt(i).id);
+                if (n_ar != -1) {
                     dropArcLQD(n_ar);
+                }
 
 
-                if(more==false)
-                {
+                if (more == false) {
                     nodes.removeElementAt(i);
                 }
 
-                System.out.println("el numero de nods finalll es "+numNodes());
+                System.out.println("el numero de nods finalll es " + numNodes());
 
                 break;
-             }
-         }
-        
+            }
+        }
 
 
-
-
-      /*  for (int i = this.numNodes() - 1; (i >= 0); i--)
-            {
-            if(this.getNodeAt(i).id== index_destino)
-            {
-                Node destination = this.getNodeAt(i);
-                System.out.println("The destination node is "+ destination.dsc.getName(0));
-                //we have to remove the information of the source node in this node.
-                for(int n=0;n<destination.dsc.arg.size();n++)
-                {
-                    destination.dsc.arg.get(n).information();
-                    System.out.println("realacion con "+destination.dsc.arg.get(n).before.id);
-                    if(destination.dsc.arg.get(n).before.id == index_origen)
-                    {
-                        destination.dsc.arg.remove(n);
-                        //break;
-                    }
-                    else
-                    {
-                        System.out.println("si estuviera realacionado con otro si que entra");
-                        more=true;
-                }
-                }
-                
-                break;
-            }           
-         }
-        
-        arcs.removeElementAt(ar);
-        if(more==false)
-        {
-            System.out.println("The node is not connected with other nodes, so we have to erase this node");
-            remove_node.addElement(index_destino);
-            next_arc(index_destino);
-        
+    /*  for (int i = this.numNodes() - 1; (i >= 0); i--)
+    {
+    if(this.getNodeAt(i).id== index_destino)
+    {
+    Node destination = this.getNodeAt(i);
+    System.out.println("The destination node is "+ destination.dsc.getName(0));
+    //we have to remove the information of the source node in this node.
+    for(int n=0;n<destination.dsc.arg.size();n++)
+    {
+    destination.dsc.arg.get(n).information();
+    System.out.println("realacion con "+destination.dsc.arg.get(n).before.id);
+    if(destination.dsc.arg.get(n).before.id == index_origen)
+    {
+    destination.dsc.arg.remove(n);
+    //break;
+    }
+    else
+    {
+    System.out.println("si estuviera realacionado con otro si que entra");
+    more=true;
+    }
     }
 
-         dropNodeLQD(remove_node);
-       */
+    break;
+    }
+    }
+
+    arcs.removeElementAt(ar);
+    if(more==false)
+    {
+    System.out.println("The node is not connected with other nodes, so we have to erase this node");
+    remove_node.addElement(index_destino);
+    next_arc(index_destino);
 
     }
-   
+
+    dropNodeLQD(remove_node);
+     */
+
+    }
+
     /**
      * Deletes the indexed arc, then insert a new one
      * @param i the index of the arc to be deleted
@@ -537,8 +548,12 @@ public class Graph implements Serializable {
         return dsc;
     }
 
+    /**
+     * Replace a node
+     * @param position Position in the graph
+     * @param n New node
+     */
     public void replaceNode(int position, Node n) {
         nodes.setElementAt(n, position);
     }
 }
-

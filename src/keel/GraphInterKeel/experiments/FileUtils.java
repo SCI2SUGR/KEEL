@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: FileUtils.java
+ *
+ * A class for managing files
+ *
+ * @author Written by Admin 4/8/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.io.*;
@@ -284,4 +294,3 @@ public class FileUtils {
         file.delete();
     }
 }
-

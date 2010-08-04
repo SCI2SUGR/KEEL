@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: DataSet.java
+ *
+ * This Class shows the dialog for changing the random generator seed
+ *
+ * @author Written by Admin 4/8/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -36,7 +46,7 @@ import java.awt.event.*;
 public class DialogSeed extends JDialog {
 
     JPanel panel1 = new JPanel() {
-
+        @Override
         public void paintComponent(Graphics g) {
             //  ImageIcon img = new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/experimentos/seed.jpg"));
             //g.drawImage(img.getImage(), 0, 0, null);
@@ -48,25 +58,37 @@ public class DialogSeed extends JDialog {
     JButton jButton1 = new JButton();
     JButton jButton2 = new JButton();
     Experiments parent;
-    //ImageIcon image1 = new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/ico/aceptar.gif"));
-    //ImageIcon image2 = new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/ico/cancelar.gif"));
 
+    /**
+     * Builder
+     *
+     * @param frame Parent frame
+     * @param title Title of the frame
+     * @param modal Modal status
+     */
     public DialogSeed(Experiments frame, String title, boolean modal) {
         super(frame, title, modal);
         parent = frame;
         try {
-            jbInit();
+            initializeRandom();
             pack();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
+    /**
+     * Default builder
+     */
     public DialogSeed() {
         this(null, "", false);
     }
 
-    private void jbInit() throws Exception {
+    /**
+     * Initialize
+     * @throws java.lang.Exception
+     */
+    private void initializeRandom() throws Exception {
         panel1.setLayout(null);
         this.setSize(new Dimension(350, 200));
         panel1.setBackground(new Color(225, 225, 225));
@@ -82,17 +104,8 @@ public class DialogSeed extends JDialog {
         jCheckBox1.setText("Automatic (Random Seed)");
         jCheckBox1.setBounds(new Rectangle(90, 49, 155, 23));
         jCheckBox1.addActionListener(new DialogSemilla_jCheckBox1_actionAdapter(this));
-        //Seed should not be automatic by default
-        /*if (parent.experimentGraph.autoSeed) {
-            jTextField1.setEnabled(false);
-            jCheckBox1.setSelected(true);
-        } else {
-            jTextField1.setEnabled(true);
-            jCheckBox1.setSelected(false);
-        }*/
         jTextField1.setEnabled(true);
         jCheckBox1.setSelected(false);
-        //
         jTextField1.setFont(new java.awt.Font("Arial", 0, 11));
         jTextField1.setText(Long.toString(parent.experimentGraph.getSeed()));
         jTextField1.setBounds(new Rectangle(97, 84, 143, 24));
@@ -101,7 +114,6 @@ public class DialogSeed extends JDialog {
         jButton1.setFont(new java.awt.Font("Arial", 0, 11));
         jButton1.setOpaque(false);
         jButton1.setToolTipText("Apply changes");
-        //jButton1.setIcon(image1);
         jButton1.setMnemonic('A');
         jButton1.setText("Apply");
         jButton1.addActionListener(new DialogSemilla_jButton1_actionAdapter(this));
@@ -110,7 +122,6 @@ public class DialogSeed extends JDialog {
         jButton2.setFont(new java.awt.Font("Arial", 0, 11));
         jButton2.setOpaque(false);
         jButton2.setToolTipText("Don\'t apply the changes");
-        //jButton2.setIcon(image2);
         jButton2.setMnemonic('C');
         jButton2.setText("Cancel");
         jButton2.addActionListener(new DialogSemilla_jButton2_actionAdapter(this));
@@ -123,6 +134,10 @@ public class DialogSeed extends JDialog {
         this.getContentPane().add(panel1, BorderLayout.SOUTH);
     }
 
+    /**
+     * Sets autoSeed
+     * @param e Event
+     */
     void jCheckBox1_actionPerformed(ActionEvent e) {
         if (jCheckBox1.isSelected()) {
             parent.experimentGraph.autoSeed = true;
@@ -133,6 +148,10 @@ public class DialogSeed extends JDialog {
         }
     }
 
+    /**
+     * Entering new seed
+     * @param e Event
+     */
     void jButton1_actionPerformed(ActionEvent e) {
         try {
             parent.experimentGraph.setSeed(Long.parseLong(jTextField1.getText()));
@@ -143,6 +162,10 @@ public class DialogSeed extends JDialog {
 
     }
 
+    /**
+     * Closing button
+     * @param e Event
+     */
     void jButton2_actionPerformed(ActionEvent e) {
         this.dispose();
     }
@@ -189,4 +212,3 @@ class DialogSemilla_jButton2_actionAdapter
         adaptee.jButton2_actionPerformed(e);
     }
 }
-

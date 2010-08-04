@@ -27,32 +27,41 @@
   
 **********************************************************************/
 
-/*
- * ExecutionOptions2.java
+/**
  *
- * Created on 25 de marzo de 2009, 11:33
- * 
- * @author Ignacio Robles
+ * File: ExecutionOptions.java
+ *
+ * A class for managing execution options
+ *
+ * @author Written by Ignacio Robles 25-3-2009
+ * @version 1.0
+ * @since JDK1.5
  */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
 import javax.swing.*;
 
-/**
- * This frame contains the execution options for the JVM
- * @author  robles
- */
 public class ExecutionOptions extends javax.swing.JDialog {
 
     Experiments parentExec;
 
-    /** Creates new form ExecutionOptions2 */
+    /**
+     * Builder
+     * @param parent Parent frame
+     * @param modal Modal status
+     */
     public ExecutionOptions(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
+    /**
+     *
+     * @param owner Parent frame
+     * @param title Title of the frame
+     * @param modal Modal status
+     */
     public ExecutionOptions(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
         parentExec = (Experiments) owner;
@@ -140,6 +149,10 @@ public class ExecutionOptions extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Changing heap size
+     * @param evt Event
+     */
 private void acceptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptButtonActionPerformed
     if (Integer.parseInt(memoryField.getText()) < 32) {
         JOptionPane.showMessageDialog(null, "The Heap Size value must be 32 MB at least", "Parameter Error", JOptionPane.ERROR_MESSAGE);
@@ -151,25 +164,13 @@ private void acceptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
 }//GEN-LAST:event_acceptButtonActionPerformed
 
+    /**
+     * Closing frame
+     * @param evt Event
+     */
 private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
     this.dispose();
 }//GEN-LAST:event_cancelButtonActionPerformed
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                ExecutionOptions2 dialog = new ExecutionOptions2(new javax.swing.JFrame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptButton;
@@ -177,6 +178,4 @@ private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JTextField memoryField;
     private javax.swing.JLabel memoryLabel;
     // End of variables declaration//GEN-END:variables
-    
 }
-

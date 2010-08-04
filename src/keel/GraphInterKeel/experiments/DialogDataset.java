@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,17 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: DialogDataset.java
+ *
+ * This Class manages dialog for modifiying data sets
+ *
+ * @author Written by Admin 4/8/2008
+ * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of C√≥rdoba) 7/07/2009
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -38,25 +49,13 @@ import java.util.Arrays;
 
 import keel.GraphInterKeel.menu.Frame;
 
-/**
- * <p>
- * @author not attributable
- * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of C√≥rdoba) 7/07/2009
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
-
-
 public class DialogDataset extends JDialog {
 
-    private String currentPath="";
-
+    private String currentPath = "";
     JPanel panel1 = new JPanel() {
 
+        @Override
         public void paintComponent(Graphics g) {
-            //ImageIcon img = new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/datasets.jpg"));
-            //g.drawImage(img.getImage(), 0, 0, null);
             super.paintComponent(g);
         }
     };
@@ -98,6 +97,15 @@ public class DialogDataset extends JDialog {
     JLabel jLabel5 = new JLabel();
     int layer;
 
+    /**
+     * Builder
+     *
+     * @param frame Parent frame
+     * @param title Title
+     * @param modal Modal status
+     * @param data Data set selected
+     * @param layer Active layer
+     */
     public DialogDataset(Experiments frame, String title, boolean modal,
             DataSet data, int layer) {
         super(frame, title, modal);
@@ -122,18 +130,25 @@ public class DialogDataset extends JDialog {
          ***************  EDUCATIONAL KEEL  ****************************
          **************************************************************/
         try {
-            jbInit();
+            initDialog();
             pack();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
+    /**
+     * Default builder
+     */
     public DialogDataset() {
         this(null, "", false, null, 0);
     }
 
-    private void jbInit() throws Exception {
+    /**
+     * Initialize
+     * @throws java.lang.Exception
+     */
+    private void initDialog() throws Exception {
         panel1.setLayout(null);
         jScrollPane2.getViewport().setBackground(new Color(225, 225, 225));
         jScrollPane2.setFont(new java.awt.Font("Arial", 0, 11));
@@ -274,6 +289,10 @@ public class DialogDataset extends JDialog {
         jList2.setListData(aList.toArray());
     }
 
+    /**
+     * Add button
+     * @param e Event
+     */
     void anadir_actionPerformed(ActionEvent e) {
         // add pair of files to the list
         if ((training.getText().length() != 0) && (testing.getText().length() != 0)) {
@@ -294,6 +313,10 @@ public class DialogDataset extends JDialog {
         }
     }
 
+    /**
+     * Drop button
+     * @param e Event
+     */
     void quitar_actionPerformed(ActionEvent e) {
         // remove selected items
         Object[] sel = jList2.getSelectedValues();
@@ -307,6 +330,10 @@ public class DialogDataset extends JDialog {
         }
     }
 
+    /**
+     * Drop all button
+     * @param e Event
+     */
     void quitar_todo_actionPerformed(ActionEvent e) {
         // remove all items
         jList2.setSelectionInterval(0, aList.size() - 1);
@@ -322,6 +349,10 @@ public class DialogDataset extends JDialog {
         jLabel5.setEnabled(false);
     }
 
+    /**
+     * Cancel button
+     * @param e Event
+     */
     void cancelar_actionPerformed(ActionEvent e) {
         // don't save changes
         this.setVisible(false);
@@ -330,6 +361,10 @@ public class DialogDataset extends JDialog {
     /***************************************************************
      ***************  EDUCATIONAL KEEL  ****************************
      **************************************************************/
+    /**
+     * Accept button
+     * @param e
+     */
     void aceptar_actionPerformed(ActionEvent e) {
         if (Frame.buttonPressed == 0) //Button Experiments pressed
         {
@@ -339,11 +374,11 @@ public class DialogDataset extends JDialog {
                     data.tableVector.setElementAt((Vector) (((Vector) someLists.elementAt(i)).clone()), i);
                 }
             } else {
-                data.tableVector.setElementAt((Vector) aList.clone(),layer);
+                data.tableVector.setElementAt((Vector) aList.clone(), layer);
             }
             //rplace the old node
             this.setVisible(false);
-            
+
         } else //Button Teaching pressed
         {
             //Window of partitions is opened
@@ -386,17 +421,23 @@ public class DialogDataset extends JDialog {
                 this.setVisible(false);
             }
         }
-
-
     }
 
     /***************************************************************
      ***************  EDUCATIONAL KEEL  ****************************
      **************************************************************/
+    /**
+     * Closing window
+     * @param e Event
+     */
     void this_windowClosing(WindowEvent e) {
         // don't save changes
     }
 
+    /**
+     * Find training files
+     * @param e Event
+     */
     void busca_tra_actionPerformed(ActionEvent e) {
 
         JFileChooser f;
@@ -412,16 +453,20 @@ public class DialogDataset extends JDialog {
         int opcion = f.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION) {
             training.setText(f.getSelectedFile().getAbsolutePath());
-            currentPath=f.getSelectedFile().getAbsolutePath();
+            currentPath = f.getSelectedFile().getAbsolutePath();
         }
     }
 
+    /**
+     * Find test files
+     * @param e Event
+     */
     void busca_tst_actionPerformed(ActionEvent e) {
         // select test file
         JFileChooser f;
-        
+
         f = new JFileChooser(currentPath);
-        
+
         f.setDialogTitle("Test file");
         String exten[] = {
             "dat"};
@@ -430,10 +475,14 @@ public class DialogDataset extends JDialog {
         int opcion = f.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION) {
             testing.setText(f.getSelectedFile().getAbsolutePath());
-            currentPath=f.getSelectedFile().getAbsolutePath();
+            currentPath = f.getSelectedFile().getAbsolutePath();
         }
     }
 
+    /**
+     * Adding 10-folds file
+     * @param e Event
+     */
     void anadir10_actionPerformed(ActionEvent e) {
         // add 10 fold cross validation files
         int prevLayer = Layer.layerActivo; //Julian** - store the current layer to restore it later
@@ -485,6 +534,10 @@ public class DialogDataset extends JDialog {
         Layer.layerActivo = prevLayer; //restore the previous layer
     }
 
+    /**
+     * Adding 5-folds file
+     * @param e Event
+     */
     void anadir5_actionPerformed(ActionEvent e) {
         // add 5x2 cross validation files
         try {
@@ -532,6 +585,10 @@ public class DialogDataset extends JDialog {
         }
     }
 
+    /**
+     * Adding k-folds file
+     * @param e Event
+     */
     void anadir11_actionPerformed(ActionEvent e) {
         // add K fold cross validation files
 
@@ -611,6 +668,10 @@ public class DialogDataset extends JDialog {
         }
     }
 
+    /**
+     * Adding 5X2-folds file
+     * @param e Event
+     */
     void anadir12_actionPerformed(ActionEvent e) {
         // add 5x2 cross validation files
         try {
@@ -768,6 +829,7 @@ class DialogDataset_this_windowAdapter
         this.adaptee = adaptee;
     }
 
+    @Override
     public void windowClosing(WindowEvent e) {
         adaptee.this_windowClosing(e);
     }
@@ -827,4 +889,3 @@ class DialogDataset_anadir11_actionAdapter implements java.awt.event.ActionListe
         adaptee.anadir11_actionPerformed(e);
     }
 }
-

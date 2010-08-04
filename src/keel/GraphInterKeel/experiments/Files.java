@@ -27,19 +27,19 @@
   
 **********************************************************************/
 
-package keel.GraphInterKeel.experiments;
-
-/*
- * Created on 16-Jun-2004
+/**
+ *
+ * File: Files.java
  *
  * Class for use data files
  *
+ * @author Jesus Alcala Fernandez
+ * @version 1.0
+ * @since JDK1.5
  */
-/**
- * @author Jes�s Alcal� Fern�ndez
- *
- *
- */
+
+package keel.GraphInterKeel.experiments;
+
 import java.io.*;
 
 public class Files {
@@ -137,8 +137,8 @@ public class Files {
     /**
      * Appends a text to a file
      *
-     * @param name
-     * @param text
+     * @param name Name of the file
+     * @param text Text to add
      */
     public static void addToFile(String name, String text) {
         try {
@@ -154,4 +154,3 @@ public class Files {
         }
     }
 }
-

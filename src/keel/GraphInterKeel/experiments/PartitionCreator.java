@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: PartitionCreator.java
+ *
+ * A class for performing partitions of data sets
+ *
+ * @author Written by Ignacio Robles (29-4-2009)
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import javax.swing.SwingWorker;
@@ -34,13 +44,9 @@ import java.util.Vector;
 import java.io.File;
 import java.util.List;
 import javax.swing.ProgressMonitor;
-
 import keel.GraphInterKeel.datacf.partitionData.PartitionGenerator;
 
-/**
- *
- * @author Ignacio Robles (29-4-2009)
- */
+
 public class PartitionCreator extends SwingWorker<Boolean, Integer> {
 
     private DataSet ds;
@@ -48,6 +54,12 @@ public class PartitionCreator extends SwingWorker<Boolean, Integer> {
     private Experiments parent;
     private ProgressMonitor pm;
 
+    /**
+     * Builder
+     * @param parent Parent frame
+     * @param ds Data set node
+     * @param pm Progress monitor
+     */
     PartitionCreator(Experiments parent, DataSet ds, ProgressMonitor pm) {
         super();
         this.ds = ds;
@@ -56,12 +68,20 @@ public class PartitionCreator extends SwingWorker<Boolean, Integer> {
         this.pm = pm;
     }
 
+    /**
+     * Set process
+     * @param progress List of processes
+     */
     @Override
     protected void process(List<Integer> progress) {
         Integer p = new Integer(progress.get(progress.size() - 1));
         pm.setProgress(p.intValue());
     }
 
+    /**
+     * Do partitions
+     * @return Finishing
+     */
     @Override
     protected Boolean doInBackground() {
         return doPartitions();
@@ -123,4 +143,3 @@ public class PartitionCreator extends SwingWorker<Boolean, Integer> {
         }
     }
 }
-

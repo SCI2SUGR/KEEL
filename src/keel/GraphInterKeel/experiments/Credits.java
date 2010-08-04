@@ -27,10 +27,17 @@
   
 **********************************************************************/
 
-package keel.GraphInterKeel.experiments;
-/*
-File:	Credits.java
+/**
+ *
+ * File: Credits.java
+ *
+ * Showing the credits of the application
+ *
+ * @author Written by Admin 4/8/2010
+ * @version 1.0
+ * @since JDK1.5
  */
+package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -49,16 +56,17 @@ public class Credits extends JFrame implements ActionListener {
     protected static int aboutLeft = 350;
     protected Font titleFont,  bodyFont,  miniFont,  subtFont;
     protected ResourceBundle resbundle;
-
     protected Experiments parent;
 
     /**
      * Default builder
+     *
+     * @param itParent Parent frame
      */
     public Credits(Experiments itParent) {
         super("");
 
-        parent=itParent;
+        parent = itParent;
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(
                 this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/logo.gif")));
         this.setTitle("About ...");
@@ -68,8 +76,8 @@ public class Credits extends JFrame implements ActionListener {
 
         // Initialize useful fonts
         titleFont = new Font("Arial", Font.BOLD, 22);
-        
-        
+
+
         if (titleFont == null) {
             titleFont = new Font("Arial", Font.BOLD, 22);
         }
@@ -84,7 +92,7 @@ public class Credits extends JFrame implements ActionListener {
         subtFont = new Font("Arial", Font.BOLD, 14);
         if (subtFont == null) {
             subtFont = new Font("Arial", Font.BOLD, 14);
-            
+
         }
         this.setBackground(new Color(225, 225, 225));
         this.getContentPane().setLayout(new BorderLayout(10, 10));
@@ -99,12 +107,12 @@ public class Credits extends JFrame implements ActionListener {
         aboutLabel[2].setFont(miniFont);
         aboutLabel[3] = new JLabel("and the KEEL project, please visit:");
         aboutLabel[3].setFont(miniFont);
-         
 
-       aboutLabel[4] = new JLabel("http://www.keel.es");
-       aboutLabel[4].setFont(miniFont);
+
+        aboutLabel[4] = new JLabel("http://www.keel.es");
+        aboutLabel[4].setFont(miniFont);
         aboutLabel[4].addMouseListener(new Frame_logotipo_mouseAdapter(this));
-       
+
 
         Panel textPanel2 = new Panel(new GridLayout(labelCount, 1));
         textPanel2.setBackground(new Color(74, 117, 177));
@@ -118,48 +126,66 @@ public class Credits extends JFrame implements ActionListener {
         this.setLocation(aboutLeft, aboutTop);
         this.setSize(aboutWidth, aboutHeight);
         try {
-            jbInit();
+            initCredits();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     class Frame_logotipo_mouseAdapter extends MouseAdapter {
-    private Credits adaptee;
-    Frame_logotipo_mouseAdapter(Credits adaptee) {
-        this.adaptee = adaptee;
+
+        private Credits adaptee;
+
+        Frame_logotipo_mouseAdapter(Credits adaptee) {
+            this.adaptee = adaptee;
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            adaptee.logotipo_mouseEntered(e);
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            adaptee.logotipo_mouseExited(e);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            adaptee.logotipo_mousePressed(e);
+        }
     }
 
-    public void mouseEntered(MouseEvent e) {
-        adaptee.logotipo_mouseEntered(e);
-    }
-
-    public void mouseExited(MouseEvent e) {
-        adaptee.logotipo_mouseExited(e);
-    }
-
-    public void mousePressed(MouseEvent e) {
-        adaptee.logotipo_mousePressed(e);
-    }
-
-}
-    
-    
+    /**
+     * Entering logo
+     *
+     * @param e Event
+     */
     public void logotipo_mouseEntered(MouseEvent e) {
-       this.setCursor(Cursor.HAND_CURSOR);
+        this.setCursor(Cursor.HAND_CURSOR);
     }
 
+    /**
+     * Exiting logo
+     *
+     * @param e Event
+     */
     public void logotipo_mouseExited(MouseEvent e) {
         this.setCursor(Cursor.DEFAULT_CURSOR);
     }
 
+    /**
+     * Pressing logo
+     *
+     * @param e Event
+     */
     public void logotipo_mousePressed(MouseEvent e) {
         BrowserControl.displayURL("http://www.keel.es");
     }
-    
-    
+
     class SymWindow extends java.awt.event.WindowAdapter {
 
+        @Override
         public void windowClosing(java.awt.event.WindowEvent event) {
             parent.setEnabled(true);
             setVisible(false);
@@ -174,14 +200,10 @@ public class Credits extends JFrame implements ActionListener {
         setVisible(false);
     }
 
-    private void jbInit() throws Exception {
-        /*for (int i=0; i<aboutLabel.length; i++)
-        {
-        aboutLabel[i].setFont(new java.awt.Font("Arial", 0, 11));
-        }*/
+    private void initCredits() throws Exception {
 
         this.getContentPane().setBackground(Color.white);
         this.setFont(new java.awt.Font("Arial", 0, 11));
-        
+
     }
 }

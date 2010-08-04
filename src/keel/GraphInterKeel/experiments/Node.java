@@ -28,9 +28,16 @@
 **********************************************************************/
 
 /**
+ *
+ * File: DialogUser.java
+ *
+ * A class for managing user methods
+ *
  * @author Julian Luengo Martin (modifications 19/04/2009)
  * @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010)
  * @author Modified Amelia Zafra 28-6-2010
+ * @version 1.0
+ * @since JDK1.5
  */
 package keel.GraphInterKeel.experiments;
 
@@ -43,13 +50,12 @@ public abstract class Node implements Serializable {
 
     public ExternalObjectDescription dsc;
     public int type;
-    
     public int type_lqd;
-    static final int CRISP=11;
-    static final int LQD=12;
-    static final int LQD_C=13;
-    static final int C_LQD=14;
-    static final int CRISP2=15;
+    static final int CRISP = 11;
+    static final int LQD = 12;
+    static final int LQD_C = 13;
+    static final int C_LQD = 14;
+    static final int CRISP2 = 15;
     public Vector par;
     protected int id;
     protected Point centre;
@@ -83,7 +89,7 @@ public abstract class Node implements Serializable {
     public boolean m_bInputImprecise;
     public boolean m_bInputMultiClass;
     public boolean m_bInputMultiOutput;
-	public boolean m_bInputMIL;
+    public boolean m_bInputMIL;
     public boolean m_bOutputContinuous;
     public boolean m_bOutputInteger;
     public boolean m_bOutputNominal;
@@ -91,7 +97,7 @@ public abstract class Node implements Serializable {
     public boolean m_bOutputImprecise;
     public boolean m_bOutputMultiClass;
     public boolean m_bOutputMultiOutput;
-	public boolean m_bOutputMIL;
+    public boolean m_bOutputMIL;
     public String m_sDatasetHasContinuous;
     public String m_sDatasetHasInteger;
     public String m_sDatasetHasNominal;
@@ -99,25 +105,25 @@ public abstract class Node implements Serializable {
     public String m_sDatasetHasImprecise;
     public String m_sDatasetHasMultiClass;
     public String m_sDatasetHasMultiOutput;
-	public String m_sDatasetHasMIL;
+    public String m_sDatasetHasMIL;
 
-    /*
-    public boolean m_bStateContinuous;
-    public boolean m_bStateInteger;
-    public boolean m_bStateNominal;
-    public boolean m_bStateMissing;
-    public boolean m_bStateImprecise;
-    public boolean m_bStateMultiClass;
-    public boolean m_bStateMultiOutput;
+    /**
+     * Builder
      */
     public Node() {
     }
 
+    /**
+     * Builder
+     * @param mydsc Parent dsc
+     * @param position Position in the graph
+     * @param id Id of the node
+     */
     public Node(ExternalObjectDescription mydsc, Point position, int id) {
         dsc = new ExternalObjectDescription(mydsc);
         centre = new Point(position);
         this.id = id;
-      
+
     }
 
     /**
@@ -143,7 +149,11 @@ public abstract class Node implements Serializable {
     public int getType() {
         return type;
     }
-    
+
+    /**
+     * Gets the type of the node
+     * @return the type of the node
+     */
     public int getTypelqd() {
         return type_lqd;
     }
@@ -155,8 +165,12 @@ public abstract class Node implements Serializable {
     public void setType(int _type) {
         type = _type;
     }
-    
-     public void setTypelqd(int _type) {
+
+    /**
+     * Sets the type of the node
+     * @param _type the new type of the node
+     */
+    public void setTypelqd(int _type) {
         type_lqd = _type;
     }
 
@@ -201,14 +215,13 @@ public abstract class Node implements Serializable {
      * @param objective is the type of data in the Node
      */
     public abstract void draw(Graphics2D g2, boolean select);
-    
+
     /**
      * Show the datasets introduced in the Node
      * @param title is the title of the new form showed
      * */
-     
-    public abstract void contain(String title,int show, Node n,Experiments exp);
-    
+    public abstract void contain(String title, int show, Node n, Experiments exp);
+
     /**
      * Test if the provided point is inside of this node
      * @param point Point to be tested
@@ -218,6 +231,12 @@ public abstract class Node implements Serializable {
         return figure.contains(point);
     }
 
+    /**
+     * Tests if the flow is correct
+     * @param dest Destination node
+     * 
+     * @return True if the flow is correct
+     */
     String isPartialFlowCorrect(Node dest) {
 //	  correctCurrentState(previous);
 
@@ -232,26 +251,21 @@ public abstract class Node implements Serializable {
         String errorMessage = "";
         boolean errorOccurred = false;
 
-        if (dest.type != Node.type_Test && dest.type != Node.type_Visor) 
-        {
+        if (dest.type != Node.type_Test && dest.type != Node.type_Visor) {
 
 
-            if (type == Node.type_Dataset) 
-            {
+            if (type == Node.type_Dataset) {
 
 
-				if (!dest.m_bInputMIL && m_bOutputMIL) 
-                {
+                if (!dest.m_bInputMIL && m_bOutputMIL) {
                     errorMessage = errorMessage + "The data sets '" + m_sDatasetHasMIL + "' has MIL format and the destination node does not accept it.\n";
                     errorOccurred = true;
                 }
-            	if (dest.m_bInputMIL && !m_bOutputMIL) 
-                {
+                if (dest.m_bInputMIL && !m_bOutputMIL) {
                     errorMessage = errorMessage + "The data sets '" + m_sDatasetHasMIL + "' have  not MIL format and the destination node does not accept it.\n";
                     errorOccurred = true;
                 }
-                if (!dest.m_bInputContinuous && m_bOutputContinuous) 
-                {
+                if (!dest.m_bInputContinuous && m_bOutputContinuous) {
                     errorMessage = errorMessage + "The data sets '" + m_sDatasetHasContinuous + "' have continuous data and the destination node does not accept it.\n";
                     errorOccurred = true;
                 }
@@ -271,9 +285,9 @@ public abstract class Node implements Serializable {
                     errorMessage = errorMessage + "The data sets '" + m_sDatasetHasImprecise + "' have imprecise data and the destination node does not accept it.\n";
                     errorOccurred = true;
                 }
-                if (!dest.m_bInputMultiClass && m_bOutputMultiClass )  {
+                if (!dest.m_bInputMultiClass && m_bOutputMultiClass) {
 
-                    errorMessage = errorMessage +" The data sets '" + m_sDatasetHasMultiClass + "' have multiclass data and the destination node does not accept it.\n";
+                    errorMessage = errorMessage + " The data sets '" + m_sDatasetHasMultiClass + "' have multiclass data and the destination node does not accept it.\n";
                     errorOccurred = true;
                 }
                 if (!dest.m_bInputMultiOutput && m_bOutputMultiOutput) {
@@ -283,29 +297,26 @@ public abstract class Node implements Serializable {
 
                 /* if(dest.m_bOutputMultiClass && !m_bOutputMultiClass && type_lqd!=Node.C_LQD && type_lqd!=Node.CRISP)
                 {  
-                    errorMessage = errorMessage + type_lqd+" The data sets  have not multiclass data and the destination node does not accept it.\n";
-                    errorOccurred = true;
+                errorMessage = errorMessage + type_lqd+" The data sets  have not multiclass data and the destination node does not accept it.\n";
+                errorOccurred = true;
                 } */
-                
-               /* if(dest.m_bOutputMultiClass && m_bOutputMultiClass)
+
+                /* if(dest.m_bOutputMultiClass && m_bOutputMultiClass)
                 {  
-                    errorMessage = errorMessage + "Lo hace bien los dataset" + m_bOutputMultiClass + "' itiene imprecisos salidas.\n";
-                    errorOccurred = true;
+                errorMessage = errorMessage + "Lo hace bien los dataset" + m_bOutputMultiClass + "' itiene imprecisos salidas.\n";
+                errorOccurred = true;
                 }*/
 
                 if (errorOccurred) {
                     errorMessage = "Conflict with this connection.\n" + errorMessage;
                 }
-            } 
-            else { //origen is not dataset
+            } else { //origen is not dataset
 
-				if (!dest.m_bInputMIL && m_bOutputMIL) 
-                {
+                if (!dest.m_bInputMIL && m_bOutputMIL) {
                     errorMessage = errorMessage + "The source may generate multi-instance data and the destination node does not accept it.\n";
                     errorOccurred = true;
                 }
-            	if (dest.m_bInputMIL && !m_bOutputMIL) 
-                {
+                if (dest.m_bInputMIL && !m_bOutputMIL) {
                     errorMessage = errorMessage + "The source may not generate multi-instance data and the destination node does not accept it.\n";
                     errorOccurred = true;
                 }
@@ -382,6 +393,4 @@ public abstract class Node implements Serializable {
      */
     public void actInputOutput(ExternalObjectDescription dsc, GraphPanel p) {
     }
-    
- 
 }

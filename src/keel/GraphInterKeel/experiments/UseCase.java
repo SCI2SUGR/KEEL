@@ -27,17 +27,21 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: DialogUser.java
+ *
+ * This class contains all the information about the use case of an algorithm
+ *
+ * @author Written by Jose Antonio Delgado Osuna 3-7-2006
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This class contains all the information about the use case of an algorithm
- * @author Jos� Antonio Delgado Osuna
- * @version 1.0
- *
- */
 public class UseCase {
 
     /**
@@ -324,6 +328,7 @@ public class UseCase {
      *
      * @return A String representing the Use Case
      */
+    @Override
     public String toString() {
 
         String useCase = "NAME\n";
@@ -368,4 +373,3 @@ public class UseCase {
 
     }
 }
-

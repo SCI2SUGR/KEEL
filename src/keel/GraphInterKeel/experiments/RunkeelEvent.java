@@ -27,19 +27,22 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: RunkeelEvent.java
+ *
+ * Events for RunKeelTxTDocente
+ *
+ * @author Written by Juan Carlos Fernandez Caballero 26-04-2006
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.util.EventObject;
 
 import keel.RunKeelTxtDocente.EducationalRunKeelTxt;
 
-/* 
- * General description:
- * Events for RunKeelTxTDocente
- * 
- * Author: Juan Carlos Fern�ndez Caballero
- * Date: 26-04-2006
- */
 public class RunkeelEvent<A extends EducationalRunKeelTxt> extends EventObject {
     /////////////////////////////////////////////////////////////////
     // --------------------------------------- Serialization constant
@@ -78,4 +81,3 @@ public class RunkeelEvent<A extends EducationalRunKeelTxt> extends EventObject {
         return exception;
     }
 }
-

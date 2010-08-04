@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,13 @@
   
 **********************************************************************/
 
+/**
+ * <p>Title: Keel</p>
+ * <p>Description: experiment type selection</p>
+ * @author Victor Manuel Gonzalez Quevedo
+ * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of CÃ³rdoba) 7/07/2009
+ * @version 1.0
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -36,24 +43,7 @@ import java.awt.Rectangle;
 
 import keel.GraphInterKeel.menu.Frame;
 
-/**
- * <p>Title: Keel</p>
- * <p>Description: experiment type selection</p>
- * <p>Copyright: Copyright (c) 2005</p>
- * <p>Company: Universidad de Granada</p>
- * @author Victor Manuel Gonzalez Quevedo
- * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of CÃ³rdoba) 7/07/2009
- * @version 1.0
- */
-/*
- * Modified class for educational keel
- *
- *
- * Author: Juan Carlos Fernï¿½ndez Caballero
- *
- */
-public class SelectExp
-        extends JPanel {
+public class SelectExp extends JPanel {
 
     Experiments parent;
     ButtonGroup buttonGroup2 = new ButtonGroup();
@@ -71,16 +61,24 @@ public class SelectExp
     GridLayout gridLayout1 = new GridLayout();
     JSpinner spinnerKFold = new JSpinner(new SpinnerNumberModel(10, 2, 10, 1));
 
+    /**
+     * Builder
+     * @param f Parent frame
+     */
     public SelectExp(Experiments f) {
         try {
             parent = f;
-            jbInit();
+            initSelectExperiment();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void jbInit() throws Exception {
+    /**
+     * Initializing
+     * @throws java.lang.Exception
+     */
+    private void initSelectExperiment() throws Exception {
         jPanel1.setBackground(new Color(225, 225, 225));
         jPanel1.setFont(new java.awt.Font("Arial", 0, 11));
         jPanel1.setBorder(BorderFactory.createEtchedBorder());
@@ -184,6 +182,10 @@ public class SelectExp
         buttonGroup2.add(jRadioButton6);
     }
 
+    /**
+     * Classification button
+     * @param e Event
+     */
     public void jRadioButton1_actionPerformed(ActionEvent e) {
         parent.expType = Experiments.CLASSIFICATION;
         /***************************************************************
@@ -194,10 +196,9 @@ public class SelectExp
         } else {
             parent.helpContent.muestraURL(this.getClass().getResource("/contextualHelpDocente/data_set_exp.html"));
         }
-         /***************************************************************
+        /***************************************************************
          *********************  EDUCATIONAL KEEL  **********************
          **************************************************************/
-
         if (jRadioButton4.isSelected()) {
             parent.cvType = Experiments.PK;
         } else if (jRadioButton5.isSelected()) {
@@ -206,13 +207,16 @@ public class SelectExp
             parent.cvType = Experiments.PnoVal;
         }
 
-        //XXX DESCOMENTAR
         //parent.continuarExperimento();
         //Nuevas funcionalidades
         parent.numberKFoldCross = this.getValueKFoldCross();
     //Nuevas funcionalidades
     }
 
+    /**
+     * Regression button
+     * @param e Event
+     */
     public void jRadioButton2_actionPerformed(ActionEvent e) {
         parent.expType = Experiments.REGRESSION;
 
@@ -228,13 +232,17 @@ public class SelectExp
         } else {
             parent.cvType = Experiments.PnoVal;
         }
-        //XXX DESCOMENTAR
+
         //parent.continuarExperimento();
         //Nuevas funcionalidades
         parent.numberKFoldCross = this.getValueKFoldCross();
     //Nuevas funcionalidades
     }
 
+    /**
+     * Unsupervised button
+     * @param e Event
+     */
     public void jRadioButton3_actionPerformed(ActionEvent e) {
         parent.expType = Experiments.UNSUPERVISED;
 
@@ -245,14 +253,17 @@ public class SelectExp
         } else {
             parent.cvType = Experiments.PnoVal;
         }
-        //XXX DESCOMENTAR
+
         //parent.continuarExperimento();
         //Nuevas funcionalidades
         parent.numberKFoldCross = this.getValueKFoldCross();
     //Nuevas funcionalidades
     }
 
-    //Nuevas funcionalidades
+    /**
+     * Select k-folds
+     * @param e Event
+     */
     public void jRadioButton4_actionPerformed(ActionEvent e) {
         if (jRadioButton4.isSelected()) {
             //spinnerKFold.setOpaque(false);
@@ -260,22 +271,34 @@ public class SelectExp
         }
     }
 
+    /**
+     * Enable k-fold spinner
+     * @param e Event
+     */
     public void jRadioButton5_actionPerformed(ActionEvent e) {
         if (jRadioButton5.isSelected()) {
             spinnerKFold.setEnabled(false);
         }
     }
 
+    /**
+     * Enable k-fold spinner
+     * @param e Event
+     */
     public void jRadioButton6_actionPerformed(ActionEvent e) {
         if (jRadioButton6.isSelected()) {
             spinnerKFold.setEnabled(false);
         }
     }
 
+    /**
+     * Gets number of folds
+     * @return Number of folds
+     */
     public int getValueKFoldCross() {
         return (Integer) spinnerKFold.getValue();
     }
-    //Nuevas funcionalidades
+
 }
 
 class SelectExp_jRadioButton3_actionAdapter
@@ -360,4 +383,3 @@ class SelectExp_jRadioButton6_actionAdapter implements ActionListener {
     }
 }
 //Nuevas funcionalidades
-

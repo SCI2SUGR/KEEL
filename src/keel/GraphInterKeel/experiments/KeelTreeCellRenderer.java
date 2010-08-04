@@ -27,20 +27,18 @@
   
 **********************************************************************/
 
+/**
+ * <p>Title: Keel</p>
+ * <p>Description: Keel project environment</p>
+ * @author Victor Manuel Gonzalez Quevedo
+ * @version 0.1
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
-/**
- * <p>Title: Keel</p>
- * <p>Description: Keel project environment</p>
- * <p>Copyright: Copyright (c) 2004</p>
- * <p>Company: Universidad de Granada</p>
- * @author V�ctor Manuel Gonz�lez Quevedo
- * @version 0.1
- */
 public class KeelTreeCellRenderer extends DefaultTreeCellRenderer {
 
     /**
@@ -50,7 +48,7 @@ public class KeelTreeCellRenderer extends DefaultTreeCellRenderer {
         super();
         super.setBackgroundNonSelectionColor(this.getBackground());
         try {
-            jbInit();
+            keelTreeInit();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,8 +81,11 @@ public class KeelTreeCellRenderer extends DefaultTreeCellRenderer {
         return nodo;
     }
 
-    private void jbInit() throws Exception {
+    /**
+     * Initialize
+     * @throws java.lang.Exception
+     */
+    private void keelTreeInit() throws Exception {
         this.setFont(new java.awt.Font("Arial", 0, 11));
     }
 }
-

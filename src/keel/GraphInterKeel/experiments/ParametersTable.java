@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,15 +27,18 @@
   
 **********************************************************************/
 
-package keel.GraphInterKeel.experiments;
-/*
- * <p>
- * ParametersTable.java
+/**
  *
- * @author Administrator
+ * File: ParametersTable.java
+ *
+ * A class for managing user methods
+ *
+ * @author Written by Admin 4/8/2008
  * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of C√≥rdoba) 7/07/2009
- * </p>
+ * @version 1.0
+ * @since JDK1.5
  */
+package keel.GraphInterKeel.experiments;
 
 import javax.swing.table.*;
 import javax.swing.*;
@@ -106,6 +109,7 @@ public class ParametersTable extends AbstractTableModel {
      * @param col the index of the column
      * @return the name of the column
      */
+    @Override
     public String getColumnName(int col) {
         return columnNames[col];
     }
@@ -135,10 +139,7 @@ public class ParametersTable extends AbstractTableModel {
             pos++;
         }
 
-
         return data[pos][columnIndex];
-
-
 
     }
 
@@ -177,10 +178,7 @@ public class ParametersTable extends AbstractTableModel {
                 row++;
             }
         }
-
-
-
-
+        
         if (parameterData.getParameterType(row).equalsIgnoreCase("integer")) {
             try {
                 entero = new Integer((String) value);

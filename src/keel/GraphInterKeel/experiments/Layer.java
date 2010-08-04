@@ -27,11 +27,19 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: Layer.java
+ *
+ * Layer management
+ *
+ * @author Julian Luengo Martin (modifications 19/04/2009)
+ * @version 1.0
+ * @since JDK1.5
+ */
+
 package keel.GraphInterKeel.experiments;
 
-/**
- * @author Julian Luengo Martin (modifications 19/04/2009)
- */
 public final class Layer {
 
     public static int layerActivo = 0;
@@ -46,4 +54,3 @@ public final class Layer {
     }
 }
 	
-

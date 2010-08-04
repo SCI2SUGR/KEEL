@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,19 +27,8 @@
   
 **********************************************************************/
 
-package keel.GraphInterKeel.experiments;
-
-// Desde Algoritmo, JCLEC y Test
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
-import java.util.Vector;
-import javax.swing.table.*;
-
-import keel.GraphInterKeel.menu.Frame;
-
 /*
- * ParametersDialog.java
+ * File ParametersDialog.java
  *
  * Created on 02-mar-2009, 5:30:48
  * Modified on 12-may-2009
@@ -48,12 +37,21 @@ import keel.GraphInterKeel.menu.Frame;
  * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of C√≥rdoba) 7/07/2009
  * @authos Modified Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
  */
+package keel.GraphInterKeel.experiments;
 
-public class ParametersDialog
-        extends JDialog {
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.Vector;
+import javax.swing.table.*;
+
+import keel.GraphInterKeel.menu.Frame;
+
+public class ParametersDialog extends JDialog {
 
     JPanel panel1 = new JPanel() {
 
+        @Override
         public void paintComponent(Graphics g) {
             //ImageIcon img = new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/experimentos/parametersVector.jpg"));
             //g.drawImage(img.getImage(), 0, 0, null);
@@ -96,6 +94,15 @@ public class ParametersDialog
     //JLabel jLabel6 = new JLabel();
     //ExternalObjectDescription dsc1;
 
+    /**
+     * Builder
+     *
+     * @param frame Parent frame
+     * @param title Title of the frame
+     * @param modal Modal status
+     * @param parametersVector Parameters vector
+     * @param dsc Parent dsc
+     */
     public ParametersDialog(Experiments frame, String title, boolean modal,
             Vector parametersVector, ExternalObjectDescription dsc) {
         super(frame, title, modal);
@@ -130,22 +137,23 @@ public class ParametersDialog
             /***************************************************************
              ***************  EDUCATIONAL KEEL  ****************************
              **************************************************************/
-            jbInit();
+            initParameters();
             pack();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
+    /**
+     * Default builder
+     */
     public ParametersDialog() {
         this(null, "", false, null, null);
     }
 
-    private void jbInit() throws Exception {
+    private void initParameters() throws Exception {
 
-        class MyTableCellEditor
-                extends AbstractCellEditor
-                implements TableCellEditor {
+        class MyTableCellEditor extends AbstractCellEditor implements TableCellEditor {
 
             JComponent component = new JTextField();
 
@@ -217,6 +225,7 @@ public class ParametersDialog
 
         jTable1 = new JTable(paramTable) {
 
+            @Override
             public boolean isCellEditable(int rowIndex, int vColIndex) {
                 if (vColIndex == 1) {
                     return true;
@@ -368,10 +377,18 @@ public class ParametersDialog
 
     }
 
+    /**
+     * Hide button
+     * @param e Event
+     */
     void jButton2_actionPerformed(ActionEvent e) {
         this.setVisible(false);
     }
 
+    /**
+     * Apply parameters
+     * @param e Event
+     */
     void jButton1_actionPerformed(ActionEvent e) {
         jTable1.getColumnModel().getColumn(1).getCellEditor().stopCellEditing();
         Integer ejecuciones = (Integer) jSpinner1.getValue();
@@ -456,6 +473,10 @@ public class ParametersDialog
         }
     }
 
+    /**
+     * Default values button
+     * @param e Event
+     */
     void jButton5_actionPerformed(ActionEvent e) {
         int cont = 0;
 
@@ -471,13 +492,25 @@ public class ParametersDialog
         jTable1.repaint();
     }
 
+    /**
+     * Options button
+     * @param e Event
+     */
     void opciones_actionPerformed(ActionEvent e) {
     }
 
+    /**
+     * Option focus
+     * @param e Event
+     */
     void opciones_focusLost(FocusEvent e) {
         jTable1.changeSelection(0, 1, true, false);
     }
 
+    /**
+     * Apply changes
+     * @param e Event
+     */
     void jComboBox1_actionPerformed(ActionEvent e) {
         int cont = 0;
 
@@ -539,7 +572,7 @@ class ParametrosDialog_opciones_focusAdapter
     ParametrosDialog_opciones_focusAdapter(ParametersDialog adaptee) {
         this.adaptee = adaptee;
     }
-
+    @Override
     public void focusLost(FocusEvent e) {
         adaptee.opciones_focusLost(e);
     }
@@ -557,4 +590,3 @@ class ParametrosDialog_jComboBox1_actionAdapter implements java.awt.event.Action
         adaptee.jComboBox1_actionPerformed(e);
     }
 }
-

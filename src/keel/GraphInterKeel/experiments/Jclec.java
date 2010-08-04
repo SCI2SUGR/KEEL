@@ -27,8 +27,17 @@
   
 **********************************************************************/
 
-
-/* @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)*/
+/**
+ *
+ * File: Jclec.java
+ *
+ * Jclec nodes
+ *
+ * @author Written by Admin 4/8/2009
+ * @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -38,6 +47,12 @@ public final class Jclec extends Node {
 
     protected Parameters param;
 
+    /**
+     * Builder
+     * @param dsc Parent dsc
+     * @param position Position in the graph
+     * @param p Graph
+     */
     public Jclec(ExternalObjectDescription dsc, Point position, GraphPanel p) 
     {
         super(dsc, position, p.mainGraph.getId());
@@ -49,6 +64,14 @@ public final class Jclec extends Node {
         param = new Parameters(dsc.getPath() + dsc.getName() + ".xml", false);
     }
 
+    /**
+     * Builder
+     * @param dsc Parent dsc
+     * @param position Position in the graph
+     * @param p Graph
+     * @param parameters Vector of parameters
+     * @param id Node id
+     */
     public Jclec(ExternalObjectDescription dsc, Point position, GraphPanel p,
             Parameters parameters, int id) {
         super(dsc, position, id);
@@ -58,28 +81,28 @@ public final class Jclec extends Node {
         param = new Parameters(parameters);
     }
 
+    /**
+     * Contain method
+     * @param title Frame title
+     * @param show Whether to show or not
+     * @param n Id of the node
+     * @param exp Parent frame
+     */
     public void contain(String title, int show,Node n,Experiments exp) {
     }
-    public void showDialog() {
-        /*    dialogo = new ParametrosDialog(pd.padre, "Algorithm Parameters", true, param);
 
-        // Center dialog
-        dialogo.setSize(400, 580);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension frameSize = dialogo.getSize();
-        if (frameSize.height > screenSize.height) {
-        frameSize.height = screenSize.height;
-        }
-        if (frameSize.width > screenSize.width) {
-        frameSize.width = screenSize.width;
-        }
-        dialogo.setLocation( (screenSize.width - frameSize.width) / 2,
-        (screenSize.height - frameSize.height) / 2);
-        dialogo.setResizable(false);
-        dialogo.setVisible(true);
-         */
+    /**
+     * Show dialog
+     */
+    public void showDialog() {
+      
     }
 
+    /**
+     * Draw method
+     * @param g2 Graphics element
+     * @param select Selected node
+     */
     public void draw(Graphics2D g2, boolean select) {
         Point pinit = new Point(centre.x - 25, centre.y - 25);
         Point pfin = new Point(centre.x + 25, centre.y + 25);
@@ -107,4 +130,3 @@ public final class Jclec extends Node {
         g2.drawString(dsc.getName(), centre.x - width / 2, centre.y + 40);
     }
 }
-

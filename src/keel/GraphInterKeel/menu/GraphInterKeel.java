@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,12 +27,6 @@
   
 **********************************************************************/
 
-package keel.GraphInterKeel.menu;
-
-import javax.swing.UIManager;
-import java.awt.*;
-import java.util.Locale;
-
 /**
  * <p>
  * @author  Administrador
@@ -41,43 +35,55 @@ import java.util.Locale;
  * @since JDK1.5
  * </p>
  */
-public class GraphInterKeel {
-  boolean packFrame = false;
+package keel.GraphInterKeel.menu;
 
-  //Construct the application
-  public GraphInterKeel() {
-    Frame frame = new Frame();
-    //Validate frames that have preset sizes
-    //Pack frames that have useful preferred size info, e.g. from their layout
-    if (packFrame) {
-      frame.pack();
+import javax.swing.UIManager;
+import java.awt.*;
+import java.util.Locale;
+
+public class GraphInterKeel {
+
+    boolean packFrame = false;
+
+    /**
+     * Builder
+     */
+    public GraphInterKeel() {
+        Frame frame = new Frame();
+        //Validate frames that have preset sizes
+        //Pack frames that have useful preferred size info, e.g. from their layout
+        if (packFrame) {
+            frame.pack();
+        } else {
+            frame.validate();
+        }
+        //Center the window
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = frame.getSize();
+        if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+        }
+        if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+        }
+        frame.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
+        frame.setVisible(true);
     }
-    else {
-      frame.validate();
+
+    /**
+     * Main method 
+     * 
+     * @param args Arguments
+     */
+    public static void main(String[] args) {
+        try {
+            // Set the default locale to pre-defined locale
+            Locale.setDefault(Locale.ENGLISH);
+
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        new GraphInterKeel();
     }
-    //Center the window
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    Dimension frameSize = frame.getSize();
-    if (frameSize.height > screenSize.height) {
-      frameSize.height = screenSize.height;
-    }
-    if (frameSize.width > screenSize.width) {
-      frameSize.width = screenSize.width;
-    }
-    frame.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
-    frame.setVisible(true);
-  }
-  //Main method
-  public static void main(String[] args) {
-    try {
-      // Set the default locale to pre-defined locale
-      Locale.setDefault(Locale.ENGLISH);
-    
-      UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    }
-    catch(Exception e) {
-      e.printStackTrace();
-    }
-    new GraphInterKeel();
-  }
 }

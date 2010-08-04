@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,11 +27,6 @@
   
 **********************************************************************/
 
-package keel.GraphInterKeel.experiments;
-
-import java.io.File;
-import javax.swing.filechooser.FileFilter;
-
 /**
  * <p>Title: Keel</p>
  * <p>Description: File filter </p>
@@ -40,6 +35,11 @@ import javax.swing.filechooser.FileFilter;
  * @author Vï¿½ctor Manuel Gonzï¿½lez Quevedo
  * @version 0.1
  */
+package keel.GraphInterKeel.experiments;
+
+import java.io.File;
+import javax.swing.filechooser.FileFilter;
+
 public class ArchiveFilter2 extends FileFilter {
 
     String[] files; // filtered files extensions
@@ -88,4 +88,3 @@ public class ArchiveFilter2 extends FileFilter {
         return description;
     }
 }
-

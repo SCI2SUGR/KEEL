@@ -27,36 +27,28 @@
   
 **********************************************************************/
 
+/**
+ * <p>
+ * @author Modified by Julian Luengo Martin (modifications 19/04/2009)
+ * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of Córdoba) 7/07/2009
+ * @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010( University of Oviedo)
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
 import javax.swing.*;
 import java.awt.image.*;
 import java.util.*;
-
 import javax.imageio.ImageIO;
-
 import java.awt.event.*;
-
 import keel.GraphInterKeel.menu.Frame;
 
-/**
- * <p>
- * @author not attributable
- * @author Modified by Julian Luengo Martin (modifications 19/04/2009)
- * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of Córdoba) 7/07/2009
- * @version 1.0
- * @since JDK1.5
- * @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010( University of Oviedo)
- * </p>
- */
-
-
 public class GraphPanel extends JPanel implements KeyListener, MouseListener, MouseMotionListener, Scrollable {
-//TODO - Refactorize this class
 
-    
-     Graph mainGraph;
+    Graph mainGraph;
     boolean elementSelected;
     int typeSelected;
     public Experiments parent;
@@ -70,10 +62,10 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
     protected boolean multipleSelection = false;
     protected Vector selectedN = new Vector();
     private final int NODE = 0;
-    static  final int NODELQD = 10;
-    static  final int NODELQD_c = 11;
-    static  final int NODEC_LQD = 12;
-    static  final int NODEC = 13;
+    static final int NODELQD = 10;
+    static final int NODELQD_c = 11;
+    static final int NODEC_LQD = 12;
+    static final int NODEC = 13;
     private final int ARC = 1;
     static final int SELECTING = 2;
     static final int PAINT_ARC = 3;
@@ -83,8 +75,8 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
     static final int PAINT_USER = 7;
     static final int PAINT_TEST = 8;
     static final int PAINT_MULTIPLEXOR = 9;
-    public int iden_node=0; 
-   // static int Secundary= 0;
+    public int iden_node = 0;
+    // static int Secundary= 0;
     private BufferedImage texture;
     //Graphics2D g2;
     public int node_selected;
@@ -99,7 +91,11 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
      *********************  EDUCATIONAL KEEL  **********************
      **************************************************************/
 
-    /* Constructor */
+    /**
+     * Builder
+     * @param f Parent frame
+     * @param g Graph
+     */
     public GraphPanel(Experiments f, Graph g) {
         parent = f;
         mainGraph = g;
@@ -115,10 +111,15 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
 
     }
 
+    /**
+     * Draw graph
+     * @param g Graphics object
+     */
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-      
+
 
         if (mainGraph != null) {
             /***************************************************************
@@ -185,44 +186,35 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
             }
 
             // draw connections
-           // System.out.println("el numero de arcos es aquiii en pintar "+mainGraph.numArcs());
-            for (int i = 0; i < mainGraph.numArcs(); i++)
-            {
+            // System.out.println("el numero de arcos es aquiii en pintar "+mainGraph.numArcs());
+            for (int i = 0; i < mainGraph.numArcs(); i++) {
                 Arc a = mainGraph.getArcAt(i);
                 Point nodo_origen = null;
-                Point nodo_destino=null;
-                if(parent.objType!=parent.LQD)
-                {
+                Point nodo_destino = null;
+                if (parent.objType != parent.LQD) {
                     nodo_origen = mainGraph.getNodeAt(a.getSource()).getPosicion();
                     nodo_destino = mainGraph.getNodeAt(a.getDestination()).getPosicion();
                 }
-                if(parent.objType==parent.LQD)
-                {
+                if (parent.objType == parent.LQD) {
                     //System.out.println("dibujo el arco "+i+" que su nodo origen id es "+a.getSource());
                     //we found de node
-                    for (int n = 0; n < mainGraph.numNodes(); n++)
-                    {
+                    for (int n = 0; n < mainGraph.numNodes(); n++) {
 
-                       if(mainGraph.getNodeAt(n).id==a.getSource())
-                       {
-                           nodo_origen=mainGraph.getNodeAt(n).getPosicion();
-                      //     System.out.println("el nodo origen es "+mainGraph.getNodeAt(n).dsc.getName(0));
-                       }
-                       if(mainGraph.getNodeAt(n).id==a.getDestination())
-                       {
-                           nodo_destino = mainGraph.getNodeAt(n).getPosicion();
+                        if (mainGraph.getNodeAt(n).id == a.getSource()) {
+                            nodo_origen = mainGraph.getNodeAt(n).getPosicion();
+                        //     System.out.println("el nodo origen es "+mainGraph.getNodeAt(n).dsc.getName(0));
+                        }
+                        if (mainGraph.getNodeAt(n).id == a.getDestination()) {
+                            nodo_destino = mainGraph.getNodeAt(n).getPosicion();
                         //   System.out.println("el nodo destino es "+mainGraph.getNodeAt(n).dsc.getName(0));
-                       }
+                        }
                     }
-
                 }
-
 
                 if (!multipleSelection) {
                     if (i == mainGraph.numArcs() - 1 && elementSelected && typeSelected == ARC) {
                         a.draw(g2, nodo_origen, nodo_destino, true);
-                    }
-                    else {
+                    } else {
                         a.draw(g2, nodo_origen, nodo_destino, false);
                     }
                 } else {
@@ -236,17 +228,14 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
             }
 
             // draw nodes
-                  for (int i = 0; i < mainGraph.numNodes(); i++) {
-                    
+            for (int i = 0; i < mainGraph.numNodes(); i++) {
+
 
                 if (!multipleSelection) {
-                    if (i == mainGraph.numNodes() - 1 && elementSelected && typeSelected == NODE) 
-                    {                       
+                    if (i == mainGraph.numNodes() - 1 && elementSelected && typeSelected == NODE) {
                         mainGraph.getNodeAt(i).draw(g2, true);
-                    } 
-                    else 
-                    {
-                        mainGraph.getNodeAt(i).draw(g2, false );
+                    } else {
+                        mainGraph.getNodeAt(i).draw(g2, false);
                     }
                 } else {
                     if (selectedN.contains(new Integer(i))) {
@@ -256,31 +245,26 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                     }
                 }
             }
-              
-
         }
-
     }
 
-    // mouse events
+    /**
+     * Management of mouse events
+     * @param e Event
+     */
     public void mousePressed(MouseEvent e) {
-        
-        
-      
+
         UseCase casoUso = null;
         Node nodo;
 
-      
         boolean aux = multipleSelection;
         elementSelected = false;
         parent.deleteItem.setEnabled(false);
         multipleSelection = false;
 
         // don't quit multiple selection
-        if (parent.cursorAction == SELECTING && e.getButton() == e.BUTTON1 && aux) 
-        {
-            for (int i = 0; i < selectedN.size(); i++) 
-            {
+        if (parent.cursorAction == SELECTING && e.getButton() == e.BUTTON1 && aux) {
+            for (int i = 0; i < selectedN.size(); i++) {
                 Node n = mainGraph.getNodeAt(((Integer) (selectedN.elementAt(i))).intValue());
                 if (n.isInside(e.getPoint())) {
                     last.x = e.getX();
@@ -294,99 +278,89 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
 
         // select (node or connection)
         if ((parent.cursorAction == SELECTING && !multipleSelection) ||
-                e.getButton() == e.BUTTON3) 
-        {
-            
-            for (int i = mainGraph.numNodes() - 1; (i >= 0) && (!elementSelected); i--) 
-            {
+                e.getButton() == e.BUTTON3) {
+
+            for (int i = mainGraph.numNodes() - 1; (i >= 0) && (!elementSelected); i--) {
                 Node n = mainGraph.getNodeAt(i);
-                if (n.isInside(e.getPoint())) 
-                {
+                if (n.isInside(e.getPoint())) {
                     last.x = n.getPosicion().x - e.getX();
                     last.y = n.getPosicion().y - e.getY();
-                    if(parent.objType==parent.LQD)
-                    {
+                    if (parent.objType == parent.LQD) {
                         mainGraph.dropNodeLQD_move(i);
-                    }
-                    else
+                    } else {
                         mainGraph.dropNode(i);
+                    }
                     mainGraph.insertNode(n);
 
                     elementSelected = true;
                     typeSelected = NODE;
-                    node_selected =mainGraph.numNodes()-1;
+                    node_selected = mainGraph.numNodes() - 1;
 
                     nodo = n;
-                   
-                        if (n.getType() != n.type_Dataset) {
-                            parent.deleteItem.setEnabled(true);
-                        }
-                    
-                    
-                     
-                    if(parent.objType!=parent.LQD)
-                    {
-                        for (int j = 0; j < mainGraph.numArcs(); j++)
-                        {
-                        Arc a = mainGraph.getArcAt(j);
-                        int index_origen = a.getSource();
-                        int index_destino = a.getDestination();
 
-                            if (index_origen == i)
-                            a.setSource(mainGraph.numNodes() - 1);
-                            else if (index_origen > i)
-                            a.setSource(index_origen - 1);
+                    if (n.getType() != n.type_Dataset) {
+                        parent.deleteItem.setEnabled(true);
+                    }
 
-                            if (index_destino == i)
-                            a.setDestination(mainGraph.numNodes() - 1);
-                             else if (index_destino > i)
-                            a.setDestination(index_destino - 1);
+                    if (parent.objType != parent.LQD) {
+                        for (int j = 0; j < mainGraph.numArcs(); j++) {
+                            Arc a = mainGraph.getArcAt(j);
+                            int index_origen = a.getSource();
+                            int index_destino = a.getDestination();
+
+                            if (index_origen == i) {
+                                a.setSource(mainGraph.numNodes() - 1);
+                            } else if (index_origen > i) {
+                                a.setSource(index_origen - 1);
+                            }
+
+                            if (index_destino == i) {
+                                a.setDestination(mainGraph.numNodes() - 1);
+                            } else if (index_destino > i) {
+                                a.setDestination(index_destino - 1);
+                            }
                         }
                     }
                     //Print the user case for the selected node
                     if (nodo.getType() != Node.type_Dataset) {
                         casoUso = parent.readXMLUseCase("./help/" + nodo.dsc.getName());
                         if (casoUso == null) {
-                        parent.useCaseTextArea.setText("Use Case not found for this method");
+                            parent.useCaseTextArea.setText("Use Case not found for this method");
                         } else {
                             parent.useCaseTextArea.setText(casoUso.toString());
                             parent.useCaseTextArea.setCaretPosition(0);
                         }
-                    }
-                    else{
+                    } else {
                         parent.useCaseTextArea.setText("No use case available");
                     }
-         
+
                 }
             }
             if (!elementSelected) {
-                for (int i = mainGraph.numArcs() - 1; (i >= 0) && (!elementSelected); i--)
-                {
+                for (int i = mainGraph.numArcs() - 1; (i >= 0) && (!elementSelected); i--) {
                     Arc a = mainGraph.getArcAt(i);
-                    Point origen=null;
-                    Point destino=null;
-                    if(parent.objType!=parent.LQD)
-                    {
+                    Point origen = null;
+                    Point destino = null;
+                    if (parent.objType != parent.LQD) {
                         origen = mainGraph.getNodeAt(a.getSource()).getPosicion();
                         destino = mainGraph.getNodeAt(a.getDestination()).getPosicion();
-                    }
-                    else
-                    {
-                       // System.out.println("dibujo el arco "+i+" que su nodo origen id es "+a.getSource());
+                    } else {
+                        // System.out.println("dibujo el arco "+i+" que su nodo origen id es "+a.getSource());
                         //we found de node
-                        for (int n = 0; n < mainGraph.numNodes(); n++)
-                        {
-                            if(mainGraph.getNodeAt(n).id==a.getSource())
-                                   origen=mainGraph.getNodeAt(n).getPosicion();
-                           if(mainGraph.getNodeAt(n).id==a.getDestination())
-                               destino = mainGraph.getNodeAt(n).getPosicion();
+                        for (int n = 0; n < mainGraph.numNodes(); n++) {
+                            if (mainGraph.getNodeAt(n).id == a.getSource()) {
+                                origen = mainGraph.getNodeAt(n).getPosicion();
+                            }
+                            if (mainGraph.getNodeAt(n).id == a.getDestination()) {
+                                destino = mainGraph.getNodeAt(n).getPosicion();
+                            }
                         }
                     }
                     if (a.isInside(e.getPoint(), origen, destino)) {
                         mainGraph.dropAndInsertArc(i, a);
                         elementSelected = true;
                         typeSelected = ARC;
-                        arc_selected=i;
+                        arc_selected = i;
                         parent.deleteItem.setEnabled(true);
                     }
                 }
@@ -414,9 +388,13 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                 }
             }
         }
-        
+
     }
 
+    /**
+     * Dragging mouse
+     * @param e Event
+     */
     public void mouseDragged(MouseEvent e) {
         switch (parent.cursorAction) {
             // move node
@@ -463,96 +441,116 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                 break;
         }
     }
- 
-    public void new_dataset(Point punto,ExternalObjectDescription dsc,int type_Node )
-    {
-             DataSet ds = new DataSet(dsc, punto, this, null,type_Node);
-             mainGraph.insertNode(ds);
-             
-             elementSelected = true;
-             typeSelected = NODE;
-            //System.out.println("  Lega a crear el nuevo dataset");
-                 
-    }
- public void initial_dataset( Point punto,ExternalObjectDescription dsc, Vector checks,Vector dinchecks,
-         ExternalObjectDescription pdsc,Vector actualList, int type_Node)
- {
-     int c = 0;
-     for (int i = 0; i < checks.size(); i++) {          
-                 if (((JCheckBox) checks.elementAt(i)).isSelected()) {           
-                     ((JButton) (dinchecks.elementAt(i))).setText("Del");           
-                     if (c == 0) {           
-                         pdsc = new ExternalObjectDescription((ExternalObjectDescription) actualList.elementAt(i), true);           
-                     } else {
-                         pdsc.insert(new ExternalObjectDescription((ExternalObjectDescription) actualList.elementAt(i)), true);        
-                     }
-                     c++;     
-                 }
-             }
-             //This can not be erased, only one dataset of LQD is selected
-             if (c == 1) {
-                 for (int i = 0; i < dinchecks.size(); i++) {
-                     if (((JButton) dinchecks.elementAt(i)).getText() == "Del") {           
-                         ((JButton) dinchecks.elementAt(i)).setEnabled(false);
-                     }
-                 }
-             }
-           
-             dsc = new ExternalObjectDescription(pdsc);
-          
-             //We create the Dataset node. We take the information of which data sets
-             //new_dataset(punto,dsc, type_Node);
-             DataSet ds = new DataSet(dsc, punto, this, null,type_Node);
 
-             mainGraph.insertNode(ds);
-             
-             elementSelected = true;
-             typeSelected = NODE;
- }
-    public int type_lqd()
-    {
-         Point punto = new Point(125,125);
-         ExternalObjectDescription dsc= null; //Type LQD
-         ExternalObjectDescription dscLQD_C = null; //Type LQD a crisp
-         ExternalObjectDescription dscC_LQD = null; //Type crisp a LQD
-         ExternalObjectDescription dscC= null; //Type crisp but we are working in LQD         
-         
-         int one_active=0;
-         if (parent.panelDatasets.isAnySelected()) 
-         {
-             initial_dataset(punto,dsc,parent.panelDatasets.checks,parent.dinDatasets.checks,parent.dsc,parent.panelDatasets.actualList,NODELQD );
-             one_active=1;
-         }
-                           
-         if (parent.panelDatasets.isAnySelectedLQD_C()) 
-         {
-              punto = new Point(125+205,125);           
-              initial_dataset(punto,dscLQD_C,parent.panelDatasets.checksLQD_C,parent.dinDatasets.checksLQD_C,parent.dscLQD_C,parent.panelDatasets.actualListLQD_C,NODELQD_c );
-              one_active=1;
-         }
-         
-          if (parent.panelDatasets.isAnySelectedC_LQD()) 
-         {
-              punto = new Point(125,125+205);               
-              initial_dataset(punto,dscC_LQD,parent.panelDatasets.checksC_LQD,parent.dinDatasets.checksC_LQD,parent.dscC_LQD,parent.panelDatasets.actualListC_LQD,NODEC_LQD );
-              one_active=1;
-         }
-         
-           if (parent.panelDatasets.isAnySelectedC()) 
-         {
-                   punto = new Point(125+205,125+205);                         
-              initial_dataset(punto,dscC,parent.panelDatasets.checksC,parent.dinDatasets.checksC,parent.dscC,parent.panelDatasets.actualListC,NODEC);
-              one_active=1;
-         }
-         
-         if(one_active==0)
-         {
-             JOptionPane.showMessageDialog(this, "You have to select with minimum one dataset","Select Datases", JOptionPane.ERROR_MESSAGE);
-         }
-         
-         return one_active;
-         
+    /**
+     * Creation of new data set
+     * @param punto Initial point
+     * @param dsc Parent dsc
+     * @param type_Node Type of the node
+     */
+    public void new_dataset(Point punto, ExternalObjectDescription dsc, int type_Node) {
+        DataSet ds = new DataSet(dsc, punto, this, null, type_Node);
+        mainGraph.insertNode(ds);
+
+        elementSelected = true;
+        typeSelected = NODE;
+    //System.out.println("  Lega a crear el nuevo dataset");
+
     }
+
+    /**
+     * Initializes data set
+     * @param punto Initial point
+     * @param dsc Parent dsc
+     * @param checks Checks array
+     * @param dinchecks Dinamic checks array
+     * @param pdsc Parent dsc
+     * @param actualList Actual list
+     * @param type_Node Type of the node
+     */
+    public void initial_dataset(Point punto, ExternalObjectDescription dsc, Vector checks, Vector dinchecks,
+            ExternalObjectDescription pdsc, Vector actualList, int type_Node) {
+        int c = 0;
+        for (int i = 0; i < checks.size(); i++) {
+            if (((JCheckBox) checks.elementAt(i)).isSelected()) {
+                ((JButton) (dinchecks.elementAt(i))).setText("Del");
+                if (c == 0) {
+                    pdsc = new ExternalObjectDescription((ExternalObjectDescription) actualList.elementAt(i), true);
+                } else {
+                    pdsc.insert(new ExternalObjectDescription((ExternalObjectDescription) actualList.elementAt(i)), true);
+                }
+                c++;
+            }
+        }
+        //This can not be erased, only one dataset of LQD is selected
+        if (c == 1) {
+            for (int i = 0; i < dinchecks.size(); i++) {
+                if (((JButton) dinchecks.elementAt(i)).getText() == "Del") {
+                    ((JButton) dinchecks.elementAt(i)).setEnabled(false);
+                }
+            }
+        }
+
+        dsc = new ExternalObjectDescription(pdsc);
+
+        //We create the Dataset node. We take the information of which data sets
+        //new_dataset(punto,dsc, type_Node);
+        DataSet ds = new DataSet(dsc, punto, this, null, type_Node);
+
+        mainGraph.insertNode(ds);
+
+        elementSelected = true;
+        typeSelected = NODE;
+    }
+
+    /**
+     * Nodes of type LQD
+     * @return Type
+     */
+    public int type_lqd() {
+        Point punto = new Point(125, 125);
+        ExternalObjectDescription dsc = null; //Type LQD
+        ExternalObjectDescription dscLQD_C = null; //Type LQD a crisp
+        ExternalObjectDescription dscC_LQD = null; //Type crisp a LQD
+        ExternalObjectDescription dscC = null; //Type crisp but we are working in LQD
+
+        int one_active = 0;
+        if (parent.panelDatasets.isAnySelected()) {
+            initial_dataset(punto, dsc, parent.panelDatasets.checks, parent.dinDatasets.checks, parent.dsc, parent.panelDatasets.actualList, NODELQD);
+            one_active = 1;
+        }
+
+        if (parent.panelDatasets.isAnySelectedLQD_C()) {
+            punto = new Point(125 + 205, 125);
+            initial_dataset(punto, dscLQD_C, parent.panelDatasets.checksLQD_C, parent.dinDatasets.checksLQD_C, parent.dscLQD_C, parent.panelDatasets.actualListLQD_C, NODELQD_c);
+            one_active = 1;
+        }
+
+        if (parent.panelDatasets.isAnySelectedC_LQD()) {
+            punto = new Point(125, 125 + 205);
+            initial_dataset(punto, dscC_LQD, parent.panelDatasets.checksC_LQD, parent.dinDatasets.checksC_LQD, parent.dscC_LQD, parent.panelDatasets.actualListC_LQD, NODEC_LQD);
+            one_active = 1;
+        }
+
+        if (parent.panelDatasets.isAnySelectedC()) {
+            punto = new Point(125 + 205, 125 + 205);
+            initial_dataset(punto, dscC, parent.panelDatasets.checksC, parent.dinDatasets.checksC, parent.dscC, parent.panelDatasets.actualListC, NODEC);
+            one_active = 1;
+        }
+
+        if (one_active == 0) {
+            JOptionPane.showMessageDialog(this, "You have to select with minimum one dataset", "Select Datases", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return one_active;
+
+    }
+
+    /**
+     * Releasing mouse
+     * 
+     * @param e Event
+     */
     public void mouseReleased(MouseEvent e) {
         int iErrorDataType;
         //    if (parent.DatasetNoElegido && parent.accion != PAINT_DATASET) {
@@ -563,9 +561,9 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
         //    }
 
         //System.out.println(" mouse released");
-            
+
         ExternalObjectDescription dsc = null;
-        
+
         if (e.getButton() == e.BUTTON1) {
             int sust = -1;
             Point punto = null;
@@ -583,38 +581,38 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                 case SELECTING:
                     if (e.getClickCount() == 2 && elementSelected && typeSelected == NODE) {
                         Node n = mainGraph.getNodeAt(mainGraph.numNodes() - 1);
-                       // System.out.println("identificador del nodo"+ n.id);
-                        
+                        // System.out.println("identificador del nodo"+ n.id);
+
                         if (n.type != Node.type_Dataset) {
-                            if(n.dsc.getSubtypelqd()==Node.CRISP2 || n.dsc.getSubtypelqd()==Node.LQD)
-                            {
-                                if(n.dsc.arg.size()!=0)
-                                    n.contain("Selection of datasets and its parameters",1,n,parent);
-                                else
+                            if (n.dsc.getSubtypelqd() == Node.CRISP2 || n.dsc.getSubtypelqd() == Node.LQD) {
+                                if (n.dsc.arg.size() != 0) {
+                                    n.contain("Selection of datasets and its parameters", 1, n, parent);
+                                } else {
                                     JOptionPane.showMessageDialog(parent,
-                                                "This node is not connected with other one", "Error", 2);
-                            }
-                            else
+                                            "This node is not connected with other one", "Error", 2);
+                                }
+                            } else {
                                 n.showDialog();
-                            
-                        } 
-                        else {
+                            }
+
+                        } else {
                             //parent.datasetsChecksPanel.setVisible(true);
                             //parent.datasetsAlgorithmsSplit.setDividerLocation(280);
-                            if(n.type_lqd!=Node.CRISP)
-                            {
+                            if (n.type_lqd != Node.CRISP) {
                                 //Show the datasets contained in the node
-                                if(n.type_lqd==Node.CRISP2)
-                                    n.contain("Keel Crisp Dataset",1,n,parent);
-                                if(n.type_lqd==Node.LQD)
-                                    n.contain("Keel Low Quality Dataset",1,n,parent);
-                                if(n.type_lqd==Node.LQD_C)
-                                    n.contain("Keel Low Quality to Crisp Dataset",1,n,parent);
-                                if(n.type_lqd==Node.C_LQD)
-                                    n.contain("Keel Crisp to Low Quality Dataset",1,n,parent);
-                            }
-                            else
-                            {
+                                if (n.type_lqd == Node.CRISP2) {
+                                    n.contain("Keel Crisp Dataset", 1, n, parent);
+                                }
+                                if (n.type_lqd == Node.LQD) {
+                                    n.contain("Keel Low Quality Dataset", 1, n, parent);
+                                }
+                                if (n.type_lqd == Node.LQD_C) {
+                                    n.contain("Keel Low Quality to Crisp Dataset", 1, n, parent);
+                                }
+                                if (n.type_lqd == Node.C_LQD) {
+                                    n.contain("Keel Crisp to Low Quality Dataset", 1, n, parent);
+                                }
+                            } else {
                                 parent.mainSplitPane1.setDividerLocation(-1);
                                 parent.statusBarItem.setSelected(true);
 
@@ -671,36 +669,34 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
 
                     break;
                 // Insert node
-                    
+
                 case PAINT_DATASET:
                     //System.out.println("paint dataset");
-                   
+
 
                     // Dataset construction
                     int c = 0;
-                    if(parent.objType!=parent.LQD)
-                    {
-                         punto = e.getPoint();
+                    if (parent.objType != parent.LQD) {
+                        punto = e.getPoint();
                         for (int i = 0; i < mainGraph.numNodes() && sust == -1; i++) {
-                           Node n = mainGraph.getNodeAt(i);
+                            Node n = mainGraph.getNodeAt(i);
                             if (n.isInside(punto)) {
-                            sust = i;
+                                sust = i;
                             }
                         }
                         if (parent.panelDatasets.isAnySelected()) {
                             for (int i = 0; i < parent.panelDatasets.checks.size(); i++) {
                                 if (((JCheckBox) parent.panelDatasets.checks.elementAt(i)).isSelected()) {
                                     ((JButton) (parent.dinDatasets.checks.elementAt(i))).setText("Del");
-                                    if(parent.objType!=parent.LQD)
-                                    {
+                                    if (parent.objType != parent.LQD) {
                                         ((JButton) (parent.dinDatasets.edits.elementAt(i))).setVisible(true);
-                                         parent.dinDatasets.add((JButton) (parent.dinDatasets.edits.elementAt(i)));
-										 if (c == 0) {
+                                        parent.dinDatasets.add((JButton) (parent.dinDatasets.edits.elementAt(i)));
+                                        if (c == 0) {
                                             parent.dsc = new ExternalObjectDescription((ExternalObjectDescription) parent.panelDatasets.actualList.elementAt(i), true);
-                                         } else {
+                                        } else {
                                             parent.dsc.insert(new ExternalObjectDescription((ExternalObjectDescription) parent.panelDatasets.actualList.elementAt(i)), true);
-                                         }
-                                    }else{
+                                        }
+                                    } else {
                                         if (c == 0) {
                                             parent.dsc = new ExternalObjectDescription((ExternalObjectDescription) parent.panelDatasets.actualList.elementAt(i), true);
                                         } else {
@@ -721,12 +717,12 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             dsc = new ExternalObjectDescription(parent.dsc);
 
                             //We create the Dataset node. We take the information of which data sets
-                            DataSet ds = new DataSet(dsc, punto, this, null,NODE);
+                            DataSet ds = new DataSet(dsc, punto, this, null, NODE);
                             //checks if the partitions are correct
                             boolean regenerationNeeded = regenerateDatasetPartitions(ds);
                             //if some regeneration was made, rebuild the data set node
                             if (regenerationNeeded) {
-                                ds = new DataSet(dsc, punto, this, null,NODE);
+                                ds = new DataSet(dsc, punto, this, null, NODE);
                             }
                             if (sust >= 0 &&
                                     JOptionPane.showConfirmDialog(parent,
@@ -771,7 +767,7 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             parent.selecDatasets.setEnabled(true);
                             parent.selectMethods.setEnabled(true);
                             parent.selectPostprocessMethods.setEnabled(true);
-							if (parent.objType==parent.IMBALANCED) {
+                            if (parent.objType == parent.IMBALANCED) {
                                 parent.selectPostprocessMethods.setEnabled(false);
                             }
                             parent.selectPreprocessMethods.setEnabled(true);
@@ -779,7 +775,7 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             parent.selectVisualizeMethods.setEnabled(true);
                             //            parent.undoButton.setEnabled(false);
                             //            parent.redoButton.setEnabled(false);
-                            
+
 
                             //show the dinamic data set panel
                             ((CardLayout) parent.selectionPanel1.getLayout()).show(parent.selectionPanel1, "dinDatasetsCard");
@@ -787,8 +783,8 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             //parent.panelDatasets.setVisible(false);
 
                             /***************************************************************
-                            *********************  EDUCATIONAL KEEL  **********************
-                            **************************************************************/
+                             *********************  EDUCATIONAL KEEL  **********************
+                             **************************************************************/
                             if (Frame.buttonPressed == 0) //Button Experiments pressed
                             {
                                 parent.helpContent.muestraURL(this.getClass().getResource("/contextualHelp/exp_algoins.html"));
@@ -796,34 +792,32 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                                 parent.helpContent.muestraURL(this.getClass().getResource("/contextualHelpDocente/exp_algoins.html"));
                             }
                             /***************************************************************
-                            *********************  EDUCATIONAL KEEL  **********************
-                            **************************************************************/
+                             *********************  EDUCATIONAL KEEL  **********************
+                             **************************************************************/
                             parent.runButton.setEnabled(true);
                             parent.runExpItem.setEnabled(true);
                             parent.insertDataflowItem.setEnabled(true);
-                       }
+                        }
                     } //parent.objtype
-                    else if(parent.objType==parent.LQD)
-                    {
+                    else if (parent.objType == parent.LQD) {
                         //NO INSERTAR NADA EN LQD, SI CREEIS QUE ME FALTA ALGO
                         //MANDARMELO POR EMAIL palaciosana@uniovi.es. Ana Palacios
-                       // if(Secundary==0)
+                        // if(Secundary==0)
                         //{
-                           // System.out.println(" tipo lqd 0");
-                            int active=type_lqd();
-                          //  Secundary=1;
-                           if(active==1)
-                           {
+                        // System.out.println(" tipo lqd 0");
+                        int active = type_lqd();
+                        //  Secundary=1;
+                        if (active == 1) {
                             parent.cursorAction = SELECTING;
-                        
+
                             parent.status.setText("Click twice into a node to view its properties");
                             parent.deleteItem.setEnabled(false);
                             parent.setCursor(Cursor.getDefaultCursor());
-                        
+
                             parent.cursorFlux.setEnabled(true);
                             //parent.runButton.setEnabled(true);
-                            
-                       
+
+
                             parent.saveButton.setEnabled(true);
                             parent.saveExpItem.setEnabled(true);
                             parent.saveAsExpItem.setEnabled(true);
@@ -836,39 +830,36 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             parent.selectVisualizeMethods.setEnabled(true);
                             //show the dinamic data set panel
                             ((CardLayout) parent.selectionPanel1.getLayout()).show(parent.selectionPanel1, "dinDatasetsCard");
-                           }
-                            //NO SE PUEDE ACTIVAR EL BOTON DE ZIP SINO HAY CONEXIONES
-                        //parent.runButton.setEnabled(true);
-                        //parent.runExpItem.setEnabled(true);
+                        }
+                    //NO SE PUEDE ACTIVAR EL BOTON DE ZIP SINO HAY CONEXIONES
+                    //parent.runButton.setEnabled(true);
+                    //parent.runExpItem.setEnabled(true);
                     }
-                    
+
                     break;
                 case PAINT_ALGORITHM:
                     punto = e.getPoint();
-                    for (int i = 0; i < mainGraph.numNodes() && sust == -1; i++) 
-                    {
+                    for (int i = 0; i < mainGraph.numNodes() && sust == -1; i++) {
                         Node n = mainGraph.getNodeAt(i);
-                        if (n.isInside(punto)) 
-                        {
-                            if(parent.objType==parent.LQD)
-                                punto.setLocation(punto.getX(), punto.getY()+60);
-                            else
-                                 sust = i;    
+                        if (n.isInside(punto)) {
+                            if (parent.objType == parent.LQD) {
+                                punto.setLocation(punto.getX(), punto.getY() + 60);
+                            } else {
+                                sust = i;
+                            }
                         }
                     }
 
                     // algorithm construction
-                    
-                    if(parent.objType!=parent.LQD)
-                    {
+
+                    if (parent.objType != parent.LQD) {
                         dsc = new ExternalObjectDescription(parent.dsc);
-                    }
-                    else
-                    {
-                        if(parent.RamaLqd==1)
-                            dsc = new ExternalObjectDescription(parent.dscLQD);    
-                        else
-                            dsc = new ExternalObjectDescription(parent.dscCRISP);    
+                    } else {
+                        if (parent.RamaLqd == 1) {
+                            dsc = new ExternalObjectDescription(parent.dscLQD);
+                        } else {
+                            dsc = new ExternalObjectDescription(parent.dscCRISP);
+                        }
                     }
                     Algorithm alg = new Algorithm(dsc, punto, this);
 
@@ -900,14 +891,14 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             }
                         }
 
-                        
-                      parent.insertUndo();
+
+                        parent.insertUndo();
                         mainGraph.dropNode(sust);
                         mainGraph.insertNode(alg, sust);
-                    } 
-                    else {
-                        if(parent.objType!=parent.LQD)
+                    } else {
+                        if (parent.objType != parent.LQD) {
                             parent.insertUndo();
+                        }
                         mainGraph.insertNode(alg);
                         elementSelected = true;
                     }
@@ -920,9 +911,10 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                     // XXX DESCOMENTAR
                     //parent.cursorSelect.setSelected(true);
                     parent.status.setText("Click in a node to select it");
-                    if(parent.objType!=parent.LQD)
-                    parent.deleteItem.setEnabled(true);
-                    
+                    if (parent.objType != parent.LQD) {
+                        parent.deleteItem.setEnabled(true);
+                    }
+
                     parent.setCursor(Cursor.getDefaultCursor());
                     break;
                 case PAINT_USER:
@@ -930,10 +922,11 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                     for (int i = 0; i < mainGraph.numNodes() && sust == -1; i++) {
                         Node n = mainGraph.getNodeAt(i);
                         if (n.isInside(punto)) {
-                             if(parent.objType==parent.LQD)
-                                punto.setLocation(punto.getX(), punto.getY()+60);
-                             else
+                            if (parent.objType == parent.LQD) {
+                                punto.setLocation(punto.getX(), punto.getY() + 60);
+                            } else {
                                 sust = i;
+                            }
                         }
                     }
 
@@ -978,10 +971,11 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                     for (int i = 0; i < mainGraph.numNodes() && sust == -1; i++) {
                         Node n = mainGraph.getNodeAt(i);
                         if (n.isInside(punto)) {
-                             if(parent.objType==parent.LQD)
-                                punto.setLocation(punto.getX(), punto.getY()+60);
-                             else
+                            if (parent.objType == parent.LQD) {
+                                punto.setLocation(punto.getX(), punto.getY() + 60);
+                            } else {
                                 sust = i;
+                            }
                         }
                     }
 
@@ -1009,18 +1003,21 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             }
                         }
 
-                        if(parent.objType!=parent.LQD)
-                        parent.insertUndo();
+                        if (parent.objType != parent.LQD) {
+                            parent.insertUndo();
+                        }
                         mainGraph.dropNode(sust);
                         mainGraph.insertNode(t, sust);
                     } else {
-                        if(parent.objType!=parent.LQD)
-                        parent.insertUndo();
+                        if (parent.objType != parent.LQD) {
+                            parent.insertUndo();
+                        }
                         mainGraph.insertNode(t);
                         elementSelected = true;
                     }
-                    if(parent.objType==parent.LQD)
-                            parent.selectVisualizeMethods.setEnabled(false);
+                    if (parent.objType == parent.LQD) {
+                        parent.selectVisualizeMethods.setEnabled(false);
+                    }
                     typeSelected = NODE;
                     parent.cursorAction = SELECTING;
                     this.setToolTipText("Click twice into a node to view its properties");
@@ -1029,8 +1026,9 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                     // XXX DESCOMENTAR
                     //parent.cursorSelect.setSelected(true);
                     parent.status.setText("Click in a node to select it");
-                    if(parent.objType!=parent.LQD)
-                    parent.deleteItem.setEnabled(true);
+                    if (parent.objType != parent.LQD) {
+                        parent.deleteItem.setEnabled(true);
+                    }
                     parent.setCursor(Cursor.getDefaultCursor());
                     break;
 
@@ -1077,25 +1075,22 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                 // Insert connection
 
                 case PAINT_ARC:
-                    
+
                     destinationP = e.getPoint();
                     paintingLine = false;
                     boolean para = false;
                     int nodo_origen = -1;
                     int nodo_destino = -1;
-                    
-                    for (int i = mainGraph.numNodes() - 1; (i >= 0) && (!para); i--) 
-                    {
+
+                    for (int i = mainGraph.numNodes() - 1; (i >= 0) && (!para); i--) {
                         Node n2 = mainGraph.getNodeAt(i);
-                        if (n2.isInside(originP)) 
-                        {
+                        if (n2.isInside(originP)) {
                             nodo_origen = i;
                         }
                         if (n2.isInside(destinationP)) {
                             nodo_destino = i;
                         }
-                        if ((nodo_origen >= 0) && (nodo_destino >= 0)) 
-                        {
+                        if ((nodo_origen >= 0) && (nodo_destino >= 0)) {
                             para = true;
                             if (nodo_origen != nodo_destino) {
                                 boolean cont = true;
@@ -1105,40 +1100,37 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
 
                                 String errorType = mainGraph.getNodeAt(nodo_origen).isPartialFlowCorrect(mainGraph.getNodeAt(nodo_destino));
 
-                                 if (mainGraph.getNodeAt(nodo_destino).type != Node.type_Test && mainGraph.getNodeAt(nodo_destino).type != Node.type_Visor) 
-                                {
+                                if (mainGraph.getNodeAt(nodo_destino).type != Node.type_Test && mainGraph.getNodeAt(nodo_destino).type != Node.type_Visor) {
 
                                     if (errorType.length() > 1) {
                                         JOptionPane.showMessageDialog(this, errorType, "Alert", JOptionPane.ERROR_MESSAGE);
 
-                                        if(parent.objType==parent.INVESTIGATION)
+                                        if (parent.objType == parent.INVESTIGATION) {
                                             cont = false;
+                                        }
 
-                                        if(parent.objType==parent.LQD)
+                                        if (parent.objType == parent.LQD) {
                                             cont = false;
+                                        }
 
-                                       if(Frame.buttonPressed==1){
+                                        if (Frame.buttonPressed == 1) {
                                             cont = false;
-                                       }
+                                        }
                                     }
                                 }
-                                
-                                if (mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() == Node.type_Method)
-                                {
-                                    if (mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() == Node.type_Method){
+
+                                if (mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() == Node.type_Method) {
+                                    if (mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() == Node.type_Method) {
                                         JOptionPane.showMessageDialog(parent,
                                                 "Two methods can not be joined.", "Error", 2);
                                         cont = false;
                                     }
                                 }
-                                if (mainGraph.getNodeAt(nodo_destino).type == Node.type_Dataset) 
-                                {
+                                if (mainGraph.getNodeAt(nodo_destino).type == Node.type_Dataset) {
                                     JOptionPane.showMessageDialog(parent,
                                             "A Dataset node can not have inputs.", "Error", 2);
                                     cont = false;
-                                } 
-                                else if (mainGraph.getNodeAt(nodo_origen).type == Node.type_userMethod || mainGraph.getNodeAt(nodo_destino).type == Node.type_userMethod) 
-                                {
+                                } else if (mainGraph.getNodeAt(nodo_origen).type == Node.type_userMethod || mainGraph.getNodeAt(nodo_destino).type == Node.type_userMethod) {
                                     if (mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() == Node.type_Undefined) {
                                         JOptionPane.showMessageDialog(parent,
                                                 "Origin User?s Method is not defined yet",
@@ -1150,8 +1142,7 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                                                 "Error", 2);
                                         cont = false;
                                     }
-                                } 
-                                else if ((mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() ==
+                                } else if ((mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() ==
                                         Node.type_Preprocess) &&
                                         (mainGraph.getNodeAt(nodo_destino).type !=
                                         Node.type_Multiplexor)) {
@@ -1175,31 +1166,25 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                                                 "Error", 2);
                                         cont = false;
                                     }
-                                }
-                                else if (mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() ==
-                                        Node.type_Visor)
-                                {
-                                     if(parent.objType==parent.LQD)
-                                     {
-                                            JOptionPane.showMessageDialog(parent,
+                                } else if (mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() ==
+                                        Node.type_Visor) {
+                                    if (parent.objType == parent.LQD) {
+                                        JOptionPane.showMessageDialog(parent,
                                                 "The node results can not be connected with other node.",
                                                 "Error", 2);
-                                            cont = false;
-                                     }
-                                     else
-                                     {
-                                    if ((mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() !=
-                                            Node.type_Method) &&
-                                            (mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() !=
-                                            Node.type_Postprocess))
-                                         {
-
-                                        JOptionPane.showMessageDialog(parent,
-                                                "Visors inputs only can be Methods or Post-Process.",
-                                                "Error", 2);
                                         cont = false;
+                                    } else {
+                                        if ((mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() !=
+                                                Node.type_Method) &&
+                                                (mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() !=
+                                                Node.type_Postprocess)) {
+
+                                            JOptionPane.showMessageDialog(parent,
+                                                    "Visors inputs only can be Methods or Post-Process.",
+                                                    "Error", 2);
+                                            cont = false;
+                                        }
                                     }
-                                     }
                                 } else if (mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() ==
                                         Node.type_Test) {
                                     JOptionPane.showMessageDialog(parent,
@@ -1241,232 +1226,176 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                                         }
                                     }
                                 }
-                               
 
-                                
-                                if(parent.objType==parent.LQD)
-                                {
-                                   
-                                    if(mainGraph.getNodeAt(nodo_origen).dsc.arg.size()==0 &&
+
+
+                                if (parent.objType == parent.LQD) {
+
+                                    if (mainGraph.getNodeAt(nodo_origen).dsc.arg.size() == 0 &&
                                             mainGraph.getNodeAt(nodo_origen).getType() !=
-                                            Node.type_Dataset)
-                                    {
-                                         JOptionPane.showMessageDialog(parent,
-                                                    "The origen node must be connected before with other node",
-                                                    "Error", 2);
-                                            cont = false;
-                                    }
-                                    else if(mainGraph.getNodeAt(nodo_origen).getType() ==
-                                            Node.type_Dataset && mainGraph.getNodeAt(nodo_destino).dsc.getSubtypelqd()==Node.LQD
-                                            && ( mainGraph.getNodeAt(nodo_origen).type_lqd==Node.LQD_C 
-                                            || mainGraph.getNodeAt(nodo_origen).type_lqd==Node.CRISP2))
-                                    {
-                                         JOptionPane.showMessageDialog(parent,
-                                                    "These two preprocessing mechanism can not be together (one is crisp and the other LQD)",
-                                                    "Error", 2);
-                                            cont = false;
-                                    }
-                                    else if((mainGraph.getNodeAt(nodo_destino).dsc.getSubtypelqd() ==Node.LQD
-                                            || mainGraph.getNodeAt(nodo_destino).dsc.getSubtypelqd() ==Node.C_LQD)
-                                            && (mainGraph.getNodeAt(nodo_origen).dsc.getSubtypelqd() ==Node.CRISP2 
-                                            ||mainGraph.getNodeAt(nodo_origen).dsc.getSubtypelqd() ==Node.LQD_C ) )
-                                    {
-                                         JOptionPane.showMessageDialog(parent,
-                                                    "These two preprocessing mechanism can not be together (one is crisp and the other LQD)",
-                                                    "Error", 2);
-                                            cont = false;
-                                    }
-                                    else if(mainGraph.getNodeAt(nodo_destino).dsc.getSubtype()
-                                            !=Node.type_Dataset && mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() !=
+                                            Node.type_Dataset) {
+                                        JOptionPane.showMessageDialog(parent,
+                                                "The origen node must be connected before with other node",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if (mainGraph.getNodeAt(nodo_origen).getType() ==
+                                            Node.type_Dataset && mainGraph.getNodeAt(nodo_destino).dsc.getSubtypelqd() == Node.LQD && (mainGraph.getNodeAt(nodo_origen).type_lqd == Node.LQD_C || mainGraph.getNodeAt(nodo_origen).type_lqd == Node.CRISP2)) {
+                                        JOptionPane.showMessageDialog(parent,
+                                                "These two preprocessing mechanism can not be together (one is crisp and the other LQD)",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if ((mainGraph.getNodeAt(nodo_destino).dsc.getSubtypelqd() == Node.LQD || mainGraph.getNodeAt(nodo_destino).dsc.getSubtypelqd() == Node.C_LQD) && (mainGraph.getNodeAt(nodo_origen).dsc.getSubtypelqd() == Node.CRISP2 || mainGraph.getNodeAt(nodo_origen).dsc.getSubtypelqd() == Node.LQD_C)) {
+                                        JOptionPane.showMessageDialog(parent,
+                                                "These two preprocessing mechanism can not be together (one is crisp and the other LQD)",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if (mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() != Node.type_Dataset && mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() !=
                                             Node.type_Dataset &&
-                                            ((Parameters)mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).dataset_used.size()==1
-                                            && ((Parameters)mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).dataset_used.get(0).contains("100")==true
-                                            &&
-                                            ((Parameters)mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).dataset_used.size()==1
-                                            && ((Parameters)mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).dataset_used.get(0).contains("10cv")==true
-                                            )
-                                            //mainGraph.getNodeAt(nodo_origen).dsc.getName().contains("Prelabelling")
-                                            //&& mainGraph.getNodeAt(nodo_destino).dsc.getName().contains("Prelabelling"))
+                                            ((Parameters) mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).dataset_used.size() == 1 && ((Parameters) mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).dataset_used.get(0).contains("100") == true &&
+                                            ((Parameters) mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).dataset_used.size() == 1 && ((Parameters) mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).dataset_used.get(0).contains("10cv") == true) //mainGraph.getNodeAt(nodo_origen).dsc.getName().contains("Prelabelling")
+                                    //&& mainGraph.getNodeAt(nodo_destino).dsc.getName().contains("Prelabelling"))
                                     {
                                         JOptionPane.showMessageDialog(parent,
-                                                    "These two algorithms cannot be linked. The originating node" +
-                                                    "supports 100boostrap but the destination node supports 10cv only",
-                                                    "Error", 2);
-                                            cont = false;
-                                    }
-                                    else if(mainGraph.getNodeAt(nodo_destino).dsc.getSubtype()
-                                            ==Node.type_Preprocess &&
-                                            ((Parameters)mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).cost_instance==true
-                                            && mainGraph.getNodeAt(nodo_origen).m_bOutputMultiClass==false &&  mainGraph.getNodeAt(nodo_origen).type_lqd==Node.C_LQD )
-                                            //Node.C_LQD)
+                                                "These two algorithms cannot be linked. The originating node" +
+                                                "supports 100boostrap but the destination node supports 10cv only",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if (mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() == Node.type_Preprocess &&
+                                            ((Parameters) mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).cost_instance == true && mainGraph.getNodeAt(nodo_origen).m_bOutputMultiClass == false && mainGraph.getNodeAt(nodo_origen).type_lqd == Node.C_LQD) //Node.C_LQD)
                                     {
                                         JOptionPane.showMessageDialog(parent,
-                                                    "The files \"Crisp to LQD\" don't have multiclass",
-                                                    "Error", 2);
-                                            cont = false;
-                                    }
-                                    
-                                    else if(mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() 
-                                            ==Node.type_Preprocess && mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() ==
+                                                "The files \"Crisp to LQD\" don't have multiclass",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if (mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() == Node.type_Preprocess && mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() ==
                                             Node.type_Preprocess &&
-                                            ((Parameters)mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).cost_instance==true
-                                            &&
-                                            ((Parameters)mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).cost_instance==true)
-                                            //mainGraph.getNodeAt(nodo_origen).dsc.getName().contains("Prelabelling")
-                                            //&& mainGraph.getNodeAt(nodo_destino).dsc.getName().contains("Prelabelling"))
+                                            ((Parameters) mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).cost_instance == true &&
+                                            ((Parameters) mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).cost_instance == true) //mainGraph.getNodeAt(nodo_origen).dsc.getName().contains("Prelabelling")
+                                    //&& mainGraph.getNodeAt(nodo_destino).dsc.getName().contains("Prelabelling"))
                                     {
                                         JOptionPane.showMessageDialog(parent,
-                                                    "These two preprocessing mechanism can not be together, the origen node only can be connect with the method GFS_Cost_Instances",
-                                                    "Error", 2);
-                                            cont = false;
-                                    }
-                                    else if(mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() 
-                                            ==Node.type_Preprocess && mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() ==
-                                            Node.type_Preprocess && mainGraph.getNodeAt(nodo_origen).dsc.getName().contains("prelabelling") )
-                                    {
+                                                "These two preprocessing mechanism can not be together, the origen node only can be connect with the method GFS_Cost_Instances",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if (mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() == Node.type_Preprocess && mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() ==
+                                            Node.type_Preprocess && mainGraph.getNodeAt(nodo_origen).dsc.getName().contains("prelabelling")) {
                                         JOptionPane.showMessageDialog(parent,
-                                                    "The origen node only can be connect with the method GFS_Cost_Instances",
-                                                    "Error", 2);
-                                            cont = false;
-                                    }
-                                     else if(mainGraph.getNodeAt(nodo_origen).getType()==Node.type_Dataset && 
-                                     mainGraph.getNodeAt(nodo_destino).dsc.getName().contains("GFS_Cost_Instances") )
-                                    {
+                                                "The origen node only can be connect with the method GFS_Cost_Instances",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if (mainGraph.getNodeAt(nodo_origen).getType() == Node.type_Dataset &&
+                                            mainGraph.getNodeAt(nodo_destino).dsc.getName().contains("GFS_Cost_Instances")) {
                                         JOptionPane.showMessageDialog(parent,
-                                                    "The node GFS_Cost_Instances only can be connect with algorithms the preprocessing",
-                                                    "Error", 2);
-                                            cont = false;
+                                                "The node GFS_Cost_Instances only can be connect with algorithms the preprocessing",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if (mainGraph.getNodeAt(nodo_origen).getType() != Node.type_Dataset && mainGraph.getNodeAt(nodo_destino).getType() != Node.type_Dataset && ((Parameters) mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).cost_instance == true && ((Parameters) mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).cost_instance == false) {
+                                        JOptionPane.showMessageDialog(parent,
+                                                "The destination node does not suport instances with cost",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if (mainGraph.getNodeAt(nodo_origen).getType() != Node.type_Dataset && mainGraph.getNodeAt(nodo_destino).getType() != Node.type_Dataset &&
+                                            ((Parameters) mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).cost_instance == false && ((Parameters) mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).cost_instance == true) {
+                                        JOptionPane.showMessageDialog(parent,
+                                                "The origin node does not suport instances with cost",
+                                                "Error", 2);
+                                        cont = false;
+                                    } else if (mainGraph.getNodeAt(nodo_origen).dsc.getSubtype() == Node.type_Method && mainGraph.getNodeAt(nodo_destino).dsc.getSubtype() == Node.type_Method) {
+                                        JOptionPane.showMessageDialog(parent,
+                                                "Imposible connect two algorithms of classification",
+                                                "Error", 2);
+                                        cont = false;
                                     }
-                                     else if(mainGraph.getNodeAt(nodo_origen).getType()!=Node.type_Dataset
-                                     && mainGraph.getNodeAt(nodo_destino).getType()!=Node.type_Dataset
-                                     && ((Parameters)mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).cost_instance==true
-                                     && ((Parameters)mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).cost_instance==false )
-                                     {
-                                         JOptionPane.showMessageDialog(parent,
-                                                    "The destination node does not suport instances with cost",
-                                                    "Error", 2);
-                                            cont = false;
-                                     }
-                                    else if(mainGraph.getNodeAt(nodo_origen).getType()!=Node.type_Dataset
-                                     && mainGraph.getNodeAt(nodo_destino).getType()!=Node.type_Dataset &&
-                                      ((Parameters)mainGraph.getNodeAt(nodo_origen).par.elementAt(0)).cost_instance==false
-                                     && ((Parameters)mainGraph.getNodeAt(nodo_destino).par.elementAt(0)).cost_instance==true )
-                                     {
-                                         JOptionPane.showMessageDialog(parent,
-                                                    "The origin node does not suport instances with cost",
-                                                    "Error", 2);
-                                            cont = false;
-                                     }
-                                    else if(mainGraph.getNodeAt(nodo_origen).dsc.getSubtype()==Node.type_Method
-                                     && mainGraph.getNodeAt(nodo_destino).dsc.getSubtype()==Node.type_Method)
-                                     {
-                                         JOptionPane.showMessageDialog(parent,
-                                                    "Imposible connect two algorithms of classification",
-                                                    "Error", 2);
-                                            cont = false;
-                                     }
-            
+
 
                                 }
-                                
+
 
                                 // check that connection doesn't exist
-                                for (int j = 0; j < mainGraph.numArcs() && cont; j++) 
-                                {
-                                    if(parent.objType!=parent.LQD)
-                                    {
-                                    Arc b = mainGraph.getArcAt(j);
-                                    if (b.getSource() == nodo_origen &&
-                                            b.getDestination() == nodo_destino)
-                                        {
-                                        cont = false;
-                                        JOptionPane.showMessageDialog(parent,
-                                                "This connection already exists.", "Error", 2);
-                                    }
-                                }
-                                    else
-                                    {
+                                for (int j = 0; j < mainGraph.numArcs() && cont; j++) {
+                                    if (parent.objType != parent.LQD) {
                                         Arc b = mainGraph.getArcAt(j);
-                                        if (b.getSource() == mainGraph.getNodeAt(nodo_origen).id &&
-                                            b.getDestination() == mainGraph.getNodeAt(nodo_destino).id)
-                                        {
+                                        if (b.getSource() == nodo_origen &&
+                                                b.getDestination() == nodo_destino) {
                                             cont = false;
                                             JOptionPane.showMessageDialog(parent,
-                                                "This connection already exists.", "Error", 2);
+                                                    "This connection already exists.", "Error", 2);
+                                        }
+                                    } else {
+                                        Arc b = mainGraph.getArcAt(j);
+                                        if (b.getSource() == mainGraph.getNodeAt(nodo_origen).id &&
+                                                b.getDestination() == mainGraph.getNodeAt(nodo_destino).id) {
+                                            cont = false;
+                                            JOptionPane.showMessageDialog(parent,
+                                                    "This connection already exists.", "Error", 2);
                                         }
                                     }
                                 }
 
                                 //check that destination node only have a connection (1-n connections if it is a test node)
-                                if(parent.objType!=parent.LQD)
-                                {
+                                if (parent.objType != parent.LQD) {
                                     int contador_entradas = 0;
-                                    for (int j = 0; j < mainGraph.numArcs() && cont; j++) 
-                                    {
+                                    for (int j = 0; j < mainGraph.numArcs() && cont; j++) {
                                         Arc b = mainGraph.getArcAt(j);
                                         if (b.getDestination() == nodo_destino && mainGraph.getNodeAt(nodo_destino).getType() != Node.type_Test) {
                                             cont = false;
                                             JOptionPane.showMessageDialog(parent,
-                                                "This node can only have an input.", "Error", 2);
+                                                    "This node can only have an input.", "Error", 2);
                                         } else if (b.getDestination() == nodo_destino && mainGraph.getNodeAt(nodo_destino).getType() == Node.type_Test && ((Parameters) (((Test) mainGraph.getNodeAt(nodo_destino)).par.elementAt(0))).getNumInputs() > 0) {
                                             contador_entradas++;
                                             if (contador_entradas >= ((Parameters) (((Test) mainGraph.getNodeAt(nodo_destino)).par.elementAt(0))).getNumInputs()) {
                                                 cont = false;
                                                 JOptionPane.showMessageDialog(parent,
-                                                    "This test can only have " + ((Parameters) (((Test) mainGraph.getNodeAt(nodo_destino)).par.elementAt(0))).getNumInputs() + " inputs.", "Error", 2);
+                                                        "This test can only have " + ((Parameters) (((Test) mainGraph.getNodeAt(nodo_destino)).par.elementAt(0))).getNumInputs() + " inputs.", "Error", 2);
                                             }
                                         }
                                     }
                                 }
-                               
+
 
                                 if (cont) {
                                     Arc a = null;
-                                    if(parent.objType==parent.LQD)
-                                           a = new Arc(mainGraph.getNodeAt(nodo_origen).id, mainGraph.getNodeAt(nodo_destino).id, this);
-                                    if(parent.objType!=parent.LQD)
-                                    {
+                                    if (parent.objType == parent.LQD) {
+                                        a = new Arc(mainGraph.getNodeAt(nodo_origen).id, mainGraph.getNodeAt(nodo_destino).id, this);
+                                    }
+                                    if (parent.objType != parent.LQD) {
                                         parent.insertUndo();
                                         a = new Arc(nodo_origen, nodo_destino, this);
                                     }
                                     mainGraph.insertArc(a);
-                                    if(parent.objType!=parent.LQD)
-                                    {
-                                    if (existCycles()) {
-                                        if(parent.objType!=parent.LQD)
-                                            mainGraph.dropArc(mainGraph.numArcs() - 1);
+                                    if (parent.objType != parent.LQD) {
+                                        if (existCycles()) {
+                                            if (parent.objType != parent.LQD) {
+                                                mainGraph.dropArc(mainGraph.numArcs() - 1);
+                                            }
 
-                                        JOptionPane.showMessageDialog(parent,
-                                                "This connection creates a cicle in the experiment.",
-                                                "Error", 2);
-                                    } 
-                                    }
-                                    else {
+                                            JOptionPane.showMessageDialog(parent,
+                                                    "This connection creates a cicle in the experiment.",
+                                                    "Error", 2);
+                                        }
+                                    } else {
                                         elementSelected = true;
                                         //parent.deleteItem.setEnabled(true);
                                         typeSelected = ARC;
-                                        
-                                        //Insert the datasets in the destination if the origen is a type.dataset
-                                            parent.runButton.setEnabled(true);
-                                            if (mainGraph.getNodeAt(nodo_origen).getType() ==Node.type_Dataset) 
-                                            {                                                
-                                              ((DataSet) mainGraph.getNodeAt(nodo_origen)).contain("Selection of datasets and its parameters",0,mainGraph.getNodeAt(nodo_destino),parent);
-                                            }
-                                            else
-                                            {
-                                                ((Algorithm) mainGraph.getNodeAt(nodo_origen)).contain("Datasets and its parameters",2,mainGraph.getNodeAt(nodo_destino),parent);
-                                            }
-                                            
 
+                                        //Insert the datasets in the destination if the origen is a type.dataset
+                                        parent.runButton.setEnabled(true);
+                                        if (mainGraph.getNodeAt(nodo_origen).getType() == Node.type_Dataset) {
+                                            ((DataSet) mainGraph.getNodeAt(nodo_origen)).contain("Selection of datasets and its parameters", 0, mainGraph.getNodeAt(nodo_destino), parent);
+                                        } else {
+                                            ((Algorithm) mainGraph.getNodeAt(nodo_origen)).contain("Datasets and its parameters", 2, mainGraph.getNodeAt(nodo_destino), parent);
                                         }
+
+
                                     }
+                                }
                             } //if the nodes are diferent
                         }//if we have the first and destination node
                     }//for numbers of nodes
                     break;
             }
 
-             //System.out.println(" sale de todos");
+            //System.out.println(" sale de todos");
             //refresh the panel
             repaint();
 
@@ -1479,10 +1408,9 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
              **************************************************************/
             if (Frame.buttonPressed == 1) //Button Teaching pressed
             {
-                
+
                 //window of partitions is opened and the user has modified the experiment area
-                if ((parent.getExecDocentWindowState() == false) &&(caseG == PAINT_ALGORITHM || caseG == PAINT_USER || caseG == PAINT_TEST)) 
-                {
+                if ((parent.getExecDocentWindowState() == false) && (caseG == PAINT_ALGORITHM || caseG == PAINT_USER || caseG == PAINT_TEST)) {
                     //System.out.println("AKI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                     Object[] options = {"OK", "CANCEL"};
                     int n = JOptionPane.showOptionDialog(this, "The actual experiment is opened!. \n" +
@@ -1499,9 +1427,9 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                     }
                 }
             }
-            /***************************************************************
-            *********************  EDUCATIONAL KEEL  **********************
-            **************************************************************/
+        /***************************************************************
+         *********************  EDUCATIONAL KEEL  **********************
+         **************************************************************/
         } // context menu
         else if (e.isPopupTrigger() && elementSelected) {
             parent.setCursor(Cursor.getDefaultCursor());
@@ -1515,39 +1443,37 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                 popup.add(menuItem);
                 popup.addSeparator();
             }
-            if (mainGraph.getNodeAt(mainGraph.numNodes() - 1).type != Node.type_Dataset || typeSelected == ARC) 
-            {
+            if (mainGraph.getNodeAt(mainGraph.numNodes() - 1).type != Node.type_Dataset || typeSelected == ARC) {
                 JMenuItem menuItem2 = new JMenuItem("Delete");
                 menuItem2.setIcon(new ImageIcon(this.getClass().getResource(
                         "/keel/GraphInterKeel/resources/ico/experiments/borrar.gif")));
                 menuItem2.addActionListener(new GraphPanel_jMenuItem1_actionAdapter(this));
                 popup.add(menuItem2);
             }
-            if(parent.objType==parent.LQD)
-            {
-                if(typeSelected == NODE && mainGraph.getNodeAt(mainGraph.numNodes() - 1).type == Node.type_Dataset)
-                {
+            if (parent.objType == parent.LQD) {
+                if (typeSelected == NODE && mainGraph.getNodeAt(mainGraph.numNodes() - 1).type == Node.type_Dataset) {
                     JMenuItem menuItem = new JMenuItem("Show Parameters");
                     menuItem.setIcon(new ImageIcon(this.getClass().getResource(
-                        "/keel/GraphInterKeel/resources/ico/experiments/division.gif")));
+                            "/keel/GraphInterKeel/resources/ico/experiments/division.gif")));
                     menuItem.addActionListener(new GraphPanel_jMenuItem2_actionAdapter(this));
                     popup.add(menuItem);
                     popup.addSeparator();
                 }
-               /* else if(typeSelected == ARC)
-                {
-                    JMenuItem menuItem2 = new JMenuItem("Delete");
-                        menuItem2.setIcon(new ImageIcon(this.getClass().getResource(
-                        "/keel/GraphInterKeel/resources/ico/experiments/borrar.gif")));
-                        menuItem2.addActionListener(new GraphPanel_jMenuItem1_actionAdapter(this));
-                        popup.add(menuItem2);
-                }*/
-                
+            /* else if(typeSelected == ARC)
+            {
+            JMenuItem menuItem2 = new JMenuItem("Delete");
+            menuItem2.setIcon(new ImageIcon(this.getClass().getResource(
+            "/keel/GraphInterKeel/resources/ico/experiments/borrar.gif")));
+            menuItem2.addActionListener(new GraphPanel_jMenuItem1_actionAdapter(this));
+            popup.add(menuItem2);
+            }*/
+
             }
             popup.show(e.getComponent(), e.getX(), e.getY());
         }
     }
 
+    //Mouse handlers
     public void mouseEntered(MouseEvent e) {
         requestFocusInWindow();
     }
@@ -1635,8 +1561,7 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
         if (Frame.buttonPressed == 0) //Button Experiments pressed
         {
             this.keyPressedAux(evt);
-        }
-        else //Button Teaching pressed
+        } else //Button Teaching pressed
         {
             //System.out.println("ESTOY AKI!!!!!!!!!!!!!!!");
             //experiment opened
@@ -1662,8 +1587,7 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
      **************************************************************/
     public void keyPressedAux(KeyEvent evt) {
         if (!multipleSelection) {
-            if (elementSelected && typeSelected == NODE) 
-            {
+            if (elementSelected && typeSelected == NODE) {
                 Node n = mainGraph.getNodeAt(mainGraph.numNodes() - 1);
                 if (evt.getKeyCode() == KeyEvent.VK_UP) {
                     Point nuevo = new Point(n.getPosicion());
@@ -1693,12 +1617,10 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                         n.setPosicion(nuevo);
                         repaint();
                     }
-                }
-                else if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+                } else if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
                     if (n.getType() != n.type_Dataset) {
 
-                        if(parent.objType!=parent.LQD)
-                        {
+                        if (parent.objType != parent.LQD) {
                             parent.insertUndo();
                             for (int i = mainGraph.numArcs() - 1; i >= 0; i--) {
                                 Arc a = mainGraph.getArcAt(i);
@@ -1709,36 +1631,30 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                                 }
                             }
                             mainGraph.dropNode(mainGraph.numNodes() - 1);
-                        }
-                        else
-                        {
-                            if(mainGraph.getNodeAt(node_selected).dsc.getName(0).compareTo("Results")==0)
-                                            JOptionPane.showMessageDialog(parent,"This node can not be erased", "Error", 2);
-                            else
-                            {
+                        } else {
+                            if (mainGraph.getNodeAt(node_selected).dsc.getName(0).compareTo("Results") == 0) {
+                                JOptionPane.showMessageDialog(parent, "This node can not be erased", "Error", 2);
+                            } else {
                                 if (JOptionPane.showConfirmDialog(this, "Do you want to remove this node and all its way?",
-                                "Remove node", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION)
-                                {
-                                    boolean found=false;
-                                    for (int i = mainGraph.numArcs() - 1; i >= 0; i--)
-                                    {
-                                Arc a = mainGraph.getArcAt(i);
+                                        "Remove node", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION) {
+                                    boolean found = false;
+                                    for (int i = mainGraph.numArcs() - 1; i >= 0; i--) {
+                                        Arc a = mainGraph.getArcAt(i);
                                         int nodes = mainGraph.numNodes();
-                                        if (a.getDestination() == (mainGraph.getNodeAt(node_selected).id))
-                                        {
-                                            found=true;
-                                    mainGraph.dropArcLQD(i);
-                                            if(nodes==mainGraph.numNodes())
-                                            {
-                                                i=mainGraph.numArcs();
-                                }
-                                            else
+                                        if (a.getDestination() == (mainGraph.getNodeAt(node_selected).id)) {
+                                            found = true;
+                                            mainGraph.dropArcLQD(i);
+                                            if (nodes == mainGraph.numNodes()) {
+                                                i = mainGraph.numArcs();
+                                            } else {
                                                 break;
-                            }
+                                            }
+                                        }
 
-                        }
-                                    if(found==false)
+                                    }
+                                    if (found == false) {
                                         mainGraph.dropNodeLQD_move(node_selected);
+                                    }
                                 }
                             }
                         }//else
@@ -1750,20 +1666,15 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                 }
             } //If a node
             else if (elementSelected && typeSelected == ARC &&
-                    evt.getKeyCode() == KeyEvent.VK_DELETE) 
-            {
+                    evt.getKeyCode() == KeyEvent.VK_DELETE) {
 
-                if(parent.objType!=parent.LQD)
-                {
+                if (parent.objType != parent.LQD) {
                     parent.insertUndo();
                     mainGraph.dropArc(mainGraph.numArcs() - 1);
-                }
-                else
-                {
+                } else {
                     if (JOptionPane.showConfirmDialog(this, "Do you want to remove this arc and all the arc contained in the way?",
-                            "Remove node", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION)
-                    {
-                                mainGraph.dropArcLQD(arc_selected);
+                            "Remove node", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION) {
+                        mainGraph.dropArcLQD(arc_selected);
                     }
                 }
                 elementSelected = false;
@@ -1771,8 +1682,7 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                 repaint();
             }
             evt.consume();
-        }
-        else { // multiple selection
+        } else { // multiple selection
             Point minimo = new Point();
             Point maximo = new Point();
             minimo.x = minimo.y = Integer.MAX_VALUE;
@@ -1836,11 +1746,10 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                     }
                 }
             } else if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-                if(parent.objType==parent.LQD)
+                if (parent.objType == parent.LQD) {
                     JOptionPane.showMessageDialog(this, "Several elements are selected, select the element that you want to remove",
-                    "Select only one element", JOptionPane.ERROR_MESSAGE);
-                else
-                {
+                            "Select only one element", JOptionPane.ERROR_MESSAGE);
+                } else {
                     parent.insertUndo();
                     for (int j = 0; j < selectedN.size(); j++) {
                         int el = ((Integer) (selectedN.elementAt(j))).intValue();
@@ -1933,30 +1842,28 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
         return parar;
     }
 
-    // Context menu events
+    /**
+     * Remove action
+     * @param e Event
+     */
     void jMenuItem1_actionPerformed(ActionEvent e) {
         // remove connection
 
-        if (typeSelected == ARC) 
-        {
+        if (typeSelected == ARC) {
 
-            if(parent.objType!=parent.LQD)
-            {
+            if (parent.objType != parent.LQD) {
                 parent.insertUndo();
                 mainGraph.dropArc(mainGraph.numArcs() - 1);
-            }
-            else
-            {
+            } else {
                 if (JOptionPane.showConfirmDialog(this, "Do you want to remove this arc and all the arc contained in the way?",
-                            "Remove node", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION)
+                        "Remove node", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION) {
                     mainGraph.dropArcLQD(arc_selected);
+                }
             }
         // remove node
-        } else if (typeSelected == NODE) 
-        {
+        } else if (typeSelected == NODE) {
 
-            if(parent.objType!=parent.LQD)
-            {
+            if (parent.objType != parent.LQD) {
                 parent.insertUndo();
                 for (int i = mainGraph.numArcs() - 1; i >= 0; i--) {
                     Arc a = mainGraph.getArcAt(i);
@@ -1967,39 +1874,35 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                     }
                 }
                 mainGraph.dropNode(mainGraph.numNodes() - 1);
-            }
-            else
-            {
-                  if(mainGraph.getNodeAt(node_selected).dsc.getName(0).compareTo("Results")==0)
-                      JOptionPane.showMessageDialog(parent,"This node can not be erased", "Error", 2);
-                  else
-                  {
-                      if (JOptionPane.showConfirmDialog(this, "Do you want to remove this node and all its way?",
-                                "Remove node", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION)
-                      {
-                          boolean found=false;
-                          for (int i = mainGraph.numArcs() - 1; i >= 0; i--)
-                          {
-                    Arc a = mainGraph.getArcAt(i);
-                              int nodes = mainGraph.numNodes();
-                              if (a.getDestination() == (mainGraph.getNodeAt(node_selected).id))
-                              {
+            } else {
+                if (mainGraph.getNodeAt(node_selected).dsc.getName(0).compareTo("Results") == 0) {
+                    JOptionPane.showMessageDialog(parent, "This node can not be erased", "Error", 2);
+                } else {
+                    if (JOptionPane.showConfirmDialog(this, "Do you want to remove this node and all its way?",
+                            "Remove node", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION) {
+                        boolean found = false;
+                        for (int i = mainGraph.numArcs() - 1; i >= 0; i--) {
+                            Arc a = mainGraph.getArcAt(i);
+                            int nodes = mainGraph.numNodes();
+                            if (a.getDestination() == (mainGraph.getNodeAt(node_selected).id)) {
 
-                                  found=true;
-                        mainGraph.dropArcLQD(i);
-                                  if(nodes == mainGraph.numNodes())
-                                    i=mainGraph.numArcs();
-                                  else
-                                      break;
+                                found = true;
+                                mainGraph.dropArcLQD(i);
+                                if (nodes == mainGraph.numNodes()) {
+                                    i = mainGraph.numArcs();
+                                } else {
+                                    break;
+                                }
+                            }
+
+
+
+                        }
+                        if (found == false) {
+                            mainGraph.dropNodeLQD_move(node_selected);
+                        }
                     }
-                
-
-
-            }
-                          if(found==false)
-                              mainGraph.dropNodeLQD_move(node_selected);
-        }
-                  }
+                }
             }
         }
         elementSelected = false;
@@ -2008,54 +1911,63 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
         repaint();
     }
 
+    /**
+     * Remove node
+     * @param e Event
+     */
     void jMenuItem2_actionPerformed(ActionEvent e) {
-        
+
         Node n = mainGraph.getNodeAt(mainGraph.numNodes() - 1);
-        
-        if(parent.objType!=parent.LQD)
-        {
+
+        if (parent.objType != parent.LQD) {
             if (n.type != Node.type_Dataset) {
-                    n.showDialog();
+                n.showDialog();
+            }
+        } else {
+            if (mainGraph.getNodeAt(node_selected).dsc.getName(0).compareTo("Results") == 0) {
+                JOptionPane.showMessageDialog(parent, "This node can not be erased", "Error", 2);
+            } else {
+                if (n.type != Node.type_Dataset) {
+                    if (n.dsc.arg.size() != 0) {
+                        n.contain("Selection of datasets and its parameters", 2, n, parent);
+                    } else {
+                        JOptionPane.showMessageDialog(parent, "This node is not connected with other one", "Error", 2);
+                    }
+                } else {
+
+                    if (n.type_lqd == Node.CRISP2) {
+                        n.contain("Keel Crisp Dataset", 1, n, parent);
+                    }
+                    if (n.type_lqd == Node.LQD) {
+                        n.contain("Keel Low Quality Dataset", 1, n, parent);
+                    }
+                    if (n.type_lqd == Node.LQD_C) {
+                        n.contain("Keel Low Quality a Crisp Dataset", 1, n, parent);
+                    }
+                    if (n.type_lqd == Node.C_LQD) {
+                        n.contain("Keel Crisp a Low Quality Dataset", 1, n, parent);
+                    }
+                }
             }
         }
-        else
-        {
-            if(mainGraph.getNodeAt(node_selected).dsc.getName(0).compareTo("Results")==0)
-                      JOptionPane.showMessageDialog(parent,"This node can not be erased", "Error", 2);
-            else
-            {
-            if (n.type != Node.type_Dataset)
-            {                
-                if(n.dsc.arg.size()!=0)
-                    n.contain("Selection of datasets and its parameters",2,n,parent);                
-                else                
-                    JOptionPane.showMessageDialog(parent,"This node is not connected with other one", "Error", 2);
-            }
-            else
-            {
-             
-                if(n.type_lqd==Node.CRISP2)
-                    n.contain("Keel Crisp Dataset",1,n,parent);                
-                if(n.type_lqd==Node.LQD)                
-                    n.contain("Keel Low Quality Dataset",1,n,parent);                
-                if(n.type_lqd==Node.LQD_C)                
-                    n.contain("Keel Low Quality a Crisp Dataset",1,n,parent);                
-                if(n.type_lqd==Node.C_LQD)                
-                    n.contain("Keel Crisp a Low Quality Dataset",1,n,parent);
-            }
-        }
-    }
     }
 
+    /**
+     * Builder
+     */
     public GraphPanel() {
         try {
-            jbInit();
+            initPanel();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void jbInit() throws Exception {
+    /**
+     * Initialize
+     * @throws java.lang.Exception
+     */
+    private void initPanel() throws Exception {
         this.setBackground(new Color(225, 225, 225));
         this.setFont(new java.awt.Font("Arial", 0, 11));
     }
@@ -2064,6 +1976,7 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
      * This method checks if any partition of the selected
      * data sets is missing. If it is the case, then it will ask the user
      * to re-generate them.
+     * @param ds Data set
      * @return true if a new data set node needs to be created
      */
     protected boolean regenerateDatasetPartitions(DataSet ds) {
@@ -2072,10 +1985,10 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
         PartitionCreator pc;
         ProgressMonitor pm;
         int total;
-        int counter=0;
-        String message []=new String[ds.getMissingVector().size()];
+        int counter = 0;
+        String message[] = new String[ds.getMissingVector().size()];
 
-        Arrays.fill(message,"");
+        Arrays.fill(message, "");
 
         //if missing partitions, let us re-generate them
         if (!ds.isComplete()) {
@@ -2084,14 +1997,14 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
             for (int i = 0; i < missingPartitions.size(); i++) {
                 Vector aux = ((Vector) (missingPartitions.get(i)));
                 if (aux.isEmpty() == false) {
-                   if(!addToMessage(message,counter,ds.dsc.name[i])){
+                    if (!addToMessage(message, counter, ds.dsc.name[i])) {
                         counter++;
-                   }
+                    }
                 }
             }
-             for (int i = 0; i < counter; i++){
+            for (int i = 0; i < counter; i++) {
                 msg += "       " + message[i] + "\n";
-             }
+            }
 
 
             msg += "\n Do you want them to be generated?";
@@ -2107,7 +2020,7 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                 pc = new PartitionCreator(parent, ds, pm);
 
                 pc.execute();
-                
+
                 //wait for the SwingWorker thread to finish before continuing
                 //the experiment generation
                 synchronized (pc) {
@@ -2130,27 +2043,33 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
         return false;
     }
 
-    private boolean addToMessage(String message[],int counter, String name){
+    /**
+     * Add to message
+     * @param message New sub message
+     * @param counter Counter
+     * @param name Name associated
+     * @return Message
+     */
+    private boolean addToMessage(String message[], int counter, String name) {
 
-        boolean exists=false;
-        int i=0;
+        boolean exists = false;
+        int i = 0;
 
-        while((!exists)&&(i<counter)){
+        while ((!exists) && (i < counter)) {
 
-            if(message[i].equalsIgnoreCase(name)){
-                exists=true;
+            if (message[i].equalsIgnoreCase(name)) {
+                exists = true;
             }
             i++;
         }
-        
-        if(!exists){
-            message[counter]=name;
+
+        if (!exists) {
+            message[counter] = name;
         }
 
         return exists;
     }
 }
-
 
 class GraphPanel_jMenuItem1_actionAdapter
         implements java.awt.event.ActionListener {

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,13 @@
   
 **********************************************************************/
 
+/**
+ * <p>Title: Keel</p>
+ * <p>Description: DataSets selection</p>
+ * @author Victor Manuel Gonzalez Quevedo
+ * @authos Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
+ * @version 2.0
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.Color;
@@ -36,8 +43,6 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileOutputStream;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -63,16 +68,6 @@ import org.jdom.output.XMLOutputter;
 
 import keel.GraphInterKeel.datacf.*;
 
-
-/**
- * <p>Title: Keel</p>
- * <p>Description: DataSets selection</p>
- * <p>Copyright: Copyright (c) 2005</p>
- * <p>Company: Universidad de Granada</p>
- * @author Victor Manuel Gonzalez Quevedo
- * @authos Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
- * @version 2.0
- */
 public class SelectData extends JPanel implements Scrollable {
 
     private int maxUnitIncrement = 10;
@@ -89,7 +84,6 @@ public class SelectData extends JPanel implements Scrollable {
     Vector datasetXMLC_LQD = new Vector();
     Vector datasetListLQD_C = new Vector();
     Vector datasetXMLLQD_C = new Vector();
-    
     Vector actualList;
     Vector actualListC;
     Vector actualListC_LQD;
@@ -114,69 +108,73 @@ public class SelectData extends JPanel implements Scrollable {
     Experiments parent;
     Hashtable<String, Boolean> dataActive = new Hashtable<String, Boolean>();
     int oddWidth, evenWidth, maxWidth;
-    
-    JButton crisp_lqd= new JButton();
-    JButton lqd_crisp= new JButton();
-    JButton crispc= new JButton();
+    JButton crisp_lqd = new JButton();
+    JButton lqd_crisp = new JButton();
+    JButton crispc = new JButton();
     DatasetXML listData[];
-    JPanel crisplqd= new JPanel();
-    JPanel lqdcrisp= new JPanel();
-    JPanel crisp= new JPanel();
-    JPanel lqd= new JPanel();
+    JPanel crisplqd = new JPanel();
+    JPanel lqdcrisp = new JPanel();
+    JPanel crisp = new JPanel();
+    JPanel lqd = new JPanel();
     JLabel titulo3 = new JLabel("Keel Crisp Dataset");
-    int pos_initial=0;
-    int pos_initial_lc=0;
-    int pos_initial_c=0;
+    int pos_initial = 0;
+    int pos_initial_lc = 0;
+    int pos_initial_c = 0;
     int posic_lqd;
     int posilqd_c;
     int posic;
-  
-    
 
+    /**
+     * Builder
+     */
     public SelectData() {
         super();
-        
-
     }
 
+    /**
+     * Builder
+     * @param frame Parent frame
+     */
     public SelectData(Experiments frame) {
         try {
             parent = frame;
-            jbInit();
-           
-                
+            initSelector();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void transform()
-    {
-         pos_initial=0;
-         pos_initial_lc=0;
-         pos_initial_c=0;
-         lqdcrisp.setVisible(false);
-         lqd_crisp.setBackground(new Color(225, 225, 225));
-         crisplqd.setVisible(false);
-         crisp_lqd.setBackground(new Color(225, 225, 225));
-         lqdcrisp.removeAll();
-         crisplqd.removeAll();
-         crisp.removeAll();
-         lqd.removeAll();
-         crispc.setVisible(true);
-         crispc.setBackground(new Color(225, 225, 225));
-         
+    /**
+     * Transform method
+     */
+    private void transform() {
+        pos_initial = 0;
+        pos_initial_lc = 0;
+        pos_initial_c = 0;
+        lqdcrisp.setVisible(false);
+        lqd_crisp.setBackground(new Color(225, 225, 225));
+        crisplqd.setVisible(false);
+        crisp_lqd.setBackground(new Color(225, 225, 225));
+        lqdcrisp.removeAll();
+        crisplqd.removeAll();
+        crisp.removeAll();
+        lqd.removeAll();
+        crispc.setVisible(true);
+        crispc.setBackground(new Color(225, 225, 225));
+
     }
-    private void jbInit() throws Exception {
-        
-        
-        checksLQD_C= new Vector();
+
+    /**
+     * Initialize
+     * @throws java.lang.Exception
+     */
+    private void initSelector() throws Exception {
+
+        checksLQD_C = new Vector();
         checks = new Vector();
         checksC = new Vector();
         checksC_LQD = new Vector();
-        
-        
-        
+
         importB.setBackground(new Color(225, 225, 225));
         importB.setText("Import");
         importB.addActionListener(new SelectData_importar_actionAdapter(this));
@@ -185,68 +183,67 @@ public class SelectData extends JPanel implements Scrollable {
         crisp_lqd.setText("Crisp to Low Quality");
         crisp_lqd.addActionListener(new crisp_lqd_actionAdapter(this));
         crisp_lqd.setVisible(false);
-        
+
         crispc.setBackground(new Color(225, 225, 225));
         crispc.setText("Keel Crisp Classification ");
         crispc.addActionListener(new crisp_actionAdapter(this));
         crispc.setVisible(true);
         crispc.setEnabled(false);
-       
+
         crisp.setVisible(false);
-        
+
         lqd_crisp.setBackground(new Color(225, 225, 225));
         lqd_crisp.setText("Low Quality to Crisp");
         lqd_crisp.addActionListener(new lqd_crisp_actionAdapter(this));
         lqd_crisp.setVisible(false);
         lqd_crisp.setEnabled(false);
-       
-        
+
+
         remove.setBackground(new Color(225, 225, 225));
         remove.setText("Remove");
         remove.addActionListener(new SelectData_remove_actionAdapter(this));
-        
+
         selectAll.setBackground(new Color(225, 225, 225));
         selectAll.setText("Select All");
         selectAll.addActionListener(new SelectData_selectAll_actionAdapter(this));
-        
+
         selectAllC.setBackground(new Color(225, 225, 225));
         selectAllC.setText("Select All Crisp");
         selectAllC.addActionListener(new SelectData_selectAllC_actionAdapter(this));
-        
+
         selectAllC_LQD.setBackground(new Color(225, 225, 225));
         selectAllC_LQD.setText("Select All C_LQD");
         selectAllC_LQD.addActionListener(new SelectData_selectAllC_LQD_actionAdapter(this));
-        
+
         selectAllLQD_C.setBackground(new Color(225, 225, 225));
         selectAllLQD_C.setText("Select All LQD_C");
         selectAllLQD_C.addActionListener(new SelectData_selectAllLQD_C_actionAdapter(this));
-        
-        
-        
+
+
+
         invertSelection.setBackground(new Color(225, 225, 225));
         invertSelection.setText("Invert");
         invertSelection.addActionListener(new SelectData_invertSelection_actionAdapter(this));
-        
-        
+
+
         invertSelectionC.setBackground(new Color(225, 225, 225));
         invertSelectionC.setText("Invert Crisp");
         invertSelectionC.addActionListener(new SelectData_invertSelectionC_actionAdapter(this));
-        
-         invertSelectionC_LQD.setBackground(new Color(225, 225, 225));
+
+        invertSelectionC_LQD.setBackground(new Color(225, 225, 225));
         invertSelectionC_LQD.setText("Invert C_LQD");
         invertSelectionC_LQD.addActionListener(new SelectData_invertSelectionC_LQD_actionAdapter(this));
-        
+
         invertSelectionLQD_C.setBackground(new Color(225, 225, 225));
         invertSelectionLQD_C.setText("Invert LQD_C");
         invertSelectionLQD_C.addActionListener(new SelectData_invertSelectionLQD_C_actionAdapter(this));
-        
+
         selectAllUser.setBackground(new Color(225, 225, 225));
         selectAllUser.setText("Select All");
         selectAllUser.addActionListener(new SelectData_selectAllUser_actionAdapter(this));
         invertSelectionUser.setBackground(new Color(225, 225, 225));
         invertSelectionUser.setText("Invert");
         invertSelectionUser.addActionListener(new SelectData_invertSelectionUser_actionAdapter(this));
-    
 
     }
 
@@ -260,17 +257,35 @@ public class SelectData extends JPanel implements Scrollable {
         datasetList.add(new ExternalObjectDescription(ds.nameAbr, path, 0));
         datasetXML.add(ds);
     }
-     public void insertC_LQD(DatasetXML ds, String path) {
+
+    /**
+     * Insert a new External Object Description (of a data set) in the list
+     * @param ds the new data setsï¿½
+     * @param path the path to the data set(s) file(s)
+     */
+    public void insertC_LQD(DatasetXML ds, String path) {
         // Inserts a dataset info
         datasetListC_LQD.add(new ExternalObjectDescription(ds.nameAbr, path, 0));
         datasetXMLC_LQD.add(ds);
     }
-      public void insertLQD_C(DatasetXML ds, String path) {
+
+    /**
+     * Insert a new External Object Description (of a data set) in the list
+     * @param ds the new data setsï¿½
+     * @param path the path to the data set(s) file(s)
+     */
+    public void insertLQD_C(DatasetXML ds, String path) {
         // Inserts a dataset info
         datasetListLQD_C.add(new ExternalObjectDescription(ds.nameAbr, path, 0));
         datasetXMLLQD_C.add(ds);
     }
-       public void insertC(DatasetXML ds, String path) {
+
+    /**
+     * Insert a new External Object Description (of a data set) in the list
+     * @param ds the new data setsï¿½
+     * @param path the path to the data set(s) file(s)
+     */
+    public void insertC(DatasetXML ds, String path) {
         // Inserts a dataset info
         datasetListC.add(new ExternalObjectDescription(ds.nameAbr, path, 0));
         datasetXMLC.add(ds);
@@ -302,9 +317,7 @@ public class SelectData extends JPanel implements Scrollable {
         datasetXMLC.removeAllElements();
         transform();
     }
-    
-   
-   
+
     /**
      * Test if any of the data sets in the list are selected by their
      * correspondent check button
@@ -319,8 +332,13 @@ public class SelectData extends JPanel implements Scrollable {
         }
         return false;
     }
-    
-      public boolean isAnySelectedLQD_C() {
+
+    /**
+     * Test if any of the data sets in the list are selected by their
+     * correspondent check button
+     * @return True if at least one is selected, false otherwise
+     */
+    public boolean isAnySelectedLQD_C() {
         // Check that one or more datasets are selected
         for (int i = 0; i < checksLQD_C.size(); i++) {
             if (((JCheckBox) checksLQD_C.elementAt(i)).isSelected()) {
@@ -329,8 +347,13 @@ public class SelectData extends JPanel implements Scrollable {
         }
         return false;
     }
-      
-        public boolean isAnySelectedC_LQD() {
+
+    /**
+     * Test if any of the data sets in the list are selected by their
+     * correspondent check button
+     * @return True if at least one is selected, false otherwise
+     */
+    public boolean isAnySelectedC_LQD() {
         // Check that one or more datasets are selected
         for (int i = 0; i < checksC_LQD.size(); i++) {
             if (((JCheckBox) checksC_LQD.elementAt(i)).isSelected()) {
@@ -339,7 +362,13 @@ public class SelectData extends JPanel implements Scrollable {
         }
         return false;
     }
-          public boolean isAnySelectedC() {
+
+    /**
+     * Test if any of the data sets in the list are selected by their
+     * correspondent check button
+     * @return True if at least one is selected, false otherwise
+     */
+    public boolean isAnySelectedC() {
         // Check that one or more datasets are selected
         for (int i = 0; i < checksC.size(); i++) {
             if (((JCheckBox) checksC.elementAt(i)).isSelected()) {
@@ -366,7 +395,7 @@ public class SelectData extends JPanel implements Scrollable {
         actualListC = new Vector();
         actualListC_LQD = new Vector();
         actualListLQD_C = new Vector();
-        
+
         this.removeAll();
         transform();
 
@@ -376,11 +405,11 @@ public class SelectData extends JPanel implements Scrollable {
      * Reload the data set list, given the experiment type
      * @param type The current experiment type, which determines the data sets to be loaded
      */
-    public void reload(int type) {        
+    public void reload(int type) {
         componentWidth = parent.datasetsChecksPanel.getWidth() -
                 parent.mainSplitPane1.getDividerSize() - 30;
         boolean leftColumn;
-        
+
         int leftPos, rightPos, align;
         pos = 10;
         int width;
@@ -390,46 +419,45 @@ public class SelectData extends JPanel implements Scrollable {
 
         //        String cad = "classification";
         switch (type) {
-         
+
             case Experiments.CLASSIFICATION:
                  {
                     cad = "classification";
-                    
+
                     this.cadParent = 0;
-                
+
                 }
                 break;
             case Experiments.REGRESSION:
                  {
                     cad = "regression";
-                    
+
                     this.cadParent = 1;
-                
+
                 }
                 break;
             case Experiments.UNSUPERVISED: {
                 cad = "unsupervised";
-                
+
                 this.cadParent = 2;
-                
+
                 break;
             }
-            
+
         }
 
         actualList = new Vector();
         JLabel titulo1;
-        if(parent.objType==parent.LQD)
-        {
-             titulo1= new JLabel("KEEL Low Quality Datasets");
-             lqd.setBackground(new Color(255, 198, 140)) ;
-             this.add(lqd);
-             org.jdesktop.layout.GroupLayout lqdLayout = new org.jdesktop.layout.GroupLayout(lqd);
-              lqd.setLayout(lqdLayout );
-              
-        }
-        else
+        if (parent.objType == parent.LQD) {
+            titulo1 = new JLabel("KEEL Low Quality Datasets");
+            lqd.setBackground(new Color(255, 198, 140));
+            this.add(lqd);
+            org.jdesktop.layout.GroupLayout lqdLayout = new org.jdesktop.layout.GroupLayout(lqd);
+            lqd.setLayout(lqdLayout);
+
+        } else {
             titulo1 = new JLabel("KEEL Datasets");
+        }
         titulo1.setFont(new Font("Arial", Font.BOLD, 14));
         titulo1.setBounds(new Rectangle(10, 2, 200, 16));
         this.add(titulo1);
@@ -469,20 +497,22 @@ public class SelectData extends JPanel implements Scrollable {
                     JCheckBox chk = new JCheckBox();
                     chk.setBounds(new Rectangle(align, pos, 25, 16));
                     chk.setOpaque(false);
-                    if(parent.objType==parent.LQD)
+                    if (parent.objType == parent.LQD) {
                         lqd.add(chk);
-                    else
+                    } else {
                         this.add(chk);
+                    }
                     checks.add(chk);
                     JLabel txt = new JLabel(((DatasetXML) datasetXML.elementAt(i)).nameComplete);
 
                     txt.setBounds(new Rectangle(align + 30, pos, componentWidth - 45, 16));
-                    
-                    if(parent.objType==parent.LQD)
+
+                    if (parent.objType == parent.LQD) {
                         lqd.add(txt);
-                    else
+                    } else {
                         this.add(txt);
-                        
+                    }
+
                     actualList.add(datasetList.elementAt(i));
                 }
             } catch (java.net.MalformedURLException ex) {
@@ -491,44 +521,42 @@ public class SelectData extends JPanel implements Scrollable {
         }
         pos += 30;
 
-        
+
         selectAll.setBounds(new Rectangle(15, pos, 110, 20));
         //        selectAll.setFont(new Font("Arial", Font.PLAIN, 10));
-        if(parent.objType==parent.LQD)
+        if (parent.objType == parent.LQD) {
             lqd.add(selectAll);
-        else
+        } else {
             this.add(selectAll);
+        }
         invertSelection.setBounds(new Rectangle(130, pos, 110, 20));
         //        invertSelection.setFont(new Font("Arial", Font.PLAIN, 10));
-        if(parent.objType==parent.LQD)
+        if (parent.objType == parent.LQD) {
             lqd.add(invertSelection);
-        else
+        } else {
             this.add(invertSelection);
-        
-        
-        
+        }
+
         pos += 30;
-        
-        
+
         JLabel titulo2;
         titulo3.setVisible(false);
-        
-        if(parent.objType!=parent.LQD)
-           titulo2 = new JLabel("User Datasets");
-        else
-        {
-             titulo2 = new JLabel("Transforms of Datasets");
-             titulo3.setFont(new Font("Arial", Font.BOLD, 14));
-             this.add(titulo3);
-             titulo3.setVisible(true);
-             lqd.setBounds(10, 25,componentWidth,pos);
-              pos=pos+35;
+
+        if (parent.objType != parent.LQD) {
+            titulo2 = new JLabel("User Datasets");
+        } else {
+            titulo2 = new JLabel("Transforms of Datasets");
+            titulo3.setFont(new Font("Arial", Font.BOLD, 14));
+            this.add(titulo3);
+            titulo3.setVisible(true);
+            lqd.setBounds(10, 25, componentWidth, pos);
+            pos = pos + 35;
         }
-        
+
         titulo2.setFont(new Font("Arial", Font.BOLD, 14));
-       titulo2.setBounds(new Rectangle(10, pos, 200, 16));
-       
-         
+        titulo2.setBounds(new Rectangle(10, pos, 200, 16));
+
+
         this.add(titulo2);
         //user data sets now follows
         leftColumn = true;
@@ -568,21 +596,20 @@ public class SelectData extends JPanel implements Scrollable {
         }
 
         pos += 30;
-        
+
         if (numberOfUserDataset != 0) {
             remove.setBounds(new Rectangle(15, pos, 110, 20));
             this.add(remove);
             importB.setBounds(new Rectangle(130, pos, 110, 20));
-            
+
             crisp_lqd.setBounds(new Rectangle(15, pos, 150, 20));
-            lqd_crisp.setBounds(new Rectangle(15, (pos+25), 150, 20));
-            lqd_crisp.setBounds(new Rectangle(15, (pos+25), 150, 20));
-            titulo3.setBounds(new Rectangle(10, pos+45, 200, 16));
-            crispc.setBounds(new Rectangle(15, pos+45+25, 150, 20));
-            
+            lqd_crisp.setBounds(new Rectangle(15, (pos + 25), 150, 20));
+            lqd_crisp.setBounds(new Rectangle(15, (pos + 25), 150, 20));
+            titulo3.setBounds(new Rectangle(10, pos + 45, 200, 16));
+            crispc.setBounds(new Rectangle(15, pos + 45 + 25, 150, 20));
+
             this.add(importB);
-            if(parent.objType==parent.LQD)
-            {
+            if (parent.objType == parent.LQD) {
                 this.add(crisp_lqd);
                 this.add(lqd_crisp);
                 this.add(crispc);
@@ -596,31 +623,24 @@ public class SelectData extends JPanel implements Scrollable {
         } else {
             importB.setBounds(new Rectangle(15, pos, 90, 20));
             this.add(importB);
-             if(parent.objType==parent.LQD)
-            {
+            if (parent.objType == parent.LQD) {
                 this.add(crisp_lqd);
                 this.add(lqd_crisp);
                 this.add(crispc);
-             }
+            }
             crisp_lqd.setBounds(new Rectangle(8, pos, 128, 20));
-            lqd_crisp.setBounds(new Rectangle(8+139, pos, 128, 20));
-            titulo3.setBounds(new Rectangle(10, pos+45, 200, 16));
-            crispc.setBounds(new Rectangle(8, pos+45+25, 150, 20));
+            lqd_crisp.setBounds(new Rectangle(8 + 139, pos, 128, 20));
+            titulo3.setBounds(new Rectangle(10, pos + 45, 200, 16));
+            crispc.setBounds(new Rectangle(8, pos + 45 + 25, 150, 20));
             pos += 30;
 
         }
 
-      
-
         parent.checksDatasetsScrollPane.getViewport().setBackground(this.getBackground());
         //this.setPreferredSize(new Dimension(rightPos+(int)1.5*maxWidth+30, pos + 10));
         this.setPreferredSize(new Dimension(componentWidth, 2000));
-        
 
         this.repaint();
-        
-        
-       
     }
 
     /**
@@ -708,64 +728,66 @@ public class SelectData extends JPanel implements Scrollable {
         frame.setParent(this.parent);
         frame.getSelectorToolbar().setVisible(false);
         frame.getSelectorTabbedPane().removeAll();
-        if (parent.cvType == Experiments.P5X2)
-            frame.addImportTab(false,false);
-        else if (parent.cvType == Experiments.PK)
-            frame.addImportTab(false,true);
+        if (parent.cvType == Experiments.P5X2) {
+            frame.addImportTab(false, false);
+        } else if (parent.cvType == Experiments.PK) {
+            frame.addImportTab(false, true);
+        }
         this.parent.setVisible(false);
         frame.setVisible(true);
 
-        
+
         this.reload(this.cadParent);
-    
+
     }
-    
-    public int reload_crisp_lqd(JPanel contain) 
-    {
-      //  JOptionPane.showMessageDialog(this, "Nentraaaaaaaaaaaaa 1",
+    /**
+     * Reload the data set list, given the experiment type
+     * @param contain Panel of the container
+     */
+    public int reload_crisp_lqd(JPanel contain) {
+        //  JOptionPane.showMessageDialog(this, "Nentraaaaaaaaaaaaa 1",
         //            "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
         //We obtain the crisp datasets 
-         try {
-        String raiz="." + File.separatorChar + "data" + File.separatorChar +"C_LQD"+ File.separatorChar + "DatasetsC_LQD.xml";
-        File dataset = new File(raiz);
-         java.net.URL recursoInternocrisp = dataset.toURL();
-         //System.out.println(recursoInterno);
+        try {
+            String raiz = "." + File.separatorChar + "data" + File.separatorChar + "C_LQD" + File.separatorChar + "DatasetsC_LQD.xml";
+            File dataset = new File(raiz);
+            java.net.URL recursoInternocrisp = dataset.toURL();
+            //System.out.println(recursoInterno);
 
-         if (recursoInternocrisp == null) {
+            if (recursoInternocrisp == null) {
                 System.err.println("Datasets.xml file not found at resources directory");
-         } else 
-         {          
-             // SGL - Loading of an internal resource list method file in XML Format
-            Document doc = new Document();
-            try {
-                SAXBuilder builder = new SAXBuilder();
-                doc = builder.build(recursoInternocrisp);
-            } catch (JDOMException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Dataset specification XML file not found");
-            }
+            } else {
+                // SGL - Loading of an internal resource list method file in XML Format
+                Document doc = new Document();
+                try {
+                    SAXBuilder builder = new SAXBuilder();
+                    doc = builder.build(recursoInternocrisp);
+                } catch (JDOMException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.err.println("Dataset specification XML file not found");
+                }
 
-            List datasets = doc.getRootElement().getChildren();
-            listData = new DatasetXML[datasets.size()];
-            for (int i = 0; i < datasets.size(); i++) {
-                listData[i] = new DatasetXML((Element) datasets.get(i));
-                insertC_LQD(listData[i], "/data/");
-            }
+                List datasets = doc.getRootElement().getChildren();
+                listData = new DatasetXML[datasets.size()];
+                for (int i = 0; i < datasets.size(); i++) {
+                    listData[i] = new DatasetXML((Element) datasets.get(i));
+                    insertC_LQD(listData[i], "/data/");
+                }
 
-            sortDatasetC_LQD();
-         }
-          } catch (java.net.MalformedURLException ex) {
+                sortDatasetC_LQD();
+            }
+        } catch (java.net.MalformedURLException ex) {
             ex.printStackTrace();
         }
-         
-         
-         boolean leftColumn;
-         int leftPos, rightPos, align;
-         int width;  
-          actualListC_LQD = new Vector();
-          checksC_LQD = new Vector();
+
+
+        boolean leftColumn;
+        int leftPos, rightPos, align;
+        int width;
+        actualListC_LQD = new Vector();
+        checksC_LQD = new Vector();
 
         //compute the maximum length of the differents data sets names
         computeDatasetsLabelWidth(datasetXMLC_LQD);
@@ -777,10 +799,9 @@ public class SelectData extends JPanel implements Scrollable {
         leftPos = 15;
         //rightPos = leftPos + check Width + oddWidth + 10 + little offset
         rightPos = 15 + maxWidth + 10;
-        int situation=0;
+        int situation = 0;
 
-        for (int i = 0; i < datasetListC_LQD.size(); i++) 
-        {
+        for (int i = 0; i < datasetListC_LQD.size(); i++) {
             File data = new File(((ExternalObjectDescription) datasetListC_LQD.elementAt(i)).getPath(0));
             try {
                 java.net.URL recursoInterno = data.toURI().toURL();
@@ -815,7 +836,7 @@ public class SelectData extends JPanel implements Scrollable {
         }
         situation += 30;
 
-        
+
         selectAllC_LQD.setBounds(new Rectangle(10, situation, 115, 20));
         //        selectAll.setFont(new Font("Arial", Font.PLAIN, 10));
         contain.add(selectAllC_LQD);
@@ -823,61 +844,59 @@ public class SelectData extends JPanel implements Scrollable {
         //        invertSelection.setFont(new Font("Arial", Font.PLAIN, 10));
         contain.add(invertSelectionC_LQD);
         situation += 30;
-   
-         return situation;
-         
+
+        return situation;
+
     }
-    public int reload_crisp() 
-    {
-        
-        
-        
-        
-        
-      //  JOptionPane.showMessageDialog(this, "Nentraaaaaaaaaaaaa 1",
+
+    /**
+     * Reload the data set list
+     */
+    public int reload_crisp() {
+
+        //  JOptionPane.showMessageDialog(this, "Nentraaaaaaaaaaaaa 1",
         //            "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
         //We obtain the crisp datasets 
-         try {
-        String raiz="." + File.separatorChar + "data" + File.separatorChar + "Datasets.xml";
-        File dataset = new File(raiz);
-         java.net.URL recursoInternocrisp = dataset.toURL();
-         //System.out.println(recursoInterno);
+        try {
+            String raiz = "." + File.separatorChar + "data" + File.separatorChar + "Datasets.xml";
+            File dataset = new File(raiz);
+            java.net.URL recursoInternocrisp = dataset.toURL();
+            //System.out.println(recursoInterno);
 
-         if (recursoInternocrisp == null) {
+            if (recursoInternocrisp == null) {
                 System.err.println("Datasets.xml file not found at resources directory");
-         } else 
-         {          
-             // SGL - Loading of an internal resource list method file in XML Format
-            Document doc = new Document();
-            try {
-                SAXBuilder builder = new SAXBuilder();
-                doc = builder.build(recursoInternocrisp);
-            } catch (JDOMException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Dataset specification XML file not found");
-            }
+            } else {
+                // SGL - Loading of an internal resource list method file in XML Format
+                Document doc = new Document();
+                try {
+                    SAXBuilder builder = new SAXBuilder();
+                    doc = builder.build(recursoInternocrisp);
+                } catch (JDOMException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.err.println("Dataset specification XML file not found");
+                }
 
-            List datasets = doc.getRootElement().getChildren();
-            listData = new DatasetXML[datasets.size()];
-            for (int i = 0; i < datasets.size(); i++) {
-                listData[i] = new DatasetXML((Element) datasets.get(i));
-                insertC(listData[i], "/data/");
-            }
+                List datasets = doc.getRootElement().getChildren();
+                listData = new DatasetXML[datasets.size()];
+                for (int i = 0; i < datasets.size(); i++) {
+                    listData[i] = new DatasetXML((Element) datasets.get(i));
+                    insertC(listData[i], "/data/");
+                }
 
-            sortDatasetC();
-         }
-          } catch (java.net.MalformedURLException ex) {
+                sortDatasetC();
+            }
+        } catch (java.net.MalformedURLException ex) {
             ex.printStackTrace();
         }
-         
-         
-         boolean leftColumn;
-         int leftPos, rightPos, align;
-         int width;  
-          actualListC= new Vector();
-          checksC = new Vector();
+
+
+        boolean leftColumn;
+        int leftPos, rightPos, align;
+        int width;
+        actualListC = new Vector();
+        checksC = new Vector();
 
         //compute the maximum length of the differents data sets names
         computeDatasetsLabelWidth(datasetXMLC);
@@ -889,10 +908,9 @@ public class SelectData extends JPanel implements Scrollable {
         leftPos = 15;
         //rightPos = leftPos + check Width + oddWidth + 10 + little offset
         rightPos = 15 + maxWidth + 10;
-        int situation=0;
+        int situation = 0;
 
-        for (int i = 0; i < datasetListC.size(); i++) 
-        {
+        for (int i = 0; i < datasetListC.size(); i++) {
             File data = new File(((ExternalObjectDescription) datasetListC.elementAt(i)).getPath(0));
             try {
                 java.net.URL recursoInterno = data.toURI().toURL();
@@ -927,7 +945,6 @@ public class SelectData extends JPanel implements Scrollable {
         }
         situation += 30;
 
-        
         selectAllC.setBounds(new Rectangle(10, situation, 115, 20));
         //        selectAll.setFont(new Font("Arial", Font.PLAIN, 10));
         crisp.add(selectAllC);
@@ -935,60 +952,59 @@ public class SelectData extends JPanel implements Scrollable {
         //        invertSelection.setFont(new Font("Arial", Font.PLAIN, 10));
         crisp.add(invertSelectionC);
         situation += 30;
-        
 
-      
-        
         return situation;
-      
-         
+
     }
-    public int reload_lqd_crisp(JPanel contain) 
-    {
-      //  JOptionPane.showMessageDialog(this, "Nentraaaaaaaaaaaaa 1",
+
+    /**
+     * Reload the data set list, given the experiment type
+     * @param type The current experiment type, which determines the data sets to be loaded
+     */
+    public int reload_lqd_crisp(JPanel contain) {
+        //  JOptionPane.showMessageDialog(this, "Nentraaaaaaaaaaaaa 1",
         //            "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
         //We obtain the lqd datasets 
-         try {
-        String raiz="." + File.separatorChar + "data" + File.separatorChar + "DatasetsLQD.xml";
-        File dataset = new File(raiz);
-         java.net.URL recursoInternocrisp = dataset.toURL();
-         //System.out.println(recursoInterno);
+        try {
+            String raiz = "." + File.separatorChar + "data" + File.separatorChar + "DatasetsLQD.xml";
+            File dataset = new File(raiz);
+            java.net.URL recursoInternocrisp = dataset.toURL();
+            //System.out.println(recursoInterno);
 
-         if (recursoInternocrisp == null) {
+            if (recursoInternocrisp == null) {
                 System.err.println("Datasets.xml file not found at resources directory");
-         } else 
-         {          
-             // SGL - Loading of an internal resource list method file in XML Format
-            Document doc = new Document();
-            try {
-                SAXBuilder builder = new SAXBuilder();
-                doc = builder.build(recursoInternocrisp);
-            } catch (JDOMException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Dataset specification XML file not found");
-            }
+            } else {
+                // SGL - Loading of an internal resource list method file in XML Format
+                Document doc = new Document();
+                try {
+                    SAXBuilder builder = new SAXBuilder();
+                    doc = builder.build(recursoInternocrisp);
+                } catch (JDOMException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.err.println("Dataset specification XML file not found");
+                }
 
-            List datasets = doc.getRootElement().getChildren();
-            listData = new DatasetXML[datasets.size()];
-            for (int i = 0; i < datasets.size(); i++) {
-                listData[i] = new DatasetXML((Element) datasets.get(i));
-                insertLQD_C(listData[i], "/data/");
-            }
+                List datasets = doc.getRootElement().getChildren();
+                listData = new DatasetXML[datasets.size()];
+                for (int i = 0; i < datasets.size(); i++) {
+                    listData[i] = new DatasetXML((Element) datasets.get(i));
+                    insertLQD_C(listData[i], "/data/");
+                }
 
-            sortDatasetLQD_C();
-         }
-          } catch (java.net.MalformedURLException ex) {
+                sortDatasetLQD_C();
+            }
+        } catch (java.net.MalformedURLException ex) {
             ex.printStackTrace();
         }
-         
-         
-         boolean leftColumn;
-         int leftPos, rightPos, align;
-         int width;  
-          actualListLQD_C = new Vector();
-          checksLQD_C = new Vector();
+
+
+        boolean leftColumn;
+        int leftPos, rightPos, align;
+        int width;
+        actualListLQD_C = new Vector();
+        checksLQD_C = new Vector();
 
         //compute the maximum length of the differents data sets names
         computeDatasetsLabelWidth(datasetXMLC_LQD);
@@ -1000,10 +1016,9 @@ public class SelectData extends JPanel implements Scrollable {
         leftPos = 15;
         //rightPos = leftPos + check Width + oddWidth + 10 + little offset
         rightPos = 15 + maxWidth + 10;
-        int situation=0;
+        int situation = 0;
 
-        for (int i = 0; i < datasetListLQD_C.size(); i++) 
-        {
+        for (int i = 0; i < datasetListLQD_C.size(); i++) {
             File data = new File(((ExternalObjectDescription) datasetListLQD_C.elementAt(i)).getPath(0));
             try {
                 java.net.URL recursoInterno = data.toURI().toURL();
@@ -1038,7 +1053,7 @@ public class SelectData extends JPanel implements Scrollable {
         }
         situation += 30;
 
-        
+
         selectAllLQD_C.setBounds(new Rectangle(10, situation, 115, 20));
         //        selectAll.setFont(new Font("Arial", Font.PLAIN, 10));
         contain.add(selectAllLQD_C);
@@ -1046,145 +1061,129 @@ public class SelectData extends JPanel implements Scrollable {
         //        invertSelection.setFont(new Font("Arial", Font.PLAIN, 10));
         contain.add(invertSelectionLQD_C);
         situation += 30;
-        
 
+        return situation;
 
-      
-         
-         return situation;
-         
     }
-     public void crisp_lqd_actionPerformed(ActionEvent e) 
-     {
-         lqdcrisp.setVisible(false);
-         lqd_crisp.setBackground(new Color(225, 225, 225));
-         titulo3.setBounds(new Rectangle(10, crisp_lqd.getY()+45, 200, 16));
-         crisp.setBounds(new Rectangle(15, titulo3.getY()+20+25, componentWidth, crisp.getHeight()));
-         crispc.setBounds(new Rectangle(15, titulo3.getY()+20, 150, 20));
-         if(crisp_lqd.getBackground() == Color.blue)
-         {
-             // JOptionPane.showMessageDialog(this, "dice que es azul",
-               //     "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
-             crisp_lqd.setBackground(new Color(225, 225, 225));
-             crisplqd.setVisible(false);
-            // lqd_crisp.setBounds(new Rectangle(15+25, crisp_lqd.getY(), 150, 20));      
-         }
-         else
-         {
-           //JOptionPane.showMessageDialog(this, "Nentraaaaaaaaaaaaa no es azul",
-             //       "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
-             if(pos_initial==0)   
-            {
+
+    /**
+     * Crisp to LQD button
+     * @param e Event
+     */
+    public void crisp_lqd_actionPerformed(ActionEvent e) {
+        lqdcrisp.setVisible(false);
+        lqd_crisp.setBackground(new Color(225, 225, 225));
+        titulo3.setBounds(new Rectangle(10, crisp_lqd.getY() + 45, 200, 16));
+        crisp.setBounds(new Rectangle(15, titulo3.getY() + 20 + 25, componentWidth, crisp.getHeight()));
+        crispc.setBounds(new Rectangle(15, titulo3.getY() + 20, 150, 20));
+        if (crisp_lqd.getBackground() == Color.blue) {
+            // JOptionPane.showMessageDialog(this, "dice que es azul",
+            //     "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
+            crisp_lqd.setBackground(new Color(225, 225, 225));
+            crisplqd.setVisible(false);
+        // lqd_crisp.setBounds(new Rectangle(15+25, crisp_lqd.getY(), 150, 20));
+        } else {
+            //JOptionPane.showMessageDialog(this, "Nentraaaaaaaaaaaaa no es azul",
+            //       "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
+            if (pos_initial == 0) {
                 this.add(crisplqd);
-                pos_initial=pos;
+                pos_initial = pos;
                 //crisplqd.setBackground(new Color(112, 154, 209));
                 crisplqd.setBackground(new Color(201, 216, 237));
                 crisplqd.removeAll();
-               
+
                 org.jdesktop.layout.GroupLayout crisplqdLayout = new org.jdesktop.layout.GroupLayout(crisplqd);
-                 crisplqd.setLayout(crisplqdLayout );
+                crisplqd.setLayout(crisplqdLayout);
                 datasetListC_LQD = new Vector();
                 actualListC_LQD = new Vector();
                 datasetXMLC_LQD = new Vector();
-                checksC_LQD= new Vector();
-                posic_lqd=reload_crisp_lqd(crisplqd);
+                checksC_LQD = new Vector();
+                posic_lqd = reload_crisp_lqd(crisplqd);
                 crisplqd.setBounds(15, pos_initial, componentWidth, posic_lqd);
-             }
-             crisplqd.setVisible(true);
-             crisp_lqd.setBackground(Color.blue);
-             titulo3.setBounds(new Rectangle(10, pos_initial+posic_lqd+35, 200, 16));
-             crisp.setBounds(new Rectangle(15, titulo3.getY()+20+25, componentWidth, crisp.getHeight()));
-              crispc.setBounds(new Rectangle(15, titulo3.getY()+20, 150, 20));
-            
-            
-         }
-                 
-      
-         
-       
-    
+            }
+            crisplqd.setVisible(true);
+            crisp_lqd.setBackground(Color.blue);
+            titulo3.setBounds(new Rectangle(10, pos_initial + posic_lqd + 35, 200, 16));
+            crisp.setBounds(new Rectangle(15, titulo3.getY() + 20 + 25, componentWidth, crisp.getHeight()));
+            crispc.setBounds(new Rectangle(15, titulo3.getY() + 20, 150, 20));
+
+        }
     }
-     
-      public void crisp_actionPerformed(ActionEvent e) 
-     {
-          if(crispc.getBackground()==Color.darkGray)
-          {
-                crispc.setBackground(new Color(225, 225, 225));
-                crisp.setVisible(false);
-          }
-          else
-          {
-              if(pos_initial_c==0)   
-            {
+
+    /**
+     * Crisp button
+     * @param e Event
+     */
+    public void crisp_actionPerformed(ActionEvent e) {
+        if (crispc.getBackground() == Color.darkGray) {
+            crispc.setBackground(new Color(225, 225, 225));
+            crisp.setVisible(false);
+        } else {
+            if (pos_initial_c == 0) {
                 this.add(crisp);
-                pos_initial_c=pos;
+                pos_initial_c = pos;
                 //crisplqd.setBackground(new Color(112, 154, 209));
                 crisp.setBackground(new Color(204, 204, 204));
                 crisp.removeAll();
-               
+
                 org.jdesktop.layout.GroupLayout crispl = new org.jdesktop.layout.GroupLayout(crisp);
-                 crisp.setLayout(crispl);
+                crisp.setLayout(crispl);
                 datasetListC = new Vector();
                 actualListC = new Vector();
                 datasetXMLC = new Vector();
-                checksC= new Vector();
-                posic=reload_crisp();
-                crisp.setBounds(15, titulo3.getY()+25+25, componentWidth, posic);
-             }
-             crisp.setVisible(true);
-             crispc.setBackground(Color.darkGray);
-             
-            
-          }
-          
-      }
+                checksC = new Vector();
+                posic = reload_crisp();
+                crisp.setBounds(15, titulo3.getY() + 25 + 25, componentWidth, posic);
+            }
+            crisp.setVisible(true);
+            crispc.setBackground(Color.darkGray);
+        }
+    }
 
-     public void lqd_crisp_actionPerformed(ActionEvent e) 
-     {
-         crisplqd.setVisible(false);
-         crisp_lqd.setBackground(new Color(225, 225, 225));
-         titulo3.setBounds(new Rectangle(10, crisp_lqd.getY()+45, 200, 16));
-         crisp.setBounds(new Rectangle(15, titulo3.getY()+20+25, componentWidth, crisp.getHeight()));
-         crispc.setBounds(new Rectangle(15, titulo3.getY()+20, 150, 20));
-         if(lqd_crisp.getBackground() == Color.yellow)
-         {
-             lqd_crisp.setBackground(new Color(225, 225, 225));
-             lqdcrisp.setVisible(false);
-            // lqd_crisp.setBounds(new Rectangle(15+25, crisp_lqd.getY(), 150, 20));      
-         }
-         else
-         {
-           
-             if(pos_initial_lc==0)   
-            {
+    /**
+     * LQD to Crisp button
+     * @param e Event
+     */
+    public void lqd_crisp_actionPerformed(ActionEvent e) {
+        crisplqd.setVisible(false);
+        crisp_lqd.setBackground(new Color(225, 225, 225));
+        titulo3.setBounds(new Rectangle(10, crisp_lqd.getY() + 45, 200, 16));
+        crisp.setBounds(new Rectangle(15, titulo3.getY() + 20 + 25, componentWidth, crisp.getHeight()));
+        crispc.setBounds(new Rectangle(15, titulo3.getY() + 20, 150, 20));
+        if (lqd_crisp.getBackground() == Color.yellow) {
+            lqd_crisp.setBackground(new Color(225, 225, 225));
+            lqdcrisp.setVisible(false);
+        // lqd_crisp.setBounds(new Rectangle(15+25, crisp_lqd.getY(), 150, 20));
+        } else {
+
+            if (pos_initial_lc == 0) {
                 this.add(lqdcrisp);
-                pos_initial_lc=pos;
+                pos_initial_lc = pos;
                 lqdcrisp.setBackground(new Color(255, 253, 202));
                 lqdcrisp.removeAll();
-               
+
                 org.jdesktop.layout.GroupLayout lqdcrispLayout = new org.jdesktop.layout.GroupLayout(lqdcrisp);
-                 lqdcrisp.setLayout(lqdcrispLayout );
+                lqdcrisp.setLayout(lqdcrispLayout);
                 datasetListLQD_C = new Vector();
                 actualListLQD_C = new Vector();
                 datasetXMLLQD_C = new Vector();
-                checksLQD_C= new Vector();
-                posilqd_c=reload_lqd_crisp(lqdcrisp); 
+                checksLQD_C = new Vector();
+                posilqd_c = reload_lqd_crisp(lqdcrisp);
                 lqdcrisp.setBounds(15, pos_initial_lc, componentWidth, posilqd_c);
-             }
-             lqdcrisp.setVisible(true);
-             lqd_crisp.setBackground(Color.yellow);
-             titulo3.setBounds(new Rectangle(10, pos_initial_lc+posilqd_c+35, 200, 16));
-            crisp.setBounds(new Rectangle(15, titulo3.getY()+20+25, componentWidth, crisp.getHeight()));
-           crispc.setBounds(new Rectangle(15, titulo3.getY()+20, 150, 20));
-            
-         }
-                 
-      
-         
-       
-    
+            }
+            lqdcrisp.setVisible(true);
+            lqd_crisp.setBackground(Color.yellow);
+            titulo3.setBounds(new Rectangle(10, pos_initial_lc + posilqd_c + 35, 200, 16));
+            crisp.setBounds(new Rectangle(15, titulo3.getY() + 20 + 25, componentWidth, crisp.getHeight()));
+            crispc.setBounds(new Rectangle(15, titulo3.getY() + 20, 150, 20));
+
+        }
     }
 
+    /**
+     * Rmove button
+     * @param e Event
+     */
     public void remove_actionPerformed(ActionEvent e) {
         boolean anySelected = false;
 
@@ -1196,8 +1195,8 @@ public class SelectData extends JPanel implements Scrollable {
                         this.deleteFromXML(j);
                         actualList.remove(i);
                         checks.remove(i);
-                        String nameData=((DatasetXML)datasetXML.elementAt(j)).nameAbr;
-                        FileUtils.rmdir("./data/"+nameData);
+                        String nameData = ((DatasetXML) datasetXML.elementAt(j)).nameAbr;
+                        FileUtils.rmdir("./data/" + nameData);
                         datasetList.remove(j);
                         datasetXML.remove(j);
                         this.reload(this.cadParent);
@@ -1214,6 +1213,10 @@ public class SelectData extends JPanel implements Scrollable {
         }
     }
 
+    /**
+     * Select all button
+     * @param e Event
+     */
     public void selectAll_actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < this.actualList.size(); i++) {
@@ -1224,7 +1227,11 @@ public class SelectData extends JPanel implements Scrollable {
             }
         }
     }
-    
+
+    /**
+     * Select all button
+     * @param e Event
+     */
     public void selectAllC_actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < this.actualListC.size(); i++) {
@@ -1235,8 +1242,12 @@ public class SelectData extends JPanel implements Scrollable {
             }
         }
     }
-    
-      public void selectAllC_LQD_actionPerformed(ActionEvent e) {
+
+    /**
+     * Select all button
+     * @param e Event
+     */
+    public void selectAllC_LQD_actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < this.actualListC_LQD.size(); i++) {
             for (int j = 0; j < datasetListC_LQD.size(); j++) {
@@ -1246,7 +1257,12 @@ public class SelectData extends JPanel implements Scrollable {
             }
         }
     }
-         public void selectAllLQD_C_actionPerformed(ActionEvent e) {
+
+    /**
+     * Select all button
+     * @param e Event
+     */
+    public void selectAllLQD_C_actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < this.actualListLQD_C.size(); i++) {
             for (int j = 0; j < datasetListLQD_C.size(); j++) {
@@ -1257,6 +1273,10 @@ public class SelectData extends JPanel implements Scrollable {
         }
     }
 
+    /**
+     * Invert button
+     * @param e Event
+     */
     public void invertSelection_actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < this.actualList.size(); i++) {
@@ -1267,7 +1287,12 @@ public class SelectData extends JPanel implements Scrollable {
             }
         }
     }
-     public void invertSelectionC_actionPerformed(ActionEvent e) {
+
+    /**
+     * Invert button
+     * @param e Event
+     */
+    public void invertSelectionC_actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < this.actualListC.size(); i++) {
             for (int j = 0; j < datasetListC.size(); j++) {
@@ -1277,8 +1302,12 @@ public class SelectData extends JPanel implements Scrollable {
             }
         }
     }
-    
-     public void invertSelectionC_LQD_actionPerformed(ActionEvent e) {
+
+    /**
+     * Invert button
+     * @param e Event
+     */
+    public void invertSelectionC_LQD_actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < this.actualListC_LQD.size(); i++) {
             for (int j = 0; j < datasetListC_LQD.size(); j++) {
@@ -1288,7 +1317,12 @@ public class SelectData extends JPanel implements Scrollable {
             }
         }
     }
-       public void invertSelectionLQD_C_actionPerformed(ActionEvent e) {
+
+    /**
+     * Invert button
+     * @param e Event
+     */
+    public void invertSelectionLQD_C_actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < this.actualListLQD_C.size(); i++) {
             for (int j = 0; j < datasetListLQD_C.size(); j++) {
@@ -1299,6 +1333,10 @@ public class SelectData extends JPanel implements Scrollable {
         }
     }
 
+    /**
+     * Select all button
+     * @param e Event
+     */
     public void selectAllUser_actionPerformed(ActionEvent e) {
         for (int i = 0; i < this.actualList.size(); i++) {
             for (int j = 0; j < datasetList.size(); j++) {
@@ -1309,13 +1347,20 @@ public class SelectData extends JPanel implements Scrollable {
         }
     }
 
+    /**
+     * UnSelect all
+     */
     public void deselectAll() {
         for (int i = 0; i < checks.size(); i++) {
             ((JCheckBox) checks.elementAt(i)).setSelected(false);
         }
-       
+
     }
 
+    /**
+     * Invert button
+     * @param e Event
+     */
     public void invertSelectionUser_actionPerformed(ActionEvent e) {
         for (int i = 0; i < this.actualList.size(); i++) {
             for (int j = 0; j < datasetList.size(); j++) {
@@ -1367,7 +1412,6 @@ public class SelectData extends JPanel implements Scrollable {
             ex.printStackTrace();
         }
     }
-    
 
     /**
      * This function sorts the inserted data set lists,
@@ -1378,17 +1422,32 @@ public class SelectData extends JPanel implements Scrollable {
         Collections.sort(datasetXML);
         Collections.sort(datasetList);
     }
-       public void sortDatasetC_LQD() {
+
+    /**
+     * This function sorts the inserted data set lists,
+     * so they will appear sorted in the GUI
+     */
+    public void sortDatasetC_LQD() {
         //sort the data set list
         Collections.sort(datasetXMLC_LQD);
         Collections.sort(datasetListC_LQD);
     }
-         public void sortDatasetLQD_C() {
+
+    /**
+     * This function sorts the inserted data set lists,
+     * so they will appear sorted in the GUI
+     */
+    public void sortDatasetLQD_C() {
         //sort the data set list
         Collections.sort(datasetXMLLQD_C);
         Collections.sort(datasetListLQD_C);
     }
-          public void sortDatasetC() {
+
+    /**
+     * This function sorts the inserted data set lists,
+     * so they will appear sorted in the GUI
+     */
+    public void sortDatasetC() {
         //sort the data set list
         Collections.sort(datasetXMLC);
         Collections.sort(datasetListC);
@@ -1417,12 +1476,16 @@ public class SelectData extends JPanel implements Scrollable {
                 if (i % 2 != 0 && evenWidth < width) {
                     evenWidth = width;
                 }
-            
+
             }
         }
 
     }
-	public void hideImportButton(){
+
+    /**
+     * Hide import button
+     */
+    public void hideImportButton() {
         importB.setVisible(false);
     }
 }
@@ -1448,11 +1511,10 @@ class crisp_lqd_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
-    public void actionPerformed(ActionEvent e)  {
+    public void actionPerformed(ActionEvent e) {
         adaptee.crisp_lqd_actionPerformed(e);
     }
 }
-
 
 class lqd_crisp_actionAdapter implements ActionListener {
 
@@ -1462,12 +1524,10 @@ class lqd_crisp_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
-    public void actionPerformed(ActionEvent e)  {
+    public void actionPerformed(ActionEvent e) {
         adaptee.lqd_crisp_actionPerformed(e);
     }
 }
-
-
 
 class crisp_actionAdapter implements ActionListener {
 
@@ -1477,7 +1537,7 @@ class crisp_actionAdapter implements ActionListener {
         this.adaptee = adaptee;
     }
 
-    public void actionPerformed(ActionEvent e)  {
+    public void actionPerformed(ActionEvent e) {
         adaptee.crisp_actionPerformed(e);
     }
 }
@@ -1507,7 +1567,6 @@ class SelectData_selectAll_actionAdapter implements ActionListener {
         adaptee.selectAll_actionPerformed(e);
     }
 }
-
 
 class SelectData_selectAllC_actionAdapter implements ActionListener {
 
@@ -1586,6 +1645,7 @@ class SelectData_invertSelectionC_LQD_actionAdapter implements ActionListener {
         adaptee.invertSelectionC_LQD_actionPerformed(e);
     }
 }
+
 class SelectData_invertSelectionLQD_C_actionAdapter implements ActionListener {
 
     private SelectData adaptee;
@@ -1598,6 +1658,7 @@ class SelectData_invertSelectionLQD_C_actionAdapter implements ActionListener {
         adaptee.invertSelectionLQD_C_actionPerformed(e);
     }
 }
+
 class SelectData_selectAllUser_actionAdapter implements ActionListener {
 
     private SelectData adaptee;
@@ -1623,4 +1684,3 @@ class SelectData_invertSelectionUser_actionAdapter implements ActionListener {
         adaptee.invertSelectionUser_actionPerformed(e);
     }
 }
-

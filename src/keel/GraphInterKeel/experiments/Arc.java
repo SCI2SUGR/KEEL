@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: Arc.java
+ *
+ * A class representing arcs of the graph
+ *
+ * @author Written by Admin 4/8/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -41,14 +51,27 @@ public class Arc implements Serializable {
     private transient Image myImage;
     private transient GraphPanel pd;
 
+    /**
+     * Builder
+     */
     public Arc() {
     }
 
+    /**
+     * Builder
+     * @param p Parent graph
+     */
     public Arc(GraphPanel p) {
         myImage = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/keel/GraphInterKeel/resources/ico/experiments/flecha.gif"));
         pd = p;
     }
 
+    /**
+     * Builder
+     * @param source Source node
+     * @param destination Destination node
+     * @param p Parent graph
+     */
     public Arc(int source, int destination, GraphPanel p) {
         sourceNode = source;
         destinationNode = destination;
@@ -90,18 +113,34 @@ public class Arc implements Serializable {
         pd.mainGraph.setModified(true);
     }
 
+    /**
+     * Gets the source node of this arc
+     * @return The source node
+     */
     public int getSource2() {
         return sourceNode;
     }
 
+    /**
+     * Gets the destination node
+     * @return the destination node
+     */
     public int getDestination2() {
         return destinationNode;
     }
 
+    /**
+     * Sets the node source
+     * @param source The new node source
+     */
     public void setSource2(int source) {
         sourceNode = source;
     }
 
+    /**
+     * Sets the destination node
+     * @param destination the new destination node
+     */
     public void setDestination2(int destination) {
         destinationNode = destination;
     }
@@ -137,11 +176,11 @@ public class Arc implements Serializable {
     }
 
     /**
-     * If the provided point is inside
-     * @param point
-     * @param source
-     * @param destination
-     * @return
+     * Test if the provided point is inside
+     * @param point Point
+     * @param source Source node
+     * @param destination Destination node
+     * @return If the provided point is inside
      */
     public boolean isInside(Point point, Point source, Point destination) {
         double dist = ((Line2D) line).ptSegDist(point);
@@ -152,6 +191,12 @@ public class Arc implements Serializable {
         }
     }
 
+    /**
+     * Computes the intersection of two nodes
+     * @param source Source node
+     * @param destination Destination node
+     * @return Intersection of two nodes as a point
+     */
     private Point intersection(Point source, Point destination) {
         Point punto = new Point();
         Point p0, p1, p2, p3;
@@ -192,4 +237,3 @@ public class Arc implements Serializable {
         return punto;
     }
 }
-

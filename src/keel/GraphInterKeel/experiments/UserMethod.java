@@ -27,12 +27,20 @@
   
 **********************************************************************/
 
-/*@author Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)*/
+/**
+ *
+ * File: UserMethod.java
+ *
+ * A class for managing user methods
+ *
+ * @author Written by Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
 import java.awt.geom.*;
-
 
 public final class UserMethod extends Node {
 
@@ -40,6 +48,12 @@ public final class UserMethod extends Node {
     protected String patternFile;
     protected String command;
 
+    /**
+     * Builder
+     * @param dsc Parent dsc
+     * @param posicion Initial position
+     * @param p Graph
+     */
     public UserMethod(ExternalObjectDescription dsc, Point posicion,
             GraphPanel p) {
         super(dsc, posicion, p.mainGraph.getId());
@@ -52,6 +66,14 @@ public final class UserMethod extends Node {
         parametersUser = null;
     }
 
+    /**
+     * Builder
+     * @param dsc Parent dsc
+     * @param posicion Initial position
+     * @param p Graph
+     * @param parameters Parameters of the method
+     * @param id Node id
+     */
     public UserMethod(ExternalObjectDescription dsc, Point position,
             GraphPanel p, Parameters parameters, int id) {
         super(dsc, position, id);
@@ -65,8 +87,21 @@ public final class UserMethod extends Node {
             parametersUser = new Parameters(parameters);
         }
     }
-public void contain(String title, int show,Node n,Experiments exp) {
+
+    /**
+     * Contain method
+     *
+     * @param title Title of the node
+     * @param show Wheter to show or not
+     * @param n Id node
+     * @param exp Paret frame
+     */
+    public void contain(String title, int show, Node n, Experiments exp) {
     }
+
+    /**
+     * Show associated dialog
+     */
     public void showDialog() {
 
         dialog = new DialogUser(pd.parent, "Algorithm Files", true, this);
@@ -85,6 +120,11 @@ public void contain(String title, int show,Node n,Experiments exp) {
         dialog.setVisible(true);
     }
 
+    /**
+     * Drawing component
+     * @param g2 Graphich element
+     * @param select Is selected
+     */
     public void draw(Graphics2D g2, boolean select) {
         Point pinit = new Point(centre.x - 25, centre.y - 25);
         Point pfin = new Point(centre.x + 25, centre.y + 25);
@@ -112,4 +152,3 @@ public void contain(String title, int show,Node n,Experiments exp) {
         g2.drawString(dsc.getName(), centre.x - width / 2, centre.y + 40);
     }
 }
-

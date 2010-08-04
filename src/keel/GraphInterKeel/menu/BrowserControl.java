@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: BrowserControl.java
+ *
+ * A simple, static class to display a URL in the system browser.
+ *
+ * @author Written by Admin 4/8/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.menu;
 
 import java.io.IOException;
@@ -154,4 +164,3 @@ or
     // The flag to display a url.
     private static final String UNIX_FLAG = "-remote openURL";
 }
-

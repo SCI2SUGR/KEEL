@@ -27,18 +27,34 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: Multiplexor.java
+ *
+ * Multiplexor nodes
+ *
+ * @author Written by Admin 4/8/2009
+ * @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
+ * @version 1.0
+ * @since JDK1.5
+ */
+
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
 import java.awt.geom.*;
 import java.util.Vector;
 
-/*@author Modified Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)*/
 
 public final class Multiplexor extends Node {
 
     protected transient Vector inputs;
 
+    /**
+     * Builder
+     * @param position Position in the graph
+     * @param p Graph
+     */
     public Multiplexor(Point position, GraphPanel p) {
         super(new ExternalObjectDescription("Multiplexor", null, Node.type_Undefined), position, p.mainGraph.getId());
         p.mainGraph.setId(p.mainGraph.getId() + 1);
@@ -48,6 +64,13 @@ public final class Multiplexor extends Node {
         inputs = new Vector();
     }
 
+    /**
+     * Builder
+     * @param subtipo Subtype of the node
+     * @param position Position in the graph
+     * @param p Graph
+     * @param id Node id
+     */
     public Multiplexor(int subtipo, Point position, GraphPanel p, int id) {
         super(new ExternalObjectDescription("Multiplexor", null, subtipo), position, id);
         type = type_Multiplexor;
@@ -56,9 +79,19 @@ public final class Multiplexor extends Node {
         inputs = new Vector();
     }
 
+    /**
+     * Show dialog
+     */
     public void showDialog() {
     }
 
+    /**
+     * Contain method
+     * @param title Frame title
+     * @param show Whether to show or not
+     * @param n Id of the node
+     * @param exp Parent frame
+     */
     public void contain(String title,int show,Node n,Experiments exp) {
     }
     public void draw(Graphics2D g2, boolean select) {
@@ -82,6 +115,10 @@ public final class Multiplexor extends Node {
         g2.drawImage(image, centre.x - 25, centre.y - 25, 50, 50, pd);
     }
 
+    /**
+     * Add input to the multiplexor
+     * @param node Id of the node
+     */
     public void addInput(int node) {
         // insert id node as an input
         if (dsc.getSubtype() == type_Undefined) {
@@ -90,6 +127,11 @@ public final class Multiplexor extends Node {
         inputs.addElement(new Integer(pd.mainGraph.getNodeAt(node).id));
     }
 
+    /**
+     * Remove input from the multiplexor
+     * @param node Id of the node
+     * @param multi Id of the multiplexor
+     */
     public void removeInput(int node, int multi) {
         // remove id node as an input
         inputs.removeElement(new Integer(pd.mainGraph.getNodeAt(node).id));
@@ -104,6 +146,10 @@ public final class Multiplexor extends Node {
         }
     }
 
+    /**
+     * Gets input
+     * @return Vector with the inputs
+     */
     public Vector getInputs() {
         // return input nodes
         Vector e = new Vector();
@@ -129,4 +175,3 @@ public final class Multiplexor extends Node {
         return e;
     }
 }
-

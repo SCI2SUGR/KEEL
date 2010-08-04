@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+/*
+ * File ParametersDialog2.java
+ *
+ * Created on 02-mar-2009, 5:30:48
+ * Modified on 12-may-2009
+ * @author Ignacio Robles
+ * @author Julian Luengo
+ * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of C√≥rdoba) 7/07/2009
+ * @authos Modified Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
+ */
 package keel.GraphInterKeel.experiments;
 
 // Called from DialogUsuario
@@ -36,18 +46,11 @@ import java.awt.event.*;
 import java.util.Vector;
 import javax.swing.table.*;
 
-/**
- * <p>Title: </p>
- * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2004</p>
- * <p>Company: </p>
- * @author not attributable
- * @version 1.0
- */
 public class ParametersDialog2 extends JDialog {
 
     JPanel panel1 = new JPanel() {
 
+        @Override
         public void paintComponent(Graphics g) {
             //ImageIcon img = new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/experimentos/parametros.jpg"));
             //g.drawImage(img.getImage(), 0, 0, null);
@@ -80,26 +83,39 @@ public class ParametersDialog2 extends JDialog {
             "/keel/GraphInterKeel/resources/ico/experiments/deshacer.gif"));
     UserMethod mu;
 
-    public ParametersDialog2(Frame frame, String title, boolean modal,
-            UserMethod mu) {
+    /**
+     * Builder
+     * @param frame Parent frame
+     * @param title Title of the frame
+     * @param modal Modal status
+     * @param mu User method
+     */
+    public ParametersDialog2(Frame frame, String title, boolean modal, UserMethod mu) {
         super(frame, title, modal);
         try {
             this.mu = mu;
             parameterData = mu.parametersUser;
             undoParameters = new Parameters(mu.parametersUser);
             parametersTable = new ParametersTable(undoParameters, this);
-            jbInit();
+            initParams();
             pack();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
+    /**
+     * Default builder
+     */
     public ParametersDialog2() {
         this(null, "", false, null);
     }
 
-    private void jbInit() throws Exception {
+    /**
+     * Initialize
+     * @throws java.lang.Exception
+     */
+    private void initParams() throws Exception {
 
         class MyTableCellEditor
                 extends AbstractCellEditor
@@ -175,6 +191,7 @@ public class ParametersDialog2 extends JDialog {
 
         jTable1 = new JTable(parametersTable) {
 
+            @Override
             public boolean isCellEditable(int rowIndex, int vColIndex) {
                 if (vColIndex == 1) {
                     return true;
@@ -347,10 +364,18 @@ public class ParametersDialog2 extends JDialog {
 
     }
 
+    /**
+     * Hide button
+     * @param e Event
+     */
     void jButton2_actionPerformed(ActionEvent e) {
         this.setVisible(false);
     }
 
+    /**
+     * Apply parameters
+     * @param e Event
+     */
     void jButton1_actionPerformed(ActionEvent e) {
         parameterData.copyParameters(undoParameters);
         Integer ejecuciones = (Integer) jSpinner1.getValue();
@@ -460,6 +485,10 @@ public class ParametersDialog2 extends JDialog {
         }
     }
 
+    /**
+     * Default values button
+     * @param e Event
+     */
     void jButton5_actionPerformed(ActionEvent e) {
         undoParameters.setValues(parameterData.getDefaultValues());
         for (int i = 0; i < parameterData.getNumParameters(); i++) {
@@ -513,6 +542,7 @@ class ParametrosDialog2_opciones_focusAdapter
         this.adaptee = adaptee;
     }
 
+    @Override
     public void focusLost(FocusEvent e) {
         adaptee.opciones_focusLost(e);
     }
@@ -531,4 +561,3 @@ class ParametrosDialog2_jButton1_actionAdapter
         adaptee.jButton1_actionPerformed(e);
     }
 }
-

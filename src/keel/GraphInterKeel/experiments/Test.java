@@ -27,20 +27,37 @@
   
 **********************************************************************/
 
-/*@author Modified Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)*/
+/**
+ *
+ * File: UserMethod.java
+ *
+ * A class for managing user methods
+ *
+ * @author Written by Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
 import java.awt.geom.*;
 import java.util.*;
 
-
 public final class Test extends Node {
 
+    /**
+     * Builder
+     */
     public Test() {
         super();
     }
 
+    /**
+     * Builder
+     * @param dsc Parent dsc
+     * @param posicion Initial position
+     * @param p Graph
+     */
     public Test(ExternalObjectDescription dsc, Point position, GraphPanel p) {
         super(dsc, position, p.mainGraph.getId());
         p.mainGraph.setId(p.mainGraph.getId() + 1);
@@ -49,55 +66,55 @@ public final class Test extends Node {
         if (dsc.getSubtype() == type_Test) {
             image = Toolkit.getDefaultToolkit().getImage(this.getClass().
                     getResource("/keel/GraphInterKeel/resources/ico/experiments/test.gif"));
-        } else if (dsc.getSubtype() == type_Visor)
-        {
-            if(dsc.getSubtypelqd()!=CRISP )
-            {
-            image = Toolkit.getDefaultToolkit().getImage(this.getClass().
-                    getResource("/keel/GraphInterKeel/resources/ico/experiments/resultsLQD.gif"));
-                type_lqd=LQD;
-            }
-            else
+        } else if (dsc.getSubtype() == type_Visor) {
+            if (dsc.getSubtypelqd() != CRISP) {
                 image = Toolkit.getDefaultToolkit().getImage(this.getClass().
-                    getResource("/keel/GraphInterKeel/resources/ico/experiments/visor.gif"));
+                        getResource("/keel/GraphInterKeel/resources/ico/experiments/resultsLQD.gif"));
+                type_lqd = LQD;
+            } else {
+                image = Toolkit.getDefaultToolkit().getImage(this.getClass().
+                        getResource("/keel/GraphInterKeel/resources/ico/experiments/visor.gif"));
+            }
         }
         pd = p;
         par = new Vector();
-		
-		
-		if(dsc.getSubtypelqd()!=CRISP )
-        {
+
+
+        if (dsc.getSubtypelqd() != CRISP) {
             par.addElement(new Parameters(dsc.getPath(0) + dsc.getName(0) + ".xml", true));
+        } else {
+            for (int i = 0; i < Layer.numLayers; i++) {
+                par.addElement(new Parameters(dsc.getPath(i) + dsc.getName(i) + ".xml", true));
+            }
         }
-        else
-        {
-             for (int i = 0; i < Layer.numLayers; i++)
-            {
-            par.addElement(new Parameters(dsc.getPath(i) + dsc.getName(i) + ".xml", true));
-			}
-		}
     }
 
+    /**
+     *
+     * @param dsc Parent dsc
+     * @param posicion Initial position
+     * @param p Graph
+     * @param vparameters Vector of parameter
+     * @param id Node id
+     * @param lqd LQD status
+     */
     public Test(ExternalObjectDescription dsc, Point position, GraphPanel p,
-            Vector vparameters, int id,int lqd) {
+            Vector vparameters, int id, int lqd) {
         super(dsc, position, id);
         type = type_Test;
         // subtipo = tipo_Test;
         if (dsc.getSubtype() == type_Test) {
             image = Toolkit.getDefaultToolkit().getImage(this.getClass().
                     getResource("/keel/GraphInterKeel/resources/ico/experiments/test.gif"));
-        }
-        else if (dsc.getSubtype() == type_Visor)
-        {
-            if(lqd ==LQD )
-            {
-            image = Toolkit.getDefaultToolkit().getImage(this.getClass().
-                    getResource("/keel/GraphInterKeel/resources/ico/experiments/resultsLQD.gif"));
-                type_lqd=LQD;
+        } else if (dsc.getSubtype() == type_Visor) {
+            if (lqd == LQD) {
+                image = Toolkit.getDefaultToolkit().getImage(this.getClass().
+                        getResource("/keel/GraphInterKeel/resources/ico/experiments/resultsLQD.gif"));
+                type_lqd = LQD;
+            } else {
+                image = Toolkit.getDefaultToolkit().getImage(this.getClass().
+                        getResource("/keel/GraphInterKeel/resources/ico/experiments/visor.gif"));
             }
-            else
-             image = Toolkit.getDefaultToolkit().getImage(this.getClass().
-                    getResource("/keel/GraphInterKeel/resources/ico/experiments/visor.gif"));
         }
         pd = p;
         par = new Vector();
@@ -108,11 +125,28 @@ public final class Test extends Node {
     // par = new Parametros(parameters);
     }
 
+    /**
+     * Get active parameters
+     * @return Active parameters
+     */
     public Parameters getActivePair() {
         return (Parameters) par.elementAt(Layer.layerActivo);
     }
-public void contain(String title, int show,Node n,Experiments exp) {
+
+    /**
+     * Contain method
+     *
+     * @param title Title of the node
+     * @param show Wheter to show or not
+     * @param n Id node
+     * @param exp Paret frame
+     */
+    public void contain(String title, int show, Node n, Experiments exp) {
     }
+
+    /**
+     * Show associated dialog
+     */
     public void showDialog() {
 //    dialogo = new ParametrosDialog(pd.padre, "Test Parameters", true, (Parametros)par.elementAt(Layer.layerActivo));
 
@@ -134,6 +168,11 @@ public void contain(String title, int show,Node n,Experiments exp) {
         dialog.setVisible(true);
     }
 
+    /**
+     * Drawing component
+     * @param g2 Graphich element
+     * @param select Is selected
+     */
     public void draw(Graphics2D g2, boolean select) {
         Point pinit = new Point(centre.x - 25, centre.y - 25);
         Point pfin = new Point(centre.x + 25, centre.y + 25);
@@ -161,6 +200,12 @@ public void contain(String title, int show,Node n,Experiments exp) {
         g2.drawString(dsc.getName(), centre.x - width / 2, centre.y + 40);
     }
 
+    /**
+     * Checking the number of inputs
+     *
+     * @param nEntradas Number of inputs
+     * @return True if the number is correct
+     */
     boolean chkNumEntradas(int nEntradas) {
         // Check that input numbers is correct
         // test class implements test that needs 2 inputs
@@ -178,4 +223,3 @@ public void contain(String title, int show,Node n,Experiments exp) {
 
     }
 }
-

@@ -27,16 +27,22 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: DialogUser.java
+ *
+ * A class for filtering KEEL files
+ *
+ * @author Written by Ignacio Robles 23-3-2009
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.io.File;
 import java.util.Vector;
 import javax.swing.filechooser.*;
 
-/**
- *
- * @author robles
- */
 public final class KeelFileFilter extends FileFilter {
 
     private Vector<String> extensions = new Vector<String>();
@@ -82,4 +88,3 @@ public final class KeelFileFilter extends FileFilter {
         return filterName;
     }
 }
-

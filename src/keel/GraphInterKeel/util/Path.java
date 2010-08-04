@@ -27,9 +27,15 @@
   
 **********************************************************************/
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * File: Path.java
+ *
+ * A class for managing paths of files
+ *
+ * @author Written by Admin 4/8/2010
+ * @version 1.0
+ * @since JDK1.5
  */
 package keel.GraphInterKeel.util;
 
@@ -43,20 +49,39 @@ public class Path {
 
     protected static String path = ".";
 
+    /**
+     * Get the path
+     *
+     * @return Path
+     */
     public static String getPath() {
         return path;
     }
 
+    /**
+     * Set the path
+     *
+     * @param path Path to set
+     */
     public static void setPath(String path) {
         Path.path = path;
     }
 
+    /**
+     * Generate a file with the path stored
+     *
+     * @return New file
+     */
     public static File getFilePath() {
         return new File(path);
     }
 
+    /**
+     * Sets the path from a given file
+     *
+     * @param filePath Reference file
+     */
     public static void setFilePath(File filePath) {
         Path.path = filePath.getPath();
     }
 }
-

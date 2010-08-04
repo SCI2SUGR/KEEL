@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,9 +27,6 @@
   
 **********************************************************************/
 
-package keel.GraphInterKeel.experiments;
-
-
 /**
  * <p>
  * @author Written by Juan Carlos Fern√°ndez and Pedro Antonio Guti√©rrez (University of C√≥rdoba) 23/08/2009
@@ -37,6 +34,7 @@ package keel.GraphInterKeel.experiments;
  * @since JDK1.5
  * </p>
  */
+package keel.GraphInterKeel.experiments;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -47,7 +45,6 @@ import java.util.List;
 import java.util.StringTokenizer;
 import org.jdom.Element;
 
-
 public class EducationalMethodReport extends EducationalReport
 {
     /**
@@ -57,8 +54,6 @@ public class EducationalMethodReport extends EducationalReport
      * The report is for methods.
      * </p>
      */
-
-
 
 	private String[] classes = null;
 	//training and test
@@ -80,7 +75,6 @@ public class EducationalMethodReport extends EducationalReport
 		super(sentences, experimentType);
 	}
 
-		
 	/**
      * <p>
 	 * This method has to invoque for to create the report.
@@ -397,9 +391,6 @@ public class EducationalMethodReport extends EducationalReport
 			e.printStackTrace();
 		}		
 	}
-
-
-
 
 	/**
      * <p>

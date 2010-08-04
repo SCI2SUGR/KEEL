@@ -1,19 +1,47 @@
-package keel.GraphInterKeel.experiments;
+/***********************************************************************
 
-/*
- * Created on 6-Jul-2004
+	This file is part of KEEL-software, the Data Mining tool for regression, 
+	classification, clustering, pattern mining and so on.
+
+	Copyright (C) 2004-2010
+	
+	F. Herrera (herrera@decsai.ugr.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
+    J. Luengo (julianlm@decsai.ugr.es)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see http://www.gnu.org/licenses/
+  
+**********************************************************************/
+
+/**
+ *
+ * File: Parameters.java
  *
  * Read patterns file
  *
- */
-/**
  * @author Salvador Garcia Lopez
  * @author Julian Luengo Martin (modifications 19/04/2009)
  * @author joaquín Derrac Rus (modifications 6/05/2009)
  * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of Córdoba) 7/07/2009
  * @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
+ * @version 1.0
+ * @since JDK1.5
  */
-
+package keel.GraphInterKeel.experiments;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -48,7 +76,7 @@ public class Parameters implements Serializable {
     public Vector tst_val = new Vector(); // original test files
     public Vector configs = new Vector(); // config files generated  by method
     public Vector additional_outputs = new Vector(); // Additional output files
-    public Vector<String> dataset_used=new Vector<String>();
+    public Vector<String> dataset_used = new Vector<String>();
     public boolean cost_instance;
     public int crisp;
     public boolean fuzzy;
@@ -400,46 +428,88 @@ public class Parameters implements Serializable {
     public Vector getTestFiles() {
         return tst_val;
     }
-     public Vector getdataset_used() {
+
+    /**
+     * Gets datasets useds
+     * @return Datasets useds
+     */
+    public Vector getdataset_used() {
         return dataset_used;
     }
 
-     public boolean getCost_instances() {
+    /**
+     * Gets cost instances
+     * @return Cost instances
+     */
+    public boolean getCost_instances() {
         return cost_instance;
     }
-      public boolean getFuzzy() {
-        return fuzzy;
-    }
-       public int getCrisp() {
-        return crisp;
-    }
 
-      public boolean isCost_instance()
-     {
-
-        return cost_instance;
-    }
-      public int isCrisp()
-     {
-        return crisp;
-    }
-       public boolean isFuzzy()
-     {
+    /**
+     * Get fuzzy status
+     * @return Fuzzy status
+     */
+    public boolean getFuzzy() {
         return fuzzy;
     }
 
-       public void setcost_instance(boolean cost)
-     {
-        cost_instance=cost;
+    /**
+     * Get crisp status
+     * @return Crisp status
+     */
+    public int getCrisp() {
+        return crisp;
     }
-      public void setcrisp(int cr)
-     {
-        crisp=cr;
+
+    /**
+     * Is cost instance
+     * @return Is cost instance
+     */
+    public boolean isCost_instance() {
+
+        return cost_instance;
     }
-       public void setfuzzy(boolean fuz)
-     {
-        fuzzy=fuz;
+
+    /**
+     * Is crisp
+     * @return Is crisp
+     */
+    public int isCrisp() {
+        return crisp;
     }
+
+    /**
+     * Is fuzzy
+     * @return Is fuzzy
+     */
+    public boolean isFuzzy() {
+        return fuzzy;
+    }
+
+    /**
+     * Set cost instance
+     * @param cost Type of cost
+     */
+    public void setcost_instance(boolean cost) {
+        cost_instance = cost;
+    }
+
+    /**
+     * Set crisp
+     * @param cr Id of crisp
+     */
+    public void setcrisp(int cr) {
+        crisp = cr;
+    }
+
+    /**
+     * Set fuzzy status
+     * @param fuz Fuzzy status
+     */
+    public void setfuzzy(boolean fuz) {
+        fuzzy = fuz;
+    }
+
     /**
      * return additional output files
      * @return the additional output files for the method
@@ -475,10 +545,10 @@ public class Parameters implements Serializable {
         defaultValue = (Vector) param.getDefaultValues().clone();
         value = (Vector) param.getValues().clone();
         hidden = (Vector) param.getHidden().clone();
-        dataset_used= (Vector) param.getdataset_used().clone();
-        cost_instance = (Boolean)param.getCost_instances();
+        dataset_used = (Vector) param.getdataset_used().clone();
+        cost_instance = (Boolean) param.getCost_instances();
         crisp = param.getCrisp();
-        fuzzy = (Boolean)param.getFuzzy();
+        fuzzy = (Boolean) param.getFuzzy();
     }
 
     /**
@@ -502,10 +572,10 @@ public class Parameters implements Serializable {
             value = (Vector) param.getValues().clone();
             hidden = (Vector) param.getHidden().clone();
         }
-        dataset_used= (Vector) param.getdataset_used().clone();
-        cost_instance =param.getCost_instances();
-        crisp =param.getCrisp();
-        fuzzy =param.getFuzzy();
+        dataset_used = (Vector) param.getdataset_used().clone();
+        cost_instance = param.getCost_instances();
+        crisp = param.getCrisp();
+        fuzzy = param.getFuzzy();
     }
 
     /**
@@ -541,41 +611,40 @@ public class Parameters implements Serializable {
 
             specification = doc.getRootElement();
 
-            int con=0;
-         String va = specification.getChildText("dataset"+con);
-        while(va!=null)
-        {
-            dataset_used.addElement(va);
-            con++;
-            va = specification.getChildText("dataset"+con);
-        }
-        
-        va = specification.getChildText("cost_instances");
-        if(va!=null)
-        {
-            if(va.compareTo("Yes")==0)
-                cost_instance=true;
-            else
-                cost_instance=false;
-        }
-            
-          va = specification.getChildText("crisp");
-         if(va!=null)
-         {
-             if(va.compareTo("Yes")==0)
-                 crisp=1;
-             else
-                 crisp=0;
-         }
-            
-           va = specification.getChildText("fuzzy");
-         if(va!=null)
-         {
-             if(va.compareTo("Yes")==0)
-                 fuzzy=true;
-             else
-                 fuzzy=false;
-         }
+            int con = 0;
+            String va = specification.getChildText("dataset" + con);
+            while (va != null) {
+                dataset_used.addElement(va);
+                con++;
+                va = specification.getChildText("dataset" + con);
+            }
+
+            va = specification.getChildText("cost_instances");
+            if (va != null) {
+                if (va.compareTo("Yes") == 0) {
+                    cost_instance = true;
+                } else {
+                    cost_instance = false;
+                }
+            }
+
+            va = specification.getChildText("crisp");
+            if (va != null) {
+                if (va.compareTo("Yes") == 0) {
+                    crisp = 1;
+                } else {
+                    crisp = 0;
+                }
+            }
+
+            va = specification.getChildText("fuzzy");
+            if (va != null) {
+                if (va.compareTo("Yes") == 0) {
+                    fuzzy = true;
+                } else {
+                    fuzzy = false;
+                }
+            }
 
 
             algorithmType = specification.getChildText("name");
@@ -620,11 +689,9 @@ public class Parameters implements Serializable {
                             " has an error.");
                 }
                 domain.addElement(new Vector());
-                if (tempEle.getChild("domain") != null)
-                {
+                if (tempEle.getChild("domain") != null) {
                     List dominios = tempEle.getChild("domain").getChildren();
-                    for (j = 0; j < dominios.size(); j++)
-                    {
+                    for (j = 0; j < dominios.size(); j++) {
                         temp = ((Element) dominios.get(j)).getText();
                         ((Vector) (domain.elementAt(i))).addElement(new String(temp));
                     }
@@ -663,7 +730,7 @@ public class Parameters implements Serializable {
      */
     public void writeScripts(String path, String baseName, String methodName,
             String problemName, Vector set, String result,
-            boolean pre, int valType, int numFolds,int expType) {
+            boolean pre, int valType, int numFolds, int expType) {
 
         String fichero, nombre, aux;
         int i, j, k, cont = 0;
@@ -730,16 +797,15 @@ public class Parameters implements Serializable {
                     fichero += "\"" + ((Vector) (set.elementAt(2))).elementAt(i) +
                             "\" ";
                 } else {
-                    if(expType!=2){
+                    if (expType != 2) {
                         for (k = 0; k < 3; k++) {
                             fichero += "\"" + ((Vector) (set.elementAt(k))).elementAt(i) +
                                     "\" ";
                         }
-                    }
-                    else{
+                    } else {
                         //unsupervised
                         fichero += "\"" + ((Vector) (set.elementAt(0))).elementAt(i) +
-                            "\" ";
+                                "\" ";
                     }
                 }
                 if (set.size() == 5) {
@@ -759,14 +825,14 @@ public class Parameters implements Serializable {
                         if (pre) {
                             aux = "../datasets/" + methodName + "." +
                                     problemName + "/" + methodName + "." +
-                                    problemName + typeCV + (cont+1) + "tra.dat";
+                                    problemName + typeCV + (cont + 1) + "tra.dat";
 
                             outputs_tra.add(aux);
                             fichero += "outputData = \"" + aux + "\" ";
 
                             aux = "../datasets/" + methodName + "." +
                                     problemName + "/" + methodName + "." +
-                                    problemName + typeCV + (cont+1) + "tst.dat";
+                                    problemName + typeCV + (cont + 1) + "tst.dat";
 
                             outputs_tst.add(aux);
                             fichero += "\"" + aux + "\" ";
@@ -790,14 +856,14 @@ public class Parameters implements Serializable {
 
                             aux = "../datasets/" + methodName + "." +
                                     problemName + "/" + methodName + "s" + j + "." +
-                                    problemName + typeCV + (cont+1) + "tra.dat";
+                                    problemName + typeCV + (cont + 1) + "tra.dat";
 
                             outputs_tra.add(aux);
                             fichero += "outputData = \"" + aux + "\" ";
 
                             aux = "../datasets/" + methodName + "." +
                                     problemName + "/" + methodName + "s" + j + "." +
-                                    problemName + typeCV + (cont+1) + "tst.dat";
+                                    problemName + typeCV + (cont + 1) + "tst.dat";
 
                             outputs_tst.add(aux);
                             fichero += "\"" + aux + "\" ";
@@ -851,21 +917,20 @@ public class Parameters implements Serializable {
                 /***************************************************************
                  ***************  EDUCATIONAL KEEL  ****************************
                  **************************************************************/
-                if(pre){
+                if (pre) {
 
-                    if(methodName.endsWith("-D")||methodName.endsWith("-FS")||methodName.endsWith("-TR")){
+                    if (methodName.endsWith("-D") || methodName.endsWith("-FS") || methodName.endsWith("-TR")) {
                         //using modified training data as validation file
                         tra_val.add(outputs_tra.elementAt(i));
                         tst_val.add(outputs_tst.elementAt(i));
 
-                    }else{
+                    } else {
                         //using initial data as validation file
                         tra_val.add(((Vector) set.elementAt(1)).elementAt(i));
                         tst_val.add(((Vector) set.elementAt(3)).elementAt(i));
                     }
 
-                }
-                else{
+                } else {
                     //using initial data as validation file
                     tra_val.add(((Vector) set.elementAt(1)).elementAt(i));
                     tst_val.add(((Vector) set.elementAt(3)).elementAt(i));
@@ -883,7 +948,7 @@ public class Parameters implements Serializable {
 
                                 if (pre) {
                                     aux = "\"../datasets/" + methodName + "." +
-                                            problemName + "/" + result + (cont+1) + "e" + k + ".txt\" ";
+                                            problemName + "/" + result + (cont + 1) + "e" + k + ".txt\" ";
 
                                     fichero += aux + " ";
                                     temp.add(aux);
@@ -897,7 +962,7 @@ public class Parameters implements Serializable {
                             } else {
                                 if (pre) {
                                     aux = "\"../datasets/" + methodName + "." +
-                                            problemName + "/" + result + (cont+1) + "s" + j + "e" + k + ".txt\" ";
+                                            problemName + "/" + result + (cont + 1) + "s" + j + "e" + k + ".txt\" ";
 
                                     fichero += aux + " ";
                                     temp.add(aux);
@@ -987,7 +1052,6 @@ public class Parameters implements Serializable {
      * @param fullName List of algorithms tested
      * @param relationBBDD Names of the database employed
      */
-
     public void writeTestScripts(String path, String baseName,
             String methodName,
             String problemName, Vector set,
@@ -1093,7 +1157,7 @@ public class Parameters implements Serializable {
             /***************************************************************
              ***************  EDUCATIONAL KEEL  ****************************
              **************************************************************/
-            if (methodName.equals("Vis-Clas-Tabular")|| methodName.equals("Vis-Imb-Tabular")) {
+            if (methodName.equals("Vis-Clas-Tabular") || methodName.equals("Vis-Imb-Tabular")) {
 
                 fichero += "outputDataTabular = ";
                 //  if(ProcessConfig.tableType1.equalsIgnoreCase("YES"))
@@ -1131,7 +1195,7 @@ public class Parameters implements Serializable {
             /***************************************************************
              ***************  EDUCATIONAL KEEL  ****************************
              **************************************************************/
-            } else if (methodName.equalsIgnoreCase("Vis-Clas-General") || methodName.equalsIgnoreCase("Vis-Regr-General")|| methodName.equalsIgnoreCase("Vis-Imb-General"))  {
+            } else if (methodName.equalsIgnoreCase("Vis-Clas-General") || methodName.equalsIgnoreCase("Vis-Regr-General") || methodName.equalsIgnoreCase("Vis-Imb-General")) {
                 fichero += "outputDataTabular = ";
                 /***************************************************************
                  ***************  EDUCATIONAL KEEL  ****************************
@@ -1164,26 +1228,25 @@ public class Parameters implements Serializable {
                  **************************************************************/
                 if (Frame.buttonPressed == 0) //Button Experiments pressed
                 {
-                    if(nOutputs==0){
-                    fichero += "outputData = \"../results/" + methodName + "/" +
-                            problemName + "/" + result + cont + "s" + j + ".stat\" ";
+                    if (nOutputs == 0) {
+                        fichero += "outputData = \"../results/" + methodName + "/" +
+                                problemName + "/" + result + cont + "s" + j + ".stat\" ";
 
-                    outputs_tra.add(new String("../results/" + methodName + "/" +
-                            problemName + "/" + result + cont + "s" +
-                            j +
-                            ".stat"));
-                    }
-                    else{
-                        String auxString= "outputData = ";
-                        for(int counter=0;counter<nOutputs;counter++){
+                        outputs_tra.add(new String("../results/" + methodName + "/" +
+                                problemName + "/" + result + cont + "s" +
+                                j +
+                                ".stat"));
+                    } else {
+                        String auxString = "outputData = ";
+                        for (int counter = 0; counter < nOutputs; counter++) {
                             auxString += "\"../results/" + methodName + "/" +
-                            problemName + "/" + result + cont + "s" + j + "file" +counter+".stat\" ";
+                                    problemName + "/" + result + cont + "s" + j + "file" + counter + ".stat\" ";
 
                             outputs_tra.add(new String("../results/" + methodName + "/" +
-                            problemName + "/" + result + cont + "s" +
-                            j + "file" +counter + ".stat"));
+                                    problemName + "/" + result + cont + "s" +
+                                    j + "file" + counter + ".stat"));
                         }
-                        fichero+=auxString;
+                        fichero += auxString;
                     }
                 } else //Button Teaching pressed
                 {

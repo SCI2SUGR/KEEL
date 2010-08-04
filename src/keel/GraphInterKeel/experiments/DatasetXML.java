@@ -28,10 +28,18 @@
 **********************************************************************/
 
 /**
- * @author Modified Joaquín Derrac 20-5-2010
+ *
+ * File: DatasetXML.java
+ *
+ * This Class manages XML repressentations of data sets
+ *
+ * @author Written by Admin 4/8/2009
+ * @author Modified Joaquin Derrac 20-5-2010
  * @author Modified Amelia Zafra 28-6-2010
+ * @version 1.0
+ * @since JDK1.5
  */
- package keel.GraphInterKeel.experiments;
+package keel.GraphInterKeel.experiments;
 
 import java.util.*;
 
@@ -52,7 +60,7 @@ public class DatasetXML implements Comparable {
     public boolean m_bImprecise;
     public boolean m_bMultiClass;
     public boolean m_bMultiOutput;
-	public boolean m_bMIL;
+    public boolean m_bMIL;
     public double missing;
     public Vector properties;
     public int nAttributes;
@@ -74,7 +82,7 @@ public class DatasetXML implements Comparable {
         Element temporal;
         int i;
         String value;
-        
+
 
         nameAbr = dataset.getChildText("nameAbr");
         //System.out.println (" \n > Reading dataset: "+nameAbr );
@@ -142,7 +150,7 @@ public class DatasetXML implements Comparable {
         }
         //System.out.println ("    > MutliOutput: "+m_bMultiOutput );
 
-		value = dataset.getChildText("multiinstance");
+        value = dataset.getChildText("multiinstance");
         if (value != null && value.equalsIgnoreCase("Yes")) {
             m_bMIL = true;
         } else {
@@ -162,42 +170,41 @@ public class DatasetXML implements Comparable {
             nInstances = Integer.parseInt(dataset.getChildText("nInstances"));
         }
 
-        if (problemType.compareTo("Classification")==0) {
+        if (problemType.compareTo("Classification") == 0) {
             if (dataset.getChild("nClasses") != null) {
                 nClasses = Integer.parseInt(dataset.getChildText("nClasses"));
             }
         }
 
-         classes = new Vector<String>();
-         int con=0;
-        value = dataset.getChildText("classes"+con);
-        while(value!=null)
-        {
+        classes = new Vector<String>();
+        int con = 0;
+        value = dataset.getChildText("classes" + con);
+        while (value != null) {
             classes.addElement(value);
             con++;
-            value = dataset.getChildText("classes"+con);
+            value = dataset.getChildText("classes" + con);
         }
-        
+
         value = dataset.getChildText("fuzzy");
-         if (value != null && value.equalsIgnoreCase("Yes"))
-             fuzzy=true;
+        if (value != null && value.equalsIgnoreCase("Yes")) {
+            fuzzy = true;
+        } else {
+            fuzzy = false;
+        }
 
-         else
-                 fuzzy=false;
+        value = dataset.getChildText("exh_test");
+        if (value != null && value.equalsIgnoreCase("Yes")) {
+            exh_test = true;
+        } else {
+            exh_test = false;
+        }
 
-         value = dataset.getChildText("exh_test");
-         if (value != null && value.equalsIgnoreCase("Yes"))
-             exh_test=true;
-
-         else
-                 exh_test=false;
-
-         value = dataset.getChildText("files");
-         if (value != null )
-             files=Integer.parseInt(value);
-
-         else
-             files=-1;
+        value = dataset.getChildText("files");
+        if (value != null) {
+            files = Integer.parseInt(value);
+        } else {
+            files = -1;
+        }
 
         field = dataset.getChildText("field");
         if (dataset.getChild("userDataset") == null) {
@@ -205,8 +212,7 @@ public class DatasetXML implements Comparable {
         } else {
             user = true;
         }
-        
-       
+
     }
 
     /**
@@ -216,8 +222,7 @@ public class DatasetXML implements Comparable {
      */
     public int compareTo(Object o) {
         DatasetXML data = (DatasetXML) o;
-        
+
         return this.nameAbr.compareTo(data.nameAbr);
     }
 }
-

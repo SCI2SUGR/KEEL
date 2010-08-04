@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: DialogUser.java
+ *
+ * A class for managing user methods
+ *
+ * @author Written by Admin 4/8/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -35,18 +45,11 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.io.*;
 
-/**
- * <p>Title: </p>
- * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2004</p>
- * <p>Company: </p>
- * @author not attributable
- * @version 1.0
- */
 public class DialogUser extends JDialog {
 
     JPanel panel1 = new JPanel() {
 
+        @Override
         public void paintComponent(Graphics g) {
             //ImageIcon img = new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/experimentos/usuario.jpg"));
             //g.drawImage(img.getImage(), 0, 0, null);
@@ -69,12 +72,20 @@ public class DialogUser extends JDialog {
     JLabel jLabel8 = new JLabel();
     UserMethod theMethod;
 
+    /**
+     * Buider
+     *
+     * @param frame Parent frame
+     * @param title Title of the frame
+     * @param modal Modal status
+     * @param metodo Name of the method
+     */
     public DialogUser(Frame frame, String title, boolean modal,
             UserMethod metodo) {
         super(frame, title, modal);
         this.theMethod = metodo;
         try {
-            jbInit();
+            initUser();
             pack();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -82,11 +93,18 @@ public class DialogUser extends JDialog {
 
     }
 
+    /**
+     * Default builder
+     */
     public DialogUser() {
         this(null, "", false, null);
     }
 
-    private void jbInit() throws Exception {
+    /**
+     * Initialize
+     * @throws java.lang.Exception
+     */
+    private void initUser() throws Exception {
 
         panel1.setLayout(null);
         jButton1.setBackground(new Color(225, 225, 225));
@@ -163,6 +181,10 @@ public class DialogUser extends JDialog {
         panel1.add(jPanel1, null);
     }
 
+    /**
+     * Find executable file
+     * @param e Event
+     */
     void jButton3_actionPerformed(ActionEvent e) {
         JFileChooser f = new JFileChooser();
         f.setDialogTitle("Executable file");
@@ -173,6 +195,11 @@ public class DialogUser extends JDialog {
 
     }
 
+    /**
+     * Find pattern file
+     *
+     * @param e Event
+     */
     void jButton4_actionPerformed(ActionEvent e) {
         JFileChooser f = new JFileChooser();
         f.setDialogTitle("Pattern file");
@@ -182,6 +209,10 @@ public class DialogUser extends JDialog {
         }
     }
 
+    /**
+     * Inserting new user method
+     * @param e Event
+     */
     void jButton1_actionPerformed(ActionEvent e) {
         String aux = new String(theMethod.patternFile);
         File f = new File(jTextField1.getText());
@@ -275,6 +306,5 @@ public class DialogUser extends JDialog {
         }
     }
 }
-
 
 

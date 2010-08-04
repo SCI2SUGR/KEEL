@@ -27,18 +27,16 @@
   
 **********************************************************************/
 
+/**
+ * <p>Title: Keel</p>
+ * <p>Description: File filter</p>
+ * @author Victor Manuel Gonzolez Quevedo
+ * @version 1.0
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.io.*;
 
-/**
- * <p>Title: Keel</p>
- * <p>Description: File filter</p>
- * <p>Copyright: Copyright (c) 2004</p>
- * <p>Company: Universidad de Granada</p>
- * @author V�ctor Manuel Gonz�lez Quevedo
- * @version 0.1
- */
 public class ArchiveFilter implements FilenameFilter {
 
     String[] files; // filtered file extensions
@@ -79,4 +77,3 @@ public class ArchiveFilter implements FilenameFilter {
         return false;
     }
 }
-

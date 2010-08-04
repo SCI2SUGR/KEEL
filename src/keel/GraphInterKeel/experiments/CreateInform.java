@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,18 +27,19 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: Algorithm.java
+ *
+ * This class creates a report in the exoeriment directory.
+ * A file "report.txt" is created in the same result directory
+ *
+ * @author Written by Juan Carlos Fernï¿½ndez Caballero 13-03-2007
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
-/*
- * General description:
- * 
- * This class creates a report in the exoeriment directory.
- * A file "report.txt" is creates in the same result directory
- * 
- * Author: Juan Carlos Fernï¿½ndez Caballero
- * 
- * Last modification: 13-03-2007
- */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -86,13 +87,11 @@ public class CreateInform {
         }
     }
 
-
     /**
      * This method has to invoque for to create the report.
      * Verify the type of problem, type partition and paths for
      * to create the report. Read in iterative way the files of
      * results
-     *
      */
     public void execute() {
         StringTokenizer st = null;
@@ -363,7 +362,7 @@ public class CreateInform {
                     break;
             }//switch
         }//for training and test
-//		 All partitions have finished
+    //All partitions have finished
 
         try {
             bw.close();
@@ -371,11 +370,11 @@ public class CreateInform {
             e.printStackTrace();
         }
     }//execute
+
     /**
-     * This method calculate the classes for classification problem
+     * This method computes the classes for classification problem
      * This classes are used for to create confusion matrix
-     *
-     *
+
      */
     private void calcularClases() {
         String cadena = "";
@@ -432,8 +431,9 @@ public class CreateInform {
     }
 
     /**
-     * This method complete the confusion matrix
-     *
+     * This method completes the confusion matrix
+     * @param esperada_
+     * @param obtenida_
      */
     private void calcularConfusion(String esperada_, String obtenida_) {
         int posi = 0;
@@ -464,4 +464,5 @@ public class CreateInform {
 
         return (double) (tmp / aux0);
     }
+
 }//CreateInform

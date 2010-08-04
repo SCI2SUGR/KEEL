@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,17 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: DialogDataset2.java
+ *
+ * This Class manages dialog for modifiying data sets
+ *
+ * @author Written by Admin 4/8/2008
+ * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of C√≥rdoba) 7/07/2009
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.experiments;
 
 import java.awt.*;
@@ -36,18 +47,11 @@ import java.util.Vector;
 import java.io.File;
 import java.util.Arrays;
 
-/**
- * <p>Title: </p>
- * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2004</p>
- * <p>Company: </p>
- * @author not attributable
- * @version 1.0
- */
 public class DialogDataset2 extends JDialog {
 
     JPanel panel1 = new JPanel() {
 
+        @Override
         public void paintComponent(Graphics g) {
             //ImageIcon img = new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/experimentos/datasets.jpg"));
             //g.drawImage(img.getImage(), 0, 0, null);
@@ -84,6 +88,15 @@ public class DialogDataset2 extends JDialog {
     JLabel jLabel5 = new JLabel();
     int layer;
 
+    /**
+     * Builder
+     *
+     * @param frame Parent frame
+     * @param title Title
+     * @param modal Modal status
+     * @param data Data set selected
+     * @param layer Active layer
+     */
     public DialogDataset2(Experiments frame, String title, boolean modal,
             DataSet data, int layer) {
         super(frame, title, modal);
@@ -96,18 +109,25 @@ public class DialogDataset2 extends JDialog {
             someLists.addElement((Vector) ((Vector) data.tableVector.elementAt(i)).clone());
         }
         try {
-            jbInit();
+            initialize2();
             pack();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
+    /**
+     * Default builder
+     */
     public DialogDataset2() {
         this(null, "", false, null, 0);
     }
 
-    private void jbInit() throws Exception {
+    /**
+     * Initialization
+     * @throws java.lang.Exception
+     */
+    private void initialize2() throws Exception {
         panel1.setLayout(null);
         jScrollPane2.getViewport().setBackground(new Color(225, 225, 225));
         jScrollPane2.setFont(new java.awt.Font("Arial", 0, 11));
@@ -246,6 +266,10 @@ public class DialogDataset2 extends JDialog {
         jList2.setListData(aList.toArray());
     }
 
+    /**
+     * Add button
+     * @param e Event
+     */
     void anadir_actionPerformed(ActionEvent e) {
         // add pair of files to the list
         if ((training.getText().length() != 0) && (testing.getText().length() != 0)) {
@@ -266,6 +290,10 @@ public class DialogDataset2 extends JDialog {
         }
     }
 
+    /**
+     * Drop button
+     * @param e Event
+     */
     void quitar_actionPerformed(ActionEvent e) {
         // remove selected items
         Object[] sel = jList2.getSelectedValues();
@@ -279,6 +307,10 @@ public class DialogDataset2 extends JDialog {
         }
     }
 
+    /**
+     * Drop all button
+     * @param e Event
+     */
     void quitar_todo_actionPerformed(ActionEvent e) {
         // remove all items
         jList2.setSelectionInterval(0, aList.size() - 1);
@@ -294,11 +326,19 @@ public class DialogDataset2 extends JDialog {
         jLabel5.setEnabled(false);
     }
 
+    /**
+     * Cancel button
+     * @param e Event
+     */
     void cancelar_actionPerformed(ActionEvent e) {
         // don't save changes
         this.setVisible(false);
     }
 
+    /**
+     * Accept button
+     * @param e
+     */
     void aceptar_actionPerformed(ActionEvent e) {
         // save selected files
         if (jLabel5.isEnabled()) {
@@ -311,10 +351,18 @@ public class DialogDataset2 extends JDialog {
         this.setVisible(false);
     }
 
+    /**
+     * Closing window
+     * @param e Event
+     */
     void this_windowClosing(WindowEvent e) {
         // don't save changes
     }
 
+    /**
+     * Find training files
+     * @param e Event
+     */
     void busca_tra_actionPerformed(ActionEvent e) {
         // select training file
         JFileChooser f = new JFileChooser();
@@ -329,6 +377,10 @@ public class DialogDataset2 extends JDialog {
         }
     }
 
+    /**
+     * Find test files
+     * @param e Event
+     */
     void busca_tst_actionPerformed(ActionEvent e) {
         // select test file
         JFileChooser f = new JFileChooser();
@@ -343,6 +395,10 @@ public class DialogDataset2 extends JDialog {
         }
     }
 
+    /**
+     * Adding 10-folds file
+     * @param e Event
+     */
     void anadir10_actionPerformed(ActionEvent e) {
         // add 10 fold cross validation files
         File dir = new File(data.dsc.getPath() + data.dsc.getName());
@@ -385,6 +441,10 @@ public class DialogDataset2 extends JDialog {
         jLabel5.setEnabled(false);
     }
 
+    /**
+     * Adding 5-folds file
+     * @param e Event
+     */
     void anadir5_actionPerformed(ActionEvent e) {
         // add 5x2 cross validation files
         File dir = new File("." + data.dsc.getPath() + data.dsc.getName());
@@ -428,6 +488,10 @@ public class DialogDataset2 extends JDialog {
         jLabel5.setEnabled(false);
     }
 
+    /**
+     * Adding 5X2-folds file
+     * @param e Event
+     */
     void anadir12_actionPerformed(ActionEvent e) {
         // add 5x2 cross validation files
         File dir = new File("." + data.dsc.getPath() + data.dsc.getName());
@@ -582,6 +646,7 @@ class DialogDataset2_this_windowAdapter
         this.adaptee = adaptee;
     }
 
+    @Override
     public void windowClosing(WindowEvent e) {
         adaptee.this_windowClosing(e);
     }
@@ -641,4 +706,3 @@ class DialogDataset2_anadir12_actionAdapter implements java.awt.event.ActionList
         adaptee.anadir12_actionPerformed(e);
     }
 }
-

@@ -27,36 +27,59 @@
   
 **********************************************************************/
 
+/**
+ *
+ * File: HelpSheet.java
+ *
+ * A class for managing help sheets
+ *
+ * @author Written by Admin 4/8/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 package keel.GraphInterKeel.help;
 
 import java.net.URL;
 
 public class HelpSheet {
 
-  public String nombre;
-  public URL direccion;
+    public String name;
+    public URL adress;
 
-  public HelpSheet(String nombre, String fichero) {
-    this.nombre = nombre;
-    String prefix = "file:"
-        + System.getProperty("user.dir")
-        + System.getProperty("file.separator");
-    try {
-      direccion = new URL(prefix + fichero);
+    /**
+     * Builder
+     *
+     * @param name Name of the sheet
+     * @param file Associated file
+     */
+    public HelpSheet(String name, String file) {
+        this.name = name;
+        String prefix = "file:" + System.getProperty("user.dir") + System.getProperty("file.separator");
+        try {
+            adress = new URL(prefix + file);
+        } catch (java.net.MalformedURLException exc) {
+            adress = null;
+        }
     }
-    catch (java.net.MalformedURLException exc) {
-      direccion = null;
+
+    /**
+     * Builder
+     *
+     * @param name Name of the sheet
+     * @param file Associated file
+     */
+    public HelpSheet(String name, URL file) {
+        this.name = name;
+        adress = file;
     }
-  }
 
-  public HelpSheet(String nombre, URL fichero) {
-    this.nombre = nombre;
-//    String[] fields = fichero.getFile().split("/");
-//    this.nombre = fields[fields.length - 1];
-    direccion = fichero;
-  }
-
-  public String toString() {
-    return nombre;
-  }
+    /**
+     * To string method
+     *
+     * @return String representation
+     */
+    @Override
+    public String toString() {
+        return name;
+    }
 }
