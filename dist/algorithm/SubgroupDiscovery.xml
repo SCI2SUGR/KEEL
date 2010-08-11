@@ -58,8 +58,8 @@
     <jar_file>SDAlgorithm.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
-		<continuous>Yes</continuous>
-		<integer>Yes</integer>
+		<continuous>No</continuous>
+		<integer>No</integer>
 		<nominal>Yes</nominal>
 		<missing>Yes</missing>
 		<imprecise>No</imprecise>
@@ -68,8 +68,8 @@
 		<multiinstance>No</multiinstance> 
 		</input>
 		<output>
-		<continuous>Yes</continuous>
-		<integer>Yes</integer>
+		<continuous>No</continuous>
+		<integer>No</integer>
 		<nominal>Yes</nominal>
 		<missing>Yes</missing>
 		<imprecise>No</imprecise>
