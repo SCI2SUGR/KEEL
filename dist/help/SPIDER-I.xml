@@ -1,0 +1,94 @@
+<method>
+
+	<name>SPIDER</name>
+
+	<reference>  
+
+		<ref> 	J. Stefanowski, S. Wilk. Selective pre-processing of imbalanced data for improving  classification  performance. 10th International Conference on Data Warehousing and Knowledge Discovery (DaWaK08). Turin (Italy, 2008) 283-292</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Instance Selection. Selective Preprocessing</type>
+
+		<objective>Local over-sampling of the minority class and filtering of difficult examples from the majority class</objective>
+
+		<howWork>SPIDER over-samples instances from the minority class that are difficult to learn and at the same time filters the examples from the majority class which are also difficult to learn.</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to classify an instances as safe or noisy.</param>
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>
+			<param>Preprocessing Option: Weak amplification, weak amplification and relabeling or strong amplification. Type of selective preprocessing used in the algorithm. Weak: amplifies noisy examples from the minority class. Relabel: amplifies noisy examples from the minority class and relabel noisy examples from the majority class. Strong: amplifies both noisy and safe samples from the minority class </param>			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: SPIDER
+Dataset: abalone19
+Training set: abalone19-5-5-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\datasets\Reb-Borderline_SMOTEs0.abalone19-5-5-1tra.dat:
+
+@relation unknow
+@attribute Sex {M, F, I}
+@attribute Length real [0.075, 0.815]
+@attribute Diameter real [0.055, 0.65]
+@attribute Height real [0.0, 1.13]
+@attribute Whole_weight real [0.0020, 2.8255]
+@attribute Shucked_weight real [0.0010, 1.488]
+@attribute Viscera_weight real [5.0E-4, 0.76]
+@attribute Shell_weight real [0.0015, 1.005]
+@attribute Rings {positive, negative}
+@data
+M,0.455,0.365,0.095,0.514,0.2245,0.101,0.15,negative
+M,0.35,0.265,0.09,0.2255,0.0995,0.0485,0.07,negative
+F,0.53,0.42,0.135,0.677,0.2565,0.1415,0.21,negative
+M,0.44,0.365,0.125,0.516,0.2155,0.114,0.155,negative
+I,0.33,0.255,0.08,0.205,0.0895,0.0395,0.055,negative
+I,0.425,0.3,0.095,0.3515,0.141,0.0775,0.12,negative
+F,0.53,0.415,0.15,0.7775,0.237,0.1415,0.33,negative
+M,0.475,0.37,0.125,0.5095,0.2165,0.1125,0.165,negative
+M,0.43,0.35,0.11,0.406,0.1675,0.081,0.135,negative
+F,0.535,0.405,0.145,0.6845,0.2725,0.171,0.205,negative
+F,0.47,0.355,0.1,0.4755,0.1675,0.0805,0.185,negative
+I,0.355,0.28,0.085,0.2905,0.095,0.0395,0.115,negative
+M,0.355,0.28,0.095,0.2455,0.0955,0.062,0.075,negative
+I,0.38,0.275,0.1,0.2255,0.08,0.049,0.085,negative
+F,0.615,0.48,0.165,1.1615,0.513,0.301,0.305,negative
+F,0.56,0.44,0.14,0.9285,0.3825,0.188,0.3,negative
+F,0.58,0.45,0.185,0.9955,0.3945,0.272,0.285,negative
+M,0.59,0.445,0.14,0.931,0.356,0.234,0.28,negative
+M,0.605,0.475,0.18,0.9365,0.394,0.219,0.295,negative
+M,0.575,0.425,0.14,0.8635,0.393,0.227,0.2,negative
+M,0.58,0.47,0.165,0.9975,0.3935,0.242,0.33,negative
+M,0.665,0.525,0.165,1.338,0.5515,0.3575,0.35,negative
+F,0.68,0.55,0.175,1.798,0.815,0.3925,0.455,positive
+F,0.68,0.55,0.175,1.798,0.815,0.3925,0.455,positive
+F,0.68,0.55,0.175,1.798,0.815,0.3925,0.455,positive
+F,0.68,0.55,0.175,1.798,0.815,0.3925,0.455,positive
+M,0.465,0.355,0.105,0.4795,0.227,0.124,0.125,negative
+F,0.54,0.475,0.155,1.217,0.5305,0.3075,0.34,negative
+...
+</example>
+
+</method>

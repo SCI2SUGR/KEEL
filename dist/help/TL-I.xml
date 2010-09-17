@@ -1,0 +1,91 @@
+<method>
+
+	<name>Tomek's modification of Condensed Nearest Neighbor</name>
+
+	<reference>  
+
+		<ref>I. Tomek. Two modifications of CNN. IEEE Transactions on Systems, Man and Cybernetics 6 (1976) 769-772.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Rebalancing. Undersampling Method</type>
+
+		<objective>Balance the class distribution for changing the data space when applying usual classifiers in imbalanced domains</objective>
+
+		<howWork>Prior to the application of the CNN rule, this modification obtains an instance set which contains only
+		instances beloning to spaces near to decision boundaries.</howWork>
+
+		<parameterSpec>  
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: Tomek Links
+Dataset: pimaImb
+Training set: pimaImb-5-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\datasets\TL-I.pimaImb\TL-I.pimaImb-5-1tra.dat:
+
+@relation pimaImb
+@attribute Preg real [0.0, 17.0]
+@attribute Plas real [0.0, 199.0]
+@attribute Pres real [0.0, 122.0]
+@attribute Skin real [0.0, 99.0]
+@attribute Insu real [0.0, 846.0]
+@attribute Mass real [0.0, 67.1]
+@attribute Pedi real [0.078, 2.42]
+@attribute Age real [21.0, 81.0]
+@attribute Class {positive, negative}
+@data
+14.0,175.0,62.0,30.0,0.0,33.6,0.212,38.0,positive
+4.0,146.0,78.0,0.0,0.0,38.5,0.52,67.0,positive
+15.0,136.0,70.0,32.0,110.0,37.1,0.153,43.0,positive
+5.0,116.0,74.0,29.0,0.0,32.3,0.66,35.0,positive
+6.0,0.0,68.0,41.0,0.0,39.0,0.727,41.0,positive
+3.0,173.0,78.0,39.0,185.0,33.8,0.97,31.0,positive
+3.0,162.0,52.0,38.0,0.0,37.2,0.652,24.0,positive
+4.0,146.0,92.0,0.0,0.0,31.2,0.539,61.0,positive
+2.0,155.0,52.0,27.0,540.0,38.7,0.24,25.0,positive
+9.0,145.0,80.0,46.0,130.0,37.9,0.637,40.0,positive
+6.0,162.0,62.0,0.0,0.0,24.3,0.178,50.0,positive
+9.0,112.0,82.0,32.0,175.0,34.2,0.26,36.0,positive
+10.0,101.0,86.0,37.0,0.0,45.6,1.136,38.0,positive
+1.0,144.0,82.0,46.0,180.0,46.1,0.335,46.0,positive
+1.0,168.0,88.0,29.0,0.0,35.0,0.905,52.0,positive
+0.0,146.0,70.0,0.0,0.0,37.9,0.334,28.0,positive
+2.0,102.0,86.0,36.0,120.0,45.5,0.127,23.0,positive
+...
+6.0,80.0,80.0,36.0,0.0,39.8,0.177,28.0,negative
+3.0,111.0,62.0,0.0,0.0,22.6,0.142,21.0,negative
+3.0,99.0,62.0,19.0,74.0,21.8,0.279,26.0,negative
+1.0,131.0,64.0,14.0,415.0,23.7,0.389,21.0,negative
+1.0,103.0,80.0,11.0,82.0,19.4,0.491,22.0,negative
+1.0,109.0,60.0,8.0,182.0,25.4,0.947,21.0,negative
+2.0,100.0,68.0,25.0,71.0,38.5,0.324,26.0,negative
+6.0,114.0,88.0,0.0,0.0,27.8,0.247,66.0,negative
+6.0,92.0,92.0,0.0,0.0,19.9,0.188,28.0,negative
+1.0,181.0,64.0,30.0,180.0,34.1,0.328,38.0,positive
+</example>
+
+</method>

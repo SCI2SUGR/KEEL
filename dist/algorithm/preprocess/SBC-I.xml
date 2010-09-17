@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>SBC</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+  <parameter>
+    <name>Ratio</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter> 
+  <parameter>
+    <name>Ncluster</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>  
+</algorithm_specification>

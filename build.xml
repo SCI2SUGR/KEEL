@@ -13,6 +13,7 @@
 	<property name="lib_weka" location="lib/MIL"/>
 	<property name="lib_math" location="lib/mathtools"/>
     <property name="lib_jama" location="lib/Jama"/>
+	<property name="lib_javastat" location="lib/Javastat"/>
 	<property name="dirjavacc" location="resources/javacc.jar"/>
     <property name="dist"	location="${src}/keel/GraphInterKeel/resources/listAlgorithms"/>
     <property name="distMet" location="${distGraph}/algorithm/methods"/>
@@ -43,7 +44,9 @@
 	<fileset id="lib_jama.jars" dir="${lib_jama}">
         <include name="**/*.jar"/>
     </fileset>
-	
+	<fileset id="lib_javastat.jars" dir="${lib_javastat}">
+        <include name="**/*.jar"/>
+    </fileset>
 	<fileset id="lib_weka.jars" dir="${lib_weka}">
         <include name="**/*.jar"/>
     </fileset>
@@ -60,6 +63,7 @@
 		<fileset refid="lib_mathtools.jars"/>
 		<fileset refid="lib_jclec.jars"/>
 		<fileset refid="lib_jama.jars"/>
+		<fileset refid="lib_javastat.jars"/>
     </path>
 	
 	<!-- Define a classpath for use throughout the buildfile -->
@@ -75,6 +79,7 @@
     <fileset refid="lib_weka.jars"/>
 	<fileset refid="lib_jclec.jars"/>
 	<fileset refid="lib_jama.jars"/>
+	<fileset refid="lib_javastat.jars"/>
    </path>
   
 
@@ -223,6 +228,7 @@
         <mkdir dir="${lib_xml}"/>
         <mkdir dir="${lib_nnep}"/>
 		<mkdir dir="${lib_jama}"/>
+		<mkdir dir="${lib_javastat}"/>
 		<!-- javac options (fork, memoryinitialsize, memoryinitialsize) added to give javac enough heap size to compile   (Joaquin - 4/08/2008) -->
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no"
                debug="true" classpathref="lib.path" encoding="ISO-8859-1" 
@@ -1411,14 +1417,6 @@
              includes="keel/Algorithms/Decision_Trees/CART/**/*.class
              			keel/Algorithms/Neural_Networks/NNEP_Common/**/*.class"/>
           <zipgroupfileset refid="lib_nnep.jars"/>
-        </jar>
-
-	    <jar
-          jarfile="${distMet}/C45CS.jar"
-          manifest="${src}/keel/Algorithms/Decision_Trees/C45CS/Manifest">
-          <fileset dir="${bin}"
-             includes="keel//Algorithms/Decision_Trees/C45CS/**/*.class"/>
-          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
         </jar>
 		
          <jar
@@ -3274,15 +3272,6 @@
                                        keel/Algorithms/Neural_Networks/NNEP_Common/util/**/*.class"/>
 		       <zipgroupfileset refid="lib_nnep.jars"/>
 		</jar>
-		
-		<jar
-          jarfile="${distMet}/Imb-NNCS.jar"
-          manifest="${src}/keel/Algorithms/Neural_Networks/MLPerceptronBackpropCS/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/Neural_Networks/MLPerceptronBackpropCS/**/*.class
-                       org/core/**/*.class"/>
-        	<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
-        </jar>
 
 		<!-- PSO Learning  -->
 		<jar 
@@ -4609,80 +4598,257 @@
 		            includes="keel/Algorithms/LQD/tests/IntermediateBoost/**/*.class"/>
         </jar>
 
-	   <!-- Imbalanced Module -->
-	   
-	   
-       <jar
-		   	jarfile="${distMet}/C_SVMCS.jar"
-		   	manifest="${src}/keel/Algorithms/SVM/C_SVMCost/Manifest">
-   		   <fileset dir="${bin}"
-		 			includes="keel/Algorithms/SVM/C_SVMCost/**/*.class
-		 			org/core/*.class
-		 			org/libsvm/*.class">
-				 </fileset>
-				<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
-       </jar>
+	   <!-- Imbalanced Experiments Module -->
+
+	   <!-- Imbalanced Over-Sampling -->
+
+	   <jar
+          jarfile="${distPre}/ADASYN-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/ADASYN/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/ADASYN/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>
+		
+		<jar
+          jarfile="${distPre}/ADOMS-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/ADOMS/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/ADOMS/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+		  <zipgroupfileset refid="lib_javastat.jars"/>
+        </jar>		
 
 		<jar
-          jarfile="${distPre}/Reb-SMOTE.jar"
-          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/SMOTE/Manifest">
+          jarfile="${distPre}/AHC-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/AHCClustering/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/Preprocess/Instance_Selection/SMOTE/**/*.class"/>
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/AHCClustering/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>		
+
+		<jar
+          jarfile="${distPre}/Borderline_SMOTE-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/Borderline_SMOTE/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/Borderline_SMOTE/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>		
+		
+		<jar
+          jarfile="${distPre}/ROS-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/RandomOverSampling/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/RandomOverSampling/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>		
+		
+		<jar
+          jarfile="${distPre}/SafeLevel_SMOTE-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/Safe_Level_SMOTE/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/Safe_Level_SMOTE/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>		
+		
+		<jar
+          jarfile="${distPre}/SMOTE-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/SMOTE/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/SMOTE/**/*.class"/>
           <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
  		  org/core/**/*.class
 		  keel/Dataset/**/*.class"/>
         </jar>
 
 		<jar
-          jarfile="${distPre}/Reb-SMOTE_ENN.jar"
-          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/SMOTE_ENN/Manifest">
+          jarfile="${distPre}/SMOTE_ENN-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/SMOTE_ENN/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/Preprocess/Instance_Selection/SMOTE_ENN/**/*.class"/>
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/SMOTE_ENN/**/*.class"/>
           <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
  		  org/core/**/*.class
 		  keel/Dataset/**/*.class"/>
         </jar>
         
 		<jar
-          jarfile="${distPre}/Reb-SMOTE_TomekLinks.jar"
-          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/SMOTE_TomekLinks/Manifest">
+          jarfile="${distPre}/SMOTE_TomekLinks-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/SMOTE_TomekLinks/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/Preprocess/Instance_Selection/SMOTE_TomekLinks/**/*.class"/>
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/SMOTE_TomekLinks/**/*.class"/>
           <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
  		  org/core/**/*.class
 		  keel/Dataset/**/*.class"/>
-        </jar>
+        </jar>		
+		
+		<jar
+          jarfile="${distPre}/SPIDER-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/SPIDER/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/SPIDER/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>		
+		
+	   <!-- Imbalanced Under-Sampling -->		
+		
+		<jar
+          jarfile="${distPre}/CNN-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/CNN/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/CNN/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>	
 
 		<jar
-          jarfile="${distPre}/Reb-Borderline_SMOTE.jar"
-          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/Borderline_SMOTE/Manifest">
+          jarfile="${distPre}/CNNTL-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/CNN_TomekLinks/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/Preprocess/Instance_Selection/Borderline_SMOTE/**/*.class"/>
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/CNN_TomekLinks/**/*.class"/>
           <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
  		  org/core/**/*.class
 		  keel/Dataset/**/*.class"/>
-        </jar>
+        </jar>			
+		
+		<jar
+          jarfile="${distPre}/CPM-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/CPM/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/CPM/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>			
 
 		<jar
-          jarfile="${distPre}/Reb-SafeLevel_SMOTE.jar"
-          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/Safe_Level_SMOTE/Manifest">
+          jarfile="${distPre}/NCL-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/NCL/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/Preprocess/Instance_Selection/Safe_Level_SMOTE/**/*.class"/>
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/NCL/**/*.class"/>
           <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
  		  org/core/**/*.class
 		  keel/Dataset/**/*.class"/>
-        </jar>
+        </jar>	
 
 		<jar
-          jarfile="${distPre}/Reb-ADASYN.jar"
-          manifest="${src}/keel/Algorithms/Preprocess/Instance_Selection/ADASYN/Manifest">
+          jarfile="${distPre}/OSS-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/OSS/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/Preprocess/Instance_Selection/ADASYN/**/*.class"/>
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/OSS/**/*.class"/>
           <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
  		  org/core/**/*.class
 		  keel/Dataset/**/*.class"/>
+        </jar>			
+		
+		<jar
+          jarfile="${distPre}/RUS-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/RandomUnderSampling/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/RandomUnderSampling/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>			
+		
+		<jar
+          jarfile="${distPre}/SBC-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/SBC/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/SBC/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>			
+
+		<jar
+          jarfile="${distPre}/TL-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/TomekLinks/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/TomekLinks/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>		
+		
+	   <!-- Imbalanced Methods Cost-Boosting and Cost-Sensitive -->			
+
+		<jar jarfile="${distMet}/AdaC2-I.jar"
+			manifest="${src}/keel/Algorithms/ImbalancedClassification/CSBoosting/ADAC2/Manifest">
+			<fileset dir="${bin}"
+			includes="keel/Algorithms/ImbalancedClassification/CSBoosting/ADAC2/**/*.class
+			org/core/**/*.class
+			keel/Dataset/**/*.class"/>
+		</jar> 		
+
+       <jar
+		   	jarfile="${distMet}/C_SVMCS-I.jar"
+		   	manifest="${src}/keel/Algorithms/ImbalancedClassification/CSMethods/C_SVMCost/Manifest">
+   		   <fileset dir="${bin}"
+		 			includes="keel/Algorithms/ImbalancedClassification/CSMethods/C_SVMCost/**/*.class
+		 			org/core/*.class
+		 			org/libsvm/*.class">
+				 </fileset>
+				<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+       </jar>
+	   
+	    <jar
+          jarfile="${distMet}/C45CS-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/CSMethods/C45CS/Manifest">
+          <fileset dir="${bin}"
+             includes="keel//Algorithms/ImbalancedClassification/CSMethods/C45CS/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+        </jar>
+	   		
+		<jar
+          jarfile="${distMet}/NNCS-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/CSMethods/MLPerceptronBackpropCS/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/CSMethods/MLPerceptronBackpropCS/**/*.class
+                       org/core/**/*.class"/>
+        	<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+        </jar>
+        
+	   <!-- Imbalanced Statistical Tests -->			
+		
+        <jar
+          jarfile="${distTest}/Imb_Wilcoxon.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ImbWilcoxon/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Classification/ImbWilcoxon/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
         </jar>
 
+        <jar
+          jarfile="${distTest}/Imb_Friedman.jar"
+          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ImbFriedman/Manifest">
+          <fileset dir="${bin}"
+                    includes="org/core/**/*.class
+                    keel/Algorithms/Statistical_Tests/Classification/ImbFriedman/**/*.class
+                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
+                    keel/Algorithms/Shared/**/*.class
+                    keel/Dataset/**/*.class"/>
+        </jar>       
+		
+	   <!-- Imbalanced Show Results -->			
+		
 		<jar
           jarfile="${distTest}/ImbalancedTest_Summary.jar"
           manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Imbalanced_Summary/Manifest">
@@ -4705,7 +4871,7 @@
 					keel/Dataset/**/*.class"/>
         </jar>
 
-	<jar
+		<jar
           jarfile="${distTest}/ImbalancedTest_Tabular.jar"
           manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/Imbalanced_Tabular/Manifest">
           <fileset dir="${bin}"
@@ -4715,29 +4881,7 @@
                     keel/Algorithms/Shared/**/*.class
 					keel/Dataset/**/*.class"/>
         </jar>
-
-        <jar
-          jarfile="${distTest}/Imb_Wilcoxon.jar"
-          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ImbWilcoxon/Manifest">
-          <fileset dir="${bin}"
-                    includes="org/core/**/*.class
-                    keel/Algorithms/Statistical_Tests/Classification/ImbWilcoxon/**/*.class
-                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
-                    keel/Algorithms/Shared/**/*.class
-                    keel/Dataset/**/*.class"/>
-        </jar>
-
-        <jar
-          jarfile="${distTest}/Imb_Friedman.jar"
-          manifest="${src}/keel/Algorithms/Statistical_Tests/Classification/ImbFriedman/Manifest">
-          <fileset dir="${bin}"
-                    includes="org/core/**/*.class
-                    keel/Algorithms/Statistical_Tests/Classification/ImbFriedman/**/*.class
-                    keel/Algorithms/Statistical_Tests/Shared/**/*.class
-                    keel/Algorithms/Shared/**/*.class
-                    keel/Dataset/**/*.class"/>
-        </jar>
-		
+	
 	<!--RunKeel.jar -->
 
 		<jar

@@ -344,4 +344,3 @@ public class ParseFileList {
                                  nameResults, labels);
 }
 }
-

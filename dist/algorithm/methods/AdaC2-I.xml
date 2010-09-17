@@ -1,0 +1,70 @@
+<algorithm_specification>
+  <name>Cost-Sensitive Boosting AdaC2</name>
+  <nParameters>8</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>pruned</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+  <parameter>
+    <name>confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.25</default>
+  </parameter>
+  <parameter>
+    <name>instancesPerLeaf</name>
+    <type>integer</type>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Number of Classifiers</name>
+    <type>integer</type>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>Train Method</name>
+    <type>list</type>
+    <domain>
+      <item>NORESAMPLING</item>
+      <item>RESAMPLING</item>
+    </domain>
+    <default>NORESAMPLING</default>
+  </parameter>
+  <parameter>
+    <name>Cost Set-up</name>
+    <type>list</type>
+    <domain>
+      <item>ADAPTIVE</item>
+      <item>MANUAL</item>
+    </domain>
+    <default>ADAPTIVE</default>
+  </parameter>
+  <parameter>
+    <name>Cost Majority Class</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.25</default>
+  </parameter>
+  <parameter>
+    <name>Cost Minority Class</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+</algorithm_specification>

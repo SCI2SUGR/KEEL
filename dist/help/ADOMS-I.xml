@@ -1,0 +1,99 @@
+<method>
+
+	<name>Adjusting the Direction Of the synthetic Minority clasS examples (ADOMS)</name>
+
+	<reference>  
+
+		<ref>S. Tang, S. Chen. The Generation Mechanism of Synthetic Minority Class Examples. 5th Int. Conference on Information Technology and Applications in Biomedicine (ITAB 2008). Shenzhen (China, 2008) 444-447.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Rebalancing. Oversampling Method</type>
+
+		<objective>Balance the class distribution for changing the data space when applying usual classifiers in imbalanced domains</objective>
+
+		<howWork>ADOMS generate positive data instances from other instances in the original dataset selecting k nearest neighbors and using them to perform arithmetical
+		operations to generate the new instance by PCA</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to generate a new positive example using the K-Nearest Neighbor Rule</param>
+			<param>Type of SMOTE: both if we consider as neighbors instances from both classes, minority if we consider as neighbors instances from the minority class and ASMO if we consider as neighbors instances from the majority class</param>
+			<param>Balancing: YES, if we want de data class distribution completely balanced, NO otherwise</param>
+			<param>Quantity of generated examples: if the Balancing option is not selected, proportion of examples from the majority class that the minority class has to reach</param>
+			<param>Type of Interpolation: way of interpolating the neighbors instances to create a synthetic instance. Standard is the original interpolation proposed.</param>
+			<param>Alpha: alpha parameter for the BLX-alpha interpolation</param>
+			<param>Mu: mu parameter for the SBX interpolation</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: ADOMS
+Dataset: pimaImb
+Training set: pimaImb-5-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\datasets\ADOMS-Is0.pimaImb-5-1tra.dat:
+
+@relation pimaImb
+@attribute Preg real [0.0, 17.0]
+@attribute Plas real [0.0, 199.0]
+@attribute Pres real [0.0, 122.0]
+@attribute Skin real [0.0, 99.0]
+@attribute Insu real [0.0, 846.0]
+@attribute Mass real [0.0, 67.1]
+@attribute Pedi real [0.078, 2.42]
+@attribute Age real [21.0, 81.0]
+@attribute Class {positive, negative}
+@data
+14.0,175.0,62.0,30.0,0.0,33.6,0.212,38.0,positive
+4.0,146.0,78.0,0.0,0.0,38.5,0.52,67.0,positive
+15.0,136.0,70.0,32.0,110.0,37.1,0.153,43.0,positive
+5.0,116.0,74.0,29.0,0.0,32.3,0.66,35.0,positive
+6.0,0.0,68.0,41.0,0.0,39.0,0.727,41.0,positive
+3.0,173.0,78.0,39.0,185.0,33.8,0.97,31.0,positive
+3.0,162.0,52.0,38.0,0.0,37.2,0.652,24.0,positive
+4.0,146.0,92.0,0.0,0.0,31.2,0.539,61.0,positive
+2.0,155.0,52.0,27.0,540.0,38.7,0.24,25.0,positive
+9.0,145.0,80.0,46.0,130.0,37.9,0.637,40.0,positive
+6.0,162.0,62.0,0.0,0.0,24.3,0.178,50.0,positive
+9.0,112.0,82.0,32.0,175.0,34.2,0.26,36.0,positive
+10.0,101.0,86.0,37.0,0.0,45.6,1.136,38.0,positive
+1.0,144.0,82.0,46.0,180.0,46.1,0.335,46.0,positive
+1.0,168.0,88.0,29.0,0.0,35.0,0.905,52.0,positive
+0.0,146.0,70.0,0.0,0.0,37.9,0.334,28.0,positive
+2.0,102.0,86.0,36.0,120.0,45.5,0.127,23.0,positive
+...
+0.0,121.51253964900128,72.48746035099872,18.75626982450064,39.177500528229814,29.327781772024007,0.27327781772024007,29.781349122503205,positive
+3.7359612504141833,119.48865874295889,74.11230999668653,0.0,0.0,30.35221312272199,0.38286500748923125,45.47192250082837,positive
+10.590866123408462,113.63748079137999,65.54519674045078,38.36346449363385,0.0,44.15433061704231,0.2548771711263344,40.36346449363385,positive
+7.3778334727614014,107.55666945522803,0.0,0.0,0.0,30.0,0.37027212469881815,34.26700083656841,positive
+4.374800624299678,174.25518376820835,80.24880374579807,39.749601248599355,251.88835817192154,37.899521498319224,0.31309888178325784,30.250398751400642,positive
+1.103502315113758,103.55253472670637,74.31050694534127,0.0,0.0,39.236069096459914,0.2986408761736998,42.10350231511376,positive
+2.0,149.20883682948943,50.75903646346202,25.75903646346202,497.600412501619,37.81064279881445,0.22676305561026155,24.37951823173101,positive
+2.0,110.0794534570892,86.0,40.84767207425352,152.31781382835683,39.76358804546666,0.22314549613936155,27.039726728544604,positive
+2.0,106.19029477638553,83.6720584575636,36.23279415424364,116.50808768634539,44.149793905386886,0.14748588557344033,24.39676492546184,positive
+6.6162606569955145,118.14742184869957,75.53495737201794,0.0,0.0,34.4667194499462,0.9554612464476682,34.844985790672645,positive
+</example>
+
+</method>
