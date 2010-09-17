@@ -560,7 +560,7 @@ public class DinamicDataset extends JPanel implements Scrollable {
 
         parent.dinDatasetsScrollPane.getViewport().setBackground(this.getBackground());
 
-        this.setPreferredSize(new Dimension(280, 2000));
+        this.setPreferredSize(new Dimension(280, pos+20));
 
         this.repaint();
 

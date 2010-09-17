@@ -638,7 +638,7 @@ public class SelectData extends JPanel implements Scrollable {
 
         parent.checksDatasetsScrollPane.getViewport().setBackground(this.getBackground());
         //this.setPreferredSize(new Dimension(rightPos+(int)1.5*maxWidth+30, pos + 10));
-        this.setPreferredSize(new Dimension(componentWidth, 2000));
+        this.setPreferredSize(new Dimension(componentWidth, pos+20));
 
         this.repaint();
     }
