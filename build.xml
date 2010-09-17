@@ -1209,7 +1209,50 @@
    		  org/core/**/*.class"/>
         </jar>
 		
+		<jar
+          jarfile="${distMet}/FuzzyApriori.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/FuzzyApriori/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/FuzzyApriori/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class
+   		  org/core/**/*.class"/>
+        </jar>
+    	
+    	<jar
+          jarfile="${distMet}/GeneticFuzzyApriori.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/GeneticFuzzyApriori/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/GeneticFuzzyApriori/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class
+   		  org/core/**/*.class"/>
+        </jar>
 		
+		<jar
+          jarfile="${distMet}/GeneticFuzzyAprioriMS.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/GeneticFuzzyAprioriMS/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/GeneticFuzzyAprioriMS/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class
+   		  org/core/**/*.class"/>
+        </jar>
+		
+		<jar
+          jarfile="${distMet}/GeneticFuzzyAprioriDC.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/GeneticFuzzyAprioriDC/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/GeneticFuzzyAprioriDC/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class
+   		  org/core/**/*.class"/>
+        </jar>
+
+    	<jar
+          jarfile="${distMet}/Alcalaetal.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/Alcalaetal/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/Alcalaetal/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class
+   		  org/core/**/*.class"/>
+        </jar>
 		
 		<!-- Associative classification-->
 

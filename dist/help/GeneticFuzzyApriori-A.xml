@@ -1,0 +1,122 @@
+﻿<method>
+
+	<name>GeneticFuzzyApriori</name>
+
+	<reference>  
+
+		<ref>Hong,T.-P., Chen, C.-H., Wu, Y.-L., Lee Y.-C. A GA-based fuzzy mining approach to achieve a trade-off between number off rules and suitability of membership functions. Soft Computing, 10:1091–1101 (2006)</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Association Rules Mining by means of Genetic-Fuzzy Learning Methods</type>
+
+		<objective>The genetic fuzzy mining method proposes a new fuzzy data-mining algorithm for extracting both association rules and membership functions from quantitative transactions.</objective>
+
+		<howWork> The proposed algorithm can dynamically adapt membership functions by genetic algorithms and uses them to fuzzify the 
+quantitative transactions. The previous FuzzyApriori algorithm can thus be easily used to find fuzzy association rules. 
+The fitness of each set of membership functions is then evaluated from the mining results and used as the evolutionary criteria
+in GA. After the GA process terminates, a better set of association rules can then be expected with a more suitable set of membership
+functions.</howWork>
+
+		<parameterSpec>  
+			
+			<param>Number of Evaluations: The maximum number of evaluations to accomplish before terminating the genetic learning.</param>
+			<param>Population Size: The maximum size of population to handle after each generation.</param>
+			<param>Probability of Mutation: The probability of the mutation operator.</param>
+			<param>Probability of Crossover: The probability of the crossover operator.</param>
+			<param>Parameter d for MMA Crossover: The parameter which is used while executing the Max-Min-Arithmetical crossover operator.</param>
+			<param>Number of Fuzzy Regions for Numeric Attributes: The number of fuzzy regions with which numeric attributes are evaluated.</param>
+			<param>Use Max Operator for 1-Frequent Itemsets: It indicates whether the max operator must be used while discovering 1-Frequent Itemsets.</param>
+			<param>Minimum Support: The user-specified minimum support for the mined association rules.</param>
+			<param>Minimum Confidence: The user-specified minimum confidence for the mined association rules.</param>
+		
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+Problem type: Association Rules
+Method: GeneticFuzzyApriori
+Dataset: weather
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see XML representations of the mined association rules along with the values concerning the measures of interest, respectively, in:
+
+&quot;results/Asso-GeneticFu.weather/result0s0.tra&quot;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rules&gt;
+&lt;rule id="0"&gt;
+&lt;antecedents&gt;
+&lt;attribute name="outlook" value="overcast"/&gt;
+&lt;/antecedents&gt;
+&lt;consequents&gt;
+&lt;attribute name="play" value="yes"/&gt;
+&lt;/consequents&gt;
+&lt;/rule&gt;
+&lt;/rules&gt;
+
+
+&quot;results/Asso-GeneticFu.weather/result0s0.tst&quot;
+
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;values n_one_frequent_itemsets=&quot;12&quot; n_rules=&quot;52&quot;&gt;
+&lt;rule id=&quot;0&quot; rule_support=&quot;0.2857142857142857&quot; antecedent_support=&quot;0.2857142857142857&quot; confidence=&quot;1.0&quot;/&gt;
+&lt;/values&gt;
+
+
+We can also see some relevant information on-screen:
+
+
+Reading the transaction set: ../datasets/weather/weather.dat
+Opening the file: ../datasets/weather/weather.dat.
+ Processing inputs and outputs
+ The number of output attributes is: 1
+
+
+ Reading the data 
+ Number of instances read: 14
+
+  Finishing the statistics: (isTrain)true, (# out attributes)1
+  File LOADED CORRECTLY!!
+
+Pass: 1; Total Frequent Itemsets: 12
+Pass: 2; Total Frequent Itemsets: 59; Total Association Rules: 3
+Pass: 3; Total Frequent Itemsets: 98; Total Association Rules: 35
+Pass: 4; Total Frequent Itemsets: 104; Total Association Rules: 52
+Pass: 5; Total Frequent Itemsets: 104; Total Association Rules: 52
+
+Number of Frequent Itemsets found: 104
+Number of Association Rules generated: 52
+Average Support: 0.16346153846153857
+Average Confidence: 0.9972527472527474
+Average Antecedents Length: 2.269230769230769
+Number of Covered Records (%): 100.0
+
+Algorithm Finished
+
+0.144 seconds
+
+</example>
+
+</method>

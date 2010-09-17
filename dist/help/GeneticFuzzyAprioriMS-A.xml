@@ -1,0 +1,129 @@
+﻿<method>
+
+	<name>GeneticFuzzyAprioriMS</name>
+
+	<reference>  
+
+		<ref>Chen, C.-H., Hong,T.-P., Tseng, V.S., Lee C.-S. A genetic-fuzzy mining approach for items with multiple minimum supports. Soft Computing, Springer-Verlag (2008)</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Association Rules Mining by means of Genetic-Fuzzy Learning Methods</type>
+
+		<objective>The fuzzy, the genetic and the clustering concepts are used together to discover useful fuzzy association rules, suitable minimum support values and membership functions from quantitative transactions.</objective>
+
+		<howWork> The proposed framework maintains a population of sets of minimum support values and membership functions, and uses the 
+genetic algorithm to automatically derive the resulting one. It first uses the k-means clustering approach to gather similar items into groups. 
+All items in the same cluster are considered to have similar characteristics and are assigned similar values when a population is initialized.
+The values (or initialization information) include an appropriate number of linguistic terms for each item, its reasonable membership functions,
+and a range of its possible minimum support values. It then generates and encodes each set of minimum support values and membership functions 
+into a fixed-length string according to the initialization information. Each chromosome is then evaluated by the requirement satisfaction and 
+the suitability of membership functions to estimate its fitness value. The evaluation results are utilized to choose appropriate chromosomes
+for mating. The offspring sets of membership functions and minimum support values then undergo recursive evolution until a good set 
+(the highest fitness value) has been obtained. Finally, the derived minimum support values and membership functions are used to mine fuzzy
+association rules by the approach in Lee et al. (2004).</howWork>
+
+		<parameterSpec>  
+			
+			<param>Number of Evaluations: The maximum number of evaluations to accomplish before terminating the genetic learning.</param>
+			<param>Population Size: The maximum size of population to handle after each generation.</param>
+			<param>Probability of Mutation: The probability of the mutation operator.</param>
+			<param>Probability of Crossover: The probability of the crossover operator.</param>
+			<param>Parameter d for MMA Crossover: The parameter which is used while executing the Max-Min-Arithmetical crossover operator.</param>
+			<param>Use Max Operator for 1-Frequent Itemsets: It indicates whether the max operator must be used while discovering 1-Frequent Itemsets.</param>
+			<param>Maximum Minimum Support: The user-specified maximum minimum support to generate minimum supports for each item (it will be considered if it is different from -1.0).</param>
+			<param>Minimum Confidence: The user-specified minimum confidence for the mined association rules.</param>
+			<param>Number of clusters: A parameter k for k-means clustering in order to divide the items into clusters.</param>
+			<param>Interval Threshold: A threshold to remove intervals.</param>
+			<param>Break Threshold:  A threshold to get the cluster break points</param>
+			<param>Percentage of the required number of large 1-itemsets: The percentage of the required number of large 1-itemsets.</param>
+		
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+Problem type: Association Rules
+Method: GeneticFuzzyAprioriMS
+Dataset: weather
+Parameters: default values
+
+
+After the execution of RunKeel.jar we can see XML representations of the mined association rules along with the values concerning the measures of interest, respectively, in:
+
+&quot;results/Asso-GeneticFu.weather/result0s0.tra&quot;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rules&gt;
+&lt;rule id="0"&gt;
+&lt;antecedents&gt;
+&lt;attribute name="temperature" value="cool"/&gt;
+&lt;/antecedents&gt;
+&lt;consequents&gt;
+&lt;attribute name="humidity" value="normal"/&gt;
+&lt;/consequents&gt;
+&lt;/rule&gt;
+&lt;/rules&gt;
+
+
+&quot;results/Asso-GeneticFu.weather/result0s0.tst&quot;
+
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;values n_one_frequent_itemsets=&quot;12&quot; n_rules=&quot;52&quot;&gt;
+&lt;rule id=&quot;0&quot; rule_support=&quot;0.2857142857142857&quot; antecedent_support=&quot;0.2857142857142857&quot; confidence=&quot;1.0&quot;/&gt;
+&lt;/values&gt;
+
+
+We can also see some relevant information on-screen:
+
+
+Reading the transaction set: ../datasets/weather/weather.dat
+Opening the file: ../datasets/weather/weather.dat.
+ Processing inputs and outputs
+ The number of output attributes is: 1
+
+
+ Reading the data 
+ Number of instances read: 14
+
+  Finishing the statistics: (isTrain)true, (# out attributes)1
+  File LOADED CORRECTLY!!
+
+Pass: 1; Total Frequent Itemsets: 12
+Pass: 2; Total Frequent Itemsets: 33; Total Association Rules: 2
+Pass: 3; Total Frequent Itemsets: 42; Total Association Rules: 8
+Pass: 4; Total Frequent Itemsets: 42; Total Association Rules: 8
+
+Number of Frequent Itemsets found: 42
+Number of Association Rules generated: 8
+Average Support: 0.22321428571428564
+Average Confidence: 0.9821428571428572
+Average Antecedents Length: 1.75
+Number of Covered Records (%): 64.28571428571429
+
+Algorithm Finished
+
+0.55 seconds
+
+</example>
+
+</method>

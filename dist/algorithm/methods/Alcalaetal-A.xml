@@ -1,0 +1,87 @@
+<algorithm_specification>
+  <name>Alcalaetal</name>
+  <nParameters>9</nParameters>
+  <seed>1</seed>
+  <nOutput>3</nOutput>
+  <parameter>
+    <name>Number of Evaluations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>100</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>10000</default>
+  </parameter>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  <parameter>
+    <name>Number of Bits per Gene</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>30</default>
+  </parameter>
+  <parameter>
+    <name>Decreasing Factor of L threshold (NOT USED)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Factor for Parent Centric BLX Crossover</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter>    
+  <parameter>
+    <name>Number of Fuzzy Regions for Numeric Attributes</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>Use Max Operator for 1-Frequent Itemsets</name>
+    <type>list</type>
+    <domain>
+      <item>true</item>
+      <item>false</item>
+    </domain>
+    <default>false</default>
+  </parameter>
+  <parameter>
+    <name>Minimum Support</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Minimum Confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>
+</algorithm_specification>
