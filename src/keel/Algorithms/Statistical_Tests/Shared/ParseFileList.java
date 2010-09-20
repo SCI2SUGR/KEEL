@@ -154,7 +154,7 @@ public class ParseFileList {
                                         dv = Double.parseDouble(tmp1);
                                     } else {
                                         if (tmp1.equalsIgnoreCase(
-                                                "unclassified")) {
+                                                "unclassified")||tmp1.equalsIgnoreCase("?")) {
                                             dv = -1;
                                         } else {
                                             System.out.println(

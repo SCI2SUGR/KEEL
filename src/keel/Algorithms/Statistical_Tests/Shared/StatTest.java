@@ -136,6 +136,7 @@ public class StatTest {
             especificSymbol);
     private DecimalFormat dfTable1 = new DecimalFormat("#0.0000000000");
     private DecimalFormat dfPvalue = new DecimalFormat("#0.0000");
+
 	/**
 	* <p>
 	* t Distribution function with 'nu' degrees of freedom
@@ -4216,8 +4217,12 @@ p.println();
                         for (int m=0; m<4; m++)
                             confusion_matrix[m] = 0;
 
-                        for (int k = 0; k < nExamples[j]; k++) {
-                            confusion_matrix[(int)error[i][j][k]]++;
+						for (int k = 0; k < nExamples[j]; k++) {
+                        	if (error[i][j][k] != -1.0) {
+
+                        		confusion_matrix[(int)error[i][j][k]]++;
+                        	}
+
                         }
 
                         double measure;
@@ -4415,7 +4420,6 @@ p.println();
                 }
             }
         }
-
         // If the positive-negative classes are changed, change the position of the data
         if ((confusion_matrix[0][0]+confusion_matrix[0][1]) > (confusion_matrix[0][2]+confusion_matrix[0][3])) {
             int aux;
@@ -4612,7 +4616,11 @@ p.println();
             }
             else if((a == 1.0) && (b == 1.0)) {
                 return 3;
+
             }        
+			else if ((a == -1.0) || (b == -1.0)) {
+            	return -1.0;
+            }
 		default:
             System.out.println("Unknown type of error");
             return 0;
@@ -4747,7 +4755,7 @@ p.println();
                 p.println();
                 p.print("Fold" + j);
 
-                double measure;
+                double measure, unc_measure;
                 int TP = confusion_matrix[j][0];
                 int FN = confusion_matrix[j][1];
                 int FP = confusion_matrix[j][2];
@@ -4767,15 +4775,20 @@ p.println();
                 else if (ProcessConfig.imbalancedMeasure == ProcessConfig.STANDARDACCURACY) {
                     measure = (double)(TP+TN)/(double)total_instances;
                 }
+                unc_measure = 0;
+                for (int k = 0; k < nOutputs*2; k++) {
+                	unc_measure += unclassified[0][j][k];
+                }
+                
                 for (int k = 0; k < nOutputs; k++) {
-                    for (int n = 0; n < algorithms.size(); n++) {
+                	for (int n = 0; n < algorithms.size(); n++) {
                         p.print("," +
                                 dfTable1.format(measure) + "," +
-                                dfTable1.format(unclassified[0][j +
-                                                nfold_real * n][k]));
+                                dfTable1.format((double)unc_measure/(double)total_instances));
                     }
                 }
-            }
+				
+            }  
         }
         else {
             for (int j = 0; j < nfold_real; j++) {
@@ -5123,8 +5136,8 @@ p.println();
             double g_measure = 0;
             double serrI;
             double sumeI = 0;
-            double g_unc = 0;
-            gUNC = new double[nOutputs];
+            double aux_unc;
+            gUNC = new double[1];
 
             for (int j = 0; j < nFolds; j++) {
                 double measure;
@@ -5151,22 +5164,19 @@ p.println();
                 serrI = measure;
                 sumeI += serrI * serrI;
                 g_measure += measure;
-                double l_measure = 0;
+                aux_unc = 0;
                 for (int k = 0; k < nOutputs; k++) {
-                    gUNC[k] += unclassified[0][j][k];
-                    l_measure += unclassified[0][j][k];
+                    aux_unc += unclassified[0][j][k];
                 }
-                g_unc += ((double)l_measure/(double)total_instances);
-
-                for (int k = 0; k < nOutputs; k++) {
-                    gUNC[k] += unclassified[0][j][k];
-                }
+                aux_unc = (double)aux_unc/(double)total_instances;
+                gUNC[0] += aux_unc; 
             }
+            gUNC[0] = (double)gUNC[0]/(double)nFolds;
 
             //Calculate the average and the variance
             double average;
             double variance;
-            int totalSamples = nfold_real;
+
             p.println();
             p.print(Dataset);
 
