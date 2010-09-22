@@ -32,7 +32,8 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierIshibuchi99;
 /**
  * <p>
  * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
- * @version 1.0
+ * @author Modified by Alberto Fernández (University of Jaén) 22/09/2010
+ * @version 1.1
  * @since JDK 1.6
  * </p>
  */
@@ -333,7 +334,7 @@ public class Algorithm {
         if (u < probDontCare) {
             result = -1;
         } else {
-            result = Randomize.RandintClosed(0, numEtiquetas);
+            result = Randomize.RandintClosed(0, numEtiquetas-1);
         }
 
         return (result);
@@ -649,9 +650,9 @@ public class Algorithm {
                 }
             }
         } else {
-            mum = Randomize.RandintClosed(0, tamPoblacion);
+            mum = Randomize.RandintClosed(0, tamPoblacion-1);
             do {
-                dad = Randomize.RandintClosed(0, tamPoblacion);
+                dad = Randomize.RandintClosed(0, tamPoblacion-1);
             } while (mum == dad);
         }
     }
@@ -983,4 +984,3 @@ public class Algorithm {
         Files.writeFile(filename, output);
     }
 }
-
