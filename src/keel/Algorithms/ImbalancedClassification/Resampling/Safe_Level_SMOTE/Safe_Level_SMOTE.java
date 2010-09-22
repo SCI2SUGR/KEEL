@@ -37,6 +37,7 @@
  *
  * @author Written by Salvador Garcia Lopez (University of Granada) 30/03/2006
  * @author Modified by Victoria Lopez Morales (University of Granada) 17/04/2010
+ * @author Modified by Victoria Lopez Morales (University of Granada) 21/09/2010 
  * @version 0.1
  * @since JDK1.5
  *
@@ -641,6 +642,9 @@ public class Safe_Level_SMOTE extends Metodo {
 					datosTrain[i][k] -= Attributes.getInputAttribute(k).getMinAttribute();
 					datosTrain[i][k] /= Attributes.getInputAttribute(k).getMaxAttribute() -
 					Attributes.getInputAttribute(k).getMinAttribute();
+					if (Double.isNaN(datosTrain[i][k])){
+						datosTrain[i][k] = realTrain[i][k];
+			    }
 				}
 			}
 		} 

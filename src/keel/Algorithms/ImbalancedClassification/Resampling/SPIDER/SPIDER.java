@@ -37,6 +37,7 @@
  *
  * @author Written by Mikel Galar Idoate (Public University of Navarra) 20/06/2010
  * @author Modified by Victoria Lopez Morales (University of Granada) 23/07/2010
+ * @author Modified by Victoria Lopez Morales (University of Granada) 21/09/2010 
  * @version 0.1
  * @since JDK1.5
  *
@@ -389,6 +390,9 @@ public class SPIDER extends Metodo {
 					datosTrain[i][k] -= Attributes.getInputAttribute(k).getMinAttribute();
 					datosTrain[i][k] /= Attributes.getInputAttribute(k).getMaxAttribute() -
 					Attributes.getInputAttribute(k).getMinAttribute();
+					if (Double.isNaN(datosTrain[i][k])){
+						datosTrain[i][k] = realTrain[i][k];
+			    }
 				}
 			}
 		} 

@@ -29,12 +29,13 @@
 
 /**
  * 
- * File: Referencia.java
+ * File: Metodo.java
  * 
  * An auxiliary class to initialize Instance Selection algorithms
  * 
  * @author Written by Salvador Garc?a (University of Granada) 20/07/2004 
  * @author Modified by Isaac Triguero (University of Granada) 22/06/2010 
+ * @author Modified by Victoria Lopez (University of Granada) 21/09/2010 
  * @version 0.1 
  * @since JDK1.5
  * 
@@ -262,6 +263,9 @@ public class Metodo {
 					datosTrain[i][k] -= Attributes.getInputAttribute(k).getMinAttribute();
 					datosTrain[i][k] /= Attributes.getInputAttribute(k).getMaxAttribute() -
 					Attributes.getInputAttribute(k).getMinAttribute();
+					if (Double.isNaN(datosTrain[i][k])){
+						datosTrain[i][k] = realTrain[i][k];
+			    }
 				}
 			}
 		} 
@@ -308,4 +312,3 @@ public class Metodo {
 	} //end-method
 
 } //end-class
-

@@ -37,6 +37,7 @@
  *
  * @author Written by Salvador Garcia Lopez (University of Granada) 30/03/2006
  * @author Modified by Victoria Lopez Morales (University of Granada) 16/04/2010
+ * @author Modified by Victoria Lopez Morales (University of Granada) 21/09/2010 
  * @version 0.1
  * @since JDK1.5
  *
@@ -121,7 +122,7 @@ public class Borderline_SMOTE extends Metodo {
             int nPosInterpola;
 
             long tiempo = System.currentTimeMillis();
-
+            
             /*Count of number of positive and negative examples*/
             for (i=0; i<clasesTrain.length; i++) {
                     if (clasesTrain[i] == 0)
@@ -161,18 +162,19 @@ public class Borderline_SMOTE extends Metodo {
             }
 
         nPosInterpola = j;
+        
+		if (nPosInterpola == 0){ //Por si no encuentra ninguno
+			positives = new int[nPos];
+		
+		    for (i=0, j=0; i<clasesTrain.length; i++) {
+		        if (clasesTrain[i] == posID) {
+		            positives[j] = i;
+		            j++;
+		        }
+		    }
+		    nPosInterpola = positives.length;
+		}
 
-if (nPosInterpola == 0){ //Por si no encuentra ninguno
-    positives = new int[nPos];
-
-    for (i=0, j=0; i<clasesTrain.length; i++) {
-        if (clasesTrain[i] == posID) {
-            positives[j] = i;
-            j++;
-        }
-    }
-    nPosInterpola = positives.length;
-}
 
         /*Randomize the instance presentation*/
         Randomize.setSeed (semilla);
@@ -186,25 +188,23 @@ if (nPosInterpola == 0){ //Por si no encuentra ninguno
     /*Obtain k-nearest neighbors of each positive instance*/
     neighbors = new int[nPosInterpola][kSMOTE];
     for (i=0; i<nPosInterpola; i++) {
-        if (typeBorderline == 1) {
+        if ((typeBorderline == 1)&&(nPos > 1)) {
             evaluationKNNClass (kSMOTE, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[positives[i]], realTrain[positives[i]], nominalTrain[positives[i]], nulosTrain[positives[i]], 2, distanceEu, neighbors[i],posID);
         }
         else {
-            switch (ASMO) {
-                case 0:
-                    KNN.evaluacionKNN2 (kSMOTE, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[positives[i]], realTrain[positives[i]], nominalTrain[positives[i]], nulosTrain[positives[i]], 2, distanceEu, neighbors[i]);
-                    break;
-                case 1:
-                    evaluationKNNClass (kSMOTE, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[positives[i]], realTrain[positives[i]], nominalTrain[positives[i]], nulosTrain[positives[i]], 2, distanceEu, neighbors[i],posID);
-                    break;
-                case 2:
-                    evaluationKNNClass (kSMOTE, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[positives[i]], realTrain[positives[i]], nominalTrain[positives[i]], nulosTrain[positives[i]], 2, distanceEu, neighbors[i],negID);
-                    break;
-            }           
+        	if ((ASMO == 0)||(nPos == 1)) {
+        		KNN.evaluacionKNN2 (kSMOTE, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[positives[i]], realTrain[positives[i]], nominalTrain[positives[i]], nulosTrain[positives[i]], 2, distanceEu, neighbors[i]);
+            }
+        	else if (ASMO == 1) {
+        		evaluationKNNClass (kSMOTE, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[positives[i]], realTrain[positives[i]], nominalTrain[positives[i]], nulosTrain[positives[i]], 2, distanceEu, neighbors[i],posID);
+            }
+        	else if (ASMO == 2) {
+        		evaluationKNNClass (kSMOTE, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[positives[i]], realTrain[positives[i]], nominalTrain[positives[i]], nulosTrain[positives[i]], 2, distanceEu, neighbors[i],negID);
+            }
         }
     }
 
-    /*Interpolation of the minority instances*/
+	/*Interpolation of the minority instances*/
     if (balance) {
     	genS = new double[nNeg-nPos][datosTrain[0].length];
     	genR = new double[nNeg-nPos][datosTrain[0].length];
@@ -218,6 +218,7 @@ if (nPosInterpola == 0){ //Por si no encuentra ninguno
     	genM = new boolean[(int)(nPos*smoting)][datosTrain[0].length];
     	clasesGen = new int[(int)(nPos*smoting)];
     }
+    
     for (i=0; i<genS.length; i++) {
     	clasesGen[i] = posID;
     	do {
@@ -713,6 +714,9 @@ if (nPosInterpola == 0){ //Por si no encuentra ninguno
 					datosTrain[i][k] -= Attributes.getInputAttribute(k).getMinAttribute();
 					datosTrain[i][k] /= Attributes.getInputAttribute(k).getMaxAttribute() -
 					Attributes.getInputAttribute(k).getMinAttribute();
+					if (Double.isNaN(datosTrain[i][k])){
+						datosTrain[i][k] = realTrain[i][k];
+			    }
 				}
 			}
 		} 
