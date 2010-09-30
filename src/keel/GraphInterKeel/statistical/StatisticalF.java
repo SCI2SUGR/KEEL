@@ -687,8 +687,8 @@ public class StatisticalF extends javax.swing.JFrame {
         unsetOneAllChecks();
         setMultipleChecks();
 
-        radioBMaximize.setEnabled(false);
-        radioBMinimize.setEnabled(false);
+        radioBMaximize.setEnabled(true);
+        radioBMinimize.setEnabled(true);
     }//GEN-LAST:event_radioBMultipleActionPerformed
 
     private void radioBContrastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBContrastActionPerformed

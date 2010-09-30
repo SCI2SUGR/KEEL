@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ import org.core.*;
 public class Multiple {
 	
 	private static boolean Iman, Nemenyi, Bonferroni, Holm, Hoch, Hommel, Scha, Berg; //post-hoc methods to apply
-	
+	private static final int MAX_ALGORITHMS = 9;
 	/**
 	* Builder
 	*/
@@ -155,11 +155,42 @@ public class Multiple {
 	
     	mean = new double[nDatasets][algorithmName.length];
 
-        /*Compute the average performance per algorithm for each data set*/
-        for (i=0; i<nDatasets; i++) {
-            for (j=0; j<algorithmName.length; j++) {
-                mean[i][j] = results[j][i];
+		//Maximize performance
+        if(Configuration.getObjective()==1){
+
+            /*Compute the average performance per algorithm for each data set*/
+            for (i=0; i<nDatasets; i++) {
+                for (j=0; j<algorithmName.length; j++) {
+                    mean[i][j] = results[j][i];
+                }
             }
+
+
+        }
+        //Minimize performance
+        else{
+
+            double maxValue=Double.MIN_VALUE;
+            
+            /*Compute the average performance per algorithm for each data set*/
+            for (i=0; i<nDatasets; i++) {
+                for (j=0; j<algorithmName.length; j++) {
+
+                    if(results[j][i]>maxValue){
+                        maxValue=results[j][i];
+                    }
+
+                    mean[i][j] = (-1.0 * results[j][i]);
+
+                }
+            }
+
+            for (i=0; i<nDatasets; i++) {
+                for (j=0; j<algorithmName.length; j++) {
+                    mean[i][j] += maxValue;
+                }
+            }
+
         }
        
     	/*We use the pareja structure to compute and order rankings*/
@@ -380,7 +411,7 @@ public class Multiple {
     	}
     		    
     	/*For Bergmann-Hommel's procedure, 9 algorithms could suppose intense computation*/
-    	if (algorithmName.length < 9) {
+    	if (algorithmName.length <= MAX_ALGORITHMS) {
     		for (i=0; i<algorithmName.length; i++) {
     			 indices.add(new Integer(i));
     		}	    	
@@ -543,7 +574,7 @@ public class Multiple {
     	}
     		    
     	/*For Bergmann-Hommel's procedure, 9 algorithms could suppose intense computation*/
-    	if (algorithmName.length < 9) {
+    	if (algorithmName.length <= MAX_ALGORITHMS) {
     		
     		indices.removeAllElements();
     		for (i=0; i<algorithmName.length; i++) {
@@ -620,7 +651,7 @@ public class Multiple {
     		    pos = (int)combinatoria(2,algorithmName.length) - Tarray[tmp];
     		}
     		    	
-    		if (algorithmName.length < 9) {
+    		if (algorithmName.length <= MAX_ALGORITHMS) {
     		    maxAPi = Double.MIN_VALUE;
     		    minPi = Double.MAX_VALUE;
     			for (j=0; j<exhaustiveI.size(); j++) {

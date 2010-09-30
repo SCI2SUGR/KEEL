@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -224,6 +224,12 @@ public class Friedman {
 		nf6.setMinimumFractionDigits(0);
 
 		nf6.setDecimalFormatSymbols(dfs); 
+		
+		DecimalFormat nf12 = (DecimalFormat) DecimalFormat.getInstance();
+		nf12.setMaximumFractionDigits(12);
+		nf12.setMinimumFractionDigits(0);
+
+		nf12.setDecimalFormatSymbols(dfs); 
 
         int nDatasets = Configuration.getNDatasets();
         int nAlgorithms = Configuration.getNAlgorithms();
@@ -523,7 +529,7 @@ public class Friedman {
 		    	iman = ((nDatasets-1)*friedman)/(nDatasets*(nAlgorithms-1) - friedman);
 		    	out+="Iman and Davenport statistic (distributed according to F-distribution with "+(nAlgorithms-1)+" and "+ (nAlgorithms-1)*(nDatasets-1) +" degrees of freedom): "+nf6.format(iman)+". ";
 	        	pIman = FishF(iman, (nAlgorithms-1),(nAlgorithms-1) * (nDatasets - 1));
-	        	out+="\\newline P-value computed by Iman and Daveport Test: " + nf6.format(pIman) +".\\newline\n\n";
+	        	out+="\\newline P-value computed by Iman and Daveport Test: " + nf12.format(pIman) +".\\newline\n\n";
 	    	}
         	
         	out+="\n\\newpage\n";
@@ -583,7 +589,7 @@ public class Friedman {
 
 	    	pFriedman = ChiSq(friedman, (nAlgorithms-1));
 
-	    	out+="\\newline P-value computed by Aligned Friedman Test: " + nf6.format(pFriedman) +".\\newline\n\n";
+	    	out+="\\newline P-value computed by Aligned Friedman Test: " + nf12.format(pFriedman) +".\\newline\n\n";
         
 	    	out+="\n\\newpage\n";
 	    }
@@ -614,7 +620,7 @@ public class Friedman {
 	    	iman = ((nDatasets-1)*sumatoria) / (termino1 - sumatoria);
 	    	out+="Quade statistic (distributed according to F-distribution with "+(nAlgorithms-1)+" and "+ (nAlgorithms-1)*(nDatasets-1) +" degrees of freedom): "+nf6.format(iman)+". ";
 	    	pIman = FishF(iman, (nAlgorithms-1),(nAlgorithms-1) * (nDatasets - 1));
-	    	out+="\\newline P-value computed by Quade Test: " + nf6.format(pIman) +".\\newline\n\n";
+	    	out+="\\newline P-value computed by Quade Test: " + nf12.format(pIman) +".\\newline\n\n";
 
 	    	out+="\n\\newpage\n";
 	    }
