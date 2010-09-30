@@ -10,7 +10,7 @@
     <property name="lib_xml" location="lib/XML"/>
     <property name="lib_nnep" location="lib/nnep"/>
 	<property name="lib_jclec" location="lib/jclec"/>
-	<property name="lib_weka" location="lib/MIL"/>
+	<property name="lib_jclecmil" location="lib/MIL"/>
 	<property name="lib_math" location="lib/mathtools"/>
     <property name="lib_jama" location="lib/Jama"/>
 	<property name="lib_javastat" location="lib/Javastat"/>
@@ -41,16 +41,16 @@
 	        <include name="**/*.jar"/>
 	</fileset>
 	
+	<fileset id="lib_jclecmil.jars" dir="${lib_jclecmil}">
+	        <include name="**/*.jar"/>
+	</fileset>
 	<fileset id="lib_jama.jars" dir="${lib_jama}">
         <include name="**/*.jar"/>
     </fileset>
+	
 	<fileset id="lib_javastat.jars" dir="${lib_javastat}">
         <include name="**/*.jar"/>
     </fileset>
-	<fileset id="lib_weka.jars" dir="${lib_weka}">
-        <include name="**/*.jar"/>
-    </fileset>
-    
     <fileset id="lib_mathtools.jars" dir="${lib_math}">
         <include name="**/*.jar"/>
     </fileset>
@@ -59,9 +59,9 @@
         <fileset refid="lib_graph.jars"/>
         <fileset refid="lib_xml.jars"/>
         <fileset refid="lib_nnep.jars"/>
-		<fileset refid="lib_weka.jars"/>
 		<fileset refid="lib_mathtools.jars"/>
 		<fileset refid="lib_jclec.jars"/>
+		<fileset refid="lib_jclecmil.jars"/>
 		<fileset refid="lib_jama.jars"/>
 		<fileset refid="lib_javastat.jars"/>
     </path>
@@ -76,7 +76,7 @@
 	<fileset refid="lib_graph.jars"/>
     <fileset refid="lib_xml.jars"/>
     <fileset refid="lib_nnep.jars"/>
-    <fileset refid="lib_weka.jars"/>
+	<fileset refid="lib_jclecmil.jars"/>
 	<fileset refid="lib_jclec.jars"/>
 	<fileset refid="lib_jama.jars"/>
 	<fileset refid="lib_javastat.jars"/>
@@ -229,6 +229,8 @@
         <mkdir dir="${lib_nnep}"/>
 		<mkdir dir="${lib_jama}"/>
 		<mkdir dir="${lib_javastat}"/>
+		<mkdir dir="${lib_jclec}"/>
+    	<mkdir dir="${lib_jclecmil}"/>
 		<!-- javac options (fork, memoryinitialsize, memoryinitialsize) added to give javac enough heap size to compile   (Joaquin - 4/08/2008) -->
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no"
                debug="true" classpathref="lib.path" encoding="ISO-8859-1" 
@@ -2951,101 +2953,98 @@
         </jar>
 
 		 <!-- Métodos de MIL -->
-		<!--	 
-			<jar
-		       jarfile="${distMet}/CitationKNN_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/CitationKNN_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/CitationKNN_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
+		 
+		<jar
+	       jarfile="${distMet}/APR_GFS_AllPositive_APR.jar"
+	       manifest="${src}/keel/Algorithms/MIL/APR/GFS_AllPositive_APR/Manifest">
+ 	       <fileset dir="${bin}"
+ 	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
+ 	             org/core/**/*.class">
+ 	       </fileset>  
+	       <zipgroupfileset refid="lib_jclec.jars"/>         
 		</jar>
 
-	<jar
-		       jarfile="${distMet}/MDD_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/MDD_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/MDD_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
+   		<jar
+	       jarfile="${distMet}/APR_GFS_ElimCount_APR.jar"
+	       manifest="${src}/keel/Algorithms/MIL/APR/GFS_ElimCount_APR/Manifest">
+	       <fileset dir="${bin}"
+	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
+	             org/core/**/*.class">
+	       </fileset>  
+	       <zipgroupfileset refid="lib_jclec.jars"/>         
 		</jar>
-
-	<jar
-		       jarfile="${distMet}/MIDD_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/MIDD_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/MIDD_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
+    	
+   		<jar
+	       jarfile="${distMet}/APR_GFS_Kde_APR.jar"
+	       manifest="${src}/keel/Algorithms/MIL/APR/GFS_Kde_APR/Manifest">
+	       <fileset dir="${bin}"
+	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
+	             org/core/**/*.class">
+	       </fileset>  
+	       <zipgroupfileset refid="lib_jclec.jars"/>         
 		</jar>
-		<jar
-		       jarfile="${distMet}/MISMO_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/MISMO_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/MISMO_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
+    	
+   		<jar
+	       jarfile="${distMet}/APR_IteratedDiscrimination.jar"
+	       manifest="${src}/keel/Algorithms/MIL/APR/IteratedDiscrimination/Manifest">
+	       <fileset dir="${bin}"
+	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
+	             org/core/**/*.class">
+	       </fileset>  
+	       <zipgroupfileset refid="lib_jclec.jars"/>         
 		</jar>
-	 <jar
-		       jarfile="${distMet}/MIEMDD_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/MIEMDD_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/MIEMDD_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
+    	
+   		<jar
+	       jarfile="${distMet}/DD.jar"
+	       manifest="${src}/keel/Algorithms/MIL/Diverse_Density/DD/Manifest">
+	       <fileset dir="${bin}"
+	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
+	             org/core/**/*.class">
+	       </fileset>  
+	       <zipgroupfileset refid="lib_jclec.jars"/>         
 		</jar>
-		 <jar
-		       jarfile="${distMet}/MIJ48_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/MIJ48_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/MIJ48_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
-		</jar>
-		 <jar
-		       jarfile="${distMet}/MIRBF_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/MIRBF_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/MIRBF_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
-		</jar>
-		 <jar
-		       jarfile="${distMet}/MILR_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/MILR_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/MILR_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
-		</jar>
-		<jar
-		       jarfile="${distMet}/MIPART_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/MIPART_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/MIPART_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
-		</jar>
-		<jar
-		       jarfile="${distMet}/MISVM_Clas.jar"
-		       manifest="${src}/keel/Algorithms/MIL/MISVM_Clas/Manifest">
-		       <fileset dir="${bin}"
-		             includes="keel/Algorithms/MIL/MISVM_Clas/**/*.class 
-		             org/core/**/*.class">
-		       </fileset>
-           <zipgroupfileset refid="lib_weka.jars"/>
+    	
+   		<jar
+	       jarfile="${distMet}/EMDD.jar"
+	       manifest="${src}/keel/Algorithms/MIL/Diverse_Density/EMDD/Manifest">
+	       <fileset dir="${bin}"
+	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
+	             org/core/**/*.class">
+	       </fileset>  
+	       <zipgroupfileset refid="lib_jclec.jars"/>         
 		</jar>
 		
-		-->
+   		<jar
+	       jarfile="${distMet}/Citation-KNN.jar"
+	       manifest="${src}/keel/Algorithms/MIL/Nearest_Neighbour/CKNN/Manifest">
+	       <fileset dir="${bin}"
+	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
+	             org/core/**/*.class">
+	       </fileset>  
+	       <zipgroupfileset refid="lib_jclec.jars"/>         
+		</jar>
+    	
+   		<jar
+	       jarfile="${distMet}/KNN-MI.jar"
+	       manifest="${src}/keel/Algorithms/MIL/Nearest_Neighbour/KNN/Manifest">
+	       <fileset dir="${bin}"
+	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
+	             org/core/**/*.class">
+	       </fileset>  
+	       <zipgroupfileset refid="lib_jclec.jars"/>         
+		</jar>
+		
+		<jar
+	       jarfile="${distMet}/G3PMI.jar"
+	       manifest="${src}/keel/Algorithms/MIL/G3PMI/Manifest">
+	       <fileset dir="${bin}"
+	             includes="keel/Algorithms/MIL/G3PMI/**/*.class 
+	             org/core/**/*.class">
+	       </fileset>
+   		   <zipgroupfileset refid="lib_jclecmil.jars"/>
+
+		</jar>
+		
 		<!-- Neural Networks -->
 		
 		<jar
@@ -4632,7 +4631,7 @@
  		  org/core/**/*.class
 		  keel/Dataset/**/*.class"/>
         </jar>		
-
+		
 		<jar
           jarfile="${distPre}/Borderline_SMOTE-I.jar"
           manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/Borderline_SMOTE/Manifest">
@@ -4881,7 +4880,7 @@
                     keel/Algorithms/Shared/**/*.class
 					keel/Dataset/**/*.class"/>
         </jar>
-	
+		
 	<!--RunKeel.jar -->
 
 		<jar
@@ -4965,8 +4964,7 @@
 									<exclude name="imag/"/>
 									<exclude name="ico/"/>
     	          </fileset>
-    	          
-    	          
+
 				  			<fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Converter/**/*.class"/>
 
     	        		<!-- for RunKeelTxtDocente -->

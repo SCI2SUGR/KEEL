@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>MI_CKNN</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>number-references</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>number-citers</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>4</default>
+  </parameter>
+</algorithm_specification>

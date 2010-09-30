@@ -1,0 +1,33 @@
+<algorithm_specification>
+  <name>MI_APR_IteratedDiscrimination</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>alpha</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>  
+  <parameter>
+    <name>epsilon</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>  
+  <parameter>
+    <name>tau</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.99</default>
+  </parameter>  
+</algorithm_specification>

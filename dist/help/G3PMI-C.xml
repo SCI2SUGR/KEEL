@@ -1,0 +1,564 @@
+<method>
+
+	<name>G3PMI</name>
+
+	<reference>  
+
+		<ref>A. Zafra, S. Ventura. G3P-MI: A genetic programming algorithm for multiple instance learning . Information Science. Article in Press. 2010</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by constrained-syntax genetic programming.</type>
+
+		<objective>To determine a set of rules that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.</objective>
+
+		<howWork>
+		It is a GP algorithm for classification rule mining for multiple instance learning which has demonstrated that reports good accuracy and comprehensibility results.
+		It was run using the implementation present in the evolutionary computation framework JCLEC. It is a constrained syntax algorithm which represents the rules by
+		defining a set of functions consisting both of logical operators (AND, OR) and relational operators (= , != , &lt;= , &gt;). The genetic operators considered by 
+		this algorithm are crossover and reproduction, so that no mutation is performed during the evolution. For the sake of evolving comprehensible rules, 
+		the fitness function evolves two terms:
+		
+		fitness = sensitivity * specificity 
+		
+	
+		</howWork>
+
+		<parameterSpec>  
+
+			<param>population-size: number of individuals in the population</param>
+			<param>max-of-generations: number of generations of the algorithm</param>
+			<param>derivation-size: maximum number of derivations allowed for the grammar</param>
+			<param>rec-prob: recombination probability</param>
+			<param>mut-prob: mutation probability</param>
+
+		</parameterSpec>
+
+		<properties>
+		    <input>
+		      <continuous>Yes</continuous>
+		      <integer>Yes</integer>
+		      <nominal>Yes</nominal>
+		      <missing>No</missing>
+		      <imprecise>No</imprecise>
+		      <multiclass>Yes</multiclass>
+		      <multioutput>No</multioutput>
+		    </input>
+		    <output>
+		      <continuous>Yes</continuous>
+		      <integer>Yes</integer>
+		      <nominal>Yes</nominal>
+		      <missing>No</missing>
+		      <imprecise>No</imprecise>
+		      <multiclass>Yes</multiclass>
+		      <multioutput>No</multioutput>
+		    </output>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+	Method: G3PMI-C
+Dataset: mi-musk1
+Training set: mi-musk-10-1tra.dat
+Test set: mi-musk-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: population-size=1000, max-generations=100, max-deriv-size=50, rec-prob=0.9, rec-mut=0.3
+
+After the execution of RunKeel.jar we can see into the Experiment\results\Vis-Clas-Check\TSTG3PMI-C folder the classification results for the test/train set:
+
+TEST RESULTS
+============
+Classifier= musk1 
+Fold 0 : CORRECT=0.6666666666666667 N/C=0.0 
+Fold 1 : CORRECT=0.5555555555555556 N/C=0.0 
+Fold 2 : CORRECT=0.6666666666666667 N/C=0.0 
+Fold 3 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 4 : CORRECT=0.6666666666666667 N/C=0.0 
+Fold 5 : CORRECT=0.8888888888888888 N/C=0.0 
+Fold 6 : CORRECT=0.6666666666666667 N/C=0.0 
+Fold 7 : CORRECT=0.7777777777777778 N/C=0.0 
+Fold 8 : CORRECT=0.7777777777777778 N/C=0.0 
+Fold 9 : CORRECT=0.5555555555555556 N/C=0.0 
+Global Classification Error + N/C:
+0.3333333333333333 
+stddev Global Classification Error + N/C:
+0.121716123890037 
+Correctly classified:
+0.6666666666666667 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= musk1 
+Summary of data, Classifiers: musk1 
+Fold 0 : CORRECT=0.8554216867469879 N/C=0.0 
+Fold 1 : CORRECT=0.8674698795180723 N/C=0.0 
+Fold 2 : CORRECT=0.8313253012048193 N/C=0.0 
+Fold 3 : CORRECT=0.8072289156626506 N/C=0.0 
+Fold 4 : CORRECT=0.8554216867469879 N/C=0.0 
+Fold 5 : CORRECT=0.8192771084337349 N/C=0.0 
+Fold 6 : CORRECT=0.8554216867469879 N/C=0.0 
+Fold 7 : CORRECT=0.8674698795180723 N/C=0.0 
+Fold 8 : CORRECT=0.9036144578313253 N/C=0.0 
+Fold 9 : CORRECT=0.891566265060241 N/C=0.0 
+Global Classification Error + N/C:
+0.14457831325301207 
+stddev Global Classification Error + N/C:
+0.02851122787035944 
+Correctly classified:
+0.8554216867469879 
+Global N/C:
+0.0 
+
+
+We can see too the output and target classes for each case of the train set in the results/G3PMI-C.mi-musk1/result0s0.tra:
+
+@relation musk1
+@attribute Molecule_name {MUSK-jf59, MUSK-jf46, MUSK-224, MUSK-314, MUSK-285, MUSK-f152, MUSK-190, MUSK-272, MUSK-jf78, MUSK-236, MUSK-f184, MUSK-jf58, MUSK-238, MUSK-284, MUSK-188, MUSK-jf17, MUSK-219, MUSK-211, MUSK-321, MUSK-f205, MUSK-jf67, MUSK-256, MUSK-254, MUSK-227, MUSK-213, MUSK-333, MUSK-212, MUSK-315, MUSK-293, MUSK-jf47, MUSK-228, MUSK-f159, MUSK-330, MUSK-273, MUSK-j51, MUSK-331, MUSK-301, MUSK-292, MUSK-j33, MUSK-f158, MUSK-240, MUSK-246, NON-MUSK-j129, NON-MUSK-jp13, NON-MUSK-f161, NON-MUSK-289, NON-MUSK-220, NON-MUSK-jp10, NON-MUSK-253, NON-MUSK-305, NON-MUSK-232, NON-MUSK-286, NON-MUSK-j83, NON-MUSK-297, NON-MUSK-f150, NON-MUSK-f164, NON-MUSK-208, NON-MUSK-199, NON-MUSK-200, NON-MUSK-j146, NON-MUSK-j130, NON-MUSK-j90, NON-MUSK-308, NON-MUSK-249, NON-MUSK-319, NON-MUSK-j97, NON-MUSK-j100, NON-MUSK-320, NON-MUSK-f209, NON-MUSK-j93, NON-MUSK-334, NON-MUSK-j148, NON-MUSK-309, NON-MUSK-288, NON-MUSK-257, NON-MUSK-327, NON-MUSK-j84, NON-MUSK-247, NON-MUSK-296, NON-MUSK-295, NON-MUSK-290, NON-MUSK-j81, NON-MUSK-j96, NON-MUSK-271, NON-MUSK-318, NON-MUSK-226, NON-MUSK-j147, MUSK-323, MUSK-344, MUSK-322, MUSK-311, MUSK-316}
+@attribute F1 real [-9.0, 130.0]
+@attribute F2 real [-199.0, 98.0]
+@attribute F3 real [-166.0, 83.0]
+@attribute F4 real [-115.0, 157.0]
+@attribute F5 real [-117.0, 238.0]
+@attribute F6 real [-184.0, 200.0]
+@attribute F7 real [-170.0, 214.0]
+@attribute F8 real [-231.0, 188.0]
+@attribute F9 real [-242.0, 135.0]
+@attribute F10 real [-284.0, 218.0]
+@attribute F11 real [-327.0, 104.0]
+@attribute F12 real [-326.0, 196.0]
+@attribute F13 real [-302.0, 117.0]
+@attribute F14 real [-348.0, 72.0]
+@attribute F15 real [-292.0, 77.0]
+@attribute F16 real [-318.0, 13.0]
+@attribute F17 real [-225.0, 125.0]
+@attribute F18 real [-312.0, 139.0]
+@attribute F19 real [-291.0, 214.0]
+@attribute F20 real [-243.0, 273.0]
+@attribute F21 real [-298.0, 196.0]
+@attribute F22 real [-187.0, 147.0]
+@attribute F23 real [-255.0, 187.0]
+@attribute F24 real [-70.0, 312.0]
+@attribute F25 real [-102.0, 254.0]
+@attribute F26 real [-243.0, 162.0]
+@attribute F27 real [-205.0, 157.0]
+@attribute F28 real [-164.0, 147.0]
+@attribute F29 real [-140.0, 181.0]
+@attribute F30 real [-154.0, 258.0]
+@attribute F31 real [-118.0, 190.0]
+@attribute F32 real [-149.0, 143.0]
+@attribute F33 real [-124.0, 219.0]
+@attribute F34 real [-278.0, 163.0]
+@attribute F35 real [-156.0, 227.0]
+@attribute F36 real [16.0, 291.0]
+@attribute F37 real [-175.0, 224.0]
+@attribute F38 real [-192.0, 165.0]
+@attribute F39 real [-145.0, 105.0]
+@attribute F40 real [-181.0, 189.0]
+@attribute F41 real [-190.0, 82.0]
+@attribute F42 real [-151.0, 201.0]
+@attribute F43 real [-291.0, 168.0]
+@attribute F44 real [-343.0, 81.0]
+@attribute F45 real [-315.0, 65.0]
+@attribute F46 real [-338.0, 115.0]
+@attribute F47 real [-157.0, 110.0]
+@attribute F48 real [-294.0, 99.0]
+@attribute F49 real [-269.0, 180.0]
+@attribute F50 real [-273.0, 214.0]
+@attribute F51 real [-329.0, 218.0]
+@attribute F52 real [-205.0, 148.0]
+@attribute F53 real [-206.0, 159.0]
+@attribute F54 real [-143.0, 286.0]
+@attribute F55 real [-113.0, 259.0]
+@attribute F56 real [-282.0, 199.0]
+@attribute F57 real [-168.0, 231.0]
+@attribute F58 real [-178.0, 111.0]
+@attribute F59 real [-173.0, 181.0]
+@attribute F60 real [-254.0, 178.0]
+@attribute F61 real [-102.0, 243.0]
+@attribute F62 real [-195.0, 173.0]
+@attribute F63 real [-69.0, 110.0]
+@attribute F64 real [-197.0, 220.0]
+@attribute F65 real [-159.0, 108.0]
+@attribute F66 real [6.0, 197.0]
+@attribute F67 real [-166.0, 262.0]
+@attribute F68 real [-196.0, 157.0]
+@attribute F69 real [-134.0, 205.0]
+@attribute F70 real [-192.0, 168.0]
+@attribute F71 real [-174.0, 83.0]
+@attribute F72 real [-150.0, 98.0]
+@attribute F73 real [-322.0, 133.0]
+@attribute F74 real [-338.0, 112.0]
+@attribute F75 real [-272.0, 132.0]
+@attribute F76 real [-191.0, -65.0]
+@attribute F77 real [-255.0, 154.0]
+@attribute F78 real [-318.0, 158.0]
+@attribute F79 real [-310.0, 185.0]
+@attribute F80 real [-197.0, 233.0]
+@attribute F81 real [-258.0, 183.0]
+@attribute F82 real [-176.0, 192.0]
+@attribute F83 real [-301.0, 208.0]
+@attribute F84 real [-98.0, 251.0]
+@attribute F85 real [-222.0, 183.0]
+@attribute F86 real [-200.0, 189.0]
+@attribute F87 real [-208.0, 113.0]
+@attribute F88 real [-213.0, 105.0]
+@attribute F89 real [-111.0, 163.0]
+@attribute F90 real [-159.0, 272.0]
+@attribute F91 real [-202.0, 168.0]
+@attribute F92 real [-20.0, 167.0]
+@attribute F93 real [-121.0, 233.0]
+@attribute F94 real [-326.0, 178.0]
+@attribute F95 real [-77.0, 149.0]
+@attribute F96 real [-70.0, 336.0]
+@attribute F97 real [-191.0, 171.0]
+@attribute F98 real [-191.0, 194.0]
+@attribute F99 real [-155.0, 48.0]
+@attribute F100 real [-155.0, 235.0]
+@attribute F101 real [-210.0, 88.0]
+@attribute F102 real [-37.0, 265.0]
+@attribute F103 real [-296.0, 96.0]
+@attribute F104 real [-320.0, 95.0]
+@attribute F105 real [-319.0, 72.0]
+@attribute F106 real [-287.0, 179.0]
+@attribute F107 real [-194.0, 144.0]
+@attribute F108 real [-293.0, 52.0]
+@attribute F109 real [-250.0, 183.0]
+@attribute F110 real [-295.0, 53.0]
+@attribute F111 real [-252.0, 117.0]
+@attribute F112 real [-268.0, 211.0]
+@attribute F113 real [-223.0, 188.0]
+@attribute F114 real [-206.0, 160.0]
+@attribute F115 real [-251.0, 201.0]
+@attribute F116 real [-252.0, 187.0]
+@attribute F117 real [-104.0, 315.0]
+@attribute F118 real [-209.0, 137.0]
+@attribute F119 real [-193.0, 215.0]
+@attribute F120 real [-201.0, 152.0]
+@attribute F121 real [-123.0, 254.0]
+@attribute F122 real [-118.0, 270.0]
+@attribute F123 real [-131.0, 279.0]
+@attribute F124 real [-121.0, 200.0]
+@attribute F125 real [-145.0, 149.0]
+@attribute F126 real [-44.0, 137.0]
+@attribute F127 real [-285.0, 123.0]
+@attribute F128 real [-219.0, 238.0]
+@attribute F129 real [-305.0, 159.0]
+@attribute F130 real [-188.0, 152.0]
+@attribute F131 real [-94.0, 140.0]
+@attribute F132 real [-140.0, 170.0]
+@attribute F133 real [-322.0, 176.0]
+@attribute F134 real [-341.0, 187.0]
+@attribute F135 real [-342.0, 111.0]
+@attribute F136 real [-197.0, 137.0]
+@attribute F137 real [-201.0, 186.0]
+@attribute F138 real [-200.0, 127.0]
+@attribute F139 real [-246.0, 138.0]
+@attribute F140 real [-286.0, 207.0]
+@attribute F141 real [-294.0, 238.0]
+@attribute F142 real [-186.0, 177.0]
+@attribute F143 real [-158.0, 213.0]
+@attribute F144 real [-173.0, 158.0]
+@attribute F145 real [-179.0, 178.0]
+@attribute F146 real [-107.0, 240.0]
+@attribute F147 real [-131.0, -3.0]
+@attribute F148 real [-201.0, 134.0]
+@attribute F149 real [-215.0, 121.0]
+@attribute F150 real [-191.0, 174.0]
+@attribute F151 real [-126.0, 243.0]
+@attribute F152 real [-125.0, 154.0]
+@attribute F153 real [-112.0, 207.0]
+@attribute F154 real [-171.0, 84.0]
+@attribute F155 real [-145.0, 161.0]
+@attribute F156 real [-197.0, 113.0]
+@attribute F157 real [-252.0, 141.0]
+@attribute F158 real [-324.0, 72.0]
+@attribute F159 real [-217.0, 173.0]
+@attribute F160 real [-135.0, 185.0]
+@attribute F161 real [-126.0, 253.0]
+@attribute F162 real [-78.0, 291.0]
+@attribute F163 real [35.0, 302.0]
+@attribute F164 real [-132.0, 24.0]
+@attribute F165 real [-258.0, 82.0]
+@attribute F166 real [-72.0, 235.0]
+@attribute Class {0, 1}
+@inputs Molecule_name, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24, F25, F26, F27, F28, F29, F30, F31, F32, F33, F34, F35, F36, F37, F38, F39, F40, F41, F42, F43, F44, F45, F46, F47, F48, F49, F50, F51, F52, F53, F54, F55, F56, F57, F58, F59, F60, F61, F62, F63, F64, F65, F66, F67, F68, F69, F70, F71, F72, F73, F74, F75, F76, F77, F78, F79, F80, F81, F82, F83, F84, F85, F86, F87, F88, F89, F90, F91, F92, F93, F94, F95, F96, F97, F98, F99, F100, F101, F102, F103, F104, F105, F106, F107, F108, F109, F110, F111, F112, F113, F114, F115, F116, F117, F118, F119, F120, F121, F122, F123, F124, F125, F126, F127, F128, F129, F130, F131, F132, F133, F134, F135, F136, F137, F138, F139, F140, F141, F142, F143, F144, F145, F146, F147, F148, F149, F150, F151, F152, F153, F154, F155, F156, F157, F158, F159, F160, F161, F162, F163, F164, F165, F166,
+@outputs Class
+@data
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 1
+1 0
+1 0
+1 1
+1 1
+1 1
+1 1
+1 1
+1 0
+1 1
+1 1
+1 1
+1 1
+1 1
+1 0
+1 1
+1 1
+1 0
+1 1
+1 1
+1 1
+1 1
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 1
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 1
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 1
+0 1
+0 1
+0 0
+0 0
+0 1
+0 0
+0 1
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+
+
+We can see too the output and target classes for each case of the test set in the results/G3PMI-C.mi-musk1/result0s0.tst:
+ 
+@relation musk1
+@attribute Molecule_name {MUSK-jf59, MUSK-jf46, MUSK-224, MUSK-314, MUSK-285, MUSK-f152, MUSK-190, MUSK-272, MUSK-jf78, MUSK-236, MUSK-f184, MUSK-jf58, MUSK-238, MUSK-284, MUSK-188, MUSK-jf17, MUSK-219, MUSK-211, MUSK-321, MUSK-f205, MUSK-jf67, MUSK-256, MUSK-254, MUSK-227, MUSK-213, MUSK-333, MUSK-212, MUSK-315, MUSK-293, MUSK-jf47, MUSK-228, MUSK-f159, MUSK-330, MUSK-273, MUSK-j51, MUSK-331, MUSK-301, MUSK-292, MUSK-j33, MUSK-f158, MUSK-240, MUSK-246, NON-MUSK-j129, NON-MUSK-jp13, NON-MUSK-f161, NON-MUSK-289, NON-MUSK-220, NON-MUSK-jp10, NON-MUSK-253, NON-MUSK-305, NON-MUSK-232, NON-MUSK-286, NON-MUSK-j83, NON-MUSK-297, NON-MUSK-f150, NON-MUSK-f164, NON-MUSK-208, NON-MUSK-199, NON-MUSK-200, NON-MUSK-j146, NON-MUSK-j130, NON-MUSK-j90, NON-MUSK-308, NON-MUSK-249, NON-MUSK-319, NON-MUSK-j97, NON-MUSK-j100, NON-MUSK-320, NON-MUSK-f209, NON-MUSK-j93, NON-MUSK-334, NON-MUSK-j148, NON-MUSK-309, NON-MUSK-288, NON-MUSK-257, NON-MUSK-327, NON-MUSK-j84, NON-MUSK-247, NON-MUSK-296, NON-MUSK-295, NON-MUSK-290, NON-MUSK-j81, NON-MUSK-j96, NON-MUSK-271, NON-MUSK-318, NON-MUSK-226, NON-MUSK-j147, MUSK-323, MUSK-344, MUSK-322, MUSK-311, MUSK-316}
+@attribute F1 real [-9.0, 130.0]
+@attribute F2 real [-199.0, 98.0]
+@attribute F3 real [-166.0, 83.0]
+@attribute F4 real [-115.0, 157.0]
+@attribute F5 real [-117.0, 238.0]
+@attribute F6 real [-184.0, 200.0]
+@attribute F7 real [-170.0, 214.0]
+@attribute F8 real [-231.0, 188.0]
+@attribute F9 real [-242.0, 135.0]
+@attribute F10 real [-284.0, 218.0]
+@attribute F11 real [-327.0, 104.0]
+@attribute F12 real [-326.0, 196.0]
+@attribute F13 real [-302.0, 117.0]
+@attribute F14 real [-348.0, 72.0]
+@attribute F15 real [-292.0, 77.0]
+@attribute F16 real [-318.0, 13.0]
+@attribute F17 real [-225.0, 125.0]
+@attribute F18 real [-312.0, 139.0]
+@attribute F19 real [-291.0, 214.0]
+@attribute F20 real [-243.0, 273.0]
+@attribute F21 real [-298.0, 196.0]
+@attribute F22 real [-187.0, 147.0]
+@attribute F23 real [-255.0, 187.0]
+@attribute F24 real [-70.0, 312.0]
+@attribute F25 real [-102.0, 254.0]
+@attribute F26 real [-243.0, 162.0]
+@attribute F27 real [-205.0, 157.0]
+@attribute F28 real [-164.0, 147.0]
+@attribute F29 real [-140.0, 181.0]
+@attribute F30 real [-154.0, 258.0]
+@attribute F31 real [-118.0, 190.0]
+@attribute F32 real [-149.0, 143.0]
+@attribute F33 real [-124.0, 219.0]
+@attribute F34 real [-278.0, 163.0]
+@attribute F35 real [-156.0, 227.0]
+@attribute F36 real [16.0, 291.0]
+@attribute F37 real [-175.0, 224.0]
+@attribute F38 real [-192.0, 165.0]
+@attribute F39 real [-145.0, 105.0]
+@attribute F40 real [-181.0, 189.0]
+@attribute F41 real [-190.0, 82.0]
+@attribute F42 real [-151.0, 201.0]
+@attribute F43 real [-291.0, 168.0]
+@attribute F44 real [-343.0, 81.0]
+@attribute F45 real [-315.0, 65.0]
+@attribute F46 real [-338.0, 115.0]
+@attribute F47 real [-157.0, 110.0]
+@attribute F48 real [-294.0, 99.0]
+@attribute F49 real [-269.0, 180.0]
+@attribute F50 real [-273.0, 214.0]
+@attribute F51 real [-329.0, 218.0]
+@attribute F52 real [-205.0, 148.0]
+@attribute F53 real [-206.0, 159.0]
+@attribute F54 real [-143.0, 286.0]
+@attribute F55 real [-113.0, 259.0]
+@attribute F56 real [-282.0, 199.0]
+@attribute F57 real [-168.0, 231.0]
+@attribute F58 real [-178.0, 111.0]
+@attribute F59 real [-173.0, 181.0]
+@attribute F60 real [-254.0, 178.0]
+@attribute F61 real [-102.0, 243.0]
+@attribute F62 real [-195.0, 173.0]
+@attribute F63 real [-69.0, 110.0]
+@attribute F64 real [-197.0, 220.0]
+@attribute F65 real [-159.0, 108.0]
+@attribute F66 real [6.0, 197.0]
+@attribute F67 real [-166.0, 262.0]
+@attribute F68 real [-196.0, 157.0]
+@attribute F69 real [-134.0, 205.0]
+@attribute F70 real [-192.0, 168.0]
+@attribute F71 real [-174.0, 83.0]
+@attribute F72 real [-150.0, 98.0]
+@attribute F73 real [-322.0, 133.0]
+@attribute F74 real [-338.0, 112.0]
+@attribute F75 real [-272.0, 132.0]
+@attribute F76 real [-191.0, -65.0]
+@attribute F77 real [-255.0, 154.0]
+@attribute F78 real [-318.0, 158.0]
+@attribute F79 real [-310.0, 185.0]
+@attribute F80 real [-197.0, 233.0]
+@attribute F81 real [-258.0, 183.0]
+@attribute F82 real [-176.0, 192.0]
+@attribute F83 real [-301.0, 208.0]
+@attribute F84 real [-98.0, 251.0]
+@attribute F85 real [-222.0, 183.0]
+@attribute F86 real [-200.0, 189.0]
+@attribute F87 real [-208.0, 113.0]
+@attribute F88 real [-213.0, 105.0]
+@attribute F89 real [-111.0, 163.0]
+@attribute F90 real [-159.0, 272.0]
+@attribute F91 real [-202.0, 168.0]
+@attribute F92 real [-20.0, 167.0]
+@attribute F93 real [-121.0, 233.0]
+@attribute F94 real [-326.0, 178.0]
+@attribute F95 real [-77.0, 149.0]
+@attribute F96 real [-70.0, 336.0]
+@attribute F97 real [-191.0, 171.0]
+@attribute F98 real [-191.0, 194.0]
+@attribute F99 real [-155.0, 48.0]
+@attribute F100 real [-155.0, 235.0]
+@attribute F101 real [-210.0, 88.0]
+@attribute F102 real [-37.0, 265.0]
+@attribute F103 real [-296.0, 96.0]
+@attribute F104 real [-320.0, 95.0]
+@attribute F105 real [-319.0, 72.0]
+@attribute F106 real [-287.0, 179.0]
+@attribute F107 real [-194.0, 144.0]
+@attribute F108 real [-293.0, 52.0]
+@attribute F109 real [-250.0, 183.0]
+@attribute F110 real [-295.0, 53.0]
+@attribute F111 real [-252.0, 117.0]
+@attribute F112 real [-268.0, 211.0]
+@attribute F113 real [-223.0, 188.0]
+@attribute F114 real [-206.0, 160.0]
+@attribute F115 real [-251.0, 201.0]
+@attribute F116 real [-252.0, 187.0]
+@attribute F117 real [-104.0, 315.0]
+@attribute F118 real [-209.0, 137.0]
+@attribute F119 real [-193.0, 215.0]
+@attribute F120 real [-201.0, 152.0]
+@attribute F121 real [-123.0, 254.0]
+@attribute F122 real [-118.0, 270.0]
+@attribute F123 real [-131.0, 279.0]
+@attribute F124 real [-121.0, 200.0]
+@attribute F125 real [-145.0, 149.0]
+@attribute F126 real [-44.0, 137.0]
+@attribute F127 real [-285.0, 123.0]
+@attribute F128 real [-219.0, 238.0]
+@attribute F129 real [-305.0, 159.0]
+@attribute F130 real [-188.0, 152.0]
+@attribute F131 real [-94.0, 140.0]
+@attribute F132 real [-140.0, 170.0]
+@attribute F133 real [-322.0, 176.0]
+@attribute F134 real [-341.0, 187.0]
+@attribute F135 real [-342.0, 111.0]
+@attribute F136 real [-197.0, 137.0]
+@attribute F137 real [-201.0, 186.0]
+@attribute F138 real [-200.0, 127.0]
+@attribute F139 real [-246.0, 138.0]
+@attribute F140 real [-286.0, 207.0]
+@attribute F141 real [-294.0, 238.0]
+@attribute F142 real [-186.0, 177.0]
+@attribute F143 real [-158.0, 213.0]
+@attribute F144 real [-173.0, 158.0]
+@attribute F145 real [-179.0, 178.0]
+@attribute F146 real [-107.0, 240.0]
+@attribute F147 real [-131.0, -3.0]
+@attribute F148 real [-201.0, 134.0]
+@attribute F149 real [-215.0, 121.0]
+@attribute F150 real [-191.0, 174.0]
+@attribute F151 real [-126.0, 243.0]
+@attribute F152 real [-125.0, 154.0]
+@attribute F153 real [-112.0, 207.0]
+@attribute F154 real [-171.0, 84.0]
+@attribute F155 real [-145.0, 161.0]
+@attribute F156 real [-197.0, 113.0]
+@attribute F157 real [-252.0, 141.0]
+@attribute F158 real [-324.0, 72.0]
+@attribute F159 real [-217.0, 173.0]
+@attribute F160 real [-135.0, 185.0]
+@attribute F161 real [-126.0, 253.0]
+@attribute F162 real [-78.0, 291.0]
+@attribute F163 real [35.0, 302.0]
+@attribute F164 real [-132.0, 24.0]
+@attribute F165 real [-258.0, 82.0]
+@attribute F166 real [-72.0, 235.0]
+@attribute Class {0, 1}
+@inputs Molecule_name, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24, F25, F26, F27, F28, F29, F30, F31, F32, F33, F34, F35, F36, F37, F38, F39, F40, F41, F42, F43, F44, F45, F46, F47, F48, F49, F50, F51, F52, F53, F54, F55, F56, F57, F58, F59, F60, F61, F62, F63, F64, F65, F66, F67, F68, F69, F70, F71, F72, F73, F74, F75, F76, F77, F78, F79, F80, F81, F82, F83, F84, F85, F86, F87, F88, F89, F90, F91, F92, F93, F94, F95, F96, F97, F98, F99, F100, F101, F102, F103, F104, F105, F106, F107, F108, F109, F110, F111, F112, F113, F114, F115, F116, F117, F118, F119, F120, F121, F122, F123, F124, F125, F126, F127, F128, F129, F130, F131, F132, F133, F134, F135, F136, F137, F138, F139, F140, F141, F142, F143, F144, F145, F146, F147, F148, F149, F150, F151, F152, F153, F154, F155, F156, F157, F158, F159, F160, F161, F162, F163, F164, F165, F166,
+@outputs Class
+@data
+0 1
+0 0
+0 0
+0 1
+1 1
+1 0
+1 1
+1 1
+1 1
+
+
+</example>
+
+</method>

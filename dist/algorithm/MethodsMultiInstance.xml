@@ -1,87 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <method_list>
-<method>
-    <name>Clas-CitationKNN</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>CitationKNN_Clas.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>Yes</multiinstance>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
-    </output>
-  </method>
-  <method>
-    <name>Clas-MDD</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>MDD_Clas.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>Yes</multiinstance>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
-    </output>
-  </method>
-  <method>
-    <name>Clas-MIDD</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>MIDD_Clas.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>Yes</multiinstance>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
-    </output>
-  </method>
    <method>
-    <name>Clas-MIEMDD</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>MIEMDD_Clas.jar</jar_file>
+    <name>G3PMI-C</name>
+    <family>Multi Instance Learning</family>
+    <jar_file>G3PMI.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
@@ -91,7 +13,7 @@
       <imprecise>No</imprecise>
       <multiclass>No</multiclass>
       <multioutput>No</multioutput>
-      <multiinstance>Yes</multiinstance>
+      <multiinstance>Yes</multiinstance> 
     </input>
     <output>
       <continuous>Yes</continuous>
@@ -101,13 +23,13 @@
       <imprecise>No</imprecise>
       <multiclass>No</multiclass>
       <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
+      <multiinstance>Yes</multiinstance>
     </output>
   </method>
-    <method>
-    <name>Clas-MISMO</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>MISMO_Clas.jar</jar_file>
+  <method>
+    <name>APR_GFS_AllPositive_APR-C</name>
+    <family>Multi Instance Learning</family>
+    <jar_file>APR_GFS_AllPositive_APR.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
@@ -117,7 +39,7 @@
       <imprecise>No</imprecise>
       <multiclass>No</multiclass>
       <multioutput>No</multioutput>
-      <multiinstance>Yes</multiinstance>
+      <multiinstance>Yes</multiinstance> 
     </input>
     <output>
       <continuous>Yes</continuous>
@@ -127,91 +49,13 @@
       <imprecise>No</imprecise>
       <multiclass>No</multiclass>
       <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
-    </output>
- </method>
-    <method>
-    <name>Clas-MILR</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>MILR_Clas.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
       <multiinstance>Yes</multiinstance>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
-    </output>
-   </method>
-    <method>
-    <name>Clas-MISVM</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>MISVM_Clas.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>Yes</multiinstance>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
-    </output>
-   </method>
-    <method>
-    <name>Clas-MIPART</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>MIPART_Clas.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>Yes</multiinstance>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
     </output>
   </method>
-    <method>
-    <name>Clas-MIJ48</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>MIJ48_Clas.jar</jar_file>
+  <method>
+    <name>APR_GFS_ElimCount_APR-C</name>
+    <family>Multi Instance Learning</family>
+    <jar_file>APR_GFS_ElimCount_APR.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
@@ -221,7 +65,7 @@
       <imprecise>No</imprecise>
       <multiclass>No</multiclass>
       <multioutput>No</multioutput>
-      <multiinstance>Yes</multiinstance>
+      <multiinstance>Yes</multiinstance> 
     </input>
     <output>
       <continuous>Yes</continuous>
@@ -231,13 +75,13 @@
       <imprecise>No</imprecise>
       <multiclass>No</multiclass>
       <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
+      <multiinstance>Yes</multiinstance>
     </output>
   </method>
-    <method>
-    <name>Clas-MIRBF</name>
-    <family>Multiple Instance Learning</family>
-    <jar_file>MIRBF_Clas.jar</jar_file>
+  <method>
+    <name>APR_GFS_Kde_APR-C</name>
+    <family>Multi Instance Learning</family>
+    <jar_file>APR_GFS_Kde_APR.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
@@ -247,7 +91,7 @@
       <imprecise>No</imprecise>
       <multiclass>No</multiclass>
       <multioutput>No</multioutput>
-      <multiinstance>Yes</multiinstance>
+      <multiinstance>Yes</multiinstance> 
     </input>
     <output>
       <continuous>Yes</continuous>
@@ -257,7 +101,137 @@
       <imprecise>No</imprecise>
       <multiclass>No</multiclass>
       <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>
+      <multiinstance>Yes</multiinstance>
+    </output>
+  </method>
+  <method>
+    <name>APR_IteratedDiscrimination-C</name>
+    <family>Multi Instance Learning</family>
+    <jar_file>APR_IteratedDiscrimination.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance> 
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance>
+    </output>
+  </method>
+  <method>
+    <name>Citation-KNN-C</name>
+    <family>Multi Instance Learning</family>
+    <jar_file>Citation-KNN.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance> 
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance>
+    </output>
+  </method>
+  <method>
+    <name>KNN-MI-C</name>
+    <family>Multi Instance Learning</family>
+    <jar_file>KNN-MI.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance> 
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance>
+    </output>
+  </method>
+  <method>
+    <name>DD-C</name>
+    <family>Multi Instance Learning</family>
+    <jar_file>DD.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance> 
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance>
+    </output>
+  </method>
+  <method>
+    <name>EMDD-C</name>
+    <family>Multi Instance Learning</family>
+    <jar_file>EMDD.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance> 
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>No</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>Yes</multiinstance>
     </output>
   </method>
 </method_list>

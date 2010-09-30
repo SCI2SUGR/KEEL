@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset_list>
   <dataset>
-    <nameAbr>elephant</nameAbr>
-    <nameComplete>elephant</nameComplete>
+    <nameAbr>musk1</nameAbr>
+    <nameComplete>musk1</nameComplete>
     <problemType>Classification</problemType>
     <partitions>
       <partition>10cfv</partition>
-      <partition>5x2cv</partition>
     </partitions>
     <continuous>Yes</continuous>
     <integer>No</integer>
     <nominal>No</nominal>
     <imprecise>No</imprecise>
     <missing>No</missing>
-    <nAttributes>230</nAttributes>
-    <nInstances>200</nInstances>
+	<multiinstance>Yes</multiinstance>
+    <nAttributes>546</nAttributes>
+    <nInstances>476</nInstances>
     <nClasses>2</nClasses>
     <field>Output</field>
-    <multiinstance>Yes</multiinstance>
   </dataset>
 </dataset_list>
 

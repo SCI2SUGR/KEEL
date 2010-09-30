@@ -1,0 +1,98 @@
+<method>
+
+	<name>Diverse Denstiy algorithm</name>
+
+	<reference>  
+
+		<ref>J. Wang and J.-D. Zucker. Solving the multiple-instance problem: a lazy learning approach. Proc. 17th Int'l Conf. on Machine Learning, pp. 1119-1125, 2000.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Expectation Maximization Diverse Density algorithm</type>
+
+		<objective>To determine a classification model for multiple instance learning based on Diverse Density (DD) algorithm and Expectation Maximization (EM) method.</objective>
+
+		<howWork> This algorithm combines the DD algorithm with an iterative approach inspired by the expectation maximization algorithm (EM). In each iteration, the most-likely-cause model [2] is used to find the most likely target points based on the DD model that has been learned.
+				</howWork>
+
+		<parameterSpec>  
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+	Method: EMDD-C
+Dataset: mi-musk1
+Training set: mi-musk-10-1tra.dat
+Test set: mi-musk-10-1tst.dat
+Test Show results: Vis-Clas-Check
+
+
+After the execution of RunKeel.jar we can see into the Experiment\results\Vis-Clas-Check\TSTEMDD-C folder the classification results for the test/train set:
+
+TEST RESULTS
+============
+Classifier= musk1 
+Fold 0 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 1 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 2 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 3 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 4 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 5 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 6 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 7 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 8 : CORRECT=0.4444444444444444 N/C=0.0 
+Fold 9 : CORRECT=0.4444444444444444 N/C=0.0 
+Global Classification Error + N/C:
+0.5555555555555555 
+stddev Global Classification Error + N/C:
+1.0536712127723509E-8 
+Correctly classified:
+0.44444444444444453 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= musk1 
+Summary of data, Classifiers: musk1 
+Fold 0 : CORRECT=0.5060240963855422 N/C=0.0 
+Fold 1 : CORRECT=0.5060240963855422 N/C=0.0 
+Fold 2 : CORRECT=0.5060240963855422 N/C=0.0 
+Fold 3 : CORRECT=0.5060240963855422 N/C=0.0 
+Fold 4 : CORRECT=0.5060240963855422 N/C=0.0 
+Fold 5 : CORRECT=0.5060240963855422 N/C=0.0 
+Fold 6 : CORRECT=0.5060240963855422 N/C=0.0 
+Fold 7 : CORRECT=0.5060240963855422 N/C=0.0 
+Fold 8 : CORRECT=0.5060240963855422 N/C=0.0 
+Fold 9 : CORRECT=0.5060240963855422 N/C=0.0 
+Global Classification Error + N/C:
+0.49397590361445787 
+stddev Global Classification Error + N/C:
+NaN 
+Correctly classified:
+0.5060240963855421 
+Global N/C:
+0.0 
+
+</example>
+
+</method>
