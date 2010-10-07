@@ -444,13 +444,13 @@ public class IndCAN extends Individual {
                 float sumaSignClase=0;
                 for (int aux=0; aux<Variables.getNClass(); aux++) {
                     if (cubreClase[aux]!=0)
-                        sumaSignClase += cubreClase[aux] * Math.log ((float)cubreClase[aux]/(ejClase[aux]*coverage));
+                        sumaSignClase += cubreClase[aux] * Math.log10 ((float)cubreClase[aux]/(ejClase[aux]*coverage));
                 }
                 significance = 2 * sumaSignClase;
                 float maxSignif=0;
                 for (int a=0; a<Variables.getNClass(); a++) {
                     if (cubreClase[a]!=0 && coverage!=0)  
-                        maxSignif += cubreClase[a] * Math.log ((float)1/coverage);
+                        maxSignif += cubreClase[a] * Math.log10 ((float)1/coverage);
                 }
                 maxSignif = 2*maxSignif ; 
                 float normSignif=0;

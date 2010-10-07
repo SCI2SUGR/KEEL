@@ -362,7 +362,7 @@ public class IndDNF  extends Individual{
                 float sumaSignClase=0;
                 for (int j=0; j<Variables.getNClass(); j++) {
                     if (cubreClase[j]!=0)
-                        sumaSignClase += cubreClase[j] * Math.log ((float)cubreClase[j]/(ejClase[j]*coverage));
+                        sumaSignClase += cubreClase[j] * Math.log10 ((float)cubreClase[j]/(ejClase[j]*coverage));
                 }
                 significance = 2 * sumaSignClase;
                 if (numVarNoInterv >= Variables.getNVars()) {
@@ -372,7 +372,7 @@ public class IndDNF  extends Individual{
                 float maxSignif=0;
                 for (int ii=0; ii<Variables.getNClass(); ii++) {
                     if (cubreClase[ii]!=0 && coverage!=0)   // cubreclase contains the frecuency
-                        maxSignif += cubreClase[ii] * Math.log ((float)1/coverage);
+                        maxSignif += cubreClase[ii] * Math.log10 ((float)1/coverage);
                 }
                 maxSignif = 2*maxSignif ;
                 // Then, normalize the value

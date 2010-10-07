@@ -64,6 +64,7 @@ public class MESDIF {
     private static String nombre_alg;    // Algorithm Name
     private static boolean claseSelec;   // Indicates if there is a selected class to run the algorithm or not
 
+    private static String input_file_ref;   // Input mandatory file training
     private static String input_file_tra;   // Input mandatory file training
     private static String input_file_tst;   // Input mandatory file test
     private static String output_file_tra;   // Output mandatory file training
@@ -107,6 +108,7 @@ public class MESDIF {
      */
     private static void GetInputFiles(StringTokenizer s) {
         String val   = s.nextToken(); // skip "="
+        input_file_ref = s.nextToken().replace('"',' ').trim();
         input_file_tra = s.nextToken().replace('"',' ').trim();
         input_file_tst = s.nextToken().replace('"',' ').trim();
     }
@@ -249,7 +251,7 @@ public class MESDIF {
 
         // Declaration of the dataset and load in memory
         Data = new InstanceSet();
-        Data.readSet(input_file_tra,true);
+        Data.readSet(input_file_ref,true);
        
         // Check that there is only one output variable
         if (Attributes.getOutputNumAttributes()>1) {

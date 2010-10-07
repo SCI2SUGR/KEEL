@@ -39,6 +39,8 @@
 
 package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
+import keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate.*;
+
 import org.core.*;
 
 
@@ -338,7 +340,7 @@ public class IndCAN  extends Individual {
         float sumaSignClase=0;
         for (int j=0; j<Variables.getNClass(); j++) {
             if (cubreClase[j]!=0)
-                sumaSignClase += cubreClase[j] * Math.log ((float)cubreClase[j]/(ejClase[j]*coverage));
+                sumaSignClase += cubreClase[j] * Math.log10 ((float)cubreClase[j]/(ejClase[j]*coverage));
         }
         significance = 2 * sumaSignClase;
         if (numVarNoInterv >= Variables.getNVars())
