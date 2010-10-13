@@ -27,7 +27,18 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: MogulSC.java
+ * 
+ * Performs the search by using MOGUL methodology
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import org.core.*;
 import java.util.*;
@@ -74,7 +85,7 @@ class MogulSC {
         String cadenaEntrada, valor;
 
         // we read the file in a String
-        cadenaEntrada = Fichero.leeFichero(fichero_conf);
+        cadenaEntrada = Files.readFile(fichero_conf);
         StringTokenizer sT = new StringTokenizer(cadenaEntrada, "\n\r=", false);
 
         // we read the algorithm's name
@@ -112,7 +123,6 @@ class MogulSC {
         // we read if the model is descriptive or approximation
         sT.nextToken();
         valor = sT.nextToken();
-        aplicar_ee = Integer.parseInt(valor.trim());
 
         // we read the evolution strategy iterations
         sT.nextToken();
@@ -173,15 +183,13 @@ class MogulSC {
         Regla_act = new int[tabla.n_variables];
         Padre = new Structure(base_reglas.n_genes);
         Hijo = new Structure(base_reglas.n_genes);
-
-        System.out.println("N_genes " + base_reglas.n_genes);
-
 	}
 
 
     public void run() {
         int i, j, pos_individuo;
         double RCE, min_CR, min_CVR, ec, el, ec_tst, el_tst, PN, fitness;
+		String aux_string;
 
         /* We read the configutate file and we initialize the structures and variables */
         leer_conf();
@@ -206,7 +214,7 @@ class MogulSC {
             }
 
             informe += "\n";
-            Fichero.escribeFichero(fichero_inf, informe);
+            Files.writeFile(fichero_inf, informe);
 
             /* Inicialization of the counters */
             tabla.no_cubiertos = tabla.long_tabla;
@@ -216,10 +224,11 @@ class MogulSC {
             do {
 
                 /* Phase 1: Generation of the better rule */
-                Generate();
+                Generate();			
 
                 fun_adap.CriteriosReglas(Padre.Gene);
 				fitness = fun_adap.F * fun_adap.G * fun_adap.g;
+				PN = 1.0;			
 
                 if (fun_adap.tipo_fitness == 1) {
                     PN = fun_adap.LNIR(Padre.Gene);
@@ -228,7 +237,7 @@ class MogulSC {
                     fitness *= fun_adap.PC;
                 }
 
-                /* Phase 2: Optimization of the rule */
+				/* Phase 2: Optimization of the rule */
                 if (aplicar_ee == 1) {
                     ee_11.Estrategia_Evolucion(Padre, Hijo);
 
@@ -260,6 +269,7 @@ class MogulSC {
                 /* the multimodal GA finish when the condition is true */
             } while (Parada() == 0);
 
+
             /* we calculate the minimum and maximum matching */
             min_CR = 1.0;
             min_CVR = 10E37;
@@ -282,21 +292,21 @@ class MogulSC {
             cadenaReglas += "\nMSEtra: " + ec + " MSEtst: " + ec_tst +
                     "\nMinimun C_R: " + min_CR + " MSE CV_R: " + min_CVR + "\n";
 
-            Fichero.escribeFichero(fichero_reglas, cadenaReglas);
+            Files.writeFile(fichero_reglas, cadenaReglas);
 
             /* we write the obligatory output files*/
             String salida_tra = tabla_val.getCabecera();
             salida_tra += fun_adap.getSalidaObli(tabla_val);
-            Fichero.escribeFichero(fich_tra_obli, salida_tra);
+            Files.writeFile(fich_tra_obli, salida_tra);
 
             String salida_tst = tabla_tst.getCabecera();
             salida_tst += fun_adap.getSalidaObli(tabla_tst);
-            Fichero.escribeFichero(fich_tst_obli, salida_tst);
+            Files.writeFile(fich_tst_obli, salida_tst);
 
             /* we write the MSEs in specific files */
-            Fichero.AnadirtoFichero(ruta_salida + "MogulSCcomunR.txt", "" + base_reglas.n_reglas + "\n");
-            Fichero.AnadirtoFichero(ruta_salida + "MogulSCcomunTRA.txt", "" + ec + "\n");
-            Fichero.AnadirtoFichero(ruta_salida + "MogulSCcomunTST.txt", "" + ec_tst + "\n");
+            Files.addToFile(ruta_salida + "MogulSCcomunR.txt", "" + base_reglas.n_reglas + "\n");
+            Files.addToFile(ruta_salida + "MogulSCcomunTRA.txt", "" + ec + "\n");
+            Files.addToFile(ruta_salida + "MogulSCcomunTST.txt", "" + ec_tst + "\n");
         }
     }
 
@@ -378,7 +388,7 @@ class MogulSC {
         }
 
         /* we obtain the best rule */
-        Padre.Perf = 0;
+        Padre.Perf = 0.0;
         indice_mejor = 0;
         for (i = 0; i < n_reg_generadas; i++) {
             base_reglas.Pob_reglas[i].Perf = fun_adap.eval(base_reglas.Pob_reglas[i].Gene);
@@ -405,7 +415,4 @@ class MogulSC {
             return (0);
         }
     }
-
-
 }
-

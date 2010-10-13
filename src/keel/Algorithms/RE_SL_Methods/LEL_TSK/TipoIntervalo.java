@@ -27,11 +27,22 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: TipoIntervalo.java
+ * 
+ * A java class representing intervals
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 class TipoIntervalo {
     /* Each interval type has this form */
     public double min;
     public double max;
 }
-

@@ -27,7 +27,18 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: BaseR.java
+ * 
+ * Java class for managing a rule base. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 class BaseR {
 
@@ -82,8 +93,8 @@ class BaseR {
         for (i = 0; i < tabla.n_variables; i++) {
             pos_individuo = tabla.n_variables + 3 * i;
             ListaTabu[n_reglas][i] = Padre.Gene[pos_individuo + 1];
-            BaseReglas[n_reglas][i].Nombre = base_datos.BaseDatos[i][(int) Padre.Gene[i]].Nombre;
-            BaseReglas[n_reglas][i].Etiqueta = base_datos.BaseDatos[i][(int) Padre.Gene[i]].Etiqueta;
+            BaseReglas[n_reglas][i].Nombre = new String (base_datos.BaseDatos[i][(int) Padre.Gene[i]].Nombre);
+            BaseReglas[n_reglas][i].Etiqueta = new String (base_datos.BaseDatos[i][(int) Padre.Gene[i]].Etiqueta);
             BaseReglas[n_reglas][i].x0 = Padre.Gene[pos_individuo];
             BaseReglas[n_reglas][i].x1 = Padre.Gene[pos_individuo + 1];
             BaseReglas[n_reglas][i].x2 = Padre.Gene[pos_individuo + 1];
@@ -146,7 +157,7 @@ class BaseR {
         int b;
 
         for (b = 0; b < n_reglas; b++) {
-            if (GradoEmp[b] != 0) {
+            if (GradoEmp[b] != 0.0) {
                 if (GradoEmp[b] == 1.0) {
                     Consecuentes[b].x0 = BaseReglas[b][tabla.n_variables -
                                          1].x0;
@@ -157,22 +168,10 @@ class BaseR {
                     Consecuentes[b].x3 = BaseReglas[b][tabla.n_variables -
                                          1].x3;
                 } else {
-                    Consecuentes[b].x0 = BaseReglas[b][tabla.n_variables -
-                                         1].x0;
-                    Consecuentes[b].x1 = BaseReglas[b][tabla.n_variables -
-                                         1].x0 +
-                                         (BaseReglas[b][tabla.n_variables -
-                                          1].x1 -
-                                          BaseReglas[b][tabla.n_variables -
-                                          1].x0) * GradoEmp[b];
-                    Consecuentes[b].x2 = BaseReglas[b][tabla.n_variables -
-                                         1].x3 +
-                                         (BaseReglas[b][tabla.n_variables -
-                                          1].x2 -
-                                          BaseReglas[b][tabla.n_variables -
-                                          1].x3) * GradoEmp[b];
-                    Consecuentes[b].x3 = BaseReglas[b][tabla.n_variables -
-                                         1].x3;
+                    Consecuentes[b].x0 = BaseReglas[b][tabla.n_variables - 1].x0;
+                    Consecuentes[b].x1 = BaseReglas[b][tabla.n_variables - 1].x0 + (BaseReglas[b][tabla.n_variables - 1].x1 - BaseReglas[b][tabla.n_variables - 1].x0) * GradoEmp[b];
+                    Consecuentes[b].x2 = BaseReglas[b][tabla.n_variables - 1].x3 + (BaseReglas[b][tabla.n_variables - 1].x2 - BaseReglas[b][tabla.n_variables - 1].x3) * GradoEmp[b];
+                    Consecuentes[b].x3 = BaseReglas[b][tabla.n_variables - 1].x3;
                 }
             }
 
@@ -240,7 +239,7 @@ class BaseR {
         num = 0;
         den = 0;
         for (i = 0; i < n_reglas; i++) {
-            if (Consecuentes[i].y != 0) {
+            if (Consecuentes[i].y != 0.0) {
                 num += GradoEmp[i] *
                         (AreaTrapecioX(Consecuentes[i].x0, Consecuentes[i].x1,
                                        Consecuentes[i].x2, Consecuentes[i].x3,
@@ -252,7 +251,7 @@ class BaseR {
             }
         }
 
-        if (den != 0) {
+        if (den != 0.0) {
             return (num / den);
         } else {
             return ((tabla.extremos[tabla.n_var_estado].max - tabla.extremos[tabla.n_var_estado].min) / 2.0);
@@ -290,4 +289,3 @@ class BaseR {
         return (cadena);
     }
 }
-

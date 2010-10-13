@@ -27,12 +27,18 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
-
-/* Created on 08-feb-2004
- *
- * @author Jesus Alcala Fernandez
+/**
+ * 
+ * File: MiDataset.java
+ * 
+ * Java class for managing data sets
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
  */
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.io.*;
 import keel.Dataset.*;
@@ -76,7 +82,6 @@ public class MiDataset {
             long_tabla = IS.getNumInstances();
             n_var_estado = Attributes.getInputNumAttributes();
             n_var_control = Attributes.getOutputNumAttributes();
-            no_cubiertos = long_tabla;
 
             // Check that there is only one output variable and
             // it is nominal
@@ -125,8 +130,10 @@ public class MiDataset {
                     }
 					else {
                         datos[k] = new TTABLA(n_variables);
+
                         for (j = 0; j < n_var_estado; j++) {
                             datos[k].ejemplo[j] = IS.getInputNumericValue(i, j);
+							// System.out.print(" " + datos[k].ejemplo[j]);
                         }
                         if (noOutputs) {
                             datos[k].ejemplo[j] = 0;
@@ -134,11 +141,15 @@ public class MiDataset {
 						else {
                             datos[k].ejemplo[j] = IS.getOutputNumericValue(i, 0);
                         }
+						// System.out.println(" " + datos[k].ejemplo[j]);
+						// System.out.println("");
                         k++;
                     }
                 }
                 calculaRangos(); // read the extremes
                 long_tabla = k;
+				no_cubiertos = long_tabla;
+				// System.out.println("\n\nLongitud de la tabla = " + long_tabla);
             }
         } catch (Exception e) {
             System.out.println("DBG: Exception in readSet");
@@ -168,4 +179,3 @@ public class MiDataset {
         extremos[n_variables - 1].max = Attributes.getOutputAttribute(0).getMaxAttribute();
     }
 }
-

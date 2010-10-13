@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: TTABLA.java
+ * 
+ * A java class representing a data base
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 class BaseD {
 
@@ -111,4 +123,3 @@ class BaseD {
     }
 
 }
-

@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: AG_Tun.java
+ * 
+ * Genetic algorithm implementation
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.lang.Math;
 import org.core.*;
@@ -189,7 +201,7 @@ class AG {
     }
   }
 
-  /* Operador de cruce multipunto en dos puntos */
+  /* Two point crossover */
   void Cruce_Multipunto() {
     int mom, dad, xpoint1, xpoint2, i, j;
     char temp;
@@ -220,7 +232,7 @@ class AG {
     }
   }
 
-  /* Operador de Mutacion Uniforme */
+  /* Uniform mutation operator */
   void Mutacion_Uniforme() {
     int posiciones, i, j;
     double m;
@@ -320,4 +332,3 @@ class AG {
     return (New[Best_guy].Perf);
   }
 }
-

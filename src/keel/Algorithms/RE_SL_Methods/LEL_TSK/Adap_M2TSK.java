@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: Adap_M2TSK.java
+ * 
+ * Functions for adapting the rule base. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 import java.lang.Math;
 
 
@@ -93,11 +105,13 @@ class Adap_M2TSK {
 	double Alfa_Error (double [] Consecuentes) {
 		int i, j;
 		double suma, salida;
+		float aux;
 
 		for (i=0, suma=0.0; i<n_ejemplos_positivos; i++) {
 			salida = Math.tan (Consecuentes[tabla.n_var_estado]);
-			for (j=0; j<tabla.n_var_estado; j++)
+			for (j=0; j<tabla.n_var_estado; j++) {
 				salida += Math.tan (Consecuentes[j]) * tabla.datos[indices_ep[i]].ejemplo[j];
+			}
 
 			suma += tabla.datos[indices_ep[i]].nivel_cubrimiento * Math.pow (tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado]-salida, 2.0);
 		}
@@ -180,5 +194,4 @@ class Adap_M2TSK {
 	}
 
 }
-
 

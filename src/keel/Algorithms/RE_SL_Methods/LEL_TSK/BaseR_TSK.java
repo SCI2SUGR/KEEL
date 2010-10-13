@@ -27,7 +27,18 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: BaseR_TSK.java
+ * 
+ * Java class for managing a TSK rule base. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.io.*;
 import org.core.*;
@@ -73,7 +84,7 @@ class BaseR_TSK {
     int i, j;
     String cadena;
 
-    cadena = Fichero.leeFichero(fichero);
+    cadena = Files.readFile(fichero);
 
     StringTokenizer sT = new StringTokenizer(cadena, "\n\r\t ", false);
     sT.nextToken();
@@ -95,6 +106,7 @@ class BaseR_TSK {
         BaseReglas[i].Ant[j].x3 = Double.parseDouble(sT.nextToken());
         BaseReglas[i].Ant[j].y = 1.0;
       }
+	  
       if (sel) {
         for (j = 0; j < tabla.n_variables; j++) {
           BaseReglas[i].Cons[j] = Double.parseDouble(sT.nextToken());
@@ -179,8 +191,7 @@ class BaseR_TSK {
       return (num / den);
     }
     else {
-      return ( (tabla.extremos[tabla.n_var_estado].max -
-                tabla.extremos[tabla.n_var_estado].min) / 2.0);
+      return ( (tabla.extremos[tabla.n_var_estado].max - tabla.extremos[tabla.n_var_estado].min) / 2.0);
     }
   }
 
@@ -225,7 +236,6 @@ class BaseR_TSK {
     }
 
     /* 'b' values of the consequent */
-    BaseReglas[regla].Cons[i] = Math.tan(consecuente[tabla.n_var_estado]);
+    BaseReglas[regla].Cons[tabla.n_var_estado] = Math.tan(consecuente[tabla.n_var_estado]);
   }
 }
-

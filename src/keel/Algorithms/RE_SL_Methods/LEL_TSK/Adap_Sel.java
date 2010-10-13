@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: Adap_Sel.java
+ * 
+ * Functions for adapting the rule base. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.lang.Math;
 
@@ -63,7 +75,7 @@ class Adap_Sel {
     tipo_fitness = tipo;
     cont_soluciones = 0;
 
-    /* Calculo del radio del nicho */
+    /* Computation of nichus ratious */
     radio_nicho = (int) (porc_radio_nicho * n_genes);
     min_reglas = (int) (porc_min_reglas * (double) n_genes);
 
@@ -98,10 +110,10 @@ class Adap_Sel {
   }
 
   /* -------------------------------------------------------------------------
-                                 FUNCION FITNESS
+                                 FITNESS FUNCTION 
    ------------------------------------------------------------------------- */
 
-  /* ------------------------- Criterios de reglas -------------------------- */
+  /* ------------------------- Rule criteria -------------------------- */
 
   /* Calcula el grado de compatibilidad (Ri(ek)) de la regla con el ejemplo */
   public double ReglaCubreEjemplo(Difuso[] R, double[] ejem) {
@@ -122,8 +134,7 @@ class Adap_Sel {
     return (minimo);
   }
 
-  /* Calcula los grados de cubrimiento medio y minimo de la Base de Conocimiento
-    sobre el conjunto de ejemplos  */
+  /* Computes ratios of maximun and minimun coverages  */
   public void Cubrimientos_Base() {
     int i, j;
     double RCE, cb;
@@ -152,10 +163,9 @@ class Adap_Sel {
     medcb = cb / (double) tabla.long_tabla;
   }
 
-  /* ---------------------- Decodificacion del cromosoma -------------------- */
+  /* ---------------------- Decodification of the chromosome -------------------- */
 
-  /* Pasa la Base de Conocimiento codificada en el cromosoma a una estructura
-    adecuada para inferir */
+  /* Converts the knowledge base into a chromosome */
   void Decodifica(char[] cromosoma) {
     int i, j;
 
@@ -173,15 +183,10 @@ class Adap_Sel {
               BaseReglas[i].Ant[j].x3;
           base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].y = base_total.
               BaseReglas[i].Ant[j].y;
-          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].Nombre =
-              base_total.BaseReglas[i].Ant[j].Nombre;
-          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].Etiqueta =
-              base_total.BaseReglas[i].Ant[j].Etiqueta;
         }
 
         for (j = 0; j < tabla.n_variables; j++) {
-          base_reglas.BaseReglas[base_reglas.n_reglas].Cons[j] = base_total.
-              BaseReglas[i].Cons[j];
+          base_reglas.BaseReglas[base_reglas.n_reglas].Cons[j] = base_total.BaseReglas[i].Cons[j];
         }
 
         base_reglas.n_reglas++;
@@ -189,9 +194,9 @@ class Adap_Sel {
     }
   }
 
-  /* --------------- Criterios especificos de la aplicacion ----------------- */
+  /* --------------- Specific criteria ----------------- */
 
-  /* Error Cuadratico */
+  /* Cuadratic error */
   double ErrorCuadratico() {
     int i;
     double suma;
@@ -205,7 +210,7 @@ class Adap_Sel {
     return (suma / (double) tabla.long_tabla);
   }
 
-  /* Errores Cuadratico y Lineal */
+  /* Linear and cuadratic error */
   void Error_tra() {
     int i, j;
     double suma1, suma2, fuerza;
@@ -221,7 +226,7 @@ class Adap_Sel {
     EL = suma2 / (double) tabla.long_tabla;
   }
 
-  /* Errores Cuadratico y Lineal */
+  /* Linear and cuadratic error */
   void Error_tst() {
     int i, j;
     double suma1, suma2, fuerza;
@@ -237,7 +242,7 @@ class Adap_Sel {
     EL = suma2 / (double) tabla_tst.long_tabla;
   }
 
-  /* ---------------------------- Funcion fitness --------------------------- */
+  /* ---------------------------- Fitness Function --------------------------- */
 
   double eval(char[] cromosoma) {
     if (tipo_fitness == 1) {
@@ -248,17 +253,12 @@ class Adap_Sel {
     }
   }
 
-  /* Funcion fitness empleada por Paco y Manolo: Se minimiza el error cuadratico
-    siempre que la base posea un grado de cubrimiento minimo superior a tau. El
-    cromosoma toma un valor maximo de fitness cuando la base que codifica no
-    presenta el grado de cubrimiento exigido */
+  /* Fitness Function: Minimizes the quadratic error if the coverage degree is greater than tau.
+  If the data base does not achieve the exiged coverage, its finess is maximun */
   double eval_EC(char[] cromosoma) {
     int i;
     double ec, fitness, Pen_nicho;
 
-    /* Se calcula la adecuacion de la base de conocimiento codificada en el
-       cromosoma actual, se estudia la posible penalizacion del mismo y se
-       devuelve el valor final */
     Decodifica(cromosoma);
     Cubrimientos_Base();
 
@@ -269,7 +269,6 @@ class Adap_Sel {
       if (Pen_nicho != 2.0) {
         fitness = ec * Pen_nicho;
       }
-      /* Si el cromosoma codifica una solucion ya obtenida, se le da el peor valor de fitness posible */
       else {
         fitness = maxEC;
       }
@@ -281,15 +280,13 @@ class Adap_Sel {
     return (fitness);
   }
 
-  /* Funcion fitness que pondera el error cuadratico por la desviacion del grado
-    de cubrimiento de la base con respecto al valor optimo 1 */
+  /* Fitness Function: Minimizes the quadratic error if the coverage degree is greater than tau.
+  If the data base does not achieve the exiged coverage, its finess is maximun.
+	Fitness value is ponderated by the maximun possible*/
   double eval_EC_cubr(char[] cromosoma) {
     int i;
     double ec, fitness;
 
-    /* Se calcula la adecuacion de la base de conocimiento codificada en el
-       cromosoma actual, se estudia la posible penalizacion del mismo y se
-       devuelve el valor final */
     Decodifica(cromosoma);
     Cubrimientos_Base();
 
@@ -305,10 +302,9 @@ class Adap_Sel {
   }
 
   /* -------------------------------------------------------------------------
-                               Distancia de Hamming
+                               Hamming Distance
    ------------------------------------------------------------------------- */
 
-  /* Calculo de la distancia de Hamming entre c1 y c2 */
   int Hamming(char[] c1, char[] c2) {
     int i, d;
 
@@ -323,13 +319,11 @@ class Adap_Sel {
   }
 
   /* -------------------------------------------------------------------------
-        Funcion de penalizacion
+        Penalization function
    ------------------------------------------------------------------------- */
 
-  /* Ley de la potencia. Recuerdese que estamos minimizando, con lo cual, el
-    cromosoma que es penalizado ha de aumentar su fitness para no ser selec-
-    cionado. Esto se hace calculando una variante de la ley de la potencia
-    que aparece en [Beasley93] */
+  /* Power law. Since we are minimizinf, fitness of the chormosome should be updated. 
+  See [Beasley93] */
   double P(char[] cromosoma) {
     int i, dist, peor_dist;
 
@@ -341,14 +335,11 @@ class Adap_Sel {
       }
     }
 
-    /* Si el cromosoma se encuentra dentro de algun nicho en el que ya se ha
-       hallado una solucion, entonces es penalizado. La penalizacion es maxima
-     (=alfa) cuando el cromosoma estudiado ya fue seleccionado como solucion */
     if (peor_dist < radio_nicho) {
       return (2 - Math.pow(peor_dist / (double) radio_nicho, alfa));
     }
 
-    /* Si no esta en ninguno de esos nichos, no se penaliza */
+    /* If the chromosome is not in a niche, it is not penalized */
     return (1.0);
   }
 
@@ -363,10 +354,10 @@ class Adap_Sel {
   }
 
   /* -------------------------------------------------------------------------
-               Funciones comunes
+               Common functions
    ------------------------------------------------------------------------- */
 
-  /* salida */
+  /* Output */
   public String getSalidaObli(MiDataset tabla_datos) {
     int j;
     double fuerza;
@@ -384,4 +375,3 @@ class Adap_Sel {
     return (salida);
   }
 }
-

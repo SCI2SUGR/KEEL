@@ -27,7 +27,18 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: Simplif.java
+ * 
+ * Performs thea simplificate search 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.io.*;
 import org.core.*;
@@ -69,7 +80,7 @@ class Simplif {
     int tipo_fitness, long_poblacion;
 
     // we read the file in a String
-    cadenaEntrada = Fichero.leeFichero(fichero_conf);
+    cadenaEntrada = Files.readFile(fichero_conf);
     StringTokenizer sT = new StringTokenizer(cadenaEntrada, "\n\r=", false);
 
     // we read the algorithm's name
@@ -84,7 +95,6 @@ class Simplif {
     fich_datos_chequeo = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
     fich_datos_val = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
     fich_datos_tst = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
-    //fichero_br = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
 
     // we read the name of the output files
     sT.nextToken();
@@ -93,7 +103,6 @@ class Simplif {
     ficheros = new StringTokenizer(valor, "\t ", false);
     fich_tra_obli = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
     fich_tst_obli = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
-    //fichero_reglas = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
     String aux = ( (ficheros.nextToken()).replace('\"', ' ')).trim(); //Br inicial
     aux = ( (ficheros.nextToken()).replace('\"', ' ')).trim(); //BD
     fichero_br = ( (ficheros.nextToken()).replace('\"', ' ')).trim(); //BR salida de MAN2TSK
@@ -265,23 +274,23 @@ class Simplif {
               "\nAverage covering degree: " + fun_adap.medcb + " MLE: " + el +
               "\nMSEtra: " + ec + " , MSEtst: " + ectst + "\n";
 
-          Fichero.escribeFichero(fichero_reglas, cadenaReglas);
+          Files.writeFile(fichero_reglas, cadenaReglas);
 
           /* we write the obligatory output files*/
           String salida_tra = tabla.getCabecera();
           salida_tra += fun_adap.getSalidaObli(tabla_val);
-          Fichero.escribeFichero(fich_tra_obli, salida_tra);
+          Files.writeFile(fich_tra_obli, salida_tra);
 
           String salida_tst = tabla_tst.getCabecera();
           salida_tst += fun_adap.getSalidaObli(tabla_tst);
-          Fichero.escribeFichero(fich_tst_obli, salida_tst);
+          Files.writeFile(fich_tst_obli, salida_tst);
 
           /* we write the MSEs in specific files */
-          Fichero.AnadirtoFichero(ruta_salida + "SimplifcomunR.txt",
+          Files.addToFile(ruta_salida + "SimplifcomunR.txt",
                                   "" + base_reglas.n_reglas + "\n");
-          Fichero.AnadirtoFichero(ruta_salida + "SimplifcomunTRA.txt",
+          Files.addToFile(ruta_salida + "SimplifcomunTRA.txt",
                                   "" + ec + "\n");
-          Fichero.AnadirtoFichero(ruta_salida + "SimplifcomunTST.txt",
+          Files.addToFile(ruta_salida + "SimplifcomunTST.txt",
                                   "" + ectst + "\n");
         }
 
@@ -306,4 +315,3 @@ class Simplif {
     return (1);
   }
 }
-

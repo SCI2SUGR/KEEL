@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: Difuso.java
+ * 
+ * Java class implementing a evolution strategy. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.lang.Math;
 import org.core.*;
@@ -44,6 +56,7 @@ class Est_evol {
     public BaseD base_datos;
     public BaseR base_reglas;
     public Adap fun_adap;
+	private double PI = 3.1415926;
 
     public Est_evol(BaseD base_da, BaseR base_re, Adap fun) {
         base_datos = base_da;
@@ -55,7 +68,8 @@ class Est_evol {
     /** Calculates the new value of sigma according to the number of mutation with hit*/
     public double AdaptacionSigma(double old_sigma, double p, double n) {
         /* if p<1/5, sigma lowers (c<1 -> sigma*c^(1/n)<sigma) */
-        if (p < 0.2) {
+
+		if (p < 0.2) {
             return (old_sigma * Math.pow(c, 1.0 / n));
         }
 
@@ -78,7 +92,7 @@ class Est_evol {
         u2 = Randomize.Rand();
 
         /* we calcules a normal value with the uniform values */
-        return (desv * Math.sqrt( -2.0 * Math.log(u1)) * Math.sin(2.0 * Math.PI * u2));
+        return (desv * Math.sqrt( -2.0 * Math.log(u1)) * Math.sin(2.0 * PI * u2));
     }
 
 
@@ -96,6 +110,7 @@ class Est_evol {
                 /* we copy the C1 part of the father in the son */
                 Hijo.Gene[variable] = Padre.Gene[variable];
                 etiqueta = (int) Padre.Gene[variable];
+				
                 gen = base_datos.tabla.n_variables + 3 * variable;
 
                 /* we obtain the fuzzy set */
@@ -125,8 +140,7 @@ class Est_evol {
                 n = ValorNormal(new_sigma * S);
                 newx = x0 + n;
                 if (newx <= base_datos.intervalos[variable][etiqueta].min) {
-                    Hijo.Gene[gen] = base_datos.intervalos[variable][etiqueta].
-                                     min;
+                    Hijo.Gene[gen] = base_datos.intervalos[variable][etiqueta].min;
                 } else {
                     if (newx >= newx1) {
                         Hijo.Gene[gen] = newx1;
@@ -148,7 +162,7 @@ class Est_evol {
                     } else {
                         Hijo.Gene[gen + 2] = newx;
                     }
-                }
+                }													 
             }
 
             /* we evaluate the son */
@@ -173,16 +187,11 @@ class Est_evol {
             }
 
             /* we adapt sigma */
-            new_sigma = AdaptacionSigma(sigma, n_exitos / (double) n_mutaciones,
-                                        (double) base_reglas.n_genes -
-                                        base_datos.tabla.n_variables);
+            new_sigma = AdaptacionSigma(sigma, n_exitos / (double) n_mutaciones, (double) base_reglas.n_genes - base_datos.tabla.n_variables);
 
             if (it_sin_exito >= n_gen_ee) {
                 fin = 1;
             }
-
-        } while (fin == 0);
+       } while (fin == 0);   
     }
-
 }
-

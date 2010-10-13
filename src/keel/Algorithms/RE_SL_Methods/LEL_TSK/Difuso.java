@@ -27,11 +27,21 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: Difuso.java
+ * 
+ * Java class representing a trapezium or triangular-shaped fuzzy set. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 class Difuso {
     /* This class allows trapezium or triangular-shaped fuzzy set */
     public double x0, x1, x2, x3, y;
     public String Nombre, Etiqueta;
 }
-

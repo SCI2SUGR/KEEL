@@ -169,7 +169,7 @@
     <name>Number of Parents to recombine the Angle String MOGUL</name>
     <type>integer</type>
     <domain>
-      <lowerB>2</lowerB>
+      <lowerB>1</lowerB>
       <upperB>500</upperB>
     </domain>
     <default>2</default>

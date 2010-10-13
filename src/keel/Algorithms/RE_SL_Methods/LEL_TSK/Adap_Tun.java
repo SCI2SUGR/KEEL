@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: Adap_Tun.java
+ * 
+ * Functions for tunning the rule base. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.lang.Math;
 
@@ -60,13 +72,9 @@ class Adap_Tun {
 		else  return (y);
 	}
 
+  /* ---------------------- Decodification of the chromosome -------------------- */
 
-
-
-	/* ---------------------- Decodificacion del cromosoma -------------------- */
-
-	/* Pasa la Base de Conocimiento codificada en el cromosoma a una estructura
-	adecuada para inferir */
+  /* Converts the knowledge base into a chromosome */
 	void Decodifica (double [] cromosoma) {
 		int i, j;
 
@@ -87,9 +95,9 @@ class Adap_Tun {
 	}
 
 
-/* ------------------------ Medidas Globales de Error --------------------- */
+/* ------------------------ Global error measures --------------------- */
 
-	/* Error Cuadratico */
+	/* Cuadratic error */
 	public double ErrorCuadratico () {
 		int i;
 		double suma;
@@ -101,7 +109,7 @@ class Adap_Tun {
 	}
 
 
-	/* Errores Cuadratico y Lineal */
+  /* Linear and cuadratic error */
 	public void Error_tra () {
 		int i,j;
 		double suma1, suma2, fuerza;
@@ -115,8 +123,8 @@ class Adap_Tun {
 		EC = suma1 / (double)tabla.long_tabla;
 		EL = suma2 / (double)tabla.long_tabla;
 	}
-
-	/* Errores Cuadratico y Lineal */
+	
+  /* Linear and cuadratic error */
 	public void Error_tst (MiDataset tabla_tst) {
 		int i, j;
 		double suma1, suma2, fuerza;
@@ -131,18 +139,18 @@ class Adap_Tun {
 		EL = suma2 / (double)tabla_tst.long_tabla;
 	}
 
-/* ---------------------------- Funcion fitness --------------------------- */
+/* ---------------------------- Fitness Function --------------------------- */
 
 	double eval (double [] cromosoma) {
 		Decodifica (cromosoma);
 		return (ErrorCuadratico ());
 	}
 
-/* -------------------------------------------------------------------------
-             Funciones comunes
+  /* -------------------------------------------------------------------------
+               Common functions
    ------------------------------------------------------------------------- */
 
-	/* salida */
+  /* Output */
 	public String getSalidaObli (MiDataset tabla_datos) {
 		int j;
 		double fuerza;
@@ -159,4 +167,3 @@ class Adap_Tun {
 		return (salida);
 	}
 }
-

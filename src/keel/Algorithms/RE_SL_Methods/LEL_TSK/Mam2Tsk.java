@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: Mam2Tsk.java
+ * 
+ * Performs a Mandami TSK search
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.io.*;
 import org.core.*;
@@ -65,7 +77,7 @@ class Mam2Tsk {
     int Omega_x, Omega_sigma, Omega_alfa, Delta_x, Delta_sigma, Delta_alfa;
 
     // we read the file in a String
-    cadenaEntrada = Fichero.leeFichero(fichero_conf);
+    cadenaEntrada = Files.readFile(fichero_conf);
     StringTokenizer sT = new StringTokenizer(cadenaEntrada, "\n\r=", false);
 
     // we read the algorithm's name
@@ -80,7 +92,6 @@ class Mam2Tsk {
     fich_datos_chequeo = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
     fich_datos_val = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
     fich_datos_tst = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
-    //fichero_br = ((ficheros.nextToken()).replace('\"', ' ')).trim();
 
     // we read the name of the output files
     sT.nextToken();
@@ -97,8 +108,6 @@ class Mam2Tsk {
     aux = ( (ficheros.nextToken()).replace('\"', ' ')).trim(); //BR de Tuning
     ruta_salida = fich_tst_obli.substring(0, fich_tst_obli.lastIndexOf('/') + 1);
 
-    //fichero_reglas = ((ficheros.nextToken()).replace('\"', ' ')).trim();
-    //ruta_salida = fich_tst_obli.substring(0,fich_tst_obli.lastIndexOf('/') + 1);
 
     // we read the seed of the random generator
     sT.nextToken();
@@ -111,6 +120,7 @@ class Mam2Tsk {
       sT.nextToken(); //valor parametro
     }
 
+	// System.out.println("\n\nEntrando en Configiracion.");
     // we read the Evolutionary Strategy iterations
     sT.nextToken();
     valor = sT.nextToken();
@@ -167,7 +177,6 @@ class Mam2Tsk {
     Delta_alfa = Integer.parseInt(valor.trim());
 
     // we create all the objects
-    //tabla = new MiDataset(fich_datos_chequeo, true);
     tabla = new MiDataset(fich_datos_chequeo, false);
     if (tabla.salir == false) {
       tabla_val = new MiDataset(fich_datos_val, false);
@@ -187,6 +196,7 @@ class Mam2Tsk {
     /* We read the configutate file and we initialize the structures and variables */
     leer_conf();
 
+
     if (tabla.salir == false) {
       for (i = 0; i < base_reglas.n_reglas; i++) {
         /* we obtain the positive examples */
@@ -197,20 +207,6 @@ class Mam2Tsk {
 
         /* we store the rule in the RB */
         base_reglas.inserta_cons(i, ee.solucion());
-
-        /*                tmp = base_reglas.n_reglas;
-                        base_reglas.n_reglas = i + 1; */
-
-        /* we calcule the MSEs */
-        /*                fun_adap.Error_tra();
-                        ec_tra = fun_adap.EC;
-                        el_tra = fun_adap.EL;
-
-                        fun_adap.Error_tst();
-                        ec_tst = fun_adap.EC;
-                        el_tst = fun_adap.EL;
-
-                        base_reglas.n_reglas = tmp; */
       }
 
       /* we calcule the MSEs */
@@ -226,25 +222,24 @@ class Mam2Tsk {
       cadenaReglas = base_reglas.BRtoString();
       cadenaReglas += "\nECMtra: " + ec_tra + "  ELMtra: " + el_tra;
       cadenaReglas += "\nECMtst: " + ec_tst + "  ELMtst: " + el_tst;
-      Fichero.escribeFichero(fichero_reglas, cadenaReglas);
+      Files.writeFile(fichero_reglas, cadenaReglas);
 
       /* we write the obligatory output files*/
       String salida_tra = tabla.getCabecera();
       salida_tra += fun_adap.getSalidaObli(tabla_val);
-      Fichero.escribeFichero(fich_tra_obli, salida_tra);
+      Files.writeFile(fich_tra_obli, salida_tra);
 
       String salida_tst = tabla_tst.getCabecera();
       salida_tst += fun_adap.getSalidaObli(tabla_tst);
-      Fichero.escribeFichero(fich_tst_obli, salida_tst);
+      Files.writeFile(fich_tst_obli, salida_tst);
 
       /* we write the MSEs in specific files */
-      Fichero.AnadirtoFichero(ruta_salida + "mam2tskcomunR.txt",
+      Files.addToFile(ruta_salida + "mam2tskcomunR.txt",
                               "" + base_reglas.n_reglas + "\n");
-      Fichero.AnadirtoFichero(ruta_salida + "mam2tskcomunTRA.txt",
+      Files.addToFile(ruta_salida + "mam2tskcomunTRA.txt",
                               "" + ec_tra + "\n");
-      Fichero.AnadirtoFichero(ruta_salida + "mam2tskcomunTST.txt",
+      Files.addToFile(ruta_salida + "mam2tskcomunTST.txt",
                               "" + ec_tst + "\n");
     }
   }
 }
-

@@ -27,14 +27,18 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
-
-/*
- * Created on 07-feb-2004
- *
- * @author Jesus Alcala Fernandez
- *
+/**
+ * 
+ * File: Lanzar.java
+ * 
+ * Executes the method. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
  */
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.lang.*;
 
@@ -62,4 +66,3 @@ public class Lanzar {
     }
   }
 }
-

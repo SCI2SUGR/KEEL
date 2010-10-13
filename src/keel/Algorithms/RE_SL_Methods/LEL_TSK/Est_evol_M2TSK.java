@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/**
+ * 
+ * File: Est_evol_M2TSK.java
+ * 
+ * Java class implementing a evolution strategy for TSK rules. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.lang.Math;
 import org.core.*;
@@ -43,7 +55,6 @@ class Est_evol_M2TSK {
 	public int [] indices_seleccion;
 	public int [] indices_recombinacion;
 	public int [] ind_mayor;
-	public int [] indices_ep;
 	public Structure [] Padres;
 	public Structure [] Hijos;
 
@@ -57,7 +68,7 @@ class Est_evol_M2TSK {
 	public double porcentaje_Mu = 0.2;
 	/* Initial value of the sigmas */
 	public double Valor_Inicial_Sigma = 0.001;
-
+	private double PI = 3.1415926;
 	public BaseR_TSK base_reglas;
 	public Adap_M2TSK fun_adap;
 	public MiDataset tabla;
@@ -92,7 +103,6 @@ class Est_evol_M2TSK {
 		indices_seleccion = new int[Landa];
 		indices_recombinacion = new int[(int) Adap.Maximo(Delta_x, Adap.Maximo (Delta_sigma,Delta_alfa))];
 		ind_mayor = new int[tabla.long_tabla];
-		indices_ep = new int[tabla.long_tabla];
 
 		Padres = new Structure[Mu];
 		Hijos = new Structure[Landa];
@@ -123,7 +133,7 @@ class Est_evol_M2TSK {
 
 	/** Returns the 'a' values as little as we want */
 	double f (double x, int y) {
-		return (y * Math.PI/2 * Math.pow (x,q));
+		return (y * PI/2.0 * Math.pow (x,q));
 	}
 
 
@@ -134,22 +144,23 @@ class Est_evol_M2TSK {
 		double imagen;
 
 		/* we calculate the average, maximum and minimum high, and the matching with which a example is considerated in the initial population */
-		y_med = y_min = y_max = tabla.datos[indices_ep[0]].ejemplo[tabla.n_var_estado];
-		h_max = tabla.datos[indices_ep[0]].nivel_cubrimiento;
+		y_med = y_min = y_max = tabla.datos[fun_adap.indices_ep[0]].ejemplo[tabla.n_var_estado];
+		h_max = tabla.datos[fun_adap.indices_ep[0]].nivel_cubrimiento;
+
 
 		for (i=1; i<fun_adap.n_ejemplos_positivos; i++) {
-			if (tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado] > y_max)
-				y_max = tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado];
-			if (tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado] < y_min)
-				y_min = tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado];
+			if (tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado] > y_max)  y_max = tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado];
+			if (tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado] < y_min)  y_min = tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado];
 
-			y_med += tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado];
-			if (tabla.datos[indices_ep[i]].nivel_cubrimiento > h_max)
-				h_max = tabla.datos[indices_ep[i]].nivel_cubrimiento;
+			y_med += tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado];
+			if (tabla.datos[fun_adap.indices_ep[i]].nivel_cubrimiento > h_max)  h_max = tabla.datos[fun_adap.indices_ep[i]].nivel_cubrimiento;
+		    
 		}
 
 		y_med /= fun_adap.n_ejemplos_positivos;
 		h_exigido = porcentaje_h * h_max;
+
+
 
 		/* Inicialization of a individual with 'b' value same as the average high and with the 'a' values to 0 */
 		for (j=0; j<tabla.n_var_estado; j++)  Padres[0].Gene[j] = 0;
@@ -157,15 +168,15 @@ class Est_evol_M2TSK {
 
 		/* Inicialization of the porcentaje_Mu * Mu individuals with 'b' value equal to a random value in the rank [y_min,y_max] and with the 'a' values to 0 */
 		Mu_primer_grupo = (int) (porcentaje_Mu * Mu + 1);
-		for (i=1; i<Mu_primer_grupo; i++) {
+		for (i=1; i<=Mu_primer_grupo; i++) {
 			for (j=0; j<tabla.n_var_estado; j++)  Padres[i].Gene[j] = 0;
 			Padres[i].Gene[tabla.n_var_estado] = Math.atan(Randomize.Randdouble (y_min,y_max));
 		}
 
 		/* Inicialization of the remaining individuals with the random 'a' values and with a the 'b' value for any to example is in the plane */
-		for (i=Mu_primer_grupo; i<Mu; i++) {
+		for (i=Mu_primer_grupo+1; i<Mu; i++) {
 			for (j=0; j<tabla.n_var_estado; j++) {
-				if (Randomize.Rand ()<.5)  y = -1;
+				if (Randomize.Rand () < 0.5)  y = -1;
 				else  y=1;
 
 				x = Randomize.Rand ();
@@ -174,8 +185,7 @@ class Est_evol_M2TSK {
 
 			/* we select randomly a example with a matching more high than "h_exigido" */
 			for (total_mayor=pos_ep=0; pos_ep<fun_adap.n_ejemplos_positivos; pos_ep++)
-				if (tabla.datos[indices_ep[pos_ep]].nivel_cubrimiento >= h_exigido)
-					ind_mayor[total_mayor++] = pos_ep;
+				if (tabla.datos[fun_adap.indices_ep[pos_ep]].nivel_cubrimiento >= h_exigido)  ind_mayor[total_mayor++] = pos_ep;
 
 			if (total_mayor==0) {
 				System.out.println("Error: The matching, with which a example is considerated in the initial population, isn't surmounted");
@@ -183,9 +193,9 @@ class Est_evol_M2TSK {
 
 			pos_ep = ind_mayor[Randomize.RandintClosed (0,total_mayor-1)];
 			for (imagen=0.0,j=0; j<tabla.n_var_estado; j++)
-				imagen += Math.tan (Padres[i].Gene[j]) * tabla.datos[indices_ep[pos_ep]].ejemplo[j];
+				imagen += Math.tan (Padres[i].Gene[j]) * tabla.datos[fun_adap.indices_ep[pos_ep]].ejemplo[j];
 
-			Padres[i].Gene[tabla.n_var_estado] = Math.atan(tabla.datos[indices_ep[pos_ep]].ejemplo[tabla.n_var_estado]-imagen);
+			Padres[i].Gene[tabla.n_var_estado] = Math.atan(tabla.datos[fun_adap.indices_ep[pos_ep]].ejemplo[tabla.n_var_estado]-imagen);
 		}
 
 
@@ -209,8 +219,8 @@ class Est_evol_M2TSK {
 		switch (omega) {
 			/* Intermediate Global Recombination */
 			case 1: for (suma=0.0,i=0;i<delta;i++)
-						suma += Padres[indices_recombinacion[i]].Gene[pos];
-
+						suma += Padres[indices_recombinacion[i]].Gene[pos];       
+					
 					salida=suma/delta;
 					break;
 
@@ -236,9 +246,10 @@ class Est_evol_M2TSK {
 		int i;
 
 		i=0;
-		while (i<n_seleccionados)
+		while (i<n_seleccionados) {
 			if (indices_seleccionados[i]==ind_act)  return (1);
 			else  i++;
+		}
 
 		return (0);
 	}
@@ -275,6 +286,7 @@ class Est_evol_M2TSK {
 							break;
 				}
 
+
 				/* we perform if the string isn't empty */
 				if (princ_cadena!=fin_cadena) {
 					/* we select the individual */
@@ -284,22 +296,26 @@ class Est_evol_M2TSK {
 						for (i=0; i<delta; i++)  indices_recombinacion[i] = i;
 					/* we select randomly the individuals if all individuals aren't selected */
 					else {
-						for (i=0; i<delta; i++)
-							do
+						for (i=0; i<delta; i++)	{
+							do {
 								indices_recombinacion[i]=Randomize.RandintClosed (0,delta-1);
-							while (Pertenece (indices_recombinacion,indices_recombinacion[i],i)==1);
+							} while (Pertenece (indices_recombinacion,indices_recombinacion[i],i) == 1);
+						}
 					}
 
 					if (omega==0) {
 						/* we select randomly a individual */
 						padre=Randomize.RandintClosed (0,delta-1);
-						for (j=princ_cadena; j<fin_cadena; j++)
+						for (j=princ_cadena; j<fin_cadena; j++) {
 							Hijos[n_hijo].Gene[j] = Padres[indices_recombinacion[padre]].Gene[j];
+						}
+
 					}
 					else
 						/* we recombine the current string with the selected operator omega */
-						for (j=princ_cadena; j<fin_cadena; j++)
+						for (j=princ_cadena; j<fin_cadena; j++) {
 							Hijos[n_hijo].Gene[j] = OperadoresRecombinacion (omega,delta,j);
+						}
 				}
 			}
 		}
@@ -319,7 +335,7 @@ class Est_evol_M2TSK {
 		u2=Randomize.Rand ();
 
 		/* we calcules a normal value with the uniform values */
-		return (desv * Math.sqrt (-2 * Math.log(u1)) * Math.sin (2*Math.PI*u2));
+		return (desv * Math.sqrt (-2.0 * Math.log(u1)) * Math.sin (2.0*PI*u2));
 	}
 
 
@@ -334,7 +350,7 @@ class Est_evol_M2TSK {
 				Hijos[n_hijo].Gene[tabla.n_variables] *= ValorNormal (Tau_1);
 			else {
 				z0 = ValorNormal (Tau_0);
-				for (i=tabla.n_variables; i<tabla.n_variables + n_sigma; i++) {
+				for (i=tabla.n_variables; i < tabla.n_variables + n_sigma; i++) {
 					z1 = ValorNormal (Tau);
 					Hijos[n_hijo].Gene[i] *= Math.exp (z1+z0);
 
@@ -351,18 +367,17 @@ class Est_evol_M2TSK {
 
 				/* Si el valor mutado se sale del intervalo [-i,i], se proyecta
 				circularmente el valor a dicho intervalo */
-				if (Math.abs(Hijos[n_hijo].Gene[i])>i)
-					Hijos[n_hijo].Gene[i] -= 2 *i * signo (Hijos[n_hijo].Gene[i]);
+				if (Math.abs(Hijos[n_hijo].Gene[i])>i)  Hijos[n_hijo].Gene[i] -= 2.0 * PI * signo (Hijos[n_hijo].Gene[i]);
 			}
 
 			/* Mutation of x */
 
 			/* we calculate the uncorrelated vector of mutations */
-			for (i=0; i<tabla.n_variables; i++)
-				if (tabla.n_variables + i < tabla.n_variables + n_sigma)
-					Z[i] = ValorNormal (Hijos[n_hijo].Gene[tabla.n_variables+i]);
-				else /* if there aren't more tipical desviations we use the latest */
-					Z[i] = ValorNormal (Hijos[n_hijo].Gene[tabla.n_variables+n_sigma-1]);
+			for (i=0; i<tabla.n_variables; i++) {
+				if (tabla.n_variables + i < tabla.n_variables + n_sigma)  Z[i] = ValorNormal (Hijos[n_hijo].Gene[tabla.n_variables+i]);
+				else  Z[i] = ValorNormal (Hijos[n_hijo].Gene[tabla.n_variables+n_sigma-1]); /* if there aren't more tipical desviations we use the latest */
+			}
+					
 
 			/* Correlation of the vector if we use the angles */
 			if (n_alfa!=0) {
@@ -387,10 +402,8 @@ class Est_evol_M2TSK {
 			for (i=0; i<tabla.n_variables; i++) {
 				Hijos[n_hijo].Gene[i] += Z[i];
 
-				if (Hijos[n_hijo].Gene[i] < -(Math.PI/2.0))
-					Hijos[n_hijo].Gene[i] = -(Math.PI/2.0) + 1E-10;
-				if (Hijos[n_hijo].Gene[i] > (Math.PI/2.0))
-					Hijos[n_hijo].Gene[i] = (Math.PI/2.0) - 1E-10;
+				if (Hijos[n_hijo].Gene[i] < (-1.0 * (PI/2.0)))  Hijos[n_hijo].Gene[i] = (-1.0 * (PI/2.0)) + 1E-10;
+				if (Hijos[n_hijo].Gene[i] > (PI/2.0))  Hijos[n_hijo].Gene[i] = (PI/2.0) - 1E-10;
 			}
 		}
 	}
@@ -405,24 +418,29 @@ class Est_evol_M2TSK {
 		int i, j, temp;
 
 		/* we evaluate the Landa sons */
-		for (i=0; i<Landa; i++)
+		for (i=0; i<Landa; i++) {
 			Hijos[i].Perf = fun_adap.eval (Hijos[i].Gene);
+		    // System.out.println("Hijos[" + i + "].Perf = " + Hijos[i].Perf);
+		}
 
 		/* we order the sons by mean of the bubble method */
 		for (i=0; i<Landa; i++)  indices_seleccion[i]=i;
 
-		for (i=0; i<Landa; i++)
-			for (j=0; j<Landa-i-1; j++)
-			if (Hijos[indices_seleccion[j+1]].Perf < Hijos[indices_seleccion[j]].Perf) {
-				temp = indices_seleccion[j];
-				indices_seleccion[j] = indices_seleccion[j+1];
-				indices_seleccion[j+1] = temp;
+		for (i=0; i<Landa; i++) {
+			for (j=0; j<Landa-i-1; j++) {
+				if (Hijos[indices_seleccion[j+1]].Perf < Hijos[indices_seleccion[j]].Perf) {
+					temp = indices_seleccion[j];
+					indices_seleccion[j] = indices_seleccion[j+1];
+					indices_seleccion[j+1] = temp;
+				}
 			}
+		}
 
 		/* we select the best Mu sons */
 		for (i=0; i<Mu; i++)
-			for (j=0; j<n_total; j++)
+			for (j=0; j<n_total; j++) {
 				Padres[i].Gene[j] = Hijos[indices_seleccion[i]].Gene[j];
+			}
 	}
 
 
@@ -437,11 +455,11 @@ class Est_evol_M2TSK {
 		int i;
 
 		InicializaPadres ();
+
 		for (i=0; i<n_gen_ee; i++) {
 			Recombinacion ();
 			Mutacion ();
 			Seleccion ();
-
 		}
 	}
 
@@ -449,5 +467,4 @@ class Est_evol_M2TSK {
 		return (Padres[0].Gene);
 	}
 }
-
 
