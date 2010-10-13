@@ -45,7 +45,9 @@ import keel.Dataset.Attributes;
 
 
 /** 
-   A Java implementation of the ID3 algorithm
+   A Java implementation of the ID3 algorithm. This is a binary version where 
+   nodes are split by atributtes and values, instead of the generic ID3, which
+   only considers attributes for splitting.
    @author Cristóbal Romero Morales (UCO)
    @version 1.0 (30-03-06)
 */

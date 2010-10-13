@@ -17,8 +17,9 @@
 		<howWork>ID3 is a decision tree generating algorithm that it induces classification rules in the form of decision trees from a set of given examples. The basic ideas behind ID3 are that:
              - In the decision tree each node corresponds to a non-categorical attribute and each arc to a possible value of that attribute. A leaf of the tree specifies the expected value of the categorical attribute for the records described by the path from the root to that leaf. 
              - In the decision tree at each node should be associated the non-categorical attribute which is most informative among the attributes not yet considered in the path from the root. 
-						 - Entropy is used to measure how informative is a node. 
-    </howWork>
+			 - Entropy is used to measure how informative is a node. 
+			 - This is a binary version of ID3 where nodes are split by atributtes and values, instead of the generic ID3, which only considers attributes for splitting.
+		</howWork>
 
 		<parameterSpec>  
 
