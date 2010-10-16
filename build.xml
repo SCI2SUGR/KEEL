@@ -3831,14 +3831,6 @@
 			 org/core/**/*.class
 			 keel/Dataset/**/*.class"/>
         </jar>
-        <jar
-          jarfile="${distMet}/TSK-IRL.jar"
-          manifest="${src}/keel/Algorithms/RE_SL_Methods/TSKIRL/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/RE_SL_Methods/TSKIRL/**/*.class
-			 org/core/**/*.class
-			 keel/Dataset/**/*.class"/>
-        </jar>
        
         <jar
           jarfile="${distMet}/mogulHC.jar"
@@ -3865,10 +3857,10 @@
 			 keel/Dataset/**/*.class"/>
         </jar>
         <jar
-          jarfile="${distMet}/mogulTSK_IRL.jar"
-          manifest="${src}/keel/Algorithms/RE_SL_Methods/mogulTSK_IRL/Manifest">
+          jarfile="${distMet}/TSK_IRL.jar"
+          manifest="${src}/keel/Algorithms/RE_SL_Methods/TSK_IRL/Manifest">
           <fileset dir="${bin}"
-             includes="keel/Algorithms/RE_SL_Methods/mogulTSK_IRL/**/*.class
+             includes="keel/Algorithms/RE_SL_Methods/TSK_IRL/**/*.class
 			 org/core/**/*.class
 			 keel/Dataset/**/*.class"/>
         </jar>

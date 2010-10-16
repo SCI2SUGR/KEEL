@@ -3311,7 +3311,7 @@
   <method>
     <name>TSK-IRL-R</name>
     <family>Evolutionary Fuzzy Rule Learning</family>
-    <jar_file>mogulTSK_IRL.jar</jar_file>
+    <jar_file>TSK_IRL.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
       <continuous>Yes</continuous>
