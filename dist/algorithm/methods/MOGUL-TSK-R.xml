@@ -1,0 +1,318 @@
+<algorithm_specification>
+  <name>Iterative Rule Learning of Fuzzy Rules. Selection plus Tuning</name>
+  <nParameters>36</nParameters>
+  <seed>1</seed>
+  <nOutput>5</nOutput>
+  <parameter>
+    <name>Evolutionary Strategy Application</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Evolutionary Strategy Iterations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>Type of Niches</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>4</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Omega parameter for the maching degree of the positive instances</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter>
+  <parameter>
+    <name>K parameter for the percentage of allowed negative instances</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Epsilon parameter for the minimun maching degree required to the KB</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>3</upperB>
+    </domain>
+    <default>1.5</default>
+  </parameter>
+  <parameter>
+    <name>Type of Fitness Function</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>2</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Number of Labels</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Evolutionary Strategy Iterations MOGUL</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>500</default>
+  </parameter>
+  <parameter>
+    <name>Number of Parents for the Evolutionary Strategy MOGUL</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>500</upperB>
+    </domain>
+    <default>15</default>
+  </parameter>
+  <parameter>
+    <name>Number of offspring for the Evolutionary Strategy MOGUL</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>500</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>Size of the Standar Deviation String MOGUL</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>6</default>
+  </parameter>
+  <parameter>
+    <name>Size of the Angle String MOGUL</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>0</default>
+  </parameter>
+  <parameter>
+    <name>Recombination Operator for the Solution String MOGUL</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>Recombination Operator for the Deviation String MOGUL</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Recombination Operator for the Angle String MOGUL</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>0</default>
+  </parameter>
+  <parameter>
+    <name>Number of Parents to recombine the Solution String MOGUL</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>500</upperB>
+    </domain>
+    <default>15</default>
+  </parameter>
+  <parameter>
+    <name>Number of Parents to recombine the Deviation String MOGUL</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>500</upperB>
+    </domain>
+    <default>15</default>
+  </parameter>
+  <parameter>
+    <name>Number of Parents to recombine the Angle String MOGUL</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>500</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Number of Iterations SELECTION</name>
+    <type>integer</type>
+    <default>500</default>
+  </parameter>
+  <parameter>
+    <name>Population Size SELECTION</name>
+    <type>integer</type>
+    <default>61</default>
+  </parameter>
+  <parameter>
+    <name>Tau parameter for the minimun maching degree required to the KB SELECTION</name>
+    <type>real</type>
+    <default>1.5</default>
+  </parameter>
+  <parameter>
+    <name>Rate of Rules that don't are eliminated SELECTION</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.0</default>
+  </parameter>
+  <parameter>
+    <name>Rate of rules to estimate the niche radio SELECTION</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.025</default>
+  </parameter>
+  <parameter>
+    <name>Beta parameter for the Power Law SELECTION</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  <parameter>
+    <name>Type of Fitness Function SELECTION</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>2</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>Cross Probability SELECTION</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.6</default>
+  </parameter>
+  <parameter>
+    <name>Mutation Probability SELECTION</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Number of Iterations TUNING</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>50000</upperB>
+    </domain>
+    <default>1000</default>
+  </parameter>
+  <parameter>
+    <name>Population Size TUNING</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>61</default>
+  </parameter>
+  <parameter>
+    <name>Parameter a TUNING</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.35</default>
+  </parameter>
+  <parameter>
+    <name>Parameter b TUNING</name>
+    <type>real</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Cross Probability TUNING</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.6</default>
+  </parameter>
+  <parameter>
+    <name>Mutation Probability TUNING</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Rate of the Population to which the ES is applied TUNING</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.2</default>
+  </parameter>
+  <parameter>
+    <name>Evolutionary Strategy Iterations TUNING</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>25</default>
+  </parameter>
+</algorithm_specification>
