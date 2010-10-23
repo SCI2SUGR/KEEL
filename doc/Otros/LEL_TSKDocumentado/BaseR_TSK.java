@@ -1,4 +1,44 @@
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/***********************************************************************
+
+	This file is part of KEEL-software, the Data Mining tool for regression, 
+	classification, clustering, pattern mining and so on.
+
+	Copyright (C) 2004-2010
+	
+	F. Herrera (herrera@decsai.ugr.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
+    J. Luengo (julianlm@decsai.ugr.es)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see http://www.gnu.org/licenses/
+  
+**********************************************************************/
+
+/**
+ * 
+ * File: BaseR_TSK.java
+ * 
+ * Java class for managing a TSK rule base. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.io.*;
 import org.core.*;
@@ -12,7 +52,6 @@ class BaseR_TSK {
   public MiDataset tabla;
 
   public double[] GradoEmp;
-  public int[] allZero;
 
   public BaseR_TSK(String fichero, MiDataset datos, boolean sel) {
     int i;
@@ -20,7 +59,6 @@ class BaseR_TSK {
     tabla = datos;
     leer_BR(fichero, sel);
     max_reglas = n_reglas;
-    allZero = new int[tabla.n_var_estado];
 
     GradoEmp = new double[n_reglas];
   }
@@ -35,8 +73,6 @@ class BaseR_TSK {
     BaseReglas = new Regla[max_reglas];
 
     GradoEmp = new double[max_reglas];
-    allZero = new int[tabla.n_var_estado];
-	
 
     for (i = 0; i < max_reglas; i++) {
       BaseReglas[i] = new Regla(tabla.n_var_estado, tabla.n_variables);
@@ -48,7 +84,7 @@ class BaseR_TSK {
     int i, j;
     String cadena;
 
-    cadena = Fichero.leeFichero(fichero);
+    cadena = Files.readFile(fichero);
 
     StringTokenizer sT = new StringTokenizer(cadena, "\n\r\t ", false);
     sT.nextToken();
@@ -191,45 +227,15 @@ class BaseR_TSK {
   }
 
   /** Inserts the consequent of the rule "regla" in the RB */
-  public void inserta_cons(int regla, double[] consecuente, Adap_M2TSK fun_adap) {
+  public void inserta_cons(int regla, double[] consecuente) {
     int i;
 
+    /* 'a' values of the consequent */
     for (i = 0; i < tabla.n_var_estado; i++) {
-      allZero[i] = 1;
-    }
-	
-	for (int j=0; j < fun_adap.n_ejemplos_positivos; j++)
-       for (int k=0;  k < tabla.n_var_estado; k++) {
-          if (tabla.datos[fun_adap.indices_ep[j]].ejemplo[k] != 0.0) {
-			  allZero[k] = 0;
-		  }
-	   }
-    
-	/* 'a' values of the consequent */
-    for (i = 0; i < tabla.n_var_estado; i++) {
-	  if (allZero[i] == 1)  BaseReglas[regla].Cons[i] = 0.0;
-      else  BaseReglas[regla].Cons[i] = Math.tan(consecuente[i]);
+      BaseReglas[regla].Cons[i] = Math.tan(consecuente[i]);
     }
 
     /* 'b' values of the consequent */
     BaseReglas[regla].Cons[tabla.n_var_estado] = Math.tan(consecuente[tabla.n_var_estado]);
-  }
-
-  public void clean (Adap_Tun fun_adap) {
-    int i, j, k;
-
-	for (i = 0; i < this.n_reglas; i++) {						 
-		for (j = 0; j < tabla.n_var_estado; j++)  allZero[j] = 1;
-		for (j = 0; j < tabla.long_tabla; j++) {
-			if (fun_adap.AntecedenteCubreEjemplo (BaseReglas[i].Ant, tabla.datos[j].ejemplo) > 0.0) {
-				for (k = 0; k < tabla.n_var_estado; k++) {
-					if (tabla.datos[j].ejemplo[k]!= 0.0)  allZero[k] = 0;
-				}
-			}
-		}
-		
-		for (k=0; k < tabla.n_var_estado; k++)
-			if (allZero[k] == 1)  BaseReglas[i].Cons[k] = 0.0;
-	}
   }
 }

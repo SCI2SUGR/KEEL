@@ -174,7 +174,7 @@ class AG_Tun {
       for (j = 0; j < base_reglas.tabla.n_variables; j++) {
         temp = primer_gen_C2 + i * (base_reglas.tabla.n_variables) + j;
         New[0].Gene[temp] = Math.atan(base_reglas.BaseReglas[i].Cons[j]);
-        intervalos[temp].min = - (Math.PI / 2) + 1E-10;
+        intervalos[temp].min = (- 1.0 * Math.PI / 2) + 1E-10;
         intervalos[temp].max = (Math.PI / 2) - 1E-10;
       }
     }
@@ -208,8 +208,8 @@ class AG_Tun {
         do {
           New[i].Gene[j] = New[0].Gene[j] + ValorNormal(Valor_Inicial_Sigma);
         }
-        while (New[i].Gene[j] <= - (Math.PI / 2) ||
-               New[i].Gene[j] >= (Math.PI / 2));
+        while (New[i].Gene[j] <= (-1.0 * Math.PI / 2.0) ||
+               New[i].Gene[j] >= (Math.PI / 2.0));
       }
 
       New[i].n_e = 1;

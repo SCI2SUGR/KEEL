@@ -1,4 +1,45 @@
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/***********************************************************************
+
+	This file is part of KEEL-software, the Data Mining tool for regression, 
+	classification, clustering, pattern mining and so on.
+
+	Copyright (C) 2004-2010
+	
+	F. Herrera (herrera@decsai.ugr.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
+    J. Luengo (julianlm@decsai.ugr.es)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see http://www.gnu.org/licenses/
+  
+**********************************************************************/
+
+/**
+ * 
+ * File: Tun_TSK.java
+ * 
+ * Tunning of TSK rules 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import org.core.*;
 import java.util.*;
@@ -37,7 +78,7 @@ class Tun_TSK {
     int long_poblacion, gen_ee;
 
     // we read the file in a String
-    cadenaEntrada = Fichero.leeFichero(fichero_conf);
+    cadenaEntrada = Files.readFile(fichero_conf);
     StringTokenizer sT = new StringTokenizer(cadenaEntrada, "\n\r=", false);
 
     // we read the algorithm's name
@@ -177,8 +218,6 @@ class Tun_TSK {
 
       /* we calcule the MSEs */
       fun_adap.Decodifica(alg_gen.solucion());
-	  base_reglas.clean(fun_adap);
-
       fun_adap.Error_tra();
       ec = fun_adap.EC;
       el = fun_adap.EL;
@@ -192,23 +231,23 @@ class Tun_TSK {
       cadenaReglas += "\nMSEtra: " + ec + "  MLEtra: " + el;
       cadenaReglas += "\nMSEtst: " + ec_tst + "  MLEtst: " + el_tst;
 
-      Fichero.escribeFichero(fichero_reglas, cadenaReglas);
+      Files.writeFile(fichero_reglas, cadenaReglas);
 
       /* we write the obligatory output files*/
       String salida_tra = tabla.getCabecera();
       salida_tra += fun_adap.getSalidaObli(tabla_val);
-      Fichero.escribeFichero(fich_tra_obli, salida_tra);
+      Files.writeFile(fich_tra_obli, salida_tra);
 
       String salida_tst = tabla_tst.getCabecera();
       salida_tst += fun_adap.getSalidaObli(tabla_tst);
-      Fichero.escribeFichero(fich_tst_obli, salida_tst);
+      Files.writeFile(fich_tst_obli, salida_tst);
 
       /* we write the MSEs in specific files */
-      Fichero.AnadirtoFichero(ruta_salida + "tun_tskcomunR.txt",
+      Files.addToFile(ruta_salida + "tun_tskcomunR.txt",
                               "" + base_reglas.n_reglas + "\n");
-      Fichero.AnadirtoFichero(ruta_salida + "tun_tskcomunTRA.txt",
+      Files.addToFile(ruta_salida + "tun_tskcomunTRA.txt",
                               "" + ec + "\n");
-      Fichero.AnadirtoFichero(ruta_salida + "tun_tskcomunTST.txt",
+      Files.addToFile(ruta_salida + "tun_tskcomunTST.txt",
                               "" + ec_tst + "\n");
     }
   }

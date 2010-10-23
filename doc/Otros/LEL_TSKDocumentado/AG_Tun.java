@@ -1,7 +1,47 @@
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/***********************************************************************
 
-import org.core.Fichero;
+	This file is part of KEEL-software, the Data Mining tool for regression, 
+	classification, clustering, pattern mining and so on.
+
+	Copyright (C) 2004-2010
+	
+	F. Herrera (herrera@decsai.ugr.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
+    J. Luengo (julianlm@decsai.ugr.es)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see http://www.gnu.org/licenses/
+  
+**********************************************************************/
+
+/**
+ * 
+ * File: AG_Tun.java
+ * 
+ * Genetic algorithm for tunning of rules
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+
 import java.lang.Math;
+import org.core.*;
 
 class AG_Tun {
   public double prob_cruce, prob_mutacion, a, b;
@@ -106,9 +146,8 @@ class AG_Tun {
 
     Trials = 0;
 
-    /* Los conjuntos difusos de los antecedentes de las reglas constituyen la
-       primera parte del primer cromosoma de la poblacion inicial.
-       Se inicializa C1 en el primer cromosoma. */
+    /* Antecedents' fuzzy sets are the initial population.
+       C1 is initialized in the first chromosome. */
     New[0].n_e = 1;
     primer_gen_C2 = 0;
 
@@ -121,8 +160,7 @@ class AG_Tun {
       }
     }
 
-    /* Se establecen los intervalos en los que varia cada gen de la primera
-       parte en la primera generacion */
+    /* Variation Intervals are established*/
     for (i = 0; i < primer_gen_C2; i += 3) {
       intervalos[i].min = New[0].Gene[i] -
           (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
@@ -140,9 +178,7 @@ class AG_Tun {
           (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
     }
 
-    /* Se inicializa la segunda parte del primer cromosoma con los parametros
-       de los consecuentes de las reglas de la BC inicial, junto con los inter-
-       valos correspondientes */
+    /* Second part of the chromosome is initialized with the consequent' parameters of the rules, and its intervals */
     for (i = 0; i < base_reglas.n_reglas; i++) {
       for (j = 0; j < base_reglas.tabla.n_variables; j++) {
         temp = primer_gen_C2 + i * (base_reglas.tabla.n_variables) + j;
@@ -152,8 +188,7 @@ class AG_Tun {
       }
     }
 
-    /* Se genera la segunda mitad de la poblacion inicial generando aleatoriamen-
-       te C1 y manteniendo C2 */
+    /* C1 is generated randomly. C2 is mantained */
     mitad_Pob = ceil(long_poblacion / 2);
     for (i = 1; i < mitad_Pob; i++) {
       for (j = 0; j < primer_gen_C2; j++) {
@@ -168,8 +203,7 @@ class AG_Tun {
       New[i].n_e = 1;
     }
 
-    /* Se genera el resto de la poblacion inicial generando aleatoriamente C1
-       a partir de los intervalos anteriores y mutando C2 */
+     /* C1 is generated randomly. C2 is mutated */
     for (i = mitad_Pob; i < long_poblacion; i++) {
       for (j = 0; j < primer_gen_C2; j++) {
         New[i].Gene[j] = Randomize.Randdouble(intervalos[j].min,
@@ -177,7 +211,6 @@ class AG_Tun {
       }
 
       for (j = primer_gen_C2; j < n_genes; j++) {
-        /* Comprobamos que no se salgan del intervalo permitido [-PI/2,PI/2] */
         do {
           New[i].Gene[j] = New[0].Gene[j] + ValorNormal(Valor_Inicial_Sigma);
         }
@@ -358,28 +391,26 @@ class AG_Tun {
         i = Mu_next / n_genes;
         j = Mu_next % n_genes;
 
-        /* Se determinan los intervalos de mutacion de ese gen y se calcula el
-             valor mutado */
-        if (j >= primer_gen_C2) { /* Consecuente: muta en [-PI/2,PI/2] */
+        if (j >= primer_gen_C2) { /* Consecuent: mutates in [-PI/2,PI/2] */
           intervalo_mut.min = intervalos[j].min;
           intervalo_mut.max = intervalos[j].max;
         }
         else {
           switch (j % 3) {
             case 0:
-                /* Punto izquierdo: muta en [intervalos[j].min,cromosoma[j+1]] */
+                /* Left point: mutates in [intervalos[j].min,cromosoma[j+1]] */
               intervalo_mut.min = intervalos[j].min;
               intervalo_mut.max = New[i].Gene[j + 1];
               break;
 
             case 1:
-                /* Punto central: muta en [cromosoma[j-1],cromosoma[j+1]] */
+                /* Central point: mutates in [cromosoma[j-1],cromosoma[j+1]] */
               intervalo_mut.min = New[i].Gene[j - 1];
               intervalo_mut.max = New[i].Gene[j + 1];
               break;
 
             case 2:
-                /* Punto derecho: muta en [cromosoma[j-1],intervalos[j].max] */
+                /* Right point: mutates in [cromosoma[j-1],intervalos[j].max] */
               intervalo_mut.min = New[i].Gene[j - 1];
               intervalo_mut.max = intervalos[j].max;
               break;

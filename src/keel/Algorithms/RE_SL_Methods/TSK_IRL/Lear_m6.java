@@ -45,12 +45,11 @@ class Lear_m6 {
   public String datos_inter = "";
   public String cadenaReglas = "";
 
-  public Structure Padre, Hijo;
+  public Structure Padre;
   public MiDataset tabla, tabla_tst, tabla_val;
   public BaseR base_reglas;
   public BaseD base_datos;
   public Adap fun_adap;
-  public Est_evol ee_11;
   public Est_mu_landa ee_mu_landa;
 
   public Lear_m6(String f_e) {
@@ -161,21 +160,6 @@ class Lear_m6 {
     valor = sT.nextToken();
     Delta_alfa = Integer.parseInt(valor.trim());
 
-    // we read if the Estrategia de Evolucion (1+1) is applied
-    sT.nextToken();
-    valor = sT.nextToken();
-    aplicar_ee_11 = Integer.parseInt(valor.trim());
-
-    // we read the Evolution Strategy Iterations
-    sT.nextToken();
-    valor = sT.nextToken();
-    n_gen_ee_11 = Integer.parseInt(valor.trim());
-
-    // we read the Type of niches
-    sT.nextToken();
-    valor = sT.nextToken();
-    Tipo_nichos = Integer.parseInt(valor.trim());
-
     // we read the Omega parameter for the maching degree of the positive instances
     sT.nextToken();
     valor = sT.nextToken();
@@ -212,14 +196,11 @@ class Lear_m6 {
     }
 
     base_reglas = new BaseR(base_datos, tabla);
-    fun_adap = new Adap(tabla, base_reglas, Omega, K, Epsilon, Tipo_fitness,
-                        Tipo_nichos);
+    fun_adap = new Adap(tabla, base_reglas, Omega, K, Epsilon, Tipo_fitness);
     ee_mu_landa = new Est_mu_landa(base_reglas, fun_adap, tabla, n_gen_ee, Mu,
                                    Landa, N_sigma, N_alfa, Omega_x, Omega_sigma,
                                    Omega_alfa, Delta_x, Delta_sigma, Delta_alfa);
-    ee_11 = new Est_evol(base_datos, fun_adap, tabla.n_var_estado, n_gen_ee_11);
-    Padre = new Structure(ee_11.n_genes_ee_11);
-    Hijo = new Structure(ee_11.n_genes_ee_11);
+    Padre = new Structure((tabla.n_var_estado * 4) + tabla.n_var_estado + 1);
   }
 
   public void run() {
@@ -258,18 +239,13 @@ class Lear_m6 {
 
         Padre.Perf = 0.0;
 
-        /* Inicialization of the antecedents for the ES (1+1) */
-        ee_11.inicializa_ant(Padre, i, base_reglas);
+        /* Inicialization of the antecedents for the ES */
+        inicializa_ant(Padre, i);
 
         fun_adap.ejemplos_positivos(Padre.Gene);
 
         /* Inicialization of the consequents for the ES (1+1) */
-        ee_mu_landa.inicializa_cons(Padre);
-
-        /* Phase 3: Optimization of the current rule */
-        if (aplicar_ee_11 == 1) {
-          ee_11.Estrategia_Evolucion(Padre, Hijo);
-        }
+        inicializa_cons(Padre);
 
         /* we apply the strategy Evolution for learning the consequent */
         ee_mu_landa.EE_Mu_Landa();
@@ -281,12 +257,6 @@ class Lear_m6 {
 
         /* we store the rule in the RB */
         base_reglas.inserta_regla(i, Padre.Gene);
-
-        /* we study the covering of the examples */
-        if (aplicar_ee_11 == 1) {
-          fun_adap.cubrimiento(Padre.Gene);
-        }
-
       }
       base_reglas.n_reglas = i;
 
@@ -324,5 +294,34 @@ class Lear_m6 {
                               "" + ec_tst + "\n");
     }
   }
+
+
+  /** Initialization of the antecedent */
+  public void inicializa_ant(Structure Padre, int regla) {
+    int i, pos_individuo, etiqueta;
+
+    for (i = 0; i < tabla.n_var_estado; i++) {
+      etiqueta = base_reglas.Pob_reglas[regla][i];
+      pos_individuo = tabla.n_var_estado + 3 * i;
+      Padre.Gene[i] = (double) etiqueta;
+      Padre.Gene[pos_individuo] = base_datos.BaseDatos[i][etiqueta].x0;
+      Padre.Gene[pos_individuo + 1] = base_datos.BaseDatos[i][etiqueta].x1;
+      Padre.Gene[pos_individuo + 2] = base_datos.BaseDatos[i][etiqueta].x3;
+    }
+  }
+
+
+  public void inicializa_cons(Structure Padre) {
+    int i, pos_individuo;
+
+    pos_individuo = tabla.n_var_estado + 3 * tabla.n_var_estado;
+    for (i = 0; i < tabla.n_var_estado; i++) {
+      Padre.Gene[pos_individuo + i] = 0;
+    }
+
+    Padre.Gene[pos_individuo + tabla.n_var_estado] = tabla.datos[fun_adap.indices_ep[0]].ejemplo[tabla.n_var_estado];
+  }
+
+
 }
 

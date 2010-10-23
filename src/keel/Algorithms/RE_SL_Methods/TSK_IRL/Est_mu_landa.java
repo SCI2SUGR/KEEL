@@ -42,7 +42,6 @@ class Est_mu_landa {
   public int[] indices_seleccion;
   public int[] indices_recombinacion;
   public int[] ind_mayor;
-  public int[] indices_ep;
   public Structure[] Padres;
   public Structure[] Hijos;
 
@@ -92,9 +91,8 @@ class Est_mu_landa {
     Z = new double[tabla.n_variables];
     indices_seleccion = new int[Landa];
     indices_recombinacion = new int[ (int) Adap.Maximo(Delta_x,
-        Adap.Maximo(Delta_sigma, Delta_alfa))];
+    Adap.Maximo(Delta_sigma, Delta_alfa))];
     ind_mayor = new int[tabla.long_tabla];
-    indices_ep = new int[tabla.long_tabla];
 
     Padres = new Structure[Mu];
     Hijos = new Structure[Landa];
@@ -144,21 +142,21 @@ class Est_mu_landa {
     double imagen;
 
     /* we calculate the average, maximum and minimum high, and the matching with which a example is considerated in the initial population */
-    y_med = y_min = y_max = tabla.datos[indices_ep[0]].ejemplo[tabla.
+    y_med = y_min = y_max = tabla.datos[fun_adap.indices_ep[0]].ejemplo[tabla.
         n_var_estado];
-    h_max = tabla.datos[indices_ep[0]].nivel_cubrimiento;
+    h_max = tabla.datos[fun_adap.indices_ep[0]].nivel_cubrimiento;
 
     for (i = 1; i < fun_adap.n_ejemplos_positivos; i++) {
-      if (tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado] > y_max) {
-        y_max = tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado];
+      if (tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado] > y_max) {
+        y_max = tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado];
       }
-      if (tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado] < y_min) {
-        y_min = tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado];
+      if (tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado] < y_min) {
+        y_min = tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado];
       }
 
-      y_med += tabla.datos[indices_ep[i]].ejemplo[tabla.n_var_estado];
-      if (tabla.datos[indices_ep[i]].nivel_cubrimiento > h_max) {
-        h_max = tabla.datos[indices_ep[i]].nivel_cubrimiento;
+      y_med += tabla.datos[fun_adap.indices_ep[i]].ejemplo[tabla.n_var_estado];
+      if (tabla.datos[fun_adap.indices_ep[i]].nivel_cubrimiento > h_max) {
+        h_max = tabla.datos[fun_adap.indices_ep[i]].nivel_cubrimiento;
       }
     }
 
@@ -178,7 +176,7 @@ class Est_mu_landa {
 
     /* Inicialization of the porcentaje_Mu * Mu individuals with 'b' value equal to a random value in the rank [y_min,y_max] and with the 'a' values to 0 */
     Mu_primer_grupo = (int) (porcentaje_Mu * Mu + 1);
-    for (i = 1; i < Mu_primer_grupo; i++) {
+    for (i = 1; i <= Mu_primer_grupo; i++) {
       for (j = 0; j < tabla.n_var_estado; j++) {
         Padres[i].Gene[j] = 0;
       }
@@ -189,7 +187,7 @@ class Est_mu_landa {
     /* Inicialization of the remaining individuals with the random 'a' values and with a the 'b' value for any to example is in the plane */
     for (i = Mu_primer_grupo + 1; i < Mu; i++) {
       for (j = 0; j < tabla.n_var_estado; j++) {
-        if (Randomize.Rand() < .5) {
+        if (Randomize.Rand() < 0.5) {
           y = -1;
         }
         else {
@@ -203,7 +201,7 @@ class Est_mu_landa {
       /* we select randomly a example with a matching more high than "h_exigido" */
       for (total_mayor = pos_ep = 0; pos_ep < fun_adap.n_ejemplos_positivos;
            pos_ep++) {
-        if (tabla.datos[indices_ep[pos_ep]].nivel_cubrimiento >= h_exigido) {
+        if (tabla.datos[fun_adap.indices_ep[pos_ep]].nivel_cubrimiento >= h_exigido) {
           ind_mayor[total_mayor++] = pos_ep;
         }
       }
@@ -215,10 +213,10 @@ class Est_mu_landa {
       pos_ep = ind_mayor[Randomize.RandintClosed(0, total_mayor - 1)];
       for (imagen = 0.0, j = 0; j < tabla.n_var_estado; j++) {
         imagen += Math.tan(Padres[i].Gene[j]) *
-            tabla.datos[indices_ep[pos_ep]].ejemplo[j];
+            tabla.datos[fun_adap.indices_ep[pos_ep]].ejemplo[j];
       }
 
-      Padres[i].Gene[tabla.n_var_estado] = Math.atan(tabla.datos[indices_ep[
+      Padres[i].Gene[tabla.n_var_estado] = Math.atan(tabla.datos[fun_adap.indices_ep[
           pos_ep]].ejemplo[tabla.n_var_estado] - imagen);
     }
 
@@ -414,7 +412,7 @@ class Est_mu_landa {
         /* Si el valor mutado se sale del intervalo [-i,i], se proyecta
              circularmente el valor a dicho intervalo */
         if (Math.abs(Hijos[n_hijo].Gene[i]) > i) {
-          Hijos[n_hijo].Gene[i] -= 2 * i * signo(Hijos[n_hijo].Gene[i]);
+          Hijos[n_hijo].Gene[i] -= 2 * Math.PI * signo(Hijos[n_hijo].Gene[i]);
         }
       }
 
@@ -521,19 +519,6 @@ class Est_mu_landa {
       Seleccion();
 
     }
-  }
-
-  public void inicializa_cons(Structure Padre) {
-    int i, pos_individuo;
-
-    pos_individuo = tabla.n_var_estado + 3 * tabla.n_var_estado;
-    for (i = 0; i < tabla.n_var_estado; i++) {
-      Padre.Gene[pos_individuo + i] = 0;
-    }
-
-    Padre.Gene[pos_individuo +
-        tabla.n_var_estado] = tabla.datos[indices_ep[0]].ejemplo[tabla.
-        n_var_estado];
   }
 
   public void guardar_solucion(Structure Padre) {

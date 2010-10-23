@@ -99,9 +99,9 @@ class Tun_TSK {
     sT.nextToken();
     valor = sT.nextToken();
     semilla = Double.parseDouble(valor.trim());
-    Randomize.setSeed( (long) semilla); ;
+    Randomize.setSeed( (long) semilla);
 
-    for (i = 0; i < 20; i++) { //leo los 17 primeros parametros que son de los dos primeros métodos
+    for (i = 0; i < 17; i++) { //leo los 17 primeros parametros que son de los dos primeros métodos
       sT.nextToken(); //nombre parametro
       sT.nextToken(); //valor parametro
     }
@@ -167,6 +167,7 @@ class Tun_TSK {
     if (tabla.salir == false) {
       /* Generation of the initial population */
       Gen = 0;
+	System.out.println ("\n\nInicializo AG");
       alg_gen.Initialize();
 
       /* Evaluation  of the initial population */
@@ -187,8 +188,10 @@ class Tun_TSK {
         /* Mutation */
         alg_gen.Mutacion_No_Uniforme(Gen, n_generaciones);
 
+		System.out.println ("\n\nEntro en EE");
         /* Estrategia de evolucion */
         alg_gen.Estrategia_Evolucion();
+		System.out.println ("\n\nSalgo de EE");
 
         /* Elitist selection */
         alg_gen.Elitist();
@@ -198,6 +201,7 @@ class Tun_TSK {
 
         /* we increment the counter */
         Gen++;
+		System.out.println ("Generacion = " + Gen);
       }
       while (Gen <= n_generaciones);
 

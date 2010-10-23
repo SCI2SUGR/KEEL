@@ -1,4 +1,45 @@
-package keel.Algorithms.RE_SL_Methods.LEL_TSK;
+/***********************************************************************
+
+	This file is part of KEEL-software, the Data Mining tool for regression, 
+	classification, clustering, pattern mining and so on.
+
+	Copyright (C) 2004-2010
+	
+	F. Herrera (herrera@decsai.ugr.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
+    J. Luengo (julianlm@decsai.ugr.es)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see http://www.gnu.org/licenses/
+  
+**********************************************************************/
+
+/**
+ * 
+ * File: Adap_Tun.java
+ * 
+ * Functions for tunning the rule base. 
+ * 
+ * @author Written by Jesus Alcala Fernandez (University of Granada) 8/02/2004 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
+ 
+ package keel.Algorithms.RE_SL_Methods.LEL_TSK;
 
 import java.lang.Math;
 
@@ -9,7 +50,6 @@ class Adap_Tun {
 
 	public MiDataset tabla;
 	public BaseR_TSK base_reglas;
-	public double[] grado_pertenencia;
 
 	public Adap_Tun (MiDataset training, BaseR_TSK base) {
 		int i;
@@ -17,7 +57,6 @@ class Adap_Tun {
 		tabla = training;
 		base_reglas = base;
 
-		grado_pertenencia = new double[tabla.n_var_estado];
 		primer_gen_C2 = 3 * tabla.n_var_estado * base_reglas.n_reglas;
 	}
 
@@ -33,28 +72,9 @@ class Adap_Tun {
 		else  return (y);
 	}
 
+  /* ---------------------- Decodification of the chromosome -------------------- */
 
-
-	/** Returns the matching degree of the rule "Ri(ek)" with the instance "ejem" */
-	double AntecedenteCubreEjemplo (Difuso [] AntRegla, double [] ejem) {
-		int i;
-		double min;
-
-		for (i=0; i<tabla.n_var_estado; i++)
-			grado_pertenencia[i] = base_reglas.Fuzzifica (ejem[i], AntRegla[i]);
-
-		min = 1;
-		for(i=0; i<tabla.n_var_estado; i++)
-			if (grado_pertenencia[i]<min)  min = grado_pertenencia[i];
-
-		return (min);
-	}
-
-
-	/* ---------------------- Decodificacion del cromosoma -------------------- */
-
-	/* Pasa la Base de Conocimiento codificada en el cromosoma a una estructura
-	adecuada para inferir */
+  /* Converts the knowledge base into a chromosome */
 	void Decodifica (double [] cromosoma) {
 		int i, j;
 
@@ -75,9 +95,9 @@ class Adap_Tun {
 	}
 
 
-/* ------------------------ Medidas Globales de Error --------------------- */
+/* ------------------------ Global error measures --------------------- */
 
-	/* Error Cuadratico */
+	/* Cuadratic error */
 	public double ErrorCuadratico () {
 		int i;
 		double suma;
@@ -89,7 +109,7 @@ class Adap_Tun {
 	}
 
 
-	/* Errores Cuadratico y Lineal */
+  /* Linear and cuadratic error */
 	public void Error_tra () {
 		int i,j;
 		double suma1, suma2, fuerza;
@@ -103,8 +123,8 @@ class Adap_Tun {
 		EC = suma1 / (double)tabla.long_tabla;
 		EL = suma2 / (double)tabla.long_tabla;
 	}
-
-	/* Errores Cuadratico y Lineal */
+	
+  /* Linear and cuadratic error */
 	public void Error_tst (MiDataset tabla_tst) {
 		int i, j;
 		double suma1, suma2, fuerza;
@@ -119,18 +139,18 @@ class Adap_Tun {
 		EL = suma2 / (double)tabla_tst.long_tabla;
 	}
 
-/* ---------------------------- Funcion fitness --------------------------- */
+/* ---------------------------- Fitness Function --------------------------- */
 
 	double eval (double [] cromosoma) {
 		Decodifica (cromosoma);
 		return (ErrorCuadratico ());
 	}
 
-/* -------------------------------------------------------------------------
-             Funciones comunes
+  /* -------------------------------------------------------------------------
+               Common functions
    ------------------------------------------------------------------------- */
 
-	/* salida */
+  /* Output */
 	public String getSalidaObli (MiDataset tabla_datos) {
 		int j;
 		double fuerza;

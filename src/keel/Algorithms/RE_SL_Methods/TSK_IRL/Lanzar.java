@@ -96,7 +96,7 @@ public class Lanzar {
     String fich_tuning = ( (ficheros.nextToken()).replace('\"', ' ')).trim(); //BR de tuning
 
     // we read the parameters
-    for (i = 0; i < 20; i++) { //leo los 20 primeros parametros que son del primer metodo
+    for (i = 0; i < 17; i++) { //leo los 20 primeros parametros que son del primer metodo
       sT.nextToken(); //nombre parametro
       sT.nextToken(); //valor parametro
     }

@@ -17,7 +17,8 @@
 		<howWork>This method learns the consequent of the fuzzy rules in the Rule Base by means of a decision table 
 		representation of the fuzzy rule base, following a Pittsburgh approach. This method has also the ability to
 		learn the optimal number of rules for the base, due to the inclusion of a special value for the allele that
-		represents the absence of that rule. 
+		represents the absence of that rule. However, this algorithm is designed for low dimensional data-sets and 
+		it would not work due to memory constraints for problems with more than 7 or 8 variables. 
 		</howWork>
 
 		<parameterSpec>  
