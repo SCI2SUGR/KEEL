@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -1122,13 +1122,15 @@ private void nextPreviewButtonActionPerformed(java.awt.event.ActionEvent evt) {/
                 File originalTrainingFile = new File((String) trainingModel.getElementAt(i));
                 File originalTestFile = new File((String) testingModel.getElementAt(i));
 
-                String trainingConverted = convert(originalTrainingFile.getPath(), outputPath);
-                String testingConverted = convert(originalTestFile.getPath(), outputPath);
                 if (trainingOutputFileName == null || testOutputFileName == null) {
                     return;
                 } else if (trainingOutputFileName.equals("") || testOutputFileName.equals("")) {
                     return;
                 }
+
+                String trainingConverted = convert(originalTrainingFile.getPath(), System.getProperty("java.io.tmpdir"));
+                String testingConverted = convert(originalTestFile.getPath(), System.getProperty("java.io.tmpdir"));
+                
                 try {
                     unifyHeader(trainingConverted, testingConverted);
                 } catch (IOException ex) {
@@ -2603,7 +2605,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
             String pathnameInput = inputFile;
             pathnameOutput = outputFile;
 
-
+            
             File fileInput1 = new File(pathnameInput);
 
 
@@ -3413,8 +3415,8 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
             // Loading one data set to extract statitics
             keel.Dataset.InstanceSet iSet2 = new keel.Dataset.InstanceSet();
             try {
-                System.out.println(file.getPath());
-                iSet2.readSet(file.getPath(), false);
+                System.out.println(fileTesting.getPath());
+                iSet2.readSet(fileTesting.getPath(), false);
             } catch (Exception ex) {
                 System.out.println(
                         "READING DATASET ERROR. The format of the header is not correct.");
