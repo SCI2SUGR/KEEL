@@ -200,8 +200,6 @@ class AG_Tun {
     /* Se genera la segunda mitad de la poblacion inicial generando aleatoriamen-
        te C1 y manteniendo C2 */
     mitad_Pob = (int) Math.ceil(long_poblacion / 2.0);
-	System.out.println("mitad_Pob = " + mitad_Pob);
-	System.exit(-1);
     for (i = 1; i < mitad_Pob; i++) {
       for (j = 0; j < primer_gen_C2; j++) {
         New[i].Gene[j] = intervalos[j].min + Randomize.Randdouble(intervalos[j].min, intervalos[j].max);
