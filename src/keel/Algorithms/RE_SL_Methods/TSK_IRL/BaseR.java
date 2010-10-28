@@ -37,12 +37,13 @@ class BaseR {
 
   public Regla[] BaseReglas;
   public int max_reglas;
-  public int n_reglas;
+  public int n_reglas, n_etiq_distintas;
 
   public double[] GradoEmp;
   public double[] cromosoma;
   public double[][] ListaTabu;
   public int[] Regla_act;
+  public int [][] b_reglas;
   public int[][] Pob_reglas;
 
   public MiDataset tabla;
@@ -77,15 +78,18 @@ class BaseR {
 
     tabla = datos;
     leer_BR(fichero);
+	max_reglas = n_reglas;
+	b_reglas = new int[n_reglas][tabla.n_variables];
 
     GradoEmp = new double[n_reglas];
   }
 
   /** Reads the RB of a input file */
   public void leer_BR(String fichero) {
-    int i, j;
+    int i, j, k, repetida;
     String cadena;
 
+	System.out.println("\n\nEntrando en LeerBR");
     cadena = Fichero.leeFichero(fichero);
 
     StringTokenizer sT = new StringTokenizer(cadena, "\n\r\t ", false);
@@ -94,23 +98,39 @@ class BaseR {
     sT.nextToken();
 
     n_reglas = Integer.parseInt(sT.nextToken());
+	System.out.println("\n\nEntrando en LeerBR");
 
     BaseReglas = new Regla[n_reglas];
     for (i = 0; i < n_reglas; i++) {
       BaseReglas[i] = new Regla(tabla.n_var_estado, tabla.n_variables);
     }
 
-    for (i = 0; i < n_reglas; i++) {
+	this.n_etiq_distintas = 0;
+
+	for (i = 0; i < n_reglas; i++) {
       for (j = 0; j < tabla.n_var_estado; j++) {
         BaseReglas[i].Ant[j].x0 = Double.parseDouble(sT.nextToken());
         BaseReglas[i].Ant[j].x1 = Double.parseDouble(sT.nextToken());
         BaseReglas[i].Ant[j].x2 = BaseReglas[i].Ant[j].x1;
         BaseReglas[i].Ant[j].x3 = Double.parseDouble(sT.nextToken());
         BaseReglas[i].Ant[j].y = 1.0;
-      }
 
-      /* We don't store the consequent */
-      Double.parseDouble(sT.nextToken());
+		k = repetida = 0;
+		while (k < i && repetida == 0) {
+			if (BaseReglas[i].Ant[j].x0==BaseReglas[k].Ant[j].x0 && BaseReglas[i].Ant[j].x1==BaseReglas[k].Ant[j].x1 && BaseReglas[i].Ant[j].x3==BaseReglas[k].Ant[j].x3) {
+				repetida = 1;
+			}
+			else {
+				k++;
+			}
+		}
+			
+		if (repetida == 0)  this.n_etiq_distintas++;
+	  }
+
+      for (j = 0; j < tabla.n_variables; j++) {
+        BaseReglas[i].Cons[j] = Double.parseDouble(sT.nextToken());
+      }
     }
   }
 
@@ -184,8 +204,7 @@ class BaseR {
       return (num / den);
     }
     else {
-      return ( (tabla.extremos[tabla.n_var_estado].max -
-                tabla.extremos[tabla.n_var_estado].min) / 2.0);
+      return ( (tabla.extremos[tabla.n_var_estado].max - tabla.extremos[tabla.n_var_estado].min) / 2.0);
     }
   }
 

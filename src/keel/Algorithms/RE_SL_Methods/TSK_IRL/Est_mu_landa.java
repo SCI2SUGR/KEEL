@@ -44,6 +44,7 @@ class Est_mu_landa {
   public int[] ind_mayor;
   public Structure[] Padres;
   public Structure[] Hijos;
+  private double PI = 3.1415926;
 
   public static double Beta = 0.0873;
   public static double Epsilon_sigma = 0.0001;
@@ -90,8 +91,7 @@ class Est_mu_landa {
 
     Z = new double[tabla.n_variables];
     indices_seleccion = new int[Landa];
-    indices_recombinacion = new int[ (int) Adap.Maximo(Delta_x,
-    Adap.Maximo(Delta_sigma, Delta_alfa))];
+    indices_recombinacion = new int[ (int) Adap.Maximo(Delta_x, Adap.Maximo(Delta_sigma, Delta_alfa))];
     ind_mayor = new int[tabla.long_tabla];
 
     Padres = new Structure[Mu];
@@ -132,7 +132,7 @@ class Est_mu_landa {
 
   /** Returns the 'a' values as little as we want */
   double f(double x, int y) {
-    return (y * Math.PI / 2 * Math.pow(x, q));
+    return (y * PI / 2 * Math.pow(x, q));
   }
 
   /** Generates the initial population of fathers */
@@ -375,7 +375,7 @@ class Est_mu_landa {
     u2 = Randomize.Rand();
 
     /* we calcules a normal value with the uniform values */
-    return (desv * Math.sqrt( -2 * Math.log(u1)) * Math.sin(2 * Math.PI * u2));
+    return (desv * Math.sqrt( -2 * Math.log(u1)) * Math.sin(2 * PI * u2));
   }
 
   /* Mutation process of the generated son by means of the recombination */
@@ -412,7 +412,7 @@ class Est_mu_landa {
         /* Si el valor mutado se sale del intervalo [-i,i], se proyecta
              circularmente el valor a dicho intervalo */
         if (Math.abs(Hijos[n_hijo].Gene[i]) > i) {
-          Hijos[n_hijo].Gene[i] -= 2 * Math.PI * signo(Hijos[n_hijo].Gene[i]);
+          Hijos[n_hijo].Gene[i] -= 2 * PI * signo(Hijos[n_hijo].Gene[i]);
         }
       }
 
@@ -455,11 +455,11 @@ class Est_mu_landa {
       for (i = 0; i < tabla.n_variables; i++) {
         Hijos[n_hijo].Gene[i] += Z[i];
 
-        if (Hijos[n_hijo].Gene[i] < - (Math.PI / 2.0)) {
-          Hijos[n_hijo].Gene[i] = - (Math.PI / 2.0) + 1E-10;
+        if (Hijos[n_hijo].Gene[i] < - (PI / 2.0)) {
+          Hijos[n_hijo].Gene[i] = - (PI / 2.0) + 1E-10;
         }
-        if (Hijos[n_hijo].Gene[i] > (Math.PI / 2.0)) {
-          Hijos[n_hijo].Gene[i] = (Math.PI / 2.0) - 1E-10;
+        if (Hijos[n_hijo].Gene[i] > (PI / 2.0)) {
+          Hijos[n_hijo].Gene[i] = (PI / 2.0) - 1E-10;
         }
       }
     }

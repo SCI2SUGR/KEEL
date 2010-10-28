@@ -44,6 +44,8 @@ class AG_Tun {
   public int[] sample;
   public int[] indices_ordenacion;
   public int last;
+  private double PI = 3.1415926;
+
 
   public Structure[] Old;
   public Structure[] New;
@@ -56,23 +58,25 @@ class AG_Tun {
 
   public Adap_Tun fun_adap;
   public BaseR base_reglas;
+  public MiDataset tabla;
 
-  public AG_Tun(int n_poblacion, double cruce, double mutacion, double valor_a,
+  public AG_Tun(int long_poblacion, double cruce, double mutacion, double valor_a,
             double valor_b, double porc_pob_ee11, int gen_ee, Adap_Tun funcion,
-            BaseR base) {
+            BaseR base, MiDataset tabla) {
     int i;
 
-    base_reglas = base;
-    fun_adap = funcion;
-    long_poblacion = n_poblacion;
-    prob_cruce = cruce;
-    prob_mutacion = mutacion;
-    a = valor_a;
-    b = valor_b;
-    porc_pob_ee = porc_pob_ee11;
-    n_gen_ee = gen_ee;
-    n_genes = (3 * base_reglas.tabla.n_var_estado +
-               base_reglas.tabla.n_variables) * base_reglas.n_reglas;
+	this.tabla = tabla;
+    this.base_reglas = base;
+    this.fun_adap = funcion;
+    this.long_poblacion = long_poblacion;
+    this.prob_cruce = cruce;
+    this.prob_mutacion = mutacion;
+    this.a = valor_a;
+    this.b = valor_b;
+    this.porc_pob_ee = porc_pob_ee11;
+    this.n_gen_ee = gen_ee;
+    this.n_genes = (3 * this.base_reglas.n_etiq_distintas) + (tabla.n_variables * base_reglas.n_reglas);
+	this.last = (int) (this.long_poblacion * this.prob_cruce);
 
     prob_mutacion = prob_mutacion / (double) n_genes;
 
@@ -102,36 +106,32 @@ class AG_Tun {
     }
   }
 
-  private int ceil(double v) {
-    int valor;
-
-    valor = (int) Math.round(v);
-    if ( (double) valor < v) {
-      valor++;
-    }
-
-    return (valor);
-  }
-
   public void Intercambio() {
     temp = Old;
     Old = New;
     New = temp;
   }
 
+
+
   /** Inicialization of the population */
   public void Initialize() {
-    int i, j, temp, mitad_Pob;
+    int i, j, k, temp, mitad_Pob, et_act, repetida;
+	int [] n_etiquetas = new int[this.tabla.n_var_estado];
     double Valor_Inicial_Sigma = 0.001;
+	double u;
+
 
     if (prob_mutacion < 1.0) {
-      Mu_next = ceil(Math.log(Randomize.Rand()) / Math.log(1.0 - prob_mutacion));
+      Mu_next = (int) Math.ceil(Math.log(Randomize.Rand()) / Math.log(1.0 - prob_mutacion));
     }
     else {
       Mu_next = 1;
     }
 
-    Trials = 0;
+
+	for (i=0; i < this.tabla.n_var_estado; i++)  n_etiquetas[i] = 0;
+	Trials = 0;
 
     /* Los conjuntos difusos de los antecedentes de las reglas constituyen la
        primera parte del primer cromosoma de la poblacion inicial.
@@ -139,53 +139,72 @@ class AG_Tun {
     New[0].n_e = 1;
     primer_gen_C2 = 0;
 
-    for (i = 0; i < base_reglas.n_reglas; i++) {
-      for (j = 0; j < base_reglas.tabla.n_var_estado; j++) {
-        New[0].Gene[primer_gen_C2] = base_reglas.BaseReglas[i].Ant[j].x0;
-        New[0].Gene[primer_gen_C2 + 1] = base_reglas.BaseReglas[i].Ant[j].x1;
-        New[0].Gene[primer_gen_C2 + 2] = base_reglas.BaseReglas[i].Ant[j].x3;
-        primer_gen_C2 += 3;
-      }
-    }
+
+	for (j=0; j < tabla.n_var_estado; j++) {
+		for (i=0; i<base_reglas.n_reglas; i++) {
+			et_act = 0;
+			for (k=0; k < j; k++)  et_act += n_etiquetas[k];
+
+			k = 3 * et_act;
+			repetida = 0;
+
+			while (k < primer_gen_C2 && repetida == 0) {
+				if (base_reglas.BaseReglas[i].Ant[j].x0==New[0].Gene[k] && base_reglas.BaseReglas[i].Ant[j].x1==New[0].Gene[k+1] && base_reglas.BaseReglas[i].Ant[j].x3==New[0].Gene[k+2])
+					repetida = 1;
+				else {
+					k += 3;
+					et_act++;
+				}
+			}
+
+			base_reglas.b_reglas[i][j] = et_act;
+			if (repetida==0) {
+				n_etiquetas[j]++;
+				New[0].Gene[primer_gen_C2] = base_reglas.BaseReglas[i].Ant[j].x0;
+				New[0].Gene[primer_gen_C2 + 1] = base_reglas.BaseReglas[i].Ant[j].x1;
+				New[0].Gene[primer_gen_C2 + 2] = base_reglas.BaseReglas[i].Ant[j].x3;
+				primer_gen_C2 += 3;
+			}
+		}
+	}
+
+	this.fun_adap.primer_gen_C2 = this.primer_gen_C2;
+
+
 
     /* Se establecen los intervalos en los que varia cada gen de la primera
        parte en la primera generacion */
     for (i = 0; i < primer_gen_C2; i += 3) {
-      intervalos[i].min = New[0].Gene[i] -
-          (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
-      intervalos[i].max = New[0].Gene[i] +
-          (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
+      intervalos[i].min = New[0].Gene[i] - (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
+      intervalos[i].max = New[0].Gene[i] + (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
 
-      intervalos[i + 1].min = New[0].Gene[i + 1] -
-          (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
-      intervalos[i + 1].max = New[0].Gene[i + 1] +
-          (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
+      intervalos[i + 1].min = New[0].Gene[i + 1] - (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
+      intervalos[i + 1].max = New[0].Gene[i + 1] + (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
 
-      intervalos[i + 2].min = New[0].Gene[i + 2] -
-          (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
-      intervalos[i + 2].max = New[0].Gene[i + 2] +
-          (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
+      intervalos[i + 2].min = New[0].Gene[i + 2] - (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
+      intervalos[i + 2].max = New[0].Gene[i + 2] + (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
     }
 
     /* Se inicializa la segunda parte del primer cromosoma con los parametros
        de los consecuentes de las reglas de la BC inicial, junto con los inter-
        valos correspondientes */
     for (i = 0; i < base_reglas.n_reglas; i++) {
-      for (j = 0; j < base_reglas.tabla.n_variables; j++) {
-        temp = primer_gen_C2 + i * (base_reglas.tabla.n_variables) + j;
+      for (j = 0; j < tabla.n_variables; j++) {
+        temp = primer_gen_C2 + i * (tabla.n_variables) + j;
         New[0].Gene[temp] = Math.atan(base_reglas.BaseReglas[i].Cons[j]);
-        intervalos[temp].min = (- 1.0 * Math.PI / 2) + 1E-10;
-        intervalos[temp].max = (Math.PI / 2) - 1E-10;
+        intervalos[temp].min = (- 1.0 * PI / 2.0) + 1E-10;
+        intervalos[temp].max = (PI / 2.0) - 1E-10;
       }
     }
 
     /* Se genera la segunda mitad de la poblacion inicial generando aleatoriamen-
        te C1 y manteniendo C2 */
-    mitad_Pob = ceil(long_poblacion / 2);
+    mitad_Pob = (int) Math.ceil(long_poblacion / 2.0);
+	System.out.println("mitad_Pob = " + mitad_Pob);
+	System.exit(-1);
     for (i = 1; i < mitad_Pob; i++) {
       for (j = 0; j < primer_gen_C2; j++) {
-        New[i].Gene[j] = Randomize.Randdouble(intervalos[j].min,
-                                              intervalos[j].max);
+        New[i].Gene[j] = intervalos[j].min + Randomize.Randdouble(intervalos[j].min, intervalos[j].max);
       }
 
       for (j = primer_gen_C2; j < n_genes; j++) {
@@ -199,17 +218,14 @@ class AG_Tun {
        a partir de los intervalos anteriores y mutando C2 */
     for (i = mitad_Pob; i < long_poblacion; i++) {
       for (j = 0; j < primer_gen_C2; j++) {
-        New[i].Gene[j] = Randomize.Randdouble(intervalos[j].min,
-                                              intervalos[j].max);
+        New[i].Gene[j] = intervalos[j].min + Randomize.Randdouble(intervalos[j].min, intervalos[j].max);
       }
 
       for (j = primer_gen_C2; j < n_genes; j++) {
         /* Comprobamos que no se salgan del intervalo permitido [-PI/2,PI/2] */
         do {
           New[i].Gene[j] = New[0].Gene[j] + ValorNormal(Valor_Inicial_Sigma);
-        }
-        while (New[i].Gene[j] <= (-1.0 * Math.PI / 2.0) ||
-               New[i].Gene[j] >= (Math.PI / 2.0));
+        } while (New[i].Gene[j] <= (-1.0 * PI / 2.0) || New[i].Gene[j] >= (PI / 2.0));
       }
 
       New[i].n_e = 1;
@@ -220,6 +236,8 @@ class AG_Tun {
   void Select() {
     double expected, factor, perf, ptr, sum, rank_max, rank_min;
     int i, j, k, best, temp;
+
+	// System.out.println("\n\nEntrando en Seleccion");
 
     rank_min = 0.75;
 
@@ -248,12 +266,15 @@ class AG_Tun {
     /* we normalize the ranking */
     rank_max = 2.0 - rank_min;
     factor = (rank_max - rank_min) / (double) (long_poblacion - 1);
+	// System.out.println("rank_max = " + rank_max + "  rank_min = " + rank_min + "  factor = " + factor);
 
     /* we assign the number of replicas of each chormosome according to the select probability */
     k = 0;
     ptr = Randomize.Rand();
+	// System.out.println("ptr = " + ptr);
     for (sum = i = 0; i < long_poblacion; i++) {
       expected = rank_min + Old[i].n_e * factor;
+	  // System.out.println("expected = " + expected);
       for (sum += expected; sum >= ptr; ptr++) {
         sample[k++] = i;
       }
@@ -263,12 +284,14 @@ class AG_Tun {
     if (k != long_poblacion) {
       for (; k < long_poblacion; k++) {
         sample[k] = Randomize.RandintClosed(0, long_poblacion - 1);
+		// System.out.println("sample[" + k + "] = " + sample[k]);
       }
     }
 
     /* we shuffle the selected chromosomes */
     for (i = 0; i < long_poblacion; i++) {
       j = Randomize.RandintClosed(i, long_poblacion - 1);
+	  // System.out.println("j = " + j);
       temp = sample[j];
       sample[j] = sample[i];
       sample[i] = temp;
@@ -283,7 +306,9 @@ class AG_Tun {
 
       New[i].Perf = Old[k].Perf;
       New[i].n_e = 0;
+	  // System.out.println("New[ " + i + "].Perf = " + New[i].Perf);
     }
+	  // System.exit(-1);
   }
 
   private double T_producto_logico(double x, double y) {
@@ -313,6 +338,8 @@ class AG_Tun {
     int mom, dad, i, j, temp;
     int[] indice = new int[4];
 
+	// System.out.println("\n\nEntrando en Cruce");
+
     for (mom = 0; mom < last; mom += 2) {
       dad = mom + 1;
 
@@ -330,6 +357,8 @@ class AG_Tun {
       C[1].Perf = fun_adap.eval(C[1].Gene);
       C[2].Perf = fun_adap.eval(C[2].Gene);
       C[3].Perf = fun_adap.eval(C[3].Gene);
+
+	// System.out.println("C[0].Perf = " + C[0].Perf + "  C[1].Perf = " + C[1].Perf + "  C[2].Perf = " + C[2].Perf + "  C[3].Perf = " + C[3].Perf);
 
       /* we order the offsprings by means of the bubble method */
       for (i = 0; i < 4; i++) {
@@ -356,9 +385,11 @@ class AG_Tun {
       New[dad].Perf = C[indice[1]].Perf;
       New[mom].n_e = 0;
       New[dad].n_e = 0;
+	// System.out.println("New[mom].Perf = " + New[mom].Perf + "  New[dad].Perf = " + New[dad].Perf);
 
       Trials += 2;
     }
+	// System.exit(-1);
   }
 
   private double delta(long t, double y, long n_generaciones) {
@@ -429,7 +460,7 @@ class AG_Tun {
         /* we calculate the next position */
         if (prob_mutacion < 1) {
           m = Randomize.Rand();
-          Mu_next += ceil(Math.log(m) / Math.log(1.0 - prob_mutacion));
+          Mu_next += (int) Math.ceil(Math.log(m) / Math.log(1.0 - prob_mutacion));
         }
         else {
           Mu_next += 1;
@@ -445,6 +476,8 @@ class AG_Tun {
     double performance;
     int i, j;
 
+	// System.out.println("\n\nEntrando en Evaluate.");
+
     for (i = 0; i < long_poblacion; i++) {
       /* if the chromosome aren't evaluated, it's evaluate */
       if (New[i].n_e == 1) {
@@ -457,17 +490,20 @@ class AG_Tun {
       else {
         performance = New[i].Perf;
       }
+	// System.out.println("New[" + i + "].Perf = " + performance);
 
       /* we calculate the position of the best individual */
       if (i == 0) {
-        Best_current_perf = performance;
-        Best_guy = 0;
+        this.Best_current_perf = performance;
+        this.Best_guy = 0;
       }
-      else if (performance < Best_current_perf) {
-        Best_current_perf = performance;
-        Best_guy = i;
+      else if (performance < this.Best_current_perf) {
+        this.Best_current_perf = performance;
+        this.Best_guy = i;
       }
     }
+
+	// System.out.println("\nBest_current_perf = " + this.Best_current_perf + "  Best_guy = " + this.Best_guy);
   }
 
   /* Elitist selection */
@@ -555,7 +591,7 @@ class AG_Tun {
     u2 = Randomize.Rand();
 
     /* we calcules a normal value with the uniform values */
-    return (desv * Math.sqrt( -2 * Math.log(u1)) * Math.sin(2 * Math.PI * u2));
+    return (desv * Math.sqrt( -2 * Math.log(u1)) * Math.sin(2 * PI * u2));
   }
 
   /** Evolution Strategy (1+1) */
@@ -567,19 +603,26 @@ class AG_Tun {
     n_mutaciones = n_exitos = it_sin_exito = fin = 0;
     sigma = new_sigma = 1.0;
 
+	// System.out.println("Muta_C1 = " + Muta_C1 + "  Muta_C2 = " + Muta_C2 + "  primer_gen_C2" + primer_gen_C2);
+
+
     do {
       if (Muta_C1 == 1) {
+        // System.out.println("\nMuta C1");
         /* Mutation of C1 */
         for (gen = 0; gen < primer_gen_C2; gen += 3) {
           /* we obtain the fuzzy set */
           x0 = Padre.Gene[gen];
           x1 = Padre.Gene[gen + 1];
           x2 = Padre.Gene[gen + 2];
+	      // System.out.println("x0 = " + x0 + "  x1 = " + x1  + "  x2 = " + x2);
+
 
           /* Adaptation of S and mutation of the center point */
           S = Adap.Minimo(x1 - x0, x2 - x1) / 2.0;
           m = ValorNormal(new_sigma * S);
           newx1 = x1 + m;
+	      // System.out.println("S = " + S + "  m = " + m  + "  newx1 = " + newx1);
 
           if (newx1 <= x0) {
             Hijo.Gene[gen + 1] = x0;
@@ -599,6 +642,7 @@ class AG_Tun {
           S = Adap.Minimo(x0 - intervalos[gen].min, newx1 - x0) / 2.0;
           m = ValorNormal(new_sigma * S);
           newx = x0 + m;
+	      // System.out.println("S = " + S + "  m = " + m  + "  newx = " + newx);
 
           if (newx <= intervalos[gen].min) {
             Hijo.Gene[gen] = intervalos[gen].min;
@@ -616,6 +660,7 @@ class AG_Tun {
           S = Adap.Minimo(x2 - newx1, intervalos[gen + 2].max - x2) / 2.0;
           m = ValorNormal(new_sigma * S);
           newx = x2 + m;
+	      // System.out.println("S = " + S + "  m = " + m  + "  newx = " + newx);
 
           if (newx <= newx1) {
             Hijo.Gene[gen + 2] = newx1;
@@ -635,14 +680,18 @@ class AG_Tun {
       else {
         for (gen = 0; gen < primer_gen_C2; gen++) {
           Hijo.Gene[gen] = Padre.Gene[gen];
+	      // System.out.println("Hijo.Gene[" + gen + "] = " + Hijo.Gene[gen]);
         }
       }
 
       if (Muta_C2 == 1) {
         /* Mutation of C2 */
+        // System.out.println("\nMuta C2");
+
         for (gen = primer_gen_C2; gen < n_genes; gen++) {
           m = ValorNormal(new_sigma * S_sigma_consecuentes);
           newx = Padre.Gene[gen] + m;
+	      // System.out.println("m = " + m  + "  newx = " + newx);
 
           if (newx < intervalos[gen].min) {
             Hijo.Gene[gen] = intervalos[gen].min;
@@ -661,11 +710,13 @@ class AG_Tun {
       else {
         for (gen = primer_gen_C2; gen < n_genes; gen++) {
           Hijo.Gene[gen] = Padre.Gene[gen];
+	      // System.out.println("Hijo.Gene[" + gen + "] = " + Hijo.Gene[gen]);
         }
       }
 
       /* we evaluate the son */
       Hijo.Perf = fun_adap.eval(Hijo.Gene);
+      // System.out.println("Hijo.Perf = " + Hijo.Perf + "  Padre.Perf = " + Padre.Perf);
 
       /* we count the mutation */
       n_mutaciones += 1;
@@ -686,11 +737,11 @@ class AG_Tun {
         it_sin_exito++;
       }
 
+      // System.out.println("it_sin_exito = " + it_sin_exito);
       /* we adapt sigma */
-      new_sigma = AdaptacionSigma(sigma, n_exitos / (double) n_mutaciones,
-                                  (double) n_genes -
-                                  base_reglas.tabla.n_var_estado);
-
+      new_sigma = AdaptacionSigma(sigma, n_exitos / (double) n_mutaciones, (double) n_genes - tabla.n_var_estado);
+      // System.out.println("new_sigma = " + new_sigma + "  sigma = " + sigma + "  n_exitos = " + n_exitos + "  n_mutaciones = " + n_mutaciones + "  n_genes = " + n_genes);
+	  
       if (it_sin_exito >= n_gen_ee) {
         fin = 1;
       }
@@ -702,6 +753,9 @@ class AG_Tun {
   /* Main of the Evolution Strategy (1+1) */
   public void Estrategia_Evolucion() {
     int i, j, temp, cromosoma, n_ya_explotados, n_a_explotar;
+
+	// System.out.println("\n\nEntrando en EE");
+
 
     /* we evaluate the population */
     for (i = 0; i < long_poblacion; i++) {
@@ -718,8 +772,7 @@ class AG_Tun {
 
     for (i = 0; i < long_poblacion; i++) {
       for (j = 0; j < long_poblacion - i - 1; j++) {
-        if (New[indices_ordenacion[j +
-            1]].Perf < New[indices_ordenacion[j]].Perf) {
+        if (New[indices_ordenacion[j + 1]].Perf < New[indices_ordenacion[j]].Perf) {
           temp = indices_ordenacion[j];
           indices_ordenacion[j] = indices_ordenacion[j + 1];
           indices_ordenacion[j + 1] = temp;
@@ -727,10 +780,15 @@ class AG_Tun {
       }
     }
 
+	// System.out.println("New[indices_ordenacion[0]].Perf = " + New[indices_ordenacion[0]].Perf + "  New[indices_ordenacion[long_poblacion-1]].Perf = " + New[indices_ordenacion[long_poblacion-1]].Perf);
+
     /* the evolution strategy is applied to each individual of the population with fitness better than 0 */
     i = 0;
     n_ya_explotados = 0;
     n_a_explotar = (int) (porc_pob_ee * long_poblacion);
+
+	// System.out.println("n_a_explotar = " + n_a_explotar + "  n_genes = " + n_genes);
+
 
     while ( (i < long_poblacion) && (n_ya_explotados < n_a_explotar)) {
       /* we initialize the index of the chromosome */
@@ -743,6 +801,7 @@ class AG_Tun {
 
       /* Inicialization of the counters */
       YaExplotados[n_ya_explotados].Perf = New[cromosoma].Perf;
+	// System.out.println("YaExplotados[n_ya_explotados].Perf = " + YaExplotados[n_ya_explotados].Perf);
       n_ya_explotados++;
 
       /* we apply the ES(1+1) */
@@ -753,10 +812,9 @@ class AG_Tun {
         do {
           i++;
         }
-        while (i < long_poblacion &&
-               Pertenece_AG(New[indices_ordenacion[i]], YaExplotados,
-                            n_ya_explotados) == 1);
+        while (i < long_poblacion && Pertenece_AG(New[indices_ordenacion[i]], YaExplotados, n_ya_explotados) == 1);
       }
+	// System.out.println("i = " + i);
     }
   }
 

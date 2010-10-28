@@ -43,8 +43,6 @@ class Adap_Tun {
 
     tabla = training;
     base_reglas = base;
-
-    primer_gen_C2 = 3 * tabla.n_var_estado * base_reglas.n_reglas;
   }
 
   public static double Minimo(double x, double y) {
@@ -74,23 +72,17 @@ class Adap_Tun {
 
     for (i = 0; i < base_reglas.n_reglas; i++) {
       for (j = 0; j < tabla.n_var_estado; j++) {
-        base_reglas.BaseReglas[i].Ant[j].x0 = cromosoma[3 *
-            (i * tabla.n_var_estado + j)];
-        base_reglas.BaseReglas[i].Ant[j].x1 = cromosoma[3 *
-            (i * tabla.n_var_estado + j) + 1];
-        base_reglas.BaseReglas[i].Ant[j].x2 = cromosoma[3 *
-            (i * tabla.n_var_estado + j) + 1];
-        base_reglas.BaseReglas[i].Ant[j].x3 = cromosoma[3 *
-            (i * tabla.n_var_estado + j) + 2];
+        base_reglas.BaseReglas[i].Ant[j].x0 = cromosoma[3 * base_reglas.b_reglas[i][j]];
+        base_reglas.BaseReglas[i].Ant[j].x1 = cromosoma[3 * base_reglas.b_reglas[i][j] + 1];
+        base_reglas.BaseReglas[i].Ant[j].x2 = cromosoma[3 * base_reglas.b_reglas[i][j] + 1];
+        base_reglas.BaseReglas[i].Ant[j].x3 = cromosoma[3 * base_reglas.b_reglas[i][j] + 2];
         base_reglas.BaseReglas[i].Ant[j].y = 1.0;
         base_reglas.BaseReglas[i].Ant[j].Nombre = "x" + (j + 1);
         base_reglas.BaseReglas[i].Ant[j].Etiqueta = "E" + i + j;
-        base_reglas.BaseReglas[i].Cons[j] = Math.tan(cromosoma[primer_gen_C2 +
-            i * (tabla.n_variables) + j]);
+        base_reglas.BaseReglas[i].Cons[j] = Math.tan(cromosoma[primer_gen_C2 + i * (tabla.n_variables) + j]);
       }
 
-      base_reglas.BaseReglas[i].Cons[j] = Math.tan(cromosoma[primer_gen_C2 +
-          i * (tabla.n_variables) + j]);
+      base_reglas.BaseReglas[i].Cons[j] = Math.tan(cromosoma[primer_gen_C2 + i * (tabla.n_variables) + j]);
     }
   }
 
@@ -102,9 +94,7 @@ class Adap_Tun {
     double suma;
 
     for (i = 0, suma = 0.0; i < tabla.long_tabla; i++) {
-      suma +=
-          Math.pow(tabla.datos[i].ejemplo[tabla.n_var_estado] -
-                   base_reglas.FLC_TSK(tabla.datos[i].ejemplo), 2.0);
+      suma += Math.pow(tabla.datos[i].ejemplo[tabla.n_var_estado] - base_reglas.FLC_TSK(tabla.datos[i].ejemplo), 2.0);
     }
 
     return (suma / (double) tabla.long_tabla);
@@ -117,8 +107,7 @@ class Adap_Tun {
 
     for (j = 0, suma1 = suma2 = 0.0; j < tabla.long_tabla; j++) {
       fuerza = base_reglas.FLC_TSK(tabla.datos[j].ejemplo);
-      suma1 +=
-          Math.pow(tabla.datos[j].ejemplo[tabla.n_var_estado] - fuerza, 2.0);
+      suma1 += Math.pow(tabla.datos[j].ejemplo[tabla.n_var_estado] - fuerza, 2.0);
       suma2 += Math.abs(tabla.datos[j].ejemplo[tabla.n_var_estado] - fuerza);
     }
 
@@ -133,9 +122,8 @@ class Adap_Tun {
 
     for (j = 0, suma1 = suma2 = 0.0; j < tabla_tst.long_tabla; j++) {
       fuerza = base_reglas.FLC_TSK(tabla_tst.datos[j].ejemplo);
-      suma1 +=
-          Math.pow(tabla_tst.datos[j].ejemplo[tabla.n_var_estado] - fuerza, 2.0);
-      suma2 += Math.abs(tabla_tst.datos[j].ejemplo[tabla.n_var_estado] - fuerza);
+      suma1 += Math.pow(tabla_tst.datos[j].ejemplo[tabla_tst.n_var_estado] - fuerza, 2.0);
+      suma2 += Math.abs(tabla_tst.datos[j].ejemplo[tabla_tst.n_var_estado] - fuerza);
     }
 
     EC = suma1 / (double) tabla_tst.long_tabla;

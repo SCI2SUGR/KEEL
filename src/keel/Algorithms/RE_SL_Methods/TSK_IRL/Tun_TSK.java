@@ -95,6 +95,8 @@ class Tun_TSK {
     fichero_reglas = ( (ficheros.nextToken()).replace('\"', ' ')).trim();
     ruta_salida = fich_tst_obli.substring(0, fich_tst_obli.lastIndexOf('/') + 1);
 
+	System.out.println("\n\nEntrando en Leer");
+
     // we read the seed of the random generator
     sT.nextToken();
     valor = sT.nextToken();
@@ -126,6 +128,8 @@ class Tun_TSK {
     valor = sT.nextToken();
     b = Double.parseDouble(valor.trim());
 
+	System.out.println("n_generaciones = " + n_generaciones + "  long_poblacion = " + long_poblacion + "  a = " + a + "  b = " + b);
+
     // we read the Cross Probability
     sT.nextToken();
     valor = sT.nextToken();
@@ -146,6 +150,8 @@ class Tun_TSK {
     valor = sT.nextToken();
     gen_ee = Integer.parseInt(valor.trim());
 
+	System.out.println("cruce = " + cruce + "  mutacion = " + mutacion + "  porc_ind_ee = " + porc_ind_ee + "  gen_ee = " + gen_ee);
+
     // we create all the objects
     tabla = new MiDataset(fich_datos_chequeo, false);
     if (tabla.salir == false) {
@@ -153,8 +159,7 @@ class Tun_TSK {
       tabla_tst = new MiDataset(fich_datos_tst, false);
       base_reglas = new BaseR(fichero_br, tabla);
       fun_adap = new Adap_Tun(tabla, base_reglas);
-      alg_gen = new AG_Tun(long_poblacion, cruce, mutacion, a, b, porc_ind_ee,
-                       gen_ee, fun_adap, base_reglas);
+      alg_gen = new AG_Tun(long_poblacion, cruce, mutacion, a, b, porc_ind_ee, gen_ee, fun_adap, base_reglas, tabla);
     }
   }
 
@@ -232,12 +237,9 @@ class Tun_TSK {
       Fichero.escribeFichero(fich_tst_obli, salida_tst);
 
       /* we write the MSEs in specific files */
-      Fichero.AnadirtoFichero(ruta_salida + "tun_tskcomunR.txt",
-                              "" + base_reglas.n_reglas + "\n");
-      Fichero.AnadirtoFichero(ruta_salida + "tun_tskcomunTRA.txt",
-                              "" + ec + "\n");
-      Fichero.AnadirtoFichero(ruta_salida + "tun_tskcomunTST.txt",
-                              "" + ec_tst + "\n");
+      Fichero.AnadirtoFichero(ruta_salida + "tun_tskcomunR.txt", "" + base_reglas.n_reglas + "\n");
+      Fichero.AnadirtoFichero(ruta_salida + "tun_tskcomunTRA.txt", "" + ec + "\n");
+      Fichero.AnadirtoFichero(ruta_salida + "tun_tskcomunTST.txt", "" + ec_tst + "\n");
     }
   }
 

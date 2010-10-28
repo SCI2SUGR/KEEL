@@ -43,7 +43,7 @@ package keel.Algorithms.RE_SL_Methods.TSK_IRL;
 
 import java.lang.*;
 import java.util.StringTokenizer;
-import org.core.Fichero;
+import org.core.*;
 
 public class Lanzar {
 

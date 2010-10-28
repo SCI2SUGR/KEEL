@@ -102,7 +102,8 @@ class Lear_m6 {
     // we read the seed of the random generator
     sT.nextToken();
     valor = sT.nextToken();
-    semilla = Double.parseDouble(valor.trim());
+//    semilla = Double.parseDouble(valor.trim());
+    semilla = 12345678;
     Randomize.setSeed( (long) semilla);
 
     // we read the Evolutionary Strategy Iterations
