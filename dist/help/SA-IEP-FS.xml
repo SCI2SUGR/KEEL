@@ -29,7 +29,7 @@
 
 		<properties>
 
-			<continuous>No</continuous>
+			<continuous>Yes</continuous>
 
 			<discretized>Yes</discretized>
 
@@ -42,7 +42,7 @@
 			<impreciseValue>No</impreciseValue>
 
 		</properties>
-
+		
 	</generalDescription>
 
 	<example>
