@@ -101,7 +101,7 @@ class Tun_TSK {
     sT.nextToken();
     valor = sT.nextToken();
     semilla = Double.parseDouble(valor.trim());
-    Randomize.setSeed( (long) semilla); ;
+    Randomize.setSeed( (long) semilla);
 
     for (i = 0; i < 28; i++) {
       sT.nextToken(); //variable
@@ -156,7 +156,7 @@ class Tun_TSK {
       base_reglas = new BaseR_TSK(fichero_br, tabla, true);
       fun_adap = new Adap_Tun(tabla, base_reglas);
       alg_gen = new AG_Tun(long_poblacion, cruce, mutacion, a, b, porc_ind_ee,
-                       gen_ee, fun_adap, base_reglas);
+                       gen_ee, fun_adap, base_reglas, tabla);
     }
   }
 

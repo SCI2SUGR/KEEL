@@ -132,11 +132,9 @@ class Adap_Sel {
       tabla.datos[i].nivel_cubrimiento = 0.0;
       tabla.datos[i].maximo_cubrimiento = 0.0;
       for (j = 0; j < base_reglas.n_reglas; j++) {
-        RCE = ReglaCubreEjemplo(base_reglas.BaseReglas[j].Ant,
-                                tabla.datos[i].ejemplo);
+        RCE = ReglaCubreEjemplo(base_reglas.BaseReglas[j].Ant, tabla.datos[i].ejemplo);
         tabla.datos[i].nivel_cubrimiento += RCE;
-        tabla.datos[i].maximo_cubrimiento = Maximo(tabla.datos[i].
-            maximo_cubrimiento, RCE);
+        tabla.datos[i].maximo_cubrimiento = Maximo(tabla.datos[i].maximo_cubrimiento, RCE);
       }
     }
 
@@ -163,16 +161,11 @@ class Adap_Sel {
     for (i = 0; i < base_total.n_reglas; i++) {
       if (cromosoma[i] == '1') {
         for (j = 0; j < tabla.n_var_estado; j++) {
-          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].x0 = base_total.
-              BaseReglas[i].Ant[j].x0;
-          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].x1 = base_total.
-              BaseReglas[i].Ant[j].x1;
-          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].x2 = base_total.
-              BaseReglas[i].Ant[j].x2;
-          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].x3 = base_total.
-              BaseReglas[i].Ant[j].x3;
-          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].y = base_total.
-              BaseReglas[i].Ant[j].y;
+          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].x0 = base_total.BaseReglas[i].Ant[j].x0;
+          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].x1 = base_total.BaseReglas[i].Ant[j].x1;
+          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].x2 = base_total.BaseReglas[i].Ant[j].x2;
+          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].x3 = base_total.BaseReglas[i].Ant[j].x3;
+          base_reglas.BaseReglas[base_reglas.n_reglas].Ant[j].y = base_total.BaseReglas[i].Ant[j].y;
         }
 
         for (j = 0; j < tabla.n_variables; j++) {

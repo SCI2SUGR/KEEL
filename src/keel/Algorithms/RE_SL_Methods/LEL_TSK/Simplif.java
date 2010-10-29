@@ -219,13 +219,6 @@ class Simplif {
 
           /* we increment the counter */
           Gen++;
-          /*
-          fun_adap.Decodifica(alg_gen.solucion());
-          fun_adap.Error_tra();
-          ec = fun_adap.EC;
-          System.out.println(" Iteration=" + (Gen - 1) + " MSE=" + ec + " " +
-                             " #R=" + base_reglas.n_reglas);
-          */
         }
         while (Gen <= n_generaciones);
 
@@ -275,12 +268,9 @@ class Simplif {
           Fichero.escribeFichero(fich_tst_obli, salida_tst);
 
           /* we write the MSEs in specific files */
-          Fichero.AnadirtoFichero(ruta_salida + "SimplifcomunR.txt",
-                                  "" + base_reglas.n_reglas + "\n");
-          Fichero.AnadirtoFichero(ruta_salida + "SimplifcomunTRA.txt",
-                                  "" + ec + "\n");
-          Fichero.AnadirtoFichero(ruta_salida + "SimplifcomunTST.txt",
-                                  "" + ectst + "\n");
+          Fichero.AnadirtoFichero(ruta_salida + "SimplifcomunR.txt", "" + base_reglas.n_reglas + "\n");
+          Fichero.AnadirtoFichero(ruta_salida + "SimplifcomunTRA.txt", "" + ec + "\n");
+          Fichero.AnadirtoFichero(ruta_salida + "SimplifcomunTST.txt", "" + ectst + "\n");
         }
 
         /* the multimodal GA finish when the condition is true */

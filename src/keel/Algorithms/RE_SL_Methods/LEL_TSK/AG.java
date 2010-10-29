@@ -68,17 +68,6 @@ class AG {
     }
   }
 
-  private int ceil(double v) {
-    int valor;
-
-    valor = (int) Math.round(v);
-    if ( (double) valor < v) {
-      valor++;
-    }
-
-    return (valor);
-  }
-
   public void Intercambio() {
     temp = Old;
     Old = New;
@@ -94,7 +83,7 @@ class AG {
     Trials = 0;
 
     if (prob_mutacion < 1.0) {
-      Mu_next = ceil(Math.log(Randomize.Rand()) / Math.log(1.0 - prob_mutacion));
+      Mu_next = (int) Math.ceil(Math.log(Randomize.Rand()) / Math.log(1.0 - prob_mutacion));
     }
     else {
       Mu_next = 1;
@@ -246,7 +235,7 @@ class AG {
         /* we calculate the next position */
         if (prob_mutacion < 1) {
           m = Randomize.Rand();
-          Mu_next += ceil(Math.log(m) / Math.log(1.0 - prob_mutacion));
+          Mu_next += (int) Math.ceil(Math.log(m) / Math.log(1.0 - prob_mutacion));
         }
         else {
           Mu_next += 1;

@@ -54,6 +54,7 @@ class AG_Tun {
   public Structure Hijo;
   public TipoIntervalo[] intervalos;
   private TipoIntervalo intervalo_mut;
+  private MiDataset tabla;
   private double PI = 3.1415926;
 
   public Adap_Tun fun_adap;
@@ -61,58 +62,48 @@ class AG_Tun {
 
   public AG_Tun(int n_poblacion, double cruce, double mutacion, double valor_a,
                 double valor_b, double porc_pob_ee11, int gen_ee, Adap_Tun funcion,
-                BaseR_TSK base) {
+                BaseR_TSK base, MiDataset tabla) {
     int i;
 
-    base_reglas = base;
-    fun_adap = funcion;
-    long_poblacion = n_poblacion;
-    prob_cruce = cruce;
-    prob_mutacion = mutacion;
-    a = valor_a;
-    b = valor_b;
-    porc_pob_ee = porc_pob_ee11;
-    n_gen_ee = gen_ee;
-    n_genes = (3 * base_reglas.tabla.n_var_estado +
-               base_reglas.tabla.n_variables) * base_reglas.n_reglas;
+    this.base_reglas = base;
+    this.fun_adap = funcion;
+	this.tabla = tabla;
+    this.long_poblacion = n_poblacion;
+    this.prob_cruce = cruce;
+    this.prob_mutacion = mutacion;
+    this.a = valor_a;
+    this.b = valor_b;
+    this.porc_pob_ee = porc_pob_ee11;
+    this.n_gen_ee = gen_ee;
+    this.n_genes = (3 * this.tabla.n_var_estado + this.tabla.n_variables) * this.base_reglas.n_reglas;
 
-    prob_mutacion = prob_mutacion / (double) n_genes;
+    this.prob_mutacion = this.prob_mutacion / (double) this.n_genes;
+	this.last = (int) (this.long_poblacion * this.prob_cruce);
 
-    Old = new Structure[long_poblacion];
-    New = new Structure[long_poblacion];
-    YaExplotados = new Structure[long_poblacion];
+    this.Old = new Structure[this.long_poblacion];
+    this.New = new Structure[this.long_poblacion];
+    this.YaExplotados = new Structure[this.long_poblacion];
 
-    for (i = 0; i < long_poblacion; i++) {
-      Old[i] = new Structure(n_genes);
-      New[i] = new Structure(n_genes);
-      YaExplotados[i] = new Structure(n_genes);
+    for (i = 0; i < this.long_poblacion; i++) {
+      this.Old[i] = new Structure(this.n_genes);
+      this.New[i] = new Structure(this.n_genes);
+      this.YaExplotados[i] = new Structure(this.n_genes);
     }
 
-    Hijo = new Structure(n_genes);
-    sample = new int[long_poblacion];
-    indices_ordenacion = new int[long_poblacion];
-    intervalo_mut = new TipoIntervalo();
+    this.Hijo = new Structure(this.n_genes);
+    this.sample = new int[this.long_poblacion];
+    this.indices_ordenacion = new int[this.long_poblacion];
+    this.intervalo_mut = new TipoIntervalo();
 
-    intervalos = new TipoIntervalo[n_genes];
-    for (i = 0; i < n_genes; i++) {
-      intervalos[i] = new TipoIntervalo();
+    this.intervalos = new TipoIntervalo[this.n_genes];
+    for (i = 0; i < this.n_genes; i++) {
+      this.intervalos[i] = new TipoIntervalo();
     }
 
-    C = new Structure[4];
+    this.C = new Structure[4];
     for (i = 0; i < 4; i++) {
-      C[i] = new Structure(n_genes);
+      this.C[i] = new Structure(this.n_genes);
     }
-  }
-
-  private int ceil(double v) {
-    int valor;
-
-    valor = (int) Math.round(v);
-    if ( (double) valor < v) {
-      valor++;
-    }
-
-    return (valor);
   }
 
   public void Intercambio() {
@@ -126,8 +117,9 @@ class AG_Tun {
     int i, j, temp, mitad_Pob;
     double Valor_Inicial_Sigma = 0.001;
 
+
     if (prob_mutacion < 1.0) {
-      Mu_next = ceil(Math.log(Randomize.Rand()) / Math.log(1.0 - prob_mutacion));
+      Mu_next = (int) Math.ceil(Math.log(Randomize.Rand()) / Math.log(1.0 - prob_mutacion));
     }
     else {
       Mu_next = 1;
@@ -142,7 +134,7 @@ class AG_Tun {
     primer_gen_C2 = 0;
 
     for (i = 0; i < base_reglas.n_reglas; i++) {
-      for (j = 0; j < base_reglas.tabla.n_var_estado; j++) {
+      for (j = 0; j < tabla.n_var_estado; j++) {
         New[0].Gene[primer_gen_C2] = base_reglas.BaseReglas[i].Ant[j].x0;
         New[0].Gene[primer_gen_C2 + 1] = base_reglas.BaseReglas[i].Ant[j].x1;
         New[0].Gene[primer_gen_C2 + 2] = base_reglas.BaseReglas[i].Ant[j].x3;
@@ -153,41 +145,34 @@ class AG_Tun {
     /* Se establecen los intervalos en los que varia cada gen de la primera
        parte en la primera generacion */
     for (i = 0; i < primer_gen_C2; i += 3) {
-      intervalos[i].min = New[0].Gene[i] -
-          (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
-      intervalos[i].max = New[0].Gene[i] +
-          (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
+      intervalos[i].min = New[0].Gene[i] - (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
+      intervalos[i].max = New[0].Gene[i] + (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
 
-      intervalos[i + 1].min = New[0].Gene[i + 1] -
-          (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
-      intervalos[i + 1].max = New[0].Gene[i + 1] +
-          (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
+      intervalos[i + 1].min = New[0].Gene[i + 1] - (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
+      intervalos[i + 1].max = New[0].Gene[i + 1] + (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
 
-      intervalos[i + 2].min = New[0].Gene[i + 2] -
-          (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
-      intervalos[i + 2].max = New[0].Gene[i + 2] +
-          (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
+      intervalos[i + 2].min = New[0].Gene[i + 2] - (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
+      intervalos[i + 2].max = New[0].Gene[i + 2] + (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
     }
 
     /* Se inicializa la segunda parte del primer cromosoma con los parametros
        de los consecuentes de las reglas de la BC inicial, junto con los inter-
        valos correspondientes */
     for (i = 0; i < base_reglas.n_reglas; i++) {
-      for (j = 0; j < base_reglas.tabla.n_variables; j++) {
-        temp = primer_gen_C2 + i * (base_reglas.tabla.n_variables) + j;
+      for (j = 0; j < tabla.n_variables; j++) {
+        temp = primer_gen_C2 + i * (tabla.n_variables) + j;
         New[0].Gene[temp] = Math.atan(base_reglas.BaseReglas[i].Cons[j]);
-        intervalos[temp].min = - (PI / 2) + 1E-10;
-        intervalos[temp].max = (PI / 2) - 1E-10;
+        intervalos[temp].min = (-1.0 * PI / 2.0) + 1E-10;
+        intervalos[temp].max = (PI / 2.0) - 1E-10;
       }
     }
 
     /* Se genera la segunda mitad de la poblacion inicial generando aleatoriamen-
        te C1 y manteniendo C2 */
-    mitad_Pob = ceil(long_poblacion / 2);
+    mitad_Pob = (int) Math.ceil(long_poblacion / 2.0);
     for (i = 1; i < mitad_Pob; i++) {
       for (j = 0; j < primer_gen_C2; j++) {
-        New[i].Gene[j] = Randomize.Randdouble(intervalos[j].min,
-                                              intervalos[j].max);
+        New[i].Gene[j] = intervalos[j].min + Randomize.Randdouble(intervalos[j].min, intervalos[j].max);
       }
 
       for (j = primer_gen_C2; j < n_genes; j++) {
@@ -201,8 +186,7 @@ class AG_Tun {
        a partir de los intervalos anteriores y mutando C2 */
     for (i = mitad_Pob; i < long_poblacion; i++) {
       for (j = 0; j < primer_gen_C2; j++) {
-        New[i].Gene[j] = Randomize.Randdouble(intervalos[j].min,
-                                              intervalos[j].max);
+        New[i].Gene[j] = intervalos[j].min + Randomize.Randdouble(intervalos[j].min, intervalos[j].max);
       }
 
       for (j = primer_gen_C2; j < n_genes; j++) {
@@ -210,8 +194,7 @@ class AG_Tun {
         do {
           New[i].Gene[j] = New[0].Gene[j] + ValorNormal(Valor_Inicial_Sigma);
         }
-        while (New[i].Gene[j] <= - (PI / 2) ||
-               New[i].Gene[j] >= (PI / 2));
+        while (New[i].Gene[j] <= (-1.0 * PI / 2.0) || New[i].Gene[j] >= (PI / 2.0));
       }
 
       New[i].n_e = 1;
@@ -431,7 +414,7 @@ class AG_Tun {
         /* we calculate the next position */
         if (prob_mutacion < 1) {
           m = Randomize.Rand();
-          Mu_next += ceil(Math.log(m) / Math.log(1.0 - prob_mutacion));
+          Mu_next += (int) Math.ceil(Math.log(m) / Math.log(1.0 - prob_mutacion));
         }
         else {
           Mu_next += 1;
@@ -689,9 +672,7 @@ class AG_Tun {
       }
 
       /* we adapt sigma */
-      new_sigma = AdaptacionSigma(sigma, n_exitos / (double) n_mutaciones,
-                                  (double) n_genes -
-                                  base_reglas.tabla.n_var_estado);
+      new_sigma = AdaptacionSigma(sigma, n_exitos / (double) n_mutaciones, (double) n_genes - tabla.n_var_estado);
 
       if (it_sin_exito >= n_gen_ee) {
         fin = 1;
