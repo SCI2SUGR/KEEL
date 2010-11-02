@@ -112,6 +112,7 @@ class MogulSC {
         // we read if the model is descriptive or approximation
         sT.nextToken();
         valor = sT.nextToken();
+		aplicar_ee = Integer.parseInt(valor.trim());
 
         // we read the evolution strategy iterations
         sT.nextToken();
@@ -153,10 +154,8 @@ class MogulSC {
         tabla_val = new MiDataset(fich_datos_val, false);
         tabla_tst = new MiDataset(fich_datos_tst, false);
 
+        MaxReglas = 100000;
         base_datos = new BaseD(n_etiquetas, tabla);
-
-        MaxReglas = 10000;
-
         base_reglas = new BaseR(MaxReglas, base_datos, tabla);
 
         fun_adap = new Adap(tabla, base_reglas, aplicar_ee);
@@ -165,9 +164,7 @@ class MogulSC {
         fun_adap.K = K;
         fun_adap.tipo_fitness = tipo_fitness;
 
-        ee_11 = new Est_evol(base_datos, base_reglas, fun_adap);
-        ee_11.n_gen_ee = n_gen_ee;
-
+        ee_11 = new Est_evol(base_datos, base_reglas, fun_adap, n_gen_ee);
         indices_nc = new int[tabla.long_tabla];
         Regla_act = new int[tabla.n_variables];
         Padre = new Structure(base_reglas.n_genes);
@@ -225,6 +222,9 @@ class MogulSC {
                 } else {
                     fitness *= fun_adap.PC;
                 }
+
+//				System.out.println("fun_adap.F = " + fun_adap.F + "  fun_adap.G = " + fun_adap.G + "  fun_adap.g = " + fun_adap.g);
+//				System.out.println("PN = " + PN + "  fitness = " + fitness);
 
 				/* Phase 2: Optimization of the rule */
                 if (aplicar_ee == 1) {

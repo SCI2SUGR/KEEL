@@ -108,7 +108,6 @@ class Mam2Tsk {
       sT.nextToken(); //valor parametro
     }
 
-	// System.out.println("\n\nEntrando en Configiracion.");
     // we read the Evolutionary Strategy iterations
     sT.nextToken();
     valor = sT.nextToken();

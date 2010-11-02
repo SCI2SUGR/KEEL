@@ -408,7 +408,6 @@ class Est_evol_M2TSK {
 		/* we evaluate the Landa sons */
 		for (i=0; i<Landa; i++) {
 			Hijos[i].Perf = fun_adap.eval (Hijos[i].Gene);
-		    // System.out.println("Hijos[" + i + "].Perf = " + Hijos[i].Perf);
 		}
 
 		/* we order the sons by mean of the bubble method */

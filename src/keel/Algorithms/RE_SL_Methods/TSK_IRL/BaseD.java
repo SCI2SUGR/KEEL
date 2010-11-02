@@ -41,21 +41,25 @@ class BaseD {
   public BaseD(MiDataset t, int MaxEtiquetas) {
     int i, j;
 
-    tabla = t;
+    this.tabla = t;
 
-    intervalos = new TipoIntervalo[tabla.n_var_estado][MaxEtiquetas];
-    BaseDatos = new Difuso[tabla.n_var_estado][MaxEtiquetas];
+    this.intervalos = new TipoIntervalo[this.tabla.n_var_estado][MaxEtiquetas];
+    this.BaseDatos = new Difuso[this.tabla.n_var_estado][MaxEtiquetas];
 
-    for (i = 0; i < tabla.n_var_estado; i++) {
-      BaseDatos[i] = new Difuso[MaxEtiquetas];
-      intervalos[i] = new TipoIntervalo[MaxEtiquetas];
+    for (i = 0; i < this.tabla.n_var_estado; i++) {
+      this.BaseDatos[i] = new Difuso[MaxEtiquetas];
+      this.intervalos[i] = new TipoIntervalo[MaxEtiquetas];
       for (j = 0; j < MaxEtiquetas; j++) {
-        BaseDatos[i][j] = new Difuso();
-        intervalos[i][j] = new TipoIntervalo();
+        this.BaseDatos[i][j] = new Difuso();
+        this.intervalos[i][j] = new TipoIntervalo();
       }
     }
 
-    n_etiquetas = new int[tabla.n_variables];
+    this.n_etiquetas = new int[this.tabla.n_variables];
+
+    for (i = 0; i < this.tabla.n_variables; i++) {
+      this.n_etiquetas[i] = MaxEtiquetas;
+    }
   }
 
   /** Rounds the generated value for the semantics */

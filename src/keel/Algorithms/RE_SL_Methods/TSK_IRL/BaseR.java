@@ -52,11 +52,11 @@ class BaseR {
   public BaseR(BaseD base_d, MiDataset t) {
     int i;
 
-    tabla = t;
-    base_datos = base_d;
-    n_reglas = 0;
+    this.tabla = t;
+    this.base_datos = base_d;
+    this.n_reglas = 0;
 
-    max_reglas = 1;
+    this.max_reglas = 1;
     for (i = 0; i < tabla.n_var_estado; i++) {
       max_reglas *= base_datos.n_etiquetas[i];
     }
@@ -67,8 +67,8 @@ class BaseR {
     ListaTabu = new double[max_reglas][tabla.n_var_estado];
     Pob_reglas = new int[max_reglas][tabla.n_var_estado];
 
-    BaseReglas = new Regla[max_reglas];
-    for (i = 0; i < max_reglas; i++) {
+    BaseReglas = new Regla[this.max_reglas];
+    for (i = 0; i < this.max_reglas; i++) {
       BaseReglas[i] = new Regla(tabla.n_var_estado, tabla.n_variables);
     }
   }

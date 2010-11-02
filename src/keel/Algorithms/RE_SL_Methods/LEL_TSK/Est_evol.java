@@ -46,10 +46,11 @@ class Est_evol {
     public Adap fun_adap;
 	private double PI = 3.1415926;
 
-    public Est_evol(BaseD base_da, BaseR base_re, Adap fun) {
-        base_datos = base_da;
-        base_reglas = base_re;
-        fun_adap = fun;
+    public Est_evol(BaseD base_da, BaseR base_re, Adap fun, int n_gen_ee) {
+        this.base_datos = base_da;
+        this.base_reglas = base_re;
+        this.fun_adap = fun;
+		this.n_gen_ee = n_gen_ee;
     }
 
 
@@ -92,6 +93,7 @@ class Est_evol {
         /* Inicialization of the counters */
         n_mutaciones = n_exitos = it_sin_exito = fin = 0;
         sigma = new_sigma = 1.0;
+
 
         do {
             for (variable = 0; variable < base_datos.tabla.n_variables; variable++) {
@@ -176,6 +178,7 @@ class Est_evol {
 
             /* we adapt sigma */
             new_sigma = AdaptacionSigma(sigma, n_exitos / (double) n_mutaciones, (double) base_reglas.n_genes - base_datos.tabla.n_variables);
+//			System.out.println("new_sigma  = " + new_sigma);
 
             if (it_sin_exito >= n_gen_ee) {
                 fin = 1;

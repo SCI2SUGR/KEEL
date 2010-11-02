@@ -69,7 +69,6 @@ public class MiDataset {
 
         try {
 
-            // System.out.println("Entrando en Leer Dataset");
             // Load in memory a dataset that contains a regression problem
             IS.readSet(nfejemplos, train);
 
@@ -128,7 +127,6 @@ public class MiDataset {
 
                         for (j = 0; j < n_var_estado; j++) {
                             datos[k].ejemplo[j] = IS.getInputNumericValue(i, j);
-							// System.out.print(" " + datos[k].ejemplo[j]);
                         }
                         if (noOutputs) {
                             datos[k].ejemplo[j] = 0;
@@ -136,15 +134,12 @@ public class MiDataset {
 						else {
                             datos[k].ejemplo[j] = IS.getOutputNumericValue(i, 0);
                         }
-						// System.out.println(" " + datos[k].ejemplo[j]);
-						// System.out.println("");
                         k++;
                     }
                 }
                 calculaRangos(); // read the extremes
                 long_tabla = k;
 				no_cubiertos = long_tabla;
-				// System.out.println("\n\nLongitud de la tabla = " + long_tabla);
             }
         } catch (Exception e) {
             System.out.println("DBG: Exception in readSet");

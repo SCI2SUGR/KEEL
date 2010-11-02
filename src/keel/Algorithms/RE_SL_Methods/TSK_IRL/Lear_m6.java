@@ -102,8 +102,7 @@ class Lear_m6 {
     // we read the seed of the random generator
     sT.nextToken();
     valor = sT.nextToken();
-//    semilla = Double.parseDouble(valor.trim());
-    semilla = 12345678;
+    semilla = Double.parseDouble(valor.trim());
     Randomize.setSeed( (long) semilla);
 
     // we read the Evolutionary Strategy Iterations
@@ -191,11 +190,6 @@ class Lear_m6 {
     tabla_val = new MiDataset(fich_datos_val, false);
     tabla_tst = new MiDataset(fich_datos_tst, false);
     base_datos = new BaseD(tabla, n_etiquetas);
-
-    for (i = 0; i < tabla.n_variables; i++) {
-      base_datos.n_etiquetas[i] = n_etiquetas;
-    }
-
     base_reglas = new BaseR(base_datos, tabla);
     fun_adap = new Adap(tabla, base_reglas, Omega, K, Epsilon, Tipo_fitness);
     ee_mu_landa = new Est_mu_landa(base_reglas, fun_adap, tabla, n_gen_ee, Mu,

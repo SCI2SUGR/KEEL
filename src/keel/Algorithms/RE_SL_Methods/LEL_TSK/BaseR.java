@@ -244,6 +244,7 @@ class BaseR {
             return (num / den);
         } else {
             return ((tabla.extremos[tabla.n_var_estado].max - tabla.extremos[tabla.n_var_estado].min) / 2.0);
+//            return (0.0);
         }
     }
 
