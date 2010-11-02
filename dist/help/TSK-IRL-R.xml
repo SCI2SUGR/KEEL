@@ -24,6 +24,7 @@
         and consequent parts of the fuzzy rules in this previous knowledge base are adapted by a
 		hybrid evolutionary process composed of a genetic algorithm and an evolution strategy 
 		to obtain the final Knowledge Base whose rules cooperate in the best possible way.
+		This algorithm is designed for low dimensional data-sets and it would not work due to memory constraints for problems with more than 7 or 8 variables.
 
         </howWork>
 
