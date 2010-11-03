@@ -105,7 +105,7 @@ class Sel {
     sT.nextToken();
     valor = sT.nextToken();
     semilla = Double.parseDouble(valor.trim());
-    Randomize.setSeed( (long) semilla); ;
+    Randomize.setSeed( (long) semilla);
 
     for (i = 0; i < 14; i++) { //leo los 8 primeros parametros que son del método anterior MOGUL
       sT.nextToken(); //nombre parametro

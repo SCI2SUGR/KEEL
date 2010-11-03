@@ -45,10 +45,11 @@ class Est_evol {
     public BaseR base_reglas;
     public Adap fun_adap;
 
-    public Est_evol(BaseD base_da, BaseR base_re, Adap fun) {
-        base_datos = base_da;
-        base_reglas = base_re;
-        fun_adap = fun;
+    public Est_evol(BaseD base_da, BaseR base_re, Adap fun, int n_gen_ee) {
+        this.base_datos = base_da;
+        this.base_reglas = base_re;
+        this.fun_adap = fun;
+		this.n_gen_ee = n_gen_ee;
     }
 
 
@@ -125,8 +126,7 @@ class Est_evol {
                 n = ValorNormal(new_sigma * S);
                 newx = x0 + n;
                 if (newx <= base_datos.intervalos[variable][etiqueta].min) {
-                    Hijo.Gene[gen] = base_datos.intervalos[variable][etiqueta].
-                                     min;
+                    Hijo.Gene[gen] = base_datos.intervalos[variable][etiqueta].min;
                 } else {
                     if (newx >= newx1) {
                         Hijo.Gene[gen] = newx1;
@@ -173,9 +173,7 @@ class Est_evol {
             }
 
             /* we adapt sigma */
-            new_sigma = AdaptacionSigma(sigma, n_exitos / (double) n_mutaciones,
-                                        (double) base_reglas.n_genes -
-                                        base_datos.tabla.n_variables);
+            new_sigma = AdaptacionSigma(sigma, n_exitos / (double) n_mutaciones, (double) base_reglas.n_genes - base_datos.tabla.n_variables);
 
             if (it_sin_exito >= n_gen_ee) {
                 fin = 1;

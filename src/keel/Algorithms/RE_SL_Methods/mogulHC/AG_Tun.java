@@ -54,12 +54,13 @@ class AG_Tun {
             double valor_b, Adap_Tun funcion) {
     int i;
 
-    long_poblacion = n_poblacion;
-    prob_cruce = cruce;
+    this.long_poblacion = n_poblacion;
+    this.prob_cruce = cruce;
     prob_mutacion = mutacion;
     a = valor_a;
     b = valor_b;
     fun_adap = funcion;
+	this.last = (int) (this.long_poblacion * this.prob_cruce);
 
     sample = new int[long_poblacion];
   }
@@ -119,27 +120,20 @@ class AG_Tun {
 
     /* we generate the variation intervals for each gene */
     for (i = 0; i < n_genes; i += 3) {
-      intervalos[i].min = New[0].Gene[i] -
-          (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
-      intervalos[i].max = New[0].Gene[i] +
-          (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
+      intervalos[i].min = New[0].Gene[i] - (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
+      intervalos[i].max = New[0].Gene[i] + (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
 
-      intervalos[i + 1].min = New[0].Gene[i + 1] -
-          (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
-      intervalos[i + 1].max = New[0].Gene[i + 1] +
-          (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
+      intervalos[i + 1].min = New[0].Gene[i + 1] - (New[0].Gene[i + 1] - New[0].Gene[i]) / 2.0;
+      intervalos[i + 1].max = New[0].Gene[i + 1] + (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
 
-      intervalos[i + 2].min = New[0].Gene[i + 2] -
-          (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
-      intervalos[i + 2].max = New[0].Gene[i + 2] +
-          (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
+      intervalos[i + 2].min = New[0].Gene[i + 2] - (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
+      intervalos[i + 2].max = New[0].Gene[i + 2] + (New[0].Gene[i + 2] - New[0].Gene[i + 1]) / 2.0;
     }
 
     /* the remainder of the population is randomly generated out of a the intervals */
     for (i = 1; i < long_poblacion; i++) {
       for (j = 0; j < n_genes; j++) {
-        New[i].Gene[j] = intervalos[j].min +
-            (intervalos[j].max - intervalos[j].min) * Randomize.Rand();
+        New[i].Gene[j] = intervalos[j].min + (intervalos[j].max - intervalos[j].min) * Randomize.Rand();
       }
 
       New[i].n_e = 1;

@@ -60,6 +60,7 @@ class AG_Tun {
     a = valor_a;
     b = valor_b;
     fun_adap = funcion;
+	this.last = (int) (this.long_poblacion * this.prob_cruce);
 
     sample = new int[long_poblacion];
   }

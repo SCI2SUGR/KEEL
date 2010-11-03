@@ -166,8 +166,7 @@ class MogulSC {
         fun_adap.K = K;
         fun_adap.tipo_fitness = tipo_fitness;
 
-        ee_11 = new Est_evol(base_datos, base_reglas, fun_adap);
-        ee_11.n_gen_ee = n_gen_ee;
+        ee_11 = new Est_evol(base_datos, base_reglas, fun_adap, n_gen_ee);
 
         indices_nc = new int[tabla.long_tabla];
         Regla_act = new int[tabla.n_variables];
