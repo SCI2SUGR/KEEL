@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
  * <p>
- * @author Written by Pedro González (University of Jaen) 15/02/2004
+ * @author Written by Pedro Gonzï¿½lez (University of Jaen) 15/02/2004
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -456,8 +456,8 @@ public class Individual {
       
         float sumaSignClase=0;
         for (int i=0; i<StCalculate.n_clases; i++) {
-            if (cubreClase[i]!=0) {  // If 0 don´t add
-                sumaSignClase += cubreClase[i] * Math.log ((float)cubreClase[i]/(ejClase[i]*coverage));
+            if (cubreClase[i]!=0) {  // If 0 donï¿½t add
+                sumaSignClase += cubreClase[i] * Math.log10((float)cubreClase[i]/(ejClase[i]*coverage));
             }
         }
         significance = 2 * sumaSignClase;
