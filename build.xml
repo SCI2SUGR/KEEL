@@ -3813,24 +3813,6 @@
 			 org/core/**/*.class
 			 keel/Dataset/**/*.class"/>
         </jar> 
-        
-        <jar
-          jarfile="${distMet}/Mam-IRLHC.jar"
-          manifest="${src}/keel/Algorithms/RE_SL_Methods/MamIRLHC/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/RE_SL_Methods/MamIRLHC/**/*.class
-			 org/core/**/*.class
-			 keel/Dataset/**/*.class"/>
-        </jar>
-
-        <jar
-          jarfile="${distMet}/Mam-IRLSC.jar"
-          manifest="${src}/keel/Algorithms/RE_SL_Methods/MamIRLSC/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/RE_SL_Methods/MamIRLSC/**/*.class
-			 org/core/**/*.class
-			 keel/Dataset/**/*.class"/>
-        </jar>
        
         <jar
           jarfile="${distMet}/mogulHC.jar"
