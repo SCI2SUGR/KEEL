@@ -271,12 +271,12 @@ public class Metodo {
 		} 
                 
               
-                
-                datosTest = new double[test.getNumInstances()][Attributes.getInputNumAttributes()];
+          
+        datosTest = new double[test.getNumInstances()][Attributes.getInputNumAttributes()];
 		clasesTest = new int[test.getNumInstances()];
-                caja = new double[1];
+        caja = new double[1];
                 
-                for (i=0; i<test.getNumInstances(); i++) {
+        for (i=0; i<test.getNumInstances(); i++) {
 			temp = test.getInstance(i);
 			nulls = temp.getInputMissingValues();
 			datosTest[i] = test.getInstance(i).getAllInputValues();
@@ -286,18 +286,8 @@ public class Metodo {
 				}
 			caja = test.getInstance(i).getAllOutputValues();
 			clasesTest[i] = (int) caja[0];
-                        
-			for (k = 0; k < datosTest[i].length; k++) {
-				if (Attributes.getInputAttribute(k).getType() == Attribute.NOMINAL) {
-					datosTest[i][k] /= Attributes.getInputAttribute(k).getNominalValuesList().size() - 1;
-				} else {
-					datosTest[i][k] -= Attributes.getInputAttribute(k).getMinAttribute();
-					datosTest[i][k] /= Attributes.getInputAttribute(k).getMaxAttribute() -	Attributes.getInputAttribute(k).getMinAttribute();
-				}
-			}
 		} 
-                
-		
+                		
 	} //end-method
 
 	/** 
