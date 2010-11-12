@@ -8055,7 +8055,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsImbalanced.xml");
             } else {
                 if (objType == MULTIINSTANCE) {
-                    createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsMultiInstance.xml");
+                    createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsMultiinstance.xml");
                 } else {
                     createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "Datasets.xml");
                 }
