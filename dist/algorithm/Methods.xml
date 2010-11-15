@@ -3275,12 +3275,52 @@
     <family>Evolutionary Fuzzy Rule Learning</family>
     <jar_file>SEFC.jar</jar_file>
     <problem_type>regression</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>No</nominal>
+        <missing>No</missing>
+        <imprecise>No</imprecise>
+        <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>No</nominal>
+        <missing>No</missing>
+        <imprecise>No</imprecise>
+        <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance>
+    </output>
   </method>
   <method>
     <name>P_FCS1-R</name>
     <family>Evolutionary Fuzzy Rule Learning</family>
     <jar_file>P_FCS1.jar</jar_file>
     <problem_type>regression</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>No</nominal>
+        <missing>No</missing>
+        <imprecise>No</imprecise>
+        <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>No</nominal>
+        <missing>No</missing>
+        <imprecise>No</imprecise>
+        <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance>
+    </output>
   </method>
   <method>
     <name>WM-R</name>
