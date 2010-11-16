@@ -277,7 +277,7 @@ public class Algorithm {
             /* First, the antecedent */
             for (i = 0; i < entradas; i++) {
                 Poblacion.get(j).antecedente[i].m = Randomize.RanddoubleClosed(train.getMin(i), train.getMax(i));
-                Poblacion.get(j).antecedente[i].sigma = Randomize.RandintClosed(1, 4+1);
+                Poblacion.get(j).antecedente[i].sigma = Randomize.RandintClosed(1, 4);
             }
 
             /* Secondly, the consequent */
@@ -285,7 +285,7 @@ public class Algorithm {
                 num = 0;
 
                 for (i = 0; i < entradas; i++) {
-                    u = Randomize.RanddoubleClosed(0.0, 1.0);
+                    u = Randomize.RandClosed();
                     /* The term is used in the consequent */
                     if (u < 0.5) {
                         Poblacion.get(j).consecuente[i] = Randomize.RanddoubleClosed(-1.0, 1.0);
@@ -301,7 +301,7 @@ public class Algorithm {
                     }
                 }
 
-                u = Randomize.RanddoubleClosed(0.0, 1.0);
+                u = Randomize.RandClosed();
                 /* The term is used in the consequent */
                 if (u < 0.5) {
 //                    Poblacion.get(j).consecuente[entradas] = Randomize.RanddoubleClosed( - 45.0, 45.0);
@@ -335,7 +335,7 @@ public class Algorithm {
 
         SistemaDifuso.clear();
         for (i = 0; i < Nr; i++){
-            pos = Randomize.RandintClosed(0, tam);
+            pos = Randomize.RandintClosed(0, tam-1);
             Poblacion.get(vector[pos]).n_SistemasDifusos++;
             Individual indi = new Individual(Poblacion.get(vector[pos]));
             SistemaDifuso.add(indi);
@@ -404,7 +404,7 @@ public class Algorithm {
             /* First, the antecedent */
             for (i = 0; i < entradas; i++) {
                 Poblacion.get(j).antecedente[i].m = Randomize.RanddoubleClosed(train.getMin(i), train.getMax(i));
-                Poblacion.get(j).antecedente[i].sigma = Randomize.RandintClosed(1, 4+1);
+                Poblacion.get(j).antecedente[i].sigma = Randomize.RandintClosed(1, 4);
             }
 
             /* Secondly, the consequent */
@@ -412,7 +412,7 @@ public class Algorithm {
                 num = 0;
 
                 for (i = 0; i < entradas; i++) {
-                    u = Randomize.RanddoubleClosed(0.0, 1.0);
+                    u = Randomize.RandClosed();
                     /* The term is used in the consequent */
                     if(u < 0.5){
                         Poblacion.get(j).consecuente[i] = Randomize.RanddoubleClosed(-1.0, 1.0);
@@ -427,7 +427,7 @@ public class Algorithm {
                     }
                 }
 
-                u = Randomize.RanddoubleClosed(0.0, 1.0);
+                u = Randomize.RandClosed();
                 /* The term is used in the consequent */
                 if(u < 0.5){
                       Poblacion.get(j).consecuente[entradas] = Randomize.RanddoubleClosed(-1.0 * ((train.getMax(entradas) - train.getMin(entradas)) / 2.0), ((train.getMax(entradas) - train.getMin(entradas)) / 2.0));
@@ -503,9 +503,9 @@ public class Algorithm {
             int result;
             int[] indiv = new int[2];
 
-            indiv[0] = Randomize.RandintClosed(0, ((tamPoblacion / 2) - 1));
+            indiv[0] = Randomize.RandintClosed(0, ((tamPoblacion / 2)-2));
             do{
-                indiv[1] = Randomize.RandintClosed(0, ((tamPoblacion / 2) - 1));
+                indiv[1] = Randomize.RandintClosed(0, ((tamPoblacion / 2) - 2));
             } while (indiv[0] == indiv[1]);
 
             if(Poblacion2.get(indiv[0]).fitness > Poblacion2.get(indiv[1]).fitness){
@@ -537,7 +537,7 @@ public class Algorithm {
                     salir = true;
 
                     /* We choose the crossover site */
-                    xpoint = Randomize.RandintClosed(1, ((2 * entradas) + entradas));
+                    xpoint = Randomize.RandintClosed(1, ((2 * entradas) + entradas -1));
 
                     /* The crossover point is in the antededent part */
                     if(xpoint < (2 * entradas)){
@@ -636,16 +636,16 @@ public class Algorithm {
             for (j = 0; j < tamPoblacion; j++){
                 /* First, the antecedent */
                 for (i = 0; i < entradas; i++){
-                    u = Randomize.RanddoubleClosed(0.0, 1.0);
+                    u = Randomize.RandClosed();
                     if (u < probMut){
                         Poblacion.get(j).antecedente[i].m = Randomize.RanddoubleClosed(train.getMin(i), train.getMax(i));
                     }
 
-                    u = Randomize.RanddoubleClosed(0.0, 1.0);
+                    u = Randomize.RandClosed();
                     if (u < probMut){
                         aux1 = Poblacion.get(j).antecedente[i].sigma;
                         do{
-                            Poblacion.get(j).antecedente[i].sigma = Randomize.RandintClosed(1, 4 + 1);
+                            Poblacion.get(j).antecedente[i].sigma = Randomize.RandintClosed(1, 4);
                         } while (aux1 == Poblacion.get(j).antecedente[i].sigma);
                     }
                 }
@@ -659,9 +659,9 @@ public class Algorithm {
                 }
 
                 for (i = 0; i < entradas; i++){
-                    u = Randomize.RanddoubleClosed(0.0, 1.0);
+                    u = Randomize.RandClosed();
                     if (u < probMut){
-                        u2 = Randomize.RanddoubleClosed(0.0, 1.0);
+                        u2 = Randomize.RandClosed();
                         if (u2 < 0.5){
                             Poblacion.get(j).consecuente[i] = Randomize.RanddoubleClosed(-1.0, 1.0);
                         }
@@ -675,9 +675,9 @@ public class Algorithm {
                     }
                 }
 
-                u = Randomize.RanddoubleClosed(0.0, 1.0);
+                u = Randomize.RandClosed();
                 if (u < probMut){
-                    u2 = Randomize.RanddoubleClosed(0.0, 1.0);
+                    u2 = Randomize.RandClosed();
                     if (u2 < 0.5){
                         Poblacion.get(j).consecuente[entradas] = Randomize.RanddoubleClosed(-1.0 * ((train.getMax(entradas) - train.getMin(entradas)) / 2.0), ((train.getMax(entradas) - train.getMin(entradas)) / 2.0));
 //                        Poblacion.get(j).consecuente[entradas] = Randomize.RanddoubleClosed(-45.0, 45.0);

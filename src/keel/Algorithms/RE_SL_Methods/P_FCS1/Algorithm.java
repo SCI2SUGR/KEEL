@@ -504,11 +504,11 @@ public class Algorithm {
 
         Descen.clear();
 
-        u = Randomize.RanddoubleClosed(0.0, 1.0);
+        u = Randomize.RandClosed();
         if (u < probCrossover) {
             /* We calculate the two crosspoints vectors C1 and C2 */
-            R1 = Randomize.RanddoubleClosed(0.0, 1.0);
-            R2 = Randomize.RanddoubleClosed(0.0, 1.0);
+            R1 = Randomize.RandClosed();
+            R2 = Randomize.RandClosed();
             for (i = 0; i < entradas; i++) {
                 C1[i] = train.getMin(i) +
                         (train.getMax(i) - train.getMin(i)) *
@@ -659,13 +659,13 @@ public class Algorithm {
         double u, factor;
 
         /* First child */
-        reg = Randomize.RandintClosed(0, Descen.get(0).num_reglas);
-        entrada = Randomize.RandintClosed(0, entradas + 1);
+        reg = Randomize.RandintClosed(0, Descen.get(0).num_reglas-1);
+        entrada = Randomize.RandintClosed(0, entradas);
         factor = Randomize.RanddoubleClosed(0.9, 1.1);
 
-        u = Randomize.RanddoubleClosed(0.0, 1.0);
+        u = Randomize.RandClosed();
         if (u < probMut) {
-            u = Randomize.RanddoubleClosed(0.0, 1.0);
+            u = Randomize.RandClosed();
             /* We mutate the center of input "entrada" in the rule "reg" of the first child */
             if (u < 0.5) {
                 Descen.get(0).RuleBase[reg].memfunctions[entrada].center *=
@@ -679,13 +679,13 @@ public class Algorithm {
         }
 
         /* Second child */
-        reg = Randomize.RandintClosed(0, Descen.get(1).num_reglas);
-        entrada = Randomize.RandintClosed(0, entradas + 1);
+        reg = Randomize.RandintClosed(0, Descen.get(1).num_reglas-1);
+        entrada = Randomize.RandintClosed(0, entradas);
         factor = Randomize.RanddoubleClosed(0.9, 1.1);
 
-        u = Randomize.RanddoubleClosed(0.0, 1.0);
+        u = Randomize.RandClosed();
         if (u < probMut) {
-            u = Randomize.RanddoubleClosed(0.0, 1.0);
+            u = Randomize.RandClosed();
             /* We mutate the center of input "entrada" in the rule "reg" of the first child */
             if (u < 0.5) {
                 Descen.get(1).RuleBase[reg].memfunctions[entrada].center *=
