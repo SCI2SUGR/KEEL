@@ -277,11 +277,21 @@ public class Multiple {
     	out+="\n\nFriedman statistic considering reduction performance (distributed according to chi-square with "
     		+(algorithmName.length-1)+" degrees of freedom: "+nf6.format(friedman)+".\n\n";
 
+		double pFriedman;
+        pFriedman = ChiSq(friedman, (algorithmName.length-1));
+
+        System.out.print("P-value computed by Friedman Test: " + pFriedman +".\\newline\n\n");
+		
     	/*Compute the Iman-Davenport statistic*/
     	if(Iman){
-    	iman = ((nDatasets-1)*friedman)/(nDatasets*(algorithmName.length-1) - friedman);
-    	out+="Iman and Davenport statistic considering reduction performance (distributed according to F-distribution with "
+			iman = ((nDatasets-1)*friedman)/(nDatasets*(algorithmName.length-1) - friedman);
+			out+="Iman and Davenport statistic considering reduction performance (distributed according to F-distribution with "
     		+(algorithmName.length-1)+" and "+ (algorithmName.length-1)*(nDatasets-1) +" degrees of freedom: "+nf6.format(iman)+".\n\n";
+			
+			double pIman;
+		
+			pIman = FishF(iman, (algorithmName.length-1),(algorithmName.length-1) * (nDatasets - 1));
+			System.out.print("P-value computed by Iman and Daveport Test: " + pIman +".\\newline\n\n");
     	}
     	
     	termino3 = Math.sqrt((double)algorithmName.length*((double)algorithmName.length+1)/(6.0*(double)nDatasets));
@@ -917,6 +927,111 @@ public class Multiple {
 		
 		return a;		
 	}//end-method
+	
+	/**
+	* Chi square distribution
+	*
+	* @param x Chi^2 value
+	* @param n Degrees of freedom
+	*
+	* @return P-value associated
+	*/
+	private static double ChiSq(double x, int n) {
+        if (n == 1 & x > 1000) {
+            return 0;
+        }
+        if (x > 1000 | n > 1000) {
+            double q = ChiSq((x - n) * (x - n) / (2 * n), 1) / 2;
+            if (x > n) {
+                return q;
+            }
+            {
+                return 1 - q;
+            }
+        }
+        double p = Math.exp( -0.5 * x);
+        if ((n % 2) == 1) {
+            p = p * Math.sqrt(2 * x / Math.PI);
+        }
+        double k = n;
+        while (k >= 2) {
+            p = p * x / k;
+            k = k - 2;
+        }
+        double t = p;
+        double a = n;
+        while (t > 0.0000000001 * p) {
+            a = a + 2;
+            t = t * x / a;
+            p = p + t;
+        }
+        return 1 - p;
+    }
+	
+	/**
+	* Fisher distribution
+	*
+	* @param f Fisher value
+	* @param n1 N1 value
+	* @param n2 N2 value
+	*
+	* @return P-value associated
+	*/
+	private static double FishF(double f, int n1, int n2) {
+        double x = n2 / (n1 * f + n2);
+        if ((n1 % 2) == 0) {
+            return StatCom(1 - x, n2, n1 + n2 - 4, n2 - 2) * Math.pow(x, n2 / 2.0);
+        }
+        if ((n2 % 2) == 0) {
+            return 1 -
+                    StatCom(x, n1, n1 + n2 - 4, n1 - 2) *
+                    Math.pow(1 - x, n1 / 2.0);
+        }
+        double th = Math.atan(Math.sqrt(n1 * f / (1.0*n2)));
+        double a = th / (Math.PI / 2.0);
+        double sth = Math.sin(th);
+        double cth = Math.cos(th);
+        if (n2 > 1) {
+            a = a +
+                sth * cth * StatCom(cth * cth, 2, n2 - 3, -1) / (Math.PI / 2.0);
+        }
+        if (n1 == 1) {
+            return 1 - a;
+        }
+        double c = 4 * StatCom(sth * sth, n2 + 1, n1 + n2 - 4, n2 - 2) * sth *
+                   Math.pow(cth, n2) / Math.PI;
+        if (n2 == 1) {
+            return 1 - a + c / 2.0;
+        }
+        int k = 2;
+        while (k <= (n2 - 1) / 2.0) {
+            c = c * k / (k - .5);
+            k = k + 1;
+        }
+        return 1 - a + c;
+    }
+	
+	/**
+	* StatCom distribution
+	*
+	* @param q q parameter
+	* @param i i parameter
+	* @param j j parameter
+	* @param b b parameter
+	*
+	* @return P-value associated
+	*/
+	private static double StatCom(double q, int i, int j, int b) {
+        double zz = 1;
+        double z = zz;
+        int k = i;
+        while (k <= j) {
+            zz = zz * q * k / (k - b);
+            z = z + zz;
+            k = k + 2;
+        }
+        return z;
+    }
 	
 	/**
 	* Prints as many "c" as desired
