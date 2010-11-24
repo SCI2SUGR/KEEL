@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-import keel.Algorithms.Neural_Networks.RBFN_decremental_CL.RBFUtils;
+import keel.Algorithms.Neural_Networks.RBFN_decremental.RBFUtils;
 
 
 public class Rbfn {

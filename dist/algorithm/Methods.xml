@@ -1230,22 +1230,22 @@
     <jar_file>RBFN_decremental.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
-      <continuous>No</continuous>
-      <integer>No</integer>
-      <nominal>No</nominal>
-      <missing>No</missing>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     <multiinstance>No</multiinstance> 
 	</input>
     <output>
-      <continuous>No</continuous>
-      <integer>No</integer>
-      <nominal>No</nominal>
-      <missing>No</missing>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     <multiinstance>No</multiinstance> 
 	</output>

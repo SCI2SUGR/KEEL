@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,8 +32,8 @@
  
 /**
  * <p>
- * @author Writen by Antonio J. Rivera Rivas (University of Jaén) 03/03/2004
- * @author Modified by María Dolores Pérez Godoy (University of Jaén) 17/12/2008
+ * @author Writen by Antonio J. Rivera Rivas (University of Jaï¿½n) 03/03/2004
+ * @author Modified by Marï¿½a Dolores Pï¿½rez Godoy (University of Jaï¿½n) 17/12/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -269,7 +269,6 @@ public class Rbf implements Cloneable {
    public double euclideaDist(double [] v) {
        int i;
        double aux=0;
-
        for (i=0; i<nInput; i++)
            aux+=(v[i]-centre[i])*(v[i]-centre[i]);
        return(Math.sqrt(aux));
