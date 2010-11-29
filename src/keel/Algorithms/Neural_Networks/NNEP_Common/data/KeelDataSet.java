@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -85,7 +85,11 @@ public class KeelDataSet extends FileDataset{
 	
 	/** The keyword used to denote the output attribute */
 	  
-	static String KEEL_OUTPUT = "@output";
+	static String KEEL_OUTPUTS = "@outputs";
+
+	/** The keyword used to denote the input attribute */
+
+	static String KEEL_INPUTS = "@inputs";
 		
 	
 	/** Symbol which represents missed values */
@@ -300,17 +304,18 @@ public class KeelDataSet extends FileDataset{
 			//Read until finding the sentence @DATA
 			String line = ((BufferedReader) fileReader).readLine();
 			int indexAttribute = 0;
+                        line = line.replace("real[","real [");
+                        line = line.replace("integer[","integer [");
+                        line = line.replace("{"," {");
 			StringTokenizer elementLine = new StringTokenizer(line);
 			String element = elementLine.nextToken();
 			
 			while (!element.equalsIgnoreCase(KEEL_DATA)){
-				
 				if(element.equalsIgnoreCase(KEEL_ATTRIBUTE)){
 					//The next attribute	
 					indexAttribute++;
 					String name = elementLine.nextToken();
 					String type = elementLine.nextToken();
-					
 					if(type.equalsIgnoreCase("REAL") || type.equalsIgnoreCase("INTEGER")){
 						addAttributeToSpecification(type, line, name);
 					}
@@ -326,7 +331,10 @@ public class KeelDataSet extends FileDataset{
 				line = ((BufferedReader) fileReader).readLine();
 				while(line.startsWith(commentedValue) || line.equalsIgnoreCase(""))
 					line = ((BufferedReader) fileReader).readLine();
-				
+
+                                line = line.replace("real[","real [");
+                                line = line.replace("integer[","integer [");
+                                line = line.replace("{"," {");
 				elementLine = new StringTokenizer(line);
 				element = elementLine.nextToken();
 				
@@ -564,4 +572,5 @@ public class KeelDataSet extends FileDataset{
 		}
 	}
 }
+
 

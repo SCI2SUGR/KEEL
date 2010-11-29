@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -445,7 +445,7 @@ public class DoubleTransposedDataSet implements IConfigure
 		for(int i=0; i<metadata.numberOfAttributes(); i++){
 			if(metadata.getAttribute(i).getType() == AttributeType.Categorical){
 				int numberCategories = ((CategoricalAttribute) metadata.getAttribute(i)).getNumberCategories();
-				if(numberCategories==2)
+				if(numberCategories==2 && schema[i]==1)
 					numberCategories=1;
 				if(schema[i]==1)
 					nOfInputs+=(numberCategories-1);
@@ -480,7 +480,7 @@ public class DoubleTransposedDataSet implements IConfigure
 				else{
 					CategoricalAttribute attribute = (CategoricalAttribute) metadata.getAttribute(i);
 					int numberCategories = attribute.getNumberCategories();
-					if(numberCategories==2)
+					if(numberCategories==2 && schema[i]==1)
 						numberCategories=1;
 					if(schema[i]==1)
 						for(int j=1; j<=numberCategories; j++)
@@ -794,4 +794,5 @@ public class DoubleTransposedDataSet implements IConfigure
 		fileName = settings.getString("[@file-name]");
 	}
 }
+
 

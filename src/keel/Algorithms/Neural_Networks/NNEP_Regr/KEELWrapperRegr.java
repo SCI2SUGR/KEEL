@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -243,9 +243,18 @@ public class KEELWrapperRegr
 		algConf.addProperty("evaluator.error-function", "keel.Algorithms.Neural_Networks.NNEP_Regr.problem.errorfunctions.MSEErrorFunction");
 		
 		algConf.addProperty("evaluator.input-interval[@closure]", "closed-closed");
-		algConf.addProperty("evaluator.input-interval[@left]", 0.1);
-		algConf.addProperty("evaluator.input-interval[@right]", 0.9);
-		algConf.addProperty("evaluator.output-interval[@closure]", "closed-closed");
+		if  (props.getProperty("Transfer").equals("Product_Unit"))
+		{
+                    algConf.addProperty("evaluator.input-interval[@left]", 1.0);
+                    algConf.addProperty("evaluator.input-interval[@right]", 2.0);
+		}
+		else
+		{
+                    algConf.addProperty("evaluator.input-interval[@left]", 0.1);
+                    algConf.addProperty("evaluator.input-interval[@right]", 0.9);
+		}
+
+                algConf.addProperty("evaluator.output-interval[@closure]", "closed-closed");
 
 		algConf.addProperty("evaluator.output-interval[@left]", 1.0);
 		algConf.addProperty("evaluator.output-interval[@right]", 2.0);			
@@ -341,6 +350,9 @@ public class KEELWrapperRegr
 
 		Reader reader = new BufferedReader(new FileReader(file));			
 		String line = ((BufferedReader) reader).readLine();
+                line = line.replace("real[","real [");
+                line = line.replace("integer[","integer [");
+                line = line.replace("{"," {");
 		StringTokenizer elementLine = new StringTokenizer(line);
 		String element = elementLine.nextToken();
 
@@ -365,6 +377,10 @@ public class KEELWrapperRegr
 			line = ((BufferedReader) reader).readLine();
 			while(line.startsWith("%") || line.equalsIgnoreCase(""))
 				line = ((BufferedReader) reader).readLine();
+                        
+                        line = line.replace("real[","real [");
+                        line = line.replace("integer[","integer [");
+                        line = line.replace("{"," {");
 
 			elementLine = new StringTokenizer(line);
 			element = elementLine.nextToken();
@@ -431,4 +447,5 @@ public class KEELWrapperRegr
 		return schema;
 	}
 }
+
 
