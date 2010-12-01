@@ -33,6 +33,7 @@
  * Specific table model for the data table
  *
  * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
+ * @author Modified by Joaquin Derrac (University of Granada) 1/12/2010
  * @version 1.0
  * @since JDK1.5
 */
@@ -51,6 +52,8 @@ public class statTableModel extends DefaultTableModel{
     private Class classes[];
     private Object values [][];
 
+    private String separator;
+
     private static final int CORRECT = 0;
     private static final int VOID = 1;
     private static final int INCORRECT = 2;
@@ -64,7 +67,7 @@ public class statTableModel extends DefaultTableModel{
         rows=10;
 
         resetData();
-    }
+    }//end-method
 
     /**
      * Gets the number of columns of the table
@@ -74,7 +77,7 @@ public class statTableModel extends DefaultTableModel{
     @Override
     public int getColumnCount() {
         return numColumns;
-    }
+    }//end-method
 
     /**
      * Gets the number of rows of the table
@@ -84,7 +87,7 @@ public class statTableModel extends DefaultTableModel{
     @Override
     public int getRowCount() {
         return rows;
-    }
+    }//end-method
 
     /**
      * Get the name of a column
@@ -96,7 +99,7 @@ public class statTableModel extends DefaultTableModel{
     @Override
     public String getColumnName(int col) {
         return columnNames[col];
-    }
+    }//end-method
 
     /**
      * Gets the value of a cell
@@ -109,7 +112,7 @@ public class statTableModel extends DefaultTableModel{
     @Override
     public Object getValueAt(int row, int col) {
         return values[row][col];
-    }
+    }//end-method
 
     /**
      * Get the class of a column
@@ -121,7 +124,7 @@ public class statTableModel extends DefaultTableModel{
     @Override
     public Class getColumnClass(int c) {
         return classes[c];
-    }
+    }//end-method
 
     /**
      * Tets if a cell is editable
@@ -136,7 +139,7 @@ public class statTableModel extends DefaultTableModel{
 
         return true;
         
-    }
+    }//end-method
 
     /**
      * Sets the value of a cell
@@ -150,7 +153,7 @@ public class statTableModel extends DefaultTableModel{
     public void setValueAt(Object value, int row, int col) {
         values[row][col] = value;
         fireTableCellUpdated(row, col);
-    }
+    }//end-method
 
     /**
      * Resizes a table
@@ -164,7 +167,7 @@ public class statTableModel extends DefaultTableModel{
         rows=newData;
 
         resetData();
-    }
+    }//end-method
 
     /**
      * Resets data of the table to defaukt values
@@ -198,7 +201,7 @@ public class statTableModel extends DefaultTableModel{
 
         this.fireTableStructureChanged();
         
-    }
+    }//end-method
 
     /**
      * Exports the contents of the table in CSV format
@@ -237,7 +240,7 @@ public class statTableModel extends DefaultTableModel{
         output+="\n";
         
         return output;
-    }
+    }//end-method
 
     /**
      * Load the contents of the table in CSV format
@@ -258,11 +261,13 @@ public class statTableModel extends DefaultTableModel{
         int newAlg;
         int newData;
 
+        scanSeparator(contents);
+
         fileLines = new StringTokenizer (contents,"\n\r");
 
         line=fileLines.nextToken();
 
-        lineWords=new StringTokenizer (line, ",");
+        lineWords=new StringTokenizer (line, separator);
 
         newAlg=lineWords.countTokens()-1;
 
@@ -323,7 +328,7 @@ public class statTableModel extends DefaultTableModel{
 
             line=fileLines.nextToken();
 
-            lineWords=new StringTokenizer (line, ",");
+            lineWords=new StringTokenizer (line, separator);
 
             counter=0;
             while(lineWords.hasMoreTokens()){
@@ -337,7 +342,7 @@ public class statTableModel extends DefaultTableModel{
             counter2=0;
             while(fileLines.hasMoreTokens()){
                 line=fileLines.nextToken();
-                lineWords=new StringTokenizer (line, ",");
+                lineWords=new StringTokenizer (line, separator);
 
                 counter=0;
 
@@ -359,7 +364,35 @@ public class statTableModel extends DefaultTableModel{
         this.fireTableStructureChanged();
 
         return errorCode;
-    }
+    }//end-method
+
+    /**
+     * Tries to find which separator for CSV ("," or ";") have been used
+     *
+     * @param contents Data to scan
+     */
+    private void scanSeparator(String contents){
+
+        int numComma=0;
+        int numDotComma=0;
+
+        for(int i=0;i<contents.length();i++){
+            if(contents.charAt(i)==','){
+                numComma++;
+            }
+            if(contents.charAt(i)==';'){
+                numDotComma++;
+            }
+        }
+
+        if(numDotComma>numComma){
+            separator=";";
+        }
+        else{
+            separator=",";
+        }
+
+    }//end-method
 
     /**
      * Test if a line is correct
@@ -375,10 +408,9 @@ public class statTableModel extends DefaultTableModel{
         StringTokenizer lineWords;
         String element;
 
-        lineWords=new StringTokenizer (line, ",");
+        lineWords=new StringTokenizer (line, separator);
 
         elements=lineWords.countTokens()-1;
-
 
         if(elements==1){
             return 1;
@@ -401,6 +433,7 @@ public class statTableModel extends DefaultTableModel{
         }
 
         return 0;
-    }
-}
+    }//end-method
+    
+}//end-class
 

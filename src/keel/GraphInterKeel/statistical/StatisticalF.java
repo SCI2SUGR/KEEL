@@ -33,9 +33,10 @@
  * Main frame of the statistical module
  *
  * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
+ * @author Modified by Joaquin Derrac (University of Granada) 1/12/2010
  * @version 1.0
  * @since JDK1.5
-*/
+ */
 package keel.GraphInterKeel.statistical;
 
 import java.awt.Toolkit;
@@ -49,31 +50,27 @@ import keel.GraphInterKeel.statistical.help.HelpContent;
 import keel.GraphInterKeel.statistical.tests.Contrast;
 import keel.GraphInterKeel.statistical.tests.Friedman;
 import keel.GraphInterKeel.statistical.tests.Multiple;
+import keel.GraphInterKeel.statistical.tests.Wilcoxon;
 
 public class StatisticalF extends javax.swing.JFrame {
 
     protected JFrame parent = null;
     private HelpContent content = new HelpContent();
-
     private int testType;
     private int objective;
-
     private statTableModel model;
     private StatCellEditor editor;
     private statTableRenderer renderer;
-
     private final static int FRIEDMAN = 0;
     private final static int FRIEDMAN_ALIGNED = 1;
     private final static int QUADE = 2;
     private final static int CONTRAST = 3;
     private final static int MULTIPLE = 4;
-
+    private final static int WILCOXON = 5;
     public final static int MINDATA = 4;
     public final static int MAXDATA = 500;
-
-    public final static int MINALG = 3;
+    public final static int MINALG = 2;
     public final static int MAXALG = 50;
-
     public final static int MAXIMIZE = 1;
     public final static int MINIMIZE = 2;
 
@@ -83,15 +80,15 @@ public class StatisticalF extends javax.swing.JFrame {
     public StatisticalF() {
 
         this.setResizable(false);
-        
+
         TableColumn column;
 
         initComponents();
 
-        testType=FRIEDMAN;
-        objective=MAXIMIZE;
+        testType = FRIEDMAN;
+        objective = MAXIMIZE;
 
-        model= new statTableModel();
+        model = new statTableModel();
 
         editor = new StatCellEditor();
 
@@ -124,7 +121,7 @@ public class StatisticalF extends javax.swing.JFrame {
         //set the form visible
         this.setVisible(true);
 
-    }
+    }//end-method
 
     /**
      * <p>
@@ -134,7 +131,7 @@ public class StatisticalF extends javax.swing.JFrame {
      */
     public void setParent(JFrame parent) {
         this.parent = parent;
-    }
+    }//end-method
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -168,6 +165,7 @@ public class StatisticalF extends javax.swing.JFrame {
         radioBContrast = new javax.swing.JRadioButton();
         radioBQuade = new javax.swing.JRadioButton();
         radioBMultiple = new javax.swing.JRadioButton();
+        radioBWilcoxon = new javax.swing.JRadioButton();
         buttonPanel = new javax.swing.JPanel();
         loadButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
@@ -276,7 +274,7 @@ public class StatisticalF extends javax.swing.JFrame {
                     .addComponent(checkNemenyi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(checkShaffer)
                     .addComponent(checkBergman))
-                .addGap(40, 40, 40))
+                .addGap(59, 59, 59))
         );
         optionsPanelLayout.setVerticalGroup(
             optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,6 +358,15 @@ public class StatisticalF extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(radioBWilcoxon);
+        radioBWilcoxon.setText(resourceMap.getString("radioBWilcoxon.text")); // NOI18N
+        radioBWilcoxon.setName("radioBWilcoxon"); // NOI18N
+        radioBWilcoxon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBWilcoxonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout radioPanelLayout = new javax.swing.GroupLayout(radioPanel);
         radioPanel.setLayout(radioPanelLayout);
         radioPanelLayout.setHorizontalGroup(
@@ -370,13 +377,15 @@ public class StatisticalF extends javax.swing.JFrame {
                     .addComponent(radioBQuade)
                     .addComponent(radioBFriedman)
                     .addComponent(radioBAligned))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(radioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(radioPanelLayout.createSequentialGroup()
                         .addComponent(radioBMultiple)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, radioPanelLayout.createSequentialGroup()
-                        .addComponent(radioBContrast)
+                        .addGroup(radioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(radioBWilcoxon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(radioBContrast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(50, 50, 50))))
         );
         radioPanelLayout.setVerticalGroup(
@@ -391,7 +400,9 @@ public class StatisticalF extends javax.swing.JFrame {
                     .addComponent(radioBQuade)
                     .addComponent(radioBContrast))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radioBAligned))
+                .addGroup(radioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioBAligned)
+                    .addComponent(radioBWilcoxon)))
         );
 
         buttonPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -504,7 +515,7 @@ public class StatisticalF extends javax.swing.JFrame {
                     .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(analysisButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         buttonPanelLayout.setVerticalGroup(
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -559,7 +570,7 @@ public class StatisticalF extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, measurePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(radioBMaximize)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(radioBMinimize)
                 .addGap(63, 63, 63))
         );
@@ -651,18 +662,18 @@ public class StatisticalF extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void radioBFriedmanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBFriedmanActionPerformed
-        testType=FRIEDMAN;
+        testType = FRIEDMAN;
 
         setOneAllChecks();
         unsetMultipleChecks();
 
         radioBMaximize.setEnabled(true);
         radioBMinimize.setEnabled(true);
-       
+
     }//GEN-LAST:event_radioBFriedmanActionPerformed
 
     private void radioBQuadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBQuadeActionPerformed
-        testType=QUADE;
+        testType = QUADE;
 
         setOneAllChecks();
         unsetMultipleChecks();
@@ -672,7 +683,7 @@ public class StatisticalF extends javax.swing.JFrame {
     }//GEN-LAST:event_radioBQuadeActionPerformed
 
     private void radioBAlignedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBAlignedActionPerformed
-        testType=FRIEDMAN_ALIGNED;
+        testType = FRIEDMAN_ALIGNED;
 
         setOneAllChecks();
         unsetMultipleChecks();
@@ -682,7 +693,7 @@ public class StatisticalF extends javax.swing.JFrame {
     }//GEN-LAST:event_radioBAlignedActionPerformed
 
     private void radioBMultipleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBMultipleActionPerformed
-        testType=MULTIPLE;
+        testType = MULTIPLE;
 
         unsetOneAllChecks();
         setMultipleChecks();
@@ -692,7 +703,7 @@ public class StatisticalF extends javax.swing.JFrame {
     }//GEN-LAST:event_radioBMultipleActionPerformed
 
     private void radioBContrastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBContrastActionPerformed
-        testType=CONTRAST;
+        testType = CONTRAST;
 
         unsetOneAllChecks();
         unsetMultipleChecks();
@@ -710,31 +721,33 @@ public class StatisticalF extends javax.swing.JFrame {
         int salvar = JOptionPane.YES_OPTION;
 
         salvar = JOptionPane.showConfirmDialog(this,
-             "This will erase all data. Are you sure?", "Set dimensions",
-             JOptionPane.YES_NO_OPTION);
+                "This will erase all data. Are you sure?", "Set dimensions",
+                JOptionPane.YES_NO_OPTION);
 
         if (salvar == JOptionPane.YES_OPTION) {
-            try{
-                newData=Integer.parseInt(datasetsField.getText());
-                newMethod=Integer.parseInt(methodsField.getText());
+            try {
+                newData = Integer.parseInt(datasetsField.getText());
+                newMethod = Integer.parseInt(methodsField.getText());
 
-            }catch(NumberFormatException e){
-                newData=0;
-                newMethod=0;
+            } catch (NumberFormatException e) {
+                newData = 0;
+                newMethod = 0;
             }
 
-            code=adequateDimensions(newMethod,newData);
+            code = adequateDimensions(newMethod, newData);
 
-            switch(code){
-                case 0: model.resizeTable(newData,newMethod);
-                       break;
-                case 1:  JOptionPane.showMessageDialog(this, "Error setting dimensions:\n" +
-                        "The number of datsets must be between "+MINDATA+ " and " +MAXDATA + " .", "Error", JOptionPane.ERROR_MESSAGE);
-                       break;
+            switch (code) {
+                case 0:
+                    model.resizeTable(newData, newMethod);
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(this, "Error setting dimensions:\n" +
+                            "The number of datsets must be between " + MINDATA + " and " + MAXDATA + " .", "Error", JOptionPane.ERROR_MESSAGE);
+                    break;
                 case 2:
-                        JOptionPane.showMessageDialog(this, "Error setting dimensions:\n" +
-                        "The number of algorithms must be between "+MINALG+ " and " +MAXALG + " .", "Error", JOptionPane.ERROR_MESSAGE);
-                       break;
+                    JOptionPane.showMessageDialog(this, "Error setting dimensions:\n" +
+                            "The number of algorithms must be between " + MINALG + " and " + MAXALG + " .", "Error", JOptionPane.ERROR_MESSAGE);
+                    break;
             }
 
             scrollTable.repaint();
@@ -748,8 +761,8 @@ public class StatisticalF extends javax.swing.JFrame {
         int salvar = JOptionPane.YES_OPTION;
 
         salvar = JOptionPane.showConfirmDialog(this,
-             "This will erase all data. Are you sure?", "Clear data",
-             JOptionPane.YES_NO_OPTION);
+                "This will erase all data. Are you sure?", "Clear data",
+                JOptionPane.YES_NO_OPTION);
         if (salvar == JOptionPane.YES_OPTION) {
             model.resetData();
         }
@@ -758,7 +771,7 @@ public class StatisticalF extends javax.swing.JFrame {
 
     private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
 
-        File saveFile=null;
+        File saveFile = null;
 
         String contents;
         String path;
@@ -775,33 +788,32 @@ public class StatisticalF extends javax.swing.JFrame {
 
         int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            saveFile=chooser.getSelectedFile();
-        }
-        else{
+            saveFile = chooser.getSelectedFile();
+        } else {
             return;
         }
 
         try {
-            path=saveFile.getCanonicalPath();
+            path = saveFile.getCanonicalPath();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error exporting data:\n" + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if(!path.endsWith(".csv")){
-            path+=".csv";
+        if (!path.endsWith(".csv")) {
+            path += ".csv";
         }
 
-        contents=model.generateCSVOutput();
+        contents = model.generateCSVOutput();
 
         Files.writeFile(path, contents);
 
-        JOptionPane.showMessageDialog(this, "Data succesfully exported to "+path+" file.", "Export data", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Data succesfully exported to " + path + " file.", "Export data", JOptionPane.INFORMATION_MESSAGE);
 }//GEN-LAST:event_exportButtonActionPerformed
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
 
-        File loadFile=null;
+        File loadFile = null;
         int errorCode;
 
         String contents;
@@ -819,28 +831,27 @@ public class StatisticalF extends javax.swing.JFrame {
 
         int returnVal = chooser.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            loadFile=chooser.getSelectedFile();
-        }
-        else{
+            loadFile = chooser.getSelectedFile();
+        } else {
             return;
         }
 
         try {
-            path=loadFile.getCanonicalPath();
+            path = loadFile.getCanonicalPath();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error loading data:\n" + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if(!path.endsWith(".csv")){
-            path+=".csv";
+        if (!path.endsWith(".csv")) {
+            path += ".csv";
         }
 
-        contents=Files.readFile(path);
+        contents = Files.readFile(path);
 
-        errorCode=model.loadCSVData(contents);
+        errorCode = model.loadCSVData(contents);
 
-        switch(errorCode){
+        switch (errorCode) {
 
             case 0:
                 JOptionPane.showMessageDialog(this, "Data succesfully loaded.", "Load data", JOptionPane.INFORMATION_MESSAGE);
@@ -851,30 +862,30 @@ public class StatisticalF extends javax.swing.JFrame {
                 break;
 
             case 2:
-                JOptionPane.showMessageDialog(this, "Error loading data:\n" + "Data must contain results of "+MINALG+" algorithms, at least ", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error loading data:\n" + "Data must contain results of " + MINALG + " algorithms, at least ", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
 
             case 3:
-                JOptionPane.showMessageDialog(this, "Error loading data:\n" + "Data must contain results in "+MINDATA+" data sets, at least ", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error loading data:\n" + "Data must contain results in " + MINDATA + " data sets, at least ", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
 
             case 4:
-                JOptionPane.showMessageDialog(this, "Error loading data:\n" + "Data must contain results of less than "+(MAXALG+1)+" algorithms.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error loading data:\n" + "Data must contain results of less than " + (MAXALG + 1) + " algorithms.", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
 
             case 5:
-                JOptionPane.showMessageDialog(this, "Error loading data:\n" + "Data must contain results of less than "+(MAXDATA+1)+" data sets.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error loading data:\n" + "Data must contain results of less than " + (MAXDATA + 1) + " data sets.", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
         }
 
-        methodsField.setText(""+(model.getColumnCount()-1));
-        datasetsField.setText(""+(model.getRowCount()));
+        methodsField.setText("" + (model.getColumnCount() - 1));
+        datasetsField.setText("" + (model.getRowCount()));
 
     }//GEN-LAST:event_loadButtonActionPerformed
 
     private void analysisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analysisButtonActionPerformed
-        
-        File saveFile=null;
+
+        File saveFile = null;
 
         String path;
 
@@ -890,27 +901,26 @@ public class StatisticalF extends javax.swing.JFrame {
 
         int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            saveFile=chooser.getSelectedFile();
-        }
-        else{
+            saveFile = chooser.getSelectedFile();
+        } else {
             return;
         }
 
         try {
-            path=saveFile.getCanonicalPath();
+            path = saveFile.getCanonicalPath();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error generating results file.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if(!path.endsWith(".tex")){
-            path+=".tex";
+        if (!path.endsWith(".tex")) {
+            path += ".tex";
         }
 
         //Prepare configuration
 
         Configuration.setPath(path);
-        Configuration.setNAlgorithms(model.getColumnCount()-1);
+        Configuration.setNAlgorithms(model.getColumnCount() - 1);
         Configuration.setNDatasets(model.getRowCount());
         Configuration.setObjective(objective);
 
@@ -928,69 +938,89 @@ public class StatisticalF extends javax.swing.JFrame {
         Configuration.setBergman(checkBergman.isSelected());
 
         //Launch tests
-        String algorithmNames [] = new String[model.getColumnCount()-1];
+        String algorithmNames[] = new String[model.getColumnCount() - 1];
 
-        for(int i=0;i<algorithmNames.length;i++){
-            algorithmNames[i]=model.getColumnName(i+1);
+        for (int i = 0; i < algorithmNames.length; i++) {
+            algorithmNames[i] = model.getColumnName(i + 1);
         }
 
-        double data [][]=new double [algorithmNames.length][model.getRowCount()];
+        double data[][] = new double[algorithmNames.length][model.getRowCount()];
 
-        for(int i=0;i<algorithmNames.length;i++){
-            for(int j=0;j<model.getRowCount();j++){
-                data[i][j]=(Double)model.getValueAt(j, i+1);
+        for (int i = 0; i < algorithmNames.length; i++) {
+            for (int j = 0; j < model.getRowCount(); j++) {
+                data[i][j] = (Double) model.getValueAt(j, i + 1);
             }
         }
-        
-        switch(testType){
+
+        String location;
+
+        location="Results file in .tex format can be found in "+path;
+
+        switch (testType) {
 
             case FRIEDMAN:
-                Friedman.doFriedman(data,algorithmNames);
-                JOptionPane.showMessageDialog(this, "Friedman test performed succesfully.", "Statistical procedure", JOptionPane.INFORMATION_MESSAGE);
+                Friedman.doFriedman(data, algorithmNames);
+                JOptionPane.showMessageDialog(this, "Friedman test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
                 break;
 
             case FRIEDMAN_ALIGNED:
-                Friedman.doFriedmanAligned(data,algorithmNames);
-                JOptionPane.showMessageDialog(this, "Friedman Aligned test performed succesfully.", "Statistical procedure", JOptionPane.INFORMATION_MESSAGE);
+                Friedman.doFriedmanAligned(data, algorithmNames);
+                JOptionPane.showMessageDialog(this, "Friedman Aligned test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
                 break;
 
             case QUADE:
-                Friedman.doQuade(data,algorithmNames);
-                JOptionPane.showMessageDialog(this, "Quade performed succesfully.", "Statistical procedure", JOptionPane.INFORMATION_MESSAGE);
+                Friedman.doQuade(data, algorithmNames);
+                JOptionPane.showMessageDialog(this, "Quade test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
                 break;
 
             case MULTIPLE:
-                Multiple.doMultiple(data,algorithmNames);
-                JOptionPane.showMessageDialog(this, "Friedman NxN test performed succesfully.", "Statistical procedure", JOptionPane.INFORMATION_MESSAGE);
+                Multiple.doMultiple(data, algorithmNames);
+                JOptionPane.showMessageDialog(this, "Friedman NxN test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
                 break;
 
             case CONTRAST:
-                Contrast.doContrast(data,algorithmNames);
-                JOptionPane.showMessageDialog(this, "Contrast estimation performed succesfully.", "Statistical procedure", JOptionPane.INFORMATION_MESSAGE);
+                Contrast.doContrast(data, algorithmNames);
+                JOptionPane.showMessageDialog(this, "Contrast estimation performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
+                break;
+
+            case WILCOXON:
+                Wilcoxon.doWilcoxon(data, algorithmNames);
+                JOptionPane.showMessageDialog(this, "Wilcoxon test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
                 break;
         }
 
-        
+
 }//GEN-LAST:event_analysisButtonActionPerformed
 
     private void radioBMaximizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBMaximizeActionPerformed
-        objective=MAXIMIZE;
+        objective = MAXIMIZE;
     }//GEN-LAST:event_radioBMaximizeActionPerformed
 
     private void radioBMinimizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBMinimizeActionPerformed
-        objective=MINIMIZE;
+        objective = MINIMIZE;
     }//GEN-LAST:event_radioBMinimizeActionPerformed
 
+    private void radioBWilcoxonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBWilcoxonActionPerformed
+        testType = WILCOXON;
+
+        unsetOneAllChecks();
+        unsetMultipleChecks();
+
+        radioBMaximize.setEnabled(true);
+        radioBMinimize.setEnabled(true);
+}//GEN-LAST:event_radioBWilcoxonActionPerformed
+
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new StatisticalF().setVisible(true);
             }
         });
-    }
+    }//end-method
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton analysisButton;
@@ -1032,6 +1062,7 @@ public class StatisticalF extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioBMinimize;
     private javax.swing.JRadioButton radioBMultiple;
     private javax.swing.JRadioButton radioBQuade;
+    private javax.swing.JRadioButton radioBWilcoxon;
     private javax.swing.JPanel radioPanel;
     private javax.swing.JScrollPane scrollTable;
     // End of variables declaration//GEN-END:variables
@@ -1039,7 +1070,7 @@ public class StatisticalF extends javax.swing.JFrame {
     /**
      * Enables all checks for one vs all tests
      */
-    private void setOneAllChecks(){
+    private void setOneAllChecks() {
 
         checkIman.setEnabled(true);
         checkBonferroni.setEnabled(true);
@@ -1051,12 +1082,12 @@ public class StatisticalF extends javax.swing.JFrame {
         checkFinner.setEnabled(true);
         checkLi.setEnabled(true);
 
-    }
+    }//end-method
 
     /**
      * Disables all checks for one vs all tests
      */
-    private void unsetOneAllChecks(){
+    private void unsetOneAllChecks() {
 
         checkIman.setEnabled(false);
         checkBonferroni.setEnabled(false);
@@ -1068,12 +1099,12 @@ public class StatisticalF extends javax.swing.JFrame {
         checkFinner.setEnabled(false);
         checkLi.setEnabled(false);
 
-    }
+    }//end-method
 
     /**
      * Enables all checks for multiple tests
      */
-    private void setMultipleChecks(){
+    private void setMultipleChecks() {
 
         checkNemenyi.setEnabled(true);
         checkShaffer.setEnabled(true);
@@ -1081,18 +1112,18 @@ public class StatisticalF extends javax.swing.JFrame {
 
         checkIman.setEnabled(true);
         checkHolm.setEnabled(true);
-    }
+    }//end-method
 
     /**
      * Disables all checks for multiple tests
      */
-    private void unsetMultipleChecks(){
+    private void unsetMultipleChecks() {
 
         checkNemenyi.setEnabled(false);
         checkShaffer.setEnabled(false);
         checkBergman.setEnabled(false);
 
-    }
+    }//end-method
 
     /**
      * Test if the dimensions selected are right
@@ -1102,19 +1133,18 @@ public class StatisticalF extends javax.swing.JFrame {
      *
      * @return 0 if the dimensions selected are right, > 0 if not
      */
-    private int adequateDimensions(int cols,int rows){
+    private int adequateDimensions(int cols, int rows) {
 
-        if((cols>=MINALG)&&(cols<=MAXALG)){
-            if((rows>=MINDATA)&&(rows<=MAXDATA)){
+        if ((cols >= MINALG) && (cols <= MAXALG)) {
+            if ((rows >= MINDATA) && (rows <= MAXDATA)) {
                 return 0;
-            }
-            else{
+            } else {
                 return 1;
             }
-        }
-        else{
+        } else {
             return 2;
         }
 
-    }
-}
+    }//end-method
+
+}//end-class
