@@ -942,6 +942,7 @@ public class StatisticalF extends javax.swing.JFrame {
 
         for (int i = 0; i < algorithmNames.length; i++) {
             algorithmNames[i] = model.getColumnName(i + 1);
+            algorithmNames[i] = formatLatex(algorithmNames[i]);
         }
 
         double data[][] = new double[algorithmNames.length][model.getRowCount()];
@@ -1145,6 +1146,20 @@ public class StatisticalF extends javax.swing.JFrame {
             return 2;
         }
 
+    }//end-method
+
+    /**
+     * replaces characters non adequate for LaTeX formatting
+     *
+     * @param text String to scan
+     *
+     * @return A string replaced
+     */
+    private String formatLatex(String text){
+
+        String output=text.replaceAll("_","-");
+
+        return output;
     }//end-method
 
 }//end-class

@@ -1,3 +1,32 @@
+/***********************************************************************
+
+	This file is part of KEEL-software, the Data Mining tool for regression, 
+	classification, clustering, pattern mining and so on.
+
+	Copyright (C) 2004-2010
+	
+	F. Herrera (herrera@decsai.ugr.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
+    J. Luengo (julianlm@decsai.ugr.es)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see http://www.gnu.org/licenses/
+  
+**********************************************************************/
+
 /**
  * File: Wilcoxon.java.
  *
@@ -33,6 +62,8 @@ public class Wilcoxon {
     private static int rows;
     private static String algorithms [];
 
+    private static String outputFileName;
+
 	/**
 	* Builder
 	*/
@@ -48,7 +79,7 @@ public class Wilcoxon {
      */
 	public static void doWilcoxon(double newData[][], String newAlgorithms[]) {
 
-		String outputFileName = Configuration.getPath();
+		outputFileName = Configuration.getPath();
 
         String outputString = new String("");
 	    outputString = header();
@@ -82,11 +113,15 @@ public class Wilcoxon {
 		dfs.setDecimalSeparator('.');
 		nf.setDecimalFormatSymbols(dfs);
 
-	    outputString += computeBody();
+        Files.writeFile(outputFileName, outputString);
 
-        outputString += footer();
+	    computeBody();
 
-	    Files.writeFile(outputFileName, outputString);
+        outputString= footer();
+
+        Files.addToFile(outputFileName, outputString);
+
+	    
 
 	}//end-method
 
@@ -102,7 +137,7 @@ public class Wilcoxon {
 		String text;
 
 		for(int first=0;first<columns;first++){
-			for(int second=0;second<columns;second++){
+			for(int second=0;second<columns;second++){            
                 if(first!=second){
                     computeRanks(first,second);
                 }
@@ -199,6 +234,9 @@ public class Wilcoxon {
             }
             text +="\n" + "\\end{tabular}\n" + "\\caption{Confidence intervals for algorithm "+algorithms[first]+" ($\\alpha$=0.95)}\n\\end{table}\n";
             text +="\n \\clearpage \n\n";
+
+            Files.addToFile(outputFileName, text);
+            text="";
         }
        
 		return text;
@@ -384,10 +422,19 @@ public class Wilcoxon {
 
 		double aux, aux2;
 		for(int i=0;i<diffOld.length-1;i++){
-			aux=AOld[i]-BOld[i];
+            if(Configuration.getObjective()==1){
+                aux=AOld[i]-BOld[i];
+            }else{
+                aux=BOld[i]-AOld[i];
+            }
+			
 			walsh.add(aux);
 			for(int j=i+1;j<diffOld.length;j++){
-				aux2=AOld[j]-BOld[j];
+				if(Configuration.getObjective()==1){
+                    aux2=AOld[j]-BOld[j];
+                }else{
+                    aux2=BOld[j]-AOld[j];
+                }
 				walsh.add((aux+aux2)/2.0);
 			}
 		}
@@ -396,7 +443,7 @@ public class Wilcoxon {
 
 		//Find critical levels
 
-		criticalN=findCriticalValue(diffOld.length,0.05);
+		criticalN=findCriticalValue(diffOld.length,0.05,tiesDistribution);
 		criticalN=Math.max(criticalN,0);
 
 		//Build interval
@@ -408,9 +455,8 @@ public class Wilcoxon {
 
 		confidenceIntervals95[first][second]=interval;
 		exactConfidence95[first][second]=1.0-(WilcoxonDistribution.computeExactProbability(diffOld.length,criticalN));
-		
-
-		criticalN=findCriticalValue(diffOld.length,0.1);
+	
+		criticalN=findCriticalValue(diffOld.length,0.1,tiesDistribution);
         criticalN=Math.max(criticalN,0);
 
 		//Build interval
@@ -422,6 +468,7 @@ public class Wilcoxon {
         
 		confidenceIntervals90[first][second]=interval;
 		exactConfidence90[first][second]=1.0-(WilcoxonDistribution.computeExactProbability(diffOld.length,criticalN));
+
 	}//end-method
 
     /**
@@ -432,15 +479,21 @@ public class Wilcoxon {
      *
      * @return Critical value
      */
-	private static int findCriticalValue(int N, double alpha){
+	private static int findCriticalValue(int N, double alpha, int [] tiesDistribution){
 
 		double limit=alpha;
 		int critical=-1;
 
-		do{
-			critical++;
-		}while(WilcoxonDistribution.computeExactProbability(N, critical)<limit);
-
+        if(N<51){
+            do{
+                critical++;
+            }while(WilcoxonDistribution.computeExactProbability(N, critical)<limit);
+        }
+        else{
+            do{
+                critical++;
+            }while(WilcoxonDistribution.computeAsymptoticProbability(N, critical,tiesDistribution)<limit);
+        }
 		critical--;
 
 		return critical;
