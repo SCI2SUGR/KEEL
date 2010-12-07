@@ -1115,6 +1115,42 @@
 				keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
 			</jar>
 
+			<jar
+				jarfile="${distPre}/Filter-EnsembleFilter.jar"
+				manifest="${src}/keel/Algorithms/Preprocess/NoiseFilters/EnsembleFilter/Manifest">
+				<fileset dir="${bin}"
+					includes="keel/Algorithms/Preprocess/NoiseFilters/EnsembleFilter/**/*.class
+					keel/Dataset/**/*.class
+					org/core/**/*.class
+					keel//Algorithms/Decision_Trees/C45/**/*.class
+					keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+					keel/Algorithms/Shared/**/*.class
+					keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+			</jar>
+
+
+			<jar
+				jarfile="${distPre}/Filter-IterativePartitioningFilter.jar"
+				manifest="${src}/keel/Algorithms/Preprocess/NoiseFilters/IterativePartitioningFilter/Manifest">
+				<fileset dir="${bin}"
+					includes="keel/Algorithms/Preprocess/NoiseFilters/IterativePartitioningFilter/**/*.class
+					keel/Dataset/**/*.class
+					org/core/**/*.class
+					keel//Algorithms/Decision_Trees/C45/**/*.class
+					keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+			</jar>
+
+
+			<jar
+				jarfile="${distPre}/Filter-CVCommitteesFilter.jar"
+				manifest="${src}/keel/Algorithms/Preprocess/NoiseFilters/CVCommitteesFilter/Manifest">
+				<fileset dir="${bin}"
+					includes="keel/Algorithms/Preprocess/NoiseFilters/CVCommitteesFilter/**/*.class
+					keel/Dataset/**/*.class
+					org/core/**/*.class
+					keel/Algorithms/Decision_Trees/C45/**/*.class
+					keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+			</jar>
 
 			<jar
 

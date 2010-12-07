@@ -2372,6 +2372,78 @@
 	</output>
 </method>
 <method>
+	<name>EnsembleFilter-F</name>
+	<family>Noisy Data Filtering</family>
+	<jar_file>Filter-EnsembleFilter.jar</jar_file>
+	<problem_type>unspecified</problem_type>
+	<input>
+		<continuous>Yes</continuous>
+    	<integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>Yes</missing>
+    	<imprecise>No</imprecise>
+    	<multiclass>Yes</multiclass>
+  		<multioutput>No</multioutput>
+	</input>
+	<output>
+		<continuous>No</continuous>
+    	<integer>No</integer>
+    	<nominal>Yes</nominal>
+    	<missing>Yes</missing>
+    	<imprecise>No</imprecise>
+    	<multiclass>Yes</multiclass>
+  		<multioutput>No</multioutput>
+	</output>
+</method>
+<method>
+	<name>Filter-CVCommitteesFilter-F</name>
+	<family>Noisy Data Filtering</family>
+	<jar_file>Filter-CVCommitteesFilter.jar</jar_file>
+	<problem_type>unspecified</problem_type>
+	<input>
+		<continuous>Yes</continuous>
+    	<integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>Yes</missing>
+    	<imprecise>No</imprecise>
+    	<multiclass>Yes</multiclass>
+  		<multioutput>No</multioutput>
+	</input>
+	<output>
+		<continuous>No</continuous>
+    	<integer>No</integer>
+    	<nominal>Yes</nominal>
+    	<missing>Yes</missing>
+    	<imprecise>No</imprecise>
+    	<multiclass>Yes</multiclass>
+  		<multioutput>No</multioutput>
+	</output>
+</method>
+<method>
+	<name>IterativePartitioningFilter-F</name>
+	<family>Noisy Data Filtering</family>
+	<jar_file>Filter-IterativePartitioningFilter.jar</jar_file>
+	<problem_type>unspecified</problem_type>
+	<input>
+		<continuous>Yes</continuous>
+    	<integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>Yes</missing>
+    	<imprecise>No</imprecise>
+    	<multiclass>Yes</multiclass>
+  		<multioutput>No</multioutput>
+	</input>
+	<output>
+		<continuous>No</continuous>
+    	<integer>No</integer>
+    	<nominal>Yes</nominal>
+    	<missing>Yes</missing>
+    	<imprecise>No</imprecise>
+    	<multiclass>Yes</multiclass>
+  		<multioutput>No</multioutput>
+	</output>
+</method>
+<method>
 	<name>Metrics-DC</name>
 	<family>Data Complexity</family>
 	<jar_file>DC-Metrics.jar</jar_file>

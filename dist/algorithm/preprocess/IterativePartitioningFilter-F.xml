@@ -1,0 +1,55 @@
+<algorithm_specification>
+
+	<name>IterativePartitioningFilter</name>
+	<nParameters>5</nParameters>
+  	<seed>1</seed>
+  	<nOutput>1</nOutput>
+
+	<parameter>
+    	<name>numPartitions</name>
+    	<type>integer</type>
+    	<domain>
+      		<lowerB>2</lowerB>
+      		<upperB>100</upperB>
+    	</domain>
+    	<default>5</default>
+  	</parameter>
+
+	<parameter>
+	  	<name>filterType</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>consensus</item>
+	    	<item>majority</item>
+	  	</domain>
+	  	<default>consensus</default>   
+	</parameter>
+	
+	<parameter>
+	  	<name>prune</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>true</item>
+		   	<item>false</item>
+	  	</domain>
+	  	<default>true</default>
+	 	<disabled/>
+	</parameter>
+	
+	<parameter>
+    	<name>confidence</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>0</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0.25</default>
+  	</parameter>
+
+  	<parameter>
+    	<name>itemsetsPerLeaf</name>
+    	<type>integer</type>
+    	<default>2</default>
+  	</parameter>
+
+</algorithm_specification>
