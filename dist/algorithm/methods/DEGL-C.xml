@@ -1,0 +1,99 @@
+<algorithm_specification>
+  <name>DE</name>
+  <nParameters>9</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+  <parameter>
+    <name>Number of Neighbors</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+
+   <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  
+   <parameter>
+    <name>Particle Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  
+   <parameter>
+    <name>MaxIter</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>500</default>
+  </parameter>
+  
+   <parameter>
+    <name>Scaling Factor</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>
+  
+  <parameter>
+    <name>CrossoverRate</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.9</default>
+  </parameter>
+  
+  <parameter>
+    <name>WeightFactor</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.0</default>
+  </parameter>
+   
+      <parameter>
+    <name>neighboors</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  
+   <parameter>
+    <name>WeightScheme</name>
+    <type>list</type>
+    <domain>
+      <item>Linear</item>
+      <item>Exponential</item>
+      <item>Random</item>
+      <item>Adaptive</item>
+    </domain>
+    <default>Exponential</default>   
+  </parameter>
+  
+</algorithm_specification>

@@ -3718,6 +3718,411 @@
     <multiinstance>No</multiinstance> 
 	</output>
   </method>
+  <method>
+    <name>DE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-DE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+<method>
+    <name>SADE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-SADE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+
+<method>
+    <name>JADE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-JADE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+  
+  <method>
+    <name>OBDE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-OBDE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+  
+    <method>
+    <name>DEGL-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-DEGL.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+  
+      <method>
+    <name>SFLSDE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-SFLSDE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+
+
+<method>
+    <name>IPLDE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-IPLDE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+
+
+   <method>
+    <name>SSMASFLSDE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-SSMASFLSDE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+
+
+<method>
+    <name>SSMAPSO-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-SSMAPSO.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+  
+  <method>
+    <name>SSMALVQ3-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-SSMALVQ3.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+
+
+    <method>
+    <name>DROP3SFLSDE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-DROP3SFLSDE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+
+
+
+ <method>
+    <name>DROP3PSO-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-DROP3PSO.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+  
+    <method>
+    <name>DROP3LVQ3-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-DROP3LVQ3.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+
+         <method>
+    <name>ICFSFLSDE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-ICFSFLSDE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+
+
+    <method>
+    <name>ICFPSO-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-ICFPSO.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
+  
+         <method>
+    <name>ICFLVQ3-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-ICFLVQ3.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>
   <method>	
     <name>NSC-C</name>
     <family>Prototype Generation</family>

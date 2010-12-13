@@ -2377,7 +2377,251 @@
 					  <fileset dir="${bin}" includes="org/core/**/*.class" />
 		  </jar>
 	  
-	  
+	  <!-- Differential Evolution -->
+     
+ 	<jar
+          jarfile="${distMet}/IG-DE.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/DE/DEAlgorithm.mf">
+          <!-- <fileset dir="${bin}" -->
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+        </jar>
+        
+        <jar
+          jarfile="${distMet}/IG-SADE.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/SADE/SADEAlgorithm.mf">
+          <!-- <fileset dir="${bin}" -->
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+        </jar>
+        
+      <jar
+          jarfile="${distMet}/IG-JADE.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/JADE/JADEAlgorithm.mf">
+          <!-- <fileset dir="${bin}" -->
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+        </jar>
+        
+     <jar
+          jarfile="${distMet}/IG-OBDE.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/OBDE/OBDEAlgorithm.mf">
+          <!-- <fileset dir="${bin}" -->
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+        </jar>
+        
+             <jar
+          jarfile="${distMet}/IG-DEGL.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/DEGL/DEGLAlgorithm.mf">
+          <!-- <fileset dir="${bin}" -->
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+        </jar>
+        
+                     <jar
+          jarfile="${distMet}/IG-SFLSDE.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/SFLSDE/SFLSDEAlgorithm.mf">
+          <!-- <fileset dir="${bin}" -->
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+        </jar>
+        
+          <jar
+          jarfile="${distMet}/IG-IPLDE.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/IPLDE/IPLDEAlgorithm.mf">
+          <!-- <fileset dir="${bin}" -->
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/Basic/*.class" />
+          <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+        </jar>
+
+
+   <jar
+          jarfile="${distMet}/IG-SSMAPSO.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/SSMAPSO/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Instance_Generation/SSMAPSO/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Basic/**/*.class
+		 org/core/*.class
+		 keel/Dataset/**/*.class"/>
+                   <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/*.class" />
+                   <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+                  
+        </jar>
+    
+             <jar
+          jarfile="${distMet}/IG-SSMALVQ3.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/SSMALVQ3/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Instance_Generation/SSMALVQ3/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Basic/**/*.class
+		 org/core/*.class
+		 keel/Dataset/**/*.class"/>
+                   <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/*.class" />
+                   <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+                  
+        </jar>
+
+
+  <jar
+          jarfile="${distMet}/IG-SSMASFLSDE.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/SSMASFLSDE/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Instance_Generation/SSMASFLSDE/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Basic/**/*.class
+		 org/core/*.class
+		 keel/Dataset/**/*.class"/>
+                   <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/*.class" />
+                   <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+                  
+        </jar>
+
+
+       <jar
+          jarfile="${distMet}/IG-DROP3PSO.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/DROP3PSO/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Instance_Generation/DROP3PSO/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Basic/**/*.class
+		 org/core/*.class
+		 keel/Dataset/**/*.class"/>
+                   <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/*.class" />
+                   <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+                  
+        </jar>
+        
+                     <jar
+          jarfile="${distMet}/IG-DROP3LVQ3.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/DROP3LVQ3/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Instance_Generation/DROP3LVQ3/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Basic/**/*.class
+		 org/core/*.class
+		 keel/Dataset/**/*.class"/>
+                   <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/*.class" />
+                   <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+                  
+        </jar>
+
+                                 <jar
+          jarfile="${distMet}/IG-DROP3SFLSDE.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/DROP3SFLSDE/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Instance_Generation/DROP3SFLSDE/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Basic/**/*.class
+		 org/core/*.class
+		 keel/Dataset/**/*.class"/>
+                   <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/*.class" />
+                   <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+                  
+        </jar>
+
+
+
+         <jar
+          jarfile="${distMet}/IG-ICFPSO.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/ICFPSO/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Instance_Generation/ICFPSO/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Basic/**/*.class
+		 org/core/*.class
+		 keel/Dataset/**/*.class"/>
+                   <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/*.class" />
+                   <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+                  
+        </jar>
+        
+      <jar
+          jarfile="${distMet}/IG-ICFLVQ3.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/ICFLVQ3/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Instance_Generation/ICFLVQ3/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Basic/**/*.class
+		 org/core/*.class
+		 keel/Dataset/**/*.class"/>
+                   <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/*.class" />
+                   <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+                  
+        </jar>
+
+
+    <jar
+          jarfile="${distMet}/IG-ICFSFLSDE.jar"
+          manifest="${src}/keel/Algorithms/Instance_Generation/ICFSFLSDE/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Instance_Generation/ICFSFLSDE/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Basic/**/*.class
+		 org/core/*.class
+		 keel/Dataset/**/*.class"/>
+                   <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/*.class" />
+                   <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/*/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/KNN/*.class" />
+				  <fileset dir="${bin}" includes="keel/Algorithms/Instance_Generation/utilities/*.class" />
+				  <fileset dir="${bin}" includes="org/core/**/*.class" />
+                  
+        </jar>
+		
 		<!-- Instance Selection AS CLASSIFIERS-->
 		
 		<jar

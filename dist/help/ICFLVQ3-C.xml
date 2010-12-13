@@ -1,0 +1,83 @@
+<method>
+
+	<name>Hybrid ICF and LVQ3</name>
+
+	<reference>
+	  <ref>I. Triguero, S. García, F. Herrera, Differential Evolution for Optimizing the Positioning of Prototypes in Nearest Neighbor Classification. Pattern Recognition, doi: 10.1016/j.patcog.2010.10.020, in press (2010).</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Reduction. Prototype Generation. Positioning Adjustment.</type>
+
+		<objective>Reduce the size of the training set without losing precision or accuracy in order to a posterior classification</objective>
+
+		<howWork>
+
+		DE begins with a population of NP individuals, each individual encodes a complete reduced set.
+
+		Initially, prototypes are randomly selected from the training set.
+
+		Next, mutation and crossover operators guide the optimization process.
+
+		Selection operator  must decide which individual between Xi,G and Ui,G should survive in the population of the next generation G + 1
+
+
+		The algorithm returns the best individual found.
+
+		</howWork>
+
+
+		<parameterSpec>  
+			<param>Strategy: A number between 1-6, It indicates the mutation strategy, 1: Rand/1, 2: Best/1, 3: RandTobest/1, 4: Best/2, 5: Rand/2 6:RandToBest/2.</param>
+			<param>Crossover Type: You can select between the three existing crossover operators.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+Method: PG-DE
+Dataset: iris
+Training set: iris-10-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\Results\PG-DSM:
+
+@relation  iris_plants_database
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+5.1, 3.5, 1.4, 0.3, Iris-setosa
+4.9, 3.1, 1.5, 0.1, Iris-setosa
+4.4, 3.2, 1.3, 0.2, Iris-setosa
+6.308170919143739, 2.7350897261486264, 4.723733702409732, 1.5115457950605133, Iris-versicolor
+5.5, 2.4, 3.8, 1.1, Iris-versicolor
+5.618777325399516, 2.6229848035109464, 4.420779559503547, 1.193610590789169, Iris-versicolor
+5.898289497000296, 2.8042548608426205, 4.9660399280669125, 1.8178239547005592, Iris-virginica
+6.9081826221002, 3.1040913110501003, 5.4266687642504, 2.1287294682604, Iris-virginica
+6.3775142272412975, 2.7910514614838506, 5.5508813991589125, 2.081558663854463, Iris-virginica
+7.3, 2.9, 6.3, 1.8, Iris-virginica
+
+</example>
+
+</method>
