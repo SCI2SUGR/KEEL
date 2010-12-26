@@ -2396,7 +2396,7 @@
 	</output>
 </method>
 <method>
-	<name>Filter-CVCommitteesFilter-F</name>
+	<name>CVCommitteesFilter-F</name>
 	<family>Noisy Data Filtering</family>
 	<jar_file>Filter-CVCommitteesFilter.jar</jar_file>
 	<problem_type>unspecified</problem_type>
