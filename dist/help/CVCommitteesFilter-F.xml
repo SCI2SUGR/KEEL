@@ -4,7 +4,7 @@
 
 	<reference>  
 
-		<ref>S. Verbaeten, and A. V. Assche, “Ensemble methods for noise elimination in classification problems,” In Fourth International Workshop on Multiple Classifier Systems. Springer, 2003, pp. 317–325.</ref>
+		<ref>S. Verbaeten, and A. V. Assche, “Ensemble methods for noise elimination in classification problems”, In Fourth International Workshop on Multiple Classifier Systems. Springer, 2003, pp. 317–325.</ref>
 
 	</reference>
 
@@ -15,26 +15,14 @@
 		<objective>To remove noisy instances from the training data.</objective>
 
 		<howWork>
-Cross-Validated Committees Filter (CVCF) uses ensemble methods in order to preprocess
-the training set to identify and remove mislabeled examples in classification datasets. 
-CVCF is mainly based on performing an n-fold cross-validation to split the full training data 
-and on building classifiers using decision trees on each training subset. Authors of CVCF do 
-a special emphasis on using ensembles of decision trees as can be C4.5 because they think 
-that this kind of algorithms act well as filters for noisy data. 
+The steps of the Cross-Validated Committees Filter are the following:
 
-The basic steps of CVCF are the followings: 
-
-1) Partition the training set into n subsets of approximately equal size. 
-2) A base learning algorithm is trained n times, each time leaving out one of the subsets 
-from the training set. This results in n classifiers. 
-3) These n classifiers tag each example in the training set. 
-4) The filter compares the real class of each example with the n labels of the classifiers, 
-and decides whether or not to remove the example using a voting scheme. 
-
-CVCF considers two possibilities to determine which instances remove: a consensus filter, 
-where a training example is removed only if all the n labels of the base algorithms are 
-different from its class; or a majority vote filter, where a training example is removed if the 
-majority of the labels of the base classifiers are different from its class. 
+1) Partition the training set into n subsets.
+2) The C4.5 algorithm is trained n times, each time leaving out one of the subsets
+from the training set.
+3) These n classifiers tag each example in the training set.
+4) The filter compares the real class of each example with the n labels of the classifiers,
+and decides whether or not to remove the example using a voting scheme.
 		</howWork>
 
 		<parameterSpec>
@@ -45,10 +33,10 @@ majority of the labels of the base classifiers are different from its class.
 			<param>filterType: consensus or majority.
 			</param>
 			
-			<param>confidence: confidence for C4.5 algorithm.
+			<param>confidence: confidence for the C4.5 algorithm.
 			</param>
 
-			<param>itemsetsPerLeaf: minimum of itemsets per leaf for C4.5 algorithm.
+			<param>itemsetsPerLeaf: minimum of itemsets per leaf for the C4.5 algorithm.
 			</param>
 
 			

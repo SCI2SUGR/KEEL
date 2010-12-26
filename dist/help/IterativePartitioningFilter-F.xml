@@ -4,7 +4,7 @@
 
 	<reference>  
 
-		<ref>T. M. Khoshgoftaar and P. Rebours, “Improving software quality prediction by noise filtering techniques,” Journal of Computer Science and Technology, vol. 22, pp. 387–396, 2007.</ref>
+		<ref>T. M. Khoshgoftaar and P. Rebours, “Improving software quality prediction by noise filtering techniques”, Journal of Computer Science and Technology, vol. 22, pp. 387–396, 2007.</ref>
 
 	</reference>
 
@@ -15,38 +15,19 @@
 		<objective>To remove noisy instances from the training data.</objective>
 
 		<howWork>
-The Iterative-Partitioning Filter (IPF) is a preprocessing technique based on the 
-Partitioning Filter. It is employed for identifying and eliminating mislabeled instances 
-in large datasets. Most of noise filtering methods assume that datasets are relatively small for 
-learning at one time, but this is not always true and partitioning procedures may be necessary.
+The Iterative-Partitioning Filter removes noisy instances in multiple iterations until a stopping criterion is reached.
+Initially, we have a set of noisy examples A = empty and a set of good data G = empty.
 
-IPF removes noisy instances in multiple iterations until a stopping criterion is reached. The 
-iterative process stops if for a number of consecutive iterations k, the number of identified 
-noisy examples in each of these iterations is less than a percentage p of the size of the 
-original training dataset. Initially, we have a set of noisy examples A = empty, and a set of good 
-data G = empty. The basic steps of each iteration are:
- 
-1) Split the current training dataset E into n equal sized subsets, each of which is small 
-enough to be processed by an induction algorithm at one time. Authors of IPF propose 
-to use C4.5 algorithm since is a robust algorithm tolerant to noisy data. 
-2) Build a model over each of these n subsets and to use them to evaluate the whole 
-current training dataset E. 
-3) Add to A the noisy examples identified in E using a voting scheme. 
-4) Add to G a percentage y of the good data in E. This step is useful when we treat with 
-large datasets because helps to reduce them faster. We do not eliminate good data with 
-the IPF method in our experimentation, without loss of generality. 
+The basic steps of each iteration are:
+
+1) Split the current training dataset E into n equal sized subsets.
+2) Build a model with the C4.5 algorithm over each of these n subsets and use them to
+evaluate the whole current training dataset E.
+3) Add to A the noisy examples identified in E using a voting scheme.
+4) Add to G a percentage y of the good data in E.
 5) Remove the noisy examples and the good data from the training set.
 
-At the end of the iterative process, the ﬁltered data is formed by the remaining examples of 
-E and the good data of G.
- 
-They propose two voting schemes to identify noisy examples: consensus and majority 
-schemes. An instance is tags as noisy by majority scheme if it is misclassified by more 
-than n/2 classifiers, and by all n models in the consensus scheme. Moreover, a noisy 
-instance should be misclassified by the model which was induced on the subset containing 
-that instance. Consensus scheme is more conservative than majority scheme. By varying the 
-required number of filtering iterations, the level of conservativeness of the filter can be varied 
-too.
+The filtered data is formed by the remaining examples of E and the good data of G.
 		</howWork>
 
 		<parameterSpec>
@@ -57,10 +38,10 @@ too.
 			<param>filterType: consensus or majority.
 			</param>
 			
-			<param>confidence: confidence for C4.5 algorithm.
+			<param>confidence: confidence for the C4.5 algorithm.
 			</param>
 
-			<param>itemsetsPerLeaf: minimum of itemsets per leaf for C4.5 algorithm.
+			<param>itemsetsPerLeaf: minimum of itemsets per leaf for the C4.5 algorithm.
 			</param>
 
 			

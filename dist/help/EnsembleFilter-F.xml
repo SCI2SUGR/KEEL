@@ -13,26 +13,14 @@
 		<objective>To remove noisy instances from the training data.</objective>
 
 		<howWork>
-Ensemble Filter (EF) is a well-known filter in the literature. It pretends to improve the quality
-of the training data as a preprocessing step in classification, by detecting and eliminating mislabeled
-examples. It uses a set of learning algorithms to create classifiers on several subsets of the training
-data that serve as noise filters for the training set. The identification of potentially noisy instances
-is made by performing an n-fold cross-validation over the training data with m classification algorithms,
-called filter algorithms. The complete process carried out by EF is described below:
-			
-1) Split the training data into n equal sized parts.
-2) For each of these n parts, the m filters algorithms are trained on the other n − 1 parts. 
-3) The m resulting classifiers are then used to tag each instance in the excluded part as either correct or
-mislabeled, by comparing the training label with the assigned by the classifier.
-4) At the end of the above process, each instance in the training data has been tagged by each filter
-algorithm. This information is used to decide which instances must be removed from the training set by means
-a vote-based scheme. 
+The process carried out by the Ensemble Filter is described below:
 
-There are two possible schemes to determine which instances remove: consensus vote or majority vote. Consensus
-scheme removes an example if it is misclassified by all the classifiers, while majority scheme removes an
-instance if it is misclassified by more than half of the classifiers. Consensus filters are characterized for
-to be conservative at throwing away good data at the expense of retaining bad data. Majority filters are better
-at detecting bad data at the expense of throwing away good data.
+1) Split the training data into n equal sized parts.
+2) For each of these n parts, m filter algorithms are trained on the other n − 1 parts.
+3) The m resulting classifiers are then used to tag each instance in the excluded part as
+either correct or mislabeled, by comparing the training label with that assigned by the
+classifier.
+4) Decide which instances must be removed from the training set by means a vote-based scheme.
 		</howWork>
 
 		<parameterSpec>
@@ -43,16 +31,16 @@ at detecting bad data at the expense of throwing away good data.
 			<param>filterType: consensus or majority.
 			</param>
 			
-			<param>numNeighbors: for K-NN algorithm, the number of neighbors.
+			<param>numNeighbors: for the K-NN algorithm, the number of neighbors.
 			</param>
 			
-			<param>distanceType: for K-NN algorithm, the distance type.
+			<param>distanceType: for the K-NN algorithm, the distance type.
 			</param>
 			
-			<param>confidence: confidence for C4.5 algorithm.
+			<param>confidence: confidence for the C4.5 algorithm.
 			</param>
 
-			<param>itemsetsPerLeaf: minimum of itemsets per leaf for C4.5 algorithm.
+			<param>itemsetsPerLeaf: minimum of itemsets per leaf for the C4.5 algorithm.
 			</param>
 
 			
