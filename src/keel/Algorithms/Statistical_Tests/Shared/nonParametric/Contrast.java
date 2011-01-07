@@ -84,8 +84,16 @@ public class Contrast {
 	        }else{
 
 	          //Number of files?
-	          int nResults = Integer.parseInt("" + aux[4].charAt(6));
-	          nResults++; //The first is indexed by 0
+              int pointer=6;
+              String myNumber="";
+
+              while(aux[4].charAt(pointer)!='s'){
+                myNumber+=aux[4].charAt(pointer);
+                pointer++;
+              }
+              int nResults = Integer.parseInt(myNumber);
+
+              nResults++; //The first is indexed by 0
 
 	          if (nResults > 3) {
 	            double[][] results = new double[nAlgorithm][nResults];
