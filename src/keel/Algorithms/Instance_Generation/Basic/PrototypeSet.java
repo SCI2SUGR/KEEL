@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -1576,6 +1576,43 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 
 
 	
+
+    
+
+    
+
+    /**
+     * 
+     * PrototypeSet to double. 
+     */
+    
+    public void doubleToprototypeSet(double datos[][], int clase[]){
+    	int j;
+    	
+    	 //System.out.println("Datos leng = " + datos.length);
+    	  new PrototypeSet();
+    	 
+    	for(int i=0; i< datos.length;i++){
+    		
+    		if(!Double.isNaN(datos[i][0])){
+	    		Prototype o = new Prototype(datos[i].length,1);
+	    		
+	    		for(j= 0; j< datos[i].length; j++){
+	    			
+	    			o.setInput(j, datos[i][j]);
+	    			
+	    		}
+	    		o.setFirstOutput(clase[i]);
+	    		
+	    		this.add(o);
+    		}
+
+    	}
+    	
+	
+    	   	
+    }
+    
     
     /**
      * 
@@ -1902,6 +1939,77 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 		this.add(initial.get(i).formatear());  
 	   }
    }
+   
+   /**
+    * Obtener un sub-conjunto aleatorio de otro dado.
+    * @param original
+    * @param numberOfPrototypesSelected
+    * @param usePriorProb
+    * @return
+    */
+   
+   public static PrototypeSet selecRandomSet(PrototypeSet original, int numberOfPrototypesSelected, boolean usePriorProb) {
+       //Debug.errorln("selecRandomSet");
+       //Debug.errorln("num " + numberOfPrototypesSelected);
+       //Debug.errorln("size " + trainingDataSet.size());
+       //No tiene sentido usar las probabilidades a priori si seleccionamos todo el conjunto
+       if (usePriorProb  &&  numberOfPrototypesSelected != original.size()) {
+           int numberOfInstances_1 = original.size() - 1;
+           int _size = original.size();
+           double prop = numberOfPrototypesSelected / (double) (_size);
+           PrototypeSet edited = new PrototypeSet();
+
+           HashMap<Double, Integer> sizeOfPartition = original.countPrototypesOfEachOutput();
+
+           ArrayList<Double> values = Prototype.possibleValuesOfOutput();
+           for (double class_i : values) {
+               int n_class_i = (int) Math.floor(prop * sizeOfPartition.get(class_i));
+               //System.out.println("Clase " + class_i + " tiene " + n_class_i + " protos");
+               HashSet<Integer> forbidden = new HashSet<Integer>();
+               int k = 0;
+               while (k < n_class_i) {
+                   int chosen;
+                   do {
+                       chosen = RandomGenerator.Randint(0, numberOfInstances_1);
+                       //System.err.println("CHOSEN: " + chosen);
+                   } while (forbidden.contains(chosen) || original.get(chosen).firstOutput() != class_i);
+                   forbidden.add(chosen);
+                   //System.out.println("tam_" + k + ": " + edited.size());
+                   edited.add(original.get(chosen));
+                   ++k;
+               }
+           }
+           HashSet<Integer> forbidden = new HashSet<Integer>();
+           //Le metemos prototipos aleatorios mientras no se cumpla que se tiene
+           //el nÃºmero de prototipos requerido
+           while (edited.size() < numberOfPrototypesSelected) {
+               int chosen;
+               do
+               {
+                   chosen = RandomGenerator.Randint(0, numberOfInstances_1);
+                  // System.err.println("CHOSEN_EXTRA: " + chosen);
+               }
+               while (forbidden.contains(chosen) || edited.contains(original.get(chosen)));
+               forbidden.add(chosen);
+               edited.add(original.get(chosen));
+           }
+           //Debug.errorln("end selecRandomSet");
+           return edited;
+       }
+       else
+       {
+           PrototypeSet edited = new PrototypeSet(numberOfPrototypesSelected);
+           RandomGenerator.generateDifferentRandomIntegers(0, original.size());
+           ArrayList<Integer> indexes =  RandomGenerator.generateDifferentRandomIntegers(0, original.size()-1);
+           for (int i=0; i< numberOfPrototypesSelected;i++){
+               edited.add(original.get(indexes.get(i)));
+               //System.out.println("i =" + indexes.get(i));
+           } //Debug.errorln("end selecRandomSet");
+           return edited;            
+       }
+       
+   }
+   
    
 }
 

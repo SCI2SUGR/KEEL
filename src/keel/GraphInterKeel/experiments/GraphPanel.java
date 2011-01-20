@@ -767,12 +767,18 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                             parent.selecDatasets.setEnabled(true);
                             parent.selectMethods.setEnabled(true);
                             parent.selectPostprocessMethods.setEnabled(true);
-                            if (parent.objType == parent.IMBALANCED) {
-                                parent.selectPostprocessMethods.setEnabled(false);
-                            }
                             parent.selectPreprocessMethods.setEnabled(true);
                             parent.selectTestMethods.setEnabled(true);
                             parent.selectVisualizeMethods.setEnabled(true);
+                            
+                            if (parent.objType == parent.IMBALANCED) {
+                                parent.selectPostprocessMethods.setEnabled(false);
+                            }else if(parent.objType == parent.SSL){
+                            	parent.selectPreprocessMethods.setEnabled(false);
+                            	parent.selectPostprocessMethods.setEnabled(false);
+                            	
+                            }
+
                             //            parent.undoButton.setEnabled(false);
                             //            parent.redoButton.setEnabled(false);
 

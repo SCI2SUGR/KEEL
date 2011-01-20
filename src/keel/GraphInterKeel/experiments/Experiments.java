@@ -107,6 +107,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     public static final int LQD = 2;
     public static final int TEACHING = 1;
     public static final int IMBALANCED = 3;
+    public static final int SSL = 6;
     public static final int MULTIINSTANCE = 4;
     public static final int SUBGROUPDISCOVERY = 5;
     static final int CLASSIFICATION = 0;
@@ -206,6 +207,21 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             loadImbalancedExperiment();
         }
 
+        
+        if (objType == SSL) {
+            showHelpButton.setEnabled(true);
+            selectItem.setEnabled(false);
+            insertDataflowItem.setEnabled(false);
+            importItem.setEnabled(false);
+            snapshotItem.setEnabled(false);
+            runExpItem.setEnabled(false);
+            seedItem.setEnabled(false);
+            executionOptItem.setEnabled(false);
+
+            setTitle("Semi-Supervised Learning Experiments Design: Off-Line Module");
+            loadSSLExperiment();
+        }
+        
         if (objType == MULTIINSTANCE) {
 
             showHelpButton.setEnabled(true);
@@ -250,6 +266,37 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
     }
 
+    /**
+     * Load a new SSL experiment
+     */
+    private void loadSSLExperiment() {
+        numberKFoldCross = 10;
+        dinDatasets.hideImportButton();
+        panelDatasets.hideImportButton();
+        ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "datasetsChecksCard");
+        status.setText("Select an initial set of dataset and then click on the drawing panel");
+        selectButton.setEnabled(true);
+        enableMainToolBar(true);
+
+        quicktools.getComponent(quicktools.getComponentCount() - 1).setEnabled(true);
+
+        helpContent.muestraURL(this.getClass().getResource("/contextualHelp/data_set_exp.html"));
+
+        this.expType = Experiments.CLASSIFICATION;
+        cvType = Experiments.PK;
+
+        //we want to prevent that this panel will ever show again
+        initialPanel1.setVisible(false);
+        //now, we load the datasets and the different methods
+        undoButton.setEnabled(false);
+        redoButton.setEnabled(false);
+        continueExperimentGeneration();
+        ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "datasetsChecksPanel");
+        deleteItem.setEnabled(false);
+
+    }
+    
+    
     /**
      * Load a new multiinstance experiment
      */
@@ -1702,11 +1749,13 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
      */
     private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runButtonActionPerformed
         /***************************************************************
-         *********************  EDUCATIONAL KEEL  **********************
+         *********************  EDUCATIONAL KEEL   **********************
          **************************************************************/
         if (Frame.buttonPressed == 0) //Button Experiments pressed
         {
             if (objType != LQD) {
+            	
+            	
                 regeneratePartitions();
                 generateExperimentDirectories();
             } else {
@@ -4222,6 +4271,23 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                             }
                             break;
 
+                        case SSL:
+
+                            mipath = mipath.substring(0, mipath.lastIndexOf('/') + 1);
+                            if (mitipo.equals("PreProcessSSL") == true) {
+                                mipath = mipath + "preprocess" + "/";
+                            } else if (mitipo.equals("MethodsSSL") == true) {
+                                mipath = mipath + "methods" + "/";
+                            } else if (mitipo.equals("TestsSSL") == true) {
+                                mipath = mipath + "tests" + "/";
+                            } else if (mitipo.equals("VisualizeSSL") == true) {
+                                mipath = mipath + "visualize" + "/";
+                            } else {
+                                mitipo = mitipo.toLowerCase();
+                                mipath = mipath + mitipo + "/";
+                            }
+                            break;
+                            
                         default:
 
                             mitipo = mitipo.toLowerCase();
@@ -4903,6 +4969,8 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
 
             for (int i = 0; i < ((Vector) (ds.tableVector.elementAt(Layer.layerActivo))).size(); i++) {
                 String fichero = ds.getTrainingAt(i);
+                
+                              
                 String origen = ds.dsc.getPath() + ds.dsc.getName() + "/" + fichero;
                 String destino = path_destino + "/" + fichero;
                 FileUtils.copy("." + origen, destino);
@@ -4912,6 +4980,17 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 destino = path_destino + "/" + fichero;
 
                 FileUtils.copy("." + origen, destino);
+                
+                // In SSL we need one more file.
+                if(this.objType== SSL){
+                    fichero = ds.getTransAt(i); // En realidad cunado es SSL, se copia aqui el TEST!
+                    origen = ds.dsc.getPath() + ds.dsc.getName() + "/" + fichero;
+                    destino = path_destino + "/" + fichero;
+
+                    FileUtils.copy("." + origen, destino);
+                	
+                }
+                
             }
         }
     }
@@ -5020,6 +5099,8 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         /***************************************************************
          ***************  EDUCATIONAL KEEL   ***************************
          **************************************************************/
+        
+        
         if (al.dsc.getSubtype() == Node.type_Preprocess) {
             al.getActivePair().writeScripts(path_scripts, "config", fullName[numNode], problema, conj, "result", true, cvType, numberKFoldCross, expType);
         } else {
@@ -5079,8 +5160,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         String fichero, nombre, aux, result = "", results_crisp = "";
         int cont = 0;
 
-
-
+       
         // Check that script doesn't exist ()
         String cadRutaParcial = "";
         if (type_algorithm == 0) {
@@ -5402,6 +5482,8 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         Vector tst = new Vector();
         Vector tst2 = new Vector();
 
+        Vector trs = new Vector();
+        Vector trs2 = new Vector();
         /***************************************************************
          ***************  EDUCATIONAL KEEL   ****************************
          **************************************************************/
@@ -5418,17 +5500,35 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         for (int j = 0; j < ((Vector) ds.tableVector.elementAt(Layer.layerActivo)).size(); j++) {
             tra.add(new String(cadRutaParcial + problema + "/" + ds.getTrainingAt(j)));
             tra2.add(new String(cadRutaParcial + problema + "/" + ds.getTrainingAt(j)));
-            tst.add(new String(cadRutaParcial + problema + "/" + ds.getTestAt(j)));
-            tst2.add(new String(cadRutaParcial + problema + "/" + ds.getTestAt(j)));
+
+            
+            if (objType == SSL){
+                trs.add(new String(cadRutaParcial + problema + "/" + ds.getTestAt(j)));
+                tst.add(new String(cadRutaParcial + problema + "/" + ds.getTransAt(j)));
+                tst2.add(new String(cadRutaParcial + problema + "/" + ds.getTestAt(j)));
+            }else{
+                tst.add(new String(cadRutaParcial + problema + "/" + ds.getTestAt(j)));
+                tst2.add(new String(cadRutaParcial + problema + "/" + ds.getTestAt(j)));
+            }
         }
         /***************************************************************
          ***************  EDUCATIONAL KEEL   ****************************
          **************************************************************/
-        conj.add(tra);
-        conj.add(tra2);
-        conj.add(tst);
-        conj.add(tst2);
 
+
+
+        if (objType == SSL){
+        	conj.add(tra);
+            conj.add(trs);
+            conj.add(tst);
+            conj.add(tst2);
+        }else{
+            conj.add(tra);
+            conj.add(tra2);
+            conj.add(tst);
+            conj.add(tst2);
+        }
+        
         if (al.dsc.getSubtype() == Node.type_Preprocess) {
             al.getActivePair().writeScripts(path_scripts, "config",
                     fullName[numNode], problema, conj, "result", true, cvType, numberKFoldCross, expType);
@@ -5478,6 +5578,9 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
             conj.add(salidas);
 
         }
+        
+
+        
         if (al.dsc.getSubtype() == Node.type_Preprocess) {
             al.getActivePair().writeScripts(path_tmp, "config",
                     al.dsc.getName(), problema, conj, "result", true, cvType, numberKFoldCross, expType);
@@ -5793,16 +5896,21 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         al.getActivePair().configs.removeAllElements();
         al.getActivePair().additional_outputs.removeAllElements();
 
+        System.out.println("PUES AKI ESTOY JODIDO GENERANDO dataEXPERIMENTOS!!");
+        
         // generate subdirectories and scripts
         for (int i = 0; i < experimentGraph.numArcs(); i++) {
             Arc a = experimentGraph.getArcAt(i);
             if (a.getDestination() == nodo) {
                 if (experimentGraph.getNodeAt(a.getSource()).type == Node.type_Dataset) {
                     // data from dataset
+                    System.out.println("ES AQUII???");
                     dirAlgorithmDataset(al, a.getSource(), path_scripts, path_results, nodo, problema);
                 } else if (experimentGraph.getNodeAt(a.getSource()).type == Node.type_Algorithm) {
+
                     dirAlgorithmAlgorithm(al, a.getSource(), path_scripts, path_results, nodo, problema);
                 } else if (experimentGraph.getNodeAt(a.getSource()).type == Node.type_userMethod) {
+
                     dirAlgorithmUsermethod(al, a.getSource(), path_scripts, path_results);
                 }
             }
@@ -6784,6 +6892,8 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                     //Compute absolute names
                     absoluteNames();
 
+           
+                    
                     //Review
                     /*System.out.println("***********ABSOLUTENAMES************");
                     for(int i = 0; i < experimentGraph.numNodes(); i++) {
@@ -6812,11 +6922,15 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                             }
                         }
 
+                        
+                        
+                        
                         // STEP 2: directories for algorithms
                         int i = -1;
                         while ((i = nextNode(visitados)) != -1) {
                             if (sueltos.contains(new Integer(i)) == false) {
                                 if (experimentGraph.getNodeAt(i).type == Node.type_Algorithm) {
+                                	
                                     Algorithm al = (Algorithm) experimentGraph.getNodeAt(i);
                                     dirAlgorithm(al, i, path, sentencias, indexRoot);
                                     /***************************************************************
@@ -6830,10 +6944,14 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                                  *********************  EDUCATIONAL KEEL  **********************
                                  **************************************************************/
                                 } else if (experimentGraph.getNodeAt(i).type == Node.type_Test) {
+                                	
+                                	
+                                	
                                     Test t = (Test) experimentGraph.getNodeAt(i);
                                     dirTest(t, i, path, sentencias);
                                     tests.addElement(t.dsc.getName());
                                 } else if (experimentGraph.getNodeAt(i).type == Node.type_userMethod) {
+                                	
                                     UserMethod mu = (UserMethod) experimentGraph.getNodeAt(i);
                                     dirUsermethod(mu, i, path, sentencias);
                                 }
@@ -8048,11 +8166,14 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         selectPostprocessMethods.setEnabled(false);
         selectTestMethods.setEnabled(false);
         selectVisualizeMethods.setEnabled(false);
+        
         if (objType == LQD) {
             createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsLQD.xml");
         } else {
             if (objType == IMBALANCED) {
                 createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsImbalanced.xml");
+            }else if(objType == SSL){
+            	createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsSSL.xml");            	
             } else {
                 if (objType == MULTIINSTANCE) {
                     createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsMultiinstance.xml");
@@ -8084,7 +8205,10 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 if (objType == IMBALANCED) {
                     top4 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
                     createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar + "PreProcessImbalanced.xml");
-                } else {
+                }else if (objType == SSL){
+                    top4 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
+                    //createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar + "PreProcessSSL.xml");                	
+                }else {
                     top4 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
                     createAlgorithmNodes(top4, "." + File.separatorChar + "algorithm" + File.separatorChar + "PreProcess.xml");
                 }
@@ -8117,6 +8241,11 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 }
             });
         }
+        
+        //Nowadays there is no preprocess methods for SSL.
+       // if(objType==SSL){
+        //   	preprocessTree.enable(false);
+       // }
         preprocessScroll.setViewportView(preprocessTree);
 
 
@@ -8142,7 +8271,9 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 } else {
                     if (objType == IMBALANCED) {
                         createAlgorithmNodes(top2, "." + File.separatorChar + "algorithm" + File.separatorChar + "MethodsImbalanced.xml");
-                    } else {
+                    }else if(objType == SSL){
+                    	createAlgorithmNodes(top2, "." + File.separatorChar + "algorithm" + File.separatorChar + "MethodsSSL.xml");        	
+                    }else {
                         if (objType == MULTIINSTANCE) {
                             createAlgorithmNodes(top2, "." + File.separatorChar + "algorithm" + File.separatorChar + "MethodsMultiInstance.xml");
 
@@ -8199,7 +8330,8 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         else
         {*/
         top5 = new DefaultMutableTreeNode(new ExternalObjectDescription("Algorithms", null, 0));
-        createAlgorithmNodes(top5, "." + File.separatorChar + "algorithm" + File.separatorChar + "PostProcess.xml");
+        
+       	createAlgorithmNodes(top5, "." + File.separatorChar + "algorithm" + File.separatorChar + "PostProcess.xml");
         //}
 
 
