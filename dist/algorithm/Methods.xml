@@ -2551,6 +2551,30 @@
 	</output>
   </method>
   <method>
+    <name>RMini-C</name>
+    <family>Crisp Rule Learning</family>
+    <jar_file>RMini.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>No</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>No</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
+  <method>
     <name>CN2-C</name>
     <family>Crisp Rule Learning</family>
     <jar_file>CN2.jar</jar_file>
