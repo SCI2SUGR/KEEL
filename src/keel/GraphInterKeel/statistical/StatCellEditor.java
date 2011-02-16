@@ -77,4 +77,3 @@ public class StatCellEditor extends AbstractCellEditor implements TableCellEdito
     }
 
 }
-

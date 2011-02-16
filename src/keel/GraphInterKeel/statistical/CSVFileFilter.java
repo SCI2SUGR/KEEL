@@ -88,4 +88,3 @@ public final class CSVFileFilter extends FileFilter {
         return filterName;
     }
 }
-

@@ -126,4 +126,3 @@ class statTableRenderer extends DefaultTableCellRenderer {
 
 }
 
-
