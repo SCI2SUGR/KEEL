@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.6" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -73,11 +73,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" max="-2" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="radioPanel" max="32767" attributes="1"/>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="radioPanel" min="0" pref="323" max="32767" attributes="1"/>
                           <Component id="optionsPanel" alignment="0" max="32767" attributes="1"/>
                           <Component id="measurePanel" alignment="0" max="32767" attributes="1"/>
                           <Component id="buttonPanel" alignment="0" max="32767" attributes="1"/>
@@ -156,7 +153,7 @@
                               <Component id="checkShaffer" alignment="0" min="-2" max="-2" attributes="1"/>
                               <Component id="checkBergman" alignment="0" min="-2" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -300,18 +297,19 @@
                               <Component id="radioBFriedman" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="radioBAligned" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="21" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="1">
                                   <Component id="radioBMultiple" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="radioBWilcoxon" alignment="1" max="32767" attributes="1"/>
-                                      <Component id="radioBContrast" alignment="1" max="32767" attributes="1"/>
-                                  </Group>
+                                  <Component id="radioBContrast" min="-2" max="-2" attributes="1"/>
                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="radioBWilcoxon" min="-2" max="-2" attributes="1"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -443,7 +441,7 @@
                                   <Component id="jPanel1" alignment="0" max="32767" attributes="1"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="52" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -636,7 +634,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="radioBMaximize" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="150" max="32767" attributes="0"/>
+                          <EmptySpace pref="104" max="32767" attributes="0"/>
                           <Component id="radioBMinimize" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       </Group>
