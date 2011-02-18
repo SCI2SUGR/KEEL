@@ -29,8 +29,15 @@
 
 /**
  * <p>
- * @author Written by Juliï¿½n Luengo Martï¿½n 09/10/2007
- * @author Modified by Victoria López Morales 01/05/2010
+ * File: svmClassifierCost.java
+ *
+ * This class is a wrapper to the LibSVM C-SVM classifier, in order to operate with KEEL 
+ * data sets and parameters. The implementation has been adapted to deal with imbalanced
+ * classification problems.
+ *  
+ * @author Written by Julian Luengo Martin 09/10/2007
+ * @author Modified by Victoria Lopez Morales 01/05/2010
+ * @author Modified by Victoria Lopez Morales 05/10/2010 
  * @version 0.3
  * @since JDK 1.5
  * </p>
@@ -48,7 +55,7 @@ import keel.Algorithms.Preprocess.Basic.*;
  * </p>
  */
 public class svmClassifierCost {
-	double[] mean = null;
+    double[] mean = null;
     double[] std_dev = null;
     double tempData = 0;
 
@@ -101,14 +108,20 @@ public class svmClassifierCost {
     }
 
     // Write data matrix X to disk, in KEEL format
-    private void write_results(String output) {
+    private void write_results(String output, int positive_class) {
         // File OutputFile = new File(output_train_name.substring(1,
         // output_train_name.length()-1));
+    	/*int tp = 0;
+    	int tn = 0;
+    	int fp = 0;
+    	int fn = 0;
+    	double tp_rate, fp_rate, auc;*/
+    	
         try {
             FileWriter file_write = new FileWriter(output);
 
             file_write.write(IS.getHeader());
-
+            
             // now, print the normalized data
             file_write.write("@data\n");
             for (int i = 0; i < ndatos; i++) {
@@ -117,7 +130,45 @@ public class svmClassifierCost {
                     file_write.write(" " + X[i][j]);
                 }
                 file_write.write("\n");
+                
+                /*int aux;
+                if (Character.isDigit(X[i][0].charAt(0))) {
+                	aux = Integer.parseInt(X[i][0]);
+                }
+                else {
+                	if (X[i][0].contains("positive")) {
+                		aux = positive_class;
+                	}
+                	else {
+                		aux = positive_class+1;
+                	}
+                }
+                
+                if (X[i][0].equals(X[i][1])) {
+                	if (aux == positive_class) {
+                		tp++;
+                	}
+                	else {
+                		tn++;
+                	}
+                }
+                else {
+                	if (aux == positive_class) {
+                		fn++;
+                	}
+                	else {
+                		fp++;
+                	}
+                }*/
             }
+            
+            /*tp_rate = (double)tp/(double)(tp+fn);
+            fp_rate = (double)fp/(double)(fp+tn);
+            
+            auc = (1+tp_rate-fp_rate)/2;
+            
+            System.out.println("TP: " + tp + " TN: " + tn + " FP: " + fp + " FN: " + fn + " Area Under the ROC Curve is "+auc);*/
+            
             file_write.close();
         } catch (IOException e) {
             System.out.println("IO exception = " + e);
@@ -173,10 +224,11 @@ public class svmClassifierCost {
         Vector instancesSelected2 = new Vector();
         int n_pos = 0;
         int n_neg = 0;
+        int positive_class = -1;
         double positive_cost, negative_cost;
 
         //SVM PARAMETERS
-        SVMparam.C = 1.0;
+        SVMparam.C = C;
         SVMparam.cache_size = 10; //10MB of cache
         SVMparam.degree = degree;
         SVMparam.eps = eps;
@@ -231,10 +283,15 @@ public class svmClassifierCost {
                 Instance inst = IS.getInstance(i);
                 
                 SVMp.y[i] = inst.getAllOutputValues()[0];
-                if (SVMp.y[i] == 0.0)
+                if (SVMp.y[i] == 0.0) {
                 	n_pos++;
-                else
+                	positive_class = 0;
+                }
+                else {
                 	n_neg++;
+                	positive_class = (int)SVMp.y[i];
+                }
+
                 for (int n = 0; n < Attributes.getInputNumAttributes(); n++) {
                     SVMp.x[i][n].index = n;
                     SVMp.x[i][n].value = inst.getAllInputValues()[n];
@@ -243,14 +300,27 @@ public class svmClassifierCost {
                 //end of instance
                 SVMp.x[i][nentradas].index = -1;
             }
+            if (n_pos > n_neg) {
+            	int tmp = n_pos;
+            	n_pos = n_neg;
+            	n_neg = n_pos;
+            }
             
             // Add the costs to the SVM mechanism
             positive_cost = ((double)n_neg/(double)n_pos);
             negative_cost = 1;
-            SVMparam.weight = new double[2];
-            SVMparam.weight[0] = positive_cost;
-            SVMparam.weight[1] = negative_cost;
+            
             SVMparam.nr_weight = 2;
+            SVMparam.weight = new double[SVMparam.nr_weight];
+            
+            for (int a=0; a<SVMparam.nr_weight; a++) {
+            	if (a == positive_class) {
+            		SVMparam.weight[a] = positive_cost;
+            	}
+            	else {
+            		SVMparam.weight[a] = negative_cost;
+            	}
+            }
             
             if (svm.svm_check_parameter(SVMp, SVMparam) != null) {
                 System.err.print("SVM parameter error in training: ");
@@ -269,6 +339,9 @@ public class svmClassifierCost {
             nentradas = Attributes.getInputNumAttributes();
             nsalidas = Attributes.getOutputNumAttributes();
 
+            // We allocate again the matrix with the data to allocate the validation set (it can be larger than the original training set)
+            X = new String[ndatos][2]; // matrix with transformed data
+            
             for (int i = 0; i < ISval.getNumInstances(); i++) {
                 Instance inst = ISval.getInstance(i);
                 Attribute a = Attributes.getOutputAttribute(0);
@@ -305,7 +378,7 @@ public class svmClassifierCost {
             e.printStackTrace();
             System.exit( -1);
         }
-        write_results(output_train_name);
+        write_results(output_train_name, positive_class);
         /** ************************************************************************************ */
         try {
 
@@ -360,7 +433,7 @@ public class svmClassifierCost {
             e.printStackTrace();
             System.exit( -1);
         }
-        write_results(output_test_name);
+        write_results(output_test_name, positive_class);
     }
 
 }

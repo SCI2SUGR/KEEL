@@ -732,8 +732,6 @@ public class Parameters implements Serializable {
             String problemName, Vector set, String result,
             boolean pre, int valType, int numFolds, int expType) {
 
-
-    	
         String fichero, nombre, aux;
         int i, j, k, cont = 0;
         int times;
@@ -793,7 +791,6 @@ public class Parameters implements Serializable {
                 fichero = "algorithm = " + algorithmType + "\n";
                 fichero += "inputData = ";
 
-                
                 if (pre) {
                     fichero += "\"" + ((Vector) (set.elementAt(0))).elementAt(i) +
                             "\" ";
@@ -818,9 +815,6 @@ public class Parameters implements Serializable {
                     }
                 }
 
-
-            	
-            	
                 fichero += "\n";
                 /***************************************************************
                  ***************  EDUCATIONAL KEEL  ****************************
@@ -858,17 +852,12 @@ public class Parameters implements Serializable {
 
                         }
                     } else {
-
-                    	
-                    	
                         if (pre) {
 
-                        	
                             aux = "../datasets/" + methodName + "." +
                                     problemName + "/" + methodName + "s" + j + "." +
                                     problemName + typeCV + (cont + 1) + "tra.dat";
 
-                            
                             outputs_tra.add(aux);
                             fichero += "outputData = \"" + aux + "\" ";
 
@@ -880,9 +869,6 @@ public class Parameters implements Serializable {
                             fichero += "\"" + aux + "\" ";
 
                         } else {
-                        	
-                        	//OUTPUTS for SSL
-                        	
                             aux = "../results/" + methodName + "." +
                                     problemName + "/" + result + cont + "s" + j + ".tra";
 

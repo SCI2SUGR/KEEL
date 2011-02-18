@@ -42,6 +42,7 @@ import org.core.Randomize;
  * Class for generating the individuals
  * </p>
  * @author Written by Nicolas Garcia Pedrajas (University of Cordoba) 27/02/2007
+ * @author Modified by Victoria Lopez Morales (University of Granada) 23/05/2010 
  * @version 0.1
  * @since JDK1.5
  */
@@ -257,8 +258,15 @@ public class MLPerceptronBackpropCS {
         }
         if (global.save) {
             neural.SaveNetwork("network", false);
-
         }
+        
+        int positive_class;
+        double positive_cost, negative_cost;
+        
+        positive_class = positive_class(train);
+        positive_cost = positive_cost(train);
+        negative_cost = negative_cost(train);
+        
         if (global.verbose) {
             neural.PrintWeights();
 
@@ -280,13 +288,6 @@ public class MLPerceptronBackpropCS {
                                    100.0 * res);
             }
         }
-        
-        int positive_class;
-        double positive_cost, negative_cost;
-        
-        positive_class = positive_class(train);
-        positive_cost = positive_cost(train);
-        negative_cost = negative_cost(train);
         
         neural.SaveOutputFile(global.train_output, data.train, //data.validation,
                               global.n_train_patterns, global.problem, positive_class, positive_cost, negative_cost); // global.n_val_patterns, global.problem);
@@ -423,6 +424,14 @@ public class MLPerceptronBackpropCS {
         return (int) Randomize.Randdouble(min, max);
     }
     
+    /**
+     * <p>
+     * Computes the positive_class of the dataset (in an imbalanced classification problem) according to the frequency of patterns
+     * </p>
+     * 
+     * @param	data Dataset used to compute the positive class
+     * @return integer that represents the positive class
+     */
     private static int positive_class (OpenDataset data) {
     	int n_classes = data.getRangosVar(data.getnentradas()).size();
     	int freqClasses[] = new int[n_classes];
@@ -447,6 +456,14 @@ public class MLPerceptronBackpropCS {
         return minIndex;   
     }
     
+    /**
+     * <p>
+     * Computes the cost of misclassifying a positive instance in an imbalanced classification problem according to the frequency of patterns
+     * </p>
+     * 
+     * @param	data Dataset used to compute the cost of misclassifying a positive instance
+     * @return cost of misclassifying a positive instance
+     */
     private static double positive_cost(OpenDataset data) {
     	int n_classes = data.getRangosVar(data.getnentradas()).size();
     	int freqClasses[] = new int[n_classes];
@@ -488,6 +505,14 @@ public class MLPerceptronBackpropCS {
         return positive_cost;
     }
     
+    /**
+     * <p>
+     * Computes the cost of misclassifying a negative instance in an imbalanced classification problem according to the frequency of patterns
+     * </p>
+     * 
+     * @param	data Dataset used to compute the cost of misclassifying a negative instance
+     * @return cost of misclassifying a negative instance
+     */    
     private static double negative_cost(OpenDataset data) {
     	return 1.0;
     }

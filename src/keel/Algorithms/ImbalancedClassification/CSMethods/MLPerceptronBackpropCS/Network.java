@@ -37,6 +37,8 @@ import java.io.FileInputStream;
 import java.io.DataInputStream;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import keel.Dataset.*;
 
@@ -46,6 +48,7 @@ import keel.Dataset.*;
  * </p>
  * @author Written by Nicolas Garcia Pedrajas (University of Cordoba) 27/02/2007
  * @author Modified by Victoria Lopez Morales (University of Granada) 23/05/2010
+ * @author Modified by Victoria Lopez Morales (University of Granada) 28/09/2010
  * @version 0.1
  * @since JDK1.5
  */
@@ -244,7 +247,7 @@ public class Network {
         return fitness;
 
     }
-
+    
     /**
      * <p>
      * Test network in regression
@@ -614,44 +617,181 @@ public class Network {
      * <p>
      * Return the class where a pattern is classified
      * </p>
-     * @param pattern Pattern to check
+     * 
+     * @param pattern	Pattern to check
+     * @param positive_class Positive class in the imbalanced classification problem
+     * @param postive_cost Cost of misclassifying an instance from the positive class
+     * @param negative_cost Cost of misclassifying an instance from the negative class
      * @return Class index
      */
-    public int NetGetClassOfPattern (double pattern[], int positive_class, double positive_cost, double negative_cost, double[][] normalization) {
+    public int NetGetClassOfPattern (double pattern[], int positive_class, double positive_cost, double negative_cost) {
+        double sum = 0;
+        double sum_negative = 0;
+        double min_value = Double.MAX_VALUE;
+    	boolean positive_activation = false;
+    	
     	// Obtain network output
-    	GenerateOutput(pattern);
+        GenerateOutput(pattern);
+
+        // Normalize to an interval [0,1] according to the restrictions
+        for (int j = 0; j < Noutputs; j++) {
+        	if (activation[Nlayers - 1][j] >= 0) {
+        		positive_activation = true;
+        	}
+        	else {
+        		sum_negative += activation[Nlayers - 1][j];
+        		if (activation[Nlayers - 1][j] < min_value) {
+        			min_value = activation[Nlayers - 1][j];
+        		}
+        	}
+        	sum += Math.abs(activation[Nlayers - 1][j]);
+        }
+
+    	// Creating a small data structure to sort the output values
+    	final class OutputValue implements Comparable {
+            private double real_output;
+            private int associated_class;
+            
+            public OutputValue (double output, int my_class) {
+            	real_output = output;
+            	associated_class = my_class;
+            }
+            
+            public double get_real_output () {
+            	return real_output;
+            }
+            
+            public void set_real_output (double value) {
+            	real_output = value;
+            }
+            
+            public int get_associated_class () {
+            	return associated_class;
+            }
+            
+            public int compareTo (Object otherOutputValue){
+            	if( !(otherOutputValue instanceof OutputValue)) {
+            		throw new ClassCastException("Invalid object");
+           		}
+
+           		double other_value = ((OutputValue)otherOutputValue).get_real_output();
+
+           		if (this.get_real_output() > other_value)
+            		return 1;
+           		else if (this.get_real_output() < other_value)
+            		return -1;
+           		else
+            		return 0;
+            }
+        }        
+        
+    	ArrayList <OutputValue> outputs_for_normalization;
+    	outputs_for_normalization = new ArrayList <OutputValue> (Noutputs);
     	
-    	double [] new_output = new double [Noutputs];
-    	for (int i=0; i<new_output.length; i++) {
+    	if (positive_activation && (sum_negative == 0)) {
+        	// All the values are positive
+        	for (int j = 0; j < Noutputs; j++) {
+        		outputs_for_normalization.add(new OutputValue(activation[Nlayers - 1][j]/sum, j));
+            }
+        }
+        else { 
+        	OutputValue tmp;
+        	
+        	if (positive_activation) {
+        		int first_positive = -1;
+        		double negative_extra = sum_negative/sum;
+        		
+        		// There are positive and negative values
+        		for (int j = 0; j < Noutputs; j++) {
+	            	outputs_for_normalization.add(new OutputValue(activation[Nlayers - 1][j], j));
+	            }
+        		
+        		// Sort the values
+	    		Collections.sort(outputs_for_normalization);
+	    		
+	    		// Find where the positive values start
+	    		for (int j=1; (j < Noutputs) && (first_positive < 0); j++) {
+	    			if (((OutputValue)outputs_for_normalization.get(j)).get_real_output() >= 0) {
+	    				first_positive = j;
+	    			}
+	    			else {
+	    				((OutputValue)outputs_for_normalization.get(j)).set_real_output(-((OutputValue)outputs_for_normalization.get(j)).get_real_output());
+		    		}
+	    		}
+	    		
+	    		if (first_positive == 1) {
+	    			// If there is only a negative value
+	        		for (int j = 0; j < Noutputs; j++) {
+	        			((OutputValue)outputs_for_normalization.get(j)).set_real_output(((OutputValue)outputs_for_normalization.get(j)).get_real_output()-min_value);
+	        			((OutputValue)outputs_for_normalization.get(j)).set_real_output(((OutputValue)outputs_for_normalization.get(j)).get_real_output()/sum);
+			        }
+				}
+	    		else {
+	    			// There are several negative values
+		    		// Exchange the values for negatives
+		    		for (int j=0; j < first_positive/2; j++) {
+		    			tmp = (OutputValue)outputs_for_normalization.get(j);
+		    			outputs_for_normalization.set(j, (OutputValue)outputs_for_normalization.get(Noutputs-1-j));
+		    			outputs_for_normalization.set(Noutputs-1-j, tmp);
+		    		}
+	        		for (int j = 0; j < Noutputs; j++) {
+	        			((OutputValue)outputs_for_normalization.get(j)).set_real_output(((OutputValue)outputs_for_normalization.get(j)).get_real_output()/sum);
+		            }
+		    		// Add the negative extra for positive values
+		    		for (int j=first_positive; j < Noutputs; j++) {
+		    			((OutputValue)outputs_for_normalization.get(j)).set_real_output(((OutputValue)outputs_for_normalization.get(j)).get_real_output()+negative_extra);
+		    		}
+				}
+        	}
+        	else {
+	        	// All the values are negative
+	        	for (int j = 0; j < Noutputs; j++) {
+	            	outputs_for_normalization.add(new OutputValue(-activation[Nlayers - 1][j]/sum, j));
+	            }
+	    		
+	    		// Sort the values
+	    		Collections.sort(outputs_for_normalization);
+	    		
+	    		// Exchange the values
+	    		for (int j=0; j < Noutputs/2; j++) {
+	    			tmp = (OutputValue)outputs_for_normalization.get(j);
+	    			outputs_for_normalization.set(j, (OutputValue)outputs_for_normalization.get(Noutputs-1-j));
+	    			outputs_for_normalization.set(Noutputs-1-j, tmp);
+	    		}
+	    	}
+        }
+        
+    	// For every output, multiply it with the sum of the costs of misclassifyng the corresponding class to other classes
+    	for (int j = 0; j < Noutputs; j++) {
+    		OutputValue tmp = (OutputValue)outputs_for_normalization.get(j);
     		
-            new_output[i] = 0;
-    		double min = normalization[0][i];
-    		double range = normalization[1][i]-min;
-    		   		
-    		for (int j=0; j<new_output.length; j++) {
-    			if (i != j) {
-    				if (j == positive_class) {
-    					new_output[i] = new_output[i] + (positive_cost*((activation[Nlayers - 1][j]-min)/range));
-    				}
-    				else {
-    					new_output[i] = new_output[i] + (negative_cost*((activation[Nlayers - 1][j]-min)/range));
-    				}
-    			}
+    		if (tmp.get_associated_class() == positive_class) {
+    			tmp.set_real_output(tmp.get_real_output()*positive_cost);
     		}
-    	}
-    	
-    	
-    	// Classify pattern
-        int min_index = 0;
-        double minimum = new_output[0];
-        for (int j = 1; j < new_output.length; j++) {
-            if (minimum < new_output[j]) {
-                min_index = j;
-                minimum = new_output[j];
+    		else {
+    			tmp.set_real_output(tmp.get_real_output()*negative_cost);
+    		}
+        }
+    	// Normalize again, however, now all values are positive
+    	sum = 0;
+        for (int j = 0; j < Noutputs; j++) {
+        	sum += ((OutputValue)outputs_for_normalization.get(j)).get_real_output();
+        }
+        for (int j = 0; j < Noutputs; j++) {
+        	((OutputValue)outputs_for_normalization.get(j)).set_real_output((((OutputValue)outputs_for_normalization.get(j)).get_real_output())/sum);
+        }
+        
+        // Classify pattern with the biggest output
+        int Class = ((OutputValue)outputs_for_normalization.get(0)).get_associated_class();
+        int pos_max = 0;
+        for (int j = 1; j < Noutputs; j++) {
+        	if (((OutputValue)outputs_for_normalization.get(pos_max)).get_real_output() < ((OutputValue)outputs_for_normalization.get(j)).get_real_output()) {
+                Class = ((OutputValue)outputs_for_normalization.get(j)).get_associated_class();
+                pos_max = j;
             }
         }
 
-        return min_index;
+        return Class;
     }
 
     /**
@@ -686,7 +826,7 @@ public class Network {
      */
     public void SaveOutputFile(String file_name, double data[][], int n,
                                String problem, int positive_class, double positive_cost, double negative_cost) {
-        String line;
+        //String line;
 
         try {
             // Result file
@@ -706,8 +846,6 @@ public class Network {
 
                 // Classification
                 if (problem.compareToIgnoreCase("Classification") == 0) {
-                	double [][]values_for_normalization = normalizeOutput(data, n);
-                	
                 		Attribute a = Attributes.getOutputAttribute(0);
 										int tipo = a.getType();
                     // Obtain class
@@ -721,11 +859,11 @@ public class Network {
 
                     if(tipo!=Attribute.NOMINAL){
                     	f.write(Integer.toString(Class) + " ");
-                    	f.write(Integer.toString(NetGetClassOfPattern(data[i], positive_class, positive_cost, negative_cost, values_for_normalization)));
+                    	f.write(Integer.toString(NetGetClassOfPattern(data[i], positive_class, positive_cost, negative_cost)));
                   	}
                   	else{
                   		f.write(a.getNominalValue(Class) + " ");
-                    	f.write(a.getNominalValue(NetGetClassOfPattern(data[i], positive_class, positive_cost, negative_cost, values_for_normalization)));
+                    	f.write(a.getNominalValue(NetGetClassOfPattern(data[i], positive_class, positive_cost, negative_cost)));
                   	}
                     f.newLine();
                 }
@@ -755,122 +893,5 @@ public class Network {
         }
 
     }
-
-    /* private void BackPropagationErrorMax(Parameters global, int cycles,
-                                          double data[][],
-                                          int npatterns, Sample sample) {
-       int pattern, Class;
-       double change;
-
-       double[] error = new double[Noutputs];
-
-       // Momentum set to 0
-       for (int k = 0; k < Nlayers - 1; k++) {
-         for (int i = 0; i < Nhidden[k + 1]; i++) {
-           for (int j = 0; j < Nhidden[k]; j++) {
-             momentum[k][i][j] = 0.0;
-
-           }
-         }
-       }
-       for (int iter = 0; iter < cycles; iter++) {
-         // Choose a random pattern
-         pattern = sample.GetPattern(global.random);
-
-         // Learn only if the pattern is not correctly classified
-         if (!NetClassifyPattern(data[pattern])) {
-           // Forward pass
-           GenerateOutput(data[pattern]);
-           int max_index = NetGetClassOfPattern(data[pattern]);
-
-           // Obtain class
-           Class = GetClassOfPattern(data[pattern]);
-
-           // Obtain error for output nodes
-           for (int i = 0; i < Noutputs; i++) {
-             error[i] = 0.0;
-
-           }
-
-           // Opcion 1
-     error[Class] = activation[Nlayers - 1][max_index] + global.threshold -
-               activation[Nlayers - 1][Class];
-     error[max_index] = activation[Nlayers - 1][Class] - global.threshold -
-               activation[Nlayers - 1][max_index];
-
-           // Compute deltas for output
-           for (int i = 0; i < Noutputs; i++) {
-             if (transfer[Nlayers - 2].compareToIgnoreCase("Log") == 0) {
-               delta[Nlayers - 1][i] = error[i] * b_log * activation[Nlayers -
-                   1][i] * (1.0 - activation[Nlayers - 1][i] / a);
-             }
-             else if (transfer[Nlayers - 2].compareToIgnoreCase("Htan") == 0) {
-               delta[Nlayers -
-                   1][i] = error[i] * (b_htan / a) *
-                   (a - activation[Nlayers - 1][i]) *
-                   (a + activation[Nlayers - 1][i]);
-             }
-             else {
-               delta[Nlayers - 1][i] = error[i];
-
-             }
-           }
-           // Compute deltas for hidden nodes
-           for (int k = Nlayers - 2; k > 0; k--) {
-             for (int i = 0; i < Nhidden[k]; i++) {
-               delta[k][i] = 0.0;
-               for (int j = 0; j < Nhidden[k + 1]; j++) {
-                 delta[k][i] += delta[k + 1][j] * w[k][j][i];
-
-               }
-               if (transfer[k - 1].compareToIgnoreCase("Log") == 0) {
-                 delta[k][i] *= b_log * activation[k][i] *
-                     (1.0 - activation[k][i] / a);
-               }
-               else if (transfer[k - 1].compareToIgnoreCase("Htan") == 0) {
-                 delta[k][i] *= (b_htan / a) * (a - activation[k][i]) *
-                     (a + activation[k][i]);
-               }
-             }
-           }
-
-           // Update weights
-           for (int k = Nlayers - 2; k >= 0; k--) {
-             for (int i = 0; i < Nhidden[k + 1]; i++) {
-               for (int j = 0; j < Nhidden[k]; j++) {
-                 change = global.eta * delta[k + 1][i] * activation[k][j] +
-                     global.alpha * momentum[k][i][j] -
-                     global.lambda * w[k][i][j];
-                 w[k][i][j] += change;
-                 momentum[k][i][j] = change;
-               }
-             }
-           }
-         }
-       }
-     }*/
-
-    private double [][] normalizeOutput (double data[][], int n) {
-    	double [][] valuesForNormalization = new double [2][Noutputs];
-    	double output[] = new double [Noutputs];
-    	
-    	GenerateOutput(data[0], output);
-		for (int k=0; k<Noutputs; k++) {
-			valuesForNormalization[0][k] = output[k];
-			valuesForNormalization[1][k] = output[k];
-		}
-		
-    	for (int i = 1; i < n; i++) {
-    		GenerateOutput(data[i], output);
-    		
-    		for (int k=0; k<Noutputs; k++) {
-    			if (output[k] < valuesForNormalization[0][k])
-    				valuesForNormalization[0][k] = output[k];
-    			if (output[k] > valuesForNormalization[1][k])
-    				valuesForNormalization[1][k] = output[k];
-    		}
-    	}
-    	
-    	return valuesForNormalization;
-    }
+    
 }

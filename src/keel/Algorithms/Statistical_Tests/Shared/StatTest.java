@@ -2134,7 +2134,13 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
                         if (ProcessConfig.imbalancedMeasure == ProcessConfig.AUC) {
                             double TPrate_wx = (double)TP_wx/(double)(TP_wx+FN_wx);
                             double FPrate_wx = (double)FP_wx/(double)(FP_wx+TN_wx);
-                            measure_wx = (double)(1+TPrate_wx-FPrate_wx)/2.0;
+                            
+                            if (((TP_wx+FN_wx) == 0) || ((FP_wx+TN_wx) == 0)) {
+                            	measure_wx = 0;
+                          	}
+                          	else {
+                          		measure_wx = (double)(1+TPrate_wx-FPrate_wx)/2.0;
+                          	}
                         }
                         else if (ProcessConfig.imbalancedMeasure == ProcessConfig.GMEAN) {
                             measure_wx = Math.sqrt(((double)TP_wx/(double)(TP_wx+FN_wx)) * ((double)TN_wx/(double)(FP_wx+TN_wx)));
@@ -2241,7 +2247,13 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
                         if (ProcessConfig.imbalancedMeasure == ProcessConfig.AUC) {
                             double TPrate_fr = (double)TP_fr/(double)(TP_fr+FN_fr);
                             double FPrate_fr = (double)FP_fr/(double)(FP_fr+TN_fr);
-                            measure_fr = (double)(1+TPrate_fr-FPrate_fr)/2.0;
+                            
+                            if (((TP_fr+FN_fr) == 0) || ((FP_fr+TN_fr) == 0)) {
+                            	measure_fr = 0;
+                          	}
+                          	else {
+                          		measure_fr = (double)(1+TPrate_fr-FPrate_fr)/2.0;
+                          	}
                         }
                         else if (ProcessConfig.imbalancedMeasure == ProcessConfig.GMEAN) {
                             measure_fr = Math.sqrt(((double)TP_fr/(double)(TP_fr+FN_fr)) * ((double)TN_fr/(double)(FP_fr+TN_fr)));
@@ -3379,7 +3391,13 @@ p.println();
                         p.print("Fold " + j + " : AUC=");
                         double TPrate = (double)TP/(double)(TP+FN);
                         double FPrate = (double)FP/(double)(FP+TN);
-                        measure = (double)(1+TPrate-FPrate)/2.0;
+                        
+                        if (((TP+FN) == 0) || ((FP+TN) == 0)) {
+                        	measure = 0;
+                        }
+                        else {
+                        	measure = (double)(1+TPrate-FPrate)/2.0;
+                        }
                     }
                     else if (ProcessConfig.imbalancedMeasure == ProcessConfig.GMEAN) {
                         p.print("Fold " + j + " : G_MEAN=");
@@ -3458,7 +3476,13 @@ p.println();
                         p.print("Fold " + j + " : AUC=");
                         double TPrate = (double)TP/(double)(TP+FN);
                         double FPrate = (double)FP/(double)(FP+TN);
-                        measure = (double)(1+TPrate-FPrate)/2.0;
+                        
+                        if (((TP+FN) == 0) || ((FP+TN) == 0)) {
+                        	measure = 0;
+                        }
+                        else {
+                        	measure = (double)(1+TPrate-FPrate)/2.0;
+                        }
                     }
                     else if (ProcessConfig.imbalancedMeasure == ProcessConfig.GMEAN) {
                         p.print("Fold " + j + " : G_MEAN=");
@@ -4235,7 +4259,12 @@ p.println();
                         if (ProcessConfig.imbalancedMeasure == ProcessConfig.AUC) {
                             double TPrate = (double)TP/(double)(TP+FN);
                             double FPrate = (double)FP/(double)(FP+TN);
-                            measure = (double)(1+TPrate-FPrate)/2.0;
+                            if (((TP+FN) == 0) || ((FP+TN) == 0)) {
+		                        	measure = 0;
+		                        }
+		                        else {
+		                        	measure = (double)(1+TPrate-FPrate)/2.0;
+		                        }
                         }
                         else if (ProcessConfig.imbalancedMeasure == ProcessConfig.GMEAN) {
                             measure = Math.sqrt(((double)TP/(double)(TP+FN)) * ((double)TN/(double)(FP+TN)));
@@ -4767,7 +4796,12 @@ p.println();
                 if (ProcessConfig.imbalancedMeasure == ProcessConfig.AUC) {
                     double TPrate = (double)TP/(double)(TP+FN);
                     double FPrate = (double)FP/(double)(FP+TN);
-                    measure = (double)(1+TPrate-FPrate)/2.0;
+                    if (((TP+FN) == 0) || ((FP+TN) == 0)) {
+                        	measure = 0;
+                        }
+                        else {
+                        	measure = (double)(1+TPrate-FPrate)/2.0;
+                        }
                 }
                 else if (ProcessConfig.imbalancedMeasure == ProcessConfig.GMEAN) {
                     measure = Math.sqrt(((double)TP/(double)(TP+FN)) * ((double)TN/(double)(FP+TN)));
@@ -5152,7 +5186,12 @@ p.println();
                 if (ProcessConfig.imbalancedMeasure == ProcessConfig.AUC) {
                     double TPrate = (double)TP/(double)(TP+FN);
                     double FPrate = (double)FP/(double)(FP+TN);
-                    measure = (double)(1+TPrate-FPrate)/2.0;
+                    if (((TP+FN) == 0) || ((FP+TN) == 0)) {
+                        	measure = 0;
+                        }
+                        else {
+                        	measure = (double)(1+TPrate-FPrate)/2.0;
+                        }
                 }
                 else if (ProcessConfig.imbalancedMeasure == ProcessConfig.GMEAN) {
                     measure = Math.sqrt(((double)TP/(double)(TP+FN)) * ((double)TN/(double)(FP+TN)));

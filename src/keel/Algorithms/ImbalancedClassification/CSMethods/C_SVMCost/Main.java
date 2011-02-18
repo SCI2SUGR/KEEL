@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. SÃ¡nchez (luciano@uniovi.es)
-    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÃ­a (sglopez@ujaen.es)
-    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,13 @@
 
 /**
  * <p>
- * @author Written by Juliï¿½n Luengo Martï¿½n 01/01/2006
- * @author Modified by Victoria LÃ³pez Morales 01/05/2010
+ * File: Main.java
+ *
+ * A Main class to process the parameters of the method and launch the algorithm
+ * 
+ * @author Written by Julian Luengo Martin 01/01/2006
+ * @author Modified by Victoria Lopez Morales 01/05/2010
+ * @author Modified by Victoria Lopez Morales 05/10/2010
  * @version 0.3
  * @since JDK 1.5
  * </p>
@@ -40,12 +45,16 @@ package keel.Algorithms.ImbalancedClassification.CSMethods.C_SVMCost;
 
 public class Main {
     
-    /** Creates a new instance of Main */
+    /** 
+     * Creates a new instance of Main 
+     */
     public Main() {
     }
     
     /**
-     * @param args the command line arguments
+     * Main method
+     *
+     * @param args The command line arguments
      */
     public static void main(String[] args) {
     	svmClassifierCost M;

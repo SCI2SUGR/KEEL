@@ -26,7 +26,7 @@
 	along with this program.  If not, see http://www.gnu.org/licenses/
   
 **********************************************************************/
-
+ 
 /**
  * <p>Title: Keel</p>
  * <p>Description: Modules screen</p>
@@ -54,13 +54,11 @@ public class FrameModules extends JFrame {
     JLabel labelLQD2 = new JLabel();
     JLabel labelImbalance = new JLabel();
     JLabel labelNonParametric = new JLabel();
-    JLabel labelSSL = new JLabel();
     JLabel labelMil = new JLabel();
     JLabel labelBack = new JLabel();
     JLabel lqd = new JLabel();
     JLabel imbalance = new JLabel();
     JLabel nonParametric = new JLabel();
-    JLabel SSL = new JLabel();
     JLabel mil = new JLabel();
     JLabel back = new JLabel();
     JButton exit = new JButton();
@@ -155,7 +153,7 @@ public class FrameModules extends JFrame {
 
         labelImbalance.setFont(new java.awt.Font("Arial", 1, 18));
         labelImbalance.setForeground(Color.white);
-        labelImbalance.setText("Experiments with Imbalanced Data Sets");
+        labelImbalance.setText("Experiments with Imbalance Data Sets");
         labelImbalance.setBounds(new Rectangle(40, 412, 465, 27));
         labelImbalance.setVisible(false);
 
@@ -166,12 +164,6 @@ public class FrameModules extends JFrame {
         labelNonParametric.setBounds(new Rectangle(40, 412, 465, 27));
         labelNonParametric.setVisible(false);
 
-        labelSSL.setFont(new java.awt.Font("Arial", 1, 18));
-        labelSSL.setForeground(Color.white);
-        labelSSL.setText("Semi-Supervised Learning");
-        labelSSL.setBounds(new Rectangle(40, 412, 465, 27));
-        labelSSL.setVisible(false);
-        
 
         labelMil.setFont(new java.awt.Font("Arial", 1, 17));
         labelMil.setForeground(Color.white);
@@ -201,26 +193,21 @@ public class FrameModules extends JFrame {
         back.setBounds(new Rectangle(406, 409, 110, 38));
         back.addMouseListener(new FrameModules_back_mouseAdapter(this));
 
-        lqd.setBounds(new Rectangle(50, 120, 244, 40));
+        lqd.setBounds(new Rectangle(50, 140, 244, 40));
         lqd.addMouseListener(new Frame_lqd_mouseAdapter(this));
 
-        imbalance.setBounds(new Rectangle(50, 180, 264, 38));
+        imbalance.setBounds(new Rectangle(50, 200, 264, 38));
         imbalance.addMouseListener(new Frame_imbalance_mouseAdapter(this));
 
-        nonParametric.setBounds(new Rectangle(50, 240, 400, 42));
+        nonParametric.setBounds(new Rectangle(50, 260, 400, 42));
         nonParametric.addMouseListener(new Frame_nonParametric_mouseAdapter(this));
 
-        SSL.setBounds(new Rectangle(50, 300, 400, 42));
-        SSL.addMouseListener(new Frame_SSL_mouseAdapter(this));
-        
-        
-        mil.setBounds(new Rectangle(50, 360, 400, 42));
+        mil.setBounds(new Rectangle(50, 320, 400, 42));
         mil.addMouseListener(new Frame_mil_mouseAdapter(this));
 
         lqd.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/lqd.png")));
         imbalance.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/imbalance.png")));
         nonParametric.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/nonParametric.png")));
-        SSL.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/SSL.png")));
         mil.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/mil.png")));
         back.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/back.png")));
 
@@ -232,13 +219,11 @@ public class FrameModules extends JFrame {
         contentPane.add(labelLQD, null);
         contentPane.add(labelImbalance, null);
         contentPane.add(labelNonParametric, null);
-        contentPane.add(labelSSL, null);
         contentPane.add(labelMil, null);
         //contentPane.add(lqd);
         contentPane.add(mil);
         contentPane.add(imbalance);
         contentPane.add(nonParametric);
-        contentPane.add(SSL);
         contentPane.add(keel);
         contentPane.add(logotipo);
         contentPane.add(logotipoSoft);
@@ -416,29 +401,6 @@ public class FrameModules extends JFrame {
         this.setCursor(Cursor.DEFAULT_CURSOR);
     }
 
-    
-    /**
-     * Enter in SSLbutton
-     *
-     * @param e Event
-     */
-    public void SSL_mouseEntered(MouseEvent e) {
-        SSL.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/SSL2.png")));
-        labelSSL.setVisible(true);
-        this.setCursor(Cursor.HAND_CURSOR);
-    }
-
-    /**
-     * Exit from statistical button
-     *
-     * @param e Event
-     */
-    public void SSL_mouseExited(MouseEvent e) {
-        SSL.setIcon(new ImageIcon(this.getClass().getResource("/keel/GraphInterKeel/resources/imag/menu/SSL.png")));
-        labelSSL.setVisible(false);
-        this.setCursor(Cursor.DEFAULT_CURSOR);
-    }
-    
     /**
      * Enter in MIL button
      *
@@ -561,32 +523,6 @@ public class FrameModules extends JFrame {
         frame.setVisible(true);
     }
 
-    
-    
-    /**
-     * Entering in ssl module
-     *
-     * @param e Event
-     */
-    public void SSL_mouseReleased(MouseEvent e) {
-
-        buttonPressed = 0;
-        Experiments frame = new Experiments(parent, Experiments.SSL);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension frameSize = frame.getSize();
-        if (frameSize.height > screenSize.height) {
-            frameSize.height = screenSize.height;
-        }
-        if (frameSize.width > screenSize.width) {
-            frameSize.width = screenSize.width;
-        }
-        frame.setLocation((screenSize.width - frameSize.width) / 2,
-                (screenSize.height - frameSize.height) / 2);
-        this.setVisible(false);
-
-        frame.activateUpperMenu_principals();
-    }
-    
     /**
      * Entering in logo
      *
@@ -732,31 +668,6 @@ class Frame_nonParametric_mouseAdapter extends MouseAdapter {
     }
 }
 
-
-class Frame_SSL_mouseAdapter extends MouseAdapter {
-
-    private FrameModules adaptee;
-
-    Frame_SSL_mouseAdapter(FrameModules adaptee) {
-        this.adaptee = adaptee;
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        adaptee.SSL_mouseEntered(e);
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        adaptee.SSL_mouseExited(e);
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        adaptee.SSL_mouseReleased(e);
-    }
-}
-
 /**
  * Default adapter for KEEL logo
  */
@@ -864,5 +775,3 @@ class FrameModules_back_mouseAdapter extends MouseAdapter {
         adaptee.back_mouseReleased(e);
     }
 }
-
-

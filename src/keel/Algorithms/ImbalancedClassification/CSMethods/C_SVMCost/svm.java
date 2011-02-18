@@ -27,14 +27,25 @@
   
 **********************************************************************/
 
-
-
+/**
+ * <p>
+ * File: svm.java
+ *
+ * This class includes the main operations for svms. It has been modified to work
+ * with the imbalanced classification problem
+ * 
+ * @author Written by Julian Luengo Martin 01/01/2006
+ * @author Modified by Victoria Lopez Morales 01/05/2010
+ * @author Modified by Victoria Lopez Morales 05/10/2010
+ * @version 0.3
+ * @since JDK 1.5
+ * </p>
+ */
 
 
 package keel.Algorithms.ImbalancedClassification.CSMethods.C_SVMCost;
 import java.io.*;
 import java.util.*;
-
 
 //
 // Kernel Cache
@@ -525,7 +536,7 @@ class Solver {
 			
 				if(diff > 0)
 				{
-					if(alpha[j] < 0)
+					if(alpha[j] < 0) // in region III
 					{
 						alpha[j] = 0;
 						alpha[i] = diff;
@@ -1515,7 +1526,6 @@ public class svm {
 		svm_problem prob, svm_parameter param,
 		double Cp, double Cn)
 	{
-		System.out.println("Coste positiva: " + Cp + " Coste negativa: " + Cn);
 		double[] alpha = new double[prob.l];
 		Solver.SolutionInfo si = new Solver.SolutionInfo();
 		switch(param.svm_type)
@@ -2000,7 +2010,7 @@ public class svm {
 				weighted_C[i] = param.C;
 			for(i=0;i<param.nr_weight;i++)
 			{
-				weighted_C[i] *= param.weight[i];
+					weighted_C[i] *= param.weight[i];
 			}
 
 			// train k*(k-1)/2 models
