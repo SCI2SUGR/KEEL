@@ -3054,7 +3054,12 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         }
         Element problemType = new Element("problemType");
         if (classification) {
-            problemType.setText("Classification");
+            if(iSet.isOutputInfered()){
+                problemType.setText("Unsupervised");
+            }
+            else{
+                problemType.setText("Classification");
+            }
         } else {
             problemType.setText("Regression");
         }

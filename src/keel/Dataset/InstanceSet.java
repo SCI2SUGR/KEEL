@@ -89,7 +89,11 @@ public class InstanceSet {
  * the load of different datasets
  */
   private boolean storeAttributesAsNonStatic;
-  
+
+  /**
+   * It indicates that the output attribute has been infered as the last one
+   */
+  private boolean outputInfered;
 /////////////////////////////////////////////////////////////////////////////
 ///////////////// METHODS OF THE INSTANCESET CLASS //////////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -401,23 +405,30 @@ public class InstanceSet {
                                     Vector outputAttrNames, Vector inputAttrNames ){
   //Afteer parsing the header, the inputs and the outputs are prepared.
     System.out.println (" >> Processing inputs and outputs");
+    outputInfered=false;
 	if ( isTrain ){
         if (!inputsDef && !outputsDef){
             outputAttrNames.add( Attributes.getAttribute( Attributes.getNumAttributes()-1).getName() );
             inputAttrNames = Attributes.getAttributesExcept(outputAttrNames);
+            outputInfered=true;
         }else if (!inputsDef && outputsDef){
             inputAttrNames = Attributes.getAttributesExcept(outputAttrNames);
         }else if (inputsDef && !outputsDef){
             outputAttrNames = Attributes.getAttributesExcept(inputAttrNames);
+            outputInfered=true;
         }
 
         Attributes.setOutputInputAttributes(inputAttrNames, outputAttrNames);
     }
   }//end of processInputsAndOutputs
 
-  
-  
-  
+/**
+ * Test if the output attribute has been infered.
+ * @return True if the output attribute has been infered. False if not.
+ */
+  public boolean isOutputInfered(){
+        return outputInfered;
+  }
   
 /**
  * It returns the number of instances.
@@ -794,4 +805,3 @@ public class InstanceSet {
   }
   
 }//end of InstanceSet Class.
-
