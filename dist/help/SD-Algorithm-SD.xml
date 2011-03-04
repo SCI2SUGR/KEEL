@@ -3,7 +3,8 @@
 	<name>SD Algorithm for Subgroup Discovery</name>
 
 	<reference>  
-<ref>Expert-Guided Subgroup Discovery: Methodology and Application. D. Gambergr and N. Lavrac. Journal of Artificial Intelligence Research, 17 (2002) 501-227.</ref>
+<ref>Expert-Guided Subgroup Discovery: Methodology and Application. D. Gambergr and N. Lavrac. Journal of Artificial Intelligence Research, 17 (2002) 501-227.
+</ref>
 	</reference>
 
 	<generalDescription>  
@@ -288,7 +289,7 @@ Rule 4: IF  safety = low THEN class -> unacc
 Rule 5: IF  persons = 2 THEN class -> unacc  
 [  1,00  0,00  0,00  0,00  ]
 
-Rule 6: IF  buying > v_high AND safety != low THEN class -> good  
+Rule 6: IF  buying > v_high AND safety <> low THEN class -> good  
 [  0,00  0,14  0,43  0,43  ]
 
 Rule 7: IF  buying > v_high THEN class -> good  
@@ -300,10 +301,10 @@ Rule 8: IF  maint > v_high THEN class -> good
 Rule 9: IF  doors > 2 THEN class -> good  
 [  0,30  0,10  0,30  0,30  ]
 
-Rule 10: IF  safety > med AND buying != v_high AND lug_boot != small THEN class -> v_good  
+Rule 10: IF  safety > med AND buying <> v_high AND lug_boot <> small THEN class -> v_good  
 [  0,00  0,00  0,00  1,00  ]
 
-Rule 11: IF  safety > med AND buying != v_high THEN class -> v_good  
+Rule 11: IF  safety > med AND buying <> v_high THEN class -> v_good  
 [  0,00  0,00  0,25  0,75  ]
 
 Rule 12: IF  safety > med THEN class -> v_good  

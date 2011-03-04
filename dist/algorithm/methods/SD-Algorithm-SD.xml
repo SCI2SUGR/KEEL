@@ -1,23 +1,31 @@
 <algorithm_specification>
   <name>SDAlgorithm for Subgroup Discovery</name>
-  <nParameters>5</nParameters>
+  <nParameters>17</nParameters>
   <seed>0</seed>
   <nOutput>4</nOutput>
   <parameter>
-    <name>g</name>
-    <type>integer</type>
+    <name>algorithm</name>
+    <type>list</type>
     <domain>
-      <lowerB>0</lowerB>
-      <upperB>100</upperB>
+      <item>SDAlgorithm</item>
     </domain>
-    <default>10</default>
+    <default>SDAlgorithm</default>
+  </parameter>
+  <parameter>
+    <name>g</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>100.0</upperB>
+    </domain>
+    <default>10.0</default>
   </parameter>
   <parameter>
     <name>minSupp</name>
     <type>real</type>
     <domain>
       <lowerB>0.0</lowerB>
-      <upperB>1.0</upperB>
+      <upperB>0.0</upperB>
     </domain>
     <default>0.1</default>
   </parameter>
@@ -37,14 +45,6 @@
       <lowerB>1</lowerB>
       <upperB>20</upperB>
     </domain>
-    <default>1</default>
-  </parameter>
-    <parameter>
-    <name>algorithm</name>
-    <type>list</type>
-    <domain>
-      <item>SDAlgorithm</item>
-    </domain>
-    <default>SDAlgorithm</default>
+    <default>0</default>
   </parameter>
 </algorithm_specification>
