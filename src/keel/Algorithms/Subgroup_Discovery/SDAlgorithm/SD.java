@@ -267,7 +267,7 @@ public class SD {
         } else {
             evRules = new EvaluateRules(setFinalRules, dataEva, dataTst,
                                             muestPorClaseEval, muestPorClaseTest,
-                                            nameClasses);
+                                            nameClasses, measure_file);
             generateExit();
         }
         System.out.println("\n\nExecuting finished\n");
@@ -563,7 +563,7 @@ public class SD {
      * </p>
      */
     private void generateExit() {
-        Files f = new Files();
+        
         String cad = "";
         DecimalFormat d = new DecimalFormat("0.000");
 
@@ -571,17 +571,14 @@ public class SD {
         cad = setFinalRules.printString();
         time = (double) time / 1000;
 
-        cad += "\n\n" + evRules.printString() + "\nTime: " + d.format(time);
+        //cad += "\n\n" + evRules.printString() + "\nTime: " + d.format(time);
+        cad += "\n\nTime: " + d.format(time);
         // Print the result of rules and quality measures in "rule file"
-        f.writeFile(rule_file, cad);
-
-        // Print the result of the quality measures in "measure file"
-        cad = evRules.printMeasure();
-        f.writeFile(measure_file, cad);
+        Files.writeFile(rule_file, cad);
 
         // Print results of train and test
-        f.writeFile(output_file_tra, theExit + evRules.exitResult(dataTra));
-        f.writeFile(output_file_tst, theExit + evRules.exitResult(dataTst));
+        Files.writeFile(output_file_tra, theExit + evRules.exitResult(dataTra));
+        Files.writeFile(output_file_tst, theExit + evRules.exitResult(dataTst));
 
     }
 

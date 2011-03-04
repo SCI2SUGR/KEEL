@@ -114,4 +114,25 @@ public class SetData{
         return c;
     }
 
+    /**
+     * <p>
+     * Return the examples for a class
+     * </p>
+     * @param value         Value of the class
+     * @return              The number of examples for the class
+     */
+    public int getExamplesClass(int value){
+
+        int conta=0;
+
+        for(int i=0; i<datos.size(); i++){
+            Instance m = (Instance) datos.get(i);
+            if(m.getClas()==value){
+                conta++;
+            }
+
+        }
+        return conta;
+    }
+
 }
