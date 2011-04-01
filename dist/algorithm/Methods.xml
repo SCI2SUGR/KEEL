@@ -1335,7 +1335,7 @@
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
@@ -1345,7 +1345,7 @@
 	</input>
     <output>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
@@ -1361,7 +1361,7 @@
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
@@ -1371,7 +1371,7 @@
 	</input>
     <output>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
