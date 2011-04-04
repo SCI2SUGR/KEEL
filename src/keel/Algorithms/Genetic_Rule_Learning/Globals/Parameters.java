@@ -119,5 +119,6 @@ public final class Parameters {
 	public static String processType;
         public static String defaultClass;
         public static String initMethod;
+	public static double coefficient; 
 }
 

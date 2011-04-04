@@ -27,15 +27,6 @@
   
 **********************************************************************/
 
-/*
- * ChiMergeDiscretizer.java
- *
- */
-
-/**
- *
- */
-
 package keel.Algorithms.Discretizers.Basic;
 
 import keel.Dataset.*;
@@ -44,11 +35,12 @@ import java.util.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
 public abstract class Discretizer {
+
 	protected double [][]cutPoints;
 	protected double [][]realValues;
 	protected boolean []realAttributes;
 	protected int []classOfInstances;
-	private int iClassIndex;
+	protected int iClassIndex;
 	
 	public void buildCutPoints(InstanceSet is) {
 		int i;
