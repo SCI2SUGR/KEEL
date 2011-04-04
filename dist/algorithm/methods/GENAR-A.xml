@@ -76,15 +76,6 @@
     <default>2.0</default>
   </parameter>
   <parameter>
-    <name>Minimum Support</name>
-    <type>real</type>
-    <domain>
-      <lowerB>0.0</lowerB>
-      <upperB>1.0</upperB>
-    </domain>
-    <default>0.1</default>
-  </parameter>
-  <parameter>
     <name>Minimum Confidence</name>
     <type>real</type>
     <domain>
@@ -92,5 +83,14 @@
       <upperB>1.0</upperB>
     </domain>
     <default>0.8</default>
+  </parameter>
+  <parameter>
+    <name>Minimum Support</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.1</default>
   </parameter>
 </algorithm_specification>
