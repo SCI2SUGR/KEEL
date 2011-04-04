@@ -396,6 +396,24 @@
 		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
 		</jar>	
 		<jar
+		  jarfile="${distPre}/Disc-HDD.jar"
+		  manifest="${src}/keel/Algorithms/Discretizers/HDD/Manifest">
+		  <fileset dir="${bin}"
+		  includes="keel/Algorithms/Discretizers/HDD/**/*.class
+			  keel/Algorithms/Discretizers/Basic/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+		</jar>	
+		<jar
+		  jarfile="${distPre}/Disc-ClusterAnalysis.jar"
+		  manifest="${src}/keel/Algorithms/Discretizers/Cluster_Analysis/Manifest">
+		  <fileset dir="${bin}"
+		  includes="keel/Algorithms/Discretizers/Cluster_Analysis/**/*.class
+			  keel/Algorithms/Discretizers/Basic/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+		</jar>	
+		<jar
 		  jarfile="${distPre}/Disc-Khiops.jar"
 		  manifest="${src}/keel/Algorithms/Discretizers/Khiops/Manifest">
 		  <fileset dir="${bin}"
