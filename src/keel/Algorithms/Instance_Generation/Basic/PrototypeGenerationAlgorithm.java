@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -62,8 +62,9 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
     /** Type of file: training data set. */
     protected static final int TRAINING = 0;
     /** Type of file: test data set. */
-    protected static final int TEST = 1;
-    
+    protected static final int VALIDATION = 1;  // for KEEL DEV
+    /** Type of file: test data set. */
+    protected static final int TEST = 2;
     /**
      * Gets the file names from one line of keel text.
      * @return Array with all file names from that line of text.
@@ -230,15 +231,15 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
             int trainRealClass[][];
             int trainPrediction[][];
                 
-            trainRealClass = new int[resultingSet.size()][1];
-	    trainPrediction = new int[resultingSet.size()][1];	
+            trainRealClass = new int[training.size()][1];
+	    trainPrediction = new int[training.size()][1];	
            
             int nClases = resultingSet.getPosibleValuesOfOutput().size();
                  
            //Working on training
-            for (int i=0; i<resultingSet.size(); i++) {
-                 trainRealClass[i][0] = (int) resultingSet.get(i).getOutput(0);
-                 trainPrediction[i][0] = evaluate(resultingSet.get(i).getInputs(),training.prototypeSetTodouble(), nClases, training.getClases(), 1);
+            for (int i=0; i<training.size(); i++) {
+                 trainRealClass[i][0] = (int) training.get(i).getOutput(0);
+                 trainPrediction[i][0] = evaluate(training.get(i).getInputs(),resultingSet.prototypeSetTodouble(), nClases, resultingSet.getClases(), 1);
             }
             
             Attribute entradas[];
@@ -259,7 +260,7 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
 		prediction[i][0]= evaluate(test.get(i).getInputs(),resultingSet.prototypeSetTodouble(), nClases, resultingSet.getClases(), 1);
             }
                 
-            writeOutput(outputFilesPath.get(TEST), realClass, prediction,  entradas, salida, relation);
+            writeOutput(outputFilesPath.get(1), realClass, prediction,  entradas, salida, relation);
                 
             
             

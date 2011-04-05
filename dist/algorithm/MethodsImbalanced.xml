@@ -31,7 +31,7 @@
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
@@ -40,7 +40,7 @@
     </input>
     <output>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
@@ -3755,6 +3755,30 @@
 	</output>
   </method>  
   <method>
+    <name>OBDE-C</name>
+    <family>Prototype Generation</family>
+    <jar_file>IG-OBDE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>  
+  <method>
     <name>PNN-C</name>
     <family>Prototype Generation</family>
     <jar_file>IG-PNN.jar</jar_file>
@@ -5296,7 +5320,7 @@
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
@@ -5306,7 +5330,7 @@
 	</input>
     <output>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
@@ -5322,7 +5346,7 @@
     <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
@@ -5332,7 +5356,7 @@
 	</input>
     <output>
       <continuous>Yes</continuous>
-      <integer>No</integer>
+      <integer>Yes</integer>
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
