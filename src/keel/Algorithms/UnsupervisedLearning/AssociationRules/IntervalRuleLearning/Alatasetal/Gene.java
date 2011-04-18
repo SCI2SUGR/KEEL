@@ -213,6 +213,7 @@ public class Gene {
 	public boolean equals(Object obj) {
 		Gene g = (Gene)obj;
 		
+        if ((g.ac == NOT_INVOLVED) && (this.ac == NOT_INVOLVED))  return true;
 		if (g.ac == this.ac) {
 			if (g.pn == this.pn) {
 				if (g.lb == this.lb) {
