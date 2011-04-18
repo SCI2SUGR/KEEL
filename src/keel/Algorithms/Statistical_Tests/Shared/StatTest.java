@@ -3877,6 +3877,7 @@ p.println();
                 break;
 				
             case StatTest.summaryR:
+                
                 out = new FileOutputStream(nres);
                 p = new PrintStream(out);
 
@@ -3910,7 +3911,7 @@ p.println();
                     p.print(Math.sqrt(sume2[k] - gERR[k] * gERR[k]) + " ");
                 }
                 p.println();
-                p.println("TRAIN RESULTS");
+                p.println("\nTRAIN RESULTS");
                 p.println("============");
                 p.println("Model = " + nameRel);
                 rmsSummary(dtrain[0]);
@@ -5281,7 +5282,7 @@ p.println();
             p.println();
             for (int i = 0; i < algorithms.size(); i++) {
                 for (int j = 0; j < nOutputs; j++) {
-                    p.print("," + "Output:" + (j + 1));
+                    p.print("," + "Output (MSE) ");
                 }
             }
         } else {
@@ -5289,7 +5290,7 @@ p.println();
             for (int i = 0; i < algorithms.size(); i++) {
 
                 for (int j = 0; j < nOutputs; j++) {
-                    p.print("," + algorithms.get(i) + "--Output:" + (j + 1));
+                    p.print("," + algorithms.get(i) + "--Output (MSE) ");
                 }
 
             }
@@ -5370,8 +5371,7 @@ p.println();
                 p.println();
                 for (int i = 0; i < algorithms.size(); i++) {
                     for (int j = 0; j < nOutputs; j++) {
-                        p.print("," + "Average--Output:" + (j + 1) + "," +
-                                "Variance--Output:" + (j + 1));
+                        p.print("," + "Average (MSE), Variance (MSE) ");
                     }
                 }
             }
@@ -5381,10 +5381,8 @@ p.println();
                 p.print("DATASET");
                 for (int i = 0; i < algorithms.size(); i++) {
                     for (int j = 0; j < nOutputs; j++) {
-                        p.print("," + algorithms.get(i) + "--Average--Output:" +
-                                (j + 1));
-                        p.print("," + algorithms.get(i) + "--Variance--Output:" +
-                                (j + 1));
+                        p.print("," + algorithms.get(i) + "--Average (MSE) ");
+                        p.print("," + algorithms.get(i) + "--Variance (MSE) ");
                     }
                 }
 

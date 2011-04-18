@@ -47,7 +47,7 @@
       <lowerB>0</lowerB>
       <upperB>2</upperB>
     </domain>
-    <default>1</default>
+    <default>2</default>
   </parameter>
   <parameter>
     <name>1-Data used in previous table</name>
@@ -74,7 +74,7 @@
       <lowerB>0</lowerB>
       <upperB>2</upperB>
     </domain>
-    <default>1</default>
+    <default>2</default>
   </parameter>
   <parameter>
     <name>2-Data used in previous table</name>

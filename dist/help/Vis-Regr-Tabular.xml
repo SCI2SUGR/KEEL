@@ -52,16 +52,12 @@ Type of partitions: k-fold, k=10
 
 After the execution of RunKeel.jar we can see into the ./results/StatTabularMO/TSTModelLinearLMSvsModelFuzzyWangMendel/ folder the results for the tested regression method: machinecpu_ByFoldByAlgorithm_s0.stat and Summary_s0.stat.
 
-File pvalueMatrix0s0.stat:
-------------------------------------------------------
-Table: RMS by algorithm and by fold
-Dataset used: machinecpu
-------------------------------------------------------
-
+File machinecpu_ByFoldByAlgorithm_s0.stat:
 
 TEST RESULTS
 
-machinecpu,ModelLinearLMS--Output:1,ModelPolCuadraticLMS--Output:1
+machinecpu,ModelLinearLMS,ModelPolCuadraticLMS
+,Output (MSE),Output (MSE)
 Fold0,6269.3119803267,19895.1342723521
 Fold1,2147.2593482864,914.1738736216
 Fold2,1995.9915937209,1861.5149495191
@@ -76,7 +72,8 @@ Fold9,3784.4057951743,1185.1871498092
 
 TRAIN RESULTS
 
-machinecpu,ModelLinearLMS--Output:1,ModelPolCuadraticLMS--Output:1
+machinecpu,ModelLinearLMS,ModelPolCuadraticLMS
+,Output (MSE),Output (MSE)
 Fold0,3257.4008331947,793.4548048664
 Fold1,3638.8121543421,1125.9622150435
 Fold2,3658.5387089614,1096.5429891227
@@ -89,7 +86,6 @@ Fold8,2716.6152034492,944.4745150139
 Fold9,3473.8292418227,1108.1094643893
 
 
-
 File Summary_s0.stat:
 ------------------------------------------------------
 Global Average and Variance
@@ -98,12 +94,14 @@ Global Average and Variance
 
 TEST RESULTS
 
-DATASET,ModelLinearLMS--Average--Output:1,ModelLinearLMS--Variance--Output:1,ModelPolCuadraticLMS--Average--Output:1,ModelPolCuadraticLMS--Variance--Output:1
+DATASET,ModelLinearLMS,ModelLinearLMS,ModelPolCuadraticLMS,ModelPolCuadraticLMS
+,Average (MSE), Variance (MSE),Average (MSE), Variance (MSE)
 machinecpu,5.284071116281E03,1.600067864171E07,7.824207844652E03,1.427559803258E08
 
 TRAIN RESULTS
 
-DATASET,ModelLinearLMS--Average--Output:1,ModelLinearLMS--Variance--Output:1,ModelPolCuadraticLMS--Average--Output:1,ModelPolCuadraticLMS--Variance--Output:1
+DATASET,ModelLinearLMS,ModelLinearLMS,ModelPolCuadraticLMS,ModelPolCuadraticLMS
+,Average (MSE), Variance (MSE),Average (MSE), Variance (MSE)
 machinecpu,3.421252623971E03,9.906740216156E04,1.014645885548E03,1.640093200564E04
 </example>
 

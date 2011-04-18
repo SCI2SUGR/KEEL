@@ -90,12 +90,10 @@ public class ParseFileList {
                 nameResults.add(new String(tmp));
 
                 try {
-
                     // Extract the name of the dataset
                     in = new BufferedReader(new FileReader(tmp));
 
                     labels = pc.skipHeader(in);
-
                     if (!lastRel.equals(pc.getRelation())) {
 
                         lastRel = pc.getRelation();
@@ -103,7 +101,6 @@ public class ParseFileList {
                         listOfNames += pc.getRelation() + " ";
 
                     }
-
 
                     data.add(new Vector());
                     y = 0;

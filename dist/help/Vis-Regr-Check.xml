@@ -39,7 +39,7 @@ After the execution of RunKeel.jar we can see into the ./results/StatCheckMO fol
 
 TEST RESULTS
 ============
-Model = 
+Model = machine_cpu
 MSE of all folds:
 Fold 0 : 6269.121643564491 
 Fold 1 : 2147.230910972645 
@@ -55,9 +55,10 @@ Global MSE:
 5283.943486931982 
 Global stdev:
 4000.2034383340088 
+
 TRAIN RESULTS
 ============
-Model = 
+Model = machine_cpu
 MSE of all folds:
 Fold 0 : 3257.4008111435282 
 Fold 1 : 3638.8121443199325 
@@ -88,7 +89,7 @@ After the execution of RunKeel.jar we can see into the ./results/StatCheckMO fol
 
 TEST RESULTS
 ============
-Model = 
+Model = machine_cpu
 MSE of all folds:
 Fold 0 : 3024.466632140766 
 Fold 1 : 4857.1275434019635 
@@ -99,9 +100,10 @@ Global MSE:
 3208.4772050274178 
 Global stdev:
 1238.2471764669267 
+
 TRAIN RESULTS
 ============
-Model = 
+Model = machine_cpu
 MSE of all folds:
 Fold 0 : 2818.855165182976 
 Fold 1 : 3260.433836491104 
