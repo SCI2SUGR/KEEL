@@ -1289,6 +1289,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         useCaseScrollPane.setName("useCaseScrollPane"); // NOI18N
 
         useCaseTextArea.setColumns(20);
+        useCaseTextArea.setEditable(false);
         useCaseTextArea.setRows(5);
         useCaseTextArea.setName("useCaseTextArea"); // NOI18N
         useCaseScrollPane.setViewportView(useCaseTextArea);
