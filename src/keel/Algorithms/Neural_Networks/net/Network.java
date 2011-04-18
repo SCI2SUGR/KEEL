@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -663,7 +663,7 @@ public class Network {
      * @throws IOException
      */
     public void SaveOutputFile(String file_name, double data[][], int n,
-                               String problem) {
+                               String problem, double[] a, double[] b) {
         String line;
 
         try {
@@ -684,8 +684,8 @@ public class Network {
 
                 // Classification
                 if (problem.compareToIgnoreCase("Classification") == 0) {
-                		Attribute a = Attributes.getOutputAttribute(0);
-										int tipo = a.getType();
+                    Attribute aa = Attributes.getOutputAttribute(0);
+		    int tipo = aa.getType();
                     // Obtain class
                     int Class = 0;
                     for (int j = 1; j < Noutputs; j++) {
@@ -699,24 +699,40 @@ public class Network {
                     	f.write(Integer.toString(NetGetClassOfPattern(data[i])));
                   	}
                   	else{
-                  		f.write(a.getNominalValue(Class) + " ");
-                    	f.write(a.getNominalValue(NetGetClassOfPattern(data[i])));
+                  		f.write(aa.getNominalValue(Class) + " ");
+                    	f.write(aa.getNominalValue(NetGetClassOfPattern(data[i])));
                   	}
                   	f.newLine();
                 }
                 // Regression
                 else {
-                    for (int j = 0; j < Noutputs; j++) {
-                        f.write(Double.toString(data[i][Ninputs + j]) + " ");
+                    if(a!=null && b!=null){
+                        for (int j = 0; j < Noutputs; j++) {
+                            f.write(Double.toString((data[i][Ninputs + j] - b[j])/a[j]) + " ");
+
+                        }
+                        GenerateOutput(data[i]);
+                        for (int j = 0; j < Noutputs; j++) {
+                            f.write(Double.toString((activation[Nlayers - 1][j]-b[j])/a[j]) +
+                                    " ");
+
+                        }
+                        f.newLine();
+                    }
+                    else{
+                        for (int j = 0; j < Noutputs; j++) {
+                            f.write(Double.toString(data[i][Ninputs + j]) + " ");
+
+                        }
+                        GenerateOutput(data[i]);
+                        for (int j = 0; j < Noutputs; j++) {
+                            f.write(Double.toString(activation[Nlayers - 1][j]) +
+                                    " ");
+
+                        }
+                        f.newLine();
 
                     }
-                    GenerateOutput(data[i]);
-                    for (int j = 0; j < Noutputs; j++) {
-                        f.write(Double.toString(activation[Nlayers - 1][j]) +
-                                " ");
-
-                    }
-                    f.newLine();
                 }
             }
             f.close();

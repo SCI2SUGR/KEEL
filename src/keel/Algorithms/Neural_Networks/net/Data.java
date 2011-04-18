@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -53,6 +53,10 @@ public class Data {
 
     /** Testing data */
     public double test[][];
+
+    /** Scaling parameters */
+    public double [] a = null;
+    public double [] b = null;
 
     /**
      * <p>
@@ -266,15 +270,19 @@ public class Data {
      * @param ubound upper bound
      */
     public void ScaleOutputData(Parameters global, double lbound, double ubound) {
-        double max_val, min_val, a, b;
+        double max_val, min_val;
         /* Make the linear transformation x' = ax
          * + b, where a=(MAX -
          * MIN)/(max_val-min_val)
          * b=(MIN\u00B7max_val-MAX\u00B7min_val)/(max_val-min_val).
          */
 
+        a = new double[global.Noutputs];
+        b = new double[global.Noutputs];
+
         // Scale output.
         for (int i = global.Ninputs; i < global.Ninputs + global.Noutputs; i++) {
+            int ii = i-global.Ninputs;
             /*
              * Get the max and min values of the column.
              */
@@ -292,23 +300,23 @@ public class Data {
             // Calculate a and b coefficients.
             // If constant do nothing.
             if (max_val != min_val) {
-                a = (ubound - lbound) / (max_val - min_val);
-                b = (lbound * max_val - ubound * min_val) / (max_val - min_val);
+                a[ii] = (ubound - lbound) / (max_val - min_val);
+                b[ii] = (lbound * max_val - ubound * min_val) / (max_val - min_val);
 
                 /*
                  * Scale column.
                  */
                 for (int j = 0; j < global.n_train_patterns; j++) {
-                    train[j][i] = a * train[j][i] + b;
+                    train[j][i] = a[ii] * train[j][i] + b[ii];
                 }
                 if (global.test_data) {
                     for (int j = 0; j < global.n_test_patterns; j++) {
-                        test[j][i] = a * test[j][i] + b;
+                        test[j][i] = a[ii] * test[j][i] + b[ii];
                     }
                 }
                 if (global.val_data) {
                     for (int j = 0; j < global.n_val_patterns; j++) {
-                        validation[j][i] = a * validation[j][i] + b;
+                        validation[j][i] = a[ii] * validation[j][i] + b[ii];
                     }
                 }
             }

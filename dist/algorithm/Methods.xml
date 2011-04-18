@@ -1096,7 +1096,7 @@
   </method>
   <method>
     <name>Ensemble-R</name>
-    <family>Evolutionary Neural Networks</family>
+    <family>Neural Networks</family>
     <jar_file>Regr-Ensemble.jar</jar_file>
     <problem_type>regression</problem_type>
     <input>
