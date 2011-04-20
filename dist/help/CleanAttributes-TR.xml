@@ -1,0 +1,30 @@
+<method>
+
+	<name>Clean Attributes</name>
+
+	<reference>  
+	</reference>
+	
+	<generalDescription>  
+
+		<type>Cleaning method</type>
+
+		<objective>Cleaning those irrelevant or superfluous attributes with a single value.</objective>
+
+		<howWork>
+This method can be used to enhance the use of datasets after the application of preprocessing methods. Variables are filtered,
+erasing those with a single value in its domain (being discrete or continuous). 
+		</howWork>
+		
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+	</generalDescription>
+	<example>
+	</example>
+</method>

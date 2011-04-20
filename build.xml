@@ -254,8 +254,6 @@
 		  keel/Dataset/**/*.class"/>
 		</jar>	
 		
-		
-		
 		<!-- Transformations  (Julian) -->
 
           <jar jarfile="${distPre}/Trns-MinMax.jar" manifest="${src}/keel/Algorithms/Preprocess/Transformations/min_max/Manifest">
@@ -275,6 +273,11 @@
 		  
 		  <jar jarfile="${distPre}/Trns-Nominal2Binary.jar" manifest="${src}/keel/Algorithms/Preprocess/Transformations/Nominal2Binary/Manifest">
 		  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Transformations/Nominal2Binary/**/*.class" />
+		  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
+		  </jar>
+		  
+		  <jar jarfile="${distPre}/CleanAttributes-TR.jar" manifest="${src}/keel/Algorithms/Preprocess/Transformations/CleanAttributes/Manifest">
+		  <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Transformations/CleanAttributes/**/*.class" />
 		  <fileset dir="${bin}" includes="keel/Dataset/**/*.class" />
 		  </jar>
 
