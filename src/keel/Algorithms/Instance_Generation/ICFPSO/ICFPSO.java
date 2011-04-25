@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,9 +31,9 @@
 //  SSMA.javA  HIBRIDO  PSO
 
 //
-//  Salvador García López
+//  Salvador Garcï¿½a Lï¿½pez
 //
-//  Created by Salvador García López 3-10-2005.
+//  Created by Salvador Garcï¿½a Lï¿½pez 3-10-2005.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -62,10 +62,10 @@ public class ICFPSO extends Metodo {
 	  private int k;
 	  private double semilla;
 	  
-  public String Script; // para releer par‡metros..
+  public String Script; // para releer parï¿½metros..
   private PrototypeSet trainingDataSet;
   private PrototypeGenerator generador;
-  //Par‡metros PSO
+  //Parï¿½metros PSO
   private int SwarmSize; // SwarmSize == P
   private int ParticleSize; // ParticleSize == K  (in the article)
   private int MaxIter; 
@@ -302,7 +302,7 @@ public class ICFPSO extends Metodo {
 					   if(velocidad[i][k][j]>VMax){
 						   velocidad[i][k][j] = VMax;  // The particles's velocities has a maximum velocity.
 					   }else if(velocidad[i][k][j]< -VMax){
-						   velocidad[i][k][j]=-VMax;      // absolute value. À? or -VMax , Vmax. ?
+						   velocidad[i][k][j]=-VMax;      // absolute value. ï¿½? or -VMax , Vmax. ?
 						   
 					   }
 					   
@@ -488,7 +488,7 @@ public class ICFPSO extends Metodo {
 	    OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
 	    
 	    
-	    /** AHORA A„ADO MI PSO!! **/
+	    /** AHORA Aï¿½ADO MI PSO!! **/
 	    Parameters.assertBasicArgs(ficheroSalida);
 	    
 	    PrototypeGenerationAlgorithm.readParametersFile(this.Script);
@@ -502,6 +502,37 @@ public class ICFPSO extends Metodo {
 	    
 	     PrototypeSet SADE = reduceSet(training); // LLAMO al SADE
 	    SADE.save(ficheroSalida[0]); // Lo guardo
+	    
+	    
+	    // COn conjS me vale.
+        int trainRealClass[][];
+        int trainPrediction[][];
+                
+         trainRealClass = new int[datosTrain.length][1];
+		 trainPrediction = new int[datosTrain.length][1];	
+                
+         //Working on training
+         for ( i=0; i<datosTrain.length; i++) {
+              trainRealClass[i][0] = clasesTrain[i];
+              trainPrediction[i][0] = KNN.evaluate(datosTrain[i],SADE.prototypeSetTodouble(), nClases, SADE.getClases(), 1);
+          }
+                 
+          KNN.writeOutput(ficheroSalida[0], trainRealClass, trainPrediction,  entradas, salida, relation);
+                 
+                 
+        //Working on test
+		int realClass[][] = new int[datosTest.length][1];
+		int prediction[][] = new int[datosTest.length][1];	
+		
+		//Check  time		
+				
+		for (i=0; i<realClass.length; i++) {
+			realClass[i][0] = clasesTest[i];
+			prediction[i][0]= KNN.evaluate(datosTest[i],SADE.prototypeSetTodouble(), nClases, SADE.getClases(), 1);
+		}
+                
+         KNN.writeOutput(ficheroSalida[1], realClass, prediction,  entradas, salida, relation);
+         
 	  }
 
 	  /*Function that calculates teh number of elements of the coverage set for an instance*/
@@ -574,6 +605,13 @@ public class ICFPSO extends Metodo {
     i++;
     for (j=i; line[j]!='\"'; j++);
     ficheroTraining = new String (line,i,j-i);
+    
+	for (i=j+1; line[i]!='\"'; i++);
+	i++;
+	for (j=i; line[j]!='\"'; j++);
+	ficheroValidation = new String (line,i,j-i);
+	
+	
     for (i=j+1; line[i]!='\"'; i++);
     i++;
     for (j=i; line[j]!='\"'; j++);

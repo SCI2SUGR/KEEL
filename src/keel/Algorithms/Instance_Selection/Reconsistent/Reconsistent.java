@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -241,34 +241,34 @@ public class Reconsistent extends Metodo {
 
     System.out.println("Reconsistent "+ relation + " " + (double)(System.currentTimeMillis()-tiempo)/1000.0 + "s");
 
-                 // COn conjS me vale.
-                 int trainRealClass[][];
-                 int trainPrediction[][];
-                
-                 trainRealClass = new int[conjS.length][1];
-		 trainPrediction = new int[conjS.length][1];	
-                
-                 //Working on training
-                 for ( i=0; i<conjS.length; i++) {
-                     trainRealClass[i][0] = clasesS[i];
-                     trainPrediction[i][0] = KNN.evaluate(conjS[i],datosTrain, nClases, clasesTrain, 1);
-                 }
-                 
-                 KNN.writeOutput(ficheroSalida[0], trainRealClass, trainPrediction,  entradas, salida, relation);
-                 
-                 
-                //Working on test
-		int realClass[][] = new int[datosTest.length][1];
-		int prediction[][] = new int[datosTest.length][1];	
-		
-		//Check  time		
-				
-		for (i=0; i<realClass.length; i++) {
-			realClass[i][0] = clasesTest[i];
-			prediction[i][0]= KNN.evaluate(datosTest[i],conjS, nClases, clasesS, 1);
-		}
-                
-                KNN.writeOutput(ficheroSalida[1], realClass, prediction,  entradas, salida, relation);
+    // COn conjS me vale.
+    int trainRealClass[][];
+    int trainPrediction[][];
+            
+     trainRealClass = new int[datosTrain.length][1];
+	 trainPrediction = new int[datosTrain.length][1];	
+            
+     //Working on training
+     for ( i=0; i<datosTrain.length; i++) {
+          trainRealClass[i][0] = clasesTrain[i];
+          trainPrediction[i][0] = KNN.evaluate(datosTrain[i],conjS, nClases, clasesS, 1);
+      }
+             
+      KNN.writeOutput(ficheroSalida[0], trainRealClass, trainPrediction,  entradas, salida, relation);
+             
+             
+    //Working on test
+	int realClass[][] = new int[datosTest.length][1];
+	int prediction[][] = new int[datosTest.length][1];	
+	
+	//Check  time		
+			
+	for (i=0; i<realClass.length; i++) {
+		realClass[i][0] = clasesTest[i];
+		prediction[i][0]= KNN.evaluate(datosTest[i],conjS, nClases, clasesS, 1);
+	}
+            
+     KNN.writeOutput(ficheroSalida[1], realClass, prediction,  entradas, salida, relation);
 
   }
 
@@ -335,6 +335,12 @@ public class Reconsistent extends Metodo {
     i++;
     for (j=i; line[j]!='\"'; j++);
     ficheroTraining = new String (line,i,j-i);
+    
+	for (i=j+1; line[i]!='\"'; i++);
+	i++;
+	for (j=i; line[j]!='\"'; j++);
+	ficheroValidation = new String (line,i,j-i);
+	
     for (i=j+1; line[i]!='\"'; i++);
     i++;
     for (j=i; line[j]!='\"'; j++);

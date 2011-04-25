@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@
 //
 //  SSMA.java
 //
-//  Salvador García López
+//  Salvador Garcï¿½a Lï¿½pez
 //
-//  Created by Salvador García López 3-10-2005.
+//  Created by Salvador Garcï¿½a Lï¿½pez 3-10-2005.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -67,10 +67,10 @@ public class SSMASFLSDE extends Metodo {
   private double pCross;
   private double pMut;
   private int kNeigh;
-  public String Script; // para releer par‡metros..
+  public String Script; // para releer parï¿½metros..
   private PrototypeSet trainingDataSet;
   private PrototypeGenerator generador;
-  //Par‡metros DE
+  //Parï¿½metros DE
   private int k;
   
   private int PopulationSize; 
@@ -226,7 +226,7 @@ public class SSMASFLSDE extends Metodo {
   			   	   mutant = result.sumar(producto3);
     		       break;
     		       
-  		   	  /*// Para hacer esta estratŽgia, lo que hay que elegir es CrossoverType = Arithmetic
+  		   	  /*// Para hacer esta estratï¿½gia, lo que hay que elegir es CrossoverType = Arithmetic
   		   	   * case 7: //DE current to rand 1
   		   		   resta = r1.restar(population[actual]); 
   		   		   resta2 = r2.restar(r3);
@@ -891,7 +891,7 @@ public class SSMASFLSDE extends Metodo {
     OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
     
     
-    /** AHORA A„ADO MI DE!! **/
+    /** AHORA Aï¿½ADO MI DE!! **/
     Parameters.assertBasicArgs(ficheroSalida);
     
     PrototypeGenerationAlgorithm.readParametersFile(this.Script);
@@ -941,6 +941,12 @@ public class SSMASFLSDE extends Metodo {
     i++;
     for (j=i; line[j]!='\"'; j++);
     ficheroTraining = new String (line,i,j-i);
+    
+	for (i=j+1; line[i]!='\"'; i++);
+	i++;
+	for (j=i; line[j]!='\"'; j++);
+	ficheroValidation = new String (line,i,j-i);
+    
     for (i=j+1; line[i]!='\"'; i++);
     i++;
     for (j=i; line[j]!='\"'; j++);
