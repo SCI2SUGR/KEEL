@@ -1,0 +1,92 @@
+<algorithm_specification>
+  <name>OlexGA</name>
+  <nParameters>10</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Xover</name>
+    <type>list</type>
+    <domain>
+      <item>Uniform Xover</item>
+      <item>Two Point xOver</item>
+      <item>Binary xOver</item>
+    </domain>
+    <default>Uniform Xover</default>
+  </parameter><parameter>
+    <name>XOverRate</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1.0</default>
+  </parameter><parameter>
+    <name>classIndex</name>
+   <type>list</type>
+    <domain>
+      <item>1</item>
+      <item>0</item>
+    </domain>
+    <default>1</default>
+  </parameter><parameter>
+    <name>elitismRate</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.2</default>
+  </parameter>
+  <parameter>
+    <name>mutationRate</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.001</default>
+  </parameter><parameter>
+    <name>numOfFeatures</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>30</lowerB>
+      <upperB>200</upperB>
+    </domain>
+    <default>50</default>
+  </parameter><parameter>
+    <name>scoringFunction</name>
+    <type>list</type>
+    <domain>
+    	<item>Chi Square</item>
+    	<item>Information Gain</item>
+    	<item>Odds Ratio</item>
+    </domain>
+    <default>Chi Square</default>
+  </parameter><parameter>
+    <name>populationSize</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>50</lowerB>
+      <upperB>500</upperB>
+    </domain>
+    <default>500</default>
+  </parameter>
+  <parameter>
+    <name>numOfGenerations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>100</lowerB>
+      <upperB>200</upperB>
+    </domain>
+    <default>200</default>
+  </parameter>
+   <parameter>
+    <name>selectionAlgorithm</name>
+    <type>list</type>
+    <domain>
+      <item>Tournament Selection</item>
+      <item>Roulette Wheel</item>
+    </domain>
+    <default>Tournament Selection</default>
+  </parameter>
+</algorithm_specification>

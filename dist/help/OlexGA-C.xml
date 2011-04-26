@@ -1,0 +1,129 @@
+<method>
+
+	<name>OlexGA</name>
+	<reference>  
+			<ref>Adriana Pietramala,Veronica L. Policicchio,Pasquale Rullo, Inderbir Sidhu. 
+			A Genetic Algorithm for Text Classification Rule Induction. In the "Proceedings 
+			of the European conference on Machine Learning and Knowledge Discovery in
+			databases - Part II", 2008.	
+ 			</ref>
+ 			<ref>
+ 			Further details can be found at https://www.mat.unical.it/Olex-GA/OlexGA/OlexGA-overview.htm .
+ 			</ref>
+	</reference>
+	<generalDescription>  
+		<type> Text Classification model by rules </type>
+		<objective> 
+				To extract a set of maximally accurate 
+				rules that completely defines the feature space.
+		</objective>
+		<howWork>
+				OlexGA is a Pittsburgh-style rule learner for text classification. 
+				A classifier is of the form "classify document d under category c if either t1 or ... or tn occurs in d and none of tn+1, ..., tn+m occurs in d", where each ti is a feature.
+				The ﬁtness of a chromosome (representing a classifier) is the value of 
+				the F-measure resulting from applying the classifier to the training set.
+				After population has been initialized, evolution takes place by iterating elitism, 
+				selection, crossover and mutation, until a pre-deﬁned number of generations is created. 
+				At each step, a repair operator, aimed at correcting possible illegal individuals generated 
+				by crossover/mutation, is applied.
+				</howWork>
+		<parameterSpec>  
+  			<param> Xover: Type of cross-over </param>
+  			<param> XOverRate: Probability of two individuals (chosen by the selection algorithm) of undergoing reproduction.</param>
+  			<param> classIndex: Position of the label of the category being learned in the class attribute list - 0 if the category is in the first position, 1 otherwise.</param>
+  			<param> elitismRate: Percentage of current best individuals that are passed to the next generation.  </param>
+  			<param> mutationRate: Chance of a gene of being flipped by standard mutation.  </param>
+  			<param> numOfFeatures: Number of both positive and negative candidate features. Suggested values range between 30 and 100. </param>
+  			<param> scoringFunction: Type of feature selection function used to select candidate features. </param>
+  			<param> populationSize: Number of individuals in the population.  </param>
+  			<param> numOfGenerations: Number of new populations created by the GA.  </param>
+  			<!-- <param> numOfRuns: Number of times the genetic algorithm is run (keeping the same input parameters). The best classifier is returned.   </param> -->
+  			<param> selectionAlgorithm: Type of algorithm used for the selection of the parent individuals for reproduction .   </param>
+		</parameterSpec> 
+		<properties>
+			<continuous>	   Yes 	</continuous>
+			<discretized>	   No	</discretized>
+			<integer>		   Yes	</integer>
+			<nominal>		   Yes	</nominal>
+			<valueLess>		   Yes	</valueLess>
+			<impreciseValue>   No	</impreciseValue>
+		</properties>
+	</generalDescription>
+
+	<example>
+		Problem type: Classification 
+		Method: OlexGA
+		Dataset: corn-100 (5 fold cross validation run)
+		Training set: corn-100-5-1tra.dat to corn-100-5-5tra.dat 
+		Test set: corn-100--5-1tst.dat to corn-100-5-5tst.dat
+		Test Show results: Vis-Clas-Check
+		Parameters: default values
+
+		After the execution of RunKeel.jar,  the results/Vis-Clas-Check/TSTOlexGA
+		folder will contain the classification results for training and  test set:
+		
+		TEST RESULTS
+		============
+		Classifier= 
+		Fold 0 : CORRECT=0.9961240310077519 N/C=0.0 
+		Fold 1 : CORRECT=0.9961225281116712 N/C=0.0 
+		Fold 2 : CORRECT=0.9972857696781698 N/C=0.0 
+		Fold 3 : CORRECT=0.9953470337340055 N/C=0.0 
+		Fold 4 : CORRECT=0.9976744186046511 N/C=0.0 
+		Global Classification Error + N/C:
+		0.003489243772750089 
+		stddev Global Classification Error + N/C:
+		8.496215020926284E-4 
+		Correctly classified:
+		0.9965107562272499 
+		Global N/C:
+		0.0 
+		
+		TRAIN RESULTS
+		============
+		Classifier= 
+		Summary of data, Classifiers: 
+		Fold 0 : CORRECT=0.9966075409518271 N/C=0.0 
+		Fold 1 : CORRECT=0.9966078697421981 N/C=0.0 
+		Fold 2 : CORRECT=0.9963171157201008 N/C=0.0 
+		Fold 3 : CORRECT=0.9968017057569296 N/C=0.0 
+		Fold 4 : CORRECT=0.9962198313463216 N/C=0.0 
+		Global Classification Error + N/C:
+		0.003489187296524557 
+		stddev Global Classification Error + N/C:
+		2.1240709165289007E-4 
+		Correctly classified:
+		0.9965108127034754 
+		Global N/C:
+		0.0 
+		
+		We can also see the output and target classes for each case of the test set 
+		in results/OlexGA.corn-100. For each fold, the following file is generated:
+		
+		File result0s0e0.txt: 
+	
+		***** Measures on Training Set ***** 
+		F-measure: 0.9135802469135802
+		TP=185
+		FP=33
+		FN=2
+		TN=10097
+		P=0.8486238532110092
+		R=0.9893048128342246
+		F=0.9135802469135802
+		
+		LEARN TIME: 4 sec.
+		***** Measures on Test Set ***** 
+		TP=49
+		FP=9
+		FN=1
+		TN=2521
+		P=0.8448275862068966
+		R=0.98
+		F=0.9074074074074074
+		
+		VALIDATION TIME: 1 sec.
+
+	</example>
+		
+</method>

@@ -1926,29 +1926,29 @@
 	</output>
   </method>
   <method>
-    <name>XCS-C</name>
+    <name>OlexGA-C</name>
     <family>Evolutionary Crisp Rule Learning</family>
-    <jar_file>XCS.jar</jar_file>
+    <jar_file>OlexGA.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>Yes</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
+  	  <continuous>Yes</continuous>
+	  <integer>Yes</integer>
+	  <nominal>Yes</nominal>
+	  <missing>No</missing>
+	  <imprecise>No</imprecise>
+	  <multiclass>No</multiclass>
+	  <multioutput>No</multioutput>
+	<multiinstance>No</multiinstance> 
 	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>Yes</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
+	<output>
+	  <continuous>No</continuous>
+	  <integer>No</integer>
+	  <nominal>Yes</nominal>
+	  <missing>No</missing>
+	  <imprecise>No</imprecise>
+	  <multiclass>No</multiclass>
+	  <multioutput>No</multioutput>
+	<multiinstance>No</multiinstance> 
 	</output>
   </method>
   <method>
