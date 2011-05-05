@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>FUSINTER</name>
+  <nParameters>2</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>lambda</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+  <parameter>
+    <name>alpha</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.975</default>
+  </parameter>
+</algorithm_specification>

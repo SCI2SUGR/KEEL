@@ -568,20 +568,31 @@
 		</jar>	
 
 		<jar
-		  jarfile="${distPre}/Disc-Unification.jar"
-		  manifest="${src}/keel/Algorithms/Discretizers/Unification_Discretizer/Manifest">
+		  jarfile="${distPre}/Disc-FUSINTER.jar"
+		  manifest="${src}/keel/Algorithms/Discretizers/FUSINTER/Manifest">
 		  <fileset dir="${bin}"
-		  includes="keel/Algorithms/Discretizers/Unification_Discretizer/**/*.class
+		  includes="keel/Algorithms/Discretizers/FUSINTER/**/*.class
 			  keel/Algorithms/Discretizers/Basic/**/*.class
 		  keel/Dataset/**/*.class
 		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
-		</jar>	
+		</jar>
 
 		<jar
 		  jarfile="${distPre}/Disc-Zeta.jar"
 		  manifest="${src}/keel/Algorithms/Discretizers/Zeta_Discretizer/Manifest">
 		  <fileset dir="${bin}"
 		  includes="keel/Algorithms/Discretizers/Zeta_Discretizer/**/*.class
+			  keel/Algorithms/Discretizers/Basic/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
+		</jar>	
+		
+		<jar
+		  jarfile="${distPre}/Disc-MVD.jar"
+		  manifest="${src}/keel/Algorithms/Discretizers/MVD/Manifest">
+		  <fileset dir="${bin}"
+		  includes="org/core/**/*.class 
+		  keel/Algorithms/Discretizers/MVD/**/*.class
 			  keel/Algorithms/Discretizers/Basic/**/*.class
 		  keel/Dataset/**/*.class
 		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>

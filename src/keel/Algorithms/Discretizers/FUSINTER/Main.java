@@ -29,19 +29,13 @@
 
 /**
  * <p>
- * File: Main.java
- * 
- * This is the main class of the algorithm.
- * It gets the configuration script, finds the discretization accordingly to the model, and
- * applies it to the data.
- * 
- * @author Written by Victoria Lopez Morales (University of Granada) 02/01/2010 
- * @version 1.0
+ * @author Written by Salvador García (University of Jaén) 4/05/2011
+ * @version 1.1
  * @since JDK1.5
  * </p>
  */
 
-package keel.Algorithms.Discretizers.Unification_Discretizer;
+package keel.Algorithms.Discretizers.FUSINTER;
 
 import java.util.*;
 
@@ -52,7 +46,7 @@ import keel.Algorithms.Discretizers.Basic.*;
 public class Main {
 /**
  * <p>
- * Main class Unification Discretizer.
+ * Main class Chi-Merge discretizer.
  * </p>
  */
 	
@@ -64,8 +58,8 @@ public class Main {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-	    ParserParameters.doParse(args[0]);
-	    LogManager.initLogManager();
+		ParserParameters.doParse(args[0]);
+		LogManager.initLogManager();
 
 		InstanceSet is=new InstanceSet();
 		try {	
@@ -74,18 +68,17 @@ public class Main {
                         LogManager.printErr(e.toString());
                         System.exit(1);
                 }
-		checkDataset();
+		checkDataset(is);
 
 		Discretizer dis;
-		String name=Parameters.algorithmName;
-		dis=new UnificationDiscretizer();
+		dis=new FUSINTER(Parameters.lambda, Parameters.alpha);
 		dis.buildCutPoints(is);
 		dis.applyDiscretization(Parameters.trainInputFile,Parameters.trainOutputFile);
 		dis.applyDiscretization(Parameters.testInputFile,Parameters.testOutputFile);
 		LogManager.closeLog();
 	}
 
-        static void checkDataset() {
+        static void checkDataset(InstanceSet is) {
                 Attribute []outputs=Attributes.getOutputAttributes();
                 if(outputs.length!=1) {
                         LogManager.printErr("Only datasets with one output are supported");
@@ -97,6 +90,6 @@ public class Main {
                 }
                 Parameters.numClasses=outputs[0].getNumNominalValues();
                 Parameters.numAttributes=Attributes.getInputAttributes().length;
+        		Parameters.numInstances = is.getNumInstances();
         }
 }
-

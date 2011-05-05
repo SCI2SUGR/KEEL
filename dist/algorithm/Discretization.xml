@@ -650,32 +650,6 @@
 	</output>
   </method>
   <method>
-    <name>Disc-Unification</name>
-    <family>Discretizers</family>
-    <jar_file>Disc-Unification.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance>
-	</input>
-    <output>
-      <continuous>No</continuous>
-	    <integer>No</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-      <multiinstance>No</multiinstance>	
-	</output>
-  </method>
-  <method>
     <name>Disc-Zeta</name>
     <family>Discretizers</family>
     <jar_file>Disc-Zeta.jar</jar_file>
@@ -699,6 +673,32 @@
 	    <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
       <multiinstance>No</multiinstance>	
+	</output>
+  </method>
+    <method>
+    <name>FUSINTER-D</name>
+    <family>Discretization</family>
+    <jar_file>Disc-FUSINTER.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>No</continuous>
+	    <integer>No</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
 	</output>
   </method>
 </discretization_list>

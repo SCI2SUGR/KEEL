@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/*
- * ParserParameters.java
- *
- */
-
-/**
- *
- */
 package keel.Algorithms.Discretizers.Basic;
 
 import java.util.*;
@@ -187,6 +179,10 @@ public class ParserParameters {
         if(Parameters.algorithmName.equalsIgnoreCase("Unification Discretizer") && paramName.equalsIgnoreCase("beta")) return true;
 		if(Parameters.algorithmName.equalsIgnoreCase("UCPD") && paramName.equalsIgnoreCase("mergedThreshold")) return true;
 		if(Parameters.algorithmName.equalsIgnoreCase("UCPD") && paramName.equalsIgnoreCase("scalingFactor")) return true;
+		if(Parameters.algorithmName.equalsIgnoreCase("HDD") && paramName.equalsIgnoreCase("coefficient")) return true;
+		if(Parameters.algorithmName.equalsIgnoreCase("Multivariate Discretizer") && paramName.equalsIgnoreCase("alpha")) return true;
+		if(Parameters.algorithmName.equalsIgnoreCase("FUSINTER") && paramName.equalsIgnoreCase("lambda")) return true;
+		if(Parameters.algorithmName.equalsIgnoreCase("FUSINTER") && paramName.equalsIgnoreCase("alpha")) return true;
 		return false;
 	}
 
@@ -223,6 +219,7 @@ public class ParserParameters {
 		if(Parameters.algorithmName.equalsIgnoreCase("HellingerBD") && paramName.equalsIgnoreCase("numIntervals")) return true;
 		if(Parameters.algorithmName.equalsIgnoreCase("IDD") && paramName.equalsIgnoreCase("numIntervals")) return true;
 		if(Parameters.algorithmName.equalsIgnoreCase("DIBD") && paramName.equalsIgnoreCase("numIntervals")) return true;
+		if(Parameters.algorithmName.equalsIgnoreCase("Multivariate Discretizer") && paramName.equalsIgnoreCase("numIntervals")) return true;
 		return false;
 	}
 
@@ -372,6 +369,14 @@ public class ParserParameters {
 		if(name.equalsIgnoreCase("IDD")) return true;
 		if(name.equalsIgnoreCase("UCPD")) return true;
 
+		if(name.equalsIgnoreCase("CAD") ||
+				name.equalsIgnoreCase("Cluster Analysis Discretizer")) return true;
+		if(name.equalsIgnoreCase("HDD")) return true;
+		
+		if(name.equalsIgnoreCase("MVD") ||
+				name.equalsIgnoreCase("Multivariate Discretizer")) return true;
+		if(name.equalsIgnoreCase("FUSINTER")) return true;
+
 		return false;
 	}
 
@@ -392,4 +397,3 @@ public class ParserParameters {
 
 	
 }
-

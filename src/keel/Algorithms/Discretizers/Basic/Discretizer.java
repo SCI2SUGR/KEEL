@@ -231,7 +231,7 @@ public abstract class Discretizer {
 		return cutPoints[attribute][cp];
 	}
 
-	protected abstract Vector discretizeAttribute(int attribute,int []values,int begin,int end) ;
+	protected abstract Vector discretizeAttribute(int attribute,int []values,int begin,int end);
 
 	public int discretize(int attribute,double value) {
 		if(cutPoints[attribute]==null) return 0;

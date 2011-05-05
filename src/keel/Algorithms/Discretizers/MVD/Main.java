@@ -29,13 +29,13 @@
 
 /**
  * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
+ * @author Written by Julian Luengo (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/03/2011
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
 
-package keel.Algorithms.Discretizers.UCPD;
+package keel.Algorithms.Discretizers.MVD;
 
 import keel.Dataset.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
@@ -44,7 +44,7 @@ import keel.Algorithms.Discretizers.Basic.*;
 
 /**
  * <p>
- * Main class of UCPD (Unsupervised Correlation Preserving Discretization) algorithm
+ * Main class of MVD (Multivariate Discretization) algorithm
  * </p>
  */
 public class Main {
@@ -83,7 +83,7 @@ public class Main {
 
 		checkDataset();
 			
-		UCPD dis = new UCPD(is);
+		MVD dis = new MVD(is,Parameters.numIntervals,Parameters.alpha);
 		dis.discretizeAllAttributes();
 		dis.buildCutPoints(is);
 		dis.applyDiscretization(Parameters.trainInputFile,Parameters.trainOutputFile);

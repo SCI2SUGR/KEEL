@@ -35,6 +35,7 @@ import org.core.Fichero;
 /**
  * Class to implement the C4.5Rules algorithm
  * @author Antonio Alejandro Tortosa Urdiales (UGR)
+ * @author Modified by Victoria Lopez (University of Granada) 03/05/2011
  * @version 1.0 (05-04-08)
  */
 class M5Rules {
@@ -133,9 +134,10 @@ class M5Rules {
   * @param rules Vector the rules
   */
  private void doRulesOutput(String filename,Vector rules) {
+   //String output = new String("@Generated tree \n");
    String output = new String("");
 
-   for (int i=0;i<rules.size()-1;i++){
+   /*for (int i=0;i<rules.size()-1;i++){
      output+="if(";
      Rule current=(Rule) rules.elementAt(i);
      for (int k=0;k<current.size();k++){
@@ -145,7 +147,13 @@ class M5Rules {
      output+=")\n\t";
      output+=((Rule) rules.elementAt(i)).getFunction()+"\nelse ";
    }
-   output+="\n\t"+((Rule)rules.lastElement()).getFunction();
+   output+="\n\t"+((Rule)rules.lastElement()).getFunction();*/
+   
+   //output = output + "\n\n@Number of rules: " + rules.size() +"\n\n";
+   output = output + "@Number of rules: " + rules.size() +"\n\n";
+   for(int i=0;i<rules.size();i++)
+       output = output + "Rule " + (i+1) + ": "  +(Rule)rules.elementAt(i) + "\n";
+   
    Fichero.escribeFichero(filename, output);
  }
 
