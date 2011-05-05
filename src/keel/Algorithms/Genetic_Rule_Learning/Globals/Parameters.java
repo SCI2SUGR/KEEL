@@ -45,6 +45,7 @@ public final class Parameters {
 	public static double inconsistencyThreshold;
 	public static double alpha;
 	public static double beta;
+	public static double lambda;
 	public static int numIntervals;
 	public static boolean amevaR;
 	public static String numIntrvls;
