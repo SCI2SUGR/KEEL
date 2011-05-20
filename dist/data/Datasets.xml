@@ -46,12 +46,11 @@
     <multiinstance>No</multiinstance>
   </dataset>
   <dataset>
-    <nameAbr>daily-electric-energy</nameAbr>
-    <nameComplete>Daily Electric Energy</nameComplete>
+    <nameAbr>dee</nameAbr>
+    <nameComplete>Dee</nameComplete>
     <problemType>Regression</problemType>
     <partitions>
-      <partition>10cfv</partition>
-      <partition>5x2cv</partition>
+      <partition>5cfv</partition>
     </partitions>
     <continuous>Yes</continuous>
     <integer>No</integer>
@@ -67,14 +66,11 @@
     <multiinstance>No</multiinstance>
   </dataset>
   <dataset>
-    <nameAbr>ele1</nameAbr>
-    <nameComplete>Ele1</nameComplete>
+    <nameAbr>ele-1</nameAbr>
+    <nameComplete>Ele-1</nameComplete>
     <problemType>Regression</problemType>
     <partitions>
-      <partition>10cfv</partition>
-      <partition>5x2cv</partition>
-      <partition>3ho</partition>
-      <partition>5ho</partition>
+      <partition>5cfv</partition>
     </partitions>
     <continuous>Yes</continuous>
     <integer>No</integer>
@@ -94,8 +90,7 @@
     <nameComplete>Friedman</nameComplete>
     <problemType>Regression</problemType>
     <partitions>
-      <partition>10cfv</partition>
-      <partition>5x2cv</partition>
+      <partition>5cfv</partition>
     </partitions>
     <continuous>Yes</continuous>
     <integer>No</integer>
@@ -158,12 +153,11 @@
     <multiinstance>No</multiinstance>
   </dataset>
   <dataset>
-    <nameAbr>machinecpu</nameAbr>
+    <nameAbr>machineCPU</nameAbr>
     <nameComplete>MachineCPU</nameComplete>
     <problemType>Regression</problemType>
     <partitions>
-      <partition>10cfv</partition>
-      <partition>5x2cv</partition>
+      <partition>5cfv</partition>
     </partitions>
     <continuous>Yes</continuous>
     <integer>No</integer>
