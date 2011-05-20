@@ -74,6 +74,8 @@ public class StatisticalF extends javax.swing.JFrame {
     public final static int MAXIMIZE = 1;
     public final static int MINIMIZE = 2;
 
+    public static String lastPath;
+
     /**
      * Builder
      */
@@ -84,6 +86,8 @@ public class StatisticalF extends javax.swing.JFrame {
         TableColumn column;
 
         initComponents();
+
+        lastPath=".";
 
         testType = FRIEDMAN;
         objective = MAXIMIZE;
@@ -775,7 +779,7 @@ public class StatisticalF extends javax.swing.JFrame {
         String contents;
         String path;
 
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(lastPath);
 
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.setDialogTitle("Select a name to export the file");
@@ -784,10 +788,12 @@ public class StatisticalF extends javax.swing.JFrame {
         filter.addExtension("csv");
         filter.setFilterName("CSV Files");
         chooser.setFileFilter(filter);
+        chooser.setAcceptAllFileFilterUsed(true);
 
         int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             saveFile = chooser.getSelectedFile();
+            lastPath=chooser.getSelectedFile().getParent();
         } else {
             return;
         }
@@ -818,7 +824,7 @@ public class StatisticalF extends javax.swing.JFrame {
         String contents;
         String path;
 
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(lastPath);
 
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.setDialogTitle("Select a CSV file to load");
@@ -828,9 +834,12 @@ public class StatisticalF extends javax.swing.JFrame {
         filter.setFilterName("CSV Files");
         chooser.setFileFilter(filter);
 
+        chooser.setAcceptAllFileFilterUsed(true);
+
         int returnVal = chooser.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             loadFile = chooser.getSelectedFile();
+            lastPath=chooser.getSelectedFile().getParent();
         } else {
             return;
         }
@@ -843,7 +852,8 @@ public class StatisticalF extends javax.swing.JFrame {
         }
 
         if (!path.endsWith(".csv")) {
-            path += ".csv";
+            JOptionPane.showMessageDialog(this, "Error loading data:\n "+path+" is not a .csv file" , "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
         contents = Files.readFile(path);
@@ -888,7 +898,7 @@ public class StatisticalF extends javax.swing.JFrame {
 
         String path;
 
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(lastPath);
 
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.setDialogTitle("Select a name for the resuls file");
@@ -897,10 +907,13 @@ public class StatisticalF extends javax.swing.JFrame {
         filter.addExtension("tex");
         filter.setFilterName("TeX Files");
         chooser.setFileFilter(filter);
-
+        chooser.setAcceptAllFileFilterUsed(true);
+        
         int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             saveFile = chooser.getSelectedFile();
+            lastPath = chooser.getSelectedFile().getParent();
+
         } else {
             return;
         }

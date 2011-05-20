@@ -263,6 +263,8 @@ public class statTableModel extends DefaultTableModel{
 
         scanSeparator(contents);
 
+        contents=" "+contents;
+
         fileLines = new StringTokenizer (contents,"\n\r");
 
         line=fileLines.nextToken();
