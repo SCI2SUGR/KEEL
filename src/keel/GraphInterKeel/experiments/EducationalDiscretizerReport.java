@@ -83,7 +83,20 @@ public class EducationalDiscretizerReport extends EducationalReport
 	 * </p>
 	 */
 	public void running()
-	{				
+	{
+
+            String modelContents="";
+
+                //read model
+                if(listPathFilesExtra.size()>0){
+                    modelContents+="\n\n===================================\n Model generated \n===================================\n";
+                    modelContents+=Files.readFile((String)listPathFilesExtra.get(0));
+                }
+                else{
+                    modelContents+="\n\nThis method does not provide information about its model.\n";
+                }
+
+
 		if(experimentType == CLASSIFICATION)
 		{
 			String cad = "";
@@ -202,6 +215,7 @@ public class EducationalDiscretizerReport extends EducationalReport
 			}//for	
 			try 
 			{
+                            bw.write(modelContents);
 				br.close();
 				bw.close();
 			}

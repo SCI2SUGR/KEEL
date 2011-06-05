@@ -87,7 +87,20 @@ public class EducationalISReport extends EducationalReport
 	 * </p>
 	 */
 	public void running()
-	{			
+	{
+
+            String modelContents="";
+
+                //read model
+                if(listPathFilesExtra.size()>0){
+                    modelContents+="\n\n===================================\n Model generated \n===================================\n";
+                    modelContents+=Files.readFile((String)listPathFilesExtra.get(0));
+                }
+                else{
+                    modelContents+="\n\nThis method does not provide information about its model.\n";
+                }
+
+            
 		if(experimentType == CLASSIFICATION)
 		{
 			int contPart = 0;
@@ -255,6 +268,7 @@ public class EducationalISReport extends EducationalReport
 			
 			try 
 			{
+                            bw.write(modelContents);
 				br.close();
 				bw.close();
 			}
