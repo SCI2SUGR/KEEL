@@ -308,7 +308,7 @@ public abstract class Node implements Serializable {
                 }*/
 
                 if (errorOccurred) {
-                    errorMessage = "Conflict with this connection.\n" + errorMessage;
+                     errorMessage = "Possible conflict with this connection.\n" + errorMessage + "Joining these nodes is not recommended.";
                 }
             } else { //origen is not dataset
 
@@ -350,7 +350,7 @@ public abstract class Node implements Serializable {
                 }
 
                 if (errorOccurred) {
-                    errorMessage = "Possible conflict with this connection.\n" + errorMessage;
+                    errorMessage = "Possible conflict with this connection.\n" + errorMessage + "Joining these nodes is not recommended.";
                 }
 
             }

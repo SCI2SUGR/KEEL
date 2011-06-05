@@ -66,6 +66,7 @@ public abstract class EducationalReport
 	protected List<Element> sentences;
 	protected List<String> pathDatasetFiles = null;
 	protected List<String> listPathFiles = null;
+        protected List<String> listPathFilesExtra = null;
 	protected String[] pathOutputFiles = null;
 	protected String pathReporFile = "";
 	protected String experimentName = "";
@@ -82,6 +83,7 @@ public abstract class EducationalReport
 		this.sentences = sentences;
 		this.experimentType = experimentType;
 		listPathFiles = new ArrayList<String>();
+                listPathFilesExtra = new ArrayList<String>();
 		pathDatasetFiles = new ArrayList<String>();
 	    experimentName =  new String();
 		pathReporFile = new String();
@@ -288,6 +290,11 @@ public abstract class EducationalReport
 					st.nextToken();				
 					//Test file
 					listPathFiles.add(st.nextToken());
+                                        //White space
+                                        st.nextToken();
+                                        if(st.hasMoreTokens()){
+                                            listPathFilesExtra.add(st.nextToken());
+                                        }
 					break;
 				}
 				try 
@@ -329,7 +336,9 @@ public abstract class EducationalReport
 			pathOutputFiles[i] = new String();
 			pathOutputFiles[i] = (String)listPathFiles.get(i);
 			//System.out.println("rutasFicheros[" + i + "]:" + pathOutputFiles[i]);
+                        
 		}
+              
 	}
 	
 	/**

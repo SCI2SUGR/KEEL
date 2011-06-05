@@ -1103,19 +1103,29 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                                 if (mainGraph.getNodeAt(nodo_destino).type != Node.type_Test && mainGraph.getNodeAt(nodo_destino).type != Node.type_Visor) {
 
                                     if (errorType.length() > 1) {
-                                        JOptionPane.showMessageDialog(this, errorType, "Alert", JOptionPane.ERROR_MESSAGE);
-
-                                        if (parent.objType == parent.INVESTIGATION) {
-                                            cont = false;
-                                        }
 
                                         if (parent.objType == parent.LQD) {
+                                            JOptionPane.showMessageDialog(this, errorType, "Alert", JOptionPane.ERROR_MESSAGE);
                                             cont = false;
+                                        }
+                                        else{
+
+                                            JOptionPane.showMessageDialog(this, errorType, "Warning", JOptionPane.WARNING_MESSAGE);
+
+                                            //5-6-2011: Connections still should be allowed
+                                            /*if (parent.objType == parent.INVESTIGATION) {
+                                                //cont = false;
+                                            }*/
+
+
+
+                                            //5-6-2011: Connections still should be allowed
+                                            /*if (Frame.buttonPressed == 1) {
+                                                cont = false;
+                                            }*/
                                         }
 
-                                        if (Frame.buttonPressed == 1) {
-                                            cont = false;
-                                        }
+
                                     }
                                 }
 

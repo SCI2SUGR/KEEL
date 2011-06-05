@@ -41,6 +41,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 import org.jdom.Element;
@@ -93,10 +94,22 @@ public class EducationalMethodReport extends EducationalReport
 		double totalPercentage = 0.0;
 		String relation = "";	
 		double ecmTotal = 0.0;
+
+                String modelContents="";
 						
 		if(experimentType == CLASSIFICATION)
 			this.calculateClasses();
-							
+
+
+                //read model
+                if(listPathFilesExtra.size()>0){
+                    modelContents+="\n\n===================================\n Model generated (First partition)\n===================================\n";
+                    modelContents+=Files.readFile((String)listPathFilesExtra.get(0));
+                }
+                else{
+                    modelContents+="\n\nThis method does not provide information about its model.\n";
+                }
+
 		//for training and test
 		for (int p=0; p<2; p++)
 		{
@@ -124,7 +137,8 @@ public class EducationalMethodReport extends EducationalReport
 			{	
 				n_partition++;
 				try 
-				{							
+				{
+
 					fr = new FileReader(pathOutputFiles[i]);
 					br = new BufferedReader(fr);
 				} 
@@ -300,6 +314,10 @@ public class EducationalMethodReport extends EducationalReport
 							}						
 							bw.write(filaConfusion);							
 						}
+
+                                                for (int i=0; i<confusionMatrix.length; i++){
+                                                    Arrays.fill(confusionMatrix[i],0);
+                                                }
 					} 
 	    			catch (IOException e) 
 	    			{				
@@ -384,6 +402,7 @@ public class EducationalMethodReport extends EducationalReport
 
 		try 
 		{
+                        bw.write(modelContents);
 			bw.close();
 		}
 		catch (IOException e) 
