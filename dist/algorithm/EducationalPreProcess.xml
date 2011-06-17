@@ -27,6 +27,32 @@
 		</output>
   </method>
   <method>
+    <name>UniformFrequency-D</name>
+    <family>Discretization</family>
+    <jar_file>Disc-UniformFrequency.jar</jar_file>
+    <problem_type>unspecified</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+    	<integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>Yes</missing>
+    	<imprecise>No</imprecise>
+    	<multiclass>Yes</multiclass>
+    	<multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>No</continuous>
+	    <integer>No</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>
+  <method>
     <name>Fayyad-D</name>
     <family>Discretization</family>
     <jar_file>Disc-Fayyad.jar</jar_file>
@@ -104,6 +130,58 @@
 	  <multiinstance>No</multiinstance> 
 	  </output>
   </method>
+   <method>
+    <name>GGA-TSS</name>
+    <family>Evolutionary Training Set Selection</family>
+    <jar_file>IS-GGA.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  <multiinstance>No</multiinstance> 
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  <multiinstance>No</multiinstance> 
+	  </output>
+	</method>
+  <method>
+    <name>SGA-TSS</name>
+    <family>Evolutionary Training Set Selection</family>
+    <jar_file>IS-SGA.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  <multiinstance>No</multiinstance> 
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>No</multioutput>
+	  <multiinstance>No</multiinstance> 
+	  </output>
+  </method>
   <method>
     <name>LVF-FS</name>
     <family>Feature Selection</family>
@@ -127,6 +205,32 @@
     	<imprecise>No</imprecise>
     	<multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
+		<multiinstance>No</multiinstance> 
+    </output>
+  </method>
+  <method>
+    <name>Relief-FS</name>
+    <family>Feature Selection</family>
+    <jar_file>FS-Relief.jar</jar_file>
+    <problem_type>unspecified</problem_type>
+    <input>
+      <continuous>No</continuous>
+    	<integer>No</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+    	<imprecise>No</imprecise>
+    	<multiclass>Yes</multiclass>
+    	<multioutput>No</multioutput>
+		<multiinstance>No</multiinstance> 
+    </input>
+    <output>
+      <continuous>No</continuous>
+    	<integer>No</integer>
+    	<nominal>Yes</nominal>
+    	<missing>No</missing>
+    	<imprecise>No</imprecise>
+    	<multiclass>Yes</multiclass>
+    	<multioutput>No</multioutput>
 		<multiinstance>No</multiinstance> 
     </output>
   </method>

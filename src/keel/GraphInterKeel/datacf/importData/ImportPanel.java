@@ -3049,21 +3049,27 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         nameComplete.setText(rootName);
 
         boolean classification = false;
-        if (Attributes.getOutputAttribute(0).getType() == Attribute.NOMINAL) {
-            classification = true;
-        }
         Element problemType = new Element("problemType");
-        if (classification) {
-            if(iSet.isOutputInfered()){
-                problemType.setText("Unsupervised");
-            }
-            else{
-                problemType.setText("Classification");
-            }
-        } else {
-            problemType.setText("Regression");
-        }
 
+        if(Attributes.getOutputNumAttributes()==0){
+            problemType.setText("Unsupervised");
+        }
+        else{
+            if (Attributes.getOutputAttribute(0).getType() == Attribute.NOMINAL) {
+                classification = true;
+            }
+
+            if (classification) {
+                if(iSet.isOutputInfered()){
+                    problemType.setText("Unsupervised");
+                }
+                else{
+                    problemType.setText("Classification");
+                }
+            } else {
+                problemType.setText("Regression");
+            }
+        }
 
         Element partitions = new Element("partitions");
         if (!datasets) {

@@ -732,7 +732,10 @@ public class SelectData extends JPanel implements Scrollable {
             frame.addImportTab(false, false);
         } else if (parent.cvType == Experiments.PK) {
             frame.addImportTab(false, true);
-        }
+            }else{
+                frame.addImportTab(false, false);
+            }
+
         this.parent.setVisible(false);
         frame.setVisible(true);
 
