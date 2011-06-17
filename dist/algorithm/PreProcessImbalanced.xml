@@ -797,6 +797,32 @@
 	</output>
   </method>
   <method>
+    <name>FUSINTER-D</name>
+    <family>Discretization</family>
+    <jar_file>Disc-FUSINTER.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>No</continuous>
+	    <integer>No</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>  
+  <method>
     <name>HDD-D</name>
     <family>Discretization</family>
     <jar_file>Disc-HDD.jar</jar_file>
@@ -1031,6 +1057,32 @@
 	</output>
   </method>
   <method>
+    <name>MVD-D</name>
+    <family>Discretization</family>
+    <jar_file>Disc-MVD.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>No</continuous>
+	    <integer>No</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+	</method>  
+  <method>
     <name>Proportional-D</name>
     <family>Discretization</family>
     <jar_file>Disc-Proportional.jar</jar_file>
@@ -1082,32 +1134,6 @@
     <multiinstance>No</multiinstance> 
 	</output>
   </method>  
-  <method>
-    <name>Unification-D</name>
-    <family>Discretization</family>
-    <jar_file>Disc-Unification.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>No</continuous>
-	    <integer>No</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>
   <method>
     <name>UniformFrequency-D</name>
     <family>Discretization</family>
@@ -2838,6 +2864,30 @@
 	  <multiinstance>No</multiinstance> 
 	  </output>
 	</method>	
+  <method>
+    <name>CleanAttributes-TR</name>
+    <family>Transformation</family>
+    <jar_file>CleanAttributes-TR.jar</jar_file>
+    <problem_type>unspecified</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+    	<integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>Yes</missing>
+    	<imprecise>Yes</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>Yes</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+    	<integer>Yes</integer>
+    	<nominal>Yes</nominal>
+    	<missing>Yes</missing>
+    	<imprecise>Yes</imprecise>
+	    <multiclass>Yes</multiclass>
+	    <multioutput>Yes</multioutput>
+	  </output>
+  </method>	
   <method>
     <name>DecimalScaling-TR</name>
     <family>Transformation</family>

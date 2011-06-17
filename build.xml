@@ -5012,7 +5012,17 @@
           <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
  		  org/core/**/*.class
 		  keel/Dataset/**/*.class"/>
-        </jar>		
+        </jar>	
+
+		<jar
+          jarfile="${distPre}/SPIDER2-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/SPIDER2/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/SPIDER2/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>   		
 		
 	   <!-- Imbalanced Under-Sampling -->		
 		

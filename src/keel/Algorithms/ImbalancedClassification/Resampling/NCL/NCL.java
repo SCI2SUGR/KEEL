@@ -38,6 +38,7 @@
  * @author Written by Salvador Garcia Lopez (University of Granada) 30/03/2006
  * @author Modified by Victoria Lopez Morales (University of Granada) 23/07/2010
  * @author Modified by Victoria Lopez Morales (University of Granada) 21/09/2010 
+ * @author Modified by Victoria Lopez Morales (University of Granada) 06/06/2011
  * @version 0.1
  * @since JDK1.5
  *
@@ -157,7 +158,12 @@ public class NCL extends Metodo {
     for (i=0, l=0; i<datosTrain.length; i++) {
       if (marcas[i]) { //the instance will be copied to the solution
         for (j=0; j<datosTrain[0].length; j++) {
-          conjS[l][j] = datosTrain[i][j];
+        	if (nulosTrain[i][j]) {
+        		conjS[l][j] = 0.5;
+        	}
+        	else {
+                conjS[l][j] = datosTrain[i][j];        		
+        	}
         }
         clasesS[l] = clasesTrain[i];
         l++;
