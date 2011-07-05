@@ -211,6 +211,7 @@ public class Wilcoxon {
             for (int i = 0; i < columns; i++) {
                 text += algorithms[i] + " (" + (i + 1) + ")";
                 for (int j = 0; j < columns; j++) {
+                   
                     if (i < j) {//0.1
                         text += "& " + getSymbol(i,j,exactPValues[i][j], exactPValues[j][i], 0.1) + " ";
                     }
@@ -221,6 +222,7 @@ public class Wilcoxon {
                         text += "& " + getSymbol(i,j,exactPValues[i][j], exactPValues[j][i], 0.05) + " ";
                     }
                 }
+                
                 text += "\\\\\n\\hline\n";
             }
         } else {
@@ -233,7 +235,7 @@ public class Wilcoxon {
                     if (i == j) {
                         text += "& -";
                     }
-                    if (i < j) {//0.05
+                    if (i > j) {//0.05
                         text += "& " + getSymbol(i,j,asymptoticPValues[i][j], asymptoticPValues[j][i], 0.05) + " ";
                     }
                 }
@@ -538,6 +540,7 @@ public class Wilcoxon {
         double increment;
         double sum0;
         if (ties > 1) {
+            //discard a tie if there's an odd number of them
             if (ties % 2 == 1) {
                 increment = ties - 1.0;
             } else {
@@ -545,7 +548,7 @@ public class Wilcoxon {
             }
 
             //Adition of 0 ranked differences
-            sum0 = (((double) ties + 1.0) * (double) ties) / 2.0;
+            sum0 = (((double) increment + 1.0) * (double) increment) / 2.0;
             sum0 /= 2.0;
 
             RA += sum0;
@@ -560,7 +563,7 @@ public class Wilcoxon {
                 }
             }
         }
-
+        
         //save the ranks
         wilcoxonRanks[first][second] = RA;
         wilcoxonRanks[second][first] = RB;
