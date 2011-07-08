@@ -240,6 +240,30 @@
 	    <multioutput>No</multioutput>
 	  </output>
   </method>	
+  <method>
+    <name>SPIDER2-I</name>
+    <family>Over-Sampling Methods</family>
+    <jar_file>SPIDER2-I.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>No</multiclass>
+	    <multioutput>No</multioutput>
+	  </input>
+	  <output>
+	    <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>No</multiclass>
+	    <multioutput>No</multioutput>
+	  </output>
+  </method>    
 	<method>
     <name>CNN-I</name>
     <family>Under-Sampling Methods</family>

@@ -38,6 +38,7 @@
  * @author Written by Salvador Garcia Lopez (University of Granada) 30/03/2006
  * @author Modified by Victoria Lopez Morales (University of Granada) 23/07/2010
  * @author Modified by Victoria Lopez Morales (University of Granada) 21/09/2010 
+ * @author Modified by Victoria Lopez Morales (University of Granada) 08/07/2011  
  * @version 0.1
  * @since JDK1.5
  *
@@ -52,6 +53,7 @@ import keel.Dataset.Instance;
 import javastat.multivariate.PCA;
 import org.core.*;
 
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class ADOMS extends Metodo {
@@ -202,6 +204,16 @@ public class ADOMS extends Metodo {
 	} else {
 		tamS = nNeg + nPos + (int)(nPos*smoting);
 	}		    
+	
+	for (int c=0; c<genS.length; c++) {
+		for (int k=0; k<datosTrain[0].length; k++) {
+			if (genS[c][k] < 0.0)
+				genS[c][k] = 0.0;
+			if (genS[c][k] > 1.0)
+				genS[c][k] = 1.0;
+		}
+	}
+	
    /*Construction of the S set from the previous vector S*/
     conjS = new double[tamS][datosTrain[0].length];
     clasesS = new int[tamS];

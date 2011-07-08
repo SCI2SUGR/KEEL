@@ -37,6 +37,7 @@
  *
  * @author Written by Salvador Garcia Lopez (University of Granada) 30/03/2006
  * @author Modified by Victoria Lopez Morales (University of Granada) 21/09/2010 
+ * @author Modified by Victoria Lopez Morales (University of Granada) 08/07/2011 
  * @version 0.1
  * @since JDK1.5
  *
@@ -52,6 +53,7 @@ import keel.Dataset.Instance;
 
 import org.core.*;
 
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class ADASYN extends Metodo {
@@ -118,7 +120,7 @@ public class ADASYN extends Metodo {
     double Ri[];
     int cont;
     double sumRi = 0;
-    long gi;
+    long [] gi;
 
     long tiempo = System.currentTimeMillis();
 
@@ -173,7 +175,8 @@ public class ADASYN extends Metodo {
     	sumRi += Ri[i];
     }    
     for (i=0; i<positives.length; i++) {
-    	Ri[i] /= sumRi;
+    	if (Ri[i] != 0)
+    		Ri[i] /= sumRi;
     }
     
 
@@ -206,22 +209,62 @@ public class ADASYN extends Metodo {
     	genM = new boolean[(int)(nPos*smoting)][datosTrain[0].length];
     	clasesGen = new int[(int)(nPos*smoting)];
     }
+    
+    int total_gi = 0;
+    boolean [] added;
+    int random;
+    
+    gi = new long [positives.length];
+    added = new boolean [positives.length];
+    Arrays.fill(added, false);
+    
+    for (i=0; i<positives.length; i++) {
+    	gi[i] = Math.round((double)genS.length * Ri[i]);
+    	total_gi += gi[i];
+    }
+    
+    if (total_gi < genS.length) {
+    	while ((total_gi+positives.length) < genS.length) {
+    		for (i=0; i<positives.length; i++) {
+    			gi[i]++;
+    			total_gi++;
+    		}
+    	}
+    	
+    	while (total_gi < genS.length) {
+    		random = Randomize.Randint(0, positives.length);
+    		
+    		if (!added[random]) {
+    			added[random] = true;
+    			total_gi++;
+    			gi[random]++;
+    		}
+    	}
+    }
+    else if (total_gi > genS.length) {
+    	while ((total_gi-positives.length) > genS.length) {
+    		for (i=0; i<positives.length; i++) {
+    			gi[i]--;
+    			total_gi--;
+    		}
+    	}
+    	
+    	while (total_gi > genS.length) {
+    		random = Randomize.Randint(0, positives.length);
+    		
+    		if (!added[random]) {
+    			added[random] = true;
+    			total_gi--;
+    			gi[random]--;
+    		}
+    	}
+    }
+    
     for (i=0, j=0; j<genS.length; i++) {    	
-    	boolean done = false;
-
-    	gi = Math.round((double)genS.length * Ri[i%positives.length]);
-    	for (l=0; l<gi && j<genS.length; l++, j++) {
-    		done = true;
-        	clasesGen[j] = posID;
+    	for (l=0; l<gi[i] && j<genS.length; l++, j++) {
+    		clasesGen[j] = posID;
         	nn = Randomize.Randint(0,kSMOTE-1);
     		interpolate (realTrain[positives[i%positives.length]],realTrain[neighbors[i%positives.length][nn]],nominalTrain[positives[i%positives.length]],nominalTrain[neighbors[i%positives.length][nn]],nulosTrain[positives[i%positives.length]],nulosTrain[neighbors[i%positives.length][nn]],genS[j],genR[j],genN[j],genM[j],interpolation,alpha,mu);
-    	}
-
-    	if (!done) {
-    		clasesGen[i] = posID;
-        	nn = Randomize.Randint(0,kSMOTE-1);
-        	interpolate (realTrain[positives[i%positives.length]],realTrain[neighbors[i%positives.length][nn]],nominalTrain[positives[i%positives.length]],nominalTrain[neighbors[i%positives.length][nn]],nulosTrain[positives[i%positives.length]],nulosTrain[neighbors[i%positives.length][nn]],genS[i],genR[i],genN[i],genM[i],interpolation,alpha,mu);
-        	j++;
     	}
     }
 
