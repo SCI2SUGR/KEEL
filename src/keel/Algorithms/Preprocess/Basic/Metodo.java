@@ -388,32 +388,15 @@ public class Metodo {
 				}
 			}
 		} 
-                
-	    
-        
-		
+
         datosTest = new double[test.getNumInstances()][Attributes.getInputNumAttributes()];
-        realTest = new double[test.getNumInstances()][Attributes.getInputNumAttributes()];
 		clasesTest = new int[test.getNumInstances()];
         caja = new double[1];
-    
+                
         for (i=0; i<test.getNumInstances(); i++) {
 			temp = test.getInstance(i);
 			nulls = temp.getInputMissingValues();
 			datosTest[i] = test.getInstance(i).getAllInputValues();
-			
-			for (k = 0; k < datosTest[i].length; k++) {
-				
-				if (Attributes.getInputAttribute(k).getType() != Attribute.NOMINAL) {
-					realTest[i][k] = datosTest[i][k];
-					datosTest[i][k] -= Attributes.getInputAttribute(k).getMinAttribute();
-					datosTest[i][k] /= Attributes.getInputAttribute(k).getMaxAttribute() - Attributes.getInputAttribute(k).getMinAttribute();
-					if (Double.isNaN(datosTest[i][k])){
-						datosTest[i][k] = realTest[i][k];
-					}
-				}
-		    }
-			
 			for (j=0; j<nulls.length; j++)
 				if (nulls[j]) {
 					datosTest[i][j]=0.0;
