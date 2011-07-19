@@ -280,7 +280,7 @@ public class Multiple {
 		double pFriedman;
         pFriedman = ChiSq(friedman, (algorithmName.length-1));
 
-        System.out.print("P-value computed by Friedman Test: " + pFriedman +".\\newline\n\n");
+        out+="P-value computed by Friedman Test: " + pFriedman +".\\newline\n\n";
 		
     	/*Compute the Iman-Davenport statistic*/
     	if(Iman){
@@ -291,7 +291,7 @@ public class Multiple {
 			double pIman;
 		
 			pIman = FishF(iman, (algorithmName.length-1),(algorithmName.length-1) * (nDatasets - 1));
-			System.out.print("P-value computed by Iman and Daveport Test: " + pIman +".\\newline\n\n");
+			out+="P-value computed by Iman and Daveport Test: " + pIman +".\\newline\n\n");
     	}
     	
     	termino3 = Math.sqrt((double)algorithmName.length*((double)algorithmName.length+1)/(6.0*(double)nDatasets));
@@ -421,7 +421,7 @@ public class Multiple {
     	}
     		    
     	/*For Bergmann-Hommel's procedure, 9 algorithms could suppose intense computation*/
-    	if (algorithmName.length <= MAX_ALGORITHMS) {
+    	if ((algorithmName.length <= MAX_ALGORITHMS)&&(Berg)) {
     		for (i=0; i<algorithmName.length; i++) {
     			 indices.add(new Integer(i));
     		}	    	
@@ -584,7 +584,7 @@ public class Multiple {
     	}
     		    
     	/*For Bergmann-Hommel's procedure, 9 algorithms could suppose intense computation*/
-    	if (algorithmName.length <= MAX_ALGORITHMS) {
+    	if ((algorithmName.length <= MAX_ALGORITHMS)&(Berg)) {
     		
     		indices.removeAllElements();
     		for (i=0; i<algorithmName.length; i++) {
