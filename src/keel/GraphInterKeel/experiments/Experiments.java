@@ -48,7 +48,6 @@ import javax.swing.*;
 import javax.swing.tree.*;
 import java.io.*;
 import javax.swing.event.*;
-import com.sun.image.codec.jpeg.*;
 import java.awt.image.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +68,7 @@ import org.exolab.castor.xml.Marshaller;
 import org.xml.sax.InputSource;
 import keel.GraphInterKeel.menu.Frame;
 import keel.GraphInterKeel.menu.FrameModules;
+import javax.imageio.ImageIO;
 
 public class Experiments extends javax.swing.JFrame implements ItemListener, IEducationalRunListener {
     //----------------------------------
@@ -2240,13 +2240,18 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
                     BufferedImage bi = new BufferedImage(graphDiagramINNER.mainGraph.getMaxX(), graphDiagramINNER.mainGraph.getMaxY(),
                             BufferedImage.TYPE_INT_RGB);
-                    Graphics2D g2 = bi.createGraphics();
-                    graphDiagramINNER.paint(g2);
-                    g2.dispose();
-                    OutputStream out = new FileOutputStream(fileName);
-                    JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-                    encoder.encode(bi);
-                    out.close();
+                    
+					Graphics2D g2 = bi.createGraphics();
+					graphDiagramINNER.paint(g2);
+					g2.dispose();
+					
+					ImageIO.write(bi, "jpeg",tmp);
+                    /*	
+						OutputStream out = new FileOutputStream(fileName);
+					JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+						encoder.encode(bi);
+						out.close();
+						*/                
                 }
             } catch (Exception exc) {
             }
