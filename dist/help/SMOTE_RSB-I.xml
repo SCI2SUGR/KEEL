@@ -1,0 +1,101 @@
+<method>
+
+	<name>SMOTE-RSB*: Preprocessing using SMOTE and Rough Sets Theory</name>
+
+	<reference>  
+
+		<ref>Private Communication</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Preprocess Method. Data Rebalancing. Oversampling Method</type>
+
+		<objective>Balance the class distribution for changing the data space when applying usual classifiers in imbalanced domains</objective>
+
+		<howWork>SMOTE generate positive data instances from other instances in the original dataset selecting k nearest neighbors and using them to perform arithmetical
+		operations to generate the new instance. Some of the examples are removed according to some measures computed with Rough Set Theory.</howWork>
+
+		<parameterSpec>  
+
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to generate a new positive example using the K-Nearest Neighbor Rule</param>
+			<param>Type of neighbors: both if we consider as neighbors instances from both classes, minority if we consider as neighbors instances from the minority class and majority if we consider as neighbors instances from the majority class</param>
+			<param>Balancing: YES, if we want de data class distribution completely balanced, NO otherwise</param>
+			<param>Smoting: if the Balancing option is not selected, proportion of examples from the majority class that the minority class has to reach</param>
+			<param>Number of Extension</param>
+			<param>Comptype</param>
+			<param>Cutoffini</param>
+			<param>Cutoffinal</param>
+			<param>MustContinue</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: SMOTE_RSB
+Dataset: pimaImb
+Training set: pimaImb-5-1tra.dat
+Parameters: default values
+
+We can see output set in Experiment\datasets\SMOTE_RSB-I.pimaImb\SMOTE_RSB-Is0.pimaImb-5-1tra.dat:
+
+@relation pimaImb
+@attribute Preg real [0.0, 17.0]
+@attribute Plas real [0.0, 199.0]
+@attribute Pres real [0.0, 122.0]
+@attribute Skin real [0.0, 99.0]
+@attribute Insu real [0.0, 846.0]
+@attribute Mass real [0.0, 67.1]
+@attribute Pedi real [0.078, 2.42]
+@attribute Age real [21.0, 81.0]
+@attribute Class {positive, negative}
+@data
+14.0,175.0,62.0,30.0,0.0,33.6,0.212,38.0,positive
+4.0,146.0,78.0,0.0,0.0,38.5,0.52,67.0,positive
+15.0,136.0,70.0,32.0,110.0,37.1,0.153,43.0,positive
+5.0,116.0,74.0,29.0,0.0,32.3,0.66,35.0,positive
+6.0,0.0,68.0,41.0,0.0,39.0,0.727,41.0,positive
+3.0,173.0,78.0,39.0,185.0,33.8,0.97,31.0,positive
+3.0,162.0,52.0,38.0,0.0,37.2,0.652,24.0,positive
+4.0,146.0,92.0,0.0,0.0,31.2,0.539,61.0,positive
+2.0,155.0,52.0,27.0,540.0,38.7,0.24,25.0,positive
+9.0,145.0,80.0,46.0,130.0,37.9,0.637,40.0,positive
+6.0,162.0,62.0,0.0,0.0,24.3,0.178,50.0,positive
+9.0,112.0,82.0,32.0,175.0,34.2,0.26,36.0,positive
+10.0,101.0,86.0,37.0,0.0,45.6,1.136,38.0,positive
+1.0,144.0,82.0,46.0,180.0,46.1,0.335,46.0,positive
+1.0,168.0,88.0,29.0,0.0,35.0,0.905,52.0,positive
+0.0,146.0,70.0,0.0,0.0,37.9,0.334,28.0,positive
+2.0,102.0,86.0,36.0,120.0,45.5,0.127,23.0,positive
+...
+5.285375740149716,101.396173599298,66.72968164595402,32.350340203048646,0.0,38.981084740734424,0.3495965391977123,28.747087787415804,positive
+3.540212447099158,131.27294881795459,81.26980136731503,0.0,0.0,37.95700213035797,0.9300382333454246,42.074462325386214,positive
+0.10895100749494491,177.41996935702875,78.5424284429101,38.49503579844788,185.0,32.34998671810856,0.7752628100255587,28.80111954924645,positive
+0.7429319331464366,121.28457818049735,69.4420407979494,29.173355790141485,189.2318130753407,31.044953122604014,0.5394936795712095,26.817746790904767,positive
+8.59336168121704,156.08751202201813,89.43795822073353,0.0,0.0,27.94965985611979,0.6365435729107258,65.95280330693478,positive
+8.577480729345204,142.4150324578037,85.33455979474611,30.10994082756697,165.0995283400662,32.887954573900366,0.3045818673054621,34.85635739334422,positive
+3.1721879163145474,99.9302109274794,71.81389588426204,37.05198739513065,190.51132823870233,33.99035997830733,0.5390776343026052,34.72220098146148,positive
+2.5055930316227366,102.0,74.0,0.0,0.0,37.72097145978194,0.12819195335802896,40.769174044433264,positive
+2.0,97.61677349716783,62.810319002252,16.432422342788605,88.66676319364431,31.870667136417513,0.7504714578546461,26.11516999956826,positive
+6.333852235057483,116.43971315178815,77.50988170962829,33.92347875424737,0.0,30.636323707725694,0.6099165565848313,30.15512812335723,positive
+</example>
+
+</method>
