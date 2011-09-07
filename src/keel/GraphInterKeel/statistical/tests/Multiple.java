@@ -291,7 +291,7 @@ public class Multiple {
 			double pIman;
 		
 			pIman = FishF(iman, (algorithmName.length-1),(algorithmName.length-1) * (nDatasets - 1));
-			out+="P-value computed by Iman and Daveport Test: " + pIman +".\\newline\n\n");
+			out+="P-value computed by Iman and Daveport Test: " + pIman +".\\newline\n\n";
     	}
     	
     	termino3 = Math.sqrt((double)algorithmName.length*((double)algorithmName.length+1)/(6.0*(double)nDatasets));
