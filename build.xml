@@ -4993,7 +4993,17 @@
  		  org/core/**/*.class
 		  keel/Dataset/**/*.class"/>
         </jar>
-        
+
+		<jar
+          jarfile="${distPre}/SMOTE_RSB-I.jar"
+          manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/SMOTE_RSB/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/ImbalancedClassification/Resampling/SMOTE_RSB/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+ 		  keel/Dataset/**/*.class"/>
+    </jar> 
+            
 		<jar
           jarfile="${distPre}/SMOTE_TomekLinks-I.jar"
           manifest="${src}/keel/Algorithms/ImbalancedClassification/Resampling/SMOTE_TomekLinks/Manifest">
