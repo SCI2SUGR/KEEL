@@ -562,6 +562,9 @@ public class Wilcoxon {
                     RB += increment;
                 }
             }
+			
+			//Updating N so it correctly contain the ties
+            N+=increment;
         }
         
         //save the ranks
