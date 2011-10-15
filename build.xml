@@ -5116,17 +5116,9 @@
 		  keel/Dataset/**/*.class"/>
         </jar>		
 		
-	   <!-- Imbalanced Methods Cost-Boosting and Cost-Sensitive -->			
-
-		<jar jarfile="${distMet}/AdaC2-I.jar"
-			manifest="${src}/keel/Algorithms/ImbalancedClassification/CSBoosting/ADAC2/Manifest">
-			<fileset dir="${bin}"
-			includes="keel/Algorithms/ImbalancedClassification/CSBoosting/ADAC2/**/*.class
-			org/core/**/*.class
-			keel/Dataset/**/*.class"/>
-		</jar> 		
-
-       <jar
+	   <!-- Imbalanced Methods Cost-Sensitive -->			
+	   
+     <jar
 		   	jarfile="${distMet}/C_SVMCS-I.jar"
 		   	manifest="${src}/keel/Algorithms/ImbalancedClassification/CSMethods/C_SVMCost/Manifest">
    		   <fileset dir="${bin}"
@@ -5153,6 +5145,16 @@
                        org/core/**/*.class"/>
         	<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
         </jar>
+
+	   <!-- Imbalanced Methods Ensembles -->			
+
+		<jar jarfile="${distMet}/Ensembles-I.jar"
+			manifest="${src}/keel/Algorithms/ImbalancedClassification/Ensembles/Manifest">
+			<fileset dir="${bin}"
+			includes="keel/Algorithms/ImbalancedClassification/Ensembles/**/*.class
+			org/core/**/*.class
+			keel/Dataset/**/*.class"/>
+		</jar> 	               
         
 	   <!-- Imbalanced Statistical Tests -->			
 		

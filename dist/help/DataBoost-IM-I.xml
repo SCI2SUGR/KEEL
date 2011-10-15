@@ -1,19 +1,21 @@
 <method>
-	<name>Cost Sensitive Boosting with C4.5 Decision Tree as Base Classifier</name>
+	<name>
+		DataBoost-IM algorithm with C4.5 Decision Tree as Base Classifier
+	</name>
 	<reference>  
 		<ref>
-			Y. Sun, M. Kamel, A. Wong, and Y. Wang. Cost-sensitive boosting for classification of imbalanced data. Pattern Recognition, 40(12):3358–3378, December 2007.
+			H. Guo and H. L. Viktor. Learning from imbalanced data sets with boosting and data generation: the DataBoost-IM approach. SIGKDD Expl. Newsl., vol. 6, pp. 30-39, 2004.
 		</ref>
 	</reference>
 	<generalDescription>  
 		<type>
-			Ensemble of classifiers. Boosting. Cost-sensitive. Imbalanced.
+			Ensemble of classifiers. Boosting. Resampling
 		</type>
 		<objective>
-			To determine a decision tree that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute. The cost set-ups are taken into account in the boosting procedure.
+			To determine a set of decision trees that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.
 		</objective>
-		<howWork> 
-			AdaC2 is a boosting algorithm that produce an ensemble of decision trees (C4.5 in this case) from a set of given examples. Each instance has an associated cost depending on the class. It tries to solve the imbalance problem by increasing the weight of the instances from the minority class in each iteration of the boosting algorithm. It can be executed using the cost sensitive C4.5 or a resampling procedure after the weights update. C2 modification refers to the way in which the costs are introduced in the boosting procedure (within the exponent part in this case).
+		<howWork>
+			It combines AdaBoost.M1 algorithm with a data generation strategy. It first identifies hard examples (seeds) and then carries out a rebalance process, always for both classes. 
         </howWork>
 		<parameterSpec>  
 			<param>
@@ -31,15 +33,6 @@
 			<param>
 				Train Method: is the method used to train the classifier in each iteration (using resampling or cost-sensitive classifier)
 			</param>
-			<param>
-				Cost Set-up: is the cost set-up, when ADAPTIVE the costs are selected considering the imbalance ratio, in other case they are manually set
-			</param>
-			<param>
-				Cost Majority class: is the cost for missclassifying an instance from the majority class (if set-up is MANUAL)
-			</param>
-			<param>
-				Cost Minority class: is the cost for missclassifying an instance from the minority class (if set-up is MANUAL)
-			</param>
 		</parameterSpec>
 		<properties>
 			<continuous>Yes</continuous>
@@ -50,27 +43,27 @@
 			<impreciseValue>No</impreciseValue>
 		</properties>
 	</generalDescription>
-	<example>
+<example>
 Problem type: Imbalanced
-Method: Cost Sensitive Boosting with C4.5 Decision Tree as Base Classifier
+Method: DataBoost-IM algorithm with C4.5 Decision Tree as Base Classifier
 Dataset: abalone9-18
 Training set: abalone9-18-5-5-1tra.dat
 Test set: abalone9-18-5-5-1tst.dat
-Test Show results: TSTImb-AdaC2
+Test Show results: TSTImb-DataBoostIM
 Parameters: default values
 
 After the execution of RunKeel.jar we can see the classification results for the test set:
 
-G-mean in Training: 0.9686557752314763
-F-mean in Training: 0.66
+G-mean in Training: 1.0
+F-mean in Training: 1.0
 TPrate in Training: 1.0
-G-mean in Test: 0.7036825151484182
-F-mean in Test: 0.3448275862068966
-TPrate in Test: 0.5555555555555556
-Accuracy in training: 0.9417808219178082
-Accuracy in test: 0.8707482993197279
+G-mean in Test: 0.4679760787753559
+F-mean in Test: 0.30769230769230765
+TPrate in Test: 0.2222222222222222
+Accuracy in training: 1.0
+Accuracy in test: 0.9387755102040817
 
-We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-AdaC2.abalone9-18:
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-DataBoostIM.abalone9-18:
 
 @relation  abalone9-18
 @attribute Sex{M,F,I}
@@ -91,28 +84,27 @@ negative negative
 negative negative
 negative negative
 positive negative
-negative positive
-negative positive
+negative negative
+negative negative
 negative negative
 negative negative
 positive positive
 negative negative
 negative negative
-positive positive
-positive positive
+positive negative
+positive negative
 positive negative
 negative negative
 negative negative
 negative negative
 negative negative
-negative positive
 negative negative
 negative negative
 negative negative
 negative negative
-negative positive
 negative negative
-negative positive
+negative negative
+negative negative
 negative negative
 negative negative
 negative negative

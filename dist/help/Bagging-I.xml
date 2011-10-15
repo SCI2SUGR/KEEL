@@ -1,0 +1,111 @@
+<method>
+	<name>
+		Bagging algorithm with C4.5 Decision Tree as Base Classifier
+	</name>
+	<reference>  
+		<ref>
+			L. Breiman. Bagging predictors. Machine Learning, vol. 24, pp. 123--140, 1996.
+		</ref>
+	</reference>
+	<generalDescription>  
+		<type>
+			Ensemble of classifiers. Bagging.
+		</type>
+		<objective>
+			To determine a set of decision trees that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.
+		</objective>
+		<howWork>
+		Bagging or bootstrap aggregating consists in training different classifiers with bootstrapped replicas of the original training data-set. That is, a new data-set is formed to train each classifier by randomly drawing (with replacement) instances from the original data-set (usually, maintaining the original data-set size). Hence, diversity is obtained with the resampling procedure using different data subsets. Finally, when an unknown instance is presented to each individual classifier, a majority or weighted vote is used to infer the class. 
+        </howWork>
+		<parameterSpec>  
+			<param>
+				prune: wether to prune or not prune the tree. It is a boolean value that determines if the algorithm applies a prune process after building the tree
+			</param>
+			<param>
+				confidence: is the confidence level. It is a float value that determines what is the minimal confidence that must has a leaf in order to can be considered in the tree
+			</param>
+			<param>
+				minItemsets: is the minimum number of item-sets per leaf. It is an integer value that determines how much data instances must contain a leaf in order to can be created
+			</param>
+			<param>
+				Number of Classifiers: is the number of iterations that the bagging procedure will be executed (the number of classifiers that will form the ensemble)
+			</param>
+		</parameterSpec>
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+	</generalDescription>
+<example>
+Problem type: Imbalanced
+Method: Bagging algorithm with C4.5 Decision Tree as Base Classifier
+Dataset: abalone9-18
+Training set: abalone9-18-5-5-1tra.dat
+Test set: abalone9-18-5-5-1tst.dat
+Test Show results: TSTImb-Bagging
+Parameters: default values
+
+After the execution of RunKeel.jar we can see the classification results for the test set:
+
+G-mean in Training: 0.6276459144608478
+F-mean in Training: 0.5652173913043478
+TPrate in Training: 0.3939393939393939
+G-mean in Test: 0.4714045207910317
+F-mean in Test: 0.3636363636363636
+TPrate in Test: 0.2222222222222222
+Accuracy in training: 0.9657534246575342
+Accuracy in test: 0.9523809523809523
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-Bagging.abalone9-18:
+
+@relation  abalone9-18
+@attribute Sex{M,F,I}
+@attribute Length real[0.075,0.815]
+@attribute Diameter real[0.055,0.65]
+@attribute Height real[0.0,1.13]
+@attribute Whole_weight real[0.0020,2.8255]
+@attribute Shucked_weight real[0.0010,1.488]
+@attribute Viscera_weight real[5.0E-4,0.76]
+@attribute Shell_weight real[0.0015,1.005]
+@attribute Rings{positive,negative}
+@inputs Sex,Length,Diameter,Height,Whole_weight,Shucked_weight,Viscera_weight,Shell_weight
+@outputs Rings
+@data
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+positive negative
+negative negative
+negative negative
+negative negative
+negative negative
+positive positive
+negative negative
+negative negative
+positive negative
+positive negative
+positive negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+...
+</example>
+
+</method>

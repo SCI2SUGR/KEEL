@@ -1,6 +1,6 @@
 <algorithm_specification>
-  <name>Cost-Sensitive Boosting AdaC2</name>
-  <nParameters>9</nParameters>
+  <name>EasyEnsembleAlgorithm</name>
+  <nParameters>7</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>
   <parameter>
@@ -27,19 +27,19 @@
     <default>2</default>
   </parameter>
   <parameter>
-    <name>Number of Classifiers</name>
+    <name>Number of Classifiers in each Bag</name>
     <type>integer</type>
     <default>10</default>
   </parameter>
-    <parameter>
+  <parameter>
     <name>Algorithm</name>
     <type>list</type>
     <domain>
-      <item>ADAC2</item>
+      <item>EASYENSEMBLE</item>
     </domain>
-    <default>ADAC2</default>
+    <default>EASYENSEMBLE</default>
   </parameter>
-  <parameter>
+    <parameter>
     <name>Train Method</name>
     <type>list</type>
     <domain>
@@ -48,31 +48,9 @@
     </domain>
     <default>NORESAMPLING</default>
   </parameter>
-  <parameter>
-    <name>Cost Set-up</name>
-    <type>list</type>
-    <domain>
-      <item>ADAPTIVE</item>
-      <item>MANUAL</item>
-    </domain>
-    <default>ADAPTIVE</default>
-  </parameter>
-  <parameter>
-    <name>Cost Majority Class</name>
-    <type>real</type>
-    <domain>
-      <lowerB>0</lowerB>
-      <upperB>1</upperB>
-    </domain>
-    <default>0.25</default>
-  </parameter>
-  <parameter>
-    <name>Cost Minority Class</name>
-    <type>real</type>
-    <domain>
-      <lowerB>0</lowerB>
-      <upperB>1</upperB>
-    </domain>
-    <default>1</default>
+    <parameter>
+    <name>Number of Bags</name>
+    <type>integer</type>
+    <default>4</default>
   </parameter>
 </algorithm_specification>

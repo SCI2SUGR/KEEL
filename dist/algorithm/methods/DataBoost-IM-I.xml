@@ -1,6 +1,6 @@
 <algorithm_specification>
-  <name>Cost-Sensitive Boosting AdaC2</name>
-  <nParameters>9</nParameters>
+  <name>DataBoost-IM algorithm</name>
+  <nParameters>6</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>
   <parameter>
@@ -31,13 +31,13 @@
     <type>integer</type>
     <default>10</default>
   </parameter>
-    <parameter>
+  <parameter>
     <name>Algorithm</name>
     <type>list</type>
     <domain>
-      <item>ADAC2</item>
+      <item>DATABOOST-IM</item>
     </domain>
-    <default>ADAC2</default>
+    <default>DATABOOST-IM</default>
   </parameter>
   <parameter>
     <name>Train Method</name>
@@ -47,32 +47,5 @@
       <item>RESAMPLING</item>
     </domain>
     <default>NORESAMPLING</default>
-  </parameter>
-  <parameter>
-    <name>Cost Set-up</name>
-    <type>list</type>
-    <domain>
-      <item>ADAPTIVE</item>
-      <item>MANUAL</item>
-    </domain>
-    <default>ADAPTIVE</default>
-  </parameter>
-  <parameter>
-    <name>Cost Majority Class</name>
-    <type>real</type>
-    <domain>
-      <lowerB>0</lowerB>
-      <upperB>1</upperB>
-    </domain>
-    <default>0.25</default>
-  </parameter>
-  <parameter>
-    <name>Cost Minority Class</name>
-    <type>real</type>
-    <domain>
-      <lowerB>0</lowerB>
-      <upperB>1</upperB>
-    </domain>
-    <default>1</default>
   </parameter>
 </algorithm_specification>

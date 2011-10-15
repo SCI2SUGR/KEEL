@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>OverBagging2 algorithm</name>
+  <nParameters>5</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>pruned</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+  <parameter>
+    <name>confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.25</default>
+  </parameter>
+  <parameter>
+    <name>instancesPerLeaf</name>
+    <type>integer</type>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Number of Classifiers</name>
+    <type>integer</type>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>Algorithm</name>
+    <type>list</type>
+    <domain>
+      <item>OVERBAGGING2</item>
+    </domain>
+    <default>OVERBAGGING2</default>
+  </parameter>
+</algorithm_specification>

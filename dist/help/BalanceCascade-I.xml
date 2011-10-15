@@ -1,19 +1,21 @@
 <method>
-	<name>Cost Sensitive Boosting with C4.5 Decision Tree as Base Classifier</name>
+	<name>
+		BalanceCascade ensemble with C4.5 Decision Tree as Base Classifier
+	</name>
 	<reference>  
 		<ref>
-			Y. Sun, M. Kamel, A. Wong, and Y. Wang. Cost-sensitive boosting for classification of imbalanced data. Pattern Recognition, 40(12):3358–3378, December 2007.
+			X.-Y. Liu, J. Wu, and Z.-H. Zhou. Exploratory undersampling for class-imbalance learning. IEEE Transactions on Systems, Man, and Cybernetics - part B, vol. 39, no. 2, pp. 539-550, 2009. 
 		</ref>
 	</reference>
 	<generalDescription>  
 		<type>
-			Ensemble of classifiers. Boosting. Cost-sensitive. Imbalanced.
+			Ensemble of classifiers. Bagging. Boosting. Undersampling.
 		</type>
 		<objective>
-			To determine a decision tree that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute. The cost set-ups are taken into account in the boosting procedure.
+			To determine a set of decision trees that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.
 		</objective>
-		<howWork> 
-			AdaC2 is a boosting algorithm that produce an ensemble of decision trees (C4.5 in this case) from a set of given examples. Each instance has an associated cost depending on the class. It tries to solve the imbalance problem by increasing the weight of the instances from the minority class in each iteration of the boosting algorithm. It can be executed using the cost sensitive C4.5 or a resampling procedure after the weights update. C2 modification refers to the way in which the costs are introduced in the boosting procedure (within the exponent part in this case).
+		<howWork>
+		BalanceCascade carries out a double ensemble learning, that is, it combines both bagging and boosting (also with a preprocessing technique). In the same manner as UnderBagging, each balanced bag is constructed by randomly undersampling instances from the majority class and using all the instances from the minority class. The difference between these methods is the way in which they treat the negative instances after each iteration. BalanceCascade works in a supervised manner, and therefore the classifiers have to be trained sequentially. In each bagging iteration after learning the AdaBoost classifier, the majority class examples that are correctly classified with higher confidences by the current trained classifiers are removed from the data-set, and they are not taken into account in further iterations.
         </howWork>
 		<parameterSpec>  
 			<param>
@@ -26,19 +28,13 @@
 				minItemsets: is the minimum number of item-sets per leaf. It is an integer value that determines how much data instances must contain a leaf in order to can be created
 			</param>
 			<param>
-				Number of Classifiers: is the maximum number of iterations that the boosting procedure will be executed
+				Number of Classifiers: is the number of iterations that the boosting procedure will use (the total number of classifiers is the number of classifiers times the number or bags)
 			</param>
 			<param>
 				Train Method: is the method used to train the classifier in each iteration (using resampling or cost-sensitive classifier)
 			</param>
 			<param>
-				Cost Set-up: is the cost set-up, when ADAPTIVE the costs are selected considering the imbalance ratio, in other case they are manually set
-			</param>
-			<param>
-				Cost Majority class: is the cost for missclassifying an instance from the majority class (if set-up is MANUAL)
-			</param>
-			<param>
-				Cost Minority class: is the cost for missclassifying an instance from the minority class (if set-up is MANUAL)
+				Number of Bags: is the number of bags to be used (= how many times the undersampling is carried out)
 			</param>
 		</parameterSpec>
 		<properties>
@@ -50,27 +46,27 @@
 			<impreciseValue>No</impreciseValue>
 		</properties>
 	</generalDescription>
-	<example>
+<example>
 Problem type: Imbalanced
-Method: Cost Sensitive Boosting with C4.5 Decision Tree as Base Classifier
+Method: BalanceCascade ensemble with C4.5 Decision Tree as Base Classifier
 Dataset: abalone9-18
 Training set: abalone9-18-5-5-1tra.dat
 Test set: abalone9-18-5-5-1tst.dat
-Test Show results: TSTImb-AdaC2
+Test Show results: TSTImb-BalanceCascade
 Parameters: default values
 
 After the execution of RunKeel.jar we can see the classification results for the test set:
 
-G-mean in Training: 0.9686557752314763
-F-mean in Training: 0.66
-TPrate in Training: 1.0
-G-mean in Test: 0.7036825151484182
-F-mean in Test: 0.3448275862068966
-TPrate in Test: 0.5555555555555556
-Accuracy in training: 0.9417808219178082
-Accuracy in test: 0.8707482993197279
+G-mean in Training: 0.7962749440387267
+F-mean in Training: 0.29347826086956524
+TPrate in Training: 0.8181818181818182
+G-mean in Test: 0.8379101370347369
+F-mean in Test: 0.34782608695652173
+TPrate in Test: 0.8888888888888888
+Accuracy in training: 0.7773972602739726
+Accuracy in test: 0.7959183673469388
 
-We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-AdaC2.abalone9-18:
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-BalanceCascade.abalone9-18:
 
 @relation  abalone9-18
 @attribute Sex{M,F,I}
@@ -87,11 +83,11 @@ We can also see the output and target classes for each case of the test set (res
 @data
 negative negative
 negative negative
-negative negative
-negative negative
-negative negative
-positive negative
 negative positive
+negative negative
+negative negative
+positive positive
+negative negative
 negative positive
 negative negative
 negative negative
@@ -105,14 +101,9 @@ negative negative
 negative negative
 negative negative
 negative negative
-negative positive
 negative negative
 negative negative
 negative negative
-negative negative
-negative positive
-negative negative
-negative positive
 negative negative
 negative negative
 negative negative

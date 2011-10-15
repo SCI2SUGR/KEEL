@@ -1,19 +1,21 @@
 <method>
-	<name>Cost Sensitive Boosting with C4.5 Decision Tree as Base Classifier</name>
-	<reference>  
+	<name>
+		MSMOTEBoost algorithm with C4.5 Decision Tree as Base Classifier
+	</name>
+	<reference>
 		<ref>
-			Y. Sun, M. Kamel, A. Wong, and Y. Wang. Cost-sensitive boosting for classification of imbalanced data. Pattern Recognition, 40(12):3358–3378, December 2007.
+			S. Hu, Y. Liang, L. Ma, and Y. He. MSMOTE: Improving classification performance when training data is imbalanced, in 2nd International Workshop on Computer Science and Engineering, vol. 2, 2009, pp. 13-17.
 		</ref>
 	</reference>
 	<generalDescription>  
 		<type>
-			Ensemble of classifiers. Boosting. Cost-sensitive. Imbalanced.
+			Ensemble of classifiers. Boosting. MSMOTE. Resampling.
 		</type>
 		<objective>
-			To determine a decision tree that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute. The cost set-ups are taken into account in the boosting procedure.
+			To determine a set of decision trees that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.
 		</objective>
-		<howWork> 
-			AdaC2 is a boosting algorithm that produce an ensemble of decision trees (C4.5 in this case) from a set of given examples. Each instance has an associated cost depending on the class. It tries to solve the imbalance problem by increasing the weight of the instances from the minority class in each iteration of the boosting algorithm. It can be executed using the cost sensitive C4.5 or a resampling procedure after the weights update. C2 modification refers to the way in which the costs are introduced in the boosting procedure (within the exponent part in this case).
+		<howWork>
+			MSMOTEBoost introduces synthetic instances in each iteration of of AdaBoost.M2, using the MSMOTE data preprocessing algorithm. The weights of the new instances are proportional to the total number of instances in the new data-set. Hence, their weights are always the same (in all iterations and for all new instances), whereas original data-set's instances weights are normalized in such a way that they form a distribution with the new instances. After training a classifier, the weights of the original data-set instances are updated, then another sampling phase is applied (again, modifying the weight distribution). The repetition of this process also brings along more diversity in the training data, which generally benefits the ensemble learning.
         </howWork>
 		<parameterSpec>  
 			<param>
@@ -32,13 +34,7 @@
 				Train Method: is the method used to train the classifier in each iteration (using resampling or cost-sensitive classifier)
 			</param>
 			<param>
-				Cost Set-up: is the cost set-up, when ADAPTIVE the costs are selected considering the imbalance ratio, in other case they are manually set
-			</param>
-			<param>
-				Cost Majority class: is the cost for missclassifying an instance from the majority class (if set-up is MANUAL)
-			</param>
-			<param>
-				Cost Minority class: is the cost for missclassifying an instance from the minority class (if set-up is MANUAL)
+				Quantity of balancing: percentage of the majority class instances in the new data-set (if it is less or equal to 100%, the classes are rebalanced at 100%)
 			</param>
 		</parameterSpec>
 		<properties>
@@ -50,27 +46,27 @@
 			<impreciseValue>No</impreciseValue>
 		</properties>
 	</generalDescription>
-	<example>
+<example>
 Problem type: Imbalanced
-Method: Cost Sensitive Boosting with C4.5 Decision Tree as Base Classifier
+Method: MSMOTEBoost algorithm with C4.5 Decision Tree as Base Classifier
 Dataset: abalone9-18
 Training set: abalone9-18-5-5-1tra.dat
 Test set: abalone9-18-5-5-1tst.dat
-Test Show results: TSTImb-AdaC2
+Test Show results: TSTImb-MSMOTEBoost
 Parameters: default values
 
 After the execution of RunKeel.jar we can see the classification results for the test set:
 
-G-mean in Training: 0.9686557752314763
-F-mean in Training: 0.66
-TPrate in Training: 1.0
-G-mean in Test: 0.7036825151484182
-F-mean in Test: 0.3448275862068966
-TPrate in Test: 0.5555555555555556
-Accuracy in training: 0.9417808219178082
-Accuracy in test: 0.8707482993197279
+G-mean in Training: 0.8680155676503334
+F-mean in Training: 0.819672131147541
+TPrate in Training: 0.7575757575757576
+G-mean in Test: 0.6544779483398382
+F-mean in Test: 0.4444444444444444
+TPrate in Test: 0.4444444444444444
+Accuracy in training: 0.9811643835616438
+Accuracy in test: 0.9319727891156463
 
-We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-AdaC2.abalone9-18:
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-MSMOTEBoost.abalone9-18:
 
 @relation  abalone9-18
 @attribute Sex{M,F,I}
@@ -87,34 +83,34 @@ We can also see the output and target classes for each case of the test set (res
 @data
 negative negative
 negative negative
-negative negative
-negative negative
-negative negative
-positive negative
-negative positive
 negative positive
 negative negative
 negative negative
-positive positive
-negative negative
-negative negative
-positive positive
-positive positive
 positive negative
 negative negative
 negative negative
 negative negative
 negative negative
+positive positive
+negative negative
+negative negative
+positive negative
+positive negative
+positive negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
 negative positive
-negative negative
-negative negative
-negative negative
-negative negative
-negative positive
-negative negative
-negative positive
-negative negative
-negative negative
 negative negative
 ...
 </example>

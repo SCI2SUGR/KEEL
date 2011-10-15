@@ -1,19 +1,21 @@
 <method>
-	<name>Cost Sensitive Boosting with C4.5 Decision Tree as Base Classifier</name>
-	<reference>  
+	<name>
+		RUSBoost algorithm with C4.5 Decision Tree as Base Classifier
+	</name>
+	<reference>
 		<ref>
-			Y. Sun, M. Kamel, A. Wong, and Y. Wang. Cost-sensitive boosting for classification of imbalanced data. Pattern Recognition, 40(12):3358–3378, December 2007.
+			C. Seiffert, T. Khoshgoftaar, J. Van Hulse, and A. Napolitano. Rusboost: A hybrid approach to alleviating class imbalance,'' \emph{{IEEE} Transactions on Systems, Man and Cybernetics - part A, vol. 40, no. 1, pp. 185-197, 2010.
 		</ref>
 	</reference>
 	<generalDescription>  
 		<type>
-			Ensemble of classifiers. Boosting. Cost-sensitive. Imbalanced.
+			Ensemble of classifiers. Boosting. UnderSampling. Resampling.
 		</type>
 		<objective>
-			To determine a decision tree that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute. The cost set-ups are taken into account in the boosting procedure.
+			To determine a set of decision trees that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.
 		</objective>
-		<howWork> 
-			AdaC2 is a boosting algorithm that produce an ensemble of decision trees (C4.5 in this case) from a set of given examples. Each instance has an associated cost depending on the class. It tries to solve the imbalance problem by increasing the weight of the instances from the minority class in each iteration of the boosting algorithm. It can be executed using the cost sensitive C4.5 or a resampling procedure after the weights update. C2 modification refers to the way in which the costs are introduced in the boosting procedure (within the exponent part in this case).
+		<howWork>
+			RUSBoost removes instances from the majority class by random undersampling the data-set in each iteration. In this case, it is not necessary to assign new weights to the instances. It is enough with simply normalizing the weights of the remaining instances in the new data-set with respect to their total sum of weights. After training a classifier, the weights of the original data-set instances are updated, then another sampling phase is applied (again, modifying the weight distribution). The repetition of this process also brings along more diversity in the training data, which generally benefits the ensemble learning.
         </howWork>
 		<parameterSpec>  
 			<param>
@@ -32,13 +34,7 @@
 				Train Method: is the method used to train the classifier in each iteration (using resampling or cost-sensitive classifier)
 			</param>
 			<param>
-				Cost Set-up: is the cost set-up, when ADAPTIVE the costs are selected considering the imbalance ratio, in other case they are manually set
-			</param>
-			<param>
-				Cost Majority class: is the cost for missclassifying an instance from the majority class (if set-up is MANUAL)
-			</param>
-			<param>
-				Cost Minority class: is the cost for missclassifying an instance from the minority class (if set-up is MANUAL)
+				% majority class: N% of the new data-set each iteration will be from the majority class (percentage of the majority class instances in each boosting iteration)
 			</param>
 		</parameterSpec>
 		<properties>
@@ -50,27 +46,27 @@
 			<impreciseValue>No</impreciseValue>
 		</properties>
 	</generalDescription>
-	<example>
+<example>
 Problem type: Imbalanced
-Method: Cost Sensitive Boosting with C4.5 Decision Tree as Base Classifier
+Method: RUSBoost algorithm with C4.5 Decision Tree as Base Classifier
 Dataset: abalone9-18
 Training set: abalone9-18-5-5-1tra.dat
 Test set: abalone9-18-5-5-1tst.dat
-Test Show results: TSTImb-AdaC2
+Test Show results: TSTImb-RUSBoost
 Parameters: default values
 
 After the execution of RunKeel.jar we can see the classification results for the test set:
 
-G-mean in Training: 0.9686557752314763
-F-mean in Training: 0.66
-TPrate in Training: 1.0
-G-mean in Test: 0.7036825151484182
-F-mean in Test: 0.3448275862068966
-TPrate in Test: 0.5555555555555556
-Accuracy in training: 0.9417808219178082
-Accuracy in test: 0.8707482993197279
+G-mean in Training: 0.9104428159429501
+F-mean in Training: 0.44137931034482764
+TPrate in Training: 0.9696969696969697
+G-mean in Test: 0.603265403067209
+F-mean in Test: 0.21052631578947367
+TPrate in Test: 0.4444444444444444
+Accuracy in training: 0.8613013698630136
+Accuracy in test: 0.7959183673469388
 
-We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-AdaC2.abalone9-18:
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-RUSBoost.abalone9-18:
 
 @relation  abalone9-18
 @attribute Sex{M,F,I}
@@ -87,18 +83,18 @@ We can also see the output and target classes for each case of the test set (res
 @data
 negative negative
 negative negative
-negative negative
+negative positive
 negative negative
 negative negative
 positive negative
 negative positive
 negative positive
-negative negative
-negative negative
-positive positive
-negative negative
+negative positive
 negative negative
 positive positive
+negative negative
+negative negative
+positive negative
 positive positive
 positive negative
 negative negative
@@ -111,11 +107,6 @@ negative negative
 negative negative
 negative negative
 negative positive
-negative negative
-negative positive
-negative negative
-negative negative
-negative negative
 ...
 </example>
 

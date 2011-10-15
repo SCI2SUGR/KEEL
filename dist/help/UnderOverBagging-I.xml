@@ -1,0 +1,106 @@
+<method>
+	<name>
+		UnderOverBagging algorithm with C4.5 Decision Tree as Base Classifier
+	</name>
+	<reference>  
+		<ref>
+			S. Wang and X. Yao, Diversity analysis on imbalanced data sets by using ensemble models, in  IEEE Symposium Series on Computational Intelligence and Data Mining, 2009, pp. 324-331.
+		</ref>
+	</reference>
+	<generalDescription>  
+		<type>
+			Ensemble of classifiers. Bagging. OverSampling. SMOTE.
+		</type>
+		<objective>
+			To determine a set of decision trees that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.
+		</objective>
+		<howWork>
+		UnderBagging to OverBagging (UnderOverBagging) makes use of both oversampling and undersampling techniques, a resampling rate (a%) is set in each iteration (ranging from 10% to 100% always being multiple of 10), this ratio defines the number of instances taken from each class (a% * N_maj instances). Hence, the first classifiers are trained with a lower number of instances than the last ones. This way, the diversity is boosted. 
+        </howWork>
+		<parameterSpec>  
+			<param>
+				prune: wether to prune or not prune the tree. It is a boolean value that determines if the algorithm applies a prune process after building the tree
+			</param>
+			<param>
+				confidence: is the confidence level. It is a float value that determines what is the minimal confidence that must has a leaf in order to can be considered in the tree
+			</param>
+			<param>
+				minItemsets: is the minimum number of item-sets per leaf. It is an integer value that determines how much data instances must contain a leaf in order to can be created
+			</param>
+			<param>
+				Number of Classifiers: is the number of iterations that the bagging procedure will be executed (the number of classifiers that will form the ensemble)
+			</param>
+		</parameterSpec>
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+	</generalDescription>
+<example>
+Problem type: Imbalanced
+Method: UnderOverBagging algorithm with C4.5 Decision Tree as Base Classifier
+Dataset: abalone9-18
+Training set: abalone9-18-5-5-1tra.dat
+Test set: abalone9-18-5-5-1tst.dat
+Test Show results: TSTImb-UnderOverBagging
+Parameters: default values
+
+After the execution of RunKeel.jar we can see the classification results for the test set:
+
+G-mean in Training: 0.9807586233696722
+F-mean in Training: 0.7586206896551725
+TPrate in Training: 1.0
+G-mean in Test: 0.6395449267764849
+F-mean in Test: 0.33333333333333337
+TPrate in Test: 0.4444444444444444
+Accuracy in training: 0.964041095890411
+Accuracy in test: 0.891156462585034
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-UnderOverBagging.abalone9-18:
+
+@relation  abalone9-18
+@attribute Sex{M,F,I}
+@attribute Length real[0.075,0.815]
+@attribute Diameter real[0.055,0.65]
+@attribute Height real[0.0,1.13]
+@attribute Whole_weight real[0.0020,2.8255]
+@attribute Shucked_weight real[0.0010,1.488]
+@attribute Viscera_weight real[5.0E-4,0.76]
+@attribute Shell_weight real[0.0015,1.005]
+@attribute Rings{positive,negative}
+@inputs Sex,Length,Diameter,Height,Whole_weight,Shucked_weight,Viscera_weight,Shell_weight
+@outputs Rings
+@data
+negative negative
+negative negative
+negative positive
+negative negative
+negative negative
+positive negative
+negative positive
+negative positive
+negative negative
+negative negative
+positive positive
+negative negative
+negative negative
+positive negative
+positive positive
+positive negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+...
+</example>
+
+</method>

@@ -1,0 +1,52 @@
+<algorithm_specification>
+  <name>IIVotes: SPIDER + IVotes</name>
+  <nParameters>6</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>pruned</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+  <parameter>
+    <name>confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.25</default>
+  </parameter>
+  <parameter>
+    <name>instancesPerLeaf</name>
+    <type>integer</type>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Number of Classifiers</name>
+    <type>integer</type>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>Algorithm</name>
+    <type>list</type>
+    <domain>
+      <item>IIVOTES</item>
+    </domain>
+    <default>IIVOTES</default>
+  </parameter>
+  <parameter>
+    <name>Preprocess Type</name>
+    <type>list</type>
+    <domain>
+      <item>WEAK</item>
+      <item>RELABEL</item>
+      <item>STRONG</item>
+    </domain>
+    <default>WEAK</default>
+  </parameter>
+</algorithm_specification>

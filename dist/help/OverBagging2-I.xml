@@ -1,0 +1,106 @@
+<method>
+	<name>
+		OverBagging2 algorithm with C4.5 Decision Tree as Base Classifier
+	</name>
+	<reference>  
+		<ref>
+			S. Wang and X. Yao. Diversity analysis on imbalanced data sets by using ensemble models. in  IEEE Symposium on Computational Intelligence and Data
+  Mining, 2009, pp. 324-331.
+		</ref>
+	</reference>
+	<generalDescription>  
+		<type>
+			Ensemble of classifiers. Bagging. OverSampling.
+		</type>
+		<objective>
+			To determine a set of decision trees that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.
+		</objective>
+		<howWork>
+		An easy way to overcome class imbalance problem in each bag is to take into account the classes of the instances when they are randomly drawn from the original data-set. Hence, instead of performing a random sampling of the whole data-set, an oversampling process can be carried out before training each classifier. Oversampling consists in increasing the number of minority class instances by their replication, in this case, majority class instances are  is to resampled trying to increase the diversity.
+        </howWork>
+		<parameterSpec>  
+			<param>
+				prune: wether to prune or not prune the tree. It is a boolean value that determines if the algorithm applies a prune process after building the tree
+			</param>
+			<param>
+				confidence: is the confidence level. It is a float value that determines what is the minimal confidence that must has a leaf in order to can be considered in the tree
+			</param>
+			<param>
+				minItemsets: is the minimum number of item-sets per leaf. It is an integer value that determines how much data instances must contain a leaf in order to can be created
+			</param>
+			<param>
+				Number of Classifiers: is the number of iterations that the bagging procedure will be executed (the number of classifiers that will form the ensemble)
+			</param>
+		</parameterSpec>
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+	</generalDescription>
+<example>
+Problem type: Imbalanced
+Method: OverBagging2 algorithm with C4.5 Decision Tree as Base Classifier
+Dataset: abalone9-18
+Training set: abalone9-18-5-5-1tra.dat
+Test set: abalone9-18-5-5-1tst.dat
+Test Show results: TSTImb-OverBagging2
+Parameters: default values
+
+After the execution of RunKeel.jar we can see the classification results for the test set:
+
+G-mean in Training: 0.9963636243206234
+F-mean in Training: 0.9428571428571428
+TPrate in Training: 1.0
+G-mean in Test: 0.6520128625624344
+F-mean in Test: 0.4210526315789474
+TPrate in Test: 0.4444444444444444
+Accuracy in training: 0.9931506849315068
+Accuracy in test: 0.9251700680272109
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Imb-OverBagging2.abalone9-18:
+
+@relation  abalone9-18
+@attribute Sex{M,F,I}
+@attribute Length real[0.075,0.815]
+@attribute Diameter real[0.055,0.65]
+@attribute Height real[0.0,1.13]
+@attribute Whole_weight real[0.0020,2.8255]
+@attribute Shucked_weight real[0.0010,1.488]
+@attribute Viscera_weight real[5.0E-4,0.76]
+@attribute Shell_weight real[0.0015,1.005]
+@attribute Rings{positive,negative}
+@inputs Sex,Length,Diameter,Height,Whole_weight,Shucked_weight,Viscera_weight,Shell_weight
+@outputs Rings
+@data
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+positive positive
+negative positive
+negative negative
+negative negative
+negative negative
+positive positive
+negative negative
+negative negative
+positive negative
+positive positive
+positive negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+negative negative
+...
+</example>
+
+</method>
