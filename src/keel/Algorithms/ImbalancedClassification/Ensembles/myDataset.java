@@ -1,33 +1,4 @@
-/***********************************************************************
-
-	This file is part of KEEL-software, the Data Mining tool for regression, 
-	classification, clustering, pattern mining and so on.
-
-	Copyright (C) 2004-2010
-	
-	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
-    J. Luengo (julianlm@decsai.ugr.es)
-
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see http://www.gnu.org/licenses/
-  
-**********************************************************************/
-
-package keel.Algorithms.ImbalancedClassification.CSBoosting.ADAC2;
+package keel.Algorithms.ImbalancedClassification.Ensembles;
 
 /**
  * <p>Title: Dataset</p>
@@ -38,7 +9,6 @@ package keel.Algorithms.ImbalancedClassification.CSBoosting.ADAC2;
  * <p>Company: KEEL </p>
  *
  * @author Alberto Fern�ndez
- * @author Modified by Mikel Galar 30/5/10
  * @version 1.0
  */
 
@@ -86,11 +56,6 @@ public class myDataset {
     IS = new InstanceSet();
   }
 
-   /**
-   * Creates a new data-set from the copy by resampling using the given weight distribution
-    * @param copia original myDataset
-    * @param distribution the weight distribution for the resampling procedure
-   */
   public myDataset(myDataset copia, double[] distribution){
     nVars = copia.getnVars();
     nInputs = copia.getnInputs();
@@ -126,6 +91,435 @@ public class myDataset {
     list_of_classes = copia.list_of_classes.clone();
     computeInstancesPerClass();
     //this.computeStatisticsPerClass();
+  }
+
+  public myDataset(myDataset copia){
+    nVars = copia.getnVars();
+    nInputs = copia.getnInputs();
+    nClasses = copia.getnClasses();
+    nData = 0;
+    list_of_classes = copia.list_of_classes.clone();
+    copia.IS.setAttributesAsNonStatic();
+    this.IS = new InstanceSet(copia.IS);
+  }
+
+  public myDataset(myDataset copia, int clase_1, int clase_2){
+    nVars = copia.getnVars();
+    nInputs = copia.getnInputs();
+    nClasses = copia.getnClasses();
+    double [][] X_aux = new double[copia.size()][copia.getnInputs()];
+    int [] outputInteger_aux = new int [copia.size()];
+    String [] output_aux = new String [copia.size()];
+    nData = 0;
+    for (int i = 0; i < copia.size(); i++){
+      if ((copia.getOutputAsInteger(i) == clase_1)||(copia.getOutputAsInteger(i) == clase_2)){
+        X_aux[nData] = copia.getExample(i).clone();
+        outputInteger_aux[nData] = copia.getOutputAsInteger(i);
+        output_aux[nData] = copia.getOutputAsString(i);
+        nData++;
+      }
+    }
+    X = new double[nData][nInputs];
+    outputInteger = new int[nData];
+    output = new String[nData];
+    for (int i = 0; i < nData; i++){
+      X[i] = X_aux[i].clone();
+      outputInteger[i] = outputInteger_aux[i];
+      output[i] = output_aux[i];
+    }
+    list_of_classes = new int[2];
+    list_of_classes[0] = clase_1;
+    list_of_classes[1] = clase_2;
+    copia.computeInstancesPerClass(); //para el cost_sensitive learning
+    instancesCl = new int[copia.getnClasses()];
+    for (int i = 0; i < instancesCl.length; i++){
+      instancesCl[i] = copia.numberInstances(i);
+    }
+  }
+
+    public myDataset(myDataset copia, String bagType){
+    nVars = copia.getnVars();
+    nInputs = copia.getnInputs();
+    nClasses = copia.getnClasses();
+    double [][] X_aux = new double[copia.size()][copia.getnInputs()];
+    int [] outputInteger_aux = new int [copia.size()];
+    String [] output_aux = new String [copia.size()];
+    nData = 0;
+    int r = 0;
+    int maj = copia.claseNumerica(copia.claseMasFrecuente());
+    int min = maj == 1 ? 0 : 1;
+    int bagT = 0;
+    int tam = 0;
+    if (bagType.equals("OVERBAGGING"))
+    {
+       bagT = maj == 1 ? 0 : 1;
+       X_aux = new double[copia.instancesCl[maj] * 2][copia.getnInputs()];
+       outputInteger_aux = new int [copia.instancesCl[maj] * 2];
+       output_aux = new String [copia.instancesCl[maj] * 2];
+       tam = maj;
+    }
+    else if (bagType.equals("UNDERBAGGING"))
+    {
+       X_aux = new double[copia.instancesCl[min] * 2][copia.getnInputs()];
+       outputInteger_aux = new int [copia.instancesCl[min] * 2];
+       output_aux = new String [copia.instancesCl[min] * 2];
+       bagT = maj;
+       tam = min;
+    }
+    for (int i = 0; i < copia.size(); i++){
+       if (copia.getOutputAsInteger(i) == min && bagType.equals("UNDERBAGGING"))
+       {
+           X_aux[nData] = copia.getExample(i).clone();
+           outputInteger_aux[nData] = copia.getOutputAsInteger(i);
+           output_aux[nData] = copia.getOutputAsString(i);
+           nData++;
+       }
+       else if (copia.getOutputAsInteger(i) == maj && bagType.equals("OVERBAGGING"))
+       {
+          X_aux[nData] = copia.getExample(i).clone();
+           outputInteger_aux[nData] = copia.getOutputAsInteger(i);
+           output_aux[nData] = copia.getOutputAsString(i);
+           nData++;
+       }
+    }
+    for (int i = nData; i < copia.instancesCl[tam] * 2; i++){
+       do {
+         r = Randomize.RandintClosed(0, copia.size() - 1);
+       } while (copia.getOutputAsInteger(r) != bagT);
+
+        X_aux[nData] = copia.getExample(r).clone();
+        outputInteger_aux[nData] = copia.getOutputAsInteger(r);
+        output_aux[nData] = copia.getOutputAsString(r);
+        nData++;
+    }
+    X = new double[nData][nInputs];
+    outputInteger = new int[nData];
+    output = new String[nData];
+    for (int i = 0; i < nData; i++){
+      X[i] = X_aux[i].clone();
+      outputInteger[i] = outputInteger_aux[i];
+      output[i] = output_aux[i];
+    }
+    list_of_classes = copia.list_of_classes;
+    computeInstancesPerClass();
+  }
+
+  public myDataset(myDataset copia, int clase_1, int clase_2, int[] empate){
+    nVars = copia.getnVars();
+    nInputs = copia.getnInputs();
+    nClasses = copia.getnClasses();
+    double [][] X_aux = new double[copia.size()][copia.getnInputs()];
+    int [] outputInteger_aux = new int [copia.size()];
+    String [] output_aux = new String [copia.size()];
+    nData = 0;
+    for (int i = 0; i < copia.size(); i++){
+      if (((copia.getOutputAsInteger(i) == clase_1)||(copia.getOutputAsInteger(i) == clase_2)) && empate[i] == 1){
+        X_aux[nData] = copia.getExample(i).clone();
+        outputInteger_aux[nData] = copia.getOutputAsInteger(i);
+        output_aux[nData] = copia.getOutputAsString(i);
+        nData++;
+      }
+    }
+    X = new double[nData][nInputs];
+    outputInteger = new int[nData];
+    output = new String[nData];
+    for (int i = 0; i < nData; i++){
+      X[i] = X_aux[i].clone();
+      outputInteger[i] = outputInteger_aux[i];
+      output[i] = output_aux[i];
+    }
+    list_of_classes = new int[2];
+    list_of_classes[0] = clase_1;
+    list_of_classes[1] = clase_2;
+    copia.computeInstancesPerClass(); //para el cost_sensitive learning
+    instancesCl = new int[copia.getnClasses()];
+    for (int i = 0; i < instancesCl.length; i++){
+      instancesCl[i] = copia.numberInstances(i);
+    }
+  }
+
+   public myDataset(myDataset copia, int majC, double[][] Xmaj, int minC, double[][] Xmin) {
+    nVars = copia.getnVars();
+    nInputs = copia.getnInputs();
+    nClasses = copia.getnClasses();
+    int newNData = copia.size() + Xmaj.length + Xmin.length;
+    double [][] X_aux = new double[newNData][copia.getnInputs()];
+    int [] outputInteger_aux = new int [newNData];
+    String [] output_aux = new String [newNData];
+    nData = 0;
+    for (int i = 0; i < copia.size(); i++){
+        X_aux[nData] = copia.getExample(i).clone();
+        outputInteger_aux[nData] = copia.getOutputAsInteger(i);
+        output_aux[nData] = copia.getOutputAsString(i);
+        nData++;
+    }
+    for (int i = 0; i < Xmaj.length; i++){
+        X_aux[nData] = Xmaj[i].clone();
+        outputInteger_aux[nData] = majC;
+        output_aux[nData] = copia.getOutputValue(majC);
+        nData++;
+    }
+    for (int i = 0; i < Xmin.length; i++){
+        X_aux[nData] = Xmin[i].clone();
+        outputInteger_aux[nData] = minC;
+        output_aux[nData] = copia.getOutputValue(minC);
+        nData++;
+    }
+    X = new double[nData][nInputs];
+    outputInteger = new int[nData];
+    output = new String[nData];
+    for (int i = 0; i < nData; i++){
+      X[i] = X_aux[i].clone();
+      outputInteger[i] = outputInteger_aux[i];
+      output[i] = output_aux[i];
+    }
+    list_of_classes = copia.list_of_classes.clone();
+    computeInstancesPerClass();
+   }
+
+  /* Original dataset to take examples from and
+   * the % of majority class in the new data set */
+  public int[] randomUnderSampling(myDataset copia, int majC, int N)
+  {
+     
+    int[] majExamples = new int[copia.size()];
+    int majCount = 0;
+     // First, we copy the examples from the minority class and save the indexes of the majority
+    // the new data-set contains samples_min + samples_min * N / 100
+    int size = copia.numberInstances(majC == 0 ? 1 : 0) * (100 + 2 * N) / 100;
+    int[] selected = new int[size]; // we store the selected examples indexes
+
+
+    double [][] X_aux = new double[size][copia.getnInputs()];
+    int [] outputInteger_aux = new int [size];
+    String [] output_aux = new String [size];
+    nData = 0;
+    for (int i = 0; i < copia.size(); i++){
+       if (copia.getOutputAsInteger(i) == majC)
+       {
+          // save index
+          majExamples[majCount] = i;
+          majCount++;
+       }
+       else
+       {
+          selected[nData] = i;
+          // minority class, save instance
+          X_aux[nData] = copia.getExample(i).clone();
+          outputInteger_aux[nData] = copia.getOutputAsInteger(i);
+          output_aux[nData] = copia.getOutputAsString(i);
+          nData++;
+       }
+    }
+    /* random undersampling of the majority */
+    int r;
+    for (int i = nData; i < size; i++){
+       r = Randomize.Randint(0, majCount - 1);
+
+       selected[nData] = majExamples[r];
+       X_aux[nData] = copia.getExample(majExamples[r]).clone();
+       outputInteger_aux[nData] = copia.getOutputAsInteger(majExamples[r]);
+       output_aux[nData] = copia.getOutputAsString(majExamples[r]);
+       nData++;
+    }
+    X = new double[nData][nInputs];
+    outputInteger = new int[nData];
+    output = new String[nData];
+    for (int i = 0; i < nData; i++){
+      X[i] = X_aux[i].clone();
+      outputInteger[i] = outputInteger_aux[i];
+      output[i] = output_aux[i];
+    }
+
+    computeInstancesPerClass();
+    return selected;
+  }
+
+  public int[] randomSampling(myDataset copia, int majC, int minC, int a)
+  {
+
+    int[] majExamples = new int[copia.size()];
+    int[] minExamples = new int[copia.size()];
+    int majCount = 0, minCount = 0;
+     // First, we copy the examples from the minority class and save the indexes of the majority
+    // the new data-set contains samples_min + samples_min * N / 100
+    int size = copia.numberInstances(majC) * a / 100 * 2;
+    int[] selected = new int[size]; // we store the selected examples indexes
+
+
+    double [][] X_aux = new double[size][copia.getnInputs()];
+    int [] outputInteger_aux = new int [size];
+    String [] output_aux = new String [size];
+    nData = 0;
+    for (int i = 0; i < copia.size(); i++){
+       if (copia.getOutputAsInteger(i) == majC)
+       {
+          // save index
+          majExamples[majCount] = i;
+          majCount++;
+       }
+       else
+       {
+          minExamples[minCount] = i;
+          minCount++;
+       }
+    }
+    /* random undersampling of the majority */
+    int r;
+    for (int i = 0; i < size / 2; i++){
+       r = Randomize.Randint(0, majCount - 1);
+
+       selected[nData] = majExamples[r];
+       X_aux[nData] = copia.getExample(majExamples[r]).clone();
+       outputInteger_aux[nData] = copia.getOutputAsInteger(majExamples[r]);
+       output_aux[nData] = copia.getOutputAsString(majExamples[r]);
+       nData++;
+
+       r = Randomize.Randint(0, minCount - 1);
+
+       selected[nData] = minExamples[r];
+       X_aux[nData] = copia.getExample(minExamples[r]).clone();
+       outputInteger_aux[nData] = copia.getOutputAsInteger(minExamples[r]);
+       output_aux[nData] = copia.getOutputAsString(minExamples[r]);
+       nData++;
+    }
+    X = new double[nData][nInputs];
+    outputInteger = new int[nData];
+    output = new String[nData];
+    for (int i = 0; i < nData; i++){
+      X[i] = X_aux[i].clone();
+      outputInteger[i] = outputInteger_aux[i];
+      output[i] = output_aux[i];
+    }
+
+    computeInstancesPerClass();
+    return selected;
+  }
+
+  public int[] randomSampling(myDataset copia, int majC, int minC, int nMaj, int nMin)
+  {
+
+    int[] majExamples = new int[copia.size()];
+    int[] minExamples = new int[copia.size()];
+    int majCount = 0, minCount = 0;
+     // First, we copy the examples from the minority class and save the indexes of the majority
+    // the new data-set contains samples_min + samples_min * N / 100
+    int size = nMaj + nMin;
+    int[] selected = new int[size]; // we store the selected examples indexes
+
+
+    double [][] X_aux = new double[size][copia.getnInputs()];
+    int [] outputInteger_aux = new int [size];
+    String [] output_aux = new String [size];
+    nData = 0;
+    for (int i = 0; i < copia.size(); i++){
+       if (copia.getOutputAsInteger(i) == majC)
+       {
+          // save index
+          majExamples[majCount] = i;
+          majCount++;
+       }
+       else
+       {
+          minExamples[minCount] = i;
+          minCount++;
+       }
+    }
+    /* random undersampling of the majority */
+    boolean[] taken = new boolean[copia.size()];
+    int r;
+    for (int i = 0; i < nMaj; i++){
+       r = Randomize.Randint(0, majCount - 1);
+
+       selected[nData] = majExamples[r]; taken[majExamples[r]] = true;
+       X_aux[nData] = copia.getExample(majExamples[r]).clone();
+       outputInteger_aux[nData] = copia.getOutputAsInteger(majExamples[r]);
+       output_aux[nData] = copia.getOutputAsString(majExamples[r]);
+       nData++;
+    }
+    for (int i = 0; i < nMin; i++){
+       r = Randomize.Randint(0, minCount - 1);
+
+       selected[nData] = minExamples[r]; taken[minExamples[r]] = true;
+       X_aux[nData] = copia.getExample(minExamples[r]).clone();
+       outputInteger_aux[nData] = copia.getOutputAsInteger(minExamples[r]);
+       output_aux[nData] = copia.getOutputAsString(minExamples[r]);
+       nData++;
+    }
+
+    int deleted = 0;
+    for (int i = 0; i < copia.size(); i++)
+       if (!taken[i])
+       {
+          this.IS.removeInstance(i - deleted);
+          deleted++;
+       }
+
+
+    X = new double[nData][nInputs];
+    outputInteger = new int[nData];
+    output = new String[nData];
+    for (int i = 0; i < nData; i++){
+      X[i] = X_aux[i].clone();
+      outputInteger[i] = outputInteger_aux[i];
+      output[i] = output_aux[i];
+    }
+
+    computeInstancesPerClass();
+    return selected;
+  }
+
+
+  public boolean[] importanceSampling(myDataset copia, int size, boolean[] oob, double oobErr)
+  {
+
+    boolean[] selected = new boolean[copia.getnData()]; // we store the selected examples indexes
+
+    this.IS.clearInstances();
+    X = new double[size][copia.getnInputs()];
+    outputInteger = new int [size];
+    output = new String [size];
+    nData = 0;
+     int r;
+    while (nData < size)
+    {
+       r = Randomize.Randint(0, copia.getnData());
+
+       if (oob[r] == false || (Randomize.RandClosed() <= oobErr / (1 - oobErr)))
+       {
+          selected[r] = true;
+
+          this.IS.addInstance(copia.IS.getInstance(r));
+          X[nData] = copia.getExample(r).clone();
+          outputInteger[nData] = copia.getOutputAsInteger(r);
+          output[nData] = copia.getOutputAsString(r);
+
+          nData++;
+       }
+    }
+
+
+
+    /*int deleted = 0;
+    for (int i = 0; i < copia.size(); i++)
+       if (!taken[i])
+       {
+          this.IS.removeInstance(i - deleted);
+          deleted++;
+       }*/
+
+
+   /* X = new double[nData][nInputs];
+    outputInteger = new int[nData];
+    output = new String[nData];
+    for (int i = 0; i < nData; i++){
+      X[i] = X_aux[i].clone();
+      outputInteger[i] = outputInteger_aux[i];
+      output[i] = output_aux[i];
+    }*/
+
+    computeInstancesPerClass();
+    return selected;
   }
 
   /**
@@ -500,6 +894,35 @@ public class myDataset {
     }
   }
 
+/*  public void normalize_statistics() {
+    int atts = this.getnInputs();
+    double maxs[] = new double[atts];
+    X_normalized =  new double[nData][nInputs];
+    for (int j = 0; j < atts; j++) {
+        if (Attributes.getAttribute(j).getType() == Attribute.NOMINAL)
+        {
+            maxs[j] = 1.0 /
+                    ((Attributes.getAttribute(j).getNumNominalValues()-1) - 0);
+        }
+        else
+            maxs[j] = 1.0 / (emax[j] - emin[j]);
+    }
+    for (int i = 0; i < this.getnData(); i++) {
+      for (int j = 0; j < atts; j++) {
+        if (isMissing(i, j)) {
+          ; //this process ignores missing values
+        }
+        else {
+            if (Attributes.getAttribute(j).getType() == Attribute.NOMINAL)
+            {
+                X_normalized[i][j] = (X[i][j] - 0) * maxs[j];
+            }
+            else
+                X_normalized[i][j] = (X[i][j] - emin[j]) * maxs[j];
+        }
+      }
+    }
+  }*/
 
     /**
    * It computes the average and standard deviation of the input attributes
@@ -809,10 +1232,6 @@ public class myDataset {
     return ejemplos;
   }
 
-
-  /**
-   * returns true if  the number of instances in any of the classes is 0
-   */
   public boolean vacio(){
     if ((this.numberInstances(list_of_classes[0]) == 0)||(this.numberInstances(list_of_classes[1]) == 0)){
       return true;
@@ -820,9 +1239,6 @@ public class myDataset {
     return false;
   }
 
-  /**
-   * Prints the data set
-   */
   public String printDataSet(){
      System.out.println("Printing data-set...");
     String cadena = new String("");
@@ -858,4 +1274,44 @@ public class myDataset {
          };
  }
 
+   void deleteExamples(boolean[] correct, int[] selected, int minC) {//, int maxDel) {
+      ArrayList delete = new ArrayList<Integer>();
+      for (int i = 0; i < selected.length; i++)
+         if (correct[selected[i]] && (outputInteger[selected[i]] != minC))// && delete.size() < maxDel)
+         {
+            if (!delete.contains(selected[i]))
+               delete.add(selected[i]);
+         }
+    double [][] X_aux = new double[size() - delete.size()][getnInputs()];
+    int [] outputInteger_aux = new int [size() - delete.size()];
+    String [] output_aux = new String [size() - delete.size()];
+    int nDataAux = 0;
+    //List al = asList(selected);
+    for (int i = 0; i < size(); i++){
+       if ( !delete.contains(i) )
+       {
+          X_aux[nDataAux] = getExample(i).clone();
+          outputInteger_aux[nDataAux] = getOutputAsInteger(i);
+          output_aux[nDataAux] = getOutputAsString(i);
+          nDataAux++;
+       }
+    }
+    nData = nDataAux;
+    X = new double[nData][nInputs];
+    outputInteger = new int[nData];
+    output = new String[nData];
+    for (int i = 0; i < nData; i++){
+      X[i] = X_aux[i].clone();
+      outputInteger[i] = outputInteger_aux[i];
+      output[i] = output_aux[i];
+    }
+
+    computeInstancesPerClass();
+
+   }
+
+  public InstanceSet getIS()
+  {
+     return this.IS;
+  }
 }

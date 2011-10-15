@@ -1,91 +1,58 @@
-/***********************************************************************
-
-	This file is part of KEEL-software, the Data Mining tool for regression, 
-	classification, clustering, pattern mining and so on.
-
-	Copyright (C) 2004-2010
-	
-	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
-    J. Luengo (julianlm@decsai.ugr.es)
-
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see http://www.gnu.org/licenses/
-  
-**********************************************************************/
-
-//package adaC2;
+package keel.Algorithms.ImbalancedClassification.Ensembles;
 
 /**
-* <p>
-* @author Written by Mikel Galar (Universidad Pública de Navarra) 30/5/2010
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
-package keel.Algorithms.ImbalancedClassification.CSBoosting.ADAC2;
+ * <p>Title: Algorithm</p>
+ *
+ * <p>Description: It contains the implementation of the algorithm</p>
+ *
+ *
+ * <p>Company: KEEL </p>
+ *
+ * @author Alberto Fern�ndez
+ * @version 1.0
+ */
 
 import java.io.IOException;
 import org.core.*;
-import keel.Algorithms.ImbalancedClassification.CSBoosting.ADAC2.C45.C45;
+import keel.Algorithms.ImbalancedClassification.Ensembles.C45.C45;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+public class multi_C45 {
 
-/**
- * Class to implement the AdaBoost.C2 algorithm with C4.5 as base classifier
-   @author Mikel Galar Idoate (UPNA)
-   @version 1.1 (30-05-10)
- */
-public class AdaC2 {
-
-  /* Parameters of the algorithm */
   parseParameters parameters;
-  /* Train, test and validation datasets */
   myDataset train, val, test;
-  /* output path strings */
   String outputTr, outputTst, ficheroBR;
-  /* C4.5 instaces per leaf and maximum number of classifiers */
   int instancesPerLeaf, n_classifiers;
-  /* Maximum confidence for C4.5 */
   float confidence;
-  /* Prune option for C4.5 and valid data-sets index */
   boolean pruned, valid[];
-  /* Rule base of each C4.5 tree */
-  BaseR[] baseReglasTree;
-  /* Actual training set for the boosting procedure */
-  myDataset actua_train_set;
-  /* Instance of boosting ensemble */
-  Ensemble ensemble;
+  String fichTrain;
+  BaseR[] baseReglasTree;           // Trees of the ensemble
+  myDataset actua_train_set;        // train data-set for the actual ensemble
+  Ensemble ensemble;                
+  String ensembleType;
 
 
   private boolean somethingWrong = false; //to check if everything is correct.
 
+  /**
+   * Default constructor
+   */
+  public multi_C45() {
+  }
 
-  /** Constructor.
+  /**
    * It reads the data from the input files (training, validation and test) and parse all the parameters
    * from the parameters array.
    * @param parameters parseParameters It contains the input files, output files and parameters
    */
-  public AdaC2(parseParameters parameters) {
+  public multi_C45(parseParameters parameters) {
 
     this.parameters = parameters;
     train = new myDataset();
     val = new myDataset();
     test = new myDataset();
+    fichTrain = parameters.getTrainingInputFile();
     try {
       System.out.println("\nReading the training set: " +
                          parameters.getTrainingInputFile());
@@ -110,16 +77,20 @@ public class AdaC2 {
     ficheroBR = parameters.getOutputFile(0);
 
     //Now we parse the parameters
-    pruned = parameters.getParameter(0).equalsIgnoreCase("TRUE");
+    pruned = parameters.getParameter(1).equalsIgnoreCase("TRUE");
     confidence = Float.parseFloat(parameters.getParameter(2));
     instancesPerLeaf = Integer.parseInt(parameters.getParameter(3));
     n_classifiers = Integer.parseInt(parameters.getParameter(4));
-    ensemble = new Ensemble(train, n_classifiers, this);
+    ensembleType = parameters.getParameter(5);
+    
+    System.out.println("go");
+    /* Create the ensemble! */
+    ensemble = new Ensemble(ensembleType, train, n_classifiers, this);
+    System.out.println("gone");
+	}
 
-  }
-
-  /** Executes the algorithm
-   * 
+  /**
+   * It launches the algorithm
    */
   public void execute() {
     if (somethingWrong) { //We do not execute the program
@@ -133,19 +104,30 @@ public class AdaC2 {
       valid = new boolean[n_classifiers];
       baseReglasTree = new BaseR[n_classifiers];
 
+      /** While the algorithm has not end, and the number of classifier constructed is not reached... 
+       * we construct a new classifier for the ensemble
+       */
       boolean fin = false;
-      for (int i = 0; i < n_classifiers && !fin; i++) { // each round of boosting
+      for (int i = 0; i < n_classifiers && !fin; i++) {
 
-        actua_train_set = ensemble.getDS(); // get the data-set
+          // we get the actual training data-set
+        actua_train_set = ensemble.getDS();
 
+        /* Databoost-IM has problems generating instances in Highly imbalanced data-sets */
+        if (actua_train_set.getnData() > 10000)
+        {
+           System.out.println("Databoost overflow!, nData = " + actua_train_set.getnData());
+           fin = true;
+           break;
+        }
         if (!actua_train_set.vacio())
         {
-            /* Train the new data-set based on the weights*/
-             Fichero.escribeFichero("training.txt", actua_train_set.printDataSet());
+            // write the data-set which will be readed by C4.5 decision tree learning algorithm
+             Fichero.escribeFichero(ensembleType + "training.txt", actua_train_set.printDataSet());
              valid[i] = true;
              System.out.println("Training classifier[" + i + "]");
-
-             C45 arbol = new C45("training.txt", pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
+             // Construct the tree using the weights (they can be unirformly distributed)
+             C45 arbol = new C45(ensembleType + "training.txt", pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
              try {
                arbol.generateTree();
              }
@@ -154,26 +136,28 @@ public class AdaC2 {
                System.err.println(e.getMessage());
                System.exit( -1);
              }
+             /* The tree is stored in a set of rules */
              Fichero.escribeFichero("arbol.txt", arbol.printString());
              String cadenaArbol = arbol.printString();
              obtenerReglas(cadenaArbol, i);
              if (baseReglasTree[i].size() == 0)
              {
                 int clase = arbol.getPriorProbabilities()[0] > arbol.getPriorProbabilities()[1] ? 0 : 1;
-
-                // Meter regla por defecto con el mayor prior prob de C45
+                // The a priori rule is introduced which predict the class with the greatest prior probability
                 baseReglasTree[i].baseReglas.add(new Regla(train.getOutputValue(clase), actua_train_set));
              }
 
              baseReglasTree[i].cubrirEjemplos();
-             baseReglasTree[i].cubrirEjemplos(ensemble.getWeights().clone());
-
-             
+             baseReglasTree[i].cubrirEjemplos(ensemble.getWeights().clone());            
            }
            else {
              valid[i] = false;
            }
+            // Go to the next iteration of the ensemble!
             fin = ensemble.nextIteration();
+            if (ensembleType.equalsIgnoreCase("EASYENSEMBLE") 
+                    || ensembleType.equalsIgnoreCase("BALANCECASCADE"))
+            i = ensemble.t - 1;
         }
       //Finally we should fill the training and test output files
       double accTr = doOutput(this.val, this.outputTr);
@@ -227,7 +211,47 @@ public class AdaC2 {
     return (1.0 * aciertos / dataset.size());
   }
 
-    
+    public double prueba(myDataset dataset) {
+
+       double TP = 0, FP = 0, FN = 0, TN = 0;
+
+    //String output = new String("");
+    //output = dataset.copyHeader(); //we insert the header in the output file
+    int aciertos = 0;
+    //We write the output for each example
+    for (int i = 0; i < dataset.getnData(); i++) {
+        String claseReal = dataset.getOutputAsString(i);
+        String prediccion = this.classificationOutput(dataset.getExample(i));
+        //output += claseReal + " " + prediccion + "\n";
+        if (claseReal.equalsIgnoreCase(prediccion)) {
+          aciertos++;
+        }
+
+        if (claseReal.equalsIgnoreCase(prediccion) && claseReal.equalsIgnoreCase(train.claseMasFrecuente()))
+           TN++;
+        else if (claseReal.equalsIgnoreCase(prediccion) && !claseReal.equalsIgnoreCase(train.claseMasFrecuente()))
+           TP++;
+        else if (!claseReal.equalsIgnoreCase(prediccion) && claseReal.equalsIgnoreCase(train.claseMasFrecuente()))
+           FP++;
+        else
+           FN++;
+     }
+
+    double TPrate = TP / (TP + FN);
+    double TNrate = TN / (TN + FP);
+    double gmean = Math.sqrt(TPrate * TNrate);
+    double precision = TP / (TP + FP);
+    double recall = TP / (TP + FN);
+    double fmean = 2 * recall * precision / (1 * recall + precision);
+
+    System.out.println("G-mean: " + gmean);
+    System.out.println("F-mean: " + fmean);
+    System.out.println("TPrate: " + TPrate);
+
+    return (1.0 * aciertos / dataset.size());
+  }
+
+
   /**
    * It returns the algorithm classification output given an input example
    * @param example double[] The input example
@@ -241,6 +265,12 @@ public class AdaC2 {
     return ensemble.computeClassScores(example);
   }
 
+  /** It returns the class index of the prediction of an example in the i^{th} classifier
+   * 
+   * @param i the classifier to be used
+   * @param example the example to be classified
+   * @return the predicted class index
+   */
   protected int obtainClass(int i, double[] example)
   {
       if (valid[i]) {
@@ -254,6 +284,7 @@ public class AdaC2 {
         int clase_num = train.claseNumerica(clase);
         if (clase_num == -1)
         {
+            // System.out.println("No da la clase!!!!!");
             clase_num = train.claseNumerica(train.claseMasFrecuente());
         }
         return clase_num;
@@ -262,6 +293,12 @@ public class AdaC2 {
           return -1;
   }
 
+  /** It obtains the confidence on the prediction of the example in the i^{th} classifier
+   * 
+   * @param i the classifier to be used
+   * @param example the example to be classified
+   * @return the confidence on the prediction
+   */
   protected double obtainConfidence(int i, double[] example)
   {
       double confianza = 0;
@@ -343,13 +380,23 @@ public class AdaC2 {
         operadores.remove(operadores.size() - 1);
         valores.remove(valores.size() - 1);
       }
-
+      //System.err.println(reglas);
     }
-
+    //Fichero.escribeFichero("reglas.txt", reglas);
     baseReglasTree[classifier] = new BaseR(actua_train_set, reglas);
   }
 
   public void escribeSalidas(double accTr, double accTst) {
+    for (int i = 0; i < baseReglasTree.length; i++) {
+      //System.out.println("Classifier number " + i + ": ");
+      /*if (valid[i]) {
+        System.out.println("Number of Rules (Tree): " + baseReglasTree[i].size());
+        System.out.println("" + baseReglasTree[i].printString());
+      }
+      else {
+        System.out.println("Not valid!");
+      }*/
+    }
     
     Fichero.escribeFichero(ficheroBR,"");
     for (int i = 0; i < ensemble.nClassifier; i++) {
