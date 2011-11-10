@@ -189,9 +189,6 @@ public class pnPair {
 	 * <p>
 	 * It checks if only the literal lit covers the pnPair and the other do not
 	 * </p>
-	 * @param literals
-	 * @param numlit
-	 * @param lit
 	 * @return true or false
 	 */
 	public boolean onlyOneLiteral(boolean[][] literals, Vector<Integer> L, int lit){
@@ -214,10 +211,6 @@ public class pnPair {
 	 * <p>
 	 * It checks if only the literal lit covers the pnPair and the other do not
 	 * </p>
-	 * @param literals
-	 * @param numlit
-	 * @param lit
-	 * @return true or false
 	 */
 	public boolean isCovered(boolean[][] literals, int lit){
 		
@@ -232,12 +225,6 @@ public class pnPair {
 	
 //******************************************************************************************************
 	
-	/**
-	 * <p>
-	 * Main method
-	 * </p>
-	 * @param args the command line arguments
-	 */
 	static public Vector<pnPair> getPNpairs(IntegerSet E, Instance[] instances, int positiveClass){
 		
 		Vector<pnPair> U = new Vector<pnPair>();

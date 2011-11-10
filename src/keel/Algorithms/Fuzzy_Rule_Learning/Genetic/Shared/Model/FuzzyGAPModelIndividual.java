@@ -202,8 +202,8 @@ public class FuzzyGAPModelIndividual extends GeneticIndividualForModels {
 	 * This method calculates a local optimization
 	 * </p>
 	 * @param MAXITER Maximun number of iterations
-	 * @param idoptimiza Type of optimization
-	 * @throws invalidOptim Message if error
+	 * @param idoptimization Type of optimization
+	 * @throws idoptimization Message if error
 	 */
     public void localOptimization(int MAXITER, int idoptimization) throws invalidOptim {
 	   throw new invalidOptim("Optimizacion local no implementada en FuzzyGAPModelIndividual");

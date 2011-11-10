@@ -333,9 +333,6 @@ public final class M5 {
      * Construct a model tree by training instances
      *
      * @param inst training instances
-     * @param options information for constructing the model tree,
-     * mostly from command line options
-     * @return the root of the model tree
      * @exception Exception if the classifier can't be built
      */
     public final void buildClassifier(M5Instances inst) throws Exception {
@@ -383,7 +380,7 @@ public final class M5 {
     /**
      * Classifies the given test instance.
      *
-     * @param instance the instance to be classified
+     * @param ins the instance to be classified
      * @return the predicted class for the instance
      * @exception Exception if the instance can't be classified
      */
@@ -632,7 +629,7 @@ public final class M5 {
 
     /**
      * Returns the value of the named measure
-     * @param measureName the name of the measure to query for its value
+     * @param additionalMeasureName the name of the measure to query for its value
      * @return the value of the named measure
      * @exception IllegalArgumentException if the named measure is not supported
      */
@@ -703,7 +700,7 @@ public final class M5 {
     /**
      * Set the value of Model.
      *
-     * @param v  Value to assign to Model.
+     * @param newMethod  Value to assign to Model.
      */
     public void setModelType(SelectedAssociation newMethod) {
 

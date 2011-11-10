@@ -319,8 +319,8 @@ public class SaturationFilter {
 	 * <p>
 	 * Constructor of the class
 	 * </p>
-	 * @param
-	 * @param
+	 * @param indexLit
+	 * @param Uaux
 	 */
 	public double sumOfWeights(int indexLit, Vector<pnPair> Uaux){
 		

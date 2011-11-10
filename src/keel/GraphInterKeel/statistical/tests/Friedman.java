@@ -62,11 +62,6 @@ public class Friedman {
      * <p>
      * In this method, all possible post hoc statistical test between more than three algorithms results 
      * are executed, according to the configuration file
-     * @param code A double that identifies which methods will be applied
-     * @param nfold A vector of int with fold number by algorithm
-     * @param algorithms A vector of String with the names of the algorithms
-     * @param fileName A String with the name of the output file
-	 * @param type Type of test to carry out
      * </p>
      */
     public static void doFriedman(double data[][], String algorithms[]) {
@@ -91,11 +86,6 @@ public class Friedman {
      * <p>
      * In this method, all possible post hoc statistical test between more than three algorithms results
      * are executed, according to the configuration file
-     * @param code A double that identifies which methods will be applied
-     * @param nfold A vector of int with fold number by algorithm
-     * @param algorithms A vector of String with the names of the algorithms
-     * @param fileName A String with the name of the output file
-	 * @param type Type of test to carry out
      * </p>
      */
     public static void doFriedmanAligned(double data[][], String algorithms[]) {
@@ -120,11 +110,6 @@ public class Friedman {
      * <p>
      * In this method, all possible post hoc statistical test between more than three algorithms results
      * are executed, according to the configuration file
-     * @param code A double that identifies which methods will be applied
-     * @param nfold A vector of int with fold number by algorithm
-     * @param algorithms A vector of String with the names of the algorithms
-     * @param fileName A String with the name of the output file
-	 * @param type Type of test to carry out
      * </p>
      */
     public static void doQuade(double data[][], String algorithms[]) {
@@ -1805,7 +1790,7 @@ public class Friedman {
 	/**
 	* Computes the (N/M) combinatory number
 	*
-	* @param n N value
+	* @param m N value
 	* @param n M value
 	*
 	* @return The (N/M) combinatory number

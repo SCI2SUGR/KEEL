@@ -389,9 +389,6 @@ public final class M5TreeNode implements Serializable {
 
     /**
      * Prunes the model tree
-     * @param modelType determines what kind a model is constructed, a model tree,
-     *      a regression tree or a simple linear regression
-     * @param pruningFactor the pruning factor influences the size of the pruned tree
      * @exception Exception if something goes wrong
      */
     public final void prune() throws Exception {
@@ -532,7 +529,7 @@ public final class M5TreeNode implements Serializable {
      * Calculates a multiplication factor used at this node
      * @param n the number of instances
      * @param v the number of the coefficients
-     * @pruningFactor the pruning factor
+     * @param pruningFactor the pruning factor
      * @return multiplication factor
      */
     public final double factor(int n, int v, double pruningFactor) {
@@ -643,7 +640,7 @@ public final class M5TreeNode implements Serializable {
 
     /**
      * Converts the predictions by the tree under this node to a string
-     * @param insta instances
+     * @param inst instances
      * @param smooth =ture using the smoothed models; otherwise, the unsmoothed
      * @return the converted string
      * @exception Exception if something goes wrong
@@ -686,8 +683,7 @@ public final class M5TreeNode implements Serializable {
 
     /**
      * Detects which leaf a instance falls into
-     * @param i instance i
-     * @param inst instances
+     * @param instance instances
      * @return the leaf no.
      */
     public final int leafNum(M5Instance instance) {
@@ -709,9 +705,8 @@ public final class M5TreeNode implements Serializable {
 
     /**
      * Predicts the class value of an instance by the tree
-     * @param i instance i
-     * @smooth =true, uses the smoothed model; otherwise uses the unsmoothed
-     * @inst instances
+     * @param instance instance i
+     * @param smooth =true, uses the smoothed model; otherwise uses the unsmoothed
      * @return the predicted value
      */
     public final double predict(M5Instance instance, boolean smooth) {
@@ -742,7 +737,7 @@ public final class M5TreeNode implements Serializable {
     /**
      * Evaluates a tree
      * @param inst instances
-     * @smooth =true, evaluates the smoothed models;
+     * @param smooth =true, evaluates the smoothed models;
      *         =false, evaluats the unsmoothed models
      * @return the evaluation results
      * @exception Exception if something goes wrong
@@ -892,7 +887,7 @@ public final class M5TreeNode implements Serializable {
 
     /**
      * Converts the performance measures into a string
-     * @param measures[] contains both the unsmoothed and smoothed measures
+     * @param measures contains both the unsmoothed and smoothed measures
      * @param inst the instances
      * @param lmNo also converts the predictions by all linear models if lmNo=0,
      *        or one linear model spedified by lmNo.

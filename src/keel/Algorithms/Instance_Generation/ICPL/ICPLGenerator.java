@@ -84,8 +84,7 @@ public class ICPLGenerator extends PrototypeGenerator {
   
   /**
    * Build a new ICPLGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   *
    */
   
   public ICPLGenerator(PrototypeSet _trainingDataSet, int nalg, String Method, int k, int Q)
@@ -104,7 +103,7 @@ public class ICPLGenerator extends PrototypeGenerator {
   /**
    * Build a new RSPGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public ICPLGenerator(PrototypeSet t, Parameters parameters)
   {

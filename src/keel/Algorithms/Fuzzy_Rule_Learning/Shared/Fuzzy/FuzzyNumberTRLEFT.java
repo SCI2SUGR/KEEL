@@ -75,7 +75,7 @@ public class FuzzyNumberTRLEFT extends Fuzzy {
      * Copies the FuzzyNumberTRLEFT parameter over the present instance. 
      * 
      * </p> 
-     * @param pa a FuzzyNumberTRLEFT object to be copied
+     * @param b a FuzzyNumberTRLEFT object to be copied
      */
     public void Asigna(FuzzyNumberTRLEFT b) {
         center=b.center; right=b.right;
@@ -85,7 +85,7 @@ public class FuzzyNumberTRLEFT extends Fuzzy {
      *  Indicates whether some other object is "equal to" this one.
      * 
      * </p>
-     * @param B the reference object with which to compare. 
+     * @param b the reference object with which to compare. 
      * @return true if this object is the same as the B argument; false otherwise. 
      */     
     public boolean equals(Fuzzy b) {

@@ -69,7 +69,7 @@ public class domain_t {
      * </p>
      * @param n int The number of label to be used in the variable
      * @param inf double The lower value for the variable range
-     * @param inf double The upper value for the variable range     
+     * @param sup double The upper value for the variable range     
      * @param menosinf boolean TRUE if the negative extreme is delimited. FALSE otherwise
      * @param masinf boolean TRUE if the positive extreme is delimited. FALSE otherwise     
      */
@@ -188,7 +188,7 @@ public class domain_t {
 	 * </p>
          * @param n int The number of label to be used in the variable
          * @param inf double The lower value for the variable range
-         * @param inf double The upper value for the variable range    
+         * @param sup double The upper value for the variable range    
          * @param a double[] Parameter a for each of the trapezoidal fuzzy set    
          * @param b double[] Parameter b for each of the trapezoidal fuzzy set    
          * @param c double[] Parameter c for each of the trapezoidal fuzzy set    

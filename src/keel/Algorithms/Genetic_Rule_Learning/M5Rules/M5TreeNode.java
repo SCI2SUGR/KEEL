@@ -762,7 +762,6 @@ public final class M5TreeNode {
      * Predicts the class value of an itemset by the tree
      * @param itemset the itemset
      * @param smooth =true, uses the smoothed model; otherwise uses the unsmoothed
-     * @inst itemsets
      * @return the predicted value
      */
     public final double predict(Itemset itemset, boolean smooth) {

@@ -141,7 +141,7 @@ public class ModelPolQuadraticLMS {
 	
 	/**
 	* <p>
-	* This public static method runs {@link quadraticModel}
+	* This public static method runs {@link ModelPolQuadraticLMS}
 	* @param args A vector of string with the command line parameters
 	* </p>
 	*/   

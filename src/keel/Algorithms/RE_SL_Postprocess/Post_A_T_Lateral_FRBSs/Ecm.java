@@ -268,7 +268,7 @@ public class Ecm {
 
 	/**
 	 * It calculates the mean square error(MSE) of the training data
-	 * @param it contains the chromosome values
+	 * @param cromosoma it contains the chromosome values
 	 * @return the mean square error(MSE)
 	 */
 
@@ -288,7 +288,7 @@ public class Ecm {
 
 	/**
 	 * It calculates the mean square error(MSE) of the test data
-	 * @param it contains the chromosome values
+	 * @param cromosoma it contains the chromosome values
 	 * @return the mean square error(MSE)
 	 */
 	public double ECM_tst (double [] cromosoma){
@@ -306,7 +306,7 @@ public class Ecm {
 	
 	/**
 	 * It evaluates by the mean square error(MSE)
-	 * @param it contains the chromosome values
+	 * @param cromosoma it contains the chromosome values
 	 * @return the mean square error(MSE)
 	 */
 	

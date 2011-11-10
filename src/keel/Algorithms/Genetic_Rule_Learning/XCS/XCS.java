@@ -339,7 +339,7 @@ public class XCS {
  * parameters of the classifiers are not updated. In addition, the covering operator
  * is not applied, so, we can have some unclassified examples. 
  * </p>
- * @param classifiersInFile is the file name that contains the classifiers of the population that has to be read. 
+ * 
  */
 
   public void startTestXCS(){
@@ -558,7 +558,7 @@ public class XCS {
  * set down to make posterior statistics. 
  * @param typeOfTest indicates the test set kind (if is the test set (0) or the train
  * set (1) ) of the run.
- * @param writeExpectedOut determines is an output file with expected-real 
+ * @param writeExpOut determines is an output file with expected-real 
  * output has to be writen.
  */
 
@@ -693,7 +693,7 @@ public class XCS {
  * @param tStamp is the system time.
  * @param globalResults is the sum of all statistics done in the system.
  * @param sysError is the error sum of XCS.
- * @param numProblem is the number of examples done in the run.
+ * @param numProblems is the number of examples done in the run.
  */
 
     public void doTestScreenStatistics(int tStamp, int []globalResults, double []sysError, int numProblems){

@@ -147,7 +147,7 @@ public class Representation {
  * It creates a new representation that is a clone of the representation
  * passed. 
  * </p>
- * @param rep is the representation that has to be cloned.
+ * @param r is the representation that has to be cloned.
  */
   public  Representation(Representation r) {      
     int i = 0;

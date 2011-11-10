@@ -206,7 +206,6 @@ public class Rbf implements Cloneable {
     * </p>
     * @param i Index of weights of a neuron to set
     * @param val Value of the weight
-    * @return Nothing
     */
    public void setWeight(int i,double val){
        weights[i] = val;
@@ -257,7 +256,6 @@ public class Rbf implements Cloneable {
     * <p>
     * Prints neuron on std out
     * </p>
-    * @return Nothing.
     */
    public void paint( ){
    	this.paint( "" );
@@ -270,7 +268,6 @@ public class Rbf implements Cloneable {
     * Prints neuron on a file
     * </p>
     * @param _fileName Name of the file.
-    * @return Nothing.
     */
    public void paint( String _fileName ){
         int i;

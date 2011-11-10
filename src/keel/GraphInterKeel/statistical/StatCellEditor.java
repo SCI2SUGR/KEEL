@@ -67,7 +67,7 @@ public class StatCellEditor extends AbstractCellEditor implements TableCellEdito
      * @param value Value to represent
      * @param isSelected Tests if the cell is currently selected
      * @param row Row selected
-     * @param col Column selected
+     * @param column Column selected
      *
      * @return Cell editor component
      */

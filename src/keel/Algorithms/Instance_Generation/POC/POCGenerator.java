@@ -83,8 +83,7 @@ public class POCGenerator extends PrototypeGenerator {
   
   /**
    * Build a new POCGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   *
    */
   
   public POCGenerator(PrototypeSet _trainingDataSet, double ratio, String Method)
@@ -101,7 +100,7 @@ public class POCGenerator extends PrototypeGenerator {
   /**
    * Build a new RSPGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public POCGenerator(PrototypeSet t, Parameters parameters)
   {

@@ -479,7 +479,7 @@ public class NominalToBinaryFilter {
     /**
      * Method for testing filters.
      *
-     * @param argv should contain the following arguments: <br>
+     * @param options should contain the following arguments: <br>
      * -i input_file <br>
      * -o output_file <br>
      * -c class_index <br>
@@ -644,7 +644,7 @@ public class NominalToBinaryFilter {
     /**
      * Method for testing filters ability to process multiple batches.
      *
-     * @param argv should contain the following arguments:<br>
+     * @param options should contain the following arguments:<br>
      * -i (first) input file <br>
      * -o (first) output file <br>
      * -r (second) input file <br>

@@ -150,7 +150,7 @@ public class Structure {
    * <p>
    * It sets the position of the first rule that wrongly classifies the example stored in the structure
    * </p>
-   * @param cRule int Position of the first rule that wrongly classifies the example stored in the structure
+   * @param wRule int Position of the first rule that wrongly classifies the example stored in the structure
    */
   public void setwRule (int wRule) {
     this.wRule = wRule;

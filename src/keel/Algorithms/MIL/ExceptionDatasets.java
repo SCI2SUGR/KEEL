@@ -45,8 +45,6 @@ public class ExceptionDatasets{
     /**
      * initializes the capability with the given flags
      * 
-     * @param flags	"meta-data" for the capability
-     * @param display	the display string (must be unique!)
      */
     public ExceptionDatasets(String nameFile) throws IOException {
     

@@ -119,7 +119,7 @@ public class TreeNode
 	}
 
 	/**
-	 * @param left son to set
+	 * @param leftSon son to set
 	 */	
 	public void setLeftSon(TreeNode leftSon) {
 		this.leftSon = leftSon;
@@ -227,7 +227,7 @@ public class TreeNode
 	}
 
 	/**
-	 * @param impurites the impurities to set
+	 * @param impurities the impurities to set
 	 */
 	public void setImpurities(double impurities) {
 		this.impurities = impurities;
@@ -270,7 +270,6 @@ public class TreeNode
 	/**
 	 * @param pattern pattern to evaluate
 	 * @param regression flag to determine whether it is a regression or classification problem
-	 * @return
 	 */
 	public double evaluate(double [] pattern, boolean regression) {
 

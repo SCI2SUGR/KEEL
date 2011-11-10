@@ -63,7 +63,7 @@ public class Individual {
      * Creates new instance of Individual
      * </p>
      * @param length        Length of the chromosome for the individual
-     * @param datos_var     Contents the type of the variable, and the number of labels.
+     * @param datos_v     Contents the type of the variable, and the number of labels.
      */
     public Individual(int length, TypeVar datos_v[]) {
       tamano = length;
@@ -123,7 +123,6 @@ public class Individual {
      * </p>
      * @param pos       Position of the variable in the Chromosome
      * @param elem      Position of the gen of the variable
-     * @return          Value to introduce in the gen of the variable
      */
     public void setCromElem (int pos, int elem, int val) {
         cromosoma.setCromElem(pos, elem, val);

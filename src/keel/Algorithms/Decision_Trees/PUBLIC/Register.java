@@ -192,7 +192,7 @@ public class Register implements Comparable <Register> {
      *
      * @return 0 if both registers are equal, 1 if this register is greater than the other register, -1 if 
      * this register is smaller than the other register
-     * @see java.lang.Comparable#compareTo()
+     *
      */ 
     public int compareTo(Register other_register) {
     	if (this.attributeValue == other_register.attributeValue)

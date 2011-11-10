@@ -366,7 +366,7 @@ public class UCS {
  * down to make statistics. 
  * @param typeOfTest indicates the test set kind (if is the test set (0) or the train
  * set (1) ) of the run.
- * @param writeExpectedOut determines is an output file with expected-real 
+ * @param writeExpOut determines is an output file with expected-real 
  * output has to be writen.
  */
 
@@ -493,7 +493,7 @@ public class UCS {
  * </p>
  * @param tStamp is the system time.
  * @param globalResults is the sum of all statistics done in the system.
- * @param numProblem is the number of examples done in the run.
+ * @param numProblems is the number of examples done in the run.
  */
 
   public void doTestScreenStatistics(int tStamp, int []globalResults, int numProblems){

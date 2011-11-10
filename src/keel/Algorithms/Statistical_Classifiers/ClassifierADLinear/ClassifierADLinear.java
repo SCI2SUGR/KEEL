@@ -157,7 +157,7 @@ public class ClassifierADLinear {
     
 	/**
 	* <p>
-	* This method runs {@link adl}
+	* This method runs {@link ClassifierADLinear}
 	* @param args Vector of string with command line arguments
 	* </p>
 	*/  

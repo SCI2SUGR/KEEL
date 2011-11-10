@@ -99,8 +99,6 @@ public class PSOGenerator extends PrototypeGenerator {
   
   /**
    * Build a new PSOGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
    */
   
   public PSOGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
@@ -126,7 +124,7 @@ public class PSOGenerator extends PrototypeGenerator {
   /**
    * Build a new PSOGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public PSOGenerator(PrototypeSet t, Parameters parameters)
   {

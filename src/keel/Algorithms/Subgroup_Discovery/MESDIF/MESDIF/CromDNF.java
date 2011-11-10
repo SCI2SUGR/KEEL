@@ -55,7 +55,7 @@ public class CromDNF {
      *    chromosomes with a maximum number or participating variables
      *    and for an indicated % of the population (the rest is random)
      * </p>
-     * @param porVar
+     * @param porcVar
      */
     public void initCromBsd (float porcVar) {
         int num_var;

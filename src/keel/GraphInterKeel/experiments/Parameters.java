@@ -726,7 +726,7 @@ public class Parameters implements Serializable {
      * @param pre True if this is a preprocess method
      * @param valType Type of validation (0- k-Fold  1- 5x2 2- None)
      * @param numFolds Number of folds in cross validation
-     * @param extType Type of experiment
+     * @param expType Type of experiment
      */
     public void writeScripts(String path, String baseName, String methodName,
             String problemName, Vector set, String result,

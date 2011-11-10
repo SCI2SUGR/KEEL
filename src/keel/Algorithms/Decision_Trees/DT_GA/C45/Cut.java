@@ -518,7 +518,7 @@ public class Cut {
     /** Function to compute the information gain.
      *
      * @param values				The classification used to compute the information gain.
-     * @param totalnoInst			Number of itemsets.
+     * @param totalNoInst			Number of itemsets.
      * @param oldEnt				The value for the entropy before cutting.
      *
      * @return						The information gain.

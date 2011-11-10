@@ -49,7 +49,7 @@ public class Node {
      * para conservar el total de cada rama.
      */
     private int[][] histograma;
-    /** Índice Gini de este nodo */
+    /** indice Gini de este nodo */
     private double indiceGini;
     /** Mejor ganancia para partir */
     private double mejorGini;
@@ -129,7 +129,7 @@ public class Node {
 
     /** Registra un elemento de la clase indicada que pasa de la hoja izquierda a la derecha
      *
-     * @param clase Índice de la clase del elemento
+     * @param clase indice de la clase del elemento
      */
     protected void actualizaHistograma(int clase) {
         histograma[clase + 1][0]--;
@@ -157,7 +157,7 @@ public class Node {
 
     /** Método que prueba un corte y calcula la mejora que se obtendría. Para atributos discretos
      *
-     * @param indAtributo   Índice del atributo
+     * @param indAtributo   indice del atributo
      * @param listaClases   Lista de clases
      * @param atributo      Referencia al atributo
      */
@@ -240,7 +240,7 @@ public class Node {
 
     /** Método que prueba un corte y calcula la mejora que se obtendría. Para atributos continuos
      *
-     * @param atributo  Índice del atributo
+     * @param atributo  indice del atributo
      * @param listaClases   Lista de clases
      * @param valor     Valor a comprobar
      * @param siguiente Valor siguiente
@@ -326,12 +326,11 @@ public class Node {
      *  with Prior Knowledge', en la que hay un capítulo dedicado específicamente
      *  al estudio de árboles, las técnicas de splitting y de poda.
      *
-     * @param indSubconjunto    Índice del subconjunto a probar
+     * @param indSubconjunto    indice del subconjunto a probar
      * @param ocurrencias       Matriz de ocurrencias
      * @param numValores        Número de valores en la matriz
      * @param numClases         Número de clases en la matriz
      * @param totalOcurrencias  Total de ocurrencias
-     * @return
      */
     public double calculaGini(int indSubconjunto, int[][] ocurrencias, int numValores, int numClases, int totalOcurrencias) {
         int indice = 0, ciclos = numValores * numClases,
@@ -428,7 +427,7 @@ public class Node {
 
     /** Facilita la clase más representativa del nodo
      *
-     * @return Índice de la clase
+     * @return indice de la clase
      */
     public int getClase() {
         return primeraClase;

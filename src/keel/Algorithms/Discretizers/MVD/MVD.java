@@ -100,7 +100,7 @@ public class MVD extends Discretizer {
 	 * <p>
 	 * Constructor of the class
 	 * </p>
-	 * @param is set of instances
+	 * @param _is set of instances
 	 */
 	public MVD(InstanceSet _is, int _numBasicIntervals,double _alpha){
 		

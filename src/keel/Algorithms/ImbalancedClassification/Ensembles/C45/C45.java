@@ -146,7 +146,7 @@ public class C45
 
   /** Constructor.
    *
-   * @param fichTrain		The input training file.
+   * @param IS		The input training file.
    * @param pruned indicates if the tree is going to be pruned or not
    * @param confidence confidence
    * @param instancesPerLeaf minimun number of instances per leaf

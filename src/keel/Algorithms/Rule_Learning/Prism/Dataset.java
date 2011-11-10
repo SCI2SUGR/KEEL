@@ -107,7 +107,7 @@ public class Dataset {
      * <p>
      * Checks if in the instance set the are instances of a one determinet class
      * </p>
-     * @param The class 
+     * @param whichClass the class 
      * @return true if there are instances
      */
     public boolean hayInstanciasDeClaseC(int whichClass)throws ArrayIndexOutOfBoundsException{

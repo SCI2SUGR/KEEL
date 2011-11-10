@@ -52,8 +52,8 @@ public class NodeAnd extends NodeAssert {
 	 * <p>
 	 * Constructor. Generate a new NodeAnd with two children: asert1 and asert2
 	 * </p>
-	 * @param asert1 Children for the NodeAnd (NodeAssert) 
-	 * @param asert2 Children for the NodeAnd (NodeAssert)
+	 * @param aserto1 Children for the NodeAnd (NodeAssert) 
+	 * @param aserto2 Children for the NodeAnd (NodeAssert)
 	 */
     public NodeAnd(NodeAssert aserto1, NodeAssert aserto2)  {
         super(2,NAnd);

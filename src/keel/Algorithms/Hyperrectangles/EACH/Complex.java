@@ -148,7 +148,7 @@ public class Complex implements Comparable {
      * <p>
      * Remove the selectors from the list of the selectors that have the parameter attribute
      * </p>o
-     * @param atrib the attribute
+     * @param attribute the attribute
      */
     public void removeSelectorAttribute(int attribute) {
     	Selector s;
@@ -216,7 +216,6 @@ public class Complex implements Comparable {
      * <p>
      * Returns the class that defines the comples
      * </p>
-     * @return int the class
      */
     public void setClassAttribute(int clase) {
         this.classAttribute = clase;
@@ -458,10 +457,6 @@ public class Complex implements Comparable {
      * <p>
      * Prints on a String the complex content (List->Attribute)
      * </p>
-     * @param nominal indicates if the attribute is numeric(1) or nominal(0)
-     * @param inf lower limit interval
-     * @param sup upper limit interval
-     * @return String The String with the complex content
      */
     public String printString(int []numValues) {
 

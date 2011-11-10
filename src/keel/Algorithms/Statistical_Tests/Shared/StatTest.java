@@ -1335,7 +1335,7 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
      * </p>
      * @param err A cubic matrix with the samples values indexed by algorithm, fold and dataset
      * @param significance 1-level of the test
-     * @param PrintStream Output stream for tracing purposes
+     * @param p Output stream for tracing purposes
      * @return A vector of p-values, one for each dataset
      */    
     public static double[] testsw(double[][][] err, double significance,
@@ -1945,7 +1945,6 @@ C	tail area of P; Z is accurate to about 1 part in 10**16.
      * @param nameRel Algorithms names
      * @param nameResults Results names
      * @param labels Class labels
-     * @return Nothing, the results and tables ares stored in the appropiate files
      */ 
     public StatTest(int selector, double[][][][] d, double[][][][] dtrain,
                     double significance, String nres, String nameRel,

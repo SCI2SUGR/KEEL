@@ -146,7 +146,7 @@ public class Complejo implements Comparable {
      * <p>
      * Remove the selectors from the list of the selectors that have the parameter attribute
      * </p>o
-     * @param atrib the attribute
+     * @param atributo the attribute
      */
     public void removeSelectorAtributo(int atributo) {
     	Selector s;
@@ -246,7 +246,7 @@ public class Complejo implements Comparable {
 	* <p>
 	* Checks if the rule gets the parameter instance
 	* </p>
-	* @param instance the instance
+	* @param instancia the instance
 	* @return boolean True if the rule gets the instance
     */
    public boolean reglaCubreInstancia(Instance instancia){

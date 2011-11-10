@@ -198,7 +198,7 @@ public class Utils {
      * C.A.R, Hoare Quick sort. Based on sort by interchange. Decreasing sort.
      * </p>
      * @param v             Vector to be sorted
-     * @param izqinitial    Position to sort
+     * @param left    Position to sort
      * @param right           Final position to sort
      * @param index        The indexes of the original vector
      */

@@ -138,7 +138,7 @@ public class GenotypeFuzzyGP extends Genotype {
 * The nodes are analyzed to be the same tree without considering the
 * constants values.
 * </p>
-* @param p the {@link Genotype} to be compared
+* @param g the {@link Genotype} to be compared
 * @return true if both objects are related
 */
     public boolean isRelated(Genotype g) {
@@ -162,7 +162,7 @@ public class GenotypeFuzzyGP extends Genotype {
 * </p>
 * @param alpha double value kept for compatibility, not used.
 * @param mutationID an int with the crossover operation to be carried out:
-*                   {@link OperatorIdent.MUTACIONGENERICA} for the genetic algorithm mutation
+*                   OperatorIdent.MUTACIONGENERICA for the genetic algorithm mutation
 * @throws {@link invalidMutation} if mutationID is not valid
 */
     public void mutation(double alpha, int mutationID) throws invalidMutation {
@@ -243,7 +243,7 @@ public class GenotypeFuzzyGP extends Genotype {
 * @param p3 the {@link Genotype} object with the first offspring
 * @param p4 the {@link Genotype} object with the second offspring
 * @param crossoverID an int with the crossover operation to be carried out:
-*                    {@link OperatorIdent.CRUCEGENERICO} for genetic algorithm crossover
+*                    OperatorIdent.CRUCEGENERICO for genetic algorithm crossover
 * @throws {@link invalidCrossover} if crossoverID is not valid
 */
     public void crossover(Genotype p2, Genotype p3, Genotype p4, int crossoverID) throws invalidCrossover {

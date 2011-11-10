@@ -142,7 +142,7 @@ public class myDataset {
 
     /**
      * It returns the input value of the example "pos" as string
-     * @param Var int the variable (id) of the example
+     * @param var int the variable (id) of the example
      * @param pos int the position (id) of the example
      * @return String a string containing the input value
      */

@@ -444,8 +444,8 @@ public class Rule {
 	
     /**
      * It return a bit string correspoding to a certain example
-     * @param dataset myDataset input dataset
-     * @param identification of the example within the train set
+     * @param train myDataset input dataset
+     * @param ej identification of the example within the train set
      */
     public static boolean[] toBitString (myDataset train, int ej) {
 

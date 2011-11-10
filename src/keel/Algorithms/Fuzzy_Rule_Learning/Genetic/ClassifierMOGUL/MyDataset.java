@@ -191,7 +191,7 @@ public class MyDataset {
      * <p>    
      * It returns the header
      * </p>  
-     * @ Return String The Header of the Data Set
+     * @return String The Header of the Data Set
      */
 public String getHeader() {
     return (IS.getHeader());

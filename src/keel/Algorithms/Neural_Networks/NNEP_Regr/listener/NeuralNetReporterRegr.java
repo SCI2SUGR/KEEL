@@ -257,7 +257,7 @@ public class NeuralNetReporterRegr implements IAlgorithmListener<NeuralNetAlgori
 	 * <p>
 	 * Sets file name where the best model obtained will be written
 	 * </p>
-	 * @param String File name
+	 * @param bestModelResultFile File name
 	 */
 
 	public void setBestModelResultFile(String bestModelResultFile) {
@@ -281,7 +281,7 @@ public class NeuralNetReporterRegr implements IAlgorithmListener<NeuralNetAlgori
 	 * Sets file name where the testing results of best model 
 	 * obtained will be written
 	 * </p>
-	 * @param String File name
+	 * @param testResultFile File name
 	 */
 
 	public void setTestResultFile(String testResultFile) {
@@ -305,7 +305,7 @@ public class NeuralNetReporterRegr implements IAlgorithmListener<NeuralNetAlgori
 	 * Sets file name where the testing results of best model 
 	 * obtained will be written
 	 * </p>
-	 * @param String File name
+	 * @param trainResultFile File name
 	 */
 
 	public void setTrainResultFile(String trainResultFile) {
@@ -327,7 +327,7 @@ public class NeuralNetReporterRegr implements IAlgorithmListener<NeuralNetAlgori
 	 * <p>
 	 * Sets KEEL file header
 	 * </p>
-	 * @param String KEEL file header
+	 * @param header KEEL file header
 	 */
 
 	public void setHeader(String header) {

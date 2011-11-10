@@ -534,8 +534,7 @@ public class FunctionalTrees {
      * Classifies a given item with the information stored in the tree
      * 
      * @param item  Data attribute values for the item we are classifying
-     * @param atts  Attributes in the data set that are used for building the tree and describing the 
-     * instance given
+     *
      * @return the class asigned to the item given
      */
     public int evaluateItem (double [] item) {

@@ -54,7 +54,7 @@ public class ProportionalDiscretizer extends Discretizer {
 	 * <p> 
 	 * Constructor of the class, initializes the numInt attribute
 	 * </p>
-	 * @param _numInt
+	 *
 	 */
 	public ProportionalDiscretizer() {
 		

@@ -143,7 +143,6 @@ public class myDataset {
   /**
    * This function checks if the attribute value is missing
    * @param i int Example id
-   * @param j int Variable id
    * @return boolean True is the value is missing, else it returns false
    */
   public boolean isNominal(int i) {

@@ -285,7 +285,7 @@ public class Cromosoma implements Comparable {
 	 * Reinitializes the chromosome by using CHC diverge procedure
 	 *
 	 * @param r R factor of diverge
-	 * @param Mejor Best chromosome found so far
+	 * @param mejor Best chromosome found so far
 	 * @param prob Probability of setting a gen to 1
 	 */
 	 

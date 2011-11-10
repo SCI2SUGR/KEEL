@@ -133,7 +133,7 @@ implements Serializable {
 	/** The lines read so far in case of incremental loading. Since the 
 	 * StreamTokenizer will be re-initialized with every instance that is read,
 	 * we have to keep track of the number of lines read so far. 
-	 * @see #readInstance(Reader) */
+	 */
 	protected int m_Lines = 0;
 
 	/**

@@ -757,7 +757,7 @@ private void addjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
      * <p>
      * Enables or Disables Delete Button
      * </p>
-     * @param value boolean indicating if the button is enabled or disabled
+     * @param state boolean indicating if the button is enabled or disabled
      */
     public void setStateDeleteButton(boolean state) {
         this.deletejButton.setEnabled(state);

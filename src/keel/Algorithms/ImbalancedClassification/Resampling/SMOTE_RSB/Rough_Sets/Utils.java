@@ -152,7 +152,7 @@ public final class Utils {
    * another string.
    *
    * @param inString the string to replace substrings in.
-   * @param substring the substring to replace.
+   * @param subString the substring to replace.
    * @param replaceString the replacement substring
    * @return the input string with occurrences of substring replaced.
    */
@@ -345,7 +345,7 @@ public final class Utils {
   /**
    * Returns the basic class of an array class (handles multi-dimensional
    * arrays).
-   * @param o        the array to inspect
+   * @param c        the array to inspect
    * @return         the class of the innermost elements
    */
   public static Class getArrayClass(Class c) {
@@ -436,7 +436,7 @@ public final class Utils {
   /**
    * Checks if the given array contains any non-empty options.
    *
-   * @param strings an array of strings
+   * @param options an array of strings
    * @exception Exception if there are any non-empty options
    */
   public static void checkForRemainingOptions(String [] options) 
@@ -465,7 +465,7 @@ public final class Utils {
    * it is replaced with the empty string.
    *
    * @param flag the character indicating the flag.
-   * @param strings the array of strings containing all the options.
+   * @param options the array of strings containing all the options.
    * @return true if the flag was found
    * @exception Exception if an illegal option was found
    */
@@ -480,7 +480,7 @@ public final class Utils {
    * it is replaced with the empty string.
    *
    * @param flag the String indicating the flag.
-   * @param strings the array of strings containing all the options.
+   * @param options the array of strings containing all the options.
    * @return true if the flag was found
    * @exception Exception if an illegal option was found
    */
@@ -756,7 +756,7 @@ public final class Utils {
    * Split up a string containing options into an array of strings,
    * one for each option.
    *
-   * @param optionString the string containing the options
+   * @param quotedOptionString the string containing the options
    * @return the array of options
    */
   public static String [] splitOptions(String quotedOptionString) throws Exception{

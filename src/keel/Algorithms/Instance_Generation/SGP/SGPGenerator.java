@@ -83,8 +83,7 @@ public class SGPGenerator extends PrototypeGenerator {
   
   /**
    * Build a new SGPGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   *
    */
   
   public SGPGenerator(PrototypeSet _trainingDataSet, int method, int Rmin, int Rmis)
@@ -109,7 +108,7 @@ public class SGPGenerator extends PrototypeGenerator {
   /**
    * Build a new SGPGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public SGPGenerator(PrototypeSet t, Parameters parameters)
   {

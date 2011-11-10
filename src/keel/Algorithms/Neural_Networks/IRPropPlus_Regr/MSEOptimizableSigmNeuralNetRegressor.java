@@ -130,7 +130,7 @@ public class MSEOptimizableSigmNeuralNetRegressor extends NeuralNetRegressor imp
 	 * model
 	 * B01 B02 ... B0(J-1) [W11 W12 ... B11 B12 B1(J-1)]* ...  
 	 * 
-	 * @param double array of final coefficients values
+	 * @param a array of final coefficients values
 	 * </p>
 	 */
 

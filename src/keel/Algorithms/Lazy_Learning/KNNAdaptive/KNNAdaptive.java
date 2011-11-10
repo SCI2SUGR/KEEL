@@ -251,9 +251,6 @@ public class KNNAdaptive extends LazyAlgorithm{
 	/** 
 	 * Precalculates the radius of each train instance
 	 * 
-	 * @param instance1 First instance 
-	 * @param instance2 Second instance
-	 * @param index Index of train instance in radius structure 
 	 */	
 	
 	public void calculateRadius(){

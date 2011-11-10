@@ -65,11 +65,11 @@ public class QualitySubgroup {
      * <p>
      * It creates a new object with the values of the quality measures
      * </p>
-     * @param double        Value of the tp measure
-     * @param double        Value of the fp measure
-     * @param double        Value of the TP missing measure
-     * @param double        Value of the FP missing measure
-     * @param double        Value of the quality measure
+     * @param _tp        Value of the tp measure
+     * @param _fp        Value of the fp measure
+     * @param _TPm        Value of the TP missing measure
+     * @param _FPm        Value of the FP missing measure
+     * @param _q        Value of the quality measure
      */
     public QualitySubgroup(double _tp, double _fp, double _TPm, double _FPm, double _q){
 
@@ -109,7 +109,7 @@ public class QualitySubgroup {
      * <p>
      * Sets the value for the tp quality measure
      * </p>
-     * @param double            Value of the tp
+     * @param val            Value of the tp
      */
     public void set_tp(double val){
         tp = val;
@@ -129,7 +129,7 @@ public class QualitySubgroup {
      * <p>
      * Sets the value for the fp quality measure
      * </p>
-     * @param double            Value of the fp
+     * @param val            Value of the fp
      */
     public void set_fp(double val){
         fp = val;
@@ -149,7 +149,7 @@ public class QualitySubgroup {
      * <p>
      * Sets the value for the TP missing quality measure
      * </p>
-     * @param double            Value of the TPm
+     * @param val            Value of the TPm
      */
     public void set_TPm(double val){
         TPm = val;
@@ -169,7 +169,7 @@ public class QualitySubgroup {
      * <p>
      * Sets the value for the FP missing quality measure
      * </p>
-     * @param double            Value of the FPm
+     * @param val            Value of the FPm
      */
     public void set_FPm(double val){
         FPm = val;
@@ -189,7 +189,7 @@ public class QualitySubgroup {
      * <p>
      * Sets the value for the q quality measure
      * </p>
-     * @param double            Value of the q
+     * @param val            Value of the q
      */
     public void set_q(double val){
         q = val;

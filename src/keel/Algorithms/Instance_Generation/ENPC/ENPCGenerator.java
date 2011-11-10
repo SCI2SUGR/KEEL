@@ -83,8 +83,7 @@ public class ENPCGenerator extends PrototypeGenerator {
   
   /**
    * Build a new ENPCGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   *
    */
   
   public ENPCGenerator(PrototypeSet _trainingDataSet, int k, int max)
@@ -101,7 +100,7 @@ public class ENPCGenerator extends PrototypeGenerator {
   /**
    * Build a new RSPGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public ENPCGenerator(PrototypeSet t, Parameters parameters)
   {

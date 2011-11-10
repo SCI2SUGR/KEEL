@@ -77,7 +77,7 @@ public class DataParser implements DataParserConstants {
   * It's the parser main method. It opens the file specified and parses it.
   * The name of the file to be parsed has to be received as a parameter. 
   * @param fileName is the name of the file to be parsed.
-  * @param isTrain indicates if it's a train run.
+  * @param _isTrain indicates if it's a train run.
   */
   public static void headerParse(String fileName, boolean _isTrain) throws HeaderFormatException{
     try {

@@ -174,7 +174,7 @@ public class DataSqueezer extends Algorithm {
 
     /** Constructor.
 	 * 
-	 * @param file			The parameters file.
+	 * @param paramFile			The parameters file.
 	 * 
 	 */
 	public DataSqueezer(String paramFile) {
@@ -607,7 +607,7 @@ public class DataSqueezer extends Algorithm {
 	/** Function to evaluate the class which the itemset must have according to the classification of the rules.
      * Francisco Charte - 19-ene-2010
 	 * 
-	 * @param itemset		The itemset to evaluate.
+	 * @param i		The itemset to evaluate.
 	 * 
 	 * @return				The index of the class index predicted or -1 if it's not described by any rule.
 	 */

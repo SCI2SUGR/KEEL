@@ -32,7 +32,6 @@ public class SerializedObject implements Serializable {
    * Creates a new serialized object (without compression).
    *
    * @param toStore the object to store
-   * @param compress whether or not to use compression
    * @exception Exception if the object couldn't be serialized
    */ 
   public SerializedObject(Object toStore) throws Exception {

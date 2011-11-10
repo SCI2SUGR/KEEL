@@ -84,7 +84,6 @@ public class C45 extends Algorithm {
 
     /** Constructor.
      *
-     * @param paramFile		The parameters file.
      *
      * @throws Exception	If the algorithm cannot be executed.
      */

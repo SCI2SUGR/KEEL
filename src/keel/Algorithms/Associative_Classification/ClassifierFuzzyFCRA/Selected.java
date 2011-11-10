@@ -51,7 +51,7 @@ public class Selected implements Comparable{
    * <p>
    * Parameters Constructor
    * </p>
-   * @param porb double Probability
+   * @param prob double Probability
    * @param pos int Position
    */
   public Selected(double prob, int pos) {

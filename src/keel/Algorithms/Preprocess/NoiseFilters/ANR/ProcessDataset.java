@@ -220,7 +220,7 @@ public class ProcessDataset {
      * Process a dataset file for a classification problem.
      * 
      * </p>
-     * @param nfexamples Name of the dataset file
+     * @param nfejemplos Name of the dataset file
      * @param train The dataset file is for training or for test
      *
      */
@@ -453,7 +453,7 @@ public class ProcessDataset {
      * Process a old format dataset file for a modelling problem.
      * 
      * </p>
-     * @param nfexamples Name of the dataset file
+     * @param nfejemplos Name of the dataset file
      *
      */
 
@@ -514,7 +514,7 @@ public class ProcessDataset {
      * Process an old format dataset file for a classification problem.
      * 
      * </p>
-     * @param nfexamples Name of the dataset file.
+     * @param nfejemplos Name of the dataset file.
      *
      */
     public void oldClusteringProcess(String nfejemplos) {
@@ -586,7 +586,7 @@ public class ProcessDataset {
      * Process an old format dataset file for a clustering problem.
      * 
      * </p>
-     * @param nfexamples Name of the dataset file.
+     * @param nfejemplos Name of the dataset file.
      *
      */
 

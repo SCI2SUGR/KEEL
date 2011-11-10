@@ -60,7 +60,7 @@ public class IndDNF  extends Individual{
      * @param length              Length of the individual
      * @param Variables           Structure of the variables
      * @param numExamples         Number of examples of the data set
-     * @param numOIbjectives      Number of objectives of the algorithm
+     * @param numObjectives      Number of objectives of the algorithm
      */
     public IndDNF(Genetic AG, int length, TableVar Variables, int numExamples, int numObjectives) {
       tamano = length;
@@ -77,7 +77,7 @@ public class IndDNF  extends Individual{
      * <p>
      * Used to know if two individuals describe the same rule
      *
-     * @param otro:     Individual to compare with this
+     * @param otro     Individual to compare with this
      * @return      true if the individuals are equal
      */
     public boolean equalTo (Individual otro) {
@@ -127,7 +127,7 @@ public class IndDNF  extends Individual{
      * <p>
      * Copy the indicaded individual in "this" individual
      * <p>
-     * @param otro:        Individual to be copied
+     * @param otro        Individual to be copied
      */
     public void copyIndiv (Individual otro) {
         int number;
@@ -220,7 +220,6 @@ public class IndDNF  extends Individual{
      * @param AG                Genetic algorithm
      * @param Variables         Variables structure
      * @param Examples          Ejemplos structure
-     * @param marcar            Indicates to mark the covered examples
      */
     public void evalInd (Genetic AG, TableVar Variables, TableDat Examples) {
 

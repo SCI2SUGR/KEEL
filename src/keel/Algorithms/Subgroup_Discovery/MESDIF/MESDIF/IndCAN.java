@@ -60,7 +60,7 @@ public class IndCAN  extends Individual {
      * @param AG                  Instance of the genetic algorithm
      * @param length              Length of the chromosome
      * @param numExamples         Number of examples of the data set
-     * @param numOIbjectives      Number of objectives of the algorithm
+     * @param numObjectives      Number of objectives of the algorithm
      */
     public IndCAN(Genetic AG, int length, int numExamples,int numObjectives) {
       tamano = length;
@@ -77,8 +77,8 @@ public class IndCAN  extends Individual {
      * <p>
      * Used to know if two individuals describe the same rule
      *
-     * @param otro:     Individual to compare with this
-     * @return equals:     true if the individuals are equal
+     * @param otro     Individual to compare with this
+     * @return equals     true if the individuals are equal
      */
     public boolean equalTo (Individual otro) {
         boolean equals= true;
@@ -118,7 +118,7 @@ public class IndCAN  extends Individual {
      * <p>
      * Copy the indicaded individual in "this" individual
      * <p>
-     * @param otro:        Individual to be copied
+     * @param otro        Individual to be copied
      */
     public void copyIndiv (Individual otro) {
         for (int i=0;i<this.tamano;i++)

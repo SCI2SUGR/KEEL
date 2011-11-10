@@ -97,8 +97,6 @@ public class IPLDEGenerator extends PrototypeGenerator {
   
   /**
    * Build a new IPLDEGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
    */
   
   public IPLDEGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double F, double CR, int strg)
@@ -123,7 +121,7 @@ public class IPLDEGenerator extends PrototypeGenerator {
   /**
    * Build a new IPLDEGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public IPLDEGenerator(PrototypeSet t, Parameters parameters)
   {
@@ -258,11 +256,6 @@ public class IPLDEGenerator extends PrototypeGenerator {
 
   /**
    * Local Search Fitness Function
-   * @param Fi
-   * @param xt
-   * @param xr
-   * @param xs
-   * @param actual
    */
   public double lsff(double Fi, double CRi, PrototypeSet population){
 	  PrototypeSet resta, producto, mutation;
@@ -305,7 +298,6 @@ public class IPLDEGenerator extends PrototypeGenerator {
   /**
    * SFGSS local Search.
    * @param population
-   * @return
    */
   public PrototypeSet SFGSS(PrototypeSet population, double CRi){
 	  double a=0.1, b=1;
@@ -368,12 +360,6 @@ public class IPLDEGenerator extends PrototypeGenerator {
   
   /**
    * SFHC local search
-   * @param xt
-   * @param xr
-   * @param xs
-   * @param actual
-   * @param SFi
-   * @return
    */
   
   public  PrototypeSet SFHC(PrototypeSet population, double SFi, double CRi){
@@ -435,7 +421,7 @@ public class IPLDEGenerator extends PrototypeGenerator {
   
   /**
    * 
-   * @return
+   *
    */
   public PrototypeSet basicDE(PrototypeSet myTrain){ 
 	 

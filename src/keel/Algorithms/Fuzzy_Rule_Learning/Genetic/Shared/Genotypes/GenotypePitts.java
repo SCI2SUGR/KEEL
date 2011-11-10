@@ -67,7 +67,7 @@ public class GenotypePitts extends  Genotype {
 * Class constructor with the following parameters:
 * </p>
 * @param n the number of alleles
-* @param nlables the number of output available labels
+* @param nlabels the number of output available labels
 * @param r the {@link Randomize} object
 */
     public GenotypePitts(int n, int nlabels, Randomize r) {
@@ -157,7 +157,7 @@ public class GenotypePitts extends  Genotype {
 * @param offspng1 the {@link Genotype} object with the first offspring
 * @param offspng2 the {@link Genotype} object with the second offspring
 * @param crossoverID an int with the crossover operation to be carried out:
-*                    {@link OperatorIdent.CRUCEGENERICO} for genetic algorithm crossover
+*                    OperatorIdent.CRUCEGENERICO for genetic algorithm crossover
 * @throws {@link invalidCrossover} if crossoverID is not valid
 */
     public void crossover(Genotype padre2, Genotype offspng1, Genotype offspng2, int crossoverID) throws invalidCrossover {
@@ -203,7 +203,7 @@ public class GenotypePitts extends  Genotype {
 * </p>
 * @param alpha double value kept for compatibility, not used.
 * @param mutationID an int with the crossover operation to be carried out:
-*                   {@link OperatorIdent.MUTACIONGENERICA} for the genetic algorithm mutation
+*                   OperatorIdent.MUTACIONGENERICA for the genetic algorithm mutation
 * @throws {@link invalidMutation} if mutationID is not valid
 */
     public void mutation(double alpha, int mutationID) throws invalidMutation {
@@ -244,7 +244,7 @@ public class GenotypePitts extends  Genotype {
 * This method returns a rule in the rule base.
 * </p>
 * @param n index of the desired rule
-* @returnthe int value indexin the used rule in the rule base
+* @return the int value indexin the used rule in the rule base
 */
     public int getInvolvedRule(int n) {
         return involvedRuleAllele[n];

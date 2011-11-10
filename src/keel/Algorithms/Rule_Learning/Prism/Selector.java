@@ -76,7 +76,7 @@ public class Selector implements Comparable {
      * @param atr atribute
      * @param op operator
      * @param val value
-     * @param nominal, true indicate values are nominal
+     * @param nominal true indicate values are nominal
      */    
     public Selector(int atr, int op, String val,boolean nominal) {
         atributo = atr;

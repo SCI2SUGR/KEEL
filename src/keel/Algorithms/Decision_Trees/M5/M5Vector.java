@@ -377,7 +377,7 @@ public class M5Vector implements Serializable {
     /**
      * Returns all the elements of this vector as an array
      *
-     * @param an array containing all the elements of this vector
+     * @return an array containing all the elements of this vector
      */
     public final Object[] toArray() {
 

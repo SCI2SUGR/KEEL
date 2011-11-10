@@ -98,7 +98,7 @@ public abstract class ClassificationProblemEvaluator extends ProblemEvaluator<Ab
      * Returns the train error value of a neural net with an specified
      * error function
      *
-     * @param nnind Neural net to obtain the error
+     * @param classifier Neural net to obtain the error
      * @param errorFunction Error function to obtain the error
      * 
      * @return double Train error value
@@ -138,7 +138,7 @@ public abstract class ClassificationProblemEvaluator extends ProblemEvaluator<Ab
      * Returns the test error value of a neural net with an specified
      * error function
      *
-     * @param nnind Neural net to obtain the error
+     * @param classifier Neural net to obtain the error
      * @param errorFunction Error function to obtain the error
      * 
      * @return double Test error value
@@ -423,8 +423,7 @@ public abstract class ClassificationProblemEvaluator extends ProblemEvaluator<Ab
      * Returns the diversity measure Q statistic of two classifiers
      * in test data set
      *
-     * @param classifier1 First classifier
-     * @param classifier2 Second classifier
+     * @param classifiers First classifier
      * 
      * @return double Ro statistic
      * </p>

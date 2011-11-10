@@ -880,13 +880,6 @@ public class IDIBL extends LazyAlgorithm{
 	/** 
 	 * Prune instance set using drop 4 algorithm
 	 * 
-	 * @param instance which votes 
-	 * @param dist Distance used 
-	 * @param newK New value of K
-	 * @param newKernel New value of Kernel 
-	 * @param newWK New value of Wk
-	 * @param newAvgK New value of avgK
-	 * 
 	 */
 	public void pruneInstanceSet(){
 		

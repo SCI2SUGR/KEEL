@@ -94,7 +94,7 @@ public class Cogin {
 	 * <p>
 	 * Builds up the COGIN with the provided parameters in KEEL format
 	 * </p>
-	 * @param fileParam The path to the configuration file with all the parameters in KEEL format
+	 * @param paramfile The path to the configuration file with all the parameters in KEEL format
 	 */
 	public Cogin(String paramfile){
 		config_read(paramfile);

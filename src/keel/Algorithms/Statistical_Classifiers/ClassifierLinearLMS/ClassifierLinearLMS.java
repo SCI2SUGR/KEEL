@@ -235,7 +235,7 @@ public class ClassifierLinearLMS {
 	
 	/**
 	* <p>
-	* This method runs {@link linearClassifierLMS}
+	* This method runs {@link ClassifierLinearLMS}
 	* @param args A vector of string with command line arguments
 	* </p>
 	*/ 

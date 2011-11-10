@@ -58,7 +58,7 @@ public class SLIQ extends Algorithm {
 
     /** Constructor.
      *
-     * @param file			El archivo de parámetros.
+     * @param paramFile			El archivo de parámetros.
      *
      */
     public SLIQ(String paramFile) {

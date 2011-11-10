@@ -121,7 +121,7 @@ public class Chromosome implements Comparable{
 	 * @param pos Position in which we put the gene
 	 * @param a the attribute related to this gene (real or integer!)
 	 * @param relation the type of the relation which implements the gene (see Gene.java)
-	 * @param values the real values that covers this gene
+	 * @param value the real values that covers this gene
 	 */
 	public void addRealGene(int pos,Attribute a, int relation, double value){
 		Gene newGene = new Gene(a,relation);

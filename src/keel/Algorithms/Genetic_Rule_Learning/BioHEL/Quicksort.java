@@ -65,7 +65,7 @@ public class Quicksort {
 	 * <p>
 	 * Sorts the values array basing on opt
  	 * </p>
-	 * @param values double values array to sort
+	 * @param vector double values array to sort
 	 * @param size number of elements to sort
 	 * @param opt equals to HIGHEST_FIRST to sort from highest to lowest, and equals to LOWEST_FIRST to
 	 * sort from lowest to highest

@@ -131,7 +131,6 @@ public class MPEnvironment extends SSEnvironment {
  * <p>
  * It is the constructor of the class. It initializes the environment.
  * </p>
- * @param cLength is the condition length of the classifier
  */
     public MPEnvironment() {        
         //super();

@@ -71,7 +71,7 @@ public class QualityMeasures {
      * Creates a new instance of QualityMeasures
      * </p>
      * @param AG            Instance of the genetic algorithm
-     * @param number:         number of objectives to store
+     * @param number         number of objectives to store
      */
     public QualityMeasures(Genetic AG, int number) {
         // both name_obj and value_obj are declared with number+1 to use
@@ -309,7 +309,7 @@ public class QualityMeasures {
      * <p>
      * Method to get the name of the objective indicated
      * </p>
-     * @param num:         Number of the objective
+     * @param num         Number of the objective
      * @return             Name of objective
      */
     public String getNameObj (int num) {
@@ -320,8 +320,8 @@ public class QualityMeasures {
      * <p>
      * Method to set the name of the objective indicated
      * </p>
-     * @param num:         Number of the objective
-     * @param name:        Name of the objective
+     * @param num         Number of the objective
+     * @param name        Name of the objective
      */
     public void setNameObj (int num, String name) {
         name_obj[num] = name;
@@ -332,7 +332,7 @@ public class QualityMeasures {
      * <p>
      * Method to get the value of the objective indicated
      * </p>
-     * @param num:         Number of the objective
+     * @param num         Number of the objective
      * @return             Value of objective
      */
     public float getValueObj (int num) {
@@ -343,7 +343,7 @@ public class QualityMeasures {
      * <p>
      * Method to get the value of the objective with the name indicated
      * </p>
-     * @param name:        Name of the objective
+     * @param name        Name of the objective
      * @return             Value of objective
      */
     public float getValueObj (String name) {
@@ -359,8 +359,8 @@ public class QualityMeasures {
      * <p>
      * Method to set the value of the objective indicated
      * </p>
-     * @param num:         Number of the objective
-     * @param value:       Value of the objective
+     * @param num         Number of the objective
+     * @param value       Value of the objective
      */
     public void setValueObj (int num, float value) {
         value_obj[num] = value;

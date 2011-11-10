@@ -270,7 +270,6 @@ public class Genesis {
      * <p>
      * Generate random int between min and max using r seed
      * </p>
-     * @param r Random seed
      * @param min Min value
      * @param max Max value
      * @return random integer number

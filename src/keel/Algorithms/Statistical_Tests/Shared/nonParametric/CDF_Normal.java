@@ -56,8 +56,7 @@ public class CDF_Normal extends Object {
 *@param   p    p must lie between 0 and 1.  xnormi returns
 *              the normal cdf inverse evaluated at p.
 *
-*@author Steve Verrill
-*@version .5 --- June 7, 1996
+* Steve Verrill
 *
 */
 
@@ -129,7 +128,6 @@ public class CDF_Normal extends Object {
 *@param   z   The method returns the value of the normal
 *             cumulative distribution function at z.
 *
-*@version .5 --- January 10, 2001
 *
 */
 

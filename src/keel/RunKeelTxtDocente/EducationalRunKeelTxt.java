@@ -754,7 +754,7 @@ public class EducationalRunKeelTxt
      * <p>
 	 * This method set type problem, classification or regression
 	 * </p>
-     * @param int Type of Experiment
+     * @param tipo Type of Experiment
 	 */
 	public void setExperimenttype(int tipo)
 	{		
@@ -767,7 +767,7 @@ public class EducationalRunKeelTxt
 	 *
 	 * 	PK = 0		P5X2 = 1;
 	 * </p>
-     * @param int Tipe of partition
+     * @param tipo Tipe of partition
 	 */
 	public void setpartitionType(int tipo)
 	{

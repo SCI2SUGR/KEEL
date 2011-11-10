@@ -341,7 +341,6 @@ public class Dataset {
      * Read a DataSet
      * </p>
      * @param fileName File Name with a dataset
-     * @return Dataset that has been read
      */
     public Dataset(String fileName) {
 

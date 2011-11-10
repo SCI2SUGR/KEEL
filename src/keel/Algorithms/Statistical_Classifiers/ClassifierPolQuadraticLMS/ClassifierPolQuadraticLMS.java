@@ -173,7 +173,7 @@ public class ClassifierPolQuadraticLMS {
 	   
 		/**
 		* <p>
-		* This method runs {@link quadraticClassifierLS}
+		* This method runs {@link ClassifierPolQuadraticLMS}
 		* @param args A vector of string with command line arguments
 		* </p>
 		*/ 		   

@@ -338,7 +338,6 @@ public class myDataset {
 
     /**
      * It copies the header of the dataset
-     * @return String A string containing all the data-set information
      */
     public void createFGTTFS(DataBase dataBase) {
 		int i, j, k;

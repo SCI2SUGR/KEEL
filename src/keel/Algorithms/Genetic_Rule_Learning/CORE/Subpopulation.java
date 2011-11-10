@@ -65,7 +65,7 @@ public class Subpopulation {
 	 * Gets a rule from this subpopulation
 	 * </p>
 	 * @param i the index of the rule
-	 * @return
+	 * @return rule from this subpopulation
 	 */
 	public Chromosome getRule(int i){
 		return rules.get(i);

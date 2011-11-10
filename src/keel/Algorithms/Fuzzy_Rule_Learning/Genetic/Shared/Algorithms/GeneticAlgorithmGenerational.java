@@ -94,16 +94,14 @@ public class GeneticAlgorithmGenerational extends GeneticAlgorithm {
 * </p>
 * @param initialIndividual a {@link GeneticIndividual} to start the search process with the desired type of individual
 * @param pPopSize an int with the population size
-* @param pGenerations an int with the number of iterations to be carried out
 * @param PM a double with the mutation probability
 * @param AMP a double with the mutation amplitude
-* @param PMG a double with the migration probability
 * @param pLOptProb a double with the local optimization method probability
 * @param NOL an int with the number of iterations in the local optimization method
 * @param IOL an int with the local identification method identidication
 * @param r the {@link Randomize} object
-* @param pCrossoverID the genetic algorithm crossover operation used attending the the current {@link Genotype}
-* @param pMutationID the genetic algorithm crossover operation used attending the the current {@link Genotype}
+* @param pCrossoverID the genetic algorithm crossover operation used attending the the current Genotype
+* @param pMutationID the genetic algorithm crossover operation used attending the the current Genotype
 */
     public GeneticAlgorithmGenerational(
 		GeneticIndividual initialIndividual,

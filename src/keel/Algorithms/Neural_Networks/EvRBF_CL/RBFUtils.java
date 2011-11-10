@@ -126,10 +126,9 @@ public class RBFUtils {
     * Turns vector of strings into two double arrays, one for inputs and other for outputs.
     * </p>
     * @param _v The vector
-    * @param _impDim Input dimension
+    * @param _inpDim Input dimension
     * @param _input Array in which INPUT  values are returned
     * @param _output Array in which OUTPUT values are returned
-    * @return _input and _output because they change their values.
     */
     public static void vector2InputOutput( Vector _v, int _inpDim, double [] _input, double [] _output )  throws IOException {
         if( _input.length>0 ) {
@@ -156,8 +155,8 @@ public class RBFUtils {
     * <p>
     * Turns vector of strings into a double array containing only the inputs
     * </p>
-    * @param _vector The vector
-    * @param _impDim Input dimension
+    * @param _v The vector
+    * @param _inpDim Input dimension
     * @return The array containing the values
     */
     public static double[] vector2Input( Vector _v, int _inpDim ) throws IOException {
@@ -178,7 +177,7 @@ public class RBFUtils {
     * <p>
     * Turns vector of strings into a double array containing only the outputs
     * </p>
-    * @param _vector The vector
+    * @param _v The vector
     * @param _outDim Output dimension
     * @return The array containing the values
     */
@@ -200,7 +199,6 @@ public class RBFUtils {
     * Prints on console the elements of an array of doubles
     * </p>
     * @param _a The array
-    * @return Nothing.
     */
     public static void printArray ( double [] _a ) {
     	System.out.println( array2string( _a) );
@@ -211,7 +209,6 @@ public class RBFUtils {
     * Prints on console the elements of an array of integers
     * </p>
     * @param _a The array
-    * @return Nothing.
     */
     public static void printArray ( int [] _a ) {
     	System.out.println( array2string( _a) );
@@ -377,7 +374,6 @@ public class RBFUtils {
     * </p>
     * @param _origin Name of the training/test file
     * @param _destiny Name of the output file
-    * @return Nothing.
     */
      public static void createOutputFile( String _origin, String _destiny ) {
      	try {

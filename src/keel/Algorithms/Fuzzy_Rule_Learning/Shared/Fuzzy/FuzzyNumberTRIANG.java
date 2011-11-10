@@ -67,7 +67,7 @@ public class FuzzyNumberTRIANG extends Fuzzy {
      * A copy constructor for a triangular fuzzy number, given other triangular fuzzy number. 
      * 
      * </p> 
-     * @param pa to be copied.    
+     * @param t to be copied.    
      */
     public FuzzyNumberTRIANG(FuzzyNumberTRIANG t) {
         left=t.left; center=t.center; right=t.right;
@@ -77,7 +77,7 @@ public class FuzzyNumberTRIANG extends Fuzzy {
      * Copies the FuzzyNumberTRIANG parameter over the present instance. 
      * 
      * </p> 
-     * @param pa a FuzzyNumberTRIANG object to be copied
+     * @param t a FuzzyNumberTRIANG object to be copied
      */
     public void Asigna(FuzzyNumberTRIANG t) {
         left=t.left; center=t.center; right=t.right;
@@ -87,7 +87,7 @@ public class FuzzyNumberTRIANG extends Fuzzy {
      *  Indicates whether some other object is "equal to" this one.
      * 
      * </p>
-     * @param B the reference object with which to compare. 
+     * @param b the reference object with which to compare. 
      * @return true if this object is the same as the B argument; false otherwise. 
      */     
     public boolean equals(Fuzzy b) {

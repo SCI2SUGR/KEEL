@@ -62,7 +62,7 @@ public class SetData{
      * <p>
      * Delete a data
      * </p>
-     * @param int               Position to delete
+     * @param i               Position to delete
      */
     public void deleteDato(int i) {
         datos.remove(i);
@@ -72,7 +72,7 @@ public class SetData{
      * <p>
      * Add a data
      * </p>
-     * @param Instance              Instance to add
+     * @param m              Instance to add
      */
     public void addDato(Instance m) {
         Instance mim = m.copy();
@@ -83,7 +83,7 @@ public class SetData{
      * <p>
      * Return an instance
      * </p>
-     * @param int               Position of the instance
+     * @param i               Position of the instance
      * @return                  The instance indicated in the position
      */
     public Instance getDato(int i) {
@@ -94,8 +94,8 @@ public class SetData{
      * <p>
      * Sets an instance
      * </p>
-     * @param int               Position to insert the instance
-     * @param Instance          Instance to insert
+     * @param i               Position to insert the instance
+     * @param m          Instance to insert
      */
     public void setDato(int i, Instance m) {
         datos.set(i, m);

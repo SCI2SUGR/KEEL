@@ -88,7 +88,7 @@ public class AttributeTable extends AbstractTableModel {
      * <p>
      * Fills data in the table with a ResultSet
      * </p>
-     * @see ResulSet
+     * 
      * @param p_rset ResultSet
      */
     public void populateFromResultSet(ResultSet p_rset) {

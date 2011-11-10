@@ -74,7 +74,7 @@ public class Normalizer{
 	 * @param scaledMin Array of minimum scaled values
 	 * @param unscaledMax Array of maximum unscaled values
 	 * @param unscaledMin Array of minimum unscaled values
-	 * @return double Unscale SEP value
+	 *
 	 */
     public void scaleDS (DoubleTransposedDataSet dataset, 
             double[] scaledMax, double[] scaledMin, 

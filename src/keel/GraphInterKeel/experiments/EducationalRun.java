@@ -530,7 +530,7 @@ public class EducationalRun extends javax.swing.JFrame implements WindowListener
 	 * This method is invoqued when a partition is finished. 
 	 *</p>
      * @param event Event in EducationalRunKeelTxt
-	 * @return void
+	 *
 	 */
 	public void runKeelIterationCompleted(EducationalRunkeelEvent<EducationalRunKeelTxt> event)
 	{
@@ -587,7 +587,7 @@ public class EducationalRun extends javax.swing.JFrame implements WindowListener
 	 * This method is invoqued when the partitions
 	 * have finished in natural way or not
 	 *</p>
-	 * @return void
+	 *
 	 */
 	public void runKeelFinished(EducationalRunkeelEvent<EducationalRunKeelTxt> event)
 	{
@@ -697,7 +697,7 @@ public class EducationalRun extends javax.swing.JFrame implements WindowListener
 	 * partitions. Then the experiment finished
 	 *</p>
      * @param arg0 Window event
-	 * @return void
+	 *
 	 */
 
 	public void windowClosing(WindowEvent arg0)

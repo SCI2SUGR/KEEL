@@ -152,7 +152,6 @@ public class Wilcoxon {
     /**
      * Computes body of the summary file
      *
-     * @return Contents of summary
      */
     public static void computeSummary() {
 
@@ -329,7 +328,6 @@ public class Wilcoxon {
     /**
      * Computes body of the report file (i.e. the test itself)
      *
-     * @return Contents of report
      */
     public static void computeBody() {
 

@@ -58,7 +58,6 @@ public class Cluster_Analysis extends Discretizer {
 
 	/**
 	* Builder
-	* @param _conf Confidence threshold
 	*/
 	public Cluster_Analysis() {
 	}

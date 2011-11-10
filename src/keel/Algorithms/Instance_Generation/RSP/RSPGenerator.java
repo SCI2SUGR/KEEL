@@ -76,8 +76,7 @@ public class RSPGenerator extends PrototypeGenerator {
   
   /**
    * Build a new PSOGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   * 
    */
   
   public RSPGenerator(PrototypeSet _trainingDataSet, int blocks, String choice)
@@ -94,7 +93,7 @@ public class RSPGenerator extends PrototypeGenerator {
   /**
    * Build a new RSPGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public RSPGenerator(PrototypeSet t, Parameters parameters)
   {

@@ -1801,7 +1801,7 @@ public class Friedman {
 	* Computes the (N/M) combinatory number
 	*
 	* @param n N value
-	* @param n M value
+	* @param m M value
 	*
 	* @return The (N/M) combinatory number
 	*/

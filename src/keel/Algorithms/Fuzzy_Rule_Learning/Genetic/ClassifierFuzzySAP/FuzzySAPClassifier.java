@@ -163,9 +163,9 @@ public class FuzzySAPClassifier extends GeneticIndividualForClassification {
 * This method performs the mutation genetic operation of the current FuzzySAPClassifier. 
 * This methods updates its classifier according its genotype.
 * </p> 
-* @param alpha   this parameter is fixed according to {@link GenotypeFuzzySAP}
-* @param mutationID the type of mutation operation as stated in {@link GenotypeFuzzySAP}.
-* @throws {@link invalidOptim} if non supported mutationID
+* @param alpha   this parameter is fixed according to GenotypeFuzzySAP
+* @param mutationID the type of mutation operation as stated in GenotypeFuzzySAP
+* @throws {@link invalidMutation} if non supported mutationID
 */ 	
     public void mutation(double alpha, int mutationID) throws invalidMutation {
         g.mutation(alpha,mutationID);
@@ -182,7 +182,7 @@ public class FuzzySAPClassifier extends GeneticIndividualForClassification {
 * @param p2      the {@link GeneticIndividual} to cross with 
 * @param p3      the first crossed {@link GeneticIndividual}
 * @param p4      the second crossed {@link GeneticIndividual}
-* @param croosoverID this value should be fixed according to {@link GenotypeFuzzyGAP}
+* @param crossoverID this value should be fixed according to {@link GenotypeFuzzyGAP}
 * @throws {@link invalidCrossover} in case of invalid crossoverID
 */ 	
     public void crossover(GeneticIndividual p2, GeneticIndividual p3, GeneticIndividual p4, int crossoverID) throws invalidCrossover {

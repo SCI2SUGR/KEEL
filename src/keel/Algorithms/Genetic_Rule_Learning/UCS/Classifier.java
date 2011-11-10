@@ -77,8 +77,6 @@ public class Classifier {
  * It's used by the covering operator.
  * </p>
  * <p>
- * @param condition is the environtment state
- * @param action is the action chosen
  * @param size is the size of the set.
  * @param tStamp is the time
  * </p>
@@ -203,7 +201,7 @@ public class Classifier {
  * <p>
  * Updates the parameters of a classifier.
  * </p>
- * @param microClSum is the numerosity of the action set (all the action set.). 
+ * @param microClInC is the numerosity of the action set (all the action set.). 
  * @param classOfExample is the class of the example.
  */
   public void updateParameters(double microClInC, int classOfExample) {        

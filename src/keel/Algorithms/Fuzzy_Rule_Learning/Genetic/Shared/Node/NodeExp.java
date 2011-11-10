@@ -53,7 +53,7 @@ public class NodeExp extends NodeExprArit {
 	 * <p>
 	 * Constructor. Generate a NodeExp with an only one children
 	 * </p>
-	 * @param asert1 The node for generate the children (NodeExprArit)
+	 * @param assert1 The node for generate the children (NodeExprArit)
 	 */
     public NodeExp(NodeExprArit assert1) {
         super(1,NExp);

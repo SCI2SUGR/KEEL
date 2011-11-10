@@ -97,8 +97,7 @@ public class JADEGenerator extends PrototypeGenerator {
   
   /**
    * Build a new JADEGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   *
    */
   
   public JADEGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double F, double CR, int strg)
@@ -123,7 +122,7 @@ public class JADEGenerator extends PrototypeGenerator {
   /**
    * Build a new JADEGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public JADEGenerator(PrototypeSet t, Parameters parameters)
   {

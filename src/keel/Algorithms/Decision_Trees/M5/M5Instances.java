@@ -119,7 +119,7 @@ public class M5Instances implements Serializable {
      * Constructor copying all instances and references to
      * the header information from the given set of instances.
      *
-     * @param instances the set to be copied
+     * @param dataset the set to be copied
      */
     public M5Instances(M5Instances dataset) {
 
@@ -133,7 +133,7 @@ public class M5Instances implements Serializable {
      * to the header information from the given set of instances. Sets
      * the capacity of the set of instances to 0 if its negative.
      *
-     * @param instances the instances from which the header
+     * @param dataset the instances from which the header
      * information is to be taken
      * @param capacity the capacity of the new dataset
      */
@@ -378,7 +378,7 @@ public class M5Instances implements Serializable {
      * (0 to numAttributes() - 1). A deep copy of the attribute
      * information is performed before the attribute is deleted.
      *
-     * @param pos the attribute's position
+     * @param position the attribute's position
      * @exception IllegalArgumentException if the given index is out of range or the
      * class attribute is being deleted
      */
@@ -528,7 +528,7 @@ public class M5Instances implements Serializable {
      * a deep copy of the existing attribute information.
      *
      * @param att the attribute to be inserted
-     * @param pos the attribute's position
+     * @param position the attribute's position
      * @exception IllegalArgumentException if the given index is out of range
      */
     public void insertAttributeAt(M5Attribute att, int position) {

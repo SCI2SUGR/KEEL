@@ -115,7 +115,7 @@ public class KNN {
    * @param ejemplo
    * @param nClases
    * @return The neighboors' classes.
-   * @author Isaac Triguero.
+   * 
    */
   public static int[] evaluacionKNN3 (int nvec, double conj[][], int clases[], double ejemplo[], int nClases) {
 
@@ -443,7 +443,7 @@ public class KNN {
    * @param ejemplo
    * @param nClases
    * @return The neighboors' classes.
-   * @author Isaac Triguero.
+   * Isaac Triguero.
    */
 
   public static int[] evaluacionKNN3 (int nvec, double conj[][], double real[][], int nominal[][], boolean nulos[][], int clases[], double ejemplo[], double ejReal[], int ejNominal[], boolean ejNulos[], int nClases, boolean distance) {

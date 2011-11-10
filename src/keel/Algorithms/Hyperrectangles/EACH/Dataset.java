@@ -139,7 +139,7 @@ public class Dataset {
      * <p>
      * Checks if in the instances set left instances of a determined class
      * </p>
-     * @param The class
+     * @param whichClass The class
      * @return true if there're instances, false otherwise
      */
     public boolean thereInstancesOfClass(int whichClass)throws ArrayIndexOutOfBoundsException{

@@ -105,7 +105,7 @@ public class Gene {
 	 * <p>
 	 * Obtains the status of the negation bit
 	 * </p>
-	 * @return
+	 * 
 	 */
 	public int getNegationBit(){
 		return negationBit;
@@ -115,7 +115,7 @@ public class Gene {
 	 * <p>
 	 * Obtains the number of bits (computed from the attribute associated)
 	 * </p>
-	 * @return
+	 *
 	 */
 	public int getNumBits(){
 		return bits;

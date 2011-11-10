@@ -146,9 +146,9 @@ public class SSFileEnvironment implements Environment {
  * <p>
  * It's the constructor of the class.
  * </p>
- * @param attributesFileName is the name of the file where
+ * @param fileName is the name of the file where
  * the attributes of the problem are described.
- * @param examplesFileName is the name of the file where the 
+ * @param readAttrBounds is the name of the file where the 
  * examples of the execution are written.
  */
   public  SSFileEnvironment(String fileName, boolean readAttrBounds) {        

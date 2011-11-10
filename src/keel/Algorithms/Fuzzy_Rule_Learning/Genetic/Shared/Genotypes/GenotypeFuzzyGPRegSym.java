@@ -92,10 +92,10 @@ public class GenotypeFuzzyGPRegSym extends Genotype {
 * </p>
 * @param kmin  the minimum double value for each constant
 * @param kmax  the maximum double value for each constant
-* @param pNInput the number of input variables
-* @param cteType the type of value used:  {@link FuzzyRegressor.Crisp} for crisp values, 
-*                {@link FuzzyRegressor.Interval} for interval values and 
-*				 {@link FuzzyRegressor.Fuzzy} for fuzzy values
+* @param pNInputs the number of input variables
+* @param cteType the type of value used:  FuzzyRegressor.Crisp for crisp values, 
+*                FuzzyRegressor.Interval for interval values and 
+*				 FuzzyRegressor.Fuzzy for fuzzy values
 * @param vChainLength the length of the {@link FuzzyAlphaCut}array
 * @param mh the maximum valid tree height
 * @param r the {@link Randomize} object
@@ -145,7 +145,7 @@ public class GenotypeFuzzyGPRegSym extends Genotype {
 * The nodes are analyzed to be the same tree without considering the
 * constants values.
 * </p>
-* @param p the {@link Genotype} to be compared
+* @param g the {@link Genotype} to be compared
 * @return true if both objects are related
 */
     public boolean isRelated(Genotype g) {
@@ -184,10 +184,10 @@ public class GenotypeFuzzyGPRegSym extends Genotype {
 * <p>
 * Method for carrying out the mutation genetic operations.
 * </p>
-* @param alpha double value kept for compatibility, not used.
+* @param AMPL double value kept for compatibility, not used.
 * @param mutationID an int with the crossover operation to be carried out:
-*                   {@link OperatorIdent.GAPMUTAGA} for the genetic algorithm mutation
-*                   {@link OperatorIdent.GAPMUTAGP} for the genetic programming mutation
+*                   OperatorIdent.GAPMUTAGA for the genetic algorithm mutation
+*                   OperatorIdent.GAPMUTAGP for the genetic programming mutation
 * @throws {@link invalidMutation} if mutationID is not valid
 */
     public void mutation(double AMPL, int mutationID) throws invalidMutation {
@@ -254,8 +254,8 @@ public class GenotypeFuzzyGPRegSym extends Genotype {
 * @param p3 the {@link Genotype} object with the first offspring
 * @param p4 the {@link Genotype} object with the second offspring
 * @param crossoverID an int with the crossover operation to be carried out:
-*                    {@link OperatorIdent.GAPCRUCEGA} for genetic algorithm crossover
-*                    {@link OperatorIdent.GAPCRUCEGP} for genetic programming crossover
+*                    OperatorIdent.GAPCRUCEGA for genetic algorithm crossover
+*                    OperatorIdent.GAPCRUCEGP for genetic programming crossover
 * @throws {@link invalidCrossover} if crossoverID is not valid
 */
     public void crossover(Genotype p2, Genotype p3, Genotype p4, int crossoverID) throws invalidCrossover {
@@ -574,7 +574,7 @@ public class GenotypeFuzzyGPRegSym extends Genotype {
     
 /**
 * <p>
-* This method returns the centre of weights of the vector {@link fsChain}.
+* This method returns the centre of weights of the vector fsChain.
 * </p>
 * @return the double value array
 */

@@ -106,7 +106,7 @@ public class Main {
      * <p>
      * Auxiliar Gets the name for the input files, eliminating "" and skiping "="
      * </p>
-     * @param s                 String of the input files
+     * @param nFile                 String of the input files
      */
     public void ReadParameters (String nFile) {
 

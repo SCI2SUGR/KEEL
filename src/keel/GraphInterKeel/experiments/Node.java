@@ -212,7 +212,7 @@ public abstract class Node implements Serializable {
      * Draws the node in a 2D component
      * @param g2 the 2D graphic element
      * @param select if the node is selected
-     * @param objective is the type of data in the Node
+     *
      */
     public abstract void draw(Graphics2D g2, boolean select);
 

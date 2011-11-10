@@ -111,10 +111,10 @@ public class AlgorithmGAPGen extends GeneticAlgorithm {
 * @param NOL an int with the number of iterations in the local optimization method
 * @param IOL an int with the local identification method identidication
 * @param r the {@link Randomize} object
-* @param pGACrossoverID the genetic algorithm crossover operation used attending the the current {@link Genotype}
-* @param pGPCrossoverID the genetic algorithm crossover operation used attending the the current {@link Genotype}
-* @param pGAMutationID the genetic algorithm crossover operation used attending the the current {@link Genotype}
-* @param pGPMutationID the genetic algorithm crossover operation used attending the the current {@link Genotype}
+* @param pGACrossoverID the genetic algorithm crossover operation used attending the the current Genotype
+* @param pGPCrossoverID the genetic algorithm crossover operation used attending the the current Genotype
+* @param pGAMutationID the genetic algorithm crossover operation used attending the the current Genotype
+* @param pGPMutationID the genetic algorithm crossover operation used attending the the current Genotype
 */
 	public AlgorithmGAPGen(GeneticIndividual initialIndividual,int pPopSize, int pGenerations, double PM, double AMP, 
 		double PMIG, double pGACrossoverProb, double pGAMutationProb, double pLOptProb,int NOL, int IOL,

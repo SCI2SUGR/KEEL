@@ -217,9 +217,9 @@ public class VariableTable extends AbstractTableModel {
      * <p>
      * Sets the value of a cell
      * </p>
-     * @param rowIndex Row of the cell
-     * @param columnIndex Column of the cell
-     * @return Object Value of the cell
+     * @param row Row of the cell
+     * @param col Column of the cell
+     *
      */
     @Override
     @SuppressWarnings("static-access")

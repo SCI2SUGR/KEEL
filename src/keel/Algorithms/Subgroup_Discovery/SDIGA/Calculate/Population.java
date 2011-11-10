@@ -94,7 +94,7 @@ public class Population {
        * <p>
        * Gets the position of the best individual of the population
        * </p>
-       * @param     The position of the best individual
+       * @return     The position of the best individual
        */
       public int getPopBestGuy() {
           return Best_guy;
@@ -381,7 +381,7 @@ public class Population {
        * <p>
        * Returns fitness of the indicated inidividual of the population
        * </p>
-       * @param num_indivi      Position of the individual
+       * @param num_indiv      Position of the individual
        * @return                Fitness of the individual
        */
       public float getIndivPerf (int num_indiv) {

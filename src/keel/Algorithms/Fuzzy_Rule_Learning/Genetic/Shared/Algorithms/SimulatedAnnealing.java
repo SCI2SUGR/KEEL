@@ -107,17 +107,14 @@ public class SimulatedAnnealing extends GeneticAlgorithm {
 * Class constructor with the following parameters:
 * </p>
 * @param initialIndividual a {@link GeneticIndividual} to start the search process with the desired type of individual
-* @param pPopSize an int with the population size
-* @param pGenerations an int with the number of iterations to be carried out
 * @param deltaFit a double with the coefficient for the fitness error following the simulate annealing evolution rules
 * @param pPROBMUTAGA a double with the mutation probability
 * @param p0 the desired initial temperature
 * @param p1 the desired final temperature
-* @param Km a double with the mutation amplitude
 * @param pNSUB an int with the number of individuals to be analized in each iteration
 * @param r the {@link Randomize} object
-* @param pGAMutationID the genetic algorithm mutation operation used attending the the current {@link Genotype}
-* @param pGPMutationID the genetic programming mutation operation used attending the the current {@link Genotype}
+* @param pGAMutationID the genetic algorithm mutation operation used attending the the current Genotype
+* @param pGPMutationID the genetic programming mutation operation used attending the the current Genotype
 * @param pNUMOL an int with the number of iterations in the local optimization method
 * @param pIDOL an int with the local identification method identidication
 * @param pLOptProb a double with the local optimization method probability

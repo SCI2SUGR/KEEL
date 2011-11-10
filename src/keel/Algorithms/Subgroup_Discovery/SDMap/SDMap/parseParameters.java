@@ -233,7 +233,7 @@ public class parseParameters {
      * <p>
      * Gets a string with the parameter of a determined position used by the algorithm
      * </p>
-     * @param int       Position of the parameter
+     * @param pos       Position of the parameter
      * @return          A string with the value of the parameter
      */
     public String getParameter(int pos){

@@ -155,7 +155,7 @@ public class ExternalObjectDescription implements Serializable, Comparable {
      * @param n Name
      * @param p Path
      * @param s Subtype
-     * @param s Subtypelqd
+     *
      */
     public ExternalObjectDescription(String n, String p, int s) {
 

@@ -180,7 +180,7 @@ public abstract class LinkedLayer implements ILayer<LinkedNeuron>{
      * <p>
 	 * Sets the minimum number of neurons of this layer
 	 * </p>
-	 * @param initialnofneurons Minimum number of neurons
+	 * @param minofneurons Minimum number of neurons
 	 */
     public void setMinnofneurons(int minofneurons) {
         this.minnofneurons = minofneurons;
@@ -198,7 +198,7 @@ public abstract class LinkedLayer implements ILayer<LinkedNeuron>{
     
     /**
 	 * Sets the initial maximum number of neurons of this layer (without BIAS)
-	 * @param initialnofneurons Initial number of neurons
+	 * @param initialmaxnofneurons Initial number of neurons
 	 */
     public void setInitialmaxnofneurons(int initialmaxnofneurons) {
         this.initialmaxnofneurons = initialmaxnofneurons;

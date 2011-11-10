@@ -126,7 +126,7 @@ public class Population {
 
     /**
      * Main procedure of the GA
-     * @param n_generations int number of generations
+     * @param n_Generations int number of generations
      */
     public void Generation(int n_Generations) {
         init();

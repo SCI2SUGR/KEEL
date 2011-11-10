@@ -461,7 +461,7 @@ private void tableInfojTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-F
      * <p>
      * Sets nominal values
      * </p>
-     * @param value Nominal values
+     * @param values Nominal values
      */
     public void setNominalValues(String values) {
         this.valuesjTextPane.setText(values);

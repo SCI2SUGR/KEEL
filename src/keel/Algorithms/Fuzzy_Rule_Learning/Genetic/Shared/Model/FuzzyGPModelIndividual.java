@@ -199,8 +199,8 @@ public class FuzzyGPModelIndividual extends GeneticIndividualForModels {
 	 * This method calculate a local optimization
 	 * </p>
 	 * @param MAXITER Maximum number of iterations
-	 * @param idoptimiza Type of optimization
-	 * @throws invalidOptim Message if error
+	 * @param idoptimization Type of optimization
+	 * @throws idoptimization Message if error
 	 */    
 	public void localOptimization(int MAXITER, int idoptimization) throws invalidOptim {
 	   throw new invalidOptim("Optimizacion local no implementada en FuzzyGPModelIndividual");

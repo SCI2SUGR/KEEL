@@ -61,7 +61,7 @@ public class FuzzyFGPClassifier extends Classifier {
 * Class constructor using the following parameters:
 * </p> 
 * @param pR      the {@link NodeRuleBase}
-* @param c       the class variable {@link Fuzzypartition} 
+* @param c       the class variable {@link FuzzyPartition} 
 */ 	
     public FuzzyFGPClassifier( NodeRuleBase pR, FuzzyPartition c) {
         R=(NodeRuleBase)pR.clone();

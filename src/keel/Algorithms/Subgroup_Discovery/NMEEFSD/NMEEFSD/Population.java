@@ -178,7 +178,7 @@ public class Population {
        * @param num_indiv               Position of the individual
        * @param pos                     Position of the variable
        * @param elem                    Position of the gene of the variable
-       * @param RulesRep                Rules representation
+       * @param RulRep                Rules representation
        * @return                        Gene of the chromosome
        */
       public int getCromElem (int num_indiv, int pos, int elem, String RulRep) {
@@ -202,7 +202,7 @@ public class Population {
        * @param pos                     Position of the variable
        * @param elem                    Position of the gene of the variable
        * @param val                     Value for the gene
-       * @param RulesRep                Rules representation
+       * @param RulRep                Rules representation
        */
       public void setCromElem (int num_indiv, int pos, int elem, int val, String RulRep) {
 

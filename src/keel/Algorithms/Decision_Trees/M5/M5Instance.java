@@ -248,7 +248,7 @@ public class M5Instance implements Serializable {
      * have access to any dataset because otherwise inconsistencies
      * could be introduced.
      *
-     * @param pos the attribute's position
+     * @param position the attribute's position
      * @exception RuntimeException if the instance has access to a
      * dataset
      */
@@ -279,7 +279,7 @@ public class M5Instance implements Serializable {
     /**
      * Tests if the headers of two instances are equivalent.
      *
-     * @param instance another instance
+     * @param inst another instance
      * @return true if the header of the given instance is
      * equivalent to this instance's header
      * @throws Exception
@@ -312,10 +312,7 @@ public class M5Instance implements Serializable {
      * have access to any dataset because otherwise inconsistencies
      * could be introduced.
      *
-     * @param pos the attribute's position
-     * @exception RuntimeException if the instance has accesss to a
-     * dataset
-     * @exception IllegalArgumentException if the position is out of range
+     * @param position the attribute's position
      */
     public void insertAttributeAt(int position) {
 

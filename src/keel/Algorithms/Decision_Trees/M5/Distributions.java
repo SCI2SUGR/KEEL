@@ -213,7 +213,7 @@ public class Distributions {
      * Returns probability that the standardized normal variate Z (mean = 0, standard
      * deviation = 1) is less than z.
      *
-     * @param the z-value
+     * @param z the z-value
      * @return the probability of the z value according to the normal pdf
      */
     public static double normalProbability(double z) {

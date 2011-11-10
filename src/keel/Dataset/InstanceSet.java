@@ -239,7 +239,7 @@ public class InstanceSet {
  * It reads the information in the header of the file. 
  * It reads relation's name, attributes' names, and inputs and outputs.
  *
- * @param instanceParser is the parser of the data set
+ * @param parser is the parser of the data set
  * @param isTrain is a boolean indicating if this is a train set (and so
  * parameters information must be read) or a test set (parameters information 
  * has not to be read).

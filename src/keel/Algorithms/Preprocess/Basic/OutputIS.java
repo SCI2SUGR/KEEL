@@ -256,7 +256,7 @@ public class OutputIS {
 	 * @param instanciasIN Instances to write
 	 * @param instanciasOUT Instances to mantain
 	 * @param entradas Input attributes characteristics
-	 * @param salida Output attribute characteristics
+	 * @param salidas Output attribute characteristics
 	 * @param nEntradas Number of input attributes
 	 * @param nSalidas Number of output attributes
 	 * @param relation Name of the data set
@@ -398,7 +398,7 @@ public class OutputIS {
 	 * @param instanciasIN Instances to write
 	 * @param instanciasOUT Instances to mantain
 	 * @param entradas Input attributes characteristics
-	 * @param salida Output attribute characteristics
+	 * @param salidas Output attribute characteristics
 	 * @param nEntradas Number of input attributes
 	 * @param nSalidas Number of output attributes
 	 * @param relation Name of the data set

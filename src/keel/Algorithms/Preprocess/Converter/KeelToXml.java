@@ -103,7 +103,7 @@ public class KeelToXml extends Exporter {
         String filename = new String();
         String nameElement = new String();
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"√°", "√©", "√≠", "√≥", "√∫", "√Å", "√â", "√ç", "√ì", "√ö"};
+        String vowel_accent[] = {"·", "È", "Ì", "Û", "˙", "¡", "…", "Õ", "”", "⁄"};
 
         /* Comprobamos si el nombre del fichero tiene la extensi√≥n .xml, si no la tiene
          * se la ponemos */

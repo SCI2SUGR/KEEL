@@ -93,8 +93,6 @@ public class OBDEGenerator extends PrototypeGenerator {
   
   /**
    * Build a new OBDEGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
    */
   
   public OBDEGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double F, double CR, double JR, int strg)
@@ -120,7 +118,7 @@ public class OBDEGenerator extends PrototypeGenerator {
   /**
    * Build a new OBDEGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public OBDEGenerator(PrototypeSet t, Parameters parameters)
   {

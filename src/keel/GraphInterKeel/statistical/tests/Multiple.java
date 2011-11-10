@@ -60,10 +60,7 @@ public class Multiple {
      * <p>
      * In this method, all possible post hoc statistical test between more than three algorithms results 
      * are executed, according to the configuration file
-     * @param code A double that identifies which methods will be applied
-     * @param nfold A vector of int with fold number by algorithm
      * @param algorithms A vector of String with the names of the algorithms
-     * @param fileName A String with the name of the output file
      * </p>
      */
     public static void doMultiple(double data[][], String algorithms[]) {
@@ -878,7 +875,6 @@ public class Multiple {
 	* Computes the trueHShaffer distribution from a given parameter.
 	*
 	* @param k K parameter
-	* @param n M value
 	*
 	* @return The trueHShaffer distribution
 	*/

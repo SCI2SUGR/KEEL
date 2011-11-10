@@ -65,7 +65,7 @@ public class ID3 extends Algorithm
 	
 	/** Constructor.
 	 * 
-	 * @param file			The parameters file.
+	 * @param paramFile			The parameters file.
 	 * 
 	 */
 	public ID3( String paramFile ) 

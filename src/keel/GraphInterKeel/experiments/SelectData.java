@@ -962,7 +962,7 @@ public class SelectData extends JPanel implements Scrollable {
 
     /**
      * Reload the data set list, given the experiment type
-     * @param type The current experiment type, which determines the data sets to be loaded
+     * @param contain The current experiment type, which determines the data sets to be loaded
      */
     public int reload_lqd_crisp(JPanel contain) {
         //  JOptionPane.showMessageDialog(this, "Nentraaaaaaaaaaaaa 1",

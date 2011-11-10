@@ -40,13 +40,13 @@ import java.util.Comparator;
 public class ListaAtributos {
     /** Valor del atributo */
     public double valor;
-    /** Índice que apunta a la lista de clases */
+    /** indice que apunta a la lista de clases */
     public int indice;
 
     /** Constructor
      *
      * @param valor  Valor del atributo
-     * @param indice Índice de la entrada en la lista de clases que le corresponde
+     * @param indice indice de la entrada en la lista de clases que le corresponde
      */
     public ListaAtributos(double valor, int indice) {
         this.valor = valor;

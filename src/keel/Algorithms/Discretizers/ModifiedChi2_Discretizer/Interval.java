@@ -50,7 +50,7 @@ import keel.Algorithms.Genetic_Rule_Learning.Globals.Parameters;
 		 * Compute the interval ratios.
 		 * </p>
 		 * @param _attribute
-		 * @param []_values
+		 * @param _values
 		 * @param _begin
 		 * @param _end
 		 */

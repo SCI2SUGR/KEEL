@@ -55,7 +55,7 @@ public class FUSINTER extends Discretizer {
 
 	/**
 	* Builder
-	* @param _conf Confidence threshold
+	* 
 	*/
 	public FUSINTER(double _lambda, double _alpha) {
 		lambda = _lambda;

@@ -229,7 +229,7 @@ public class PartitionScheme {
 	 * <p>
 	 * It returns all the original instances
 	 * </p>
-	 * @param the instances
+	 * @return the instances
 	 */
 	public Instance[] getInstances(){
 		return instances;
@@ -241,7 +241,6 @@ public class PartitionScheme {
 	 * <p>
 	 * It returns the indexes of the original instances in all partitions
 	 * </p>
-	 * @param the indexes of the instances in each partition
 	 */
 	public Vector[] getPartitions(){
 		return partitions;

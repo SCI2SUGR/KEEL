@@ -257,8 +257,7 @@ public final class Function implements Serializable {
 
     /**
      * Returns the predicted value of instance i by a function
-     * @param i instance i
-     * @param inst instances
+     * @param instance instances
      * @return the predicted value
      */
     public final double predict(M5Instance instance) {

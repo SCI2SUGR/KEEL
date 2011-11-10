@@ -160,7 +160,7 @@ public class ModelLinearLMS {
 	   
 		/**
 		* <p>
-		* This method calls {@link linearModel}
+		* This method calls {@link ModelLinearLMS}
 		* @param args Vector of strings with command line arguments
 		* </p>
 		*/  

@@ -323,7 +323,7 @@ private void savejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
      * <p>
      * Sets a view for a dataset
      * </p>
-     * @param dataCFFrame View for a dataset
+     * @param dataCFView View for a dataset
      */
     public void setDataCFView(DataCFFrame dataCFView) {
         this.dataCFFrame = dataCFView;

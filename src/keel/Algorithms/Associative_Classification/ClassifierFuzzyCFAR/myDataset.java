@@ -330,8 +330,7 @@ public class myDataset {
 
 
     /**
-     * It copies the header of the dataset
-     * @return String A string containing all the data-set information
+     * It copies the header of the dataset. A string containing all the data-set information
      */
     public void transform(DataBase dataBase) {
 		int i, j, k;

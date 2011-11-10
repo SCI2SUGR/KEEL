@@ -238,7 +238,7 @@ public class Genetic {
      * <p>
      * Methods to get the value for the weight of the objective in a position
      * </p>
-     * @param               Number of the objective
+     * @param               pos of the objective
      * @return              Weight of the objective
      */
     public float getW(int pos){

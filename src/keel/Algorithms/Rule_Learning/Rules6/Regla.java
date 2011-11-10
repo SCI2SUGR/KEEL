@@ -117,7 +117,7 @@ public class Regla {
     /**
      * Devuelve verdadero o falso dependiendo de si un atributo  y su valor
      * están en la lista de valores invalidos
-     * @param atributo Integer Entero que representa el atributo
+     * @param Atributo Integer Entero que representa el atributo
      * @param valor Double Doble que representa el valor del atributo
      * @return boolean Si la condicion es verdadera o falsa
      */

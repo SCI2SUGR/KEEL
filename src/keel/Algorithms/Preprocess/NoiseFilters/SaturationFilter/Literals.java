@@ -551,7 +551,6 @@ public class Literals {
 	 * <p>
 	 * It prints the matrix of literals
 	 * </p>
-	 * @param args the command line arguments
 	 */
 	public void printlit(){
 

@@ -310,7 +310,7 @@ public class Ensemble {
      * @param global Global definition parameters
      * @param data Input data
      * @param npatterns No of patterns
-     * @return
+     * @return Test ensemble in regression
      */
     public double TestEnsembleInRegression(EnsembleParameters global,
                                            double data[][],

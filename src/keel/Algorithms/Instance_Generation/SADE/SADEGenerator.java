@@ -94,8 +94,7 @@ public class SADEGenerator extends PrototypeGenerator {
   
   /**
    * Build a new SADEGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   * 
    */
   
   public SADEGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones)
@@ -118,7 +117,7 @@ public class SADEGenerator extends PrototypeGenerator {
   /**
    * Build a new SADEGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public SADEGenerator(PrototypeSet t, Parameters parameters)
   {
@@ -144,7 +143,6 @@ public class SADEGenerator extends PrototypeGenerator {
    * @param population
    * @param actual
    * @param mejor
-   * @return
    */
   public PrototypeSet mutant(PrototypeSet population[], int actual, int mejor){
 	  
@@ -293,7 +291,7 @@ public class SADEGenerator extends PrototypeGenerator {
   /**
    * I use this function to calculate what strategy we must use with the probability strategy we have.
    * @param ProbabilityStrategy
-   * @return
+   *
    */
   public int selectStrategy(double ProbabilityStrategy[]){
 	  

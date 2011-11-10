@@ -248,7 +248,6 @@ public class Prototype
      * Set a input for an attribute
      * @param i Index of the input attribute.
      * @param valor Value to set.
-     * @autor Isaac.
      */
     public void setInput(int i, double valor){
     	inputs[i] =valor;
@@ -348,8 +347,7 @@ public class Prototype
     
     /**
      * Multiply component by component like a scalar product.
-     * @note Two prototype must have the same size.
-     * @param weight Constant to be multiplied to each sum.
+     * 
      * @return A prototype which inputs product with other..
      */ 
     public Prototype mul(Prototype other)
@@ -372,8 +370,6 @@ public class Prototype
  
     /**
      * Multiply component by component like a scalar product.
-     * @note Two prototype must have the same size.
-     * @param weight Constant to be multiplied to each sum.
      * @return A prototype which inputs product with other..
      */ 
     public double mulEscalar(Prototype other)
@@ -459,7 +455,7 @@ public class Prototype
     /**
      * Add an increment to all the inputs of the prototype
      * @param increment
-     * @return
+     *
      */
     public Prototype add(double increment){
     	Prototype p = new Prototype(this);
@@ -919,7 +915,7 @@ public class Prototype
     
     /**
      * Opuesto de un prototipo
-     * @return
+     *
      */
     
     public Prototype opposite(){
@@ -935,7 +931,6 @@ public class Prototype
     /**
      * This function is for NOminal adaptation...
      * 
-     * @return
      */
     public Prototype formatear(){
     	Prototype formateado = new Prototype(this);

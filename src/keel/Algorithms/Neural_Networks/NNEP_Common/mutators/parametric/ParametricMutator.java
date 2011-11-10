@@ -280,7 +280,7 @@ public abstract class ParametricMutator<I extends NeuralNetIndividual> extends N
 	 * <p>
 	 * Sets the initial alpha coeficient for the output weigths
 	 * </p>
-	 * @param initialAlphaInput Initial alpha coeficient for the output weigths
+	 * @param initialAlphaOutput Initial alpha coeficient for the output weigths
 	 */
 	
 	public void setInitialAlphaOutput(double initialAlphaOutput) {

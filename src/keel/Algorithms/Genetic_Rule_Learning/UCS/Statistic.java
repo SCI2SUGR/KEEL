@@ -363,8 +363,8 @@ public class Statistic {
  * It writes to the train statistics file the expected out compared with the
  * output predicted by the system.
  * </p>
- * @param is the expected ouptut
- * @param is the current output (the real one)
+ * @param expected the expected ouptut
+ * @param current the current output (the real one)
  */  
   public void writeExpectedTrainOut(int expected, int current){
     if ( fOTrain != null ){
@@ -388,8 +388,8 @@ public class Statistic {
  * It writes to the test statistics file the expected out compared with the
  * output predicted by the system.
  * </p>
- * @param is the expected ouptut
- * @param is the current output (the real one)
+ * @param expected the expected ouptut
+ * @param current the current output (the real one)
  */
   public void writeExpectedTestOut(int expected, int current){
 	

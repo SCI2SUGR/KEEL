@@ -88,7 +88,7 @@ public class PropertyListToKeel extends Importer {
         Element children;
         Element instance;
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"√°", "√©", "√≠", "√≥", "√∫", "√Å", "√â", "√ç", "√ì", "√ö"};
+        String vowel_accent[] = {"·", "È", "Ì", "Û", "˙", "¡", "…", "Õ", "”", "⁄"};
 
         try {
 

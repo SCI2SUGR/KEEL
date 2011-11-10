@@ -72,7 +72,7 @@ public class CreateInform {
      * Builder
      *
      * @param	path	report path without extension
-     * @param	readingFiles	result files path
+     * @param	files	result files path
      * @param	problemType	type of problem (classification, regression)
      */
     public CreateInform(String path, String[] files, int problemType) {

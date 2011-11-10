@@ -137,7 +137,7 @@ public class FuzzyRuleSet {
 	
 	/**
 	 * This method returns the number of rules of this Rule Set
-	 * @return
+	 * @return the number of rules of this Rule Set
 	 */
 	public int getNumRules(){
 		return m_rules;

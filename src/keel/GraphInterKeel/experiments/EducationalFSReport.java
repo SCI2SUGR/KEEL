@@ -64,9 +64,7 @@ public class EducationalFSReport extends EducationalReport
 	 * Constructor
 	 * 
 	 * @param	sentences Total of sentences for RunKeel.xml file
-	 * @param	
-	 * @param	tipoExperimento Tipo experimento, clasificacion o regresion
-	 * @param	
+	 * @param	experimentType Tipo experimento, clasificacion o regresion
 	 */
 	public EducationalFSReport(ArrayList<Element> sentences, int experimentType)
 	{				

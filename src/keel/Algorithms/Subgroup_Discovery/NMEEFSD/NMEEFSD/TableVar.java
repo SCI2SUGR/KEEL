@@ -236,7 +236,7 @@ public class TableVar {
      * </p>
      * @param val       The value to round
      * @param tope
-     * @return
+     * @return rounded value
      */
     public float Round (float val, float tope) {
         if (val>-0.0001 && val<0.0001)

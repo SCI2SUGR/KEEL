@@ -620,7 +620,7 @@ public class Network {
      * 
      * @param pattern	Pattern to check
      * @param positive_class Positive class in the imbalanced classification problem
-     * @param postive_cost Cost of misclassifying an instance from the positive class
+     * @param positive_cost Cost of misclassifying an instance from the positive class
      * @param negative_cost Cost of misclassifying an instance from the negative class
      * @return Class index
      */

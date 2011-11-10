@@ -61,9 +61,9 @@ public class Information {
     /**
      * Creates new option with the given parameters.
      *
-     * @String description the option's description
-     * @String name the option's name
-     * @String numArguments the number of arguments
+     * @param description the option's description
+     * @param name the option's name
+     * @param numArguments the number of arguments
      */
     public Information(String description, String name,
                        int numArguments, String synopsis) {

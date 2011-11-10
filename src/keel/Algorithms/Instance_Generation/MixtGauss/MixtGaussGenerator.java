@@ -57,7 +57,6 @@ import java.util.StringTokenizer;
 
 /**
  * 
- * @param  
  * @author Isaac Triguero
  * @version 1.0
  */
@@ -74,8 +73,6 @@ public class MixtGaussGenerator extends PrototypeGenerator {
   
   /**
    * Build a new PSOGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
    */
   
   public MixtGaussGenerator(PrototypeSet _trainingDataSet, int blocks, String choice)
@@ -90,7 +87,7 @@ public class MixtGaussGenerator extends PrototypeGenerator {
   /**
    * Build a new MixtGaussGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public MixtGaussGenerator(PrototypeSet t, Parameters parameters)
   {
@@ -117,7 +114,7 @@ public class MixtGaussGenerator extends PrototypeGenerator {
   /**
    * Return the value of PDF normal.
    * @param x
-   * @return
+   * @return the value of PDF normal
    */
   public double pdfNormal(double x){
 	  double result;
@@ -131,7 +128,7 @@ public class MixtGaussGenerator extends PrototypeGenerator {
   /**
    * F(x) = N(x^t_k)
    * @param x
-   * @return
+   * @return F(x) = N(x^t_k)
    */
   public double f_x(double x, double mu, double sigma){
 	  double result = 1./sigma;
@@ -141,7 +138,7 @@ public class MixtGaussGenerator extends PrototypeGenerator {
   
   /**
    * Accuracy per class.
-   * @return
+   * @return Accuracy per class
    */
   
   public double[] CalculateAccuracy(PrototypeSet actual){
@@ -161,7 +158,6 @@ public class MixtGaussGenerator extends PrototypeGenerator {
   
   /**
    * Expectation-Maximisation Algorithm
-   * @return
    */
   public Pair<PrototypeSet, PrototypeSet> EMstep(PrototypeSet actual, PrototypeSet SD){
 	  

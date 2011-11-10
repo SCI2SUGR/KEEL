@@ -92,7 +92,7 @@ public class Literal implements Comparable{
    * <p>
    * It sets the gain for a literal
    * </p>
-   * @param double value Gain to set
+   * @param value Gain to set
    */
   public void setGain (double value) {
 	  this.gain = value;

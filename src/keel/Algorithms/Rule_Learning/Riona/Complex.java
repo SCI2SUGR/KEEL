@@ -161,7 +161,7 @@ public class Complex implements Comparable {
      * Borra los selectores de la lista de selectores que tengan como atributo el pasado
      * como argumento
      * </p>
-     * @param atrib el atributo
+     * @param attribute el atributo
      */
     public void removeSelectorAttribute(int attribute) {
     	Selector s;
@@ -283,7 +283,7 @@ public class Complex implements Comparable {
    * <p>
    * Check if the rule match with the parameter instance
    * </p>
-   * @param instance The instance
+   * @param ejemplo The instance
    * @return boolean True if match
   */
    public boolean ruleCoversInstance(double []ejemplo/*Instance instancia*/){
@@ -434,9 +434,6 @@ public class Complex implements Comparable {
      * <p>
      * Print the complex content using a string (List->Attribute operator value)
      * </p>
-     * @param nominal indicates if nominal(0) o numeric(1)
-     * @param inf el bottom interval
-     * @param sup el top interval
      * @return String string with the content of the complex
      */
     public String printString(int []numValues) {

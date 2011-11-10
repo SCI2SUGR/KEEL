@@ -46,8 +46,7 @@ import java.util.StringTokenizer;
 
 
 
-/**
- * @see K-NN ->int[] evaluacionKNN3 
+/** 
  * @param  k
  * @param  k'
  * @author Isaac Triguero

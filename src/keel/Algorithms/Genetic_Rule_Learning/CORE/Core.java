@@ -100,7 +100,7 @@ public class Core {
 	}
 	
 	/** Creates a new instance of Core
-     * @param fileParam The path to the configuration file with all the parameters in KEEL format
+     * @param paramfile The path to the configuration file with all the parameters in KEEL format
      */
 	public Core(String paramfile){
 		int occurrences[];

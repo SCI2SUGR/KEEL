@@ -78,7 +78,7 @@ public class Condition {
      * Constructor
      * </p>
      * @param valor1 double Lower value of the condition "ENTRE"
-     * @param valor1 double Upper value of the condition "ENTRE"
+     * @param valor2 double Upper value of the condition "ENTRE"
      * @param nombre String Name of the condition     
      */
     public Condition(double valor1, double valor2, String nombre) {

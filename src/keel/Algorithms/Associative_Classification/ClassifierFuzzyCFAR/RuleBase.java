@@ -231,7 +231,6 @@ public class RuleBase {
    * <p>
    * Function to evaluate the whole rule base by using the training dataset
    * </p>
-   * @return double Fitness of the rule base
    */
   public void evalua() {
     int n_clasificados, Prediction;

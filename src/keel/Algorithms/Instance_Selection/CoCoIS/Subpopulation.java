@@ -364,7 +364,7 @@ public class Subpopulation{
      * Crosses two selectors of the subpopulation and generates two new childs
      * 
      * @param a First selector
-     * @param B Second selector
+     * @param b Second selector
      * @param newIndex Base index for the offspring
      */	
 	public void HUX(int a, int b,int newIndex){

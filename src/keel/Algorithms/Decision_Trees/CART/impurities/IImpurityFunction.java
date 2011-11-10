@@ -53,8 +53,6 @@ public interface IImpurityFunction {
 	/**
 	 * 
 	 * @param patterns index of patterns from dataset associated to node to evaluate
-	 * @param inputvar Input variable to consider
-	 * @param splitValue Value used to split the patterns using (inputvar <= splitValue)
 	 * @param cost Associated cost
 	 * @return Impurity value associated
 	 * @throws Exception 

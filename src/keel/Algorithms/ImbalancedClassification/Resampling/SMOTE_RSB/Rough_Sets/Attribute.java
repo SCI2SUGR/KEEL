@@ -663,9 +663,7 @@ public class Attribute implements Copyable, Serializable {
 	/**
 	 * Returns the header info for a relation-valued attribute, null if the
 	 * attribute is not relation-valued.
-	 * 
-	 * @param valIndex
-	 *            the value's index
+	 *
 	 * @return the attribute's value as an Instances object
 	 */
 	public final/* @ non_null pure @ */Instances relation() {
@@ -822,7 +820,7 @@ public class Attribute implements Copyable, Serializable {
 	 * 
 	 * @param src
 	 *            The Attribute containing the string value to add.
-	 * @param int
+	 * @param index
 	 *            index the index of the string value in the source attribute.
 	 * @return the index assigned to the string, or -1 if the attribute is not
 	 *         of type Attribute.STRING

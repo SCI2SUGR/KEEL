@@ -197,7 +197,7 @@ public class Gene {
 	 * <p>
 	 * It sets the upper bound of the interval stored in a gene
 	 * </p>
-	 * @param lb The value indicating the upper bound of the interval
+	 * @param ub The value indicating the upper bound of the interval
 	 */
 	public void setUpperBound(double ub) {
 		this.ub = ub;

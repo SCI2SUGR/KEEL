@@ -161,7 +161,7 @@ public class EvaluateRules {
      * <p>
      * Print the quality measures in the measure file
      * </p>
-     * @param String        String with the values to introduce
+     * @param cad        String with the values to introduce
      */
     public void printMeasure(String cad) {
 

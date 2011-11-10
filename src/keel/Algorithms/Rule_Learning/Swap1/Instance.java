@@ -741,8 +741,6 @@ public class Instance {
 
 	/**
 	 * It does return all the input nominal values.
-	 * @param pos is the position.
-	 * @return an int with the nominal value.
 	 */  
 	public int[] getInputNominalValuesInt(){
 		return intNominalValues[0];
@@ -789,8 +787,6 @@ public class Instance {
 
 	/**
 	 * It does return the output value at the specified position
-	 * @param pos is the position.
-	 * @return an int with the nominal value.
 	 */
 	public int[] getOutputNominalValuesInt(){
 		return intNominalValues[1];

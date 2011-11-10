@@ -134,7 +134,7 @@ public class Complejo implements Comparable {
     /**
      * Borra los selectores de la lista de selectores que tengan como atributo el pasado
      *como argumento
-     * @param atrib el atributo
+     * @param atributo el atributo
      */
     public void removeSelectorAtributo(int atributo) {
     	Selector s;
@@ -221,7 +221,7 @@ public class Complejo implements Comparable {
   
   /**
     *Comprueba si la regla cubre a la instancia pasada como parametro
-    *@param instance La instancia
+    *@param instancia La instancia
     *@return boolean True si la regla cubre a la instancia
   */
   

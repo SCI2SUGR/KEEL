@@ -84,7 +84,7 @@ public class SSFileEnvironment implements Environment {
  * It's the constructor of the class.
  * 
  * @param fileName is the database file name
- * @param readAttrBound indicate if the attribute information has to be read. 
+ * @param readAttrInfo indicate if the attribute information has to be read. 
  */
   public  SSFileEnvironment( String fileName, boolean readAttrInfo ) {        
     String line;

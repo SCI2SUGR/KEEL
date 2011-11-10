@@ -113,7 +113,7 @@ public class AprioriTFP_CMAR extends AprioriTFPclass {
     list of rules.
     <LI>Prune list according the cover stratgey.
     <LI>Test classification using Chi-Squared Weighting approach.</OL>
-    @return The classification accuracy (%).	*/
+    */
 
     public void startCMARclassification() {
         System.out.println("START APRIORI-TFP CMAR\n" + "--------------------------");

@@ -83,7 +83,7 @@ public class FuzzyGPRegSymModel extends FuzzyRegressor {
      * This method assing the properties of a fuzzy system of symbolic regression for
      * GP model to another one
      * </p>
-     * @param p The fuzzy system of symbolic regression for GP model
+     * @param mb The fuzzy system of symbolic regression for GP model
      */  
 
     public void set(FuzzyGPRegSymModel mb) {

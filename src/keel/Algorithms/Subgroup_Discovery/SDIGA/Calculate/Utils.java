@@ -219,7 +219,7 @@ public class Utils {
      * </p>
      * @param val       The value to round
      * @param tope
-     * @return 
+     * @return 0 if incorrect assignement, otherwise, val
      */
     public static float Assigned (float val, float tope) {
         if (val>-0.0001 && val<0.0001) 
@@ -234,7 +234,7 @@ public class Utils {
     * <p>
     * Counts the number of examples of the DataSet belonging to the number of the class indicated
     * </p>
-    * @param num_clase      The number of the objective class
+    * @param num_class      The number of the objective class
     * @return               The number of examples of the class
     **/ 
     public static int ExamplesClass (int num_class) {

@@ -257,7 +257,7 @@ public class NeuralNetReporterClas implements IAlgorithmListener<NeuralNetAlgori
 	 * <p>
 	 * Sets file name where the best model obtained will be written
 	 *
-	 * @param String File name
+	 * @param bestModelResultFile File name
 	 * </p>
 	 */
 
@@ -283,7 +283,7 @@ public class NeuralNetReporterClas implements IAlgorithmListener<NeuralNetAlgori
 	 * Sets file name where the testing results of best model 
 	 * obtained will be written
 	 *
-	 * @param String File name
+	 * @param testResultFile File name
 	 * </p>
 	 */
 
@@ -309,7 +309,7 @@ public class NeuralNetReporterClas implements IAlgorithmListener<NeuralNetAlgori
 	 * Sets file name where the testing results of best model 
 	 * obtained will be written
 	 *
-	 * @param String File name
+	 * @param trainResultFile File name
 	 * </p>
 	 */
 
@@ -333,7 +333,7 @@ public class NeuralNetReporterClas implements IAlgorithmListener<NeuralNetAlgori
 	 * <p>
 	 * Sets KEEL file header
 	 *
-	 * @param String KEEL file header
+	 * @param header KEEL file header
 	 * </p>
 	 */
 

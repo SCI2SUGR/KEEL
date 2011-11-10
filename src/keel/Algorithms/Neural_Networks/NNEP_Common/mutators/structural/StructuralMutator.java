@@ -570,7 +570,7 @@ public class StructuralMutator<I extends NeuralNetIndividual> extends NeuralNetM
 	 * <p>
 	 * Configuration parameters for StructuralMutator are:
 	 * </p>
-	 * @params settings Settings to configure
+	 * @param settings Settings to configure
 	 * <ul>
 	 * <li>
 	 * <code>temperature-exponent[@value] double (default=1)</code></p>

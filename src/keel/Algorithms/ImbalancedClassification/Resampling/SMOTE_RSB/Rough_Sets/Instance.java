@@ -252,7 +252,7 @@ public class Instance implements Copyable, Serializable {
    * have access to any dataset because otherwise inconsistencies
    * could be introduced.
    *
-   * @param pos the attribute's position
+   * @param position the attribute's position
    * @exception RuntimeException if the instance has access to a
    * dataset 
    */
@@ -284,7 +284,7 @@ public class Instance implements Copyable, Serializable {
   /**
    * Tests if the headers of two instances are equivalent.
    *
-   * @param instance another instance
+   * @param inst another instance
    * @return true if the header of the given instance is 
    * equivalent to this instance's header
    * @exception UnassignedDatasetException if instance doesn't have access to any
@@ -328,7 +328,7 @@ public class Instance implements Copyable, Serializable {
    * have access to any dataset because otherwise inconsistencies
    * could be introduced.
    *
-   * @param pos the attribute's position
+   * @param position the attribute's position
    * @exception RuntimeException if the instance has accesss to a
    * dataset
    * @exception IllegalArgumentException if the position is out of range
@@ -743,7 +743,7 @@ public class Instance implements Copyable, Serializable {
   /** 
    * Returns the relational value of a relational attribute.
    *
-   * @param attIndex the attribute's index
+   * @param att the attribute's index
    * @return the corresponding relation as an Instances object
    * @exception IllegalArgumentException if the attribute is not a
    * relation-valued attribute
@@ -785,7 +785,7 @@ public class Instance implements Copyable, Serializable {
    * Returns the value of a nominal, string, date, or relational attribute
    * for the instance as a string.
    *
-   * @param attIndex the attribute's index
+   * @param att the attribute's index
    * @return the value as a string
    * @exception IllegalArgumentException if the attribute is not a nominal,
    * string, date, or relation-valued attribute.

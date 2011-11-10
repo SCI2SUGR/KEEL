@@ -898,7 +898,6 @@ public class Multiple {
 	* Computes the trueHShaffer distribution from a given parameter.
 	*
 	* @param k K parameter
-	* @param n M value
 	*
 	* @return The trueHShaffer distribution
 	*/

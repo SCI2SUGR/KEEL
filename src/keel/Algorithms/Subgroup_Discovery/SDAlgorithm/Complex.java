@@ -85,7 +85,7 @@ public class Complex implements Comparable {
      * <p>
      * Compare two objects
      * </p>
-     * @param Object            Complex to compare
+     * @param o            Complex to compare
      * @return                  0 equal || -1 better || 1 worse
      */
     public int compareTo(Object o) {
@@ -120,7 +120,7 @@ public class Complex implements Comparable {
      * <p>
      * Check if two complex are equal
      * </p>
-     * @param Complex           Complex to compare
+     * @param c           Complex to compare
      * @return                  True of False
      */
     public boolean isEqual(Complex c){
@@ -139,7 +139,7 @@ public class Complex implements Comparable {
      * <p>
      * Add the selector to the complex
      * </p>
-     * @param Selector          The selector to add
+     * @param s          The selector to add
      */
     public void addSelector(Selector s) {
         compl.add(s);
@@ -200,7 +200,7 @@ public class Complex implements Comparable {
      * <p>
      * Check if the complex covers to the example
      * </p>
-     * @param Instance               Instance to study
+     * @param m               Instance to study
      * @return                      True or False
      */
     public boolean cover(Instance m) {
@@ -515,7 +515,7 @@ public class Complex implements Comparable {
      * <p>
      * Copy the name of the attributes
      * </p>
-     * @param String[]              Array with the name of the attributes
+     * @param attrib              Array with the name of the attributes
      */
     public void adjuntaNombreAtributos(String [] attrib){
         nameAttributes = new String[attrib.length -1];

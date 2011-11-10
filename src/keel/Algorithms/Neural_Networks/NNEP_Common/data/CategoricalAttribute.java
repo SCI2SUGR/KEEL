@@ -151,7 +151,7 @@ public class CategoricalAttribute extends AbstractAttribute {
 	 * <p>
 	 * Adds a new value
 	 * </p>
-	 * @param newValye New value to be added
+	 * @param newValue New value to be added
 	 */
 	@SuppressWarnings("unchecked")
 	public void addValue(Object newValue){

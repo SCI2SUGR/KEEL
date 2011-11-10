@@ -80,7 +80,7 @@ public class Rule {
 	 * <p>
 	 * Deep-copy constructor
 	 * </p>
-	 * @param rule original rule
+	 * @param regla original rule
 	 */
 	public Rule(Rule regla){
 		numAttributes = regla.numAttributes;

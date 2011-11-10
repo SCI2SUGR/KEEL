@@ -61,7 +61,7 @@ public interface IOptimizableFunc
 	 * <p>
 	 * Establish the final value of a[], that is, the coefficients of
 	 * model 
-	 * @param double array of final coefficients values
+	 * @param a double array of final coefficients values
 	 * </p>
 	 */
 

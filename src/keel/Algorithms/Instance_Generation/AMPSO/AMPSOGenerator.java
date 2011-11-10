@@ -91,8 +91,7 @@ public class AMPSOGenerator extends PrototypeGenerator {
   
   /**
    * Build a new PSOGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   *
    */
   
   public AMPSOGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion,  int iteraciones, double c1, double c2, double c3, double vmax, double inertia, double x, double pr, double pd)
@@ -122,7 +121,7 @@ public class AMPSOGenerator extends PrototypeGenerator {
   /**
    * Build a new PSOGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public AMPSOGenerator(PrototypeSet t, Parameters parameters)
   {

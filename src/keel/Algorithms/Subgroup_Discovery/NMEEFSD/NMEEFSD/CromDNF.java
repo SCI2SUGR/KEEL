@@ -119,7 +119,7 @@ public class CromDNF {
      * @param Variables		Contents the type of the variable, and the number of labels.
      * @param Examples          Dataset
      * @param porcCob           Percentage of participating variables
-     * @param number_obj        Number of objectives of the algorithm
+     * @param nobj        Number of objectives of the algorithm
      */
     public void CobInitCrom(Population pop, TableVar Variables, TableDat Examples, float porcCob, int nobj) {
 

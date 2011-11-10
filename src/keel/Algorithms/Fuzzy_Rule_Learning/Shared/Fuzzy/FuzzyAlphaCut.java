@@ -307,7 +307,7 @@ public class FuzzyAlphaCut extends Fuzzy {
      *  Returns the multiplication of the present FuzzyInterval and the parameter x.
      *  
      * </p>
-     * @param x to be multiplied.
+     * @param k to be multiplied.
      * @return the multiplication of the present FuzzyAlphaCut and the scalar x. 
      */ 
     public FuzzyAlphaCut multiply(double k) {
@@ -485,8 +485,7 @@ public class FuzzyAlphaCut extends Fuzzy {
      * <p> 
      *  Returns the average amplitude of a fuzzy set. It halves the nonspecificity.   	
      *  
-     * </p>
-     * @return the average amplitude of a fuzzy set. 
+     * </p> 
      */   
 	public void averageAmplitude() {
 	   // Halves the nonspecificity
@@ -509,7 +508,6 @@ public class FuzzyAlphaCut extends Fuzzy {
      * @param a 
      * @param b
      * @param alphap
-     * @return the linear combination of alpha-cuts a and b with alphap. 
      */
 	public void linearComb(FuzzyAlphaCut a,FuzzyAlphaCut b,double alphap) {
 		

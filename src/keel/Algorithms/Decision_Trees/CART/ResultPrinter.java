@@ -190,8 +190,7 @@ public class ResultPrinter {
 	/**
 	 * This method print the output file in Keel format for classification problems
 	 * 
-	 * @param predicted train. Output class as binary in rows, patterns in cols.
-	 * @param
+	 * @param predictedTrain Output class as binary in rows, patterns in cols.
 	 */ 
 
 	@SuppressWarnings("unchecked")
@@ -252,8 +251,7 @@ public class ResultPrinter {
 	 * 
 	 * This method print the output file in Keel format for regression problems
 	 * 
-	 * @param predicted train. Output class as binary in rows, patterns in cols.
-	 * @param
+	 * @param predictedTrain Output class as binary in rows, patterns in cols.
 	 */ 
 
 	@SuppressWarnings("unchecked")
@@ -303,7 +301,7 @@ public class ResultPrinter {
 	
 	/**
 	 * Print result model tree 
-	 * @param tree
+	 * @param result
 	 */
 	
 	public void printModelFile(Object result) 

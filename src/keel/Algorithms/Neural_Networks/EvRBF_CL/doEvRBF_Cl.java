@@ -292,7 +292,6 @@ private static void set_test( ProcDataset DData ) {
     * Main Function: reads the parameters, creates the population, evolves it, gets the best individual, writes results and finishes.
     * </p>
     * @param args the Command line arguments. Only one is processed: the name of the file containing the	parameters
-    * @return Nothing
     */
     public static void main(String[] args) throws IOException{
         Rbfn red;

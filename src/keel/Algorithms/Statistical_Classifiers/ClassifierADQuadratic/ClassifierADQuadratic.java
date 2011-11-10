@@ -160,7 +160,7 @@ public class ClassifierADQuadratic {
 
     /**
      * <p>
-     * This method runs {@link qda}
+     * This method runs {@link ClassifierADQuadratic}
      * @param args A vector of string with command line arguments
      * </p>
      */ 

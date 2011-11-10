@@ -173,7 +173,7 @@ public class PittsburghModel extends GeneticIndividualForModels {
 	 * This method calculate a local optimization
 	 * </p>
 	 * @param MAXITER Maximum iterations
-	 * @param idoptimiza Type of optimization
+	 * @param idoptimization Type of optimization
 	 * @throws invalidOptim Message if error
 	 */    
 	public void localOptimization(int MAXITER, int idoptimization) throws invalidOptim {

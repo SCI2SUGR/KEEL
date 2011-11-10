@@ -232,7 +232,7 @@ public final class InformationHandler implements Serializable {
 
     /**
      * Initializes for constucting model trees
-     * @param dataset a dataset
+     * @param inst a dataset
      * @exception Exception if something goes wrong
      */
     public final void initialize(M5Instances inst) throws Exception {
@@ -259,7 +259,7 @@ public final class InformationHandler implements Serializable {
     /**
      * Prints information stored in an 'InformationHandler' object, basically containing
      *     command line options
-     * @param dataset a dataset
+     * @param inst a dataset
      * @exception Exception if something goes wrong
      */
     public final String toString(M5Instances inst) throws Exception {

@@ -131,7 +131,7 @@ public abstract class GeneticIndividualForModels extends GeneticIndividual {
      * This method inicialize the examples
      * </p>
      * @param pX The set of examples
-     * @param pC The sets of classes
+     * @param pY The sets of classes
      */
     public void setExamples(double[][] pX, double[] pY) {
         X=pX; Y=pY;

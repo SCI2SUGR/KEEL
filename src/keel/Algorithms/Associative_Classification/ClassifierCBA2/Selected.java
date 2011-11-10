@@ -137,7 +137,7 @@ public class Selected implements Comparable{
    * <p>
    * It sets the total of errors made by the rule into the "selected" structure
    * </p>
-   * @param int totalErrors Number of errors the rule made while it was classifying examples
+   * @param totalErrors Number of errors the rule made while it was classifying examples
    */
   public void setTotalErrors (int totalErrors) {
     this.totalErrors = totalErrors;

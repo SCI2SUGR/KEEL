@@ -419,7 +419,6 @@ public class Rbfn {
 	 * Deletes a neuron of the net
 	 * </p> 
 	 * @param idRbf Identifier of neuron to delete
-	 * @return Nothing
 	 */
 
 	public void removeRbf(String idRbf) {
@@ -435,7 +434,6 @@ public class Rbfn {
 	 * Adds a neuron to the net
 	 * </p> 
 	 * @param rbf The neuron to insert
-	 * @return Nothing
 	 */
 
 	public void insertRbf(Rbf rbf) {
@@ -454,7 +452,6 @@ public class Rbfn {
 	 * </p>
 	 * @param idRbf Identifier of neuron to delete
 	 * @param rbf  Neuron to insert
-	 * @return Nothing
 	 */
 
 	public void modifyRbf(Rbf rbf, String idRbf) {
@@ -644,7 +641,6 @@ public class Rbfn {
      * @param epsilon minimun error to introduce a new RBF
      * @param delta minimun distance to introduce a new RBF
      * @param alfa learning factor when a new unit is not allocated
-     * @return Nothing
      */
 
 	public void RAN(double[][] X, double[][] Y, int ndata, double delta,
@@ -830,7 +826,6 @@ public class Rbfn {
      * @param ndata Number of instances
      * @param percent Percent under the average of the weights to delete a neuron
      * @param alfa Learnig factor of LMS algorithm
-     * @return Nothing
      */
 
 	public void decremental(double[][] X, double[][] Y, int ndata,
@@ -1051,7 +1046,6 @@ public class Rbfn {
      * @param ndata Number of instances
      * @param iter Number of times the set of samples will be used.
      * @param alfa Learning factor.
-     * @return Nothing
      */
 
 	public void trainLMS(double[][] X, double[][] Y, int ndata, int iter,
@@ -1170,7 +1164,6 @@ public class Rbfn {
      * @param X matrix of inputs instances
      * @param ndata Number of instances
      * @param obtained Vector of results of the evaluation
-     * @return Nothing
      */
 
 	public void testModeling(double[][] X, int ndata, double[] obtained) {
@@ -1196,7 +1189,6 @@ public class Rbfn {
      * @param obtained Vector of results of the evaluation
      * @param max Class maximun identifier
      * @param min Class minimun identifier
-     * @return Nothing
      */
 
 	public void testClasification(double[][] X, int ndata, int[] obtained,
@@ -1222,8 +1214,6 @@ public class Rbfn {
 	 * <p>
 	 * Prints net on a stdout
 	 * </p>
-	 * @param _fileName Name of the file.
-	 * @return Nothing.
 	 */
 
 	public void printRbfn() {
@@ -1237,7 +1227,6 @@ public class Rbfn {
 	 * Prints net on a file.
 	 * </p>
 	 * @param _fileName Name of the file.
-	 * @return Nothing.
 	 */
 
 	public void printRbfn(String _fileName) {

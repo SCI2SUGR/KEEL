@@ -163,7 +163,7 @@ public class parseParameters {
     /**
      * <p>       
      * It returns the name of the file containing the training data
-     * @Return String the name of the file containing the training data
+     * @return String the name of the file containing the training data
      * </p>        
      */
     public String getTrainingInputFile(){
@@ -173,7 +173,7 @@ public class parseParameters {
     /**
      * <p>       
      * It returns the name of the file containing the test data
-     * @Return String the name of the file containing the test data
+     * @return String the name of the file containing the test data
      * </p>        
      */
     public String getTestInputFile(){
@@ -183,7 +183,7 @@ public class parseParameters {
     /**
      * <p>       
      * It returns the name of the file containing the validation data
-     * @Return String the name of the file containing the validation data
+     * @return String the name of the file containing the validation data
      * </p>        
      */
     public String getValidationInputFile(){
@@ -193,7 +193,7 @@ public class parseParameters {
     /**
      * <p>       
      * It returns the name of the file containing the output for the training data
-     * @Return String the name of the file containing the output for the training data
+     * @return String the name of the file containing the output for the training data
      * </p>        
      */
     public String getTrainingOutputFile(){
@@ -203,7 +203,7 @@ public class parseParameters {
     /**
      * <p>       
      * It returns the name of the file containing the output for the test data
-     * @Return String the name of the file containing the output for the test data
+     * @return String the name of the file containing the output for the test data
      * </p>        
      */
     public String getTestOutputFile(){
@@ -213,7 +213,7 @@ public class parseParameters {
     /**
      * <p>       
      * It returns the name of the algorithm
-     * @Return String the name of the algorithm
+     * @return String the name of the algorithm
      * </p>        
      */
     public String getAlgorithmName(){
@@ -223,7 +223,7 @@ public class parseParameters {
     /**
      * <p>       
      * It returns all the parameters as an array of Strings
-     * @Return String [] all the parameters of the algorithm
+     * @return String [] all the parameters of the algorithm
      * </p>        
      */
     public String [] getParameters(){
@@ -235,7 +235,7 @@ public class parseParameters {
      * <p>       
      * It returns the parameter in the position "pos"
      * @param pos int Position of the parameter
-     * @Return String [] the parameter of the algorithm in position "pos"
+     * @return String [] the parameter of the algorithm in position "pos"
      * </p>        
      */
     public String getParameter(int pos){
@@ -245,7 +245,7 @@ public class parseParameters {
     /**
      * <p>       
      * It returns all the input files
-     * @Return String [] all the input files
+     * @return String [] all the input files
      * </p>        
      */
     public String [] getInputFiles(){
@@ -256,7 +256,7 @@ public class parseParameters {
      * <p>       
      * It returns the input file in the position "pos"
      * @param pos int Position of the input file
-     * @Return String [] the input file of the algorithm in position "pos"
+     * @return String [] the input file of the algorithm in position "pos"
      * </p>        
      */
     public String getInputFile(int pos){
@@ -266,7 +266,7 @@ public class parseParameters {
     /**
      * <p>       
      * It returns all the output files
-     * @Return String [] all the output files
+     * @return String [] all the output files
      * </p>        
      */
     public String [] getOutputFiles(){
@@ -277,7 +277,7 @@ public class parseParameters {
      * <p>       
      * It returns the output file in the position "pos"
      * @param pos int Position of the output file
-     * @Return String [] the output file of the algorithm in position "pos"
+     * @return String [] the output file of the algorithm in position "pos"
      * </p>        
      */
     public String getOutputFile(int pos){

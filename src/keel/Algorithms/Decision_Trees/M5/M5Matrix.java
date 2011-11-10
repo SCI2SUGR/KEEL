@@ -64,7 +64,7 @@ public final class M5Matrix {
      * @param nrl the smallest index of the rows
      * @param nrh the largest index of the rows
      * @param ncl the smallest index of the column
-     * @param ncl the largest index of the column
+     * @param nch the largest index of the column
      * @return the converted string
      */
     public final String toString(int nrl, int nrh, int ncl, int nch) {

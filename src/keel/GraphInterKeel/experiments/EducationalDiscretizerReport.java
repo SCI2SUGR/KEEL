@@ -63,7 +63,7 @@ public class EducationalDiscretizerReport extends EducationalReport
      * <p>
 	 * Constructor
 	 * </p>
-	 * @param	sentencesTotal of sentences for RunKeel.xml file
+	 * @param	sentences of sentences for RunKeel.xml file
 	 * @param	experimentType Type of experiment, clasifficacion o regression
 	 */
 	public EducationalDiscretizerReport(ArrayList<Element> sentences, int experimentType)

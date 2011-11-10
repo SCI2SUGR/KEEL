@@ -95,8 +95,6 @@ public class PSCSAGenerator extends PrototypeGenerator {
   
   /**
    * Build a new PSCSAGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
    */
   
   public PSCSAGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double F, double CR, int strg)
@@ -114,7 +112,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
   /**
    * Build a new PSCSAGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public PSCSAGenerator(PrototypeSet t, Parameters parameters)
   {
@@ -163,7 +161,6 @@ public class PSCSAGenerator extends PrototypeGenerator {
   
   /**
    * Stim for binary codification
-   * @return
    */
   public double stimString(String [][] binario, int index, String [][] binarioTrain, int pIndex){
 	  double hamming= 0.0;
@@ -186,7 +183,6 @@ public class PSCSAGenerator extends PrototypeGenerator {
   
   /**
    * Stim for binary codification
-   * @return
    */
   public double stimString2(String [] binario, String [] binarioTrain){
 	  double hamming= 0.0;
@@ -219,7 +215,6 @@ public class PSCSAGenerator extends PrototypeGenerator {
    * Stim function. Is used to measure the response of B cell to an antigen. For CSA
    * is inversely proportional to the Hamming distance between the feature
    * vectors of the argument elements.
-   * @return
    */
   public double stim(Prototype agi, Prototype mj){
 	  
@@ -313,9 +308,6 @@ public class PSCSAGenerator extends PrototypeGenerator {
   
   /**
    * Production of mutated clones
-   * @param x
-   * @param flag
-   * @return
    */
   public Pair<String [], Boolean> mutate(String Mmatch[], String agk[],double claseBj){
 	 

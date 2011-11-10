@@ -10,7 +10,7 @@ public class RoughSetsOriginal implements Serializable {
 	 */
 	// private static final long serialVersionUID = 7659983106378537022L;
 	/**
-	 * @param args
+	 * 
 	 */
 	public Instances m_Data;
 	protected int[][] equivalence_sets;
@@ -109,7 +109,7 @@ public class RoughSetsOriginal implements Serializable {
 	 * index of the equivalence clasess of an instance
 	 * 
 	 * @param obj
-	 * @return
+	 * @return the list with the index of the equivalence classes
 	 * @throws Exception
 	 */
 	public int[] EquivClasses_Instance(Instance obj) throws Exception {
@@ -152,7 +152,6 @@ public class RoughSetsOriginal implements Serializable {
 	 * Compute the lower aproximation of a set
 	 * 
 	 * @param class_index
-	 * @return
 	 */
 	public int[] lower_aproximation_Set(int class_index) {
 		int[] la = new int[m_Data.numInstances()];
@@ -191,7 +190,6 @@ public class RoughSetsOriginal implements Serializable {
 	 * Compute the upper aproximation of a set
 	 * 
 	 * @param class_index
-	 * @return
 	 */
 	public int[] upper_aproximation_Set(int class_index) {
 		int[] ua = new int[m_Data.numInstances()];

@@ -764,8 +764,6 @@ public class Rbfn implements Cloneable {
     * <p>
     * Prints net on a stdout
     * </p>
-    * @param _fileName Name of the file.
-    * @return Nothing.
     */
     public void paint( ) {
 		  this.paint( "" );
@@ -777,7 +775,6 @@ public class Rbfn implements Cloneable {
     * Prints net on a file.
     * </p>
     * @param _fileName Name of the file.
-    * @return Nothing.
     */
     public void paint( String _fileName ) {
     	int i;

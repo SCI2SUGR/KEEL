@@ -116,7 +116,7 @@ public class SDIGA {
      * <p>
      * Auxiliar Gets the name for the input files, eliminating "" and skiping "="
      * </p>
-     * @param s                 String of the input files
+     * @param nFile                 String of the input files
      */
     public static void ReadParameters (String nFile) {
        claseSelec = false;  // By default, there is a selected target class to run the algorihtm

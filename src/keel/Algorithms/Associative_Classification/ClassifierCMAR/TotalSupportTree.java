@@ -1135,7 +1135,7 @@ public class TotalSupportTree extends AssocRuleMining {
     /* OUTPUT FREQUENT SETS (GUI VERSION) */
     /** Commences the process of outputting the frequent sets contained in 
     the T-tree to a rext area. 
-    @param the text area. */
+    @param textArea the text area. */
                 
     public void outputFrequentSets(JTextArea textArea) {
 	int number = 1;
@@ -1296,7 +1296,7 @@ public class TotalSupportTree extends AssocRuleMining {
 	}
 	
     /** Commences the process of outputting T-tree statistics:GUI version.
-    @param the text area. */
+    @param textArea the text area. */
     
     public void outputTtreeStats(JTextArea textArea) {
         textArea.append("T-TREE STATISTICS\n-----------------\n");	

@@ -59,12 +59,12 @@ public class AssociationRule {
 	 * <p>
 	 * It creates a new association rule by setting up its properties
 	 * </p>
-	 * @param short[]       The antecedent part of the rule
-	 * @param short[]       The consequent part of the rule
-	 * @param double        The value representing the rule support
-	 * @param double        The value representing the antecedent support
-	 * @param double        The value representing the rule confidence
-         * @param int           Values of the target variable
+	 * @param antecedent       The antecedent part of the rule
+	 * @param consequent       The consequent part of the rule
+	 * @param ruleSupport        The value representing the rule support
+	 * @param antecedentSupport        The value representing the antecedent support
+	 * @param confidence        The value representing the rule confidence
+         * @param clases           Values of the target variable
 	 */
 	public AssociationRule(short[] antecedent, short[] consequent, double ruleSupport, double antecedentSupport, double confidence, int clases) {
 		this.setAntecedent(antecedent);
@@ -85,13 +85,13 @@ public class AssociationRule {
 	 * <p>
 	 * It creates a new association rule by setting up its properties
 	 * </p>
-	 * @param short[]       The antecedent part of the rule
-	 * @param short[]       The consequent part of the rule
-	 * @param double        The value representing the rule support
-	 * @param double        The value representing the antecedent support
-	 * @param double        The value representing the rule confidence
-         * @param int           Values of the target variable
-         * @param int[]         Distribution values of the class
+	 * @param antecedent       The antecedent part of the rule
+	 * @param consequent       The consequent part of the rule
+	 * @param ruleSupport        The value representing the rule support
+	 * @param antecedentSupport        The value representing the antecedent support
+	 * @param confidence        The value representing the rule confidence
+         * @param clases           Values of the target variable
+         * @param dist         Distribution values of the class
 	 */
 	public AssociationRule(short[] antecedent, short[] consequent, double ruleSupport, double antecedentSupport, double confidence, int clases, int[] dist) {
 		this.setAntecedent(antecedent);

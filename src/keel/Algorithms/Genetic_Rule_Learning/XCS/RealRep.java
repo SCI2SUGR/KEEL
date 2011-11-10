@@ -393,7 +393,6 @@ public class RealRep implements Attribute{
  * Returns if the real representation is a don't care symbol. It's not necessary in real representation, but it has to
  * be codified because is defined in the interface. So, it will return the generality of the interval.
  * </p>
- * @param i is the position of that allele (it's needed in the real representation to know the limits of the interval).
  * @return a double that indicates if the character of the representation is a don't care symbol.
  */
     public double isDontCareSymbol(){

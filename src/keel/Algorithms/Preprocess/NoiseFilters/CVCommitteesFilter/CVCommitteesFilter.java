@@ -108,8 +108,7 @@ public class CVCommitteesFilter {
 	 * <p>
 	 * It initializes the partitions from training set
 	 * </p>
-	 * @param paramName parameter name
-	 * @return true if the parameter is real, false otherwise
+	 * 
 	 */
 	public void run(){
 		

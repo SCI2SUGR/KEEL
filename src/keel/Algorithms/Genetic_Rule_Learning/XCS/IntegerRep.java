@@ -407,7 +407,6 @@ public class IntegerRep implements Attribute{
  * be codified because is defined in the interface. So, it will return the generality of the interval.
  * is a don't care symbol
  * </p>
- * @param i is the position of that allele (it is needed in the real representation to know the limits of the interval).
  * @return an integer that indicates if the character of the representation is a don't care symbol.
  */
   public double isDontCareSymbol(){

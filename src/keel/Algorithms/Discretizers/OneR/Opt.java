@@ -60,7 +60,7 @@ public class Opt {
 	/**
 	 * Creates a new object with the given elements
 	 * @param value the explanatory value
-	 * @param numClases the total number of different classes
+	 * @param numClasses the total number of different classes
 	 */
 	public Opt(double value,int numClasses){
 		_value = value;

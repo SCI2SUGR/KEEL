@@ -75,7 +75,6 @@ public class Interval {
 	/**
 	 * Checks if the provided instance is covered by this interval in the specified attribute
 	 * @param inst
-	 * @return
 	 */
 	public boolean covers(Instance inst){
 		double num = inst.getAllInputValues()[attribute]; 
@@ -89,7 +88,6 @@ public class Interval {
 	/**
 	 * Checks if the provided instance is covered by this interval in the specified attribute
 	 * @param index
-	 * @return
 	 */
 	public boolean covers(int index){
 		

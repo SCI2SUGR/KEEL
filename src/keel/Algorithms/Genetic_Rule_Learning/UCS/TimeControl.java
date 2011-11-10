@@ -86,7 +86,7 @@ public class TimeControl {
 
 /**
  * Updates the training time
- * @param iTestTime is the time at the beginning of training
+ * @param iTrainTime is the time at the beginning of training
  */
    public void updateTrainTime (long iTrainTime){
    	t_Train += System.currentTimeMillis() - iTrainTime; 	

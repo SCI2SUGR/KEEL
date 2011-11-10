@@ -64,7 +64,7 @@ public class Pair implements Comparable {
   /**
   * CompareTo method
   *
-  * @param Other pair
+  * @param o1 pair
   * @return A integer representing the order
   */
   public int compareTo (Object o1) { //sort by value

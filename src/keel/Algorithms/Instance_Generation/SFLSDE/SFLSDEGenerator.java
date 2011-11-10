@@ -95,8 +95,7 @@ public class SFLSDEGenerator extends PrototypeGenerator {
   
   /**
    * Build a new SFLSDEGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   *
    */
   
   public SFLSDEGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double F, double CR, int strg)
@@ -117,7 +116,7 @@ public class SFLSDEGenerator extends PrototypeGenerator {
   /**
    * Build a new SFLSDEGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public SFLSDEGenerator(PrototypeSet t, Parameters parameters)
   {
@@ -255,11 +254,7 @@ public PrototypeSet mutant(PrototypeSet population[], int actual, int mejor, dou
   
   /**
    * Local Search Fitness Function
-   * @param Fi
-   * @param xt
-   * @param xr
-   * @param xs
-   * @param actual
+   * 
    */
   public double lsff(double Fi, double CRi, PrototypeSet population[], int actual, int mejor){
 	  PrototypeSet resta, producto, mutant;
@@ -298,7 +293,7 @@ public PrototypeSet mutant(PrototypeSet population[], int actual, int mejor, dou
   /**
    * SFGSS local Search.
    * @param population
-   * @return
+   *
    */
   public PrototypeSet SFGSS(PrototypeSet population[], int actual, int mejor, double CRi){
 	  double a=0.1, b=1;
@@ -354,12 +349,7 @@ public PrototypeSet mutant(PrototypeSet population[], int actual, int mejor, dou
   
   /**
    * SFHC local search
-   * @param xt
-   * @param xr
-   * @param xs
-   * @param actual
-   * @param SFi
-   * @return
+   * 
    */
   
   public  PrototypeSet SFHC(PrototypeSet population[], int actual, int mejor, double SFi, double CRi){

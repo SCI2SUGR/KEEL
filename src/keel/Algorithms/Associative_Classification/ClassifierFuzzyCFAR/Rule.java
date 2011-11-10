@@ -127,7 +127,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the antecedent of the rule
    * </p>
-   * @param antecedent int[] Antecedent of the rule
+   * @param antecedente int[] Antecedent of the rule
    */
   public void asignaAntecedente(int [] antecedente){
     for (int i = 0; i < antecedente.length; i++)  this.antecedente[i] = antecedente[i];
@@ -148,7 +148,7 @@ public class Rule implements Comparable {
    * <p>
    * Function to check if a given example matchs with the rule (the rule correctly classifies it)
    * </p>
-   * @param example int[] Example to be classified
+   * @param ejemplo int[] Example to be classified
    * @return double 0.0 = doesn't match, >0.0 = does.
    */
   public double matching(double[] ejemplo) {

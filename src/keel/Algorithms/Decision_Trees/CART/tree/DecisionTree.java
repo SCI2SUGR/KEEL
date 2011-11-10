@@ -62,7 +62,7 @@ public class DecisionTree {
 	/////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * {@inheritDoc}
+	 * 
 	 */
 	public TreeNode getRoot() {
 		return root;

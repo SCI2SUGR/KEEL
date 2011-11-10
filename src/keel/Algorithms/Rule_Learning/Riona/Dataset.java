@@ -92,7 +92,7 @@ public class Dataset {
 	 * Return the values of the in-put attributes for an instance
 	 * </p>
 	 * 
-	 * @param The position of the instance
+	 * @param pos The position of the instance
 	 * @return double[] In-put attributes for this instance
 	 */
 	public double []getX(int pos){
@@ -126,7 +126,7 @@ public class Dataset {
 	 * <p>
 	 * Check if in the set of the instances the are instances of a determined class
 	 * </p>
-     * @param Tha lookinf for class instances
+     * @param whichClass Tha lookinf for class instances
      * @return true if there are instances
 	 */
 	public boolean existInstanceOfClassC(int whichClass)throws ArrayIndexOutOfBoundsException{
@@ -315,7 +315,6 @@ public class Dataset {
 	 * <p>
 	 * Returns for each attribute the number of attributes for each set of values
 	 * </p>
-	 * @return int [] an array with the different values
 	 */
 	public void/*int []*/setNumValues(){
 		//int []num=new int [nentradas];

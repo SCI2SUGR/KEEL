@@ -87,7 +87,7 @@ public class TimeControl {
    
 /**
  * Updates the reduction time.
- * @param is the initial reduction time (when the reduction has started)
+ * @param iReductionTime the initial reduction time (when the reduction has started)
  */
    public void updateReductionTime(long iReductionTime){
 	if (Config.typeOfReduction.toUpperCase().equals("SD"))		t_StrongDixon	+= System.currentTimeMillis() - iReductionTime;
@@ -99,7 +99,7 @@ public class TimeControl {
 
 /**
  * Updates the training time
- * @param iTestTime is the time at the beginning of training
+ * @param iTrainTime is the time at the beginning of training
  */
    public void updateTrainTime (long iTrainTime){
    	t_Train += System.currentTimeMillis() - iTrainTime; 	

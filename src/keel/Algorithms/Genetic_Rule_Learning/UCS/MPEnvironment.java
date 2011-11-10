@@ -81,7 +81,6 @@ public class MPEnvironment implements Environment {
  * It is the constructor of the class. 
  * It initializes the environment.
  *
- * @param cLength is the condition length of the classifier
  */
   public MPEnvironment() {        
 	condLength = Config.clLength;

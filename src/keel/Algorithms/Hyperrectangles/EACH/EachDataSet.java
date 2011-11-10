@@ -69,7 +69,7 @@ public class EachDataSet {
      * <p>
      * Removes a data item
      * </p>
-     * @param i Position to delete
+     * @param m Position to delete
      */
     public void addData(Sample m) {
         Sample mim = m.copySample();

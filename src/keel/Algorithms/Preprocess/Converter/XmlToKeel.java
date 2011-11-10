@@ -110,7 +110,7 @@ public class XmlToKeel extends Importer {
         Vector nameLabel = new Vector();
         List<Element> firstInstance;
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"√°", "√©", "√≠", "√≥", "√∫", "√Å", "√â", "√ç", "√ì", "√ö"};
+        String vowel_accent[] = {"·", "È", "Ì", "Û", "˙", "¡", "…", "Õ", "”", "⁄"};
         List elements;
 
         try {

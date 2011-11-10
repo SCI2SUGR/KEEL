@@ -69,7 +69,7 @@ public final class UserMethod extends Node {
     /**
      * Builder
      * @param dsc Parent dsc
-     * @param posicion Initial position
+     * @param position Initial position
      * @param p Graph
      * @param parameters Parameters of the method
      * @param id Node id

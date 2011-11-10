@@ -218,7 +218,7 @@ public class Cluster{
 	/** 
 	 * Drop an element from the cluster
 	 * 
-	 * @param ins Index of the instance in the cluster
+	 * @param index Index of the instance in the cluster
 	 * @return Index of the instance dropt
 	 * 
 	 */	
@@ -298,7 +298,7 @@ public class Cluster{
 	/** 
 	 * Set the inner border of the cluster
 	 * 
-	 * @param values Values of the inner border
+	 * @param value Values of the inner border
      *
 	 */
 	public void setInnerBorder(int [] value){
@@ -322,7 +322,7 @@ public class Cluster{
 	/** 
 	 * Set the outer border of the cluster
 	 * 
-	 * @param values Values of the outer border
+	 * @param value Values of the outer border
 	 * 
 	 */
 	public void setOuterBorder(int [] value){

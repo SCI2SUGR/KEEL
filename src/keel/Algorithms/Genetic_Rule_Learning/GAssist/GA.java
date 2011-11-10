@@ -97,7 +97,6 @@ public class GA {
 
   /**
    *  Executes a number of iterations of GA.
-   *  @param _numIterations Number of iterations to do.
    */
   public void run() {
     Classifier[] offsprings;

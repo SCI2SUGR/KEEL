@@ -375,7 +375,7 @@ public class RuleSet implements Comparable{
 	 * appending all the attributes from rs to the rules of the actual rule set. 
 	 * The rules used for this task should have the same class as the rule from our
 	 * rule set, but if we cannot find it, use any rule.
-	 * @param rs the rule set from which we will append the attributes
+	 * @param whichAtt the rule set from which we will append the attributes
 	 */
 	public void IS3(int whichAtt){
 		Attribute a =Attributes.getOutputAttribute(0);

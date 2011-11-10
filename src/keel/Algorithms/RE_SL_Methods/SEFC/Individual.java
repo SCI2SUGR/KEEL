@@ -54,7 +54,7 @@ public class Individual implements Comparable {
      * <p>       
      * Creates an individual containing "entradas" gaussian membership functions
      * </p>       
-     * @param n_var int The number of gaussian membership functions in the individual
+     * @param entradas int The number of gaussian membership functions in the individual
      */
     public Individual(int entradas) {
         antecedente = new MemFun[entradas];

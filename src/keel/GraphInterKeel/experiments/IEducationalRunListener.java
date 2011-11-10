@@ -51,7 +51,7 @@ public interface IEducationalRunListener<A extends EducationalRun>{
 	 * Window of partitions is closed by user, then this method is invoqued
      * </p>
      *
-     * @param Event  Event
+     * @param event  Event
 	 */	
 	public void closedEducationalExec(EducationalRunEvent<A> event);
 }

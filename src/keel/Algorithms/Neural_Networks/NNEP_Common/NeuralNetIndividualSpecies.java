@@ -111,7 +111,7 @@ public class NeuralNetIndividualSpecies extends AbstractNeuralNetSpecies<NeuralN
 	 * <p>
 	 * Sets number of outputs of the neural nets
 	 * 
-	 * @param nOfInputs Number of hidden layers
+	 * @param nOfOutputs Number of hidden layers
 	 * </p>
 	 */
 	
@@ -164,7 +164,7 @@ public class NeuralNetIndividualSpecies extends AbstractNeuralNetSpecies<NeuralN
 	 * Sets minimum number of neurons of a hidden layer
 	 * 
 	 * @param index Index of the desired hidden layer
-	 * @param hiddenLayerMaxNofneurons Minimum number of neurons
+	 * @param hiddenLayerMinNofneurons Minimum number of neurons
 	 * </p>
 	 */
 	
@@ -177,7 +177,7 @@ public class NeuralNetIndividualSpecies extends AbstractNeuralNetSpecies<NeuralN
 	 * Sets initial maximum number of neurons of a hidden layer
 	 * 
 	 * @param index Index of the desired hidden layer
-	 * @param hiddenLayerInitialNofneurons Initial maximum number of neurons
+	 * @param hiddenLayerInitialMaxNofneurons Initial maximum number of neurons
 	 * </p>
 	 */
 	
@@ -487,7 +487,7 @@ public class NeuralNetIndividualSpecies extends AbstractNeuralNetSpecies<NeuralN
 	 * output-layer[@type] (string)
 	 *  Boolean indicating if the output layer is biased.
 	 *  
-	 *  @param configutation Configuration if the Individual
+	 *  @param configuration Configuration if the Individual
 	 * </p>
 	 */
 

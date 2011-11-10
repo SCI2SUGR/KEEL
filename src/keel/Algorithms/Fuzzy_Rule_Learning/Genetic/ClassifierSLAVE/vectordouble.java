@@ -164,7 +164,7 @@ public class vectordouble {
      * Set the values of the first "tamano" elements of the vector to the values in vector "x"
      * </p>
      * @param x double[] The new values
-     * @param pos int The last position in the vector
+     * @param tamano int The last position in the vector
      */
     public void Put(double[] x, int tamano) {
         reservado = tamano;
@@ -182,7 +182,7 @@ public class vectordouble {
      * Returns a new vector containing the first "tamano" elements of the vector
      * </p>
      * @param tamano Integer The last position in the vector
-     * @param double[] The new vector
+     * @return double[] The new vector
      */
     public double[] Convert(Integer tamano) {
         double[] x;
@@ -202,7 +202,7 @@ public class vectordouble {
      * Returns the value in the position "pos" of the vector (or -99999999 if the position is not valid)
      * </p>
      * @param pos int The position in the vector
-     * @param double The value of the vector in this position
+     * @return double The value of the vector in this position
      */
     public double At(int pos) {
         if (pos < 0 || pos > numero) {

@@ -98,7 +98,7 @@ public class HtmlToKeel extends Importer {
         double max;
         List<Element> firstInstance;
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"√°", "√©", "√≠", "√≥", "√∫", "√Å", "√â", "√ç", "√ì", "√ö"};
+        String vowel_accent[] = {"·", "È", "Ì", "Û", "˙", "¡", "…", "Õ", "”", "⁄"};
 
         File fileInput = new File(pathnameInput);
 

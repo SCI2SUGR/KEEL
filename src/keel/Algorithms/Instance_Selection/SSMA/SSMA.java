@@ -285,7 +285,7 @@ public class SSMA extends Metodo {
   	/** 
 	 * Reads configuration script, and extracts its contents.
 	 * 
-	 * @param script Name of the configuration script  
+	 * @param ficheroScript Name of the configuration script  
 	 * 
 	 */	
 	public void leerConfiguracion (String ficheroScript) {

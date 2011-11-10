@@ -782,7 +782,7 @@ public class MODL extends Discretizer {
 	 * @param i The interval considered
 	 * @param ni Number of instances which belong to interval i
 	 * @param nij Number of instances of class j which belong to interval i
-	 * @return
+	 *
 	 */
 	public double factDivision(int i,int ni[],int nij[][]){
 		double result;

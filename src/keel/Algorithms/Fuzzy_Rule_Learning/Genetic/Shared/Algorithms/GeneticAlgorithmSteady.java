@@ -97,8 +97,8 @@ public class GeneticAlgorithmSteady extends GeneticAlgorithm {
 * @param NOL an int with the number of iterations in the local optimization method
 * @param IOL an int with the local identification method identidication
 * @param r the {@link Randomize} object
-* @param pCrossoverID the genetic algorithm crossover operation used attending the the current {@link Genotype}
-* @param pMutationID the genetic algorithm crossover operation used attending the the current {@link Genotype}
+* @param pCrossoverID the genetic algorithm crossover operation used attending the the current Genotype
+* @param pMutationID the genetic algorithm crossover operation used attending the the current Genotype
 */
     public GeneticAlgorithmSteady(
                                    GeneticIndividual initialIndividual,

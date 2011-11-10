@@ -117,7 +117,7 @@ public class MESDIF {
      * <p>
      * Auxiliar Gets the name for the input files, eliminating "" and skiping "="
      * </p>
-     * @param s                 String of the input files
+     * @param nFile                 String of the input files
      */
     public static void ReadParameters (String nFile) {
         int max_objectives = 4;     // Constant to store the max number of objectives

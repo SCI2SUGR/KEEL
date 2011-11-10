@@ -68,7 +68,7 @@ public class myDataset {
 	 * <p>
 	 * Initialize a new set of instances
 	 * </p>
-	 * @param nFuzzyRegionsForNumericAttributes The number of fuzzy regions with which numeric attributes are evaluated
+	 *
 	 */
   public myDataset() {
 	  IS = new InstanceSet();

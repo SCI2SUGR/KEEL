@@ -144,7 +144,6 @@ public class GCQuad {
      *  
      *  </p>
      *  @param x the example to give the perceptron
-     *  @param W the weights of the perceptron
      *  @return the output of perceptron with weights W for input x
      *  
      */  

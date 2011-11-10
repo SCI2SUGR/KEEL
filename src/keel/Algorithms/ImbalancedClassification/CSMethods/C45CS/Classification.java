@@ -214,7 +214,7 @@ public class Classification {
     /** Function to add all itemsets in given range to given value.
      *
      * @param valueIndex		The index of the value.
-     * @param itemset			The itemset to add.
+     * @param source			The itemset to add.
      * @param start				The index of the first itemset to add.
      * @param end				The index of the first itemset that will not be added.
      *

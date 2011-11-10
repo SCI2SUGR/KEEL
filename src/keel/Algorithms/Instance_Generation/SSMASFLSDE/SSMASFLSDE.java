@@ -253,11 +253,6 @@ public class SSMASFLSDE extends Metodo {
 
   /**
    * Local Search Fitness Function
-   * @param Fi
-   * @param xt
-   * @param xr
-   * @param xs
-   * @param actual
    */
   public double lsff(double Fi, double CRi, PrototypeSet population[], int actual, int mejor){
 	  PrototypeSet resta, producto, mutant;
@@ -296,7 +291,6 @@ public class SSMASFLSDE extends Metodo {
   /**
    * SFGSS local Search.
    * @param population
-   * @return
    */
   public PrototypeSet SFGSS(PrototypeSet population[], int actual, int mejor, double CRi){
 	  double a=0.1, b=1;
@@ -353,12 +347,6 @@ public class SSMASFLSDE extends Metodo {
   
   /**
    * SFHC local search
-   * @param xt
-   * @param xr
-   * @param xs
-   * @param actual
-   * @param SFi
-   * @return
    */
   
   public  PrototypeSet SFHC(PrototypeSet population[], int actual, int mejor, double SFi, double CRi){

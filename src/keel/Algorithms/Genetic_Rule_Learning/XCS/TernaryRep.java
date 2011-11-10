@@ -104,7 +104,7 @@ public class TernaryRep implements Attribute{
  * <p>
  * It's the  constructor of the class value from the environmental value.
  * </p>
- * @env is the environmental value for this attribute.
+ * @param env is the environmental value for this attribute.
  */
     public  TernaryRep(double env) {        
 	
@@ -197,9 +197,7 @@ public class TernaryRep implements Attribute{
  * <p>
  * @param tr contains the value that has to be set. 
  * </p>
- * <p>
- * @param i is needed to implement the Attribute interface
- * </p>
+ * 
  */
     public void setAllele(Attribute tr) {        
         pos = ((TernaryRep)tr).pos;
@@ -234,9 +232,7 @@ public class TernaryRep implements Attribute{
  * <p>
  * It returns the generality of the allele.
  * </p>
- * <p>
- * @param i is needed to implement the Attribute interface
- * </p>
+ *
  * <p>
  * @return a double with the generality of this allele. 
  * </p>
@@ -273,11 +269,9 @@ public class TernaryRep implements Attribute{
  * <p>
  * Mutates the character.
  * </p>
+ *
  * <p>
- * @param currentState is the current value of this position in the environment.
- * </p>
- * <p>
- * @param i is needed to implement the Attribute interface
+ * @param currentState is needed to implement the Attribute interface
  * </p>
  */
     public void mutate(double currentState) {        

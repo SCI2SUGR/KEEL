@@ -130,7 +130,7 @@ public class Rbf implements Cloneable {
      * @param c Vector of centres
      * @param r Radius
      * @param w Weights
-     * @return Nothing
+     *
      */
     public void setParam(double [] c,double r, double [] w) {
         int i;
@@ -152,7 +152,7 @@ public class Rbf implements Cloneable {
      * @param r Radius
      * @param w Weights
      * @param _vectors
-     * @return Nothing
+     *
      */
     
     public void setParam(double [] c,double r, double [] w,int _vectors) {
@@ -180,7 +180,7 @@ public class Rbf implements Cloneable {
    * Sets the vector of centres of a neuron
    * </p>
    * @param c centre of a neuron
-   * @return Nothing
+   *
    */
    public void setCentre(double [] c) {
        int i;
@@ -204,7 +204,7 @@ public class Rbf implements Cloneable {
    * Sets the radius of a neuron
    * </p>
    * @param r Radius of a neuron
-   * @return Nothing
+   *
    */
    public void setRadius(double r) {
         radius = r;
@@ -226,7 +226,7 @@ public class Rbf implements Cloneable {
      * </w>
      * 
      * @param w A vector of doubles with the weights of a neuron
-     * @return Nothing
+     *
      */
    public void setWeight(double [] w) {
        int i;
@@ -253,7 +253,7 @@ public class Rbf implements Cloneable {
    * </p>
    * @param i Index of weights of a neuron to set
    * @param val Value of the weight
-   * @return Nothing
+   *
    */
    public void setWeight(int i,double val){
        weight[i] = val;
@@ -294,7 +294,7 @@ public class Rbf implements Cloneable {
    * <p>
    * Prints neuron on std out
    * </p>
-   * @return Nothing
+   *
    */
    public void printRbf( ){
    	this.printRbf( "" );
@@ -305,7 +305,7 @@ public class Rbf implements Cloneable {
    * Prints neuron on a file.
    * </p>
    * @param _fileName Name of the file.
-   * @return Nothing
+   *
    */
    public void printRbf( String _fileName ){
         int i;

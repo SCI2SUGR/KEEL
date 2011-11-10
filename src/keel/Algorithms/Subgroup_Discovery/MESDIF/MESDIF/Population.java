@@ -105,7 +105,7 @@ public class Population {
        * </p>
        * @param Variables       Variables structure
        * @param porcVar         Percentage of max number of variables in the individual
-       * @param porPob          Percentage of max number of individuals to apply this initialization
+       * @param porcPob          Percentage of max number of individuals to apply this initialization
        */
       public void BsdInitPop (TableVar Variables, float porcVar, float porcPob) {
           int i, j;
@@ -212,8 +212,8 @@ public class Population {
       /**
        * Returns the indicated individual of the population
        *
-       * @param pos:         Number of the individual
-       * @return Individuo:  Individual indicated by pos
+       * @param pos         Number of the individual
+       * @return Individuo  Individual indicated by pos
        */
       public Individual getIndiv (int pos) {
           return indivi[pos];
@@ -222,8 +222,8 @@ public class Population {
       /**
        * Copy the individual otro into the individual pos of this population
        *
-       * @param pos:         Number of the individual of "indivi" where to copy individual "otro"
-       * @param otro:        Individual to be copied
+       * @param pos         Number of the individual of "indivi" where to copy individual "otro"
+       * @param otro        Individual to be copied
        */
       public void copyIndiv (int pos, Individual otro) {
           indivi[pos].copyIndiv(otro);
@@ -380,7 +380,7 @@ public class Population {
        * <p>
        * Gets if the individual in the position is or not dominated
        * </p>
-       * @param num_indiv:               Number of individual
+       * @param num_indiv               Number of individual
        * @return                   The individual is dominated or not
        */
       public boolean getIndivDom (int num_indiv) {
@@ -391,7 +391,7 @@ public class Population {
        * <p>
        * Sets the individual to dominated or not dominated
        * </p>
-       * @param num_indiv:               Number of individual
+       * @param num_indiv               Number of individual
        * @param dominated               Dominated or not
        */
       public void setIndivDom (int num_indiv, boolean dominated) {
@@ -437,7 +437,7 @@ public class Population {
        * <p>
        * Sets the individual raw fitness
        * </p>
-       * @param pos:               Number of the individual
+       * @param pos               Number of the individual
        * @param value              Raw fitness value
        */
       public void setIndivRawFit (int pos, int value) {
@@ -460,7 +460,7 @@ public class Population {
        * <p>
        * Sets the individual density
        * </p>
-       * @param pos:               Number of the individual
+       * @param pos               Number of the individual
        * @param value              Density value
        */
       public void setIndivDensity (int pos, float value) {

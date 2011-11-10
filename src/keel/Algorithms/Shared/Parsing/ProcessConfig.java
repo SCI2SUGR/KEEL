@@ -2055,7 +2055,7 @@ public class ProcessConfig {
      *<p>
      * Writes the result file with pattern and obtained data for clustering problems.
      *</p>
-     * @param expected expected data vector.
+     * @param pattern expected data vector.
      * @param obtained expected data vector
      */
     public void results(double[][] pattern, int[] obtained) {
@@ -2086,7 +2086,7 @@ public class ProcessConfig {
      *<p>
      * Writes the training result file with pattern and obtained data for clustering problems.
      *</p>
-     * @param expected expected data vector.
+     * @param pattern expected data vector.
      * @param obtained expected data vector
      */
     public void trainingResults(double[][] pattern, int[] obtained) {

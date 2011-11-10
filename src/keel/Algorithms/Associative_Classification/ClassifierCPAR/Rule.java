@@ -60,7 +60,6 @@ public class Rule implements Comparable {
    * <p>
    * Copy Constructor
    * </p>
-   * @param r Rule Rule to be copied
    */
   public Rule() {
   }

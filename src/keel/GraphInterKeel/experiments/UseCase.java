@@ -269,7 +269,7 @@ public class UseCase {
     /**
      * Sets the method's parameters
      *
-     * @param parameters
+     * @param parameter
      */
     public void addParameter(String parameter) {
         this.parameters.add(parameter);
@@ -285,7 +285,7 @@ public class UseCase {
     /**
      * Adds a new method's reference
      *
-     * @param references
+     * @param ref
      */
     public void addReference(String ref) {
         this.references.add(ref);

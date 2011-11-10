@@ -65,7 +65,7 @@ public class SetRules {
      * <p>
      * Add a set of rules to the list
      * </p>
-     * @param SetRules                  The set of rules to add
+     * @param r                  The set of rules to add
      */
     public void addReglas(SetRules r) {
         for (int i = 0; i < r.size(); i++) {
@@ -78,7 +78,7 @@ public class SetRules {
      * <p>
      * Add a rule to the list
      * </p>
-     * @param Complex                   Complex to add
+     * @param regl                   Complex to add
      */
     public void addRegla(Complex regl) {
         reglas.add(regl);
@@ -88,7 +88,7 @@ public class SetRules {
      * <p>
      * Delete a rule of the list
      * </p>
-     * @param int                       Number of complex to delete
+     * @param i                       Number of complex to delete
      */
     public void deleteRegla(int i) {
         reglas.remove(i);
@@ -107,7 +107,7 @@ public class SetRules {
      * <p>
      * Return a complex of the rule
      * </p>
-     * @param int                       Index of the rule
+     * @param i                       Index of the rule
      * @return                          A rule
      */
     public Complex getRule(int i) {
@@ -206,7 +206,7 @@ public class SetRules {
      * <p>
      * Delete rules with the same complex
      * </p>
-     * @param int                   Size of the set of rules
+     * @param tam                   Size of the set of rules
      */
     public void deleteEqual(int tam) {
 
@@ -241,7 +241,7 @@ public class SetRules {
      * <p>
      * Delete rules with equal semantics
      * </p>
-     * @param int                               Size of the set of rules
+     * @param tam                               Size of the set of rules
      */
     public void eliminaSubsumidos(int tam) {
 
@@ -279,7 +279,7 @@ public class SetRules {
      * <p>
      * Delete rules with the same attribute
      * </p>
-     * @param int               Size of the beam
+     * @param beamWidth               Size of the beam
      */
     public void deleteEqualAttributes(int beamWidth) {
 
@@ -299,8 +299,8 @@ public class SetRules {
      * <p>
      * Delete rules with low support
      * </p>
-     * @param int           Size of the beam
-     * @param float         Minimum support
+     * @param beamWidth           Size of the beam
+     * @param minSup         Minimum support
      */
     public void deleteRulesLowSupport(int beamWidth, float minSup) {
 

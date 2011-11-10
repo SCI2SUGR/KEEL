@@ -108,9 +108,9 @@ public class myDataset {
        * <p>
        * Outputs an array of transactions with their corresponding attribute values.
        * </p>
-       * @param int             Position of the example
-       * @param int             Positoin of the variable
-       * @return double         The value of the transaction for that position
+       * @param i             Position of the example
+       * @param j             Positoin of the variable
+       * @return The value of the transaction for that position
        */
       public double getValTrueTransactions(int i, int j){
         return trueTransactions[i][j];

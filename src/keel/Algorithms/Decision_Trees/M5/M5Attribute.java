@@ -353,7 +353,7 @@ public class M5Attribute implements Serializable {
     /**
      * Returns the attribute's type as an integer.
      *
-     * @returns the attribute's type.
+     * @return the attribute's type.
      */
     public final int type() {
 
@@ -455,7 +455,7 @@ public class M5Attribute implements Serializable {
      * more efficient than addStringValue(String) for long strings.
      *
      * @param src The Attribute containing the string value to add.
-     * @param int index the index of the string value in the source attribute.
+     * @param index the index of the string value in the source attribute.
      * @return the index assigned to the string, or -1 if the attribute is not
      * of type M5Attribute.STRING
      */

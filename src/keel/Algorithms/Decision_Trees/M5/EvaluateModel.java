@@ -158,7 +158,6 @@ public class EvaluateModel {
      * cost matrix as parameter.
      *
      * @param data set of instances, to get some header information
-     * @param costMatrix the cost matrix---if null, default costs will be used
      * @exception Exception if cost matrix is not compatible with
      * data, the class is not defined or the class is numeric
      */
@@ -233,7 +232,7 @@ public class EvaluateModel {
      * Performs a (stratified if class is nominal) cross-validation
      * for a classifier on a set of instances.
      *
-     * @param classifier a string naming the class of the classifier
+     * @param classifierString a string naming the class of the classifier
      * @param data the data on which the cross-validation is to be
      * performed
      * @param numFolds the number of folds for the cross-validation

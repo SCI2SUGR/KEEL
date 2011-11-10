@@ -70,7 +70,7 @@ public class PittsburghClassifier extends GeneticIndividualForClassification {
 * </p> 
 * @param s       the {@link FuzzyClassifier} to be cloned, used and train in this class 
 * @param tf      the type of Fitness function to evaluate the individual
-* @param r       the Randomize object to be used in the genetic evolution
+* @param rand       the Randomize object to be used in the genetic evolution
 */ 	
     public PittsburghClassifier(FuzzyClassifier s, int tf, Randomize rand) {
 	    super(tf);

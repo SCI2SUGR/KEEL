@@ -55,7 +55,7 @@ public final class Test extends Node {
     /**
      * Builder
      * @param dsc Parent dsc
-     * @param posicion Initial position
+     * @param position Initial position
      * @param p Graph
      */
     public Test(ExternalObjectDescription dsc, Point position, GraphPanel p) {
@@ -92,7 +92,7 @@ public final class Test extends Node {
     /**
      *
      * @param dsc Parent dsc
-     * @param posicion Initial position
+     * @param position Initial position
      * @param p Graph
      * @param vparameters Vector of parameter
      * @param id Node id

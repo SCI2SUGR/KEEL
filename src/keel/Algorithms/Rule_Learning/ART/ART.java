@@ -66,7 +66,7 @@ public class ART extends Algorithm
 
 	/** Constructor.
 	 * 
-	 * @param file			The parameters file.
+	 * @param paramFile			The parameters file.
 	 * 
 	 */
 	public ART( String paramFile )

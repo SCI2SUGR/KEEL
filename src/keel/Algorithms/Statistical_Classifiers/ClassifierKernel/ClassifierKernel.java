@@ -162,7 +162,7 @@ public class ClassifierKernel {
     
 	/**
 	* <p>
-	* This method runs {@link kernelClassifier}
+	* This method runs {@link ClassifierKernel}
 	* @param args Vector of string with command line arguments
 	* </p>
 	*/ 

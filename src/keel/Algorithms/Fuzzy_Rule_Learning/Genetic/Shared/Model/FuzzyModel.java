@@ -95,7 +95,7 @@ public class FuzzyModel extends Model {
      * This method defuzzified the output and return a value
      * </p> 
      * @param x The output
-     * @return
+     * @return the output defuzzified
      */
     public double output(double [] x) {
         return R.defuzzify(R.output(x),defuzType);

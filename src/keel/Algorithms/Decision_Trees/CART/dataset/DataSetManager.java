@@ -88,7 +88,7 @@ public class DataSetManager
 	/**
 	 * Reads schema from the KEEL file
 	 * 
-	 * @param jobFilename Name of the KEEL dataset file
+	 * @param fileName Name of the KEEL dataset file
 	 */
 
 	public static byte[] readSchema(String fileName) throws IOException, DatasetException{

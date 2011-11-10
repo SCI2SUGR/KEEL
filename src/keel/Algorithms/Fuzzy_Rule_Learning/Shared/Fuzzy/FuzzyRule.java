@@ -63,7 +63,8 @@ public class FuzzyRule {
     * A constructor for a fuzzy rule, given its consequent and weight in the base rules. 
     * 
     * </p> 
-    * @param c the single point of the fuzzy set.
+    * @param a consequent
+    * @param b weight
     */
    public FuzzyRule(int a, double b) {
        consequent=a; weight=b;
@@ -73,7 +74,7 @@ public class FuzzyRule {
     * A copy constructor for fuzzy rule, given other fuzzy rule. 
     * 
     * </p> 
-    * @param b to be copied.    
+    * @param r to be copied.    
     */
    public FuzzyRule(FuzzyRule r) {
        consequent=r.consequent;

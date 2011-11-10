@@ -118,7 +118,6 @@ public class RbfnPopulation {
     * @param _X Data
     * @param _ndatos Number of data (could differ from _X.length)
     * @param _nEnt Input dimension
-    * @return Nothing, since modifies instance variables minValues and maxValues
     */
   public void set_min_max_values(double [][] _X, int _ndatos, int _nEnt) {
     minValues=new double[_nEnt];
@@ -164,8 +163,7 @@ public class RbfnPopulation {
     * @param _X array containing the input patterns
     * @param _Y array containing the desired output (although only first column is used)
     * @param _nDatos Number of patterns
-    * @param _nClasses Number of diferent classes
-    * @return Nothing
+    * @param _nClases Number of diferent classes
     */
     public void setFitness_Cl(double [][] _X,  double [][] _Y, int _nDatos, int _nClases ) {
        try {
@@ -196,7 +194,6 @@ public class RbfnPopulation {
     * @param _nDatos Number of patterns in _X
     * @param _LMSLoops NUmber of iterations for LMS
     * @param _delta Delta parameter for LMS
-    * @return Nothing
     */
     public void trainLMS_subPop(double [][] _X,  double [][] _Y, 
                     int _nDatos, int _LMSLoops, double _delta ) {
@@ -217,8 +214,7 @@ public class RbfnPopulation {
     * @param _X array containing the input patterns
     * @param _Y array containing the desired output (although only first column is used)
     * @param _nDatos Number of patterns
-    * @param _nClasses Number of diferent classes
-    * @return Nothing
+    * @param _nClases Number of diferent classes
     */
     public void setFitness_Cl_subPop(double [][] _X,  double [][] _Y, int _nDatos, int _nClases ) {
        try {
@@ -245,9 +241,6 @@ public class RbfnPopulation {
     * </p>
     * @param _subPopSize  Number of individuals to select
     * @param _tournamentSize  Number of individuals to perform the tournament
-    * @return Nothing
-    * @date 16-aug-2007
-    * @author Victor Rivas (vrivas-AT-ujaen.es)
     */ 
   public void selectIndividuals( int _subPopSize, int _tournamentSize ) {
     // Setting the parameters to correct numbers
@@ -279,9 +272,6 @@ public class RbfnPopulation {
     * </p>
     * @param _xOverRate Probability for XOver operators
     * @param _mutatorRate Probability for Mutation operators
-    * @return Nothing
-    * @date 16-aug-2007
-    * @author Victor Rivas (vrivas-AT-ujaen.es)
     */ 
     public void  applyOperators( double _xOverRate, double _mutatorRate ) {
         for (int i = 0; i < subPopulation.length; ++i) {
@@ -306,7 +296,6 @@ public class RbfnPopulation {
     * Removes worse _numIndividuals nets from Population and includes individuals from subpopulation
     * </p>
     * @param _numIndividuals Number of indivuals to replace
-    * @return Nothing
     */
     public void replaceIndividuals( int _numIndividuals ){
         _numIndividuals=(_numIndividuals>subPopulation.length)?subPopulation.length:_numIndividuals;
@@ -323,7 +312,6 @@ public class RbfnPopulation {
     * Shows the _size first individuals (sorted by fitness)
     * </p>
     * @param _size Number of individuals to show
-    * @return Nothing
     */
     public void paint_sort(int _size ) {
         System.out.println( "Sorted population" );
@@ -338,7 +326,6 @@ public class RbfnPopulation {
     * <p>
     * Sorts population
     * </p>
-    * @return Nothing, but modifies the object
     */
     public void sort_population() {
         Rbfn tmpNet;
@@ -361,9 +348,6 @@ public class RbfnPopulation {
     * _net, taking numNeurons from a randomly chosen net.
     * </p>
     * @param _net The net to be modified
-    * @return Nothing
-    * @date 16-aug-2007
-    * @author Victor Rivas (vrivas-AT-ujaen.es)
     */
     public void x_fix( Rbfn _net ) {
         try {
@@ -406,9 +390,6 @@ public class RbfnPopulation {
     * Performs the C_RANDOM mutator operator: modifies MUTATORS_INTERNAL_PROB % of the centers of the net
     * </p>
     * @param _net The net to be modified
-    * @return Nothing
-    * @date 16-aug-2007
-    * @author Victor Rivas (vrivas-AT-ujaen.es)
     */
     public void c_random( Rbfn _net ) {
         try {
@@ -434,9 +415,6 @@ public class RbfnPopulation {
    /**
     * <p>Performs the R_RANDOM mutator operator: modifies 50% of the Radius of the net</p>
     * @param _net The net to be modified
-    * @return Nothing
-    * @date 16-aug-2007
-    ** @author Victor Rivas (vrivas-AT-ujaen.es)
     */
     public void r_random( Rbfn _net ) {
         try {
@@ -462,9 +440,6 @@ public class RbfnPopulation {
     * Performs the DELETER mutator operator: modifies C_DELETER% of the Radius of the net
     * </p>
     * @param _net The net to be modified
-    * @return Nothing
-    * @date 16-aug-2007
-    * @author Victor Rivas (vrivas-AT-ujaen.es)
     */
     public void deleter( Rbfn _net ) {
         try {
@@ -484,9 +459,6 @@ public class RbfnPopulation {
     * Performs the DELETER mutator operator: modifies C_DELETER% of the Radius of the net
     * </p>
     * @param _net The net to be modified
-    * @return Nothing
-    * @date 20-oct-2007
-    * @author Victor Rivas (vrivas-AT-ujaen.es)
     */
     public void adder( Rbfn _net ) {
         try {
@@ -516,8 +488,6 @@ public class RbfnPopulation {
     * <p>
     * Prints the ppulation on a stdout
     * </p>
-    * @param _fileName Name of the file.
-    * @return Nothing.
     */
     public void paint( ) {
         this.paint( "" );
@@ -529,7 +499,6 @@ public class RbfnPopulation {
     * Prints the pipulation on a file.
     * </p>
     * @param _fileName Name of the file.
-    * @return Nothing.
     */
     public void paint( String _fileName ) {
         if ( _fileName!="" ) {

@@ -47,7 +47,7 @@ public class Dataset {
 	/** Conjuntos de elementos. */
 	protected Vector itemsets;	
 		
-	/** Índice del atributo de clase. */
+	/** indice del atributo de clase. */
 	protected int classIndex;
 	
 	/** Keel dataset InstanceSet **/
@@ -295,7 +295,7 @@ public class Dataset {
 
   	/** Método que elimina el conjunto de elementos correspondiente a un índice.
   	 * 
-  	 * @param index 	Índice del conjunto de datos a borrar.
+  	 * @param index 	indice del conjunto de datos a borrar.
   	 */
   	public final void delete(int index) {
   		itemsets.removeElementAt(index);
@@ -303,7 +303,7 @@ public class Dataset {
 
 	/** Método para eliminar todos los atributos en los que falten valores.
 	 * 
-	 * @param attIndex		Índice del atributo.
+	 * @param attIndex		indice del atributo.
 	 */
   	public final void deleteWithMissing(int attIndex) {
   		Vector newItemsets = new Vector(numItemsets());
@@ -405,7 +405,7 @@ public class Dataset {
 
   	/** Método que implementa el algoritmo quicksort.
   	 * 
-  	 * @param attIndex		Índice del atributo utilizado para ordenar.
+  	 * @param attIndex		indice del atributo utilizado para ordenar.
   	 * @param lo0			Valor mínimo.
   	 * @param hi0			Valor máximo.
   	 */

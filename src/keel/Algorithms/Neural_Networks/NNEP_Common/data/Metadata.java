@@ -164,7 +164,7 @@ public class Metadata implements IMetadata
      * This means that it could not be retrieved via its name. It is
      * highly recommended only to use attributes with unique names.
      * </p>
-     * @param miningAttribute mining attribute to add
+     * @param attribute mining attribute to add
      * @return true attribute also added to name hashtable, false if attribute
      * name is null or there already exists an attribute with the same name
      */

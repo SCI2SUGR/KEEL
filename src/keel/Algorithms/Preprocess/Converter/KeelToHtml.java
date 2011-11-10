@@ -107,7 +107,7 @@ public class KeelToHtml extends Exporter {
         Element childrenRoot;
         Element children;
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"√°", "√©", "√≠", "√≥", "√∫", "√Å", "√â", "√ç", "√ì", "√ö"};
+        String vowel_accent[] = {"·", "È", "Ì", "Û", "˙", "¡", "…", "Õ", "”", "⁄"};
 
 
 

@@ -93,8 +93,7 @@ public class DEGenerator extends PrototypeGenerator {
   
   /**
    * Build a new DEGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
+   * 
    */
   
   public DEGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double F, double CR, int strg)
@@ -119,7 +118,7 @@ public class DEGenerator extends PrototypeGenerator {
   /**
    * Build a new DEGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public DEGenerator(PrototypeSet t, Parameters parameters)
   {

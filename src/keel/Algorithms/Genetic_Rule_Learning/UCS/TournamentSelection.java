@@ -62,7 +62,7 @@ public class TournamentSelection implements Selection {
  * Initializes the tournament selection. It does nothing,
  * but it is required as this class implements Selection
  * 
- * @param pop is the population.
+ * @param correctSet is the population.
  */
   public void init( Population correctSet ) {        
   } // end init
@@ -72,7 +72,7 @@ public class TournamentSelection implements Selection {
 /**
  * Applies the tournament selection.
  *
- * @param pop is the population.
+ * @param correctSet is the population.
  * @return a Classifier with the selected classifier
  */
   public Classifier makeSelection( Population correctSet ){        

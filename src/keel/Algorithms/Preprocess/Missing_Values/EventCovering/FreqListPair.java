@@ -119,7 +119,7 @@ public class FreqListPair {
      * <p>
      * Number of different pairs of this list
      * </p>
-     * @return
+     * @return Number of different pairs of this list
      */
     public int numElems(){
         return freqs.size();

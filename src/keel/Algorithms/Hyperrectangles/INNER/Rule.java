@@ -141,8 +141,8 @@ public class Rule implements Comparator{
 	/**
      * Copies the training data iniside the class
      *
-     * @param training data Training data
-     * @param training output Output values
+     * @param trainData training data Training data
+     * @param trainOutput training output Output values
      * 
      */		
 	public static void copyData(double trainData [][], int trainOutput []){
@@ -651,7 +651,7 @@ public class Rule implements Comparator{
     /**
      * Tests if an instance is covered by the rule
      *
-     * @param instance Instance to be tested
+     * @param example Instance to be tested
      * @return True if it is covered. False, if not.
      */
 	public boolean inside(double example []){
@@ -1024,7 +1024,7 @@ public class Rule implements Comparator{
 	* Compare two rules, regarding its impurity level
 	*
 	* @param o First rule.
-	* @param o2Second rule.
+	* @param o2 Second rule.
 	*
 	* @return Order of the rules
 	*/

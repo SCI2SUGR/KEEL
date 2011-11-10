@@ -93,7 +93,7 @@ public abstract class RunCART
 	/**
 	 * Default constructor
 	 * @param file parameter file
-	 * @param boolean set at true if tree is used for regression 
+	 * @param regression set at true if tree is used for regression 
 	 * and if false is used for classification
 	 */
 	public RunCART(String file, boolean regression) {

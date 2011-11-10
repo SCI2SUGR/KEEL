@@ -56,7 +56,7 @@ public class FuzzyClassifier extends Classifier {
 * Class constructor using the following parameters:
 * </p> 
 * @param a      the input variables {@link FuzzyPartition} array
-* @param b      the class variable {@link Fuzzypartition} 
+* @param b      the class variable {@link FuzzyPartition} 
 * @param tn     the t-norm to be used
 * @param ag     the aggregation operator
 */ 	
@@ -147,10 +147,10 @@ public class FuzzyClassifier extends Classifier {
 
 /** 
 * <p> 
-* This method sets a given {@link FuzzyRule} in the {@link RuleBas}.
+* This method sets a given {@link FuzzyRule} in the {@link RuleBase}.
 * </p> 
 * @param n    the index of the component to set
-* @param t    the new {@link FuzzyRule} to be introduced.
+* @param r    the new {@link FuzzyRule} to be introduced.
 */ 	
     public void setComponent(int n, FuzzyRule r) {
         R.setComponent(n,r.clone());

@@ -50,8 +50,6 @@ public class CAIMDiscretizer extends Discretizer {
 
 	/**
 	* Builder
-	* @param _conf  Confidence threshold
-	* @param _nint  Number of intervals
 	*/
 	public CAIMDiscretizer () {
 		

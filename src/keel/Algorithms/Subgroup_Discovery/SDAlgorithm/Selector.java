@@ -53,7 +53,7 @@ public class Selector implements Comparable {
      * <p>
      * Constructor
      * </p>
-     * @param int        Attribute to add
+     * @param atr        Attribute to add
      * @param op         Operator to add
      * @param val        Value to add
      */
@@ -69,7 +69,7 @@ public class Selector implements Comparable {
      * <p>
      * Constructor for several values
      * </p>
-     * @param int        Attribute to add
+     * @param atr        Attribute to add
      * @param op         Operator to add
      * @param val        Array of values to add
      */
@@ -87,7 +87,7 @@ public class Selector implements Comparable {
      * <p>
      * Function to compare two objects of this class
      * </p>
-     * @param Objet             Selector to compare
+     * @param o             Selector to compare
      * @return                  0 equal
      *                          1 equal attribute and operator, and upper value
      *                          2 different attribute and operator
@@ -230,7 +230,7 @@ public class Selector implements Comparable {
      * <p>
      * Sets the attribute
      * </p>
-     * @param int                   Value of the attribute
+     * @param i                   Value of the attribute
      */
     public void setAtributo(int i) {
         attribute = i;
@@ -240,7 +240,7 @@ public class Selector implements Comparable {
      * <p>
      * Sets the operator
      * </p>
-     * @param int                   Value of the operator
+     * @param i                   Value of the operator
      */
     public void setOperador(int i) {
         operator = i;
@@ -249,7 +249,7 @@ public class Selector implements Comparable {
     /**
      * <p>
      * Sets the value for the selector
-     * @param double                Value of the selector
+     * @param f                Value of the selector
      */
     public void setValor(double f) {
         valor[0] = f;
@@ -259,7 +259,7 @@ public class Selector implements Comparable {
      * <p>
      * Sets a set of value for the selector
      * </p>
-     * @param double[]              Array of values of the selector
+     * @param f              Array of values of the selector
      */
     public void setValores(double[] f) {
         valor = new double[f.length];

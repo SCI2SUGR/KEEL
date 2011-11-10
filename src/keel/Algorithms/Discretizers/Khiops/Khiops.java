@@ -238,7 +238,7 @@ public class Khiops extends Discretizer {
 	 * @param indexna Index of the first element of na in the whole list of real values
 	 * @param nb Right interval to merge
 	 * @param indexnb Index of the first element of nb in the whole list of real values
-	 * @param I Current number of intervals (the total intervals prior to the merging)
+	 * @param nbChi2 Current number of intervals (the total intervals prior to the merging)
 	 * @param values Array in which position i there is the number of instance which explanatory (real) value has rank i after sorting
 	 * @return The cost variation produced by the merge operation
 	 */

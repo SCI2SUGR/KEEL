@@ -378,7 +378,7 @@ public class fuzzygCenter {
      * <p>
      * Returns the cluster to which the given instance belongs to
      * </p>
-     * @param orderOf_i The index of the instance
+     * @param i The index of the instance
      * @return The index of the cluster to this isntance belongs to.
      */
 	public int getClusterOf(Instance i) {

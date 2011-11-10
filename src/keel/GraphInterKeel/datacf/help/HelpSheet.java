@@ -74,7 +74,7 @@ public class HelpSheet {
      * <p>
      * Constructor that initializes the sheet using an URL address
      * </p>
-     * @param name Name of the sheet
+     * @param nombre Name of the sheet
      * @param adress URL adress
      */
     public HelpSheet(String nombre, URL adress) {

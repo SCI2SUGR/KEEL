@@ -50,9 +50,7 @@ public class ProtectedProperties extends Properties {
   }
 
   /**
-   * Overrides a method to prevent the properties from being modified.
-   *
-   * @return never returns without throwing an exception.
+   * Overrides a method to prevent the properties from being modified. inStream returns without throwing an exception.
    * @exception UnsupportedOperationException always.
    */  
   public void load(InputStream inStream) {
@@ -64,7 +62,6 @@ public class ProtectedProperties extends Properties {
   /**
    * Overrides a method to prevent the properties from being modified.
    *
-   * @return never returns without throwing an exception.
    * @exception UnsupportedOperationException always.
    */
   public void clear() {
@@ -91,7 +88,7 @@ public class ProtectedProperties extends Properties {
   /**
    * Overrides a method to prevent the properties from being modified.
    *
-   * @return never returns without throwing an exception.
+   * @param t never returns without throwing an exception.
    * @exception UnsupportedOperationException always.
    */
   public void putAll(Map t) {

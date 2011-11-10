@@ -177,7 +177,7 @@ public class RegressionProblemEvaluator extends ProblemEvaluator<AbstractIndivid
      * error function
      * </p>
      *
-     * @param nnind Neural net to obtain the error
+     * @param regressor Neural net to obtain the error
      * @param errorFunction Error function to obtain the error
      * 
      * @return double Train error value
@@ -212,7 +212,7 @@ public class RegressionProblemEvaluator extends ProblemEvaluator<AbstractIndivid
      * Returns the test error value of a neural net with an specified
      * error function
      * </p>
-     * @param nnind Neural net to obtain the error
+     * @param regressor Neural net to obtain the error
      * @param errorFunction Error function to obtain the error
      * 
      * @return double Test error value
@@ -254,7 +254,7 @@ public class RegressionProblemEvaluator extends ProblemEvaluator<AbstractIndivid
 	 * <ul>
 	 * <li>
 	 * <code>Problem evaluator configuration</code></p> 
-	 * @see net.sf.jclec.problem.ProblemEvaluator
+	 * net.sf.jclec.problem.ProblemEvaluator
 	 * </li>
 	 * <li>
 	 * <code>error-function: complex</code></p> 

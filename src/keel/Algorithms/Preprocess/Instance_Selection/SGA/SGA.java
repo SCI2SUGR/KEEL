@@ -233,7 +233,6 @@ public class SGA extends Metodo {
 	 * @param newPob New population
 	 * @param sel1 First parent
 	 * @param sel2 Second parent
-	 * @param pos Position of the chromosomes in the new population
 	 */
 	public void crucePMX (Cromosoma poblacion[], Cromosoma newPob[], int sel1, int sel2) {
 
@@ -272,7 +271,7 @@ public class SGA extends Metodo {
   	/** 
 	 * Reads configuration script, and extracts its contents.
 	 * 
-	 * @param script Name of the configuration script  
+	 * @param ficheroScript Name of the configuration script  
 	 * 
 	 */	
 	public void leerConfiguracion (String ficheroScript) {

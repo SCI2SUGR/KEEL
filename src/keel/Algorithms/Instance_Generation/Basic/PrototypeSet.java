@@ -118,7 +118,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
     /**
      * Return all the prototype in (this) that has other like the nearest neighbor
-     * @return
+     *
      */
     public PrototypeSet isTheNearPrototype(Prototype other){
     	PrototypeSet result = new PrototypeSet();
@@ -137,7 +137,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
   
     /**
      * Return all the prototype in (this) that has other like the nearest neighbor with the class given.
-     * @return
+     * 
      */
     public PrototypeSet isTheNearPrototypeWithClass(Prototype other, double clase){
     	PrototypeSet result = new PrototypeSet();
@@ -184,7 +184,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
     /** 
      * Return the  prototype  containing N from this set.
-     * @param current.
+     * @param current
      * @return Return the  prototype  containing N from this set.
      */
     public Prototype containing(Prototype current)
@@ -710,8 +710,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     /**
      * This method return the ratio of the average distance between instances blongin to different classes of i
      * and the average distance between instances that are from the same class i.
-     * @return
-     * @note This method is obtain by the exprexion (4) in the paper October 1, 2008 18:43WSPC/INSTRUCTIONFILECano-Garcia-Herrera-Bernado-IJPRAI 
+     * @return This method is obtain by the exprexion (4) in the paper October 1, 2008 18:43WSPC/INSTRUCTIONFILECano-Garcia-Herrera-Bernado-IJPRAI 
  		Because it was imposible to understand in the original PAPER
      */
     public double Overlapping (){
@@ -1172,7 +1171,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     /**
      * Performs standard desviation operation of the prototype set.
      * @return SD prototype of the data set.
-     * @author Isaac.
+     *
      */
     public Prototype sd()
     {
@@ -1224,8 +1223,8 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
   
     /**
      * Add one prototype to the set..
-     * @param one prototype
-     * @author isaac
+     * @param other one prototype
+     *
      */
     public void addPrototype(Prototype other)
     {
@@ -1237,7 +1236,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
      * this + other.
      * @param other
      * @return  S U other
-     * @author isaac
+     *
      */
     public PrototypeSet addPrototype2(Prototype other){
     	PrototypeSet otro = new PrototypeSet(this);
@@ -1322,7 +1321,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
     /**
      * return the smallest distance between uno and all prototypes of the particle.
-     * @author Isaac
+     *
      */
     
     public double minDist ( Prototype uno)
@@ -1398,7 +1397,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
      * @param datosTrain
      * @param C
      * @param centers
-     * @return
+     * 
      */
     
     @SuppressWarnings("unused")
@@ -1752,7 +1751,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 
    /**
     * Calculaa el opuesto de un conjunto .
-    * @return
+    * 
     */
    
    public PrototypeSet opposite(){
@@ -1945,7 +1944,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     * @param original
     * @param numberOfPrototypesSelected
     * @param usePriorProb
-    * @return
+    *
     */
    
    public static PrototypeSet selecRandomSet(PrototypeSet original, int numberOfPrototypesSelected, boolean usePriorProb) {

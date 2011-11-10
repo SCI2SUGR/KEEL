@@ -156,7 +156,7 @@ public class HyperrectangleSet{
     * <p>
     * Returns a hyperrectangles of the set
     * </p>
-    * @param index position in the set
+    * @param indice position in the set
     */
     public Hyperrectangle getHyperrectangle(int indice){
     	return set[indice];

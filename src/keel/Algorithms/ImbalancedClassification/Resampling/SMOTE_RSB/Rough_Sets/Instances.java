@@ -147,7 +147,7 @@ public class Instances implements Serializable {
 	 * Constructor copying all instances and references to the header
 	 * information from the given set of instances.
 	 * 
-	 * @param instances
+	 * @param dataset
 	 *            the set to be copied
 	 */
 	public Instances(/* @non_null@ */Instances dataset) {
@@ -162,7 +162,7 @@ public class Instances implements Serializable {
 	 * header information from the given set of instances. Sets the capacity of
 	 * the set of instances to 0 if its negative.
 	 * 
-	 * @param instances
+	 * @param dataset
 	 *            the instances from which the header information is to be taken
 	 * @param capacity
 	 *            the capacity of the new dataset
@@ -427,7 +427,7 @@ public class Instances implements Serializable {
 	 * deep copy of the attribute information is performed before the attribute
 	 * is deleted.
 	 * 
-	 * @param pos
+	 * @param position
 	 *            the attribute's position
 	 * @exception IllegalArgumentException
 	 *                if the given index is out of range or the class attribute
@@ -604,7 +604,7 @@ public class Instances implements Serializable {
 	 * 
 	 * @param att
 	 *            the attribute to be inserted
-	 * @param pos
+	 * @param position
 	 *            the attribute's position
 	 * @exception IllegalArgumentException
 	 *                if the given index is out of range

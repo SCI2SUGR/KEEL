@@ -186,8 +186,8 @@ public class FuzzyGAPClassifier extends GeneticIndividualForClassification {
 * @param p3      the first crossed {@link GeneticIndividual}
 * @param p4      the second crossed {@link GeneticIndividual}
 * @param croosoverID this value should be fixed to:
-*	{@link OperatorIdent.GAPCRUCEGA} for a genetic algorithm crossover
-*	{@link OperatorIdent.GAPCRUCEGP} for genetic programming crossover
+*	OperatorIdent.GAPCRUCEGA for a genetic algorithm crossover
+*	OperatorIdent.GAPCRUCEGP for genetic programming crossover
 * @throws {@link invalidCrossover} in case of invalid crossoverID
 */ 	
     public void crossover(GeneticIndividual p2, GeneticIndividual p3, GeneticIndividual p4, int croosoverID) throws invalidCrossover {

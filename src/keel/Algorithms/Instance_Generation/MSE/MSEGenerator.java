@@ -84,8 +84,6 @@ public class MSEGenerator extends PrototypeGenerator {
   
   /**
    * Build a new MSEGenerator Algorithm
-   * @param t Original prototype set to be reduced.
-   * @param perc Reduction percentage of the prototype set.
    */
   
   public MSEGenerator(PrototypeSet _trainingDataSet, int k, int centroid, double gradStep, double temp)
@@ -106,7 +104,7 @@ public class MSEGenerator extends PrototypeGenerator {
   /**
    * Build a new RSPGenerator Algorithm
    * @param t Original prototype set to be reduced.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public MSEGenerator(PrototypeSet t, Parameters parameters)
   {

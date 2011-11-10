@@ -319,7 +319,7 @@ public class Datos {
 
     /** calculates the precision (errors/total_instances) in the prediction of the instance class.
         This is the Leaving One Out algorithm
-     *  @param featuresVector[] a boolean array with selected features
+     *  @param featuresVector a boolean array with selected features
      *  @return returns a double value with the error  (n_errors/total_instances) */
     public double LVO(boolean featuresVector[]){
         double min,media;
@@ -372,7 +372,7 @@ public class Datos {
 
 
     /** calculates the inconcistency ratio.
-     *  @param featuresVector[] a boolean array with the selected features
+     *  @param featuresVector a boolean array with the selected features
      *  @return returns a double value with the inconsistency ratio (0..1) */
     public double medidaInconsistencia(boolean featuresVector[]){
         int i, j, cuenta, max;
@@ -448,7 +448,7 @@ public class Datos {
 
 
      /** calculates the inconsistent example pairs ratio (IEP)
-     *  @param featuresVector[] a boolean array with the selected features
+     *  @param featuresVector a boolean array with the selected features
      *  @return returns a double value with the inconsistency ratio (0..1) */
     public double measureIEP(boolean featuresVector[]){
         int i, j, cuenta, max;
@@ -802,7 +802,7 @@ public class Datos {
 
     /** calculates the precision (errors/total_instances) in the classification of all instances in the TEST DATASET
         using the given features and THE SAME TEST DATASET TO PREDICT. Uses the Leaving One Out algorithm
-     *  @param featuresVector[] a boolean array with the selected features
+     *  @param featuresVector a boolean array with the selected features
      *  @return returns a double value with the calculated error (n.errors/total) */
     public double LVOTest(boolean featuresVector[]){
         double min,media;
@@ -857,7 +857,7 @@ public class Datos {
 
     /** calculates the precision (errors/total_instances) in the classification of all instances in the TEST DATASET
         using the given features and THE TRAINING DATASET TO PREDICT. Uses the Leaving One Out algorithm
-     *  @param featuresVector[] a boolean array with the selected features
+     *  @param featuresVector a boolean array with the selected features
      *  @return returns a double value with the calculated error (n.errors/total) */
     public double validacionCruzada(boolean featuresVector[]){
         double min,media;

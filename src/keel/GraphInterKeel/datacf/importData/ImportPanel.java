@@ -1587,7 +1587,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
      * <p>
      * Sets a view for a dataset
      * </p>
-     * @param dataCFFrame View for a dataset
+     * @param dataCFView View for a dataset
      */
     public void setDataCFView(DataCFFrame dataCFView) {
         this.dataCFFrame = dataCFView;

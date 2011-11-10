@@ -432,7 +432,7 @@ public class Population {
   * the deleted classifier. If it is in the second population, it
   * will delete it too.
   * </p>
-  * @param p is the population where the deleted classifier has to be searched. 
+  * @param aSet is the population where the deleted classifier has to be searched. 
   * @return a Classifier that contains the deleted classifier.
   */
   public Classifier deleteClFromPopulation (Population aSet){

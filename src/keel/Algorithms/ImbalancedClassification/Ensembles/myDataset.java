@@ -795,8 +795,6 @@ public class myDataset {
     /**
    * It reads the whole input data-set and it stores each example and its associated output value in
    * local arrays to ease their use.
-   * @param datasetFile String name of the file containing the dataset
-   * @param train boolean It must have the value "true" if we are reading the training data-set
    * @throws IOException If there ocurs any problem with the reading of the data-set
    */
   public void readInstanceSet(InstanceSet IS) throws

@@ -56,7 +56,7 @@ public class FixedFrequencyDiscretizer extends Discretizer {
 	 * <p> 
 	 * Constructor of the class, initializes the numInt attribute
 	 * </p>
-	 * @param _numInt
+	 * @param _freqSize
 	 */
 	public FixedFrequencyDiscretizer(int _freqSize) {
 		freqSize=_freqSize;

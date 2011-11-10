@@ -89,8 +89,6 @@ public class RoughSetsCuttoff {
 	/**
 	 * Compute the equivalence classes
 	 * 
-	 * @param classIndex
-	 * 
 	 * @throws Exception
 	 */
 	public void EquivalenceClasses() throws Exception {
@@ -106,7 +104,6 @@ public class RoughSetsCuttoff {
 	 * index of the equivalence clasess of an instance
 	 * 
 	 * @param obj
-	 * @return
 	 * @throws Exception
 	 * @throws Exception
 	 */
@@ -147,7 +144,6 @@ public class RoughSetsCuttoff {
 	 * Compute the upper aproximation of a set
 	 * 
 	 * @param class_index
-	 * @return
 	 */
 	public int[] upper_aproximation_Set(int class_index) {
 		int[] ua = new int[m_Data.numInstances()];
@@ -296,7 +292,6 @@ public class RoughSetsCuttoff {
 	 * all new instances are in upper approximation and they are in boundary to
 	 * because in this case the list have not lower approximation instances
 	 * 
-	 * @param classIndex
 	 * @throws Exception
 	 */
 	public void edit3RS() throws Exception {

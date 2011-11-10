@@ -101,7 +101,6 @@ public class KNN {
 	/** 
 	 * The main method of the class
 	 * 
-	 * @param script Name of the configuration script
 	 */
 	public KNN(Instance[] trainI, Instance[] testI) {
 		
@@ -582,7 +581,7 @@ public class KNN {
 	/** 
 	 * Generates a string with the contents of the instance
 	 * 
-	 * @param a Instance to print. 
+	 * @param instance a Instance to print. 
 	 * 
 	 * @return A string, with the values of the instance
 	 * 

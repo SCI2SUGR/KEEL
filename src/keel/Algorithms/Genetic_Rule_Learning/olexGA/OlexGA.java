@@ -115,8 +115,7 @@ public class OlexGA {
 	/**
 	 * Builds the model
 	 * 
-	 * @param insts
-	 *            Instances
+	 * @param inputFile Instances
 	 * 
 	 */
 	public void buildClassifier(String inputFile) throws Exception {

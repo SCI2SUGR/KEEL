@@ -129,7 +129,7 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
   * <p>
   * Process a dataset for classification
   * </p>
-  * @return Nothing
+  * 
   */
  public void processClassifierDataset() throws IOException {
   try {
@@ -185,7 +185,7 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
   * <p>
   * Process a dataset for modelling
   * </p>
-  * @return Nothing        
+  *   
   */
  
  public void processModelDataset()  throws IOException {
@@ -242,7 +242,7 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
   * </p>
   * @param nfexamples 
   * @param train 
-  * @return Nothing
+  * 
   */
  public void processClusterDataset(String nfexamples, boolean train) throws 
  IOException {
@@ -316,10 +316,10 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
      * <p>
      * Generates output file for a modelling problem
      * </p>
-     * @ param Foutput Name of the output file
-     * @ param real Vector of outputs instances
-     * @ param obtained Vector of net outputs
-     * @return Nothing
+     * @param Foutput Name of the output file
+     * @param real Vector of outputs instances
+     * @param obtained Vector of net outputs
+     *
      */
   public void generateResultsModeling(String Foutput,int []real, int[] obtained) {
 
@@ -349,10 +349,10 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
      * <p>
      * Generates output file for a modelling problem
      * </p>
-     * @ param Foutput Name of the output file
-     * @ param real Vector of outputs instances
-     * @ param obtained Vector of net outputs
-     * @return Nothing
+     * @param Foutput Name of the output file
+     * @param real Vector of outputs instances
+     * @param obtained Vector of net outputs
+     * 
      */
   public void generateResultsModeling(String Foutput,double []real, double[] obtained) {
 
@@ -382,10 +382,10 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
      * <p>
      * Generates output file for a clasification problem
      * </p>
-     * @ param Foutput Name of the output file
-     * @ param real Vector of outputs instances
-     * @ param obtained Vector of net outputs
-     * @return Nothing
+     * @param Foutput Name of the output file
+     * @param real Vector of outputs instances
+     * @param obtained Vector of net outputs
+     * 
      */
  public void generateResultsClasification(String Foutput,int []real, int[] obtained) {
 
