@@ -54,7 +54,7 @@ public class Main {
 	
 	/**
 	 * <p>
-	 * Creates a new instance of Main 
+	 * Creates a new instance of Main.
 	 * </p>
 	 */
 	public Main(){
