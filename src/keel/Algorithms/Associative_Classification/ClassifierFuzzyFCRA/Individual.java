@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
 
+import org.core.Randomize;
+import java.lang.*;
+
 /**
  * <p>Title: Individual</p>
  *
@@ -42,10 +45,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
  * @version 1.0
  * @since JDK1.5
  */
-
-import org.core.Randomize;
-import java.lang.*;
-
 public class Individual implements Comparable{
   int[] chromosome;
   double fitness, accuracy;

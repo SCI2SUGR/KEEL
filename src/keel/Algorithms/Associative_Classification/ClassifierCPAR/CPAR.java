@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCPAR;
 
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: CPAR</p>
  *
@@ -41,10 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCPAR;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class CPAR {
 
   myDataset train, val, test;

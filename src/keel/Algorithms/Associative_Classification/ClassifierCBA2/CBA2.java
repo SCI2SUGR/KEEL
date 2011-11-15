@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: CBA2</p>
  *
@@ -41,10 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class CBA2 {
 	/**
 	 * <p>

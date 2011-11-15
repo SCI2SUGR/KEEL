@@ -43,10 +43,9 @@
 
 // Java packages
 package keel.Algorithms.Associative_Classification.ClassifierCMAR;
+
 import java.io.*;
 import java.util.*;
-
-// Java GUI packages
 import javax.swing.*;
 
 /**
@@ -64,7 +63,6 @@ algorithms included in the LUCS-KDD suite of ARM programs.</p>
  * @version 1.0
  * @since JDK1.5
  */
-
 public class AssocRuleMining extends JFrame {
 
     /* ------ FIELDS ------ */

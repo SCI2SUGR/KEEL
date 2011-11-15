@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCMAR;
 
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: CMAR</p>
  *
@@ -42,10 +45,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCMAR;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class CMAR {
 
   myDataset train, val, test;

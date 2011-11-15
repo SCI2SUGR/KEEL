@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
 
+import java.util.*;
+import org.core.*;
+
 /**
  * <p>Title: Population</p>
  *
@@ -42,10 +45,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
  * @version 1.2
  * @since JDK1.5
  */
-
-import java.util.*;
-import org.core.*;
-
 public class Population {
     ArrayList<Individual> Population;
     ArrayList<Individual> offspring;

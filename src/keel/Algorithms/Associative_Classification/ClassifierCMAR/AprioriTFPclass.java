@@ -53,6 +53,7 @@ AssocRuleMining
 // Java packages
 
 package keel.Algorithms.Associative_Classification.ClassifierCMAR;
+
 import java.util.*;			      
 import java.io.*;
 
@@ -73,7 +74,6 @@ field.</p>
  * @version 1.0
  * @since JDK1.5
  */
-
 public class AprioriTFPclass extends PartialSupportTree {
 
     /* ------ FIELDS ------ */

@@ -42,7 +42,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
  * @version 1.0
  * @since JDK1.5
  */
-
 public class Fuzzy {
   double x0, x1, x3, y;
   String name;

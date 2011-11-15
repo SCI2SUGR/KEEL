@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
 
+import java.util.*;
+import org.core.*;
+
 /**
  * <p>Title: RuleBase</p>
  *
@@ -42,11 +45,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
  * @version 1.0
  * @since JDK1.5
  */
-
-
-import java.util.*;
-import org.core.*;
-
 public class RuleBase {
   ArrayList<Rule> ruleBase;
   DataBase dataBase;

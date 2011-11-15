@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
 
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,10 +43,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class CFAR {
 
   myDataset train, val, test;

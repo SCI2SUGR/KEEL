@@ -29,6 +29,8 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCPAR;
 
+import org.core.Files;
+
 /**
  * <p>Title: DataBase</p>
  *
@@ -42,9 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCPAR;
  * @version 1.0
  * @since JDK1.5
  */
-
-import org.core.Files;
-
 public class DataBase {
 	/**
 	 * <p>

@@ -52,10 +52,9 @@ AssocRuleMining
 
 /* Java packages */ 
 package keel.Algorithms.Associative_Classification.ClassifierCMAR;
+
 import java.io.*;
 import java.util.*;
-
-// Java GUI packages
 import javax.swing.*;
 
 /**
@@ -74,7 +73,6 @@ data structures.</p>
  * @version 1.0
  * @since JDK1.5
  */
-
 public class PartialSupportTree extends TotalSupportTree {
 
     /*------------------------------------------------------------------------*/

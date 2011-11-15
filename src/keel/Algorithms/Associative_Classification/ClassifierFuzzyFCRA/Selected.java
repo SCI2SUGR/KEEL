@@ -42,7 +42,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
  * @version 1.0
  * @since JDK1.5
  */
-
 public class Selected implements Comparable{
   double probability;
   int post;

@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
 
+import java.io.IOException;
+import java.lang.String;
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,12 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import java.lang.String;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
     public static final int REAL = 0;

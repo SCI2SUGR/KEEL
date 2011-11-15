@@ -29,6 +29,8 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
 
+import java.util.*;
+
 /**
  * <p>Title: Item</p>
  *
@@ -42,10 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.util.*;
-
-
 public class Item implements Comparable {
   int variable, value;
 

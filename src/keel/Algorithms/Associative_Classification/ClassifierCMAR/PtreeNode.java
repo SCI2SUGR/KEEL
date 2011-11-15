@@ -62,7 +62,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCMAR;
  * @version 1.0
  * @since JDK1.5
  */
-
 public class PtreeNode {
     
     /*------------------------------------------------------------------------*/

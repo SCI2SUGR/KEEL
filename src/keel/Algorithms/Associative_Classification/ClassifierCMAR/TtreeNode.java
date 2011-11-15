@@ -41,6 +41,7 @@
 /* ------------------------------------------------------------------------- */
 
 package keel.Algorithms.Associative_Classification.ClassifierCMAR;
+
 import java.io.*;
 import java.util.*;
 
@@ -59,7 +60,6 @@ are used to store nodes at the same level in any sub-branch of the T-tree.</p>
  * @version 1.0
  * @since JDK1.5
  */
-
 public class  TtreeNode {
     
     /* ------ FIELDS ------ */

@@ -42,8 +42,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCPAR;
  * @version 1.0
  * @since JDK1.5
  */
-
-
 public class Literal implements Comparable{
 	/**
 	 * <p>

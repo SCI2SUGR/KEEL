@@ -52,10 +52,9 @@ To run */
 
 /* Java packages */      
 package keel.Algorithms.Associative_Classification.ClassifierCMAR;
+
 import java.io.*;
 import java.util.*;
-
-// Java GUI packages
 import javax.swing.*;
 
 /**
@@ -74,7 +73,6 @@ itemsets.</p>
  * @version 1.0
  * @since JDK1.5
  */
-
 public class TotalSupportTree extends AssocRuleMining {
 
     /* ------ FIELDS ------ */

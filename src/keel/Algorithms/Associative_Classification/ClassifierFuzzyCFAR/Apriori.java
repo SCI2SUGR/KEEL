@@ -29,6 +29,8 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
 
+import java.util.*;
+
 /**
  * <p>Title: Apriori</p>
  *
@@ -42,10 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.util.*;
-
-
 public class Apriori {
   ArrayList<Itemset> L1;
   double minpsup, minpconf, MS;

@@ -29,6 +29,8 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
 
+import org.core.Fichero;
+
 /**
  * <p>Title: DataBase</p>
  *
@@ -42,9 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
  * @version 1.0
  * @since JDK1.5
  */
-
-import org.core.Fichero;
-
 public class DataBase {
   int n_variables, partitions;
   int[] nLabels;

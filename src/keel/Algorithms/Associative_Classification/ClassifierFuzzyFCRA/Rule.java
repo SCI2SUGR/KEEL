@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
 
+import java.util.*;
+import org.core.Randomize;
+
 /**
  * <p>Title: Rule</p>
  *
@@ -42,10 +45,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.util.*;
-import org.core.Randomize;
-
 public class Rule implements Comparable {
 
   int[] antecedent;

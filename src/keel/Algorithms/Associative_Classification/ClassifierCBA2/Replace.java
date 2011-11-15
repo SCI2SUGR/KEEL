@@ -42,7 +42,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
  * @version 1.0
  * @since JDK1.5
  */
-
 public class Replace implements Comparable{
 	/**
 	 * Auxiliary class to store the representation of the "Replace" structure

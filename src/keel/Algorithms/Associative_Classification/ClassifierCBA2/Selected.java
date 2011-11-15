@@ -42,7 +42,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
  * @version 1.0
  * @since JDK1.5
  */
-
 public class Selected implements Comparable{
 	/**
 	 * This class contains the representation of the "Selected" structure <rule, defaultClass, totalErrors>

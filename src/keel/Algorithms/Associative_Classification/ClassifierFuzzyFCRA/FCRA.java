@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
 
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: FCRA</p>
  *
@@ -41,10 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class FCRA {
 
   myDataset train, val, test;

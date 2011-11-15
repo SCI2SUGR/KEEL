@@ -29,6 +29,8 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
+import org.core.Files;
+
 /**
  * <p>Title: DataBase</p>
  *
@@ -42,8 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
  * @version 1.0
  * @since JDK1.5
  */
-
-import org.core.Files;
 
 public class DataBase {
 	/**

@@ -57,6 +57,7 @@ AssocRuleMining
 // Java packages
 
 package keel.Algorithms.Associative_Classification.ClassifierCMAR;
+
 import java.util.*;
 import java.io.*;
 
@@ -78,7 +79,6 @@ stored in the <TT>numClasses</TT> field.</p>
  * @version 1.0
  * @since JDK1.5
  */
-
 public class AprioriTFP_CMAR extends AprioriTFPclass {
 
     /* ------ FIELDS ------ */

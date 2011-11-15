@@ -29,6 +29,9 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCPAR;
 
+import java.util.*;
+import org.core.*;
+
 /**
  * <p>Title: RuleBase</p>
  *
@@ -42,9 +45,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCPAR;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.util.*;
-import org.core.*;
 
 public class RuleBase {
 	/**
