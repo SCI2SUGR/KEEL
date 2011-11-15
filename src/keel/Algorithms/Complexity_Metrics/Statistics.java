@@ -37,15 +37,16 @@
  */
 
 package keel.Algorithms.Complexity_Metrics;
+
 import  keel.Dataset.*;
 import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class Statistics {
 /**
  * This is the main class of the Statistics computation
  */
+public class Statistics {
 	
 /** Dataset **/
     keel.Dataset.InstanceSet dSet;

@@ -40,7 +40,6 @@ package keel.Algorithms.Decision_Trees.CART;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import keel.Algorithms.Neural_Networks.NNEP_Common.data.DoubleTransposedDataSet;
 import keel.Algorithms.Neural_Networks.NNEP_Common.data.IAttribute;
 

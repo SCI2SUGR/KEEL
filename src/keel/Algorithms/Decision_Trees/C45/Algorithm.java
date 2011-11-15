@@ -38,9 +38,11 @@
 package keel.Algorithms.Decision_Trees.C45;
 
 import java.io.*;
-
 import keel.Dataset.Attributes;
 
+/**
+ * This is the main class
+ */
 public abstract class Algorithm {
     /** The name of the file that contains the information to build the model. */
     protected static String modelFileName = "";
@@ -179,4 +181,3 @@ public abstract class Algorithm {
      */
     protected abstract void printTrain() throws IOException;
 }
-

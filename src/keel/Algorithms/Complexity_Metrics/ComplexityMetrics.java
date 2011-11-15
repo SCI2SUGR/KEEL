@@ -36,15 +36,16 @@
  */
 
 package keel.Algorithms.Complexity_Metrics;
+
 import  keel.Dataset.*;
 import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class ComplexityMetrics {
 /**
  * This is the main class of the ComplexityMetrics library
  */
+public class ComplexityMetrics {
 	
 /** Dataset **/
     private keel.Dataset.InstanceSet dSet;
