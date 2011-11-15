@@ -29,6 +29,8 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCBA;
 
+import java.util.*;
+
 /**
  * <p>Title: Apriori</p>
  *
@@ -42,10 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.util.*;
-
-
 public class Apriori {
 	/**
 	 * <p>

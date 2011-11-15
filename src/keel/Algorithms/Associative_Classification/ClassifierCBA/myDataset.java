@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCBA;
 
+import java.io.IOException;
+import java.lang.String;
+import keel.Dataset.*;
+
 /**
  * <p>Title: myDataset</p>
  *
@@ -40,11 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import java.lang.String;
-
-import keel.Dataset.*;
 
 public class myDataset {
 

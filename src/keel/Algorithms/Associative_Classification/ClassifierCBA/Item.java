@@ -42,7 +42,6 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA;
  * @version 1.0
  * @since JDK1.5
  */
-
 public class Item implements Comparable {
 	/**
 	 * <p>
