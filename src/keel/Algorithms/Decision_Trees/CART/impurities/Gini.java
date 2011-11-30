@@ -50,15 +50,25 @@ public class Gini implements IImpurityFunction {
 	private DoubleTransposedDataSet dataset;
 
 
-	/**
-	 * {@inheritDoc}}
+	/** 
+	 * 
+	 * It sets the datasets of patters
+	 * 
+	 * @param dataset Complete data set of patterns
 	 */
 	public void setDataset(DoubleTransposedDataSet dataset) {
 		this.dataset = dataset;
 	}
 	
 	/**
-	 * {@inheritDoc}
+	 * 
+	 * It compute the impurity value associated
+	 * 
+	 * @param patterns index of patterns from dataset associated to node to evaluate
+	 * @param cost Associated cost
+	 * @return Impurity value associated
+	 * @throws Exception 
+	 * 
 	 */
 	public double impurities(int [] patterns, double cost) {
 		
@@ -106,6 +116,4 @@ public class Gini implements IImpurityFunction {
 		//return info;
 	}
 
-
 }
-

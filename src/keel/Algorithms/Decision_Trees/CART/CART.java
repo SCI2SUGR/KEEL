@@ -77,12 +77,20 @@ public class CART
 
 	/**
 	 * Default constructor
+	 * 
+	 * @param dataset Dataset to learn
 	 */
 	public CART (DoubleTransposedDataSet dataset) {
 		this.dataset = dataset;
 
 	}
 
+	/**
+	 * Constructor with impurity function
+	 * 
+	 * @param dataset Dataset to learn
+	 * @param impurityFunction the impurity function
+	 */
 	public CART (DoubleTransposedDataSet dataset, IImpurityFunction impurityFunction) {
 		this.dataset = dataset;
 
@@ -96,6 +104,8 @@ public class CART
 	/////////////////////////////////////////////////////////////////////
 
 	/**
+	 * It returns the decision tree
+	 * 
 	 * @return the decision tree
 	 */
 	public DecisionTree getTree() 
@@ -104,6 +114,8 @@ public class CART
 	}
 
 	/**
+	 * It returns the impurity function
+	 * 
 	 * @return the impurityFunction
 	 */
 	public IImpurityFunction getImpurityFunction() 
@@ -112,6 +124,9 @@ public class CART
 	}
 
 	/**
+	 * 
+	 * It sets the impurity function
+	 * 
 	 * @param impurityFunction the impurityFunction to set
 	 */
 	public void setImpurityFunction(IImpurityFunction impurityFunction) 
@@ -121,6 +136,8 @@ public class CART
 	}
 
 	/**
+	 * It returns the maximal depth
+	 * 
 	 * @return the maxDepth
 	 */
 	public int getMaxDepth() {
@@ -128,6 +145,8 @@ public class CART
 	}
 
 	/**
+	 * It sets the maximal depth
+	 * 
 	 * @param maxDepth the maxDepth to set
 	 */
 	public void setMaxDepth(int maxDepth) {
@@ -135,6 +154,8 @@ public class CART
 	}
 	
 	/**
+	 * Returns if we are dealing with a regression problem
+	 * 
 	 * @return the regression
 	 */
 	public boolean isRegression() {
@@ -142,6 +163,8 @@ public class CART
 	}
 
 	/**
+	 * It sets if we are dealing with a regression problem
+	 * 
 	 * @param regression the regression to set
 	 */
 	public void setRegression(boolean regression) {
@@ -154,6 +177,9 @@ public class CART
 
 	/**
 	 * This function find the best possible values for splitting
+	 * 
+	 * @param patterns pattern indexes
+	 * @return the best possible values for splitting
 	 */
 	private double[][] splittingValues(int [] patterns)
 	{
@@ -215,7 +241,7 @@ public class CART
 	/**
 	 * This is a recursive function that receive a node and check if it can be split. 
 	 * If true, it adds sons, and try to grow them.
-	 * @param node
+	 * @param node the node to check
 	 */
 	private void grow(TreeNode node)
 	{
@@ -246,7 +272,9 @@ public class CART
 	}
 	
 	/**
-	 * @param node node to split in two sons
+	 * It splits a node into two sons
+	 * 
+	 * @param node node to split into two sons
 	 */
 	private void splitNode(TreeNode node)
 	{
@@ -309,6 +337,7 @@ public class CART
 	/**
 	 * This function assign output class to a node. 
 	 * Its class label is that of the majority class in that node patterns 
+	 * 
 	 * @param node tree node to assign its output class
 	 */
 	private void assignClass(TreeNode node) 
@@ -349,6 +378,7 @@ public class CART
 	/**
 	 * Assign predicted value as the mean of the output 
 	 * from each pattern in this node
+	 * 
 	 * @param node TreeNode to compute
 	 */
 	private void assignMean(TreeNode node)
@@ -374,6 +404,7 @@ public class CART
 	/**
 	 * This function divides patterns associated to a node using its variable and split value into two
 	 * groups of patterns depending on the condition (variable <= splitValue)
+	 * 
 	 * @param from Node to split in two branches. It must contain variable, split value and associated patterns.
 	 * @return Return toLeft This parameter will be deleted!. It will contain the patterns on left branch. toRight This parameter will be deleted!. It will contain the patterns on right branch
 	 */
@@ -491,6 +522,8 @@ public class CART
 	}
 
 	/**
+	 * It checks if the stop criteria has been reached
+	 * 
 	 * @return true if stop criteria has been reached. False otherwise
 	 */
 	public boolean stopCriteria(TreeNode node) {
@@ -536,6 +569,8 @@ public class CART
 	}
 
 	/**
+	 * It gets the classification results
+	 * 
 	 * @param dataset used for checking error in 
 	 * @return error produced applying the data set given as argument
 	 * 
@@ -573,6 +608,9 @@ public class CART
 	
 	
 	/**
+	 * 
+	 * It gets the regression results
+	 * 
 	 * @param dataset used for checking error in 
 	 * @return error produced applying the data set given as argument
 	 * 
@@ -603,6 +641,8 @@ public class CART
 	
 
 	/**
+	 * 
+	 * It returns the transposed matrix of a given one
 	 * 
 	 * @param a input matrix
 	 * @return transposed matrix of a

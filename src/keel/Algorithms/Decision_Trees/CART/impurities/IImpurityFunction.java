@@ -46,21 +46,23 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.data.DoubleTransposedDataSet;
 public interface IImpurityFunction {
 	
 	/** 
+	 * 
+	 * It sets the datasets of patters
+	 * 
 	 * @param dataset Complete data set of patterns
 	 */
 	public void setDataset(DoubleTransposedDataSet dataset);
 	
 	/**
 	 * 
+	 * It compute the impurity value associated
+	 * 
 	 * @param patterns index of patterns from dataset associated to node to evaluate
 	 * @param cost Associated cost
 	 * @return Impurity value associated
 	 * @throws Exception 
+	 * 
 	 */
 	public double impurities (int [] patterns,  double cost) throws Exception;
-	
-	
-	
 
 }
-

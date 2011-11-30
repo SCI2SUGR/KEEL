@@ -87,7 +87,9 @@ public class RunRegressionCART extends RunCART {
 
 	/**
 	 * 
-	 * @param args
+	 * It runs the CART method for regression
+	 * 
+	 * @param args the configuration file must be given in the arguments
 	 */
 	public static void main(String[] args) {
 		if (args.length != 1) {

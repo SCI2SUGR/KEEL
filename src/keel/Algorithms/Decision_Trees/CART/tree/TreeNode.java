@@ -100,6 +100,8 @@ public class TreeNode
 	/////////////////////////////////////////////////////////////////////
 
 	/**
+	 * It gets the parent of the current node
+	 * 
 	 * @return parent parent of current node
 	 */
 	public TreeNode getParent() {
@@ -107,6 +109,8 @@ public class TreeNode
 	}
 
 	/**
+	 * It sets the parent of the current node
+	 * 
 	 * @param parent to set
 	 */
 	public void setParent(TreeNode parent) {
@@ -116,6 +120,8 @@ public class TreeNode
 	////////////////////////////////////////////////////////////////
 
 	/**
+	 * It gets the left son of the current node
+	 * 
 	 * @return left son of current node. null if it is terminal
 	 */
 	public TreeNode getLeftSon() {

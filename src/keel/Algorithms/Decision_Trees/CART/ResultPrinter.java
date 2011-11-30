@@ -88,6 +88,8 @@ public class ResultPrinter {
 	
 
 	/**
+	 * It returns the header
+	 * 
 	 * @return the header
 	 */
 	public String getHeader() {
@@ -95,6 +97,8 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * It sets the header
+	 * 
 	 * @param header the header to set
 	 */
 	public void setHeader(String header) {
@@ -102,6 +106,8 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * It returns the training results file
+	 * 
 	 * @return the trainResultFile
 	 */
 	public String getTrainResultFile() {
@@ -109,6 +115,8 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * It sets the training results file
+	 * 
 	 * @param trainResultFile the trainResultFile to set
 	 */
 	public void setTrainResultFile(String trainResultFile) {
@@ -116,6 +124,8 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * It gets the test result file
+	 * 
 	 * @return the testResultFile
 	 */
 	public String getTestResultFile() {
@@ -123,6 +133,8 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * It sets the test result file
+	 * 
 	 * @param testResultFile the testResultFile to set
 	 */
 	public void setTestResultFile(String testResultFile) {
@@ -130,13 +142,18 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * It gets the model result file
+	 * 
 	 * @return the modelResultFile
 	 */
 	public String getModelResultFile() {
 		return ModelResultFile;
 	}
 
+	
 	/**
+	 * It sets the model result file
+	 * 
 	 * @param modelResultFile the modelResultFile to set
 	 */
 	public void setModelResultFile(String modelResultFile) {
@@ -144,6 +161,8 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * If returns the output attribute
+	 * 
 	 * @return the outputAttribute
 	 */
 	public IAttribute getOutputAttribute() {
@@ -151,6 +170,8 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * It sets the output attribute
+	 * 
 	 * @param outputAttribute the outputAttribute to set
 	 */
 	public void setOutputAttribute(IAttribute outputAttribute) {
@@ -158,6 +179,8 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * Ir returns the training data
+	 * 
 	 * @return the trainData
 	 */
 	public DoubleTransposedDataSet getTrainData() {
@@ -165,6 +188,9 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * 
+	 * It sets the training data
+	 * 
 	 * @param trainData the trainData to set
 	 */
 	public void setTrainData(DoubleTransposedDataSet trainData) {
@@ -172,6 +198,8 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * It gets the test data
+	 * 
 	 * @return the testData
 	 */
 	public DoubleTransposedDataSet getTestData() {
@@ -179,6 +207,9 @@ public class ResultPrinter {
 	}
 
 	/**
+	 * 
+	 * It sets the test data
+	 * 
 	 * @param testData the testData to set
 	 */
 	public void setTestData(DoubleTransposedDataSet testData) {
@@ -251,7 +282,6 @@ public class ResultPrinter {
 	}
 	
 	/**
-	 * TODO Must be checked
 	 * 
 	 * This method print the output file in Keel format for regression problems
 	 * 

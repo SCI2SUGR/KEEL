@@ -41,9 +41,6 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.data.DoubleTransposedDataSet;
 
 /**
  * Implementation of Least Square Deviation impurity Function
- * 
- * TODO Must be checked
- * 
  *
  */
 public class LeastSquaresDeviation implements IImpurityFunction {
@@ -89,7 +86,7 @@ public class LeastSquaresDeviation implements IImpurityFunction {
 	/**
 	 * Compute mean of pattern output values
 	 * @param patterns
-	 * @return
+	 * @return the mean of pattern output values
 	 */
 	private double computeMean(int [] patterns) {
 		double mean=0f;

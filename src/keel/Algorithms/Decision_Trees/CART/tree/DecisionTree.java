@@ -62,13 +62,17 @@ public class DecisionTree {
 	/////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * It returns the root of the tree
 	 * 
+	 * @return the root of the tree
 	 */
 	public TreeNode getRoot() {
 		return root;
 	}
 	
 	/**
+	 * It set the root of the tree
+	 * 
 	 * @param root the root to set
 	 */
 	public void setRoot(TreeNode root) 
@@ -81,6 +85,8 @@ public class DecisionTree {
 	/////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * 
+	 * It returns the depth of the tree
 	 * 
 	 * @return depth of the tree
 	 */

@@ -70,6 +70,8 @@ public class DataSetManager
 	
 	
 	/**
+	 * It returns the header
+	 * 
 	 * @return the header
 	 */
 	public static String getHeader() {
@@ -78,6 +80,9 @@ public class DataSetManager
 
 
 	/**
+	 * 
+	 * It returns the output attribute
+	 * 
 	 * @return the outputAttribute
 	 */
 	public static IAttribute getOutputAttribute() {
