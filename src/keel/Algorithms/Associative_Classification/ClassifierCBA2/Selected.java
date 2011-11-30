@@ -53,9 +53,9 @@ public class Selected implements Comparable{
    * <p>
    * Parameters Constructor
    * </p>
-   * @param rule Rule Rule to sotre in the Selected structure
-   * @param defaultClass int Default class set for the rule
-   * @param totalErrors int Number of errors this rule has got while it was classifying
+   * @param rule Rule to sotre in the Selected structure
+   * @param defaultClass Default class set for the rule
+   * @param totalErrors Number of errors this rule has got while it was classifying
    */
   public Selected(Rule rule, int defaultClass, int totalErrors) {
 	this.rule = rule;
@@ -88,7 +88,7 @@ public class Selected implements Comparable{
    * <p>
    * It sets the rule into the "selected" structure
    * </p>
-   * @param rule Rule Rule to store
+   * @param rule Rule to store
    */
   public void setRule (Rule rule) {
     this.rule = rule;
@@ -108,7 +108,7 @@ public class Selected implements Comparable{
    * <p>
    * It sets the default class into the "selected" structure
    * </p>
-   * @param defaultClass int Default class to store
+   * @param defaultClass Default class to store
    */
   public void setDefaultClass (int defaultClass) {
     this.defaultClass = defaultClass;

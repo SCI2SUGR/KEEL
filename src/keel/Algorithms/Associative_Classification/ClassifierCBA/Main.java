@@ -30,7 +30,7 @@
 package keel.Algorithms.Associative_Classification.ClassifierCBA;
 
 /**
- * It reads the configuration file (data-set files and parameters) and launch the algorithm
+ * It reads the configuration file (data-set files and parameters) and launch the algorithm.
  *
  * @author Jesús Alcalá Fernández
  * @version 1.0
@@ -45,7 +45,7 @@ public class Main {
 
     /**
      * It launches the algorithm
-     * @param confFile String it is the filename of the configuration file.
+     * @param confFile it is the filename of the configuration file.
      */
     private void execute(String confFile) {
         parameters = new parseParameters();

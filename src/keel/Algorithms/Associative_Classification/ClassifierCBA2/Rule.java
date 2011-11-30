@@ -52,7 +52,7 @@ public class Rule implements Comparable {
    * <p>
    * Copy Constructor
    * </p>
-   * @param r Rule Rule to be copied
+   * @param r Rule to be copied
    */
   public Rule(Rule r) {
     this.antecedent = new int[r.antecedent.length];
@@ -76,7 +76,7 @@ public class Rule implements Comparable {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param dataBase DataBase Set of training data which is necessary to generate a rule
+   * @param dataBase Set of training data which is necessary to generate a rule
    */
   public Rule(DataBase dataBase) {
 	this.replace = new ArrayList<Replace> ();
@@ -122,7 +122,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the rule's antecedent
    * </p>
-   * @param antecedent int[] Array of values. Each position in the array represents an attribute.
+   * @param antecedent Array of values. Each position in the array represents an attribute.
    */
   public void asignaAntecedente(int [] antecedent){
 	this.nAnts = 0;
@@ -136,7 +136,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the rule's consequent
    * </p>
-   * @param clas int Consequent of the rule
+   * @param clas Consequent of the rule
    */
   public void setConsequent(int clas) {
     this.clas = clas;
@@ -146,7 +146,7 @@ public class Rule implements Comparable {
    * <p>
    * Function to check if a given example matchs with the rule (the rule correctly classifies it)
    * </p>
-   * @param example int[] Example to be classified
+   * @param example Example to be classified
    * @return double 0.0 = doesn't match, >0.0 = does.
    */
   public double matching(int[] example) {
@@ -168,7 +168,7 @@ public class Rule implements Comparable {
    * <p>
    * Function to add a replace entry in the "Replace" list
    * </p>
-   * @param r Replace Element to be inserted
+   * @param r Element to be inserted
    */
   public void addReplace(Replace r) {
     this.replace.add(r);;
@@ -178,7 +178,7 @@ public class Rule implements Comparable {
    * <p>
    * Function to check if a rule is equal to another given
    * </p>
-   * @param rule Rule Rule to compare with ours
+   * @param rule Rule to compare with ours
    * @return boolean true = they are equal, false = they aren't.
    */
   public boolean isEqual (Rule rule) {
@@ -216,7 +216,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the rule's mark
    * </p>
-   * @param mark int Whether the rule is marked (1) or not (0)
+   * @param mark Whether the rule is marked (1) or not (0)
    */
   public void setMark (int mark) {
     this.mark = mark;
@@ -266,7 +266,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the time the rule was added to the rule set
    * </p>
-   * @param time long Time to be set
+   * @param time Time to be set
    */
   public void setTime(long time) {
     this.time = time;
@@ -312,7 +312,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the Replace element of the rule in the position "pos"
    * </p>
-   * @param pos int Position of the "replace element" we are looking for
+   * @param pos Position of the "replace element" we are looking for
    * @return Replace Replace element of the rule in the position "pos"
    */
   public Replace getReplace(int pos) {
@@ -333,7 +333,7 @@ public class Rule implements Comparable {
    * <p>
    * Function to know whether our rule has more precedence than another given or not.
    * </p>
-   * @param r Rule Given rule to compare
+   * @param r Given rule to compare
    * @return boolean true = our rule has more precedence, false = it hasn't.
    */
   public boolean isPrecedence(Rule r) {
@@ -351,7 +351,7 @@ public class Rule implements Comparable {
    * <p>
    * Function to increase in 1 the number of examples whose output class is the given class "clas" and are covered by this rule
    * </p>
-   * @param clas int Output class of the covered example
+   * @param clas Output class of the covered example
    */
   public void incrCovered (int clas) {
 	  this.classCasesCovered[clas]++;
@@ -361,7 +361,7 @@ public class Rule implements Comparable {
    * <p>
    * Function to decrease in 1 the number of examples whose output class is the given class "clas" and are covered by this rule
    * </p>
-   * @param clas int Output class of the covered example
+   * @param clas Output class of the covered example
    */
   public void decrCovered (int clas) {
 	  this.classCasesCovered[clas]--;
@@ -371,7 +371,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the number of examples covered by the rule for the class "class"
    * </p>
-   * @param clas int Class to know how many examples with this class are covered by our rule
+   * @param clas Class to know how many examples with this class are covered by our rule
    * @return int Number of examples covered by our rule for the given class
    */
   public int getclassCasesCovered (int clas) {
@@ -399,8 +399,8 @@ public class Rule implements Comparable {
 
   /**
    * It sets the label for a given position in the antecedent (for a given attribute)
-   * @param pos int Location of the attribute which we want to set the label
-   * @param label int New label value to set
+   * @param pos Location of the attribute which we want to set the label
+   * @param label New label value to set
    */
   public void setLabel(int pos, int label) {
 	if ((antecedent[pos] < 0) && (label > -1))  this.nAnts++;

@@ -93,9 +93,9 @@ public class AprioriTFP_CMAR extends AprioriTFPclass {
 
     /** 
      * Processes command line arguments.
-     * @param minConf double Minimum confidence threshold
-     * @param minSup double Minimum support threshold
-     * @param delta int Minimum coverage threshold
+     * @param minConf Minimum confidence threshold
+     * @param minSup Minimum support threshold
+     * @param delta Minimum coverage threshold
      */
     public AprioriTFP_CMAR(double minConf, double minSup, int delta) {
 		super(minConf, minSup, delta);

@@ -34,7 +34,7 @@ import java.lang.String;
 import keel.Dataset.*;
 
 /**
- * It contains the methods to read a Classification/Regression Dataset
+ * It contains the methods to read a Classification/Regression Dataset.
  *
  * @author Alberto Fernández
  * @version 1.0
@@ -81,7 +81,7 @@ public class myDataset {
 
     /**
      * Output a specific example
-     * @param pos int position (id) of the example in the data-set
+     * @param pos position (id) of the example in the data-set
      * @return double[] the attributes of the given example
      */
     public int[] getExample(int pos) {
@@ -127,7 +127,7 @@ public class myDataset {
 
     /**
      * It returns the output value of the example "pos"
-     * @param pos int the position (id) of the example
+     * @param pos the position (id) of the example
      * @return String a string containing the output value
      */
     public String getOutputAsString(int pos) {
@@ -136,8 +136,8 @@ public class myDataset {
 
     /**
      * It returns the input value of the example "pos" as string
-     * @param var int the variable (id) of the example
-     * @param pos int the position (id) of the example
+     * @param var the variable (id) of the example
+     * @param pos the position (id) of the example
      * @return String a string containing the input value
      */
     public String getInputAsString(int var, int pos) {
@@ -147,8 +147,8 @@ public class myDataset {
 
     /**
      * It returns the output value of the example "pos"
-     * @param pos int the position (id) of the example
-     * @return int an integer containing the output value
+     * @param pos the position (id) of the example
+     * @return an integer containing the output value
      */
     public int getOutputAsInteger(int pos) {
         return outputInteger[pos];
@@ -156,8 +156,8 @@ public class myDataset {
 
     /**
      * It returns the output value of the example "pos"
-     * @param pos int the position (id) of the example
-     * @return double a real containing the output value
+     * @param pos the position (id) of the example
+     * @return a real containing the output value
      */
     public double getOutputAsReal(int pos) {
         return outputReal[pos];
@@ -221,8 +221,8 @@ public class myDataset {
 
     /**
      * This function checks if the attribute value is missing
-     * @param i int Example id
-     * @param j int Variable id
+     * @param i Example id
+     * @param j Variable id
      * @return boolean True is the value is missing, else it returns false
      */
     public boolean isMissing(int i, int j) {
@@ -231,7 +231,7 @@ public class myDataset {
 
     /**
      * This function checks if the attribute value is nominal
-     * @param i int attribute id
+     * @param i attribute id
      * @return boolean True is the value is nominal, else it returns false
      */
     public boolean isNominal(int i) {
@@ -241,8 +241,8 @@ public class myDataset {
     /**
      * It reads the whole input data-set and it stores each example and its associated output value in
      * local arrays to ease their use.
-     * @param datasetFile String name of the file containing the dataset
-     * @param train boolean It must have the value "true" if we are reading the training data-set
+     * @param datasetFile name of the file containing the dataset
+     * @param train It must have the value "true" if we are reading the training data-set
      * @throws IOException If there ocurs any problem with the reading of the data-set
      */
     public void readClassificationSet(String datasetFile, boolean train) throws

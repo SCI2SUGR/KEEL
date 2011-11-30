@@ -32,7 +32,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA;
 import java.util.*;
 
 /**
- * This class mines the frecuent non-fuzzy itemsets and the non-fuzzy classification association rules
+ * This class mines the frecuent non-fuzzy itemsets and the non-fuzzy classification association rules.
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0
@@ -64,10 +64,10 @@ public class Apriori {
    * </p>
    * @param dataBase Raw training information useful in the class
    * @param train Contains the train data set with the whole information to execute the algorithm
-   * @param minpsup double The minimum support for the problem
-   * @param minpconf double The minimum confidence for the problem
-   * @param prune int Value which decides whether prune or not the rule set
-   * @param limitRules int Maximum number of rules to generate (0 = no_limit)
+   * @param minpsup The minimum support for the problem
+   * @param minpconf The minimum confidence for the problem
+   * @param prune Value which decides whether prune or not the rule set
+   * @param limitRules Maximum number of rules to generate (0 = no_limit)
    */
   public Apriori(DataBase dataBase, myDataset train, double minpsup, double minpconf, int prune, int limitRules) {
 	  this.train = train;
@@ -86,8 +86,8 @@ public class Apriori {
    * <p>
    * Sets the minimum confidence and support thresholds
    * </p>
-   * @param minpsup double The minimum support for the problem
-   * @param minpconf double The minimum confidence for the problem
+   * @param minpsup The minimum support for the problem
+   * @param minpconf The minimum confidence for the problem
    */
   public void setSupportConfidence (double minpsup, double minpconf) {
 	  this.minpsup = minpsup; 

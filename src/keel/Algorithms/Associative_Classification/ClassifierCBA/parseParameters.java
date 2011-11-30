@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import org.core.Fichero;
 
 /**
- * It reads the configuration file (data-set files and parameters)
+ * It reads the configuration file (data-set files and parameters).
  *
  * @author Alberto Fernández
  * @version 1.0
@@ -110,7 +110,7 @@ public class parseParameters {
 
     /**
      * We read the output files for training and test and all the possible remaining output files
-     * @param line StringTokenizer It is the line containing the output files.
+     * @param line It is the line containing the output files.
      */
     private void readOutputFiles(StringTokenizer line){
         String new_line = line.nextToken(); //We read the input data line
@@ -125,7 +125,7 @@ public class parseParameters {
 
     /**
      * We read all the possible parameters of the algorithm
-     * @param line StringTokenizer It contains all the parameters.
+     * @param line It contains all the parameters.
      */
     private void readAllParameters(StringTokenizer line){
         String new_line,cadena;

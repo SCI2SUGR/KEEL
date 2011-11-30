@@ -53,10 +53,10 @@ public class Structure {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param dID int Position of the correctly classified example
-   * @param y int Class of the "dID" example
-   * @param cRule int Position in the rule set for the rule that correctly classifies the "dID" instance
-   * @param wRule int Position in the rule set for the first rule that wrongly classifies the "dID" instance
+   * @param dID Position of the correctly classified example
+   * @param y Class of the "dID" example
+   * @param cRule Position in the rule set for the rule that correctly classifies the "dID" instance
+   * @param wRule Position in the rule set for the first rule that wrongly classifies the "dID" instance
    */
   public Structure(int dID, int y, int cRule, int wRule) {
     this.dID = dID;
@@ -79,7 +79,7 @@ public class Structure {
    * <p>
    * It sets in the structure the position in the training dataset of the wanted example
    * </p>
-   * @param dID int Position in the training dataset of the wanted example
+   * @param dID Position in the training dataset of the wanted example
    */
   public void setdID (int dID) {
     this.dID = dID;
@@ -99,7 +99,7 @@ public class Structure {
    * <p>
    * It sets in the structure the class of the example
    * </p>
-   * @param y int Class of the example
+   * @param y Class of the example
    */
   public void sety (int y) {
     this.y = y;
@@ -119,7 +119,7 @@ public class Structure {
    * <p>
    * It sets the position of the best rule that correctly classifies the example stored in the structure
    * </p>
-   * @param cRule int Position of the best rule that correctly classifies the example stored in the structure
+   * @param cRule Position of the best rule that correctly classifies the example stored in the structure
    */
   public void setcRule (int cRule) {
     this.cRule = cRule;
@@ -139,7 +139,7 @@ public class Structure {
    * <p>
    * It sets the position of the first rule that wrongly classifies the example stored in the structure
    * </p>
-   * @param wRule int Position of the first rule that wrongly classifies the example stored in the structure
+   * @param wRule Position of the first rule that wrongly classifies the example stored in the structure
    */
   public void setwRule (int wRule) {
     this.wRule = wRule;

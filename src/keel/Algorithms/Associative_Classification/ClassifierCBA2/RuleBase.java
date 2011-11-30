@@ -63,8 +63,8 @@ public class RuleBase {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param dataBase DataBase Set of training data which is necessary to generate a rule
-   * @param train myDataset Training data set with information to construct the rule base (mainly, the training examples)
+   * @param dataBase Set of training data which is necessary to generate a rule
+   * @param train Training data set with information to construct the rule base (mainly, the training examples)
    */
   public RuleBase(DataBase dataBase, myDataset train) {
     this.ruleBase = new ArrayList<Rule> ();
@@ -79,7 +79,7 @@ public class RuleBase {
    * <p>
    * It adds a rule to the rule base
    * </p>
-   * @param rule Rule Rule to be added
+   * @param rule Rule to be added
    */
   public void add(Rule rule) {
 	  this.ruleBase.add(rule);
@@ -89,8 +89,8 @@ public class RuleBase {
    * <p>
    * It adds a rule to the rule base from an itemset and a time
    * </p>
-   * @param itemset Itemset Itemset to be translated to an array to insert it in the rule base
-   * @param time long Position in time when the rule has been added
+   * @param itemset Itemset to be translated to an array to insert it in the rule base
+   * @param time Position in time when the rule has been added
    */
   public void add(Itemset itemset, long time) {
 	  int i;
@@ -117,7 +117,7 @@ public class RuleBase {
    * <p>
    * Function to get a rule from the rule base
    * </p>
-   * @param pos int Position in the rule base where the desired rule is stored
+   * @param pos Position in the rule base where the desired rule is stored
    * @return Rule The desired rule
    */
   public Rule get(int pos) {
@@ -128,7 +128,7 @@ public class RuleBase {
    * <p>
    * It sets the default class for the rule base
    * </p>
-   * @param defaultClass int Default class to set
+   * @param defaultClass Default class to set
    */
   public void setDefaultClass (int defaultClass) {
 	  this.defaultClass = defaultClass;
@@ -157,7 +157,7 @@ public class RuleBase {
    * <p>
    * It removes the rule stored in the given position
    * </p>
-   * @param pos int Position where the rule we want to remove is
+   * @param pos Position where the rule we want to remove is
    * @return Rule Removed rule
    */
   public Rule remove(int pos) {
@@ -187,7 +187,7 @@ public class RuleBase {
    * <p>
    * It returns the class which better fits to the given example
    * </p>
-   * @param example int[] Example to be classified
+   * @param example Example to be classified
    * @return int Output class
    */
   public int FRM(int[] example) {
@@ -487,7 +487,7 @@ public class RuleBase {
    * <p>
    * It stores the rule base in a given file
    * </p>
-   * @param filename String Name for the rulebase file
+   * @param filename Name for the rulebase file
    */
   public void saveFile(String filename) {
     String stringOut = new String("");

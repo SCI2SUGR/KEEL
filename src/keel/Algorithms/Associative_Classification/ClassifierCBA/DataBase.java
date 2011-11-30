@@ -32,7 +32,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA;
 import org.core.Files;
 
 /**
- * Class to store the examples to work with the algorithm and some other useful information
+ * Class to store the examples to work with the algorithm and some other useful information.
  *
  * @author Written by Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
@@ -58,7 +58,7 @@ public class DataBase {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param train myDataset It contains the train data set with the whole information to execute the algorithm
+   * @param train It contains the train data set with the whole information to execute the algorithm
    */
   public DataBase(myDataset train) {
     int rank;
@@ -137,9 +137,9 @@ public class DataBase {
    * <p>
    * It checks if the value of a specific label in a specific attribute matchs with a given value
    * </p>
-   * @param variable int Attribute which we are going to check
-   * @param label int Attribute's label we are going to check
-   * @param value int Value to be compared
+   * @param variable Attribute which we are going to check
+   * @param label Attribute's label we are going to check
+   * @param value Value to be compared
    * @return int 1 = they match, 0 = they don't.
    */
   public int matching(int variable, int label, int value) {
@@ -152,8 +152,8 @@ public class DataBase {
    * <p>
    * It prints an attribute with its label in a string way
    * </p>
-   * @param var int Attribute to be printed
-   * @param label int Attribute's label to be printed
+   * @param var Attribute to be printed
+   * @param label Attribute's label to be printed
    * @return String A string which represents the "string format" of the given input
    */
   public String print(int var, int label) {

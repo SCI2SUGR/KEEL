@@ -59,7 +59,7 @@ public class DataBase {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param train myDataset It contains the train data set with the whole information to execute the algorithm
+   * @param train It contains the train data set with the whole information to execute the algorithm
    */
   public DataBase(myDataset train) {
     int rank;
@@ -116,7 +116,7 @@ public class DataBase {
    * <p>
    * It returns the number of different labels that a specific input attribute can hold
    * </p>
-   * @param variable int The input attribute which we want to know the number of different labels it can have
+   * @param variable The input attribute which we want to know the number of different labels it can have
    * @return int The number of labels
    */
   public int numLabels(int variable) {
@@ -137,9 +137,9 @@ public class DataBase {
    * <p>
    * It checks if the value of a specific label in a specific attribute matchs with a given value
    * </p>
-   * @param variable int Attribute which we are going to check
-   * @param label int Attribute's label we are going to check
-   * @param value int Value to be compared
+   * @param variable Attribute which we are going to check
+   * @param label Attribute's label we are going to check
+   * @param value Value to be compared
    * @return int 1 = they match, 0 = they don't.
    */
   public int matching(int variable, int label, int value) {
@@ -152,8 +152,8 @@ public class DataBase {
    * <p>
    * It prints an attribute with its label in a string way
    * </p>
-   * @param var int Attribute to be printed
-   * @param label int Attribute's label to be printed
+   * @param var Attribute to be printed
+   * @param label Attribute's label to be printed
    * @return String A string which represents the "string format" of the given input
    */
   public String print(int var, int label) {
@@ -181,7 +181,7 @@ public class DataBase {
    * <p>
    * It stores the data base in a given file
    * </p>
-   * @param filename String Name for the database file
+   * @param filename Name for the database file
    */
   public void saveFile(String filename) {
     String stringOut = new String("");

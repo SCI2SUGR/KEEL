@@ -32,7 +32,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA;
 import java.util.*;
 
 /**
- * This class stores an itemset representation for classification by association algorithms. Also, it stores some useful information to manage the itemset
+ * This class stores an itemset representation for classification by association algorithms. Also, it stores some useful information to manage the itemset.
  *
  * @author Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
@@ -59,7 +59,7 @@ public class Itemset implements Comparable {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param clas int Associated output of the Itemset
+   * @param clas Associated output of the Itemset
    */
   public Itemset(int clas) {
       this.itemset = new ArrayList<Item> ();
@@ -94,7 +94,7 @@ public class Itemset implements Comparable {
    * <p>
    * Function to add an item to our itemset
    * </p>
-   * @param item Item Element to be added
+   * @param item Element to be added
    */
   public void add (Item item) {
 	  this.itemset.add(item);
@@ -104,7 +104,7 @@ public class Itemset implements Comparable {
    * <p>
    * It returns the item located in the given position of the itemset
    * </p>
-   * @param pos int Position of the requested item into the itemset
+   * @param pos Position of the requested item into the itemset
    * @return Item The requested item of the itemset
    */
   public Item get (int pos) {
@@ -115,7 +115,7 @@ public class Itemset implements Comparable {
    * <p>
    * Function to remove the item located in the given position
    * </p>
-   * @param pos int Position of the requested item into the itemset
+   * @param pos Position of the requested item into the itemset
    * @return Item The removed item of the itemset
    */
   public Item remove (int pos) {
@@ -196,7 +196,7 @@ public class Itemset implements Comparable {
    * <p>
    * Function which sets the itemset's output class
    * </p>
-   * @param clas int Itemset's output class
+   * @param clas Itemset's output class
    */
   public void setClas(int clas) {
 	this.clas = clas;
@@ -206,7 +206,7 @@ public class Itemset implements Comparable {
    * <p>
    * Function to check if an itemset is equal to another given
    * </p>
-   * @param a Itemset Itemset to compare with ours
+   * @param a Itemset to compare with ours
    * @return boolean true = they are equal, false = they aren't.
    */
   public boolean isEqual(Itemset a) {
@@ -229,7 +229,7 @@ public class Itemset implements Comparable {
    * <p>
    * Function to check if the antecedent of our itemset is equal to another given
    * </p>
-   * @param a Itemset Itemset which antecedents we are going to compare with ours
+   * @param a Itemset which antecedents we are going to compare with ours
    * @return boolean true = they are equal, false = they aren't.
    */
   public boolean isEqualAnt(Itemset a) {
@@ -250,7 +250,7 @@ public class Itemset implements Comparable {
    * <p>
    * Function to check if our itemset is Subitemset (can be contained) of a given itemset
    * </p>
-   * @param a Itemset Itemset to check if can contain ours
+   * @param a Itemset to check if can contain ours
    * @return boolean true = our itemset is subitemset of a, false = it isn't.
    */
   public boolean isSubItemset(Itemset a) {
