@@ -38,9 +38,13 @@
 
 package keel.Algorithms.Decision_Trees.ID3;
 import java.io.*;
-
 import keel.Dataset.Attributes;
 
+/**
+ * 
+ * Abstract class that implements the Algorithm interface
+ *
+ */
 public abstract class Algorithm
 {
 	/** The name of the file that contains the information to build the model. */
@@ -84,7 +88,7 @@ public abstract class Algorithm
 	
 	/** Function to initialize the stream tokenizer.
 	 * 
-	 * @param tokenizer		The tokenizer.
+	 * @param tokenizer	The tokenizer.
 	 */
  	protected void initTokenizer( StreamTokenizer tokenizer )
  	{
@@ -148,4 +152,3 @@ public abstract class Algorithm
      */
 	protected abstract void printTrain() throws IOException;
 }
-

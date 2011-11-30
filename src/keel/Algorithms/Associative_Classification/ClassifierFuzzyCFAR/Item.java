@@ -54,8 +54,8 @@ public class Item implements Comparable {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param variable int Value which represents an input attribute of a rule
-   * @param value int Value attached to the variable
+   * @param variable Value which represents an input attribute of a rule
+   * @param value Value attached to the variable
    */
   public Item(int variable, int value) {
 	  this.variable = variable;
@@ -67,8 +67,8 @@ public class Item implements Comparable {
    * <p>
    * It sets the pair of values to the item
    * </p>
-   * @param variable int Value which represents an input attribute of a rule
-   * @param value int Value attached to the variable
+   * @param variable Value which represents an input attribute of a rule
+   * @param value Value attached to the variable
    */
   public void setValues (int variable, int value) {
 	  this.variable = variable;
@@ -80,7 +80,7 @@ public class Item implements Comparable {
    * <p>
    * It returns the variable of the item
    * </p>
-   * @return int Input attribute
+   * @return Input attribute
    */
   public int getVariable () {
 	  return (this.variable);
@@ -91,7 +91,7 @@ public class Item implements Comparable {
    * <p>
    * It returns the value of the item
    * </p>
-   * @return int Value of the item
+   * @return Value of the item
    */
   public int getValue () {
 	  return (this.value);
@@ -116,7 +116,7 @@ public class Item implements Comparable {
    * <p>
    * Function to check if an item is equal to another given
    * </p>
-   * @param a Item Item to compare with ours
+   * @param a Item to compare with ours
    * @return boolean true = they are equal, false = they aren't.
    */
   public boolean isEqual(Item a) {

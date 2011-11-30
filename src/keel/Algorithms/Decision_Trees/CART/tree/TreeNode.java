@@ -37,7 +37,11 @@
 
 package keel.Algorithms.Decision_Trees.CART.tree;
 
-
+/**
+ * 
+ * Class that implements a tree used by the CART algorithm
+ *
+ */
 public class TreeNode
 {	
 

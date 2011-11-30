@@ -58,7 +58,6 @@ import net.sf.jclec.util.intset.Interval;
 
 /**
  * This class helps managing the conversion from KeelDataset to DoubleTransposedDataset
- * 
  *
  */
 public class DataSetManager 

@@ -42,6 +42,11 @@ import keel.Algorithms.Decision_Trees.CART.RunCART;
 import keel.Algorithms.Decision_Trees.CART.dataset.DataSetManager;
 import keel.Algorithms.Decision_Trees.CART.impurities.LeastSquaresDeviation;
 
+/**
+ * 
+ * Class to run the CART algorithm for regression problems
+ *
+ */
 public class RunRegressionCART extends RunCART {
 
 	/**

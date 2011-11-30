@@ -42,6 +42,11 @@ import keel.Algorithms.Decision_Trees.CART.RunCART;
 import keel.Algorithms.Decision_Trees.CART.dataset.DataSetManager;
 import keel.Algorithms.Decision_Trees.CART.impurities.Gini;
 
+/**
+ * 
+ * Class to run the CART algorithm
+ *
+ */
 public class RunClassificationCART extends RunCART {
 
 	/**

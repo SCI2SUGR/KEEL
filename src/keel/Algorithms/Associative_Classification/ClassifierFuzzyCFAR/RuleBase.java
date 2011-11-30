@@ -51,8 +51,8 @@ public class RuleBase {
 
   /**
    * Maximization
-   * @param a int first number
-   * @param b int second number
+   * @param a first number
+   * @param b second number
    * @return boolean true if a is better than b
    */
   public boolean BETTER(int a, int b) {
@@ -74,8 +74,8 @@ public class RuleBase {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param dataBase DataBase Set of training data which is necessary to generate a rule
-   * @param train myDataset Training data set with information to construct the rule base (mainly, the training examples)
+   * @param dataBase Set of training data which is necessary to generate a rule
+   * @param train Training data set with information to construct the rule base (mainly, the training examples)
    */
   public RuleBase(DataBase dataBase, myDataset train) {
     this.ruleBase = new ArrayList<Rule> ();
@@ -112,7 +112,7 @@ public class RuleBase {
    * <p>
    * It adds a rule to the rule base
    * </p>
-   * @param rule Rule Rule to be added
+   * @param rule Rule to be added
    */
   public void add(Rule rule) {
 	  this.ruleBase.add(rule);
@@ -123,8 +123,8 @@ public class RuleBase {
    * <p>
    * It adds a rule to the rule base
    * </p>
-   * @param itemset Itemset itemset to be added
-   * @param time long Time of the rule
+   * @param itemset itemset to be added
+   * @param time Time of the rule
    */
   public void add(Itemset itemset, long time) {
 	  int i;
@@ -152,8 +152,8 @@ public class RuleBase {
    * <p>
    * Function to get a rule from the rule base
    * </p>
-   * @param pos int Position in the rule base where the desired rule is stored
-   * @return Rule The desired rule
+   * @param pos Position in the rule base where the desired rule is stored
+   * @return The desired rule
    */
   public Rule get(int pos) {
 	  return (this.ruleBase.get(pos));
@@ -164,7 +164,7 @@ public class RuleBase {
    * <p>
    * It returns the number of rules in the rule base
    * </p>
-   * @return int Rule base's size
+   * @return Rule base's size
    */
   public int size() {
 	  return (this.ruleBase.size());
@@ -185,8 +185,8 @@ public class RuleBase {
    * <p>
    * It removes the rule stored in the given position
    * </p>
-   * @param pos int Position where the rule we want to remove is
-   * @return Rule Removed rule
+   * @param pos Position where the rule we want to remove is
+   * @return Removed rule
    */
   public Rule remove(int pos) {
 	  return (this.ruleBase.remove(pos));
@@ -241,8 +241,8 @@ public class RuleBase {
    * <p>
    * It returns the class which better fits to the given example
    * </p>
-   * @param example double[] Example to be classified
-   * @return int Output class
+   * @param example Example to be classified
+   * @return Output class
    */
   public int FRM(double[] example) {
     return FRM_WR(example);
@@ -271,7 +271,7 @@ public class RuleBase {
    * <p>
    * Function to return the fitness of the rule base
    * </p>
-   * @return double Fitness of the rule base
+   * @return Fitness of the rule base
    */
   public double getAccuracy() {
     return (double) fitness / train.size();
@@ -329,7 +329,7 @@ public class RuleBase {
    * <p>
    * This function generates a classifier from the CompSet of the generated fuzzy rules
    * </p>
-   * @return RuleBase Classifier obtained
+   * @return Classifier obtained
    */
   public RuleBase classifier() {
 	  int i, j;
@@ -406,7 +406,7 @@ public class RuleBase {
    * <p>
    * It prints the whole rulebase
    * </p>
-   * @return String The whole rulebase
+   * @return The whole rulebase
    */
   public String printString() {
     int i, j, ant;
@@ -456,7 +456,7 @@ public class RuleBase {
    * <p>
    * It stores the rule base in a given file
    * </p>
-   * @param filename String Name for the rulebase file
+   * @param filename Name for the rulebase file
    */
   public void saveFile(String filename) {
     String stringOut = new String("");

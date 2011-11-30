@@ -75,7 +75,7 @@ public class Rule implements Comparable {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param dataBase DataBase Set of training data which is necessary to generate a rule
+   * @param dataBase Set of training data which is necessary to generate a rule
    */
   public Rule(DataBase dataBase) {
     this.antecedente = new int[dataBase.numVariables()];
@@ -120,7 +120,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the antecedent of the rule
    * </p>
-   * @param antecedente int[] Antecedent of the rule
+   * @param antecedente Antecedent of the rule
    */
   public void asignaAntecedente(int [] antecedente){
     for (int i = 0; i < antecedente.length; i++)  this.antecedente[i] = antecedente[i];
@@ -130,7 +130,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the consequent of the rule
    * </p>
-   * @param clas int Class of the rule
+   * @param clas Class of the rule
    */
   public void setConsequent(int clas) {
     this.clase = clas;
@@ -141,8 +141,8 @@ public class Rule implements Comparable {
    * <p>
    * Function to check if a given example matchs with the rule (the rule correctly classifies it)
    * </p>
-   * @param ejemplo int[] Example to be classified
-   * @return double 0.0 = doesn't match, >0.0 = does.
+   * @param ejemplo Example to be classified
+   * @return 0.0 = doesn't match, >0.0 = does.
    */
   public double matching(double[] ejemplo) {
     return (degreeMinimum(ejemplo));
@@ -242,7 +242,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the Confidence of the rule
    * </p>
-   * @return double Confidence of the rule
+   * @return Confidence of the rule
    */
   public double getConfidence() {
     return (this.Dconf);
@@ -253,7 +253,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the support of the rule
    * </p>
-   * @return double Support of the rule
+   * @return Support of the rule
    */
   public double getSupport() {
     return (this.Dsupp);
@@ -264,7 +264,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the time of the rule
    * </p>
-   * @return long Time of the rule
+   * @return Time of the rule
    */
   public long getTime() {
     return (this.time);
@@ -275,7 +275,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the number of right of the rule
    * </p>
-   * @return int Rights of the rule
+   * @return Rights of the rule
    */
   public int getRightN() {
     return (this.RightN);
@@ -285,7 +285,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the number of wrong of the rule
    * </p>
-   * @return int Wrongs of the rule
+   * @return Wrongs of the rule
    */
   public int getWrongN() {
     return (this.WrongN);
@@ -295,7 +295,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the DF of the rule
    * </p>
-   * @return int DF of the rule
+   * @return DF of the rule
    */
   public double getDF() {
     return (this.DF);
@@ -305,7 +305,7 @@ public class Rule implements Comparable {
    * <p>
    * It returns the output class of the rule
    * </p>
-   * @return int Output class of the rule
+   * @return Output class of the rule
    */
   public int getClas() {
     return (this.clase);
@@ -315,8 +315,8 @@ public class Rule implements Comparable {
    * <p>
    * Function to check if a given rule is a subrule of this rule
    * </p>
-   * @param a Rule Rule to be examinated
-   * @return boolean false = it isn't, true = it is.
+   * @param a Rule to be examinated
+   * @return false = it isn't, true = it is.
    */
   public boolean isSubset(Rule a) {
 	  for (int k = 0; k < this.antecedente.length; k++) {
@@ -330,8 +330,8 @@ public class Rule implements Comparable {
 
   /**
    * It sets the label for a given position in the antecedent (for a given attribute)
-   * @param pos int Location of the attribute which we want to set the label
-   * @param label int New label value to set
+   * @param pos Location of the attribute which we want to set the label
+   * @param label New label value to set
    */
   public void setLabel(int pos, int label) {
 	this.antecedente[pos] = label;

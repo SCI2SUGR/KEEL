@@ -81,7 +81,7 @@ public class parseParameters {
 
     /**
      * It reads the name of the algorithm from the configuration file
-     * @param line StringTokenizer It is the line containing the algorithm name.
+     * @param line It is the line containing the algorithm name.
      */
     private void readName(StringTokenizer line){
         StringTokenizer data = new StringTokenizer(line.nextToken(), " = \" ");
@@ -94,7 +94,7 @@ public class parseParameters {
 
     /**
      * We read the input data-set files and all the possible input files
-     * @param line StringTokenizer It is the line containing the input files.
+     * @param line It is the line containing the input files.
      */
     private void readInputFiles(StringTokenizer line){
         String new_line = line.nextToken(); //We read the input data line
@@ -110,7 +110,7 @@ public class parseParameters {
 
     /**
      * We read the output files for training and test and all the possible remaining output files
-     * @param line StringTokenizer It is the line containing the output files.
+     * @param line It is the line containing the output files.
      */
     private void readOutputFiles(StringTokenizer line){
         String new_line = line.nextToken(); //We read the input data line
@@ -125,7 +125,7 @@ public class parseParameters {
 
     /**
      * We read all the possible parameters of the algorithm
-     * @param line StringTokenizer It contains all the parameters.
+     * @param line It contains all the parameters.
      */
     private void readAllParameters(StringTokenizer line){
         String new_line,cadena;

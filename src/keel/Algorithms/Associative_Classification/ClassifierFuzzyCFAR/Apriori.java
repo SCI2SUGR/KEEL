@@ -57,10 +57,10 @@ public class Apriori {
    * <p>
    * Parameters Constructor: Generates an Apriori objects from a list of parameters
    * </p>
-   * @param minpsup double The minimum support for the problem
-   * @param minpconf double The minimum confidence for the problem
-   * @param MS double Cut Threshold (MS)
-   * @param ruleBase RuleBase Rule Base
+   * @param minpsup The minimum support for the problem
+   * @param minpconf The minimum confidence for the problem
+   * @param MS Cut Threshold (MS)
+   * @param ruleBase Rule Base
    */
   public Apriori(double minpsup, double minpconf, double MS, RuleBase ruleBase) {
 	  this.L1 = new ArrayList<Itemset> ();

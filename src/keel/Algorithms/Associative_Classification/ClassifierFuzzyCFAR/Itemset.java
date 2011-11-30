@@ -56,8 +56,8 @@ public class Itemset {
    * <p>
    * Parameters Constructor
    * </p>
-   * @param clas int Associated output of the Itemset
-   * @param MS double Cut threshold
+   * @param clas Associated output of the Itemset
+   * @param MS Cut threshold
    */
   public Itemset(int clas, double MS) {
       this.itemset = new ArrayList<Item> ();
@@ -90,7 +90,7 @@ public class Itemset {
    * <p>
    * Function to add an item to our itemset
    * </p>
-   * @param item Item Element to be added
+   * @param item Element to be added
    */
   public void add (Item item) {
 	  this.itemset.add(item);
@@ -101,8 +101,8 @@ public class Itemset {
    * <p>
    * It returns the item located in the given position of the itemset
    * </p>
-   * @param pos int Position of the requested item into the itemset
-   * @return Item The requested item of the itemset
+   * @param pos Position of the requested item into the itemset
+   * @return The requested item of the itemset
    */
   public Item get (int pos) {
 	  return (this.itemset.get(pos));
@@ -113,8 +113,8 @@ public class Itemset {
    * <p>
    * Function to remove the item located in the given position
    * </p>
-   * @param pos int Position of the requested item into the itemset
-   * @return Item The removed item of the itemset
+   * @param pos Position of the requested item into the itemset
+   * @return The removed item of the itemset
    */
   public Item remove (int pos) {
 	  return (this.itemset.remove(pos));
@@ -125,7 +125,7 @@ public class Itemset {
    * <p>
    * It returns the size of the itemset (the number of items it has)
    * </p>
-   * @return int Number of items the itemset stores
+   * @return Number of items the itemset stores
    */
   public int size () {
 	  return (this.itemset.size());
@@ -136,7 +136,7 @@ public class Itemset {
    * <p>
    * It returns the support of the antecedent of the itemset
    * </p>
-   * @return double Support of the antecedent of the itemset
+   * @return Support of the antecedent of the itemset
    */
   public double getSupport() {
 	return (this.support);
@@ -147,7 +147,7 @@ public class Itemset {
    * <p>
    * It returns the support of the itemset for its related output class
    * </p>
-   * @return double Support of the itemset for its related output class
+   * @return Support of the itemset for its related output class
    */
   public double getSupportClass() {
 	return (this.supportRule);
@@ -158,7 +158,7 @@ public class Itemset {
    * <p>
    * It returns the output class of the itemset
    * </p>
-   * @return int output class of the itemset
+   * @return output class of the itemset
    */
   public int getClas() {
 	return (this.clas);
@@ -179,7 +179,7 @@ public class Itemset {
    * <p>
    * Function to check if an itemset is equal to another given
    * </p>
-   * @param a Itemset Itemset to compare with ours
+   * @param a Itemset to compare with ours
    * @return boolean true = they are equal, false = they aren't.
    */
   public boolean isEqual(Itemset a) {

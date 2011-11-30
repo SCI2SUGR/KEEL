@@ -45,8 +45,8 @@ public class Fuzzy {
 
   /**
    * If fuzzyfies a crisp value
-   * @param X double The crips value
-   * @return double the degree of membership
+   * @param X The crips value
+   * @return the degree of membership
    */
   public double Fuzzifica(double X) {
     if (X == x1) { 
@@ -88,7 +88,7 @@ public class Fuzzy {
    * <p>
    * It returns the name of the fuzzy set
    * </p>
-   * @return String The name of the fuzzy set
+   * @return The name of the fuzzy set
    */
   public String getName(){
 	  return (this.name);

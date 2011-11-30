@@ -45,7 +45,7 @@ public class Main {
 
     /**
      * It launches the algorithm
-     * @param confFile String it is the filename of the configuration file.
+     * @param confFile it is the filename of the configuration file.
      */
     private void execute(String confFile) {
         parameters = new parseParameters();

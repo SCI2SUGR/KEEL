@@ -74,7 +74,7 @@ public class myDataset {
 
     /**
      * Outputs an array of examples with their corresponding attribute values.
-     * @return double[][] an array of examples with their corresponding attribute values
+     * @return an array of examples with their corresponding attribute values
      */
     public double[][] getX() {
         return X;
@@ -82,8 +82,8 @@ public class myDataset {
 
     /**
      * Output a specific example
-     * @param pos int position (id) of the example in the data-set
-     * @return double[] the attributes of the given example
+     * @param pos position (id) of the example in the data-set
+     * @return the attributes of the given example
      */
     public double[] getExample(int pos) {
         return X[pos];
@@ -91,8 +91,8 @@ public class myDataset {
 
     /**
      * Output a specific example
-     * @param pos int position (id) of the example in the data-set
-     * @return double[] the attributes of the given example
+     * @param pos position (id) of the example in the data-set
+     * @return the attributes of the given example
      */
     public double[][] getExampleXf(int pos) {
         return (Xf[pos]);
@@ -100,7 +100,7 @@ public class myDataset {
 
     /**
      * Returns the output of the data-set as integer values
-     * @return int[] an array of integer values corresponding to the output values of the dataset
+     * @return an array of integer values corresponding to the output values of the dataset
      */
     public int[] getOutputAsInteger() {
         int[] output = new int[outputInteger.length];
@@ -112,7 +112,7 @@ public class myDataset {
 
     /**
      * Returns the output of the data-set as real values
-     * @return double[] an array of real values corresponding to the output values of the dataset
+     * @return an array of real values corresponding to the output values of the dataset
      */
     public double[] getOutputAsReal() {
         double[] output = new double[outputReal.length];
@@ -124,7 +124,7 @@ public class myDataset {
 
     /**
      * Returns the output of the data-set as nominal values
-     * @return String[] an array of nomianl values corresponding to the output values of the dataset
+     * @return an array of nomianl values corresponding to the output values of the dataset
      */
     public String[] getOutputAsString() {
         String[] output = new String[this.output.length];
@@ -136,8 +136,8 @@ public class myDataset {
 
     /**
      * It returns the output value of the example "pos"
-     * @param pos int the position (id) of the example
-     * @return String a string containing the output value
+     * @param pos the position (id) of the example
+     * @return a string containing the output value
      */
     public String getOutputAsString(int pos) {
         return output[pos];
@@ -145,8 +145,8 @@ public class myDataset {
 
     /**
      * It returns the output value of the example "pos"
-     * @param pos int the position (id) of the example
-     * @return int an integer containing the output value
+     * @param pos the position (id) of the example
+     * @return an integer containing the output value
      */
     public int getOutputAsInteger(int pos) {
         return outputInteger[pos];
@@ -154,8 +154,8 @@ public class myDataset {
 
     /**
      * It returns the output value of the example "pos"
-     * @param pos int the position (id) of the example
-     * @return double a real containing the output value
+     * @param pos the position (id) of the example
+     * @return a real containing the output value
      */
     public double getOutputAsReal(int pos) {
         return outputReal[pos];
@@ -163,7 +163,7 @@ public class myDataset {
 
     /**
      * It returns an array with the maximum values of the attributes
-     * @return double[] an array with the maximum values of the attributes
+     * @return an array with the maximum values of the attributes
      */
     public double[] getemax() {
         return emax;
@@ -171,7 +171,7 @@ public class myDataset {
 
     /**
      * It returns an array with the minimum values of the attributes
-     * @return double[] an array with the minimum values of the attributes
+     * @return an array with the minimum values of the attributes
      */
     public double[] getemin() {
         return emin;
@@ -187,7 +187,7 @@ public class myDataset {
 
     /**
      * It gets the size of the data-set
-     * @return int the number of examples in the data-set
+     * @return the number of examples in the data-set
      */
     public int getnData() {
         return nData;
@@ -195,7 +195,7 @@ public class myDataset {
 
     /**
      * It gets the number of variables of the data-set (including the output)
-     * @return int the number of variables of the data-set (including the output)
+     * @return the number of variables of the data-set (including the output)
      */
     public int getnVars() {
         return nVars;
@@ -203,7 +203,7 @@ public class myDataset {
 
     /**
      * It gets the number of input attributes of the data-set
-     * @return int the number of input attributes of the data-set
+     * @return the number of input attributes of the data-set
      */
     public int getnInputs() {
         return nInputs;
@@ -211,7 +211,7 @@ public class myDataset {
 
     /**
      * It gets the number of output attributes of the data-set (for example number of classes in classification)
-     * @return int the number of different output values of the data-set
+     * @return the number of different output values of the data-set
      */
     public int getnClasses() {
         return nClasses;
@@ -219,9 +219,9 @@ public class myDataset {
 
     /**
      * This function checks if the attribute value is missing
-     * @param i int Example id
-     * @param j int Variable id
-     * @return boolean True is the value is missing, else it returns false
+     * @param i Example id
+     * @param j Variable id
+     * @return True is the value is missing, else it returns false
      */
     public boolean isMissing(int i, int j) {
         return missing[i][j];
@@ -229,8 +229,8 @@ public class myDataset {
 
     /**
      * This function checks if the attribute value is nominal
-     * @param i int attribute id
-     * @return boolean True is the value is nominal, else it returns false
+     * @param i attribute id
+     * @return True is the value is nominal, else it returns false
      */
     public boolean isNominal(int i) {
         return nominal[i];
@@ -239,8 +239,8 @@ public class myDataset {
     /**
      * It reads the whole input data-set and it stores each example and its associated output value in
      * local arrays to ease their use.
-     * @param datasetFile String name of the file containing the dataset
-     * @param train boolean It must have the value "true" if we are reading the training data-set
+     * @param datasetFile name of the file containing the dataset
+     * @param train It must have the value "true" if we are reading the training data-set
      * @throws IOException If there ocurs any problem with the reading of the data-set
      */
     public void readClassificationSet(String datasetFile, boolean train) throws
@@ -354,7 +354,7 @@ public class myDataset {
 
     /**
      * It copies the header of the dataset
-     * @return String A string containing all the data-set information
+     * @return A string containing all the data-set information
      */
     public String copyHeader() {
         String p = new String("");
@@ -389,7 +389,7 @@ public class myDataset {
 
     /**
      * It checks if the data-set has any real value
-     * @return boolean True if it has some real values, else false.
+     * @return True if it has some real values, else false.
      */
     public boolean hasRealAttributes() {
         return Attributes.hasRealAttributes();
@@ -402,7 +402,7 @@ public class myDataset {
 
     /**
      * It checks if the data-set has any missing value
-     * @return boolean True if it has some missing values, else false.
+     * @return True if it has some missing values, else false.
      */
     public boolean hasMissingAttributes() {
         return (this.sizeWithoutMissing() < this.getnData());
@@ -410,7 +410,7 @@ public class myDataset {
 
     /**
      * It return the size of the data-set without having account the missing values
-     * @return int the size of the data-set without having account the missing values
+     * @return the size of the data-set without having account the missing values
      */
     public int sizeWithoutMissing() {
         int tam = 0;
@@ -478,8 +478,8 @@ public class myDataset {
 
     /**
      * It returns the standard deviation of an specific attribute
-     * @param position int attribute id (position of the attribute)
-     * @return double the standard deviation  of the attribute
+     * @param position attribute id (position of the attribute)
+     * @return the standard deviation  of the attribute
      */
     public double stdDev(int position) {
         return stdev[position];
@@ -487,8 +487,8 @@ public class myDataset {
 
     /**
      * It return the average of an specific attribute
-     * @param position int attribute id (position of the attribute)
-     * @return double the average of the attribute
+     * @param position attribute id (position of the attribute)
+     * @return the average of the attribute
      */
     public double average(int position) {
         return average[position];
@@ -534,7 +534,7 @@ public class myDataset {
 
     /**
      * Devuelve el universo de discuros de las variables de entrada y salida
-     * @return double[][] El rango minimo y maximo de cada variable
+     * @return El rango minimo y maximo de cada variable
      */
     public double [][] devuelveRangos(){
       double [][] rangos = new double[this.getnVars()][2];

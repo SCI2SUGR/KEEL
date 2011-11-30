@@ -45,17 +45,15 @@ import java.util.Vector;
 import keel.Algorithms.Shared.Parsing.*;
 import org.core.*;
 
-
+/**
+ * KMeans is a private class to cluterize a dataset using the k-means clustering
+ * algorithm. The initial centroids are chosen randomly between the examples in the dataset. 
+ * Each centroid is updated as the mean value of its nearest examples in the dataset.
+ *
+ * @version 1.0
+ * @since JDK1.5
+ */
 class KMeans {
-/** 
-* <p> 
-* KMeans is a private class to cluterize a dataset using the k-means clustering
-* algorithm. 
-* The initial centroids are chosen randomly between the examples in the dataset. 
-* Each centroid is updated as the mean value of its nearest examples in the 
-* dataset.
-* </p> 
-*/ 
 	
 	//the dataset to be clusterized
 	double train[][]; 
@@ -73,7 +71,7 @@ class KMeans {
 * updated as the mean vlaue of nearest examples in the dataset. 
 * The updating is carried out until no changes in the centroids is achieved.
 * </p> 
-s* @param X  The dataset to be clusterized
+* @param X  The dataset to be clusterized
 * @param nclusters The desired number of clusters 
 * @param vrand The Randomize object to be used
 */ 	
@@ -163,7 +161,7 @@ s* @param X  The dataset to be clusterized
 * dataset. The distance is measure by means of the private method distance.
 * </p> 
 * @param x  The example in the dataset
-* @return  The index of the nearest cluster centroid as an integer values.
+* @return The index of the nearest cluster centroid as an integer values.
 */ 	
 	public int nearestCentroid(double x[]) {
 		
@@ -215,7 +213,6 @@ s* @param X  The dataset to be clusterized
 	
 }
 
-public class ClusterKMeans {
 /** 
 * <p> 
 * ClusterKMeans is a class to cluterize a dataset using the k-means clustering 
@@ -227,6 +224,7 @@ public class ClusterKMeans {
 * acts as the interface with the KEEL environment.
 * </p> 
 */ 
+public class ClusterKMeans {
 
 	//The random numbers generator used in this process
 	static Randomize rand;

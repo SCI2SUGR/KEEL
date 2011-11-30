@@ -43,6 +43,11 @@ import java.io.PrintWriter;
 import keel.Algorithms.Neural_Networks.NNEP_Common.data.DoubleTransposedDataSet;
 import keel.Algorithms.Neural_Networks.NNEP_Common.data.IAttribute;
 
+/**
+ * 
+ * Class to print the results of the CART algorithm
+ *
+ */
 public class ResultPrinter {
 	
 	
