@@ -33,12 +33,7 @@ import java.io.IOException;
 import org.core.*;
 
 /**
- * <p>Title: CMAR</p>
- *
- * <p>Description: It contains the implementation of the CMAR algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
+ * It contains the implementation of the CMAR algorithm
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @author Modified by Sergio Almecija (University of Granada) 23/05/2010

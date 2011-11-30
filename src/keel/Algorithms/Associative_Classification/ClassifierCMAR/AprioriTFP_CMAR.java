@@ -62,16 +62,13 @@ import java.util.*;
 import java.io.*;
 
 /**
- * <p>Title: AprioriTFP_CMAR</p>
- *
- * <p>Description: Methods to produce classification rules using Wenmin Li, Jiawei Han and
+ * Methods to produce classification rules using Wenmin Li, Jiawei Han and
 Jian Pei's CMAR (Classification based on Multiple associate Rules) algorithm
 but founded on Apriori-TFP. Assumes that input dataset is orgnised such that
 classifiers are at the end of each record. Note: number of classifiers value is
-stored in the <TT>numClasses</TT> field.</p>
+stored in the <TT>numClasses</TT> field.
  *
  *
- * <p>Company: KEEL </p>
  *
  * @author Frans Coenen 2 March 2004
  * @author Modified by Jesus Alcala (University of Granada) 09/02/2010

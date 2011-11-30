@@ -33,12 +33,7 @@ import java.io.IOException;
 import org.core.*;
 
 /**
- * <p>Title: CPAR</p>
- *
- * <p>Description: It contains the implementation of the CPAR algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
+ * It contains the implementation of the CPAR algorithm
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0

@@ -34,11 +34,7 @@ import java.util.ArrayList;
 import org.core.Fichero;
 
 /**
- * <p>Title: Parse Configuration File</p>
- *
- * <p>Description: It reads the configuration file (data-set files and parameters)</p>
- *
- * <p>Company: KEEL</p>
+ * It reads the configuration file (data-set files and parameters)
  *
  * @author Alberto Fernández
  * @version 1.0

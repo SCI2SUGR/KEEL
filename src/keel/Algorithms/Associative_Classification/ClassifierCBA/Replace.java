@@ -30,13 +30,7 @@
 package keel.Algorithms.Associative_Classification.ClassifierCBA;
 
 /**
- * <p>Title: Replace</p>
- *
- * <p>Description: This class contains the representation of the "Replace" structure <cRule, dID, y></p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class contains the representation of the "Replace" structure <cRule, dID, y>
  *
  * @author Written by Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
@@ -44,10 +38,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA;
  */
 
 public class Replace implements Comparable{
-	/**
-	 * Auxiliary class to store the representation of the "Replace" structure
-	 * <cRule, dID, y>
-	 */
+	
   int dID, y;
   int cRule;
 

@@ -32,27 +32,16 @@ package keel.Algorithms.Associative_Classification.ClassifierCPAR;
 import java.util.*;
 
 /**
- * <p>Title: Predictive Rule Mining PRM</p>
- *TODO
- * <p>Description: This class stores information to manage the PRM procedure.
+ * This class stores information to manage the PRM procedure.
  * This algorithm modifies FOIL to achieve higher accuracy and efficiency.
- * </p>
  *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */
 public class PRM {
-	/**
-	 * <p>
-	 * This class stores information to manage the PRM procedure.
-	 * This algorithm modifies FOIL to achieve higher accuracy and efficiency.
-	 * </p>
-	 */
+	
   double alfa, delta, min_gain;
   int nClasses, nData;
   myDataset train;

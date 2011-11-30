@@ -33,23 +33,13 @@ import java.io.IOException;
 import org.core.*;
 
 /**
- * <p>Title: CBA2</p>
- *
- * <p>Description: It contains the implementation of the CBA2 algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
+ * It contains the implementation of the CBA2 (Classification Based on Association 2) algorithm
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */
 public class CBA2 {
-	/**
-	 * <p>
-	 * Main class of the CBA2 algorithm (Classification Based on Association 2) 
-	 * </p>
-	 */
 
   myDataset train, val, test;
   String outputTr, outputTst, fileDB, fileRB, fileTime, fileHora, data;

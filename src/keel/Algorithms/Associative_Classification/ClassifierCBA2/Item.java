@@ -30,24 +30,14 @@
 package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
 /**
- * <p>Title: Item</p>
- *
- * <p>Description: This class contains the representation of a item</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class stores an item representation for classification by association algorithms.
  *
  * @author Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */
 public class Item implements Comparable {
-	/**
-	 * <p>
-	 * This class stores an item representation for classification by association algorithms.
-	 * </p>
-	 */
+	
   int variable, value;
 
   /**

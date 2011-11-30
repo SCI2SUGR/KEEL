@@ -54,13 +54,8 @@ import java.util.*;
 import javax.swing.*;
 
 /**
- * <p>Title: RuleList</p>
- *
- * <p>Description: Set of utilities to support various Association Rule Mining (ARM) 
-algorithms included in the LUCS-KDD suite of ARM programs.</p>
- *
- *
- * <p>Company: KEEL </p>
+ * Set of utilities to support various Association Rule Mining (ARM) 
+algorithms included in the LUCS-KDD suite of ARM programs.
  *
  * @author Frans Coenen 2 March 2004
  * @author Modified by Jesus Alcala (University of Granada) 09/02/2010

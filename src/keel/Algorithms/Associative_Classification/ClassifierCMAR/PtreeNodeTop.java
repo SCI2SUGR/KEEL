@@ -49,12 +49,7 @@ in which to store the top level of the Ptree.
 package keel.Algorithms.Associative_Classification.ClassifierCMAR;
 
 /**
- * <p>Title: PtreeNodeTop</p>
- *
- * <p>Description: Class to store the top node of the P-tree</p>
- *
- *
- * <p>Company: KEEL </p>
+ * Class to store the top node of the P-tree
  *
  * @author Frans Coenen
  * @author Modified by Jesus Alcala (University of Granada) 09/02/2010

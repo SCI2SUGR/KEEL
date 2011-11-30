@@ -33,23 +33,14 @@ import java.io.IOException;
 import org.core.*;
 
 /**
- * <p>Title: CBA</p>
- *
- * <p>Description: It contains the implementation of the CBA algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
+ * It contains the implementation of the CBA (Classification Based on Association) algorithm
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */
 public class CBA {
-	/**
-	 * <p>
-	 * Main class of the CBA algorithm (Classification Based on Association) 
-	 * </p>
-	 */
+
   myDataset train, val, test;
   String outputTr, outputTst, fileDB, fileRB, fileTime, fileHora, data;
   DataBase dataBase;

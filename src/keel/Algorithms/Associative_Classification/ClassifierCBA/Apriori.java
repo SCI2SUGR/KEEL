@@ -39,11 +39,6 @@ import java.util.*;
  * @since JDK1.5
  */
 public class Apriori {
-	/**
-	 * <p>
-	 * This class mines the frequent non-fuzzy itemsets and the non-fuzzy classification association rules
-	 * </p>
-	 */
 	
   ArrayList<Itemset> L2;
   double minpsup, minpconf;

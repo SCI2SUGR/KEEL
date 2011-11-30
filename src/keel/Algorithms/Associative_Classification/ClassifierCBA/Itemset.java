@@ -32,13 +32,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA;
 import java.util.*;
 
 /**
- * <p>Title: Itemset</p>
- *
- * <p>Description: This class contains the representation of an itemset</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class stores an itemset representation for classification by association algorithms. Also, it stores some useful information to manage the itemset
  *
  * @author Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
@@ -46,12 +40,7 @@ import java.util.*;
  */
 
 public class Itemset implements Comparable {
-	/**
-	 * <p>
-	 * This class stores an itemset representation for classification by association algorithms.
-	 * Also, it stores some useful information to manage the itemset
-	 * </p>
-	 */
+
   ArrayList<Item> itemset;
   int clas;
   double support, supportRule, per;

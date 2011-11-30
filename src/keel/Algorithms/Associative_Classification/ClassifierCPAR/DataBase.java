@@ -32,24 +32,14 @@ package keel.Algorithms.Associative_Classification.ClassifierCPAR;
 import org.core.Files;
 
 /**
- * <p>Title: DataBase</p>
- *
- * <p>Description: Data Base</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2008</p>
- *
- * <p>Company: KEEL </p>
+ * Class to store the examples to work with the algorithm and some other useful information
  *
  * @author Written by Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */
 public class DataBase {
-	/**
-	 * <p>
-	 * Class to store the examples to work with the algorithm and some other useful information
-	 * </p>
-	 */
+	
   int n_variables, n_variablesUsed, partitions;
   int[] nLabels;
   int[][] dataBase;

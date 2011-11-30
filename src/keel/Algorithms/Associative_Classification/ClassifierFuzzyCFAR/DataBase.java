@@ -32,13 +32,7 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyCFAR;
 import org.core.Fichero;
 
 /**
- * <p>Title: DataBase</p>
- *
- * <p>Description: Fuzzy Data Base</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2008</p>
- *
- * <p>Company: KEEL </p>
+ * Fuzzy Data Base
  *
  * @author Written by Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0

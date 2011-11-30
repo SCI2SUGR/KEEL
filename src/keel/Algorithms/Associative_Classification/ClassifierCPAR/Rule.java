@@ -32,24 +32,14 @@ package keel.Algorithms.Associative_Classification.ClassifierCPAR;
 import java.util.*;
 
 /**
- * <p>Title: Rule</p>
- *
- * <p>Description: Codifies a Non-Fuzzy Rule</p>
- *
- * <p>Copyright: KEEL Copyright (c) 2008</p>
- *
- * <p>Company: KEEL </p>
- *
+ * Class to store a non-fuzzy rule, together with some necessary information to manage the CBA algorithm
+ * 
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */
 public class Rule implements Comparable {
-	/**
-	 * <p>
-	 * Class to store a non-fuzzy rule, together with some necessary information to manage the CBA algorithm
-	 * </p>
-	 */
+	
   int[] antecedent;
   int clas, nAnts;
   double laplaceAccuracy;

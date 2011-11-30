@@ -30,9 +30,7 @@
 package keel.Algorithms.Associative_Classification.ClassifierCPAR;
 
 /**
- * <p>Title: PNArray</p>
- *
- * <p>Description: This class contains the 
+ * This class contains the 
  * representation of a structure that stores
  * some information corresponding to rule r.
  * Such as,
@@ -40,29 +38,14 @@ package keel.Algorithms.Associative_Classification.ClassifierCPAR;
  * examples satisfying rule's body
  * P[p] and N[p] as the numbers of positive and negative examples for each literal p
  * satisfying the body of rule r', the rule constructed by appending p to r.
- * </p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * 
  *
  * @author Written by Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */
 public class PNArray {
-	/**
-	 * <p>
-	 * Description: This class contains the 
-	 * representation of a structure that stores
-	 * some information corresponding to rule r.
-	 * Such as,
-	 * P and N as the number of positive and negative
-	 * examples satisfying rule's body
-	 * P[p] and N[p] as the numbers of positive and negative examples for each literal p
-	 * satisfying the body of rule r', the rule constructed by appending p to r.
-	 * </p>
-	 */
+	
   int nVariables, nData;
   int[] nLabels;
   double P, N;

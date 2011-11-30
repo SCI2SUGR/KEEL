@@ -58,14 +58,9 @@ import java.util.*;
 import javax.swing.*;
 
 /**
- * <p>Title: PartialSupportTree</p>
- *
- * <p>Description: Methods to implement the "Apriori-TFP" (Total From Partial) ARM algorithm 
+ * Methods to implement the "Apriori-TFP" (Total From Partial) ARM algorithm 
 using both the T-tree (Total support tree) and P-tree (Partial support tree 
-data structures.</p>
- *
- *
- * <p>Company: KEEL </p>
+data structures.
  *
  * @author Frans Coenen 5 July 2003
  * @author Modified by Jesus Alcala (University of Granada) 09/02/2010

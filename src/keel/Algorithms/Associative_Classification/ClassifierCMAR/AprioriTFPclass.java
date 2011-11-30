@@ -58,15 +58,10 @@ import java.util.*;
 import java.io.*;
 
 /**
- * <p>Title: AprioriTFPclass</p>
- *
- * <p>Description: Methods to produce classification rules using a Apriori-T appraoch. Assumes 
+ * Methods to produce classification rules using a Apriori-T appraoch. Assumes 
 that input dataset is orgnised such that classifiers are at the end of each 
 record. Note: number of classifiers value is stored in the <TT>numClasses</TT> 
-field.</p>
- *
- *
- * <p>Company: KEEL </p>
+field.
  *
  * @author Frans Coenen 29 April 2003
  * @author Modified by Jesus Alcala (University of Granada) 09/02/2010

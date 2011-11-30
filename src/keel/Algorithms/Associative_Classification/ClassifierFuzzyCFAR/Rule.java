@@ -33,13 +33,7 @@ import java.util.*;
 import org.core.Randomize;
 
 /**
- * <p>Title: Rule</p>
- *
- * <p>Description: Codifies a Fuzzy Rule</p>
- *
- * <p>Copyright: KEEL Copyright (c) 2008</p>
- *
- * <p>Company: KEEL </p>
+ * Codifies a Fuzzy Rule
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0

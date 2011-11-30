@@ -30,26 +30,14 @@
 package keel.Algorithms.Associative_Classification.ClassifierCPAR;
 
 /**
- * <p>Title: Literal</p>
- *
- * <p>Description: This class contains the representation of a item with its gain</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * Class to store a Literal. It is almost the same as an Item, but it also stores the item's gain, which is calculated by the FOIL method.
  *
  * @author Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */
 public class Literal implements Comparable{
-	/**
-	 * <p>
-	 * Class to store a Literal.
-	 * It is almost the same as an Item, but it also stores the item's gain,
-	 * which is calculated by the FOIL method.
-	 * </p>
-	 */
+	
   int variable, value;
   double gain;
 

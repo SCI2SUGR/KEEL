@@ -49,12 +49,7 @@ with the addition of a sibling branch.
 package keel.Algorithms.Associative_Classification.ClassifierCMAR;
 
 /**
- * <p>Title: PtreeNode</p>
- *
- * <p>Description: Class to store the node of a P-tree</p>
- *
- *
- * <p>Company: KEEL </p>
+ * Class to store the node of a P-tree
  *
  * @author Frans Coenen
  * @author Modified by Jesus Alcala (University of Granada) 09/02/2010

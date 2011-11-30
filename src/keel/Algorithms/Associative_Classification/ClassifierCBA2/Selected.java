@@ -30,22 +30,14 @@
 package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
 /**
- * <p>Title: Selected</p>
- *
- * <p>Description: This class contains the representation of the "Selected" structure <rule, defaultClass, totalErrors></p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class contains the representation of the "Selected" structure <rule, defaultClass, totalErrors>
  *
  * @author Written by Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */
 public class Selected implements Comparable{
-	/**
-	 * This class contains the representation of the "Selected" structure <rule, defaultClass, totalErrors>
-	 */
+	
   int defaultClass, totalErrors;
   Rule rule;
 

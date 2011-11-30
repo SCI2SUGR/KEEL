@@ -58,14 +58,9 @@ import java.util.*;
 import javax.swing.*;
 
 /**
- * <p>Title: TotalSupportTree</p>
- *
- * <p>Description: Methods concerned with the generation, processing and manipulation of 
+ * Methods concerned with the generation, processing and manipulation of 
 T-tree data storage structures used to hold the total support counts for large 
-itemsets.</p>
- *
- *
- * <p>Company: KEEL </p>
+itemsets.
  *
  * @author Frans Coenen 3 July 2003
  * @author Modified by Jesus Alcala (University of Granada) 09/02/2010

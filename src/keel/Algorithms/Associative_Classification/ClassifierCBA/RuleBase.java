@@ -33,13 +33,7 @@ import java.util.*;
 import org.core.*;
 
 /**
- * <p>Title: RuleBase</p>
- *
- * <p>Description: This class contains the representation of a Rule Set</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class contains the representation of a Rule Set
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0
@@ -47,11 +41,7 @@ import org.core.*;
  */
 
 public class RuleBase {
-	/**
-	 * <p>
-	 * This class contains the representation of a Rule Set
-	 * </p>
-	 */
+	
   ArrayList<Rule> ruleBase;
   ArrayList<Rule> U;
   ArrayList<Rule> Q;

@@ -46,13 +46,8 @@ import java.io.*;
 import java.util.*;
 
 /**
- * <p>Title: TtreeNode</p>
- *
- * <p>Description: Methods concerned with Ttree node structure. Arrays of these structures 
-are used to store nodes at the same level in any sub-branch of the T-tree.</p>
- *
- *
- * <p>Company: KEEL </p>
+ * Methods concerned with Ttree node structure. Arrays of these structures 
+are used to store nodes at the same level in any sub-branch of the T-tree.
  *
  * @author Frans Coenen 2 July 2003
  * @author Modified by Jesus Alcala (University of Granada) 09/02/2010

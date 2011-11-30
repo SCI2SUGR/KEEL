@@ -33,12 +33,7 @@ import java.io.IOException;
 import org.core.*;
 
 /**
- * <p>Title: Algorithm</p>
- *
- * <p>Description: It contains the implementation of the algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
+ * It contains the implementation of the algorithm
  *
  * @author Alberto Fernández
  * @version 1.0
