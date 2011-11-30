@@ -179,10 +179,22 @@ public class myDataset {
         return emin;
     }
 
+    /**
+     * It returns the maximum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the maximum value of the attribute
+     */    
     public int getMax(int variable) {
         return emax[variable];
     }
 
+    /**
+     * It returns the minimum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the minimum value of the attribute
+     */    
     public int getMin(int variable) {
         return emin[variable];
     }
@@ -352,6 +364,10 @@ public class myDataset {
         return Attributes.hasRealAttributes();
     }
 
+    /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
     public boolean hasNumericalAttributes() {
         return (Attributes.hasIntegerAttributes() ||
                 Attributes.hasRealAttributes());
@@ -388,7 +404,9 @@ public class myDataset {
     }
 
 
-
+    /**
+     * It computes the number the instances per class
+     */
     public void computeInstancesPerClass() {
 		int i;
         this.instancesCl = new int[this.nClasses];
@@ -399,6 +417,12 @@ public class myDataset {
 		for (i = 0; i < this.nClasses; i++)  this.frecuentCl[i] = (1.0 * this.instancesCl[i]) / (double) this.nData;
     }
 
+    /**
+     * It returns the number of instances in the dataset of the given class
+     *
+     * @param clas the index of the class
+     * @return the number of instances in the dataset of the given class
+     */
     public int numberInstances(int clas) {
         return instancesCl[clas];
     }
