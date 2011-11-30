@@ -32,13 +32,7 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
 import java.util.*;
 
 /**
- * <p>Title: Itemset</p>
- *
- * <p>Description: This class contains the representation of a itemset</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class contains the representation of a itemset
  *
  * @author Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0

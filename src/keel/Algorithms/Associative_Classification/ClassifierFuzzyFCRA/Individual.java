@@ -33,13 +33,7 @@ import org.core.Randomize;
 import java.lang.*;
 
 /**
- * <p>Title: Individual</p>
- *
- * <p>Description: This class contains the representation of the individuals of the population</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class contains the representation of the individuals of the population
  *
  * @author Written by Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0

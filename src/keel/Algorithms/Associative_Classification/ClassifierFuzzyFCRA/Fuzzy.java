@@ -30,13 +30,7 @@
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
 
 /**
- * <p>Title: Fuzzy</p>
- *
- * <p>Description: This class contains the representation of a fuzzy value</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class contains the representation of a fuzzy value
  *
  * @author Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0

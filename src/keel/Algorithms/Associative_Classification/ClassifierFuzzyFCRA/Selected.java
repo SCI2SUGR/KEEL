@@ -30,13 +30,7 @@
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
 
 /**
- * <p>Title: Selected</p>
- *
- * <p>Description: This class contains the representation to select rules</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class contains the representation to select rules
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0

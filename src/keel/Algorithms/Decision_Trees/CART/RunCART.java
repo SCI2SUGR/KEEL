@@ -48,9 +48,7 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.data.KeelDataSet;
 
 /**
  * Main class for CART algorithm. 
- * CART: Classification And Regression Trees (Breiman and al., 1984) CART are binary trees
- * This class can be call from KEEL Project.
- * 
+ * CART: Classification And Regression Trees (Breiman and al., 1984) CART are binary trees 
  * 
  */
 public abstract class RunCART 

@@ -39,10 +39,6 @@ package keel.Algorithms.Decision_Trees.C45;
 
 import java.io.*;
 
-/** para commons.configuration
- import org.apache.commons.configuration.*;
- */
-
 /**
  * Class to implement the C4.5 algorithm
    @author Cristóbal Romero Morales (UCO) (30-03-06)

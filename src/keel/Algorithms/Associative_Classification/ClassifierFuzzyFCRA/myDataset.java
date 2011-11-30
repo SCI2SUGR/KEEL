@@ -34,12 +34,7 @@ import java.lang.String;
 import keel.Dataset.*;
 
 /**
- * <p>Title: Dataset</p>
- *
- * <p>Description: It contains the methods to read a Classification Dataset</p>
- *
- *
- * <p>Company: KEEL </p>
+ * Description: It contains the methods to read a Classification Dataset
  *
  * @author Alberto Fernández
  * @version 1.0

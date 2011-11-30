@@ -32,13 +32,7 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFCRA;
 import java.util.*;
 
 /**
- * <p>Title: Apriori</p>
- *
- * <p>Description: This class mines the frecuent fuzzy itemsets and the fuzzy classification associacion rules</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * This class mines the frecuent fuzzy itemsets and the fuzzy classification associacion rules
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0

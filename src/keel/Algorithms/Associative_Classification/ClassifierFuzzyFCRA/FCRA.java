@@ -33,12 +33,7 @@ import java.io.IOException;
 import org.core.*;
 
 /**
- * <p>Title: FCRA</p>
- *
- * <p>Description: It contains the implementation of the FCRA algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
+ * It contains the implementation of the FCRA algorithm
  *
  * @author Written by Jesus Alcala (University of Granada) 09/02/2010
  * @version 1.0

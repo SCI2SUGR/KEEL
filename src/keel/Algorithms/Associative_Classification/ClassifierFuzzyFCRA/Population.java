@@ -33,13 +33,7 @@ import java.util.*;
 import org.core.*;
 
 /**
- * <p>Title: Population</p>
- *
- * <p>Description: This class contains the population for the genetic algorithm</p>
- *
- * <p>Copyright: KEEL Copyright (c) 2008</p>
- *
- * <p>Company: KEEL </p>
+ * This class contains the population for the genetic algorithm
  *
  * @author Written by Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.2
