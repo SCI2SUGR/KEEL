@@ -27,22 +27,18 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.HellingerBD;
 
 
 /**
  * <p>
- * This class implements the Quicksort algorithm. It lets sort an array of values from lowest to highest and
- * vice versa basing on an option
+ * This class implements the Quicksort algorithm. It lets to sort an array of values from the lowest to the highest value and
+ * vice versa based on an option
  * </p>
+ * 
+ * @author Written by Jose A. Saez (University of Granada), 12/21/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class Quicksort {
 	
@@ -63,9 +59,9 @@ public class Quicksort {
 
 	/**
 	 * <p>
-	 * Sorts the values array basing on opt
+	 * It sorts the values array based on opt
  	 * </p>
-	 * @param vector double values array to sort
+	 * @param vector array of double values to sort
 	 * @param size number of elements to sort
 	 * @param opt equals to HIGHEST_FIRST to sort from highest to lowest, and equals to LOWEST_FIRST to
 	 * sort from lowest to highest
@@ -94,13 +90,13 @@ public class Quicksort {
 
 	/**
 	 * <p>
-	 * Sorts the values between begin and end indexes
+	 * It sorts the values between the begin and the end indexes
  	 * </p>
 	 * @param values values to sort with their original positions
 	 * @param begin start position to sort
 	 * @param end end position to sort
 	 */	
-	static private void sortValues(OrderStructure[] values, int begin, int end){
+	static public void sortValues(OrderStructure[] values, int begin, int end){
 			
 		double pivot;
 		OrderStructure temp;

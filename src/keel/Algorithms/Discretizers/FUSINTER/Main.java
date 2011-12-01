@@ -27,34 +27,33 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Salvador García (University of Jaén) 4/05/2011
- * @version 1.1
- * @since JDK1.5
- * </p>
- */
-
 package keel.Algorithms.Discretizers.FUSINTER;
-
-import java.util.*;
 
 import keel.Dataset.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 import keel.Algorithms.Discretizers.Basic.*;
 
-public class Main {
+
 /**
  * <p>
- * Main class Chi-Merge discretizer.
+ * Main class of the FUSINTER discretizer.
  * </p>
+ * 
+ * @author Written by Salvador García (University of Jaén) 4/05/2011
+ * @version 1.1
+ * @since JDK1.5
  */
+public class Main {
+
 	
 	/** Creates a new instance of Main */
 	public Main() {
 	}
 	
 	/**
+	 * <p>
+	 * Main method
+	 * </p>
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
@@ -92,4 +91,5 @@ public class Main {
                 Parameters.numAttributes=Attributes.getInputAttributes().length;
         		Parameters.numInstances = is.getNumInstances();
         }
+        
 }

@@ -27,15 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.5
- * </p>
- */
-
 package keel.Algorithms.Discretizers.Fayyad_Discretizer;
 
 import java.util.*;
@@ -43,16 +34,22 @@ import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
 
-public class FayyadDiscretizer extends Discretizer {
 /**
  * <p>
  * This class implements the Fayyad discretizer.
  * </p>
+ * 
+ * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004 </p>
+ * Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.5
+ * </p>
  */
+public class FayyadDiscretizer extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Returns a vector with the discretized values.
+	 * It returns a vector with the discretized values.
 	 * </p>
 	 * @param attribute
 	 * @param values
@@ -191,4 +188,3 @@ public class FayyadDiscretizer extends Discretizer {
 	}
 		
 }
-

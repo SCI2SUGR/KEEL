@@ -27,27 +27,23 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Salvador García (University of Jaén) 4/05/2011
- * @version 1.1
- * @since JDK1.5
- * </p>
- */
-
 package keel.Algorithms.Discretizers.FUSINTER;
 
 import java.util.*;
-
 import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
-public class FUSINTER extends Discretizer {
+
 /**
  * <p>
  * This class implements the FUSINTER discretizer.
  * </p>
+ * 
+ * @author Written by Salvador García (University of Jaén) 4/05/2011
+ * @version 1.1
+ * @since JDK1.5
  */
+public class FUSINTER extends Discretizer {
 	
 	
 	double lambda;
@@ -248,6 +244,5 @@ public class FUSINTER extends Discretizer {
 		
 		return total;
 	}
-	
 	
 }

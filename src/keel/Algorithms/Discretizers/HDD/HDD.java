@@ -27,26 +27,23 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Salvador García (University of Jaén - Jaén) 20/03/2011
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
-
 package keel.Algorithms.Discretizers.HDD;
 
 import java.util.*;
 import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
-public class HDD extends Discretizer {
+
 /**
  * <p>
  * This class implements the HDD discretizer.
  * </p>
+ * 
+ * @author Written by Salvador Garcia (University of Jaén - Jaén) 20/03/2011
+ * @version 1.0
+ * @since JDK1.5
  */
+public class HDD extends Discretizer {
 
 	double R;
 	
@@ -198,5 +195,6 @@ public class HDD extends Discretizer {
 		}
 		
 		return suma / (double)quanta[0].length;
-	}	
+	}
+	
 }

@@ -27,39 +27,23 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.HellingerBD;
 
 import keel.Dataset.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 import keel.Algorithms.Discretizers.Basic.*;
 
-
 /**
  * <p>
  * Main class of HellingerBD (Hellinger-Based Discretizer)
  * </p>
+ * 
+ * @author Written by Jose A. Saez (University of Granada), 12/21/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class Main {
 
-	
-//******************************************************************************************************
-	
-	/**
-	 * <p>
-	 * Creates a new instance of Main 
-	 * </p>
-	 */
-	public Main(){
-	}
-	
 //******************************************************************************************************
 		
 	/**
@@ -95,12 +79,16 @@ public class Main {
 
 	/**
 	 * <p>
-	 * Checks the dataset and exits the program if there are errors:
+	 * It checks the dataset and exits the program if there are errors:
+	 * </p>
+	 * <p>
 	 * 	- more than one output
+	 * </p>
+	 * <p>
 	 * 	- output attribute is not nominal
 	 * </p>
 	 */
-	static void checkDataset(InstanceSet is){
+	public static void checkDataset(InstanceSet is){
 		
 		Attribute []outputs = Attributes.getOutputAttributes();
         

@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.DIBD;
 
 import java.util.*;
@@ -48,6 +40,10 @@ import keel.Dataset.Attributes;
  * <p>
  * This class implements the DIBD
  * </p>
+ * 
+ * @author Written by Jose A. Saez (University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class DIBD extends Discretizer {
 
@@ -279,7 +275,7 @@ public class DIBD extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Computes the number of instances of class class_ (or all classes) and attribute value <= or > than
+	 * It computes the number of instances of class class_ (or all classes) and attribute value <= or > than
 	 * value, according to option
 	 * </p>
 	 * @param class_ class of instances computed
@@ -287,7 +283,7 @@ public class DIBD extends Discretizer {
 	 * @param option is equal to one tag: LEFT (for <=) or RIGHT (for >)
 	 * @return number of instances
 	 */
-	private int computeNI(int class_, int value, int option){
+	public int computeNI(int class_, int value, int option){
 		
 		int res = 0;
 		
@@ -324,14 +320,14 @@ public class DIBD extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Computes the number of instances with attribute value in the interval [start, end] and class class_
+	 * It computes the number of instances with attribute value in the interval [start, end] and class class_
 	 * </p>
 	 * @param class_ class of instances computed
 	 * @param start begin of the interval
 	 * @param end end of the interval
 	 * @return number of instances
 	 */
-	private int computeIntervalNI(int class_, int start, int end){
+	public int computeIntervalNI(int class_, int start, int end){
 		
 		int res = 0;
 		
@@ -352,12 +348,12 @@ public class DIBD extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Computes the Left decision distributional index needed to compute the entropy of a cutpoint
+	 * It computes the Left decision distributional index needed to compute the entropy of a cutpoint
 	 * </p>
 	 * @param value index of the cutpoint studied
 	 * @return the value of the index
 	 */
-	private double Eleft(int value){
+	public double Eleft(int value){
 		
 		double res = 0, aux;
 		
@@ -378,12 +374,12 @@ public class DIBD extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Computes the Right decision distributional index needed to compute the entropy of a cutpoint
+	 * It computes the Right decision distributional index needed to compute the entropy of a cutpoint
 	 * </p>
 	 * @param value index of the cutpoint studied
 	 * @return the value of the index
 	 */
-	private double Eright(int value){
+	public double Eright(int value){
 		
 		double res = 0, aux;
 		
@@ -404,13 +400,13 @@ public class DIBD extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Computes the compound distributional index needed to compute the compound decrement of a cutpoint
+	 * It computes the compound distributional index needed to compute the compound decrement of a cutpoint
 	 * </p>
 	 * @param start begin of the interval
 	 * @param end end of the interval
 	 * @return the value of the index
 	 */
-	private double Ecom(int start, int end){
+	public double Ecom(int start, int end){
 		
 		double ed = Ed(start, end);
 		double ev = Ev(start, end);
@@ -423,13 +419,13 @@ public class DIBD extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Computes the decision distributional index needed to compute the compound distributional index (Ecom)
+	 * It computes the decision distributional index needed to compute the compound distributional index (Ecom)
 	 * </p>
 	 * @param start begin of the interval
 	 * @param end end of the interval
 	 * @return the value of the index
 	 */
-	private double Ed(int start, int end){
+	public double Ed(int start, int end){
 		
 		double res = 0, aux, aux2;
 		
@@ -449,13 +445,13 @@ public class DIBD extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Computes the value distributional index needed to compute the compound distributional index (Ecom)
+	 * It computes the value distributional index needed to compute the compound distributional index (Ecom)
 	 * </p>
 	 * @param start begin of the interval
 	 * @param end end of the interval
 	 * @return the value of the index
 	 */
-	private double Ev(int start, int end){
+	public double Ev(int start, int end){
 		
 		double res = 0, aux, resto;
 		

@@ -27,15 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.5
- * </p>
- */
-
 package keel.Algorithms.Discretizers.FixedFrequency_Discretizer;
 
 import java.util.*;
@@ -43,12 +34,17 @@ import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
 
-public class FixedFrequencyDiscretizer extends Discretizer {
 /**
- * <p>
+ *<p>
  * This class implements the Fixed Frequency discretizer.
  * </p>
+ *
+ * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004 </p>
+ * Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.5
  */
+public class FixedFrequencyDiscretizer extends Discretizer {
 		
 	double freqSize;
 
@@ -56,7 +52,7 @@ public class FixedFrequencyDiscretizer extends Discretizer {
 	 * <p> 
 	 * Constructor of the class, initializes the numInt attribute
 	 * </p>
-	 * @param _freqSize
+	 * @param _freqSize frequency of examples per interval
 	 */
 	public FixedFrequencyDiscretizer(int _freqSize) {
 		freqSize=_freqSize;
@@ -64,12 +60,12 @@ public class FixedFrequencyDiscretizer extends Discretizer {
 
 	/**
 	 * <p>
-	 * Returns a vector with the discretized values.
+	 * It returns a vector with the discretized values
 	 * </p>
-	 * @param attribute
-	 * @param values
-	 * @param begin
-	 * @param end
+	 * @param attribute index of the attribute to discretize
+	 * @param values vector of the indexes of the instances sorted from the lowest to the highest value of attribute
+	 * @param begin index of the instance with the lowest value of attribute
+	 * @param end index of the instance with the highest value of attribute
 	 * @return vector with the discretized values
 	 */
 	protected Vector discretizeAttribute(int attribute,int []values,int begin,int end) {
@@ -120,5 +116,5 @@ public class FixedFrequencyDiscretizer extends Discretizer {
 
 		return cp;
 	}
+	
 }
-

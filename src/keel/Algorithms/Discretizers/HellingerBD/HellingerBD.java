@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.HellingerBD;
 
 import java.util.*;
@@ -43,11 +35,14 @@ import keel.Algorithms.Genetic_Rule_Learning.Globals.Parameters;
 import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 
-
 /**
  * <p>
  * This class implements the HellingerBD discretizer
  * </p>
+ * 
+ * @author Written by Jose A. Saez (University of Granada), 12/21/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class HellingerBD extends Discretizer {
 	
@@ -113,10 +108,10 @@ public class HellingerBD extends Discretizer {
 
 	/**
 	 * <p>
-	 * Returns a vector with the discretized values
+	 * It returns a vector with the discretized values
 	 * </p>
 	 * @param attribute index of the attribute to discretize
-	 * @param values vector of indexes of the instances sorted from lowest to highest value of attribute
+	 * @param values vector of the indexes of the instances sorted from the lowest to the highest value of attribute
 	 * @param begin index of the instance with the lowest value of attribute
 	 * @param end index of the instance with the highest value of attribute
 	 * @return vector with the discretized values
@@ -205,13 +200,13 @@ public class HellingerBD extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Computes the interval entropy
+	 * It computes the interval entropy
 	 * </p>
  	 * @param interval index of the interval
  	 * @param attribute index of the attribute to discretize
 	 * @return the entropy of the interval
 	 */
-	private double intervalEntropy(int interval, int attribute){
+	public double intervalEntropy(int interval, int attribute){
 
 		int i, numInst = 0;
 		double total = 0;
@@ -256,12 +251,12 @@ public class HellingerBD extends Discretizer {
 	
 	/**
 	 * <p>
-	 * Computes the cutpoint entropy
+	 * It computes the cutpoint entropy
 	 * </p>
  	 * @param cutp index of the cutpoint
 	 * @return the entropy of the cutpoint
 	 */
-	private double cutpointEntropy(int cutp){
+	public double cutpointEntropy(int cutp){
 		
 		return 	Math.abs(entropyIntrvl[cutp-1] - entropyIntrvl[cutp]);
 	}	

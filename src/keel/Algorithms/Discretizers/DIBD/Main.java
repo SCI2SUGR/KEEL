@@ -27,26 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.DIBD;
 
 import keel.Dataset.*;
 import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
-
- /**
-  * <p>
-  * Main class of DIBD (Distribution-Index-Based Discretizer)
-  * </p>
-  */
+/**
+ * <p>
+ * Main class of DIBD (Distribution-Index-Based Discretizer)
+ * </p>
+ *
+ * @author Written by Jose A. Saez (University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class Main {
 
  	
@@ -54,7 +50,7 @@ public class Main {
  	
  	/**
  	 * <p>
- 	 * Creates a new instance of Main 
+ 	 * It creates a new instance of Main 
  	 * </p>
  	 */
  	public Main(){
@@ -95,12 +91,12 @@ public class Main {
 
 	/**
 	 * <p>
-	 * Checks the dataset and exits the program if there are errors:
-	 * 	- more than one output
+	 * It checks the dataset and exits the program if there are errors:</p>
+	 * 	- more than one output</p>
 	 * 	- output attribute is not nominal
 	 * </p>
 	 */
-	static void checkDataset(InstanceSet is){
+	public static void checkDataset(InstanceSet is){
 		
 		Attribute []outputs = Attributes.getOutputAttributes();
         
