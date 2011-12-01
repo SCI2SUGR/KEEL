@@ -27,15 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.5
- * </p>
- */
-
 package keel.Algorithms.Discretizers.UniformFrequency_Discretizer;
 
 import java.util.*;
@@ -43,12 +34,18 @@ import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
 
-public class UniformFrequencyDiscretizer extends Discretizer {
 /**
  * <p>
  * This class implements the Uniform Frequency discretizer.
  * </p>
+ * 
+ * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004 </p>
+ * Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.5
+ * </p>
  */
+public class UniformFrequencyDiscretizer extends Discretizer {
 		
 	double numInt;
 
@@ -56,7 +53,7 @@ public class UniformFrequencyDiscretizer extends Discretizer {
 	 * <p> 
 	 * Constructor of the class, initializes the numInt attribute
 	 * </p>
-	 * @param _numInt
+	 * @param _numInt number of intervals
 	 */
 	public UniformFrequencyDiscretizer(int _numInt) {
 		if (_numInt > 0)
@@ -122,5 +119,5 @@ public class UniformFrequencyDiscretizer extends Discretizer {
 
 		return cp;
 	}
+	
 }
-

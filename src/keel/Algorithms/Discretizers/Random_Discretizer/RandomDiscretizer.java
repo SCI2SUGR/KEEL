@@ -27,21 +27,18 @@
   
 **********************************************************************/
 
-/*
- * RandomDiscretizer.java
- *
- */
-
-/**
- *
- */
-
 package keel.Algorithms.Discretizers.Random_Discretizer;
 
 import java.util.*;
 import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
+
+/**
+ * 
+ * This class implements the Random Discretizer
+ *
+ */
 public class RandomDiscretizer extends Discretizer {
 	protected Vector discretizeAttribute(int attribute,int []values,int begin,int end) {
 		Vector cd=classDistribution(attribute,values,begin,end);
@@ -102,6 +99,4 @@ public class RandomDiscretizer extends Discretizer {
 		return res;
 	}
 		
-
 }
-

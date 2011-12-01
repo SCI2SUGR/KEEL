@@ -27,24 +27,18 @@
   
 **********************************************************************/
 
-/*
- * Control.java
- *
- * Created on 28 de marzo de 2004, 21:47
- */
-
-/**
- *
- */
-
 package keel.Algorithms.Discretizers.Random_Discretizer;
-
-import java.util.*;
 
 import keel.Dataset.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 import keel.Algorithms.Discretizers.Basic.*;
 
+
+/**
+ * 
+ * Main class of the Random Discretizer
+ *
+ */
 public class Main {
 	
 	/** Creates a new instance of Main */
@@ -52,6 +46,9 @@ public class Main {
 	}
 	
 	/**
+	 * <p>
+	 * Main method
+	 * </p>
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
@@ -90,5 +87,5 @@ public class Main {
                 Parameters.numClasses=outputs[0].getNumNominalValues();
                 Parameters.numAttributes=Attributes.getInputAttributes().length;
         }
+        
 }
-
