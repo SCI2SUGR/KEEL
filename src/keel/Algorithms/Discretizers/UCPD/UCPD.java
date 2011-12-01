@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.UCPD;
 
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
@@ -48,6 +40,10 @@ import keel.Dataset.*;
  * <p>
  * This class implements the UCPD algorithm
  * </p>
+ * 
+ * @author Written by Jose A. Saez ( University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class UCPD extends Discretizer {
 	
@@ -78,7 +74,7 @@ public class UCPD extends Discretizer {
 
 	/**
 	 * <p>
-	 * Returns a vector with the discretized values
+	 * It returns a vector with the discretized values
 	 * </p>
 	 * @param attribute index of the attribute to discretize
 	 * @param values not used
@@ -165,7 +161,7 @@ public class UCPD extends Discretizer {
 
 	/**
 	 * <p>
-	 * Computes the cutpoints for each continuous variable
+	 * It computes the cutpoints for each continuous variable
 	 * </p>
 	 */	
 	public void discretizeAllAttributes(){
@@ -397,10 +393,10 @@ public class UCPD extends Discretizer {
 
 	/**
 	 * <p>
-	 * Normalize continuous attributes and center them on their mean
+	 * It normalizes continuous attributes and center them on their mean
 	 * </p>
 	 */		
-	private void normalizeAndCenter(){
+	public void normalizeAndCenter(){
 		
 		int i, j, cont;
 		double min, max;
@@ -443,14 +439,14 @@ public class UCPD extends Discretizer {
 
 	/**
 	 * <p>
-	 * It calcules the cutpoints using the K-Means algorithm
+	 * It calculates the cutpoints using the K-Means algorithm
 	 * </p>
 	 * @param k number of intervals
 	 * @param FinalData the mapped data with eigendimension
-	 * @param att the eigendimension to discretize
+	 * @param dim the eigendimension to discretize
 	 * @return the cutpoints
 	 */	
-	private double[] KMeans(int k, double[][] FinalData, int dim){
+	public double[] KMeans(int k, double[][] FinalData, int dim){
 		
 		int i, j;
 		double[] cutpoints = new double[k-1];		// cutpoints selected
@@ -544,7 +540,7 @@ public class UCPD extends Discretizer {
 	 * @param dim dimension to find the nearest neighbors
 	 * @return the value of the cutpoint
 	 */	
-	private double KNN(int att, double value, double[][] FinalData, int dim){
+	public double KNN(int att, double value, double[][] FinalData, int dim){
 		
 		// compute the distance of each instance to value
 		double[] distance = new double[numInstances];
@@ -568,14 +564,14 @@ public class UCPD extends Discretizer {
 
 	/**
 	 * <p>
-	 * It calcules the cutpoints with uniform frequency
+	 * It calculates the cutpoints with uniform frequency
 	 * </p>
 	 * @param k number of cutpoints to compute
 	 * @param FinalData matrix of data of PCA
 	 * @param att index of the dimension
 	 * @return the cutpoints
 	 */	
-	private double[] uniformFrequencyCutpoints(int k, double[][] FinalData, int att){
+	public double[] uniformFrequencyCutpoints(int k, double[][] FinalData, int att){
 		
 		double[] cutpoints = new double[k];
 		
@@ -603,14 +599,14 @@ public class UCPD extends Discretizer {
 
 	/**
 	 * <p>
-	 * Computes the frequent itemsets of the given instances
+	 * It computes the frequent itemsets of the given instances
 	 * </p>
 	 * @param its
 	 * @param instances
 	 * @param numi
 	 * @return the the indexes of the instances into the interval inter
 	 */	
-	private Vector<Itemset> frequentItemsetForInterval(Vector<Itemset> its, int[] instances, int numi){
+	public Vector<Itemset> frequentItemsetForInterval(Vector<Itemset> its, int[] instances, int numi){
 		
 		Vector<Itemset> res = new Vector<Itemset>();
 		int[] votes = new int[its.size()];
@@ -639,13 +635,13 @@ public class UCPD extends Discretizer {
 
 	/**
 	 * <p>
-	 * Checks if two frequents itemsets are similar
+	 * It checks if two frequents itemsets are similar
 	 * </p>
 	 * @param A first set of frequents itemsets
 	 * @param B second set of frequents itemsets
 	 * @return if A and B are or not similar
 	 */	
-	private boolean areSimilar(Vector<Itemset> A, Vector<Itemset> B){
+	public boolean areSimilar(Vector<Itemset> A, Vector<Itemset> B){
 		
 		double total = 0;
 		int numEqualElements = 0;
@@ -674,7 +670,7 @@ public class UCPD extends Discretizer {
 
 	/**
 	 * <p>
-	 * Computes the indexes of instances that fall into the interval selected
+	 * It computes the indexes of instances that fall into the interval selected
 	 * </p>
 	 * @param FinalData matrix of data of PCA
 	 * @param dim index of the dimension
@@ -686,7 +682,7 @@ public class UCPD extends Discretizer {
 	 * interval
 	 * @return the indexes of the selected instances and the number
 	 */	
-	private Object[] getInstancesInto(double[][] FinalData, int dim, int[] selected, double[] cutp, int ncp, int sp, int opt){
+	public Object[] getInstancesInto(double[][] FinalData, int dim, int[] selected, double[] cutp, int ncp, int sp, int opt){
 		
 		int[] inst = new int[numInstances];
 		int numInst = 0;

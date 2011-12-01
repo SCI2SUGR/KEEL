@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.HeterDisc;
 
 import keel.Dataset.*;
@@ -46,6 +38,10 @@ import keel.Algorithms.Discretizers.Basic.*;
  * <p>
  * Main class of Heter-Disc algorithm (discretization algorithm based on Heterogeneity Criterion)
  * </p>
+ * 
+ * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class Main {
 
@@ -54,7 +50,7 @@ public class Main {
 	
 	/**
 	 * <p>
-	 * Creates a new instance of Main 
+	 * It creates a new instance of Main 
 	 * </p>
 	 */
 	public Main(){
@@ -100,7 +96,7 @@ public class Main {
 	 * 	- output attribute is not nominal
 	 * </p>
 	 */
-	static void checkDataset(InstanceSet is){
+	public static void checkDataset(InstanceSet is){
 		
 		Attribute []outputs = Attributes.getOutputAttributes();
         

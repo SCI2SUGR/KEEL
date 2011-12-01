@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.UCPD;
 
 
@@ -43,6 +35,10 @@ package keel.Algorithms.Discretizers.UCPD;
  * This class implements the Quicksort algorithm. It lets sort an array of values from lowest to highest and
  * vice versa basing on an option
  * </p>
+ * 
+ * @author Written by Jose A. Saez (University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class Quicksort {
 	
@@ -63,7 +59,7 @@ public class Quicksort {
 
 	/**
 	 * <p>
-	 * Sorts the values array basing on opt
+	 * It sorts the values array basing on opt
  	 * </p>
 	 * @param vector double values array to sort
 	 * @param size number of elements to sort
@@ -94,7 +90,7 @@ public class Quicksort {
 
 	/**
 	 * <p>
-	 * Sorts the values between begin and end indexes
+	 * It sorts the values between begin and end indexes
  	 * </p>
 	 * @param values values to sort with their original positions
 	 * @param begin start position to sort

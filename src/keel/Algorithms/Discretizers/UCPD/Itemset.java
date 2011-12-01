@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.UCPD;
 
 
@@ -42,6 +34,10 @@ package keel.Algorithms.Discretizers.UCPD;
  * <p>
  * This class lets to manipulate itemsets
  * </p>
+ * 
+ * @author Written by Jose A. Saez (University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class Itemset {	
 	
@@ -75,7 +71,7 @@ public class Itemset {
 
 	/**
 	 * <p>
-	 * Combines two itemsets to get a new itemset basing on the creation rules of A priori algorithm
+	 * It combines two itemsets to get a new itemset based on the creation rules of A priori algorithm
 	 * </p>
 	 * @param itemset2 the other itemset
 	 * @return the combined itemset of this and itemset2
@@ -119,7 +115,7 @@ public class Itemset {
 
 	/**
 	 * <p>
-	 * Checks if the example given follows the patron of the itemset
+	 * It checks if the example given follows the patron of the itemset
 	 * </p>
 	 * @param example an instance
 	 * @return true if the example follows the patron of the itemset, otherwise false
@@ -139,7 +135,7 @@ public class Itemset {
 
 	/**
 	 * <p>
-	 * Checks if the itemset given is equals to this itemset
+	 * It checks if the itemset given is equals to this itemset
 	 * </p>
 	 * @param itemset2 second itemset
 	 * @return true if both are equal, otherwise false
@@ -157,7 +153,7 @@ public class Itemset {
 
 	/**
 	 * <p>
-	 * Returns the items array of this itemset
+	 * It returns the items array of this itemset
 	 * </p>
 	 * @return the items array
 	 */
@@ -170,7 +166,7 @@ public class Itemset {
 
 	/**
 	 * <p>
-	 * Returns the size (number of different attributes) of this itemset
+	 * It returns the size (number of different attributes) of this itemset
 	 * </p>
 	 * @return the size of this itemset
 	 */
@@ -183,7 +179,7 @@ public class Itemset {
 
 	/**
 	 * <p>
-	 * Returns the support of this itemset
+	 * It returns the support of this itemset
 	 * </p>
 	 * @return the support value
 	 */
@@ -196,7 +192,7 @@ public class Itemset {
 
 	/**
 	 * <p>
-	 * Sets the support of this itemset
+	 * It sets the support of this itemset
 	 * </p>
 	 * @value sup the new support
 	 */
@@ -209,7 +205,7 @@ public class Itemset {
 
 	/**
 	 * <p>
-	 * Prints the itemset
+	 * It prints the itemset
 	 * </p>
 	 */
 	public void print(){

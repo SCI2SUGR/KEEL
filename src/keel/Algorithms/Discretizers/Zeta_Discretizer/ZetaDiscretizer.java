@@ -27,34 +27,27 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.Zeta_Discretizer;
+
+import java.util.*;
+import keel.Algorithms.Discretizers.Basic.*;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+
+
 /**
  * <p>
- * File: ZetaDiscretizer.java
- * 
  * This is the class with the operations of the Zeta based discretization. It adopts the
  * behavior of the general discretizers and specifies its differences in this class, 
  * that has to extend the abstract methods.
+ * </p>
  * 
  * @author Written by Victoria Lopez Morales (University of Granada) 06/12/2009 
  * @version 1.0
  * @since JDK1.5
- * </p>
  */
-
-package keel.Algorithms.Discretizers.Zeta_Discretizer;
-
-import java.util.*;
-
-import keel.Algorithms.Discretizers.Basic.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-
 public class ZetaDiscretizer extends Discretizer {
-/**
- * <p>
- * This class implements the Zeta based discretizer.
- * </p>
- */	
-    
+
+	
     /**
      * <p>
      * Selects, for a given attribute, the real values that best discretize the attribute

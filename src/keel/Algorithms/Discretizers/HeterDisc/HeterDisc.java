@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.HeterDisc;
 
 import java.util.*;
@@ -48,6 +40,10 @@ import keel.Dataset.Attributes;
  * <p>
  * This class implements the Heter-Disc discretizer
  * </p>
+ * 
+ * @author Written by Jose A. Saez (University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class HeterDisc extends Discretizer {
 	
@@ -280,14 +276,14 @@ public class HeterDisc extends Discretizer {
 
 	/**
 	 * <p>
-	 * Generates the neighborhood of ds scheme discretization and adds each neighbor to variable GD
+	 * It generates the neighborhood of ds scheme discretization and adds each neighbor to variable GD
 	 * </p>
 	 * @param ds discretization scheme to generate its neighborhood
 	 * @param ni number of intervals of the neighbors discretizations
 	 * @param attribute index of the attribute to discretize
-	 * @param GloblOpt fitness of the best discretization scheme found
+	 * @param GlobalOpt fitness of the best discretization scheme found
 	 */
-	private void generateNeighborhood(DiscretizationScheme ds, int ni, int attribute, double GlobalOpt){
+	public void generateNeighborhood(DiscretizationScheme ds, int ni, int attribute, double GlobalOpt){
 		
 		int i;
 		double fitness, max = (-1)*Double.MIN_VALUE;
@@ -327,14 +323,14 @@ public class HeterDisc extends Discretizer {
 
 	/**
 	 * <p>
-	 * Computes and returns the value of criterion function of the discretization scheme build with selectedp cutpoints
+	 * It computes and returns the value of criterion function of the discretization scheme build with selectedp cutpoints
 	 * </p>
 	 * @param selectedp indexes of selected cutpoints
 	 * @param ni number of intervals
 	 * @param attribute index of the attribute
 	 * @return the criterion function value
 	 */	
-	private double computeCriterionFuction(int[] selectedp, int ni, int attribute){
+	public double computeCriterionFuction(int[] selectedp, int ni, int attribute){
 				
 		int i, s;
 		double fitnessDiscr = 0;
@@ -359,13 +355,13 @@ public class HeterDisc extends Discretizer {
 
 	/**
 	 * <p>
-	 * Computes the heterogeneity for a conditional class probability vector given needed for compute
+	 * It computes the heterogeneity for a conditional class probability vector given needed for compute
 	 * the heterogeneity of a discretization scheme in criterion fuction calculus
 	 * </p>
 	 * @param ccpv conditional class probability vector
 	 * @return the heterogeneity value
 	 */	
-	private double computeHeterCCPV(double ccpv[]){
+	public double computeHeterCCPV(double ccpv[]){
 		
 		double total = 0, aux;
 		int s;
@@ -382,13 +378,13 @@ public class HeterDisc extends Discretizer {
 
 	/**
 	 * <p>
-	 * Creates the quanta matrix basis of selected cutpoints array
+	 * It creates the quanta matrix basis of selected cutpoints array
 	 * </p>
 	 * @param ni number of intervals
 	 * @param attribute index of the attribute
 	 * @param selected vector with indexes of selected cut-points
 	 */
-	private void CreateQuantaMatrix(int ni, int attribute, int[] selected){
+	public void CreateQuantaMatrix(int ni, int attribute, int[] selected){
 		
 		int i, j, point, clase;		// loop indexes
 		

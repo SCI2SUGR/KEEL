@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.UCPD;
 
 import org.core.Randomize;
@@ -44,6 +36,10 @@ import org.core.Randomize;
  * <p>
  * This class helps managing a sampling without replacement process 
  * </p>
+ * 
+ * @author Written by Jose A. Saez (University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class Sampling {
 	
@@ -71,7 +67,7 @@ public class Sampling {
 
 	/**
 	 * <p>
-	 * Initializes the sampling
+	 * It initializes the sampling
  	 * </p>
 	 */		
 	void initSampling(){
@@ -86,7 +82,7 @@ public class Sampling {
 
 	/**
 	 * <p>
-	 * Returns one value of the sampling
+	 * It returns one value of the sampling
  	 * </p>
 	 * @return the sampled value
 	 */	

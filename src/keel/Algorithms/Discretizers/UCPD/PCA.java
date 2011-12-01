@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.UCPD;
 
 import keel.Algorithms.Statistical_Classifiers.Logistic.core.matrix.EigenvalueDecomposition;
@@ -45,6 +37,10 @@ import keel.Algorithms.Statistical_Classifiers.Logistic.core.matrix.Matrix;
  * <p>
  * This class implements the PCA algorithm
  * </p>
+ * 
+ * @author Written by Jose A. Saez (University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  */
 public class PCA {
 	
@@ -80,7 +76,7 @@ public class PCA {
 
 	/**
 	 * <p>
-	 * Computes all necesary parameters
+	 * It computes all necesary parameters
 	 * </p>
 	 */
 	public void ComputeParameters(){
@@ -118,7 +114,7 @@ public class PCA {
 
 	/**
 	 * <p>
-	 * Computes the most representative eigenvectors
+	 * It computes the most representative eigenvectors
 	 * </p>
 	 * @param percent percentage needed to compute the representative eigenvectors
 	 * @return the selected eigenvectors
@@ -162,7 +158,7 @@ public class PCA {
 
 	/**
 	 * <p>
-	 * Computes the final data
+	 * It computes the final data
   	 * </p>
 	 * @param selectedEvectors selected eigenvectors
 	 * @return the final data matrix
@@ -186,7 +182,7 @@ public class PCA {
 
 	/**
 	  * <p>
-	  * Returns the number of dimensions
+	  * It returns the number of dimensions
 	  * </p>
 	  * @return the number of dimensions
 	  */
@@ -199,7 +195,7 @@ public class PCA {
 
 	/**
 	  * <p>
-	  * Returns the selected eigenvalues vector
+	  * It returns the selected eigenvalues vector
 	  * </p>
 	  * @return the selected eigenvalues vector
 	  */
@@ -212,7 +208,7 @@ public class PCA {
 
 	/**
 	  * <p>
-	  * Returns the matrix of covariance
+	  * It returns the matrix of covariance
 	  * </p>
 	  * @return the matrix of covariance
 	  */
