@@ -29,6 +29,7 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
+
 /**
  * This class stores an item representation for classification by association algorithms.
  *
@@ -141,4 +142,3 @@ public class Item implements Comparable {
   }
 
 }
-

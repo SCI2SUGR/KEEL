@@ -32,6 +32,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 import java.io.IOException;
 import org.core.*;
 
+
 /**
  * It contains the implementation of the CBA2 (Classification Based on Association 2) algorithm
  *
@@ -141,6 +142,9 @@ public class CBA2 {
     }
   }
 
+  /**
+   * It prints the running time of the algorithm
+   */
   public void writeTime() {
 	long seg, min, hor;
     String stringOut = new String("");
@@ -205,4 +209,3 @@ public class CBA2 {
   }
 
 }
-

@@ -31,6 +31,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
 import java.util.*;
 
+
 /**
  * This class stores an itemset representation for classification by association algorithms.
  * Also, it stores some useful information to manage the itemset
@@ -379,4 +380,3 @@ public class Itemset implements Comparable {
   }
 
 }
-

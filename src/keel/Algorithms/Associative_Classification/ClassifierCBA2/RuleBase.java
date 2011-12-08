@@ -32,6 +32,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 import java.util.*;
 import org.core.*;
 
+
 /**
  * This class contains the representation of a Rule Set
  *

@@ -31,6 +31,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
 import java.util.*;
 
+
 /**
  * Class to store a non-fuzzy rule, together with some necessary information to manage the CBA algorithm
  *

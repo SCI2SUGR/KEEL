@@ -29,6 +29,7 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
+
 /**
  * This class contains the representation of the structure <dID, y, cRule, wRule>
  *

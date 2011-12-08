@@ -31,6 +31,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
 import org.core.Files;
 
+
 /**
  * Class to store the examples to work with the algorithm and some other useful information
  *
@@ -38,7 +39,6 @@ import org.core.Files;
  * @version 1.0
  * @since JDK1.5
  */
-
 public class DataBase {
 
   int n_variables, nVariablesUsed, partitions;
@@ -190,4 +190,3 @@ public class DataBase {
   }
 
 }
-

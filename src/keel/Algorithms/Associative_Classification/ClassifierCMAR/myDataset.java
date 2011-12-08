@@ -178,10 +178,24 @@ public class myDataset {
         return emin;
     }
 
+    
+    /**
+     * It returns the maximum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the maximum value of the given attribute
+     */
     public int getMax(int variable) {
         return emax[variable];
     }
 
+    
+    /**
+     * It returns the minimum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the minimum value of the given attribute
+     */
     public int getMin(int variable) {
         return emin[variable];
     }
@@ -346,12 +360,19 @@ public class myDataset {
 
     /**
      * It checks if the data-set has any real value
+     * 
      * @return boolean True if it has some real values, else false.
      */
     public boolean hasRealAttributes() {
         return Attributes.hasRealAttributes();
     }
-
+    
+    
+    /**
+     * It checks if the data-set has any numerical value
+     * 
+     * @return boolean True if it has some numerical values, else false.
+     */
     public boolean hasNumericalAttributes() {
         return (Attributes.hasIntegerAttributes() ||
                 Attributes.hasRealAttributes());
@@ -383,6 +404,11 @@ public class myDataset {
         return tam;
     }
 
+    /**
+     * It return the size of the data-set
+     * 
+     * @return the size of the data-set
+     */
     public int size() {
         return nData;
     }
@@ -495,4 +521,3 @@ public class myDataset {
   }
 
 }
-

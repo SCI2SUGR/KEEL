@@ -29,6 +29,7 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
+
 /**
  * It reads the configuration file (data-set files and parameters) and launch the algorithm
  *
@@ -72,4 +73,3 @@ public class Main {
         program.execute(args[0]);
     }
 }
-

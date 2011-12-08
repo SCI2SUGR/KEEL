@@ -31,6 +31,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA2;
 
 import java.util.*;
 
+
 /**
  *
  * This class mines the frecuent non-fuzzy itemsets and the non-fuzzy classification association rules
@@ -40,7 +41,6 @@ import java.util.*;
  * @version 1.0
  * @since JDK1.5
  */
-
 public class Apriori {
 	
   ArrayList<Itemset> L2;
@@ -273,5 +273,5 @@ public class Apriori {
 		  i = j;
 	  }
   }
+  
 }
-
