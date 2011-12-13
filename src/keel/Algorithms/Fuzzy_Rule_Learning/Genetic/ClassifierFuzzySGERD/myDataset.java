@@ -29,24 +29,18 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySGERD;
 
+import java.io.IOException;
+import keel.Dataset.*;
+
+
 /**
- * <p>Title: myDataset</p>
- *
- * <p>Description: It contains the methods to read a Classification/Regression Dataset</p>
- *
- *
- * <p>Company: KEEL </p>
+ * <p>It contains the methods to read a Classification/Regression Dataset</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 29/10/2007
  * @author Modified by Jesus Alcala (University of Granada) 22/05/2009
  * @version 1.3
  * @since JDK1.5
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
   public static final int REAL = 0;
@@ -176,10 +170,23 @@ public class myDataset {
     return emin;
   }
 
+  /**
+   * It returns the maximum value of the given attribute
+   * 
+   * @param variable the index of the attribute
+   * @return the maximum value of the given attribute
+   */
   public double getMax(int variable) {
     return emax[variable];
   }
 
+  
+  /**
+   * It returns the minimum value of the given attribute
+   * 
+   * @param variable the index of the attribute
+   * @return the minimum value of the given attribute
+   */
   public double getMin(int variable) {
     return emin[variable];
   }
@@ -500,24 +507,49 @@ public class myDataset {
     return average[position];
   }
 
+  /**
+   * It computes the number of examples per class
+   * 
+   */
   public void computeInstancesPerClass() {
     instancesCl = new int[nClasses];
     for (int i = 0; i < this.nClasses; i++)  instancesCl[i] = 0;
     for (int i = 0; i < this.getnData(); i++)  instancesCl[this.outputInteger[i]]++;
   }
 
+  /**
+   * It returns the number of instances in the data set for a given class.
+   * @param clas int Given class.
+   * @return int Number of instances for the given class.
+   */
   public int numberInstances(int clas) {
     return instancesCl[clas];
   }
 
+  /**
+   * Function to get the number of different feasible values for a given attribute 
+   * @param attribute int Given attribute
+   * @return int Number of different feasible values for a given attribute
+   */
   public int numberValues(int attribute) {
     return Attributes.getInputAttribute(attribute).getNumNominalValues();
   }
 
+  /**
+   * It returns the output value (string) which matchs with a given integer value 
+   * @param intValue int Given value
+   * @return String Output value in an understanding way
+   */
   public String getOutputValue(int intValue) {
     return Attributes.getOutputAttribute(0).getNominalValue(intValue);
   }
 
+  
+  /**
+   * It returns the type of an attribute
+   * @param variable Given attribute
+   * @return int Type of the attribute, it is an integer which corresponds to an enummerate field
+   */
   public int getType(int variable) {
     if (Attributes.getAttribute(variable).getType() ==
         Attributes.getAttribute(0).INTEGER) {

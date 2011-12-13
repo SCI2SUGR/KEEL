@@ -29,6 +29,8 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Selec;
 
+import org.core.Fichero;
+
 /**
  * <p>Title: </p>
  *
@@ -41,9 +43,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Selec;
  * @author not attributable
  * @version 1.0
  */
-
-import org.core.Fichero;
-
 public class BaseD {
   int n_variables, particiones;
   Difuso[][][] baseDatos;

@@ -27,7 +27,23 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzyPittsBurgh;
+
+import org.core.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
+import keel.Algorithms.Shared.Exceptions.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
+
+
 /** 
+* <p> 
+* PittsburghClassifier is designed to allow a Fuzzy Classifier evolve by means of
+* an Genetic Algorithm. This class is a specification of class 
+* {@link GeneticIndividualForClassification}.
+* </p> 
+* 
 * <p> 
 * @author Written by Luciano Sanchez (University of Oviedo) 20/05/2004 
 * @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
@@ -35,26 +51,7 @@
 * @since JDK1.4 
 * </p> 
 */ 
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzyPittsBurgh;
-import org.core.*;
-
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
-import keel.Algorithms.Shared.Exceptions.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
-
 public class PittsburghClassifier extends GeneticIndividualForClassification {
-/** 
-* <p> 
-* PittsburghClassifier is designed to allow a Fuzzy Classifier evolve by means of
-* an Genetic Algorithm. This class is a specification of class 
-* {@link GeneticIndividualForClassification}.
-* 
-* </p> 
-*/ 
 
 /** 
 * <p> 

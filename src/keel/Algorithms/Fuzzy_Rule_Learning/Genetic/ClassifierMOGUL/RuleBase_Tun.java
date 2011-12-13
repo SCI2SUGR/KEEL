@@ -29,7 +29,15 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
 
+import java.util.*;
+
+
 /**
+ * 
+ * <p>
+ * It encodes a Rule Base for the tunning process
+ * </p>
+ * 
  * <p>
  * @author Written by Jesus Alcala Fernandez (University of Granada) 01/01/2004
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
@@ -37,17 +45,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
  * @since JDK 1.6
  * </p>
  */
-
-import java.io.*;
-import org.core.*;
-import java.util.*;
-
 public class RuleBase_Tun {
-/**	
- * <p>
- * It encodes a Rule Base for the tunning process
- * </p>
- */
  
     public Rule[] BaseReglas;
     public char[] modificador;
@@ -269,14 +267,14 @@ public class RuleBase_Tun {
                                                   Fuzzification Interface
      ------------------------------------------------------------------------- */
 
-	/*
+	/**
 	 * <p>
 	 * Fuzzification Interface
 	 * </p>
 	 * @param X double The value of the example
 	 * @param D FuzzySet The fuzzy set
 	 * @return The fuzzification value 
-	 */
+	 **/
     public double Fuzzification(double X, FuzzySet D) {
         /* If X are not in the rank D, the degree is 0 */
         if ((X < D.x0) || (X > D.x3)) {
@@ -297,12 +295,12 @@ public class RuleBase_Tun {
                                                         Conjunction Operator
      ------------------------------------------------------------------------- */
 
-        /*
+        /**
          * <p>
          * Minimum T-norm
          * </p>
          * @param entradas double[] The given example
-         */
+         **/
     public void Min(double[] entradas) {
         int b, b2;
         double minimo, y;
@@ -443,4 +441,3 @@ public class RuleBase_Tun {
     }
 
 }
-

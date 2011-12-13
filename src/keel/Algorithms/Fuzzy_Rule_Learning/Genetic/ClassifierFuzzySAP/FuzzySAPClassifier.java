@@ -27,7 +27,24 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySAP;
+
+import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node.*;
+import keel.Algorithms.Shared.Exceptions.*;
+import org.core.*;
+
+
 /** 
+* <p> 
+* FuzzySAPClassifier is designed to allow a Fuzzy Classifier evolve by means of
+* an Simulated Annealing Algorithm and Programming (SAP). This class is a specification of
+* class {@link GeneticIndividualForClassification}. 
+* </p>
+* 
 * <p> 
 * @author Written by Luciano Sanchez (University of Oviedo) 21/01/2004 
 * @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
@@ -35,27 +52,8 @@
 * @since JDK1.4 
 * </p> 
 */ 
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySAP;
-import keel.Algorithms.Shared.Parsing.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node.*;
-import keel.Algorithms.Shared.Exceptions.*;
-import org.core.*;
-
 public class FuzzySAPClassifier extends GeneticIndividualForClassification {
-/** 
-* <p> 
-* FuzzySAPClassifier is designed to allow a Fuzzy Classifier evolve by means of
-* an Simulated Annealing Algorithm and Programming (SAP). This class is a specification of
-* class {@link GeneticIndividualForClassification}.
-* 
-* </p> 
-*/ 
+
 	//The input space partitions
     static FuzzyPartition[] A;
  	//The class variable or output variable partitions or classes

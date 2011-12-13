@@ -29,24 +29,18 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySGERD;
 
+import java.util.*;
+import org.core.*;
+
+
 /**
- * <p>Title: RuleBase</p>
- *
- * <p>Description: This class contains the representation of a Rule Set</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * <p>This class contains the representation of a Rule Set</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 29/10/2007
  * @author Modifed by Jesus Alcala (University of Granada) 23/05/2009
  * @version 1.1
  * @since JDK1.5
  */
-
-import java.util.*;
-import org.core.*;
-
 public class RuleBase {
   ArrayList<Rule> ruleBase;
   DataBase dataBase;
@@ -163,8 +157,11 @@ public class RuleBase {
   }
 
   /**
-   *
-   * @return RuleBase
+   * <p>
+   * Clone Function
+   * </p>
+   * 
+   * @return a copy of the RuleBase
    */
   public RuleBase clone() {
     RuleBase br = new RuleBase();

@@ -27,28 +27,23 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.OneR;
+
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Vector;
+import keel.Algorithms.Discretizers.Basic.Discretizer;
+import keel.Dataset.*;
+
+
 /**
+ * This class implements the OneR discretizer
+ * 
  * <p>
  * @author Written by Julián Luengo Martín 28/10/2008
  * @version 0.1
  * @since JDK 1.5
  * </p>
- */
-package keel.Algorithms.Discretizers.OneR;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Vector;
-
-import keel.Algorithms.Discretizers.Basic.Discretizer;
-import keel.Dataset.*;
-
-/**
- * This class implements the OneR discretizer
- *
  */
 public class OneR extends Discretizer{
 	PrintStream stdout = System.out; //the standard output stored for further manipulation

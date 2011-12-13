@@ -27,32 +27,26 @@
   
 **********************************************************************/
 
-/**
- *
- * File: KNN.java
- *
- * The KNN algorithm tries to find the K nearest instances in the
- * training data, selecting the most present class.
- *
- * Euclidean (L2), Manhattan (L1) and HVDM distances can be used as
- * distance function by the classifier.
- *
- *
- * @author Written by Salvador García López (University of Granada) 11/07/2004
-  * @author Modified by Joaquin Derrac (University of Granada) 3/11/2009
- * @version 1.1
- * @since JDK1.4
- *
- */
-
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySGERD;
 
 import java.lang.String;
 import java.util.StringTokenizer;
 import keel.Algorithms.Preprocess.Basic.*;
 import keel.Dataset.*;
-import org.core.*;
 
+
+/**
+* The KNN algorithm tries to find the K nearest instances in the
+* training data, selecting the most present class.
+*
+* Euclidean (L2), Manhattan (L1) and HVDM distances can be used as
+* distance function by the classifier.
+*
+* @author Written by Salvador García López (University of Granada) 11/07/2004
+* @author Modified by Joaquin Derrac (University of Granada) 3/11/2009
+* @version 1.1
+* @since JDK1.4
+*/
 public class KNN extends Metodo {
 
     /*Paths and names of I/O files*/

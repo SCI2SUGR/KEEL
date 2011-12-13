@@ -27,32 +27,14 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sanchez (University of Oviedo) 21/07/2008 
-* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/ 
-
-
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzyLogitBoost;
+
 import keel.Algorithms.Shared.Parsing.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Boosting.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms.*;
-import keel.Algorithms.Shared.Exceptions.*;
-
 import java.io.*;
-import java.util.StringTokenizer;
-import java.util.Vector;
-
 import org.core.*;
 
 
-public class ClassifierFuzzyLogitBoost {
 /** 
 * <p> 
 * ClassifierFuzzyLogitBoost generates a Fuzzy Rule Based System classifier using 
@@ -62,10 +44,17 @@ public class ClassifierFuzzyLogitBoost {
 * Detailed in 
 * M.J. del Jesus, F. Hoffmann, L. Junco, L. Sánchez. Induction of Fuzzy-Rule-
 * Based Classifiers With Evolutionary Boosting Algorithms. IEEE Transactions on 
-* Fuzzy Systems 12:3 (2004) 296-308.
+* Fuzzy Systems 12:3 (2004) 296-308. 
+* </p> 
 * 
+* <p> 
+* @author Written by Luciano Sanchez (University of Oviedo) 21/07/2008 
+* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
+* @version 1.0 
+* @since JDK1.4 
 * </p> 
 */ 
+public class ClassifierFuzzyLogitBoost {
 	
 	//The Randomize object used in this class
 	static Randomize rand;

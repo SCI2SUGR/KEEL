@@ -30,11 +30,7 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySGERD;
 
 /**
- * <p>Title: Main Class of the Program</p>
- *
- * <p>Description: It reads the configuration file (data-set files and parameters) and launch the algorithm</p>
- *
- * <p>Company: KEEL</p>
+ * <p>It reads the configuration file (data-set files and parameters) and launch the algorithm</p>
  *
  * @author Jesús Alcalá Fernández
  * @version 1.0

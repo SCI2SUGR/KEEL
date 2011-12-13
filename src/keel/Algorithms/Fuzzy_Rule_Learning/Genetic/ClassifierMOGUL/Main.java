@@ -29,7 +29,12 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
 
+
 /**
+ * <p>
+ * Main Class of the Program. It launches the algorithm
+ * </p>
+ * 
  * <p>
  * @author Written by Jesus Alcala Fernandez (University of Granada) 01/01/2004
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
@@ -37,18 +42,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
  * @since JDK 1.6
  * </p>
  */
- 
-import java.io.*;
-import java.util.*;
-import java.lang.*;
-
-public class Main {
-/**	
- * <p>
- * Main Class of the Program. It launches the algorithm
- * </p>
- */
- 
+public class Main { 
  
     /**
      * <p>
@@ -83,5 +77,5 @@ public class Main {
             System.out.println("Algorithm Finished!");
         }
     }
+    
 }
-

@@ -29,23 +29,17 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySGERD;
 
+import org.core.Files;
+
+
 /**
- * <p>Title: DataBase</p>
- *
- * <p>Description: Fuzzy Data Base</p>
- *
- * <p>Copyright: Copyright (c) 2008</p>
- *
- * <p>Company: KEEL </p>
+ * <p>Fuzzy Data Base</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 29/10/2007
  * @author Modified by Jesus Alcalá (University of Granada) 21/05/2009
  * @version 1.2
  * @since JDK1.5
  */
-
-import org.core.Files;
-
 public class DataBase {
     int n_variables, partitions, nLabels;
     Fuzzy[][][] dataBase;

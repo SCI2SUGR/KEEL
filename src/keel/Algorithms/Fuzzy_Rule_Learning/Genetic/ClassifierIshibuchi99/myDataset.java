@@ -29,7 +29,15 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierIshibuchi99;
 
+import java.io.IOException;
+import keel.Dataset.*;
+
+
 /**
+ * <p>
+ * It contains the methods to read a Classification/Regression Dataset
+ * </p>
+ * 
  * <p>
  * @author Written by Alberto Fernández (University of Granada) 01/01/2007
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
@@ -37,17 +45,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierIshibuchi99;
  * @since JDK 1.6
  * </p>
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
-/**	
- * <p>
- * It contains the methods to read a Classification/Regression Dataset
- * </p>
- */
 
     public static final int REAL = 0;
     public static final int ENTERO = 1;

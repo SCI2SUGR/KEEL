@@ -29,23 +29,18 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySGERD;
 
+import java.util.*;
+import org.core.*;
+
+
 /**
- * <p>Title: Populatoin</p>
- *
- * <p>Description: This class contains the population for the genetic algorithm</p>
- *
- * <p>Copyright: KEEL Copyright (c) 2008</p>
- *
- * <p>Company: KEEL </p>
+ * <p>This class contains the population for the genetic algorithm</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 29/10/2007
  * @author Modified by Jesus Alcalá (University of Granada) 24/05/2009
  * @version 1.2
  * @since JDK1.5
  */
-import java.util.*;
-import org.core.*;
-
 public class Population {
     ArrayList<RuleBase> population;
     ArrayList<RuleBase> populationAux;

@@ -29,24 +29,15 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySGERD;
 
+
 /**
- * <p>Title: Rule</p>
- *
- * <p>Description: Codifies a Fuzzy Rule</p>
- *
- * <p>Copyright: KEEL Copyright (c) 2008</p>
- *
- * <p>Company: KEEL </p>
+ * <p>Codifies a Fuzzy Rule</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 29/10/2007
  * @author Modified by Jesus Alcala Fernandez (University of Granada) 20/05/2009
  * @version 1.5
  * @since JDK1.5
  */
-
-import java.util.*;
-import org.core.Randomize;
-
 public class Rule
     implements Comparable {
 

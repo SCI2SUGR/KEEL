@@ -29,23 +29,18 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzySGERD;
 
+import java.io.IOException;
+import org.core.*;
+
+
 /**
- * <p>Title: SGERD</p>
- *
- * <p>Description: It contains the implementation of the SGERD algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
+ * <p>It contains the implementation of the SGERD algorithm</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 03/09/2007
  * @author Modified by Jesus Alcalá (University of Granada) 19/05/2009
  * @version 1.4
  * @since JDK1.5
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class SGERD {
 
   myDataset train, val, test;

@@ -512,6 +512,10 @@ public class myDataset {
         return average[position];
     }
 
+    /**
+     * It computes the number of examples per class
+     * 
+     */
     public void computeInstancesPerClass() {
 		int i;
         this.instancesCl = new int[this.nClasses];
@@ -621,4 +625,3 @@ public class myDataset {
   }
 
 }
-

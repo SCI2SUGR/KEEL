@@ -29,7 +29,16 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierIshibuchi99;
 
+import java.io.IOException;
+import java.util.*;
+import org.core.*;
+
+
 /**
+ * <p>
+ * It contains the implementation of the algorithm
+ * </p>
+ * 
  * <p>
  * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
  * @author Modified by Alberto Fernández (University of Jaén) 22/09/2010
@@ -37,17 +46,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierIshibuchi99;
  * @since JDK 1.6
  * </p>
  */
- 
-import java.io.IOException;
-import java.util.*;
-import org.core.*;
-
 public class Algorithm {
-/**	
- * <p>
- * It contains the implementation of the algorithm
- * </p>
- */
  
     myDataset train, val, test;
     String outputTr, outputTst, outputBD, outputBR;

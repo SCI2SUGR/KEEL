@@ -27,41 +27,24 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sanchez (University of Oviedo) 21/07/2005 
-* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/ 
-
-
-
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzyPittsBurgh;
+
 import keel.Algorithms.Shared.Parsing.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 import keel.Algorithms.Shared.Exceptions.*;
-
 import java.io.*;
-import java.util.StringTokenizer;
-import java.util.Vector;
-
-
 import org.core.*;
 
 
-public class ClassifierFuzzyPittsBurgh {
 /** 
 * <p> 
 * ClassifierFuzzyPittsBurgh is intended to generate a Fuzzy Rule Based System
 * (FRBS) classifier using an Genetic Algorithm and Programming (GAP). 
 * 
 * This class makes used of the following classes:
-*      {@link PittsburghModel}: the classifier model to be learned
+*      PittsburghModel: the classifier model to be learned
 *      {@link GeneticAlgorithm}: to optimize following the genetic rules.
 *                       The concrete algorithm used depends on the Steady parameter
 *                       varying between the {@link GeneticAlgorithmSteady} if set,
@@ -76,7 +59,15 @@ public class ClassifierFuzzyPittsBurgh {
 * 1995
 * 
 * </p> 
+* 
+* <p> 
+* @author Written by Luciano Sanchez (University of Oviedo) 21/07/2005 
+* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
 */ 
+public class ClassifierFuzzyPittsBurgh {
 	
 	//The Randomize object used in this class
 	static Randomize rand;
@@ -88,7 +79,7 @@ public class ClassifierFuzzyPittsBurgh {
 * This private static method extract the dataset and the method's parameters  
 * from the KEEL environment, carries out with the partitioning of the
 * input and output spaces, learn the FRBS regression model --which is a 
-* {@link PittsburghClassifier} instance-- using the   GP algorithm --which is an instance 
+* PittsburghClassifier instance-- using the   GP algorithm --which is an instance 
 * of the GeneticAlgorithm class-- and prints out the results with the validation 
 * dataset. 
 *

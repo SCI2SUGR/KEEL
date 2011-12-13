@@ -29,7 +29,14 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
 
+import java.io.*;
+
+
 /**
+ * <p>
+ * Functions for dealing with files
+ * </p>
+ * 
  * <p>
  * @author Written by Jesus Alcala Fernandez (University of Granada) 01/01/2004
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
@@ -37,16 +44,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
  * @since JDK 1.6
  * </p>
  */
-
-import java.io.*;
-import java.util.*;
-
 public class MyFile{
-/**
- * <p>
- * Functions for dealing with files
- * </p>
- */
 
 	/**
 	 * <p>

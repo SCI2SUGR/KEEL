@@ -31,18 +31,16 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierIshibuchi99;
 
 /**
  * <p>
+ * An individual of the population
+ * </p>
+ * 
+ * <p>
  * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
  * @version 1.0
  * @since JDK 1.6
  * </p>
- */
- 
+ */ 
 public class Individual implements Comparable {
-/**	
- * <p>
- * An individual of the population
- * </p>
- */
  
     int[] Arbol;
     int clase;

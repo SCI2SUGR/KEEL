@@ -27,20 +27,20 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 28/10/2008
- * @version 0.1
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Discretizers.OneR;
 
 import java.util.Arrays;
 
+
 /**
  * <p>
  * This class represents the optimum class for a given explanatory value
+ * </p>
+ * 
+ * <p>
+ * @author Written by Julián Luengo Martín 28/10/2008
+ * @version 0.1
+ * @since JDK 1.5
  * </p>
  */
 public class Opt {

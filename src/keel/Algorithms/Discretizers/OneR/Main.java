@@ -27,27 +27,21 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.OneR;
+
+import keel.Dataset.*;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+import keel.Algorithms.Discretizers.Basic.*;
+
+
 /**
+ * Main class
  * <p>
  * @author Written by Julián Luengo Martín 28/10/2008
  * @version 0.1
  * @since JDK 1.5
  * </p>
  */
-
-package keel.Algorithms.Discretizers.OneR;
-
-import java.io.IOException;
-import java.util.*;
-
-import org.core.Randomize;
-
-import keel.Dataset.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-import keel.Algorithms.Statistical_Classifiers.Naive_Bayes.Algorithm;
-import keel.Algorithms.Statistical_Classifiers.Naive_Bayes.myDataset;
-import keel.Algorithms.Discretizers.Basic.*;
-
 public class Main {
 	
 
@@ -56,6 +50,8 @@ public class Main {
 	}
 
 	/**
+	 * It runs the algorithm
+	 * 
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
@@ -94,5 +90,5 @@ public class Main {
 		Parameters.numClasses=outputs[0].getNumNominalValues();
 		Parameters.numAttributes=Attributes.getInputAttributes().length;
 	}
+	
 }
-

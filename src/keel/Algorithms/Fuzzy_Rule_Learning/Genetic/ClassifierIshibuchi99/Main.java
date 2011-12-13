@@ -30,20 +30,19 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierIshibuchi99;
 
 /**
+ * 
+ * <p>
+ * Main Class of the Program
+ * It reads the configuration file (data-set files and parameters) and launch the algorithm
+ * </p>
+ * 
  * <p>
  * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
  * @version 1.0
  * @since JDK 1.6
  * </p>
- */
- 
+ */ 
 public class Main {
-/**	
- * <p>
- * Main Class of the Program
- * It reads the configuration file (data-set files and parameters) and launch the algorithm
- * </p>
- */
  
     private parseParameters parameters;
 

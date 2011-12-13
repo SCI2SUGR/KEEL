@@ -29,7 +29,15 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
 
+import java.io.*;
+import keel.Dataset.*;
+
+
 /**
+ * <p>
+ * It contains the methods to read a Dataset
+ * </p>
+ * 
  * <p>
  * @author Written by Jesus Alcala Fernandez (University of Granada) 01/01/2004
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
@@ -37,18 +45,8 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
  * @since JDK 1.6
  * </p>
  */
- 
-import java.io.*;
-import org.core.*;
-import keel.Dataset.*;
-import java.util.*;
 
 public class MyDataset {
-/**	
- * <p>
- * It contains the methods to read a Dataset
- * </p>
- */
  	
     public T_Table[] datos;
     public int n_variables, n_inputs, long_tabla;
