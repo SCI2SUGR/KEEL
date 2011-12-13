@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julian Luengo (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/03/2011
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.MVD;
 
 import keel.Dataset.*;
@@ -45,6 +37,12 @@ import keel.Algorithms.Discretizers.Basic.*;
 /**
  * <p>
  * Main class of MVD (Multivariate Discretization) algorithm
+ * </p>
+ * 
+ * <p>
+ * @author Written by Julian Luengo (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/03/2011
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class Main {

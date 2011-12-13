@@ -27,20 +27,19 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.MODL;
+
+import java.util.ArrayList;
+
+
 /**
+ * This class represents an operation of the post-optimization of the MODL discretization algorithm
+ * 
  * <p>
  * @author Written by Julián Luengo Martín 07/05/2008
  * @version 0.
  * @since JDK 1.5
  * </p>
- */
-package keel.Algorithms.Discretizers.MODL;
-
-import java.util.ArrayList;
-
-/**
- * This class represents an operation of the post-optimization of the MODL discretization algorithm
- *
  */
 public class Neighbour implements Comparable {
 	public double cost = 0; //cost of the operation

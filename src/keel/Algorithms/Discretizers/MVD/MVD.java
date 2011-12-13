@@ -27,21 +27,10 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julian Luengo (SCI2S research group, DECSAI in ETSIIT, University of Granada), 18/04/2011
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.MVD;
 
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 import keel.Algorithms.Discretizers.Basic.*;
-
-import org.core.Randomize;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Vector;
@@ -51,6 +40,12 @@ import keel.Dataset.*;
 /**
  * <p>
  * This class implements the UCPD algorithm
+ * </p>
+ * 
+ * <p>
+ * @author Written by Julian Luengo (SCI2S research group, DECSAI in ETSIIT, University of Granada), 18/04/2011
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class MVD extends Discretizer {

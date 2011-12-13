@@ -27,12 +27,16 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.MantarasDist_Discretizer;
+
+import keel.Dataset.*;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+import keel.Algorithms.Discretizers.Basic.*;
+
+
 /**
  * <p>
- * File: Main.java
- * 
- * This is the main class of the algorithm.
- * It gets the configuration script, finds the discretization accordingly to the model, and
+ * Main class Mantaras Distance-Based Discretizer. It gets the configuration script, finds the discretization accordingly to the model, and
  * applies it to the data.
  * 
  * @author Written by Victoria Lopez Morales (University of Granada) 23/11/2009 
@@ -40,27 +44,15 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Discretizers.MantarasDist_Discretizer;
-
-import java.util.*;
-
-import keel.Dataset.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-import keel.Algorithms.Discretizers.Basic.*;
-
 public class Main {
-/**
- * <p>
- * Main class Mantaras Distance-Based Discretizer.
- * </p>
- */
 	
 	/** Creates a new instance of Main */
 	public Main() {
 	}
 	
 	/**
+	 * It runs the algorithm
+	 * 
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {

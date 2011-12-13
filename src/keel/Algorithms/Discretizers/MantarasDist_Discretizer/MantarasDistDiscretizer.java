@@ -27,10 +27,15 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.MantarasDist_Discretizer;
+
+import java.util.*;
+import keel.Algorithms.Discretizers.Basic.*;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+
+
 /**
  * <p>
- * File: MantarasDistDiscretizer.java
- * 
  * This is the class with the operations of the Mantaras Distance-Based discretization. It 
  * adopts the behavior of the general discretizers and specifies its differences in this 
  * class, that has to extend the abstract methods.
@@ -40,19 +45,7 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Discretizers.MantarasDist_Discretizer;
-
-import java.util.*;
-import keel.Algorithms.Discretizers.Basic.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-
 public class MantarasDistDiscretizer extends Discretizer {
-/**
- * <p>
- * This class implements the Distance-Based discretizer by Mantaras.
- * </p>
- */	
 	
     /**
      * <p>
@@ -557,5 +550,5 @@ public class MantarasDistDiscretizer extends Discretizer {
 
         return res;
     }
+    
 }
-

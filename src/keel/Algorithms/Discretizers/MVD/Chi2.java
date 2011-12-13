@@ -29,6 +29,7 @@
 
 package keel.Algorithms.Discretizers.MVD;
 
+
 /**
  * <p>
  * This class implements the Chi2 table.

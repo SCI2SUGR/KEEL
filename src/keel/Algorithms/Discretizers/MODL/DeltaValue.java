@@ -27,20 +27,19 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.MODL;
+
+import java.util.ArrayList;
+
+
 /**
+ * This class represents the cost variation associated with merging two adjacent intervals
+ * 
  * <p>
  * @author Written by Julián Luengo Martín 07/05/2008
  * @version 0.1
  * @since JDK 1.5
  * </p>
- */
-package keel.Algorithms.Discretizers.MODL;
-
-import java.util.ArrayList;
-
-/**
- * This class represents the cost variation associated with merging two adjacent intervals
- *
  */
 public class DeltaValue implements Comparable{
 	//pointer list

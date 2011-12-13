@@ -27,19 +27,9 @@
   
 **********************************************************************/
 
-/*
- * ModifiedChi2Discretizer.java
- *
- */
-
-/**
- *
- */
-
 package keel.Algorithms.Discretizers.ModifiedChi2_Discretizer;
 
 import keel.Dataset.*;
-
 import java.util.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 

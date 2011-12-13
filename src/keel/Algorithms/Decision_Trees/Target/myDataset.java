@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Decision_Trees.Target;
 
+import java.io.IOException;
+
+import keel.Dataset.*;
+import java.util.Vector;
+
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,12 +46,6 @@ package keel.Algorithms.Decision_Trees.Target;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-import java.util.Vector;
-
 public class myDataset {
 
   public static final int REAL = 0;

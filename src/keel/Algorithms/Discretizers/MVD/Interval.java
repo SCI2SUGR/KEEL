@@ -27,26 +27,21 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.MVD;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import keel.Dataset.Instance;
+
+
 /**
+ * Simple class to codify an interval for a numerical attribute
+ * 
  * <p>
  * @author Written by Julian Luengo Martin (SCI2S research group, DECSAI in ETSIIT, University of Granada), 19/04/2011
  * @version 1.0
  * @since JDK1.6
  * </p>
- */
-
-
-package keel.Algorithms.Discretizers.MVD;
-
-import java.util.ArrayList;
-import java.util.Collections;
-
-import keel.Dataset.Instance;
-
-/**
- * Simple class to codify an interval for a numerical attribute
- * @author Julián Luengo Martín
- *
  */
 public class Interval {
 
@@ -129,6 +124,11 @@ public class Interval {
 		return coveredInstances.size();
 	}
 	
+	/**
+	 * Provides the indexes of the instances in the data set covered by this interval
+	 * 
+	 * @return the indexes of the instances in the data set covered by this interval
+	 */
 	public ArrayList<Integer> getCoveredInstances(){
 		return coveredInstances;
 	}
@@ -139,4 +139,5 @@ public class Interval {
 	public String toString(){
 		return "["+this.lowerbound+","+this.upperbound+"]";
 	}
+	
 }

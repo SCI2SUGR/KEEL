@@ -27,35 +27,24 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.MODL;
+
+import java.util.*;
+import keel.Algorithms.Discretizers.Basic.*;
+import keel.Dataset.Attributes;
+
 /**
+ * MODL Discretizer, based on the work of Marc Boullé
+ * 
+ *	M. Boulle. 
+ *	MODL: A bayes optimal discretization method for continuous attributes. 
+ *	Machine Learning 65:1 (2006) 131-165
  * <p>
  * @author Written by Julián Luengo Martín 07/05/2008
  * @version 0.2
  * @since JDK 1.5
  * </p>
  */
-package keel.Algorithms.Discretizers.MODL;
-
-import java.util.*;
-
-import keel.Algorithms.Discretizers.Basic.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-import keel.Dataset.Attributes;
-
-/**
- * MODL Discretizer
- * Implemented by Julian Luengo, May 2008
- * Corrections by Julian Luengo, March 2010
- * julianlm@decsai.ugr.es
- * 
- * Based on the work of Marc Boullé
- * 
- *	M. Boulle. 
- *	MODL: A bayes optimal discretization method for continuous attributes. 
- *	Machine Learning 65:1 (2006) 131-165
- *
- */
-
 public class MODL extends Discretizer {
 	int numClasses;
 	int discretizationApplied;
