@@ -27,7 +27,25 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzyGAP;
+
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
+import keel.Algorithms.Shared.Exceptions.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node.*;
+import org.core.*;
+
+
 /** 
+* 
+* <p> 
+* FuzzyGAPClassifier is designed to allow a Fuzzy Classifier evolve by means of
+* an Genetic Algorithm and Programming (GAP). This class is a specification of
+* class {@link GeneticIndividualForClassification}.
+* </p> 
+* 
 * <p> 
 * @author Written by Luciano Sanchez (University of Oviedo) 21/01/2004 
 * @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
@@ -35,29 +53,8 @@
 * @since JDK1.4 
 * </p> 
 */ 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzyGAP;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
-import keel.Algorithms.Shared.Exceptions.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node.*;
-import java.io.*;
-import java.util.StringTokenizer;
-import java.util.Vector;
-import org.core.*;
-
-
 public class FuzzyGAPClassifier extends GeneticIndividualForClassification {
-/** 
-* <p> 
-* FuzzyGAPClassifier is designed to allow a Fuzzy Classifier evolve by means of
-* an Genetic Algorithm and Programming (GAP). This class is a specification of
-* class {@link GeneticIndividualForClassification}.
-* 
-* </p> 
-*/ 
+
 	//The input space partitions
     static FuzzyPartition[] A;
  	//The class variable or output variable partitions or classes

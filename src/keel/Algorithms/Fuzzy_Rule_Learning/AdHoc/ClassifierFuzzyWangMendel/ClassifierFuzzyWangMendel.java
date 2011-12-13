@@ -27,25 +27,14 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sanchez (University of Oviedo) 21/07/2008 
-* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/ 
-
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.ClassifierFuzzyWangMendel;
+
 import keel.Algorithms.Shared.Parsing.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 import org.core.*;
-
 import java.io.*;
-import java.util.StringTokenizer;
-import java.util.Vector;
 
-public class ClassifierFuzzyWangMendel {
+
 /** 
 * <p> 
 * ClassifierFuzzyWangMendel is intended to generate a Fuzzy Rule Based System
@@ -56,7 +45,15 @@ public class ClassifierFuzzyWangMendel {
 * antecedent from the RB is found and assigned with the corresponding output 
 * class. Finally, this rule is chosen as a one of the FRBS rules.  
 * </p> 
-*/ 
+*  
+* <p> 
+* @author Written by Luciano Sanchez (University of Oviedo) 21/07/2008 
+* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class ClassifierFuzzyWangMendel {
 	
 	//The Randomize object used in this class
 	static Randomize rand;

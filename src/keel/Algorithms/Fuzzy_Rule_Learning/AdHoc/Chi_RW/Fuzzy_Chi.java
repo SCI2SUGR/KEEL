@@ -33,12 +33,7 @@ import java.io.IOException;
 import org.core.*;
 
 /**
- * <p>Title: Fuzzy_Chi</p>
- *
- * <p>Description: It contains the implementation of the Chi algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
+ * <p>It contains the implementation of the Chi algorithm</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 02/11/2007
  * @version 1.0

@@ -30,13 +30,7 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Chi_RW;
 
 /**
- * <p>Title: Rule</p>
- *
- * <p>Description: This class contains the structure of a Fuzzy Rule</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * <p>This class contains the structure of a Fuzzy Rule</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 29/10/2007
  * @version 1.0

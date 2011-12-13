@@ -32,13 +32,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Chi_RW;
 import org.core.Files;
 
 /**
- * <p>Title: DataBase</p>
- *
- * <p>Description: This class contains the representation of a Fuzzy Data Base</p>
- *
- * <p>Copyright: Copyright KEEL (c) 2007</p>
- *
- * <p>Company: KEEL </p>
+ * <p>This class contains the representation of a Fuzzy Data Base</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 28/10/2007
  * @author Modified by Alberto Fernández (University of Granada) 12/11/2008

@@ -27,33 +27,16 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sanchez (University of Oviedo) 21/07/2005 
-* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/ 
-
-
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierFuzzyGP;
+
 import keel.Algorithms.Shared.Parsing.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 import keel.Algorithms.Shared.Exceptions.*;
-
 import java.io.*;
-import java.util.StringTokenizer;
-import java.util.Vector;
-
-
 import org.core.*;
 
 
-public class ClassifierFuzzyGP {
 /** 
 * <p> 
 * ClassifierFuzzyGP is intended to generate a Fuzzy Rule Based System
@@ -71,9 +54,16 @@ public class ClassifierFuzzyGP {
 * L. Sánchez, I. Couso, J.A. Corrales. Combining GP Operators With SA Search To 
 * Evolve Fuzzy Rule Based Classifiers. Information Sciences 136:1-4 (2001) 
 * 175-192.
+* </p> 
 * 
+* <p> 
+* @author Written by Luciano Sanchez (University of Oviedo) 21/07/2005 
+* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
+* @version 1.0 
+* @since JDK1.4 
 * </p> 
 */ 
+public class ClassifierFuzzyGP {
 	
 	//The Randomize object used in this class
 	static Randomize rand;

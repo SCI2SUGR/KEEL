@@ -33,11 +33,7 @@ import java.io.IOException;
 import keel.Dataset.*;
 
 /**
- * <p>Title: myDataset</p>
- *
- * <p>Description: It contains the methods to read a Classification/Regression Dataset</p>
- *
- * <p>Company: KEEL </p>
+ * <p>It contains the methods to read a Classification/Regression Dataset</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 15/10/2007
  * @author Modified by Alberto Fernández (University of Granada) 12/11/2008
@@ -171,10 +167,24 @@ public class myDataset {
     return emin;
   }
 
+  
+  /**
+   * It returns the maximum value of the given attribute
+   * 
+   * @param variable the index of the attribute
+   * @return the maximum value of the given attribute
+   */
   public double getMax(int variable) {
     return emax[variable];
   }
 
+  
+  /**
+   * It returns the minimum value of the given attribute
+   * 
+   * @param variable the index of the attribute
+   * @return the minimum value of the given attribute
+   */
   public double getMin(int variable) {
     return emin[variable];
   }
@@ -421,6 +431,10 @@ public class myDataset {
     return Attributes.hasRealAttributes();
   }
 
+  /**
+   * It checks if the data-set has any numerical value
+   * @return boolean True if it has some numerical values, else false.
+   */
   public boolean hasNumericalAttributes() {
     return (Attributes.hasIntegerAttributes() ||
             Attributes.hasRealAttributes());
@@ -452,6 +466,11 @@ public class myDataset {
     return tam;
   }
 
+  /**
+   * It returns the number of examples
+   * 
+   * @return the number of examples
+   */
   public int size() {
     return nData;
   }
