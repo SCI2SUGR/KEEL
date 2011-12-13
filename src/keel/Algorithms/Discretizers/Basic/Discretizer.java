@@ -30,9 +30,9 @@
 package keel.Algorithms.Discretizers.Basic;
 
 import keel.Dataset.*;
-
 import java.util.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+
 
 public abstract class Discretizer {
 
@@ -239,5 +239,5 @@ public abstract class Discretizer {
 			if(value<cutPoints[attribute][i]) return i;
 		return cutPoints[attribute].length;
 	}
+	
 }
-

@@ -137,6 +137,15 @@ public class DataBase {
     else  return (this.dataBase[variable][label].Fuzzifica(value));
   }
 
+  /**
+   * <p>
+   * It prints the values of the fuzzy label of the given variable
+   * </p>
+   * 
+   * @param var Attribute which we are going to check
+   * @param label Attribute's label we are going to check
+   * @return the values of the fuzzy label of the given variable
+   */
   public String print_triangle(int var, int label) {
     String cadena = new String("");
 

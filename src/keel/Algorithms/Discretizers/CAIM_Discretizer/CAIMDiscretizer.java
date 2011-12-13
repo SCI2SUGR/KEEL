@@ -27,26 +27,25 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Salvador García (University of Jaén - Jaén) 31/12/2009
- * @version 1.1
- * @since JDK1.5
- * </p>
- */
-
 package keel.Algorithms.Discretizers.CAIM_Discretizer;
 
 import java.util.*;
 import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
-public class CAIMDiscretizer extends Discretizer {
-/**
+
+/** 
  * <p>
  * This class implements the CADD discretizer.
  * </p>
+ * 
+ * <p>
+ * @author Written by Salvador García (University of Jaén - Jaén) 31/12/2009
+ * @version 1.1
+ * @since JDK1.5
+ * </p>
  */
+public class CAIMDiscretizer extends Discretizer {
 
 	/**
 	* Builder

@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.CADD_Discretizer;
+
+import keel.Dataset.*;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+import keel.Algorithms.Discretizers.Basic.*;
+
+
 /**
+ * 
+ * <p>
+ * Main class CADD discretizer.
+ * </p>
+ * 
  * <p>
  * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,25 +47,15 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Discretizers.CADD_Discretizer;
-
-import keel.Dataset.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-import keel.Algorithms.Discretizers.Basic.*;
-
 public class Main {
-/**
- * <p>
- * Main class CADD discretizer.
- * </p>
- */
 	
 	/** Creates a new instance of Main */
 	public Main() {
 	}
 	
 	/**
+	 * It runs the algorithm
+	 * 
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {

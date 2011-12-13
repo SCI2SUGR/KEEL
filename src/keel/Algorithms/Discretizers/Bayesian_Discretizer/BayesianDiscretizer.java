@@ -27,10 +27,15 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.Bayesian_Discretizer;
+
+import java.util.*;
+import keel.Algorithms.Discretizers.Basic.*;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+
+
 /**
  * <p>
- * File: BayesianDiscretizer.java
- * 
  * This is the class with the operations of the Bayesian discretization. It adopts the behavior
  * of the general discretizers and specifies its differences in this class, that has to extend
  * the abstract methods.
@@ -40,20 +45,7 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Discretizers.Bayesian_Discretizer;
-
-import java.util.*;
-
-import keel.Algorithms.Discretizers.Basic.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-
 public class BayesianDiscretizer extends Discretizer {
-/**
- * <p>
- * This class implements the bayesian discretizer.
- * </p>
- */	
     
     /**
      * <p>
@@ -293,6 +285,4 @@ public class BayesianDiscretizer extends Discretizer {
 		return res;
 	}
 		
-
 }
-

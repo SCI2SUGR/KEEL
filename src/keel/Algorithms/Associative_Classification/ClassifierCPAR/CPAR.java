@@ -136,6 +136,10 @@ public class CPAR {
     }
   }
 
+  
+  /**
+   * It writes the running time of the algorithm
+   */
   public void writeTime() {
 	long seg, min, hor;
     String stringOut = new String("");

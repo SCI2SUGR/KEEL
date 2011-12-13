@@ -27,21 +27,23 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.Khiops;
+
+import keel.Dataset.*;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+import keel.Algorithms.Discretizers.Basic.*;
+
+
 /**
+ * <p>
+ * Main class of Khiops
+ * </p>
  * <p>
  * @author Written by Julián Luengo Martín 18/03/2010
  * @version 0.2
  * @since JDK 1.5
  * </p>
  */
-package keel.Algorithms.Discretizers.Khiops;
-
-import java.util.*;
-
-import keel.Dataset.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-import keel.Algorithms.Discretizers.Basic.*;
-
 public class Main {
 
 	/** Creates a new instance of Main */
@@ -49,6 +51,8 @@ public class Main {
 	}
 
 	/**
+	 * It runs the algorithm
+	 * 
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
@@ -86,5 +90,5 @@ public class Main {
 		Parameters.numClasses=outputs[0].getNumNominalValues();
 		Parameters.numAttributes=Attributes.getInputAttributes().length;
 	}
+	
 }
-

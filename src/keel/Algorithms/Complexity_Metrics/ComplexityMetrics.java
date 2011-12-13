@@ -566,6 +566,15 @@ void runF3() {
 } // end runF3 
 
 
+/**
+ * 
+ * 
+ * @param discPower
+ * @param order
+ * @param numAttRemain
+ * @param pointDisc
+ * @return
+ */
 public boolean getDiscriminativePowerOfAttributes ( double[] discPower, int[] order, int numAttRemain, boolean[] pointDisc ) {
 
     int i, j, att;
@@ -687,7 +696,13 @@ public double getApproximateDistance ( int ex1, int ex2 ) {
 
 } // end getApproximateDistance
 
-
+/**
+ * <p>
+ * It computes the minimum spanning tree of the dataset
+ * </p> 
+ * 
+ * @return the minimum spanning tree (pairs of connected examples)
+ */
 public int[][] computePrim () {
 
     int currentNode;
@@ -863,6 +878,14 @@ double runKNN ( int k, double[][] testExamples, int[] classOfTestExamples, int n
 } // end runKNN
 
 
+/**
+ * 
+ * It returns the approximate distance between 2 examples
+ * 
+ * @param ex1 the first example
+ * @param ex2 the second example
+ * @return the distance between the 2 examples
+ */
 double getApproximateDistance ( double[] ex1, double[] ex2 ) {
 
     int i;

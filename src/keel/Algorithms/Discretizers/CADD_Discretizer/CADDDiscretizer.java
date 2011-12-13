@@ -27,27 +27,27 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Salvador García (University of Granada - Granada) 04/01/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.5
- * </p>
- */
-
 package keel.Algorithms.Discretizers.CADD_Discretizer;
 
 import java.util.*;
 import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
-public class CADDDiscretizer extends Discretizer {
+
 /**
+ * <p>
+ * 
  * <p>
  * This class implements the CADD discretizer.
  * </p>
+ * 
+ * @author Written by Salvador García (University of Granada - Granada) 04/01/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.5
+ * </p>
  */
+public class CADDDiscretizer extends Discretizer {
 
 	double BIGX = 20.0;
 	double confidenceThreshold;

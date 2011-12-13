@@ -178,10 +178,23 @@ public class myDataset {
         return emin;
     }
 
+    /**
+     * It returns the maximum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the maximum value of the given attribute
+     */
     public double getMax(int variable) {
         return emax[variable];
     }
 
+    
+    /**
+     * It returns the minimum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the minimum value of the given attribute
+     */
     public double getMin(int variable) {
         return emin[variable];
     }
@@ -389,6 +402,11 @@ public class myDataset {
         return Attributes.hasRealAttributes();
     }
 
+    
+    /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
     public boolean hasNumericalAttributes() {
         return (Attributes.hasIntegerAttributes() ||
                 Attributes.hasRealAttributes());
@@ -420,6 +438,12 @@ public class myDataset {
         return tam;
     }
 
+    
+    /**
+     * It return the size of the data-set
+     * 
+     * @return the size of the data-set
+     */
     public int size() {
         return nData;
     }
@@ -498,18 +522,42 @@ public class myDataset {
         }
     }
 
+    
+    /**
+     * It returns the number of instances in the data set for a given class.
+     * @param clas int Given class.
+     * @return int Number of instances for the given class.
+     */
     public int numberInstances(int clas) {
         return instancesCl[clas];
     }
 
+    
+    /**
+     * Function to get the number of different feasible values for a given attribute 
+     * @param attribute int Given attribute
+     * @return int Number of different feasible values for a given attribute
+     */
     public int numberValues(int attribute) {
         return Attributes.getInputAttribute(attribute).getNumNominalValues();
     }
 
+    
+    /**
+     * It returns the output value (string) which matchs with a given integer value 
+     * @param intValue int Given value
+     * @return String Output value in an understanding way
+     */
     public String getOutputValue(int intValue) {
         return Attributes.getOutputAttribute(0).getNominalValue(intValue);
     }
 
+    
+    /**
+     * It returns the type of an attribute
+     * @param variable Given attribute
+     * @return int Type of the attribute, it is an integer which corresponds to an enummerate field
+     */
     public int getTipo(int variable) {
         if (Attributes.getAttribute(variable).getType() ==
             Attributes.getAttribute(0).INTEGER) {
@@ -546,7 +594,10 @@ public class myDataset {
       return rangos;
     }
 
-
+    /**
+     * It returns the name of every input attributes.
+     * @return String [] Array of strings with the name of every input attribute's names.
+     */
     public String [] names(){
       String names[] = new String[nInputs];
       for (int i = 0; i < nInputs; i++){
@@ -555,6 +606,11 @@ public class myDataset {
       return names;
     }
 
+    
+    /**
+     * It returns the name of every output values (possible classes).
+     * @return String [] Array of strings with the name of every output attribute's names.
+     */
     public String [] clases(){
       String clases[] = new String[nClasses];
       for (int i = 0; i < nClasses; i++){

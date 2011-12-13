@@ -27,10 +27,14 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Discretizers.Ameva_Discretizer;
+
+import java.util.*;
+import keel.Algorithms.Discretizers.Basic.*;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+
 /**
  * <p>
- * File: AmevaDiscretizer.java
- * 
  * This is the class with the operations of the Ameva discretization. It adopts the behavior
  * of the general discretizers and specifies its differences in this class, that has to 
  * extend the abstract methods.
@@ -40,20 +44,8 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Discretizers.Ameva_Discretizer;
-
-import java.util.*;
-
-import keel.Algorithms.Discretizers.Basic.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-
 public class AmevaDiscretizer extends Discretizer {
-/**
- * <p>
- * This class implements the Ameva discretizer.
- * </p>
- */	
+
     /**
      * <p>
      * Selects, for a given attribute, the real values that best discretize the attribute
@@ -362,4 +354,3 @@ public class AmevaDiscretizer extends Discretizer {
         return res;
     }
 }
-

@@ -156,6 +156,10 @@ public class FCRA {
     }
   }
 
+  
+  /**
+   * It add the runtime to fileHora file
+   */
   public void writeTime() {
 	long aux, seg, min, hor;
     String stringOut = new String("");

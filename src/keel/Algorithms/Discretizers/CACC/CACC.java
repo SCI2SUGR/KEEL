@@ -27,24 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.CACC;
 
 import java.util.*;
 import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.Parameters;
 
-
 /**
+ * 
  * <p>
  * This class implements the CACC discretizer
+ * </p>
+ * 
+ * <p>
+ * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class CACC extends Discretizer {

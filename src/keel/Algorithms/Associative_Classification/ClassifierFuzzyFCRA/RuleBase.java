@@ -81,6 +81,13 @@ public class RuleBase {
 	this.fitness = 0.0;
   }
 
+  /**
+   * <p>
+   * Clone Function
+   * </p>
+   * 
+   * @return a copy of the RuleBase
+   */
   public RuleBase clone() {
     RuleBase br = new RuleBase();
     br.ruleBase = new ArrayList<Rule> ();

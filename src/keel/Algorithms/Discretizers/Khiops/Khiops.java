@@ -27,23 +27,16 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 18/03/2010
- * @version 0.2
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Discretizers.Khiops;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Vector;
-
 import keel.Algorithms.Discretizers.Basic.Discretizer;
 import keel.Algorithms.Preprocess.Missing_Values.EventCovering.Stat.*;
 import keel.Dataset.Attributes;
+
 
 /**
  * Khiops Discretizer
@@ -56,6 +49,11 @@ import keel.Dataset.Attributes;
  *	Khiops: A Statistical Discretization Method of Continuous Attributes 
  *	Machine Learning 55:1 (2004) 53-69
  *
+ * <p>
+ * @author Written by Julián Luengo Martín 18/03/2010
+ * @version 0.2
+ * @since JDK 1.5
+ * </p>
  */
 public class Khiops extends Discretizer {
 	

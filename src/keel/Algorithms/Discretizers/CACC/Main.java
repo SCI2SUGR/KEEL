@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Discretizers.CACC;
 
 import keel.Dataset.*;
@@ -43,8 +35,15 @@ import keel.Algorithms.Discretizers.Basic.*;
 
 
 /**
+ * 
  * <p>
  * Main class of CACC algorithm (discretization algorithm based on Class-Attribute Contingency Coefficient)
+ * </p>
+ * 
+ * <p>
+ * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class Main {

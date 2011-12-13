@@ -27,18 +27,9 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Salvador García (University of Jaén) 17/03/2011
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
-
 package keel.Algorithms.Discretizers.Cluster_Analysis;
 
 import java.util.*;
-
 import keel.Algorithms.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 import keel.Dataset.Attribute;
@@ -47,12 +38,19 @@ import keel.Dataset.Instance;
 import keel.Dataset.InstanceSet;
 
 
-public class Cluster_Analysis extends Discretizer {
 /**
+ * 
  * <p>
  * This class implements the Cluster Analysis discretizer.
  * </p>
- */	
+ * 
+ * <p>
+ * @author Written by Salvador García (University of Jaén) 17/03/2011
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
+public class Cluster_Analysis extends Discretizer {
 	
 	Instance []instances;
 
@@ -61,7 +59,12 @@ public class Cluster_Analysis extends Discretizer {
 	*/
 	public Cluster_Analysis() {
 	}
-	
+
+	/**
+	 * It computes the cutpoints of the given dataset
+	 * 
+	 * @param is the examples of the dataset
+	 */
 	public void buildCutPoints(InstanceSet is) {
 		int i, j, l, m;
 		boolean bHit;

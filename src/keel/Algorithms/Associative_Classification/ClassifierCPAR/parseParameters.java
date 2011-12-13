@@ -142,54 +142,127 @@ public class parseParameters {
         //If the algorithm is non-deterministic the first parameter is the Random SEED
     }
 
+    /**
+     * It returns the training input file
+     * 
+     * @return the training input file
+     */
     public String getTrainingInputFile(){
         return this.trainingFile;
     }
 
+    
+    /**
+     * It returns the test input file
+     * 
+     * @return the test input file
+     */
     public String getTestInputFile(){
         return this.testFile;
     }
 
+    
+    /**
+     * It returns the validation input file
+     * 
+     * @return the validation input file
+     */
     public String getValidationInputFile(){
         return this.validationFile;
     }
 
+    
+    /**
+     * It returns the training output file
+     * 
+     * @return the training output file
+     */
     public String getTrainingOutputFile(){
         return this.outputTrFile;
     }
 
+    
+    /**
+     * It returns the test output file
+     * 
+     * @return the test output file
+     */
     public String getTestOutputFile(){
         return this.outputTstFile;
     }
 
+    /**
+     * It returns the algorithm name
+     *
+     * @return the algorithm name
+     */
     public String getAlgorithmName(){
         return this.algorithmName;
     }
 
+    
+    /**
+     * It returns the name of the parameters
+     *
+     * @return the name of the parameters
+     */
     public String [] getParameters(){
         String [] param = (String []) parameters.toArray();
         return param;
     }
 
+    
+    /**
+     * It returns the name of the parameter specified
+     *
+     * @param pos the index of the parameter
+     * @return the name of the parameter specified
+     */
     public String getParameter(int pos){
         return (String)parameters.get(pos);
     }
 
+    
+    /**
+     * It returns the input files
+     * 
+     * @return the input files
+     */
     public String [] getInputFiles(){
         return (String []) inputFiles.toArray();
     }
 
+    
+    /**
+     * It returns the input file of the specified index
+     * 
+     * @param pos index of the file
+     * @return the input file of the specified index
+     */
     public String getInputFile(int pos){
         return (String)this.inputFiles.get(pos);
     }
 
+    
+    
+    /**
+     * It returns the output files
+     * 
+     * @return the output files
+     */
     public String [] getOutputFiles(){
         return (String [])this.outputFiles.toArray();
     }
 
+    
+    /**
+     * It returns the output file of the specified index
+     * 
+     * @param pos index of the file
+     * @return the output file of the specified index
+     */
     public String getOutputFile(int pos){
         return (String)this.outputFiles.get(pos);
     }
 
 }
-
