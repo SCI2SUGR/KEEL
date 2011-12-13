@@ -30,9 +30,6 @@
 package keel.Algorithms.Decision_Trees.FunctionalTrees;
 
 /**
- * 
- * File: Split.java
- * 
  * Data structure that is used during the construction of the decision tree.
  * It stores the information about how a node can be divided into two descendant, this
  * means, which attribute is used for the split and the value of the attribute used
@@ -42,7 +39,6 @@ package keel.Algorithms.Decision_Trees.FunctionalTrees;
  * @version 1.0 
  * @since JDK1.5
  */
-
 public class Split {
     /**
      * Position of the attribute that is used for the split

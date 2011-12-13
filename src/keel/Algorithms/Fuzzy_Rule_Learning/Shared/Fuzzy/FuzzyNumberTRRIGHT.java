@@ -27,26 +27,23 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
+
+
 /** 
+* <p> 
+* Represents a right-angled triangular fuzzy number with the right-angle in right side. 
+* Each support member upper than center has the membership value of 1.0 and right represent the extreme of the triangular fuzzy number. 
+* </p>
+*  
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
 * @version 1.0 
 * @since JDK1.4 
 * </p> 
-*/
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
-
-
+*/	
 class FuzzyNumberTRRIGHT extends Fuzzy {
-	/** 
-	* <p> 
-	* Represents a right-angled triangular fuzzy number with the right-angle in right side. 
-	* Each support member upper than center has the membership value of 1.0 and right represent the extreme of the triangular fuzzy number.
-	* 
-	* </p>
-	*/	
 	//the center and the extreme of the triangular fuzzy number
     double left, center;
     /** 

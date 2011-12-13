@@ -27,46 +27,34 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Random_Sets.FSS98;
+
+import keel.Algorithms.Shared.Parsing.*;
+import org.core.*;
+import java.io.*;
+
+
 /** 
+* <p> 
+* ModelFuzzySAP is intended to generate a Fuzzy Rule Based System (FRBS)
+* regression model using the fuzzy random sets regression algorithm. 
+* 
+* This class makes used of the following classes:
+*      {@link RSFSS}: the model to be learned
+*
+* Detailed in:
+*
+* L. Sánchez. A Random Sets-Based Method for Identifying Fuzzy Models. Fuzzy Sets
+* and Systems 98:3 (1998) 343-354.
+* </p>
+*
 * <p> 
 * @author Written by Luciano Sanchez (University of Oviedo) 08/03/2004 
 * @version 1.0 
 * @since JDK1.4 
 * </p> 
 */ 
-
-
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Random_Sets.FSS98;
-import keel.Algorithms.Shared.Parsing.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms.SimulatedAnnealing;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Model.FuzzyGAPModelIndividual;
-import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
-import org.core.*;
-
-import java.io.*;
-import java.util.StringTokenizer;
-import java.util.Vector;
-
-
-
-
 public class FSS98 {
-	/** 
-	* <p> 
-	* ModelFuzzySAP is intended to generate a Fuzzy Rule Based System (FRBS)
-	* regression model using the fuzzy random sets regression algorithm. 
-	* 
-	* This class makes used of the following classes:
-	*      {@link RSFSS}: the model to be learned
-	*
-	* Detailed in:
-	*
-	* L. Sánchez. A Random Sets-Based Method for Identifying Fuzzy Models. Fuzzy Sets
-	* and Systems 98:3 (1998) 343-354.
-	* 
-	* </p> 
-	*/ 
 	//The Randomize object used in this class
 	static Randomize rand;
 	

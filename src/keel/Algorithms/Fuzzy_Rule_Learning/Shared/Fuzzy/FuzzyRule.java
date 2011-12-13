@@ -27,7 +27,14 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
+
+
 /** 
+* <p> 
+* Represents a fuzzy rule.  
+* </p> 
+*  
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,17 +42,7 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
-
-
 public class FuzzyRule {
-	/** 
-	* <p> 
-	* Represents a fuzzy rule.  
-	* 
-	* </p> 
-	*/
    // The consequent is codified in rule position in the BaseRule 
    public  int consequent;
    public  double weight;

@@ -31,15 +31,10 @@ package keel.Algorithms.Decision_Trees.FunctionalTrees;
 
 import java.util.StringTokenizer;
 import java.util.ArrayList;
-
 import java.io.*;
-
 import org.core.Fichero;
 
-/**
- * 
- * File: FunctionalTrees.java
- * 
+/** 
  * The Functional Trees algorithm builds a decision tree model integrating in only
  * one model a decision tree and another classifier. The current version is called
  * FT-Leaves because the classifier is only present at the leaf nodes.
@@ -60,7 +55,6 @@ import org.core.Fichero;
  * @version 0.1 
  * @since JDK1.5
  */
-
 public class FunctionalTrees {
     /**
      * Nodes of the tree built with the Functional Trees algorithm

@@ -30,9 +30,6 @@
 package keel.Algorithms.Decision_Trees.FunctionalTrees;
 
 /**
- * 
- * File: Main.java
- * 
  * This is the main class of the algorithm.
  * It gets the configuration script, builds the decision tree model, and
  * classifies with it.
@@ -40,9 +37,7 @@ package keel.Algorithms.Decision_Trees.FunctionalTrees;
  * @author Written by Victoria Lopez Morales (University of Granada) 14/05/2009 
  * @version 0.1 
  * @since JDK1.5
- * 
  */
-
 public class Main {
     
     /**

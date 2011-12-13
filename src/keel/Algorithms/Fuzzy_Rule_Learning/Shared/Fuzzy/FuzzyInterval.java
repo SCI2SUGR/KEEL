@@ -27,7 +27,14 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
+
+
 /** 
+* <p> 
+* Represents an interval fuzzy set. Each member of a interval fuzzy set has membership value of 1.0.
+* </p>
+*  
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 25/01/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,18 +42,7 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
-
-
 public class FuzzyInterval extends Fuzzy {
-	/** 
-	* <p> 
-	* Represents an interval fuzzy set. Each member of a interval fuzzy set has membership value of 1.0.
-	* 
-	* </p>
-	* 
-	*/
 	//The extremes of the interval fuzzy set.
     double a,b;
     /** 

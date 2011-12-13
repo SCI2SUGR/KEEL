@@ -34,9 +34,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * 
- * File: TreeNode.java
- * 
  * Data structure that is used in the construction of the decision tree.
  * It stores the information about the relationship between nodes in a tree, and
  * the type of node that it is along some other necessary information such as the
@@ -46,7 +43,6 @@ import java.util.Random;
  * @version 1.0 
  * @since JDK1.5
  */
-
 public class TreeNode {
     /**
      * Identifier of the tree node

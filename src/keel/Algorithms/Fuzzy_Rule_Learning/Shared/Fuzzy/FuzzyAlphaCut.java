@@ -27,7 +27,53 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
+
+
 /** 
+* <p>
+* <pre> 
+* Represents an alpha-cut for any type of fuzzy number (triangular, trapezoidal and singleton).
+*  
+* An alpha cut is defined as:
+* 
+*  A_alpha = {x| mu(x)  >= alpha}  
+* 
+*  Given the fuzzy set A defined over the Universe of the discourse U, and the membership function mu.  
+*  
+* This implementation uses two arrays for the extremes of the support set:
+* -left[]
+* -right[]
+* 
+* and an array for the alpha-cut:
+* -alpha[]
+* 
+* 
+* 
+*     membership f
+*     1.0 -                  ---------------------------
+*         |                 /                           \   
+*         |                /                             \
+* alpha[1]----------------/                               \
+*         |              /                                 \
+*         |             /                                   \ 
+*       a -            /                                     \ 
+*         |           /                                       \        
+*         |          /                                         \  
+* alpha[0]----------/                                           \
+*         |        /                                             \
+	*         |       /                                               \
+*     0.0 -------|----------|---------------------------|----------|----------
+*          left[0]      left[1]                       right[1]   right[0]  <-- Support
+*
+* 
+* 
+* Detailed in:
+* 
+* Zadeh, L. Fuzzy logic, IEEE Computer, 1:83, (1988)
+* <pre>
+* </p>
+*  
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 23/01/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,55 +81,7 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
-
-
 public class FuzzyAlphaCut extends Fuzzy {
-	/** 
-	* <p>
-	* <pre> 
-	* Represents an alpha-cut for any type of fuzzy number (triangular, trapezoidal and singleton).
-	*  
-	* An alpha cut is defined as:
-	* 
-	*  A_alpha = {x| mu(x)  >= alpha}  
-	* 
-	*  Given the fuzzy set A defined over the Universe of the discourse U, and the membership function mu.  
-	*  
-	* This implementation uses two arrays for the extremes of the support set:
-	* -left[]
-	* -right[]
-	* 
-	* and an array for the alpha-cut:
-	* -alpha[]
-	* 
-	* 
-	* 
-	*     membership f
-    *     1.0 -                  ---------------------------
-	*         |                 /                           \   
-	*         |                /                             \
-	* alpha[1]----------------/                               \
-	*         |              /                                 \
-	*         |             /                                   \ 
-	*       a -            /                                     \ 
-	*         |           /                                       \        
-	*         |          /                                         \  
-	* alpha[0]----------/                                           \
-	*         |        /                                             \
- 	*         |       /                                               \
-	*     0.0 -------|----------|---------------------------|----------|----------
-	*          left[0]      left[1]                       right[1]   right[0]  <-- Support
-    *
-	* 
-	* 
-	* Detailed in:
-	* 
-	* Zadeh, L. Fuzzy logic, IEEE Computer, 1:83, (1988)
-	* <pre>
-	* </p> 
-	*/
 	// left and right are the extremes of the fuzzy set support, and alpha is the membership threshold. 
     double[] left, right, alpha;
      

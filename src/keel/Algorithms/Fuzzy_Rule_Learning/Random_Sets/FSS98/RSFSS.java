@@ -27,27 +27,25 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Random_Sets.FSS98;
+
+import org.core.*;
+
+
 /**
+* <p>
+* The auxiliary class Cluster supports a cluster region of an individual.
+* It is used to store a dendogram.
+* It is intended to be used in the Fuzzy Random Sets Regression Algorithm.
+* </p>
+* 
 * <p>
 * @author Written by Luciano Sanchez (University of Oviedo) 08/03/2003
 * @version 1.0
 * @since JDK1.4
 * </p>
 */
-
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Random_Sets.FSS98;
-import keel.Algorithms.Shared.ClassicalOptim.*;
-import org.core.*;
-
 class Cluster {
-	/**
-	* <p>
-	* The auxiliary class Cluster supports a cluster region of an individual.
-	* It is used to store a dendogram.
-	* It is intended to be used in the Fuzzy Random Sets Regression Algorithm.
-	* </p>
-	*/
 	//The covariance matrix of the cluster
 	double [][]C;  // Cluster covariance
 	//The clusters centroids
@@ -700,20 +698,24 @@ class MatrixCalcs {
 
 }
 
-
+/**
+* <p>
+* RSFSS is the model to be obtained as the regression model using the
+* fuzzy random sets regression algorithm.
+*
+* Detailed in:
+*
+* L. Sánchez. A Random Sets-Based Method for Identifying Fuzzy Models. Fuzzy Sets
+* and Systems 98:3 (1998) 343-354.
+* </p>
+* 
+* <p>
+* @author Written by Luciano Sanchez (University of Oviedo) 08/03/2003
+* @version 1.0
+* @since JDK1.4
+* </p>
+*/
 public class RSFSS {
-	/**
-	* <p>
-	* RSFSS is the model to be obtained as the regression model using the
-	* fuzzy random sets regression algorithm.
-	*
-	* Detailed in:
-	*
-	* L. Sánchez. A Random Sets-Based Method for Identifying Fuzzy Models. Fuzzy Sets
-	* and Systems 98:3 (1998) 343-354.
-	*
-	* </p>
-	*/
     //The input data from the dataset
 	double [][]X;
 	//the output data from the dataset

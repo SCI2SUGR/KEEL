@@ -30,9 +30,15 @@
 package keel.Algorithms.Decision_Trees.DT_GA.C45;
 
 import java.io.*;
-
 import keel.Dataset.Attributes;
 
+/**
+ * This class implements the interface Algorithm
+ * 
+ * @author Anonymous
+ * @version 1.0
+ * @since JDK1.5
+ */
 public abstract class Algorithm {
     /** The name of the file that contains the information to build the model. */
     protected static String modelFileName = "";

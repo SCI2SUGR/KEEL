@@ -27,25 +27,23 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
+
+
 /** 
+* <p> 
+* Represents a singleton fuzzy set. 
+* A Fuzzy singleton is a fuzzy set whose support is a single point in U with a membership level of 1.0. 
+* </p>
+* 
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
 * @version 1.0 
 * @since JDK1.4 
 * </p> 
-*/
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
-
+*/	
 public class FuzzySingleton extends Fuzzy {
-	/** 
-	* <p> 
-	* Represents a singleton fuzzy set. 
-	* A Fuzzy singleton is a fuzzy set whose support is a single point in U with a membership level of 1.0.
-	* 
-	* </p>
-	*/	
 	//it's the single point.
     double center;
     /** 

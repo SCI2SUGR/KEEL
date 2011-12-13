@@ -140,6 +140,11 @@ public class C45
 
   }
 
+  /**
+   * It generates the decision tree from the dataset
+   * 
+   * @throws Exception if the tree is not generated
+   */
   public void generateTree() throws Exception{
     try{
       generateTree(modelDataset);
@@ -435,6 +440,11 @@ public class C45
     }
   }
 
+  /**
+   * It prints the information related to the decision tree
+   * 
+   * @return an string with the information related to the decision tree
+   */
   public String printString(){
     String tree = new String("");
     toString();

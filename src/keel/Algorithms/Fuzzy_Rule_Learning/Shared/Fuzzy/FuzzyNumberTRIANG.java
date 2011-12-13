@@ -27,7 +27,15 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
+
+
 /** 
+* <p> 
+* Represents a triangular fuzzy number. The support member with membership value of 1.0 is the center 
+* and left and right represent the extremes of the triangular fuzzy number.
+* </p>
+* 
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,19 +43,7 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
-
-
-
 public class FuzzyNumberTRIANG extends Fuzzy {
-	/** 
-	* <p> 
-	* Represents a triangular fuzzy number. The support member with membership value of 1.0 is the center 
-	* and left and right represent the extremes of the triangular fuzzy number.
-	* </p>
-	* 
-	*/
 	//The extremes and center of the triangular fuzzy number.
     double left, center, right;
     /** 

@@ -32,9 +32,6 @@ package keel.Algorithms.Decision_Trees.FunctionalTrees;
 import java.util.ArrayList;
 
 /**
- * 
- * File: myAttribute.java
- * 
  * This class contains the most useful information about an attribute, and provides a set of functions to
  * manage this information easily.
  *
@@ -42,7 +39,6 @@ import java.util.ArrayList;
  * @version 0.1
  * @since JDK1.6
  */
-
 public class myAttribute {
     /**
      * Representative name of the attribute

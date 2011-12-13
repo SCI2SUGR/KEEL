@@ -27,7 +27,14 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
+
+
 /** 
+* <p> 
+* It is the abstract class for the remaining basic classes related with Fuzzy Regression defined in keel.Algorithms.Symbolic_Regression. 
+* </p> 
+*  
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,17 +42,7 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
-
-
 public abstract class FuzzyRegressor {
-/** 
-* <p> 
-* It is the abstract class for the remaining basic classes related with Fuzzy Regression defined in keel.Algorithms.Symbolic_Regression.  
-* 
-* </p> 
-*/
     //the type for fuzzy regressors based on crisp sets (singleton fuzzy sets) 
 	public final static int Crisp=0;
 	//the type for fuzzy regressors based on interval sets (interval fuzzy sets)

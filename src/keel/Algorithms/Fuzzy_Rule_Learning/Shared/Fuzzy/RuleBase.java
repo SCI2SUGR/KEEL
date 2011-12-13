@@ -27,7 +27,17 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
+
 /** 
+* <p> 
+* Represents a FRBS (Fuzzy Rule Base System). A FRBS is composed of:  
+* 
+* -content: the consequents of the rules (each rule has an index to partition array)
+* -partitions: the antecedents for each rule.
+* -partition: the consequents shared by all the rules.
+* </p> 
+*  
  * <p> 
  * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
  * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,19 +45,7 @@
  * @since JDK1.4 
  * </p> 
  */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
-
 public class RuleBase {
-	/** 
-	* <p> 
-	* Represents a FRBS (Fuzzy Rule Base System). A FRBS is composed of:  
-	* 
-	* -content: the consequents of the rules (each rule has an index to partition array)
-	* -partitions: the antecedents for each rule.
-	* -partition: the consequents shared by all the rules.
-	* </p> 
-	*/
 	// TNorm
 	int tnr;
 	int agr;

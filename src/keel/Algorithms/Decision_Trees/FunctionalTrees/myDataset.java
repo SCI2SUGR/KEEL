@@ -39,9 +39,6 @@ import keel.Dataset.Instance;
 import keel.Dataset.InstanceSet;
 
 /**
- * 
- * File: myDataset.java
- * 
  * This class contains the most useful information about a dataset, and provides a set of functions to
  * manage this information easily.
  *
@@ -49,7 +46,6 @@ import keel.Dataset.InstanceSet;
  * @version 0.1
  * @since JDK1.6
  */
-
 public class myDataset {
     /**
      * Representative name of the dataset

@@ -27,19 +27,8 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
-
 package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
 
-
-public abstract class Fuzzy {
 /** 
 * <p> 
 * It is the abstract class for the remaining basic classes related with Fuzzy Logic.. 
@@ -50,7 +39,15 @@ public abstract class Fuzzy {
 * Zadeh, L. Fuzzy logic, IEEE Computer, 1:83, (1988)
 * 
 * </p> 
+*  
+* <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
 */
+public abstract class Fuzzy {
 	// Positive limit for the support set of a fuzzy set
 	final double POSITIVEINF=1.0e10;
 	// Negative limit for the support set of a fuzzy set

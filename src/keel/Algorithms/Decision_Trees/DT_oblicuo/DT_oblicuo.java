@@ -30,9 +30,7 @@
 package keel.Algorithms.Decision_Trees.DT_oblicuo;
 
 /**
- * <p>Title: Algorithm</p>
- *
- * <p>Description: It contains the implementation of the algorithm</p>
+ * <p>It contains the implementation of the algorithm</p>
  *
  *
  * <p>Company: KEEL </p>

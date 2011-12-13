@@ -27,7 +27,13 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
+
 /** 
+* <p> 
+* Represents a partition of fuzzy sets.  
+* </p> 
+*  
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,16 +41,7 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
-
 public class FuzzyPartition  {
-	/** 
-	* <p> 
-	* Represents a partition of fuzzy sets.  
-	* 
-	* </p> 
-	*/
 	//the container
     private Fuzzy[] content;
     /** 
