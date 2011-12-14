@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S√°nchez (luciano@uniovi.es)
-    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
-    S. Garc√≠a (sglopez@ujaen.es)
-    A. Fern√°ndez (alberto.fernandez@ujaen.es)
+    L. S·nchez (luciano@uniovi.es)
+    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÌa (sglopez@ujaen.es)
+    A. Fern·ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -39,13 +39,18 @@ import java.awt.CardLayout;
 import java.awt.Cursor;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -72,7 +77,9 @@ import keel.Algorithms.Preprocess.Converter.WekaToKeel;
 import keel.Algorithms.Preprocess.Converter.XmlToKeel;
 import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
+import keel.Dataset.InstanceSet;
 import keel.GraphInterKeel.datacf.DataCFFrame;
+import keel.GraphInterKeel.experiments.Files;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -82,7 +89,7 @@ import org.jdom.output.XMLOutputter;
 
 /**
  * <p>
- * @author Written by Pedro Antonio Guti√©rrez and Juan Carlos Fern√°ndez (University of C√≥rdoba) 23/10/2008
+ * @author Written by Pedro Antonio GutiÈrrez and Juan Carlos Fern·ndez (University of CÛrdoba) 23/10/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -95,7 +102,8 @@ public class ImportPanel extends javax.swing.JPanel {
      * </p>
      */
 
-    
+    private boolean isUnsupervised;
+
     /**
      * <p>
      * Constructor that initializes the panel
@@ -1115,6 +1123,33 @@ private void nextPreviewButtonActionPerformed(java.awt.event.ActionEvent evt) {/
                 }
             }
 
+            if(isUnsupervised){
+               // Loading one data set to extract statitics
+                keel.Dataset.InstanceSet iSet = new keel.Dataset.InstanceSet();
+                try {
+                    Attributes.clearAll();
+                    iSet.readSet(tmpTrainingImportedFile.getPath(), true);
+                } catch (Exception ex) {
+                    System.out.println(
+                        "READING DATASET ERROR. The format of the header is not correct.");
+                    ex.printStackTrace();
+                    return;
+                }
+                deleteOutputs(tmpTrainingImportedFile,iSet);
+                
+                iSet = new keel.Dataset.InstanceSet();
+                try {
+                    Attributes.clearAll();
+                    iSet.readSet(tmpTestingImportedFile.getPath(), true);
+                } catch (Exception ex) {
+                    System.out.println(
+                        "READING DATASET ERROR. The format of the header is not correct.");
+                    ex.printStackTrace();
+                    return;
+                }
+                deleteOutputs(tmpTestingImportedFile,iSet);
+            }
+
             FileUtils.copy(tmpTrainingImportedFile.getPath(), trainingOutputFileName[0]);
             FileUtils.copy(tmpTestingImportedFile.getPath(), testOutputFileName[0]);
 
@@ -1138,6 +1173,33 @@ private void nextPreviewButtonActionPerformed(java.awt.event.ActionEvent evt) {/
                     return;
                 }
                 if (importToExperimentCheckBox.isSelected()) {
+                    if(isUnsupervised){
+                        keel.Dataset.InstanceSet iSet = new keel.Dataset.InstanceSet();
+
+                        try {
+                            Attributes.clearAll();
+                            iSet.readSet(trainingConverted, true);
+                        } catch (Exception ex) {
+                            System.out.println(
+                            "READING DATASET ERROR. The format of the header is not correct.");
+                            ex.printStackTrace();
+                            return;
+                        }
+                        deleteOutputs(new File(trainingConverted),iSet);
+
+                        iSet = new keel.Dataset.InstanceSet();
+                        try {
+                            Attributes.clearAll();
+                            iSet.readSet(testingConverted, true);
+                        } catch (Exception ex) {
+                            System.out.println(
+                            "READING DATASET ERROR. The format of the header is not correct.");
+                            ex.printStackTrace();
+                            return;
+                        }
+                        deleteOutputs(new File(testingConverted),iSet);
+                    }
+                    
                     FileUtils.copy(trainingConverted, trainingOutputFileName[i]);
                     FileUtils.copy(testingConverted, testOutputFileName[i]);
                     joinUnifiedFiles(trainingConverted, testingConverted, outputPath + File.separator + rootName + ".dat");
@@ -1587,7 +1649,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
      * <p>
      * Sets a view for a dataset
      * </p>
-     * @param dataCFView View for a dataset
+     * @param dataCFFrame View for a dataset
      */
     public void setDataCFView(DataCFFrame dataCFView) {
         this.dataCFFrame = dataCFView;
@@ -2973,7 +3035,83 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
     public void cleanPanels(){
         this.cleanButtonActionPerformed(null);
     }
-    
+
+    /**
+     * <p>
+     * Delete all output attributes in the data set file and converts them to inputs.
+     * </p>
+     *
+     * @param file File to process
+     * @param iSet instance set associated to the data set
+     * @return
+     * @throws IOException File exception is the file is not read properly
+     */
+    private boolean deleteOutputs(File file, InstanceSet iSet) throws IOException{
+
+        FileInputStream fstream = new FileInputStream(file.getAbsolutePath());
+        DataInputStream in = new DataInputStream(fstream);
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+        StringTokenizer word;
+        String line;
+        String text;
+        String cad;
+
+        ArrayList<String> atts= new ArrayList<String>();
+
+        //process header
+        
+        text="";
+        do{
+            line = br.readLine();
+            
+            if(line.startsWith("@input")||line.startsWith("@output")||line.startsWith("@data")){
+                //do not print these lines
+            }
+            else{
+                text+=line+"\n";
+                if(line.startsWith("@attribute")){
+                    word=new StringTokenizer(line," ");
+                    cad=word.nextToken();
+                    cad=word.nextToken();
+                    if(cad.contains("[")){
+                        word=new StringTokenizer(cad,"[");
+                        cad=word.nextToken();
+                    }
+                    if(cad.contains("{")){
+                        word=new StringTokenizer(cad,"{");
+                        cad=word.nextToken();
+                    }
+                    atts.add(cad);
+                }
+            }
+        }while(!line.startsWith("@data"));
+        //print @inputs line
+
+        text+="@inputs ";
+        for(int i=0;i<atts.size()-1;i++){
+            text+=atts.get(i)+", ";
+        }
+        text+=atts.get(atts.size()-1)+"\n";
+
+        text+="@output \n";
+        
+        //print @data line
+        text+=line+"\n";
+
+        PrintWriter aux= new PrintWriter(new FileWriter(file));
+        aux.print(text);
+        for(int i=0;i<iSet.getNumInstances();i++){
+            iSet.getInstance(i).printAsOriginal(aux);
+            aux.print("\n");
+        }
+
+        aux.close();
+
+        return true;
+
+    }
+
     /**
      * <p>
      * Adds a dataset to the "Datasets.xml" file of the experiment section
@@ -2985,6 +3123,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
      */
     private String addDatasetXML(File file, File fileTesting) {
 
+        isUnsupervised=false;
         /*Load the previuos datasets.xml*/
         Document data = new Document();
         try {
@@ -3026,6 +3165,8 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                 if( ((rootName == null) || (rootName.length() == 0))){
                     return null;
                 }
+		lowerCaseName= rootName.toLowerCase();
+				
                 it = data.getRootElement().getChildren().iterator();
             }
         }
@@ -3062,13 +3203,60 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
             if (classification) {
                 if(iSet.isOutputInfered()){
                     problemType.setText("Unsupervised");
+                    isUnsupervised = true;
                 }
                 else{
                     problemType.setText("Classification");
+                    isUnsupervised = false;
                 }
             } else {
                 problemType.setText("Regression");
+                isUnsupervised = false;
             }
+        }
+
+        //Custom button text
+        Object[] options = {"Classification",
+                    "Regression",
+                    "Unsupervised"};
+        int optionType = JOptionPane.showOptionDialog(parent,
+            "Select the type of problem",
+            "Select type",
+            JOptionPane.YES_NO_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[0]);
+
+        if(optionType==0){
+            classification = true;
+            problemType.setText("Classification");
+            isUnsupervised = false;
+        }
+        else if(optionType==1){
+            classification = false;
+            problemType.setText("Regression");
+            isUnsupervised = false;
+        }
+        else if(optionType==2){
+            classification = false;
+            problemType.setText("Unsupervised");
+            isUnsupervised = true;
+        }
+        else{
+            //Use default classification
+        }
+
+        if(isUnsupervised==true){
+            try {
+                deleteOutputs(file,iSet);
+            } catch (IOException ex) {
+                System.out.println(
+                    "READING DATASET ERROR. The format of the header is not correct.");
+                ex.printStackTrace();
+                return null;
+            }
+            JOptionPane.showMessageDialog(this, "All attributes have been automatically defined as inputs for this unsupervised data set problem.", "Attributes modified", JOptionPane.INFORMATION_MESSAGE);
         }
 
         Element partitions = new Element("partitions");
@@ -3288,6 +3476,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                     if( ((rootName == null) || (rootName.length() == 0))){
                         return null;
                     }
+					lowerCaseName= rootName.toLowerCase();
                     it = data.getRootElement().getChildren().iterator();
                 }
                 else{
@@ -3316,16 +3505,66 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         nameComplete.setText(rootName);
 
         boolean classification = false;
-        if (Attributes.getOutputAttribute(0).getType() == Attribute.NOMINAL) {
-            classification = true;
-        }
         Element problemType = new Element("problemType");
-        if (classification) {
-            problemType.setText("Classification");
-        } else {
-            problemType.setText("Regression");
+
+        if(Attributes.getOutputNumAttributes()==0){
+            problemType.setText("Unsupervised");
+        }
+        else{
+            if (Attributes.getOutputAttribute(0).getType() == Attribute.NOMINAL) {
+                classification = true;
+            }
+
+            if (classification) {
+                if(iSet.isOutputInfered()){
+                    problemType.setText("Unsupervised");
+                    isUnsupervised = true;
+                }
+                else{
+                    problemType.setText("Classification");
+                    isUnsupervised = false;
+                }
+            } else {
+                problemType.setText("Regression");
+                isUnsupervised = false;
+            }
         }
 
+        //Custom button text
+        Object[] options = {"Classification",
+                    "Regression",
+                    "Unsupervised"};
+        int optionType = JOptionPane.showOptionDialog(parent,
+            "Select the type of problem",
+            "Select type",
+            JOptionPane.YES_NO_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[0]);
+
+        if(optionType==0){
+            classification = true;
+            problemType.setText("Classification");
+            isUnsupervised = false;
+        }
+        else if(optionType==1){
+            classification = false;
+            problemType.setText("Regression");
+            isUnsupervised = false;
+        }
+        else if(optionType==2){
+            classification = false;
+            problemType.setText("Unsupervised");
+            isUnsupervised = true;
+        }
+        else{
+            //Use default classification
+        }
+
+        if(isUnsupervised){
+            JOptionPane.showMessageDialog(this, "All attributes have been automatically defined as inputs for this unsupervised data set problem.", "Attributes modified", JOptionPane.INFORMATION_MESSAGE);
+        }
 
         Element partitions = new Element("partitions");
         if (!datasets) {
@@ -3526,6 +3765,23 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                     element.addContent(partitions);
                 }
             }
+
+            //check if the problem is unsupervised
+            it2 = data.getRootElement().getChildren().iterator();
+            while (it2.hasNext()) {
+                Element element = (Element) it2.next();
+                if (element.getChild("nameAbr").getValue().equals(lowerCaseName)) {
+                    if(element.getChild("problemType").getValue().equals("Unsupervised")){
+                        isUnsupervised=true;
+                        JOptionPane.showMessageDialog(this, "All attributes have been automatically defined as inputs for this unsupervised data set problem.", "Attributes modified", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+                        isUnsupervised=false;
+                    }
+
+                }
+            }
+
 
             try {
                 File f = new File("./data/Datasets.xml");
