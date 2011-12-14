@@ -35,25 +35,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.StringTokenizer;
-
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 
+
 /**
+ * <p>
+ * Bojarczuk classification algorithm
+ * </p>
+ * 
  * <p>
  * @author Written by Jose Maria Luna, Juan Luis Olmo, Alberto Cano (Universidad de Cordoba) 05/07/2010
  * @version 0.1
  * @since JDK1.5
  * </p>
  */
-
 public class Main
 {
-	/**
-	 * <p>
-	 * Bojarczuk classification algorithm
-	 * </p>
-	 */
 
 	/////////////////////////////////////////////////////////////////
 	// ----------------------------------------------- Public methods
@@ -63,6 +61,8 @@ public class Main
 	 * <p>
 	 * Main method
 	 * </p>
+	 * 
+	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
 		configureJob(args[0]);
@@ -143,10 +143,10 @@ public class Main
 		try {
 			algConf.save(new File("configure.txt"));
 		} catch (ConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		net.sourceforge.jclec.RunExperiment.main(new String [] {"configure.txt"});
 	}
+	
 }

@@ -27,7 +27,17 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual;
+
+import keel.Algorithms.Shared.Exceptions.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Model.*;
+
+
 /**
+ * <p>
+ * Class for management of genetic individuals in Models
+ * </p>
+ * 
  * <p>
  * @author Written by Luciano Sánchez (University of Oviedo) 21/01/2004
  * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
@@ -36,18 +46,8 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual;
-
-import keel.Algorithms.Shared.Exceptions.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Model.*;
-
 public abstract class GeneticIndividualForModels extends GeneticIndividual {
-/**
- * <p>
- * Class for management of genetic individuals in Models
- * </p>
- */
+
     protected static double[][] X;
     protected static double[] Y;
     protected static double [] Yo;

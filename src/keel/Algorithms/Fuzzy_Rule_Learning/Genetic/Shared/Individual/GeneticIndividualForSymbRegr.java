@@ -27,7 +27,17 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual;
+
+import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
+import keel.Algorithms.Shared.Exceptions.*;
+
+
 /**
+ * <p>
+ * Class for management of genetic individuals in symbolic regression
+ * </p>
+ * 
  * <p>
  * @author Written by Luciano Sánchez (University of Oviedo) 25/01/2004
  * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
@@ -36,21 +46,7 @@
  * @since JDK1.5
  * </p>
  */
-
-
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual;
-
-import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
-import keel.Algorithms.Shared.Exceptions.*;
-
 public abstract class GeneticIndividualForSymbRegr extends GeneticIndividual {
-/**
- * <p>
- * Class for management of genetic individuals in symbolic regression
- * </p>
- */
-
 	
     protected static FuzzyAlphaCut[][] Xfuzzy;
     protected static FuzzyAlphaCut[] Yfuzzy;

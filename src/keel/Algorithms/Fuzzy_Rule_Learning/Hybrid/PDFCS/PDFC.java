@@ -27,49 +27,31 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 10/12/2008
- * @version 0.1
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Fuzzy_Rule_Learning.Hybrid.PDFCS;
-
-/**
-
- * Ref: Y. Chen, J.Z. Wang, Support Vector Learning for Fuzzy Rule-Based Classification
- * Systems. IEEE Transactions on Fuzzy Systems 11(6) 716-728.
- * @author Julián Luengo Martín
- * @date December 2008
- *
- */
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
 import org.core.*;
-
 import keel.Algorithms.SVM.SMO.SMO;
-import keel.Algorithms.SVM.SMO.core.FastVector;
 import keel.Algorithms.SVM.SMO.core.Instance;
 import keel.Algorithms.SVM.SMO.core.Instances;
-import keel.Algorithms.SVM.SMO.core.Utils;
 import keel.Algorithms.SVM.SMO.supportVector.Kernel;
 import keel.Algorithms.SVM.SMO.supportVector.PDRFKernel;
 import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 import keel.Dataset.InstanceSet;
 
+
 /**
- * <p>
  * This class implements the Positive Definite Fuzzy Classifier from Chen and Wang's paper:
- * </p>
- * <p>
- * Y. Chen, J.Z. Wang: Support Vector Learning for Fuzzy Rule-Based Classification Systems. IEEE Transactions on Fuzzy Systems, 11 (6) 2003 pp. 716-728.</ref>
- * </p>
+ * Ref: Y. Chen, J.Z. Wang, Support Vector Learning for Fuzzy Rule-Based Classification
+ * Systems. IEEE Transactions on Fuzzy Systems 11(6) 716-728.
+ * 
+ * @author Written by Julián Luengo Martín 10/12/2008
+ * @version 0.1
+ * @since JDK 1.5
  */
 public class PDFC extends SMO{
 

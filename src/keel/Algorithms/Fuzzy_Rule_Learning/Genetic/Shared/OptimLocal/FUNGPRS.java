@@ -27,7 +27,18 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.OptimLocal;
+
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Model.*;
+import keel.Algorithms.Shared.Exceptions.*;
+    
+
 /**
+ * <p>
+ * Class for evaluating the fitness of a rule set.
+ * Need: The fuzzy system
+ * </p>
+ * 
  * <p>
  * @author Written by Luciano Sánchez (University of Oviedo) 03/03/2004
  * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
@@ -36,21 +47,7 @@
  * @since JDK1.5
  * </p>
  */
-
-// RegSymFuzzyGP Wrapper.
-// Descent method optimization.
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.OptimLocal;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Model.*;
-import keel.Algorithms.Shared.Exceptions.*;
-    
 public class FUNGPRS extends FUN {
-	/**
-	 * <p>
-	 * Class for evaluating the fitness of a rule set
-	 * Need: The fuzzy system
-	 * </p>
-	 */
     
     RegSymFuzzyGP f;
     

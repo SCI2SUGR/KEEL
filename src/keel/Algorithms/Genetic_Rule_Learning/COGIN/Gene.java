@@ -27,24 +27,21 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 08/02/2007
- * @version 0.2
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Genetic_Rule_Learning.COGIN;
 
 import java.util.ArrayList;
-
-import org.core.Randomize;
-
 import keel.Dataset.Attribute;
+
 
 /**
  * <p>
  * This class implements a gene as specified by the COGIN algorithm
+ * </p>
+ * 
+ * <p>
+ * @author Written by Julián Luengo Martín 08/02/2007
+ * @version 0.2
+ * @since JDK 1.5
  * </p>
  */
 public class Gene {

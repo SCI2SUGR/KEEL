@@ -27,7 +27,15 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.OptimLocal;
+
+
 /**
+ * <p>
+ * Class for duplicate the initial ana used rles and fro filter the used ones.
+ * Need: The initial set of rules and the used ones
+ *</p>
+ *
  * <p>
  * @author Written by Luciano Sánchez (University of Oviedo) 03/03/2004
  * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
@@ -36,18 +44,8 @@
  * @since JDK1.5
  * </p>
  */
-
-// Paquete Optimizacion Local
-// Local optimization package
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.OptimLocal;
-
 abstract public class FUN {
-	/**
-	 * <p>
-	 * Class for duplicate the initial ana used rles and fro filter the used ones
-	 * Need: The initial set of rules and the used ones
-	 *</p>
-	 */
+
     // Virtual class with a double [] to double function 
     protected boolean []used;
     protected double []initial;

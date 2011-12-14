@@ -27,18 +27,22 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Hybrid.PDFCS;
+
 /**
- * @author Julian Luengo (julianlm@decsai.ugr.es) as a wrapper of SMO classifier from
- * WEKA to KEEL. 
+ * Main Class
+ *
+ * @author Julian Luengo (julianlm@decsai.ugr.es) as a wrapper of SMO classifier from WEKA to KEEL. 
  * @version 0.1
  * @since JDK 1.5
  */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Hybrid.PDFCS;
-
-
 public class Main {
 
+	/**
+	 * It runs the algorirthm
+	 * 
+	 * @param args the command line arguments
+	 */
 	public static void main (String args[]) {
 
 		PDFC model;
@@ -51,5 +55,5 @@ public class Main {
 
 		}
 	}
+	
 }
-

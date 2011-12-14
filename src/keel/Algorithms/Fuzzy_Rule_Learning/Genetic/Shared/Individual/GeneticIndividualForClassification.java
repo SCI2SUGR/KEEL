@@ -27,7 +27,15 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual;
+
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
+import keel.Algorithms.Shared.Exceptions.*;
+
+
 /**
+ * Class for management of genetic individuals in classification.
+ * Need: the examples with the class, the classifier and a variable for results
  * <p>
  * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
  * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
@@ -36,20 +44,8 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual;
-
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier.*;
-import keel.Algorithms.Shared.Exceptions.*;
-
 public abstract class GeneticIndividualForClassification extends GeneticIndividual {
-/**
- * <p>
- * Class for management of genetic individuals in classification
- * Need: the examples with the class, the classifier and a variable for results
- */
-
-
+	
     protected static double[][] X;
     protected static int[] C;
     protected Classifier c;

@@ -27,13 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 08/02/2007
- * @version 0.2
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Genetic_Rule_Learning.COGIN;
 
 import java.io.BufferedReader;
@@ -42,11 +35,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import org.core.Files;
 import org.core.Randomize;
-
 import keel.Dataset.*;
+
 
 /**
  * <p>
@@ -54,6 +46,11 @@ import keel.Dataset.*;
  * </p>
  * <p>
  * David Perry Greene and Stephen F. Smith. Competition-Based Induction of Decision Models from Examples. Machine Learning, 13: 229-257, 1993.
+ * </p>
+ * <p>
+ * @author Written by Julián Luengo Martín 08/02/2007
+ * @version 0.2
+ * @since JDK 1.5
  * </p>
  */
 public class Cogin {

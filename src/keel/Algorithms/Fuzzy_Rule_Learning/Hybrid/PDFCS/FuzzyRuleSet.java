@@ -27,19 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 12/12/2008
- * @version 0.1
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Fuzzy_Rule_Learning.Hybrid.PDFCS;
-/**
- * Fuzzy Rule Set built from the PDFC
- * @author Julián Luengo Martín
- *
- */
 
 import keel.Algorithms.SVM.SMO.SMO.BinarySMO;
 import keel.Algorithms.SVM.SMO.core.Instance;
@@ -47,6 +35,16 @@ import keel.Algorithms.SVM.SMO.core.Instances;
 import keel.Algorithms.SVM.SMO.supportVector.Kernel;
 import keel.Algorithms.SVM.SMO.supportVector.PDRFKernel;
 
+
+/**
+ * Fuzzy Rule Set built from the PDFC
+ * 
+ * <p>
+ * @author Written by Julián Luengo Martín 12/12/2008
+ * @version 0.1
+ * @since JDK 1.5
+ * </p>
+ */
 public class FuzzyRuleSet {
 	
 	/** Default output value of this rule set */

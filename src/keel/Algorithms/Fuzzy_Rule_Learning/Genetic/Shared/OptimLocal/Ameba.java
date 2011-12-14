@@ -27,7 +27,11 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.OptimLocal;
+
+
 /**
+ * Main class of the Ameba algorithm.
  * <p>
  * @author Written by Luciano Sánchez (University of Oviedo) 03/03/2004
  * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
@@ -36,17 +40,8 @@
  * @since JDK1.5
  * </p>
  */
-
-
-// Local Optimization package
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.OptimLocal;
-
 public class Ameba {
-/**
- * <p>
- * Class 	
- * Need: 
- */
+
 	// This algorithm is applied with the crossover operator. 
 	// This algorithm is an optimization of Nelder and Mead Simplex.
 	
@@ -54,9 +49,11 @@ public class Ameba {
 	
 	/**
 	 * <p>
+	 * It makes the iterations of the algorithm
 	 * </p>
-	 * @param f1
-	 * @param ctes 
+	 * 
+	 * @param f1 fitness function
+	 * @param ctes constants of the algorithm
 	 * @param max_iter The maximum number of iterations
 	 * @return The fitness
 	 */
@@ -200,8 +197,8 @@ public class Ameba {
 		
 		// Fitness is returned
 		return min;
-		
     }
+	
 	
 	/**
 	 * <p>
@@ -210,7 +207,6 @@ public class Ameba {
 	 * @param x The set of double values
 	 * @return The duplicate set
 	 */
-	
 	double[] duplicate(double []x) {
 	
 		double[] result = new double[x.length];
@@ -218,6 +214,4 @@ public class Ameba {
 		return result;
 	}
 	
-	
 }
-
