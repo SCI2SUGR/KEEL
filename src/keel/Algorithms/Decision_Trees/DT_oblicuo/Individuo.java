@@ -29,27 +29,27 @@
 
 package keel.Algorithms.Decision_Trees.DT_oblicuo;
 
-/**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
-
 import org.core.Randomize;
 
+
+/**
+ * 
+ *
+ * @author Anonymous - 2011
+ * @version 1.0
+ * @since JDK1.6
+ */
 public class Individuo
     implements Comparable {
 
   double[] cromosoma;
   double fitness;
 
+  /**
+   * Constructor of the class
+   * 
+   * @param tam size of the object
+   */
   public Individuo(int tam) {
     cromosoma = new double[tam];
     for (int i = 0; i < tam; i++){
@@ -58,6 +58,13 @@ public class Individuo
     fitness = 0.0;
   }
 
+
+  /**
+   * Constructor of the class
+   * 
+   * @param pesos weights of the object
+   * @param valor values of the object
+   */
   public Individuo(double[] pesos, double valor) {
     cromosoma = new double[pesos.length + 1];
     int i;

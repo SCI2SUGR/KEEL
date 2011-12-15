@@ -29,23 +29,18 @@
 
 package keel.Algorithms.Decision_Trees.DT_oblicuo;
 
-/**
- * <p>Title: Dataset</p>
- *
- * <p>Description: It contains the methods to read a Classification/Regression Dataset</p>
- *
- *
- * <p>Company: KEEL </p>
- *
- * @author Alberto Fernández
- * @version 1.0
- */
-
 import java.io.IOException;
-
 import keel.Dataset.*;
 import java.util.Vector;
 
+
+/**
+ * <p>It contains the methods to read a Classification/Regression Dataset</p>
+ * 
+ * @author Alberto Fernández
+ * @version 1.0
+ * @since JDK1.6
+ */
 public class myDataset {
 
   public static final int REAL = 0;

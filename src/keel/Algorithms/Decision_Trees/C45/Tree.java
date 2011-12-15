@@ -27,7 +27,13 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Decision_Trees.C45;
+
+
 /**
+ * Class to handle the classifier tree
+ * 
 * <p>
 * @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
 * @author Modified by Alberto Fernandez (UGR) 
@@ -35,13 +41,6 @@
 * @since JDK 1.5
 *</p>
 */
-
-package keel.Algorithms.Decision_Trees.C45;
-
-/**
- * Class to handle the classifier tree
- */
-
 public class Tree {
 
     /** Total number of Nodes in the tree */

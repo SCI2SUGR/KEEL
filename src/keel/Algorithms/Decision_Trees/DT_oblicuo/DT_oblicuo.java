@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Decision_Trees.DT_oblicuo;
 
+import java.io.IOException;
+import org.core.*;
+
+
 /**
  * <p>It contains the implementation of the algorithm</p>
  *
@@ -38,10 +42,6 @@ package keel.Algorithms.Decision_Trees.DT_oblicuo;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class DT_oblicuo {
 
   myDataset train, val, test;

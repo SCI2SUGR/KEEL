@@ -27,21 +27,20 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Decision_Trees.C45;
+
+import java.util.*;
+
+
 /**
+ * Class to implement the calculus of the cut point
+ *  
 * <p>
 * @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
 * @version 0.1
 * @since JDK 1.5
 *</p>
 */
-
-package keel.Algorithms.Decision_Trees.C45;
-
-import java.util.*;
-
-/**
- * Class to implement the calculus of the cut point
- */
 public class Cut {
     /**	Classification of class values. */
     protected Classification classification;

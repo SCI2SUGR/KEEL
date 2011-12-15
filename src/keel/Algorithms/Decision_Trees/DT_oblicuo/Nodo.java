@@ -30,20 +30,12 @@
 package keel.Algorithms.Decision_Trees.DT_oblicuo;
 
 /**
- * <p>Title: </p>
+ * 
  *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
+ * @author Anonymous - 2011
  * @version 1.0
+ * @since JDK1.6
  */
-
-import org.core.Randomize;
-
 public class Nodo {
   String clase;
   boolean isLeaf;

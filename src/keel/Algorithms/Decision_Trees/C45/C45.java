@@ -27,24 +27,20 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
-
 package keel.Algorithms.Decision_Trees.C45;
 
 import java.io.*;
 
+
 /**
  * Class to implement the C4.5 algorithm
-   @author Cristóbal Romero Morales (UCO) (30-03-06)
-   @author modified by Alberto Fernandez (UGR)
-   @version 1.2 (29-04-10)
- */
+ * 
+ * @author Cristóbal Romero Morales (UCO) (30-03-06)
+ * @author modified by Alberto Fernandez (UGR)
+ * @version 1.2 (29-04-10)
+ * @since JDK 1.5
+ *</p>
+ **/
 public class C45 extends Algorithm {
     /** Decision tree. */
     private Tree root;

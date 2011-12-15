@@ -27,20 +27,19 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
-
 package keel.Algorithms.Decision_Trees.C45;
 
 import java.util.*;
 
+
 /**
- * Class to select a cut point in a dataset.
+ * Class to select a cut point in a dataset. 
+ * <p>
+ * 
+* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
+*</p>
  */
 public class SelectCut {
     /** Minimum number of objects in interval. */

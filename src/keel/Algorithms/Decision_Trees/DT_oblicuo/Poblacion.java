@@ -29,22 +29,17 @@
 
 package keel.Algorithms.Decision_Trees.DT_oblicuo;
 
-/**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
-
 import java.util.*;
 import org.core.Randomize;
 
+
+/**
+ * 
+ *
+ * @author Anonymous - 2011
+ * @version 1.0
+ * @since JDK1.6
+ */
 public class Poblacion {
 
   ArrayList<Individuo> cromosomas;

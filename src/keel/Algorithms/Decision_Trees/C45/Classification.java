@@ -27,22 +27,20 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Decision_Trees.C45;
+
+import java.util.*;
+
+
 /**
+ * Class to handle a classification of class values.
+ * 
 * <p>
 * @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
 * @version 0.1
 * @since JDK 1.5
 *</p>
 */
-
-package keel.Algorithms.Decision_Trees.C45;
-
-import java.util.*;
-
-/**
- * Class to handle a classification of class values.
- *
- */
 public class Classification {
     /** Weight of itemsets per class per value. */
     private double perClassPerValue[][];
