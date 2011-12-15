@@ -27,7 +27,17 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+import java.util.Enumeration;
+import java.util.Vector;
+
+
 /**
+ * <p>
+ * Class to implement the calculus of the cut point
+ * </p>
+ * 
  * <p>
  * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,20 +45,7 @@
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-import java.util.Enumeration;
-import java.util.Vector;
-
-
 public class Cut{
-/**
- * <p>
- * Class to implement the calculus of the cut point
- * </p>
- */
 	
   /**Classification of class values. */
   protected Classification classification;
@@ -849,6 +846,11 @@ public class Cut{
     return new String( result );
   }
 
+  /**
+   * It returns the cutpoint
+   * 
+   * @return the cutpoint
+   */
   public double getCutPoint(){
     return cutPoint;
   }

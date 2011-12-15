@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+import java.util.Enumeration;
+import java.util.Vector;
+import keel.Dataset.*;
+
+
+
 /**
+ * <p>
+ * Class to implement the dataset
+ * </p>
+ * 
  * <p>
  * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,25 +47,7 @@
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-import java.util.Enumeration;
-import java.util.Vector;
-
-import keel.Dataset.*;
-
-
-
-
-public class MyDataset{
-/**
- * <p>
- * Class to implement the dataset
- * </p>
- */
-	
+public class MyDataset{	
 	
   /** The name of the dataset. */
   protected String name = "";

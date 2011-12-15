@@ -27,7 +27,10 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
 /**
+ * Main class
  * <p>
  * @author Written by Antonio Alejandro Tortosa (University of Granada)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,12 +38,9 @@
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
 class Principal {
-  public static void main(String[] args) {
+  
+	public static void main(String[] args) {
 
 
    try

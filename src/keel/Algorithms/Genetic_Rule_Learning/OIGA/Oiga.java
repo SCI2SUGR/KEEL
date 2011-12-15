@@ -27,13 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 08/02/2007
- * @version 0.2
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Genetic_Rule_Learning.OIGA;
 
 import org.core.Files;
@@ -51,6 +44,12 @@ import java.util.*;
  * </p>
  * <p>
  * Zhu, F., Guan, S.-U. Ordered incremental training with genetic algorithms. 	International Journal of Intelligent Systems 19 (12), pp. 1239-1256
+ * </p>
+ * 
+ * <p>
+ * @author Written by Julián Luengo Martín 08/02/2007
+ * @version 0.2
+ * @since JDK 1.5
  * </p>
  */
 public class Oiga {

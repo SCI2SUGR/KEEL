@@ -27,7 +27,16 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+import java.io.BufferedWriter;
+import java.io.StreamTokenizer;
+import java.io.IOException;
+import keel.Dataset.Attributes;
+
+
 /**
+ * Abstract class implementing the functions of a Algorithm
  * <p>
  * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,15 +44,6 @@
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-import java.io.BufferedWriter;
-import java.io.StreamTokenizer;
-import java.io.IOException;
-
-import keel.Dataset.Attributes;
-
 public abstract class Algorithm{
 	
   /** The name of the file that contains the information to build the model. */

@@ -27,19 +27,19 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 08/02/2007
- * @version 0.1
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Genetic_Rule_Learning.OIGA;
+
 
 /**
  * <p>
  * This class implements the relation between an attribute and its classification rate
  * for sorting purposes
+ * </p>
+ * 
+ * <p>
+ * @author Written by Julián Luengo Martín 08/02/2007
+ * @version 0.1
+ * @since JDK 1.5
  * </p>
  */
 public class AttributeCR implements Comparable{

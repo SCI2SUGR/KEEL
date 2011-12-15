@@ -29,14 +29,20 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.olexGA;
 
-import java.util.Iterator;
-import java.util.Vector;
-
 import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 import keel.Dataset.DatasetException;
-import keel.Dataset.InstanceAttributes;
 
+
+/**
+ * Class to check if dataset is correct
+ * 
+ * <p>
+ * @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
+ * @version 0.1
+ * @since JDK 1.5
+ *</p>
+ */
 public class DatasetChecker {
 
 	public static boolean checkUniqueOutput(Dataset ds) {

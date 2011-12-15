@@ -35,12 +35,11 @@ import itk.exeura.learner.engine.geneticAlgorithm.GASelectionAlgoTypes;
 import itk.exeura.learner.engine.geneticAlgorithm.LearnerParameterSet;
 import itk.exeura.learner.wrapper.core.OlexGAparameters;
 import itk.exeura.learner.wrapper.core.SFManager;
-
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.core.Files;
+
 
 /**
  * 

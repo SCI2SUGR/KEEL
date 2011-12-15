@@ -27,7 +27,16 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+import java.util.Enumeration;
+
+
 /**
+ * <p>
+ * Class to select a cut point in a dataset.
+ * </p>
+ * 
  * <p>
  * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,20 +44,7 @@
  * @since JDK1.2
  * </p>
  */
-
-
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-import java.util.Enumeration;
-
-
 public class SelectCut{
-/**
- * <p>
- * Class to select a cut point in a dataset.
- * </p>
- */
 	
   /** Minimum number of objects in interval. */
   private int minItemsets;

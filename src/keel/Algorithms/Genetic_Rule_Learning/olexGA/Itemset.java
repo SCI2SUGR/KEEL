@@ -27,20 +27,17 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
-
 package keel.Algorithms.Genetic_Rule_Learning.olexGA;
 
 
 /**
  * Class to manipulate an itemset.
- */
+ * <p>
+* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
+*</p>
+*/
 public class Itemset {
     /** The dataset which the itemset has access to. */
     protected Dataset dataset;

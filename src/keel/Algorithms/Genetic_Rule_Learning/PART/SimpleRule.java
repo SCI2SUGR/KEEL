@@ -27,7 +27,17 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+import keel.Dataset.Attributes;
+
 /**
+ * <p>
+ * Represent one single rule of the form: <b>exemple[a]==v</b>,
+ * <b>exemple[a]>=v</b> or <b>exemple[a]<=v</b>.
+ * a is one of the exemple's attributes and v is a legal value for a.
+ * </p>
+ * 
  * <p>
  * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,22 +45,7 @@
  * @since JDK1.2
  * </p>
  */
-
-
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-import keel.Dataset.Attributes;
-
-
 public class SimpleRule {
-/**
- * <p>
- * Represent one single rule of the form: <b>exemple[a]==v</b>,
- * <b>exemple[a]>=v</b> or <b>exemple[a]<=v</b>.
- * a is one of the exemple's attributes and v is a legal value for a.
- * </p>
- */
 	
   // operator >
   public static int GREATER=0; 

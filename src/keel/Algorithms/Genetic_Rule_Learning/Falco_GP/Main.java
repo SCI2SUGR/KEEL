@@ -35,25 +35,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.StringTokenizer;
-
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 
+
 /**
+ * <p>
+ * Falco classification algorithm
+ * </p>
+ * 
  * <p>
  * @author Written by Jose Maria Luna, Juan Luis Olmo, Alberto Cano (Universidad de Cordoba) 05/07/2010
  * @version 0.1
  * @since JDK1.5
  * </p>
  */
-
 public class Main
 {
-	/**
-	 * <p>
-	 * Falco classification algorithm
-	 * </p>
-	 */
 
 	/////////////////////////////////////////////////////////////////
 	// ----------------------------------------------- Public methods

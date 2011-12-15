@@ -27,7 +27,14 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+
 /**
+ * <p>
+ * Collection of auxiliary methods.
+ * </p>
+ * 
  * <p>
  * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -36,17 +43,7 @@
  * </p>
  */
 
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-
-
 public class Utilities {
-/**
- * <p>
- * Collection of auxiliar methods.
- * </p>
- */
 	
   /** The log of 2. */
   protected static double log2 = Math.log(2);

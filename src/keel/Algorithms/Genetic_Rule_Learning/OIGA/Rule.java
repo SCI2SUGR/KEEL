@@ -27,20 +27,18 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 08/02/2007
- * @version 0.2
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Genetic_Rule_Learning.OIGA;
 
-import java.util.*;
 
 /**
  * <p>
  * Represents one rule as specified by the OIGA Algorithm
+ * </p>
+ * 
+ * <p>
+ * @author Written by Julián Luengo Martín 08/02/2007
+ * @version 0.2
+ * @since JDK 1.5
  * </p>
  */
 public class Rule {

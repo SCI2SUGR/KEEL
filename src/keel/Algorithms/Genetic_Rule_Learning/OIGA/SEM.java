@@ -27,28 +27,24 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 08/02/2007
- * @version 0.2
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Genetic_Rule_Learning.OIGA;
+
 
 import org.core.Randomize;
 import keel.Dataset.*;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
+
 
 /**
  * <p>
  * This class implements the SEM algorithm of the OIGA method, which evolves 
  * mono-attribute rules.
+ * </p>
+ * 
+ * <p>
+ * @author Written by Julián Luengo Martín 08/02/2007
+ * @version 0.2
+ * @since JDK 1.5
  * </p>
  */
 public class SEM {

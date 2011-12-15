@@ -30,14 +30,11 @@
 package keel.Algorithms.Genetic_Rule_Learning.PSO_ACO;
 
 /**
- * <p>Título: Hibridación Pso Aco</p>
- * <p>Descripción: Hibridacion entre los dos algoritmos Pso y Aco</p>
- * <p>Copyright: Copyright (c) 2008</p>
- * <p>Empresa: </p>
+ * <p>This class implements an attribute</p>
+ * 
  * @author Vicente Rubén del Pino
  * @version 1.0
  */
-
 public class Atributo {
 
     private float valor; //Valor del atributo

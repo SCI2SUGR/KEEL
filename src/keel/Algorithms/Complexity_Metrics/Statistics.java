@@ -27,24 +27,21 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Complexity_Metrics;
+
+import  keel.Dataset.*;
+import java.util.*;
+
+
 /**
+ * This is the main class of the Statistics computation
+ * 
  * <p>
  * @author Written by Nuria Macia (La Salle, Universitat Ramon Llull) 27/05/2010 and
  *         modified by Albert Orriols (La Salle, Universitat Ramon Llull) 31/05/2010.
  * @version 1.1
  * @since JDK1.2
  * </p>
- */
-
-package keel.Algorithms.Complexity_Metrics;
-
-import  keel.Dataset.*;
-import java.util.*;
-import java.lang.*;
-import java.io.*;
-
-/**
- * This is the main class of the Statistics computation
  */
 public class Statistics {
 	
@@ -106,7 +103,14 @@ Statistics ( InstanceSet _dSet, int _numberOfClasses ) {
 
 } // end Statistics 
 
-
+/**
+ * It computes the statistics for the given parameters
+ * 
+ * @param example Examples normalized from the KEEL Data set
+ * @param classOfExample Class of each normalized example
+ * @param numberOfExamples Number of examples in the data set
+ * @param numberOfAttributes Number of attributes
+ */
 public void run ( double [][]example, int []classOfExample, int numberOfExamples, int numberOfAttributes ) {
 
     runClassValues( example, classOfExample, numberOfExamples, numberOfAttributes );
@@ -120,7 +124,7 @@ public void run ( double [][]example, int []classOfExample, int numberOfExamples
 } // end run
 
 
-public void runMeanComputation( double [][]example, int []classOfExample, int numberOfExamples, int numberOfAttributes ) {
+private void runMeanComputation( double [][]example, int []classOfExample, int numberOfExamples, int numberOfAttributes ) {
 
     int i, j;
 	
@@ -139,7 +143,7 @@ public void runMeanComputation( double [][]example, int []classOfExample, int nu
 } // end runMeanComputation
 
 
-public void runClassValues( double [][]example, int []classOfExample, int numberOfExamples, int numberOfAttributes ) {
+private void runClassValues( double [][]example, int []classOfExample, int numberOfExamples, int numberOfAttributes ) {
 
     int i;
     String classValue;
@@ -158,7 +162,7 @@ public void runClassValues( double [][]example, int []classOfExample, int number
 } // end runClassValues
 
 
-public void runMinMax( double [][]example, int []classOfExample, int numberOfExamples, int numberOfAttributes ) {
+private void runMinMax( double [][]example, int []classOfExample, int numberOfExamples, int numberOfAttributes ) {
 
     int i, j;
     int whichClass;
@@ -180,7 +184,7 @@ public void runMinMax( double [][]example, int []classOfExample, int numberOfExa
 } // end runMinMax
 
 
-public void runVarianceComputation( double [][]example, int []classOfExample, int numberOfExamples, int numberOfAttributes ) {
+private void runVarianceComputation( double [][]example, int []classOfExample, int numberOfExamples, int numberOfAttributes ) {
 
     int i, j;
     double [][] sumOfSquareValues;
@@ -201,24 +205,51 @@ public void runVarianceComputation( double [][]example, int []classOfExample, in
 } // end runVarianceComputation
 
 
+/**
+ * It returns the variance of the given attribute within the given class
+ * 
+ * @param whichAttribute index of the attribute
+ * @param whichClass index of the class
+ * @return variance of the given attribute within the given class
+ */
 public double getVariance ( int whichAttribute, int whichClass ) {
     return variance[ whichAttribute ][ whichClass ];
 } // end getVariance
 
 
+/**
+ * It returns the mean of the given attribute within the given class
+ * 
+ * @param whichAttribute index of the attribute
+ * @param whichClass index of the class
+ * @return mean of the given attribute within the given class
+ */
 public double getMean ( int whichAttribute, int whichClass ) {
     return mean[ whichAttribute ][ whichClass ];
 } // end geMean
 
 
+/**
+ * It returns the maximum of the given attribute within the given class
+ * 
+ * @param whichAttribute index of the attribute
+ * @param whichClass index of the class
+ * @return maximum of the given attribute within the given class
+ */
 public double getMax ( int whichAttribute, int whichClass ) {
     return maximum[ whichAttribute ][ whichClass ];
 } // end getMax
 
 
+/**
+ * It returns the minimum of the given attribute within the given class
+ * 
+ * @param whichAttribute index of the attribute
+ * @param whichClass index of the class
+ * @return minimum of the given attribute within the given class
+ */
 public double getMin ( int whichAttribute, int whichClass ) {
     return minimum[ whichAttribute ][ whichClass ];
 } // end getMin
 
 } // end Statistics 
-

@@ -27,24 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 08/02/2007
- * @version 0.2
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Genetic_Rule_Learning.OIGA;
+
 
 import org.core.*;
 import keel.Dataset.*;
-
-import java.math.*;
 import java.util.*;
 
 /**
  * <p>
  * This class represents a set of rules in the OIGA algorithm
+ * </p>
+ * 
+ * <p>
+ * @author Written by Julián Luengo Martín 08/02/2007
+ * @version 0.2
+ * @since JDK 1.5
  * </p>
  */
 public class RuleSet implements Comparable{
@@ -440,9 +438,12 @@ public class RuleSet implements Comparable{
 		return fitness;
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
+/**
+ * It compares the RuleSet with other one
+ * 
+ * @param o the rule set to compare
+ * @return 0 if both rule sets have the same fitness, 1 if the fitness of this is higher, and -1 otherwise 
+ */
 	public int compareTo(Object o){
 		RuleSet rs = (RuleSet) o;
 		if(this.fitness < rs.fitness)

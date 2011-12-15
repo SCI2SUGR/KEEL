@@ -27,16 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
-
-
 package keel.Algorithms.Genetic_Rule_Learning.PART;
 
 import java.io.FileWriter;
@@ -45,17 +35,19 @@ import java.io.StreamTokenizer;
 import java.io.IOException;
 
 
-
-/** para commons.configuration
- import org.apache.commons.configuration.*;
- */
-
-public class C45 extends Algorithm{
 /**
  * <p>
  * Class to implement the C4.5 algorithm
  * </p>
+ * 
+ * <p>
+ * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
+public class C45 extends Algorithm{
 	
   /** Decision tree. */
   private Tree root;
@@ -149,6 +141,15 @@ public class C45 extends Algorithm{
     }
   }
 
+  /**
+   * Constructor with given paramters.
+   * 
+   * @param data the dataset
+   * @param pruned if the tree will be pruned
+   * @param cf coefficient of the C4.5 algorithm
+   * @param minItemsets minimum itemsets per leaf
+   * @throws Exception If the algorithm cannot be executed.
+   **/
   public C45( MyDataset data,boolean pruned,float cf,int minItemsets ) throws Exception
   {
     try

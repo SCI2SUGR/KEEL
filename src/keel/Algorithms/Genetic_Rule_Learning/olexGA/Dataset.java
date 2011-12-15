@@ -27,29 +27,26 @@
   
  **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
- * @version 0.1
- * @since JDK 1.5
- *</p>
- */
-
 package keel.Algorithms.Genetic_Rule_Learning.olexGA;
 
 import java.util.Enumeration;
 import java.util.Vector;
-
 import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 import keel.Dataset.DatasetException;
 import keel.Dataset.HeaderFormatException;
 import keel.Dataset.InstanceSet;
 
+
 /**
  * Class to implement the dataset
+ * 
+ * <p>
+ * @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
+ * @version 0.1
+ * @since JDK 1.5
+ *</p>
  */
-
 public class Dataset {
 	/** The name of the dataset. */
 	protected String name = "";

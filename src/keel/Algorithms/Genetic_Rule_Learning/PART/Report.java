@@ -27,7 +27,15 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+
 /**
+ * <p>
+ * Auxiliar class used for compact information in the serching method of
+ * the class PART
+ * </p>
+ * 
  * <p>
  * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,20 +43,7 @@
  * @since JDK1.2
  * </p>
  */
-
-
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-
-
 class Report {
-/**
- * <p>
- * Auxiliar class used for compact information in the serching method of
- * the class PART
- * </p>
- */
   
   //it stores a combination (without repetitions) of positive numbers
   private int[] card;

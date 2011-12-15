@@ -27,21 +27,20 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.olexGA;
+
+import java.util.*;
+
+
 /**
+ * Class to implement an attribute
+ * 
 * <p>
 * @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
 * @version 0.1
 * @since JDK 1.5
 *</p>
 */
-
-package keel.Algorithms.Genetic_Rule_Learning.olexGA;
-
-import java.util.*;
-
-/**
- * Class to implement an attribute
- */
 public class OlexGA_Attribute {
     /** Continuous attribute. */
     public final static int CONTINUOUS = 0;

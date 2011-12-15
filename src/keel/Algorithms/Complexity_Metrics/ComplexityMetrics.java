@@ -27,23 +27,20 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Complexity_Metrics;
+
+import java.util.*;
+import java.io.*;
+
+
 /**
+ * This is the main class of the ComplexityMetrics library
+ * 
  * <p>
  * @author Written by Albert Orriols and Nuria Macia (La Salle, Universitat Ramon Llull) 27/05/2010
  * @version 1.1
  * @since JDK1.2
  * </p>
- */
-
-package keel.Algorithms.Complexity_Metrics;
-
-import  keel.Dataset.*;
-import java.util.*;
-import java.lang.*;
-import java.io.*;
-
-/**
- * This is the main class of the ComplexityMetrics library
  */
 public class ComplexityMetrics {
 	
@@ -169,7 +166,6 @@ public class ComplexityMetrics {
 
 /** Parameter EPSILON for SVM training */
     final double EPSILON = 0.001;
-
 
 ComplexityMetrics ( String configFileName ) {
 
@@ -566,16 +562,7 @@ void runF3() {
 } // end runF3 
 
 
-/**
- * 
- * 
- * @param discPower
- * @param order
- * @param numAttRemain
- * @param pointDisc
- * @return
- */
-public boolean getDiscriminativePowerOfAttributes ( double[] discPower, int[] order, int numAttRemain, boolean[] pointDisc ) {
+private boolean getDiscriminativePowerOfAttributes ( double[] discPower, int[] order, int numAttRemain, boolean[] pointDisc ) {
 
     int i, j, att;
     double overlapMin, overlapMax;
@@ -626,7 +613,7 @@ public boolean getDiscriminativePowerOfAttributes ( double[] discPower, int[] or
 } // end getDiscriminativePowerOfAttributes
 
 
-public void runN1() {
+private void runN1() {
 
     int different = 0;
     int[] node;
@@ -666,7 +653,7 @@ public void runN1() {
 } // end runN1
 
 
-public int selectMinNotTreated ( int[] neig, double[] edge ) {
+private int selectMinNotTreated ( int[] neig, double[] edge ) {
 
     int i;
     int min = -1;
@@ -683,7 +670,7 @@ public int selectMinNotTreated ( int[] neig, double[] edge ) {
 
 } // end selectMinNotTreated
 
-public double getApproximateDistance ( int ex1, int ex2 ) {
+private double getApproximateDistance ( int ex1, int ex2 ) {
 
     int att;
     double dist = 0;
@@ -703,7 +690,7 @@ public double getApproximateDistance ( int ex1, int ex2 ) {
  * 
  * @return the minimum spanning tree (pairs of connected examples)
  */
-public int[][] computePrim () {
+private int[][] computePrim () {
 
     int currentNode;
     int i, j;
@@ -756,7 +743,7 @@ public int[][] computePrim () {
 } // end computePrim
 
 
-public void runN2() {
+private void runN2() {
 
     int i, j;
     int neigIntra, neigInter; 
@@ -812,7 +799,7 @@ public void runN2() {
 } // end runN2
 
 
-public int getNearestNeighborOfExample ( int example, double minDist ) {
+private int getNearestNeighborOfExample ( int example, double minDist ) {
 
     int i;
     int neig = -1;
@@ -1278,7 +1265,7 @@ void runT2() {
 } // end runT2
 
 
-public void quickSort ( double[] vector, int[] order, int inf, int sup ) {
+private void quickSort ( double[] vector, int[] order, int inf, int sup ) {
 
     int pivot;
 
@@ -1291,7 +1278,7 @@ public void quickSort ( double[] vector, int[] order, int inf, int sup ) {
 
 } // end quickSort
 
-public int partition ( double[] vector, int[] order, int inf, int sup ) {
+private int partition ( double[] vector, int[] order, int inf, int sup ) {
 
     double tempF;
     int   tempI;
@@ -1936,6 +1923,11 @@ double[] trainSMO ( double[] B ) {
 
 //////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * It runs the algorithm
+ * 
+ * @param args the command line arguments
+ */
 static public void main ( String [] args ) {
 
 	System.out.println ( " > Starting running the complexity metrics " );
@@ -1945,6 +1937,4 @@ static public void main ( String [] args ) {
 
 } // end main
    
-} // end ComplexityMetrics 
-                                       
-
+} // end ComplexityMetrics

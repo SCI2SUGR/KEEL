@@ -27,7 +27,16 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+import java.util.Vector;
+
+
 /**
+ * <p>
+ * Representation of a string of simple rules chained by 'and's: <b>exemple[a1][=|>|<=]v1 && exemple[a2][=|>=|<=]v2</b>
+ * </p>
+ * 
  * <p>
  * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,21 +44,7 @@
  * @since JDK1.2
  * </p>
  */
-
-
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-import java.util.Vector;
-import keel.Dataset.Attributes;
-
-
 public class Rule {
-/**
- * <p>
- * Representation of a string of simple rules chained by 'and's: <b>exemple[a1][=|>|<=]v1 && exemple[a2][=|>=|<=]v2</b>
- * </p>
- */
 	
   // operator >
   public static int GREATER=SimpleRule.GREATER; 

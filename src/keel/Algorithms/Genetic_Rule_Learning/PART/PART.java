@@ -27,7 +27,16 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+import java.util.Vector;
+import org.core.Fichero;
+
 /**
+ * <p>
+ * Class to implement the PART algorithm
+ * </p>
+ * 
  * <p>
  * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,21 +44,7 @@
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-import java.util.Vector;
-import org.core.Fichero;
-
-
 class PART {
-/**
- * <p>
- * Class to implement the PART algorithm
- * </p>
- */
-	
 	
   //Inputs & Outputs
   //the datasets for training, validation and test

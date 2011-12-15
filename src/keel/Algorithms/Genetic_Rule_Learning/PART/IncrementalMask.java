@@ -27,20 +27,8 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
-
-
 package keel.Algorithms.Genetic_Rule_Learning.PART;
 
-
-class IncrementalMask {
 /**
  * <p>
  * Representation of a mask over a MyDataset.
@@ -53,7 +41,15 @@ class IncrementalMask {
  * many rules covers an exemple. So it is possible to add (or to substract) two
  * IncrementalMasks.
  * </p>
+ * 
+ * <p>
+ * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
+class IncrementalMask {
 	
   //this vector indicates the number of rules that cover each entry of the dataset	
   private int[] mask; 

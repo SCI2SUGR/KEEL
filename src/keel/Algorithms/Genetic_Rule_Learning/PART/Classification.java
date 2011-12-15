@@ -27,7 +27,15 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Genetic_Rule_Learning.PART;
+
+import java.util.Enumeration;
+
 /**
+ * <p>
+ * Class to handle a classification of class values.
+ * </p>
+ * 
  * <p>
  * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,19 +43,7 @@
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Genetic_Rule_Learning.PART;
-
-import java.util.Enumeration;
-
-
 public class Classification{
-/**
- * <p>
- * Class to handle a classification of class values.
- * </p>
- */
 	
   /** Weight of itemsets per class per value. */
   private double perClassPerValue[][];
