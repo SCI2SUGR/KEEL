@@ -30,18 +30,11 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
 /**
- * <p>Title: Regla</p>
- *
- * <p>Description: Contains the definition of a fuzzy rule</p>
- *
- * <p>Copyright: Copyright (c) 2009</p>
- *
- * <p>Company: KEEL</p>
+ * <p>Contains the definition of a fuzzy rule</p>
  *
  * @author A. Fernández
  * @version 1.0
  */
-
 public class Regla{
 
   int[] antecedent;
@@ -50,6 +43,10 @@ public class Regla{
   int compatibilityType, covered;
   BaseD dataBase;
 
+  /**
+   * Copy constructor
+   * @param r Regla the rule to be copied
+   */
   public Regla(Regla r) {
     this.antecedent = new int[r.antecedent.length];
     for (int k = 0; k < this.antecedent.length; k++) {
@@ -59,18 +56,32 @@ public class Regla{
     this.compatibilityType = r.compatibilityType;
   }
 
+  /**
+   * Constructor with parameters
+   * @param dataBase int
+   * @param compatibilityType int
+   */
   public Regla(BaseD dataBase, int compatibilityType) {
     this.dataBase = dataBase;
     antecedent = new int[dataBase.numVariables()];
     this.compatibilityType = compatibilityType;
   }
 
+  /**
+   * It assigns the given antecedent 
+   * 
+   * @param antecedent antecedent to be assigned
+   */
   public void assignAntecedent(int [] antecedent){
     for (int i = 0; i < antecedent.length; i++){
       this.antecedent[i] = antecedent[i];
     }
   }
 
+  /**
+   * It computes the best consequent (class and rule weight) for the given rule
+   * @param train the training data-set (set of examples)
+   */
   public void calcula_consecuente(myDataset train) {
     int i, mejor_clas;
     int n_class = train.getnClasses();
@@ -125,10 +136,19 @@ public class Regla{
     consecuente_PCF2(train); //Asigno el weight
   }
 
+  /**
+   * It assigns the class of the rule
+   * @param clas int
+   */
   public void setclas(int clas) {
     this.clas = clas;
   }
 
+  /**
+   * It assigns the rule weight to the rule
+   * @param train myDataset the training set
+   * @param ruleWeight int the type of rule weight
+   */
   public void asignaConsecuente(myDataset train, int ruleWeight) {
     if (ruleWeight == Fuzzy_Ish.CF) {
       consecuente_CF(train);
@@ -141,6 +161,11 @@ public class Regla{
     }
   }
 
+  /**
+   * It computes the compatibility of the rule with an input example
+   * @param example double[] The input example
+   * @return double the degree of compatibility
+   */
   public double compatibilidad(double[] example) {
     if (compatibilityType == Fuzzy_Ish.MINIMUM) {
       return compatibilityMinimum(example);
@@ -150,11 +175,16 @@ public class Regla{
     }
   }
 
+  /**
+   * Operator T-min
+   * @param example double[] The input example
+   * @return double the computation the the minimum T-norm
+   */
   private double compatibilityMinimum(double[] ejemplo) {
     double minimo, grado_pertenencia;
     int etiqueta;
     minimo = 1.0;
-    for (int i = 0; i < antecedent.length; i++) {
+    for (int i = 0; (i < antecedent.length)&&(minimo > 0); i++) {
       etiqueta = antecedent[i];
       grado_pertenencia = dataBase.membership(i, etiqueta, ejemplo[i]);
       minimo = Math.min(grado_pertenencia, minimo);
@@ -163,11 +193,16 @@ public class Regla{
 
   }
 
+  /**
+   * Operator T-product
+   * @param example double[] The input example
+   * @return double the computation the the product T-norm
+   */
   private double compatibilityProduct(double[] ejemplo) {
     double producto, grado_pertenencia;
     int etiqueta;
     producto = 1.0;
-    for (int i = 0; i < antecedent.length; i++) {
+    for (int i = 0; i < (antecedent.length)&&(producto > 0); i++) {
       etiqueta = antecedent[i];
       grado_pertenencia = dataBase.membership(i, etiqueta, ejemplo[i]);
       producto = producto * grado_pertenencia;
@@ -175,6 +210,10 @@ public class Regla{
     return (producto);
   }
 
+  /**
+   * Classic Certainty Factor weight
+   * @param train myDataset training dataset
+   */
   private void consecuente_CF(myDataset train) {
     double[] sumaclass = new double[train.getnClasses()];
     for (int i = 0; i < train.getnClasses(); i++) {
@@ -193,6 +232,10 @@ public class Regla{
     weight = sumaclass[clas] / total;
   }
 
+  /**
+   * Penalized Certainty Factor weight II (by Ishibuchi)
+   * @param train myDataset training dataset
+   */
   private void consecuente_PCF2(myDataset train) {
     double[] sumaclass = new double[train.getnClasses()];
     for (int i = 0; i < train.getnClasses(); i++) {
@@ -212,6 +255,10 @@ public class Regla{
     weight = (sumaclass[clas] - suma) / total;
   }
 
+  /**
+   * Penalized Certainty Factor weight IV (by Ishibuchi)
+   * @param train myDataset training dataset
+   */  
   private void consecuente_PCF4(myDataset train) {
     double[] sumaclass = new double[train.getnClasses()];
     for (int i = 0; i < train.getnClasses(); i++) {
@@ -237,13 +284,17 @@ public class Regla{
   }
 
   /**
-   *
-   * @param adjust double
+   * It modifies the rule weight adding a given quantity
+   * @param adjust double the value to be added to the rule weight
    */
   public void adjustWeight(double adjust){
     this.weight += adjust;
   }
 
+  /**
+   * It creates a copy of the rule
+   * @return a rule with the same features than the former
+   */
   public Regla clone() {
     Regla r = new Regla(dataBase, compatibilityType);
     r.antecedent = new int[antecedent.length];
@@ -256,4 +307,3 @@ public class Regla{
   }
 
 }
-

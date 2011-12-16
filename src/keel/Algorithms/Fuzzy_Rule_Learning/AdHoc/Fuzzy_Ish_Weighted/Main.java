@@ -30,11 +30,7 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
 /**
- * <p>Title: Main Class of the Program</p>
- *
- * <p>Description: It reads the configuration file (data-set files and parameters) and launch the algorithm</p>
- *
- * <p>Company: KEEL</p>
+ * It reads the configuration file (data-set files and parameters) and launch the algorithm</p>
  *
  * @author Alberto Fernández
  * @version 1.0
@@ -76,4 +72,3 @@ public class Main {
         program.execute(args[0]);
     }
 }
-

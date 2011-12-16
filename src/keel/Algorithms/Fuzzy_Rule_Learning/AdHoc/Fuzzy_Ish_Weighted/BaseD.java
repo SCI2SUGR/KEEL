@@ -31,11 +31,13 @@ package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
 import org.core.Fichero;
 
+
 /**
  * <p>Contains the definition of the data base</p>
  *
- * @author A. Fernández
+ * @author Written by Alberto Fernández (University of Granada) 28/10/2009
  * @version 1.0
+ * @since JDK1.5
  */
 public class BaseD {
   int n_vars;
@@ -43,9 +45,20 @@ public class BaseD {
   Difuso[][] dataBase;
   String[] names;
 
+  /**
+   * Default constructor
+   */
   public BaseD() {
   }
 
+  /**
+   * Constructor with parameters. It performs a homegeneous partition of the input space for
+   * a given number of fuzzy labels.
+   * @param n_vars int Number of input variables of the problem
+   * @param n_labels int Number of fuzzy labels
+   * @param ranges double[][] Range of each variable (minimum and maximum values)
+   * @param names String[] Labels for the input attributes
+   */
   public BaseD(int n_vars, int n_labels, double[][] ranges,
                String[] names) {
     this.n_vars = n_vars;
@@ -71,22 +84,47 @@ public class BaseD {
     }
   }
 
+  /**
+   * It returns the number of input variables
+   * @return int the number of input variables
+   */
   public int numVariables() {
     return n_vars;
   }
 
+  /**
+   * It returns the number of fuzzy labels
+   * @return int the number of fuzzy labels
+   */
   public int numEtiquetas() {
     return n_labels;
   }
 
+  /**
+   * It computes the membership degree for a input value
+   * @param i int the input variable id
+   * @param j int the fuzzy label id
+   * @param X double the input value
+   * @return double the membership degree
+   */
   public double membership(int i, int j, double X) {
     return dataBase[i][j].Fuzzifica(X);
   }
 
+  /**
+   * It makes a copy of a fuzzy label
+   * @param i int the input variable id
+   * @param j int the fuzzy label id
+   * @return Fuzzy a copy of a fuzzy label
+   */
   public Difuso copia(int i, int j) {
     return dataBase[i][j].clone();
   }
 
+  /**
+   * It prints the Data Base into an string
+   * @return String the data base
+   */
   public String printString() {
     String cadena = new String(
         "@Using Triangular Membership Functions as antecedent fuzzy sets\n");
@@ -104,10 +142,20 @@ public class BaseD {
 
   }
 
+  /**
+   * It prints a single label of the Data Base into an string
+   * @param var int the variable id
+   * @param label int the label id
+   * @return String the fuzzy label
+   */
   public String print(int var, int label){
      return dataBase[var][label].name;
   }
 
+  /**
+   * It writes the Data Base into an output file
+   * @param filename String the name of the output file
+   */
   public void escribeFichero(String filename) {
     String cadenaSalida = new String("");
     cadenaSalida = printString();

@@ -27,23 +27,19 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
-/**
- * <p>Title: Algorithm</p>
- *
- * <p>Description: It contains the implementation of the algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
- *
- * @author Alberto Fernández
- * @version 1.0
- */
+package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
 import java.io.IOException;
 import org.core.*;
 
+
+/**
+ * <p>It contains the implementation of the algorithm</p>
+ *
+ * @author Alberto Fernández
+ * @version 1.0
+ */
 public class Fuzzy_Ish {
 
   myDataset train, val, test;
@@ -218,4 +214,3 @@ public class Fuzzy_Ish {
   }
 
 }
-

@@ -29,22 +29,17 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
-/**
- * <p>Title: BaseR</p>
- *
- * <p>Description: Contains the definition of the rule base</p>
- *
- * <p>Copyright: Copyright (c) 2009</p>
- *
- * <p>Company: KEEL</p>
- *
- * @author A. Fernández
- * @version 1.0
- */
-
 import java.util.*;
 import org.core.*;
 
+
+/**
+ * <p>Contains the definition of the rule base</p>
+ *
+ * @author Written by Alberto Fernández (University of Granada) 29/10/2009
+ * @since JDK1.5
+ * @version 1.0
+ */
 public class BaseR {
 
   ArrayList<Regla> ruleBase;
@@ -52,10 +47,21 @@ public class BaseR {
   myDataset train;
   int n_vars, ruleWeight, infType, compType;
 
+  /**
+   * Default constructor
+   */
   public BaseR() {
 
   }
 
+  /**
+   * Rule Base Constructor
+   * @param dataBase DataBase the Data Base containing the fuzzy partitions
+   * @param train myDataset the set of training examples
+   * @param ruleWeight int the rule weight heuristic
+   * @param infType int the inference type for the FRM
+   * @param compType int the compatibility type for the t-norm
+   */
   public BaseR(BaseD dataBase, myDataset train, int ruleWeight,
                int infType, int compType) {
     ruleBase = new ArrayList<Regla> ();
@@ -67,6 +73,10 @@ public class BaseR {
     this.infType = infType;
   }
 
+  /**
+   * It prints the rule base into an string
+   * @return String an string containing the rule base
+   */
   public String printString() {
     int i, j;
     String[] nombres = train.nombres();
@@ -88,12 +98,21 @@ public class BaseR {
     return (cadena);
   }
 
+  /**
+   * It prints the rule base into a File
+   * @param filename String the name of the file
+   */
   public void escribeFichero(String filename) {
     String cadenaSalida = new String("");
     cadenaSalida = printString();
     Fichero.escribeFichero(filename, cadenaSalida);
   }
 
+  /**
+   * Fuzzy Reasoning Method
+   * @param example double[] the input example
+   * @return int the predicted class label (id)
+   */
   public int FRM(double[] example) {
     if (this.infType == Fuzzy_Ish.WINNING_RULE) {
       return FRM_WR(example);
@@ -103,6 +122,11 @@ public class BaseR {
     }
   }
 
+  /**
+   * Winning Rule FRM
+   * @param example double[] the input example
+   * @return int the class label for the rule with highest membership degree to the example
+   */
   private int FRM_WR(double[] example) {
     int clase = -1;
     double max = 0.0;
@@ -118,6 +142,11 @@ public class BaseR {
     return clase;
   }
 
+  /**
+   * Additive Combination FRM
+   * @param example double[] the input example
+   * @return int the class label for the set of rules with the highest sum of membership degree per class
+   */
   private int FRM_AC(double[] example) {
     int clase = -1;
     double[] grado_clases = new double[1];
@@ -151,7 +180,7 @@ public class BaseR {
   }
 
   /**
-   * Genero el conjunto de reglas inicial para cada particion del espacio (2...L)
+   * It generates the initial set of rules from each data partition space from 2 to L (number of labels)
    */
   public void Generacion() {
     int[] regla = new int[n_vars];
@@ -221,6 +250,9 @@ public class BaseR {
     borrar();
   }
 
+  /**
+   * It removes those rules from the RB whose rule weight (confidence) is lower than 0 
+   */
   public void borrar() {
     for (int i = 0; i < ruleBase.size(); ) {
       if (ruleBase.get(i).weight < 0.0) {
@@ -232,6 +264,10 @@ public class BaseR {
     }
   }
 
+  /**
+   * It creates a copy of the current rule base
+   * @return BaseR a new copy of the current rule base
+   */
   public BaseR clone() {
     BaseR br = new BaseR();
     br.dataBase = dataBase;
@@ -247,13 +283,20 @@ public class BaseR {
     return br;
   }
 
+  /**
+   * It returns the number of rules
+   * @return the number of rules of the rule base
+   */
   public int size() {
     return ruleBase.size();
   }
 
+  /**
+   * It removes a given rule from the rule set
+   * @param pos the position or id of the rule
+   */
   public void eliminaRegla(int pos) {
     ruleBase.remove(pos);
   }
 
 }
-

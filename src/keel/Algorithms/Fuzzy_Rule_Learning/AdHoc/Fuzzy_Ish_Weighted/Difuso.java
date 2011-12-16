@@ -30,13 +30,7 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
 /**
- * <p>Title: Difuso</p>
- *
- * <p>Description: Contains the definition of a fuzzy value</p>
- *
- * <p>Copyright: Copyright (c) 2009</p>
- *
- * <p>Company: KEEL</p>
+ * <p>Contains the definition of a fuzzy value</p>
  *
  * @author A. Fernández
  * @version 1.0
@@ -46,9 +40,17 @@ public class Difuso {
   String name;
   int label;
 
+  /**
+   * Default constructor
+   */
   public Difuso() {
   }
 
+  /**
+   * If fuzzyfies a crisp value
+   * @param X double The crips value
+   * @return double the degree of membership
+   */
   public double Fuzzifica(double X) {
     if ( (X <= x0) || (X >= x3)) /* Si X no esta en el rango de D, el */
         {
@@ -67,6 +69,10 @@ public class Difuso {
 
   }
 
+  /**
+   * It makes a copy for the object
+   * @return Fuzzy a copy for the object
+   */
   public Difuso clone(){
     Difuso d = new Difuso();
     d.x0 = this.x0;
@@ -79,4 +85,3 @@ public class Difuso {
   }
 
 }
-
