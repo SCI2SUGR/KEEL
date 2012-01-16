@@ -964,7 +964,7 @@ public class EventCovering {
             I = computeMutualInformation();
             tree = computeTree(I);
             Px = computePx(tree);
-            if(totalMissing != ndatos){
+            if(totalMissing != ndatos && totalMissing != 0){
             	Clusters = clusterInitation(Px);
             	int acum = 0;
             	for(int i=0;i<Clusters.size();i++){
@@ -1153,7 +1153,7 @@ public class EventCovering {
                 I = computeMutualInformation();
                 tree = computeTree(I);
                 Px = computePx(tree);
-                if(totalMissing != ndatos){
+                if(totalMissing != ndatos && totalMissing != 0){
                 	Clusters = clusterInitation(Px);
                 	int acum = 0;
                 	for(int i=0;i<Clusters.size();i++){
