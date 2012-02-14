@@ -30,11 +30,18 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
 /**
- * <p>Contains the definition of a fuzzy rule</p>
+ * <p>Title: Regla</p>
+ *
+ * <p>Description: Contains the definition of a fuzzy rule</p>
+ *
+ * <p>Copyright: Copyright (c) 2009</p>
+ *
+ * <p>Company: KEEL</p>
  *
  * @author A. Fernández
  * @version 1.0
  */
+
 public class Regla{
 
   int[] antecedent;
@@ -58,7 +65,7 @@ public class Regla{
 
   /**
    * Constructor with parameters
-   * @param dataBase int
+   * @param n_variables int
    * @param compatibilityType int
    */
   public Regla(BaseD dataBase, int compatibilityType) {
@@ -67,11 +74,6 @@ public class Regla{
     this.compatibilityType = compatibilityType;
   }
 
-  /**
-   * It assigns the given antecedent 
-   * 
-   * @param antecedent antecedent to be assigned
-   */
   public void assignAntecedent(int [] antecedent){
     for (int i = 0; i < antecedent.length; i++){
       this.antecedent[i] = antecedent[i];

@@ -29,16 +29,22 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
-import org.core.Fichero;
-
-
 /**
- * <p>Contains the definition of the data base</p>
+ * <p>Title: BaseD</p>
+ *
+ * <p>Description: Contains the definition of the data base</p>
+ *
+ * <p>Copyright: Copyright (c) 2009</p>
+ *
+ * <p>Company: KEEL</p>
  *
  * @author Written by Alberto Fernández (University of Granada) 28/10/2009
  * @version 1.0
  * @since JDK1.5
  */
+
+import org.core.Fichero;
+
 public class BaseD {
   int n_vars;
   int n_labels;
@@ -54,7 +60,7 @@ public class BaseD {
   /**
    * Constructor with parameters. It performs a homegeneous partition of the input space for
    * a given number of fuzzy labels.
-   * @param n_vars int Number of input variables of the problem
+   * @param n_variables int Number of input variables of the problem
    * @param n_labels int Number of fuzzy labels
    * @param ranges double[][] Range of each variable (minimum and maximum values)
    * @param names String[] Labels for the input attributes

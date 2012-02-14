@@ -30,7 +30,13 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
 /**
- * <p>Contains the definition of a fuzzy value</p>
+ * <p>Title: Difuso</p>
+ *
+ * <p>Description: Contains the definition of a fuzzy value</p>
+ *
+ * <p>Copyright: Copyright (c) 2009</p>
+ *
+ * <p>Company: KEEL</p>
  *
  * @author A. Fernández
  * @version 1.0
