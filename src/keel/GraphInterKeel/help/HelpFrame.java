@@ -161,11 +161,11 @@ public class HelpFrame extends JFrame {
         categ.add(hoja);
         temas.add(new HelpSheet("Edit",
                 this.getClass().getResource("/help/data_edit.html")));
-        hoja = new DefaultMutableTreeNode(new HelpSheet("Preparation",
+        /*hoja = new DefaultMutableTreeNode(new HelpSheet("Preparation",
                 this.getClass().getResource("/help/data_trans.html")));
         categ.add(hoja);
         temas.add(new HelpSheet("Preparation",
-                this.getClass().getResource("/help/data_trans.html")));
+                this.getClass().getResource("/help/data_trans.html")));*/
 
         // Experiment design
         //Introduction
