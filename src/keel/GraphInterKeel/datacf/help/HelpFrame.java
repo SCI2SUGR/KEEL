@@ -211,34 +211,34 @@ public class HelpFrame extends JFrame {
         hoja = new DefaultMutableTreeNode(new HelpSheet("New",
                 this.getClass().getResource("/help/data_new.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("New",
+        themes.add(new HelpSheet("New",
                 this.getClass().getResource("/help/data_new.html")));
         hoja = new DefaultMutableTreeNode(new HelpSheet("View",
                 this.getClass().getResource("/help/data_view.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("View",
+        themes.add(new HelpSheet("View",
                 this.getClass().getResource("/help/data_view.html")));
         hoja = new DefaultMutableTreeNode(new HelpSheet("Data Import",
                 this.getClass().getResource("/help/data_import.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Data Import",
+        themes.add(new HelpSheet("Data Import",
                 this.getClass().getResource("/help/data_import.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Data Export",
                 this.getClass().getResource("/help/data_export.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Data Export",
+        themes.add(new HelpSheet("Data Export",
                 this.getClass().getResource("/help/data_export.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Partition",
                 this.getClass().getResource("/help/data_partition.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Partition",
+        themes.add(new HelpSheet("Partition",
                 this.getClass().getResource("/help/data_partition.html")));
         hoja = new DefaultMutableTreeNode(new HelpSheet("Edit",
                 this.getClass().getResource("/help/data_edit.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Edit",
+        themes.add(new HelpSheet("Edit",
                 this.getClass().getResource("/help/data_edit.html")));
 
 		// Experiment design
@@ -247,28 +247,28 @@ public class HelpFrame extends JFrame {
         hoja = new DefaultMutableTreeNode(new HelpSheet("Introduction",
                 this.getClass().getResource("/help/exp_intro.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Introduction",
+        themes.add(new HelpSheet("Introduction",
                 this.getClass().getResource("/help/exp_intro.html")));
 
         //Configuration of experiments
         hoja = new DefaultMutableTreeNode(new HelpSheet("Configuration of experiments",
                 this.getClass().getResource("/help/exp_config.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Configuration of experiments",
+        themes.add(new HelpSheet("Configuration of experiments",
                 this.getClass().getResource("/help/exp_config.html")));
 
         //Selection of data sets
         hoja = new DefaultMutableTreeNode(new HelpSheet("Selection of data sets",
                 this.getClass().getResource("/help/exp_selection.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Selection of data sets",
+        themes.add(new HelpSheet("Selection of data sets",
                 this.getClass().getResource("/help/exp_selection.html")));
 
         //Experiment graph
         hoja = new DefaultMutableTreeNode(new HelpSheet("Experiment graph",
                 this.getClass().getResource("/help/exp_graph.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Experiment graph",
+        themes.add(new HelpSheet("Experiment graph",
                 this.getClass().getResource("/help/exp_graph.html")));
 
         //Subcategory
@@ -278,85 +278,85 @@ public class HelpFrame extends JFrame {
         hoja = new DefaultMutableTreeNode(new HelpSheet("Data sets",
                 this.getClass().getResource("/help/exp_graph_datasets.html")));
         categ2.add(hoja);
-        temas.add(new HelpSheet("Data sets",
+        themes.add(new HelpSheet("Data sets",
                 this.getClass().getResource("/help/exp_graph_datasets.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Preprocessing methods",
                 this.getClass().getResource("/help/exp_graph_preprocess.html")));
         categ2.add(hoja);
-        temas.add(new HelpSheet("Preprocessing methods",
+        themes.add(new HelpSheet("Preprocessing methods",
                 this.getClass().getResource("/help/exp_graph_preprocess.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Standard methods",
                 this.getClass().getResource("/help/exp_graph_standard.html")));
         categ2.add(hoja);
-        temas.add(new HelpSheet("Standard methods",
+        themes.add(new HelpSheet("Standard methods",
                 this.getClass().getResource("/help/exp_graph_standard.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Postprocessing methods",
                 this.getClass().getResource("/help/exp_graph_postprocess.html")));
         categ2.add(hoja);
-        temas.add(new HelpSheet("Postprocessing methods",
+        themes.add(new HelpSheet("Postprocessing methods",
                 this.getClass().getResource("/help/exp_graph_postprocess.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Statistical tests",
                 this.getClass().getResource("/help/exp_graph_statistical.html")));
         categ2.add(hoja);
-        temas.add(new HelpSheet("Statistical tests",
+        themes.add(new HelpSheet("Statistical tests",
                 this.getClass().getResource("/help/exp_graph_statistical.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Visualization modules",
                 this.getClass().getResource("/help/exp_graph_visualization.html")));
         categ2.add(hoja);
-        temas.add(new HelpSheet("Visualization modules",
+        themes.add(new HelpSheet("Visualization modules",
                 this.getClass().getResource("/help/exp_graph_visualization.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Connections",
                 this.getClass().getResource("/help/exp_graph_connections.html")));
         categ2.add(hoja);
-        temas.add(new HelpSheet("Connections",
+        themes.add(new HelpSheet("Connections",
                 this.getClass().getResource("/help/exp_graph_connections.html")));
 
         //Graph Management
         hoja = new DefaultMutableTreeNode(new HelpSheet("Graph Management",
                 this.getClass().getResource("/help/exp_management.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Graph Management",
+        themes.add(new HelpSheet("Graph Management",
                 this.getClass().getResource("/help/exp_management.html")));
 
         //Algorithm parameters configuration
         hoja = new DefaultMutableTreeNode(new HelpSheet("Algorithm parameters configuration",
                 this.getClass().getResource("/help/exp_parameters.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Algorithm parameters configuration",
+        themes.add(new HelpSheet("Algorithm parameters configuration",
                 this.getClass().getResource("/help/exp_parameters.html")));
 
         //Generation of experiments
         hoja = new DefaultMutableTreeNode(new HelpSheet("Generation of experiments",
                 this.getClass().getResource("/help/exp_generation.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Generation of experiments",
+        themes.add(new HelpSheet("Generation of experiments",
                 this.getClass().getResource("/help/exp_generation.html")));
 
         //Menu bar
         hoja = new DefaultMutableTreeNode(new HelpSheet("Menu bar",
                 this.getClass().getResource("/help/exp_menu.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Menu bar",
+        themes.add(new HelpSheet("Menu bar",
                 this.getClass().getResource("/help/exp_menu.html")));
 
         //Tool bar
         hoja = new DefaultMutableTreeNode(new HelpSheet("Tool bar",
                 this.getClass().getResource("/help/exp_tool.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Tool bar",
+        themes.add(new HelpSheet("Tool bar",
                 this.getClass().getResource("/help/exp_tool.html")));
 
         //Status bar
         hoja = new DefaultMutableTreeNode(new HelpSheet("Status bar",
                 this.getClass().getResource("/help/exp_status.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Status bar",
+        themes.add(new HelpSheet("Status bar",
                 this.getClass().getResource("/help/exp_status.html")));
 
         //Run KEEL
@@ -367,13 +367,13 @@ public class HelpFrame extends JFrame {
         hoja = new DefaultMutableTreeNode(new HelpSheet("Launching RunKeel",
                 this.getClass().getResource("/help/run_launch.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Launching RunKeel",
+        themes.add(new HelpSheet("Launching RunKeel",
                 this.getClass().getResource("/help/run_launch.html")));
         //View results
         hoja = new DefaultMutableTreeNode(new HelpSheet("View results",
                 this.getClass().getResource("/help/run_results.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("View results",
+        themes.add(new HelpSheet("View results",
                 this.getClass().getResource("/help/run_results.html")));
 				
         //Keel docente
@@ -382,22 +382,22 @@ public class HelpFrame extends JFrame {
         hoja = new DefaultMutableTreeNode(new HelpSheet("Introduction",
                 this.getClass().getResource("/help/teach/exp_intro.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Introduction",
+        themes.add(new HelpSheet("Introduction",
                 this.getClass().getResource("/help/teach/exp_intro.html")));
         hoja = new DefaultMutableTreeNode(new HelpSheet("Menu Bar",
                 this.getClass().getResource("/help/teach/exp_menu.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Menu Bar",
+        themes.add(new HelpSheet("Menu Bar",
                 this.getClass().getResource("/help/teach/exp_menu.html")));
         hoja = new DefaultMutableTreeNode(new HelpSheet("Tools bar",
                 this.getClass().getResource("/help/teach/exp_tool.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Tools bar",
+        themes.add(new HelpSheet("Tools bar",
                 this.getClass().getResource("/help/teach/exp_tool.html")));
         hoja = new DefaultMutableTreeNode(new HelpSheet("Status bar",
                 this.getClass().getResource("/help/teach/exp_status.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Status bar",
+        themes.add(new HelpSheet("Status bar",
                 this.getClass().getResource("/help/teach/exp_status.html")));
 
         // --> Experiment graph
@@ -406,7 +406,7 @@ public class HelpFrame extends JFrame {
         hoja = new DefaultMutableTreeNode(new HelpSheet("Datasets",
                 this.getClass().getResource("/help/teach/exp_datasets.html")));
         categ2.add(hoja);
-        temas.add(new HelpSheet("Datasets",
+        themes.add(new HelpSheet("Datasets",
                 this.getClass().getResource("/help/teach/exp_datasets.html")));
 
         // --> Algorithms
@@ -415,29 +415,29 @@ public class HelpFrame extends JFrame {
         hoja = new DefaultMutableTreeNode(new HelpSheet("Types",
                 this.getClass().getResource("/help/teach/exp_algotypes.html")));
         categ3.add(hoja);
-        temas.add(new HelpSheet("Types",
+        themes.add(new HelpSheet("Types",
                 this.getClass().getResource("/help/teach/exp_algotypes.html")));
         hoja = new DefaultMutableTreeNode(new HelpSheet("Insert algorithm",
                 this.getClass().getResource("/help/teach/exp_algoins.html")));
         categ3.add(hoja);
-        temas.add(new HelpSheet("Insert algorithm",
+        themes.add(new HelpSheet("Insert algorithm",
                 this.getClass().getResource("/help/teach/exp_algoins.html")));
         hoja = new DefaultMutableTreeNode(new HelpSheet("Parameters configuration",
                 this.getClass().getResource("/help/teach/exp_algopar.html")));
         categ3.add(hoja);
-        temas.add(new HelpSheet("Parameters configuration",
+        themes.add(new HelpSheet("Parameters configuration",
                 this.getClass().getResource("/help/teach/exp_algopar.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Connections",
                 this.getClass().getResource("/help/teach/exp_conn.html")));
         categ2.add(hoja);
-        temas.add(new HelpSheet("Connections",
+        themes.add(new HelpSheet("Connections",
                 this.getClass().getResource("/help/teach/exp_conn.html")));
 
         hoja = new DefaultMutableTreeNode(new HelpSheet("Interface management",
                 this.getClass().getResource("/help/teach/exp_inter.html")));
         categ.add(hoja);
-        temas.add(new HelpSheet("Interface management",
+        themes.add(new HelpSheet("Interface management",
                 this.getClass().getResource("/help/teach/exp_inter.html")));
 
     }
