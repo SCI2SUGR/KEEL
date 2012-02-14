@@ -48,6 +48,7 @@ import keel.Algorithms.Instance_Generation.Basic.PrototypeGenerator;
 
 
 
+import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 import keel.Dataset.InstanceAttributes;
 import keel.Dataset.InstanceSet;
@@ -69,6 +70,7 @@ public class SSMASFLSDE extends Metodo {
   private int kNeigh;
   public String Script; // para releer par�metros..
   private PrototypeSet trainingDataSet;
+  private PrototypeSet testDataSet;
   private PrototypeGenerator generador;
   //Par�metros DE
   private int k;
@@ -100,7 +102,15 @@ public class SSMASFLSDE extends Metodo {
   }
 
 
-  /**
+  public SSMASFLSDE(String ficheroScript, InstanceSet train) {
+		super (ficheroScript, train);
+  }
+
+ public void establishTrain(PrototypeSet trainPG){
+	 trainingDataSet = trainPG.clone();
+ }
+
+/**
    * Reads the prototype set from a data file.
    * @param nameOfFile Name of data file to be read.
    * @return PrototypeSet built with the data of the file.
@@ -124,6 +134,28 @@ public class SSMASFLSDE extends Metodo {
       }
       return new PrototypeSet(training);
   }
+  
+  
+  public static PrototypeSet readPrototypeSet2(InstanceSet training)
+  {
+      Attributes.clearAll();//BUGBUGBUG
+ 
+      try
+      {
+      	//System.out.print("PROBANDO:\n"+nameOfFile);
+          training.setAttributesAsNonStatic();
+          InstanceAttributes att = training.getAttributeDefinitions();
+          Prototype.setAttributesTypes(att);            
+      }
+      catch(Exception e)
+      {
+          System.err.println("readPrototypeSet has failed!");
+          e.printStackTrace();
+      }
+      return new PrototypeSet(training);
+  }
+  
+  
   
   public void inic_vector_sin(int vector[], int without){
 
@@ -253,6 +285,11 @@ public class SSMASFLSDE extends Metodo {
 
   /**
    * Local Search Fitness Function
+   * @param Fi
+   * @param xt
+   * @param xr
+   * @param xs
+   * @param actual
    */
   public double lsff(double Fi, double CRi, PrototypeSet population[], int actual, int mejor){
 	  PrototypeSet resta, producto, mutant;
@@ -291,6 +328,7 @@ public class SSMASFLSDE extends Metodo {
   /**
    * SFGSS local Search.
    * @param population
+   * @return
    */
   public PrototypeSet SFGSS(PrototypeSet population[], int actual, int mejor, double CRi){
 	  double a=0.1, b=1;
@@ -347,6 +385,12 @@ public class SSMASFLSDE extends Metodo {
   
   /**
    * SFHC local search
+   * @param xt
+   * @param xr
+   * @param xs
+   * @param actual
+   * @param SFi
+   * @return
    */
   
   public  PrototypeSet SFHC(PrototypeSet population[], int actual, int mejor, double SFi, double CRi){
@@ -466,7 +510,7 @@ public class SSMASFLSDE extends Metodo {
 
   public PrototypeSet reduceSet(PrototypeSet initial)
   {
-	  System.out.print("\nThe algorithm  SFLSDE is starting...\n Computing...\n");
+	  System.out.print("\nThe algorithm  SSMA-SFLSDE is starting...\n Computing...\n");
 	  
 	  //Algorithm
 	  // First, we create the population, with PopulationSize.
@@ -499,10 +543,10 @@ public class SSMASFLSDE extends Metodo {
 	  
 	  // Por si SSMA falla:
 	  
-	  population[0].print();
+	 // population[0].print();
 	  
 	  if(population[0].size() <2){
-		  this.numberOfPrototypes = (int)Math.round(trainingDataSet.size()*0.05);
+		  this.numberOfPrototypes = (int)Math.round(trainingDataSet.size()*0.02);
 		  
 		  population[0]=generador.selecRandomSet(numberOfPrototypes,true).clone() ;
 		  // red .95
@@ -882,27 +926,331 @@ public class SSMASFLSDE extends Metodo {
     /** AHORA A�ADO MI DE!! **/
     Parameters.assertBasicArgs(ficheroSalida);
     
-    PrototypeGenerationAlgorithm.readParametersFile(this.Script);
-    PrototypeGenerationAlgorithm.printParameters();
-    
+    if(!this.Script.equals("NOFILE")){
+    	PrototypeGenerationAlgorithm.readParametersFile(this.Script);
+    	PrototypeGenerationAlgorithm.printParameters();
+        trainingDataSet = readPrototypeSet(this.ficheroTraining); // Conjunto inicial
+        testDataSet = readPrototypeSet(this.ficheroTest);
+    }
+
     PrototypeSet training = readPrototypeSet(ficheroSalida[0]);
-    
     
  //   training.print(); // Conjunto devuelto POR SSMA
     
-    trainingDataSet = readPrototypeSet(this.ficheroTraining); // Conjunto inicial
+
     
     
    // trainingDataSet.print();
      //this.numberOfPrototypes = (int)Math.floor((trainingDataSet.size())*ParticleSize/100.0);
  
+    //System.out.println("**************DENTRO");
+    
+   // training.print();
+    
+   // System.out.println("**************FUERA");
+    
      PrototypeSet SADE = reduceSet(training); // LLAMO al SADE
 	    SADE.save(ficheroSalida[0]); // Lo guardo
+	    
+	    SADE.print();
         //Copy the test input file to the output test file
        // KeelFile.copy(inputFilesPath.get(TEST), outputFilesPath.get(TEST));
 	    System.out.println("Time elapse:" + (double)(System.currentTimeMillis()-tiempo)/1000.0 + "s");
         
+	    if(!this.Script.equals("NOFILE")){
+		    
+		    /*ADDING KNN FOR TEST FILE */
+	        int trainRealClass[][];
+	        int trainPrediction[][];
+	            
+	        trainRealClass = new int[datosTrain.length][1];
+	        trainPrediction = new int[datosTrain.length][1];	
+	       
+	         nClases = SADE.getPosibleValuesOfOutput().size();
+	
+	       
+	       //Working on training
+	         int cont=0;
+	        for (i=0; i<trainingDataSet.size(); i++) {
+	             trainRealClass[i][0] = (int) trainingDataSet.get(i).getOutput(0);
+	             trainPrediction[i][0] = evaluate(trainingDataSet.get(i).getInputs(),SADE.prototypeSetTodouble(), nClases, SADE.getClases(), 1);
+	             
+	             if(trainRealClass[i][0] ==  trainPrediction[i][0]){ cont++;}
+	        }
+	        
+	        System.out.println("Acierto = "+ (cont*1.0)/(trainingDataSet.size()));
+	        
+	        Attribute entradas[];
+	        Attribute salida;
+	                     
+	        entradas = Attributes.getInputAttributes();
+	        salida = Attributes.getOutputAttribute(0);
+	        String relation =  Attributes.getRelationName(); 
+	            
+	        writeOutput(this.ficheroSalida[0], trainRealClass, trainPrediction, entradas, salida, relation);
+	        
+	        int realClass[][] = new int[datosTest.length][1];
+	        int prediction[][] = new int[datosTest.length][1];	
+		
+				
+	        for (i=0; i<realClass.length; i++) {
+		      realClass[i][0] = (int) testDataSet.get(i).getOutput(0);
+		      prediction[i][0]= evaluate(testDataSet.get(i).getInputs(),SADE.prototypeSetTodouble(), nClases, SADE.getClases(), 1);
+	        }
+	            
+	        writeOutput(this.ficheroSalida[1], realClass, prediction,  entradas, salida, relation);
+	    }
+	    
   }
+  
+  
+  /**
+	 * Prints output files.
+	 * 
+	 * @param filename Name of output file
+	 * @param realClass Real output of instances
+	 * @param prediction Predicted output for instances
+	 */
+	public static void writeOutput(String filename, int [][] realClass, int [][] prediction, Attribute inputs[], Attribute output, String relation) {
+	
+		String text = "";
+		
+                
+		/*Printing input attributes*/
+		text += "@relation "+ relation +"\n";
+
+		for (int i=0; i<inputs.length; i++) {
+			
+			text += "@attribute "+ inputs[i].getName()+" ";
+			
+		    if (inputs[i].getType() == Attribute.NOMINAL) {
+		    	text += "{";
+		        for (int j=0; j<inputs[i].getNominalValuesList().size(); j++) {
+		        	text += (String)inputs[i].getNominalValuesList().elementAt(j);
+		        	if (j < inputs[i].getNominalValuesList().size() -1) {
+		        		text += ", ";
+		        	}
+		        }
+		        text += "}\n";
+		    } else {
+		    	if (inputs[i].getType() == Attribute.INTEGER) {
+		    		text += "integer";
+		        } else {
+		        	text += "real";
+		        }
+		        text += " ["+String.valueOf(inputs[i].getMinAttribute()) + ", " +  String.valueOf(inputs[i].getMaxAttribute())+"]\n";
+		    }
+		}
+
+		/*Printing output attribute*/
+		text += "@attribute "+ output.getName()+" ";
+
+		if (output.getType() == Attribute.NOMINAL) {
+			text += "{";
+			
+			for (int j=0; j<output.getNominalValuesList().size(); j++) {
+				text += (String)output.getNominalValuesList().elementAt(j);
+		        if (j < output.getNominalValuesList().size() -1) {
+		        	text += ", ";
+		        }
+			}		
+			text += "}\n";	    
+		} else {
+		    text += "integer ["+String.valueOf(output.getMinAttribute()) + ", " + String.valueOf(output.getMaxAttribute())+"]\n";
+		}
+
+		/*Printing data*/
+		text += "@data\n";
+
+		Files.writeFile(filename, text);
+		
+		if (output.getType() == Attribute.INTEGER) {
+			
+			text = "";
+			
+			for (int i=0; i<realClass.length; i++) {
+			      
+			      for (int j=0; j<realClass[0].length; j++){
+			    	  text += "" + realClass[i][j] + " ";
+			      }
+			      for (int j=0; j<realClass[0].length; j++){
+			    	  text += "" + prediction[i][j] + " ";
+			      }
+			      text += "\n";			      
+			      if((i%10)==9){
+			    	  Files.addToFile(filename, text);
+			    	  text = "";
+			      }     
+			}			
+			
+			if((realClass.length%10)!=0){
+				Files.addToFile(filename, text);
+			}
+		}
+		else{
+			
+			text = "";
+			
+			for (int i=0; i<realClass.length; i++) {
+			      
+			      for (int j=0; j<realClass[0].length; j++){
+			    	  text += "" + (String)output.getNominalValuesList().elementAt(realClass[i][j]) + " ";
+			      }
+			      for (int j=0; j<realClass[0].length; j++){
+			    	  if(prediction[i][j]>-1){
+			    		  text += "" + (String)output.getNominalValuesList().elementAt(prediction[i][j]) + " ";
+			    	  }
+			    	  else{
+			    		  text += "" + "Unclassified" + " ";
+			    	  }
+			      }
+			      text += "\n";
+			      
+			      if((i%10)==9){
+			    	  Files.addToFile(filename, text);
+			    	  text = "";
+			      } 
+			}			
+			
+			if((realClass.length%10)!=0){
+				Files.addToFile(filename, text);
+			}		
+		}
+		
+	}//end-method
+    
+  
+  /** 
+	 * Calculates the Euclidean distance between two instances
+	 * 
+	 * @param instance1 First instance 
+	 * @param instance2 Second instance
+	 * @return The Euclidean distance
+	 * 
+	 */
+	protected static double distance(double instance1[],double instance2[]){
+		
+		double length=0.0;
+
+		for (int i=0; i<instance1.length; i++) {
+			length += (instance1[i]-instance2[i])*(instance1[i]-instance2[i]);
+		}
+			
+		length = Math.sqrt(length); 
+				
+		return length;
+		
+	} //end-method
+    
+	
+	
+	  /** 
+	 * Calculates the Euclidean distance between two instances
+	 * 
+	 * @param instance1 First instance 
+	 * @param instance2 Second instance
+	 * @return The Euclidean distance
+	 * 
+	 */
+	protected static double distanceWeighting(double instance1[],double instance2[], double Weights[]){
+		
+		double length=0.0;
+
+		for (int i=0; i<instance1.length; i++) {
+			length += ((instance1[i]-instance2[i])*(instance1[i]-instance2[i]))*Weights[i];
+		}
+			
+		length = Math.sqrt(length); 
+				
+		return length;
+		
+	} //end-method
+    
+	
+         
+/** 
+	 * Evaluates a instance to predict its class.
+	 * 
+	 * @param example Instance evaluated 
+	 * @return Class predicted
+	 * 
+	 */
+	public static int evaluate (double example[], double trainData[][],int nClasses,int trainOutput[],int k) {
+	
+		double minDist[];
+		int nearestN[];
+		int selectedClasses[];
+		double dist;
+		int prediction;
+		int predictionValue;
+		boolean stop;
+
+		nearestN = new int[k];
+		minDist = new double[k];
+	
+	    for (int i=0; i<k; i++) {
+			nearestN[i] = 0;
+			minDist[i] = Double.MAX_VALUE;
+		}
+		
+	    //KNN Method starts here
+	    
+		for (int i=0; i<trainData.length; i++) {
+		
+		    dist = distance(trainData[i],example);
+
+			if (dist > 0.0){ //leave-one-out
+			
+				//see if it's nearer than our previous selected neighbors
+				stop=false;
+				
+				for(int j=0;j<k && !stop;j++){
+				
+					if (dist < minDist[j]) {
+					    
+						for (int l = k - 1; l >= j+1; l--) {
+							minDist[l] = minDist[l - 1];
+							nearestN[l] = nearestN[l - 1];
+						}	
+						
+						minDist[j] = dist;
+						nearestN[j] = i;
+						stop=true;
+					}
+				}
+			}
+		}
+		
+		//we have check all the instances... see what is the most present class
+		selectedClasses= new int[nClasses];
+	
+		for (int i=0; i<nClasses; i++) {
+			selectedClasses[i] = 0;
+		}	
+		
+		for (int i=0; i<k; i++) {
+             //      System.out.println("nearestN i ="+i + " =>"+nearestN[i]);
+              // System.out.println("trainOutput ="+trainOutput[nearestN[i]]);
+                
+			selectedClasses[trainOutput[nearestN[i]]]+=1;
+		}
+		
+		prediction=0;
+		predictionValue=selectedClasses[0];
+		
+		for (int i=1; i<nClasses; i++) {
+		    if (predictionValue < selectedClasses[i]) {
+		        predictionValue = selectedClasses[i];
+		        prediction = i;
+		    }
+		}
+		
+		return prediction;
+	
+	} //end-method	
+	
+
+	
 
   public void leerConfiguracion (String ficheroScript) {
 
@@ -913,161 +1261,190 @@ public class SSMASFLSDE extends Metodo {
 
     ficheroSalida = new String[2];
 
-    fichero = Fichero.leeFichero (ficheroScript);
-    lineasFichero = new StringTokenizer (fichero,"\n\r");
+    if(ficheroScript.equals("NOFILE")){
+    	System.out.println("There is no configuration file: Applying Auto-parameters");
+    	    	
+    	ficheroSalida[0] = "salida.dat";
+    	ficheroSalida[1] = "otro.dat";
+    	ficheroTraining = "intermediate.dat";
+    	tamPoblacion = 30;
+    	nEval = 10000;
+    	pCross = 0.5;
+    	pMut = 0.001;
+    	kNeigh = 1;
+    	distanceEu = true;
+    	PopulationSize = 50;
+    	this.MaxIter = 500;
+	    this.iterSFGSS = 8;
+	    this.iterSFHC = 20;
+	    this.Fl =  0.1;
+	    this.Fu =  0.9;
+	     tau = new double[4];
+	    this.tau[0] =  0.1;
+	    this.tau[1] =  0.1;
+	    this.tau[2] =  0.03;
+	    this.tau[3] =  0.07;;
+	    this.Strategy = 3;
 
-    lineasFichero.nextToken();
-    linea = lineasFichero.nextToken();
+    	
+    }else{
+	    fichero = Fichero.leeFichero (ficheroScript);
+	    
+	
+	    lineasFichero = new StringTokenizer (fichero,"\n\r");
+	
+	    lineasFichero.nextToken();
+	    linea = lineasFichero.nextToken();
+	
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    token = tokens.nextToken();
+	
+	    /*Getting the name of training and test files*/
+	    line = token.getBytes();
+	    for (i=0; line[i]!='\"'; i++);
+	    i++;
+	    for (j=i; line[j]!='\"'; j++);
+	    ficheroTraining = new String (line,i,j-i);
+	    
+		for (i=j+1; line[i]!='\"'; i++);
+		i++;
+		for (j=i; line[j]!='\"'; j++);
+		ficheroValidation = new String (line,i,j-i);
+	    
+	    for (i=j+1; line[i]!='\"'; i++);
+	    i++;
+	    for (j=i; line[j]!='\"'; j++);
+	    ficheroTest = new String (line,i,j-i);
+	
+	    
+	    //Parameters.assertBasicArgs(ficheroSalida);
+	    
+	    
+	
+	    
+	    /*Obtainin the path and the base name of the results files*/
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    token = tokens.nextToken();
+	
+	    /*Getting the name of output files*/
+	    line = token.getBytes();
+	    for (i=0; line[i]!='\"'; i++);
+	    i++;
+	    for (j=i; line[j]!='\"'; j++);
+	    ficheroSalida[0] = new String (line,i,j-i);
+	    for (i=j+1; line[i]!='\"'; i++);
+	    i++;
+	    for (j=i; line[j]!='\"'; j++);
+	    ficheroSalida[1] = new String (line,i,j-i);
+	
+	    /*Getting the seed*/
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    semilla = Long.parseLong(tokens.nextToken().substring(1));
+	
+	    /*Getting the size of the poblation and the number of evaluations*/
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    tamPoblacion = Integer.parseInt(tokens.nextToken().substring(1));
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    nEval = Double.parseDouble(tokens.nextToken().substring(1));
+	
+	    /*Getting the probabilities of evolutionary operators*/
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    pCross = Double.parseDouble(tokens.nextToken().substring(1));
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    pMut = Double.parseDouble(tokens.nextToken().substring(1));
+	
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    kNeigh = Integer.parseInt(tokens.nextToken().substring(1));
+	 
+	    /*Getting the type of distance function*/
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    distanceEu = tokens.nextToken().substring(1).equalsIgnoreCase("Euclidean")?true:false;    
+	    
+	    
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.PopulationSize = Integer.parseInt(tokens.nextToken().substring(1));
+	    
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.MaxIter = Integer.parseInt(tokens.nextToken().substring(1));
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.iterSFGSS = Integer.parseInt(tokens.nextToken().substring(1));
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.iterSFHC = Integer.parseInt(tokens.nextToken().substring(1));
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.Fl =  Double.parseDouble(tokens.nextToken().substring(1));
+	    
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.Fu =  Double.parseDouble(tokens.nextToken().substring(1));
+	    
+	    tau = new double[4];
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.tau[0] =  Double.parseDouble(tokens.nextToken().substring(1));
+	   
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.tau[1] =  Double.parseDouble(tokens.nextToken().substring(1));
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.tau[2] =  Double.parseDouble(tokens.nextToken().substring(1));
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.tau[3] =  Double.parseDouble(tokens.nextToken().substring(1));
+	    
+	    
+	    linea = lineasFichero.nextToken();
+	    tokens = new StringTokenizer (linea, "=");
+	    tokens.nextToken();
+	    this.Strategy = Integer.parseInt(tokens.nextToken().substring(1));
+	    
+	  
+	    
+	    System.out.print("\nIsaac dice:  tau3"+this.tau[3] +"\n");
 
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    token = tokens.nextToken();
-
-    /*Getting the name of training and test files*/
-    line = token.getBytes();
-    for (i=0; line[i]!='\"'; i++);
-    i++;
-    for (j=i; line[j]!='\"'; j++);
-    ficheroTraining = new String (line,i,j-i);
     
-	for (i=j+1; line[i]!='\"'; i++);
-	i++;
-	for (j=i; line[j]!='\"'; j++);
-	ficheroValidation = new String (line,i,j-i);
-    
-    for (i=j+1; line[i]!='\"'; i++);
-    i++;
-    for (j=i; line[j]!='\"'; j++);
-    ficheroTest = new String (line,i,j-i);
-
-    
-    //Parameters.assertBasicArgs(ficheroSalida);
-    
-    
-
-    
-    /*Obtainin the path and the base name of the results files*/
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    token = tokens.nextToken();
-
-    /*Getting the name of output files*/
-    line = token.getBytes();
-    for (i=0; line[i]!='\"'; i++);
-    i++;
-    for (j=i; line[j]!='\"'; j++);
-    ficheroSalida[0] = new String (line,i,j-i);
-    for (i=j+1; line[i]!='\"'; i++);
-    i++;
-    for (j=i; line[j]!='\"'; j++);
-    ficheroSalida[1] = new String (line,i,j-i);
-
-    /*Getting the seed*/
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    semilla = Long.parseLong(tokens.nextToken().substring(1));
-
-    /*Getting the size of the poblation and the number of evaluations*/
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    tamPoblacion = Integer.parseInt(tokens.nextToken().substring(1));
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    nEval = Double.parseDouble(tokens.nextToken().substring(1));
-
-    /*Getting the probabilities of evolutionary operators*/
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    pCross = Double.parseDouble(tokens.nextToken().substring(1));
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    pMut = Double.parseDouble(tokens.nextToken().substring(1));
-
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    kNeigh = Integer.parseInt(tokens.nextToken().substring(1));
- 
-    /*Getting the type of distance function*/
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    distanceEu = tokens.nextToken().substring(1).equalsIgnoreCase("Euclidean")?true:false;    
-    
-    
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.PopulationSize = Integer.parseInt(tokens.nextToken().substring(1));
-    
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.MaxIter = Integer.parseInt(tokens.nextToken().substring(1));
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.iterSFGSS = Integer.parseInt(tokens.nextToken().substring(1));
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.iterSFHC = Integer.parseInt(tokens.nextToken().substring(1));
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.Fl =  Double.parseDouble(tokens.nextToken().substring(1));
-    
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.Fu =  Double.parseDouble(tokens.nextToken().substring(1));
-    
-    tau = new double[4];
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.tau[0] =  Double.parseDouble(tokens.nextToken().substring(1));
-   
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.tau[1] =  Double.parseDouble(tokens.nextToken().substring(1));
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.tau[2] =  Double.parseDouble(tokens.nextToken().substring(1));
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.tau[3] =  Double.parseDouble(tokens.nextToken().substring(1));
-    
-    
-    linea = lineasFichero.nextToken();
-    tokens = new StringTokenizer (linea, "=");
-    tokens.nextToken();
-    this.Strategy = Integer.parseInt(tokens.nextToken().substring(1));
-    
-  
-    
-    System.out.print("\nIsaac dice:  tau3"+this.tau[3] +"\n");
-
-    
-    
+    }
     
   }
 }
