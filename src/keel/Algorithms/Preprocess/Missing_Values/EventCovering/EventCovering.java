@@ -103,7 +103,7 @@ public class EventCovering {
     int min_change_num = 0;
     double Cfactor = 1;
     
-    InstanceSet IS;
+    InstanceSet IS,IStest;
     String input_train_name = new String();
     String input_test_name = new String();
     String output_train_name = new String();
@@ -118,6 +118,7 @@ public class EventCovering {
     public EventCovering(String fileParam) {
         config_read(fileParam);
         IS = new InstanceSet();
+        IStest = new InstanceSet();
     }
     
     
@@ -146,7 +147,7 @@ public class EventCovering {
         }
     }
     
-    //Read the patron file, and parse data into strings
+    //Reads the parameter file, and parses data into strings
     private void config_read(String fileParam){
         File inputFile = new File(fileParam);
         
@@ -915,41 +916,42 @@ public class EventCovering {
      * </p>
      */
     public void process(){
+    	int in = 0;
+        int out = 0;
+        int debug = 0;
+        String[] row = null;
+        boolean valuesRemaining = false;
+        FreqList sameValue = null;
+        double[] outputs = null;
+        double[] outputsCandidate = null;
+        double[] inputs = null;
+        double[] inputsCandidate = null;
+        boolean[] inputsMissing = null;
+        boolean[] taken = null;
+        Vector instancesSelected = new Vector();
+        boolean same = true;
+        boolean valueFound = false;
+        ValueFreq valueTimes;
+        double minD = 0;
+        double dist;
+        VAList candidatesList = null;
+        valueAssociations va;
+        Instance missing = null;
+        Instance i1,i2;
+        Vector Clusters = null;
+        Cluster c;
+        int selectedCluster = 0;
+        int centroid = 0;
+        
+        Vector tree;
+        double[][] I;
+        double[] Px;
         try {
             
             // Load in memory a dataset that contains a classification problem
             IS.readSet(input_train_name,true);
             
-            int in = 0;
-            int out = 0;
-            int debug = 0;
-            String[] row = null;
-            boolean valuesRemaining = false;
-            FreqList sameValue = null;
-            double[] outputs = null;
-            double[] outputsCandidate = null;
-            double[] inputs = null;
-            double[] inputsCandidate = null;
-            boolean[] inputsMissing = null;
-            boolean[] taken = null;
-            Vector instancesSelected = new Vector();
-            boolean same = true;
-            boolean valueFound = false;
-            ValueFreq valueTimes;
-            double minD = 0;
-            double dist;
-            VAList candidatesList = null;
-            valueAssociations va;
-            Instance missing = null;
-            Instance i1,i2;
-            Vector Clusters;
-            Cluster c;
-            int selectedCluster = 0;
-            int centroid = 0;
             
-            Vector tree;
-            double[][] I;
-            double[] Px;
             
             ndatos = IS.getNumInstances();
             nvariables = Attributes.getNumAttributes();
@@ -964,7 +966,7 @@ public class EventCovering {
             I = computeMutualInformation();
             tree = computeTree(I);
             Px = computePx(tree);
-            if(totalMissing != ndatos && totalMissing != 0){
+            if(totalMissing != ndatos  && totalMissing != 0){
             	Clusters = clusterInitation(Px);
             	int acum = 0;
             	for(int i=0;i<Clusters.size();i++){
@@ -1107,40 +1109,11 @@ public class EventCovering {
             try {
                 
                 // Load in memory a dataset that contains a classification problem
-                IS.readSet(input_test_name,false);
+                IStest.readSet(input_test_name,false);
                 
-                int in = 0;
-                int out = 0;
-                int debug = 0;
-                String[] row = null;
-                boolean valuesRemaining = false;
-                FreqList sameValue = null;
-                double[] outputs = null;
-                double[] outputsCandidate = null;
-                double[] inputs = null;
-                double[] inputsCandidate = null;
-                boolean[] inputsMissing = null;
-                boolean[] taken = null;
-                Vector instancesSelected = new Vector();
-                boolean same = true;
-                boolean valueFound = false;
-                ValueFreq valueTimes;
-                double minD = 0;
-                double dist;
-                VAList candidatesList = null;
-                valueAssociations va;
-                Instance missing = null;
-                Instance i1,i2;
-                Vector Clusters;
-                Cluster c;
-                int selectedCluster = 0;
-                int centroid = 0;
                 
-                Vector tree;
-                double[][] I;
-                double[] Px;
                 
-                ndatos = IS.getNumInstances();
+                ndatos = IStest.getNumInstances();
                 nvariables = Attributes.getNumAttributes();
                 nentradas = Attributes.getInputNumAttributes();
                 nsalidas = Attributes.getOutputNumAttributes();
@@ -1150,7 +1123,7 @@ public class EventCovering {
                 
                 
                 //Create clusters for all instances without data missing
-                I = computeMutualInformation();
+                /*I = computeMutualInformation();
                 tree = computeTree(I);
                 Px = computePx(tree);
                 if(totalMissing != ndatos && totalMissing != 0){
@@ -1170,11 +1143,11 @@ public class EventCovering {
                 		C0.C.addElement(inst);
                 	}
                 	Clusters.addElement(C0);
-                }
+                }*/
                 
                 //process current dataset
                 for(int i = 0;i < ndatos;i++){
-                    Instance inst = IS.getInstance(i);
+                    Instance inst = IStest.getInstance(i);
                     
                     in = 0;
                     out = 0;
@@ -1294,4 +1267,3 @@ public class EventCovering {
         
     }
 }
-

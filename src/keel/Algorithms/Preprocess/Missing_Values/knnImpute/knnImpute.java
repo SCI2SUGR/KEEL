@@ -63,7 +63,7 @@ public class knnImpute {
     int nsalidas = 0;
     int nneigh = 1; //number of neighbours
     
-    InstanceSet IS;
+    InstanceSet IS,IStest;
     String input_train_name = new String();
     String input_test_name = new String();
     String output_train_name = new String();
@@ -77,6 +77,7 @@ public class knnImpute {
     public knnImpute(String fileParam) {
         config_read(fileParam);
         IS = new InstanceSet();
+        IStest = new InstanceSet();
     }
     
     //Write data matrix X to disk, in KEEL format
@@ -206,6 +207,67 @@ public class knnImpute {
     
     /**
      * <p>
+     *	Checks if two instances present MVs for the same attributes
+     * </p>
+     * @param inst1 the first instance
+     * @param inst2 the second instance
+     * @return true if both instances have missing values for the same attributes, false otherwise
+     */
+    protected boolean sameMissingInputAttributes(Instance inst1, Instance inst2){
+    	boolean sameMVs = true;
+    	
+    	for(int i = 0;i < Attributes.getInputNumAttributes() && sameMVs ;i++){
+    		if(inst1.getInputMissingValues(i) != inst2.getInputMissingValues(i))
+    			sameMVs = false;
+    	}
+    	
+    	return sameMVs;
+    }
+    
+    /**
+     * Finds the nearest neighbor with a valid value in the specified attribute
+     * @param inst the instance to be taken as reference
+     * @param a the attribute which will be checked
+     * @return the nearest instance that has a valid value in the attribute 'a'
+     */
+    protected Instance nearestValidNeighbor(Instance inst, int a){
+    	double distance = Double.POSITIVE_INFINITY;
+    	Instance inst2;
+    	int nn = 0;
+    	
+    	for(int i = 0;i<IS.getNumInstances();i++){
+    		inst2 = IS.getInstance(i);
+    		if(inst!= inst2 && !inst2.getInputMissingValues(a) && distance(inst,inst2)<distance){
+    			distance = distance(inst,inst2);
+    			nn = i;
+    		}
+    			
+    	}
+    	
+    	return IS.getInstance(nn);
+    }
+    
+    /**
+     * <p>
+     *	Takes a value and checks if it belongs to the attribute interval. If not, it returns the nearest limit.
+     *	IT DOES NOT CHECK IF THE ATTRIBUTE IS NOT NOMINAL
+     * </p>
+     * @param value the value to be checked
+     * @param a the attribute to which the value will be checked against
+     * @return the original value if it was in the interval limits of the attribute, or the nearest boundary limit otherwise.
+     */
+    public double boundValueToAttributeLimits(double value, Attribute a){
+    	
+    	if(value < a.getMinAttribute())
+    		value = a.getMinAttribute();
+    	else if(value > a.getMaxAttribute())
+    		value = a.getMaxAttribute();
+    	
+    	return value;
+    }
+    
+    /**
+     * <p>
      * Process the training and test files provided in the parameters file to the constructor.
      * </p>
      */
@@ -213,8 +275,8 @@ public class knnImpute {
         double []outputs;
         double []outputs2;
         Instance neighbor;
-        double dist,mean;
-        int actual,totalN;
+        double dist,mean,dist2;
+        int actual,totalN,nn_aux;
         int [] N = new int[nneigh];
         double []Ndist = new double [nneigh];
         boolean allNull;
@@ -235,7 +297,7 @@ public class knnImpute {
             
             timesSeen = new FreqList[nvariables];
             mostCommon = new String[nvariables];
-            
+
             
             for(int i = 0;i < ndatos;i++){
                 Instance inst = IS.getInstance(i);
@@ -252,7 +314,7 @@ public class knnImpute {
                     for(int k=0;k<ndatos;k++){
                         neighbor = IS.getInstance(k);
                         
-                        if(!neighbor.existsAnyMissingValue()){
+                        if(!sameMissingInputAttributes(inst, neighbor)){
                             dist = distance(inst, neighbor);
                             
                             actual = -1;
@@ -272,6 +334,7 @@ public class knnImpute {
                                 Ndist[actual] = dist;
                             }
                         }
+                        	
                     }
                 }
                 for(int j = 0; j < nvariables;j++){
@@ -294,10 +357,13 @@ public class knnImpute {
                                     totalN = 0;
                                     for(int m = 0;m < nneigh;m++){
                                     	if(N[m]!=-1){
-                                    		totalN++;
-                                    		allNull = false;
                                     		Instance inst2 = IS.getInstance(N[m]);
-                                        	mean += inst2.getInputRealValues(in);
+                                    		if(!inst2.getInputMissingValues(in)){
+                                    			mean += inst2.getInputRealValues(in);
+                                    			totalN++;
+                                    			allNull = false;
+                                    		}
+                                    		
                                     	}
                                     }
                                     if(!allNull){
@@ -307,12 +373,13 @@ public class knnImpute {
                                     	X[i][j] = new String(String.valueOf(mean));
                                     }
                                     else
-                                    	X[i][j] = "<null>";
+                                    	//if no option left, lets take the nearest neighbor with a valid attribute value
+                                    	X[i][j] = String.valueOf(nearestValidNeighbor(inst, in).getInputRealValues(in));
                                 }else{
                                     for(int m = 0;m < nneigh;m++){
                                         Instance inst2 = IS.getInstance(N[m]);
                                         
-                                        if(N[m]!=-1){
+                                        if(N[m]!=-1 && !inst2.getInputMissingValues(in)){
                                         	timesSeen[j].AddElement( inst2.getInputNominalValues(in));
                                         }
                                         
@@ -320,7 +387,7 @@ public class knnImpute {
                                     if(timesSeen[j].totalElements!=0)
                                     	X[i][j] = new String(timesSeen[j].mostCommon().getValue()); //replace missing data
                                     else
-                                    	X[i][j] = "<null>";
+                                    	X[i][j] = nearestValidNeighbor(inst, in).getInputNominalValues(in);
                                 }
                                 
                             }
@@ -351,10 +418,14 @@ public class knnImpute {
                                         	mean = mean / (double)totalN;
                                         	if(tipo == Attribute.INTEGER)
                                         		mean = new Double(mean+0.5).intValue();
+                                        	
+                                        	mean = this.boundValueToAttributeLimits(mean, a);
                                         	X[i][j] = new String(String.valueOf(mean));
                                         }
-                                        else
-                                        	X[i][j] = "<null>";
+                                        else{
+                                        	//if no option left, lets take the nearest neighbor with a valid attribute value
+                                        	X[i][j] = new String("<null>");
+                                        }
                                     }else{
                                         for(int m = 0;m < nneigh;m++){
                                             Instance inst2 = IS.getInstance(N[m]);
@@ -367,7 +438,7 @@ public class knnImpute {
                                         if(timesSeen[j].totalElements!=0)
                                         	X[i][j] = new String(timesSeen[j].mostCommon().getValue()); //replace missing data
                                         else
-                                        	X[i][j] = "<null>";
+                                        	X[i][j] = new String("<null>");
                                     }
                                     
                                 }
@@ -389,11 +460,11 @@ public class knnImpute {
             try {
                 
                 // Load in memory a dataset that contains a classification problem
-                IS.readSet(input_test_name,false);
+                IStest.readSet(input_test_name,false);
                 int in = 0;
                 int out = 0;
                 
-                ndatos = IS.getNumInstances();
+                ndatos = IStest.getNumInstances();
                 nvariables = Attributes.getNumAttributes();
                 nentradas = Attributes.getInputNumAttributes();
                 nsalidas = Attributes.getOutputNumAttributes();
@@ -407,7 +478,7 @@ public class knnImpute {
                 //the most common value
                 
                 for(int i = 0;i < ndatos;i++){
-                    Instance inst = IS.getInstance(i);
+                    Instance inst = IStest.getInstance(i);
                     
                     in = 0;
                     out = 0;
@@ -421,7 +492,7 @@ public class knnImpute {
                         for(int k=0;k<ndatos;k++){
                             neighbor = IS.getInstance(k);
                             
-                            if(!neighbor.existsAnyMissingValue()){
+                            if(!sameMissingInputAttributes(inst, neighbor)){
                                 dist = distance(inst, neighbor);
                                 
                                 actual = -1;
@@ -463,25 +534,31 @@ public class knnImpute {
                                         totalN = 0;
                                         for(int m = 0;m < nneigh;m++){
                                         	if(N[m]!=-1){
-                                        		totalN++;
-                                        		allNull = false;
                                         		Instance inst2 = IS.getInstance(N[m]);
-                                            	mean += inst2.getInputRealValues(in);
+                                        		if(!inst2.getInputMissingValues(in)){
+                                        			mean += inst2.getInputRealValues(in);
+                                        			totalN++;
+                                        			allNull = false;
+                                        		}
+                                        		
                                         	}
                                         }
                                         if(!allNull){
                                         	mean = mean / (double)totalN;
                                         	if(tipo == Attribute.INTEGER)
                                         		mean = new Double(mean+0.5).intValue();
+                                        	
+                                        	mean = this.boundValueToAttributeLimits(mean, a);
                                         	X[i][j] = new String(String.valueOf(mean));
                                         }
                                         else
-                                        	X[i][j] = "<null>";
+                                        	//if no option left, lets take the nearest neighbor with a valid attribute value
+                                        	X[i][j] = String.valueOf(nearestValidNeighbor(inst, in).getInputRealValues(in));
                                     }else{
                                         for(int m = 0;m < nneigh;m++){
                                             Instance inst2 = IS.getInstance(N[m]);
                                             
-                                            if(N[m]!=-1){
+                                            if(N[m]!=-1 && !inst2.getInputMissingValues(in)){
                                             	timesSeen[j].AddElement( inst2.getInputNominalValues(in));
                                             }
                                             
@@ -489,7 +566,7 @@ public class knnImpute {
                                         if(timesSeen[j].totalElements!=0)
                                         	X[i][j] = new String(timesSeen[j].mostCommon().getValue()); //replace missing data
                                         else
-                                        	X[i][j] = "<null>";
+                                        	X[i][j] = nearestValidNeighbor(inst, in).getInputNominalValues(in);
                                     }
                                     
                                 }
@@ -523,7 +600,7 @@ public class knnImpute {
                                             	X[i][j] = new String(String.valueOf(mean));
                                             }
                                             else
-                                            	X[i][j] = "<null>";
+                                            	X[i][j] = new String("<null>");
                                         }else{
                                             for(int m = 0;m < nneigh;m++){
                                                 Instance inst2 = IS.getInstance(N[m]);
@@ -536,7 +613,7 @@ public class knnImpute {
                                             if(timesSeen[j].totalElements!=0)
                                             	X[i][j] = new String(timesSeen[j].mostCommon().getValue()); //replace missing data
                                             else
-                                            	X[i][j] = "<null>";
+                                            	X[i][j] = new String("<null>");
                                         }
                                         
                                     }
@@ -556,4 +633,3 @@ public class knnImpute {
     }
     
 }
-

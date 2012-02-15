@@ -68,6 +68,7 @@ public class kmeansImpute {
     int maxIter = 1000;
     
     InstanceSet IS;
+    InstanceSet IStest;
     String input_train_name = new String();
     String input_test_name = new String();
     String output_train_name = new String();
@@ -81,6 +82,7 @@ public class kmeansImpute {
     public kmeansImpute(String fileParam) {
         config_read(fileParam);
         IS = new InstanceSet();
+        IStest = new InstanceSet();
     }
     
     //Write data matrix X to disk, in KEEL format
@@ -240,7 +242,7 @@ public class kmeansImpute {
         int actual;
         Randomize rnd = new Randomize();
         Instance ex;
-        gCenter kmeans;
+        gCenter kmeans = null;
         int iterations = 0;
         double E;
         double prevE;
@@ -368,71 +370,18 @@ public class kmeansImpute {
             try {
                 
                 // Load in memory a dataset that contains a classification problem
-                IS.readSet(input_test_name,false);
+                IStest.readSet(input_test_name,false);
                 int in = 0;
                 int out = 0;
                 
-                ndatos = IS.getNumInstances();
+                ndatos = IStest.getNumInstances();
                 nvariables = Attributes.getNumAttributes();
                 nentradas = Attributes.getInputNumAttributes();
                 nsalidas = Attributes.getOutputNumAttributes();
                 
-                X = new String[ndatos][nvariables];//matrix with transformed data
-                kmeans = new gCenter(K,ndatos,nvariables);
-                
-                timesSeen = new FreqList[nvariables];
-                mostCommon = new String[nvariables];
-                
-                //first, we choose k 'means' randomly from all
-                //instances
-                totalMissing = 0;
+ 
                 for(int i = 0;i < ndatos;i++){
-                    Instance inst = IS.getInstance(i);
-                    if(inst.existsAnyMissingValue())
-                    	totalMissing++;
-                }
-                if(totalMissing == ndatos)
-                	allMissing = true;
-                else
-                	allMissing = false;
-                for(int numMeans = 0;numMeans<K;numMeans++){
-                    do{
-                        actual = (int) (ndatos*rnd.Rand());
-                        ex = IS.getInstance(actual);
-                    }while(ex.existsAnyMissingValue() && !allMissing);
-                    
-                    kmeans.copyCenter(ex,numMeans);
-                }
-                
-                //now, iterate adjusting clusters' centers and
-                //instances to them
-                prevE = 0;
-                iterations = 0;
-                do{
-                    for(int i = 0;i < ndatos;i++){
-                        Instance inst = IS.getInstance(i);
-                        
-                        kmeans.setClusterOf(inst,i);
-                        
-                    }
-                    //set new centers
-                    kmeans.recalculateCenters(IS);
-                    //compute RMSE
-                    E = 0;
-                    for(int i = 0;i < ndatos;i++){
-                        Instance inst = IS.getInstance(i);
-                        
-                        E += kmeans.distance(inst,kmeans.getClusterOf(i));
-                    }
-                    iterations++;
-                    //System.out.println(iterations+"\t"+E);
-                    if(Math.abs(prevE - E ) == 0)
-                        iterations = maxIter;
-                    else
-                        prevE = E;
-                }while(E>minError && iterations < maxIter);
-                for(int i = 0;i < ndatos;i++){
-                    Instance inst = IS.getInstance(i);
+                    Instance inst = IStest.getInstance(i);
                     
                     in = 0;
                     out = 0;
@@ -482,4 +431,3 @@ public class kmeansImpute {
     }
     
 }
-

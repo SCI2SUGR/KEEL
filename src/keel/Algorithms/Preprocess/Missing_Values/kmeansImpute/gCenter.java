@@ -219,8 +219,8 @@ public class gCenter {
     
     /**
      * <p>
-     * Recalculates all the centroids using a given InstanceSet, to reduce the
-     * sum of the distances for each object from the centroid of the cluster to which the object belongs 
+     * Recalculates all the centroids using a given InstanceSet, in order to reduce the
+     * total sum of distances for each object to the centroid of the cluster, which the object belongs to
      * </p>
      * @param IS The reference InstanceSet
      */
@@ -235,11 +235,13 @@ public class gCenter {
         int direccion = 0;
         int nvariables;
         FreqList[][] modes;
+        String[][] oldGC;
         
         nvariables = Attributes.getNumAttributes();
         modes = new FreqList[numCenters][nvariables];
         nInst = new int[numCenters][nvariables];
         
+        oldGC = gravCenters;
         gravCenters = new String[numCenters][nvariables];
         
         for (int a = 0; a < numCenters; a++) {
@@ -309,8 +311,10 @@ public class gCenter {
                 if (tipo == Attribute.NOMINAL) {
                     if(modes[c][l].numElems() > 0){
                         gravCenters[c][l] = (modes[c][l].mostCommon()).getValue();
-                    } else{
-                    	gravCenters[c][l] = new String("<null>");
+                    } else{ //what do we do if no valid value is available among the instances of this cluster for this attribute?
+                    	//gravCenters[c][l] = new String("<null>");
+                    	//instead of the previous solution, lets leave the old attribute in the centroid as is
+                    	gravCenters[c][l] = oldGC[c][l];
                     }
                 }
             }
@@ -327,8 +331,10 @@ public class gCenter {
                 		tmp = tmp / nInst[a][b];
                 		gravCenters[a][b] = String.valueOf(tmp);
                 	}
-                	else{
-                		gravCenters[a][b] = new String("<null>");
+                	else{//what do we do if no valid value is available among the instances of this cluster for this attribute?
+                		//gravCenters[a][b] = new String("<null>");
+                		//instead of the previous solution, lets leave the old attribute in the centroid as is
+                		gravCenters[a][b] = oldGC[a][b];
                 	}
                 }
             }
@@ -370,4 +376,3 @@ public class gCenter {
         return gravCenters[cluster][position];
     }
 }
-

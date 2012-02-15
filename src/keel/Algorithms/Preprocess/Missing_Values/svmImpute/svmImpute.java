@@ -77,7 +77,7 @@ public class svmImpute {
 
 	int nneigh = 1; // number of neighbours
 
-	InstanceSet IS;
+	InstanceSet IS,IStest;
 
 	String input_train_name = new String();
 
@@ -112,6 +112,7 @@ public class svmImpute {
 	public svmImpute(String fileParam) {
 		config_read(fileParam);
 		IS = new InstanceSet();
+		IStest = new InstanceSet();
 	}
 
 	// Write data matrix X to disk, in KEEL format
@@ -700,11 +701,11 @@ public class svmImpute {
 
 				// Load in memory a dataset that contains a classification
 				// problem
-				IS.readSet(input_test_name, false);
+				IStest.readSet(input_test_name, false);
 				int in = 0;
 				int out = 0;
 
-				ndatos = IS.getNumInstances();
+				ndatos = IStest.getNumInstances();
 				nvariables = Attributes.getNumAttributes();
 				nentradas = Attributes.getInputNumAttributes();
 				nsalidas = Attributes.getOutputNumAttributes();
@@ -719,7 +720,7 @@ public class svmImpute {
 				// the most common value
 
 				for (int i = 0; i < ndatos; i++) {
-					Instance inst = IS.getInstance(i);
+					Instance inst = IStest.getInstance(i);
 
 					in = 0;
 					out = 0;
@@ -732,9 +733,9 @@ public class svmImpute {
 						instancesSelected.clear(); // erase elements from previous
 						// work
 						instancesSelected3.clear();
-						for (int k = 0; k < ndatos; k++) {
+						for (int k = 0; k < IS.getNumInstances(); k++) {
 							// select those instances with same class and no MVs
-							if (k != i && !IS.getInstance(k).existsAnyMissingValue()) {
+							if (!IS.getInstance(k).existsAnyMissingValue()) {
 								// compare outputs
 								outputsCandidate = IS.getInstance(k).getAllOutputValues();
 
@@ -890,9 +891,9 @@ public class svmImpute {
 										instancesSelected2.clear(); // erase elements from previous
 										// work
 										instancesSelected3.clear(); //clear previous work
-										for (int k = 0; k < ndatos; k++) {
+										for (int k = 0; k < IS.getNumInstances(); k++) {
 											// select those instances with same class and no MVs
-											if (k != i && !IS.getInstance(k).existsAnyMissingValue()) {
+											if (!IS.getInstance(k).existsAnyMissingValue()) {
 												// compare outputs
 												outputsCandidate = IS.getInstance(k).getAllInputValues();
 
@@ -1032,4 +1033,3 @@ public class svmImpute {
 	}
 
 }
-

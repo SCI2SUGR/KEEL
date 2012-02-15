@@ -153,6 +153,25 @@ public class MostCommonValue {
     
     /**
      * <p>
+     *	Takes a value and checks if it belongs to the attribute interval. If not, it returns the nearest limit.
+     *	IT DOES NOT CHECK IF THE ATTRIBUTE IS NOT NOMINAL
+     * </p>
+     * @param value the value to be checked
+     * @param a the attribute to which the value will be checked against
+     * @return the original value if it was in the interval limits of the attribute, or the nearest boundary limit otherwise.
+     */
+    public double boundValueToAttributeLimits(double value, Attribute a){
+    	
+    	if(value < a.getMinAttribute())
+    		value = a.getMinAttribute();
+    	else if(value > a.getMaxAttribute())
+    		value = a.getMaxAttribute();
+    	
+    	return value;
+    }
+    
+    /**
+     * <p>
      * Process the training and test files provided in the parameters file to the constructor.
      * </p>
      */
@@ -280,6 +299,7 @@ public class MostCommonValue {
                                             mean += (new Double(vf.getValue()).doubleValue()*vf.getFreq());
                                         }
                                         mean = mean / (double)timesSeen[j].totalElems();
+                                        mean = boundValueToAttributeLimits(mean,a);
                                         X[i][j] = new String(String.valueOf(mean));
                                     }
                                 }
@@ -418,6 +438,7 @@ public class MostCommonValue {
                                                 mean += (new Double(vf.getValue()).doubleValue()*vf.getFreq());
                                             }
                                             mean = mean / (double)timesSeen[j].totalElems();
+                                            mean = boundValueToAttributeLimits(mean,a);
                                             X[i][j] = new String(String.valueOf(mean));
                                         }
                                     }
@@ -436,4 +457,3 @@ public class MostCommonValue {
     }
     
 }
-

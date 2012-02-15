@@ -101,6 +101,25 @@ public class ConceptMostCommonValue {
         }
     }
     
+    /**
+     * <p>
+     *	Takes a value and checks if it belongs to the attribute interval. If not, it returns the nearest limit.
+     *	IT DOES NOT CHECK IF THE ATTRIBUTE IS NOT NOMINAL
+     * </p>
+     * @param value the value to be checked
+     * @param a the attribute to which the value will be checked against
+     * @return the original value if it was in the interval limits of the attribute, or the nearest boundary limit otherwise.
+     */
+    public double boundValueToAttributeLimits(double value, Attribute a){
+    	
+    	if(value < a.getMinAttribute())
+    		value = a.getMinAttribute();
+    	else if(value > a.getMaxAttribute())
+    		value = a.getMaxAttribute();
+    	
+    	return value;
+    }
+    
     //Read the patron file, and parse data into strings
     private void config_read(String fileParam){
         File inputFile = new File(fileParam);
@@ -251,6 +270,7 @@ public class ConceptMostCommonValue {
                                         timesSeen[j].iterate();
                                     }
                                     mean = mean / (double)timesSeen[j].totalElems();
+                                    mean = boundValueToAttributeLimits(mean,a);
                                     X[i][j] = new String(String.valueOf(mean));
                                 }
                             }
@@ -367,6 +387,7 @@ public class ConceptMostCommonValue {
                                             timesSeen[j].iterate();
                                         }
                                         mean = mean / (double)timesSeen[j].totalElems();
+                                        mean = boundValueToAttributeLimits(mean,a);
                                         X[i][j] = new String(String.valueOf(mean));
                                     }
                                 }
@@ -397,4 +418,3 @@ public class ConceptMostCommonValue {
     }
     
 }
-

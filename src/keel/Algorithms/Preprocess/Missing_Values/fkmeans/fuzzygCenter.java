@@ -214,10 +214,12 @@ public class fuzzygCenter {
 		int direccion = 0;
 		int nvariables;
 		FreqList[][] modes;
+		String[][] oldGC;
 
 		nvariables = Attributes.getNumAttributes();
 		modes = new FreqList[numCenters][nvariables];
 
+		oldGC = gravCenters;
 		gravCenters = new String[numCenters][nvariables];
 
 		for (int a = 0; a < numCenters; a++) {
@@ -289,8 +291,10 @@ public class fuzzygCenter {
 					if (modes[c][l].numElems() > 0) {
 						gravCenters[c][l] = (modes[c][l].mostCommon())
 								.getValue();
-					} else {
-						gravCenters[c][l] = new String("<null>");
+					} else {//what do we do if no valid value is available among the instances of this cluster for this attribute?
+                    	//gravCenters[c][l] = new String("<null>");
+                    	//instead of the previous solution, lets leave the old attribute in the centroid as is
+                    	gravCenters[c][l] = oldGC[c][l];
 					}
 				}
 
@@ -300,8 +304,10 @@ public class fuzzygCenter {
 						tmp = tmp / Utotal;
 						gravCenters[a][l] = String.valueOf(tmp);
 					}
-					else{
-						gravCenters[a][l] = new String("<null>");
+					else{//what do we do if no valid value is available among the instances of this cluster for this attribute?
+                		//gravCenters[a][b] = new String("<null>");
+                		//instead of the previous solution, lets leave the old attribute in the centroid as is
+                		gravCenters[a][l] = oldGC[a][l];
 					}
 				}
 			}
@@ -378,7 +384,7 @@ public class fuzzygCenter {
      * <p>
      * Returns the cluster to which the given instance belongs to
      * </p>
-     * @param i The index of the instance
+     * @param orderOf_i The index of the instance
      * @return The index of the cluster to this isntance belongs to.
      */
 	public int getClusterOf(Instance i) {
@@ -397,4 +403,3 @@ public class fuzzygCenter {
 		return gravCenters[cluster][position];
 	}
 }
-
