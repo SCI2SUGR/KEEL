@@ -1952,6 +1952,30 @@
 	</output>
   </method>
   <method>
+    <name>XCS-C</name>
+    <family>Evolutionary Crisp Rule Learning</family>
+    <jar_file>XCS.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
+  <method>
     <name>UCS-C</name>
     <family>Evolutionary Crisp Rule Learning</family>
     <jar_file>UCS.jar</jar_file>
