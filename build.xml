@@ -1341,6 +1341,16 @@
         </jar>
 		
 		<!-- Associative classification-->
+		
+		<jar
+          jarfile="${distMet}/Clas-Fuzzy-FARCHD.jar"
+          manifest="${src}/keel/Algorithms/Associative_Classification/ClassifierFuzzyFARCHD/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Associative_Classification/ClassifierFuzzyFARCHD/**/*.class
+					keel/Algorithms/Preprocess/Basic/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>
 
 		<jar
          jarfile="${distMet}/Clas-CBA.jar"

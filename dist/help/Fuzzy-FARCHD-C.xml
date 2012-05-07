@@ -1,0 +1,141 @@
+
+<method>
+
+	<name>FARC-HD - Fuzzy Association Rule-Based Classification Model for High-Dimensional Problems</name>
+
+	<reference>  
+<ref>J. Alcalá-Fdez, R. Alcalá, F. Herrera, A Fuzzy Association Rule-Based Classification Model for High-Dimensional Problems with Genetic Rule Selection and Lateral Tuning. IEEE Transactions on Fuzzy Systems 19:5 (2011) 857-872</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Associative Classification</type>
+
+		<objective>To obtain an accurate and compact fuzzy rule-based classifier with a low computational cost</objective>
+
+		<howWork>This method mines fuzzy association rules limiting the order of the associations in order to obtain a reduced set of candidate rules with less attributes in the antecedent. Then, this has made use of a pattern weighting scheme in order to reduce the number of candidate rules, preselecting the rules with the best quality. Finally, a genetic rule selection and lateral tuning are applied to select a small set of fuzzy association rules with a high classification accuracy.
+		</howWork>
+
+		<parameterSpec>  
+	    <param>Number of Linguistic Values</param>
+        <param>Minimum Support (Minsup)</param>
+        <param>Maximum Confidence (Maxconf)</param>
+        <param>Depth of the trees (Depthmax)</param>
+        <param>Parameter K of the prescreening (kt)</param>
+        <param>Maximum number of evaluacions (Evaluations)</param>
+        <param>Population size (Pop)</param>
+        <param>Parameter alpha</param>
+        <param>Bits per gen (BITSGENE)</param>
+		</parameterSpec>
+
+		<properties>
+        <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>Yes</nominal>
+        <missing>No</missing>
+        <imprecise>No</imprecise>
+        <multiclass>Yes</multiclass>
+        <multioutput>No</multioutput>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: Clas-Fuzzy-FARCHD
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Test Show results: Vis-Clas-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTClas-Fuzzy-FARCHD folder the classification results for the training and test sets:
+
+TEST RESULTS
+============
+Classifier= iris_plants_database 
+Fold 0 : CORRECT=0.96 N/C=0.0 
+Global Classification Error + N/C:
+0.04 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+0.96 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris_plants_database 
+Summary of data, Classifiers: iris_plants_database 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.0 
+stddev Global Classification Error + N/C:
+0.0 
+Correctly classified:
+1.0 
+Global N/C:
+0.0 
+
+
+We can see also the Data Base and Rule Base generated in the files "result0e0.txt" and "result0e1.txt" 
+respectively in the folder experiment/results/Clas-Fuzzy-FARCHD.iris/:
+
+@Using Triangular Membership Functions as antecedent fuzzy sets
+
+@Number of Labels in Variable 1: 5
+sepalLength:
+L_0(5): (3.1093349680907236,4.009334968090724,4.909334968090724)
+L_1(5): (4.046618569853515,4.9466185698535154,5.846618569853515)
+L_2(5): (5.120977496571358,6.020977496571358,6.920977496571358)
+L_3(5): (5.944680589548575,6.844680589548576,7.744680589548576)
+L_4(5): (6.91960162828836,7.8196016282883605,8.71960162828836)
+
+
+@Number of Labels in Variable 2: 5
+sepalWidth:
+L_0(5): (1.4686770848953055,2.0686770848953056,2.6686770848953056)
+L_1(5): (1.872740272967852,2.4727402729678523,3.0727402729678523)
+L_2(5): (2.4757061772033113,3.0757061772033114,3.6757061772033115)
+L_3(5): (3.226937527002037,3.826937527002037,4.426937527002037)
+L_4(5): (3.8844498844900186,4.484449884490019,5.084449884490018)
+
+
+@Number of Labels in Variable 3: 5
+petalLength:
+L_0(5): (-0.2725860760601845,1.2024139239398157,2.677413923939816)
+L_1(5): (1.6312809283511722,3.1062809283511723,4.581280928351172)
+L_2(5): (2.454357835170681,3.929357835170681,5.404357835170682)
+L_3(5): (3.8354199702322624,5.310419970232263,6.785419970232263)
+L_4(5): (5.827259014239293,7.302259014239293,8.777259014239293)
+
+
+@Number of Labels in Variable 4: 5
+petalWidth:
+L_0(5): (-0.5669210249896982,0.03307897501030184,0.6330789750103017)
+L_1(5): (0.04934987391951833,0.6493498739195183,1.2493498739195184)
+L_2(5): (0.6242152014010703,1.2242152014010705,1.8242152014010704)
+L_3(5): (1.5560712412811641,2.1560712412811642,2.7560712412811643)
+L_4(5): (2.024718356164875,2.624718356164875,3.224718356164875)
+
+
+
+@Number of rules: 4 Number of Antecedents by rule: 1.5
+
+1: petalLength IS L_0(5): Iris-setosa CF: 1.0
+2: petalLength IS L_2(5): Iris-versicolor CF: 0.8608385370205174
+3: petalWidth IS L_3(5): Iris-virginica CF: 0.8055555555555558
+4: sepalLength IS L_2(5) AND sepalWidth IS L_1(5) AND petalLength IS L_3(5): Iris-virginica CF: 0.7217903415783276
+
+
+@supp and CF:
+
+1: supp: 0.23028248587570624 AND CF: 1.0
+2: supp: 0.21807909604519785 AND CF: 0.8608385370205174
+3: supp: 0.19333333333333336 AND CF: 0.8055555555555558
+4: supp: 0.05129106507637582 AND CF: 0.7217903415783276
+ 
+ 
+</example>
+
+</method>

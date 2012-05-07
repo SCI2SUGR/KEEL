@@ -1,0 +1,96 @@
+<algorithm_specification>
+  <name>FARCHD</name>
+  <nParameters>10</nParameters>
+  <seed>1</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of Linguistic Values</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+   <parameter>
+    <name>Minimum Support</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.05</default>
+   </parameter>
+   <parameter>
+    <name>Maximum Confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.8</default>
+   </parameter>
+  <parameter>
+    <name>Depth of the trees (Depthmax)</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>Parameter K of the prescreening</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>5</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Maximum number of evaluacions</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1000</lowerB>
+      <upperB>1000000</upperB>
+    </domain>
+    <default>15000</default>
+  </parameter>
+  <parameter>
+    <name>Population size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  <parameter>
+    <name>Parameter alpha</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>10.0</upperB>
+    </domain>
+    <default>0.15</default>
+  </parameter>
+  <parameter>
+    <name>Bits per gen</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>30</default>
+  </parameter>
+  <parameter>
+    <name>Type of inference</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+</algorithm_specification>

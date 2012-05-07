@@ -34,7 +34,8 @@
  *
  * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
  * @author Modified by Joaquin Derrac (University of Granada) 1/12/2010
- * @version 1.0
+ * @author Modified by Joaquin Derrac (University of Granada) 7/5/2012
+ * @version 1.2
  * @since JDK1.5
  */
 package keel.GraphInterKeel.statistical;
@@ -70,6 +71,7 @@ public class StatisticalF extends javax.swing.JFrame {
     public final static int MINDATA = 4;
     public final static int MAXDATA = 500;
     public final static int MINALG = 2;
+	public final static int MINALGF = 3;
     public final static int MAXALG = 50;
     public final static int MAXIMIZE = 1;
     public final static int MINIMIZE = 2;
@@ -972,24 +974,41 @@ public class StatisticalF extends javax.swing.JFrame {
         switch (testType) {
 
             case FRIEDMAN:
-                Friedman.doFriedman(data, algorithmNames);
-                JOptionPane.showMessageDialog(this, "Friedman test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
+				if(algorithmNames.length<MINALGF){
+					JOptionPane.showMessageDialog(this, "Friedman test must include at least "+MINALGF+" algorithms.", "Error", JOptionPane.ERROR_MESSAGE);
+				}else{
+					Friedman.doFriedman(data, algorithmNames);
+					JOptionPane.showMessageDialog(this, "Friedman test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
+				}
                 break;
 
             case FRIEDMAN_ALIGNED:
-                Friedman.doFriedmanAligned(data, algorithmNames);
-                JOptionPane.showMessageDialog(this, "Friedman Aligned test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
+				if(algorithmNames.length<MINALGF){
+					JOptionPane.showMessageDialog(this, "Friedman Aligned test must include at least "+MINALGF+" algorithms.", "Error", JOptionPane.ERROR_MESSAGE);
+				}else{
+					Friedman.doFriedmanAligned(data, algorithmNames);
+					JOptionPane.showMessageDialog(this, "Friedman Aligned test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
+				}
                 break;
 
             case QUADE:
-                Friedman.doQuade(data, algorithmNames);
-                JOptionPane.showMessageDialog(this, "Quade test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
+				if(algorithmNames.length<MINALGF){
+					JOptionPane.showMessageDialog(this, "Quade test must include at least "+MINALGF+" algorithms.", "Error", JOptionPane.ERROR_MESSAGE);
+				}else{
+					Friedman.doQuade(data, algorithmNames);
+					JOptionPane.showMessageDialog(this, "Quade test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
+				}
                 break;
 
             case MULTIPLE:
-                Multiple.doMultiple(data, algorithmNames);
-                JOptionPane.showMessageDialog(this, "Friedman NxN test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
-                break;
+				if(algorithmNames.length<MINALGF){
+					JOptionPane.showMessageDialog(this, "Friedman NxN test must include at least "+MINALGF+" algorithms.", "Error", JOptionPane.ERROR_MESSAGE);
+					break;
+				}else{
+					Multiple.doMultiple(data, algorithmNames);
+					JOptionPane.showMessageDialog(this, "Friedman NxN test performed succesfully.\n"+location, "Analysis performed", JOptionPane.INFORMATION_MESSAGE);
+                }
+				break;
 
             case CONTRAST:
                 Contrast.doContrast(data, algorithmNames);
