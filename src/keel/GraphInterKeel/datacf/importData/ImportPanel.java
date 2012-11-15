@@ -966,7 +966,7 @@ private void outputFormatComboBoxItemStateChanged(java.awt.event.ItemEvent evt) 
 private void nextBrowserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBrowserButtonActionPerformed
     File originalFile = null;
     String outputFileName = null;
-    if (!ext.equals("DISABLED")) {
+    if (!ext.equals("DISABLE")) {
         originalFile = fileBrowserPanel.getFileChooser().getSelectedFile();
         if (originalFile == null) {
             JOptionPane.showMessageDialog(this, "You have to select a file", "Error", JOptionPane.ERROR_MESSAGE);
