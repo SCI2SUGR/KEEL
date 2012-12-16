@@ -1014,7 +1014,7 @@ public class KNN {
 				  } else if (Attributes.getInputAttribute(i).getType() == Attribute.NOMINAL) {
 					  suma += Metodo.nominalDistance[i][ej1Nom[i]][ej2Nom[i]];
 				  } else {
-					  suma += Math.abs(ej1Real[i]-ej2Real[i]) / 4*Metodo.stdDev[i];
+					  suma += Math.abs(ej1Real[i]-ej2Real[i]) / (4*Metodo.stdDev[i]);
 				  }
 			  }
 		  }
