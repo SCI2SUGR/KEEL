@@ -753,14 +753,14 @@ public class Friedman {
 	    /*Compute the rejected hypotheses for each test*/
 	    
 	    if(Bonferroni){
-	    	out+="Bonferroni-Dunn's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.05/(double)(nAlgorithms-1))+"$.\n\n";
+	    	out+="Bonferroni-Dunn's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(0.05/(double)(nAlgorithms-1))+"$.\n\n";
 	    }
 	    
 	    if(Holm){
 		    parar = false;
 		    for (i=0; i<nAlgorithms-1 && !parar; i++) {
 		    	if (Pi[i] > ALPHAiHolm[i]) {	    		
-		    		out+="Holm's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+		    		out+="Holm's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
 		    		parar = true;
 		    	}
 		    }
@@ -770,7 +770,7 @@ public class Friedman {
 	    	parar = false;
 	    	for (i=nAlgorithms-2; i>=0 && !parar; i--) {
 	    		if (Pi[i] <= ALPHAiHolm[i]) {	    		
-	    			out+="Hochberg's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+	    			out+="Hochberg's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
 	    			parar = true;
 	    		}
 	    	}
@@ -790,7 +790,7 @@ public class Friedman {
 	    		out+="Hommel's procedure rejects all hypotheses.\n\n";
 	    	} else {
 	    		j++;
-	    		out+="Hommel's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.05/(double)j)+"$.\n\n";
+	    		out+="Hommel's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(0.05/(double)j)+"$.\n\n";
 	    	}
 	    }
 	    
@@ -799,7 +799,7 @@ public class Friedman {
 	    
 	    	for (i=0; i<nAlgorithms-1 && !parar; i++) {
 	    		if (Pi[i] > ALPHAiHolland[i]) {	    		
-	    			out+="Holland's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolland[i])+"$.\n\n";
+	    			out+="Holland's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolland[i])+"$.\n\n";
 	    			parar = true;
 	    		}
 	    	}
@@ -809,7 +809,7 @@ public class Friedman {
 	    	parar = false;
 	    	for (i=nAlgorithms-2; i>=0 && !parar; i--) {
 	    		if (Pi[i] <= ALPHAiRom[i]) {	    		
-	    			out+="Rom's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiRom[i])+"$.\n\n";
+	    			out+="Rom's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiRom[i])+"$.\n\n";
 	    			parar = true;
 	    		}
 	    	}
@@ -819,16 +819,16 @@ public class Friedman {
 		    parar = false;
 		    for (i=0; i<nAlgorithms-1 && !parar; i++) {
 		    	if (Pi[i] > ALPHAiFinner[i]) {	    		
-		    		out+="Finner's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiFinner[i])+"$.\n\n";
+		    		out+="Finner's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiFinner[i])+"$.\n\n";
 		    		parar = true;
 		    	}
 		    }
 	    }
 	    if(Li){
 		    if (Pi[nAlgorithms-2] < 0.05) {
-		    	out+="Li's procedure rejects those hypotheses that have a p-value $\\le"+0.05+"$.\n\n";
+		    	out+="Li's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+0.05+"$.\n\n";
 		    } else {
-		    	out+="Li's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHA2Li)+"$.\n\n";	    	
+		    	out+="Li's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHA2Li)+"$.\n\n";	    	
 		    }
 	    }
 
@@ -961,14 +961,14 @@ public class Friedman {
 	    /*Compute the rejected hypotheses for each test*/
 	    
 	    if(Bonferroni){
-	    	out+="Bonferroni-Dunn's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.05/(double)(nAlgorithms-1))+"$.\n\n";
+	    	out+="Bonferroni-Dunn's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(0.05/(double)(nAlgorithms-1))+"$.\n\n";
 	    }
 	    
 	    if(Holm){
 		    parar = false;
 		    for (i=0; i<nAlgorithms-1 && !parar; i++) {
 		    	if (PiAR[i] > ALPHAiHolm[i]) {	    		
-		    		out+="Holm's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+		    		out+="Holm's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
 		    		parar = true;
 		    	}
 		    }
@@ -978,7 +978,7 @@ public class Friedman {
 	    	parar = false;
 	    	for (i=nAlgorithms-2; i>=0 && !parar; i--) {
 	    		if (PiAR[i] <= ALPHAiHolm[i]) {	    		
-	    			out+="Hochberg's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+	    			out+="Hochberg's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
 	    			parar = true;
 	    		}
 	    	}
@@ -998,7 +998,7 @@ public class Friedman {
 	    		out+="Hommel's procedure rejects all hypotheses.\n\n";
 	    	} else {
 	    		j++;
-	    		out+="Hommel's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.05/(double)j)+"$.\n\n";
+	    		out+="Hommel's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(0.05/(double)j)+"$.\n\n";
 	    	}
 	    }
 	    
@@ -1007,7 +1007,7 @@ public class Friedman {
 	    
 	    	for (i=0; i<nAlgorithms-1 && !parar; i++) {
 	    		if (PiAR[i] > ALPHAiHolland[i]) {	    		
-	    			out+="Holland's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolland[i])+"$.\n\n";
+	    			out+="Holland's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolland[i])+"$.\n\n";
 	    			parar = true;
 	    		}
 	    	}
@@ -1017,7 +1017,7 @@ public class Friedman {
 	    	parar = false;
 	    	for (i=nAlgorithms-2; i>=0 && !parar; i--) {
 	    		if (PiAR[i] <= ALPHAiRom[i]) {	    		
-	    			out+="Rom's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiRom[i])+"$.\n\n";
+	    			out+="Rom's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiRom[i])+"$.\n\n";
 	    			parar = true;
 	    		}
 	    	}
@@ -1027,16 +1027,16 @@ public class Friedman {
 		    parar = false;
 		    for (i=0; i<nAlgorithms-1 && !parar; i++) {
 		    	if (PiAR[i] > ALPHAiFinner[i]) {	    		
-		    		out+="Finner's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiFinner[i])+"$.\n\n";
+		    		out+="Finner's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiFinner[i])+"$.\n\n";
 		    		parar = true;
 		    	}
 		    }
 	    }
 	    if(Li){
 		    if (PiAR[nAlgorithms-2] < 0.05) {
-		    	out+="Li's procedure rejects those hypotheses that have a p-value $\\le"+0.05+"$.\n\n";
+		    	out+="Li's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+0.05+"$.\n\n";
 		    } else {
-		    	out+="Li's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHA2Li)+"$.\n\n";	    	
+		    	out+="Li's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHA2Li)+"$.\n\n";	    	
 		    }
 	    }
 
@@ -1172,14 +1172,14 @@ public class Friedman {
 	    /*Compute the rejected hypotheses for each test*/
 	    
 	    if(Bonferroni){
-	    	out+="Bonferroni-Dunn's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.05/(double)(nAlgorithms-1))+"$.\n\n";
+	    	out+="Bonferroni-Dunn's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(0.05/(double)(nAlgorithms-1))+"$.\n\n";
 	    }
 	    
 	    if(Holm){
 		    parar = false;
 		    for (i=0; i<nAlgorithms-1 && !parar; i++) {
 		    	if (PiQ[i] > ALPHAiHolm[i]) {	    		
-		    		out+="Holm's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+		    		out+="Holm's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
 		    		parar = true;
 		    	}
 		    }
@@ -1189,7 +1189,7 @@ public class Friedman {
 	    	parar = false;
 	    	for (i=nAlgorithms-2; i>=0 && !parar; i--) {
 	    		if (PiQ[i] <= ALPHAiHolm[i]) {	    		
-	    			out+="Hochberg's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+	    			out+="Hochberg's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
 	    			parar = true;
 	    		}
 	    	}
@@ -1209,7 +1209,7 @@ public class Friedman {
 	    		out+="Hommel's procedure rejects all hypotheses.\n\n";
 	    	} else {
 	    		j++;
-	    		out+="Hommel's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.05/(double)j)+"$.\n\n";
+	    		out+="Hommel's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(0.05/(double)j)+"$.\n\n";
 	    	}
 	    }
 	    
@@ -1218,7 +1218,7 @@ public class Friedman {
 	    
 	    	for (i=0; i<nAlgorithms-1 && !parar; i++) {
 	    		if (PiQ[i] > ALPHAiHolland[i]) {	    		
-	    			out+="Holland's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolland[i])+"$.\n\n";
+	    			out+="Holland's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolland[i])+"$.\n\n";
 	    			parar = true;
 	    		}
 	    	}
@@ -1228,7 +1228,7 @@ public class Friedman {
 	    	parar = false;
 	    	for (i=nAlgorithms-2; i>=0 && !parar; i--) {
 	    		if (PiQ[i] <= ALPHAiRom[i]) {	    		
-	    			out+="Rom's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiRom[i])+"$.\n\n";
+	    			out+="Rom's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiRom[i])+"$.\n\n";
 	    			parar = true;
 	    		}
 	    	}
@@ -1238,16 +1238,16 @@ public class Friedman {
 		    parar = false;
 		    for (i=0; i<nAlgorithms-1 && !parar; i++) {
 		    	if (PiQ[i] > ALPHAiFinner[i]) {	    		
-		    		out+="Finner's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiFinner[i])+"$.\n\n";
+		    		out+="Finner's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiFinner[i])+"$.\n\n";
 		    		parar = true;
 		    	}
 		    }
 	    }
 	    if(Li){
 		    if (PiQ[nAlgorithms-2] < 0.05) {
-		    	out+="Li's procedure rejects those hypotheses that have a p-value $\\le"+0.05+"$.\n\n";
+		    	out+="Li's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+0.05+"$.\n\n";
 		    } else {
-		    	out+="Li's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHA2Li)+"$.\n\n";	    	
+		    	out+="Li's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHA2Li)+"$.\n\n";	    	
 		    }
 	    }
 

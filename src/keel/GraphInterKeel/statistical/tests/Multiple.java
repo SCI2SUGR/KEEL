@@ -394,14 +394,14 @@ public class Multiple {
     	/*Compute the rejected hipotheses for each test*/
     	
     	if(Nemenyi){
-    		out+="Nemenyi's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.05/(double)(order.length))+"$.\n\n";
+    		out+="Nemenyi's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(0.05/(double)(order.length))+"$.\n\n";
     	}
     	
     	if(Holm){
     		parar = false;
     		for (i=0; i<order.length && !parar; i++) {
     			if (Pi[i] > ALPHAiHolm[i]) {	    		
-    		    	out+="Holm's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+    		    	out+="Holm's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
     		    	parar = true;
     			}
     		}
@@ -411,7 +411,7 @@ public class Multiple {
     		parar = false;
     		for (i=0; i<order.length && !parar; i++) {
     			if (Pi[i] <= ALPHAiShaffer[i]) {	    		
-    				out+="Shaffer's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiShaffer[i])+"$.\n\n";
+    				out+="Shaffer's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiShaffer[i])+"$.\n\n";
     				parar = true;
     			}
     		}
@@ -556,7 +556,7 @@ public class Multiple {
     	/*Compute the rejected hipotheses for each test*/
     	
     	if(Nemenyi){
-    		out+="Nemenyi's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(0.10/(double)(order.length))+"$.\n\n";
+    		out+="Nemenyi's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(0.10/(double)(order.length))+"$.\n\n";
     	}  
     	
     	if(Holm){
@@ -564,7 +564,7 @@ public class Multiple {
     	
     		for (i=0; i<order.length && !parar; i++) {
     			if (Pi[i] > ALPHAiHolm[i]) {	    		
-    				out+="Holm's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
+    				out+="Holm's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiHolm[i])+"$.\n\n";
     				parar = true;
     			}
     		}
@@ -574,7 +574,7 @@ public class Multiple {
     		parar = false;
     		for (i=0; i<order.length && !parar; i++) {
     			if (Pi[i] <= ALPHAiShaffer[i]) {	    		
-    				out+="Shaffer's procedure rejects those hypotheses that have a p-value $\\le"+nf6.format(ALPHAiShaffer[i])+"$.\n\n";
+    				out+="Shaffer's procedure rejects those hypotheses that have an unadjusted p-value $\\le"+nf6.format(ALPHAiShaffer[i])+"$.\n\n";
     				parar = true;
     			}
     		}
