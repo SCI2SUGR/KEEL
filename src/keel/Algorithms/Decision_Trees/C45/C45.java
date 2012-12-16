@@ -222,18 +222,18 @@ public class C45 extends Algorithm {
                     if (options.sval.equalsIgnoreCase("TRUE")) {
                         prune = true;
                     } else {
-                        //prune = false;
-                        prune = true;
+                        prune = false;
+                        //prune = true;
                     }
                 }
 
                 /* Reads the confidence parameter */
                 if (options.sval.equalsIgnoreCase("confidence")) {
-                    if (!prune) {
-                        throw new Exception(
-                                "Doesn't make sense to change confidence for prune "
-                                + "tree!");
-                    }
+                    //if (!prune) {
+                    //   throw new Exception(
+                    //            "Doesn't make sense to change confidence for prune "
+                    //            + "tree!");
+                }
 
                     options.nextToken();
                     options.nextToken();

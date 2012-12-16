@@ -228,7 +228,7 @@ public class Cut {
 
         if (minCut <= minItemsets) {
             minCut = minItemsets;
-        } else if (minCut > 5) {
+        } else if (minCut > 25) {
             minCut = 25;
         }
 
