@@ -233,7 +233,7 @@ public class C45 extends Algorithm {
                     //   throw new Exception(
                     //            "Doesn't make sense to change confidence for prune "
                     //            + "tree!");
-                }
+                		//}
 
                     options.nextToken();
                     options.nextToken();
