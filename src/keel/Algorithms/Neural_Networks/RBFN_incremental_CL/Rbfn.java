@@ -691,13 +691,13 @@ public class Rbfn {
 			patternInputs = X[numVectorSeleccionado];
 
 			patternOutputs = Y[numVectorSeleccionado];
-			/*
-			 * rbf=new Rbf(nInptuts,nOutputs);
-			 * 
-			 * rbf.setParam(patternInputs, 1.0*delta , patternOutputs);
-			 * 
-			 * this.insertRbf((Rbf)rbf.clone());
-			 */
+
+			rbf=new Rbf(nInptuts,nOutputs);
+
+			rbf.setParam(patternInputs, 1.0*delta , patternOutputs);
+
+			this.insertRbf((Rbf)rbf.clone());
+			
 			for (i = 0; i < ndata; i++) {
 				aleat[i] = i;
 			}

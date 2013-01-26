@@ -60,8 +60,8 @@ public class Rbf implements Cloneable {
     int vectors;
     double radius;
     double [] centre;
-    double [] weight;
-    String idRbf;
+    public double [] weight;
+    public String idRbf;
 
 
 
