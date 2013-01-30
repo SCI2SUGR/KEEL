@@ -1993,13 +1993,17 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             helpContent.muestraURL(this.getClass().getResource("/contextualHelp/data_set_exp.html"));
 
             this.expType = Experiments.UNSUPERVISED;
-            if (kfoldButton.isSelected()) {
+            /*if (kfoldButton.isSelected()) {
                 cvType = Experiments.PK;
             } else if (fivetwoButton.isSelected()) {
                 cvType = Experiments.P5X2;
             } else {
                 cvType = Experiments.PnoVal;
-            }
+            }*/
+
+            //for unsupervised experiments, the validation scheme is "Without validation"
+            cvType = Experiments.PnoVal;
+
             //we want to prevent that this panel will ever show again
             initialPanel1.setVisible(false);
             //now, we load the datasets and the different methods
