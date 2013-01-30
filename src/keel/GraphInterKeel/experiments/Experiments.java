@@ -36,9 +36,9 @@
  * Modified on 12-may-2009
  * @author Ignacio Robles
  * @author Julian Luengo
- * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of Córdoba) 7/07/2009
+ * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of CÃ³rdoba) 7/07/2009
  * @author Modified by Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
- * @author Modified by Joaquín Derrac 4-7-2010 (University of Granada)
+ * @author Modified by JoaquÃ­n Derrac 4-7-2010 (University of Granada)
  */
 package keel.GraphInterKeel.experiments;
 
@@ -4788,7 +4788,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         boolean bResState;
         bResState = true;
         //Creo State i progresso per totes les etapes fent & (tela marinera!!)
-        //Comprobo que algun state és true i guardo a bResState
+        //Comprobo que algun state Ã©s true i guardo a bResState
         return bResState;
     }
 
@@ -6076,7 +6076,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         String relationBBDD = ds.dsc.getName();
 
         t.getActivePair().writeTestScripts(path_tmp, "config", t.dsc.getName(),
-                problema, conj, "result", true, fullName, relationBBDD);
+                problema, conj, "result", true, fullName, relationBBDD,expType);
 
 
         /*System.out.println("After save scripts " +

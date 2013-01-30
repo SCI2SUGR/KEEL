@@ -35,8 +35,8 @@
  *
  * @author Salvador Garcia Lopez
  * @author Julian Luengo Martin (modifications 19/04/2009)
- * @author joaquín Derrac Rus (modifications 6/05/2009)
- * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of Córdoba) 7/07/2009
+ * @author joaquÃ­n Derrac Rus (modifications 6/05/2009)
+ * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of CÃ³rdoba) 7/07/2009
  * @author Modified Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
  * @version 1.0
  * @since JDK1.5
@@ -726,7 +726,7 @@ public class Parameters implements Serializable {
      * @param pre True if this is a preprocess method
      * @param valType Type of validation (0- k-Fold  1- 5x2 2- None)
      * @param numFolds Number of folds in cross validation
-     * @param expType Type of experiment
+     * @param extType Type of experiment
      */
     public void writeScripts(String path, String baseName, String methodName,
             String problemName, Vector set, String result,
@@ -919,7 +919,8 @@ public class Parameters implements Serializable {
                  **************************************************************/
                 if (pre) {
 
-                    if (methodName.endsWith("-D") || methodName.endsWith("-FS") || methodName.endsWith("-TR")) {
+                    if (methodName.endsWith("-D") || methodName.endsWith("-FS") || methodName.endsWith("-TR")
+					|| methodName.endsWith("-MV")|| methodName.endsWith("-F")) {
                         //using modified training data as validation file
                         tra_val.add(outputs_tra.elementAt(i));
                         tst_val.add(outputs_tst.elementAt(i));
@@ -1056,7 +1057,7 @@ public class Parameters implements Serializable {
             String methodName,
             String problemName, Vector set,
             String result,
-            boolean pre, String fullName, String relationBBDD) {
+            boolean pre, String fullName, String relationBBDD, int type) {
 
 
         // Only for tests
@@ -1084,6 +1085,10 @@ public class Parameters implements Serializable {
         for (j = 0; j < n_exe; j++) {
             fichero = "algorithm = " + algorithmType + "\n";
             fichero += "inputData = ";
+			
+			if(type == 2) {
+              fichero += "\"../datasets/" + relationBBDD + "/" + relationBBDD + ".dat\" ";
+             } 
 
 
             // Changed: LSR 070205
