@@ -36,6 +36,7 @@
  * @author Writen by Antonio J. Rivera Rivas (University of Jaén) 03/03/2004
  * @author Modified by Víctor Rivas (University of Jaén) 23/06/2006
  * @author Modified by María Dolores Pérez Godoy (University of Jaén) 17/12/2008
+ * @author Modified by Julian Luengo (University of Granada) 04/02/2013 
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -74,6 +75,12 @@ public class Rbfn {
 	/** Hashtable to store rbf neurons */
 
 	Hashtable rbfn = new Hashtable();
+	
+	/** Exponential factor involved in delta decay */
+	double tau = 17;
+	
+	/** Minimum delta value that must be attained in the RAN algorithm */
+	double delta_min;
 
 	/**
 	 * <p> 
@@ -679,14 +686,15 @@ public class Rbfn {
 			int nOutp = nOutputs;
 			int M = 60;
 			double thres = 0.00001;
-			Rbf rbf;
+			Rbf rbf = null;
 
 			int cont = 0;
 			int[] aleat = new int[ndata];
+			delta_min = delta/10;
 
 			// Inserts first RBF
 
-			numVectorSeleccionado = (int) Randomize.Randint(0, ndata - 1);
+			/*numVectorSeleccionado = (int) Randomize.Randint(0, ndata - 1);
 
 			patternInputs = X[numVectorSeleccionado];
 
@@ -696,7 +704,13 @@ public class Rbfn {
 
 			rbf.setParam(patternInputs, 1.0*delta , patternOutputs);
 
-			this.insertRbf((Rbf)rbf.clone());
+			this.insertRbf((Rbf)rbf.clone());*/
+			
+			//At first, the net is empty and its error is maximum
+			errori = Double.MAX_VALUE;
+			
+			//The first neuron always has a width equal to delta
+			dist = delta;
 			
 			for (i = 0; i < ndata; i++) {
 				aleat[i] = i;
@@ -712,26 +726,29 @@ public class Rbfn {
 
 				patternOutputs = Y[numVectorSeleccionado];
 
-				outputNet = this.evaluationRbfn(patternInputs);
+				if(nRbfs>0){ 
+					outputNet = this.evaluationRbfn(patternInputs);
 
-				error = this.errorRbfn(patternOutputs, outputNet);
+					error = this.errorRbfn(patternOutputs, outputNet);
 
-				key = this.rbfNearest(patternInputs);
+					key = this.rbfNearest(patternInputs);
 
-				rbf = getRbf(key);
+					rbf = getRbf(key);
 
-				dist = rbf.euclideaDist(patternInputs);
+					dist = rbf.euclideaDist(patternInputs);
 
-				errori = 0;
+					errori = 0;
 
-				for (i = 0; i < nOutputs; i++)
+					for (i = 0; i < nOutputs; i++){
 
-					if (Math.abs(error[i]) > epsilon)
-						errori = error[i];
+						if (Math.abs(error[i]) > epsilon)
+							errori = error[i];
+					}
+				}
 
 				// if(delta < delta*nInptuts*Math.log10(delta*nRbfs/nInptuts))
 				// factor = delta*nInptuts*Math.log10(delta*nRbfs/nInptuts);
-				if ((Math.abs(errori) > epsilon) && (dist > delta)) { // Major
+				if ( (nRbfs==0) || ((Math.abs(errori) > epsilon) && (dist > delta)) ){ // Major
 					// Condition
 
 					// Inserts a new Rbf
@@ -781,7 +798,13 @@ public class Rbfn {
 
 					cont++;
 
-				}/*
+				}
+				//adjust the delta value as Platt indicates
+				if(delta > delta_min){
+					delta = Math.max(delta_min, delta * Math.exp(-1/tau));
+				}
+				
+				/*
 					 * //perform prunning of hidden units
 					 * vect=this.getIndex(); double [] salidas = new
 					 * double[nRbfs]; for (i=0;i<nRbfs;i++){
