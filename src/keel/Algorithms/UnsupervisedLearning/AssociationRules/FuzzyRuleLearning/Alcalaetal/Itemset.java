@@ -176,6 +176,16 @@ public class Itemset {
     
     return min;
   }
+
+  public void changeIdAttr(FuzzyDataset fuzzyDataset) {
+    int i;
+	Item item;
+	   
+    for (i=0; i < this.itemset.size(); i++) {
+		item = this.itemset.get(i);
+		item.setIDAttribute(fuzzyDataset.getAttrib(item.getIDAttribute()));
+    }
+  }
   
   /**
    * <p>

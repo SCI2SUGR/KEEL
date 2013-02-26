@@ -103,9 +103,7 @@ public class AlcalaetalProcess {
 	  this.nGenerations = 0;
 	  this.evaluationStep = (int) Math.ceil(nEvaluations * 0.05);
 	  this.idOfAttributes = dataset.getIDsOfNumericAttributes();
-          if (this.idOfAttributes.size() == 0){
-              this.idOfAttributes = dataset.getIDsOfNominalAttributes();
-          }
+
 	  this.initialL = (this.idOfAttributes.size() * nFuzzyRegionsForNumericAttributes * nBitsGene) / 4.0;
 	  
       this.countOneFrequentItemsets = 0;
@@ -230,22 +228,22 @@ public class AlcalaetalProcess {
 	  for (attr=0; attr < this.idOfAttributes.size(); attr++) {
 		  id_attr = this.idOfAttributes.get(attr);
 		  
-		  rank = Math.abs(this.dataset.getMax(id_attr) - this.dataset.getMin(id_attr));
+		  rank = Math.abs(this.dataset.getMaxValue(id_attr) - this.dataset.getMinValue(id_attr));
 		  mark = rank / (this.nFuzzyRegionsForNumericAttributes - 1.0);
 		  
 		  fuzzy_regions = new FuzzyRegion[ this.nFuzzyRegionsForNumericAttributes ];
 		  
-		  for (id_region=0; id_region < fuzzy_regions.length; id_region++) {
+		  for (id_region=0; id_region < this.nFuzzyRegionsForNumericAttributes; id_region++) {
 			  fuzzy_regions[id_region] = new FuzzyRegion();
 			  
-			  value = this.dataset.getMin(id_attr) + mark * (id_region - 1);
-			  fuzzy_regions[id_region].setX0( this.setValue(value, this.dataset.getMax(id_attr)) );
+			  value = this.dataset.getMinValue(id_attr) + mark * (id_region - 1);
+			  fuzzy_regions[id_region].setX0( this.setValue(value, this.dataset.getMaxValue(id_attr)) );
 			  
-			  value = this.dataset.getMin(id_attr) + mark * id_region;
-			  fuzzy_regions[id_region].setX1( this.setValue(value, this.dataset.getMax(id_attr)) );
+			  value = this.dataset.getMinValue(id_attr) + mark * id_region;
+			  fuzzy_regions[id_region].setX1( this.setValue(value, this.dataset.getMaxValue(id_attr)) );
 			  
-			  value = this.dataset.getMin(id_attr) + mark * (id_region + 1);
-			  fuzzy_regions[id_region].setX3( this.setValue(value, this.dataset.getMax(id_attr)) );
+			  value = this.dataset.getMinValue(id_attr) + mark * (id_region + 1);
+			  fuzzy_regions[id_region].setX3( this.setValue(value, this.dataset.getMaxValue(id_attr)) );
 			  
 			  fuzzy_regions[id_region].setY(1.0);
 			  fuzzy_regions[id_region].setLabel("LABEL_" + id_region);
@@ -271,14 +269,14 @@ public class AlcalaetalProcess {
 	  
 	  for (attr=0; attr < this.dataset.getIDsOfNominalAttributes().size(); attr++) {
 		  id_attr = this.dataset.getIDsOfNominalAttributes().get(attr);
-		  fuzzy_regions = new FuzzyRegion[((int) this.dataset.getMax(id_attr)) + 1];
+		  fuzzy_regions = new FuzzyRegion[this.dataset.nValueNominal(id_attr)];
 		  
 		  for (id_region=0; id_region < fuzzy_regions.length; id_region++) {
 			  fuzzy_regions[id_region] = new FuzzyRegion();
 			  
-			  fuzzy_regions[id_region].setX0(this.dataset.getMin(id_attr) + id_region - 1);
-			  fuzzy_regions[id_region].setX1(this.dataset.getMin(id_attr) + id_region);
-			  fuzzy_regions[id_region].setX3(this.dataset.getMin(id_attr) + id_region + 1);
+			  fuzzy_regions[id_region].setX0(id_region - 1);
+			  fuzzy_regions[id_region].setX1(id_region);
+			  fuzzy_regions[id_region].setX3(id_region + 1);
 			  
 			  fuzzy_regions[id_region].setY(1.0);
 			  fuzzy_regions[id_region].setLabel(this.dataset.getNominalValue(id_attr, id_region));
@@ -698,7 +696,7 @@ public class AlcalaetalProcess {
 					  best_itemset = itemset;
 				  }
 			  }
-			  
+// fuzzyDataset.getAttrib(id_attr)			  
 			  if (max_support >= this.minSupport) one_frequent_itemsets.add(best_itemset);
 		  }
 	  }
@@ -772,8 +770,10 @@ public class AlcalaetalProcess {
 			  consequent = new Itemset();
 			  consequent.add(i_item);
 			  consequent.calculateSupport(fuzzyDataset);
-                          cons_sup = consequent.getSupport();
-                          interest = rule_conf * (rule_sup/cons_sup) * (1 - (rule_sup/this.dataset.getnTrans()));
+			  cons_sup = consequent.getSupport();
+			  interest = rule_conf * (rule_sup/cons_sup) * (1 - (rule_sup/this.dataset.getnTrans()));
+			  antecedent.changeIdAttr(fuzzyDataset);
+			  consequent.changeIdAttr(fuzzyDataset);
 			  this.associationRulesSet.add( new AssociationRule(antecedent, consequent, rule_sup, ant_sup, rule_conf,cons_sup,interest) );
 			  
 			  if (! generated_rules) generated_rules = true;

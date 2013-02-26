@@ -68,7 +68,7 @@ public class myDataset {
 	 * <p>
 	 * Initialize a new set of instances
 	 * </p>
-	 *
+	 * @param nFuzzyRegionsForNumericAttributes The number of fuzzy regions with which numeric attributes are evaluated
 	 */
   public myDataset() {
 	  IS = new InstanceSet();
@@ -159,6 +159,7 @@ public class myDataset {
 	  this.nInputs = Attributes.getInputNumAttributes();
 	  this.nOutputs = Attributes.getOutputNumAttributes();
 	  this.nVars = this.nInputs + this.nOutputs;
+	  System.err.println("Entrada: " + this.nInputs + " Salida: " + this.nOutputs);
 
       // Initialize and fill our own tables
       this.trueTransactions = new double[nTrans][nVars];
@@ -305,7 +306,19 @@ public class myDataset {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getType() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getType() );
   }
-  
+
+  public boolean isNominal(int id_attr) {
+	if (id_attr < this.nInputs) {
+		if (Attributes.getInputAttribute(id_attr).getType() == myDataset.NOMINAL)  return (true);
+		else  return (false);
+	}
+	else {
+		if (Attributes.getOutputAttribute(id_attr - this.nInputs).getType() == myDataset.NOMINAL)  return (true);
+		else  return (false);
+	}
+  }
+
+ 
   /**
    * It returns the nominal value "id_val" within the attribute "id_attr"
    * @param id_attr int Id of the attribute
@@ -317,17 +330,22 @@ public class myDataset {
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getNominalValue(id_val) );
   }
   
-  private double getMaxValue(int id_attr) {
+  public double getMaxValue(int id_attr) {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getMaxAttribute() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getMaxAttribute() );
   }
-  
-  private double getMinValue(int id_attr) {
+
+  public int nValueNominal(int id_attr) {
+	if (id_attr < this.nInputs) return (Attributes.getInputAttribute(id_attr).getNumNominalValues());
+	else return (Attributes.getOutputAttribute(id_attr - this.nInputs).getNumNominalValues());
+  }
+
+  public double getMinValue(int id_attr) {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getMinAttribute() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getMinAttribute() );
   }
   
-  private int getNumNominalValues(int id_attr) {
+  public int getNumNominalValues(int id_attr) {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getNumNominalValues() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getNumNominalValues() );
   }

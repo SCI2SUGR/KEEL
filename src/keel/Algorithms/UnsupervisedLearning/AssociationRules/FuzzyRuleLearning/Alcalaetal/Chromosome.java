@@ -164,7 +164,7 @@ public class Chromosome implements Comparable {
 	 * The comparison is achieved by only considering fitness values.
 	 * For this reason, note that this method provides a natural ordering that is inconsistent with equals
 	 * </p>
-	 * @param chr The object to be compared
+	 * @param obj The object to be compared
 	 * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
 	 */
 	public int compareTo(Object chr) {

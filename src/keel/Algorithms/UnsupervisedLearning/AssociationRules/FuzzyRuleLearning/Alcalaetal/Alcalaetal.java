@@ -89,9 +89,9 @@ public class Alcalaetal {
     public Alcalaetal(parseParameters parameters) {
     	
         this.rulesFilename = parameters.getAssociationRulesFile();
-        this.valuesFilename = parameters.getOutputFile(0);
-        this.uniformFuzzyAttributesFilename = parameters.getOutputFile(1);
-        this.adjustedFuzzyAttributesFilename = parameters.getOutputFile(2);
+        this.adjustedFuzzyAttributesFilename = parameters.getOutputFile(0);
+        this.valuesFilename = parameters.getOutputFile(1);
+        this.uniformFuzzyAttributesFilename = parameters.getOutputFile(2);
         this.geneticLearningLogFilename = parameters.getOutputFile(3);
         
         try {
@@ -160,7 +160,7 @@ public class Alcalaetal {
 				for (r=0; r < this.associationRulesSet.size(); r++) {
 					ar = this.associationRulesSet.get(r);
 					
-					rules_writer.println("<rule id=\"" + r + "\">");
+					rules_writer.println("<rule id = \"" + r + "\" >");
 					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + ar.getRuleSupport() + "\" antecedent_support=\"" + ar.getAntecedentSupport() + "\" confidence=\"" + ar.getConfidence() + "\"/>");					
 					rules_writer.println("<antecedents>");			
 					itemset = ar.getAntecedent();
@@ -196,42 +196,71 @@ public class Alcalaetal {
     }
     
     private void createRule(Item item, ArrayList<FuzzyAttribute> fuzzy_attributes, PrintWriter w) {
+		int attr;
+		boolean stop;
     	FuzzyAttribute fuzzy_attr;
     	FuzzyRegion[] fuzzy_regions;
-    	
-    	fuzzy_attr = fuzzy_attributes.get( item.getIDAttribute() );
-    	fuzzy_regions = fuzzy_attr.getFuzzyRegions();
-    	
-		w.print("<attribute name=\"" + trans.getAttributeName( fuzzy_attr.getIdAttr() ) + "\" value=\"");
-		w.print( fuzzy_regions[ item.getIDLabel() ].getLabel() );
-		
-		w.println("\"/>");
+
+		attr = item.getIDAttribute();
+
+		if (this.trans.isNominal(attr)) {
+			w.print("<attribute name = \"" + this.trans.getAttributeName(attr) + "\" value=\"");
+			w.print( ""+ this.trans.getNominalValue(attr, item.getIDLabel()));
+		}
+		else {
+			stop = false;
+			fuzzy_attr = fuzzy_attributes.get(0);
+			for (int i=0; i < fuzzy_attributes.size() && !stop; i++) {
+				fuzzy_attr = fuzzy_attributes.get(i);
+			    if (fuzzy_attr.getIdAttr() == item.getIDAttribute())  stop = true;
+			}
+			fuzzy_regions = fuzzy_attr.getFuzzyRegions();
+			
+			w.print("<attribute name=\"" + trans.getAttributeName( fuzzy_attr.getIdAttr() ) + "\" value=\"");
+			w.print( fuzzy_regions[ item.getIDLabel() ].getLabel() );
+		}
+		w.println("\" />");
     }
     
     private void saveFuzzyAttributes(String fuzzy_attrs_fname, ArrayList<FuzzyAttribute> fuzzy_attributes) throws FileNotFoundException {
 		int attr, region, id_attr;
+		boolean stop;
     	FuzzyRegion[] fuzzy_regions;
+    	FuzzyAttribute fuzzy_attr;
 		PrintWriter fuzzy_attrs_writer = new PrintWriter(fuzzy_attrs_fname);
 		
 		fuzzy_attrs_writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		fuzzy_attrs_writer.println("<fuzzy_attributes>");
-		
-		for (attr=0; attr < fuzzy_attributes.size(); attr++) {
-			id_attr = fuzzy_attributes.get(attr).getIdAttr();
-			fuzzy_attrs_writer.println("<attribute name=\"" + Attributes.getAttribute(id_attr).getName() + "\">");
-			fuzzy_regions = fuzzy_attributes.get(attr).getFuzzyRegions();
-			
-			for (region=0; region < fuzzy_regions.length; region++) {
-				fuzzy_attrs_writer.print("<membership_function label=\"" + fuzzy_regions[region].getLabel() + "\" ");
-				fuzzy_attrs_writer.print("x0=\"" + fuzzy_regions[region].getX0() + "\" ");
-				fuzzy_attrs_writer.print("x1=\"" + fuzzy_regions[region].getX1() + "\" ");
-				fuzzy_attrs_writer.println("x3=\"" + fuzzy_regions[region].getX3() + "\"/>");
+		fuzzy_attrs_writer.println("<data_base>");
+
+		for (attr=0; attr < this.trans.getnVars(); attr++) {
+			if (this.trans.isNominal(attr)) {
+				fuzzy_attrs_writer.println("<attribute name = \"" + this.trans.getAttributeName(attr) + "\" nValues = \"" + this.trans.nValueNominal(attr) + "\" Type = \"NOMINAL\" >");
+				
+				for (region=0; region < this.trans.nValueNominal(attr); region++) {
+					fuzzy_attrs_writer.println("<value \"" + this.trans.getNominalValue(attr, region) + "\" />");
+				}
+			}
+			else {
+				fuzzy_attrs_writer.println("<attribute name = \"" + this.trans.getAttributeName(attr) + "\" nValues = \"" + this.nFuzzyRegionsForNumericAttributes + "\" Type = \"REAL\" >");
+				stop = false;
+				fuzzy_attr = fuzzy_attributes.get(0);
+				for (int i=0; i < fuzzy_attributes.size() && !stop; i++) {
+					fuzzy_attr = fuzzy_attributes.get(i);
+					if (fuzzy_attr.getIdAttr() == attr)  stop = true;
+				}		
+				fuzzy_regions = fuzzy_attr.getFuzzyRegions();
+				for (region=0; region < fuzzy_regions.length; region++) {
+					fuzzy_attrs_writer.print("<value \"" + fuzzy_regions[region].getLabel() + "\" ");
+					fuzzy_attrs_writer.print("\"" + fuzzy_regions[region].getX0() + "\" ");
+					fuzzy_attrs_writer.print("\"" + fuzzy_regions[region].getX1() + "\" ");
+					fuzzy_attrs_writer.println("\"" + fuzzy_regions[region].getX3() + "\" />");
+				}
 			}
 			
 			fuzzy_attrs_writer.println("</attribute>");
 		}
 		
-		fuzzy_attrs_writer.println("</fuzzy_attributes>");
+		fuzzy_attrs_writer.println("</data_base>");
 		fuzzy_attrs_writer.close();
     }
     
