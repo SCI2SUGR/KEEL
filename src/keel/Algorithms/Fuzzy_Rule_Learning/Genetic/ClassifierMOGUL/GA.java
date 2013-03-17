@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
 /**
  * <p>
  * @author Written by Jesus Alcala Fernandez (University of Granada) 01/01/2004
- * @author Modified by Francisco JosÈ Berlanga (University of JaÈn) 09/12/2008 
+ * @author Modified by Francisco Jos√© Berlanga (University of Ja√©n) 09/12/2008 
  * @version 1.0
  * @since JDK 1.6
  * </p>
@@ -47,7 +47,7 @@ class GA {
  * This class implements a generational genetic algorithm
  * </p>
  */
- 	
+ 
     public double prob_cruce, prob_mutacion;
     public int Mu_next, Trials;
     public double Best_current_perf;
@@ -170,7 +170,7 @@ class GA {
             }
 
             for (j = total_reglas; j < n_genes; j++) {
-                aux = Randomize.RandintClosed(0, 3);
+                aux = Randomize.RandintClosed(0, 2);
                 switch (aux) {
                 case 0:
                     New[i].GeneSel[j] = '0';
@@ -208,7 +208,7 @@ class GA {
         /* Rest of the chomosomes */
         for (i = 13; i < long_poblacion; i++) {
             for (j = 0; j < total_reglas; j++) {
-                if (Randomize.RandintClosed(0, 2) == 0) {
+                if (Randomize.RandintClosed(0, 1) == 0) {
                     New[i].GeneSel[j] = '0';
                 } else {
                     New[i].GeneSel[j] = '1';
@@ -216,7 +216,7 @@ class GA {
             }
 
             for (j = total_reglas; j < n_genes; j++) {
-                aux = Randomize.RandintClosed(0, 3);
+                aux = Randomize.RandintClosed(0, 2);
                 switch (aux) {
                 case 0:
                     New[i].GeneSel[j] = '0';
@@ -283,13 +283,13 @@ class GA {
         /* we complete the population if necessary */
         if (k != long_poblacion) {
             for (; k < long_poblacion; k++) {
-                sample[k] = Randomize.RandintClosed(0, long_poblacion);
+                sample[k] = Randomize.RandintClosed(0, long_poblacion-1);
             }
         }
 
         /* we shuffle the selected chromosomes */
         for (i = 0; i < long_poblacion; i++) {
-            j = Randomize.RandintClosed(i, long_poblacion);
+            j = Randomize.RandintClosed(i, long_poblacion-1);
             temp = sample[j];
             sample[j] = sample[i];
             sample[i] = temp;
@@ -321,10 +321,10 @@ class GA {
             dad = mom + 1;
 
             /* we generate the 2 crossing points */
-            xpoint1 = Randomize.RandintClosed(0, n_genes);
+            xpoint1 = Randomize.RandintClosed(0, n_genes-1);
 
             if (xpoint1 != n_genes - 1) {
-                xpoint2 = Randomize.RandintClosed(xpoint1 + 1, n_genes);
+                xpoint2 = Randomize.RandintClosed(xpoint1 + 1, n_genes-1);
             }
 
             else {
@@ -375,7 +375,7 @@ class GA {
                     case 1:
                     case 2:
                         do {
-                            aux = Randomize.RandintClosed(0, 3);
+                            aux = Randomize.RandintClosed(0, 2);
                             switch (aux) {
                             case 0:
                                 nuevo = '0';
@@ -487,4 +487,3 @@ class GA {
         return (New[Best_guy].Perf);
     }
 }
-

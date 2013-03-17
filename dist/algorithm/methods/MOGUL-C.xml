@@ -125,18 +125,22 @@
     <type>integer</type>
     <domain>
       <lowerB>20</lowerB>
-      <upperB>200</upperB>
+      <upperB>2000</upperB>
     </domain>    
     <default>500</default>
   </parameter>
   <parameter>
     <name>Population Size SELECTION</name>
     <type>integer</type>
+      <lowerB>10</lowerB>
+      <upperB>200</upperB>
     <default>61</default>
   </parameter>
   <parameter>
     <name>Tau parameter for the minimun maching degree required to the KB SELECTION</name>
     <type>real</type>
+      <lowerB>0.0</lowerB>
+      <upperB>100.0</upperB>
     <default>1.5</default>
   </parameter>
   <parameter>
