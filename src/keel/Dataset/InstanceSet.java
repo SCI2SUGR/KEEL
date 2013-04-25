@@ -149,6 +149,8 @@ public class InstanceSet {
   public void setAttributesAsNonStatic (){
 	attributes = new InstanceAttributes();
 	attributes.copyStaticAttributes();
+	
+	storeAttributesAsNonStatic = true;
   }//end setAttributesAsNonStatic
 
 /**
@@ -578,7 +580,7 @@ public class InstanceSet {
     
 	if ( storeAttributesAsNonStatic && attributes != null ){
 		System.out.println ("Removing the attribute");
-    	if (!attributes.removeAttribute(inputAtt,whichAtt) || ! tSet.attributes.removeAttribute(inputAtt,whichAtt) ) return false;
+    	if (!attributes.removeAttribute(inputAtt,whichAtt) || (tSet != null && ! tSet.attributes.removeAttribute(inputAtt,whichAtt)) ) return false;
 	}
 	else{
     	if (!Attributes.removeAttribute(inputAtt,whichAtt)) return false;
