@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyAprioriMS;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
 /**
  * <p>
@@ -52,7 +52,6 @@ public class parseParameters {
     private String algorithmName;
     private String transactionsFile;
     private ArrayList <String> inputFiles;
-    private String rulesFile;
     private ArrayList <String> outputFiles;
     private ArrayList <String> parameters;
 
@@ -121,8 +120,7 @@ public class parseParameters {
     private void readOutputFiles(StringTokenizer line){
         String new_line = line.nextToken(); //We read the input data line
         StringTokenizer data = new StringTokenizer(new_line, " = \" ");
-        data.nextToken(); //inputFile
-        rulesFile = data.nextToken();
+        data.nextToken(); //outputFile
         while(data.hasMoreTokens()){
             outputFiles.add(data.nextToken());
         }
@@ -149,10 +147,6 @@ public class parseParameters {
 
     public String getTransactionsInputFile(){
         return this.transactionsFile;
-    }
-
-    public String getAssociationRulesFile(){
-        return this.rulesFile;
     }
 
     public String getAlgorithmName(){

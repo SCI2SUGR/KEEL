@@ -363,6 +363,24 @@ public class myDataset {
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getType() );
   }
   
+  public String getAttributeTypeString(int id_attr) {
+	if (this.getAttributeType(id_attr) == myDataset.NOMINAL)  return ("NOMINAL");
+	else if (this.getAttributeType(id_attr) == myDataset.INTEGER)  return ("INTEGER");
+	else return ("REAL");
+  }
+
+  public boolean isNominal(int id_attr) {
+	if (id_attr < this.nInputs) {
+		if (Attributes.getInputAttribute(id_attr).getType() == myDataset.NOMINAL)  return (true);
+		else  return (false);
+	}
+	else {
+		if (Attributes.getOutputAttribute(id_attr - this.nInputs).getType() == myDataset.NOMINAL)  return (true);
+		else  return (false);
+	}
+  }
+
+
   /**
    * It returns the nominal value "id_val" within the attribute "id_attr"
    * @param id_attr int Id of the attribute

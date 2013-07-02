@@ -120,7 +120,7 @@ public class Item implements Comparable {
    * <p>
    * It compares an item with another one in order to accomplish ordering later.
    * </p>
-   * @param item The object to be compared
+   * @param obj The object to be compared
    * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
    */
   public int compareTo(Object item) {

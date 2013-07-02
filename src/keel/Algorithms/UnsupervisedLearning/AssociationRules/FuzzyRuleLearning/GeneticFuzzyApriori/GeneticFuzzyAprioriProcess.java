@@ -100,11 +100,7 @@ public class GeneticFuzzyAprioriProcess {
 	  this.nEval = 0;
 	  this.nGenerations = 0;
 	  this.evaluationStep = (int) Math.ceil(nEvaluations * 0.05);
-	  this.idOfAttributes = dataset.getIDsOfNumericAttributes();
-          if (this.idOfAttributes.size() == 0){
-              this.idOfAttributes = dataset.getIDsOfNominalAttributes();
-          }
-	  
+	  this.idOfAttributes = dataset.getIDsOfNumericAttributes();  
       this.countOneFrequentItemsets = 0;
       this.countFrequentItemsets = 0;
       this.associationRulesSet = new ArrayList<AssociationRule>();
@@ -282,8 +278,7 @@ public class GeneticFuzzyAprioriProcess {
 			  id_attr = this.idOfAttributes.get(g);
 			  
 			  for (m=0; m < membership_functions.length; m++) {
-				  membership_functions[m] = new MembershipFunction();
-				  
+				  membership_functions[m] = new MembershipFunction();			  
 				  membership_functions[m].setC( Randomize.RanddoubleClosed(this.dataset.getMin(id_attr), this.dataset.getMax(id_attr)) );
 				  membership_functions[m].setW( Randomize.RanddoubleClosed(0.0, (this.dataset.getMax(id_attr) - this.dataset.getMin(id_attr)) / 2.0) );
 			  }
@@ -687,9 +682,9 @@ public class GeneticFuzzyAprioriProcess {
 		  if (rule_conf >= this.minConfidence) {
 			  consequent = new Itemset();
 			  consequent.add(i_item);
-                          consequent.calculateSupport(fuzzyDataset);
-                          cons_sup = consequent.getSupport();
-                          interest = rule_conf * (rule_sup/cons_sup) * (1 - (rule_sup/this.dataset.getnTrans()));
+              consequent.calculateSupport(fuzzyDataset);
+              cons_sup = consequent.getSupport();
+              interest = rule_conf * (rule_sup/cons_sup) * (1 - (rule_sup/this.dataset.getnTrans()));
 			  this.associationRulesSet.add( new AssociationRule(antecedent, consequent, rule_sup, ant_sup, rule_conf,cons_sup,interest) );
 			  
 			  if (! generated_rules) generated_rules = true;

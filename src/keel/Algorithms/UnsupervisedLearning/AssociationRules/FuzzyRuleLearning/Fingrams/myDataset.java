@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyAprioriMS;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
 /**
  * <p>
@@ -54,6 +54,8 @@ public class myDataset {
   
   private double[][] trueTransactions = null; //true transactions array
   private boolean[][] missing = null; //possible missing values
+  private boolean[] nominal = null; //nominal attributes
+  private boolean[] integer = null; //integer attributes
   private double[] emax; //max value of an attribute
   private double[] emin; //min value of an attribute
 
@@ -68,6 +70,7 @@ public class myDataset {
 	 * <p>
 	 * Initialize a new set of instances
 	 * </p>
+	 * @param nFuzzyRegionsForNumericAttributes The number of fuzzy regions with which numeric attributes are evaluated
 	 */
   public myDataset() {
 	  IS = new InstanceSet();
@@ -96,6 +99,15 @@ public class myDataset {
   public double[] getemin() {
     return emin;
   }
+
+    /**
+     * Output a specific example
+     * @param pos int position (id) of the example in the data-set
+     * @return double[] the attributes of the given example
+     */
+    public double[] getExample(int pos) {
+        return trueTransactions[pos];
+    }
 
   /**
   * It returns the upper bound of the variable
@@ -141,6 +153,24 @@ public class myDataset {
     return missing[i][j];
   }
 
+    /**
+     * This function checks if the attribute value is nominal
+     * @param i int attribute id
+     * @return boolean True is the value is nominal, else it returns false
+     */
+    public boolean isNominal(int i) {
+        return nominal[i];
+    }
+
+    /**
+     * This function checks if the attribute value is integer
+     * @param i int attribute id
+     * @return boolean True is the value is integer, else it returns false
+     */
+    public boolean isInteger(int i) {
+        return integer[i];
+    }
+
   /**
    * It reads the whole input data-set and it stores each transaction in
    * local array
@@ -162,12 +192,14 @@ public class myDataset {
       // Initialize and fill our own tables
       this.trueTransactions = new double[nTrans][nVars];
       missing = new boolean[nTrans][nVars];
+      nominal = new boolean[nVars];
+      integer = new boolean[nVars];
 
       // Maximum and minimum of attributes
       emax = new double[nVars];
       emin = new double[nVars];
-      for (i = 0; i < nVars; i++) {
-      	if ( getAttributeType(i) != myDataset.NOMINAL ) {
+      for (i = 0; i < this.nVars; i++) {
+      	if (this.getAttributeType(i) == Attribute.NOMINAL) {
   			emax[i] = getMaxValue(i);
   			emin[i] = getMinValue(i);
       	}
@@ -175,24 +207,33 @@ public class myDataset {
   			emin[i] = 0;
   			emax[i] = getNumNominalValues(i) - 1;
       	}
+		if (this.getAttributeType(i) == Attribute.NOMINAL) {
+			nominal[i] = true;
+			integer[i] = false;
+		}
+		else if (this.getAttributeType(i) == Attribute.INTEGER) {
+			nominal[i] = false;
+			integer[i] = true;
+		}
+		else {
+			nominal[i] = false;
+			integer[i] = false;
+		}
       }
-      
+
+			   
       // All values are casted into double/integer
       for (i=0; i < nTrans; i++) {
         Instance inst = IS.getInstance(i);
                 
         for (j=0; j < nInputs; j++) {
-        	trueTransactions[i][j] = IS.getInputNumericValue(i, j);
-        	
+        	trueTransactions[i][j] = IS.getInputNumericValue(i, j);       	
         	missing[i][j] = inst.getInputMissingValues(j);
         	if (missing[i][j]) {
         		trueTransactions[i][j] = emin[j] - 1;
         	}
-        }
-		
-		for (k=0; k < nOutputs; k++, j++) {
-			trueTransactions[i][j] = IS.getOutputNumericValue(i, k);
-	    }
+        }	
+		for (k=0; k < nOutputs; k++, j++)  trueTransactions[i][j] = IS.getOutputNumericValue(i, k);
 	  }
     }
     catch (Exception e) {
@@ -304,7 +345,15 @@ public class myDataset {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getType() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getType() );
   }
-  
+
+ /**
+ * It gets the relation name.
+ * @return an String with the realtion name.
+ */
+  public String getRelationName() {
+    return Attributes.getRelationName();
+  }
+
   /**
    * It returns the nominal value "id_val" within the attribute "id_attr"
    * @param id_attr int Id of the attribute
@@ -330,5 +379,82 @@ public class myDataset {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getNumNominalValues() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getNumNominalValues() );
   }
-  
+
+    public int getType(int variable) {
+        if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).INTEGER)   return this.INTEGER;
+        if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).REAL)  return this.REAL;
+        if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).NOMINAL)  return this.NOMINAL;
+
+		return 0;
+    }
+
+    public double [][] returnRanks(){
+      double [][] rangos = new double[this.getnVars()][2];
+      for (int i = 0; i < this.nInputs; i++){
+        if (Attributes.getInputAttribute(i).getNumNominalValues() > 0){
+          rangos[i][0] = 0;
+          rangos[i][1] = Attributes.getInputAttribute(i).getNumNominalValues()-1;
+        }
+		else{
+          rangos[i][0] = Attributes.getInputAttribute(i).getMinAttribute();
+          rangos[i][1] = Attributes.getInputAttribute(i).getMaxAttribute();
+        }
+      }
+      for (int i = 0; i < this.nOutputs; i++){
+        if (Attributes.getOutputAttribute(i).getNumNominalValues() > 0){
+          rangos[i + this.nInputs][0] = 0;
+          rangos[i + this.nInputs][1] = Attributes.getOutputAttribute(i).getNumNominalValues()-1;
+        }
+		else{
+          rangos[i + this.nInputs][0] = Attributes.getOutputAttribute(i).getMinAttribute();
+          rangos[i + this.nInputs][1] = Attributes.getOutputAttribute(i).getMaxAttribute();
+        }
+      }
+      return rangos;
+    }
+
+    public String [] names(){
+      String names[] = new String[nVars];
+      for (int i = 0; i < this.nVars; i++){
+        names[i] = this.getAttributeName(i);
+      }
+
+      return names;
+    }
+
+     public String nameNominal (int variable, int value){
+      if (this.getAttributeType(variable) == Attributes.getAttribute(0).NOMINAL) {
+		  if (variable < this.nInputs)  return Attributes.getInputAttribute(variable).getNominalValue(value);
+		  else  return Attributes.getOutputAttribute(variable - this.nInputs).getNominalValue(value);
+      }
+	  else  return (null);
+    }
+
+     public int posVariable (String variable){
+	  for (int i=0; i < this.nVars; i++) {
+		  if (this.getAttributeName(i).equalsIgnoreCase(variable))  return (i);
+      }
+	  return (-1);
+    }
+
+     public int posValueNominal (int variable, String value){
+	  int i, n;
+      if (this.getAttributeType(variable) == Attributes.getAttribute(0).NOMINAL) {
+		  if (variable < this.nInputs) {
+			  n = Attributes.getInputAttribute(variable).getNumNominalValues();
+			  for (i=0; i < n; i++) {
+				  if (Attributes.getInputAttribute(variable).getNominalValue(i).equalsIgnoreCase(value))  return (i);
+			  }
+		  }
+		  else {
+			  n = Attributes.getOutputAttribute(variable - this.nInputs).getNumNominalValues();
+			  for (i=0; i < n; i++) {
+				  if (Attributes.getOutputAttribute(variable - this.nInputs).getNominalValue(i).equalsIgnoreCase(value))  return (i);
+			  }
+		  }
+      }
+	  return (-1);
+    }
+
+
 }

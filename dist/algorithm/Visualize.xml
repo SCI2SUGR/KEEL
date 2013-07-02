@@ -174,4 +174,33 @@
   	</output>
 	<property>unspecified</property>
   </method>
+  <method>
+    <name>Fingrams</name>
+    <family>Fingrams (fuzzy)</family>
+    <jar_file>Fingrams.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+        <input>
+            <continuous>Yes</continuous>
+            <integer>Yes</integer>
+            <nominal>Yes</nominal>
+            <missing>No</missing>
+            <imprecise>No</imprecise>
+            <multiclass>Yes</multiclass>
+            <multioutput>Yes</multioutput>
+            <nonBalanced>Yes</nonBalanced>
+            <multiinstance>No</multiinstance>
+      </input>
+      <output>
+            <continuous>Yes</continuous>
+            <integer>Yes</integer>
+            <nominal>Yes</nominal>
+            <missing>No</missing>
+            <imprecise>No</imprecise>
+            <multiclass>Yes</multiclass>
+            <multioutput>Yes</multioutput>
+            <nonBalanced>Yes</nonBalanced>
+            <multiinstance>No</multiinstance>
+      </output>
+    <property>unspecified</property>
+    </method>
 </visors_list>

@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyAprioriMS;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
 /**
  * <p>
@@ -57,7 +57,7 @@ public class Main {
     private void execute(String confFile) {
         parameters = new parseParameters();
         parameters.parseConfigurationFile(confFile);
-        GeneticFuzzyAprioriMS method = new GeneticFuzzyAprioriMS(parameters);
+        Fingrams method = new Fingrams(parameters);
         method.execute();
     }
 
@@ -76,13 +76,6 @@ public class Main {
     public static void main(String args[]) {
         Main program = new Main();
         System.out.println("Executing Algorithm.");
-        
-        StopWatch sw = new StopWatch();
-        sw.start();
-        
         program.execute(args[0]);
-        
-        sw.stop();
-        sw.print();
     }
 }

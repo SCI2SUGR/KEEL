@@ -160,7 +160,7 @@ public class Alcalaetal {
 				for (r=0; r < this.associationRulesSet.size(); r++) {
 					ar = this.associationRulesSet.get(r);
 					
-					rules_writer.println("<rule id = \"" + r + "\" >");
+					rules_writer.println("<rule id = \"" + r + "\" />");
 					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + ar.getRuleSupport() + "\" antecedent_support=\"" + ar.getAntecedentSupport() + "\" confidence=\"" + ar.getConfidence() + "\"/>");					
 					rules_writer.println("<antecedents>");			
 					itemset = ar.getAntecedent();
@@ -216,7 +216,7 @@ public class Alcalaetal {
 			}
 			fuzzy_regions = fuzzy_attr.getFuzzyRegions();
 			
-			w.print("<attribute name=\"" + trans.getAttributeName( fuzzy_attr.getIdAttr() ) + "\" value=\"");
+			w.print("<attribute name = \"" + trans.getAttributeName( fuzzy_attr.getIdAttr() ) + "\" value = \"");
 			w.print( fuzzy_regions[ item.getIDLabel() ].getLabel() );
 		}
 		w.println("\" />");
@@ -234,14 +234,14 @@ public class Alcalaetal {
 
 		for (attr=0; attr < this.trans.getnVars(); attr++) {
 			if (this.trans.isNominal(attr)) {
-				fuzzy_attrs_writer.println("<attribute name = \"" + this.trans.getAttributeName(attr) + "\" nValues = \"" + this.trans.nValueNominal(attr) + "\" Type = \"NOMINAL\" >");
+				fuzzy_attrs_writer.println("<attribute name = \"" + this.trans.getAttributeName(attr) + "\" nValues = \"" + this.trans.nValueNominal(attr) + "\" Type = \"" + this.trans.getAttributeTypeString(attr) + "\" >");
 				
 				for (region=0; region < this.trans.nValueNominal(attr); region++) {
 					fuzzy_attrs_writer.println("<value \"" + this.trans.getNominalValue(attr, region) + "\" />");
 				}
 			}
 			else {
-				fuzzy_attrs_writer.println("<attribute name = \"" + this.trans.getAttributeName(attr) + "\" nValues = \"" + this.nFuzzyRegionsForNumericAttributes + "\" Type = \"REAL\" >");
+				fuzzy_attrs_writer.println("<attribute name = \"" + this.trans.getAttributeName(attr) + "\" nValues = \"" + this.nFuzzyRegionsForNumericAttributes + "\" Type = \"" + this.trans.getAttributeTypeString(attr) + "\" >");
 				stop = false;
 				fuzzy_attr = fuzzy_attributes.get(0);
 				for (int i=0; i < fuzzy_attributes.size() && !stop; i++) {

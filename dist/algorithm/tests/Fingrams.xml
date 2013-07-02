@@ -1,0 +1,16 @@
+<algorithm_specification>
+  <name>Fingrams</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <nInput>1</nInput>
+  <parameter>
+    <name>blankThreshold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.0</default>
+  </parameter>
+</algorithm_specification>

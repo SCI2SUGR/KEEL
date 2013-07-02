@@ -101,10 +101,7 @@ public class GeneticFuzzyAprioriDCProcess {
 	  this.nGenerations = 0;
 	  this.evaluationStep = (int) Math.ceil(nEvaluations * 0.05);
 	  this.idOfAttributes = dataset.getIDsOfNumericAttributes();
-          if (this.idOfAttributes.size() == 0){
-              this.idOfAttributes = dataset.getIDsOfNominalAttributes();
-          }
-	  
+  
       this.countOneFrequentItemsets = 0;
       this.countFrequentItemsets = 0;
       this.associationRulesSet = new ArrayList<AssociationRule>();
@@ -233,7 +230,7 @@ public class GeneticFuzzyAprioriDCProcess {
   
   private ArrayList<FuzzyAttribute> runGeneticAlgorithm() {
 	  ArrayList<FuzzyAttribute> best_fuzzy_attrs = null;
-          ArrayList<ArrayList<Chromosome> > setPop;
+          ArrayList<ArrayList<Chromosome>> setPop;
 	  ArrayList<Chromosome> pop;
           int ipop;
 	  
@@ -249,21 +246,18 @@ public class GeneticFuzzyAprioriDCProcess {
 		  System.out.println("done [Evaluations: " + this.nEval + "].");
 		  
 		  while (this.nEval < this.nEvaluations) {
-                          best_fuzzy_attrs = new ArrayList<FuzzyAttribute>();
+              best_fuzzy_attrs = new ArrayList<FuzzyAttribute>();
 			  this.nGenerations++;
 			  System.out.print("Computing Generation #" + this.nGenerations + "... ");
 			  for(ipop=0; ipop < this.idOfAttributes.size(); ipop++){
-                                  pop = setPop.get(ipop);
-                                  this.crossover(pop);
-                                  this.mutate(pop);
-                                  //Gather the sets of membership functions, which has the highest fitness value in its population
-                                  best_fuzzy_attrs.addAll(this.select(pop));
-                          }
-			  System.out.println("done [Evaluations: " + this.nEval + "].");
-		  }
-		  
-		  /*for (int i=0; i < pop.size(); i++)
-		  	System.out.println("Chromosome #" + (i+1) + ":\n" + pop.get(i) + "\n");*/
+				  pop = setPop.get(ipop);
+				  this.crossover(pop, ipop);
+				  this.mutate(pop, ipop);
+				  //Gather the sets of membership functions, which has the highest fitness value in its population
+				  best_fuzzy_attrs.addAll(this.select(pop, ipop));
+				  System.out.println("done [Evaluations: " + this.nEval + "].");
+			  }
+	     }
 	  }
 	  
 	  this.geneticLearningLog += "</genetic_learning>";
@@ -271,7 +265,7 @@ public class GeneticFuzzyAprioriDCProcess {
 	  return best_fuzzy_attrs;
   }
   
-  private ArrayList<ArrayList<Chromosome> > initializePopulation() {
+  private ArrayList<ArrayList<Chromosome>> initializePopulation() {
 	  int p, g, m, id_attr,ipop;
 	  MembershipFunction[] membership_functions;
 	  Gene[] genes;
@@ -282,20 +276,17 @@ public class GeneticFuzzyAprioriDCProcess {
           setPopInit = new ArrayList<ArrayList<Chromosome> >();
           //Iterator<ArrayList<Chromosome> > itr = popInit.iterator();
 	 
-	  membership_functions = new MembershipFunction[ this.nFuzzyRegionsForNumericAttributes ];
-	  genes = new Gene[ 1 ]; //we will evaluate one gen for population
+	      membership_functions = new MembershipFunction[ this.nFuzzyRegionsForNumericAttributes ];
+	      genes = new Gene[ 1 ]; //we will evaluate one gen for population
 	  
           //Randomly generate items populations, each for an item; each individual in a population
           //represents a possible set of membership functions for thats items.
           for(ipop=0; ipop < this.idOfAttributes.size(); ipop++){
               popInit = new ArrayList<Chromosome>();
+              id_attr = this.idOfAttributes.get(ipop);
               for (p=0; p < this.popSize; p++) {
-
-                      id_attr = this.idOfAttributes.get(ipop);
-
                       for (m=0; m < membership_functions.length; m++) {
                               membership_functions[m] = new MembershipFunction();
-
                               membership_functions[m].setC( Randomize.RanddoubleClosed(this.dataset.getMin(id_attr), this.dataset.getMax(id_attr)) );
                               membership_functions[m].setW( Randomize.RanddoubleClosed(0.0, (this.dataset.getMax(id_attr) - this.dataset.getMin(id_attr)) / 2.0) );
                       }
@@ -303,27 +294,26 @@ public class GeneticFuzzyAprioriDCProcess {
                       genes[0] = new Gene(membership_functions);
                       genes[0].sortMembershipFunctions();
 
-
                       chr = new Chromosome(genes);
-                      this.evaluateFitness(chr);
+                      this.evaluateFitness(chr,ipop);
                       popInit.add(chr);
               }
-              setPopInit.add(ipop, popInit);
+              setPopInit.add(popInit);
           }
 	  
 	  return setPopInit;
   }
   
-  private ArrayList<FuzzyAttribute> select(ArrayList<Chromosome> pop) {
+  private ArrayList<FuzzyAttribute> select(ArrayList<Chromosome> pop, int attr) {
 	  Collections.sort(pop);
 	  
 	  while (pop.size() > this.popSize)
 		  pop.remove(this.popSize);
 	  
-	  return ( this.transformIntoFuzzyAttributes( pop.get(0) ) );
+	  return ( this.transformIntoFuzzyAttributes( pop.get(0), attr ) );
   }
   
-  private void crossover(ArrayList<Chromosome> pop) {
+  private void crossover(ArrayList<Chromosome> pop, int attr) {
 	  int i, j, index_best_chr, aux;
 	  double best_fitness, sum_expected_values, rank_min, rank_max, factor, sum, rnd;
 	  double[] expected_values;
@@ -386,7 +376,7 @@ public class GeneticFuzzyAprioriDCProcess {
 		  if (Randomize.Rand() < this.pc) {
 			  for (j=0; j < offsprings.length; j++) {
 				  offsprings[j] = this.mma(j, mom.getGenes(), dad.getGenes());
-				  this.evaluateFitness(offsprings[j]);
+				  this.evaluateFitness(offsprings[j], attr);
 			  }
 			  
 			  Arrays.sort(offsprings);
@@ -401,19 +391,19 @@ public class GeneticFuzzyAprioriDCProcess {
   * It implements the max-min-arithmetical crossover operator
   */
   private Chromosome mma(int index, Gene[] mom_genes, Gene[] dad_genes) {
-	  int g, m;
+	  int m;
 	  Gene[] offspring_genes;
 	  MembershipFunction[] offspring_mfs, mom_mfs, dad_mfs;
 	  
 	  offspring_mfs = new MembershipFunction[ this.nFuzzyRegionsForNumericAttributes ];
 	  offspring_genes = new Gene[ this.idOfAttributes.size() ];
 
-          g=0; //because, each population has only one item
+      
 	  switch(index) {
 	  	case 0:
 	  			
-                                mom_mfs = mom_genes[g].getMembershipFunctions();
-                                dad_mfs = dad_genes[g].getMembershipFunctions();
+                                mom_mfs = mom_genes[0].getMembershipFunctions();
+                                dad_mfs = dad_genes[0].getMembershipFunctions();
 
                                 for (m=0; m < offspring_mfs.length; m++) {
                                         offspring_mfs[m] = new MembershipFunction();
@@ -422,15 +412,15 @@ public class GeneticFuzzyAprioriDCProcess {
                                         offspring_mfs[m].setW(this.d * mom_mfs[m].getW() + (1 - this.d) * dad_mfs[m].getW());
                                 }
 
-                                offspring_genes[g] = new Gene(offspring_mfs);
-                                offspring_genes[g].sortMembershipFunctions();
+                                offspring_genes[0] = new Gene(offspring_mfs);
+                                offspring_genes[0].sortMembershipFunctions();
 	  			
 	  			
 	  			break;
 	  	case 1:
   				
-                                mom_mfs = mom_genes[g].getMembershipFunctions();
-                                dad_mfs = dad_genes[g].getMembershipFunctions();
+                                mom_mfs = mom_genes[0].getMembershipFunctions();
+                                dad_mfs = dad_genes[0].getMembershipFunctions();
 
                                 for (m=0; m < offspring_mfs.length; m++) {
                                         offspring_mfs[m] = new MembershipFunction();
@@ -439,15 +429,15 @@ public class GeneticFuzzyAprioriDCProcess {
                                         offspring_mfs[m].setW((1 - this.d) * mom_mfs[m].getW() + this.d * dad_mfs[m].getW());
                                 }
 
-                                offspring_genes[g] = new Gene(offspring_mfs);
-                                offspring_genes[g].sortMembershipFunctions();
+                                offspring_genes[0] = new Gene(offspring_mfs);
+                                offspring_genes[0].sortMembershipFunctions();
   				
   				
 	  			break;
 	  	case 2:
 	  			
-                                mom_mfs = mom_genes[g].getMembershipFunctions();
-                                dad_mfs = dad_genes[g].getMembershipFunctions();
+                                mom_mfs = mom_genes[0].getMembershipFunctions();
+                                dad_mfs = dad_genes[0].getMembershipFunctions();
 
                                 for (m=0; m < offspring_mfs.length; m++) {
                                         offspring_mfs[m] = new MembershipFunction();
@@ -456,15 +446,15 @@ public class GeneticFuzzyAprioriDCProcess {
                                         offspring_mfs[m].setW( Math.min(mom_mfs[m].getW(), dad_mfs[m].getW()) );
                                 }
 
-                                offspring_genes[g] = new Gene(offspring_mfs);
-                                offspring_genes[g].sortMembershipFunctions();
+                                offspring_genes[0] = new Gene(offspring_mfs);
+                                offspring_genes[0].sortMembershipFunctions();
 				
 	  			
 	  			break;
 	  	case 3:
 	  			
-                                mom_mfs = mom_genes[g].getMembershipFunctions();
-                                dad_mfs = dad_genes[g].getMembershipFunctions();
+                                mom_mfs = mom_genes[0].getMembershipFunctions();
+                                dad_mfs = dad_genes[0].getMembershipFunctions();
 
                                 for (m=0; m < offspring_mfs.length; m++) {
                                         offspring_mfs[m] = new MembershipFunction();
@@ -473,8 +463,8 @@ public class GeneticFuzzyAprioriDCProcess {
                                         offspring_mfs[m].setW( Math.max(mom_mfs[m].getW(), dad_mfs[m].getW()) );
                                 }
 
-                                offspring_genes[g] = new Gene(offspring_mfs);
-                                offspring_genes[g].sortMembershipFunctions();
+                                offspring_genes[0] = new Gene(offspring_mfs);
+                                offspring_genes[0].sortMembershipFunctions();
                                 break;
 	  			
 	  }
@@ -485,7 +475,7 @@ public class GeneticFuzzyAprioriDCProcess {
    /**
   * It implements the one-point mutation operator
   */
-  private void mutate(ArrayList<Chromosome> pop) {
+  private void mutate(ArrayList<Chromosome> pop, int attr) {
 	  int p, id_attr, id_region;
 	  double w, eps;
 	  Chromosome chr;
@@ -512,15 +502,15 @@ public class GeneticFuzzyAprioriDCProcess {
 			  }
 			  else membership_functions[id_region].setW(w + eps);
 			  
-			  this.evaluateFitness(chr);
+			  this.evaluateFitness(chr, attr);
 			  
 			  pop.add(chr);
 		  }
 	  }
   }
   
-  private void evaluateFitness(Chromosome c) {
-	  int g, id_attr, num_one_frequent_itemsets;
+  private void evaluateFitness(Chromosome c, int attr) {
+	  int id_attr, num_one_frequent_itemsets;
 	  double suitability, fitness;
 	  Gene[] genes;
           ArrayList<Itemset> OneFrequentItemset;
@@ -530,13 +520,13 @@ public class GeneticFuzzyAprioriDCProcess {
 	  genes = c.getGenes();
 	  suitability = 0.0;
 	  
-	  g=0; //because each population has only one item
-          id_attr = this.idOfAttributes.get(g);
-          suitability += ( genes[g].calculateOverlapFactor() + genes[g].calculateCoverageFactor(this.dataset.getMin(id_attr), this.dataset.getMax(id_attr)) );
+	      //because each population has only one item
+          id_attr = this.idOfAttributes.get(attr);
+          suitability += ( genes[0].calculateOverlapFactor() + genes[0].calculateCoverageFactor(this.dataset.getMin(id_attr), this.dataset.getMax(id_attr)) );
 	  
 
-          OneFrequentItemset = this.generateOneFrequentItemsets( new FuzzyDataset(this.dataset, this.transformIntoFuzzyAttributes(c) ), false);
-	  num_one_frequent_itemsets = OneFrequentItemset.size();
+          OneFrequentItemset = this.generateOneFrequentItemsets( new FuzzyDataset(this.dataset, this.transformIntoFuzzyAttributes(c, attr) ), false);
+	      num_one_frequent_itemsets = OneFrequentItemset.size();
 
           sumFuzzySupport = 0.0;
           for (i=0; i< num_one_frequent_itemsets; i++){
@@ -561,8 +551,8 @@ public class GeneticFuzzyAprioriDCProcess {
 	  this.geneticLearningLog += "suitability=\"" + suitability + "\"/>\n";
   }
   
-  private ArrayList<FuzzyAttribute> transformIntoFuzzyAttributes(Chromosome c) {
-	  int g, m;
+  private ArrayList<FuzzyAttribute> transformIntoFuzzyAttributes(Chromosome c, int attr) {
+	  int m;
 	  Gene[] genes;
 	  MembershipFunction[] membership_functions;
 	  FuzzyRegion[] fuzzy_regions;
@@ -571,24 +561,22 @@ public class GeneticFuzzyAprioriDCProcess {
 	  fuzzy_attributes = new ArrayList<FuzzyAttribute>();
 	  genes = c.getGenes();
 
-          g = 0; //because each chromosome has only one item
-	  //for (g=0; g < genes.length; g++) {
-		  membership_functions = genes[g].getMembershipFunctions();
-		  fuzzy_regions = new FuzzyRegion[ membership_functions.length ];
+         //because each chromosome has only one item
+	  membership_functions = genes[0].getMembershipFunctions();
+	  fuzzy_regions = new FuzzyRegion[ membership_functions.length ];
 		  
-		  for (m=0; m < membership_functions.length; m++) {
-			  fuzzy_regions[m] = new FuzzyRegion();
+	  for (m=0; m < membership_functions.length; m++) {
+		  fuzzy_regions[m] = new FuzzyRegion();
 			  
-			  fuzzy_regions[m].setX0( membership_functions[m].getC() - membership_functions[m].getW() );
-			  fuzzy_regions[m].setX1( membership_functions[m].getC() );
-			  fuzzy_regions[m].setX3( membership_functions[m].getC() + membership_functions[m].getW() );
-			  
-			  fuzzy_regions[m].setY(1.0);
-			  fuzzy_regions[m].setLabel("LABEL_" + m);
-		  }
+		  fuzzy_regions[m].setX0( membership_functions[m].getC() - membership_functions[m].getW() );
+		  fuzzy_regions[m].setX1( membership_functions[m].getC() );
+		  fuzzy_regions[m].setX3( membership_functions[m].getC() + membership_functions[m].getW() );
 		  
-		  fuzzy_attributes.add( new FuzzyAttribute(this.idOfAttributes.get(g), fuzzy_regions) );
-	  //}
+		  fuzzy_regions[m].setY(1.0);
+		  fuzzy_regions[m].setLabel("LABEL_" + m);
+	  }
+		  
+	  fuzzy_attributes.add( new FuzzyAttribute(this.idOfAttributes.get(attr), fuzzy_regions) );
 	  
 	  return fuzzy_attributes;
   }

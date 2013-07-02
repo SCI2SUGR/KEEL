@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyAprioriMS;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
 /**
  * <p>
@@ -68,7 +68,7 @@ public class Itemset {
     Itemset item = new Itemset();
 	
     for (int i=0; i < this.itemset.size(); i++)
-		item.add( (itemset.get(i)).clone() );
+		item.add( (itemset.get(i)).copy() );
     
     item.support = this.support;
     
@@ -83,6 +83,35 @@ public class Itemset {
    */
   public void add(Item item) {
 	this.itemset.add(item);
+  }
+
+  /**
+   * <p>
+   * It allows to add an item into an itemset
+   * </p>
+   * @param item An item to be added into the itemset
+   */
+  public void addNew(Item item) {
+	  boolean stop = false;
+	  int i;
+
+	  for (i=0; i < this.itemset.size() && !stop; i++) {
+		  if ((this.itemset.get(i).getVariable() == item.getVariable()) && (this.itemset.get(i).getValue() == item.getValue()))  stop = true;
+	  }
+
+	  if (!stop)  this.itemset.add(item);
+  }
+
+  /**
+   * <p>
+   * It allows to add an item into an itemset
+   * </p>
+   * @param item An item to be added into the itemset
+   */
+  public void addItemset(Itemset newItemset) {
+	  for (int i=0; i < newItemset.size(); i++) {
+		  this.itemset.add(newItemset.get(i).copy());
+	  }
   }
   
   /**
@@ -134,86 +163,51 @@ public class Itemset {
    * @param fuzzyDataset The instance of the fuzzy dataset for dealing with its fuzzy transactions
    * @return An array of integer representing the TIDs covered by the itemset
    */
-  public ArrayList<Integer> calculateSupport(FuzzyDataset fuzzyDataset) {
+  public String calculateSupport(myDataset dataset, DataBase database, double umbral) {
 	int i;
     double degree;
-    double[][][] fuzzyTransactions;
-    ArrayList<Integer> covered_tids;
+    double[] example;
+    String covered_tids = "";
     
-    fuzzyTransactions = fuzzyDataset.getFuzzyTransactions();
-    covered_tids = new ArrayList<Integer>();
     this.support = 0.0;    
     
-    for (i=0; i < fuzzyTransactions.length; i++) {
-      degree = this.doIntersection( fuzzyTransactions[i] );
-      
-      if (degree > 0) {
+    for (i=0; i < dataset.getnTrans(); i++) {
+		example = dataset.getExample(i);
+		degree = this.matching(example, database);
+		
+		if (degree > umbral) {
     	  this.support += degree;
-    	  covered_tids.add(i);
-      }
+    	  if (covered_tids.equalsIgnoreCase(""))  covered_tids = covered_tids + "" + i + "(" + degree + ")";
+		  else  covered_tids = covered_tids + ", " + i + "(" + degree + ")";
+        }
     }
     
-	this.support /= fuzzyTransactions.length;
+	this.support /= dataset.getnTrans();
 	
 	return covered_tids;
   }
 
-  private double doIntersection(double[][] fuzzy_trans) {
-    return ( this.computeMinimum(fuzzy_trans) );
+
+
+  private double matching(double[] example, DataBase database) {
+    return (this.computeMinimum(example, database));
   }
 
-  private double computeMinimum(double[][] fuzzy_trans) {
+  private double computeMinimum(double[] example, DataBase database) {
     int i;
-	double min;
+	double min, value;
 	Item item;
 	
     min = 1.0;
     
     for (i=0; i < this.itemset.size(); i++) {
 		item = this.itemset.get(i);
-		min = Math.min(min, fuzzy_trans[ item.getIDAttribute() ][ item.getIDLabel() ]);
+		value = database.matching(item.getVariable(), item.getValue(), example[item.getVariable()]);
+		if (value < min)  min = value;
     }
     
     return min;
   }
   
-  /**
-   * <p>
-   * It indicates whether some other itemset is "equal to" this one
-   * </p>
-   * @param obj The reference object with which to compare
-   * @return True if this itemset is the same as the argument; False otherwise
-   */
-  public boolean equals(Object obj) {
-	Itemset its = (Itemset)obj;
-	Item it;
-	
-	if (this.itemset.size() != its.size()) return false;
-	
-	for (int i=0; i < this.itemset.size(); i++) {
-		it = this.itemset.get(i);
-		if (! it.equals( its.get(i) ) ) return false;
-	}
-	
-	return true;
-  }
-  
-  /**
-   * <p>
-   * It returns a raw string representation of an itemset
-   * </p>
-   * @return A raw string representation of the itemset
-   */
-  public String toString() {
-	String str = "{";
-	int i;
-	
-	for (i=0; i < this.itemset.size() - 1; i++)
-		str += this.itemset.get(i) + ", ";
-	
-	str += this.itemset.get(i) + "}";
-	
-	return str;
-  }
-  
+ 
 }

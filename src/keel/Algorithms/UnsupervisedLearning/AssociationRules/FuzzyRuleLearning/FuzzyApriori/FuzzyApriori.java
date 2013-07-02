@@ -80,8 +80,8 @@ public class FuzzyApriori {
     public FuzzyApriori(parseParameters parameters) {
     	
         this.rulesFilename = parameters.getAssociationRulesFile();
-        this.valuesFilename = parameters.getOutputFile(0);
-        this.fuzzyAttributesFilename = parameters.getOutputFile(1);
+        this.fuzzyAttributesFilename = parameters.getOutputFile(0);
+        this.valuesFilename = parameters.getOutputFile(1);
         
         this.nFuzzyRegionsForNumericAttributes = Integer.parseInt(parameters.getParameter(0));
         
@@ -139,7 +139,7 @@ public class FuzzyApriori {
 				for (r=0; r < this.associationRulesSet.size(); r++) {
 					ar = this.associationRulesSet.get(r);
 					
-					rules_writer.println("<rule id=\"" + r + "\">");
+					rules_writer.println("<rule id = \"" + r + "\" />");
 					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + ar.getRuleSupport() + "\" antecedent_support=\"" + ar.getAntecedentSupport() + "\" confidence=\"" + ar.getConfidence() + "\"/>");
 					
 					rules_writer.println("<antecedents>");			
@@ -181,10 +181,10 @@ public class FuzzyApriori {
     	id_attr = item.getIDAttribute();
 		id_label = item.getIDLabel();
 		
-		w.print("<attribute name=\"" + this.trans.getAttributeName(id_attr) + "\" value=\"");
+		w.print("<attribute name = \"" + this.trans.getAttributeName(id_attr) + "\" value = \"");
 		w.print( ( this.trans.getFuzzyAttribute(id_attr) )[id_label].getLabel() );
 		
-		w.println("\"/>");
+		w.println("\" />");
     }
     
     private void saveFuzzyAttributes(String fuzzy_attrs_fname) throws FileNotFoundException {
@@ -193,23 +193,30 @@ public class FuzzyApriori {
 		PrintWriter fuzzy_attrs_writer = new PrintWriter(fuzzy_attrs_fname);
 		
 		fuzzy_attrs_writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		fuzzy_attrs_writer.println("<fuzzy_attributes>");
+		fuzzy_attrs_writer.println("<data_base>");
 		
 		for (id_attr=0; id_attr < this.trans.getnVars(); id_attr++) {
-			fuzzy_attrs_writer.println("<attribute name=\"" + this.trans.getAttributeName(id_attr) + "\">");
 			fuzzy_attr = this.trans.getFuzzyAttribute(id_attr);
+			fuzzy_attrs_writer.println("<attribute name = \"" + this.trans.getAttributeName(id_attr) + "\" nValues = \"" + fuzzy_attr.length + "\" Type = \"" + this.trans.getAttributeTypeString(id_attr) + "\" >");
 			
-			for (id_label=0; id_label < fuzzy_attr.length; id_label++) {
-				fuzzy_attrs_writer.print("<membership_function label=\"" + fuzzy_attr[id_label].getLabel() + "\" ");
-				fuzzy_attrs_writer.print("x0=\"" + fuzzy_attr[id_label].getX0() + "\" ");
-				fuzzy_attrs_writer.print("x1=\"" + fuzzy_attr[id_label].getX1() + "\" ");
-				fuzzy_attrs_writer.println("x3=\"" + fuzzy_attr[id_label].getX3() + "\"/>");
+			if (this.trans.isNominal(id_attr)) {
+				for (id_label=0; id_label < fuzzy_attr.length; id_label++) {
+					fuzzy_attrs_writer.println("<value \"" + fuzzy_attr[id_label].getLabel() + "\" />");
+				}
+			}
+			else {	
+				for (id_label=0; id_label < fuzzy_attr.length; id_label++) {
+					fuzzy_attrs_writer.print("<value \"" + fuzzy_attr[id_label].getLabel() + "\" ");
+					fuzzy_attrs_writer.print("\"" + fuzzy_attr[id_label].getX0() + "\" ");
+					fuzzy_attrs_writer.print("\"" + fuzzy_attr[id_label].getX1() + "\" ");
+					fuzzy_attrs_writer.println("\"" + fuzzy_attr[id_label].getX3() + "\" />");
+				}
 			}
 			
 			fuzzy_attrs_writer.println("</attribute>");
 		}
 		
-		fuzzy_attrs_writer.println("</fuzzy_attributes>");
+		fuzzy_attrs_writer.println("</data_base>");
 		fuzzy_attrs_writer.close();
     }
     

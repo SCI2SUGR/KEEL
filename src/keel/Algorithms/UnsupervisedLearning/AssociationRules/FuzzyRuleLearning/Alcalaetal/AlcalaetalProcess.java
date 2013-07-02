@@ -756,8 +756,8 @@ public class AlcalaetalProcess {
 	  boolean generated_rules = false;
 	  Item i_item;
 	  Itemset antecedent, consequent;
-	  
-	  for (i=0; i < curr_itemset.size(); i++) {
+
+      for (i=0; i < curr_itemset.size(); i++) {
 		  antecedent = curr_itemset.clone();
 		  i_item = antecedent.remove(i);
 		  antecedent.calculateSupport(fuzzyDataset);
@@ -778,7 +778,7 @@ public class AlcalaetalProcess {
 			  
 			  if (! generated_rules) generated_rules = true;
 		  }
-	  }
+	    }
 	  
 	  return generated_rules;
   }

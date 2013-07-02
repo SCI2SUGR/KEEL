@@ -1233,6 +1233,17 @@
 		<!-- *****************************METHODS!!!***************************************** -->
 		
 		<!-- Association Rules -->
+		
+		<jar
+          jarfile="${distTest}/Fingrams.jar"
+manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/Fingrams/Manifest"> 
+
+          <fileset dir="${bin}"
+includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/Fingrams/**/*.class"/> 
+
+          <fileset dir="${bin}" includes="keel/Dataset/**/*.class
+             org/core/**/*.class"/>
+        </jar>
     	
         <jar jarfile="${distMet}/Apriori.jar"
           manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/Apriori/Manifest">
@@ -1312,16 +1323,7 @@
           <fileset dir="${bin}" includes="keel/Dataset/**/*.class
    		  org/core/**/*.class"/>
         </jar>
-		
-		<jar
-          jarfile="${distMet}/GeneticFuzzyAprioriMS.jar"
-          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/GeneticFuzzyAprioriMS/Manifest">
-          <fileset dir="${bin}"
-             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/GeneticFuzzyAprioriMS/**/*.class"/>
-          <fileset dir="${bin}" includes="keel/Dataset/**/*.class
-   		  org/core/**/*.class"/>
-        </jar>
-		
+
 		<jar
           jarfile="${distMet}/GeneticFuzzyAprioriDC.jar"
           manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/GeneticFuzzyAprioriDC/Manifest">

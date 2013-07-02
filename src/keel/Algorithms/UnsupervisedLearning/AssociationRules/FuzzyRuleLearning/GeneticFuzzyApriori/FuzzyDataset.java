@@ -72,12 +72,18 @@ public class FuzzyDataset {
 		
 		
 		for (trans=0; trans < this.fuzzyTransactions.length; trans++) {
-			for (attr=0; attr < this.fuzzyTransactions[trans].length; attr++) {
+			for (attr=0; attr < this.fuzzyAttributes.size(); attr++) {
 				id_attr = this.fuzzyAttributes.get(attr).getIdAttr();
+
 				this.transformIntoFuzzySet(trans, attr, true_transactions[trans][id_attr]);
 			}
 		}
 	}
+	
+	public int getAttrib(int attr) {
+		  return (this.fuzzyAttributes.get(attr).getIdAttr());
+	}
+
 	
 	private void transformIntoFuzzySet(int trans, int attr, double true_value) {
 		  int region;

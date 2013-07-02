@@ -121,7 +121,7 @@ public class parseParameters {
     private void readOutputFiles(StringTokenizer line){
         String new_line = line.nextToken(); //We read the input data line
         StringTokenizer data = new StringTokenizer(new_line, " = \" ");
-        data.nextToken(); //outputFile
+        data.nextToken(); //inputFile
         rulesFile = data.nextToken();
         while(data.hasMoreTokens()){
             outputFiles.add(data.nextToken());

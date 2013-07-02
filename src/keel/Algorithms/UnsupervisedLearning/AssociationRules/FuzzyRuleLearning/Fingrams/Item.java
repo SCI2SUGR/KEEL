@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyAprioriMS;
+package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
 /**
  * <p>
@@ -37,7 +37,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.
  * </p>
  */
 
-public class Item implements Comparable {
+public class Item {
   /**
    * <p>
    * It represents an item throughout the execution of the algorithm
@@ -73,7 +73,7 @@ public class Item implements Comparable {
    * </p>
    * @return A value representing the ID of the attribute involved in the item
    */
-  public int getIDAttribute() {
+  public int getVariable() {
 	  return this.idAttr;
   }
 
@@ -83,7 +83,7 @@ public class Item implements Comparable {
    * </p>
    * @return A value representing the ID of the label involved in the item
    */
-  public int getIDLabel() {
+  public int getValue() {
 	  return this.idLabel;
   }
 
@@ -93,7 +93,7 @@ public class Item implements Comparable {
    * </p>
    * @return A copy of the item
    */
-  public Item clone() {
+  public Item copy() {
     Item i = new Item();
     
     i.idAttr = this.idAttr;
@@ -102,52 +102,4 @@ public class Item implements Comparable {
 	return i;
   }
   
-  /**
-   * <p>
-   * It indicates whether some other item is "equal to" this one
-   * </p>
-   * @param obj The reference object with which to compare
-   * @return True if this item is the same as the argument; False otherwise
-   */
-  public boolean equals(Object obj) {
-	  Item item = (Item)obj;
-	  
-	  if ( (this.idAttr == item.idAttr) && (this.idLabel == item.idLabel) ) return true;
-	  else return false;
-  }
-  
-  /**
-   * <p>
-   * It compares an item with another one in order to accomplish ordering later.
-   * </p>
-   * @param item The object to be compared
-   * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
-   */
-  public int compareTo(Object item) {
-    if (((Item) item).idAttr > this.idAttr) {
-      return -1;
-    }
-    else if (((Item) item).idAttr < this.idAttr) {
-      return 1;
-    }
-    else if (((Item) item).idLabel > this.idLabel) {
-      return -1;
-    }
-    else if (((Item) item).idLabel < this.idLabel) {
-      return 1;
-    }
-
-    return 0;
-  }
-  
-  /**
-   * <p>
-   * It returns a raw string representation of an item
-   * </p>
-   * @return A raw string representation of the item
-   */
-  public String toString() {
-	return ( "(" + this.idAttr + ", " + this.idLabel + ")" );
-  }
-
 }
