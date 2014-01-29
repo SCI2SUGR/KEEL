@@ -1,8 +1,8 @@
 <algorithm_specification>
   <name>C_SVM Cost Sensitive</name>
-  <nParameters>9</nParameters>
+  <nParameters>10</nParameters>
   <seed>1</seed>
-  <nOutput>0</nOutput>
+  <nOutput>1</nOutput>
   <parameter>
     <name>KERNELtype</name>
     <type>list</type>
@@ -85,5 +85,14 @@
       <upperB>1</upperB>
     </domain>
     <default>1</default>
+  </parameter>
+  <parameter>
+    <name>AUC integral estimation</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>FALSE</default>
   </parameter>
 </algorithm_specification>

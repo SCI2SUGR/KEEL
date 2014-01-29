@@ -30,6 +30,7 @@
 /**
 * <p>
 * @author Written by Mikel Galar Idoate (Universidad Pública de Navarra) 30/5/2010
+* @author Modified by Sarah Vluymans (University of Ghent) 29/01/2014
 * @version 0.1
 * @since JDK 1.5
 *</p>
@@ -47,10 +48,13 @@ import java.util.Arrays;
 import java.util.Comparator;
 import org.core.Randomize;
 
+import keel.Algorithms.ImbalancedClassification.Auxiliar.AUC.PredPair;
+
 /**
  * Class to implement the different ensemble methods for class imbalance problems
    @author Mikel Galar Idoate (UPNA)
-   @version 1.1 (17-05-10)
+   @author Modified by Sarah Vluymans (University of Ghent)
+   @version 1.2 (29-01-14)
  */
 class Ensemble {
     /* Parameters used by the ensemble */
@@ -269,9 +273,9 @@ class Ensemble {
    /** Method to perform the voting strategy
     *
     * @param example instance to be predicted
-    * @return the predicted class
+    * @return the predicted class and the weighted voting sum
     */
-   String computeClassScores(double[] example) {
+   PredPair computeClassScores(double[] example) {
       double sum = 0;       // Weighted voting sum
       double confidence = 1; // Initial confidence is 1, it is used for the ensembles not using classifiers' confidences.
       /* Each classifier votes */
@@ -300,9 +304,9 @@ class Ensemble {
       }
       /* The output class is selected depending on the sign of the weighted voting */
       if (sum >= 0)
-         return originalDS.getOutputValue(0);
+         return new PredPair(originalDS.getOutputValue(0), sum);
       else
-         return originalDS.getOutputValue(1);
+         return new PredPair(originalDS.getOutputValue(1), sum);
    }
 
    /** The next iteration of the ensemble is performed depending on the type of ensemble 

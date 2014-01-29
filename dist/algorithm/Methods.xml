@@ -914,6 +914,30 @@
     <multiinstance>No</multiinstance> 
 	</output>
   </method>
+  <method>
+    <name>FURIA-C</name>
+    <family>Fuzzy Rule Learning</family>
+    <jar_file>FURIA-C.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>  
     <method>
     <name>PDFC-C</name>
     <family>Fuzzy Rule Learning</family>

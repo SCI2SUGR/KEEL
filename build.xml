@@ -1564,6 +1564,15 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
                     keel/Algorithms/Shared/**/*.class
 					keel/Dataset/**/*.class"/>
         </jar>
+        
+    		<jar
+          jarfile="${distMet}/FURIA-C.jar"
+          manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Hybrid/FURIA/Manifest">
+          <fileset dir="${bin}"
+		            includes="org/core/**/*.class
+				    keel/Algorithms/Fuzzy_Rule_Learning/Hybrid/FURIA/**/*.class
+					keel/Dataset/**/*.class"/>
+        </jar>    
 		
 		<jar
           jarfile="${distMet}/ModelFSS98.jar"
@@ -5135,6 +5144,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		   	manifest="${src}/keel/Algorithms/ImbalancedClassification/CSMethods/C_SVMCost/Manifest">
    		   <fileset dir="${bin}"
 		 			includes="keel/Algorithms/ImbalancedClassification/CSMethods/C_SVMCost/**/*.class
+		 			keel/Algorithms/ImbalancedClassification/Auxiliar/AUC/**/*.class
 		 			org/core/*.class
 		 			org/libsvm/*.class">
 				 </fileset>
@@ -5145,7 +5155,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
           jarfile="${distMet}/C45CS-I.jar"
           manifest="${src}/keel/Algorithms/ImbalancedClassification/CSMethods/C45CS/Manifest">
           <fileset dir="${bin}"
-             includes="keel//Algorithms/ImbalancedClassification/CSMethods/C45CS/**/*.class"/>
+             includes="keel/Algorithms/ImbalancedClassification/CSMethods/C45CS/**/*.class
+             keel/Algorithms/ImbalancedClassification/Auxiliar/AUC/**/*.class"/>
           <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
         </jar>
 	   		
@@ -5164,6 +5175,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 			manifest="${src}/keel/Algorithms/ImbalancedClassification/Ensembles/Manifest">
 			<fileset dir="${bin}"
 			includes="keel/Algorithms/ImbalancedClassification/Ensembles/**/*.class
+			keel/Algorithms/ImbalancedClassification/Auxiliar/AUC/**/*.class
 			org/core/**/*.class
 			keel/Dataset/**/*.class"/>
 		</jar> 	               

@@ -1,0 +1,24 @@
+<algorithm_specification>
+  <name>FURIA</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Number of Optimizations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+   <parameter>
+    <name>Number of folds</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>3</default>
+   </parameter>
+</algorithm_specification>

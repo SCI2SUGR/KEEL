@@ -52,6 +52,7 @@ We propose that beginners try the following procedure:
 			<param>shrinking: reduces the size of the optimization problem without considering
 some bounded variables. The decomposition method then works on a smaller problem which is less
 time consuming and requires less memory</param>
+			<param>AUC integral estimation: indicates if the integral estimation of the AUC is computed or not</param>
 		</parameterSpec>
 
 		<properties>

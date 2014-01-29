@@ -38,6 +38,8 @@
 package keel.Algorithms.ImbalancedClassification.CSMethods.C45CS;
 
 import java.io.*;
+import keel.Algorithms.ImbalancedClassification.Auxiliar.AUC.CalculateAUC;
+import keel.Algorithms.ImbalancedClassification.Auxiliar.AUC.PosProb;
 
 /** para commons.configuration
  import org.apache.commons.configuration.*;
@@ -47,7 +49,8 @@ import java.io.*;
  * Class to implement the C4.5 algorithm
    @author Cristobal Romero Morales (UCO)
    @author Modified by Victoria Lopez Morales (UGR)
-   @version 1.1 (17-05-10)
+   @author Modified by Sarah Vluymans (UGent)
+   @version 1.3 (27-01-14)
  */
 public class C45CS extends Algorithm {
     /** Decision tree. */
@@ -77,6 +80,10 @@ public class C45CS extends Algorithm {
     
     /** Is the Minimum Expected Cost Criterion used or not */
     private boolean minimumExpectedCost = true;
+    
+    /** Values for AUC computation */
+    private PosProb[] valsForAUCTrain ;
+    private PosProb[] valsForAUCTest ;
 
     /** Constructor.
      *
@@ -299,13 +306,16 @@ public class C45CS extends Algorithm {
         root.buildTree(itemsets);
     }
 
-    /** Function to evaluate the class which the itemset must have according to the classification of the tree.
+    /** Function to evaluate the class which the itemset must have 
+     * according to the classification of the tree.
      *
      * @param itemset		The itemset to evaluate.
+     * @param index	Position in the training or test set of the evaluated instance
+     * @param isTrain	It indicates if the current instance belongs to the training set or not
      *
      * @return				The index of the class index predicted.
      */
-    public double evaluateItemset(Itemset itemset) throws Exception {
+    public double evaluateItemset(Itemset itemset, int index, boolean isTrain) throws Exception {
         Itemset classMissing = (Itemset) itemset.copy();
         double prediction = 0;
         int positive_class = itemset.getDataset().positive_class();
@@ -313,10 +323,12 @@ public class C45CS extends Algorithm {
         classMissing.setClassMissing();
 
         double[] classification = classificationForItemset(classMissing);
-        
+ 
         if (minimumExpectedCost) {
         	double [] minimum_expected_classification = new double [itemset.getDataset().numClasses()];
+                
         	for (int i=0; i<minimum_expected_classification.length; i++) {
+                 
         		minimum_expected_classification[i] = 0;
         		
         		for (int j=0; j<minimum_expected_classification.length; j++) {
@@ -330,9 +342,35 @@ public class C45CS extends Algorithm {
         			}
         		}
         	}
+                /* 
+                 * Updating information for AUC-calculations
+                 * We need a value representing the probability of belonging
+                 * to the positive class. The lower the expected cost, the
+                 * higher this value will be. Therefore, we will use:
+                 *    1 - minimum_expected_classification[positive_class]
+                 */
+                if(isTrain){
+                    boolean isPositive = (int) itemset.getValue(trainDataset.getClassIndex()) == positive_class;
+                    valsForAUCTrain[index] = new PosProb(isPositive, 1 - minimum_expected_classification[positive_class]);
+                } else {
+                    boolean isPositive = (int) itemset.getValue(testDataset.getClassIndex()) == positive_class;
+                    valsForAUCTest[index] = new PosProb(isPositive, 1 - minimum_expected_classification[positive_class]);
+                }
+                
         	prediction = minIndex(minimum_expected_classification);
         }
         else {
+                /* 
+                 * Updating information for AUC-calculations
+                 */
+                if(isTrain){
+                    boolean isPositive = (int) itemset.getValue(trainDataset.getClassIndex()) == positive_class;
+                    valsForAUCTrain[index] = new PosProb(isPositive, classification[positive_class]);
+                } else {
+                    boolean isPositive = (int) itemset.getValue(testDataset.getClassIndex()) == positive_class;
+                    valsForAUCTest[index] = new PosProb(isPositive, classification[positive_class]);
+                }
+                
         	prediction = maxIndex(classification);
         }
         updateStats(classification, itemset, itemset.numClasses());
@@ -516,7 +554,8 @@ public class C45CS extends Algorithm {
                 (trainDataset.numItemsets() - correct);
         tree += "\n@PercentageOfInCorrectlyClassifiedTraining " +
                 (float) ((trainDataset.numItemsets() - correct) * 100.0) /
-                (float) trainDataset.numItemsets() + "%";
+                (float) trainDataset.numItemsets() + "%";        
+        tree += "\n@AUCTraining " + getTrainAUC() ;
 
         tree += "\n\n@NumberOfItemsetsTest " + testDataset.numItemsets();
         tree += "\n@NumberOfCorrectlyClassifiedTest " + testCorrect;
@@ -527,7 +566,8 @@ public class C45CS extends Algorithm {
                 (testDataset.numItemsets() - testCorrect);
         tree += "\n@PercentageOfInCorrectlyClassifiedTest " +
                 (float) ((testDataset.numItemsets() - testCorrect) * 100.0) /
-                (float) testDataset.numItemsets() + "%";
+                (float) testDataset.numItemsets() + "%";        
+        tree += "\n@AUCTesting " + getTestAUC() ;
 
         tree += "\n\n@ElapsedTime " +
                 (totalTime - minutes * 60 - seconds) / 3600 + ":" +
@@ -544,11 +584,13 @@ public class C45CS extends Algorithm {
      */
     public void printTrain() {
         String text = getHeader();
+        
+        valsForAUCTrain = new PosProb[trainDataset.numItemsets()];
 
         for (int i = 0; i < trainDataset.numItemsets(); i++) {
             try {
                 Itemset itemset = trainDataset.itemset(i);
-                int cl = (int) evaluateItemset(itemset);
+                int cl = (int) evaluateItemset(itemset , i, true);
 
                 if (cl == (int) itemset.getValue(trainDataset.getClassIndex())) {
                     correct++;
@@ -579,10 +621,12 @@ public class C45CS extends Algorithm {
      */
     public void printTest() {
         String text = getHeader();
+        
+        valsForAUCTest = new PosProb[testDataset.numItemsets()];
 
         for (int i = 0; i < testDataset.numItemsets(); i++) {
             try {
-                int cl = (int) evaluateItemset(testDataset.itemset(i));
+                int cl = (int) evaluateItemset(testDataset.itemset(i), i, false);
                 Itemset itemset = testDataset.itemset(i);
 
                 if (cl == (int) itemset.getValue(testDataset.getClassIndex())) {
@@ -613,6 +657,24 @@ public class C45CS extends Algorithm {
      */
     public String toString() {
         return root.toString();
+    }
+    
+    /*
+     * Calculates the AUC for the training set
+     *
+     * @return			The AUC value associated to the training set
+     */
+    public double getTrainAUC(){
+        return CalculateAUC.calculate(valsForAUCTrain);
+    }
+    
+    /*
+     * Calculates the AUC for the test set
+     *
+     * @return			The AUC value associated to the test set
+     */
+    public double getTestAUC(){
+        return CalculateAUC.calculate(valsForAUCTest);
     }
 
     /** Main function.
