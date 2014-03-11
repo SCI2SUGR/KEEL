@@ -1,0 +1,31 @@
+@relation  New-Thyroid-Bal
+@attribute T3resin integer[65,144]
+@attribute thyroxin real[0.5,25.3]
+@attribute triiodothyronine real[0.2,10.0]
+@attribute thyroidstimulating real[0.1,56.4]
+@attribute TSH_value real[-0.7,56.3]
+@attribute class{normal,hyper,hypo}
+@inputs T3resin,thyroxin,triiodothyronine,thyroidstimulating,TSH_value
+@outputs class
+@data
+113, 11.5, 1.5, 1.9, 2.9, normal
+108, 8.7, 1.2, 2.2, 2.5, normal
+114, 6.7, 1.5, 1.0, 3.5, normal
+106, 9.4, 2.2, 1.5, 0.0, normal
+116, 10.0, 1.7, 1.5, 4.3, normal
+102, 9.5, 1.4, 1.1, 1.6, normal
+103, 9.5, 2.9, 1.4, -0.1, normal
+109, 10.4, 1.9, 0.4, -0.1, normal
+110, 7.0, 1.0, 1.6, 4.3, normal
+119, 10.6, 2.1, 1.3, 1.1, normal
+120, 12.4, 2.4, 0.8, 1.9, normal
+105, 6.1, 2.1, 1.4, 7.0, normal
+96, 9.4, 1.5, 1.0, 3.1, normal
+126, 10.4, 1.7, 1.2, 3.5, normal
+115, 15.3, 2.3, 2.0, 2.0, normal
+88, 24.1, 5.5, 0.8, 0.1, hyper
+65, 25.3, 5.8, 1.3, 0.2, hyper
+111, 16.0, 2.1, 0.9, -0.1, hyper
+115, 6.3, 1.2, 4.7, 14.4, hypo
+125, 3.7, 1.1, 8.5, 25.9, hypo
+131, 2.7, 0.8, 9.9, 4.7, hypo

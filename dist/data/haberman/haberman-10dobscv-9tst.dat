@@ -1,0 +1,38 @@
+@relation  unknow
+@attribute Age integer[30,83]
+@attribute Year integer[58,69]
+@attribute Positive integer[0,52]
+@attribute class{positive,negative}
+@inputs Age,Year,Positive
+@outputs class
+@data
+57, 61, 5, positive
+48, 58, 11, positive
+67, 64, 8, positive
+53, 60, 9, positive
+52, 59, 2, positive
+47, 62, 0, positive
+43, 64, 0, positive
+42, 59, 0, positive
+72, 67, 3, negative
+54, 62, 0, negative
+65, 64, 0, negative
+49, 67, 1, negative
+57, 63, 0, negative
+40, 58, 2, negative
+67, 65, 0, negative
+52, 69, 0, negative
+50, 66, 1, negative
+61, 64, 0, negative
+51, 59, 1, negative
+66, 58, 1, negative
+50, 59, 2, negative
+59, 64, 7, negative
+40, 58, 0, negative
+59, 67, 3, negative
+41, 65, 0, negative
+43, 65, 0, negative
+57, 64, 0, negative
+37, 59, 6, negative
+45, 68, 0, negative
+42, 62, 20, negative
