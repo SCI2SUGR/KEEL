@@ -182,6 +182,33 @@ public final class DataSet extends Node {
                                         complete = false;
                                         pareja = dsc.getName(k) + "-" + folds + "-" + l + "tra.dat,";
                                     }
+
+
+                                   // Solo hay que hacerlo en caso de SSL
+                                
+                                    
+                                    if( pd.parent.objType == pd.parent.SSL){
+                                       // System.out.println("MOdificando Carga de DATASETS para SSL");
+	                                    metido = false;
+	                                    for (int j = 0; j < ficheros.length; j++) {
+	
+	                                        if (ficheros[j].compareTo(dsc.getName(k) + "-" + folds + "-" + l + "trs.dat") == 0) {
+	                                            metido = true;
+	                                            pareja += ficheros[j] + ",";
+	
+	                                            break;
+	
+	                                        }
+	                                    }
+	
+	                                    if (!metido) {
+	                                        cont = false;
+	                                        complete = false;
+	                                        pareja += dsc.getName(k) + "-" + folds + "-" + l + "trs.dat,";
+	                                    }
+                                    }
+
+
                                     metido = false;
                                     for (int j = 0; j < ficheros.length && cont; j++) {
                                         if (ficheros[j].compareTo(dsc.getName(k) + "-" + folds + "-" + l + "tst.dat") == 0) {

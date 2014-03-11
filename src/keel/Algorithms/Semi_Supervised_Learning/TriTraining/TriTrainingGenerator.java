@@ -414,9 +414,9 @@ public class TriTrainingGenerator extends PrototypeGenerator {
 	   }
 	  
     
-	  System.out.println("Labeled size "+ labeledBoostrapped[0].size());
-	  System.out.println("Initial % de acierto TRS = "+ (aciertoTrs*100.)/transductiveDataSet.size());
-	  System.out.println("Initial % de acierto TST = "+ (aciertoTst*100.)/testDataSet.size());
+	//  System.out.println("Labeled size "+ labeledBoostrapped[0].size());
+	 // System.out.println("Initial % de acierto TRS = "+ (aciertoTrs*100.)/transductiveDataSet.size());
+	 // System.out.println("Initial % de acierto TST = "+ (aciertoTst*100.)/testDataSet.size());
   
 	  //************************************************************
 	  

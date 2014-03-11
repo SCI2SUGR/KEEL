@@ -11,7 +11,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -20,7 +20,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -36,7 +36,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -45,7 +45,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -61,7 +61,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -70,7 +70,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -86,7 +86,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -95,7 +95,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -111,7 +111,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -120,7 +120,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -137,7 +137,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -146,7 +146,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -162,7 +162,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -171,7 +171,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -188,7 +188,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -197,7 +197,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -214,7 +214,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -223,7 +223,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -240,7 +240,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -249,7 +249,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -265,7 +265,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -274,7 +274,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -292,7 +292,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -301,7 +301,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -317,7 +317,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -326,7 +326,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -342,7 +342,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -351,7 +351,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -367,7 +367,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -376,7 +376,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -393,7 +393,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -402,7 +402,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -419,7 +419,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -428,7 +428,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>
@@ -445,7 +445,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </input>
     <output>
@@ -454,7 +454,7 @@
       <nominal>Yes</nominal>
       <missing>Yes</missing>
       <imprecise>No</imprecise>
-      <multiclass>No</multiclass>
+      <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     </output>
   </method>

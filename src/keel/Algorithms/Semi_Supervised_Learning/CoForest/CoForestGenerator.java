@@ -116,7 +116,7 @@ protected int m_KValue = 0;
       
       this.probabilities = new double[3][][];
                                       
-      System.out.print("\nIsaacSSL dice:  " + this.numberOfselectedExamples+ ", "+ this.numberOfClass +"\n");
+   //   System.out.print("\nIsaacSSL dice:  " + this.numberOfselectedExamples+ ", "+ this.numberOfClass +"\n");
 
   }
   

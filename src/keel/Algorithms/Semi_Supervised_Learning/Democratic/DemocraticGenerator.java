@@ -94,7 +94,7 @@ public class DemocraticGenerator extends PrototypeGenerator {
       //Last class is the Unknown 
       this.numberOfClass = trainingDataSet.getPosibleValuesOfOutput().size();
       
-      System.out.print("\nIsaacSSL dice:  " +  this.numberOfClass +"\n");
+   //   System.out.print("\nIsaacSSL dice:  " +  this.numberOfClass +"\n");
 
   }
   
@@ -429,10 +429,10 @@ public class DemocraticGenerator extends PrototypeGenerator {
 	  
 	  
 
-	  System.out.println("Initial-Labeled size "+ Li[1].size());
+	 // System.out.println("Initial-Labeled size "+ Li[1].size());
 	  
-	  System.out.println("Initial % de acierto TRS = "+ (aciertoTrs*100.)/transductiveDataSet.size());
-	  System.out.println("Initial % de acierto TST = "+ (aciertoTst*100.)/testDataSet.size());
+	//  System.out.println("Initial % de acierto TRS = "+ (aciertoTrs*100.)/transductiveDataSet.size());
+	 // System.out.println("Initial % de acierto TST = "+ (aciertoTst*100.)/testDataSet.size());
 	  
 	  
 
@@ -553,11 +553,11 @@ public class DemocraticGenerator extends PrototypeGenerator {
 				  EiP[i] = LiP[i].size() * (1.-sumli);
 				  qiP[i] = (Li[i].size()+LiP[i].size())*(1.-((2.*(Ei[i]+EiP[i]))/(Li[i].size()+LiP[i].size())));
 				  
-				  System.out.println("qi -> "+qi[i]);
-				  System.out.println("qiP -> + " + qiP[i]);
+				//  System.out.println("qi -> "+qi[i]);
+				 // System.out.println("qiP -> + " + qiP[i]);
 				  
 				  if(qiP[i]> qi[i] && Li[i].size()<unlabeled.size()){
-					  System.out.println("Adding");
+				//	  System.out.println("Adding");
 					  changes = true;
 					  Li[i].add(LiP[i].clone());
 					  Ei[i] = Ei[i]+ EiP[i];	
@@ -686,17 +686,17 @@ public class DemocraticGenerator extends PrototypeGenerator {
 					  
 					  
 
-					  System.out.println("update-Labeled size "+ Li[i].size());
+					 // System.out.println("update-Labeled size "+ Li[i].size());
 
-					  System.out.println("update-% de acierto TRS = "+ (aciertoTrs*100.)/transductiveDataSet.size());
-					  System.out.println("update-% de acierto TST = "+ (aciertoTst*100.)/testDataSet.size());
+//					  System.out.println("update-% de acierto TRS = "+ (aciertoTrs*100.)/transductiveDataSet.size());
+//					  System.out.println("update-% de acierto TST = "+ (aciertoTst*100.)/testDataSet.size());
 					  
 					  
 			     }
 					  
 			  }
-			  System.out.println("Li[i] size = "+ Li[i].size());
-			  System.out.println("LiP[i] size = "+ LiP[i].size());
+//			  System.out.println("Li[i] size = "+ Li[i].size());
+//			  System.out.println("LiP[i] size = "+ LiP[i].size());
 			  
 		  }
 		  
@@ -841,7 +841,7 @@ public class DemocraticGenerator extends PrototypeGenerator {
 	  
 	  
 
-	  System.out.println("Labeled size "+ Li[1].size());
+	//  System.out.println("Labeled size "+ Li[1].size());
 
 	  System.out.println("% de acierto TRS = "+ (aciertoTrs*100.)/transductiveDataSet.size());
 	  System.out.println("% de acierto TST = "+ (aciertoTst*100.)/testDataSet.size());

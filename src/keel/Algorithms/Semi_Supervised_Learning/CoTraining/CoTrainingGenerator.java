@@ -98,7 +98,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
       //Last class is the Unknown 
       this.numberOfClass = trainingDataSet.getPosibleValuesOfOutput().size();
       
-      System.out.print("\nIsaacSSL dice:  " + this.numberOfselectedExamples+ ", "+ this.numberOfClass +"\n");
+     // System.out.print("\nIsaacSSL dice:  " + this.numberOfselectedExamples+ ", "+ this.numberOfClass +"\n");
 
   }
   
@@ -185,6 +185,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 	 
 	  // Accuracy with initial labeled data.
 
+/*
 	  if(this.final_classifier.equalsIgnoreCase("NN")){
 	  
 		  System.out.println("AccTrs with initial labeled data ="+ KNN.classficationAccuracy(labeled,this.transductiveDataSet,1)*100./this.transductiveDataSet.size());
@@ -196,7 +197,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 	  
 	  }
 	  
-	  
+*/	  
 	  //labeled.print();
 	  //unlabeled.print();
 	  
@@ -227,7 +228,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 		  kj[i] = Math.round(kj[i]/minimo);
 		  
 		  maximoKj+=kj[i];
-		  System.out.println((int)kj[i]);
+		//  System.out.println((int)kj[i]);
 	  }
 	  
 
@@ -772,7 +773,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 		  }
 		  
 		 
-		  System.out.println("Labeled size = "+labeled.size());
+	/*	  System.out.println("Labeled size = "+labeled.size());
 		  System.out.println("UNLabeled size = "+unlabeled.size());
 		  System.out.println("UNLabeledsub1 size = "+unlabeled_sub1.size());
 		  System.out.println("UNLabeledsub2 size = "+unlabeled_sub2.size());
@@ -780,7 +781,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 		  System.out.println("POOL size = "+POOL.size());
 		  System.out.println("pool1 size = "+pool1.size());
 		  System.out.println("pool2 size = "+pool2.size());
-	
+	*/
 		  //re-established the indexes:
 		  
 	      for (int j=0; j< POOL.size();j++){
@@ -813,8 +814,8 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 	  }
 
 	  
-	  System.out.println("Labeled size = " +labeled.size());
-	  System.out.println("Unlabeled size = " + unlabeled.size());
+	//  System.out.println("Labeled size = " +labeled.size());
+	 // System.out.println("Unlabeled size = " + unlabeled.size());
 	  
 	  
 

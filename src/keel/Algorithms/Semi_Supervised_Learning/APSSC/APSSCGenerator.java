@@ -90,7 +90,7 @@ public class APSSCGenerator extends PrototypeGenerator {
       //Last class is the Unknown 
       this.numberOfClass = trainingDataSet.getPosibleValuesOfOutput().size();
       
-      System.out.print("\nIsaacSSL dice:  " + this.numberOfselectedExamples+ ", "+ this.numberOfClass +"\n");
+    //  System.out.print("\nIsaacSSL dice:  " + this.numberOfselectedExamples+ ", "+ this.numberOfClass +"\n");
 
   }
   
@@ -112,8 +112,8 @@ public class APSSCGenerator extends PrototypeGenerator {
 	  
 	  // Accuracy with initial labeled data.
 	  
-	  System.out.println("Labeled size = " +ANTlabeled.size());
-	  System.out.println("Unlabeled size = " + ANTunlabeled.size());
+	//  System.out.println("Labeled size = " +ANTlabeled.size());
+	 // System.out.println("Unlabeled size = " + ANTunlabeled.size());
 	  
 	  // pheromone that the labeled ant i emitted to the j unlabeled ant.
 	  double pheromone[][] = new double [ANTunlabeled.size()][this.numberOfClass];
@@ -239,8 +239,8 @@ public class APSSCGenerator extends PrototypeGenerator {
 	   ANTlabeled.add(ANTunlabeled.getAllDifferentFromClass(this.numberOfClass)); // we add the labeled ants
 	  
 	   
-		  System.out.println("Labeled size = " +ANTlabeled.size());
-		  System.out.println("Unlabeled size = " + ANTunlabeled.size());
+		 // System.out.println("Labeled size = " +ANTlabeled.size());
+		 // System.out.println("Unlabeled size = " + ANTunlabeled.size());
 		  
 	  
 	  // begin testing
