@@ -12,7 +12,7 @@ package keel.Algorithms.Semi_Supervised_Learning.TriTraining;
 
 import keel.Algorithms.Semi_Supervised_Learning.Basic.C45.*;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerNB;
-import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerRipper;
+
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerSMO;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeSet;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeGenerator;

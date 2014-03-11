@@ -12,7 +12,7 @@ package keel.Algorithms.Semi_Supervised_Learning.SelfTraining;
 
 import keel.Algorithms.Semi_Supervised_Learning.Basic.C45.*;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerNB;
-import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerRipper;
+
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerSMO;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeSet;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeGenerator;
@@ -36,7 +36,7 @@ import java.util.StringTokenizer;
 
 
 /**
- * This class implements the Self-traning wrapper. You can use: Knn, C4.5, SMO and Ripper as classifiers.
+ * This class implements the Self-traning wrapper. You can use: Knn, C4.5, and SMO as classifiers.
  * @author triguero
  *
  */
@@ -310,22 +310,7 @@ public class SelfTrainingGenerator extends PrototypeGenerator {
 			      SMO = null;
 			      getSolicitaGarbageColector();
 				  
-			  }else if(this.classifier.equalsIgnoreCase("Ripper")){
-				  getSolicitaGarbageColector();
-					 // System.out.println("SVM Executing...");
-						
-				     HandlerRipper rip = new HandlerRipper(labeled.toInstanceSet(), unlabeled.toInstanceSet(), this.numberOfClass, String.valueOf(this.SEED));      // C4.5 called
-				      
-				     pre = rip.getPredictions(0);    
-				      			      
-				     probabilities = rip.getProbabilities();
-	  
-				    //  System.out.println("SVM Finishes...");
-				     
-				     getSolicitaGarbageColector();
-					  
-			 }
-			  
+			  }
 			  
 			  // selecting best kj[j] prototypes.
 			  
@@ -427,7 +412,7 @@ public class SelfTrainingGenerator extends PrototypeGenerator {
 	
 								  
 	
-						  }else if(this.classifier.equalsIgnoreCase("C45") || this.classifier.equalsIgnoreCase("NB") || this.classifier.equalsIgnoreCase("SMO") || this.classifier.equalsIgnoreCase("Ripper")){
+						  }else if(this.classifier.equalsIgnoreCase("C45") || this.classifier.equalsIgnoreCase("NB") || this.classifier.equalsIgnoreCase("SMO") ){
 							  
 							  nearUnlabeled.setFirstOutput(pre[indexClase[j][z]]);
 							
@@ -608,24 +593,11 @@ public class SelfTrainingGenerator extends PrototypeGenerator {
 		  tstPrediction = SMO.getPredictions(0);
 
 		  
-	  }else if(this.classifier.equalsIgnoreCase("Ripper")){
-		  
-		
-	      HandlerRipper Ripper = new HandlerRipper(labeled.toInstanceSet(), transductiveDataSet.toInstanceSet(), this.numberOfClass,String.valueOf(this.SEED));      // SMO
-	      
-	      traPrediction = Ripper.getPredictions(0);    
-	      
-			
-
-	      Ripper = new HandlerRipper(labeled.toInstanceSet(), testDataSet.toInstanceSet(), this.numberOfClass,String.valueOf(this.SEED)); 
-		  tstPrediction = Ripper.getPredictions(0);
-
-		  
 	  }
 	  
 	  
 	  
-	  if(this.classifier.equalsIgnoreCase("C45") || this.classifier.equalsIgnoreCase("NB") || this.classifier.equalsIgnoreCase("SMO") || this.classifier.equalsIgnoreCase("Ripper") ){
+	  if(this.classifier.equalsIgnoreCase("C45") || this.classifier.equalsIgnoreCase("NB") || this.classifier.equalsIgnoreCase("SMO")  ){
 	
 	      aciertoTrs = 0;
 	      aciertoTst = 0;

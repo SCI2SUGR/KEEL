@@ -12,7 +12,7 @@ package keel.Algorithms.Semi_Supervised_Learning.Democratic;
 
 import keel.Algorithms.Semi_Supervised_Learning.Basic.C45.*;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerNB;
-import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerRipper;
+
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerSMO;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeSet;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeGenerator;
@@ -37,7 +37,7 @@ import java.util.StringTokenizer;
 
 
 /**
- * This class implements the Co-traning wrapper. You can use: Knn, C4.5, SMO and Ripper as classifiers.
+ * This class implements the Co-traning wrapper. You can use: Knn, C4.5, SMO and  as classifiers.
  * @author triguero
  *
  */

@@ -12,7 +12,7 @@ package keel.Algorithms.Semi_Supervised_Learning.Rel_RASCO;
 
 import keel.Algorithms.Semi_Supervised_Learning.Basic.C45.*;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerNB;
-import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerRipper;
+
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerSMO;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeSet;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeGenerator;
@@ -40,7 +40,7 @@ import java.util.StringTokenizer;
 
 
 /**
- * This class implements the Rel_RASCO algorithm. You can use: Knn, C4.5, SMO and Ripper as classifiers.
+ * This class implements the Rel_RASCO algorithm. You can use: Knn, C4.5, SMO  as classifiers.
  * @author triguero
  *
  */
@@ -469,14 +469,7 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
 			      getSolicitaGarbageColector();
 			  //    probabilities = SMO.getProbabilities();
   	  
-			  }else if(this.classifier.equalsIgnoreCase("Ripper")){
-				  
-				     HandlerRipper rip = new HandlerRipper(labeled_subX[j].toInstanceSet(),  unlabeled_subX[j].toInstanceSet(), this.numberOfClass, String.valueOf(this.SEED));      // C4.5 called
-				      
-				     pre[j]= rip.getPredictions(0);    
-				      			      
-			 
-			 }
+			  }
 			  
 			  this.cambiarContextoAttributes(); // Change Context
 
@@ -772,24 +765,11 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
 		  tstPrediction = SMO.getPredictions(0);
 
 		  
-	  }else if(this.classifier.equalsIgnoreCase("Ripper")){
-		  
-		
-	      HandlerRipper Ripper = new HandlerRipper(labeled.toInstanceSet(), transductiveDataSet.toInstanceSet(), this.numberOfClass,String.valueOf(this.SEED));      // SMO
-	      
-	      traPrediction = Ripper.getPredictions(0);    
-	      
-			
-
-	      Ripper = new HandlerRipper(labeled.toInstanceSet(), testDataSet.toInstanceSet(), this.numberOfClass,String.valueOf(this.SEED)); 
-		  tstPrediction = Ripper.getPredictions(0);
-
-		  
 	  }
 	  
 	  
 	  
-	  if(this.classifier.equalsIgnoreCase("C45") || this.classifier.equalsIgnoreCase("NB") || this.classifier.equalsIgnoreCase("SMO") || this.classifier.equalsIgnoreCase("Ripper") ){
+	  if(this.classifier.equalsIgnoreCase("C45") || this.classifier.equalsIgnoreCase("NB") || this.classifier.equalsIgnoreCase("SMO")  ){
 	
 	      aciertoTrs = 0;
 	      aciertoTst = 0;

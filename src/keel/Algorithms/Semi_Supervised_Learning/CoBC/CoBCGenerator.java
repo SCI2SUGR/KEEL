@@ -13,7 +13,7 @@ package keel.Algorithms.Semi_Supervised_Learning.CoBC;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.C45.*;
 //import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerAdaBoost;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerNB;
-import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerRipper;
+
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerSMO;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeSet;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeGenerator;
@@ -41,7 +41,7 @@ import java.util.StringTokenizer;
 
 
 /**
- * This class implements the Co-traning wrapper. You can use: Knn, C4.5, SMO and Ripper as classifiers.
+ * This class implements the Co-traning wrapper. You can use: Knn, C4.5, SMO as classifiers.
  * @author triguero
  *
  */
@@ -591,7 +591,7 @@ public class CoBCGenerator extends PrototypeGenerator {
 	
 								  
 	
-						  }else if(this.BaseLearn.equalsIgnoreCase("C45") || this.BaseLearn.equalsIgnoreCase("NB") || this.BaseLearn.equalsIgnoreCase("SMO") || this.BaseLearn.equalsIgnoreCase("Ripper")){
+						  }else if(this.BaseLearn.equalsIgnoreCase("C45") || this.BaseLearn.equalsIgnoreCase("NB") || this.BaseLearn.equalsIgnoreCase("SMO")){
 							  
 							  nearUnlabeled.setFirstOutput(pre[j][indexClase[z][w]]);
 							

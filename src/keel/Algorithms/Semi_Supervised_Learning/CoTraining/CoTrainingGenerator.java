@@ -12,7 +12,7 @@ package keel.Algorithms.Semi_Supervised_Learning.CoTraining;
 
 import keel.Algorithms.Semi_Supervised_Learning.Basic.C45.*;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerNB;
-import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerRipper;
+
 import keel.Algorithms.Semi_Supervised_Learning.Basic.HandlerSMO;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeSet;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.PrototypeGenerator;
@@ -39,7 +39,7 @@ import java.util.StringTokenizer;
 
 
 /**
- * This class implements the Co-traning wrapper. You can use: Knn, C4.5, SMO and Ripper as classifiers.
+ * This class implements the Co-traning wrapper. You can use: Knn, C4.5, SMO   as classifiers.
  * @author triguero
  *
  */
@@ -434,20 +434,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 			      getSolicitaGarbageColector();
 			    //  System.out.println("SVM Finishes...");
 		  
-			  }else if(this.classifier1.equalsIgnoreCase("Ripper")){
-				  getSolicitaGarbageColector();
-					 // System.out.println("SVM Executing...");
-						
-				     HandlerRipper rip = new HandlerRipper(labeled_sub1.toInstanceSet(), pool1.toInstanceSet(), this.numberOfClass, String.valueOf(this.SEED));      // C4.5 called
-				      
-				     pre = rip.getPredictions(0);    
-				      			      
-				     probabilities = rip.getProbabilities();
-	  
-				    //  System.out.println("SVM Finishes...");
-				     getSolicitaGarbageColector();
-			 }
-			  
+			  }
 			  
 			  this.cambiarContextoAttributes(); // Change Context
   
@@ -590,20 +577,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 			      System.gc();
 			    //  System.out.println("SVM Finishes...");
 		  
-			  }else if(this.classifier2.equalsIgnoreCase("Ripper")){
-				  
-					 // System.out.println("SVM Executing...");
-						
-				     HandlerRipper rip = new HandlerRipper(labeled_sub2.toInstanceSet(), pool2.toInstanceSet(), this.numberOfClass, String.valueOf(this.SEED));      // C4.5 called
-				      
-				     pre2 = rip.getPredictions(0);    
-				      			      
-				     probabilities2 = rip.getProbabilities();
-	  
-				    //  System.out.println("SVM Finishes...");
-					  
-			 }
-			  
+			  }
 			  
 			  this.cambiarContextoAttributes(); // Change Context
 			  // selecting best kj[j] prototypes.
@@ -905,24 +879,10 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 		  tstPrediction = SMO.getPredictions(0);
 
 		  
-	  }else if(this.final_classifier.equalsIgnoreCase("Ripper")){
-		  
-		
-	      HandlerRipper Ripper = new HandlerRipper(labeled.toInstanceSet(), transductiveDataSet.toInstanceSet(), this.numberOfClass,String.valueOf(this.SEED));      // SMO
-	      
-	      traPrediction = Ripper.getPredictions(0);    
-	      
-			
-
-	      Ripper = new HandlerRipper(labeled.toInstanceSet(), testDataSet.toInstanceSet(), this.numberOfClass,String.valueOf(this.SEED)); 
-		  tstPrediction = Ripper.getPredictions(0);
-
-		  
 	  }
 	  
 	  
-	  
-	  if(this.final_classifier.equalsIgnoreCase("C45") || this.final_classifier.equalsIgnoreCase("NB") || this.final_classifier.equalsIgnoreCase("SMO") || this.final_classifier.equalsIgnoreCase("Ripper") ){
+	  if(this.final_classifier.equalsIgnoreCase("C45") || this.final_classifier.equalsIgnoreCase("NB") || this.final_classifier.equalsIgnoreCase("SMO") ){
 	
 	      aciertoTrs = 0;
 	      aciertoTst = 0;
