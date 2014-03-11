@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -42,6 +42,8 @@ import keel.GraphInterKeel.datacf.util.Dataset;
 import org.core.Files;
 import java.io.File;
 import java.util.Vector;
+import javax.swing.JOptionPane;
+import keel.GraphInterKeel.datacf.partitionData.PartitioningSchemes.DistanceBased_best;
 
 public class PartitionGenerator {
 
@@ -56,6 +58,8 @@ public class PartitionGenerator {
     public static int _HOLDOUT = 2;
     /** Constant representing 5x2 of Dietterich partition */
     public static int _5x2 = 3;
+    /** Constant representing K-Fold Distribution Optimally Balanced Stratified Cross Validation partition */
+    public static int _DOBSCV_FOLD = 4;
 
     /**
      * <p>
@@ -239,6 +243,18 @@ public class PartitionGenerator {
             }
         } // ---------------------------------
         // ----------------------
+        
+        
+        
+        // DOB-SCV
+        else if (partitionType == 4){
+            DistanceBased_best partSch = new DistanceBased_best(originalName, nOfPartitions);
+            partSch.createPartitionFiles(newName, nombre_base);
+            //JOptionPane.showMessageDialog(null,"Hola"); 
+        }
+        
+        //------------------------------
+        //------------------------------
         // Holdout partition type
         else if (partitionType == 2) { // Holdout
 //        int nPart = nOfPartitions;

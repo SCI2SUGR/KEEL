@@ -204,7 +204,65 @@ public final class DataSet extends Node {
                                 e.printStackTrace();
                             }
                         }
-                    } else if (pd.parent.cvType == Experiments.P5X2) {
+                    } 
+                    
+                    //------ DOBSCV
+                    else if (pd.parent.cvType == Experiments.PDOBSCV) {
+                        //add k fold cross validation files for each layer
+                        folds = pd.parent.numberKFoldCross;
+                        for (int k = 0; k < dsc.getNamesLength(); k++) {
+//    		  dir = new File(dsc.getPath(k) + dsc.getNombre(k));
+                            try {
+                                dir = new File("." + dsc.getPath(k) + dsc.getName(k));
+                                ficheros = dir.list();
+                                //Nuevas funcionalidades .Bucle comentado para que coja un kfold especificado
+
+                                for (int l = 1; l <= pd.parent.numberKFoldCross; l++) { //Nuevo bucle
+                                    cont = true;
+                                    String pareja = "";
+                                    metido = false;
+                                    for (int j = 0; j < ficheros.length; j++) {
+
+                                        if (ficheros[j].compareTo(dsc.getName(k) + "-" + folds + "dobscv-" + l + "tra.dat") == 0) {
+                                            metido = true;
+                                            pareja = ficheros[j] + ",";
+
+                                            break;
+
+                                        }
+                                    }
+
+                                    if (!metido) {
+                                        cont = false;
+                                        complete = false;
+                                        pareja = dsc.getName(k) + "-" + folds + "dobscv-" + l + "tra.dat,";
+                                    }
+                                    metido = false;
+                                    for (int j = 0; j < ficheros.length && cont; j++) {
+                                        if (ficheros[j].compareTo(dsc.getName(k) + "-" + folds + "dobscv-" + l + "tst.dat") == 0) {
+                                            metido = true;
+                                            pareja += ficheros[j];
+                                            break;
+                                        }
+                                    }
+                                    //we put the current partition in the missing list if not found
+                                    if (!metido) {
+                                        complete = false;
+                                        pareja += dsc.getName(k) + "-" + folds + "dobscv-" + l + "tst.dat";
+                                        ((Vector) missing.elementAt(k)).add(pareja);
+                                    } else {
+                                        ((Vector) (listas.elementAt(k))).add(pareja);
+                                    }
+
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    //----------------------                    
+                    
+                    else if (pd.parent.cvType == Experiments.P5X2) {
                         // add 5x2 cross validation files for each layer
                         for (int k = 0; k < dsc.getNamesLength(); k++) {
                             try {

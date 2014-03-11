@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -1222,7 +1222,60 @@ public class DinamicDataset extends JPanel implements Scrollable {
                                 } catch (Exception ex) {
                                 }
                             }
-                        } // if PK
+                        }
+                        
+
+
+
+
+                        //DOBSCV
+                        if (parent.cvType == Experiments.PDOBSCV) {
+                            //add 10 fold cross validation files for each layer  
+                            for (int k = 0; k < Layer.numLayers; k++) {
+                                try {
+                                    dir = new File("." + dsc.getPath(k) + dsc.getName(k));
+                                    ficheros = dir.list();
+
+                                    for (int l = 1; l <= parent.numberKFoldCross; l++) {
+
+                                        String pareja = "";
+
+                                        found = false;
+                                        for (int j = 0; j < ficheros.length && !found; j++) {
+                                            if (ficheros[j].indexOf(parent.numberKFoldCross + "dobscv-" + l + "tra.dat") != -1) {
+                                                pareja = ficheros[j] + ",";
+                                                found = true;
+                                            }
+                                        }
+
+                                        if (!found) {
+                                            missing = true;
+                                        }
+
+                                        found = false;
+                                        for (int j = 0; j < ficheros.length && !found; j++) {
+                                            if (ficheros[j].indexOf(parent.numberKFoldCross + "dobscv-" + l + "tst.dat") != -1) {
+                                                pareja += ficheros[j];
+                                                found = true;
+                                            }
+                                        }
+
+                                        if (!found || missing) {
+                                            missing = true;
+                                            ((DataSet) parent.graphDiagramINNER.mainGraph.getNodeAt(i)).addMissingPartition(pareja, k);
+                                        } else {
+                                            ((Vector) (listas.elementAt(k))).add(pareja);
+                                        }
+                                    }
+
+                                } catch (Exception ex) {
+                                }
+                            }
+                        }
+
+
+
+                        // if PK
                         //  if(parent.objType!=parent.LQD) //ESTO LUEGO LO TENGO QUE MIRAR PARA CONTROLAR
                         // {
                         else if (parent.cvType == Experiments.P5X2) {

@@ -115,6 +115,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     static final int PK = 0;
     static final int P5X2 = 1;
     static final int PnoVal = 2;
+    static final int PDOBSCV = 3;
     //END OF STATIC VARIABLES
     public int heapSize = 512; //- Java performance option variables
     public int numberKFoldCross = 10;
@@ -166,6 +167,9 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     public Experiments(keel.GraphInterKeel.menu.Frame parent, int type) {
         initComponents();
         subgroupDiscoveryButton.setVisible(false);
+        
+        partitioningImbalanced.setVisible(false);
+        
         this.father = parent;
         this.root = parent.raiz;
         experimentGraph.objective = type;
@@ -224,7 +228,12 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
      * Load a new imbalanced experiment
      */
     private void loadImbalancedExperiment() {
+        
+        cvType = Experiments.PK;
         numberKFoldCross = 5;
+        
+        partitioningImbalanced.setVisible(true);
+        
         dinDatasets.hideImportButton();
         panelDatasets.hideImportButton();
         ((CardLayout) selectionPanel1.getLayout()).show(selectionPanel1, "datasetsChecksCard");
@@ -237,7 +246,6 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         helpContent.muestraURL(this.getClass().getResource("/contextualHelp/data_set_exp.html"));
 
         this.expType = Experiments.CLASSIFICATION;
-        cvType = Experiments.PK;
 
         //we want to prevent that this panel will ever show again
         initialPanel1.setVisible(false);
@@ -329,6 +337,8 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         kfoldButton = new javax.swing.JRadioButton();
         kValueField = new javax.swing.JTextField();
         partitionsLabel = new javax.swing.JLabel();
+        DOBSCVButton = new javax.swing.JRadioButton();
+        kValueFieldDOBSCV = new javax.swing.JTextField();
         experimentPanel = new javax.swing.JPanel();
         classificationButton = new javax.swing.JButton();
         regressionButton = new javax.swing.JButton();
@@ -344,6 +354,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         datasetsChecksPanel = new javax.swing.JPanel();
         checksDatasetsScrollPane = new javax.swing.JScrollPane();
         panelDatasets = new keel.GraphInterKeel.experiments.SelectData(this);
+        partitioningImbalanced = new javax.swing.JComboBox();
         regressionPanel = new javax.swing.JPanel();
         keelLabel2 = new javax.swing.JLabel();
         keelLabel3 = new javax.swing.JLabel();
@@ -606,7 +617,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
         mainToolBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         mainToolBar1.setFloatable(false);
-        mainToolBar1.setOrientation(1);
+        mainToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         mainToolBar1.setRollover(true);
         mainToolBar1.setName("mainToolBar1"); // NOI18N
 
@@ -717,6 +728,11 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         partitionGroup.add(fivetwoButton);
         fivetwoButton.setText("5x2 cross validation");
         fivetwoButton.setName("fivetwoButton"); // NOI18N
+        fivetwoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fivetwoButtonActionPerformed(evt);
+            }
+        });
 
         partitionGroup.add(kfoldButton);
         kfoldButton.setSelected(true);
@@ -725,6 +741,11 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         kfoldButton.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 kfoldButtonItemStateChanged(evt);
+            }
+        });
+        kfoldButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kfoldButtonActionPerformed(evt);
             }
         });
 
@@ -740,25 +761,50 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         partitionsLabel.setName("partitionsLabel"); // NOI18N
         partitionsLabel.setOpaque(true);
 
+        partitionGroup.add(DOBSCVButton);
+        DOBSCVButton.setText("k-fold DOB-SCV");
+        DOBSCVButton.setName("DOBSCVButton"); // NOI18N
+        DOBSCVButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                DOBSCVButtonStateChanged(evt);
+            }
+        });
+        DOBSCVButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DOBSCVButtonItemStateChanged(evt);
+            }
+        });
+        DOBSCVButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DOBSCVButtonActionPerformed(evt);
+            }
+        });
+
+        kValueFieldDOBSCV.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        kValueFieldDOBSCV.setText("10");
+        kValueFieldDOBSCV.setEnabled(false);
+        kValueFieldDOBSCV.setName("kValueFieldDOBSCV"); // NOI18N
+
         org.jdesktop.layout.GroupLayout partitionPanel1Layout = new org.jdesktop.layout.GroupLayout(partitionPanel1);
         partitionPanel1.setLayout(partitionPanel1Layout);
         partitionPanel1Layout.setHorizontalGroup(
             partitionPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, partitionsLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, partitionsLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(partitionPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(kfoldButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(kValueField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
-            .add(partitionPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(fivetwoButton)
-                .addContainerGap(179, Short.MAX_VALUE))
-            .add(partitionPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(withoutButton)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .add(partitionPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(fivetwoButton)
+                    .add(withoutButton)
+                    .add(partitionPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, partitionPanel1Layout.createSequentialGroup()
+                            .add(DOBSCVButton)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(kValueFieldDOBSCV, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, partitionPanel1Layout.createSequentialGroup()
+                            .add(kfoldButton)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                            .add(kValueField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         partitionPanel1Layout.setVerticalGroup(
             partitionPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -768,11 +814,15 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
                 .add(partitionPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(kfoldButton)
                     .add(kValueField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 6, Short.MAX_VALUE)
+                .add(partitionPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(DOBSCVButton)
+                    .add(kValueFieldDOBSCV, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(fivetwoButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(withoutButton)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         experimentPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -822,22 +872,14 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         experimentPanel.setLayout(experimentPanelLayout);
         experimentPanelLayout.setHorizontalGroup(
             experimentPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(experimentLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
             .add(experimentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(classificationButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                .addContainerGap())
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, experimentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(regressionButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                .addContainerGap())
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, experimentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(unsupervisedButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                .addContainerGap())
-            .add(experimentLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, experimentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(subgroupDiscoveryButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                .add(experimentPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(classificationButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, regressionButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, unsupervisedButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, subgroupDiscoveryButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
                 .addContainerGap())
         );
         experimentPanelLayout.setVerticalGroup(
@@ -852,7 +894,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
                 .add(unsupervisedButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(subgroupDiscoveryButton)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout initialPanel1Layout = new org.jdesktop.layout.GroupLayout(initialPanel1);
@@ -888,7 +930,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         methodsPanel.setLayout(methodsPanelLayout);
         methodsPanelLayout.setHorizontalGroup(
             methodsPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(methodsScrollPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .add(methodsScrollPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         methodsPanelLayout.setVerticalGroup(
             methodsPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -950,6 +992,15 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
 
         datasetsChecksPanel.add(checksDatasetsScrollPane, java.awt.BorderLayout.CENTER);
 
+        partitioningImbalanced.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5-Fold Cross-Validation", "5-DOB Stratified Cross-Validation" }));
+        partitioningImbalanced.setName("partitioningImbalanced"); // NOI18N
+        partitioningImbalanced.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                partitioningImbalancedActionPerformed(evt);
+            }
+        });
+        datasetsChecksPanel.add(partitioningImbalanced, java.awt.BorderLayout.PAGE_START);
+
         selectionPanel1.add(datasetsChecksPanel, "datasetsChecksCard");
 
         regressionPanel.setName("regressionPanel"); // NOI18N
@@ -966,7 +1017,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         datasetsLabel1.setName("datasetsLabel1"); // NOI18N
         datasetsLabel1.setOpaque(true);
 
-        keelLabel6.setFont(new java.awt.Font("Lucida Grande 13 12 12", 1, 12));
+        keelLabel6.setFont(new java.awt.Font("Lucida Grande 13 12 12", 1, 12)); // NOI18N
         keelLabel6.setText("KEEL Datasets");
         keelLabel6.setName("keelLabel6"); // NOI18N
 
@@ -988,7 +1039,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         invert2Button.setText("Invert Selection");
         invert2Button.setName("invert2Button"); // NOI18N
 
-        keelLabel7.setFont(new java.awt.Font("Lucida Grande 13 12 12 12", 1, 12));
+        keelLabel7.setFont(new java.awt.Font("Lucida Grande 13 12 12 12", 1, 12)); // NOI18N
         keelLabel7.setText("User Datasets");
         keelLabel7.setName("keelLabel7"); // NOI18N
 
@@ -1030,7 +1081,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
                                 .add(18, 18, 18)
                                 .add(invert2Button)))))
                 .addContainerGap())
-            .add(datasetsLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .add(datasetsLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         regressionPanelLayout.setVerticalGroup(
             regressionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1052,7 +1103,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
                     .add(invert2Button))
                 .add(18, 18, 18)
                 .add(keelLabel7)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(importButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(keelLabel2)
@@ -1072,7 +1123,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         datasetsLabel2.setName("datasetsLabel2"); // NOI18N
         datasetsLabel2.setOpaque(true);
 
-        keelLabel4.setFont(new java.awt.Font("Lucida Grande 13 12 12 12", 1, 12));
+        keelLabel4.setFont(new java.awt.Font("Lucida Grande 13 12 12 12", 1, 12)); // NOI18N
         keelLabel4.setText("KEEL Datasets");
         keelLabel4.setName("keelLabel4"); // NOI18N
 
@@ -1085,7 +1136,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         invert2Button1.setText("Invert Selection");
         invert2Button1.setName("invert2Button1"); // NOI18N
 
-        keelLabel5.setFont(new java.awt.Font("Lucida Grande 13 12 12 12 12", 1, 12));
+        keelLabel5.setFont(new java.awt.Font("Lucida Grande 13 12 12 12 12", 1, 12)); // NOI18N
         keelLabel5.setText("User Datasets");
         keelLabel5.setName("keelLabel5"); // NOI18N
 
@@ -1096,6 +1147,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         unsupervisedPanel.setLayout(unsupervisedPanelLayout);
         unsupervisedPanelLayout.setHorizontalGroup(
             unsupervisedPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(datasetsLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
             .add(unsupervisedPanelLayout.createSequentialGroup()
                 .add(unsupervisedPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(unsupervisedPanelLayout.createSequentialGroup()
@@ -1112,13 +1164,11 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
                             .add(unsupervisedPanelLayout.createSequentialGroup()
                                 .add(selectAll2Button1)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(invert2Button1)))))
-                .addContainerGap(91, Short.MAX_VALUE))
-            .add(datasetsLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
-            .add(unsupervisedPanelLayout.createSequentialGroup()
-                .add(97, 97, 97)
-                .add(importButton2)
-                .addContainerGap(148, Short.MAX_VALUE))
+                                .add(invert2Button1))))
+                    .add(unsupervisedPanelLayout.createSequentialGroup()
+                        .add(97, 97, 97)
+                        .add(importButton2)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         unsupervisedPanelLayout.setVerticalGroup(
             unsupervisedPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1157,7 +1207,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         postprocessPanel.setLayout(postprocessPanelLayout);
         postprocessPanelLayout.setHorizontalGroup(
             postprocessPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(postprocessScroll, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .add(postprocessScroll, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         postprocessPanelLayout.setVerticalGroup(
             postprocessPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1182,7 +1232,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         testPanel.setLayout(testPanelLayout);
         testPanelLayout.setHorizontalGroup(
             testPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(testScroll, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .add(testScroll, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         testPanelLayout.setVerticalGroup(
             testPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1207,7 +1257,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         visualizePanel.setLayout(visualizePanelLayout);
         visualizePanelLayout.setHorizontalGroup(
             visualizePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(visualizeScroll, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .add(visualizeScroll, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         visualizePanelLayout.setVerticalGroup(
             visualizePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1233,7 +1283,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         preprocessPanel.setLayout(preprocessPanelLayout);
         preprocessPanelLayout.setHorizontalGroup(
             preprocessPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(preprocessScroll, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .add(preprocessScroll, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         preprocessPanelLayout.setVerticalGroup(
             preprocessPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1249,12 +1299,12 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             .add(leftPanel1Layout.createSequentialGroup()
                 .add(mainToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(selectionPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
+                .add(selectionPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         leftPanel1Layout.setVerticalGroup(
             leftPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(selectionPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
-            .add(mainToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+            .add(selectionPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(mainToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         mainSplitPane1.setLeftComponent(leftPanel1);
@@ -1273,7 +1323,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         graphDiagramINNER.setLayout(graphDiagramINNERLayout);
         graphDiagramINNERLayout.setHorizontalGroup(
             graphDiagramINNERLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 789, Short.MAX_VALUE)
+            .add(0, 759, Short.MAX_VALUE)
         );
         graphDiagramINNERLayout.setVerticalGroup(
             graphDiagramINNERLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1309,7 +1359,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, divider1)
             .add(mainPanelLayout.createSequentialGroup()
-                .add(quicktools, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1147, Short.MAX_VALUE)
+                .add(quicktools, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
@@ -1567,7 +1617,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(0, 0, 0)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, status, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1157, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, status, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, mainPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .add(0, 0, 0))
         );
@@ -1858,7 +1908,12 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     private void classificationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classificationButtonActionPerformed
 
         numberKFoldCross = Integer.valueOf(kValueField.getText());
-
+        
+        //---- DOBSCV ---------
+        if(DOBSCVButton.isSelected())
+            numberKFoldCross = Integer.valueOf(kValueFieldDOBSCV.getText());
+        //---------------------
+        
         //Control of this variables because of they could be
         //modified in experiments
         if (objType == LQD) {
@@ -1867,7 +1922,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         } else {
             objType = INVESTIGATION;
         }
-        if (kfoldButton.isSelected() && numberKFoldCross < 1) {
+        if ( (kfoldButton.isSelected() || DOBSCVButton.isSelected()) && numberKFoldCross < 1) {
             JOptionPane.showMessageDialog(this, "Number of folds must be at least 1",
                     "Invalid number of folds", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -1891,7 +1946,15 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
             this.expType = Experiments.CLASSIFICATION;
             if (kfoldButton.isSelected()) {
                 cvType = Experiments.PK;
-            } else if (fivetwoButton.isSelected()) {
+                
+            }
+            
+            // DOBSCV
+            else if (DOBSCVButton.isSelected()) {
+                cvType = Experiments.PDOBSCV;
+            }
+            
+            else if (fivetwoButton.isSelected()) {
                 cvType = Experiments.P5X2;
             } else {
                 cvType = Experiments.PnoVal;
@@ -3078,6 +3141,51 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
     }
 }//GEN-LAST:event_subgroupDiscoveryButtonActionPerformed
 
+    private void DOBSCVButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DOBSCVButtonItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DOBSCVButtonItemStateChanged
+
+    private void DOBSCVButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOBSCVButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DOBSCVButtonActionPerformed
+
+    private void kfoldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kfoldButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kfoldButtonActionPerformed
+
+    private void fivetwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fivetwoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fivetwoButtonActionPerformed
+
+    private void DOBSCVButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_DOBSCVButtonStateChanged
+        // TODO add your handling code here:
+        if (DOBSCVButton.isSelected()) {
+            kValueFieldDOBSCV.setEnabled(true);
+            regressionButton.setEnabled(false);
+            unsupervisedButton.setEnabled(false);
+            subgroupDiscoveryButton.setEnabled(false);
+        } else {
+            kValueFieldDOBSCV.setEnabled(false);
+            regressionButton.setEnabled(true);
+            unsupervisedButton.setEnabled(true);
+            subgroupDiscoveryButton.setEnabled(true);
+        }
+    }//GEN-LAST:event_DOBSCVButtonStateChanged
+
+    private void partitioningImbalancedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partitioningImbalancedActionPerformed
+        // TODO add your handling code here:
+        
+        if (this.partitioningImbalanced.getSelectedItem() == this.partitioningImbalanced.getItemAt(0)) {
+            cvType = Experiments.PK;
+            numberKFoldCross = 5;
+        }
+        else if (this.partitioningImbalanced.getSelectedItem() == this.partitioningImbalanced.getItemAt(1)){
+            cvType = Experiments.PDOBSCV;
+            numberKFoldCross = 5;
+        }
+            
+    }//GEN-LAST:event_partitioningImbalancedActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3091,6 +3199,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton DOBSCVButton;
     private javax.swing.JMenuItem aboutItem;
     public javax.swing.JScrollPane checksDatasetsScrollPane;
     private javax.swing.JButton classificationButton;
@@ -3129,6 +3238,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
     private javax.swing.JButton invert2Button;
     private javax.swing.JButton invert2Button1;
     private javax.swing.JTextField kValueField;
+    private javax.swing.JTextField kValueFieldDOBSCV;
     private javax.swing.JLabel keelLabel2;
     private javax.swing.JLabel keelLabel3;
     private javax.swing.JLabel keelLabel4;
@@ -3152,6 +3262,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
     public keel.GraphInterKeel.experiments.SelectData panelDatasets;
     private javax.swing.ButtonGroup partitionGroup;
     private javax.swing.JPanel partitionPanel1;
+    private javax.swing.JComboBox partitioningImbalanced;
     private javax.swing.JLabel partitionsLabel;
     private javax.swing.JPanel postprocessPanel;
     private javax.swing.JScrollPane postprocessScroll;
@@ -8064,11 +8175,16 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
             if (objType == IMBALANCED) {
                 createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsImbalanced.xml");
             } else {
+               
                 if (objType == MULTIINSTANCE) {
                     createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "DatasetsMultiInstance.xml");
-                } else {
+                }
+
+                else{
                     createDatasetNodes("." + File.separatorChar + "data" + File.separatorChar + "Datasets.xml");
                 }
+                
+
             }
 
         }

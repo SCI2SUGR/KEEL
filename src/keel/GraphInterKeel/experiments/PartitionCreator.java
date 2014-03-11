@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -113,7 +113,29 @@ public class PartitionCreator extends SwingWorker<Boolean, Integer> {
                     publish(new Integer(counter));
                 }
                 pg.partition(PartitionGenerator._K_FOLD, "." + ds.dsc.getPath(i) + ds.dsc.getName(i) + "/" + ds.dsc.getName(i) + ".dat", "." + ds.dsc.getPath(i) + ds.dsc.getName(i), parent.experimentGraph.getSeed(), parent.numberKFoldCross, -1);
-            } else if (parent.cvType == Experiments.P5X2) {
+            }
+            
+            //-------- DOBSCV--------
+            else if (parent.cvType == parent.PDOBSCV) {
+                for (int l = 1; l <= parent.numberKFoldCross && !pm.isCanceled(); l++) {
+                    fi = new File("." + ds.dsc.getPath(i) + ds.dsc.getName(i) + "/" + ds.dsc.getName(i) + "-" + parent.numberKFoldCross + "dobscv-" + l + "tra.dat");
+                    if (fi.exists()) {
+                        fi.delete();
+                    }
+                    fi = new File("." + ds.dsc.getPath(i) + ds.dsc.getName(i) + "/" + ds.dsc.getName(i) + "-" + parent.numberKFoldCross + "dobscv-" + l + "tst.dat");
+                    if (fi.exists()) {
+                        fi.delete();
+                    }
+                    counter++;
+                    publish(new Integer(counter));
+                }
+                pg.partition(PartitionGenerator._DOBSCV_FOLD, "." + ds.dsc.getPath(i) + ds.dsc.getName(i) + "/" + ds.dsc.getName(i) + ".dat", "." + ds.dsc.getPath(i) + ds.dsc.getName(i), parent.experimentGraph.getSeed(), parent.numberKFoldCross, -1);
+            }
+            //--------------------------
+            
+            
+            
+            else if (parent.cvType == Experiments.P5X2) {
                 for (int l = 1; l <= parent.numberKFoldCross && !pm.isCanceled(); l++) {
                     fi = new File(ds.dsc.getName(i) + "-5x2-" + i + "tra.dat");
                     if (fi.exists()) {

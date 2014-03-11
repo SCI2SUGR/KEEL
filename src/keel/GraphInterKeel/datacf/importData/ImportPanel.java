@@ -447,13 +447,14 @@ public class ImportPanel extends javax.swing.JPanel {
             .addGroup(leftPreviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(leftPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(leftPreviewPanelLayout.createSequentialGroup()
-                        .addComponent(originalScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
-                        .addContainerGap())
                     .addComponent(originalSeparator, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                     .addGroup(leftPreviewPanelLayout.createSequentialGroup()
-                        .addComponent(originalLabel)
-                        .addContainerGap(367, Short.MAX_VALUE))))
+                        .addGroup(leftPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(originalScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                            .addGroup(leftPreviewPanelLayout.createSequentialGroup()
+                                .addComponent(originalLabel)
+                                .addGap(0, 361, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         leftPreviewPanelLayout.setVerticalGroup(
             leftPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -500,13 +501,12 @@ public class ImportPanel extends javax.swing.JPanel {
             rightPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPreviewPanelLayout.createSequentialGroup()
                 .addGroup(rightPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, rightPreviewPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(resultScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE))
                     .addComponent(resultSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, rightPreviewPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(resultsLabel)))
+                        .addGroup(rightPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(resultScrollPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                            .addComponent(resultsLabel, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addContainerGap())
         );
         rightPreviewPanelLayout.setVerticalGroup(
@@ -621,7 +621,7 @@ public class ImportPanel extends javax.swing.JPanel {
         gridBagConstraints.weightx = 0.5;
         importToKeelPanel.add(realComboBox, gridBagConstraints);
 
-        partitionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KFold", "5x2" }));
+        partitionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KFold", "5x2", "DOB-SCV" }));
         partitionComboBox.setEnabled(false);
         partitionComboBox.setName("partitionComboBox"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -875,7 +875,7 @@ public class ImportPanel extends javax.swing.JPanel {
                     .addComponent(outputFormatPartitionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(optionsPartitionsButton)
                     .addComponent(processHeaderPartitionsCheckBox))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1103,7 +1103,13 @@ private void nextPreviewButtonActionPerformed(java.awt.event.ActionEvent evt) {/
             String partition = "";
             if (partitionComboBox.getSelectedIndex() == 0) {
                 partition = Integer.toString(trainingModel.size());
-            } else if (partitionComboBox.getSelectedIndex() == 1) {
+            } 
+            //DOBSCV
+            else if (partitionComboBox.getSelectedIndex() == 2) {
+                partition = Integer.toString(trainingModel.size()) + "dobscv";
+            }
+            
+            else if (partitionComboBox.getSelectedIndex() == 1) {
                 partition = "5x2";
             }
             for (int i = 0; i < trainingOutputFileName.length; i++) {
@@ -3260,6 +3266,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         }
 
         Element partitions = new Element("partitions");
+        JOptionPane.showMessageDialog(null,partitionComboBox.getSelectedIndex());
         if (!datasets) {
             if (partitionComboBox.getSelectedIndex() == 0) {
                 Element partition = new Element("partition");
@@ -3268,6 +3275,13 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
             } else if (partitionComboBox.getSelectedIndex() == 1) {
                 Element partition = new Element("partition");
                 partition.setText("5x2cv");
+                partitions.addContent(partition);
+            }
+            
+            // DOBSCV
+            else if (partitionComboBox.getSelectedIndex() == 2) {
+                Element partition = new Element("partition");
+                partition.setText(trainingModel.size() + "dobscv");
                 partitions.addContent(partition);
             }
         }
@@ -3577,6 +3591,13 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                 partition.setText("5x2cv");
                 partitions.addContent(partition);
             }
+            
+            //DOBSCV
+            else if (partitionComboBox.getSelectedIndex() == 2) {
+                Element partition = new Element("partition");
+                partition.setText(trainingModel.size() + "dobscv");
+                partitions.addContent(partition);
+            }
         }
         Element continuosValues = new Element("continuous");
         if (keel.Dataset.Attributes.hasRealAttributes()) {
@@ -3721,6 +3742,11 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
                 newPartition=trainingModel.size() + "cfv";
             } else if (partitionComboBox.getSelectedIndex() == 1) {
                 newPartition="5x2cv";
+            }
+            
+            //DOBSCV
+            else if (partitionComboBox.getSelectedIndex() == 3) {
+                newPartition=trainingModel.size() + "dobscv";
             }
             
             List datasetsList = data.getRootElement().getChildren();

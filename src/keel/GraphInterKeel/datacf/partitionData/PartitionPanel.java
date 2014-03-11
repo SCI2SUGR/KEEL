@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -111,7 +111,7 @@ public class PartitionPanel extends javax.swing.JPanel {
         typejLabel.setText("Type of Partition");
         typejLabel.setName("typejLabel"); // NOI18N
 
-        typejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "K-Fold Cross Validation", "5x2 Cross Validation", "Hold-Out" }));
+        typejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "K-Fold Cross Validation", "5x2 Cross Validation", "Hold-Out", "K-Fold Distribution Optimally Balanced Stratified Cross Validation" }));
         typejComboBox.setToolTipText("Type of Partitioning Approach to Apply");
         typejComboBox.setName("typejComboBox"); // NOI18N
         typejComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -184,13 +184,13 @@ public class PartitionPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fileBrowserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+            .addComponent(fileBrowserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
             .addComponent(typeofPartitionjPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(fileBrowserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addComponent(fileBrowserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(typeofPartitionjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -200,8 +200,15 @@ private void optionsjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
     //If K-Fold Cross Validation is selected
     if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(0)) {
         kfoldOptions.setVisible(true);
-        //Hold-out
-    } else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(2)) {
+    }
+    
+    //DOB-SCV
+    else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(3)) {
+        kfoldOptions.setVisible(true);
+    }
+    
+    //Hold-out
+    else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(2)) {
         holdOutOptions.setVisible(true);
     }
 }//GEN-LAST:event_optionsjButtonActionPerformed
@@ -213,12 +220,24 @@ private void typejComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         this.optionsjButton.setEnabled(true);
         //If K-Fold Cross Validation is selected
     }
+    
+    
     if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(0)) {
         kfoldOptions = new KFoldOptionsJDialog(parent, true);
         if (holdOutOptions != null) {
             holdOutOptions = null;
         }
-    } //Hold-out
+    }
+
+    // DOB-SCV
+    else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(3)) {
+        kfoldOptions = new KFoldOptionsJDialog(parent, true);
+        if (holdOutOptions != null) {
+            holdOutOptions = null;
+        }
+    }    
+
+    //Hold-out
     else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(2)) {
         holdOutOptions = new HoldOutOptionsJDialog(parent, true);
         if (kfoldOptions != null) {
@@ -250,7 +269,15 @@ private void dividejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         type = 2;
         nOfPartitions = holdOutOptions.getNOfPartitions();
         totalFractions = holdOutOptions.getTotalFractions();
-    } else {
+    } 
+    
+    //DOB-SCV
+    else if (((String) typejComboBox.getSelectedItem()).equals("K-Fold Distribution Optimally Balanced Stratified Cross Validation")) {
+        type = 4;
+        nOfPartitions = kfoldOptions.getK();
+    }
+
+    else {
         return;
     }
     long seed;
@@ -289,7 +316,7 @@ private void dividejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             index = name.length();
         }
         name = name.substring(0, index);
-        String finalName = name.concat("-" + ((type == 1) ? (nOfPartitions + "Fold") : ((type == 2) ? "HoldOut" : "5x2")));
+        String finalName = name.concat("-" + ((type == 1 || type == 4) ? (nOfPartitions + "Fold") : ((type == 2) ? "HoldOut" : "5x2")));
         chooser.setSelectedFile(new File(Path.getFilePath() + File.separator + finalName));
         int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -327,6 +354,27 @@ private void dividejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 }
             }
         }
+        
+        
+                // ---------------------
+        // DOB-SCV partition type
+        else if (type == 4) {
+            for (int i = 0; i < nOfPartitions; i++) {
+                String nombre_base = originalFile.getName().replaceAll(".dat", "");
+                File trainingFile = new File(outputPath + File.separator + nombre_base + "-" +
+                        String.valueOf(nOfPartitions) + "dobscv-" + String.valueOf(i + 1) +
+                        "tra.dat");
+                System.out.println(trainingFile.getAbsolutePath());
+                File testFile = new File(outputPath + File.separator + nombre_base + "-" +
+                        String.valueOf(nOfPartitions) + "dobscv-" + String.valueOf(i + 1) +
+                        "tst.dat");
+                if (!wantToBeOverwritten(trainingFile) || !wantToBeOverwritten(testFile)) {
+                    return;
+                }
+            }
+        }
+        
+        
         // ----------------------
         // Holdout partition type
         else if (type == 2) {
@@ -421,7 +469,27 @@ private void dividejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                             partition.setText(totalFractions + "ho");
                             element.getChild("partitions").addContent(partition);
                         }
-                    } else {
+                    } 
+                    
+                    //DOBSCV
+                    else if (type == 4) {
+                        List<Element> list = element.getChild("partitions").getChildren("partition");
+
+                        boolean founded = false;
+                        for (Element e : list) {
+                            if (e.getText().equals(nOfPartitions + "dobscv")) {
+                                founded = true;
+                            }
+                        }
+                        if (!founded) {
+                            Element partition = new Element("partition");
+                            partition.setText(nOfPartitions + "dobscv");
+                            element.getChild("partitions").addContent(partition);
+                        }
+                    }
+                    
+                    
+                    else {
                         List<Element> list = element.getChild("partitions").getChildren("partition");
 
                         boolean founded = false;

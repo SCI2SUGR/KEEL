@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.5" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -330,6 +330,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -349,7 +350,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="status" alignment="0" pref="1157" max="32767" attributes="0"/>
+                  <Component id="status" alignment="0" max="32767" attributes="0"/>
                   <Component id="mainPanel" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
@@ -382,7 +383,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="divider1" alignment="1" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="quicktools" pref="1147" max="32767" attributes="0"/>
+                  <Component id="quicktools" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -666,14 +667,14 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="mainToolBar1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="selectionPanel1" pref="310" max="32767" attributes="0"/>
+                              <Component id="selectionPanel1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="selectionPanel1" alignment="0" pref="410" max="32767" attributes="0"/>
-                          <Component id="mainToolBar1" alignment="0" pref="410" max="32767" attributes="0"/>
+                          <Component id="selectionPanel1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="mainToolBar1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -873,23 +874,26 @@
                               <Layout>
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="partitionsLabel" alignment="1" pref="306" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Component id="partitionsLabel" alignment="1" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="kfoldButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="kValueField" min="-2" pref="45" max="-2" attributes="0"/>
-                                          <EmptySpace pref="124" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="fivetwoButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="179" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="withoutButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="189" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="fivetwoButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="withoutButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="DOBSCVButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="kValueFieldDOBSCV" min="-2" pref="45" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="kfoldButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="kValueField" min="-2" pref="45" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -902,11 +906,16 @@
                                               <Component id="kfoldButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="kValueField" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace pref="6" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="DOBSCVButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="kValueFieldDOBSCV" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="fivetwoButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Component id="withoutButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="29" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -929,6 +938,9 @@
                                     <Property name="text" type="java.lang.String" value="5x2 cross validation"/>
                                     <Property name="name" type="java.lang.String" value="fivetwoButton" noResource="true"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fivetwoButtonActionPerformed"/>
+                                  </Events>
                                 </Component>
                                 <Component class="javax.swing.JRadioButton" name="kfoldButton">
                                   <Properties>
@@ -941,6 +953,7 @@
                                   </Properties>
                                   <Events>
                                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="kfoldButtonItemStateChanged"/>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kfoldButtonActionPerformed"/>
                                   </Events>
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="kValueField">
@@ -969,6 +982,28 @@
                                     <Property name="opaque" type="boolean" value="true"/>
                                   </Properties>
                                 </Component>
+                                <Component class="javax.swing.JRadioButton" name="DOBSCVButton">
+                                  <Properties>
+                                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                      <ComponentRef name="partitionGroup"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="k-fold DOB-SCV"/>
+                                    <Property name="name" type="java.lang.String" value="DOBSCVButton" noResource="true"/>
+                                  </Properties>
+                                  <Events>
+                                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="DOBSCVButtonStateChanged"/>
+                                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="DOBSCVButtonItemStateChanged"/>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DOBSCVButtonActionPerformed"/>
+                                  </Events>
+                                </Component>
+                                <Component class="javax.swing.JTextField" name="kValueFieldDOBSCV">
+                                  <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="0"/>
+                                    <Property name="text" type="java.lang.String" value="10"/>
+                                    <Property name="enabled" type="boolean" value="false"/>
+                                    <Property name="name" type="java.lang.String" value="kValueFieldDOBSCV" noResource="true"/>
+                                  </Properties>
+                                </Component>
                               </SubComponents>
                             </Container>
                             <Container class="javax.swing.JPanel" name="experimentPanel">
@@ -984,25 +1019,15 @@
                               <Layout>
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Component id="experimentLabel" alignment="0" pref="336" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="classificationButton" pref="286" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="regressionButton" pref="286" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="unsupervisedButton" pref="286" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="experimentLabel" alignment="0" pref="306" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="subgroupDiscoveryButton" pref="286" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="classificationButton" alignment="0" pref="324" max="32767" attributes="0"/>
+                                              <Component id="regressionButton" alignment="1" pref="324" max="32767" attributes="0"/>
+                                              <Component id="unsupervisedButton" alignment="1" pref="324" max="32767" attributes="0"/>
+                                              <Component id="subgroupDiscoveryButton" alignment="1" pref="324" max="32767" attributes="0"/>
+                                          </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1019,7 +1044,7 @@
                                           <Component id="unsupervisedButton" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="subgroupDiscoveryButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="79" max="32767" attributes="0"/>
+                                          <EmptySpace pref="30" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1097,7 +1122,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="methodsScrollPanel" alignment="0" pref="310" max="32767" attributes="0"/>
+                                  <Component id="methodsScrollPanel" alignment="0" pref="340" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -1244,6 +1269,25 @@
                                 </Container>
                               </SubComponents>
                             </Container>
+                            <Component class="javax.swing.JComboBox" name="partitioningImbalanced">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="2">
+                                    <StringItem index="0" value="5-Fold Cross-Validation"/>
+                                    <StringItem index="1" value="5-DOB Stratified Cross-Validation"/>
+                                  </StringArray>
+                                </Property>
+                                <Property name="name" type="java.lang.String" value="partitioningImbalanced" noResource="true"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="partitioningImbalancedActionPerformed"/>
+                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                                  <BorderConstraints direction="First"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="regressionPanel">
@@ -1302,7 +1346,7 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="datasetsLabel1" alignment="0" pref="310" max="32767" attributes="1"/>
+                                  <Component id="datasetsLabel1" alignment="0" pref="340" max="32767" attributes="1"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -1326,7 +1370,7 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="keelLabel7" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="importButton1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="keelLabel2" min="-2" max="-2" attributes="0"/>
@@ -1441,7 +1485,8 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Component id="datasetsLabel2" alignment="0" pref="340" max="32767" attributes="2"/>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="24" pref="24" max="24" attributes="0"/>
@@ -1464,14 +1509,12 @@
                                                   </Group>
                                               </Group>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                              <Component id="importButton2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace pref="91" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="datasetsLabel2" alignment="0" pref="310" max="32767" attributes="2"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                                      <Component id="importButton2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="148" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1574,7 +1617,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="postprocessScroll" alignment="0" pref="310" max="32767" attributes="0"/>
+                                  <Component id="postprocessScroll" alignment="0" pref="340" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -1619,7 +1662,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="testScroll" alignment="0" pref="310" max="32767" attributes="0"/>
+                                  <Component id="testScroll" alignment="0" pref="340" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -1664,7 +1707,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="visualizeScroll" alignment="0" pref="310" max="32767" attributes="0"/>
+                                  <Component id="visualizeScroll" alignment="0" pref="340" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -1709,7 +1752,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="preprocessScroll" alignment="0" pref="310" max="32767" attributes="0"/>
+                                  <Component id="preprocessScroll" alignment="0" pref="340" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -1769,7 +1812,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="789" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="759" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
