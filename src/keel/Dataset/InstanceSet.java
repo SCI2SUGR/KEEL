@@ -616,7 +616,19 @@ public class InstanceSet {
     return header;
   }//end getHeader
 
+  public void setHeader(String copia) {
+	    header = new String(copia);
+  }//end getHeader
   
+  public String getAttHeader() {
+	    return this.attHeader;
+  }//end getHeader
+
+	  
+  public void setAttHeader(String copia) {
+      attHeader = new String(copia);
+  }//end getHeader
+
   
 /**
  * It does return a new header (not necessary the same header as the 

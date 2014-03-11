@@ -39,6 +39,7 @@
  * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of CÃ³rdoba) 7/07/2009
  * @author Modified by Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
  * @author Modified by JoaquÃ­n Derrac 4-7-2010 (University of Granada)
+ * @author Modified by Isaac Triguero 11-3-2014 to include SSL module (University of Granada)
  */
 package keel.GraphInterKeel.experiments;
 
@@ -5601,6 +5602,8 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         Vector tst = new Vector();
         Vector tst2 = new Vector();
 
+        Vector trs = new Vector();
+        Vector trs2 = new Vector();
         /***************************************************************
          ***************  EDUCATIONAL KEEL   ****************************
          **************************************************************/

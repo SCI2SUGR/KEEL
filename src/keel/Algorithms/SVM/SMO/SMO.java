@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -73,6 +73,7 @@ import keel.Dataset.InstanceSet;
 import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 
+import org.core.Fichero;
 import org.core.Randomize;
 import org.core.Files;
 
@@ -224,6 +225,8 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	/** for serialization */
 	static final long serialVersionUID = -6585883636378691736L;
 
+	public double [][] probabilities = null;
+	
 	/**
 	 * Returns a string describing classifier
 	 * @return a description suitable for
@@ -355,6 +358,8 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 		/** Stores the weight of the training instances */
 		protected double m_sumOfWeights = 0;
+
+		
 
 		/**
 		 * Fits logistic regression model to SVM outputs analogue
@@ -1395,6 +1400,9 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		m_classAttribute = insts.classAttribute();
 		m_KernelIsLinear = (m_kernel instanceof PolyKernel) && (((PolyKernel) m_kernel).getExponent() == 1.0);
 		m_NumClasses = insts.numClasses();
+		
+	
+		
 		// Generate subsets representing each class
 		Instances[] subsets = new Instances[insts.numClasses()];
 		for (int i = 0; i < insts.numClasses(); i++) {
@@ -1456,6 +1464,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		//			m_Filter.batchFinished();
 		//			inst = m_Filter.output();
 		//		}
+
 
 		if (!m_fitLogisticModels) {
 			double[] result = new double[inst.numClasses()];
@@ -2283,14 +2292,20 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		try{
 			//*********build de SMO classifier********
 			IS.readSet(input_train_name, true);
+			
+	        
 			if(m_filterType==FILTER_STANDARDIZE)
 				computeStats(IS);
 			isWeka = InstancesKEEL2Weka(IS,m_filterType,m_nominalToBinary);
-			//			Fichero.escribeFichero("keelTemp.dat", isWeka.toString());
+			
+			
+						//Fichero.escribeFichero("keelTemp.dat", isWeka.toString());
 			buildClassifier(isWeka);
 
 			//********validate the obtained SMO*******
 			ISval.readSet(input_validation_name, false);
+			
+			
 			isWeka = InstancesKEEL2Weka(ISval,m_filterType,m_nominalToBinary);
 			//obtain the predicted class for each train instance
 			Attribute a = Attributes.getOutputAttribute(0);
@@ -2364,6 +2379,124 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		printSVs();
 	}
 
+	
+	
+	/**
+	 * Run the model once the parameters have been set by the
+	 * method config_read()
+	 */
+	public void runModel(InstanceSet train, InstanceSet test) {
+		Instances isWeka;
+		Instance instWeka;
+		InstanceSet IS = new InstanceSet();
+		InstanceSet ISval = new InstanceSet();
+		double []dist;
+		String instanciasIN[];
+		String instanciasOUT[];
+
+       // System.out.println("******TRAIN*******");
+       
+ 
+
+		
+
+		
+		try{
+			//*********build de SMO classifier********
+			//IS.readSet(input_train_name, true);
+		
+			IS = train;
+			if(m_filterType==FILTER_STANDARDIZE)
+				computeStats(IS);
+			
+			
+			isWeka = InstancesKEEL2Weka(IS,m_filterType,m_nominalToBinary);
+					//	Fichero.escribeFichero("keelTemp.dat", isWeka.toString());
+			
+	
+			buildClassifier(isWeka);
+
+					//********validate the obtained SMO*******
+			ISval = new InstanceSet(train); // .readSet(input_validation_name, false);
+			isWeka = InstancesKEEL2Weka(ISval,m_filterType,m_nominalToBinary);
+			//obtain the predicted class for each train instance
+			Attribute a = Attributes.getOutputAttribute(0);
+			int tipo = a.getType();
+			instanciasIN = new String[ISval.getNumInstances()];
+			instanciasOUT = new String[ISval.getNumInstances()];
+
+			for (int i = 0; i < isWeka.numInstances();i++) {
+				keel.Dataset.Instance inst = ISval.getInstance(i);
+				instWeka = isWeka.instance(i);
+				instWeka.setDataset(isWeka);
+				dist = this.distributionForInstance(instWeka);
+				int claseObt = 0;
+				for(int j=1;j<m_NumClasses;j++){
+					if(dist[j]>dist[claseObt])
+						claseObt = j;
+				}
+				if(tipo!=Attribute.NOMINAL){
+					instanciasIN[i] = new String(String.valueOf(inst.getOutputRealValues(0)));
+					instanciasOUT[i] = new String(String.valueOf(claseObt));
+				}
+				else{
+					instanciasIN[i] = new String(inst.getOutputNominalValues(0));
+					instanciasOUT[i] = new String(a.getNominalValue(claseObt));
+				}
+			}
+			writeOutput(output_train_name, instanciasIN, instanciasOUT, Attributes.getInputAttributes(),
+					Attributes.getOutputAttribute(0), Attributes.getInputNumAttributes(), "relation");
+		}catch(Exception ex){
+			System.err.println("Fatal Error building the SMO model!");
+			ex.printStackTrace();
+		};
+		try{
+
+			//******Apply the SMO to the test set ******
+			//IS.readSet(input_test_name, false);
+			IS = new InstanceSet(test);
+			isWeka = InstancesKEEL2Weka(IS,m_filterType,m_nominalToBinary);
+			
+			this.probabilities = new double[test.getInstances().length][this.m_NumClasses];
+			
+			//obtain the predicted class for each train instance
+			Attribute a = Attributes.getOutputAttribute(0);
+			int tipo = a.getType();
+			instanciasIN = new String[IS.getNumInstances()];
+			instanciasOUT = new String[IS.getNumInstances()];
+
+			for (int i = 0; i < isWeka.numInstances();i++) {
+				keel.Dataset.Instance inst = IS.getInstance(i);
+				instWeka = isWeka.instance(i);
+				instWeka.setDataset(isWeka);
+				dist = this.distributionForInstance(instWeka);
+				probabilities[i] = dist;
+				
+				int claseObt = 0;
+				for(int j=1;j<m_NumClasses;j++){
+					if(dist[j]>dist[claseObt])
+						claseObt = j;
+				}
+				if(tipo!=Attribute.NOMINAL){
+					instanciasIN[i] = new String(String.valueOf(inst.getOutputRealValues(0)));
+					instanciasOUT[i] = new String(String.valueOf(claseObt));
+				}
+				else{
+					instanciasIN[i] = new String(inst.getOutputNominalValues(0));
+					instanciasOUT[i] = new String(a.getNominalValue(claseObt));
+				}
+			}
+			writeOutput(output_test_name, instanciasIN, instanciasOUT, Attributes.getInputAttributes(),
+					Attributes.getOutputAttribute(0), Attributes.getInputNumAttributes(), "relation");
+		}catch(Exception ex){
+			System.err.println("Fatal Error performing test by the SMO model!");
+			ex.printStackTrace();
+		};
+
+		//if everything went well, print the support vectors to a file
+		printSVs();
+	}
+	
 	/**
 	 * Parse the parameter file created by KEEL into the needed parameters.
 	 * It also configures the selected kernel passing its parameters.
@@ -2716,8 +2849,12 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		Instances data;
 		FastVector atts;
 
+
+	
 		// Create header of instances object
 		out = Attributes.getInputNumAttributes(); //the class attribute is usually the last one
+
+		
 		if(!nominal2binary){ //leave the nominal attribute codified as integers
 			atts = new FastVector(Attributes.getNumAttributes());
 			for(int i=0;i<Attributes.getNumAttributes();i++){
@@ -2769,18 +2906,33 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 					newNumAttributes++;
 				}
 			}
+			
+
+			
 			data = new Instances(Attributes.getRelationName(), atts, is.getNumInstances());
+
+			
+			
+			
 			data.setClassIndex(out);
 		}
 
+		
 		//now fill the data in the data instanceset
 		for(int i=0;i<is.getNumInstances();i++){
+		
 			instK = is.getInstance(i);
 			in = out = 0;
 			enlargedValueVectorPos = 0;
 			values = new double[newNumAttributes];
+
+		
 			for(int j=0;j<Attributes.getNumAttributes();j++){
+				
+				
+				
 				a = Attributes.getAttribute(j);
+		
 				if(a.getDirectionAttribute()==Attribute.INPUT){
 					if(a.getType()!=Attribute.NOMINAL){
 						if(preprocessType==FILTER_NORMALIZE)
@@ -2809,15 +2961,21 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 					}
 					in++;
 				}else{
-					values[enlargedValueVectorPos] = instK.getAllOutputValues()[out];
+					//System.out.println("Soy atributo de salida! = "+instK.getOutputNominalValuesInt(0));
+										
+					values[enlargedValueVectorPos] = instK.getOutputNominalValuesInt(out);//instK.getAllOutputValues()[out];
 					out++;
 					enlargedValueVectorPos++;
 				}
 			}
+			
+			
+			
 			//**IMPORTANT** We set the weight of the instance to ONE
 			instW = new Instance(1,values);
 			data.add(instW);
 		}
+
 
 		return data;
 	}

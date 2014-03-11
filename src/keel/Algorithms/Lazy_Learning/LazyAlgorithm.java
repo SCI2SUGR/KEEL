@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -37,8 +37,8 @@
  * by implementing the abstract "evaluate" and "readParameters" method,
  * getting most of its work already done.
  * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
- * @author Modified by Joaquín Derrac (University of Granada) 10/18/2008 
+ * @author Written by Joaquï¿½n Derrac (University of Granada) 13/11/2008 
+ * @author Modified by Joaquï¿½n Derrac (University of Granada) 10/18/2008 
  * @version 1.1 
  * @since JDK1.5
  * 
@@ -87,6 +87,8 @@ public abstract class LazyAlgorithm {
 	protected double referenceData[][];
 	protected int referenceOutput[];
 	protected String relation;
+	public int[] predictions;
+	public double probabilities[][];
 	
 	protected int nClasses;
 	protected int nInstances[];
@@ -116,6 +118,132 @@ public abstract class LazyAlgorithm {
 	protected int trainUnclassified;
 	protected int trainRealClass[][];
 	protected int trainPrediction[][];
+	
+	
+	/** 
+	 * Read the configuration and data files, and process it. FOR NB
+	 * 
+	 * @param script Name of the configuration script  
+	 * 
+	 */
+	protected void readDataFiles(double [][] train, int [] clasesTrain, double [][] test, int [] clasesTest, int clases){
+	    
+		//System.out.println("Ejecutandoooo NB");
+
+		
+	    inputAtt = train[0].length; Attributes.getInputNumAttributes();
+	    inputs = Attributes.getInputAttributes();
+	    output = Attributes.getOutputAttribute(0);
+	    
+	  //  System.out.println(inputs.length + ", "+ output.getType()+","+inputAtt);
+	    
+		this.trainData = train.clone();
+		this.trainOutput = clasesTrain.clone();
+		
+		
+	    referenceData = train.clone();
+	    referenceOutput = clasesTrain.clone();
+		
+		this.testData = test.clone();
+		this.testOutput = clasesTest.clone();
+		
+		//Now, the data is loaded and preprocessed
+
+	    //Get the number of classes
+	    nClasses= clases;
+	    
+	    //And the number of instances on each class
+	    
+	    nInstances=new int[nClasses];
+	    for(int i=0;i<nClasses;i++){
+	    	nInstances[i]=0;
+		}
+	    for(int i=0;i<trainOutput.length;i++){
+	    	nInstances[trainOutput[i]]++;
+	    }
+	    
+	}//end-method 
+	
+	
+	
+	/** 
+	 * Read the configuration and data files, and process it.
+	 * 
+	 * @param script Name of the configuration script  
+	 * 
+	 */
+	protected void readDataFiles(String script, InstanceSet train, InstanceSet test, InstanceSet reference){
+	    
+		//Read of the script file
+		readConfiguracion(script);   
+		readParameters(script);
+
+
+		//Read of training data files
+	    try {
+
+	//		train.setAttributesAsNonStatic();
+
+		    inputAtt = train.getAttributeDefinitions().getInputNumAttributes();
+		    inputs = train.getAttributeDefinitions().getInputAttributes();
+		    output = train.getAttributeDefinitions().getOutputAttribute(0);
+		    
+			//Normalize the data
+	
+			normalizeTrain();
+			
+			//System.out.println("EOO");
+			
+	    } catch (Exception e) {
+			System.err.println(e);
+			System.exit(1);
+	    }
+
+	    
+	
+	    //Read of test data files
+	    try {
+
+		    test.setAttributesAsNonStatic();
+			//Normalize the data
+			normalizeTest();
+			
+	    } catch (Exception e) {
+			System.err.println(e);
+			System.exit(1);
+	    }
+  
+	    //Attributes.clearAll();
+	    
+		//Read of reference data files
+		try {
+
+			reference.setAttributesAsNonStatic();
+
+			//Normalize the data
+			normalizeReference();
+					
+		} catch (Exception e) {
+			System.err.println(e);
+			System.exit(1);
+		}
+		
+		//Now, the data is loaded and preprocessed
+
+	    //Get the number of classes
+	    nClasses=train.getAttributeDefinitions().getOutputAttribute(0).getNumNominalValues();
+	    
+	    //And the number of instances on each class
+	    
+	    nInstances=new int[nClasses];
+	    for(int i=0;i<nClasses;i++){
+	    	nInstances[i]=0;
+		}
+	    for(int i=0;i<trainOutput.length;i++){
+	    	nInstances[trainOutput[i]]++;
+	    }
+	    
+	}//end-method 
 	
 	/** 
 	 * Read the configuration and data files, and process it.
@@ -284,18 +412,22 @@ public abstract class LazyAlgorithm {
 	    //Check if dataset corresponding with a classification problem
 	    
 	    if (train.getAttributeDefinitions().getOutputNumAttributes() < 1) {
-			throw new DataException ("This dataset haven´t outputs, so it not corresponding to a classification problem.");
+	
+			throw new DataException ("This dataset havenï¿½t outputs, so it not corresponding to a classification problem.");
 	    } else if (train.getAttributeDefinitions().getOutputNumAttributes() > 1) {
+	
 			throw new DataException ("This dataset have more of one output.");
 	    }
 
 	    if (train.getAttributeDefinitions().getOutputAttribute(0).getType() == Attribute.REAL) {
+		
 			throw new DataException ("This dataset have an input attribute with float values, so it not corresponding to a classification 	problem.");
 	    }
 
+	
 	    //Copy the data
 	    
-	    tokens = new StringTokenizer (train.getHeader()," \n\r");
+	   tokens = new StringTokenizer (train.getHeader()," \n\r");
 	    tokens.nextToken();
 	    relation = tokens.nextToken();
 
@@ -358,7 +490,7 @@ public abstract class LazyAlgorithm {
 	    //Check if dataset corresponding with a classification problem
 	    
 	    if (test.getAttributeDefinitions().getOutputNumAttributes() < 1) {
-			throw new DataException ("This dataset haven´t outputs, so it not corresponding to a classification problem.");
+			throw new DataException ("This dataset havenï¿½t outputs, so it not corresponding to a classification problem.");
 	    } else if (test.getAttributeDefinitions().getOutputNumAttributes() > 1) {
 			throw new DataException ("This dataset have more of one output.");
 	    }
@@ -433,7 +565,7 @@ public abstract class LazyAlgorithm {
 	    //Check if dataset corresponding with a classification problem
 	    
 	    if (reference.getAttributeDefinitions().getOutputNumAttributes() < 1) {
-			throw new DataException ("This dataset haven´t outputs, so it not corresponding to a classification problem.");
+			throw new DataException ("This dataset havenï¿½t outputs, so it not corresponding to a classification problem.");
 	    } else if (reference.getAttributeDefinitions().getOutputNumAttributes() > 1) {
 			throw new DataException ("This dataset have more of one output.");
 	    }
@@ -502,7 +634,7 @@ public abstract class LazyAlgorithm {
 	public void execute(){
 		
 		modelTime=((double)System.currentTimeMillis()-initialTime)/1000.0;
-		System.out.println(name+" "+ relation + " Model " + modelTime + "s");
+	//	System.out.println(name+" "+ relation + " Model " + modelTime + "s");
 		
 		trainRealClass = new int[trainData.length][1];
 		trainPrediction = new int[trainData.length][1];	
@@ -520,7 +652,7 @@ public abstract class LazyAlgorithm {
 		
 		//Writing results
 		writeOutput(outFile[0], trainRealClass, trainPrediction);
-		System.out.println(name+" "+ relation + " Training " + trainingTime + "s");
+	//	System.out.println(name+" "+ relation + " Training " + trainingTime + "s");
 		
 		//Working on test
 		realClass = new int[testData.length][1];
@@ -539,7 +671,7 @@ public abstract class LazyAlgorithm {
 		
 		//Writing results
 		writeOutput(outFile[1], realClass, prediction);	
-		System.out.println(name+" "+ relation + " Test " + testTime + "s");
+	//	System.out.println(name+" "+ relation + " Test " + testTime + "s");
 		
 		printOutput();
 
@@ -552,7 +684,7 @@ public abstract class LazyAlgorithm {
 	public void executeReference(){
 		
 		modelTime=((double)System.currentTimeMillis()-initialTime)/1000.0;
-		System.out.println(name+" "+ relation + " Model " + modelTime + "s");
+		//System.out.println(name+" "+ relation + " Model " + modelTime + "s");
 		
 		trainRealClass = new int[referenceData.length][1];
 		trainPrediction = new int[referenceData.length][1];	
@@ -564,13 +696,14 @@ public abstract class LazyAlgorithm {
 		for (int i=0; i<trainRealClass.length; i++) {
 			trainRealClass[i][0] = referenceOutput[i];
 			trainPrediction[i][0]=evaluate(referenceData[i]);
+	
 		}
 
 		trainingTime=((double)System.currentTimeMillis()-initialTime)/1000.0;
 		
 		//Writing results
 		writeOutput(outFile[0], trainRealClass, trainPrediction);
-		System.out.println(name+" "+ relation + " Training " + trainingTime + "s");
+		//System.out.println(name+" "+ relation + " Training " + trainingTime + "s");
 		
 		//Working on test
 		realClass = new int[testData.length][1];
@@ -579,20 +712,35 @@ public abstract class LazyAlgorithm {
 		//Check  time		
 		setInitialTime();
 		
+		probabilities = new double[this.testData.length][this.nClasses];
+		predictions = new  int[this.testData.length];
+		
 		for (int i=0; i<realClass.length; i++) {
 			realClass[i][0] = testOutput[i];
 			prediction[i][0]=evaluate(testData[i]);
-		}
+			predictions[i] = prediction[i][0];
+			probabilities[i] = evaluate2(testData[i]);
 
+		}
+		
+		/*for(int i=0; i< probabilities.length; i++){
+			System.out.println(prediction[i][0]);
+			System.out.println(probabilities[i][0]);
+		}
+*/
 		testTime=((double)System.currentTimeMillis()-initialTime)/1000.0;
 		
 		//Writing results
 		writeOutput(outFile[1], realClass, prediction);	
-		System.out.println(name+" "+ relation + " Test " + testTime + "s");
+	//System.out.println(name+" "+ relation + " Test " + testTime + "s");
 		
-		printOutput();
+		//printOutput();
 		
 	}//end-method 
+	
+	
+	
+	
 	
 	/** 
 	 * Evaluates a instance to predict its class. 
@@ -604,6 +752,10 @@ public abstract class LazyAlgorithm {
 	 */
 	protected abstract int evaluate(double example[]);
 	
+	
+	protected double[] evaluate2(double example[]){
+		return null;
+	};
 	/** 
 	 * Calculates the Euclidean distance between two instances
 	 * 
@@ -669,7 +821,7 @@ public abstract class LazyAlgorithm {
 	/** 
 	 * Generates a string with the contents of the instance
 	 * 
-	 * @param instance Instance to print. 
+	 * @param a Instance to print. 
 	 * 
 	 * @return A string, with the values of the instance
 	 * 

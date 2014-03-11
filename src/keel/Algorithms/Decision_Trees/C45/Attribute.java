@@ -179,7 +179,7 @@ public class Attribute {
      * @param minRange	The minimum value of the range.
      * @param maxRange	The maximum value of the range.
      */
-    final void setRange(float minRange, float maxRange) {
+    public final void setRange(float minRange, float maxRange) {
         if (isDiscret()) {
             throw new IllegalArgumentException(
                     "Can only set value of numeric attribute!");

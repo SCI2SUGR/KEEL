@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -353,6 +353,9 @@ class Solver {
 	int l;
 	boolean unshrinked;	// XXX
 	
+
+
+
 	static final double INF = java.lang.Double.POSITIVE_INFINITY;
 
 	double get_C(int i)
@@ -1321,6 +1324,9 @@ class SVR_Q extends Kernel
 }
 
 public class svm {
+	
+	
+	static public double [] probabilitiesPerClass = null; // para ssl, probabilities per class.
 	//
 	// construct and solve various formulations
 	//
@@ -2366,6 +2372,8 @@ public class svm {
 			svm_predict_values(model, x, dec_values);
 
 			int[] vote = new int[nr_class];
+			
+
 			for(i=0;i<nr_class;i++)
 				vote[i] = 0;
 			int pos=0;
@@ -2379,9 +2387,28 @@ public class svm {
 				}
 
 			int vote_max_idx = 0;
-			for(i=1;i<nr_class;i++)
+			int totalVotes =vote[0];
+
+			for(i=1;i<nr_class;i++){
+				totalVotes+=vote[i];
+
 				if(vote[i] > vote[vote_max_idx])
 					vote_max_idx = i;
+			}
+
+//*********************************************+
+// @peliroojo e isaak: prob. por clase para ssl
+//*************************************************
+
+
+			probabilitiesPerClass = new double[nr_class];
+			System.out.println("tenemos " +nr_class+ " clases");
+			
+			for(i=0;i<nr_class;i++){
+				probabilitiesPerClass[i]= vote[i]/totalVotes;
+				System.out.println("Probailidaid por clase: " + probabilitiesPerClass[i]);
+			}
+
 			return model.label[vote_max_idx];
 		}
 	}

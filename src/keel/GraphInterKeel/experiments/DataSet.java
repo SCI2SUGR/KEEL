@@ -738,6 +738,24 @@ public final class DataSet extends Node {
     }
 
     /**
+     * Get the transductive file file at the indicated position
+     *
+     * @param i The index of the test file
+     * @return The indicated test file name
+     */
+    public String getTransAt(int i) {
+        // return test file at i position
+        Vector lista = (Vector) tableVector.elementAt(Layer.layerActivo);
+        String s = (String) lista.elementAt(i);
+        StringTokenizer partes = new StringTokenizer(s, ",");
+        partes.nextToken();
+        partes.nextToken();
+        return partes.nextToken();
+    }
+    
+
+
+    /**
      * Test if the data set node has all the partitions (are available from disk)
      * @return If all the correspondent partitions are present
      */

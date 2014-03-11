@@ -455,6 +455,7 @@ public class RegOptimizer
   /**
    * 
    * @param inst
+   * @return
    * @throws Exception
    */
   public double SVMOutput(Instance inst) throws Exception {
