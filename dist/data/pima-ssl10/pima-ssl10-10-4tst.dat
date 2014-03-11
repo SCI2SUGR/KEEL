@@ -1,0 +1,90 @@
+@relation pima
+@attribute Preg real [0.0, 17.0]
+@attribute Plas real [0.0, 199.0]
+@attribute Pres real [0.0, 122.0]
+@attribute Skin real [0.0, 99.0]
+@attribute Insu real [0.0, 846.0]
+@attribute Mass real [0.0, 67.1]
+@attribute Pedi real [0.078, 2.42]
+@attribute Age real [21.0, 81.0]
+@attribute Class {tested_negative, tested_positive}
+@inputs Preg, Plas, Pres, Skin, Insu, Mass, Pedi, Age
+@outputs Class
+@data
+2,197,70,45,543,30.5,0.158,53,tested_positive
+0,113,76,0,0,33.3,0.278,23,tested_positive
+8,183,64,0,0,23.3,0.672,32,tested_positive
+3,128,72,25,190,32.4,0.549,27,tested_positive
+0,141,0,0,0,42.4,0.205,29,tested_positive
+7,106,60,24,0,26.5,0.296,29,tested_positive
+11,136,84,35,130,28.3,0.26,42,tested_positive
+7,114,66,0,0,32.8,0.258,42,tested_positive
+2,124,68,28,205,32.9,0.875,30,tested_positive
+0,180,66,39,0,42,1.893,25,tested_positive
+1,88,30,42,99,55,0.496,26,tested_positive
+8,197,74,0,0,25.9,1.191,39,tested_positive
+1,119,86,39,220,45.6,0.808,29,tested_positive
+3,139,54,0,0,25.6,0.402,22,tested_positive
+4,125,70,18,122,28.9,1.144,45,tested_positive
+0,124,70,20,0,27.4,0.254,36,tested_positive
+8,176,90,34,300,33.7,0.467,58,tested_positive
+3,112,74,30,0,31.6,0.197,25,tested_positive
+5,158,84,41,210,39.4,0.395,29,tested_positive
+0,138,60,35,167,34.6,0.534,21,tested_positive
+9,130,70,0,0,34.2,0.652,45,tested_positive
+5,168,64,0,0,32.9,0.135,41,tested_positive
+1,113,64,35,0,33.6,0.543,21,tested_positive
+1,115,70,30,96,34.6,0.529,32,tested_positive
+1,181,78,42,293,40,1.258,22,tested_positive
+2,105,80,45,191,33.7,0.711,29,tested_positive
+3,106,54,21,158,30.9,0.292,24,tested_negative
+6,114,0,0,0,0,0.189,26,tested_negative
+1,81,74,41,57,46.3,1.096,32,tested_negative
+9,120,72,22,56,20.8,0.733,48,tested_negative
+1,90,62,12,43,27.2,0.58,24,tested_negative
+10,101,76,48,180,32.9,0.171,63,tested_negative
+3,99,80,11,64,19.3,0.284,30,tested_negative
+1,87,68,34,77,37.6,0.401,24,tested_negative
+0,117,66,31,188,30.8,0.493,22,tested_negative
+7,159,64,0,0,27.4,0.294,40,tested_negative
+3,81,86,16,66,27.5,0.306,22,tested_negative
+3,88,58,11,54,24.8,0.267,22,tested_negative
+2,112,86,42,160,38.4,0.246,28,tested_negative
+1,125,70,24,110,24.3,0.221,25,tested_negative
+6,123,72,45,230,33.6,0.733,34,tested_negative
+13,145,82,19,110,22.2,0.245,57,tested_negative
+6,111,64,39,0,34.2,0.26,24,tested_negative
+1,71,62,0,0,21.8,0.416,26,tested_negative
+9,124,70,33,402,35.4,0.282,34,tested_negative
+1,87,60,37,75,37.2,0.509,22,tested_negative
+0,106,70,37,148,39.4,0.605,22,tested_negative
+1,80,74,11,60,30,0.527,22,tested_negative
+0,101,64,17,0,21,0.252,21,tested_negative
+3,100,68,23,81,31.6,0.949,28,tested_negative
+0,119,66,27,0,38.8,0.259,22,tested_negative
+8,74,70,40,49,35.3,0.705,39,tested_negative
+1,93,70,31,0,30.4,0.315,23,tested_negative
+0,91,68,32,210,39.9,0.381,25,tested_negative
+4,96,56,17,49,20.8,0.34,26,tested_negative
+2,120,76,37,105,39.7,0.215,29,tested_negative
+2,146,76,35,194,38.2,0.329,29,tested_negative
+5,111,72,28,0,23.9,0.407,27,tested_negative
+5,88,66,21,23,24.4,0.342,30,tested_negative
+6,102,90,39,0,35.7,0.674,28,tested_negative
+1,71,78,50,45,33.2,0.422,21,tested_negative
+6,87,80,0,0,23.2,0.084,32,tested_negative
+2,122,60,18,106,29.8,0.717,22,tested_negative
+2,129,74,26,205,33.2,0.591,25,tested_negative
+10,115,98,0,0,24,1.022,34,tested_negative
+1,111,86,19,0,30.1,0.143,23,tested_negative
+7,136,74,26,135,26,0.647,51,tested_negative
+1,139,62,41,480,40.7,0.536,21,tested_negative
+1,81,72,18,40,26.6,0.283,24,tested_negative
+0,91,80,0,0,32.4,0.601,27,tested_negative
+1,85,66,29,0,26.6,0.351,31,tested_negative
+6,129,90,7,326,19.6,0.582,60,tested_negative
+5,105,72,29,325,36.9,0.159,28,tested_negative
+0,102,52,0,0,25.1,0.078,21,tested_negative
+0,95,64,39,105,44.6,0.366,22,tested_negative
+0,118,64,23,89,0,1.731,21,tested_negative
+0,135,68,42,250,42.3,0.365,24,tested_positive
