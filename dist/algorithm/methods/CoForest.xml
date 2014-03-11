@@ -1,0 +1,27 @@
+<algorithm_specification>
+  <name>CoForest</name>
+  <nParameters>2</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+    <parameter>
+    <name>Number of Classifiers</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>6</default>
+  </parameter>
+  
+   <parameter>
+    <name>threshold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.75</default>
+  </parameter>
+
+</algorithm_specification>

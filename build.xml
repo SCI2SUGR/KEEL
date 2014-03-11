@@ -5238,6 +5238,395 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
                     keel/Algorithms/Shared/**/*.class
 					keel/Dataset/**/*.class"/>
         </jar>
+
+
+ <!-- Semi Supervised Learning Experiments Module -->
+
+
+	<jar
+
+          jarfile="${distMet}/NNSSL.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/NNSSL/NNSSLAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/NNSSL/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class "/>
+        </jar>
+
+	<jar
+          jarfile="${distMet}/C45SSL.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/C45SSL/C45SSLAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/C45SSL/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Decision_Trees/*.class
+		  keel/Algorithms/Decision_Trees/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/Basic/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class "/>
+        </jar>
+
+	<jar
+
+          jarfile="${distMet}/NBSSL.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/NBSSL/NBSSLAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/NBSSL/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class "/>
+        </jar>
+
+
+	<jar
+
+          jarfile="${distMet}/SMOSSL.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/SMOSSL/SMOSSLAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/SMOSSL/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/SVM/SMO/**/*.class
+		  keel/Algorithms/SVM/SMO/*.class
+		  keel/Algorithms/Statistical_Classifiers/**/*.class
+		  keel/Algorithms/Statistical_Classifiers/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class "/>
+        </jar>
+
+
+
+
+	<jar
+          jarfile="${distMet}/SelfTraining.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/SelfTraining/SelfTrainingAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/SelfTraining/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Decision_Trees/*.class
+		  keel/Algorithms/Decision_Trees/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/Basic/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class
+		  keel/Algorithms/SVM/SMO/**/*.class
+		  keel/Algorithms/SVM/SMO/*.class
+		  keel/Algorithms/Statistical_Classifiers/**/*.class
+		  keel/Algorithms/Statistical_Classifiers/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+		  keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                  keel/Algorithms/Shared/*/.class
+                  keel/Algorithms/Genetic_Rule_Learning/Globals/*/.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+
+ 	"/>
+        </jar>
+
+
+
+	<jar
+          jarfile="${distMet}/CoTraining.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/CoTraining/CoTrainingAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/CoTraining/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Decision_Trees/*.class
+		  keel/Algorithms/Decision_Trees/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/Basic/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class
+		  keel/Algorithms/SVM/SMO/**/*.class
+		  keel/Algorithms/SVM/SMO/*.class
+		  keel/Algorithms/Statistical_Classifiers/**/*.class
+		  keel/Algorithms/Statistical_Classifiers/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+		  keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                  keel/Algorithms/Shared/*/.class
+                  keel/Algorithms/Genetic_Rule_Learning/Globals/*/.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+
+ 	"/>
+        </jar>
+
+
+	<jar
+          jarfile="${distMet}/RASCO.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/RASCO/RASCOAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/RASCO/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Decision_Trees/*.class
+		  keel/Algorithms/Decision_Trees/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/Basic/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class
+		  keel/Algorithms/SVM/SMO/**/*.class
+		  keel/Algorithms/SVM/SMO/*.class
+		  keel/Algorithms/Statistical_Classifiers/**/*.class
+		  keel/Algorithms/Statistical_Classifiers/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+		  keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                  keel/Algorithms/Shared/*/.class
+                  keel/Algorithms/Genetic_Rule_Learning/Globals/*/.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+
+ 	"/>
+        </jar>
+
+
+	<jar
+          jarfile="${distMet}/Rel_RASCO.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/Rel_RASCO/Rel_RASCOAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/Rel_RASCO/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Decision_Trees/*.class
+		  keel/Algorithms/Decision_Trees/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class
+		  keel/Algorithms/SVM/SMO/**/*.class
+		  keel/Algorithms/SVM/SMO/*.class
+		  keel/Algorithms/Statistical_Classifiers/**/*.class
+		  keel/Algorithms/Statistical_Classifiers/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+		  keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                  keel/Algorithms/Shared/*/.class
+                  keel/Algorithms/Genetic_Rule_Learning/Globals/*/.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/Basic/C45/*.class
+
+ 	"/>
+        </jar>
+
+	<jar
+          jarfile="${distMet}/TriTraining.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/TriTraining/TriTrainingAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/TriTraining/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Decision_Trees/*.class
+		  keel/Algorithms/Decision_Trees/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/Basic/C45/*.class
+		  keel/Algorithms/SVM/SMO/**/*.class
+		  keel/Algorithms/SVM/SMO/*.class
+		  keel/Algorithms/Statistical_Classifiers/**/*.class
+		  keel/Algorithms/Statistical_Classifiers/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+		  keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                  keel/Algorithms/Shared/*/.class
+                  keel/Algorithms/Genetic_Rule_Learning/Globals/*/.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+
+ 	"/>
+        </jar>
+
+<jar
+          jarfile="${distMet}/DE_TriTraining.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/DE_TriTraining/DE_TriTrainingAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/DE_TriTraining/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Decision_Trees/*.class
+		  keel/Algorithms/Decision_Trees/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/Basic/C45/*.class
+		  keel/Algorithms/SVM/SMO/**/*.class
+		  keel/Algorithms/SVM/SMO/*.class
+		  keel/Algorithms/Statistical_Classifiers/**/*.class
+		  keel/Algorithms/Statistical_Classifiers/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+
+		  keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+                  keel/Algorithms/Shared/*/.class
+                  keel/Algorithms/Genetic_Rule_Learning/Globals/*/.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+
+ 	"/>
+        </jar>
+
+
+	 <jar
+          jarfile="${distMet}/CoForest.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/CoForest/CoForestAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/CoForest/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  "/>
+        </jar>
+
+	 <jar
+          jarfile="${distMet}/ADE_CoForest.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/ADE_CoForest/ADE_CoForestAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/ADE_CoForest/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class
+		  "/>
+        </jar>
+
+
+	<jar
+          jarfile="${distMet}/Democratic.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/Democratic/DemocraticAlgorithm.mf">
+          <fileset dir="${bin}"
+
+             includes="keel/Algorithms/Semi_Supervised_Learning/Democratic/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Decision_Trees/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/Basic/C45/*.class
+		  keel/Algorithms/Decision_Trees/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class
+		  keel/Algorithms/SVM/SMO/**/*.class
+		  keel/Algorithms/SVM/SMO/*.class
+
+		  keel/Algorithms/Statistical_Classifiers/**/*.class
+		  keel/Algorithms/Statistical_Classifiers/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+		  keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+
+                  keel/Algorithms/Shared/*/.class
+                  keel/Algorithms/Genetic_Rule_Learning/Globals/*/.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+
+ 	"/>
+        </jar>
+
+
+
+	<jar
+          jarfile="${distMet}/CoBC.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/CoBC/CoBCAlgorithm.mf">
+          <fileset dir="${bin}"
+
+             includes="keel/Algorithms/Semi_Supervised_Learning/CoBC/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Decision_Trees/*.class
+
+		keel.Algorithms.ImbalancedClassification.Ensembles/*.class
+		  keel/Algorithms/Decision_Trees/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/Basic/C45/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class
+		  keel/Algorithms/SVM/SMO/**/*.class
+		  keel/Algorithms/SVM/SMO/*.class
+
+		  keel/Algorithms/Statistical_Classifiers/**/*.class
+		  keel/Algorithms/Statistical_Classifiers/*.class
+                  keel/Algorithms/Lazy_Learning/KNN/**/*.class
+		  keel/Algorithms/Lazy_Learning/*.class
+		  keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+
+                  keel/Algorithms/Shared/*/.class
+                  keel/Algorithms/Genetic_Rule_Learning/Globals/*/.class
+		  keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+
+ 	"/>
+        </jar>
+
+	 <jar
+
+          jarfile="${distMet}/CLCC.jar"
+
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/CLCC/CLCCAlgorithm.mf">
+          <fileset dir="${bin}"
+
+             includes="keel/Algorithms/Semi_Supervised_Learning/CLCC/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+
+ 		  org/core/**/*.class
+
+		  keel/Dataset/**/*.class
+
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+
+		  "/>
+        </jar>
+
+
+
+	 <jar
+          jarfile="${distMet}/SETRED.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/SETRED/SETREDAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/SETRED/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class "/>
+        </jar>
+
+	<jar
+          jarfile="${distMet}/SNNRCE.jar"
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/SNNRCE/SNNRCEAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/SNNRCE/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class "/>
+        </jar>
+
+
+	<jar
+          jarfile="${distMet}/APSSC.jar"
+
+          manifest="${src}/keel/Algorithms/Semi_Supervised_Learning/APSSC/APSSCAlgorithm.mf">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/Semi_Supervised_Learning/APSSC/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Semi_Supervised_Learning/Basic/**/*.class
+ 		  org/core/**/*.class
+
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/*.class 
+		  keel/Algorithms/Semi_Supervised_Learning/utilities/KNN/*.class "/>
+        </jar>
+
 		
 	<!--RunKeel.jar -->
 

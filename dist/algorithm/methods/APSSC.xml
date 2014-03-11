@@ -1,0 +1,38 @@
+<algorithm_specification>
+  <name>APSSC</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+  <parameter>
+    <name>Spread of the gaussian</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.3</default>
+  </parameter>
+
+   <parameter>
+    <name>evaporation coefficient</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.7</default>
+  </parameter>
+  
+   
+   <parameter>
+    <name>MT</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.75</default>
+  </parameter>
+  
+</algorithm_specification>

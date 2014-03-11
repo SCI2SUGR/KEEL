@@ -1,0 +1,40 @@
+<algorithm_specification>
+  <name>Rel_RASCO</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+
+   <parameter>
+    <name>MaxIter</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+  
+   <parameter>
+    <name>Number of views and classifiers</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>30</default>
+  </parameter>
+  
+   <parameter>
+    <name>Classifier</name>
+    <type>list</type>
+    <domain>
+      <item>NN</item>
+      <item>C45</item>
+      <item>NB</item>	
+      <item>SMO</item>
+    </domain>
+    <default>C45</default>   
+  </parameter>
+
+</algorithm_specification>

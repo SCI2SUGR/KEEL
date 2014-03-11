@@ -1,0 +1,60 @@
+<algorithm_specification>
+  <name>CoBC</name>
+  <nParameters>5</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+  <parameter>
+    <name>Max Iter</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>500</upperB>
+    </domain>
+    <default>40</default>
+  </parameter>
+
+  <parameter>
+    <name>Committee members</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+
+   <parameter>
+    <name>Ensemble Learning</name>
+    <type>list</type>
+    <domain>
+      <item>Bagging</item>
+      <item>AdaBoost</item>
+    </domain>
+    <default>Bagging</default>   
+  </parameter>
+
+   <parameter>
+    <name>Base Learner</name>
+    <type>list</type>
+    <domain>
+      <item>NN</item>
+      <item>C45</item>
+      <item>NB</item>	
+      <item>SMO</item>
+    </domain>
+    <default>NN</default>   
+  </parameter>
+
+  <parameter>
+    <name>Pool U'</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>5000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+
+
+</algorithm_specification>

@@ -1,0 +1,42 @@
+<algorithm_specification>
+  <name>TriTraining</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+    <parameter>
+    <name>Classifier1</name>
+    <type>list</type>
+    <domain>
+      <item>NN</item>
+      <item>C45</item>
+      <item>NB</item>	
+      <item>SMO</item>
+    </domain>
+    <default>NN</default>   
+  </parameter>
+  
+   <parameter>
+    <name>Classifier2</name>
+    <type>list</type>
+    <domain>
+      <item>NN</item>
+      <item>C45</item>
+      <item>NB</item>	
+      <item>SMO</item>
+    </domain>
+    <default>NN</default>   
+  </parameter>
+
+   <parameter>
+    <name>Classifier3</name>
+    <type>list</type>
+    <domain>
+      <item>NN</item>
+      <item>C45</item>
+      <item>NB</item>	
+      <item>SMO</item>
+    </domain>
+    <default>NN</default>   
+  </parameter>
+</algorithm_specification>

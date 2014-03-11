@@ -1,0 +1,82 @@
+<algorithm_specification>
+  <name>CLCC</name>
+  <nParameters>7</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+    <parameter>
+    <name>Number of Classifiers</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>6</default>
+  </parameter>
+  
+   <parameter>
+    <name>threshold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.75</default>
+  </parameter>
+
+   <parameter>
+    <name>manipulative parameter beta</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.4</default>
+  </parameter>
+
+
+    <parameter>
+    <name>initial number of clusters k</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>4</default>
+  </parameter>
+  
+
+
+    <parameter>
+    <name>running frequency z </name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>10</default>
+  </parameter>
+
+    <parameter>
+    <name>best center sets number</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>6</default>
+  </parameter>
+
+  <parameter>
+    <name>OptionalPart</name>
+    <type>list</type>
+    <domain>
+      <item>true</item>
+      <item>false</item>
+    </domain>
+    <default>true</default>   
+  </parameter>
+
+
+
+</algorithm_specification>

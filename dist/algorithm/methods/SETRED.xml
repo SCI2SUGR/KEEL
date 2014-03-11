@@ -1,0 +1,38 @@
+<algorithm_specification>
+  <name>SETRED</name>
+  <nParameters>3</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+  <parameter>
+    <name>Number of selected examples</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>
+
+   <parameter>
+    <name>MaxIter</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>40</default>
+  </parameter>
+  
+   
+   <parameter>
+    <name>Thresold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  
+</algorithm_specification>

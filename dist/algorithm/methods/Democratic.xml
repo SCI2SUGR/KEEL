@@ -1,0 +1,19 @@
+<algorithm_specification>
+  <name>Democractic</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>
+  <nOutput>0</nOutput>
+
+
+
+  <parameter>
+    <name>Classifiers</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+
+</algorithm_specification>
