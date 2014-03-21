@@ -30,9 +30,7 @@ Finally, the overall process iterates until a given maximum number of loops is r
 			<param>Probability of Crossover: the probability of crossover.</param>
 			<param>Probability of Mutation: the probability of mutation.</param>
 			<param>Number of Partitions for Numeric Attributes: the number of uniform partitions used for splitting numerical domains.</param>
-			<param>Minimum Support: the minimum support to be fullfilled by the mined association rules.</param>
-			<param>Minimum Confidence: the minimum confidence to be fullfilled by the mined association rules.</param>
-		
+			
 		</parameterSpec>
 
 		<properties>
@@ -56,70 +54,80 @@ Finally, the overall process iterates until a given maximum number of loops is r
 	<example>
 Problem type: Association Rules
 Method: EARMGA
-Dataset: weather
-Parameters: default values (
-
-seed = 390706926)
+Dataset: basketball
+Parameters: default values (seed = 1286082570)
 
 
 After the execution of RunKeel.jar we can see XML representations of the mined association rules along with the values concerning the measures of interest, respectively, in:
 
 
-&quot;results/Asso-EARMGA.weather/result0s0.tra&quot;
-
+&quot;results/Asso-EARMGA.basketball/result0s0.tra&quot;
 
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;rules&gt;
 &lt;rule id=&quot;0&quot;&gt;
 &lt;antecedents&gt;
-&lt;attribute name=&quot;windy&quot; value=&quot;false&quot;/&gt;
+&lt;attribute name=&quot;time_playedReal&quot; value=&quot;[25.395000000000003, 33.0525]&quot;/&gt;
 &lt;/antecedents&gt;
 &lt;consequents&gt;
-&lt;attribute name=&quot;outlook&quot; value=&quot;sunnyovercastrainy&quot;/&gt;
+&lt;attribute name=&quot;assists_per_minuteReal&quot; value=&quot;[0.0494, 0.122975][0.122975, 0.19655][0.19655, 0.270125][0.270125, 0.3437]&quot;/&gt;
 &lt;/consequents&gt;
 &lt;/rule&gt;
 ... ... ... ...
-&lt;rule id=&quot;29&quot;&gt;
-&lt;antecedents&gt;
-&lt;attribute name=&quot;play&quot; value=&quot;yes&quot;/&gt;
-&lt;/antecedents&gt;
-&lt;consequents&gt;
-&lt;attribute name=&quot;temperature&quot; value=&quot;hotmildcool&quot;/&gt;
-&lt;/consequents&gt;
-&lt;/rule&gt;
 &lt;/rules&gt;
 
-
-&quot;results/Asso-EARMGA.weather/result0s0.tst&quot;
-
+&quot;results/Asso-EARMGA.basketball/result0s0.tst&quot;
 
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;values&gt;
-&lt;rule id=&quot;0&quot; rule_support=&quot;0.5714285714285714&quot; antecedent_support=&quot;0.5714285714285714&quot; confidence=&quot;1.0&quot;/&gt;
+&lt;rule id=&quot;0&quot; rule_support=&quot;0.21&quot; antecedent_support=&quot;0.21&quot; consequent_support=&quot;1.0&quot; confidence=&quot;1.0&quot; lift=&quot;1.0&quot; conviction=&quot;1.0&quot; certainFactor=&quot;0.0&quot; netConf=&quot;0.0&quot; yulesQ=&quot;0.0&quot; nAttributes=&quot;2&quot;/&gt;
 ... ... ... ...
-&lt;rule id=&quot;29&quot; rule_support=&quot;0.6428571428571429&quot; antecedent_support=&quot;0.6428571428571429&quot; confidence=&quot;1.0&quot;/&gt;
+&lt;/values&gt;
+
+Number of Association Rules generated: 100
+Average Support: 0.23
+Average Confidence: 1.0
+Average Lift: 1.06
+Average Conviction: Infinity
+Average Certain Factor: 0.24
+Average Netconf: 0.03
+Average YulesQ: 0.14
+Average Antecedents Length: 2.0
+Number of Covered Records (%): 100.0
+
+&quot;results/Asso-EARMGA.basketball/result0s0e0.tst&quot;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;values&gt;
+Support	antecedent_support	consequent_support	Confidence	Lift	Conv	CF	NetConf	YulesQ	nAttributes
+0.21  	      0.21	                 1.0	          1.0	         1.0    1.0     0.0      0.0	 0.0	   2
+... ... ... ...
 &lt;/values&gt;
 
 
 We can also see some relevant information on-screen:
 
 
-Initializing Population... done.
-Computing Generation #1... done.
-Computing Generation #2... done.
+Initialization
+Generation: 1
+Generation: 2
 ... ... ... ...
-Computing Generation #100... done.
+Generation: 10
 
-
-Number of Association Rules generated: 30
-Average Support: 0.5142857142857143
+Number of Association Rules generated: 100
+Average Support: 0.23
 Average Confidence: 1.0
-Average Antecedents Length: 1.0
+Average Lift: 1.06
+Average Conviction: Infinity
+Average Certain Factor: 0.24
+Average Netconf: 0.03
+Average YulesQ: 0.14
+Average Antecedents Length: 2.0
 Number of Covered Records (%): 100.0
 
 Algorithm Finished
 
-2.299 seconds
+0.717 seconds
 
 </example>
 

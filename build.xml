@@ -1306,6 +1306,62 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
    		  org/core/**/*.class"/>
         </jar>
 		
+
+<!-- métodos de Diana (Cuba) -->
+
+	<jar
+          jarfile="${distMet}/ARMMGA.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/ARMMGA/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/ARMMGA/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/
+*.class
+   		  org/core/**/*.class"/>
+        </jar>
+
+		    	<jar
+          jarfile="${distMet}/MODENAR.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/MODENAR/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/MODENAR/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Dataset/**/
+*.class
+   		  org/core/**/*.class"/>
+        </jar>
+		
+				 <jar
+	          jarfile="${distMet}/MOEA_Ghosh.jar"
+	          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/MOEA_Ghosh/Manifest">
+	          <fileset dir="${bin}"
+	             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/MOEA_Ghosh/**/*.class"/>
+	          <fileset dir="${bin}" includes="keel/Dataset/**/
+	*.class
+	   		  org/core/**/*.class"/>
+        </jar>
+		
+				<jar
+	          jarfile="${distMet}/QAR_CIP_NSGAII.jar"
+	          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/QAR_CIP_NSGAII/Manifest">
+	          <fileset dir="${bin}"
+	             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/QAR_CIP_NSGAII/**/*.class"/>
+	          <fileset dir="${bin}" includes="keel/Dataset/**/
+	*.class
+	   		  org/core/**/*.class"/>
+        </jar>
+		<jar
+	          jarfile="${distMet}/MOPNAR.jar"
+	          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/MOPNAR/Manifest">
+	          <fileset dir="${bin}"
+	             includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/MOPNAR/**/*.class"/>
+	          <fileset dir="${bin}" includes="keel/Dataset/**/
+	*.class
+	   		  org/core/**/*.class"/>
+        </jar>
+
+
+<!-- -********************************************** -->
+
+
 		<jar
           jarfile="${distMet}/FuzzyApriori.jar"
           manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearning/FuzzyApriori/Manifest">

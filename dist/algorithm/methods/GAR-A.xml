@@ -2,7 +2,7 @@
   <name>GAR</name>
   <nParameters>12</nParameters>
   <seed>1</seed>
-  <nOutput>0</nOutput>
+  <nOutput>1</nOutput>
   <parameter>
     <name>Number of Itemsets</name>
     <type>integer</type>
@@ -10,16 +10,16 @@
       <lowerB>10</lowerB>
       <upperB>1000</upperB>
     </domain>
-    <default>30</default>
+    <default>100</default>
   </parameter>
   <parameter>
-    <name>Number of Generations</name>
+    <name>Total Number of Evaluations</name>
     <type>integer</type>
     <domain>
       <lowerB>10</lowerB>
-      <upperB>1000</upperB>
+      <upperB>10000000</upperB>
     </domain>
-    <default>100</default>
+    <default>50000</default>
   </parameter>
   <parameter>
     <name>Population Size</name>
@@ -94,15 +94,6 @@
     <default>2.0</default>
   </parameter>
   <parameter>
-    <name>Minimum Confidence</name>
-    <type>real</type>
-    <domain>
-      <lowerB>0.0</lowerB>
-      <upperB>1.0</upperB>
-    </domain>
-    <default>0.8</default>
-  </parameter>
-  <parameter>
     <name>Minimum Support</name>
     <type>real</type>
     <domain>
@@ -110,5 +101,14 @@
       <upperB>1.0</upperB>
     </domain>
     <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Minimum Confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.8</default>
   </parameter>
 </algorithm_specification>

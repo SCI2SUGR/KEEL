@@ -2,7 +2,7 @@
   <name>Apriori</name>
   <nParameters>3</nParameters>
   <seed>0</seed>
-  <nOutput>0</nOutput>
+  <nOutput>1</nOutput>
   <parameter>
     <name>Number of Partitions for Numeric Attributes</name>
     <type>integer</type>

@@ -1,0 +1,78 @@
+<algorithm_specification>
+  <name>ARMMGA</name>
+  <nParameters>8</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Fixed Length of Association Rules</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>Number of Evaluations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>50000</default>
+  </parameter>
+  <parameter>
+    <name>Difference Boundary (NOT USED)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>
+  <parameter>
+    <name>Probability of Selection</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.95</default>
+  </parameter>
+  <parameter>
+    <name>Probability of Crossover</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.85</default>
+  </parameter>
+  <parameter>
+    <name>Probability of Mutation</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.01</default>
+  </parameter>    
+  <parameter>
+    <name>Number of Partitions for Numeric Attributes</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>9</upperB>
+    </domain>
+    <default>4</default>
+  </parameter>
+ </algorithm_specification>  

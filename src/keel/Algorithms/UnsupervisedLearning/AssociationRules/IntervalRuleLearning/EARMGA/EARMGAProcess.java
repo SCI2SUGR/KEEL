@@ -29,9 +29,21 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.EARMGA;
 
+/**
+ * <p>
+ * @author Written by Alberto Fernández (University of Granada)
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
+
+import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.*;
+
 import org.core.Randomize;
-import keel.Dataset.*;
+
 
 public class EARMGAProcess
 {
@@ -40,20 +52,18 @@ public class EARMGAProcess
 	ArrayList<Chromosome> pop;
 	ArrayList<AssociationRule> assocRules;
 
-	private int nGenetations;
+	private int nTrials, trials;
 	private int popsize;
 	private double ps;
 	private double pc;
 	private double pm;
 	private int kItemsets;
 	private double alpha;
-	private double avg_ampl;
 	
-	
-  public EARMGAProcess(myDataset ds, DataB dataBase, int nGenetations, int popsize, int kItemsets, double ps, double pc, double pm, double alpha) {
+  public EARMGAProcess(myDataset ds, DataB dataBase, int nTrials, int popsize, int kItemsets, double ps, double pc, double pm, double alpha) {
 	  this.ds = ds;
 	  this.dataBase = dataBase;
-	  this.nGenetations = nGenetations;
+	  this.nTrials = nTrials;
 	  this.popsize = popsize;
 	  this.kItemsets = kItemsets;
 	  this.ps = ps;
@@ -67,11 +77,12 @@ public class EARMGAProcess
 	  int i, nGen;
 	  Chromosome chromo;
 	  ArrayList<Chromosome> pop_temp;
+	  this.trials = 0;
+	  nGen = 0;
 
-	  System.out.println("Inicializacion");
+	  System.out.println("Initialization");
 	  this.initialize();
 	  
-	  nGen = 0;
 	  do {
 		  System.out.println("Generation: " + nGen);
 		  this.select();
@@ -89,12 +100,12 @@ public class EARMGAProcess
 		  this.elitist (pop_temp);
 		  
 		  nGen++;
-	  }while (!terminate(nGen));
+	  }while (!terminate());
 
 	  this.genRules();
   }
 
-  public boolean terminate (int nGen) {
+  public boolean terminate () {
 	  Chromosome best, worst;
 
 	  Collections.sort(this.pop);
@@ -102,7 +113,7 @@ public class EARMGAProcess
 	  worst = this.pop.get(this.pop.size()-1);
 
 //	  if ((best.getFit() - worst.getFit()) < this.alpha)  return (true);
-	  if (nGen > this.nGenetations)  return (true);
+	  if (this.trials > this.nTrials)  return (true);
 
 	  return (false);
   }
@@ -148,8 +159,7 @@ public class EARMGAProcess
 	  }
   }
   
-  
-  private void select() {
+ private void select() {
 	  int i;
 
 	  for (i=this.pop.size()-1; i >= 0 ; i--) {
@@ -159,7 +169,7 @@ public class EARMGAProcess
   
   
   private ArrayList<Chromosome> crossover() {
-	  int i, j, k, l, posi, posj, aux, attr, pos;
+	  int i, j, k, posi, posj, aux, pos;
 	  ArrayList<Chromosome> pop_tmp = new ArrayList<Chromosome>();
 	  Chromosome dad, mom, off1, off2;
 
@@ -263,28 +273,10 @@ public class EARMGAProcess
 
   
   private void fitness(Chromosome chromo) {
-	  int i;
 	  double nTrans = (double) this.ds.getnTrans();
 	  double fit;
-/*	  boolean trivial;
 
-
-	  trivial = true;
-
-	  for (i=chromo.getLengthAnt()+1;  i < this.kItemsets && trivial; i++) {
-		  Gene gen = chromo.getGen(i);
-		  if (gen.numIntervals() < this.dataBase.numIntervals(gen.getAttr())) {
-			  trivial = false;
-		  }
-	  }
-
-	  if (trivial) {
-		  chromo.setFit(0.0);
-		  chromo.setSupportAnt(0.0);
-		  chromo.setSupportCon(0.0);
-		  chromo.setSupportAll(0.0);
-	  }
-	  else { */
+	  this.trials++;
 	  ArrayList<Integer> ant = this.countSupport(chromo, 0, chromo.getLengthAnt());
 	  if (ant.size() == 0) {
 		  chromo.setFit(0.0);
@@ -425,46 +417,171 @@ public class EARMGAProcess
 	  return tid_list;
   }
   
+  public static double roundDouble(double number, int decimalPlace){
+	  double numberRound;
+	  
+	  if(!Double.isInfinite(number)&&(!Double.isNaN(number))){
+		  BigDecimal bd = new BigDecimal(number);
+		  bd = bd.setScale(decimalPlace, BigDecimal.ROUND_UP);
+		  numberRound = bd.doubleValue();
+		  return numberRound;
+	  }else return number;
+	 
+	  
+  }
+  
   public void printReport (double minConfidence, double minSupport) {
+	  
+	  double avg_yulesQ=0.0, avg_sup=0.0, avg_conf=0.0,avg_lift=0.0, avg_conv = 0.0, avg_CF = 0.0, avg_netConf = 0.0;
 	  int i, countRules, length;
 	  AssociationRule rule;
-
+	  
 	  countRules = length = 0;
+	  
 	  for (i=0; i < this.assocRules.size(); i++) {
 		  rule = this.assocRules.get(i); 
 		  if ((rule.getConfidence() >= minConfidence) && (rule.getAll_support() >= minSupport)) {
 			countRules++;
-			length += rule.getLengthAntecedent();
+			length += rule.getLengthRule();
+			avg_sup += rule.getAll_support();
+			avg_conf += rule.getConfidence();
+			avg_lift += rule.getLift();
+			avg_conv += rule.getConv();
+			avg_CF += rule.getCF();
+			avg_netConf += rule.getNetConf();
+			avg_yulesQ += rule.getYulesQ();
+			
+		  }
+	  }
+	  
+	  System.out.println("Number of Frequent Itemsets generated: " + "-");
+	  System.out.println("Number of Association Rules generated: " + countRules);
+	 
+	  if(countRules!=0){
+		  System.out.println("Average SupportRules: " + roundDouble(( avg_sup / countRules ), 2) );
+		  System.out.println("Average Confidence: " + roundDouble(( avg_conf / countRules ), 2) );
+		  System.out.println("Average Lift: " + roundDouble(( avg_lift / countRules ), 2) );
+    	  System.out.println("Average Conviction: " + roundDouble(( avg_conv/ countRules ), 2));
+		  System.out.println("Average Certain Factor: " + roundDouble(( avg_CF/ countRules ), 2));
+		  System.out.println("Average Netconf: " + roundDouble(( avg_netConf/ countRules), 2));
+		  System.out.println("Average YulesQ: " + roundDouble(( avg_yulesQ/ countRules), 2));
+		  System.out.println("Average Length of the Rules generated: " + roundDouble((length / (double) countRules), 2));
+		  System.out.println("Number of Covered Records(%): " + (100.0 * this.numCoveredRecords (minSupport)) / this.ds.getnTrans());
+	  }
+	  else{
+		  System.out.println("Average Support: " + (0.0));
+		  System.out.println("Average Confidence: " + (0.0 ));
+		  System.out.println("Average Lift: " + ( 0.0 ));
+		  System.out.println("Average Conviction: " + ( 0.0 ));
+		  System.out.println("Average Certain Factor: " + ( 0.0 ));
+		  System.out.println("Average Netconf: " + (0.0));
+		  System.out.println("Average Antecedents Length: " + ( 0.0 ));
+		  System.out.println("Number of Covered Records (%): " + (0.0) );
+	  } 
+	}   
+  
+  public String printRules(ArrayList<AssociationRule> rules) {
+	  int i, lenghtrule;
+	  boolean stop;
+	  String rulesList;
+
+	  stop = false;
+	  rulesList = "";
+	  rulesList += ("Support\tantecedent_support\tconsequent_support\tConfidence\tLift\tConv\tCF\tNetConf\tYulesQ\tnAttributes\n");
+	  for (i=0; i < rules.size() && !stop; i++) {
+		  lenghtrule = rules.get(i).getAntecedent().size()+ rules.get(i).getConsequent().size();
+		  rulesList += ("" + roundDouble(rules.get(i).getAll_support(),2) + "\t" + roundDouble(rules.get(i).getSupport_Ant(),2) + "\t" + roundDouble(rules.get(i).getSupport_cons(),2) + "\t" + roundDouble(rules.get(i).getConfidence(),2) + "\t" + roundDouble(rules.get(i).getLift(),2) + "\t" + roundDouble(rules.get(i).getConv(),2) + "\t" + roundDouble(rules.get(i).getCF(),2) + "\t" + roundDouble(rules.get(i).getNetConf(),2) + "\t" + roundDouble(rules.get(i).getYulesQ(),2) + "\t" + lenghtrule + "\n");
+	  }
+	  return rulesList;
+  }
+  
+  public void saveReport (double minSupport,PrintWriter w) {
+	  int i, countRules, length;
+	  AssociationRule rule;
+	  double avg_yulesQ=0.0, avg_sup=0.0, avg_conf=0.0,avg_lift=0.0, avg_conv = 0.0, avg_CF = 0.0, avg_netConf = 0.0;
+
+	  countRules = length = 0;
+  
+	  for (i=0; i < this.assocRules.size(); i++) {
+		  rule = this.assocRules.get(i); 
+		  if (rule.getAll_support() >= minSupport) {
+			countRules++;
+			length += rule.getLengthRule();
+			avg_sup += rule.getAll_support();
+			avg_conf += rule.getConfidence();
+			avg_lift += rule.getLift();
+			avg_conv += rule.getConv();
+			avg_CF += rule.getCF();
+			avg_netConf += rule.getNetConf();
+			avg_yulesQ += rule.getYulesQ();
 		  }
 	  }
 
+	  w.println("\nNumber of Frequent Itemsets generated: " + "-");	
+	  System.out.println("Number of Frequent Itemsets generated: " + "-");
+	  w.println("\nNumber of Association Rules generated: " + countRules);	
 	  System.out.println("Number of Association Rules generated: " + countRules);
-	  System.out.println("Length of the Itemsets: " + this.kItemsets);
-	  System.out.println("Average Length of the Rules generated: " + length / (double) countRules);
-	  System.out.println("Number of Covered Records(%): " + (100.0 * this.numCoveredRecords (minConfidence, minSupport)) / this.ds.getnTrans());
+	 
+	  if(countRules!=0){
+		  w.println("Average Support: " + roundDouble(( avg_sup / countRules ), 2));
+		  System.out.println("Average SupportRules: " + roundDouble(( avg_sup / countRules ), 2) );
+		  w.println("Average Confidence: " + roundDouble(( avg_conf / countRules ), 2));
+		  System.out.println("Average Confidence: " + roundDouble(( avg_conf / countRules ), 2) );
+		  w.println("Average Lift: " + roundDouble(( avg_lift / countRules ), 2));
+		  System.out.println("Average Lift: " + roundDouble(( avg_lift / countRules ), 2) );
+		  w.println("Average Conviction: " + roundDouble(( avg_conv/ countRules ), 2));
+		  System.out.println("Average Conviction: " + roundDouble(( avg_conv/ countRules ), 2));
+		  w.println("Average Certain Factor: " + roundDouble(( avg_CF/ countRules ), 2));
+		  System.out.println("Average Certain Factor: " + roundDouble(( avg_CF/ countRules ), 2));
+		  w.println("Average Netconf: " + roundDouble(( avg_netConf/ countRules), 2));
+		  System.out.println("Average Netconf: " + roundDouble(( avg_netConf/ countRules), 2));
+		  w.println("Average YulesQ: " + roundDouble(( avg_yulesQ/ countRules), 2));
+		  System.out.println("Average YulesQ: " + roundDouble(( avg_yulesQ/ countRules), 2));
+		   w.println("Average Antecedents Length: " + roundDouble((length / (double) countRules), 2));
+		  System.out.println("Average Length of the Rules generated: " + roundDouble((length / (double) countRules), 2));
+		  w.println("Number of Covered Records (%): " + roundDouble((100.0 * this.numCoveredRecords (minSupport)) / this.ds.getnTrans(),2));
+		  System.out.println("Number of Covered Records(%): " + (100.0 * this.numCoveredRecords (minSupport)) / this.ds.getnTrans());
+	  }
+	  else{
+		  w.println("Average Support: " + ( 0.0 ));
+		  System.out.println("Average Support: " + (0.0));
+		  w.println("Average Confidence: " + ( 0.0 ));
+		  System.out.println("Average Confidence: " + (0.0 ));
+		  w.println("Average Lift: " + (0.0 ));
+		  System.out.println("Average Lift: " + ( 0.0 ));
+		  w.println("Average Conviction: " + ( 0.0  ));
+		  System.out.println("Average Conviction: " + ( 0.0 ));
+		  w.println("Average Certain Factor: " + ( 0.0  ));
+		  System.out.println("Average Certain Factor: " + ( 0.0 ));
+		  w.println("Average Netconf: " + ( 0.0 ));
+		  System.out.println("Average Netconf: " + (0.0));
+		  w.println("Average Antecedents Length: " + ( 0.0  ));
+		  System.out.println("Average Antecedents Length: " + ( 0.0 ));
+		  w.println("Number of Covered Records (%): " +  (0.0));
+		  System.out.println("Number of Covered Records (%): " + (0.0) );
+	  }
+	  
   }  
 
-  public ArrayList<AssociationRule> getSetRules (double minConfidence, double minSupport) {
+  public ArrayList<AssociationRule> getSetRules (double minSupport) {
 	  int i;
 	  ArrayList<AssociationRule> selectRules = new ArrayList<AssociationRule>();
 	  AssociationRule rule;
 	  
 	  for (i=0; i < this.assocRules.size(); i++) {
 		  rule = this.assocRules.get(i);
-		  if ((rule.getConfidence() >= minConfidence) && (rule.getAll_support() >= minSupport))  selectRules.add(rule.copy());
+		  if (rule.getAll_support() >= minSupport)  selectRules.add(rule.copy());
 	  }
-
-	  return selectRules;
+	  
+	 return selectRules;
   }  
    
   
   private void genRules() {
-	  int i, j, g1, g2;
-	  double all_sup, ant_sup; 
-	  ArrayList<Integer> tid_lst_all, tid_lst_ant;
+	  int i, j;
+	  double numeratorYules, denominatorYules, confidance,lift,conv, CF, netConf, yulesQ; 
 	  AssociationRule rule;
 	  Chromosome chromo;
-	  Gene[] genes_ant;
 
 	  this.assocRules = new ArrayList<AssociationRule>();
 	
@@ -475,16 +592,54 @@ public class EARMGAProcess
 		  for (j=0; j <= chromo.getLengthAnt(); j++)  rule.addAntecedent((chromo.getGen(j)).copy());
 		  for (j=chromo.getLengthAnt()+1; j < this.kItemsets; j++)  rule.addConsequent((chromo.getGen(j)).copy());
 					  
-		  rule.setSupport (chromo.getSupportAnt());
+		  confidance = chromo.getSupportAll() / chromo.getSupportAnt();
+		 
+		  if((chromo.getSupportAnt() == 0)||(chromo.getSupportCon() == 0))
+			  lift = 1;
+		  else lift = chromo.getSupportAll() /(chromo.getSupportAnt()* chromo.getSupportCon());
+		  
+		  if((chromo.getSupportCon()==1)||(chromo.getSupportAnt() == 0))
+			  conv = 1;
+		  else conv = (chromo.getSupportAnt()*(1-chromo.getSupportCon()))/(chromo.getSupportAnt()- chromo.getSupportAll());
+		  
+		  if ((chromo.getSupportAnt() == 0)||(chromo.getSupportAnt() == 1)||(Math.abs(chromo.getSupportAnt()*(1-chromo.getSupportAnt())) <= 0.001))
+			  netConf = 0;
+		  else netConf = (chromo.getSupportAll()-(chromo.getSupportAnt()* chromo.getSupportCon()))/(chromo.getSupportAnt()*(1-chromo.getSupportAnt()));
+		  
+		  //compute yulesQ
+		  numeratorYules = ((chromo.getSupportAll() * (1 - chromo.getSupportCon() - chromo.getSupportAnt() + chromo.getSupportAll())) - ((chromo.getSupportAnt() - chromo.getSupportAll())* (chromo.getSupportCon() - chromo.getSupportAll())));
+		  denominatorYules = ((chromo.getSupportAll() * (1 - chromo.getSupportCon() - chromo.getSupportAnt() + chromo.getSupportAll())) + ((chromo.getSupportAnt() - chromo.getSupportAll())* (chromo.getSupportCon() - chromo.getSupportAll())));
+			
+		  if((chromo.getSupportAnt() == 0)||(chromo.getSupportAnt() == 1)||(chromo.getSupportCon() == 0)||(chromo.getSupportCon() == 1)||(Math.abs(denominatorYules) <= 0.001))
+			  yulesQ = 0;
+		  else  yulesQ = numeratorYules/denominatorYules;
+		  
+		  CF = 0;
+	      if(confidance > chromo.getSupportCon())
+	    	  CF = (confidance - chromo.getSupportCon())/(1-chromo.getSupportCon());
+	      else 
+			 if(confidance < chromo.getSupportCon())
+				CF = (confidance - chromo.getSupportCon())/(chromo.getSupportCon());
+		  
+		  rule.setSupport_Ant (chromo.getSupportAnt());
+		  rule.setSupport_cons(chromo.getSupportCon());
 		  rule.setAll_support (chromo.getSupportAll());
-		  rule.setConfidence (chromo.getSupportAll() / chromo.getSupportAnt());
+		  rule.setConfidence (confidance);
+		  rule.setLift(lift);
+		  rule.setConv(conv);
+		  rule.setCF(CF);
+		  rule.setNetConf(netConf);
+		  rule.setYulesQ(yulesQ);
+		  
 					  			  
 		  this.assocRules.add(rule);
 	  }
+	  
+	 
   }
   
   
-  private int numCoveredRecords (double minConfidence, double minSupport) {
+  private int numCoveredRecords (double minSupport) {
 	  int i, j, covered, nTrans;
 	  ArrayList<Integer> tidCovered;
 	  Chromosome chromo;
@@ -499,7 +654,7 @@ public class EARMGAProcess
 	  for (i=0; i < this.pop.size(); i++) {
 		  chromo = this.pop.get(i);
 
-		  if (((chromo.getSupportAll() / chromo.getSupportAnt()) >= minConfidence) && (chromo.getSupportAll() >= minSupport)) {
+		  if ((chromo.getSupportAll() >= minSupport)) {
 			  tidCovered = this.countSupport(chromo, 0, this.kItemsets-1);
 			  for (j=0; j < tidCovered.size(); j++)  marked[tidCovered.get(j)] = true;
 		  }

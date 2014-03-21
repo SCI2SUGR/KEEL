@@ -45,13 +45,20 @@ public class AssociationRule {
 	 * It is used for representing and handling an Association Rule
 	 * </p>
 	 */
-	
 	private ArrayList<Integer> antecedent;
 	private ArrayList<Integer> consequent;
 	private double ruleSupport;
 	private double antecedentSupport;
+	private double consequentSupport;
 	private double confidence;
+	private double lift;
+	private double conv;
+	private double CF;
+	private double netConf;
+	private double yulesQ;
 	
+  
+
 	/**
 	 * <p>
 	 * Default constructor
@@ -171,6 +178,127 @@ public class AssociationRule {
 	public String toString() {
 		return ( this.antecedent.toString() + "-> " + this.consequent.toString() + "; Rule Support: " + this.ruleSupport + "; Antecedent Support: " + this.antecedentSupport + "; Confidence: " + this.confidence );
 	}
+	
+	/**
+	 * <p>
+	 * It returns the CF of an association rule
+	 * </p>
+	 * @return A value representing the CF of the association rule
+	 */
+	public double getCF() {
+		return CF;
+	}
+	
+	/**
+	 * <p>
+	 * It sets the CF of an association rule
+	 * </p>
+	 * @param cf The value representing the rule cf
+	 */
+	public void setCF(double cf) {
+		CF = cf;
+	}
+	
+	/**
+	 * <p>
+	 * It returns the conviction of an association rule
+	 * </p>
+	 * @return A value representing the conviction of the association rule
+	 */
+	public double getConv() {
+		return conv;
+	}
+	
+	/**
+	 * <p>
+	 * It sets the conviction of an association rule
+	 * </p>
+	 * @param conv The value representing the rule conviction
+	 */
+	public void setConv(double conv) {
+		this.conv = conv;
+	}
+
+	/**
+	 * <p>
+	 * It returns the netconf of an association rule
+	 * </p>
+	 * @return A value representing the netconf of the association rule
+	 */
+	public double getNetConf() {
+		return netConf;
+	}
+	
+	/**
+	 * <p>
+	 * It sets the netconf of an association rule
+	 * </p>
+	 * @param netconf The value representing the rule netconf
+	 */
+	public void setNetConf(double netConf) {
+		this.netConf = netConf;
+	}
+
+	/**
+	 * <p>
+	 * It returns the consequent support of an association rule
+	 * </p>
+	 * @return A value representing the consequent support of the association rule
+	 */
+	public double getConsequentSupport() {
+		return consequentSupport;
+	}
+
+	/**
+	 * <p>
+	 * It sets the consequent support of an association rule
+	 * </p>
+	 * @param consequentSupport The value representing the rule consequent support 
+	 */
+	public void setConsequentSupport(double consequentSupport) {
+		this.consequentSupport = consequentSupport;
+	}
+	
+   /**
+	 * <p>
+	 * It returns the yulesQ of an association rule
+	 * </p>
+	 * @return A value representing the yulesQ of the association rule
+	 */
+	public double getYulesQ() {
+		return yulesQ;
+	}
+	/**
+	 * <p>
+	 * It sets the yulesQ of an association rule
+	 * </p>
+	 * @param yulesQ The value representing the rule yulesQ
+	 */
+	public void setYulesQ(double yulesQ) {
+		this.yulesQ = yulesQ;
+	}
+	
+	/**
+	 * <p>
+	 * It returns the lift of an association rule
+	 * </p>
+	 * @return A value representing the lift of the association rule
+	 */
+	public double getLift() {
+		return lift;
+	}
+	/**
+	 * <p>
+	 * It sets the lift of an association rule
+	 * </p>
+	 * @param lift The value representing the rule lift
+	 */
+	public void setLift(double lift) {
+		this.lift = lift;
+	}
+
+
+
 	
 }
 

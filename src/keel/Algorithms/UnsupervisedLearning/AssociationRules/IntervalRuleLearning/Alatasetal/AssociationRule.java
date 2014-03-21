@@ -32,6 +32,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 /**
  * <p>
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.0
  * @since JDK1.6
  * </p>
@@ -165,6 +166,58 @@ public class AssociationRule {
   public double getConfidence() {
 	return ( this.chr.getRuleConfidence() );
   }
+  
+  public double getAntecedentSupport(){
+		return ( this.chr.getAntecedentSupport() ); 
+  }
+  
+  public double getConsequentSupport(){
+	  return ( this.chr.getConsequentSupport() ); 
+  }
+  
+  
+  
+  /**
+   * <p>
+   * It returns the lift of an association rule
+   * </p>
+   * @return A value representing the lift of the association rule
+   */
+  public double getLift() {
+	return ( this.chr.getRuleLift() );
+  }
+  /**
+   * <p>
+   * It returns the conviction of an association rule
+   * </p>
+   * @return A value representing the conviction of the association rule
+   */
+  public double getConv() {
+	return ( this.chr.getRuleConv() );
+  }
+  /**
+   * <p>
+   * It returns the certain factor of an association rule
+   * </p>
+   * @return A value representing the certain factor of the association rule
+   */
+  public double getCF() {
+	return ( this.chr.getRuleCF());
+  }
+  
+  /**
+   * <p>
+   * It returns the Netconf of an association rule
+   * </p>
+   * @return A value representing the netConf of the association rule
+   */
+  public double getnetConf() {
+	return ( this.chr.getRuleNetconf());
+  }
+  
+  public double getyulesQ() {
+		return ( this.chr.getRuleYulesQ());
+	  }
   
   /**
    * <p>

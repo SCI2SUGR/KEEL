@@ -31,20 +31,27 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 
 import java.util.*;
 
-
 public class AssociationRule
 {
   private ArrayList<Gene> antecedent;
   private ArrayList<Gene> consequent;
   private double all_support;
-  private double support;
+  private double support_ant;
+  private double support_cons;
   private double confidence;
+  private double lift;
+  private double conv;
+  private double CF;
+  private double netConf; 
+  private double yulesQ;
 	
+  
+
 
   public AssociationRule()
   {
-    this.antecedent = new ArrayList<Gene>();
-    this.consequent = new ArrayList<Gene>();
+	  this.antecedent = new ArrayList<Gene>();
+	  this.consequent = new ArrayList<Gene>();
   }
 
   public AssociationRule copy () {
@@ -60,9 +67,14 @@ public class AssociationRule
 	}
 	
 	rule.all_support = this.all_support;
-	rule.support = this.support;
+	rule.support_ant = this.support_ant;
+	rule.support_cons = this.support_cons;
 	rule.confidence = this.confidence;
-
+	rule.lift = this.lift;
+	rule.CF = this.CF;
+	rule.conv = this.conv;
+	rule.netConf = this.netConf;
+	rule.yulesQ = this.yulesQ;
 	return (rule);
   } 
   
@@ -89,7 +101,10 @@ public class AssociationRule
     return this.consequent;
   }
 
-
+  public int getLengthRule()
+  {
+    return this.antecedent.size()+ this.consequent.size();
+  }
   public int getLengthAntecedent()
   {
     return this.antecedent.size();
@@ -103,16 +118,16 @@ public class AssociationRule
 
   public void setAll_support(double all_support)
   {
-	this.all_support = all_support;
+	  this.all_support = all_support;
   }
 
-  public double getSupport() {
-	return this.support;
+  public double getSupport_Ant() {
+	  return this.support_ant;
   }
 
 
-  public void setSupport(double support) {
-	this.support = support;
+  public void setSupport_Ant(double support) {
+	  this.support_ant = support;
   }
 
 
@@ -130,8 +145,85 @@ public class AssociationRule
    
   public String toString()
   {
-	return ( this.antecedent.toString() + "-> " + this.consequent.toString() + ": " + this.getSupport() + "; " + this.getAll_support() + "; " + this.getConfidence());
+	return ( this.antecedent.toString() + "-> " + this.consequent.toString() + ": " + this.getSupport_Ant() + "; " + this.getAll_support() + "; " + this.getConfidence());
   }
+
+  public double getCF() {
+	  return CF;
+  }
+
+  public void setCF(double cf) {
+	  CF = cf;
+  }
+
+  public double getConv() {
+	  return conv;
+  }
+
+  public void setConv(double conv) {
+	  this.conv = conv;
+  }
+
+  public double getNetConf() {
+	  return netConf;
+  }
+
+  public void setNetConf(double netConf) {
+	  this.netConf = netConf;
+  }
+
+  public double getSupport_cons() {
+	  return support_cons;
+  }
+
+  public void setSupport_cons(double support_cons) {
+	 this.support_cons = support_cons;
+  }
+
+  public double getYulesQ() {
+	  return yulesQ;
+  }
+
+  public void setYulesQ(double yulesQ) {
+	  this.yulesQ = yulesQ;
+  }
+
+  public double getLift() {
+	  return lift;
+  }
+
+  public void setLift(double lift) {
+	  this.lift = lift;
+  }
+  public ArrayList<Gene> getGenesRule(){
+	  ArrayList<Gene> genesRule = new ArrayList<>();
+	  int i;
+
+	  for (i=0; i < this.antecedent.size(); i++) {
+		  genesRule.add((this.antecedent.get(i)).copy());
+	  }
+
+	  for (i=0; i < this.consequent.size(); i++) {
+		  genesRule.add((this.consequent.get(i)).copy());
+	  }
+
+	return genesRule;
+  }
+
+  public void sortGenes (ArrayList<Gene> genes) {
+		int i, j;
+		Gene gen;
+
+		for (i=0; i <genes.size()-1; i++) {
+			for (j=0; j <genes.size()-i-1; j++) {
+				if (genes.get(j).getAttr() > genes.get(j+1).getAttr()) {
+					gen = genes.get(j);
+					genes.set(j, genes.get(j+1));
+					genes.set(j+1,gen);
+				}
+			}
+		}
+	}
 
 }
 

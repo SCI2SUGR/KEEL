@@ -39,6 +39,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * <p>Company: KEEL </p>
  *
  * @author Alberto Fernández
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
  * @version 1.0
  */
 
@@ -48,6 +49,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.core.*;
+
 import keel.Dataset.*;
 
 public class GENAR {
@@ -55,21 +57,21 @@ public class GENAR {
     myDataset trans;
     String assoc_rules_fname;
     String sup_rules_fname;
+    String valuesOrderFilename;
     GENARProcess ap;
 	ArrayList<AssociationRule> assoc_rules;
+	private String fileTime, fileHora, namedataset;
 
     //We may declare here the algorithm's parameters
 	private int nRules;
-	private int nGen;
+	private int nTrials;
 	private int popsize;
 	private double ps;
-	private double pc;
 	private double pm;
 	private double pf;
 	private double AF;
-	private double minConfidence;
 	private double minSupport;
-
+	long startTime, totalTime;
 
     private boolean somethingWrong = false; //to check if everything is correct.
 
@@ -84,10 +86,13 @@ public class GENAR {
      * from the parameters array.
      * @param parameters parseParameters It contains the input files, output files and parameters
      */
-    public GENAR(parseParameters parameters) {       
-        this.trans = new myDataset();
+    public GENAR(parseParameters parameters) { 
+    	this.startTime = System.currentTimeMillis();
+       
+    	this.trans = new myDataset();
         try {
-            System.out.println("\nReading the transaction set: " + parameters.getTransactionsInputFile());
+        	this.namedataset = parameters.getTransactionsInputFile();
+        	System.out.println("\nReading the transaction set: " + parameters.getTransactionsInputFile());
             trans.readDataSet( parameters.getTransactionsInputFile() );
         }
         catch (IOException e) {
@@ -101,19 +106,22 @@ public class GENAR {
 		
 		this.assoc_rules_fname = parameters.getAssociationRulesFile();
         this.sup_rules_fname = parameters.getOutputFile(0);
+        this.valuesOrderFilename = parameters.getOutputFile(1);
+        
+        this.fileTime = (parameters.getOutputFile(0)).substring(0,(parameters.getOutputFile(0)).lastIndexOf('/')) + "/time.txt";
+        this.fileHora = (parameters.getOutputFile(0)).substring(0,(parameters.getOutputFile(0)).lastIndexOf('/')) + "/hora.txt";
 
 		long seed = Long.parseLong(parameters.getParameter(0));
 
         this.nRules = Integer.parseInt( parameters.getParameter(1) );
-        this.nGen = Integer.parseInt( parameters.getParameter(2) );
+        this.nTrials = Integer.parseInt( parameters.getParameter(2) );
         this.popsize = Integer.parseInt( parameters.getParameter(3) );
         this.ps = Double.parseDouble( parameters.getParameter(4) );
-        this.pc = Double.parseDouble( parameters.getParameter(5) );
-        this.pm = Double.parseDouble( parameters.getParameter(6) );
-        this.pf = Double.parseDouble( parameters.getParameter(7) );
-        this.AF = Double.parseDouble( parameters.getParameter(8) );
-        this.minConfidence = Double.parseDouble( parameters.getParameter(9) );
-        this.minSupport = Double.parseDouble( parameters.getParameter(10) );
+        this.pm = Double.parseDouble( parameters.getParameter(5) );
+        this.pf = Double.parseDouble( parameters.getParameter(6) );
+        this.AF = Double.parseDouble( parameters.getParameter(7) );
+       
+        this.minSupport = 0.001;
 
         Randomize.setSeed(seed);
 	}
@@ -128,14 +136,14 @@ public class GENAR {
             //We should not use the statement: System.exit(-1);
         } 
 		else {
-        	this.ap = new GENARProcess(this.trans, this.nRules, this.nGen, this.popsize, this.ps, this.pc, this.pm, this.pf, this.AF);
+        	this.ap = new GENARProcess(this.trans, this.nRules, this.nTrials, this.popsize, this.ps, this.pm, this.pf, this.AF);
 			this.ap.run();
-			this.ap.printReport(this.minConfidence, this.minSupport);
-			this.assoc_rules = this.ap.getSetRules (this.minConfidence, this.minSupport);
-        	        	
+			this.assoc_rules = this.ap.getSetRules(this.minSupport);
+       	        	
 			try {
 				PrintWriter rule_writer = new PrintWriter(assoc_rules_fname);
 				PrintWriter sup_writer = new PrintWriter(sup_rules_fname);
+				PrintWriter valuesOrder_writer = new PrintWriter(this.valuesOrderFilename);
 				
 				rule_writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 				rule_writer.println("<association_rules>");
@@ -143,10 +151,9 @@ public class GENAR {
 				sup_writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 				sup_writer.println("<values>");
 				
-				
-				double avg_sup=0.0, avg_conf=0.0;
-				int avg_ampl_ant=0;
-				
+				valuesOrder_writer.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+				valuesOrder_writer.println("<values>");
+								
 				for (int i=0; i < assoc_rules.size(); i++) {
 					AssociationRule a_r = assoc_rules.get(i);
 					
@@ -154,8 +161,9 @@ public class GENAR {
 					ArrayList<Gene> cons = a_r.getConsequent();
 					
 					rule_writer.println("<rule id=\"" + i + "\">");
-					sup_writer.println("<rule id=\"" + i + "\" support=\"" + a_r.getSupport() + "\" supportRule=\"" + a_r.getAll_support() + "\" confidence=\"" + a_r.getConfidence() + "\" />");
-					
+					sup_writer.println("<rule id=\"" + i + "\" rule_support=\"" + GENARProcess.roundDouble(a_r.getAll_support(),2) + "\" antecedent_support=\"" + GENARProcess.roundDouble(a_r.getSupport(),2) + "\" consequent_support=\"" + GENARProcess.roundDouble(a_r.getSupport_cons(),2)
+							+ "\" confidence=\"" + GENARProcess.roundDouble(a_r.getConfidence(),2) +"\" lift=\"" + GENARProcess.roundDouble(a_r.getLift(),2) + "\" conviction=\"" + GENARProcess.roundDouble(a_r.getConv(),2) + "\" certainFactor=\"" + GENARProcess.roundDouble(a_r.getCF(),2) + "\" netConf=\"" + GENARProcess.roundDouble(a_r.getNetConf(),2) + "\" yulesQ=\"" + GENARProcess.roundDouble(a_r.getYulesQ(),2) + "\" nAttributes=\"" + (a_r.getAntecedent().size()+ a_r.getConsequent().size()) + "\"/>");
+				
 					rule_writer.println("<antecedents>");
 					for (int j=0; j < ant.size(); j++)
 					{
@@ -171,26 +179,26 @@ public class GENAR {
 					
 					rule_writer.println("</rule>");
 					
-					avg_sup += a_r.getAll_support();
-					avg_conf += a_r.getConfidence();
-					avg_ampl_ant += ant.size();
+					
 				}
 				
 				rule_writer.println("</association_rules>");
 				sup_writer.println("</values>");
 				
+				this.ap.saveReport(this.minSupport, sup_writer);
+				
+				valuesOrder_writer.print(this.ap.printRules(this.assoc_rules));
+				valuesOrder_writer.print("</values>");
+				System.out.println("Algorithm Finished");
+										
 				rule_writer.close();
 				sup_writer.close();
+				valuesOrder_writer.close();
 				
-				if ( ! assoc_rules.isEmpty() )
-				{
-					System.out.println("Average SupportRules: " + ( avg_sup / assoc_rules.size() ) );
-					System.out.println("Average Confidence: " + ( avg_conf / assoc_rules.size() ) );
-					System.out.println("Average Amplitude of Antecedents: " + ( avg_ampl_ant / assoc_rules.size() ) );
-				}
-				else System.out.println("No Statistics.");
+				totalTime = System.currentTimeMillis() - startTime;
+				this.writeTime();
 				
-				System.out.println("Algorithm Finished");
+				
 			}
 			catch (FileNotFoundException e)
 			{
@@ -198,6 +206,32 @@ public class GENAR {
 			}
         }
     }
+    
+    public void writeTime() {
+    	long seg, min, hor;
+        String stringOut = new String("");
+
+        stringOut = "" + totalTime / 1000 + "  " + this.namedataset + assoc_rules_fname + "\n";
+        Files.addToFile(this.fileTime, stringOut);
+    	totalTime /= 1000;
+    	seg = totalTime % 60;
+    	totalTime /= 60;
+    	min = totalTime % 60;
+    	hor = totalTime / 60;
+        stringOut = "";
+    	
+    	if (hor < 10)  stringOut = stringOut + "0"+ hor + ":";
+    	else   stringOut = stringOut + hor + ":";
+
+    	if (min < 10)  stringOut = stringOut + "0"+ min + ":";
+    	else   stringOut = stringOut + min + ":";
+
+    	if (seg < 10)  stringOut = stringOut + "0"+ seg;
+    	else   stringOut = stringOut + seg;
+
+    	stringOut = stringOut + "  " + assoc_rules_fname + "\n";
+        Files.addToFile(this.fileHora, stringOut);
+      }
     
     private void createRule(Gene g, PrintWriter w)
     {

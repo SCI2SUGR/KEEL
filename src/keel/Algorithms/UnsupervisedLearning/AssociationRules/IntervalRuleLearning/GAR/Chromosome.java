@@ -29,6 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GAR;
 
+
 /*
  * Note: this class has a natural ordering that is inconsistent with equals.
  */
@@ -38,6 +39,8 @@ public class Chromosome implements Comparable {
 	private Gene[] genes;
 	private double fit;
 	private double support;
+
+
 	
 	public Chromosome(Gene[] genes) {
 		this.genes = new Gene[genes.length];
@@ -146,4 +149,6 @@ public class Chromosome implements Comparable {
 			}
 		}
 	}
+	
+
 }

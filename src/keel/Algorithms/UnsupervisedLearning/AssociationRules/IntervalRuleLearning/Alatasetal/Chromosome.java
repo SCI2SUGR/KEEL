@@ -32,12 +32,14 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 /**
  * <p>
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
 
 import java.util.ArrayList;
+
 import org.core.Randomize;
 
 
@@ -51,9 +53,17 @@ public class Chromosome implements Comparable {
 	private Gene[] genes;
 	private double fitness;
 	private double ruleSupport;
+	private double antecedentSupport;
+	private double consequentSupport;
 	private double ruleConfidence;
+	private double ruleLift;
+	private double ruleConv;
+	private double ruleCF;
+	private double ruleNetconf;
+	private double ruleYulesQ;
 	private ArrayList<Integer> coveredTIDs;
-	
+    public int nAnts;
+
 	/**
 	 * <p>
 	 * It creates a new chromosome by setting up its genes
@@ -67,6 +77,11 @@ public class Chromosome implements Comparable {
 			this.genes[i] = genes[i].copy();
 			
 		this.coveredTIDs = new ArrayList<Integer>();
+		this.nAnts = 0;
+		for (int i=0; i < genes.length; i++) {
+			this.genes[i] = genes[i].copy();
+			if (this.genes[i].getActAs() == Gene.ANTECEDENT)  this.nAnts++;
+		}
 	}
 
 	/**
@@ -83,7 +98,13 @@ public class Chromosome implements Comparable {
 		
 		chromo.fitness = this.fitness;
 		chromo.ruleSupport = this.ruleSupport;
+		chromo.antecedentSupport = this.antecedentSupport;
+		chromo.consequentSupport = this.consequentSupport;
 		chromo.ruleConfidence = this.ruleConfidence;
+		chromo.ruleLift = this.ruleLift;
+		chromo.ruleCF = this.ruleCF;
+		chromo.ruleConv = this.ruleConv;
+		chromo.ruleNetconf = this.ruleNetconf;
 		
 		return chromo;
 	}
@@ -307,7 +328,7 @@ public class Chromosome implements Comparable {
 	 * The comparison is achieved by only considering fitness values.
 	 * For this reason, note that this method provides a natural ordering that is inconsistent with equals
 	 * </p>
-	 * @param chr The object to be compared
+	 * @param obj The object to be compared
 	 * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
 	 */
 	public int compareTo(Object chr) {
@@ -324,7 +345,7 @@ public class Chromosome implements Comparable {
 	 * @param obj The reference object with which to compare
 	 * @return True if this chromosome is the same as the argument; False otherwise
 	 */
-	public boolean equals(Object obj) {
+	/*public boolean equals(Object obj) {
 		Chromosome chr = (Chromosome)obj;
 		boolean ok = true;
 		
@@ -332,6 +353,23 @@ public class Chromosome implements Comparable {
 			if ( ! chr.genes[i].equals( this.genes[i] ) )	ok = false;
 		
 		return ok;
+	}
+	*/
+	public boolean equals(Chromosome chr) {
+		int i;
+
+		for (i=0; i < this.genes.length; i++)	{
+			if ((this.genes[i].getActAs() != Gene.NOT_INVOLVED) && (chr.genes[i].getActAs() == Gene.NOT_INVOLVED))  return (false);
+			if ((this.genes[i].getActAs() == Gene.NOT_INVOLVED) && (chr.genes[i].getActAs() != Gene.NOT_INVOLVED))  return (false);
+			if ((this.genes[i].getActAs() != Gene.NOT_INVOLVED) && (chr.genes[i].getActAs() != Gene.NOT_INVOLVED)) {
+				if (!chr.genes[i].equals(this.genes[i])) { 
+					return (false);
+				
+				}
+			}
+		}
+
+		return (true);
 	}
 	
 	/**
@@ -350,5 +388,89 @@ public class Chromosome implements Comparable {
 		
 		return str;
 	}
+
+	public double getRuleLift() {
+		return ruleLift;
+	}
+
+	public void setRuleLift(double ruleLift) {
+		this.ruleLift = ruleLift;
+	}
+
+	public double getRuleCF() {
+		return ruleCF;
+	}
+
+	public void setRuleCF(double ruleCF) {
+		this.ruleCF = ruleCF;
+	}
+
+	public double getRuleConv() {
+		return ruleConv;
+	}
+
+	public void setRuleConv(double ruleConv) {
+		this.ruleConv = ruleConv;
+	}
+
+	public double getRuleNetconf() {
+		return ruleNetconf;
+	}
+
+	public void setRuleNetconf(double ruleNetconf) {
+		this.ruleNetconf = ruleNetconf;
+	}
+
+	public double getAntecedentSupport() {
+		return antecedentSupport;
+	}
+
+	public void setAntecedentSupport(double antecedentSupport) {
+		this.antecedentSupport = antecedentSupport;
+	}
+
+	public double getConsequentSupport() {
+		return consequentSupport;
+	}
+
+	public void setConsequentSupport(double consequentSupport) {
+		this.consequentSupport = consequentSupport;
+	}
+
+	public double getRuleYulesQ() {
+		return ruleYulesQ;
+	}
+
+	public void setRuleYulesQ(double ruleYulesQ) {
+		this.ruleYulesQ = ruleYulesQ;
+	}
+
+	public int getnAnts() {
+		return nAnts;
+	}
+
+	public void setnAnts(int ants) {
+		nAnts = ants;
+	}
+	
+	public boolean isSubChromo (Chromosome chromo2) {
+		int i;
+		Gene gen;
+		
+		if (this.getRuleSupport() < chromo2.getRuleSupport())  return (false);
+				
+		for (i=0; i < genes.length; i++) {
+			gen = chromo2.getGene(i);
+
+			if ((genes[i].getActAs() != Gene.NOT_INVOLVED) && (gen.getActAs() == Gene.NOT_INVOLVED))  return (false);
+			if ((genes[i].getActAs() == Gene.NOT_INVOLVED) && (gen.getActAs() != Gene.NOT_INVOLVED))  return (false);
+			if ((genes[i].getActAs() != Gene.NOT_INVOLVED) && (gen.getActAs() != Gene.NOT_INVOLVED)) {
+				if (!genes[i].isSubGen(gen))  return (false);
+				
+			}
+		}
+		return (true);
+	}
+
 	
 }

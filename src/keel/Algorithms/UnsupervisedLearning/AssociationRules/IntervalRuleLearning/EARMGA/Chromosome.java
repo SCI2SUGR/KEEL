@@ -35,6 +35,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 
 import java.util.*;
 
+
 public class Chromosome implements Comparable {
 	private ArrayList<Gene> genes;
 	private int lengthAnt;
@@ -44,6 +45,7 @@ public class Chromosome implements Comparable {
 	private double supportAll;
 	private boolean [] use;
 	private int nVars;
+	
 
 	public Chromosome(int lengthAnt, int nVars) {
 		this.genes = new ArrayList<Gene>();
@@ -188,7 +190,7 @@ public class Chromosome implements Comparable {
 					if (chromo.genes.get(i).isEqualValue(this.genes.get(j)))  found = true;
 					else  j = this.lengthAnt;
 				}
-		    }
+			}
 
 			if (!found)  return (false);
 		}
@@ -200,7 +202,7 @@ public class Chromosome implements Comparable {
 					if (chromo.genes.get(i).isEqualValue(this.genes.get(j)))  found = true;
 					else  j = this.genes.size();
 				}
-		    }
+			}
 
 			if (!found)  return (false);
 		}
@@ -212,19 +214,21 @@ public class Chromosome implements Comparable {
 	public int compareTo (Object chr) {
 		if (((Chromosome) chr).fitness < this.fitness)  return -1;
 		else if (((Chromosome) chr).fitness > this.fitness)  return 1;
-//		else {
-//			if (((Chromosome) chr).supportAll < this.supportAll)  return -1;
-//			else if (((Chromosome) chr).supportAll > this.supportAll)  return 1;
-//	    }
+		//		else {
+		//			if (((Chromosome) chr).supportAll < this.supportAll)  return -1;
+		//			else if (((Chromosome) chr).supportAll > this.supportAll)  return 1;
+		//	    }
 		else  return 0;
 	}
 
 	public String toString() {
 		String str = "Size: " + this.genes.size() + "; Fit: " + this.fitness + "\n";
-		
+
 		for (int i=0; i < this.genes.size(); i++)  str += this.genes.get(i) + "\n";
 
 		return str;
 	}
+	    
+
 }
 

@@ -37,10 +37,16 @@ public class AssociationRule
   private ArrayList<Gene> antecedent;
   private ArrayList<Gene> consequent;
   private double all_support;
-  private double support;
+  private double support_ant;
+  private double support_cons;
   private double confidence;
-	
-
+  private double lift;
+  private double conv;
+  private double CF;
+  private double netConf; 
+  private double yulesQ;
+  
+  
   public AssociationRule()
   {
     this.antecedent = new ArrayList<Gene>();
@@ -60,12 +66,47 @@ public class AssociationRule
 	}
 	
 	rule.all_support = this.all_support;
-	rule.support = this.support;
+	rule.support_ant = this.support_ant;
+	rule.support_cons = this.support_cons;
 	rule.confidence = this.confidence;
-
+	rule.lift = this.lift;
+	rule.CF = this.CF;
+	rule.conv = this.conv;
+	rule.netConf = this.netConf;
+	rule.yulesQ = this.yulesQ;
 	return (rule);
   } 
   
+  public void sortGenes (ArrayList<Gene> genes) {
+		int i, j;
+		Gene gen;
+
+		for (i=0; i <genes.size()-1; i++) {
+			for (j=0; j <genes.size()-i-1; j++) {
+				if (genes.get(j).getAttr() > genes.get(j+1).getAttr()) {
+					gen = genes.get(j);
+					genes.set(j, genes.get(j+1));
+					genes.set(j+1,gen);
+				}
+			}
+		}
+	}
+
+  public ArrayList<Gene> getGenesRule(){
+	  ArrayList<Gene> genesRule = new ArrayList<>();
+	  int i;
+	  
+	  for (i=0; i < this.antecedent.size(); i++) {
+		 genesRule.add((this.antecedent.get(i)).copy());
+	  }
+
+	  for (i=0; i < this.consequent.size(); i++) {
+		  genesRule.add((this.consequent.get(i)).copy());
+	  }
+	  
+	  
+	  return genesRule;
+  }
   public void addAntecedent(Gene g)
   {
     antecedent.add(g);
@@ -109,13 +150,13 @@ public class AssociationRule
 	this.all_support = all_support;
   }
 
-  public double getSupport() {
-	return this.support;
+  public double getSupport_Ant() {
+	return this.support_ant;
   }
 
 
-  public void setSupport(double support) {
-	this.support = support;
+  public void setSupport_Ant(double support) {
+	this.support_ant = support;
   }
 
 
@@ -133,7 +174,128 @@ public class AssociationRule
    
   public String toString()
   {
-	return ( this.antecedent.toString() + "-> " + this.consequent.toString() + ": " + this.getSupport() + "; " + this.getAll_support() + "; " + this.getConfidence());
+	return ( this.antecedent.toString() + "-> " + this.consequent.toString() + ": " + this.getSupport_Ant() + "; " + this.getAll_support() + "; " + this.getConfidence());
   }
+
+	/**
+	 * <p>
+	 * It returns the CF of an association rule
+	 * </p>
+	 * @return A value representing the CF of the association rule
+	 */
+	public double getCF() {
+		return CF;
+	}
+	
+	/**
+	 * <p>
+	 * It sets the CF of an association rule
+	 * </p>
+	 * @param cf The value representing the rule cf
+	 */
+	public void setCF(double cf) {
+		CF = cf;
+	}
+	
+	/**
+	 * <p>
+	 * It returns the conviction of an association rule
+	 * </p>
+	 * @return A value representing the conviction of the association rule
+	 */
+	public double getConv() {
+		return conv;
+	}
+	
+	/**
+	 * <p>
+	 * It sets the conviction of an association rule
+	 * </p>
+	 * @param conv The value representing the rule conviction
+	 */
+	public void setConv(double conv) {
+		this.conv = conv;
+	}
+
+	/**
+	 * <p>
+	 * It returns the netconf of an association rule
+	 * </p>
+	 * @return A value representing the netconf of the association rule
+	 */
+	public double getNetConf() {
+		return netConf;
+	}
+	
+	/**
+	 * <p>
+	 * It sets the netconf of an association rule
+	 * </p>
+	 * @param netconf The value representing the rule netconf
+	 */
+	public void setNetConf(double netConf) {
+		this.netConf = netConf;
+	}
+
+	/**
+	 * <p>
+	 * It returns the consequent support of an association rule
+	 * </p>
+	 * @return A value representing the consequent support of the association rule
+	 */
+    public double getSupport_cons() {
+	   return support_cons;
+    }
+
+	/**
+	 * <p>
+	 * It sets the consequent support of an association rule
+	 * </p>
+	 * @param consequentSupport The value representing the rule consequent support 
+	 */
+    public void setSupport_cons(double support_cons) {
+    	this.support_cons = support_cons;
+    }
+
+	/**
+	 * <p>
+	 * It returns the yulesQ of an association rule
+	 * </p>
+	 * @return A value representing the yulesQ of the association rule
+	 */
+	public double getYulesQ() {
+		return yulesQ;
+	}
+	/**
+	 * <p>
+	 * It sets the yulesQ of an association rule
+	 * </p>
+	 * @param yulesQ The value representing the rule yulesQ
+	 */
+	public void setYulesQ(double yulesQ) {
+		this.yulesQ = yulesQ;
+	}
+
+	/**
+	 * <p>
+	 * It returns the lift of an association rule
+	 * </p>
+	 * @return A value representing the lift of the association rule
+	 */
+	public double getLift() {
+		return lift;
+	}
+	/**
+	 * <p>
+	 * It sets the lift of an association rule
+	 * </p>
+	 * @param lift The value representing the rule lift
+	 */
+	public void setLift(double lift) {
+		this.lift = lift;
+	}
+
+
+
 
 }

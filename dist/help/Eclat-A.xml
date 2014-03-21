@@ -52,69 +52,78 @@ resulting set.</howWork>
 	<example>
 Problem type: Association Rules
 Method: Eclat
-Dataset: weather
+Dataset: basketball
 Parameters: default values
 
 
 After the execution of RunKeel.jar we can see XML representations of the mined association rules along with the values concerning the measures of interest, respectively, in:
 
 
-&quot;results/Asso-Eclat.weather/result0.tra&quot;
+&quot;results/Asso-Eclat.basketball/result0.tra&quot;
 
 
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;rules&gt;
 &lt;rule id=&quot;0&quot;&gt;
 &lt;antecedents&gt;
-&lt;attribute name=&quot;outlook&quot; value=&quot;sunny&quot;/&gt;
-&lt;attribute name=&quot;temperature&quot; value=&quot;hot&quot;/&gt;
+&lt;attribute name=&quot;heightInteger&quot; value=&quot;[192.25, 203.0]&quot;/&gt;
+&lt;attribute name=&quot;ageInteger&quot; value=&quot;[22.0, 25.75]&quot;/&gt;
 &lt;/antecedents&gt;
 &lt;consequents&gt;
-&lt;attribute name=&quot;humidity&quot; value=&quot;high&quot;/&gt;
+&lt;attribute name=&quot;points_per_minuteReal&quot; value=&quot;[0.32675, 0.4942]&quot;/&gt;
 &lt;/consequents&gt;
 &lt;/rule&gt;
 ... ... ... ...
-&lt;rule id=&quot;51&quot;&gt;
-&lt;antecedents&gt;
-&lt;attribute name=&quot;humidity&quot; value=&quot;normal&quot;/&gt;
-&lt;/antecedents&gt;
-&lt;consequents&gt;
-&lt;attribute name=&quot;play&quot; value=&quot;yes&quot;/&gt;
-&lt;/consequents&gt;
-&lt;/rule&gt;
 &lt;/rules&gt;
 
 
-&quot;results/Asso-Eclat.weather/result0.tst&quot;
-
+&quot;results/Asso-Eclat.basketball/result0.tst&quot;
 
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;values&gt;
-&lt;rule id=&quot;0&quot; rule_support=&quot;0.14285714285714285&quot; antecedent_support=&quot;0.14285714285714285&quot; confidence=&quot;1.0&quot;/&gt;
+&lt;rule id=&quot;0&quot; rule_support=&quot;0.11&quot; antecedent_support=&quot;0.13&quot; consequent_support=&quot;0.11&quot; confidence=&quot;0.84&quot; lift=&quot;8&quot; conviction=&quot;5.38&quot; certainFactor=&quot;0.82&quot; netConf=&quot;0.84&quot; yulesQ=&quot;1.0&quot; nAttributes=&quot;3&quot;/&gt;
 ... ... ... ...
-&lt;rule id=&quot;51&quot; rule_support=&quot;0.42857142857142855&quot; antecedent_support=&quot;0.5&quot; confidence=&quot;0.8571428571428571&quot;/&gt;
 &lt;/values&gt;
 
+Number of Frequent Itemsets found: 66
+
+Number of Association Rules generated: 4
+Average Support: 0.15
+Average Confidence: 0.87
+Average Lift: 4.88
+Average Conviction: 6.65
+Average Certain Factor: 0.84
+Average Netconf: 0.81
+Average YulesQ: 0.99
+Average Number of Antecedents: 2.75
+Number of Covered Records (%): 33.34
+
+&quot;results/Asso-Eclat.basketball/result0s0e0.tst&quot;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;values&gt;
+Support	antecedent_support	consequent_support	Confidence	Lift	Conv	CF	NetConf	YulesQ	nAttributes
+0.11  	      0.13	                 0.11	          0.84	        8.0	5.38    0.82      0.84	 1.0	   3
+... ... ... ...
+&lt;/values&gt;
 
 We can also see some relevant information on-screen:
 
-
-Pass: 1; Candidate Itemsets: 12; Pruned Itemsets: 0; Total Frequent Itemsets: 12
-Pass: 2; Candidate Itemsets: 57; Pruned Itemsets: 10; Total Frequent Itemsets: 59
-Pass: 3; Candidate Itemsets: 80; Pruned Itemsets: 41; Total Frequent Itemsets: 98
-Pass: 4; Candidate Itemsets: 7; Pruned Itemsets: 1; Total Frequent Itemsets: 104
-Pass: 5; Candidate Itemsets: 0; Pruned Itemsets: 0; Total Frequent Itemsets: 104
-
-Number of Frequent Itemsets found: 104
-Number of Association Rules generated: 52
-Average Support: 0.16346153846153857
-Average Confidence: 0.9972527472527472
-Average Antecedents Length: 2.269230769230769
-Number of Covered Records (%): 100.0
+Number of Frequent Itemsets found: 66
+Number of Association Rules generated: 4
+Average Support: 0.15
+Average Confidence: 0.87
+Average Lift: 4.88
+Average Conviction: 6.65
+Average Certain Factor: 0.84
+Average Netconf: 0.81
+Average YulesQ: 0.99
+Average Number of Antecedents: 2.75
+Number of Covered Records (%): 33.34
 
 Algorithm Finished
 
-0.101 seconds
+0.039 seconds
 
 </example>
 

@@ -1,0 +1,137 @@
+﻿<method>
+
+	<name>MODENAR</name>
+
+	<reference>  
+
+		<ref>B. Alatas, E. Akin and A Karci. MODENAR: Multi-objective differential evolution algorithm for mining numeric association rules. Applied Soft Computing, 8:646–656 (2008).</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Association Rules Mining by means of Genetic Algorithms</type>
+
+		<objective>Alatas et al propose a multi-objective differential evolution algorithm for mining numeric association rules</objective>
+
+		<howWork>The genetic learning is performed iteratively until a maximum number of evaluations is reached. 
+First an initial population is randomly generated and the rounding operator is applied to the ﬁrst part of decision variables.
+All dominated solutions are removed from the population. 
+The remaining non-dominated solutions are retained in order to apply the mutation, rounding and repairing operators.
+Then, crossover is performed. If the number of non-dominated solutions exceeds some threshold, ﬁltrating operator is applied to remove the parents which are very close to each others. 
+Three parents are randomly selected. A child is generated from the three parents and replaced into the population, if it dominates the ﬁrst selected parent; 
+otherwise is selected the solution calculated weighted sum ﬁtness of which is bigger. This process continues until the population is completed.
+Finally, the adjust of the intervals for the chosen individuals has been performed and is returned the set of non-dominated solutions.
+</howWork>	
+		<parameterSpec>  
+			<param>Population Size: the population size to handle after each generation.</param>
+			<param>Number of Evaluations: the maximum number of evaluations to accomplish.</param>
+			<param>Crossover rate (CR): the crossover constant to create an offspring from a parent individual and a mutated individual.</param>
+			<param>Threshold for the number of non-dominated solutions: the maximum number of non-dominated solutions in the population</param>
+			<param>The factor of amplitude for each attribute of the dataset: the amplitude factor related to each attribute of the database.</param>
+            <param>Weight for Support: the factor for tuning the importance of the rule support.</param>
+			<param>Weight for Confidence: the factor for tuning the importance of the rule confidence.</param>
+			<param>Weight for Comprehensibility: the factor for tuning the importance of the number of involved attributes.</param>
+			<param>Weight for Amplitude of the Intervals: the factor for tuning the importance of the intervals amplitude.</param>
+			
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+Problem type: Association Rules
+Method: MODENAR
+Dataset: basketball
+Parameters: default values (seed = 1286082570)
+
+
+After the execution of RunKeel.jar we can see XML representations of the mined association rules along with the values concerning the measures of interest, respectively, in:
+
+
+&quot;results/Asso-MODENAR.basketball/result0s0.tra&quot;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rules&gt;
+&lt;rule id=&quot;0&quot;&gt;
+&lt;antecedents&gt;
+&lt;attribute name=&quot;points_per_minuteReal&quot; value=&quot;[0.23472065279598514, 0.653745254730633]&quot;/&gt;
+&lt;/antecedents&gt;
+&lt;consequents&gt;
+&lt;attribute name=&quot;heightInteger&quot; value=&quot;[182.0, 200.0]&quot;/&gt;
+&lt;/consequents&gt;
+&lt;/rule&gt;
+... ... ... ...
+&lt;/rules&gt;
+
+
+&quot;results/Asso-MODENAR.basketball/result0s0.tst&quot;
+
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;values&gt;
+&lt;rule id=&quot;0&quot; rule_support=&quot;0.85&quot; antecedent_support=&quot;0.97&quot; consequent_support=&quot;0.88&quot; confidence=&quot;0.88&quot; lift=&quot;1&quot; conviction=&quot;0.97&quot; certainFactor=&quot;-0.01&quot; netConf=&quot;-0.13&quot; yulesQ=&quot;-1&quot; nAttributes=&quot;2&quot;/&gt;
+... ... ... ...
+&lt;/values&gt;
+
+Number of Association Rules generated: 57
+Average Support: 0.25
+Average Confidence: 0.84
+Average Lift: 3.72
+Average Conviction: Infinity
+Average Certain Factor:"0.43
+Average Netconf:"0.28
+Average YulesQ:"0.38
+Average Number of Antecedents: 2.41
+Number of Covered Records (%): 95.84
+
+&quot;results/Asso-MODENAR.basketball/result0s0e0.tst&quot;
+
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;values&gt;
+Support	antecedent_support	consequent_support	Confidence	Lift	Conv	CF	NetConf	YulesQ	nAttributes
+0.85  	      0.97	                 0.88	          0.88	        1	0.97  -0.01      -0.13	 -1	   2
+... ... ... ...
+&lt;/values&gt;
+
+We can also see some relevant information on-screen:
+
+
+Initialization
+Generation: 1
+Generation: 2
+... ... ... ...
+Generation: 187
+
+Number of Association Rules generated: 57
+Average Support: 0.25
+Average Confidence: 0.84
+Average Lift: 3.72
+Average Conviction: Infinity
+Average Certain Factor: 0.43
+Average Netconf: 0.28
+Average YulesQ: 0.38
+Average Number of Antecedents: 2.41
+Number of Covered Records (%): 95.84
+
+Algorithm Finished
+
+</example>
+
+</method>

@@ -1,16 +1,16 @@
 <algorithm_specification>
   <name>Alatasetal</name>
-  <nParameters>15</nParameters>
+  <nParameters>13</nParameters>
   <seed>1</seed>
-  <nOutput>0</nOutput>
+  <nOutput>1</nOutput>
   <parameter>
-    <name>Number of Generations</name>
+    <name>Number of Evaluations</name>
     <type>integer</type>
     <domain>
       <lowerB>10</lowerB>
-      <upperB>1000</upperB>
+      <upperB>100000</upperB>
     </domain>
-    <default>1000</default>
+    <default>50000</default>
   </parameter>
   <parameter>
     <name>Initial Random Chromosomes</name>
@@ -19,7 +19,7 @@
       <lowerB>2</lowerB>
       <upperB>50</upperB>
     </domain>
-    <default>6</default>
+    <default>12</default>
   </parameter>
   <parameter>
     <name>r-Dividing Points</name>
@@ -120,22 +120,4 @@
     </domain>
     <default>2.0</default>
   </parameter>
-  <parameter>
-    <name>Minimum Confidence</name>
-    <type>real</type>
-    <domain>
-      <lowerB>0.0</lowerB>
-      <upperB>1.0</upperB>
-    </domain>
-    <default>0.8</default>
-  </parameter>
-  <parameter>
-    <name>Minimum Support</name>
-    <type>real</type>
-    <domain>
-      <lowerB>0.0</lowerB>
-      <upperB>1.0</upperB>
-    </domain>
-    <default>0.0</default>
-  </parameter>
-</algorithm_specification>
+ </algorithm_specification>

@@ -32,12 +32,16 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 /**
  * <p>
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
 
+import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.*;
+
 import org.core.Randomize;
 
 public class AlatasetalProcess {
@@ -53,7 +57,7 @@ public class AlatasetalProcess {
   private final int ATTRIBUTE_COVERED_BY_BOTH = 2;
   
   private myDataset dataset;
-  private int nGen;
+  private int nTrials, trials;
   private int randomChromosomes;
   private int r;
   private int tournamentSize;
@@ -66,7 +70,7 @@ public class AlatasetalProcess {
   private double a4;
   private double a5;
   private double af;
-  
+ 
   private int uPopSize;
   private int nAttr;
   private int nTrans;
@@ -93,12 +97,12 @@ public class AlatasetalProcess {
    * @param a5 The factor determining the importance of the number of rules already covered
    * @param af The factor of amplitude for each of the dataset attribute
    */
-  public AlatasetalProcess(myDataset dataset, int nGen, int randomChromosomes, int r, int tournamentSize, double pc, double pmMin, double pmMax, double a1, double a2, double a3, double a4, double a5, double af) {
+  public AlatasetalProcess(myDataset dataset, int nTrials, int randomChromosomes, int r, int tournamentSize, double pc, double pmMin, double pmMax, double a1, double a2, double a3, double a4, double a5, double af) {
 	  int i;
 	  double sum_max_amp = 0.0;
 	  
 	  this.dataset = dataset;
-	  this.nGen = nGen;
+	  this.nTrials = nTrials;
 	  this.randomChromosomes = randomChromosomes;
 	  this.r = r;
 	  this.tournamentSize = tournamentSize;
@@ -132,17 +136,18 @@ public class AlatasetalProcess {
    */
   public void run() {
 	  int i, j, nGn = 0;
+	  this.trials = 0;
 	  Chromosome c1, c2;
-	  
 	  System.out.print("Initializing Uniform Population... ");
 	  
 	  this.uPop = this.initializeUniformPopulation();
+	  
 	  this.evaluate(this.uPop, 0, this.uPopSize);
 	  Collections.sort(this.uPop);
-	  
+	 
 	  System.out.print("done.\n");
 	  
-	  while (nGn < this.nGen) {
+	  while (this.trials < this.nTrials) {
 		  
 		  System.out.print("Computing Generation " + (nGn + 1) + "... ");
 		  
@@ -157,11 +162,14 @@ public class AlatasetalProcess {
 		  this.evaluate(this.uPop, this.uPopSize, this.uPop.size());
 		  this.computeAdjustedFitness(this.uPop);
 		  
-		  for (i=0; i < this.uPopSize; i++) {
+		  
+		 for (i=0; i < this.uPop.size(); i++) {
 			  c1 = this.uPop.get(i);
-			  for (j=this.uPopSize; j < this.uPop.size(); j++) {
+			  for (j=this.uPop.size()-1; j > i+1; j--) {
 				  c2 = this.uPop.get(j);
-				  if ( c1.equals(c2) ) this.uPop.remove(j);
+				  if (c1.equals(c2)) 
+					  this.uPop.remove(j);
+				 
 			  }
 		  }
 		  
@@ -175,10 +183,62 @@ public class AlatasetalProcess {
 	  }
 	  
 	  this.adjustIntervals(this.uPop);
+	  this.removeRedundant(this.uPop);
 	  
-	  /*for (i=0; i < this.uPop.size(); i++)
-		  System.out.println("#" + (i + 1) + "\n" + this.uPop.get(i));*/
   }
+  
+  public void removeRedundant (ArrayList<Chromosome> upop) {
+	  int i, j;
+	  boolean stop;
+	  Chromosome chromo1, chromo2;
+
+	 // Collections.sort(upop);
+	  this.sortByAmplitude(upop);
+
+	  for (i=0; i < upop.size(); i++) {
+		  stop = false;
+		  for (j = upop.size()-1; j >=0 && !stop; j--) {
+			  if (j != i) {
+				  chromo1 = upop.get(i);
+				  chromo2 = upop.get(j);
+				  if (chromo1.getnAnts() == chromo2.getnAnts()) {
+					  if (chromo1.isSubChromo(chromo2)) {
+						   upop.remove(j);
+							  if (j < i) i--;
+					  }
+				  }
+				  else if (chromo1.getnAnts() > chromo2.getnAnts()) stop = true;
+			  }
+		  }
+	  }
+  } 
+
+  public void sortByAmplitude( ArrayList<Chromosome> pop) {
+	  
+      for ( int i = 0; i < pop.size()-1; i++ ) {
+          
+          for (int j = i+1; j < pop.size(); j++) {
+          	if(pop.get(j).getnAnts() < pop.get(i).getnAnts()) {
+                  Chromosome temp = pop.get( i );
+                  pop.set(i, pop.get(j));
+                  pop.set(j, temp);
+              }
+          }
+                
+      }
+  }
+  
+  private boolean equalChromotoPop(Chromosome chromo_a, ArrayList<Chromosome> pop){
+	  boolean equal_chr = false;
+	  int i=0;
+	  while((!equal_chr)&&(i<pop.size())){
+		if(chromo_a.equals(pop.get(i)))
+			equal_chr = true;
+	    i++;
+	  }
+	  return equal_chr;
+		
+}
   
   /**
    * <p>
@@ -189,17 +249,20 @@ public class AlatasetalProcess {
    * @param minSupport The user-specified minimum support for the mined association rules
    * @return An array of association rules having both minimum confidence and support
    */
-  public ArrayList<AssociationRule> generateRulesSet(double minConfidence, double minSupport) {
+  public ArrayList<AssociationRule> generateRulesSet(double minSupport) {
 	  int r;
 	  Chromosome chr;
 	  ArrayList<AssociationRule> rules = new ArrayList<AssociationRule>();
+	  ArrayList<Chromosome> chrFinal = new ArrayList<Chromosome>();
 	  
 	  for (r=0; r < this.uPop.size(); r++) {
 		  chr = this.uPop.get(r);
-		  if ( (chr.getRuleConfidence() >= minConfidence) && (chr.getRuleSupport() >= minSupport) ) rules.add( new AssociationRule(chr) );
+		  if (chr.getRuleSupport() >= minSupport) {
+			  rules.add( new AssociationRule(chr) );
+			  chrFinal.add(chr);
+		  }
 	  }
-	  
-	  return rules;
+	return rules;
   }
   
   /**
@@ -210,7 +273,7 @@ public class AlatasetalProcess {
    */
   public void printReport(ArrayList<AssociationRule> rules) {
 	  int i, r, t, cnt_cov_rec = 0;
-	  double avg_sup = 0.0, avg_conf = 0.0, avg_ant_length = 0.0;
+	  double avg_yulesQ = 0.0, avg_sup = 0.0, avg_conf = 0.0, avg_ant_length = 0.0, avg_lift = 0.0,avg_conv = 0.0, avg_CF = 0.0, avg_netConf = 0.0;
 	  boolean[] cov_rec;
 	  ArrayList<Integer> cov_tids;
 	  
@@ -225,8 +288,13 @@ public class AlatasetalProcess {
 		  
 		  avg_sup += ar.getSupport();
 		  avg_conf += ar.getConfidence();
-		  avg_ant_length += ar.getIdOfAntecedents().size();
-		  
+		  avg_ant_length += ar.getIdOfAntecedents().size()+ ar.getIdOfConsequents().size();
+		  avg_lift += ar.getLift();
+		  avg_conv += ar.getConv();
+		  avg_CF += ar.getCF();
+		  avg_netConf += ar.getnetConf();
+		  avg_yulesQ += ar.getyulesQ();
+		
 		  cov_tids = ar.getCoveredTIDs();
 		  
 		  for (i=0; i < cov_tids.size(); i++) {
@@ -237,13 +305,106 @@ public class AlatasetalProcess {
 			  }
 		  }
 	  }
-	  	  
+	  System.out.println("\nNumber of Frequent Itemsets found: " + "-");
 	  System.out.println("\nNumber of Association Rules generated: " + rules.size());
+	 
 	  if (! rules.isEmpty()) {
-		  System.out.println("Average Support: " + ( avg_sup / rules.size() ));
-		  System.out.println("Average Confidence: " + ( avg_conf / rules.size() ));
-		  System.out.println("Average Antecedents Length: " + ( avg_ant_length / rules.size() ));
-		  System.out.println("Number of Covered Records (%): " + ( (100.0 * cnt_cov_rec) / this.nTrans ));
+		  System.out.println("Average Support: " + roundDouble(( avg_sup / rules.size() ),2));
+		  System.out.println("Average Confidence: " + roundDouble(( avg_conf / rules.size() ),2));
+		  System.out.println("Average Lift: " + roundDouble(( avg_lift / rules.size() ),2));
+		  System.out.println("Average Conviction: " + roundDouble(( avg_conv/ rules.size() ),2));
+		  System.out.println("Average Certain Factor: " + roundDouble(( avg_CF/ rules.size()),2));
+		  System.out.println("Average Netconf: " + roundDouble(( avg_netConf/ rules.size()),2));
+		  System.out.println("Average YulesQ: " + roundDouble(( avg_yulesQ/ rules.size()),2));
+		  System.out.println("Average Number of Antecedents: " + roundDouble(( avg_ant_length / rules.size() ),2));
+		  System.out.println("Number of Covered Records (%): " + roundDouble(( (100.0 * cnt_cov_rec) / this.nTrans ), 2));
+	  }
+  }
+  
+  public static double roundDouble(double number, int decimalPlace){
+	  double numberRound;
+	  
+	  if(!Double.isInfinite(number)&&(!Double.isNaN(number))){
+		  BigDecimal bd = new BigDecimal(number);
+		  bd = bd.setScale(decimalPlace, BigDecimal.ROUND_UP);
+		  numberRound = bd.doubleValue();
+		  return numberRound;
+	  }else return number;
+ }
+  
+  public String printRules(ArrayList<AssociationRule> rules) {
+	  int i, lenghtrule;
+	  boolean stop;
+	  String rulesList;
+
+	  stop = false;
+	  rulesList = "";
+	  rulesList += ("Support\tantecedent_support\tconsequent_support\tConfidence\tLift\tConv\tCF\tNetConf\tYulesQ\tnAttributes\n");
+	  for (i=0; i < rules.size() && !stop; i++) {
+		  lenghtrule = rules.get(i).getAntecedents().length+ rules.get(i).getConsequents().length;
+		  rulesList += ("" + roundDouble(rules.get(i).getSupport(),2) + "\t" + roundDouble(rules.get(i).getAntecedentSupport(),2) + "\t" + roundDouble(rules.get(i).getConsequentSupport(),2) + "\t" + roundDouble(rules.get(i).getConfidence(),2) + "\t" + roundDouble(rules.get(i).getLift(),2) + "\t" + roundDouble(rules.get(i).getConv(),2) + "\t" + roundDouble(rules.get(i).getCF(),2) + "\t" + roundDouble(rules.get(i).getnetConf(),2) + "\t" + roundDouble(rules.get(i).getyulesQ(),2) + "\t" + lenghtrule + "\n");
+	  }
+	  return rulesList;
+  }
+  
+  public void saveReport(ArrayList<AssociationRule> rules,PrintWriter w) {
+	  int i, r, t, cnt_cov_rec = 0;
+	  double avg_yulesQ = 0.0, avg_sup = 0.0, avg_conf = 0.0, avg_ant_length = 0.0, avg_lift = 0.0,avg_conv = 0.0, avg_CF = 0.0, avg_netConf = 0.0;
+	  boolean[] cov_rec;
+	  ArrayList<Integer> cov_tids;
+	  
+	  cov_rec = new boolean[this.nTrans];
+	  for (i=0; i < cov_rec.length; i++)
+		  cov_rec[i] = false;
+	  
+	  AssociationRule ar;
+	  
+	  for (r=0; r < rules.size(); r++) {
+		  ar = rules.get(r);
+		  
+		  avg_sup += ar.getSupport();
+		  avg_conf += ar.getConfidence();
+		  avg_ant_length += ar.getIdOfAntecedents().size()+ ar.getIdOfConsequents().size();
+		  avg_lift += ar.getLift();
+		  avg_conv += ar.getConv();
+		  avg_CF += ar.getCF();
+		  avg_netConf += ar.getnetConf();
+		  avg_yulesQ += ar.getyulesQ();
+		
+		  cov_tids = ar.getCoveredTIDs();
+		  
+		  for (i=0; i < cov_tids.size(); i++) {
+			  t = cov_tids.get(i);
+			  if (! cov_rec[t]) {
+				  cov_rec[t] = true;
+				  cnt_cov_rec++;
+			  }
+		  }
+	  }
+	  w.println("\nNumber of Frequent Itemsets found: " + "-");	
+	  System.out.println("\nNumber of Frequent Itemsets found: " + "-");
+	  w.println("\nNumber of Association Rules generated: " + rules.size());	  
+	  System.out.println("\nNumber of Association Rules generated: " + rules.size());
+	 
+	  if (! rules.isEmpty()) {
+		  w.println("Average Support: " + roundDouble(( avg_sup / rules.size() ),2));
+		  System.out.println("Average Support: " + roundDouble(( avg_sup / rules.size() ),2));
+		  w.println("Average Confidence: " + roundDouble(( avg_conf / rules.size() ),2));
+		  System.out.println("Average Confidence: " + roundDouble(( avg_conf / rules.size() ),2));
+		  w.println("Average Lift: " + roundDouble(( avg_lift / rules.size() ),2));
+		  System.out.println("Average Lift: " + roundDouble(( avg_lift / rules.size() ),2));
+		  w.println("Average Conviction: " + roundDouble(( avg_conv / rules.size() ),2));
+		  System.out.println("Average Conviction: " + roundDouble(( avg_conv/ rules.size() ),2));
+		  w.println("Average Certain Factor: " + roundDouble(( avg_CF/ rules.size() ),2));
+		  System.out.println("Average Certain Factor: " + roundDouble(( avg_CF/ rules.size()),2));
+		  w.println("Average Netconf: " + roundDouble(( avg_netConf/ rules.size() ),2));
+		  System.out.println("Average Netconf: " + roundDouble(( avg_netConf/ rules.size()),2));
+		  w.println("Average YulesQ: " + roundDouble(( avg_yulesQ/ rules.size() ),2));
+		  System.out.println("Average YulesQ: " + roundDouble(( avg_yulesQ/ rules.size()),2));
+		  w.println("Average Number of Antecedents: " + roundDouble(( avg_ant_length / rules.size() ),2));
+		  System.out.println("Average Number of Antecedents: " + roundDouble(( avg_ant_length / rules.size() ),2));
+		  w.println("Number of Covered Records (%): " + roundDouble(( (100.0 * cnt_cov_rec) / this.nTrans ), 2));
+		  System.out.println("Number of Covered Records (%): " + roundDouble(( (100.0 * cnt_cov_rec) / this.nTrans ), 2));
 	  }
   }
     
@@ -281,8 +442,13 @@ public class AlatasetalProcess {
 			  
 			  rnd_genes[g].setLowerBound(lb);
 			  rnd_genes[g].setUpperBound(ub);
+			  rnd_genes[g].setAttr (g);	
+			  rnd_genes[g].setType(this.dataset.getAttributeType(g));
+			  rnd_genes[g].setMin_attr(this.dataset.getMin(g));
+			  rnd_genes[g].setMax_attr(this.dataset.getMax(g));
 			  rnd_genes[g].setIsPositiveInterval( (Randomize.RandintClosed(0, 1) == 1) ? true : false );
 			  rnd_genes[g].setActAs( Randomize.RandintClosed(Gene.NOT_INVOLVED, Gene.CONSEQUENT) );
+			  
 		  }
 		  
 		  this.buildAllChromosomes(popInit, new Chromosome(rnd_genes), new boolean[this.r], 0, this.r, step, mod);
@@ -292,11 +458,16 @@ public class AlatasetalProcess {
   }
   
   private void buildAllChromosomes(ArrayList<Chromosome> upop, Chromosome orig_chr, boolean[] mask, int p, int r, int step, int mod) {
+	  Chromosome chromo,chromo1;
 	  if (p == r - 1) {
 		  mask[p] = false;
-		  upop.add( this.buildChromosome(orig_chr, mask, step, mod) );
+		  chromo = this.buildChromosome(orig_chr, mask, step, mod);
+		  if(!equalChromotoPop(chromo, upop))
+		    upop.add(chromo.copy());
 		  mask[p] = true;
-		  upop.add( this.buildChromosome(orig_chr, mask, step, mod) );
+		  chromo1 = this.buildChromosome(orig_chr, mask, step, mod);
+		  if(!equalChromotoPop(chromo1, upop))
+		    upop.add(chromo1.copy());
 	  }
 	  else {
 		  mask[p] = false;
@@ -354,7 +525,8 @@ public class AlatasetalProcess {
 		  }
 		  else offspring = new Chromosome( parent1.getGenes() );
 		  
-		  upop.add(offspring);
+		// if(!equalChromotoPop(offspring, upop)) 
+		    upop.add(offspring);
 	  }
   }
   
@@ -426,7 +598,10 @@ public class AlatasetalProcess {
 			  gene.setActAs( Randomize.RandintClosed(Gene.NOT_INVOLVED, Gene.CONSEQUENT) );
 			  
 			  chr.forceConsistency();
-			  upop.add(chr);
+			  
+			  //if(!equalChromotoPop(chr, upop)) 
+				    upop.add(chr);
+			  
 			  
 			  if ( chr.equals(best_chr) ) cnt_hit++;
 		  }
@@ -496,11 +671,17 @@ public class AlatasetalProcess {
   }
   
   private void buildCombinationsOfNewValues(ArrayList<Chromosome> upop, Chromosome orig_chr, ArrayList<Double> orig_values, ArrayList<Integer> diff_pos, boolean[] mask, int p, int r, int step, int mod) {
+	  Chromosome chromo, chromo1;
 	  if (p == r - 1) {
 		  mask[p] = false;
-		  upop.add( this.buildChromosomeFromDifferentValues(orig_chr, orig_values, diff_pos, mask, step, mod) );
+		  chromo = this.buildChromosomeFromDifferentValues(orig_chr, orig_values, diff_pos, mask, step, mod);
+		 // if(!equalChromotoPop(chromo, upop))
+		    upop.add(chromo.copy());
+		  
 		  mask[p] = true;
-		  upop.add( this.buildChromosomeFromDifferentValues(orig_chr, orig_values, diff_pos, mask, step, mod) );
+		  chromo1 = this.buildChromosomeFromDifferentValues(orig_chr, orig_values, diff_pos, mask, step, mod);
+		 // if(!equalChromotoPop(chromo1, upop))
+		    upop.add(chromo.copy());
 	  }
 	  else {
 		  mask[p] = false;
@@ -600,7 +781,7 @@ public class AlatasetalProcess {
   }
   
   private void computeFitness(Chromosome c) {
-	  double all_sup, ant_sup, conf;
+	  double yulesQ, numeratorYules, denominatorYules, all_sup, ant_sup, conf, cons_sup,lift, conv, CF, netConf;
 	  ArrayList<Integer> involved_attrs, covered_tids;
 	  
 	  involved_attrs = c.getIndexOfInvolvedGenes();
@@ -608,17 +789,61 @@ public class AlatasetalProcess {
 	  all_sup = (double)covered_tids.size() / (double)this.nTrans;
 	  
 	  if (all_sup > 0.0) {
-		  ant_sup = (double)this.countSupport(c.getGenes(), c.getIndexOfAntecedentGenes()).size() / (double)this.nTrans;
-		  conf = all_sup / ant_sup;
+		    ant_sup = (double)this.countSupport(c.getGenes(), c.getIndexOfAntecedentGenes()).size() / (double)this.nTrans;
+		    cons_sup = (double)this.countSupport(c.getGenes(), c.getIndexOfConsequentGenes()).size() / (double)this.nTrans;
+		 
+		    conf = all_sup / ant_sup;
 		  
-		  c.setFitness( (this.a1 * all_sup) + (this.a2 * conf) - (this.a3 * involved_attrs.size()) - (this.a4 * this.sumInterval(c.getGenes(), involved_attrs)) );
-		  c.setRuleSupport(all_sup);
-		  c.setRuleConfidence(conf);
+		    c.setFitness( (this.a1 * all_sup) + (this.a2 * conf) - (this.a3 * involved_attrs.size()) - (this.a4 * this.sumInterval(c.getGenes(), involved_attrs)) );
+		 
+
+			  //compute lift
+			  if((cons_sup == 0) || (ant_sup == 0))
+			     lift = 1;
+			  else lift = all_sup / (ant_sup*cons_sup);
+			
+			  //compute conviction
+			  if((cons_sup == 1)||(ant_sup == 0))
+				 conv = 1;
+			  else conv = (ant_sup*(1-cons_sup))/(ant_sup-all_sup);
+					
+			  //compute netconf
+			  if((ant_sup == 0)||(ant_sup == 1)||(Math.abs((ant_sup * (1-ant_sup))) <= 0.001))
+				 netConf = 0;
+			  else netConf = (all_sup - (ant_sup*cons_sup))/(ant_sup * (1-ant_sup));
+						  
+			   //compute yulesQ
+			  numeratorYules = ((all_sup * (1 - cons_sup - ant_sup + all_sup)) - ((ant_sup - all_sup)* (cons_sup - all_sup)));
+			  denominatorYules = ((all_sup * (1 - cons_sup - ant_sup + all_sup)) + ((ant_sup - all_sup)* (cons_sup - all_sup)));
+					
+			  if((ant_sup == 0)||(ant_sup == 1)|| (cons_sup == 0)||(cons_sup == 1)||(Math.abs(denominatorYules) <= 0.001))
+				 yulesQ = 0;
+			  else yulesQ = numeratorYules/denominatorYules;
+			  
+			  //compute Certain Factor(CF)
+			  CF = 0;
+			  if(conf > cons_sup)
+				CF = (conf - cons_sup)/(1-cons_sup);	
+			  else 
+			  if(conf < cons_sup)
+				CF = (conf - cons_sup)/(cons_sup);	
+			
+		   c.setRuleSupport(all_sup);
+		   c.setAntecedentSupport(ant_sup);
+		   c.setConsequentSupport(cons_sup);
+		   c.setRuleConfidence(conf);
+		   c.setRuleLift(lift);
+		   c.setRuleConv(conv);
+		   c.setRuleCF(CF);
+		   c.setRuleNetconf(netConf);
+		   c.setRuleYulesQ(yulesQ);
 	  
-		  for (int t=0; t < covered_tids.size(); t++)
+		   for (int t=0; t < covered_tids.size(); t++)
 			  c.addCoveredTID( covered_tids.get(t) );
-	  }
-	  else c.setFitness(this.minFitnessValue);
+	   }
+	   else c.setFitness(this.minFitnessValue);
+	  
+	   this.trials++;
   }
     
   private double sumInterval(Gene[] genes, ArrayList<Integer> index_list) {

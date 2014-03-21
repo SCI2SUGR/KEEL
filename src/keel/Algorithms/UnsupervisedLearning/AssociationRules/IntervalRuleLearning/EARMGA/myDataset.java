@@ -143,6 +143,7 @@ public class myDataset {
   /**
    * This function checks if the attribute value is missing
    * @param i int Example id
+   * @param j int Variable id
    * @return boolean True is the value is missing, else it returns false
    */
   public boolean isNominal(int i) {
@@ -157,10 +158,16 @@ public class myDataset {
    * @param value int Attribute
    * @return int: if NOMINAL = 0; if INTEGER = 1; if REAL = 2; 
    */
-  public int getType(int value) {
+  /* public int getType(int value) {
     return type[value];
-  }
+  }*/
 
+  public int getType(int variable) {
+      if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).INTEGER)   return this.INTEGER;
+      if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).REAL)  return this.REAL;
+      if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).NOMINAL)  return this.NOMINAL;
+      return 0;
+  }
   /**
    * It reads the whole input data-set and it stores each transaction in
    * local array

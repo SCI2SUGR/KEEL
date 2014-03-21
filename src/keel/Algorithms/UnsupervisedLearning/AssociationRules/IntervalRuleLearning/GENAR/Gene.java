@@ -91,4 +91,5 @@ public class Gene {
 	public String toString() {
 		return "A: " + attr + "; T: " + type + "; L: " + l + "; U: " + u;
 	}
+		
 }

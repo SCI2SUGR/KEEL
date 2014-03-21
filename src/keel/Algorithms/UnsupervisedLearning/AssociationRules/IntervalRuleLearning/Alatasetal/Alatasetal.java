@@ -44,6 +44,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.core.*;
+
 import keel.Dataset.*;
 
 public class Alatasetal {
@@ -57,10 +58,12 @@ public class Alatasetal {
     
     private String rulesFilename;
     private String valuesFilename;
+    String valuesOrderFilename;
     private AlatasetalProcess proc;
 	private ArrayList<AssociationRule> associationRules;
+	private String fileTime, fileHora, namedataset;
 	
-	private int nGen;
+	private int nTrials;
 	private int randomChromosomes;
 	private int r;
 	private int tournamentSize;
@@ -73,8 +76,8 @@ public class Alatasetal {
 	private double a4;
 	private double a5;
 	private double af;
-	private double minConfidence;
 	private double minSupport;
+	long startTime, totalTime;
 
 
     private boolean somethingWrong = false; //to check if everything is correct.
@@ -90,8 +93,11 @@ public class Alatasetal {
      * @param parameters It contains the input files, output files and parameters
      */
     public Alatasetal(parseParameters parameters) {       
-        this.trans = new myDataset();
+    	this.startTime = System.currentTimeMillis();
+    	
+    	this.trans = new myDataset();
         try {
+        	this.namedataset = parameters.getTransactionsInputFile();
             System.out.println("\nReading the transaction set: " + parameters.getTransactionsInputFile());
             trans.readDataSet( parameters.getTransactionsInputFile() );
         }
@@ -106,10 +112,14 @@ public class Alatasetal {
 		
 		this.rulesFilename = parameters.getAssociationRulesFile();
         this.valuesFilename = parameters.getOutputFile(0);
+        this.valuesOrderFilename = parameters.getOutputFile(1);
 
+        this.fileTime = (parameters.getOutputFile(0)).substring(0,(parameters.getOutputFile(0)).lastIndexOf('/')) + "/time.txt";
+        this.fileHora = (parameters.getOutputFile(0)).substring(0,(parameters.getOutputFile(0)).lastIndexOf('/')) + "/hora.txt";
+        
 		long seed = Long.parseLong(parameters.getParameter(0));
 
-        this.nGen = Integer.parseInt( parameters.getParameter(1) );
+        this.nTrials = Integer.parseInt( parameters.getParameter(1) );
         this.randomChromosomes = Integer.parseInt( parameters.getParameter(2) );
         int r = Integer.parseInt( parameters.getParameter(3) );
         this.tournamentSize = Integer.parseInt( parameters.getParameter(4) );
@@ -122,9 +132,8 @@ public class Alatasetal {
         this.a4 = Double.parseDouble( parameters.getParameter(11) );
         this.a5 = Double.parseDouble( parameters.getParameter(12) );
         this.af = Double.parseDouble( parameters.getParameter(13) );
-        this.minConfidence = Double.parseDouble( parameters.getParameter(14) );
-        this.minSupport = Double.parseDouble( parameters.getParameter(15) );
-        
+             
+        this.minSupport = 0.001;
         this.r = (this.trans.getnVars() >= r) ? r : this.trans.getnVars();
         Randomize.setSeed(seed);
 	}
@@ -139,11 +148,10 @@ public class Alatasetal {
             //We should not use the statement: System.exit(-1);
         } 
 		else {
-        	this.proc = new AlatasetalProcess(this.trans, this.nGen, this.randomChromosomes, this.r, this.tournamentSize, this.pc, this.pmMin, this.pmMax, this.a1, this.a2, this.a3, this.a4, this.a5, this.af);
+        	this.proc = new AlatasetalProcess(this.trans, this.nTrials, this.randomChromosomes, this.r, this.tournamentSize, this.pc, this.pmMin, this.pmMax, this.a1, this.a2, this.a3, this.a4, this.a5, this.af);
 			this.proc.run();
-			this.associationRules = this.proc.generateRulesSet(this.minConfidence, this.minSupport);
-			this.proc.printReport(this.associationRules);
-			
+			this.associationRules = this.proc.generateRulesSet(this.minSupport);// we do not use minConfidence
+		
 			try {
 				int r, i;
 				AssociationRule a_r;
@@ -152,6 +160,7 @@ public class Alatasetal {
 				
 				PrintWriter rules_writer = new PrintWriter(this.rulesFilename);
 				PrintWriter values_writer = new PrintWriter(this.valuesFilename);
+				PrintWriter valueOrder_writer = new PrintWriter(this.valuesOrderFilename);
 				
 				rules_writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 				rules_writer.println("<association_rules>");
@@ -159,11 +168,16 @@ public class Alatasetal {
 				values_writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 				values_writer.println("<values>");
 				
+				valueOrder_writer.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+				valueOrder_writer.println("<values>");
+
+				
 				for (r=0; r < this.associationRules.size(); r++) {
 					a_r = this.associationRules.get(r);
 					
 					rules_writer.println("<rule id=\"" + r + "\">");
-					values_writer.println("<rule id=\"" + r + "\" support=\"" + a_r.getSupport() + "\" confidence=\"" + a_r.getConfidence() + "\" />");
+					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + AlatasetalProcess.roundDouble(a_r.getSupport(),2) + "\" antecedent_support=\"" + AlatasetalProcess.roundDouble(a_r.getAntecedentSupport(),2) + "\" consequent_support=\"" + AlatasetalProcess.roundDouble(a_r.getConsequentSupport(),2)
+							+ "\" confidence=\"" + AlatasetalProcess.roundDouble(a_r.getConfidence(),2) +"\" lift=\"" + AlatasetalProcess.roundDouble(a_r.getLift(),2) + "\" conviction=\"" + AlatasetalProcess.roundDouble(a_r.getConv(),2) + "\" certainFactor=\"" + AlatasetalProcess.roundDouble(a_r.getCF(),2) + "\" netConf=\"" + AlatasetalProcess.roundDouble(a_r.getnetConf(),2) + "\" yulesQ=\"" + AlatasetalProcess.roundDouble(a_r.getyulesQ(),2) + "\" nAttributes=\"" + (a_r.getAntecedents().length + a_r.getConsequents().length) + "\"/>");
 					
 					rules_writer.println("<antecedents>");			
 					terms = a_r.getAntecedents();
@@ -188,9 +202,18 @@ public class Alatasetal {
 				
 				rules_writer.println("</association_rules>");
 				values_writer.println("</values>");
+				this.proc.saveReport(this.associationRules, values_writer);
 				
 				rules_writer.close();
 				values_writer.close();
+				
+				valueOrder_writer.print(this.proc.printRules(this.associationRules));
+				valueOrder_writer.println("</values>");
+
+				valueOrder_writer.close();
+				
+				totalTime = System.currentTimeMillis() - startTime;
+				this.writeTime();
 				
 				System.out.println("Algorithm Finished");
 			}
@@ -200,6 +223,33 @@ public class Alatasetal {
 			}
         }
     }
+    
+    public void writeTime() {
+    	long seg, min, hor;
+        String stringOut = new String("");
+
+        stringOut = "" + totalTime / 1000 + "  " + this.namedataset + rulesFilename + "\n";
+        Files.addToFile(this.fileTime, stringOut);
+    	totalTime /= 1000;
+    	seg = totalTime % 60;
+    	totalTime /= 60;
+    	min = totalTime % 60;
+    	hor = totalTime / 60;
+        stringOut = "";
+    	
+    	if (hor < 10)  stringOut = stringOut + "0"+ hor + ":";
+    	else   stringOut = stringOut + hor + ":";
+
+    	if (min < 10)  stringOut = stringOut + "0"+ min + ":";
+    	else   stringOut = stringOut + min + ":";
+
+    	if (seg < 10)  stringOut = stringOut + "0"+ seg;
+    	else   stringOut = stringOut + seg;
+
+    	stringOut = stringOut + "  " + rulesFilename + "\n";
+        Files.addToFile(this.fileHora, stringOut);
+      }
+
     
     private void createRule(Gene g, int id_attr, PrintWriter w) {	
     	w.println("<attribute name=\"" + Attributes.getAttribute(id_attr).getName() + "\" value=\"");

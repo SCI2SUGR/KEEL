@@ -32,10 +32,13 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 /**
  * <p>
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
+
+
 
 import org.core.Randomize;
 
@@ -50,10 +53,14 @@ public class Gene {
 	public static final int ANTECEDENT = 0;
 	public static final int CONSEQUENT = 1;
 
+	private int attr;
 	private int ac;
 	private boolean pn;
 	private double lb;
 	private double ub;
+	private double min_attr;
+	private double max_attr;
+	private int type;
 
 	/**
 	 * <p>
@@ -76,6 +83,10 @@ public class Gene {
 		gene.pn = this.pn;
 		gene.lb = this.lb;
 		gene.ub = this.ub;
+		gene.type = this.type;
+		gene.min_attr = this.min_attr;
+		gene.max_attr = this.max_attr;
+		gene.attr = this.attr;
 
 		return gene;
 	}
@@ -197,7 +208,7 @@ public class Gene {
 	 * <p>
 	 * It sets the upper bound of the interval stored in a gene
 	 * </p>
-	 * @param ub The value indicating the upper bound of the interval
+	 * @param lb The value indicating the upper bound of the interval
 	 */
 	public void setUpperBound(double ub) {
 		this.ub = ub;
@@ -210,14 +221,65 @@ public class Gene {
 	 * @param obj The reference object with which to compare
 	 * @return True if this gene is the same as the argument; False otherwise
 	 */
-	public boolean equals(Object obj) {
-		Gene g = (Gene)obj;
-		
-        if ((g.ac == NOT_INVOLVED) && (this.ac == NOT_INVOLVED))  return true;
-		if (g.ac == this.ac) {
-			if (g.pn == this.pn) {
-				if (g.lb == this.lb) {
-					if (g.ub == this.ub) return true;
+	
+	public boolean equals(Gene g) {	
+		double lb_posit, ub_posit;
+
+		if (g.attr == this.attr) {
+			if (g.ac == this.ac) {
+				if (g.pn == this.pn) {
+					if (Math.abs(g.lb - this.lb) <= 0.00001) {
+						if (Math.abs(g.ub - this.ub) <= 0.00001) return true;
+					}
+				}
+				else {
+					if (!g.pn){
+						if(g.lb == this.min_attr){
+							lb_posit = g.ub;						
+							ub_posit = this.max_attr;
+							if (type == myDataset.REAL)  lb_posit+= 0.0001;
+							else  lb_posit += 1;
+
+							if (Math.abs(lb_posit - this.lb) <= 0.00001) {
+								if (Math.abs(ub_posit - this.ub) <= 0.00001) return true;
+							}
+						}
+						if(g.ub == this.max_attr){
+							lb_posit = this.min_attr;
+							ub_posit = g.lb;
+							if(type == myDataset.REAL)  ub_posit -= 0.0001;
+							else  ub_posit -= 1;
+							
+							if (Math.abs(lb_posit - this.lb) <= 0.00001) {
+								if (Math.abs(ub_posit - this.ub) <= 0.00001) return true;
+							}
+						}
+						
+					}
+					else {
+						if(!this.pn){
+							if(this.lb == this.min_attr){
+								lb_posit = this.ub;
+								ub_posit = this.max_attr;
+								if (type == myDataset.REAL)  lb_posit+= 0.0001;
+								else  lb_posit += 1;
+
+								if (Math.abs(lb_posit - g.lb) <= 0.00001) {
+									if (Math.abs(ub_posit - g.ub) <= 0.00001) return true;
+								}
+							}
+							if(this.ub == this.max_attr){
+								lb_posit =this.min_attr;
+								ub_posit = this.lb;
+								if(type == myDataset.REAL)  ub_posit -= 0.0001;
+								else  ub_posit -= 1;
+
+								if (Math.abs(lb_posit - g.lb) <= 0.00001) {
+									if (Math.abs(ub_posit - g.ub) <= 0.00001) return true;
+								}
+							}
+						}	
+					}
 				}
 			}
 		}
@@ -234,4 +296,100 @@ public class Gene {
 	public String toString() {
 		return "AC: " + ac + "; PN: " + pn + "; LB: " + lb + "; UB: " + ub;
 	}
+
+	public int getAttr() {
+		return attr;
+	}
+
+	public void setAttr(int attr) {
+		this.attr = attr;
+	}
+
+	public double getMax_attr() {
+		return max_attr;
+	}
+
+	public void setMax_attr(double max_attr) {
+		this.max_attr = max_attr;
+	}
+
+	public double getMin_attr() {
+		return min_attr;
+	}
+
+	public void setMin_attr(double min_attr) {
+		this.min_attr = min_attr;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+	
+public boolean isSubGen (Gene g) {
+		
+		double lb_posit, ub_posit;
+		
+		if (this.attr != g.attr)  return (false);
+		//if (this.pn != g.pn)  return (false);
+		if (this.ac != g.ac)  return (false);
+		if ((this.pn) && (g.pn)){
+			if (Math.abs(g.lb - this.lb) > 0.00001)  return (false);
+			if (Math.abs(g.ub - this.ub) > 0.00001)  return (false);
+		}
+		else if ((!this.pn) && (!g.pn)){//negative interval
+			if (Math.abs(g.lb - this.lb) > 0.00001)  return (false);
+			if (Math.abs(g.ub - this.ub) > 0.00001)  return (false);
+		}
+		else {
+			if(!g.pn){ // g negative interval
+				if(g.lb == this.min_attr){
+					lb_posit = g.ub;
+					ub_posit = this.max_attr;
+					if (type == myDataset.REAL)  lb_posit+= 0.0001;
+					else  lb_posit += 1;
+
+					if (Math.abs(lb_posit - this.lb) > 0.00001)  return (false); 
+					if (Math.abs(ub_posit - this.ub) > 0.00001)  return (false);
+				}		
+				if(g.ub == this.max_attr){
+					lb_posit = this.min_attr;
+					ub_posit = g.lb;
+					if(type == myDataset.REAL)  ub_posit -= 0.0001;
+					else  ub_posit -= 1;
+
+					if (Math.abs(lb_posit - this.lb) > 0.00001)  return (false); 
+					if (Math.abs(ub_posit - this.ub) > 0.00001)  return (false);
+				}
+				
+			}
+			else { // this negative interval
+				if(!this.pn){
+					if(this.lb == this.min_attr){
+						lb_posit = this.ub;
+						ub_posit = this.max_attr;
+						if(type == myDataset.REAL)  lb_posit+= 0.0001;
+						else  lb_posit += 1;
+
+						if (Math.abs(lb_posit - g.lb) > 0.00001)  return (false); 
+						if (Math.abs(ub_posit - this.ub) > 0.00001) return (false);
+					}		
+					if(this.ub == this.max_attr){
+						lb_posit = this.min_attr;
+						ub_posit = this.lb;
+						if(type == myDataset.REAL)  ub_posit -= 0.0001;
+						else  ub_posit -= 1;
+
+						if (Math.abs(lb_posit - g.lb) > 0.00001)  return (false); 
+						if (Math.abs(ub_posit - this.ub) > 0.00001)  return (false);
+					}
+				}	
+			}
+		 } 
+		return (true);
+	}
+
 }

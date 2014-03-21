@@ -29,6 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GAR;
 
+
 public class Gene {
 	
 	public static final int NOMINAL = 0;
@@ -90,4 +91,5 @@ public class Gene {
 	public String toString() {
 		return "A: " + attr + "; T: " + type + "; L: " + l + "; U: " + u;
 	}
+	
 }

@@ -1,0 +1,140 @@
+﻿<method>
+
+	<name>MOEA_Ghosh</name>
+
+	<reference>  
+
+		<ref>A. Ghosh and B. Nath. Multi-objective rule mining using genetic algorithms. Information Sciences, 163:123-133 (2004).</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Association Rules Mining by means of Genetic Algorithms</type>
+
+		<objective>The proposed algorithm uses a Pareto based GA to extract some useful and interesting rules from any dataset.</objective>
+
+		<howWork>The genetic learning is performed iteratively until a maximum number of evaluations is reached. 
+First, the algorithm generates an initial population at random.
+Then, it computes the objective functions for each rule, ranks them depending on the non-dominance property and assigns a fitness value using its rank.
+Later, a separate population is updated, which will contain all non-dominated solutions found.
+The chromosomes are selected by roulette wheel selection scheme using the fitness and these chromosomes replace all chromosomes of the old population.
+The multi-point crossover and mutation are performed on the new individuals.
+Finally, the overall process iterates until a given maximum number of evaluations is reached. 
+At the end, the separate population is returned.
+</howWork>	
+		<parameterSpec>  
+			<param>Number of Objetives: the number of objectives to optimize</param>
+			<param>Number of Evaluations: the maximum number of evaluations to accomplish.</param>
+			<param>Population Size: the population size to handle after each generation.</param>
+			<param>Point Crossover: the number of points used in the crossover operator.</param>
+			<param>Probability of Crossover: the probability of crossover.</param>
+			<param>Probability of Mutation: the probability of mutation.</param>	
+	        <param>The factor of amplitude for each attribute of the dataset: the amplitude factor related to each attribute of the database.</param>
+       							
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>
+Problem type: Association Rules
+Method: MOEA_Ghosh
+Dataset: basketball
+Parameters: default values (seed = 1286082570)
+
+
+After the execution of RunKeel.jar we can see XML representations of the mined association rules along with the values concerning the measures of interest, respectively, in:
+
+
+&quot;results/Asso-MOEA_Ghosh.basketball/result0s0.tra&quot;
+
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rules&gt;
+&lt;rule id=&quot;0&quot;&gt;
+&lt;antecedents&gt;
+&lt;attribute name=&quot;time_playedReal&quot; value=&quot;MAJOR 32.56792841042344&quot;/&gt;
+&lt;/antecedents&gt;
+&lt;consequents&gt;
+&lt;attribute name=&quot;assists_per_minuteReal&quot; value=&quot;MAJOR 0.055&quot;/&gt;
+&lt;attribute name=&quot;heightInteger&quot; value=&quot;MINOR 203.0&quot;/&gt;
+&lt;attribute name=&quot;ageInteger&quot; value=&quot;MINOR 35.0&quot;/&gt;
+&lt;attribute name=&quot;points_per_minuteReal&quot; value=&quot;MAJOR 0.2578&quot;/&gt;
+&lt;/consequents&gt;
+&lt;/rule&gt;
+&lt;/rules&gt;
+
+
+&quot;results/Asso-MOEA_Ghosh.basketball/result0s0.tst&quot;
+
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;values&gt;
+&lt;rule id=&quot;0&quot; rule_support=&quot;0.31&quot; antecedent_support=&quot;0.31&quot; consequent_support=&quot;0.93&quot; confidence=&quot;1&quot; lift=&quot;1.08&quot; conviction=&quot;Infinity&quot; certainFactor=&quot;1&quot; netConf=&quot;0.11&quot; yulesQ=&quot;1&quot; nAttributes=&quot;5&quot;/&gt;
+... ... ... ...
+&lt;/values&gt;
+
+Number of Association Rules generated: 20
+Average Support: 0.95
+Average Confidence: 1.0
+Average Lift: 1.01
+Average Conviction: Infinity
+Average Certain Factor: 0.1
+Average Netconf: 0.01
+Average YulesQ: 0.11
+Average Number of Antecedents: 3.4
+Number of Covered Records (%): 100.0
+
+&quot;results/Asso-MOEA_Ghosh.basketball/result0s0e0.tst&quot;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;values&gt;
+Support	antecedent_support	consequent_support	Confidence	Lift	Conv	CF	NetConf	YulesQ	nAttributes
+0.31  	      0.31	                 0.93	          1	        1.08  Infinity   1      0.11	 1	   5
+... ... ... ...
+&lt;/values&gt;
+
+We can also see some relevant information on-screen:
+
+
+Initialization
+Computing Generation 1
+Computing Generation 2
+... ... ... ...
+Computing Generation 624
+done.
+
+Number of Association Rules generated: 20
+Average Support: 0.95
+Average Confidence: 1.0
+Average Lift: 1.01
+Average Conviction: Infinity
+Average Certain Factor: 0.1
+Average Netconf: 0.01
+Average YulesQ: 0.11
+Average Number of Antecedents: 3.4
+Number of Covered Records (%): 100.0
+
+Algorithm Finished
+
+0.763 seconds
+
+</example>
+
+</method>

@@ -38,6 +38,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * <p>Company: KEEL </p>
  *
  * @author Alberto Fernández
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
  * @version 1.0
  */
 
@@ -47,6 +48,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.core.*;
+
 import keel.Dataset.*;
 
 
@@ -55,12 +57,14 @@ public class GAR {
     myDataset trans;
     String assoc_rules_fname;
     String sup_rules_fname;
+    String valuesOrderFilename;
     GARProcess ap;
 	ArrayList<AssociationRule> assoc_rules;
+	 private String fileTime, fileHora, namedataset;
 
     //We may declare here the algorithm's parameters
 	private int nItemset;
-	private int nGen;
+	private int nTrials;
 	private int popsize;
 	private double ps;
 	private double pc;
@@ -71,6 +75,7 @@ public class GAR {
 	private double AF;
 	private double minConfidence;
 	private double minSupport;
+	long startTime, totalTime;
 
 
     private boolean somethingWrong = false; //to check if everything is correct.
@@ -86,9 +91,11 @@ public class GAR {
      * from the parameters array.
      * @param parameters parseParameters It contains the input files, output files and parameters
      */
-    public GAR(parseParameters parameters) {       
+    public GAR(parseParameters parameters) {
+    	this.startTime = System.currentTimeMillis();
         this.trans = new myDataset();
         try {
+        	this.namedataset = parameters.getTransactionsInputFile();
             System.out.println("\nReading the transaction set: " + parameters.getTransactionsInputFile());
             trans.readDataSet( parameters.getTransactionsInputFile() );
         }
@@ -103,11 +110,15 @@ public class GAR {
 		
 		this.assoc_rules_fname = parameters.getAssociationRulesFile();
         this.sup_rules_fname = parameters.getOutputFile(0);
+        this.valuesOrderFilename = parameters.getOutputFile(1);
+
+        this.fileTime = (parameters.getOutputFile(0)).substring(0,(parameters.getOutputFile(0)).lastIndexOf('/')) + "/time.txt";
+        this.fileHora = (parameters.getOutputFile(0)).substring(0,(parameters.getOutputFile(0)).lastIndexOf('/')) + "/hora.txt";
 
 		long seed = Long.parseLong(parameters.getParameter(0));
 
         this.nItemset = Integer.parseInt( parameters.getParameter(1) );
-        this.nGen = Integer.parseInt( parameters.getParameter(2) );
+        this.nTrials = Integer.parseInt( parameters.getParameter(2) );
         this.popsize = Integer.parseInt( parameters.getParameter(3) );
         this.ps = Double.parseDouble( parameters.getParameter(4) );
         this.pc = Double.parseDouble( parameters.getParameter(5) );
@@ -116,9 +127,10 @@ public class GAR {
         this.y = Double.parseDouble( parameters.getParameter(8) );
         this.u = Double.parseDouble( parameters.getParameter(9) );
         this.AF = Double.parseDouble( parameters.getParameter(10) );
-        this.minConfidence = Double.parseDouble( parameters.getParameter(11) );
-        this.minSupport = Double.parseDouble( parameters.getParameter(12) );
+        this.minSupport = Double.parseDouble( parameters.getParameter(11) );
+        this.minConfidence = Double.parseDouble( parameters.getParameter(12) );
 
+            
         Randomize.setSeed(seed);
 	}
 
@@ -132,14 +144,15 @@ public class GAR {
             //We should not use the statement: System.exit(-1);
         } 
 		else {
-        	this.ap = new GARProcess(this.trans, this.nItemset, this.nGen, this.popsize, this.ps, this.pc, this.pm, this.w, this.y, this.u, this.AF);
+        	this.ap = new GARProcess(this.trans, this.nItemset, this.nTrials, this.popsize, this.ps, this.pc, this.pm, this.w, this.y, this.u, this.AF);
 			this.ap.run();
-			this.ap.printReport(this.minConfidence, this.minSupport);
+			//this.ap.printReport(this.minConfidence, this.minSupport);
 			this.assoc_rules = this.ap.getSetRules (this.minConfidence, this.minSupport);
         	        	
 			try {
 				PrintWriter rule_writer = new PrintWriter(assoc_rules_fname);
 				PrintWriter sup_writer = new PrintWriter(sup_rules_fname);
+				PrintWriter valuesOrder_writer = new PrintWriter(this.valuesOrderFilename);
 				
 				rule_writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 				rule_writer.println("<association_rules>");
@@ -148,16 +161,15 @@ public class GAR {
 				sup_writer.println("<values>");
 				
 				
-				double avg_sup=0.0, avg_conf=0.0;
-				
-				for (int i=0; i < assoc_rules.size(); i++) {
+			    for (int i=0; i < assoc_rules.size(); i++) {
 					AssociationRule a_r = assoc_rules.get(i);
 					
 					ArrayList<Gene> ant = a_r.getAntecedent();
 					ArrayList<Gene> cons = a_r.getConsequent();
 					
 					rule_writer.println("<rule id=\"" + i + "\">");
-					sup_writer.println("<rule id=\"" + i + "\" support=\"" + a_r.getSupport() + "\" supportRule=\"" + a_r.getAll_support() + "\" confidence=\"" + a_r.getConfidence() + "\" />");
+					sup_writer.println("<rule id=\"" + i + "\" rule_support=\"" + GARProcess.roundDouble(a_r.getAll_support(),2) + "\" antecedent_support=\"" + GARProcess.roundDouble(a_r.getSupport_Ant(),2) + "\" consequent_support=\"" + GARProcess.roundDouble(a_r.getSupport_cons(),2)
+							+ "\" confidence=\"" + GARProcess.roundDouble(a_r.getConfidence(),2) +"\" lift=\"" + GARProcess.roundDouble(a_r.getLift(),2) + "\" conviction=\"" + GARProcess.roundDouble(a_r.getConv(),2) + "\" certainFactor=\"" + GARProcess.roundDouble(a_r.getCF(),2) + "\" netConf=\"" + GARProcess.roundDouble(a_r.getNetConf(),2) + "\" yulesQ=\"" + GARProcess.roundDouble(a_r.getYulesQ(),2) +  "\" nAttributes=\"" + (a_r.getAntecedent().size()+ a_r.getConsequent().size()) + "\"/>");
 					
 					rule_writer.println("<antecedents>");
 					for (int j=0; j < ant.size(); j++)
@@ -174,18 +186,25 @@ public class GAR {
 					
 					rule_writer.println("</rule>");
 					
-					avg_sup += a_r.getAll_support();
-					avg_conf += a_r.getConfidence();
 				}
 				
 				rule_writer.println("</association_rules>");
 				sup_writer.println("</values>");
 				
+				this.ap.saveReport(this.minConfidence, this.minSupport, sup_writer);
 				rule_writer.close();
 				sup_writer.close();
 				
-				System.out.println("Average SupportRules: " + ( avg_sup / assoc_rules.size() ) );
-				System.out.println("Average Confidence: " + ( avg_conf / assoc_rules.size() ) );
+				valuesOrder_writer.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+				valuesOrder_writer.println("<values>");
+	     		
+				valuesOrder_writer.print(this.ap.printRules(this.assoc_rules));
+	     		
+				valuesOrder_writer.print("</values>");
+	     		valuesOrder_writer.close();
+				
+				totalTime = System.currentTimeMillis() - startTime;
+				this.writeTime();
 				
 				System.out.println("Algorithm Finished");
 			}
@@ -195,6 +214,31 @@ public class GAR {
 			}
         }
     }
+    public void writeTime() {
+    	long seg, min, hor;
+        String stringOut = new String("");
+
+        stringOut = "" + totalTime / 1000 + "  " + this.namedataset + assoc_rules_fname + "\n";
+        Files.addToFile(this.fileTime, stringOut);
+    	totalTime /= 1000;
+    	seg = totalTime % 60;
+    	totalTime /= 60;
+    	min = totalTime % 60;
+    	hor = totalTime / 60;
+        stringOut = "";
+    	
+    	if (hor < 10)  stringOut = stringOut + "0"+ hor + ":";
+    	else   stringOut = stringOut + hor + ":";
+
+    	if (min < 10)  stringOut = stringOut + "0"+ min + ":";
+    	else   stringOut = stringOut + min + ":";
+
+    	if (seg < 10)  stringOut = stringOut + "0"+ seg;
+    	else   stringOut = stringOut + seg;
+
+    	stringOut = stringOut + "  " + assoc_rules_fname + "\n";
+        Files.addToFile(this.fileHora, stringOut);
+      }
     
     private void createRule(Gene g, PrintWriter w)
     {

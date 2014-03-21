@@ -1,0 +1,69 @@
+<algorithm_specification>
+  <name>MOEA_Ghosh</name>
+  <nParameters>7</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+   <parameter>
+    <name>Number of Objetives</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>3</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>Number of Evaluations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10000</lowerB>
+      <upperB>1000000</upperB>
+    </domain>
+    <default>50000</default>
+  </parameter>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+   <parameter>
+    <name>Point Crossover</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>10</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>    
+  <parameter>
+    <name>Probability of Crossover</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>
+  <parameter>
+    <name>Probability of Mutation</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.02</default>
+  </parameter>    
+  <parameter>
+    <name>The factor of amplitude for each attribute of the dataset</name>
+    <type>real</type>
+    <domain>
+      <lowerB>2.0</lowerB>
+      <upperB>20.0</upperB>
+    </domain>
+    <default>2.0</default>
+  </parameter>
+</algorithm_specification>

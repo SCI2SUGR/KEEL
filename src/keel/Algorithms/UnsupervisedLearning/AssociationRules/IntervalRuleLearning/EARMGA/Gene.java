@@ -153,9 +153,8 @@ public class Gene {
 
 		return (true);
 	}
-
-
-
+	
+	
 	public String toString() {
 		return "A: " + attr + "; T: " + type + "; V: " + value;
 	}

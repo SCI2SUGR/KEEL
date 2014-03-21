@@ -1,0 +1,87 @@
+<algorithm_specification>
+  <name>MODENAR</name>
+  <nParameters>9</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>100</default>
+  </parameter>
+  <parameter>
+    <name>Number of Evaluations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1000</lowerB>
+      <upperB>1000000</upperB>
+    </domain>
+    <default>50000</default>
+  </parameter>
+  <parameter>
+    <name>Crossover rate (CR)</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.3</default>
+  </parameter>
+  <parameter>
+    <name>Threshold for the number of non-dominated solutions</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>60</default>
+  </parameter>
+  <parameter>
+    <name>The factor of amplitude for each attribute of the dataset</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Weight for Support</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>
+  <parameter>
+    <name>Weight for Confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.2</default>
+  </parameter>
+  <parameter>
+    <name>Weight for Comprehensibility</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>
+  <parameter>
+    <name>Weight for Amplitude of the Intervals</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.4</default>
+  </parameter>
+</algorithm_specification>
