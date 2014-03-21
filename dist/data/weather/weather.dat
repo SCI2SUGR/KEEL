@@ -4,6 +4,7 @@
 @attribute humidity {high,normal}
 @attribute windy {true,false}
 @attribute play {yes,no}
+@inputs outlook, temperature, humidity, windy, play
 @data
 sunny,hot,high,false,no
 sunny,hot,high,true,no
