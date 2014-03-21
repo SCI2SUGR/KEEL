@@ -194,6 +194,7 @@
       <multioutput>No</multioutput>
     </output>
   </method>
+
   <method>
     <name>GENAR-A</name>
     <family>Association Rules</family>
@@ -218,6 +219,7 @@
       <multioutput>No</multioutput>
     </output>
   </method>
+
   <method>
     <name>EARMGA-A</name>
     <family>Association Rules</family>
@@ -242,6 +244,7 @@
       <multioutput>No</multioutput>
     </output>
   </method>
+
   <method>
     <name>Alatasetal-A</name>
     <family>Association Rules</family>
@@ -266,6 +269,135 @@
       <multioutput>No</multioutput>
     </output>
   </method>
+
+<method>
+    <name>ARMMGA-A</name>
+    <family>Association Rules</family>
+    <jar_file>ARMMGA.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
+
+<method>
+    <name>MODENAR-A</name>
+    <family>Association Rules</family>
+    <jar_file>MODENAR.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
+
+ <method>
+    <name>QAR_CIP_NSGAII-A</name>
+    <family>Association Rules</family>
+    <jar_file>QAR_CIP_NSGAII.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
+
+  <method>
+    <name>MOPNAR-A</name>
+    <family>Association Rules</family>
+    <jar_file>MOPNAR.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
+
+<method>
+      <name>MOEA_Ghosh-A</name>
+      <family>Association Rules</family>
+      <jar_file>MOEA_Ghosh.jar</jar_file>
+      <problem_type>unsupervised</problem_type>
+      <input>
+        <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>Yes</nominal>
+        <missing>No</missing>
+        <imprecise>No</imprecise>
+        <multiclass>Yes</multiclass>
+        <multioutput>No</multioutput>
+      </input>
+      <output>
+        <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>Yes</nominal>
+        <missing>No</missing>
+        <imprecise>No</imprecise>
+        <multiclass>Yes</multiclass>
+        <multioutput>No</multioutput>
+      </output>
+  </method>
+
+
+
+
   <method>
     <name>FuzzyApriori-A</name>
     <family>Association Rules</family>
