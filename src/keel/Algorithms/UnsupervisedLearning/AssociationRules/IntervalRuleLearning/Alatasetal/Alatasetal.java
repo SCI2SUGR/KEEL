@@ -33,6 +33,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * <p>
  * @author Written by Alberto Fernández (University of Granada)
  * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.1
  * @since JDK1.6
  * </p>

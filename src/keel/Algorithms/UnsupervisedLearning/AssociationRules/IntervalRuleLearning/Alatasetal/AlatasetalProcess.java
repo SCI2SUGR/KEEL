@@ -142,7 +142,7 @@ public class AlatasetalProcess {
 	  
 	  this.uPop = this.initializeUniformPopulation();
 	  
-	  this.evaluate(this.uPop, 0, this.uPopSize);
+	  this.evaluate(this.uPop, 0, this.uPop.size());
 	  Collections.sort(this.uPop);
 	 
 	  System.out.print("done.\n");
@@ -500,8 +500,9 @@ public class AlatasetalProcess {
   }
   
   private void evaluate(ArrayList<Chromosome> upop, int start_index, int end_index) {
-	  for (int i=start_index; i < end_index; i++)
+	  for (int i=start_index; i < end_index; i++){
 		  this.computeFitness( upop.get(i) );
+	  }
   }
     
   private void crossover(ArrayList<Chromosome> upop) {

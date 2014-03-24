@@ -117,11 +117,11 @@ public class ARMMGA {
 		this.popsize = Integer.parseInt( parameters.getParameter(2) );
 		this.nTrials = Integer.parseInt( parameters.getParameter(3) );
 		this.alpha = Double.parseDouble( parameters.getParameter(4) );
-		this.nIntervals = Integer.parseInt( parameters.getParameter(5));
-		this.ps = Double.parseDouble( parameters.getParameter(6) );
-		this.pc = Double.parseDouble( parameters.getParameter(7) );
-		this.pm = Double.parseDouble( parameters.getParameter(8) );
-
+		this.ps = Double.parseDouble( parameters.getParameter(5) );
+		this.pc = Double.parseDouble( parameters.getParameter(6) );
+		this.pm = Double.parseDouble( parameters.getParameter(7) );
+		this.nIntervals = Integer.parseInt( parameters.getParameter(8));
+		
 		if (this.kItemsets > this.trans.getnVars())  this.kItemsets = this.trans.getnVars();
 
 		Randomize.setSeed(seed);

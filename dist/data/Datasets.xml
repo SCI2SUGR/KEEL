@@ -22,6 +22,29 @@
     <field>Real</field>
     <multiinstance>No</multiinstance>
   </dataset>
+   <dataset>
+    <nameAbr>basketball</nameAbr>
+    <nameComplete>Basketball</nameComplete>
+    <partitions>
+      <partition>10cfv</partition>
+    </partitions>
+    <problemType>Unsupervised</problemType>
+    <partitions />
+    <continuous>Yes</continuous>
+    <integer>Yes</integer>
+    <nominal>No</nominal>
+    <imprecise>No</imprecise>
+    <missing>No</missing>
+    <multiclass>No</multiclass>
+    <multioutput>No</multioutput>
+    <percMissingValues>0.0</percMissingValues>
+    <nAttributes>5</nAttributes>
+    <nInstances>96</nInstances>
+    <nClasses>0</nClasses>
+    <field>Laboratory</field>
+    <multiinstance>No</multiinstance>
+    <userDataset />
+  </dataset> 
   <dataset>
     <nameAbr>weather</nameAbr>
     <nameComplete>Weather</nameComplete>
