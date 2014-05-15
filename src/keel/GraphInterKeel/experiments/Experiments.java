@@ -40,6 +40,7 @@
  * @author Modified by Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
  * @author Modified by JoaquÃ­n Derrac 4-7-2010 (University of Granada)
  * @author Modified by Isaac Triguero 11-3-2014 to include SSL module (University of Granada)
+ * @author Modified by Victoria Lopez 15-5-2014 to include a new imbalanced category (University of Granada)
  */
 package keel.GraphInterKeel.experiments;
 
@@ -4277,7 +4278,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 if (objType != LQD) {
                     String bold_directorio = "";
                     if (objType == IMBALANCED) {
-                        if ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance"))) {
+                        if ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Algorithmic Modifications for Imbalance")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance"))) {
                             bold_directorio = "<html><b>" + directorio + "</b></html>";
                             dir = findNode(
                                     (DefaultMutableTreeNode) actual.getRoot(),
@@ -4294,7 +4295,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                     }
                     if (dir == null) {
                         // Doesn't exist: insert
-                        if ((objType == IMBALANCED) && ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance")))) {
+                        if ((objType == IMBALANCED) && ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Algorithmic Modifications for Imbalance")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance")))) {
                             dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
                                     bold_directorio, null, 0));
                             actual.add(dir);
@@ -4447,7 +4448,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 if (objType != LQD) {
                     String bold_directorio = "";
                     if (objType == IMBALANCED) {
-                        if ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance"))) {
+                        if ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Algorithmic Modifications for Imbalance")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance"))) {
                             bold_directorio = "<html><b>" + directorio + "</b></html>";
                             dir = findNode(
                                     (DefaultMutableTreeNode) actual.getRoot(),
@@ -4464,7 +4465,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                     }
                     if (dir == null) {
                         // Doesn't exist: insert
-                        if ((objType == IMBALANCED) && ((directorio.equals("Rebalancing Methods")) || (directorio.equals("Cost-Sensitive Methods")))) {
+                        if ((objType == IMBALANCED) && ((directorio.equals("Rebalancing Methods")) || (directorio.equals("Algorithmic Modifications for Imbalance")) || (directorio.equals("Cost-Sensitive Methods")))) {
                             dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
                                     bold_directorio, null, 0));
                             actual.add(dir);
