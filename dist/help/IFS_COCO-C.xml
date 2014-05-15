@@ -1,0 +1,103 @@
+<method>
+
+	<name>Instance and Feature Selection based on Coopertive Co-evolution</name>
+
+	<reference>  
+
+		<ref>J. Derrac, S. Garcia, F. Herrera, IFS-CoCo: Instance and Feature Selection based on Cooperative Coevolution with Nearest Neighbor Rule. Pattern Recognition 43:6 (2010) 2082-2105.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Co-evolutionary learning</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>IFS-COCO is a coevolutionary model composed of three populations: One performs Instance Selection, a second one perfoms Feature Selection, and the last one performs Dual Selection (Instance and Feature Selection simultaneously). The performance of the preprocessed reference sets is evaluated throughout a k-NN wrapper.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Population Size: Size of the populations.</param>
+			<param>K : K parameter in the k-NN classifier.</param>		
+			<param>Max Evaluations: Maximum number of evaluations.</param>
+			<param>MODE: Cooperation mode (use all populations or only a specific one).</param>			
+			<param>Alpha: Alpha balancing parameter of the fitness function.</param>
+			<param>Beta: Beta balancing parameter of the fitness function.</param>
+			<param>prob0to1: Probability of changing bits to 1 during the crossover phase.</param>
+		</parameterSpec>
+		
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: IFS-COCO-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= iris 
+Fold 0 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 2 : CORRECT=1.0 N/C=0.0 
+Fold 3 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 6 : CORRECT=1.0 N/C=0.0 
+Fold 7 : CORRECT=1.0 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+Global Classification Error + N/C:
+0.04666666666666667 
+stddev Global Classification Error + N/C:
+0.05206833117271103 
+Correctly classified:
+0.9533333333333334 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris 
+Summary of data, Classifiers: iris 
+Fold 0 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 1 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 2 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 3 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 4 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 5 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 6 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 7 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 8 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 9 : CORRECT=0.9481481481481482 N/C=0.0 
+Global Classification Error + N/C:
+0.030370370370370374 
+stddev Global Classification Error + N/C:
+0.011688691731895918 
+Correctly classified:
+0.9696296296296296 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

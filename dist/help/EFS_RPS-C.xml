@@ -1,0 +1,104 @@
+<method>
+
+	<name>Evolutionary Feature Selection for fuzzy Rough set based Prototype Selection</name>
+
+	<reference>  
+
+		<ref>J. Derrac, N. Verbiest, S. Garcia, C. Cornelis, F. Herrera, On the use of Evolutionary Feature Selection for Improving Fuzzy Rough Set Based Prototype Selection. Soft Computing 17:2 (2013) 223-238.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Rough Set and Evolutionary based learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>EFS_RPS is a hybrid method for prototype selection (based on Fuzzy Rough Set theory) and feature selection (using a Steady-State Genetic Algorithm). Both preprocessing techniques are applied to obtain different reduced training sets, which are improved throughout the search in a wrapper-like way.
+		</howWork>
+
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN classifier.</param>
+			<param>SizePop: Size of the population of the genetic algorithm.</param>
+			<param>MaxEvaluations: Maximum number of evaluations in the genetic algorithm.</param>
+			<param>Beta: Beta balancing parameter of the fitness function.</param>
+			<param>MutProb: Mutation probability of the genetic algorithm, per bit</param>
+			<param>Cycle: Lenght of each cycle of EFS_RPS (evaluations)</param>
+			<param>Implicator: Type of implicator used by the instance selection wrapper.</param>
+			<param>Tnorm: Type of tnorm used by the instance selection wrapper.</param>
+		</parameterSpec>
+	
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: EFS_RPS-C
+Dataset: iris
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= iris 
+Fold 0 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 2 : CORRECT=1.0 N/C=0.0 
+Fold 3 : CORRECT=1.0 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 7 : CORRECT=1.0 N/C=0.0 
+Fold 8 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.039999999999999994 
+stddev Global Classification Error + N/C:
+0.04422166387140534 
+Correctly classified:
+0.96 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris 
+Summary of data, Classifiers: iris 
+Fold 0 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 1 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 2 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 3 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 4 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 5 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 6 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 7 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 8 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 9 : CORRECT=0.9555555555555556 N/C=0.0 
+Global Classification Error + N/C:
+0.04 
+stddev Global Classification Error + N/C:
+0.008248539796785217 
+Correctly classified:
+0.96 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

@@ -3566,6 +3566,53 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		  keel/Algorithms/Lazy_Learning/*.class"/>
         </jar>
 
+		<!-- RST Learning  -->
+		
+		<jar
+          jarfile="${distMet}/EFS_RPS.jar"
+          manifest="${src}/keel/Algorithms/RST_Learning/EFS_RPS/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RST_Learning/EFS_RPS/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/RST_Learning/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>
+
+		<jar
+          jarfile="${distMet}/EIS_RFS.jar"
+          manifest="${src}/keel/Algorithms/RST_Learning/EIS_RFS/Manifest">
+          <fileset dir="${bin}"
+             includes="keel/Algorithms/RST_Learning/EIS_RFS/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/RST_Learning/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class"/>
+        </jar>
+	
+
+		<!-- Coevolution  -->
+		
+		<jar 
+          jarfile="${distMet}/CIW_NN.jar" 
+          manifest="${src}/keel/Algorithms/Coevolution/CIW_NN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Coevolution/CIW_NN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Coevolution/*.class"/>
+        </jar>
+
+		<jar 
+          jarfile="${distMet}/IFS_COCO.jar" 
+          manifest="${src}/keel/Algorithms/Coevolution/IFS_COCO/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Coevolution/IFS_COCO/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/Preprocess/Basic/**/*.class
+ 		  org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Coevolution/*.class"/>
+        </jar>
+		
+
 		 <!-- Métodos de MIL -->
 		 
 		<jar

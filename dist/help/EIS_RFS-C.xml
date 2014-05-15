@@ -1,0 +1,103 @@
+<method>
+
+	<name>Evolutionary Instance Selection enhanced by Rough set based Feature Selection</name>
+
+	<reference>  
+
+		<ref>J. Derrac, C. Cornelis, S. Garcia, F. Herrera , Enhancing Evolutionary Instance Selection Algorithms by means of Fuzzy Rough Set based Feature Selection. Information Sciences 186:1 (2012) 73-92</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Rough Set and Evolutionary based learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>EIS_RFS is a hybrid method for feature selection (based on Fuzzy Rough Set theory) and instance selection (using a Steady-State Genetic Algorithm). Both preprocessing techniques are applied to obtain different reduced training sets, which are improved throughout the search in a wrapper-like way.
+		</howWork>
+
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN classifier.</param>
+			<param>SizePop: Size of the population of the genetic algorithm.</param>
+			<param>MaxEvaluations: Maximum number of evaluations in the genetic algorithm.</param>
+			<param>Init: Probability of initializing each gen with a '1' in the chromosomes.</param>	
+			<param>Alpha: Alpha balancing parameter of the fitness function.</param>
+			<param>MutProb: Mutation probability of the genetic algorithm, per bit.</param>
+			<param>MaxGamma: Maximum Gamma value in the feature selection procedure.</param>
+		</parameterSpec>
+  
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: EIS_RFS-C
+Dataset: iris 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= iris 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Fold 1 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 2 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 6 : CORRECT=1.0 N/C=0.0 
+Fold 7 : CORRECT=1.0 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=0.9333333333333333 N/C=0.0 
+Global Classification Error + N/C:
+0.03333333333333333 
+stddev Global Classification Error + N/C:
+0.03333333333333333 
+Correctly classified:
+0.9666666666666667 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris 
+Summary of data, Classifiers: iris 
+Fold 0 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 1 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 2 : CORRECT=0.9925925925925926 N/C=0.0 
+Fold 3 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 4 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 5 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 6 : CORRECT=0.9851851851851852 N/C=0.0 
+Fold 7 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 8 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 9 : CORRECT=0.9851851851851852 N/C=0.0 
+Global Classification Error + N/C:
+0.018518518518518517 
+stddev Global Classification Error + N/C:
+0.007590333900710815 
+Correctly classified:
+0.9814814814814815 
+Global N/C:
+0.0 
+
+</example>
+
+</method>
