@@ -155,7 +155,7 @@ public class FrameModules extends JFrame {
 
         labelImbalance.setFont(new java.awt.Font("Arial", 1, 18));
         labelImbalance.setForeground(Color.white);
-        labelImbalance.setText("Experiments with Imbalance Data Sets");
+        labelImbalance.setText("Experiments with Imbalanced Datasets");
         labelImbalance.setBounds(new Rectangle(40, 412, 465, 27));
         labelImbalance.setVisible(false);
 
