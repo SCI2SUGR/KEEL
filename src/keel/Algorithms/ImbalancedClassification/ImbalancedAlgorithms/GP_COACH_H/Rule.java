@@ -233,7 +233,11 @@ public class Rule implements Comparable {
             }
         }
         
-        support = compatibility_correctly_matching_examples / class_examples;
+        if (class_examples > 0)
+        	support = compatibility_correctly_matching_examples / class_examples;
+        else
+        	support = 0.0;
+        
         if (compatibility_matching_examples > 0)
         	confidence = compatibility_correctly_matching_examples / compatibility_matching_examples;
         else
