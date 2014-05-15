@@ -1890,7 +1890,15 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		</fileset>
 		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
 		</jar>
-
+		
+		<jar
+			jarfile="${distMet}/GP_COACH-C.jar"
+			manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/GP_COACH/Manifest">
+			<fileset dir="${bin}"
+				includes="org/core/**/*.class
+				keel/Algorithms/Fuzzy_Rule_Learning/Genetic/GP_COACH/**/*.class
+				keel/Dataset/**/*.class"/>
+		</jar>
 		
 		<!-- Genetic Rule Learning -->
 		
@@ -5235,6 +5243,18 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 			org/core/**/*.class
 			keel/Dataset/**/*.class"/>
 		</jar> 	               
+
+	   <!-- Imbalanced Algorithms -->
+
+		<jar
+			jarfile="${distMet}/GP_COACH_H-I.jar"
+			manifest="${src}/keel/Algorithms/ImbalancedClassification/ImbalancedAlgorithms/GP_COACH_H/Manifest">
+			<fileset dir="${bin}"
+				includes="keel/Algorithms/ImbalancedClassification/ImbalancedAlgorithms/GP_COACH_H/**/*.class
+				keel/Algorithms/Preprocess/Basic/**/*.class
+				org/core/**/*.class"/>
+			<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+		</jar>
         
 	   <!-- Imbalanced Statistical Tests -->			
 		

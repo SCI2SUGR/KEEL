@@ -1,0 +1,265 @@
+<algorithm_specification>
+  <name>Hierarchical genetic programming fuzzy rule based classification system with rule selection and tuning (GP-COACH-H)</name>
+  <nParameters>28</nParameters>
+  <seed>1</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of Neighbors</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>20</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>Type of SMOTE</name>
+    <type>list</type>
+    <domain>
+      <item>both</item>
+      <item>minority</item>
+      <item>ASMO</item>
+    </domain>
+    <default>both</default>   
+  </parameter>
+  <parameter>
+    <name>Balancing</name>
+    <type>list</type>
+    <domain>
+      <item>YES</item>
+      <item>NO</item>
+    </domain>
+    <default>YES</default>   
+  </parameter>
+  <parameter>
+    <name>Quantity of generated examples</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>1</default>
+  </parameter>  
+  <parameter>
+    <name>Distance Function</name>
+    <type>list</type>
+    <domain>
+      <item>Euclidean</item>
+      <item>HVDM</item>
+    </domain>
+    <default>Euclidean</default>   
+  </parameter>
+  <parameter>
+    <name>Type of Interpolation</name>
+    <type>list</type>
+    <domain>
+      <item>standard</item>
+      <item>uniform</item>
+      <item>arithmetical</item>
+      <item>blx-alpha</item>
+      <item>sbx</item>
+      <item>fuzzy</item>
+    </domain>
+    <default>standard</default>   
+  </parameter>
+  <parameter>
+    <name>Alpha</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>  
+  <parameter>
+    <name>Mu</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>  
+  <parameter>
+    <name>Number of Labels</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>13</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>T-norm/T-conorm for the Computation of the Compatibility Degree</name>
+    <type>list</type>
+    <domain>
+      <item>Minimum/Maximum</item>
+      <item>Product/Probabilistic_Sum</item>
+    </domain>
+    <default>Minimum/Maximum</default>   
+  </parameter>   
+  <parameter>
+    <name>Rule Weight</name>
+    <type>list</type>
+    <domain>
+      <item>No_Weights</item>
+      <item>Certainty_Factor</item>
+      <item>Average_Penalized_Certainty_Factor</item>      
+      <item>Penalized_Certainty_Factor</item>
+    </domain>
+    <default>Certainty_Factor</default>   
+  </parameter>  
+   <parameter>
+    <name>Fuzzy Reasoning Method</name>
+    <type>list</type>
+    <domain>
+      <item>Winning_Rule</item>
+      <item>Normalized_Sum</item>
+    </domain>
+    <default>Normalized_Sum</default>   
+  </parameter>  
+  <parameter>
+    <name>Number of Generations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>20000</default>
+  </parameter>    
+  <parameter>
+    <name>Initial Number of Fuzzy Rules (0 for 5*n_var)</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>5000</upperB>
+    </domain>
+    <default>200</default>
+  </parameter>
+  <parameter>
+    <name>Alpha Raw Fitness</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.7</default>
+  </parameter> 
+  <parameter>
+    <name>Crossover probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>   
+  <parameter>
+    <name>Mutation probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.2</default>
+  </parameter> 
+  <parameter>
+    <name>Insertion probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.15</default>
+  </parameter>  
+  <parameter>
+    <name>Dropping Condition probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.15</default>
+  </parameter>     
+  <parameter>
+    <name>Tournament Selection Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>25</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>  
+  <parameter>
+    <name>Global Fitness Weight 1</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>    
+  <parameter>
+    <name>Global Fitness Weight 2</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter> 
+  <parameter>
+    <name>Global Fitness Weight 3</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter> 
+  <parameter>
+    <name>Global Fitness Weight 4</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>     
+  <parameter>
+    <name>Alpha Hierarchical Procedure</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.2</default>
+  </parameter>    
+  <parameter>
+    <name>CHC Number of Evaluations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>1000000</upperB>
+    </domain>
+    <default>10000</default>
+  </parameter>   
+  <parameter>
+    <name>CHC Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>10000</upperB>
+    </domain>
+    <default>61</default>
+  </parameter>    
+  <parameter>
+    <name>CHC Number of Bits per Gen</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>50</upperB>
+    </domain>
+    <default>30</default>
+  </parameter>    
+</algorithm_specification>

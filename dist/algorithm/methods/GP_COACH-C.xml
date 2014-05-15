@@ -1,0 +1,153 @@
+<algorithm_specification>
+  <name>Genetic Programming-based learning of COmpact and ACcurate fuzzy rule-based classification systems for High-dimensional problems (GP-COACH)</name>
+  <nParameters>16</nParameters>
+  <seed>1</seed>
+  <nOutput>2</nOutput>
+  <parameter>
+    <name>Number of Labels</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>2</lowerB>
+      <upperB>13</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+  <parameter>
+    <name>T-norm/T-conorm for the Computation of the Compatibility Degree</name>
+    <type>list</type>
+    <domain>
+      <item>Minimum/Maximum</item>
+      <item>Product/Probabilistic_Sum</item>
+    </domain>
+    <default>Minimum/Maximum</default>   
+  </parameter>   
+  <parameter>
+    <name>Rule Weight</name>
+    <type>list</type>
+    <domain>
+      <item>No_Weights</item>
+      <item>Certainty_Factor</item>
+      <item>Average_Penalized_Certainty_Factor</item>      
+      <item>Penalized_Certainty_Factor</item>
+    </domain>
+    <default>Certainty_Factor</default>   
+  </parameter>  
+   <parameter>
+    <name>Fuzzy Reasoning Method</name>
+    <type>list</type>
+    <domain>
+      <item>Winning_Rule</item>
+      <item>Normalized_Sum</item>
+      <item>Arithmetic_Mean</item>
+    </domain>
+    <default>Normalized_Sum</default>   
+  </parameter>  
+  <parameter>
+    <name>Number of Generations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>10</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>20000</default>
+  </parameter>    
+  <parameter>
+    <name>Initial Number of Fuzzy Rules (0 for 5*n_var)</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>5000</upperB>
+    </domain>
+    <default>200</default>
+  </parameter>
+  <parameter>
+    <name>Alpha Raw Fitness</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.7</default>
+  </parameter> 
+  <parameter>
+    <name>Crossover probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>   
+  <parameter>
+    <name>Mutation probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.2</default>
+  </parameter> 
+  <parameter>
+    <name>Insertion probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.15</default>
+  </parameter>  
+  <parameter>
+    <name>Dropping Condition probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.15</default>
+  </parameter>     
+  <parameter>
+    <name>Tournament Selection Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>25</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>  
+  <parameter>
+    <name>Global Fitness Weight 1</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>    
+  <parameter>
+    <name>Global Fitness Weight 2</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter> 
+  <parameter>
+    <name>Global Fitness Weight 3</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.05</default>
+  </parameter> 
+  <parameter>
+    <name>Global Fitness Weight 4</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.1</default>
+  </parameter>     
+</algorithm_specification>

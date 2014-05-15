@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <method_list>
   <method>
+    <name>GP_COACH_H-I</name>
+    <family>Algorithmic Modifications for Imbalance</family>
+    <jar_file>GP_COACH_H-I.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>  	
+  <method>
     <name>C_SVMCS-I</name>
     <family>Cost-Sensitive Classification</family>
     <jar_file>C_SVMCS-I.jar</jar_file>
@@ -2348,6 +2374,32 @@
     <multiinstance>No</multiinstance> 
 	</output>
   </method>  
+  <method>
+    <name>GP_COACH-C</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
+    <jar_file>GP_COACH-C.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>
   <method>
     <name>MOGUL-C</name>
     <family>Evolutionary Fuzzy Rule Learning</family>

@@ -839,6 +839,32 @@
     <problem_type>classification</problem_type>
   </method>
   <method>
+    <name>GP_COACH-C</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
+    <jar_file>GP_COACH-C.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>
+  <method>
     <name>MOGUL-C</name>
     <family>Evolutionary Fuzzy Rule Learning</family>
     <jar_file>Clas-Fuzzy-MOGUL.jar</jar_file>

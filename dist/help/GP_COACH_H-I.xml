@@ -1,0 +1,178 @@
+<method>
+
+	<name>Hierarchical genetic programming fuzzy rule based classification system with rule selection and tuning (GP-COACH-H)</name>
+
+	<reference>  
+		<ref>V. Lopez, A. Fernandez, M.J. del Jesus, F. Herrera, A Hierarchical Genetic Fuzzy System Based On Genetic Programming for Addressing Classification with Highly Imbalanced and Borderline Data-sets. Knowledge-Based Systems 38 (2013) 85-104</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Algorithms for Imbalanced Classification</type>
+
+		<objective>To obtain a Hierarchical Fuzzy Rule Base that is able to properly address imbalanced datasets</objective>
+
+		<howWork>There are three different steps in the building of the model:
+			1. Preprocessing stage: In this first step, GP-COACH-H preprocesses the original data-set to balance the class distribution. 
+			2. Generation of the HKB: This stage is devoted to the generation of a two-layer HKB from the balanced data-set. This HKB is composed by two different DBs (each one with a different granularity level) and one RB that contains rules from the two hierarchies.
+			3. Refinement of the HKB: After the building of an initial HKB in the previous phase, another genetic procedure is applied to improve the final performance of this solution.
+		</howWork>
+
+		<parameterSpec>  
+			<param>Number of neighbors: Integer value. Number of nearest instances considered to generate a new positive example using the K-Nearest Neighbor Rule</param>
+			<param>Type of SMOTE: both if we consider as neighbors instances from both classes, minority if we consider as neighbors instances from the minority class and ASMO if we consider as neighbors instances from the majority class</param>
+			<param>Balancing: YES, if we want de data class distribution completely balanced, NO otherwise</param>
+			<param>Quantity of generated examples: if the Balancing option is not selected, proportion of examples from the majority class that the minority class has to reach</param>
+			<param>Distance Function: K-NN implements two distance functions. a) Euclidean with normalized attributed and b) HVDM (see paper D.R. Wilson, T.R. Martinez. Reduction Tecniques For Instance-Based Learning Algorithms. Machine Learning 38:3 (2000) 257-286.)</param>
+			<param>Type of Interpolation: way of interpolating the neighbors instances to create a synthetic instance. Standard is the original interpolation proposed.</param>
+			<param>Alpha: alpha parameter for the BLX-alpha interpolation</param>
+			<param>Mu: mu parameter for the SBX interpolation</param>
+			<param>Number of Labels: the number of possible fuzzy values for each variable.</param>
+			<param>T-norm/T-conorm for the Computation of the Compatibility Degree: Minimum T-norm/Maximum T-conorm or Product T-norm/Probabilistic Sum T-conorm </param>
+			<param>Rule Weight: Type of rule weight for the fuzzy rules </param>
+			<param>Fuzzy Reasoning Method: For the mechanism of inference </param>
+			<param>Number of Generations: Number of generations applied to the GCCL process</param>
+			<param>Initial Number of Fuzzy Rules: Initial Number of rules in the Rule Base (initial size of the population)</param>
+			<param>Alpha Raw Fitness: Alpha parameter used in the computation of the raw_fitness function for each rule</param>
+			<param>Crossover probability: Probality to cross any individual with another individual in the population</param>
+			<param>Mutation probability: Probality to mutate any individual variable's label in the population</param>
+			<param>Insertion probability: Probality to insert any variable to an individual in the population</param>
+			<param>Dropping Condition probability: Probality to delete any variable from an individual in the population</param>
+			<param>Tournament Selection Size: Size of the tournament selection procedure used to select and individual to apply a genetic operator in order to create a new rule</param>
+			<param>Global Fitness Weight 1: w1 parameter used in the computation of the global_fitness function for the whole population</param>
+			<param>Global Fitness Weight 2: w2 parameter used in the computation of the global_fitness function for the whole population</param>
+			<param>Global Fitness Weight 3: w3 parameter used in the computation of the global_fitness function for the whole population</param>
+			<param>Global Fitness Weight 4: w4 parameter used in the computation of the global_fitness function for the whole population</param>
+			<param>Alpha Hierarchical Procedure: Alpha value related to the accuracy per class to develop high granularity rules</param>
+			<param>CHC Population Size: Integer value. Number of chromosomes belonging to the CHC population.</param>
+			<param>CHC Number of Evaluations: Integer value. Maximal number of evaluations allowed in the run of the CHC algorithm</param>
+			<param>CHC Number of Bits per Gen: Number of bits per gen in the CHC method for the Gray code</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>Yes</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Imbalanced
+Method: GP-COACH-H
+Dataset: pimaImb
+Training set: pimaImb-5-1tra.dat
+Test set: pimaImb-5-1tst.dat
+Test Show results: Vis-Imb-Check
+Parameters: default values
+
+After the execution of RunKeel.jar we can see into the experiment/results/Vis-Imb-Check/TSTGP_COACH_H-I folder the classification results for the training and test sets:
+
+TEST RESULTS
+============
+Classifier= pima
+Fold 0 : AUC=0.6911111111111111 N/C=0.0 
+Fold 1 : AUC=0.7596296296296297 N/C=0.0 
+...
+Global Classification Area Under the ROC Curve:
+0.7129680004128469 
+stddev Global Classification Area Under the ROC Curve:
+0.0417149243932843 
+Global N/C:
+0.0125 
+
+TRAIN RESULTS
+============
+Classifier= pima
+Fold 0 : AUC=0.8080023364485981 N/C=0.0 
+Fold 1 : AUC=0.8161565420560748 N/C=0.0 
+...
+Global Classification Area Under the ROC Curve:
+0.8152323463755303 
+stddev Global Classification Area Under the ROC Curve:
+0.012252407022544553 
+Global N/C:
+0.005342237061769616 
+
+We can see also the Data Base and Rule Base generated in the files "result0s0e0.txt" and "result0s0e1.txt" 
+respectively in the folder experiment/results/GP_COACH_H-I.pimaImb/:
+
+@Layer 1 Data Base
+@Using Triangular Membership Functions as antecedent fuzzy sets
+@Number of Labels per variable: 5
+
+Preg:
+ L{1}_1: (-3.959659708165291,0.2903402918347087,4.540340291834709)
+ L{1}_2: (1.0765285287304969,5.326528528730497,9.576528528730497)
+ L{1}_3: (3.5992491413035346,7.849249141303535,12.099249141303535)
+ L{1}_4: (7.265545892958297,11.515545892958297,15.765545892958297)
+ L{1}_5: (13.412273104676133,17.662273104676135,21.912273104676135)
+
+Plas:
+ L{1}_1: (-43.721835912063995,6.028164087936006,55.778164087936005)
+ L{1}_2: (1.5649926259663767,51.314992625966376,101.06499262596638)
+ L{1}_3: (47.86755994915952,97.61755994915953,147.36755994915953)
+ L{1}_4: (112.26448280742653,162.01448280742653,211.76448280742653)
+ L{1}_5: (160.8811224064559,210.6311224064559,260.3811224064559)
+
+...
+
+@Layer 2 Data Base
+@Using Triangular Membership Functions as antecedent fuzzy sets
+@Number of Labels per variable: 9
+
+Preg:
+ L{2}_1: (-1.8512138216692864,0.2737861783307136,2.3987861783307136)
+ L{2}_2: (-0.6917883490595975,1.4332116509404025,3.5582116509404025)
+ L{2}_3: (2.8304432742511056,4.955443274251106,7.080443274251106)
+ L{2}_4: (5.087087942353515,7.212087942353515,9.337087942353515)
+ L{2}_5: (6.177253442567748,8.302253442567748,10.427253442567748)
+ L{2}_6: (8.358341985400306,10.483341985400306,12.608341985400306)
+ L{2}_7: (11.246430714972563,13.371430714972563,15.496430714972563)
+ L{2}_8: (12.16801118768031,14.29301118768031,16.41801118768031)
+ L{2}_9: (14.95576710621845,17.080767106218453,19.205767106218453)
+
+Plas:
+ L{2}_1: (-25.28882698501436,-0.41382698501435944,24.46117301498564)
+ L{2}_2: (2.6068382939962307,27.48183829399623,52.35683829399623)
+ L{2}_3: (31.5208248697689,56.3958248697689,81.2708248697689)
+ L{2}_4: (42.071414000987346,66.94641400098735,91.82141400098735)
+ L{2}_5: (76.92276893947451,101.79776893947451,126.67276893947451)
+ L{2}_6: (101.31024735975363,126.18524735975363,151.06024735975362)
+ L{2}_7: (130.02164556192676,154.89664556192676,179.77164556192676)
+ L{2}_8: (151.08967339674757,175.96467339674757,200.83967339674757)
+ L{2}_9: (181.12964305768986,206.00464305768986,230.87964305768986)
+ 
+...
+
+
+
+@Number of rules: 114
+
+1{1}: IF Preg IS (L{1}_1 OR L{1}_3 OR L{1}_4) AND Plas IS (L{1}_1 OR L{1}_2) AND Skin IS (L{1}_1 OR L{1}_4 OR L{1}_5) AND Insu IS L{1}_1 AND Pedi IS (L{1}_1 OR L{1}_2 OR L{1}_5) THEN negative with Rule Weight: 0.9833849607850259
+2{1}: IF Preg IS (L{1}_1 OR L{1}_3 OR L{1}_4) AND Plas IS (L{1}_1 OR L{1}_2) AND Skin IS (L{1}_1 OR L{1}_4 OR L{1}_5) AND Insu IS L{1}_1 AND Pedi IS (L{1}_1 OR L{1}_2 OR L{1}_4 OR L{1}_5) THEN negative with Rule Weight: 0.9836232108286811
+3{1}: IF Preg IS (L{1}_1 OR L{1}_4) AND Plas IS L{1}_5 AND Insu IS (L{1}_1 OR L{1}_2) AND Pedi IS (L{1}_3 OR L{1}_4 OR L{1}_5) AND Age IS (L{1}_1 OR L{1}_5) THEN positive with Rule Weight: 1.0
+4{1}: IF Plas IS L{1}_5 AND Skin IS (L{1}_2 OR L{1}_3 OR L{1}_4 OR L{1}_5) AND Insu IS (L{1}_1 OR L{1}_2) AND Pedi IS (L{1}_3 OR L{1}_4 OR L{1}_5) AND Age IS (L{1}_1 OR L{1}_5) THEN positive with Rule Weight: 1.0
+5{1}: IF Preg IS (L{1}_1 OR L{1}_2) AND Pres IS (L{1}_2 OR L{1}_5) AND Skin IS L{1}_1 AND Mass IS L{1}_2 AND Pedi IS (L{1}_1 OR L{1}_2 OR L{1}_5) AND Age IS (L{1}_1 OR L{1}_5) THEN negative with Rule Weight: 0.99497948530524
+6{1}: IF Preg IS L{1}_1 AND Pres IS (L{1}_2 OR L{1}_5) AND Skin IS L{1}_1 AND Mass IS L{1}_2 AND Age IS (L{1}_1 OR L{1}_5) THEN negative with Rule Weight: 0.9950023917515627
+7{1}: IF Preg IS L{1}_1 AND Pres IS L{1}_2 AND Skin IS L{1}_1 AND Insu IS (L{1}_1 OR L{1}_3) AND Mass IS L{1}_2 AND Age IS (L{1}_1 OR L{1}_4 OR L{1}_5) THEN negative with Rule Weight: 0.9950214142348656
+8{1}: IF Preg IS (L{1}_1 OR L{1}_2) AND Mass IS L{1}_1 AND Age IS (L{1}_1 OR L{1}_5) THEN negative with Rule Weight: 0.9894256504201333
+9{1}: IF Plas IS L{1}_5 AND Skin IS (L{1}_2 OR L{1}_3 OR L{1}_4 OR L{1}_5) AND Insu IS (L{1}_1 OR L{1}_2 OR L{1}_3) AND Pedi IS (L{1}_3 OR L{1}_4 OR L{1}_5) AND Age IS (L{1}_1 OR L{1}_5) THEN positive with Rule Weight: 1.0
+10{1}: IF Preg IS (L{1}_1 OR L{1}_3) AND Plas IS (L{1}_1 OR L{1}_5) AND Insu IS L{1}_1 AND Mass IS (L{1}_1 OR L{1}_4 OR L{1}_5) AND Pedi IS (L{1}_3 OR L{1}_4 OR L{1}_5) THEN positive with Rule Weight: 1.0
+...
+105{2}: IF Preg IS L{2}_3 AND Plas IS L{2}_9 AND Pres IS L{2}_8 AND Skin IS L{2}_4 AND Insu IS L{2}_1 AND Mass IS L{2}_4 AND Pedi IS L{2}_3 AND Age IS L{2}_3 THEN negative with Rule Weight: 1.0
+106{2}: IF Preg IS L{2}_3 AND Plas IS L{2}_9 AND Pres IS L{2}_6 AND Skin IS L{2}_4 AND Insu IS L{2}_8 AND Mass IS L{2}_5 AND Pedi IS L{2}_9 AND Age IS L{2}_2 THEN negative with Rule Weight: 0.8111144575149283
+107{2}: IF Preg IS L{2}_3 AND Plas IS L{2}_7 AND Pres IS L{2}_6 AND Skin IS L{2}_1 AND Insu IS L{2}_1 AND Mass IS L{2}_5 AND Pedi IS L{2}_3 AND Age IS L{2}_2 THEN positive with Rule Weight: 1.0
+108{2}: IF Preg IS L{2}_1 AND Plas IS L{2}_8 AND Pres IS L{2}_6 AND Skin IS L{2}_4 AND Insu IS L{2}_3 AND Mass IS L{2}_7 AND Pedi IS L{2}_2 AND Age IS L{2}_2 THEN negative with Rule Weight: 1.0
+109{2}: IF Preg IS L{2}_4 AND Plas IS L{2}_6 AND Pres IS L{2}_7 AND Skin IS L{2}_1 AND Insu IS L{2}_1 AND Mass IS L{2}_6 AND Pedi IS L{2}_3 AND Age IS L{2}_3 THEN negative with Rule Weight: 0.8769305568527935
+110{2}: IF Preg IS L{2}_6 AND Plas IS L{2}_7 AND Pres IS L{2}_6 AND Skin IS L{2}_3 AND Insu IS L{2}_2 AND Mass IS L{2}_5 AND Pedi IS L{2}_5 AND Age IS L{2}_5 THEN positive with Rule Weight: 1.0
+111{2}: IF Preg IS L{2}_5 AND Plas IS L{2}_6 AND Pres IS L{2}_6 AND Skin IS L{2}_3 AND Insu IS L{2}_1 AND Mass IS L{2}_4 AND Pedi IS L{2}_5 AND Age IS L{2}_4 THEN positive with Rule Weight: 1.0
+112{2}: IF Preg IS L{2}_5 AND Plas IS L{2}_8 AND Pres IS L{2}_5 AND Skin IS L{2}_4 AND Insu IS L{2}_6 AND Mass IS L{2}_5 AND Pedi IS L{2}_3 AND Age IS L{2}_6 THEN positive with Rule Weight: 1.0
+113{2}: IF Preg IS L{2}_4 AND Plas IS L{2}_7 AND Pres IS L{2}_5 AND Skin IS L{2}_1 AND Insu IS L{2}_1 AND Mass IS L{2}_4 AND Pedi IS L{2}_2 AND Age IS L{2}_4 THEN negative with Rule Weight: 0.5323383217622881
+114{2}: IF Preg IS L{2}_5 AND Plas IS L{2}_8 AND Pres IS L{2}_5 AND Skin IS L{2}_1 AND Insu IS L{2}_1 AND Mass IS L{2}_4 AND Pedi IS L{2}_3 AND Age IS L{2}_2 THEN negative with Rule Weight: 1.0
+
+</example>
+
+</method>
