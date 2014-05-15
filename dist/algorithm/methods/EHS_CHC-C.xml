@@ -1,0 +1,79 @@
+<algorithm_specification>
+  <name>EHS_CHC</name>
+  <nParameters>8</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+  <name>Population Size</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>5</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>50</default>
+  </parameter>
+  <parameter>
+  <name>Number of Evaluations</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>100</lowerB>
+      <upperB>100000</upperB>
+    </domain>
+    <default>10000</default>
+  </parameter>
+  <parameter>
+    <name>Alpha</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  <parameter>
+    <name>Beta</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  <parameter>
+    <name>R</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.5</default>
+  </parameter>
+  <parameter>
+    <name>Recombination Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.35</default>
+  </parameter>
+  <parameter>
+    <name>Divergence Probability</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.35</default>
+  </parameter>
+<parameter>
+    <name>Filtering</name>
+    <type>list</type>
+		<domain>
+			<item>true</item>
+			<item>false</item>
+		</domain>
+    <default>false</default>
+  </parameter>
+  
+</algorithm_specification>

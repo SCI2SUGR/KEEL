@@ -2840,6 +2840,32 @@
     <multiinstance>No</multiinstance> 
 	</output>
   </method>
+	<method>
+    <name>EHS_CHC-C</name>
+    <family>Hybrid Instance Based Learning</family>
+    <jar_file>EHS_CHC-C.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>No</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>  
   <method>
     <name>RISE-C</name>
     <family>Hybrid Instance Based Learning</family>

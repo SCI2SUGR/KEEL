@@ -2395,6 +2395,16 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		  keel/Algorithms/Hyperrectangles/Basic/**/*.class"/>
         </jar>		
 		
+	<jar
+		  jarfile="${distMet}/EHS_CHC-C.jar"
+		  manifest="${src}/keel/Algorithms/Hyperrectangles/EHS_CHC/Manifest">
+		  <fileset dir="${bin}"
+			 includes="keel/Algorithms/Hyperrectangles/EHS_CHC/**/*.class
+                         org/core/**/*.class
+                         keel/Algorithms/Preprocess/Basic/*.class
+                         keel/Dataset/**/*.class"/>
+		</jar>
+				
 		<!-- Instance Generation AS CLASSIFIERS-->
 	
 
