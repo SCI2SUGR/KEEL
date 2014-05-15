@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Possibilistic Instance Based Learning</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>BETA</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.01</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.8</default>
+  </parameter>
+</algorithm_specification>

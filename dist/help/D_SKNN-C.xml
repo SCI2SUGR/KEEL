@@ -1,0 +1,98 @@
+<method>
+
+	<name>Dempster-Shafer theory based K-Nearest Neighbors classifier</name>
+
+	<reference>  
+
+		<ref>T. Denoeux, A k-nearest neighbor classification rule based on dempster-shafer theory, IEEE Transactions on Systems, Man, and Cybernetics, vol. 25, no. 5, pp. 804-813, 1995.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>D-SKNN is a k-NN classifier based on the Dempster-Shafer theory, incorporating mechanisms to manage uncertainty and rejection of unclear instances. It makes use of expected lower and higher costs to characterize the instances according with their k nearest neighbors in the training set, assigning the instances to the class with maximum belief.
+		</howWork>
+  
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN voting rule.</param>
+			<param>Alpha: Boundary threshold.</param>
+			<param>Beta: Training parameter.</param>
+		</parameterSpec>
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: D_SKNN-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 1 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 2 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 3 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 4 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 5 : CORRECT=0.6363636363636364 N/C=0.0 
+Fold 6 : CORRECT=0.9 N/C=0.0 
+Fold 7 : CORRECT=0.9 N/C=0.0 
+Fold 8 : CORRECT=0.9 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.15727272727272731 
+stddev Global Classification Error + N/C:
+0.10641024619775935 
+Correctly classified:
+0.8427272727272727 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 1 : CORRECT=0.8315789473684211 N/C=0.0 
+Fold 2 : CORRECT=0.8631578947368421 N/C=0.0 
+Fold 3 : CORRECT=0.8526315789473684 N/C=0.0 
+Fold 4 : CORRECT=0.8315789473684211 N/C=0.0 
+Fold 5 : CORRECT=0.8526315789473684 N/C=0.0 
+Fold 6 : CORRECT=0.8125 N/C=0.0 
+Fold 7 : CORRECT=0.84375 N/C=0.0 
+Fold 8 : CORRECT=0.8229166666666666 N/C=0.0 
+Fold 9 : CORRECT=0.8229166666666666 N/C=0.0 
+Global Classification Error + N/C:
+0.15926535087719298 
+stddev Global Classification Error + N/C:
+0.01865596933396333 
+Correctly classified:
+0.840734649122807 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

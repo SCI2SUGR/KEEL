@@ -1,0 +1,98 @@
+<method>
+
+	<name>Fuzzy-Rough Nearest Neighbor classifier - Fuzzy Rough Sets</name>
+
+	<reference>  
+
+		<ref>R. Jensen and C. Cornelis, Fuzzy-rough nearest neighbour classification, Transactions on Rough Sets, vol. 13, pp. 56-72, 2011.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>FRNN-FRS makes use of rough uncertainties, and performs a classification based on the best value obtained for the lower and upper approximations of every nearest neighbor, choosing the class of the nearest neighbor with the best value (not necessarily the nearest).
+		</howWork>
+  
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN voting rule.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: FRNN_FRS-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 1 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 2 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 3 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 4 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 5 : CORRECT=0.6363636363636364 N/C=0.0 
+Fold 6 : CORRECT=0.9 N/C=0.0 
+Fold 7 : CORRECT=0.8 N/C=0.0 
+Fold 8 : CORRECT=0.7 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.1690909090909091 
+stddev Global Classification Error + N/C:
+0.1088785812478536 
+Correctly classified:
+0.8309090909090909 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.8421052631578947 N/C=0.0 
+Fold 1 : CORRECT=0.8421052631578947 N/C=0.0 
+Fold 2 : CORRECT=0.8631578947368421 N/C=0.0 
+Fold 3 : CORRECT=0.8210526315789474 N/C=0.0 
+Fold 4 : CORRECT=0.8210526315789474 N/C=0.0 
+Fold 5 : CORRECT=0.8421052631578947 N/C=0.0 
+Fold 6 : CORRECT=0.8333333333333334 N/C=0.0 
+Fold 7 : CORRECT=0.8333333333333334 N/C=0.0 
+Fold 8 : CORRECT=0.8541666666666666 N/C=0.0 
+Fold 9 : CORRECT=0.8125 N/C=0.0 
+Global Classification Error + N/C:
+0.16350877192982455 
+stddev Global Classification Error + N/C:
+0.01479969106596142 
+Correctly classified:
+0.8364912280701755 
+Global N/C:
+0.0 
+
+
+</example>
+
+</method>

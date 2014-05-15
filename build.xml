@@ -1485,7 +1485,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
         </jar>
 
 		
-		<!-- Decission Trees -->
+		<!-- Decision Trees -->
 		<jar
           jarfile="${distMet}/PUBLIC.jar"
           manifest="${src}/keel/Algorithms/Decision_Trees/PUBLIC/Manifest">
@@ -1585,6 +1585,197 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
         </jar>
 		
 		
+		<!-- Fuzzy K-NN module>-->
+		
+		<jar 
+          jarfile="${distMet}/FuzzyKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/FuzzyKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/FuzzyKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/FuzzyNPC.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/FuzzyNPC/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/FuzzyNPC/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/JFKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/JFKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/JFKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/FCMKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/FCMKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/FCMKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/D_SKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/D_SKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/D_SKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/IFSKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/IFSKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/IFSKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>
+		
+		<jar 
+          jarfile="${distMet}/IF_KNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/IF_KNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/IF_KNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>
+		
+		<jar 
+          jarfile="${distMet}/FENN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/FENN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/FENN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/PosIBL.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/PosIBL/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/PosIBL/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/FRKNNA.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/FRKNNA/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/FRKNNA/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/VWFuzzyKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/VWFuzzyKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/VWFuzzyKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/IFV_NP.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/IFV_NP/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/IFV_NP/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>
+		
+		<jar 
+          jarfile="${distMet}/IT2FKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/IT2FKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/IT2FKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>
+		
+		<jar 
+          jarfile="${distMet}/GAFuzzyKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/GAFuzzyKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/GAFuzzyKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>
+		
+		<jar 
+          jarfile="${distMet}/FRNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/FRNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/FRNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/FRNN_FRS.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/FRNN_FRS/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/FRNN_FRS/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/FRNN_VQRS.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/FRNN_VQRS/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/FRNN_VQRS/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/CFKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/CFKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/CFKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>	
+		
+		<jar 
+          jarfile="${distMet}/PFKNN.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/PFKNN/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/PFKNN/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>			
 		
 		<!-- Fuzzy Rule Learning -->
 		

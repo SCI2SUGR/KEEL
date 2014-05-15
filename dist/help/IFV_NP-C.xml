@@ -1,0 +1,98 @@
+<method>
+
+	<name>Intuitionistic Fuzzy Version of K-Nearest Neighbors classifier</name>
+
+	<reference>  
+
+		<ref>S. Hadjitodorov, An intuitionistic fuzzy version of the nearest prototype classification method, based on a moving-of-pattern procedure, International Journal of General Systems, vol. 30, no. 2, pp. 155-165, 2000.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>
+IFV-NP is a prototypical version of IFSKNN, in which after obtaining the prototypes an iterative procedure is carried out to adjust the degrees of membership and nonmembership in accordance with the distances of each instance to the center of the classes.
+		</howWork>
+  
+		<parameterSpec>  
+			<param>Threshold: Threshold parameter for the prototype adjusting procedure.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: IFV_NP-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 1 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 2 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 3 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 6 : CORRECT=0.8 N/C=0.0 
+Fold 7 : CORRECT=0.8 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.14909090909090908 
+stddev Global Classification Error + N/C:
+0.1027875929098369 
+Correctly classified:
+0.850909090909091 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.8421052631578947 N/C=0.0 
+Fold 1 : CORRECT=0.8421052631578947 N/C=0.0 
+Fold 2 : CORRECT=0.8526315789473684 N/C=0.0 
+Fold 3 : CORRECT=0.8421052631578947 N/C=0.0 
+Fold 4 : CORRECT=0.8 N/C=0.0 
+Fold 5 : CORRECT=0.8526315789473684 N/C=0.0 
+Fold 6 : CORRECT=0.8541666666666666 N/C=0.0 
+Fold 7 : CORRECT=0.84375 N/C=0.0 
+Fold 8 : CORRECT=0.8333333333333334 N/C=0.0 
+Fold 9 : CORRECT=0.8125 N/C=0.0 
+Global Classification Error + N/C:
+0.16246710526315788 
+stddev Global Classification Error + N/C:
+0.016991160282314656 
+Correctly classified:
+0.8375328947368421 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

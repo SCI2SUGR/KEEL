@@ -1,0 +1,98 @@
+<method>
+
+	<name>Fuzzy Nearest Prototype classifier</name>
+
+	<reference>  
+
+		<ref>J. M. Keller, M. R. Gray, and J. A. Givens, A fuzzy k-nearest neighbor algorithm, IEEE Transactions on Systems, Man, and Cybernetics, vol. 15, no. 4, pp. 580-585, 1985.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>
+FuzzyNPC is a prototypical version of FuzzyKNN, where only one prototype per class is used (it is obtained as the mean of every instance of the class in the training data). This classifier is a faster but less accurate version of FuzzyKNN.
+		</howWork>
+  
+		<parameterSpec>  
+			<param>M: M parameter in the distance function.</param>
+		</parameterSpec>
+ 
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: FuzzyNPC-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 1 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 2 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 3 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 4 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 5 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 6 : CORRECT=0.8 N/C=0.0 
+Fold 7 : CORRECT=0.8 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.15818181818181815 
+stddev Global Classification Error + N/C:
+0.09272727272727276 
+Correctly classified:
+0.8418181818181818 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.8526315789473684 N/C=0.0 
+Fold 1 : CORRECT=0.8315789473684211 N/C=0.0 
+Fold 2 : CORRECT=0.8526315789473684 N/C=0.0 
+Fold 3 : CORRECT=0.8315789473684211 N/C=0.0 
+Fold 4 : CORRECT=0.8 N/C=0.0 
+Fold 5 : CORRECT=0.8421052631578947 N/C=0.0 
+Fold 6 : CORRECT=0.8541666666666666 N/C=0.0 
+Fold 7 : CORRECT=0.8333333333333334 N/C=0.0 
+Fold 8 : CORRECT=0.8333333333333334 N/C=0.0 
+Fold 9 : CORRECT=0.8020833333333334 N/C=0.0 
+Global Classification Error + N/C:
+0.166655701754386 
+stddev Global Classification Error + N/C:
+0.018302041545220568 
+Correctly classified:
+0.8333442982456141 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

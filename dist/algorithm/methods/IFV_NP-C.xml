@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>IFV_NP</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>Threshold</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.01</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.7</default>
+  </parameter>
+</algorithm_specification>

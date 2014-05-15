@@ -1,0 +1,103 @@
+<method>
+
+	<name>Fuzzy K-Nearest Neighbors classifier</name>
+
+	<reference>  
+
+		<ref>J. M. Keller, M. R. Gray, and J. A. Givens, A fuzzy k-nearest neighbor algorithm, IEEE Transactions on Systems, Man, and Cybernetics, vol. 15, no. 4, pp. 580-585, 1985.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>
+FuzzyKNN is an extension of the original k-NN classifier, focused on quantifying the typicalness of every neighbor as a class prototype and the distance between it and the test instances.
+FuzzyKNN works by assigning membership values to every training instance. These membership values denotes the degree at which the instance can be considered as a typical example of the class.
+They are used as weighting factors in the definition of the voting rule. The votes of each neighbor are finally added to obtain the final classification, as in the case of k-NN.
+		</howWork>
+  
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN voting rule.</param>
+			<param>M: M parameter in the distance function.</param>
+			<param>Initialization: Initialization mode.</param>
+			<param>k Value (init): K value used in the initialization process.</param>
+		</parameterSpec>
+ 
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: FuzzyKNN-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 1 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 2 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 3 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 6 : CORRECT=0.9 N/C=0.0 
+Fold 7 : CORRECT=0.9 N/C=0.0 
+Fold 8 : CORRECT=0.9 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.13000000000000003 
+stddev Global Classification Error + N/C:
+0.09172812865624619 
+Correctly classified:
+0.87 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.8842105263157894 N/C=0.0 
+Fold 1 : CORRECT=0.8631578947368421 N/C=0.0 
+Fold 2 : CORRECT=0.8947368421052632 N/C=0.0 
+Fold 3 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 4 : CORRECT=0.8631578947368421 N/C=0.0 
+Fold 5 : CORRECT=0.8947368421052632 N/C=0.0 
+Fold 6 : CORRECT=0.8541666666666666 N/C=0.0 
+Fold 7 : CORRECT=0.8645833333333334 N/C=0.0 
+Fold 8 : CORRECT=0.8645833333333334 N/C=0.0 
+Fold 9 : CORRECT=0.8541666666666666 N/C=0.0 
+Global Classification Error + N/C:
+0.12888157894736843 
+stddev Global Classification Error + N/C:
+0.01442402432351804 
+Correctly classified:
+0.8711184210526316 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

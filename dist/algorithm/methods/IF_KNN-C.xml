@@ -1,0 +1,60 @@
+<algorithm_specification>
+  <name>Intuitionistic Fuzzy K Nearest Neighbors Classifier </name>
+  <nParameters>6</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>K Value</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+  <parameter>
+    <name>mA</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.6</default>
+  </parameter>
+  <parameter>
+    <name>vA</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.4</default>
+  </parameter>
+  <parameter>
+    <name>mR</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.3</default>
+  </parameter>
+  <parameter>
+    <name>vR</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0.0</lowerB>
+      <upperB>1.0</upperB>
+    </domain>
+    <default>0.7</default>
+  </parameter>
+   <parameter>
+    <name>k Value</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>5</default>
+  </parameter>
+</algorithm_specification>

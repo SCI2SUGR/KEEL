@@ -1,0 +1,99 @@
+<method>
+
+	<name>Variance Weighted Fuzzy K-Nearest Neighbors classifier</name>
+
+	<reference>  
+
+		<ref>J. H. Han and Y. K. Kim, A fuzzy k-nn algorithm using weights from the variance of membership values, in Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition (IEEE CVPR'99), Ft. Collins, Colorado, USA, June 23-25, 1999, pp. 394-399.</ref>
+		
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>
+VWFKNN is a modification of FuzzyKNN for which the usual class membership values of the neighbors of a training instance are considered to estimate the final membership. In this manner, the weights can model a discriminant function identifying the different boundaries between classes in the training set.
+		</howWork>
+  
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN voting rule.</param>
+			<param>k Value (init): K value used in the initialization process.</param>
+		</parameterSpec>
+ 
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: VWFuzzyKNN-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 1 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 2 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 3 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 6 : CORRECT=0.9 N/C=0.0 
+Fold 7 : CORRECT=0.9 N/C=0.0 
+Fold 8 : CORRECT=0.8 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.13090909090909092 
+stddev Global Classification Error + N/C:
+0.09326049893259751 
+Correctly classified:
+0.8690909090909091 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.9157894736842105 N/C=0.0 
+Fold 1 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 2 : CORRECT=0.9157894736842105 N/C=0.0 
+Fold 3 : CORRECT=0.9052631578947369 N/C=0.0 
+Fold 4 : CORRECT=0.8842105263157894 N/C=0.0 
+Fold 5 : CORRECT=0.9157894736842105 N/C=0.0 
+Fold 6 : CORRECT=0.8958333333333334 N/C=0.0 
+Fold 7 : CORRECT=0.8958333333333334 N/C=0.0 
+Fold 8 : CORRECT=0.8854166666666666 N/C=0.0 
+Fold 9 : CORRECT=0.8958333333333334 N/C=0.0 
+Global Classification Error + N/C:
+0.10165570175438596 
+stddev Global Classification Error + N/C:
+0.013981398302728536 
+Correctly classified:
+0.898344298245614 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

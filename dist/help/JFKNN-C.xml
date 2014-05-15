@@ -1,0 +1,97 @@
+<method>
+
+	<name>Jozwik Fuzzy K-Nearest Neighbor algorithm</name>
+
+	<reference>  
+
+		<ref>A. Jowik, A learning scheme for a fuzzy k-nn rule, Pattern Recognition Letters, vol. 1, pp. 287-289, 1983.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>
+JFKNN is based on a learning scheme of class memberships, providing to each training instance a membership array which defines its fuzzy membership to each class. After the learning process, the final classification is performed similarly to k-NN, but every neighbor uses its membership array for the voting rule, instead of just giving one vote as in the crisp k-NN.
+		</howWork>
+  
+		<parameterSpec>  
+		</parameterSpec>
+ 
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: JFKNN-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 1 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 2 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 3 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 6 : CORRECT=0.9 N/C=0.0 
+Fold 7 : CORRECT=0.9 N/C=0.0 
+Fold 8 : CORRECT=0.9 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.12090909090909092 
+stddev Global Classification Error + N/C:
+0.09064051235148023 
+Correctly classified:
+0.879090909090909 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.9052631578947369 N/C=0.0 
+Fold 1 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 2 : CORRECT=0.8947368421052632 N/C=0.0 
+Fold 3 : CORRECT=0.8842105263157894 N/C=0.0 
+Fold 4 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 5 : CORRECT=0.9052631578947369 N/C=0.0 
+Fold 6 : CORRECT=0.8645833333333334 N/C=0.0 
+Fold 7 : CORRECT=0.8854166666666666 N/C=0.0 
+Fold 8 : CORRECT=0.8854166666666666 N/C=0.0 
+Fold 9 : CORRECT=0.875 N/C=0.0 
+Global Classification Error + N/C:
+0.11527412280701754 
+stddev Global Classification Error + N/C:
+0.012996733236883669 
+Correctly classified:
+0.8847258771929825 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

@@ -1,0 +1,101 @@
+<method>
+
+	<name>Fuzzy C-Means K-Nearest Neighbors classifier</name>
+
+	<reference>  
+
+		<ref>J. Bedzek and S. K. Chuah, Generalized k-nearest neighbor rules, Fuzzy Sets and Systems, vol. 18, pp. 237-256, 1986.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>In FCMKNN, Fuzzy C-Means is applied to determine the membership values of the training data. After obtaining the memberships values (they are obtained as the membership values to every cluster representing a class of the problem), the rest of the algorithm works in the same way that FuzzyKNN.
+		</howWork>
+  
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN voting rule.</param>
+			<param>M: M parameter in the distance function.</param>
+			<param>Max Iterations: Number of iterations of Fuzzy C-Means.</param>
+			<param>Delta: Minimum improvement in Fuzzy C-Means.</param>	
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: FCMKNN-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.18181818181818177 N/C=0.0 
+Fold 1 : CORRECT=0.18181818181818177 N/C=0.0 
+Fold 2 : CORRECT=0.2727272727272727 N/C=0.0 
+Fold 3 : CORRECT=0.36363636363636365 N/C=0.0 
+Fold 4 : CORRECT=0.09090909090909094 N/C=0.0 
+Fold 5 : CORRECT=0.2727272727272727 N/C=0.0 
+Fold 6 : CORRECT=0.19999999999999996 N/C=0.0 
+Fold 7 : CORRECT=0.19999999999999996 N/C=0.0 
+Fold 8 : CORRECT=0.0 N/C=0.0 
+Fold 9 : CORRECT=0.0 N/C=0.0 
+Global Classification Error + N/C:
+0.8236363636363636 
+stddev Global Classification Error + N/C:
+0.11150362259245085 
+Correctly classified:
+0.1763636363636364 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.18947368421052635 N/C=0.0 
+Fold 1 : CORRECT=0.17894736842105263 N/C=0.0 
+Fold 2 : CORRECT=0.16842105263157892 N/C=0.0 
+Fold 3 : CORRECT=0.16842105263157892 N/C=0.0 
+Fold 4 : CORRECT=0.18947368421052635 N/C=0.0 
+Fold 5 : CORRECT=0.17894736842105263 N/C=0.0 
+Fold 6 : CORRECT=0.1875 N/C=0.0 
+Fold 7 : CORRECT=0.15625 N/C=0.0 
+Fold 8 : CORRECT=0.1875 N/C=0.0 
+Fold 9 : CORRECT=0.20833333333333337 N/C=0.0 
+Global Classification Error + N/C:
+0.8186732456140351 
+stddev Global Classification Error + N/C:
+0.013826058735644704 
+Correctly classified:
+0.1813267543859649 
+Global N/C:
+0.0 
+
+
+</example>
+
+</method>

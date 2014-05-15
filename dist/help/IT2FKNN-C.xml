@@ -1,0 +1,100 @@
+<method>
+
+	<name>Interval Type-2 Fuzzy K-Nearest Neighbors classifier</name>
+
+	<reference>  
+
+		<ref>F. Chung-Hoon and C. Hwang, An interval type-2 fuzzy k-nearest neighbor, in Proceedings of the 12th IEEE International Conference on Fuzzy Systems (IEEE FUZZY'03), St. Louis, Missouri, USA, May 25-28, 2003, pp. 802-807.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>
+This classifier uses type-2 interval fuzzy sets to represent the membership to the classes of the training instances. In this way, several values for the parameter kInit can be considered, thus including flexibility in the representation of the memberships computed by considering distinct choices. Type-2 fuzzy sets are then built considering all the different memberships computed, and then a type reduction operation is performed to obtain a final, combined value, representative of all the choices considered initially. The algorithm is similar to FuzzyKNN with respect to the rest of phases.
+		</howWork>
+  
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN voting rule.</param>
+			<param>M: M parameter in the distance function.</param>
+			<param>k Max: Maximum K value considered in the intervals.</param>
+		</parameterSpec>
+ 
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: IT2FKNN-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 1 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 2 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 3 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 6 : CORRECT=0.9 N/C=0.0 
+Fold 7 : CORRECT=0.9 N/C=0.0 
+Fold 8 : CORRECT=0.9 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.13000000000000003 
+stddev Global Classification Error + N/C:
+0.09172812865624619 
+Correctly classified:
+0.87 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.8842105263157894 N/C=0.0 
+Fold 1 : CORRECT=0.8631578947368421 N/C=0.0 
+Fold 2 : CORRECT=0.8842105263157894 N/C=0.0 
+Fold 3 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 4 : CORRECT=0.8526315789473684 N/C=0.0 
+Fold 5 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 6 : CORRECT=0.8541666666666666 N/C=0.0 
+Fold 7 : CORRECT=0.875 N/C=0.0 
+Fold 8 : CORRECT=0.8541666666666666 N/C=0.0 
+Fold 9 : CORRECT=0.8541666666666666 N/C=0.0 
+Global Classification Error + N/C:
+0.13309210526315787 
+stddev Global Classification Error + N/C:
+0.012087073958532932 
+Correctly classified:
+0.8669078947368422 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

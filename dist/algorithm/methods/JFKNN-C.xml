@@ -1,0 +1,6 @@
+<algorithm_specification>
+  <name>Jozwik Fuzzy K Nearest Neighbors Classifier</name>
+  <nParameters>0</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+</algorithm_specification>

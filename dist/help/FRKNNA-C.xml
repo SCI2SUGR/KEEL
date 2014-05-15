@@ -1,0 +1,98 @@
+<method>
+
+	<name>Fuzzy Rough K-Nearest Neighbors Approach</name>
+
+	<reference>  
+
+		<ref>H. Bian and L. Mazlack, Fuzzy-rough nearest neighbor classification approach, in Proceedings of the 22th International Conference of the North American Fuzzy Information Processing Society (NAFIPS'03),Chicago, Illinois, USA, July 24-26, 2003, pp. 500-505.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>FRKNNA incorporates the lower and upper approximations using the memberships obtained by the same method that FuzzyKNN. The decision rule assigns the new instance to the class whose difference between the lower and upper approximation is maximum.
+		</howWork>
+  
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN voting rule.</param>
+			<param>k Value (init): K value used in the initialization process.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: FRKNNA-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 1 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 2 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 3 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 6 : CORRECT=0.9 N/C=0.0 
+Fold 7 : CORRECT=0.9 N/C=0.0 
+Fold 8 : CORRECT=0.8 N/C=0.0 
+Fold 9 : CORRECT=0.9 N/C=0.0 
+Global Classification Error + N/C:
+0.15909090909090912 
+stddev Global Classification Error + N/C:
+0.09020179397530642 
+Correctly classified:
+0.8409090909090908 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.8631578947368421 N/C=0.0 
+Fold 1 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 2 : CORRECT=0.8631578947368421 N/C=0.0 
+Fold 3 : CORRECT=0.8526315789473684 N/C=0.0 
+Fold 4 : CORRECT=0.8315789473684211 N/C=0.0 
+Fold 5 : CORRECT=0.8315789473684211 N/C=0.0 
+Fold 6 : CORRECT=0.8333333333333334 N/C=0.0 
+Fold 7 : CORRECT=0.84375 N/C=0.0 
+Fold 8 : CORRECT=0.8125 N/C=0.0 
+Fold 9 : CORRECT=0.8333333333333334 N/C=0.0 
+Global Classification Error + N/C:
+0.15612938596491227 
+stddev Global Classification Error + N/C:
+0.017938707078327853 
+Correctly classified:
+0.8438706140350878 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

@@ -1,0 +1,15 @@
+<algorithm_specification>
+  <name>Pruned Fuzzy K Nearest Neighbors Classifier</name>
+  <nParameters>1</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>K Value</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>3</default>
+  </parameter>
+</algorithm_specification>

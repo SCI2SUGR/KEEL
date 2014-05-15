@@ -1,0 +1,102 @@
+<method>
+
+	<name>Intuitionistic Fuzzy K-Nearest Neighbors classifier</name>
+
+	<reference>  
+
+		<ref>L. I. Kuncheva, An intuitionistic fuzzy k-nearest neighbors rule, Notes on Intuitionistic Fuzzy Sets, vol. 1, pp. 56-60, 1995.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>
+In IF-KNN, Intuitionistic fuzzy sets are incorporated into the voting rule, where votes are weighted using the concepts of membership and nonmembership to a certain class: If the membership of a voting instance is above a lower threshold and the nonmembership below a higher threshold , the vote is considered as positive. On the other hand, if the nonmembership of a voting instance is above a lower threshold and the membership is below a positive threshold, the vote is considered as negative. Otherwise, the vote is null.
+		</howWork>
+  
+		<parameterSpec>  
+			<param>K value: K parameter in the k-NN rule.</param>
+			<param>mA: Decision rule parameter.</param>
+			<param>vA: Decision rule parameter.</param>
+			<param>mR: Decision rule parameter.</param>
+			<param>vR: Decision rule parameter.</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: IF_KNN-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 1 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 2 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 3 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 6 : CORRECT=0.9 N/C=0.0 
+Fold 7 : CORRECT=0.9 N/C=0.0 
+Fold 8 : CORRECT=0.9 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.12090909090909092 
+stddev Global Classification Error + N/C:
+0.09064051235148023 
+Correctly classified:
+0.879090909090909 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.8947368421052632 N/C=0.0 
+Fold 1 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 2 : CORRECT=0.8842105263157894 N/C=0.0 
+Fold 3 : CORRECT=0.8736842105263158 N/C=0.0 
+Fold 4 : CORRECT=0.8631578947368421 N/C=0.0 
+Fold 5 : CORRECT=0.8947368421052632 N/C=0.0 
+Fold 6 : CORRECT=0.875 N/C=0.0 
+Fold 7 : CORRECT=0.875 N/C=0.0 
+Fold 8 : CORRECT=0.8645833333333334 N/C=0.0 
+Fold 9 : CORRECT=0.8645833333333334 N/C=0.0 
+Global Classification Error + N/C:
+0.1236622807017544 
+stddev Global Classification Error + N/C:
+0.010985156749959023 
+Correctly classified:
+0.8763377192982456 
+Global N/C:
+0.0 
+
+</example>
+
+</method>

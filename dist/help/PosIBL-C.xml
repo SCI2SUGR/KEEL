@@ -1,0 +1,99 @@
+<method>
+
+	<name>Possibilistic Instance Based Learning</name>
+
+	<reference>  
+
+		<ref>E. Hullermeier, Possibilistic instance-based learning, Artificial Intelligence, vol. 148, no. 1-2, pp. 335-383, 2003.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>
+PosIBL is a nearest neighbor classifier based on Possibilistic theory. Distances computed between training instances and a new instance to be classified are weighted through a kernel function, dependent of the minimum distance of the training instance to its nearest enemy (the nearest training instance of a different class).
+		</howWork>
+  
+		<parameterSpec>  
+			<param>BETA: Neighborhood limit threshold.</param>
+		</parameterSpec>
+ 
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: PosIBL-C
+Dataset: appendicitis 
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After the execution of RunKeel.jar we can see into the Vis-Clas-Check results' file the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= appendicitis 
+Fold 0 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 1 : CORRECT=0.6363636363636364 N/C=0.0 
+Fold 2 : CORRECT=0.8181818181818181 N/C=0.0 
+Fold 3 : CORRECT=0.9090909090909091 N/C=0.0 
+Fold 4 : CORRECT=0.7272727272727273 N/C=0.0 
+Fold 5 : CORRECT=0.6363636363636364 N/C=0.0 
+Fold 6 : CORRECT=0.7 N/C=0.0 
+Fold 7 : CORRECT=0.8 N/C=0.0 
+Fold 8 : CORRECT=0.8 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.2063636363636364 
+stddev Global Classification Error + N/C:
+0.11513915404148335 
+Correctly classified:
+0.7936363636363636 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= appendicitis 
+Summary of data, Classifiers: appendicitis 
+Fold 0 : CORRECT=0.8105263157894737 N/C=0.0 
+Fold 1 : CORRECT=0.8210526315789474 N/C=0.0 
+Fold 2 : CORRECT=0.8 N/C=0.0 
+Fold 3 : CORRECT=0.7789473684210526 N/C=0.0 
+Fold 4 : CORRECT=0.8 N/C=0.0 
+Fold 5 : CORRECT=0.8315789473684211 N/C=0.0 
+Fold 6 : CORRECT=0.8125 N/C=0.0 
+Fold 7 : CORRECT=0.8020833333333334 N/C=0.0 
+Fold 8 : CORRECT=0.8229166666666666 N/C=0.0 
+Fold 9 : CORRECT=0.78125 N/C=0.0 
+Global Classification Error + N/C:
+0.19391447368421053 
+stddev Global Classification Error + N/C:
+0.01631395083136566 
+Correctly classified:
+0.8060855263157894 
+Global N/C:
+0.0 
+
+
+</example>
+
+</method>
