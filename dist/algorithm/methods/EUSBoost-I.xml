@@ -1,0 +1,56 @@
+<algorithm_specification>
+  <name>EUSBoost algorithm</name>
+  <nParameters>7</nParameters>
+  <seed>1</seed>
+  <nOutput>1</nOutput>
+  <parameter>
+    <name>pruned</name>
+    <type>list</type>
+    <domain>
+      <item>TRUE</item>
+      <item>FALSE</item>
+    </domain>
+    <default>TRUE</default>
+  </parameter>
+  <parameter>
+    <name>confidence</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1</upperB>
+    </domain>
+    <default>0.25</default>
+  </parameter>
+  <parameter>
+    <name>instancesPerLeaf</name>
+    <type>integer</type>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Number of Classifiers</name>
+    <type>integer</type>
+    <default>10</default>
+  </parameter>
+  <parameter>
+    <name>Algorithm</name>
+    <type>list</type>
+    <domain>
+      <item>ERUSBOOST</item>
+    </domain>
+    <default>ERUSBOOST</default>
+  </parameter>
+  <parameter>
+    <name>Train Method</name>
+    <type>list</type>
+    <domain>
+      <item>NORESAMPLING</item>
+      <item>RESAMPLING</item>
+    </domain>
+    <default>NORESAMPLING</default>
+  </parameter>
+   <parameter>
+    <name>% majority class</name>
+    <type>integer</type>
+    <default>50</default>
+  </parameter>
+</algorithm_specification>

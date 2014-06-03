@@ -30,57 +30,62 @@
 package keel.Algorithms.ImbalancedClassification.Ensembles;
 
 /**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
+ * <p>Title: Selector</p>
+ * <p>Description: This class implements an attribute condition of a rule
+ * <p>Company: KEEL </p>
+ * @author Alberto Fernandez (University of Jaen) 11/10/2012
+ * @version 1.1
+ * @since JDK1.6
  */
 
 import org.core.Randomize;
 
 public class Selector {
 
-  int atributo; //posicion del atributo/variable en el dataset
-  int operador; // =, <= � >
-  public static int IGUAL = 0;
-  public static int MENOR_IGUAL = 1;
-  public static int MAYOR = 2;
-  double valor; //si el atributo es real
-  String valoresNom[]; //si el atributo es nominal (para imprimir)
-  double valores[]; //si el atributo es nominal (para comprobar)
-  String nombreAtributos[];
+  int attribute; //position of the attribute/variable in the dataset
+  int operator; // =, <= or >
+  public static int EQUAL = 0;
+  public static int LESS_EQUAL = 1;
+  public static int GREATER = 2;
+  double value; //if attribute is real
+  String nominalValues[]; //if attribute is nominal (for printing)
+  double values[]; //if attribute is nominal (checking)
+  String attNames[];
   myDataset train;
 
+	/**
+   * Defalt constructor
+   */
   public Selector() {
   }
 
-  public Selector(String atributo, String operador, String valor) {
-    //atributo es del tipo AttX con X == posicion del atributo
-    String numero = new String("" + atributo.charAt(3));
-    if (atributo.length() > 4) {
-      numero += atributo.charAt(4);
+  /**
+   * Parameter constructor
+   * @param attribute name of the variable
+   * @param operator operator type
+   * @param value value of the condition
+   */
+  public Selector(String attribute, String operator, String value) {
+    //attribute is type AttX with X == attribute's position
+    String numero = new String("" + attribute.charAt(3));
+    if (attribute.length() > 4) {
+      numero += attribute.charAt(4);
     }
-    this.atributo = Integer.parseInt(numero);
-    valoresNom = new String[1];
-    valores = new double[1];
-    if (operador.equalsIgnoreCase("=")) {
-      this.operador = IGUAL;
-      valoresNom[0] = valor;
-      valores[0] = myDataset.valorReal(this.atributo,valor);
+    this.attribute = Integer.parseInt(numero);
+    nominalValues = new String[1];
+    values = new double[1];
+    if (operator.equalsIgnoreCase("=")) {
+      this.operator = EQUAL;
+      nominalValues[0] = value;
+      values[0] = myDataset.valorReal(this.attribute,value);
     }
-    else if (operador.equalsIgnoreCase("<=")) {
-      this.operador = MENOR_IGUAL;
-      this.valor = Double.parseDouble(valor);
+    else if (operator.equalsIgnoreCase("<=")) {
+      this.operator = LESS_EQUAL;
+      this.value = Double.parseDouble(value);
     }
-    else if (operador.equalsIgnoreCase(">")) {
-      this.operador = MAYOR;
-      this.valor = Double.parseDouble(valor);
+    else if (operator.equalsIgnoreCase(">")) {
+      this.operator = GREATER;
+      this.value = Double.parseDouble(value);
     }
     else {
       System.err.println("There was an error in the parsing of the tree");
@@ -88,142 +93,106 @@ public class Selector {
     }
   }
 
-  public Selector(int atributo, myDataset train){
+  /**
+   * Parameter constructor
+   * @param attribute variable position
+   * @param train full training set
+   */
+  public Selector(int attribute, myDataset train){
     this.train = train;
-    this.atributo = atributo;
+    this.attribute = attribute;
     adjuntaNombres(train.nombres());
-    if (train.getTipo(atributo) == train.NOMINAL){
-      this.operador = IGUAL;
-      int totalNominales = train.totalNominales(atributo);
+    if (train.getTipo(attribute) == train.NOMINAL){
+      this.operator = EQUAL;
+      int totalNominales = train.totalNominales(attribute);
       int nominalesEscogidos = Randomize.RandintClosed(1,totalNominales);
-      valoresNom = new String[nominalesEscogidos];
-      valores = new double[nominalesEscogidos];
+      nominalValues = new String[nominalesEscogidos];
+      values = new double[nominalesEscogidos];
       int [] noSeleccionados = new int[totalNominales];
       for (int i = 0; i < totalNominales; i++){
         noSeleccionados[i] = i;
       }
-      for (int i = 0; i < valoresNom.length; i++){
+      for (int i = 0; i < nominalValues.length; i++){
         int seleccion = Randomize.RandintClosed(0,totalNominales-1);
-        valores[i] = 1.0*noSeleccionados[seleccion];
-        valoresNom[i] = train.valorNominal(atributo,valores[i]);
+        values[i] = 1.0*noSeleccionados[seleccion];
+        nominalValues[i] = train.valorNominal(attribute,values[i]);
         noSeleccionados[seleccion] = noSeleccionados[totalNominales-1];
         totalNominales--;
       }
     }else{
-      valoresNom = new String[1];
-      valores = new double[1];
-      this.operador = Randomize.RandintClosed(this.MENOR_IGUAL, this.MAYOR);
+      nominalValues = new String[1];
+      values = new double[1];
+      this.operator = Randomize.RandintClosed(this.LESS_EQUAL, this.GREATER);
       int ejemplo = Randomize.RandintClosed(0, train.size()-1);
-      this.valor = train.getExample(ejemplo)[atributo];
+      this.value = train.getExample(ejemplo)[attribute];
     }
   }
 
-  public void adjuntaNombres(String[] atributos) {
-    nombreAtributos = new String[atributos.length];
-    nombreAtributos = atributos.clone();
+  public void adjuntaNombres(String[] attributes) {
+    attNames = new String[attributes.length];
+    attNames = attributes.clone();
   }
 
   public String printString() {
     String cadena = new String("");
-    cadena += " " + nombreAtributos[atributo];
-    if (operador == IGUAL) {
+    cadena += " " + attNames[attribute];
+    if (operator == EQUAL) {
       cadena += " = {";
       int i;
-      for (i = 0; i < valores.length - 1; i++) {
-        cadena += valoresNom[i] + ", ";
+      for (i = 0; i < values.length - 1; i++) {
+        cadena += nominalValues[i] + ", ";
       }
-      cadena += valoresNom[i] + "} ";
+      cadena += nominalValues[i] + "} ";
     }
-    else if (operador == MENOR_IGUAL) {
-      cadena += " <= " + valor + " ";
+    else if (operator == LESS_EQUAL) {
+      cadena += " <= " + value + " ";
     }
     else {
-      cadena += " > " + valor + " ";
+      cadena += " > " + value + " ";
     }
     return cadena;
   }
 
-  public Selector copia(){
+  /**
+   * Creates a copy of the Selector
+   * @return new copy of Selector
+   */
+  public Selector copy(){
     Selector s = new Selector();
-    s.atributo = atributo;
-    s.operador =  operador; // =, <= � >
-    s.valor = valor;
-    s.valoresNom = new String[valoresNom.length];
-    s.valoresNom = valoresNom.clone();
-    s.valores = new double[valores.length];
-    s.valores = valores.clone();
-    s.nombreAtributos = new String[nombreAtributos.length];
-    s.nombreAtributos = nombreAtributos.clone();
+    s.attribute = attribute;
+    s.operator =  operator; // =, <= � >
+    s.value = value;
+    s.nominalValues = new String[nominalValues.length];
+    s.nominalValues = nominalValues.clone();
+    s.values = new double[values.length];
+    s.values = values.clone();
+    s.attNames = new String[attNames.length];
+    s.attNames = attNames.clone();
     s.train = this.train;
     return s;
   }
 
-  public boolean cubre(double[] ejemplo) {
+  /**
+   * Checks if the examples is covered by the selector
+   * @param example
+   * @return true if the selector covers the example. False otherwise.
+   */
+  public boolean covers(double[] example) {
     boolean cubierto = false;
-    if (this.operador == IGUAL) {
-      for (int i = 0; i < valores.length; i++) { //Si es igual a alguno
-        cubierto = cubierto || (ejemplo[atributo] == valores[i]);
+    if (this.operator == EQUAL) {
+      for (int i = 0; i < values.length; i++) { //Si es EQUAL a alguno
+        cubierto = cubierto || (example[attribute] == values[i]);
       }
     }
-    else if (this.operador == MENOR_IGUAL){
-      cubierto = ejemplo[atributo] <= valor;
+    else if (this.operator == LESS_EQUAL){
+      cubierto = example[attribute] <= value;
     }else{
-      cubierto = ejemplo[atributo] > valor;
+      cubierto = example[attribute] > value;
     }
     return cubierto;
   }
 
-  /**
-   * Hago los cambios minimos en el selector para que cubra el ejemplo
-   * @param ejemplo double[] ejemplo a cubrir
-   */
-  public void modifica(double [] ejemplo){
-    if (this.operador == IGUAL){
-      double [] aux = valores.clone();
-      String [] auxNom = valoresNom.clone();
-      valores = new double[aux.length+1];
-      valoresNom = new String[auxNom.length+1];
-      int i;
-      for (i = 0; i < aux.length; i++){
-        valores[i] = aux[i];
-        valoresNom[i] = auxNom[i];
-      }
-      valores[i] = ejemplo[atributo];
-      valoresNom[i] = train.valorNominal(atributo, valores[i]);
-    }else if (this.operador == MENOR_IGUAL){
-      valor = ejemplo[atributo];
-    }else{
-      valor = ejemplo[atributo]-1.0;//uffff
-    }
-  }
-
-  public int getAtributo(){
-    return atributo;
-  }
-
-  /**
-   * Inventada del 15
-   */
-  public void mutar(){
-    if (operador == this.IGUAL){
-      int totalNominales = train.totalNominales(atributo);
-      int nominalesEscogidos = Randomize.RandintClosed(1,totalNominales);
-      valoresNom = new String[nominalesEscogidos];
-      valores = new double[nominalesEscogidos];
-      int [] noSeleccionados = new int[totalNominales];
-      for (int i = 0; i < totalNominales; i++){
-        noSeleccionados[i] = i;
-      }
-      for (int i = 0; i < valoresNom.length; i++){
-        int seleccion = Randomize.RandintClosed(0, totalNominales-1);
-        valores[i] = 1.0 * noSeleccionados[seleccion];
-        valoresNom[i] = train.valorNominal(atributo, valores[i]);
-        noSeleccionados[seleccion] = noSeleccionados[totalNominales - 1];
-        totalNominales--;
-      }
-    }else{
-      int ejemplo = Randomize.RandintClosed(0, train.size()-1);
-      this.valor = train.getExample(ejemplo)[atributo];
-    }
+  public int getattribute(){
+    return attribute;
   }
 }

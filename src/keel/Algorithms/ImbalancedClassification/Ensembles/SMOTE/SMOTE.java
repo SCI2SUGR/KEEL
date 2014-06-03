@@ -44,6 +44,7 @@ import keel.Dataset.*;
 import org.core.*;
 
 import java.util.StringTokenizer;
+import keel.Algorithms.ImbalancedClassification.Ensembles.multi_C45;
 
 public class SMOTE extends Metodo {
 
@@ -73,8 +74,8 @@ public class SMOTE extends Metodo {
      this.ASMO = ASMO;
      distanceEu = distance.equalsIgnoreCase("Euclidean")?true:false;
      ficheroSalida = new String[2];
-     ficheroSalida[0] = "train.tra";
-     ficheroSalida[1] = "train.tst";
+     ficheroSalida[0] = multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra";
+     ficheroSalida[1] = multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tst";
 
        try {
          /*Normalize and check the data*/
@@ -141,8 +142,7 @@ public class SMOTE extends Metodo {
             SD += realTrain[j][i] * realTrain[j][i];
           }
           media /= (double) realTrain.length;
-          stdDev[i] = Math.sqrt( (SD / ( (double) realTrain.length)) -
-                                (media * media));
+          stdDev[i] = Math.sqrt( Math.abs((SD / ( (double) realTrain.length)) - (media * media)));
         }
       }
     }
@@ -203,7 +203,7 @@ public class SMOTE extends Metodo {
     }
 
     /*Randomize the instance presentation*/
-    Randomize.setSeed (semilla);
+    //Randomize.setSeed (semilla);
     for (i=0; i<positives.length; i++) {
       tmp = positives[i];
       pos = Randomize.Randint(0,positives.length-1);

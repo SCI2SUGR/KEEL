@@ -123,6 +123,30 @@
     </output>
   </method>
   <method>
+    <name>AdaBoost.NC-I</name>
+    <family>Ensembles for Class Imbalance</family>
+    <jar_file>Ensembles-I.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>  
+  <method>
     <name>AdaBoostM1-I</name>
     <family>Ensembles for Class Imbalance</family>
     <jar_file>Ensembles-I.jar</jar_file>
@@ -290,7 +314,31 @@
       <multioutput>No</multioutput>
     </output>
   </method>
-    <method>
+  <method>
+    <name>EUSBoost-I</name>
+    <family>Ensembles for Class Imbalance</family>
+    <jar_file>Ensembles-I.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>  
+  <method>
     <name>IIVotes-I</name>
     <family>Ensembles for Class Imbalance</family>
     <jar_file>Ensembles-I.jar</jar_file>

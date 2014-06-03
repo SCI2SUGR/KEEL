@@ -1,0 +1,38 @@
+<method>
+
+    <name>AdaBoost.NC</name>
+
+   	<reference><ref>S. Wang and X. Yao. Multiclass imbalance problems: analysis and potential solutions, IEEE Transactions on Man, Systems and Cybernetics Part B, vol. 42, no. 4, pp. 1119-1130, 2012.</ref></reference>
+
+    <generalDescription>  
+
+        <type>Ensemble learning Boosting approach with C4.5 as baseline algorithm</type>
+
+        <objective>To determine a set of decision trees that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.</objective>
+
+        <howWork>
+        This approach is based on AdaBoost algorithm, in combination with negative correlation learning (NCL). 
+        The main procedure is quite similar to any boosting approach, in which the weights of the examples are updated with an ad-hoc formula depending on the classification or misclassification given by both the classifier learned in the current iteration, and the global ensemble. Initial weights in this boosting approach are assigned in inverse proportion to the number of instances in the     corresponding class.
+        </howWork>
+
+        <parameterSpec>  
+            <param>prune: whether to prune or not prune the tree. It is a boolean value that determines if the algorithm applies a prune process after building the tree</param>
+            <param>confidence: is the confidence level. It is a float value that determines what is the minimal confidence that must has a leaf in order to can be considered in the tree</param>
+            <param>minItemsets: is the minimum number of item-sets per leaf. It is an integer value that determines how much data instances must contain a leaf in order to can be created</param>
+            <param>Number of Classifiers: is the maximum number of iterations that the boosting procedure will be executed</param>
+            <param>Lambda: </param>
+        </parameterSpec>
+
+        <properties>
+            <continuous>Yes</continuous>
+            <discretized>Yes</discretized>
+            <integer>Yes</integer>
+            <nominal>Yes</nominal>
+            <valueLess>No</valueLess>
+            <impreciseValue>No</impreciseValue>
+        </properties>
+
+    </generalDescription>
+<example></example>
+
+</method>

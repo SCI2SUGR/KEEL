@@ -37,7 +37,7 @@ package keel.Algorithms.ImbalancedClassification.Ensembles;
  *
  * <p>Company: KEEL </p>
  *
- * @author Alberto Fern�ndez
+ * @author Alberto Fernandez
  * @version 1.0
  */
 
@@ -67,7 +67,7 @@ public class myDataset {
   private double[] emin; //min value of an attribute
 
   private int nData; // Number of examples
-  private int nVars; // Numer of variables
+  private int nVars; // Number of variables
   private int nInputs; // Number of inputs
   private int nClasses; // Number of outputs
   private int [] list_of_classes;
@@ -77,6 +77,7 @@ public class myDataset {
   private double stdev[], average[]; //standard deviation and average of each attribute
   private double stdevPerClass[][], averagePerClass[][];
   private int instancesCl[];
+  private double ir[];
 
   /**
    * Init a new set of instances
@@ -1116,6 +1117,29 @@ public class myDataset {
 
   public int numberInstances(int clas) {
     return instancesCl[clas];
+  }
+  
+  public void computeIR(){
+	  ir = new double[nClasses];
+	  double max = 0;
+	  for (int i = 0; i < ir.length; i++){
+		  if (instancesCl[i] > 0){
+			  ir[i] = 1.0*nData/instancesCl[i];
+			  if (ir[i] > max){
+				  max = ir[i];
+			  }
+		  	//System.out.println("Clase ("+i+"): "+ir[i]+" / "+instancesCl[i]);
+		  }
+	  }
+	  for (int i = 0; i < ir.length; i++){
+		  ir[i] /= max;
+		  //System.err.println("Clase ("+i+"): "+ir[i]);
+	  }
+	  //System.exit(0);
+  }
+  
+  public double getIR(int clase){
+	  return ir[clase];
   }
 
   public int numberValues(int attribute) {

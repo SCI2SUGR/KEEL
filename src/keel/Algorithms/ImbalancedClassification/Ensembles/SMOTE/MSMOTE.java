@@ -38,12 +38,14 @@
 
 package keel.Algorithms.ImbalancedClassification.Ensembles.SMOTE;
 
+import java.util.Arrays;
 import keel.Algorithms.ImbalancedClassification.Ensembles.Basic.*;
 import keel.Dataset.Attribute;
 
 import org.core.*;
 
 import java.util.StringTokenizer;
+import keel.Algorithms.ImbalancedClassification.Ensembles.multi_C45;
 import keel.Dataset.*;
 
 public class MSMOTE extends Metodo {
@@ -74,8 +76,8 @@ public class MSMOTE extends Metodo {
      this.smoting = smoting;
      distanceEu = distance.equalsIgnoreCase("Euclidean")?true:false;
      ficheroSalida = new String[2];
-     ficheroSalida[0] = "train.tra";
-     ficheroSalida[1] = "train.tst";
+     ficheroSalida[0] = multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra";
+     ficheroSalida[1] = multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tst";
 
        try {
          /*Normalize and check the data*/
@@ -142,8 +144,7 @@ public class MSMOTE extends Metodo {
             SD += realTrain[j][i] * realTrain[j][i];
           }
           media /= (double) realTrain.length;
-          stdDev[i] = Math.sqrt( (SD / ( (double) realTrain.length)) -
-                                (media * media));
+          stdDev[i] = Math.sqrt( Math.abs((SD / ( (double) realTrain.length)) - (media * media)));
         }
       }
     }
@@ -268,7 +269,7 @@ public class MSMOTE extends Metodo {
     }
 
     /*Randomize the instance presentation*/
-    Randomize.setSeed (semilla);
+    //Randomize.setSeed (semilla);
     for (i=0; i<positives.length; i++) {
       tmp = positives[i];
       pos = Randomize.Randint(0,positives.length-1);
@@ -333,6 +334,15 @@ public class MSMOTE extends Metodo {
     	clasesGen = new int[(int)((nPos - noiseCount)*smoting)];
     }
     i = 0;
+    
+    int aux = 0;
+    for (i = 0; i < positives.length; i++) {
+        if (type[i] != 0)
+            aux++;
+    }
+    if (aux == 0)
+        Arrays.fill(type, 1);
+        
     for (int count = 0; count<genS.length; ) {
        if (type[i%positives.length] != 0)
        {

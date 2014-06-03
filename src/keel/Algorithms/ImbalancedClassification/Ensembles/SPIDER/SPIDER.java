@@ -41,6 +41,7 @@ package keel.Algorithms.ImbalancedClassification.Ensembles.SPIDER;
 import keel.Algorithms.ImbalancedClassification.Ensembles.Basic.*;
 import org.core.*;
 import java.util.StringTokenizer;
+import keel.Algorithms.ImbalancedClassification.Ensembles.multi_C45;
 
 import keel.Dataset.*;
 
@@ -66,8 +67,8 @@ public class SPIDER extends Metodo {
      this.test = IS;
      distanceEu = distance.equalsIgnoreCase("Euclidean")?true:false;
      ficheroSalida = new String[2];
-     ficheroSalida[0] = "train.tra";
-     ficheroSalida[1] = "train.tst";
+     ficheroSalida[0] = multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra";
+     ficheroSalida[1] = multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tst";
 
        try {
          /*Normalize and check the data*/
@@ -134,8 +135,7 @@ public class SPIDER extends Metodo {
             SD += realTrain[j][i] * realTrain[j][i];
           }
           media /= (double) realTrain.length;
-          stdDev[i] = Math.sqrt( (SD / ( (double) realTrain.length)) -
-                                (media * media));
+          stdDev[i] = Math.sqrt( Math.abs((SD / ( (double) realTrain.length)) - (media * media)));
         }
       }
     }
@@ -307,7 +307,7 @@ public class SPIDER extends Metodo {
     System.out.println("SPIDER "+ relation + " " + (double)(System.currentTimeMillis()-tiempo)/1000.0 + "s");
 
     OutputIS.escribeSalida(ficheroSalida[0], conjR, conjN, conjM, clasesS, entradas, salida, nEntradas, relation);
-    OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
+    //OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
   }
 
   public void leerConfiguracion (String ficheroScript) {

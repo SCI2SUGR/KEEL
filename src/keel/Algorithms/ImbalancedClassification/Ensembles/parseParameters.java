@@ -31,7 +31,7 @@ package keel.Algorithms.ImbalancedClassification.Ensembles;
 
 import java.util.StringTokenizer;
 import java.util.ArrayList;
-import org.core.Fichero;
+import org.core.Files;
 
 /**
  * <p>Title: Parse Configuration File</p>
@@ -40,7 +40,7 @@ import org.core.Fichero;
  *
  * <p>Company: KEEL</p>
  *
- * @author Alberto Fern�ndez
+ * @author Alberto Fernández
  * @version 1.0
  */
 public class parseParameters {
@@ -63,7 +63,7 @@ public class parseParameters {
     }
 
     /**
-     * It obtains all the necesary information from the configuration file.<br/>
+     * It obtains all the necessary information from the configuration file.<br/>
      * First of all it reads the name of the input data-sets, training, validation and test.<br/>
      * Then it reads the name of the output files, where the training (validation) and test outputs will be stored<br/>
      * Finally it read the parameters of the algorithm, such as the random seed.<br/>
@@ -73,7 +73,7 @@ public class parseParameters {
      */
     public void parseConfigurationFile(String fileName) {
         StringTokenizer line;
-        String file = Fichero.leeFichero(fileName); //file is an string containing the whole file
+        String file = Files.readFile(fileName); //file is an string containing the whole file
 
         line = new StringTokenizer(file, "\n\r");
         readName(line); //We read the algorithm name

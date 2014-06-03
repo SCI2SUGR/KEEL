@@ -1928,6 +1928,30 @@
 	</output>
   </method>
   <method>
+    <name>AdaBoost.NC-C</name>
+    <family>Decision Trees</family>
+    <jar_file>Ensembles-I.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>  
+  <method>
     <name>M5-R</name>
     <family>Decision Trees</family>
     <jar_file>M5.jar</jar_file>

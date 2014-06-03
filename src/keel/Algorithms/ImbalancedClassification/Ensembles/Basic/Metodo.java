@@ -162,8 +162,7 @@ public class Metodo {
             SD += realTrain[j][i] * realTrain[j][i];
           }
           media /= (double) realTrain.length;
-          stdDev[i] = Math.sqrt( (SD / ( (double) realTrain.length)) -
-                                (media * media));
+          stdDev[i] = Math.sqrt( Math.abs((SD / ( (double) realTrain.length)) - (media * media)));
         }
       }
     }

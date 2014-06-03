@@ -476,6 +476,7 @@ public class OutputIS {
 	  cadena += "@data\n";
 
 	  Fichero.escribeFichero (nombreFichero, cadena);
+	  StringBuilder sb = new StringBuilder("");
 	  for (i=0; i<realIN.length; i++) {
 		  cadena = "";
 		  for (j=0; j<realIN[i].length; j++) {
@@ -497,8 +498,10 @@ public class OutputIS {
 	    	  cadena += (String)salida.getNominalValuesList().elementAt(instanciasOUT[i]);
 	      }
 	      cadena += "\n";
-	      Fichero.AnadirtoFichero (nombreFichero, cadena);
+	      sb.append(cadena);
 	  }
+	  
+	  Fichero.AnadirtoFichero (nombreFichero, sb.toString());
   }
 }
 

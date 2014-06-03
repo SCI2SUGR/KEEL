@@ -1,0 +1,115 @@
+<method>
+
+	<name>Evolutionary Hyperrectangle Selection based on CHC</name>
+
+	<reference>  
+
+		<ref>S. Garcia, J. Derrac, J. Luengo, C.J. Carmona, F. Herrera, Evolutionary Selection of Hyperrectangles in Nested Generalized Exemplar Learning. Applied Soft Computing 11:3 (2011) 3032-3045</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model combining rule induction and instance-based learning. Evolutionary</type>
+
+		<objective>The algorithm tries to show that is enough to consider a small neighbourhood to achieve classification accuracy comparable to an algorithm considering the whole learning set, combining this 1-nearest neighbours method and a rule-based algorithm.</objective>
+
+		<howWork>CHC evolutionary algorithm applied to the Hyperrectangles Selection Problem. During each generation the CHC develops the following steps.
+		1. It uses a parent population of size N to generate an intermediate population of N individuals, which are randomly paired and used to generate N potential offsprings.
+		2. Then, a survival competition is held where the best N chromosomes from
+		the parent and offspring populations are selected to form the next generation.
+		CHC also implements a form of heterogeneous recombination using HUX,
+		a special recombination operator. HUX exchanges half of the bits that differ
+		between parents, where the bit position to be exchanged is randomly determined. CHC also employs a method of incest prevention. Before applying HUX
+		to two parents, the Hamming distance between them is measured. Only those
+		parents who differ from each other by some number of bits (mating threshold)
+		are mated. The initial threshold is set at L=4, where L is the length od the
+		chromosomes. If no offspring are inserted into the new population then the
+		threshold is reduced by one.
+		No mutation is applied during the recombination phase. Instead, when the
+		population converges or the search stops making progress, the population is
+		reinitialized to introduce new diversity to the search. The chromosome representing the best solution found over the course of the search is used as a template to reseed the population. Reseeding of the population is accomplished by randomly changing 35 percent of the bits in the template chromosome to form each of the other N - 1 new chromosomes in the population. The search is the resumed.</howWork>
+
+		<parameterSpec>  
+			<param>Population Size: Integer value. Number of chromosome belonging to the population.</param>
+			<param>Number of Evaluations: Integer value. Maximal number of evaluations allowed in the run of the algorithm</param>
+			<param>Alfa Equilibrate Factor: Real value. Trade-off factor that controls the balancing between reduction and accuracy</param>
+			<param>Beta Equilibrate Factor: Real Value. Trade-off factor that controls the balancing between coverage of examples and accuracy</param>
+			<param>Percentage of Change in Restart: Real value. Quantity of gens changed in a restart operation</param>
+			<param>0 to 1 Probalitity in Recombination: Real value. Probability associated to a restriction in changes from 0 to 1 in recombination operator</param>
+			<param>0 to 1 Probability in Diverge: Real value. Probabiliy associated to a restriction in changes from 0 to 1 in diverge operation</param>
+			<param>Filtering: true or false. Filtering stage based on Wilson's ENN for removing noisy examples prior to the hyperrectangle generarion phase</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+<example>	
+Problem type: Classification 
+Method: EHS-CHC
+Dataset: iris
+Training set: iris-10-1tra.dat
+Test set: iris-10-1tst.dat
+Type of test: 10-fold cross validation
+Test Show results: Vis-Clas-Check
+Parameters: 
+Seed: 1958741091
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= iris 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Global Classification Error + N/C:
+0.066666666666666 
+Correctly classified:
+0.933333333333333 
+Global N/C:
+0.0 
+
+We can also see the output and target classes for each case of the test set (result0.tst) in Experiment\Results\Clas-BNGE:
+
+@relation  Iris_Plants_Database
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@data
+Iris-setosa Iris-setosa 
+Iris-setosa Iris-setosa 
+Iris-setosa Iris-setosa 
+Iris-setosa Iris-setosa 
+Iris-setosa Iris-setosa 
+Iris-versicolor Iris-versicolor 
+Iris-versicolor Iris-versicolor 
+Iris-versicolor Iris-versicolor 
+Iris-versicolor Iris-versicolor 
+Iris-versicolor Iris-versicolor 
+Iris-virginica Iris-virginica 
+Iris-virginica Iris-virginica 
+Iris-virginica Iris-versicolor 
+Iris-virginica Iris-virginica 
+Iris-virginica Iris-virginica 
+
+Accuracy Training: 1.0
+Accuracy Test: 0.9333333333333333333
+</example>
+
+</method>

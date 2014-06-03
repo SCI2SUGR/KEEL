@@ -31,6 +31,7 @@
 * <p>
 * @author Written by Mikel Galar Idoate (Universidad Pública de Navarra) 30/5/2010
 * @author Modified by Sarah Vluymans (University of Ghent) 29/01/2014
+* @author Modified by Alberto Fernandez (University of Jaen) 28/05/2014
 * @version 0.1
 * @since JDK 1.5
 *</p>
@@ -38,6 +39,7 @@
 
 package keel.Algorithms.ImbalancedClassification.Ensembles;
 
+import java.io.File;
 
 import keel.Algorithms.ImbalancedClassification.Ensembles.SMOTE.MSMOTE;
 import keel.Algorithms.ImbalancedClassification.Ensembles.SMOTE.SMOTE;
@@ -46,16 +48,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+
+import keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic.Metodo;
+
+import org.core.Files;
 import org.core.Randomize;
 
 import keel.Algorithms.ImbalancedClassification.Auxiliar.AUC.PredPair;
 
+import keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Instance_Selection.EUSCHCQstat.EUSCHCQstat;
+
 /**
- * Class to implement the different ensemble methods for class imbalance problems
-   @author Mikel Galar Idoate (UPNA)
-   @author Modified by Sarah Vluymans (University of Ghent)
-   @version 1.2 (29-01-14)
- */
+ * <p>Title: Ensemble</p>
+ * <p>Description: Class to implement the different ensemble methods for class imbalance problems
+ * <p>Company: KEEL </p>
+ * @author Created by Mikel Galar Idoate (UPNA) [30-05-10]
+ * @author Modified by Alberto Fernandez (University of Jaen) 15/10/2012
+ * @author Modified by Sarah Vluymans (University of Ghent)
+ * @version 1.2
+ * @since JDK1.6
+ */ 
 class Ensemble {
     /* Parameters used by the ensemble */
    String ensembleType;
@@ -68,14 +80,13 @@ class Ensemble {
    /* Wether the costs are setled manually or they are configured depending on the IR */
    String costType;
    /* Costs for the majority and minority classes */
-   double CostMaj, CostMin;      
+   double CostMaj, CostMin;   
+   int lambda; //for adaboostNC   
    
-
-
     /* References to the original and the actual (modified by adaboost's data-distribution change) datasets */
    myDataset originalDS, actualDS;
    /* weights of the instances for adaboost and weight of each classifier in the voting*/
-   double[] weights, alfa;
+   double[] weights, alfa, penalization;
    
    /* Backup of the weights prior to the preprocessing, needed for RUSBoost and SMOTEBoost */
    double[] weightsBackup; 
@@ -129,6 +140,16 @@ class Ensemble {
 
    /* Reference to the base classifiers */
    multi_C45 classifier;
+   
+   boolean[][] anteriores;
+   boolean[][] salidasAnteriores;
+   
+   int nClassifierCounter;
+   
+  double[] pairwiseKappa;
+  double[] errorMeanAUC, errorAUC;
+  int[][] outputs;
+  int pos;
 
    /** Constructor of the ensemble
     *
@@ -136,7 +157,7 @@ class Ensemble {
     * @param nClassifier number of maximum classifiers in to boost
     * @param classifier the reference to the base classifiers
     */
-   public Ensemble(String ensembleType, myDataset originalDS, int nClassifier, multi_C45 classifier) {
+   public Ensemble(String ensembleType, myDataset originalDS, int nClassifier, int lambda, multi_C45 classifier) {
       /* Reading the ensemble type and the original data-set */
       this.ensembleType = ensembleType;
       this.originalDS = originalDS;
@@ -150,8 +171,12 @@ class Ensemble {
 
       /* Initialize the weightes uniformly */
       weights = new double[nData];
-      for (int i = 0; i < nData; i++)
+      penalization = new double[nData];
+      originalDS.computeIR();
+      double max = 0;
+      for (int i = 0; i < nData; i++){
          weights[i] = 1.0 / (float)nData;
+    	}
  
       /* Initialize the data-set */
       actualDS = originalDS;
@@ -162,6 +187,15 @@ class Ensemble {
       alfa = new double[nClassifier];
       this.classifier = classifier;
       prepareDSNeeded = false;
+      
+      /* For KappaAUC diagrams */
+      pairwiseKappa = new double[nClassifier * (nClassifier - 1) / 2];
+      errorMeanAUC = new double[nClassifier * (nClassifier - 1) / 2];
+      errorAUC = new double[nClassifier];
+      outputs = new int[nClassifier][this.classifier.test.getnData()];
+      pos = 0;
+      
+      this.lambda = lambda;
 
       /*************************************************************************
        *            Read the configuration depending on the ensemble type      *
@@ -199,6 +233,11 @@ class Ensemble {
          
          /* Multiples for UnderOverbagging and SMOTE/MSMOTEBagging, as recommended by their authors */
          b = 10;
+         
+         if (ensembleType.contains("EUNDER")) {
+             anteriores = new boolean[this.nClassifier][];
+             salidasAnteriores = new boolean[this.nClassifier][];
+         }
       }
       /* Boosting-, and Hybrid-based ensembles */
       else if (ensembleType.contains("ADA") || ensembleType.contains("BOOST")
@@ -243,6 +282,12 @@ class Ensemble {
             N = Integer.parseInt(classifier.parameters.getParameter(nextParameter++));
             prepareDSNeeded = true;
             Randomize.setSeed(Long.parseLong(classifier.parameters.getParameter(0)));
+            
+            if (ensembleType.contains("ERUS")) {
+            	System.out.println(nextParameter);
+            	anteriores = new boolean[this.nClassifier][];
+            	salidasAnteriores = new boolean[this.nClassifier][];
+            }
          }
          /* DATABOOST-IM algorithm */
          else if (ensembleType.equalsIgnoreCase("DATABOOST-IM"))
@@ -266,6 +311,12 @@ class Ensemble {
             /* In BalanceCascade we need to initialize the thetas */
             if (ensembleType.equalsIgnoreCase("BALANCECASCADE"))
                teta = new double[this.nClassifier];
+               
+            /* For KappaAUC diagrams */
+            pairwiseKappa = new double[this.nClassifier * (this.nClassifier - 1) / 2];
+            errorMeanAUC = new double[this.nClassifier * (this.nClassifier - 1) / 2];
+            errorAUC = new double[this.nClassifier];
+            outputs = new int[this.nClassifier][this.classifier.test.getnData()];               
          }
       }    
    }
@@ -315,7 +366,7 @@ class Ensemble {
     */
    boolean nextIteration()
    {
-      boolean fin = false;  // Wether the ensembles is finished or not */
+      boolean fin = false;  // Whether the ensembles is finished or not 
       
       /* For boosting-, and hybrid-based ensembles, the weights are updated */
       if (ensembleType.contains("ADA") || ensembleType.contains("BOOST")
@@ -348,14 +399,63 @@ class Ensemble {
       /* The iteration counter is increased */
       t++;
       /* The errors of the actual ensemble are computed and shown */
-      double total = classifier.prueba(actualDS);
+      double total = classifier.classify(actualDS);
       System.out.println("Train err = " + total);
-      total = classifier.prueba(originalDS);
+      if (1 - total < 0.001) //99.9% accuracy in train
+    	  fin = true;
+      total = classifier.classify(originalDS);
       System.out.println("Train original err = " + total);
-      total = classifier.prueba(classifier.test);
+      total = classifier.classify(classifier.test);
       System.out.println("Test err = " + total);
       return fin;
    }
+   
+   void writeAUCError(String outputTst) {
+       
+       String cadena = "";
+       
+       for (int i = 0; i < pairwiseKappa.length; i++) {
+           cadena += pairwiseKappa[i] + ", " + errorMeanAUC[i] + "\n";
+       }
+       String sal = outputTst;
+       sal.lastIndexOf("5-1.tst");
+       sal = sal.substring(0, sal.length() - 7);
+       Files.addToFile(sal + "_KappaError.txt", cadena);
+      Files.writeFile(outputTst + "_KappaError", cadena);
+   }
+   
+   double computeKappa(int[] v1, int[] v2) {
+       double solucion;
+       int[][] confusion;     
+       
+       confusion = new int[2][2];
+            double[] Tr = new double[2];
+            double[] Tc = new double[2];
+
+            for (int i = 0; i < 2; i++){
+                for (int j = 0; j < 2; j++)
+                    confusion[i][j] = 0;
+                Tr[i] = Tc[i] = 0;
+            }
+            
+            for (int i = 0; i < v1.length; i++){
+                confusion[v1[i]][v2[i]]++;
+                Tr[v1[i]]++;
+                Tc[v2[i]]++;
+            }
+            
+            double sumDiagonales = 0.0, sumTrTc = 0.0;
+            for(int i = 0; i < 2; i++){
+                sumDiagonales += confusion[i][i];
+                sumTrTc += Tr[i] * Tc[i];
+            }
+
+            solucion = ((v1.length * sumDiagonales - sumTrTc) / (v1.length * v1.length - sumTrTc));
+            
+            if (Double.isNaN(solucion))
+                    solucion = 1.0;
+        return solucion;
+   }   
 
    /** Theta is adjusted for the corresponding bag of BalanceCascade, given that the adjustation algorithm
     * is not explained, we eliminate those instances from the majority class correctly classified
@@ -469,24 +569,111 @@ class Ensemble {
       
    }
    
+   /**
+    * Creates a configuration file for the EUS-CHC approach. Qstat + GM approach
+    * @param filename
+    */
+   private void createConf(String filename){
+	   String output = new String("algorithm = IS Methods\n");
+	   output += "inputData = \"training2.txt\" \"training2.txt\" \"tst.dat\"\n"
+	   		+ "outputData = \"training.txt\" \"tstOutput.dat\"\n\n"
+	   		+ "Seed = 564545456\n"
+	   		+ "Population Size = 50\n"
+	   		+ "Number of Evaluations = 10000\n"
+	   		+ "Percentage of Change in restart = 0.35\n"
+	   		+ "0-1 in restart = 0.25\n"
+	   		+ "0-1 in diverge = 0.25\n"
+	   		+ "wrapper = k-NN\n"
+	   		+ "Number of Neighbors = 1\n"
+	   		+ "Distance Function = Euclidean\n"
+	   		+ "evMeasure = geometric mean\n"
+	   		+ "majSelection = majority_selection\n"
+	   		+ "EBUS = EBUS\n"
+	   		+ "P = 0.2\n"
+	   		+ "hybrid = NO smote + eus\n"
+	   		+ "kSMOTE = 5\n"
+	   		+ "ASMO = both\n"
+	   		+ "balance = YES\n"
+	   		+ "smoting = 1\n";
+	   Files.writeFile(filename, output);	   
+   }
+   
    /** Preparation of the data-set for RUSBoost
     *   The data-set is resampled and the weight distribution is changed 
     *   in order to form a distribution with the remaining weights
     */
    private void prepareDatasetRUSBoost()
    {
-      weightsBackup = weights.clone();
       // Create the actualDS with RandomUnderSampling (N%, usually 50%) of the majority class 
-      actualDS = new myDataset(originalDS);
-      selected = actualDS.randomUnderSampling(originalDS, majC, N); //N% of the total will be from the majority class
-      // The original weights are stored and the new weights are recalculated
-      // Selected has the indexes of the instances from the previous data-set in the new one 
+      if (ensembleType.equalsIgnoreCase("ERUSBOOST")) {
+         Files.writeFile(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "training2.txt", originalDS.printDataSet());
+          Metodo m = null;          
+          createConf("EUB_M_GMConf.txt");
+          m = new EUSCHCQstat("EUB_M_GMConf.txt");
+          EUSCHCQstat m2 = (EUSCHCQstat)m;
+          m2.setAnteriores(anteriores);
+          m2.setSalidasAnteriores(salidasAnteriores);
+          
+            m.runAlgorithm();
+            m.run();
 
+            
+            try {
+        //        originalDS.getIS().setAttributesAsNonStatic();
+               /* Read the preprocessed data-set */
+             actualDS = new myDataset();
+             actualDS.readClassificationSet(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "training.txt", false);
+           }catch (IOException e) {
+             System.err.println("There was a problem while reading the input preprocessed data-sets: " + e);
+           }
+            
+            File f = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "training.txt");
+             File f2 = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "training2.txt");
+             f.delete();
+             f2.delete();
+            
+             m2 = (EUSCHCQstat)m;
+             anteriores[t] = m2.getBest().clone();
+             salidasAnteriores[t] = m2.getBestOutputs().clone();
+             m = null;
+
+             selected = new int[actualDS.getnData()];
+             Arrays.fill(selected, -1);
+             boolean[] aux = new boolean[originalDS.getnData()];
+             Arrays.fill(aux, false);
+             for (int i = 0; i < actualDS.getnData(); i++) {
+            	 double[] ej1 = actualDS.getExample(i);
+            	 for (int j = 0; j < originalDS.getnData(); j++) {
+            		 if (aux[j] == true)
+            			 continue;
+            		 double[] ej2 = originalDS.getExample(j);
+            		 boolean fin = false;
+            		 for (int k = 0; k < ej1.length && !fin; k++) {
+            			 if (ej1[k] != ej2[k])
+            				 fin = true;
+            		 }
+            		 if (fin == false) {
+            			 selected[i] = j;
+            			 aux[j] = true;
+            		 }
+            	 }
+             }
+      }else {
+    	  actualDS = new myDataset(originalDS);
+    	  selected = actualDS.randomUnderSampling(originalDS, majC, N); //N% of the total will be from the majority class
+    	  // The original weights are stored and the new weights are recalculated
+    	  // Selected has the indexes of the instances from the previous data-set in the new one 
+      }
+
+      weightsBackup = weights.clone();
       weights = new double[selected.length];
       double Z = 0;
       for (int i = 0; i < selected.length; i++)
       {
-         weights[i] = weightsBackup[selected[i]];
+    	  if (selected[i] != -1)
+    		  weights[i] = weightsBackup[selected[i]];
+    	  else
+    		  weights[i] = 1.0 / (double)actualDS.getnData();
          Z += weights[i];
       }
 
@@ -526,10 +713,13 @@ class Ensemble {
      try {
          /* Read the preprocessed data-set */
        actualDS = new myDataset();
-       actualDS.readClassificationSet("train.tra", false);
+       actualDS.readClassificationSet(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra", false);
      }catch (IOException e) {
        System.err.println("There was a problem while reading the input preprocessed data-sets: " + e);
      }
+     
+     File f = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra");
+     f.delete();
      
      /* Store the original weights */
      weightsBackup = weights.clone();
@@ -575,12 +765,13 @@ class Ensemble {
      try {
        /* The preprocessed data-set is read */
        actualDS = new myDataset();
-       actualDS.readClassificationSet("train.tra", false);
+       actualDS.readClassificationSet(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra", false);
      }catch (IOException e) {
        System.err.println("There was a problem while reading the input preprocessed data-sets: " + e);
      }
 
-
+     File f = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra");
+     f.delete();
    }
 
  /** Preparation of the data-set for DataBoost-IM
@@ -835,10 +1026,13 @@ class Ensemble {
            try {
                /* Read the preprocessed data-set */
              actualDS = new myDataset();
-             actualDS.readClassificationSet("train.tra", false);
+             actualDS.readClassificationSet(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra", false);
            }catch (IOException e) {
              System.err.println("There was a problem while reading the input preprocessed data-sets: " + e);
            }
+           
+           File f = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra");
+           f.delete();           
       }
       else if (ensembleType.equalsIgnoreCase("MSMOTEBAGGING"))
       {
@@ -860,10 +1054,13 @@ class Ensemble {
            try {
                /* Read the preprocessed data-set */
              actualDS = new myDataset();
-             actualDS.readClassificationSet("train.tra", false);
+             actualDS.readClassificationSet(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra", false);
            }catch (IOException e) {
              System.err.println("There was a problem while reading the input preprocessed data-sets: " + e);
            }
+           
+           File f = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "train.tra");
+           f.delete();              
       }
 
       /* In bagging-based ensembles the weights are uniformly distributed, there are no weights */
@@ -879,7 +1076,7 @@ class Ensemble {
     */
    double[] getWeights()
    {
-      if ((ensembleType.contains("ADA") || ensembleType.contains("BOOST")) && 
+      if ((ensembleType.contains("ADA") || ensembleType.contains("BOOST") || ensembleType.contains("EASYENSEMBLE") || ensembleType.contains("BALANCECASCADE")) && 
               !trainMethod.equalsIgnoreCase("RESAMPLING"))
          return weights;
       else
@@ -953,7 +1150,7 @@ class Ensemble {
          return modifyWeightsAdaBoostM2();
       else if (ensembleType.equalsIgnoreCase("ADAC2"))
          return modifyWeightsAdaC2();
-      else if (ensembleType.equalsIgnoreCase("RUSBOOST")
+      else if (ensembleType.contains("RUSBOOST")
               || ensembleType.contains("SMOTEBOOST"))
       {
          weights = weightsBackup.clone();
@@ -967,7 +1164,14 @@ class Ensemble {
       else if (ensembleType.equalsIgnoreCase("EASYENSEMBLE")
               || ensembleType.equalsIgnoreCase("BALANCECASCADE"))
          return modifyWeightsAdaBoostActualDS();
-      else return false;
+      else {
+      	if (ensembleType.equalsIgnoreCase("ADABOOST.NC")) {
+      		return modifyWeightsAdaBoostNC();
+      	}
+      	else {
+      		return false;
+      	}
+      }
    }
 
    /** AdaBoost algorithm
@@ -1012,6 +1216,103 @@ class Ensemble {
      
       return false;
    }
+
+	/** AdaBoost.NC algorithm
+   *
+   * @return true if the boosting has finished
+   */
+  private boolean modifyWeightsAdaBoostNC() {
+	  
+	  //Step 3. Calculate the penalty value for every example x_i
+	  //amb_t(x_i) = 1/t sum_{j=1}^{t}(||H_t = y_i|| - ||h_j = y_i||)
+	  //H_t = arg_max (y) sum_{t=1}{T}(alfa_t · ||h_t(x) = y||) ** A partir de la segunda iteración! (variable t)
+	  
+	  double [] amb_t = new double[originalDS.getnData()];
+	  int [] Hts = new int[originalDS.getnData()];
+	  for (int j = 0; j < originalDS.getnData(); j++){
+		  Hts[j] = 0;
+		  double [] example = originalDS.getExample(j).clone();
+		  if (salidaEnsemble(example) == originalDS.getOutputAsInteger(j)){
+			  Hts[j] = 1;
+		  }  
+	  }
+	  for(int i = 0; i < t; i++){
+		  for (int j = 0; j < originalDS.getnData(); j++){
+			  double [] example = originalDS.getExample(j).clone();
+			  int ht = 0;
+			  if (classifier.obtainClass(i, example) == originalDS.getOutputAsInteger(j)){
+				  ht = 1;
+			  }
+			  amb_t[j] += Math.abs(Hts[j] - ht);
+		  }
+	  }
+	  if (t > 0) for (int i = 0; i < originalDS.getnData(); i++) amb_t[i] /= t;
+	  
+	  //p_t(x_i) = 1 - |amb_t(x_i)|
+	  double [] pow = new double[originalDS.getnData()];
+	  for (int i = 0; i < originalDS.getnData(); i++){
+		  penalization[i] = 1 - Math.abs(amb_t[i]);
+		  pow[i] = Math.pow(penalization[i], lambda);
+	  }
+	  
+	  //Step 4. Calculate ht's weight alfa_t by error and penalty using:
+	  // alfa_t = 1/2 log (sum_{i, y_i = ht(x_i)}(D_t(x_i)·p_t(x_i)^l   /  sum_{i, y_i != ht(x_i)}(D_t(x_i)·p_t(x_i)^l )
+	  
+	  double sumatoriaPos = 0;
+	  double sumatoriaNeg = 0;
+	  for (int i = 0; i < originalDS.getnData(); i++){
+		  double [] example = originalDS.getExample(i).clone();
+		  if (classifier.obtainClass(t, example) == originalDS.getOutputAsInteger(i)){
+			  sumatoriaPos += this.weights[i] * pow[i]; 
+		  }else{
+			  sumatoriaNeg += this.weights[i] * pow[i];
+		  }
+	  }
+	  alfa[t] = 1.0;
+	  if (sumatoriaNeg > 0){
+		  alfa[t] = 0.5*Math.log(sumatoriaPos/sumatoriaNeg);
+	  }else{
+		  return true;
+	  }
+	  
+	  //Step 5. Update data weights Dt and obtain new weights Dt+1 by error and penalty
+	  //D_{t+1}(x_i) = p_t(x_i)^l · Dt(x_i)^(-alfa_t ||h_t(x_i)= y_i||) / Z_t
+	  //Z_t is a normalization factor
+	  double max = 0;
+	  for (int i = 0; i < originalDS.getnData(); i++){
+		  double [] example = originalDS.getExample(i).clone();
+		  double aux = this.weights[i];
+		  if (classifier.obtainClass(t, example) == originalDS.getOutputAsInteger(i)){
+			  this.weights[i] = pow[i]*weights[i]*1.0/Math.pow(Math.E,alfa[t]);
+		  }else{
+		  	  this.weights[i] = Math.E * pow[i] * this.weights[i];
+		  }
+		  if (this.weights[i] > max){
+			  max = this.weights[i];
+		  }
+	  }
+	  for (int i = 0; i < originalDS.getnData(); i++){
+		  this.weights[i] /= max;
+	  }
+	  
+	  return false;
+  }
+  
+  //H_t = arg_max (y) sum_{t=1}{T}(alfa_t · ||h_t(x) = y||) ** From second iteration! (variable t)
+  public int salidaEnsemble(double [] example){
+	  int clase = 0;
+	  double [] scores = new double[originalDS.getnClasses()];
+	  for (int i = 0; i < t; i++){ //for all sub-classifiers
+		scores[classifier.obtainClass(i, example)] += alfa[i]; //obtain the class pointed by sub-classifier "t"
+			//add "alpha" value to class "j" (y)
+	  }
+	  for (int i = 1; i < originalDS.getnClasses(); i++){
+		  if (scores[i] > scores[clase]){
+			  clase = i; 
+		  }
+	  }	  
+	  return clase;
+  }
 
    /** AdaBoost algorithm performed on ActualDS for BalanceCascade and EasyEnsemble
     *

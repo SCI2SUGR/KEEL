@@ -1,0 +1,39 @@
+<method>
+
+	<name>EUS-Boost</name>
+
+	<reference>  
+		<ref>M. Galar, A. Fernandez, E. Barrenechea and F. Herrera. EUSBoost: Enhancing Ensembles for Highly Imbalanced Data-sets by Evolutionary Undersampling, Pattern Recognition, vol. 46, no. 12, pp. 3460-3471, 2013.</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Ensemble learning classifier with undersampling preprocessing</type>
+
+		<objective></objective>
+
+		<howWork>EUS-Boost is based on RUSBoost, one of the simplest and most accurate ensemble, which combines random undersampling with Boosting algorithm. This 
+			methodology aims to improve the existing proposals enhancing the performance of the base classifiers by the usage of the evolutionary undersampling approach. 
+			Besides, it promotes diversity favoring the usage of different subsets of majority class instances to train each base classifier.
+		</howWork>
+
+		<parameterSpec>  
+			<param>pruned: specificies if the decision tree must be pruned or not</param>
+			<param>confidence: is the confidence level. It is a float value that determines what is the minimal confidence that must has a leaf in order to can be considered in the tree</param>
+			<param>instancesPerLeaf: minimum number of instances to consider a leaf for the decision tree</param>
+			<param>Number of Classifiers: is the number of iterations that the boosting procedure will use (the total number of classifiers is the number of classifiers times the number or bags)</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+<example></example>
+
+</method>

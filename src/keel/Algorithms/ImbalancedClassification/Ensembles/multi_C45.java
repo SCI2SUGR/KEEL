@@ -29,19 +29,6 @@
 
 package keel.Algorithms.ImbalancedClassification.Ensembles;
 
-/**
- * <p>Title: Algorithm</p>
- *
- * <p>Description: It contains the implementation of the algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
- *
- * @author Alberto Fernandez
- * @author Modified by Sarah Vluymans (University of Ghent) 29/01/2014
- * @version 1.0
- */
-
 import java.io.IOException;
 import org.core.*;
 import keel.Algorithms.ImbalancedClassification.Ensembles.C45.C45;
@@ -52,19 +39,34 @@ import keel.Algorithms.ImbalancedClassification.Auxiliar.AUC.PosProb;
 import keel.Algorithms.ImbalancedClassification.Auxiliar.AUC.AccAUC;
 import keel.Algorithms.ImbalancedClassification.Auxiliar.AUC.PredPair;
 
+/**
+ * <p>Title: multi_C45</p>
+ * <p>Description: Main class to compute the algorithm procedure
+ * <p>Company: KEEL </p>
+ *
+ * @author Mikel Galar Idoate (UPNA)
+ * @author Modified by Alberto Fernandez (University of Jaen) 15/10/2012
+ * @author Modified by Sarah Vluymans (University of Ghent) 29/01/2014
+ * @author Modified by Alberto Fernandez (University of Jaen) 08/05/2014
+ * @version 1.2
+ * @since JDK1.6
+ */
+ 
 public class multi_C45 {
 
   parseParameters parameters;
   myDataset train, val, test;
-  String outputTr, outputTst, ficheroBR;
-  int instancesPerLeaf, n_classifiers;
+  public static String outputTr;
+	String outputTst, ruleBaseFile;
+	int instancesPerLeaf, n_classifiers, lambda;
   float confidence;
   boolean pruned, valid[];
-  String fichTrain;
-  BaseR[] baseReglasTree;           // Trees of the ensemble
+	String trainFile,cabecera;
+	RuleBase[] treeRuleSet;           // Trees of the ensemble
   myDataset actua_train_set;        // train data-set for the actual ensemble
   Ensemble ensemble;                
   String ensembleType;
+	String evMeas;
 
 
   private boolean somethingWrong = false; //to check if everything is correct.
@@ -86,7 +88,7 @@ public class multi_C45 {
     train = new myDataset();
     val = new myDataset();
     test = new myDataset();
-    fichTrain = parameters.getTrainingInputFile();
+    trainFile = parameters.getTrainingInputFile();
     try {
       System.out.println("\nReading the training set: " +
                          parameters.getTrainingInputFile());
@@ -108,7 +110,7 @@ public class multi_C45 {
     outputTr = parameters.getTrainingOutputFile();
     outputTst = parameters.getTestOutputFile();
 
-    ficheroBR = parameters.getOutputFile(0);
+    ruleBaseFile = parameters.getOutputFile(0);
 
     //Now we parse the parameters
     pruned = parameters.getParameter(1).equalsIgnoreCase("TRUE");
@@ -117,10 +119,21 @@ public class multi_C45 {
     n_classifiers = Integer.parseInt(parameters.getParameter(4));
     ensembleType = parameters.getParameter(5);
     
-    System.out.println("go");
+    if (ensembleType.equalsIgnoreCase("ADABOOST.NC"))
+    	lambda = Integer.parseInt(parameters.getParameter(7));
+    else
+    	lambda = 1;
+
+		cabecera = parameters.getTrainingInputFile();
+
+		String[] aux = null;
+		aux = cabecera.split("\\.");
+		cabecera = aux[aux.length - 2]; //aux.length-1 es la extension
+		aux = cabecera.split("/");
+		cabecera = aux[aux.length - 1];  
+    
     /* Create the ensemble! */
-    ensemble = new Ensemble(ensembleType, train, n_classifiers, this);
-    System.out.println("gone");
+    ensemble = new Ensemble(ensembleType, train, n_classifiers, lambda, this);
 	}
 
   /**
@@ -136,7 +149,7 @@ public class multi_C45 {
 
       n_classifiers = ensemble.nClassifier;
       valid = new boolean[n_classifiers];
-      baseReglasTree = new BaseR[n_classifiers];
+      treeRuleSet = new RuleBase[n_classifiers];
 
       /** While the algorithm has not end, and the number of classifier constructed is not reached... 
        * we construct a new classifier for the ensemble
@@ -148,22 +161,24 @@ public class multi_C45 {
         actua_train_set = ensemble.getDS();
 
         /* Databoost-IM has problems generating instances in Highly imbalanced data-sets */
-        if (actua_train_set.getnData() > 10000)
+        if (actua_train_set.getnData() > 53000)
         {
            System.out.println("Databoost overflow!, nData = " + actua_train_set.getnData());
            fin = true;
            break;
         }
+        boolean mal = false;
         if (!actua_train_set.vacio())
         {
             // write the data-set which will be readed by C4.5 decision tree learning algorithm
-             Fichero.escribeFichero(ensembleType + "training.txt", actua_train_set.printDataSet());
+             Fichero.escribeFichero(ensembleType + cabecera  + ".txt", actua_train_set.printDataSet());
              valid[i] = true;
              System.out.println("Training classifier[" + i + "]");
              // Construct the tree using the weights (they can be unirformly distributed)
-             C45 arbol = new C45(ensembleType + "training.txt", pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
+             C45 tree = new C45(ensembleType + cabecera + ".txt", pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
+             
              try {
-               arbol.generateTree();
+               tree.generateTree();
              }
              catch (Exception e) {
                System.err.println("Error!!");
@@ -171,32 +186,40 @@ public class multi_C45 {
                System.exit( -1);
              }
              /* The tree is stored in a set of rules */
-             Fichero.escribeFichero("arbol.txt", arbol.printString());
-             String cadenaArbol = arbol.printString();
-             obtenerReglas(cadenaArbol, i);
-             if (baseReglasTree[i].size() == 0)
+             String cadenaTree = tree.printString();
+             obtainRules(cadenaTree, i);
+             if (treeRuleSet[i].size() == 0)
              {
-                int clase = arbol.getPriorProbabilities()[0] > arbol.getPriorProbabilities()[1] ? 0 : 1;
+             	  mal = true;
+                int clase = tree.getPriorProbabilities()[0] > tree.getPriorProbabilities()[1] ? 0 : 1;
                 // The a priori rule is introduced which predict the class with the greatest prior probability
-                baseReglasTree[i].baseReglas.add(new Regla(train.getOutputValue(clase), actua_train_set));
+                treeRuleSet[i].ruleBase.add(new Rule(train.getOutputValue(clase), actua_train_set));
              }
 
-             baseReglasTree[i].cubrirEjemplos();
-             baseReglasTree[i].cubrirEjemplos(ensemble.getWeights().clone());            
+             treeRuleSet[i].coverExamples();
+             treeRuleSet[i].coverExamples(ensemble.getWeights().clone());    //Step 2                    
            }
            else {
              valid[i] = false;
            }
             // Go to the next iteration of the ensemble!
-            fin = ensemble.nextIteration();
-            if (ensembleType.equalsIgnoreCase("EASYENSEMBLE") 
-                    || ensembleType.equalsIgnoreCase("BALANCECASCADE"))
-            i = ensemble.t - 1;
+				if (mal) {
+					if ((!ensembleType.contains("EUNDERBAGGING")) && (ensemble.weightsBackup != null)) {
+						ensemble.weights = ensemble.weightsBackup.clone();
+					}
+					else
+						fin = ensemble.nextIteration();
+				} else
+					fin = ensemble.nextIteration();
+				if (ensembleType.equalsIgnoreCase("EASYENSEMBLE") 
+						|| ensembleType.equalsIgnoreCase("BALANCECASCADE"))
+					i = ensemble.t - 1;
         }
       //Finally we should fill the training and test output files
       AccAUC pairTra = doOutput(this.val, this.outputTr);
       AccAUC pairTst = doOutput(this.test, this.outputTst);
-      escribeSalidas(pairTra, pairTst);
+      writeOutput(pairTra, pairTst, this.ruleBaseFile);
+			ensemble.writeAUCError(this.outputTst);
     }
   }
 
@@ -209,9 +232,16 @@ public class multi_C45 {
    */
   private AccAUC doOutput(myDataset dataset, String filename) {
      double TP = 0, FP = 0, FN = 0, TN = 0;
-    String output = new String("");
+    /*String output = new String("");
     output = dataset.copyHeader(); //we insert the header in the output file
-    int aciertos = 0;
+    int aciertos = 0;*/
+    
+    String outputTotal = dataset.copyHeader();
+		String claseReal = "";
+		String prediccion = "";
+		String output2 = "";
+		StringBuilder sb = new StringBuilder(dataset.getnData() * 5);
+		int aciertos = 0;
     
     /*
      * For AUC: when the weighted sum is positive, the instance is classified
@@ -232,12 +262,12 @@ public class multi_C45 {
  
     //We write the output for each example
     for (int i = 0; i < dataset.getnData(); i++) {
-        String claseReal = dataset.getOutputAsString(i);
+        claseReal = dataset.getOutputAsString(i);
         PredPair predAndVoteValue = this.classificationOutput(dataset.getExample(i));
-        String prediccion = predAndVoteValue.getPrediction();
-        output += claseReal + " " + prediccion + "\n";
+        prediccion = predAndVoteValue.getPrediction();
+        output2 = claseReal.concat(" ").concat(prediccion).concat("\n");
         
-         // Calculations for accuracy
+        // Calculations for accuracy
         if (claseReal.equalsIgnoreCase(prediccion)) {
           aciertos++;
         }
@@ -260,7 +290,9 @@ public class multi_C45 {
         }
         valsForAUC[i] = new PosProb(isPositive, prob);
         
+        sb.append(output2);
      }
+		outputTotal += sb.toString();
 
     double TPrate = TP / (TP + FN);
     double TNrate = TN / (TN + FP);
@@ -269,22 +301,28 @@ public class multi_C45 {
     double recall = TP / (TP + FN);
     double fmean = 2 * recall * precision / (1 * recall + precision);
 
-    System.out.println("G-mean: " + gmean);
-    System.out.println("F-mean: " + fmean);
-    System.out.println("TPrate: " + TPrate);
-    Fichero.escribeFichero(filename, output);
+		System.out.println("G-mean: " + gmean);
+		System.out.println("F-mean: " + fmean);
+		System.out.println("TPrate: " + TPrate);
+		System.out.println("TNrate: " + TNrate);
+		double FPrate = FP / (FP + TN);
+		System.out.println("AUC: " + (1 + TPrate - FPrate) / 2);
+		Files.writeFile(filename, outputTotal);
     
     double acc = 1.0 * aciertos / dataset.size();
     double auc = getAUC(valsForAUC);
 
     return new AccAUC(acc, auc);
-    
-    
   }
 
-    public double prueba(myDataset dataset) {
+	/**
+	 * It carries out the classification of a given dataset throughout the learning stage of the ensemble
+	 * @param dataset the instance set
+	 * @return accuracy for the current ensemble
+	 */
+    public double classify (myDataset dataset) {
 
-       double TP = 0, FP = 0, FN = 0, TN = 0;
+       //double TP = 0, FP = 0, FN = 0, TN = 0;
 
     //String output = new String("");
     //output = dataset.copyHeader(); //we insert the header in the output file
@@ -299,17 +337,17 @@ public class multi_C45 {
           aciertos++;
         }
 
-        if (claseReal.equalsIgnoreCase(prediccion) && claseReal.equalsIgnoreCase(train.claseMasFrecuente()))
+        /*if (claseReal.equalsIgnoreCase(prediccion) && claseReal.equalsIgnoreCase(train.claseMasFrecuente()))
            TN++;
         else if (claseReal.equalsIgnoreCase(prediccion) && !claseReal.equalsIgnoreCase(train.claseMasFrecuente()))
            TP++;
         else if (!claseReal.equalsIgnoreCase(prediccion) && claseReal.equalsIgnoreCase(train.claseMasFrecuente()))
            FP++;
         else
-           FN++;
+           FN++;*/
      }
 
-    double TPrate = TP / (TP + FN);
+    /*double TPrate = TP / (TP + FN);
     double TNrate = TN / (TN + FP);
     double gmean = Math.sqrt(TPrate * TNrate);
     double precision = TP / (TP + FP);
@@ -318,7 +356,7 @@ public class multi_C45 {
 
     System.out.println("G-mean: " + gmean);
     System.out.println("F-mean: " + fmean);
-    System.out.println("TPrate: " + TPrate);
+    System.out.println("TPrate: " + TPrate);*/
 
     return (1.0 * aciertos / dataset.size());
   }
@@ -347,22 +385,23 @@ public class multi_C45 {
   {
       if (valid[i]) {
         String clase = "?";
-        for (int j = 0; (j < baseReglasTree[i].size()) && (clase.equals("?"));
+        for (int j = 0; (j < treeRuleSet[i].size()) && (clase.equals("?"));
              j++) {
-          if (baseReglasTree[i].baseReglas.get(j).cubre(example)) {
-            clase = baseReglasTree[i].baseReglas.get(j).clase;
+          if (treeRuleSet[i].ruleBase.get(j).covers(example)) {
+            clase = treeRuleSet[i].ruleBase.get(j).clase;
           }
         }
         int clase_num = train.claseNumerica(clase);
         if (clase_num == -1)
         {
-            // System.out.println("No da la clase!!!!!");
             clase_num = train.claseNumerica(train.claseMasFrecuente());
         }
         return clase_num;
       }
-      else
+      else {
+      	System.err.println("This should not be accessed: "+i+"/"+valid[i]);
           return -1;
+        }
   }
 
   /** It obtains the confidence on the prediction of the example in the i^{th} classifier
@@ -377,12 +416,12 @@ public class multi_C45 {
       
       if (valid[i]) {
         String clase = "?";
-        for (int j = 0; (j < baseReglasTree[i].size()) && (clase.equals("?"));
+        for (int j = 0; (j < treeRuleSet[i].size()) && (clase.equals("?"));
              j++) {
-          if (baseReglasTree[i].baseReglas.get(j).cubre(example)) {
-            clase = baseReglasTree[i].baseReglas.get(j).clase;
-            double nCubiertosOK = baseReglasTree[i].baseReglas.get(j).fCubiertosOK; //.cubiertosOK();
-            double nCubiertos = baseReglasTree[i].baseReglas.get(j).fCubiertos;//.cubiertos();
+          if (treeRuleSet[i].ruleBase.get(j).covers(example)) {
+						clase = treeRuleSet[i].ruleBase.get(j).clase;
+						double nCubiertosOK = treeRuleSet[i].ruleBase.get(j).fCubiertosOK; 
+						double nCubiertos = treeRuleSet[i].ruleBase.get(j).fCubiertos;
             if (nCubiertos == 0)
                 confianza = 0;
             else
@@ -401,90 +440,84 @@ public class multi_C45 {
       }
   }
 
+	/**
+	 * It extracts the rule set from a given file exported by the C4.5 classifier
+	 * @param treeString the contain of the file (rule set)
+	 * @param classifier classifier id of the ensemble
+	 */
+	private void obtainRules(String treeString, int classifier) {
+		String rules = new String("");
+		StringTokenizer lines = new StringTokenizer(treeString, "\n"); //read lines
+		String line = lines.nextToken(); //First line @TotalNumberOfNodes X
+		line = lines.nextToken(); //Second line @NumberOfLeafs Y
+		//The tree starts
+		Vector <String>variables = new Vector<String>();
+		Vector <String>values = new Vector<String>();
+		Vector <String>operators = new Vector<String>();
+		int contador = 0;
+		while (lines.hasMoreTokens()) {
+			line = lines.nextToken();
+			StringTokenizer field = new StringTokenizer(line, " \t");
+			String cosa = field.nextToken(); //Possibilities: "if", "elseif", "class"
+			if (cosa.compareToIgnoreCase("if") == 0) {
+				field.nextToken(); //(
+				variables.add(field.nextToken()); //variable name (AttX, X == position)
+				operators.add(field.nextToken()); //One of three: "=", "<=", ">"
+				values.add(field.nextToken()); //Value
+			}
+			else if (cosa.compareToIgnoreCase("elseif") == 0) {
+				int dejar = Integer.parseInt(field.nextToken());
+				for (int i = variables.size() - 1; i >= dejar; i--) {
+					variables.remove(variables.size() - 1);
+					operators.remove(operators.size() - 1);
+					values.remove(values.size() - 1);
+				}
+				field.nextToken(); //(
+				variables.add(field.nextToken()); //variable name (AttX, X == position)
+				operators.add(field.nextToken()); //One of three: "=", "<=", ">"
+				values.add(field.nextToken()); //Value
+			}
+			else { //Class --> rule generation
+				field.nextToken(); // =
+				contador++; //I have a new rule
+				rules += "\nRULE-" + contador + ": IF ";
+				int i;
+				for (i = 0; i < variables.size() - 1; i++) {
+					rules += (String) variables.get(i) + " " + (String) operators.get(i) +
+							" " + (String) values.get(i) + " AND ";
+				}
+				rules += (String) variables.get(i) + " " + (String) operators.get(i) +
+						" " + (String) values.get(i);
+				rules += " THEN class = " + field.nextToken();
+				variables.remove(variables.size() - 1);
+				operators.remove(operators.size() - 1);
+				values.remove(values.size() - 1);
+			}
+		}
+		treeRuleSet[classifier] = new RuleBase(actua_train_set, rules);
+	}
 
-
-
-  private void obtenerReglas(String cadenaArbol, int classifier) {
-    String reglas = new String("");
-    StringTokenizer lineas = new StringTokenizer(cadenaArbol, "\n"); //este lee lineas
-    String linea = lineas.nextToken(); //Primera linea @TotalNumberOfNodes X
-    linea = lineas.nextToken(); //Segunda linea @NumberOfLeafs Y
-    //Empieza el arbol
-    Vector variables = new Vector();
-    Vector valores = new Vector();
-    Vector operadores = new Vector();
-    int contador = 0;
-    while (lineas.hasMoreTokens()) {
-      linea = lineas.nextToken();
-      StringTokenizer campo = new StringTokenizer(linea, " \t");
-      String cosa = campo.nextToken(); //Posibilidades: "if", "elseif", "class"
-      if (cosa.compareToIgnoreCase("if") == 0) {
-        campo.nextToken(); //(
-        variables.add(campo.nextToken()); //nombre de la variable (AttX, X == posicion)
-        operadores.add(campo.nextToken()); //Una de tres: "=", "<=", ">"
-        valores.add(campo.nextToken()); //Valor
-      }
-      else if (cosa.compareToIgnoreCase("elseif") == 0) {
-        int dejar = Integer.parseInt(campo.nextToken());
-        for (int i = variables.size() - 1; i >= dejar; i--) {
-          variables.remove(variables.size() - 1);
-          operadores.remove(operadores.size() - 1);
-          valores.remove(valores.size() - 1);
-        }
-        campo.nextToken(); //(
-        variables.add(campo.nextToken()); //nombre de la variable (AttX, X == posicion)
-        operadores.add(campo.nextToken()); //Una de tres: "=", "<=", ">"
-        valores.add(campo.nextToken()); //Valor
-      }
-      else { //Clase --> genero la regla
-        campo.nextToken(); // =
-        contador++; //tengo una nueva regla
-        reglas += "\nRULE-" + contador + ": IF ";
-        int i;
-        for (i = 0; i < variables.size() - 1; i++) {
-          reglas += (String) variables.get(i) + " " + (String) operadores.get(i) +
-              " " + (String) valores.get(i) + " AND ";
-        }
-        reglas += (String) variables.get(i) + " " + (String) operadores.get(i) +
-            " " + (String) valores.get(i);
-        reglas += " THEN class = " + campo.nextToken();
-        variables.remove(variables.size() - 1);
-        operadores.remove(operadores.size() - 1);
-        valores.remove(valores.size() - 1);
-      }
-      //System.err.println(reglas);
-    }
-    //Fichero.escribeFichero("reglas.txt", reglas);
-    baseReglasTree[classifier] = new BaseR(actua_train_set, reglas);
-  }
-
-  public void escribeSalidas(AccAUC pairTra, AccAUC pairTst) {
-    for (int i = 0; i < baseReglasTree.length; i++) {
-      //System.out.println("Classifier number " + i + ": ");
-      /*if (valid[i]) {
-        System.out.println("Number of Rules (Tree): " + baseReglasTree[i].size());
-        System.out.println("" + baseReglasTree[i].printString());
-      }
-      else {
-        System.out.println("Not valid!");
-      }*/
-    }
-    
-    Fichero.escribeFichero(ficheroBR,"");
+	/**
+	 * It writes on a file the full ensemble (C4.5 rule sets)
+	 * @param accTr Training accuracy
+	 * @param accTst Test accuracy
+	 */
+  public void writeOutput (AccAUC pairTra, AccAUC pairTst, String ruleBaseFile) {    
+    Files.writeFile(ruleBaseFile,"");
     for (int i = 0; i < ensemble.nClassifier; i++) {
       if (valid[i]) {
-        Fichero.AnadirtoFichero(ficheroBR, "@Classifier number " + i + ": \n");
-        Fichero.AnadirtoFichero(ficheroBR,
-                               baseReglasTree[i].printStringF() + "\n");
+        Files.addToFile(ruleBaseFile, "@Classifier number " + i + ": \n");
+				Files.addToFile(ruleBaseFile,treeRuleSet[i].printStringF() + "\n");                               
       }
       else {
         // System.out.println("Not valid!");
       }
     }
-    Fichero.AnadirtoFichero(ficheroBR, "Accuracy in training: " + pairTra.getAcc() + "\n");
-    Fichero.AnadirtoFichero(ficheroBR, "Accuracy in test: " + pairTst.getAcc() + "\n");
-    Fichero.AnadirtoFichero(ficheroBR, "AUC in training: " + pairTra.getAUC() + "\n");
-    Fichero.AnadirtoFichero(ficheroBR, "AUC in test: " + pairTst.getAUC() + "\n");
+
+		Files.addToFile(ruleBaseFile, "Accuracy in training: " + pairTra.getAcc() + "\n");
+		Files.addToFile(ruleBaseFile, "Accuracy in test: " + pairTst.getAcc() + "\n");
+		Files.addToFile(ruleBaseFile, "AUC in training: " + pairTra.getAUC() + "\n");
+		Files.addToFile(ruleBaseFile, "AUC in test: " + pairTst.getAUC() + "\n");
  
     System.out.println("Accuracy in training: " + pairTra.getAcc());
     System.out.println("Accuracy in test: " + pairTst.getAcc());
