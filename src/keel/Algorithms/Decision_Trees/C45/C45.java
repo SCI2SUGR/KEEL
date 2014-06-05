@@ -31,7 +31,6 @@ package keel.Algorithms.Decision_Trees.C45;
 
 import java.io.*;
 
-
 /**
  * Class to implement the C4.5 algorithm
  * 
@@ -112,7 +111,35 @@ public class C45 extends Algorithm {
         }
     }
 
+    /** Constructor.
+    *
+    * @param fichTrain		The input training file.
+    * @param pruned indicates if the tree is going to be pruned or not
+    * @param confidence confidence
+    * @param instancesPerLeaf minimun number of instances per leaf
+    *
+    * @throws Exception	If the algorithm cannot be executed.
+    */
+   public C45(String fichTrain, boolean pruned, float confidence,
+              int instancesPerLeaf, boolean ova) {
+     modelDataset = new Dataset(fichTrain, ova); //false?
+     priorsProbabilities = new double[modelDataset.numClasses()];
+     try {
+       priorsProbabilities();
+     }
+     catch (Exception e) {
+       System.err.println(e.getMessage());
+       System.exit( -1);
+     }
 
+     marginCounts = new double[marginResolution + 1];
+     this.prune = pruned;
+     this.confidence = confidence;
+     this.minItemsets = instancesPerLeaf;
+
+   }
+    
+    
     /** Function to read the options from the xml parameter file and assign the values to the corresponding member variables of C45 class:
      *	  modelFileName, trainFileName, testFileName, trainOutputFileName, testOutputFileName, resultFileName, prune, confidence, minItemsets.
      *
@@ -262,6 +289,15 @@ public class C45 extends Algorithm {
     }
 
 
+    public void generateTree() throws Exception{
+        try{
+          generateTree(modelDataset);
+        }catch (Exception e) {
+          System.err.println(e.getMessage());
+          System.exit( -1);
+        }
+      }
+    
     /** Generates the tree.
      *
      * @param itemsets		The dataset used to build the tree.
@@ -557,6 +593,18 @@ public class C45 extends Algorithm {
     public String toString() {
         return root.toString();
     }
+    
+    public String printStringOVO() {
+        String tree = new String("");
+        toString();
+        tree += "@TotalNumberOfNodes " + root.NumberOfNodes;
+        tree += "\n@NumberOfLeafs " + root.NumberOfLeafs;
+        tree += "\n"+root.toStringOVO();
+        root.NumberOfLeafs = 0;
+        root.NumberOfNodes = 0;
+        return tree;
+
+      }
 
     /** Main function.
      *

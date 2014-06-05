@@ -1,0 +1,57 @@
+<method>
+
+    <name>C4.5 Binarization</name>
+
+    <reference>  
+        <ref>J.R. Quinlan. C4.5: Programs for Machine Learning. Morgan Kauffman Publishers, San Mateo-California, 1993.</ref>
+        <ref>M. Galar, A. Fernandez, E. Barrenechea, H. Bustince, F. Herrera, An Overview of Ensemble Methods for Binary Classifiers in Multi-class Problems: Experimental Study on One-vs-One and One-vs-All Schemes. Pattern Recognition 44:8 (2011) 1761-1776</ref>
+        <ref>M. Galar, A. Fernandez, E. Barrenechea, H. Bustince, F. Herrera, Dynamic Classifier Selection for One-vs-One Strategy: Avoiding Non-Competent Classifiers. Pattern Recognition 46:12 (2013) 3412-3424</ref>
+    </reference>
+
+    <generalDescription>  
+
+        <type>Multiclassifier learning approach (One-vs-One / One-vs-All) with C4.5 as baseline algorithm</type>
+
+        <objective>To determine a set of decision trees that on the basis of answers to questions about the input attributes predicts correctly the value of the target attribute.
+        Multiclass problems are reduced to binary problems by One-vs-One or One-vs-All strategy. The inference can be done using different aggregations in the OVO case.</objective>
+
+        <howWork>
+        Usually, it is easier to construct a classifier to distinguish between two classes than to consider more than two classes in a problem. This is why binarization
+techniques come up, to deal with multi-class problems by dividing the original problem in more easier to solve binary classification problems which are face
+up by binary classifiers. These classifiers are usually referred as base learners or base classifiers of the system.
+
+Different decomposition strategies can be found in the literature. The most common strategies are called "One-vs-One" (OVO) and "One-vs-All" 
+(OVA). The former consists in dividing the problem in as many binary problems as all the possible combinations between pair of classes, so
+one classifier is learned to discriminate between each pair and then, the outputs of these base classifiers are combined in order to predict the output class. The
+latter approach learns a classifier for each class, where the class is distinguished from all other classes, so the base classifier giving a positive answer indicates
+the output class.
+
+In recent years, different methods to combine the outputs of the base classifiers from these strategies have been developed. This approach
+include the most robust techniques for the OVO schem and the standard solution (max voting) for OVA one. 
+
+The base classifier used is the well-known C4.5 decision tree. The decision tree is constructed top-down. In each step a test for the actual node is chosen (starting with the root node), which best separates the given examples by classes. 
+C45 is based on ID3 algorithm. The extensions or improvements of ID3 are that it accounts for unavailable or missing values in data, it handled continuous attribute value ranges, it chooses an appropriate attribute selection measure (maximizing gain) and it prunes the result decision trees
+        </howWork>
+
+        <parameterSpec>  
+            <param>prune: whether to prune or not prune the tree. It is a boolean value that determines if the algorithm applies a prune process after building the tree</param>
+            <param>confidence: is the confidence level. It is a float value that determines what is the minimal confidence that must has a leaf in order to can be considered in the tree</param>
+            <param>minItemsets: is the minimum number of item-sets per leaf. It is an integer value that determines how much data instances must contain a leaf in order to can be created</param>
+            <param>Binarization: OVO / OVA</param>
+            <param>Score Function: When OVO is selected, several aggregations for the score matrix can be applied, from weighted voting, to non-dominance criterion</param>
+            <param>BTS_Param (if applied): For the BTS score function, it sets the thresold</param>
+        </parameterSpec>
+
+        <properties>
+            <continuous>Yes</continuous>
+            <discretized>Yes</discretized>
+            <integer>Yes</integer>
+            <nominal>Yes</nominal>
+            <valueLess>No</valueLess>
+            <impreciseValue>No</impreciseValue>
+        </properties>
+
+    </generalDescription>
+<example></example>
+
+</method>

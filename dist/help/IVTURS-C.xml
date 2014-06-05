@@ -1,0 +1,49 @@
+<method>
+
+	<name>Interval-Valued fuzzy reasoning method with TUning and Rule Selection (IVTURS)</name>
+
+	<reference>  
+<ref>J. Sanz, A. Fernandez, H. Bustince, F. Herrera, IVTURS: a linguistic fuzzy rule-based classification system based on a new Interval-Valued fuzzy reasoning method with TUning and Rule Selection. IEEE Transactions on Fuzzy Systems 21:3 (2013) 399-411</ref> 
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutionary Fuzzy Rule Based Classification System</type>
+
+		<objective>To extract a compact set of good fuzzy rules from numerical data</objective>
+
+		<howWork>
+		IVTURS is composed of three stages: 1) The generation of an initial Interval-Valued Fuzzy
+Rule-Based Classification System (IV-FRBCS). To do this, the rule base is firstly learn using
+the recent fuzzy rule learning algorithm known as FARC-HD (Fuzzy Association Rule-based
+Classification model for High Dimensional problems) and then, the linguistic labels are modeled with IVFSs; 
+2) The application of an IV-FRM and 3) An optimization step using the synergy between the tuning of the equivalence and rule
+selection.
+		</howWork>
+
+		<parameterSpec>  
+	    <param>Number of Linguistic Values</param>
+        <param>Minimum Support (Minsup)</param>
+        <param>Maximum Confidence (Maxconf)</param>
+        <param>Depth of the trees (Depthmax)</param>
+        <param>Parameter K of the prescreening (kt)</param>
+        <param>Maximum number of evaluacions (Evaluations)</param>
+        <param>Population size (Pop)</param>
+        <param>Parameter alpha</param>
+        <param>Bits per gen (BITSGENE)</param>
+		</parameterSpec>
+
+		<properties>
+			<continuous>Yes</continuous>
+			<discretized>Yes</discretized>
+			<integer>Yes</integer>
+			<nominal>Yes</nominal>
+			<valueLess>No</valueLess>
+			<impreciseValue>No</impreciseValue>
+		</properties>
+
+	</generalDescription>
+
+	<example></example>
+
+</method>

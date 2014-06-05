@@ -865,6 +865,30 @@
 	</output>
   </method>
   <method>
+    <name>IVTURS-C</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
+    <jar_file>IVTURS-C.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>  
+  <method>
     <name>MOGUL-C</name>
     <family>Evolutionary Fuzzy Rule Learning</family>
     <jar_file>Clas-Fuzzy-MOGUL.jar</jar_file>
@@ -1927,6 +1951,30 @@
     <multiinstance>No</multiinstance> 
 	</output>
   </method>
+  <method>
+    <name>C45_Binarization-C</name>
+    <family>Decision Trees</family>
+    <jar_file>C45_Binarization-C.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>  
   <method>
     <name>AdaBoost.NC-C</name>
     <family>Decision Trees</family>

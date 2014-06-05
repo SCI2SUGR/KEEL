@@ -306,6 +306,24 @@ public class Tree {
         }
     }
 
+    /** 
+     * Function to print the tree (OVO code).
+     */
+    public String toStringOVO() {
+        try {
+            StringBuffer text = new StringBuffer();
+
+            if (!isLeaf) {
+                NumberOfNodes++;
+                printTreeOVO(0, text);
+            }
+
+            return text.toString();
+        } catch (Exception e) {
+            return "Can not print the tree.";
+        }
+    }    
+    
     /** Function to print the tree.
      *
      * @param depth			Depth of the node in the tree.
@@ -347,6 +365,42 @@ public class Tree {
         }
     }
 
+    /** Function to print the tree.
+    *
+    * @param depth			Depth of the node in the tree.
+    * @param text			The tree.
+    *
+    * @throws Exception	If the tree cannot be printed.
+    */
+   private void printTreeOVO(int depth, StringBuffer text) throws Exception {
+       int i, j;
+       String aux = "";
+
+       for (i = 0; i < sons.length; i++) {
+           text.append(aux);
+
+           if (i == 0) {
+               text.append("if ( " + nodeModel.leftSideOVO(train) +
+                           nodeModel.rightSide(i, train) + " ) then\n" + aux +
+                           "");
+           } else {
+               text.append("elseif "+depth+" ( " + nodeModel.leftSideOVO(train) +
+                           nodeModel.rightSide(i, train) + " ) then\n" + aux +
+                           "");
+           }
+
+           if (sons[i].isLeaf) {
+               NumberOfLeafs++;
+               text.append(aux + "\t" + train.getClassAttribute().name() +
+                           " = " + nodeModel.label(i, train) + " \n");
+           } else {
+               NumberOfNodes++;
+               sons[i].printTreeOVO(depth + 1, text);
+           }
+       }
+   }
+    
+    
    /**
    * Function to compute the number of attributes of the tree.
    * @param depth			Depth of the node in the tree.

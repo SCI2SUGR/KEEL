@@ -1556,7 +1556,16 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
           <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
         </jar>
 
-
+		<jar
+			jarfile="${distMet}/C45_Binarization-C.jar"
+			manifest="${src}/keel/Algorithms/Decision_Trees/C45_Binarization/Manifest">
+			<fileset dir="${bin}"
+				includes="org/core/**/*.class
+				keel/Algorithms/Decision_Trees/C45_Binarization/**/*.class
+				keel/Algorithms/Decision_Trees/C45/**/*.class
+				keel/Algorithms/Preprocess/Basic/**/*.class
+				keel/Dataset/**/*.class"/>
+		</jar>
 
  		<jar
           jarfile="${distMet}/Clas-CART.jar"
@@ -2088,6 +2097,15 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 			<fileset dir="${bin}"
 				includes="org/core/**/*.class
 				keel/Algorithms/Fuzzy_Rule_Learning/Genetic/GP_COACH/**/*.class
+				keel/Dataset/**/*.class"/>
+		</jar>
+		
+		<jar
+			jarfile="${distMet}/IVTURS-C.jar"
+			manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/IVTURS/Manifest">
+			<fileset dir="${bin}"
+				includes="org/core/**/*.class
+				keel/Algorithms/Fuzzy_Rule_Learning/Genetic/IVTURS/**/*.class
 				keel/Dataset/**/*.class"/>
 		</jar>
 		

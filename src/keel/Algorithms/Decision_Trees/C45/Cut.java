@@ -652,6 +652,20 @@ public class Cut {
         }
     }
 
+    /** Function to print left side of condition.
+    *
+    * @param data		The dataset.
+    *
+    * @return			The name of the attribute used in the cut.
+    */
+   public final String leftSideOVO(Dataset data) {
+       if (numSubsets == 1) {
+           return "";
+       } else {
+           return "Att"+attributeIndex; //data.getAttribute(attributeIndex).name();
+       }
+   }    
+    
     /** Function to print the condition satisfied by itemsets in a subset.
      *
      * @param index		The index of the value.
