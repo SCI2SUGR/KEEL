@@ -27,11 +27,11 @@ When Focus finds a subset that satisfies the consistency measure, it stops.
 
 		<properties>
 
-			<continuous>Yes</continuous>
+			<continuous>No</continuous>
 
 			<discretized>Yes</discretized>
 
-			<integer>Yes</integer>
+			<integer>No</integer>
 
 			<nominal>Yes</nominal>
 

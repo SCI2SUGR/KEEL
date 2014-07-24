@@ -28,11 +28,11 @@
 
 		<properties>
 
-			<continuous>Yes</continuous>
+			<continuous>No</continuous>
 
 			<discretized>Yes</discretized>
 
-			<integer>Yes</integer>
+			<integer>No</integer>
 
 			<nominal>Yes</nominal>
 

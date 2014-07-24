@@ -2,7 +2,7 @@
 <method_list>
   <method>
     <name>GP_COACH_H-I</name>
-    <family>Algorithmic Modifications for Imbalance</family>
+    <family>Algorithmic Modifications for Class Imbalance</family>
     <jar_file>GP_COACH_H-I.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>

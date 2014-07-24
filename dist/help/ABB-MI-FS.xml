@@ -37,7 +37,7 @@
 
 		<properties>
 
-			<continuous>Yes</continuous>
+			<continuous>No</continuous>
 
 			<discretized>Yes</discretized>
 

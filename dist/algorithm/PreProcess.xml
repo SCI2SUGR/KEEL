@@ -1764,7 +1764,7 @@
     </input>
     <output>
       <continuous>No</continuous>
-    	<integer>No</integer>
+    	<integer>Yes</integer>
     	<nominal>Yes</nominal>
     	<missing>No</missing>
     	<imprecise>No</imprecise>

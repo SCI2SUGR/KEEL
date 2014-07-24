@@ -36,6 +36,7 @@ import java.util.Comparator;
  * <p>Descripción:Comparador entre reglas</p>
  * <p>Copyright: Copyright (c) 2007</p>
  * @author Vicente Rubén del Pino Ruiz
+ * @author Victoria Lopez (University of Granada) 22/07/2014 - Correcting bugs in the compare method, it did not return 0 for equal
  * @version 1.0
  */
 
@@ -69,24 +70,29 @@ public class ComparadorRegla implements Comparator {
         float muestras1 = regla1.obtenerMuestrasCubiertas();
         float muestras2 = regla2.obtenerMuestrasCubiertas();
 
-        if (calidad1 == calidad2) { //Para ver si son iguales tiene que coincidir tambien el valor
-            if (muestras1 < muestras2) {
-                devolver = 1;
-            } else
-            if (muestras1 > muestras2) {
-                devolver = -1;
-            } else {
-                devolver = 1;
-            }
-        } else {
-            if (calidad1 < calidad2) {
-                devolver = 1;
-            } else {
-                if (calidad1 > calidad2) {
-                    devolver = -1;
-                }
-            }
-        }
+				if (calidad1 == calidad2) { // Para ver si son iguales tiene que
+											// coincidir tambien el valor
+					if (muestras1 < muestras2) {
+						devolver = 1;
+					} else {
+						if (muestras1 > muestras2) {
+							devolver = -1;
+						} else {
+							devolver = 0;
+						}
+					}
+				} else {
+					if (calidad1 < calidad2) {
+						devolver = 1;
+					} else {
+						if (calidad1 > calidad2) {
+							devolver = -1;
+						} else {
+							devolver = 0;
+						}
+					}
+				}
+				
         return devolver;
 
     }

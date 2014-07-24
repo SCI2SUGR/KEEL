@@ -7340,7 +7340,7 @@
 	</method>   
 	<method>	
     <name>EFS_RPS-C</name>
-    <family>Dual Feature and Prototype Selection/Weighting</family>
+    <family>Join Feature and Prototype Selection</family>
     <jar_file>EFS_RPS.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -7364,7 +7364,7 @@
 	</method>
   <method>	
     <name>EIS_RFS-C</name>
-    <family>Dual Feature and Prototype Selection/Weighting</family>
+    <family>Join Feature and Prototype Selection</family>
     <jar_file>EIS_RFS.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -7388,7 +7388,7 @@
   </method> 
   <method>	
     <name>CIW_NN-C</name>
-    <family>Dual Feature and Prototype Selection/Weighting</family>
+    <family>Join Feature and Prototype Selection</family>
     <jar_file>CIW_NN.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
@@ -7412,7 +7412,7 @@
   </method>
   <method>	
     <name>IFS_COCO-C</name>
-    <family>Dual Feature and Prototype Selection/Weighting</family>
+    <family>Join Feature and Prototype Selection</family>
     <jar_file>IFS_COCO.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>

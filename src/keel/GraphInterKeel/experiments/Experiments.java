@@ -4278,7 +4278,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 if (objType != LQD) {
                     String bold_directorio = "";
                     if (objType == IMBALANCED) {
-                        if ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Algorithmic Modifications for Imbalance")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance"))) {
+                        if ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Algorithmic Modifications for Class Imbalance")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance"))) {
                             bold_directorio = "<html><b>" + directorio + "</b></html>";
                             dir = findNode(
                                     (DefaultMutableTreeNode) actual.getRoot(),
@@ -4295,7 +4295,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                     }
                     if (dir == null) {
                         // Doesn't exist: insert
-                        if ((objType == IMBALANCED) && ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Algorithmic Modifications for Imbalance")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance")))) {
+                        if ((objType == IMBALANCED) && ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Algorithmic Modifications for Class Imbalance")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance")))) {
                             dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
                                     bold_directorio, null, 0));
                             actual.add(dir);
@@ -4448,7 +4448,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 if (objType != LQD) {
                     String bold_directorio = "";
                     if (objType == IMBALANCED) {
-                        if ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Algorithmic Modifications for Imbalance")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance"))) {
+                        if ((directorio.equals("Under-Sampling Methods")) || (directorio.equals("Over-Sampling Methods")) || (directorio.equals("Algorithmic Modifications for Class Imbalance")) || (directorio.equals("Cost-Sensitive Classification")) || (directorio.equals("Ensembles for Class Imbalance"))) {
                             bold_directorio = "<html><b>" + directorio + "</b></html>";
                             dir = findNode(
                                     (DefaultMutableTreeNode) actual.getRoot(),
@@ -4465,7 +4465,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                     }
                     if (dir == null) {
                         // Doesn't exist: insert
-                        if ((objType == IMBALANCED) && ((directorio.equals("Rebalancing Methods")) || (directorio.equals("Algorithmic Modifications for Imbalance")) || (directorio.equals("Cost-Sensitive Methods")))) {
+                        if ((objType == IMBALANCED) && ((directorio.equals("Rebalancing Methods")) || (directorio.equals("Algorithmic Modifications for Class Imbalance")) || (directorio.equals("Cost-Sensitive Methods")))) {
                             dir = new DefaultMutableTreeNode(new ExternalObjectDescription(
                                     bold_directorio, null, 0));
                             actual.add(dir);
