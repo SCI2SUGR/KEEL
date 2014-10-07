@@ -181,7 +181,7 @@ public class Frame extends JFrame {
 
         labelhelp.setFont(new java.awt.Font("Arial", 1, 18));
         labelhelp.setForeground(Color.white);
-        labelhelp.setText("KEEL Tool 2.0 Description");
+        labelhelp.setText("KEEL Suite 3.0 Description");
         labelhelp.setBounds(new Rectangle(40, 412, 465, 27));
         labelhelp.setVisible(false);
 

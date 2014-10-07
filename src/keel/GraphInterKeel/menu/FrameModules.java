@@ -143,7 +143,7 @@ public class FrameModules extends JFrame {
 
         labelBack.setFont(new java.awt.Font("Arial", 1, 18));
         labelBack.setForeground(Color.white);
-        labelBack.setText("Back to Keel Tool Menu");
+        labelBack.setText("Back to Keel Suite Menu");
         labelBack.setBounds(new Rectangle(40, 412, 595, 27));
         labelBack.setVisible(false);
 
