@@ -2497,6 +2497,30 @@
 	</output>
   </method>
   <method>
+    <name>IVTURS-C</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
+    <jar_file>IVTURS-C.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>  
+  <method>
     <name>MOGUL-C</name>
     <family>Evolutionary Fuzzy Rule Learning</family>
     <jar_file>Clas-Fuzzy-MOGUL.jar</jar_file>
@@ -2651,6 +2675,30 @@
 	    <multioutput>No</multioutput>
 	  <multiinstance>No</multiinstance> 
 	  </output>
+  </method>   
+  <method>	
+    <name>CIW_NN-C</name>
+    <family>Evolutionary Prototype Selection</family>
+    <jar_file>CIW_NN.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
   </method>  
   <method>
     <name>CoCoIS-C</name>
@@ -2678,6 +2726,54 @@
 	  <multiinstance>No</multiinstance> 
 	  </output>
 	</method>    
+	<method>	
+    <name>EFS_RPS-C</name>
+    <family>Evolutionary Prototype Selection</family>
+    <jar_file>EFS_RPS.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+	</method>
+  <method>	
+    <name>EIS_RFS-C</name>
+    <family>Evolutionary Prototype Selection</family>
+    <jar_file>EIS_RFS.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method> 	  
   <method>
     <name>GA_MSE_CC_FSM-C</name>
     <family>Evolutionary Prototype Selection</family>
@@ -2730,6 +2826,30 @@
 	  <multiinstance>No</multiinstance> 
 	  </output>
 	</method>	
+  <method>	
+    <name>IFS_COCO-C</name>
+    <family>Evolutionary Prototype Selection</family>
+    <jar_file>IFS_COCO.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method> 
   <method>
     <name>IGA-C</name>
     <family>Evolutionary Prototype Selection</family>
@@ -3429,285 +3549,7 @@
       <multioutput>No</multioutput>
     <multiinstance>No</multiinstance> 
 	</output>
-  </method>    
-  <method>	
-    <name>BNGE-C</name>
-    <family>Hybrid Instance Based Learning</family>
-    <jar_file>BNGE.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
-  <method>
-    <name>EACH-C</name>
-    <family>Hybrid Instance Based Learning</family>
-    <jar_file>EACH.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
-	<method>
-    <name>EHS_CHC-C</name>
-    <family>Hybrid Instance Based Learning</family>
-    <jar_file>EHS_CHC-C.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>Yes</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>No</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>Yes</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
-  <method>
-    <name>INNER-C</name>
-    <family>Hybrid Instance Based Learning</family>
-    <jar_file>INNER.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>Yes</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
-  <method>
-    <name>RISE-C</name>
-    <family>Hybrid Instance Based Learning</family>
-    <jar_file>RISE.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>Yes</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
-  <method>	
-    <name>CIW_NN-C</name>
-    <family>Join Feature and Prototype Selection</family>
-    <jar_file>CIW_NN.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </output>
-  </method>
-	<method>	
-    <name>EFS_RPS-C</name>
-    <family>Join Feature and Prototype Selection</family>
-    <jar_file>EFS_RPS.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </output>
-	</method>
-  <method>	
-    <name>EIS_RFS-C</name>
-    <family>Join Feature and Prototype Selection</family>
-    <jar_file>EIS_RFS.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </output>
-  </method> 
-  <method>	
-    <name>IFS_COCO-C</name>
-    <family>Join Feature and Prototype Selection</family>
-    <jar_file>IFS_COCO.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    </output>
-  </method>
-  <method>	
-    <name>CamNN-C</name>
-    <family>Lazy Learning</family>
-    <jar_file>CamNN.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
-  <method>	
-    <name>CenterNN-C</name>
-    <family>Lazy Learning</family>
-    <jar_file>CenterNN.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
+  </method>     
   <method>	
     <name>Deeps-C</name>
     <family>Lazy Learning</family>
@@ -3785,8 +3627,8 @@
       <multioutput>No</multioutput>
     <multiinstance>No</multiinstance> 
 	</output>
-  </method>  
-    <method>
+  </method>   
+  <method>
     <name>KNN-C</name>
     <family>Lazy Learning</family>
     <jar_file>KNN.jar</jar_file>
@@ -3968,6 +3810,266 @@
     <multiinstance>No</multiinstance> 
 	</output>
   </method>  
+  <method>	
+    <name>PW-C</name>
+    <family>Lazy Learning</family>
+    <jar_file>PW.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>  
+  <method>	
+    <name>CamNN-C</name>
+    <family>Lazy Learning</family>
+    <jar_file>CamNN.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>  
+  <method>	
+    <name>CenterNN-C</name>
+    <family>Lazy Learning</family>
+    <jar_file>CenterNN.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method> 
+  <method>	
+    <name>CPW-C</name>
+    <family>Lazy Learning</family>
+    <jar_file>CPW.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>  
+  <method>	
+    <name>CW-C</name>
+    <family>Lazy Learning</family>
+    <jar_file>CW.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>    
+  <method>	
+    <name>BNGE-C</name>
+    <family>Nested Generalized Learning</family>
+    <jar_file>BNGE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+	    <integer>Yes</integer>
+	    <nominal>Yes</nominal>
+	    <missing>Yes</missing>
+	    <imprecise>No</imprecise>
+	    <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>
+  <method>
+    <name>EACH-C</name>
+    <family>Nested Generalized Learning</family>
+    <jar_file>EACH.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>  
+	<method>
+    <name>EHS_CHC-C</name>
+    <family>Nested Generalized Learning</family>
+    <jar_file>EHS_CHC-C.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>No</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>  
+  <method>
+    <name>INNER-C</name>
+    <family>Nested Generalized Learning</family>
+    <jar_file>INNER.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>  
+  <method>
+    <name>RISE-C</name>
+    <family>Nested Generalized Learning</family>
+    <jar_file>RISE.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+	</output>
+  </method>   
   <method>
     <name>Decr-RBFN-C</name>
     <family>Neural Networks</family>
@@ -6610,83 +6712,5 @@
       <multioutput>No</multioutput>
     <multiinstance>No</multiinstance> 
 	</output>
-  </method>  
-  <method>	
-    <name>CPW-C</name>
-    <family>Weighting Methods</family>
-    <jar_file>CPW.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
-  <method>	
-    <name>CW-C</name>
-    <family>Weighting Methods</family>
-    <jar_file>CW.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
-  <method>	
-    <name>PW-C</name>
-    <family>Weighting Methods</family>
-    <jar_file>PW.jar</jar_file>
-    <problem_type>classification</problem_type>
-    <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
-	    <nominal>Yes</nominal>
-	    <missing>Yes</missing>
-	    <imprecise>No</imprecise>
-	    <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</input>
-    <output>
-      <continuous>Yes</continuous>
-      <integer>Yes</integer>
-      <nominal>Yes</nominal>
-      <missing>No</missing>
-      <imprecise>No</imprecise>
-      <multiclass>Yes</multiclass>
-      <multioutput>No</multioutput>
-    <multiinstance>No</multiinstance> 
-	</output>
-  </method>  
+  </method>
 </method_list>
