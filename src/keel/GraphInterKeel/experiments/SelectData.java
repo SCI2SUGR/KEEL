@@ -1202,8 +1202,6 @@ public class SelectData extends JPanel implements Scrollable {
                         FileUtils.rmdir("./data/" + nameData);
                         datasetList.remove(j);
                         datasetXML.remove(j);
-                        this.reload(this.cadParent);
-                        this.reloadPreviousActiveDataSets();
                         anySelected = true;
                         i = -1;
                         break;
@@ -1213,6 +1211,10 @@ public class SelectData extends JPanel implements Scrollable {
         }
         if (anySelected == false) {
             JOptionPane.showMessageDialog(null, "Check one or more user datasets", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            //We have deleted some datasets, so let's reload the panel to show up the changes
+            this.reload(this.cadParent);
+            this.reloadPreviousActiveDataSets();   
         }
     }
 
