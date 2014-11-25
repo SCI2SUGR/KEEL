@@ -51,7 +51,6 @@ import keel.GraphInterKeel.menu.Frame;
 
 public class DialogDataset extends JDialog {
 
-    private String currentPath = "";
     JPanel panel1 = new JPanel() {
 
         @Override
@@ -443,7 +442,7 @@ public class DialogDataset extends JDialog {
         JFileChooser f;
 
         // select training file
-        f = new JFileChooser(currentPath);
+        f = new JFileChooser(experiment.lastDirectory);
 
         f.setDialogTitle("Training file");
         String exten[] = {
@@ -453,7 +452,7 @@ public class DialogDataset extends JDialog {
         int opcion = f.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION) {
             training.setText(f.getSelectedFile().getAbsolutePath());
-            currentPath = f.getSelectedFile().getAbsolutePath();
+            experiment.lastDirectory = f.getSelectedFile().getAbsolutePath();
         }
     }
 
@@ -465,7 +464,7 @@ public class DialogDataset extends JDialog {
         // select test file
         JFileChooser f;
 
-        f = new JFileChooser(currentPath);
+        f = new JFileChooser(experiment.lastDirectory);
 
         f.setDialogTitle("Test file");
         String exten[] = {
@@ -475,7 +474,7 @@ public class DialogDataset extends JDialog {
         int opcion = f.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION) {
             testing.setText(f.getSelectedFile().getAbsolutePath());
-            currentPath = f.getSelectedFile().getAbsolutePath();
+            experiment.lastDirectory = f.getSelectedFile().getAbsolutePath();
         }
     }
 

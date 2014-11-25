@@ -41,6 +41,7 @@
  * @author Modified by JoaquÃ­n Derrac 4-7-2010 (University of Granada)
  * @author Modified by Isaac Triguero 11-3-2014 to include SSL module (University of Granada)
  * @author Modified by Victoria Lopez 15-5-2014 to include a new imbalanced category (University of Granada)
+    * @author Modified by Julian Luengo 25-11-2014 to globally store the last chosen path by the user (University of Burgos)
  */
 package keel.GraphInterKeel.experiments;
 
@@ -87,7 +88,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     int heightHelpPanelSplit = 0;
     SelectExp experimentPartitionsTypeSelection;
     DefaultMutableTreeNode top, top2, top4, top5, top6, top7;
-    String lastDirectory;
+    String lastDirectory; //Julian  I will keep this variable and "lastChosenPath to differentiate between paths for datasets and for experiments
     int cursorAction;
     ExternalObjectDescription dsc;
     ExternalObjectDescription dscLQD;
@@ -129,7 +130,6 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
     public boolean summary = false;
     protected int expType = 0;
     protected int cvType = 0;
-    private String lastPathChosen;
     ;
 
     //Absolute names array
@@ -2316,7 +2316,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
      * @param evt Event
      */
     private void importItemActionPerformedAux(java.awt.event.ActionEvent evt) {
-        javax.swing.JFileChooser fc = new javax.swing.JFileChooser(lastPathChosen);
+        javax.swing.JFileChooser fc = new javax.swing.JFileChooser(lastDirectory);
         KeelFileFilter ff = new KeelFileFilter();
         ff.addExtension("zip");
         ff.setFilterName("Zip files (.zip)");
@@ -2324,7 +2324,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         int returnVal = fc.showOpenDialog(null);
         if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
             java.io.File file = fc.getSelectedFile();
-            lastPathChosen = file.getAbsolutePath();
+            lastDirectory = file.getAbsolutePath();
         }
     }
 
@@ -2333,7 +2333,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
      * @param evt Event
      */
     private void snapshotItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snapshotItemActionPerformed
-        javax.swing.JFileChooser fc = new javax.swing.JFileChooser(lastPathChosen);
+        javax.swing.JFileChooser fc = new javax.swing.JFileChooser(lastDirectory);
         KeelFileFilter ff = new KeelFileFilter();
         ff.addExtension("jpg");
         ff.addExtension("jpeg");
@@ -2343,7 +2343,7 @@ public class Experiments extends javax.swing.JFrame implements ItemListener, IEd
         if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
             try {
                 java.io.File file = fc.getSelectedFile();
-                lastPathChosen = file.getAbsolutePath().replace(file.getName(), "");
+                lastDirectory = file.getAbsolutePath().replace(file.getName(), "");
 
                 String fileName = fc.getSelectedFile().getAbsolutePath();
                 if (!fileName.toLowerCase().endsWith(".jpg") && !fileName.toLowerCase().endsWith(".jpeg")) {
