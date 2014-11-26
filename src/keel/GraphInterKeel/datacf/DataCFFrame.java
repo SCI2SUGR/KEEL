@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sï¿½nchez (luciano@uniovi.es)
+    J. Alcalï¿½-Fdez (jalcala@decsai.ugr.es)
+    S. Garcï¿½a (sglopez@ujaen.es)
+    A. Fernï¿½ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -136,7 +136,7 @@ public class DataCFFrame extends javax.swing.JFrame {
 
         selectorToolBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         selectorToolBar.setFloatable(false);
-        selectorToolBar.setOrientation(1);
+        selectorToolBar.setOrientation(javax.swing.SwingConstants.VERTICAL);
         selectorToolBar.setRollover(true);
         selectorToolBar.setName("selectorToolBar"); // NOI18N
 
@@ -246,7 +246,7 @@ public class DataCFFrame extends javax.swing.JFrame {
         buttonPanel.setLayout(new java.awt.GridBagLayout());
 
         exportjButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/keel/GraphInterKeel/resources/ico/datacf/64x64/export.png"))); // NOI18N
-        exportjButton2.setText("<html><b>Export Data</b><hr>This option allows you to import other format files to KEEL format.</html>");
+        exportjButton2.setText("<html><b>Export Data</b><hr>This option allows you to export KEEL format files to other formats.</html>");
         exportjButton2.setToolTipText("Export Data");
         exportjButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportjButton2.setIconTextGap(6);
@@ -336,7 +336,7 @@ public class DataCFFrame extends javax.swing.JFrame {
 
         importjButton2.setBackground(new java.awt.Color(255, 255, 255));
         importjButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/keel/GraphInterKeel/resources/ico/datacf/64x64/import.png"))); // NOI18N
-        importjButton2.setText("<html><b>Import Data</b><hr>This option allows you to export KEEL format files to other formats.</html>");
+        importjButton2.setText("<html><b>Import Data</b><hr>Import other file formats to KEEL or add datasets to the Experiments module.</html>");
         importjButton2.setToolTipText("Import Data");
         importjButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         importjButton2.setIconTextGap(6);
@@ -390,15 +390,15 @@ public class DataCFFrame extends javax.swing.JFrame {
         startPanel.setLayout(startPanelLayout);
         startPanelLayout.setHorizontalGroup(
             startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
-            .addComponent(buttonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+            .addComponent(buttonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
         );
         startPanelLayout.setVerticalGroup(
             startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(startPanelLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
+                .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
         );
 
         selectorTabbedPane.addTab("START       ", startPanel);
@@ -410,7 +410,7 @@ public class DataCFFrame extends javax.swing.JFrame {
             .addGroup(workPanelLayout.createSequentialGroup()
                 .addComponent(selectorToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selectorTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE))
+                .addComponent(selectorTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE))
         );
         workPanelLayout.setVerticalGroup(
             workPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,9 +431,9 @@ public class DataCFFrame extends javax.swing.JFrame {
         helpAuxPanel.setLayout(helpAuxPanelLayout);
         helpAuxPanelLayout.setHorizontalGroup(
             helpAuxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 872, Short.MAX_VALUE)
+            .addGap(0, 878, Short.MAX_VALUE)
             .addGroup(helpAuxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(helpTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE))
+                .addComponent(helpTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE))
         );
         helpAuxPanelLayout.setVerticalGroup(
             helpAuxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +448,7 @@ public class DataCFFrame extends javax.swing.JFrame {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(verticalSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
+            .addComponent(verticalSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,8 +498,8 @@ public class DataCFFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(658, Short.MAX_VALUE)
-                .addComponent(statusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(665, Short.MAX_VALUE)
+                .addComponent(statusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

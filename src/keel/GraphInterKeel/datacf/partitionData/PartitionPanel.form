@@ -19,14 +19,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="fileBrowserPanel" alignment="0" pref="511" max="32767" attributes="0"/>
+          <Component id="fileBrowserPanel" alignment="0" max="32767" attributes="0"/>
           <Component id="typeofPartitionjPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="fileBrowserPanel" pref="393" max="32767" attributes="0"/>
+              <Component id="fileBrowserPanel" pref="342" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="typeofPartitionjPanel" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -59,23 +59,31 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="seedjLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="typejLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="waitingLabel" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="seedjLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="typejLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="typejComboBox" pref="0" max="32767" attributes="2"/>
+                              <Component id="seedjTextField" alignment="0" max="32767" attributes="1"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="dividejButton" max="32767" attributes="1"/>
+                              <Component id="optionsjButton" alignment="0" max="32767" attributes="1"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="typejComboBox" pref="171" max="32767" attributes="2"/>
-                      <Component id="seedjTextField" alignment="0" pref="171" max="32767" attributes="1"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="dividejButton" max="32767" attributes="1"/>
-                      <Component id="optionsjButton" alignment="0" max="32767" attributes="1"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,13 +96,15 @@
                       <Component id="optionsjButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="typejComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="seedjLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="seedjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="dividejButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="waitingLabel" pref="57" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -109,11 +119,10 @@
         <Component class="javax.swing.JComboBox" name="typejComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
+              <StringArray count="3">
                 <StringItem index="0" value="K-Fold Cross Validation"/>
                 <StringItem index="1" value="5x2 Cross Validation"/>
-                <StringItem index="2" value="Hold-Out"/>
-                <StringItem index="3" value="K-Fold Distribution Optimally Balanced Stratified Cross Validation"/>
+                <StringItem index="2" value="K-Fold Distribution Optimally Balanced Stratified Cross Validation"/>
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Type of Partitioning Approach to Apply"/>
@@ -155,6 +164,25 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dividejButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="waitingLabel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="99" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="24" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Creating dataset... Please, wait."/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="name" type="java.lang.String" value="waitingLabel" noResource="true"/>
+            <Property name="opaque" type="boolean" value="true" postCode="waitingLabel.setVisible(false);"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

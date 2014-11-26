@@ -270,7 +270,7 @@ public class ImportPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 8, 0);
         importSelectMainPanel.add(importSeparator, gridBagConstraints);
 
-        importDatasetLabel.setText("<html><b>Import Dataset</b><hr>Select this option if you want to import only a single file from other formats to KEEL format.</html>");
+        importDatasetLabel.setText("<html><b>Import Dataset</b><hr>Select this option if you want to import only a single file from other formats to KEEL format or to add a new dataset to the Experiments module.</html>");
         importDatasetLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         importDatasetLabel.setMinimumSize(new java.awt.Dimension(250, 200));
         importDatasetLabel.setName("importDatasetLabel"); // NOI18N
@@ -281,7 +281,7 @@ public class ImportPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         importSelectMainPanel.add(importDatasetLabel, gridBagConstraints);
 
-        importPartitionsLabel.setText("<html><b>Import Partitions</b><hr>Select this option if you have previously performed partitions of a dataset in other formats and you want to import them to KEEL format.</html>");
+        importPartitionsLabel.setText("<html><b>Import Partitions</b><hr>Select this option if you have previously performed partitions of a dataset in other formats and you want to import them to KEEL format. Furthermore, you can add these partitions to the Experiments module.</html>");
         importPartitionsLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         importPartitionsLabel.setMinimumSize(new java.awt.Dimension(250, 200));
         importPartitionsLabel.setName("importPartitionsLabel"); // NOI18N

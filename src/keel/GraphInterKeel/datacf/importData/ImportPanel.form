@@ -138,7 +138,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="importDatasetLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;Import Dataset&lt;/b&gt;&lt;hr&gt;Select this option if you want to import only a single file from other formats to KEEL format.&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;Import Dataset&lt;/b&gt;&lt;hr&gt;Select this option if you want to import only a single file from other formats to KEEL format or to add a new dataset to the Experiments module.&lt;/html&gt;"/>
                 <Property name="verticalAlignment" type="int" value="1"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 200]"/>
@@ -156,7 +156,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="importPartitionsLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;Import Partitions&lt;/b&gt;&lt;hr&gt;Select this option if you have previously performed partitions of a dataset in other formats and you want to import them to KEEL format.&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;Import Partitions&lt;/b&gt;&lt;hr&gt;Select this option if you have previously performed partitions of a dataset in other formats and you want to import them to KEEL format. Furthermore, you can add these partitions to the Experiments module.&lt;/html&gt;"/>
                 <Property name="verticalAlignment" type="int" value="1"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 200]"/>

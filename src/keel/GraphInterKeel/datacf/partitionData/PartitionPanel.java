@@ -100,6 +100,7 @@ public class PartitionPanel extends javax.swing.JPanel {
         seedjTextField = new javax.swing.JTextField();
         optionsjButton = new javax.swing.JButton();
         dividejButton = new javax.swing.JButton();
+        waitingLabel = new javax.swing.JLabel();
 
         setName("Form"); // NOI18N
 
@@ -111,7 +112,7 @@ public class PartitionPanel extends javax.swing.JPanel {
         typejLabel.setText("Type of Partition");
         typejLabel.setName("typejLabel"); // NOI18N
 
-        typejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "K-Fold Cross Validation", "5x2 Cross Validation", "Hold-Out", "K-Fold Distribution Optimally Balanced Stratified Cross Validation" }));
+        typejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "K-Fold Cross Validation", "5x2 Cross Validation", "K-Fold Distribution Optimally Balanced Stratified Cross Validation" }));
         typejComboBox.setToolTipText("Type of Partitioning Approach to Apply");
         typejComboBox.setName("typejComboBox"); // NOI18N
         typejComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -145,24 +146,38 @@ public class PartitionPanel extends javax.swing.JPanel {
             }
         });
 
+        waitingLabel.setBackground(new java.awt.Color(255, 153, 0));
+        waitingLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        waitingLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        waitingLabel.setText("Creating dataset... Please, wait.");
+        waitingLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        waitingLabel.setName("waitingLabel"); // NOI18N
+        waitingLabel.setOpaque(true);
+        waitingLabel.setVisible(false);
+
         javax.swing.GroupLayout typeofPartitionjPanelLayout = new javax.swing.GroupLayout(typeofPartitionjPanel);
         typeofPartitionjPanel.setLayout(typeofPartitionjPanelLayout);
         typeofPartitionjPanelLayout.setHorizontalGroup(
             typeofPartitionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, typeofPartitionjPanelLayout.createSequentialGroup()
+            .addGroup(typeofPartitionjPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(typeofPartitionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(seedjLabel)
-                    .addComponent(typejLabel))
-                .addGap(34, 34, 34)
-                .addGroup(typeofPartitionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(typejComboBox, 0, 171, Short.MAX_VALUE)
-                    .addComponent(seedjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
-                .addGap(90, 90, 90)
-                .addGroup(typeofPartitionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dividejButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(optionsjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28))
+                    .addGroup(typeofPartitionjPanelLayout.createSequentialGroup()
+                        .addComponent(waitingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(typeofPartitionjPanelLayout.createSequentialGroup()
+                        .addGroup(typeofPartitionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(seedjLabel)
+                            .addComponent(typejLabel))
+                        .addGap(34, 34, 34)
+                        .addGroup(typeofPartitionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(typejComboBox, 0, 1, Short.MAX_VALUE)
+                            .addComponent(seedjTextField))
+                        .addGap(90, 90, 90)
+                        .addGroup(typeofPartitionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(dividejButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(optionsjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28))))
         );
         typeofPartitionjPanelLayout.setVerticalGroup(
             typeofPartitionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,25 +187,27 @@ public class PartitionPanel extends javax.swing.JPanel {
                     .addComponent(typejLabel)
                     .addComponent(optionsjButton)
                     .addComponent(typejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(typeofPartitionjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(seedjLabel)
                     .addComponent(seedjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dividejButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(waitingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fileBrowserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+            .addComponent(fileBrowserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(typeofPartitionjPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(fileBrowserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                .addComponent(fileBrowserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(typeofPartitionjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -203,17 +220,18 @@ private void optionsjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GE
     }
     
     //DOB-SCV
-    else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(3)) {
+    else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(2)) {
         kfoldOptions.setVisible(true);
     }
     
     //Hold-out
-    else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(2)) {
-        holdOutOptions.setVisible(true);
-    }
+    //else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(2)) {
+    //    holdOutOptions.setVisible(true);
+    //}
 }//GEN-LAST:event_optionsjButtonActionPerformed
 
 private void typejComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typejComboBoxActionPerformed
+    
     if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(1)) {
         this.optionsjButton.setEnabled(false);
     } else {
@@ -230,7 +248,7 @@ private void typejComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     }
 
     // DOB-SCV
-    else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(3)) {
+    else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(2)) {
         kfoldOptions = new KFoldOptionsJDialog(parent, true);
         if (holdOutOptions != null) {
             holdOutOptions = null;
@@ -238,12 +256,12 @@ private void typejComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     }    
 
     //Hold-out
-    else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(2)) {
-        holdOutOptions = new HoldOutOptionsJDialog(parent, true);
-        if (kfoldOptions != null) {
-            kfoldOptions = null;
-        }
-    }
+    //else if (this.typejComboBox.getSelectedItem() == this.typejComboBox.getItemAt(2)) {
+    //    holdOutOptions = new HoldOutOptionsJDialog(parent, true);
+    //    if (kfoldOptions != null) {
+    //        kfoldOptions = null;
+    //    }
+    //}
 
 }//GEN-LAST:event_typejComboBoxActionPerformed
 
@@ -406,18 +424,25 @@ private void dividejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 }
             }
         }
+        
+        // waiting...
+        this.waitingLabel.setVisible(true);
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        JOptionPane.showMessageDialog(this, "Your partitions are going to be generated. This process may take a while. Press OK to continue creating your partitions.", "Generating partitions", JOptionPane.INFORMATION_MESSAGE);
 
         try {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             PartitionGenerator partitionGenerator = new PartitionGenerator();
             partitionGenerator.partition(type, originalFile.getPath(), outputPath, seed, nOfPartitions, totalFractions);
             this.setCursor(Cursor.getDefaultCursor());
-            JOptionPane.showMessageDialog(this, "Your partitions have been correctly generated!!", "Partitions Generated!!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Your partitions have been correctly generated!!", "Partitions Generated!!", JOptionPane.INFORMATION_MESSAGE);        
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Problem Creating Partitions", "Error", JOptionPane.ERROR_MESSAGE);
             this.setCursor(Cursor.getDefaultCursor());
             return;
         }
+        
+        // end waiting...
+        this.waitingLabel.setVisible(false);
 
 
         // If the dataset is the main file of a dataset of the Experiment section
@@ -529,6 +554,7 @@ private void dividejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     private javax.swing.JComboBox typejComboBox;
     private javax.swing.JLabel typejLabel;
     private javax.swing.JPanel typeofPartitionjPanel;
+    private javax.swing.JLabel waitingLabel;
     // End of variables declaration//GEN-END:variables
 
     /** Parent frame */
