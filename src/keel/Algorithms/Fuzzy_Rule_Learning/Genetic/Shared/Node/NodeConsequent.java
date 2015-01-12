@@ -127,6 +127,16 @@ public class NodeConsequent extends Node {
     public void debug() {
         System.out.print("C="+ C);
     }
+    
+    /**
+     * <p>
+     * This method is for debug
+     * @return class an string with the consequent 
+     * </p>
+     */
+    public String output() {
+    	return ("C="+ C);
+    }
 
 }
 

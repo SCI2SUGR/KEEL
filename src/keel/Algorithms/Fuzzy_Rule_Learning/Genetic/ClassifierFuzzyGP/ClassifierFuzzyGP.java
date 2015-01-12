@@ -172,6 +172,7 @@ public class ClassifierFuzzyGP {
 			localOptProb=pc.parLoProb;
 			localOptIterations=pc.parLoIterNumber;
 			
+			
             
             if (STEADY) AG=new GeneticAlgorithmSteady(p,lPopulation,localnPopulations,lTournament,mutacion,lmutationAmpl,
 													  migrationProb,localOptProb,localOptIterations,OperatorIdent.AMEBA,rand,crossoverID,mutationID);
@@ -183,6 +184,10 @@ public class ClassifierFuzzyGP {
             
             // Result is printed
             p.debug();
+            String output = p.output();
+            String outputFile = (String)pc.outputData.get(0);
+            Files.writeFile(outputFile, output);
+            
             System.out.println("Train error: "+p.fitness());
 			pc.trainingResults(C,p.getCo());
             

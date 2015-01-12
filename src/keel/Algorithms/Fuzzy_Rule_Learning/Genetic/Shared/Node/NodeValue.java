@@ -154,5 +154,17 @@ public class NodeValue extends NodeExprArit {
         System.out.print(")");
     }
     
+    /**
+     * <p>
+     * This method is for debug
+     * </p>
+     */
+    public String output() {
+        String output = new String("VALUE (");
+        output += string[index].aString();
+        output += ")";
+        return output;
+    }
+    
 }
 

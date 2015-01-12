@@ -165,7 +165,13 @@ public abstract class Node {
      * </p>
      */
     public abstract void debug();
-
+    
+    /**
+     * <p>
+     * This abstrac method is for debug
+     * </p>
+     */
+    public abstract String output();
     /**
      * <p>
      * This method return the type of node

@@ -134,12 +134,29 @@ public class NodeRule extends Node {
      * </p>
      */
     public void debug() {
-        System.out.print("SI ");
+        System.out.print("IF ");
         children[0].debug();
-        System.out.print(" ENTONCES ");
+        System.out.print(" THEN ");
         children[1].debug();
-        if (weight!=1) System.out.print(" CON PESO "+weight);
+        if (weight!=1) System.out.print(" W. WEIGHT "+weight);
         System.out.println();
+    }
+    
+    /**
+     * <p>
+     * This method is for debug
+     * @return rules an string with the rule antecedents, consequent and RW
+     * </p>
+     */
+    public String output() {
+    	String rules = new String("");
+        rules = "IF ";
+        rules += children[0].output();
+        rules += " THEN ";
+        rules += children[1].output();
+        if (weight!=1) rules += " W. WEIGHT "+weight;
+        rules += "\n";
+        return rules;
     }
     
 }

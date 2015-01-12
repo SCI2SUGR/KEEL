@@ -123,6 +123,15 @@ public class NodeLabel extends Node {
     public void debug() {
         System.out.print(B.aString());
     }
+    
+    /**
+     * <p>
+     * This method is for debug
+     * </p>
+     */
+    public String output() {
+    	return B.aString();
+    }
 
 }
 

@@ -132,5 +132,19 @@ public class NodeRuleBase extends Node {
             children[i].debug();
         }
     }
+    
+    /**
+     * <p>
+     * This method is for debug
+     * @return output the nodeRuleBase
+     * </p>
+     */
+    public String output() {
+    	String output = new String();
+        for (int i=0;i<children.length;i++) {
+            output += children[i].output();
+        }
+        return output;
+    }
 }
 

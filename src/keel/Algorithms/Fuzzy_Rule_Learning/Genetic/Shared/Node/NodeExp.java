@@ -115,6 +115,19 @@ public class NodeExp extends NodeExprArit {
         System.out.print(")");
     }
     
+    /**
+     * <p>
+     * This method is for debug
+     * </p>
+     */
+    public String output() {
+    	String output = new String("");
+        output = "EXP(";
+        output += children[0].output();
+        output += ")";
+        return output;
+    }
+    
 }
 
 

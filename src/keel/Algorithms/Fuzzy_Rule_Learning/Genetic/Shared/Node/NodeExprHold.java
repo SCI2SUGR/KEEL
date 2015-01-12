@@ -134,5 +134,18 @@ public class NodeExprHold extends Node {
             children[i].debug();
         }
     }
+    
+    /**
+     * <p>
+     * This method is for debug
+     * </p>
+     */
+    public String output() {
+    	String output = new String(""); 
+        for (int i=0;i<children.length;i++) {
+            output += children[i].output();
+        }
+        return output;
+    }
 }
 

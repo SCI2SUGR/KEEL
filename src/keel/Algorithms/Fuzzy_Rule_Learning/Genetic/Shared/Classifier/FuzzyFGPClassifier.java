@@ -99,6 +99,15 @@ public class FuzzyFGPClassifier extends Classifier {
         R.debug();
     }
     
+    /** 
+    * <p> 
+    * This method prints information about the Rule Base useful for debugging purposes
+    * </p>
+    */
+        public String output() {
+            return R.output();
+        }
+    
 /** 
 * <p> 
 * This method clones the current object.

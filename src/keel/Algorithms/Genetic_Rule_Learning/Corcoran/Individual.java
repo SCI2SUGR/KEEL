@@ -176,7 +176,9 @@ public class Individual {
         if (!regla){
           salida += "*";
         }
-        salida += ": " + nombreClases[(int)Gene[ (i * divisor) + divisor - 1]+1]; // + " ("+exitos[i]+"/"+fracasos[i]+")";
+        int clase = (i * divisor) + divisor - 1;
+        //salida += ": " + nombreClases[(int)Gene[ (i * divisor) + divisor - 1]+1]; // + " ("+exitos[i]+"/"+fracasos[i]+")";
+        salida += ": " + nombreClases[(int)Gene[ clase ]+1]; // + " ("+exitos[i]+"/"+fracasos[i]+")";
       }
     return salida;
   }

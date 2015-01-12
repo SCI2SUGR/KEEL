@@ -205,7 +205,15 @@ public class FuzzyGPClassifier extends GeneticIndividualForClassification {
 * </p> 
 */ 	
     public void debug() { c.debug(); } // Overload debug from GeneticIndividualForClassification
-	
+
+    /** 
+    * <p> 
+    * This method performs the debug operation, which allow to analyze the behaviour
+    * of the learning process.
+    * </p> 
+    */ 	
+    public String output() { return c.output(); } // Overload debug from GeneticIndividualForClassification    
+    
 /** 
 * <p> 
 * This method performs the local optimization: as this method does not have any

@@ -104,7 +104,16 @@ public class FuzzyClassifier extends Classifier {
     public void debug() {
         R.debug();
     }
-
+    
+    /** 
+    * <p> 
+    * This method prints information about the Rule Base useful for debugging purposes
+    * </p>
+    */ 	
+        public String output() {
+            return ("no output available");
+        }
+    
 /** 
 * <p> 
 * This method clones the current object.

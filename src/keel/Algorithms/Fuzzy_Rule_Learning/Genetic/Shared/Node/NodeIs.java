@@ -124,6 +124,21 @@ public class NodeIs extends NodeAssert {
         System.out.print(")");
 
     }
+    
+    /**
+     * <p>
+     *This method is for debug
+     * </p>
+     */
+    public String output() {
+    	String output = new String("");
+        output = "(";
+        output += children[0].output();
+        output += ") ES (";
+        output += children[1].output();
+        output += ")";
+        return output;
+    }
 
 }
 

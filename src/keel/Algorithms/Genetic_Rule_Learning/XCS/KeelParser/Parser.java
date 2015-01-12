@@ -532,11 +532,13 @@ public class Parser implements ParserConstants {
                                 Config.fOTestFileName = fName;
                                 break;
                 case 2:
-                                Config.fTimeFileName = fName;
+                                //Config.fTimeFileName = fName; //change for educational
+                				Config.fPopFileName = fName;
                                 break;
 
                 case 3:
-                                Config.fPopFileName = fName;
+                                //Config.fPopFileName = fName; //change for educational
+                				Config.fTimeFileName = fName;
                                 break;
                 case 4:
                                 Config.fPopNormFileName = fName;

@@ -84,5 +84,12 @@ public abstract class Classifier {
 * </p>
 */ 	
     public abstract void debug();
+    
+    /** 
+    * <p> 
+    * abstract method to print information useful for debugging purposes
+    * </p>
+    */ 	
+    public abstract String output();    
 }
 

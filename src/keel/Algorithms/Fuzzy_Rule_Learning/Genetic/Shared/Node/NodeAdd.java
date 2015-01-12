@@ -118,6 +118,21 @@ public class NodeAdd extends NodeExprArit {
             children[1].debug();
             System.out.print(")");
         }
+        
+        /**
+         * <p>
+         *This method is for debug
+         * </p>
+         */
+        public String output() {
+        	String output = new String("");
+            output = "(";
+            output += children[0].output();
+            output += ") + (";
+            output += children[1].output();
+            output += ")";
+            return output;
+        }
 
 }
 

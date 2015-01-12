@@ -148,7 +148,7 @@ public class Corcoran {
             }
           }
         // class
-        New[i].setGene(j, Randomize.RandintClosed(0, nClasses));
+        New[i].setGene(j, Randomize.RandintClosed(0, nClasses-1));
 
         New[i].setExitos(r, 0);
         New[i].setFracasos(r, 0);
@@ -484,13 +484,13 @@ public class Corcoran {
    */
   private void Select() {
     int i, j2, j;
-    j = Randomize.RandintClosed(0, population_size);
+    j = Randomize.RandintClosed(0, population_size-1);
     for (i = 0; i < n_gens; i++) {
       offspring1[i] = New[j].getGene(i);
 
     }
     do {
-      j2 = Randomize.RandintClosed(0, population_size);
+      j2 = Randomize.RandintClosed(0, population_size-1);
     }
     while (j2 == j);
 
@@ -510,7 +510,7 @@ public class Corcoran {
     int i, regla;
     double tmp;
 
-    regla = Randomize.RandintClosed(0, nrules);
+    regla = Randomize.RandintClosed(0, nrules-1);
 
     for (i = regla * (2 * columns); i < n_gens; i++) {
       tmp = offspring1[i];
@@ -629,18 +629,18 @@ public class Corcoran {
       aleat = Randomize.RandClosed();
       if (aleat <= ratio) {
         if ( (i % divisor) == (divisor - 1)) { // it is a class value
-          offspring1[i] = Randomize.RandintClosed(0, nClasses);
+          offspring1[i] = Randomize.RandintClosed(0, nClasses-1);
         }
         else {
           pos = i % divisor;
           pos = pos / 2;
-          offspring1[i] = Randomize.RanddoubleClosed(min[pos], max[pos]+1);
+          offspring1[i] = Randomize.RanddoubleClosed(min[pos], max[pos]);
         }
       }
       aleat = Randomize.RandClosed();
       if (aleat <= ratio) {
         if ( (i % divisor) == (divisor - 1)) {
-          offspring2[i] = Randomize.RandintClosed(0, nClasses);
+          offspring2[i] = Randomize.RandintClosed(0, nClasses-1);
         }
         else {
           pos = i % divisor;

@@ -151,6 +151,15 @@ public class NodeVariable extends NodeExprArit {
     
     /**
      * <p>
+     * This method is for debug
+     * </p>
+     */
+    public String output() {
+        return ("X["+N+"]");
+    }
+    
+    /**
+     * <p>
      * This method returns the variable number
      * </p>
      * @return The variable number
