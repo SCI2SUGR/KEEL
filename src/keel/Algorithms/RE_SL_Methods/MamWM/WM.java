@@ -226,7 +226,8 @@ class WM {
 
             /* we write the RB */
             cadenaReglas = base_reglas.BRtoString(peso);
-            cadenaReglas += "\nECMtra: " + ec + " ECMtst: " + ec_tst + "\n";
+//            cadenaReglas += "\n";
+//            cadenaReglas += "\nECMtra: " + ec + " ECMtst: " + ec_tst + "\n";
 
             Fichero.escribeFichero(fichero_reglas, cadenaReglas);
 
@@ -243,9 +244,9 @@ class WM {
             Fichero.AnadirtoFichero(ruta_salida + "WMcomunR.txt",
                                     "" + base_reglas.n_reglas + "\n");
             Fichero.AnadirtoFichero(ruta_salida + "WMcomunTRA.txt",
-                                    "" + ec + "\n");
+                                    "" + 2.0*ec + "\n");
             Fichero.AnadirtoFichero(ruta_salida + "WMcomunTST.txt",
-                                    "" + ec_tst + "\n");
+                                    "" + 2.0*ec_tst + "\n");
         }
     }
 
