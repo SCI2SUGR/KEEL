@@ -44,7 +44,6 @@
 package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
 import org.core.*;
 
-
 import java.io.*;
 import java.util.*;
 
@@ -266,8 +265,8 @@ public class doRbfnIncCl {
                     Y[i][0]=auxY[i];
                 net.testClasification(X,ndata,obtenido,Dtrn.getnclasses()-1,0);
                 Dtst.generateResultsClasification(outTstFile,auxY,obtenido);
-                RBFUtils.createOutputFile( "", outRbfFile );
-                //net.pinta( outRbfFile );
+                RBFUtils.createOutputFile( trnFile, outRbfFile );
+				net.printRbfn( outRbfFile );
             } 
                 
             if (Dtrn.datasetType()==2) 

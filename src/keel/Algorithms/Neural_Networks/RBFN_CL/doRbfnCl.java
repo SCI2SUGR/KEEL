@@ -228,8 +228,8 @@ public class doRbfnCl {
 								Y[i][0]=auxY[i];
 						net.testClasification(X,ndata,obtained,Dtrn.getnclasses()-1,0);
 						Dtst.generateResultsClasification(outTstFile,auxY,obtained);
-						RBFUtils.createOutputFile( "", outRbfFile );
-						//net.pinta( outRbfFile );
+						RBFUtils.createOutputFile( trnFile, outRbfFile );
+						net.printRbfn( outRbfFile );
                 
                 
             System.out.println( "- End of doRbfnCl. See results in output files named according to "+

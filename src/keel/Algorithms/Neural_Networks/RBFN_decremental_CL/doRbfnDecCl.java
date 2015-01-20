@@ -43,9 +43,9 @@
 package keel.Algorithms.Neural_Networks.RBFN_decremental_CL;
 import org.core.*;
 
-
 import java.io.*;
 import java.util.*;
+
 
 
 public class doRbfnDecCl {
@@ -332,8 +332,8 @@ public class doRbfnDecCl {
 								Y[i][0]=auxY[i];
 						net.testClasification(X,ndata,obtained,Dtrn.getnclasses()-1,0);
 						Dtst.generateResultsClasification(outTstFile,auxY,obtained);
-						RBFUtils.createOutputFile( "", outRbfFile );
-						//net.pinta( outRbfFile );
+						RBFUtils.createOutputFile( trnFile, outRbfFile );
+						net.printRbfn( outRbfFile );
 
                 
 

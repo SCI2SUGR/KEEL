@@ -49,17 +49,8 @@ package keel.Algorithms.Neural_Networks.RBFN_decremental;
 
 import org.core.*;
 
-
-
-
-
 import java.io.*;
-
 import java.util.*;
-
-
-
-
 
 
 
@@ -377,8 +368,8 @@ public class doRbfnDec {
 						obtained = new double[ndata];
 						net.testModeling(X,ndata,obtained);
 						Dtst.generateResultsModeling(outTstFile,auxY,obtained);
-						RBFUtils.createOutputFile( "", outRbfFile );
-						//net.pinta( outRbfFile );
+						RBFUtils.createOutputFile( trnFile, outRbfFile );
+						net.printRbfn( outRbfFile );
   
             if (Dtrn.datasetType()==2) 
 

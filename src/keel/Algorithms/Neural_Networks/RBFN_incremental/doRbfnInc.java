@@ -42,6 +42,7 @@
  
 package keel.Algorithms.Neural_Networks.RBFN_incremental;
 import org.core.*;
+
 import java.io.*;
 import java.util.*;
 
@@ -209,8 +210,8 @@ public class doRbfnInc {
 						obtenido = new double[ndata];
 						net.testModeling(X,ndata,obtenido);
 						Dtst.generateResultsModeling(outTstFile,auxY,obtenido);
-						RBFUtils.createOutputFile( "", outRbfFile );
-						//net.pinta( outRbfFile );
+						RBFUtils.createOutputFile( trnFile, outRbfFile );
+						net.printRbfn( outRbfFile );
   
             if (Dtrn.datasetType()==2) 
                 System.out.println( "This is not a clustering algorithm");

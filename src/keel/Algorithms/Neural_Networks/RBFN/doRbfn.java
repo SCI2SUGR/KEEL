@@ -43,9 +43,10 @@
 package keel.Algorithms.Neural_Networks.RBFN;
 import org.core.*;
 
-
 import java.io.*;
 import java.util.*;
+
+import keel.Algorithms.Neural_Networks.RBFN_CL.RBFUtils;
 
 
 
@@ -262,8 +263,8 @@ public class doRbfn {
                     Y[i][0]=auxY[i];
                 net.testClasification(X,ndata,obtained,Dtrn.getnclasses()-1,0);
                 Dtst.generateResultsClasification(outTstFile,auxY,obtained);
-                RBFUtils.createOutputFile( "", outRbfFile );
-                //net.pinta( outRbfFile );
+                RBFUtils.createOutputFile( trnFile, outRbfFile );
+				net.printRbfn( outRbfFile );
             } 
                 
             if (Dtrn.datasetType()==2) System.out.println( "Clustering");
