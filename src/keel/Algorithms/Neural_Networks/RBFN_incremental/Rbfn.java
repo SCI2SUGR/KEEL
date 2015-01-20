@@ -48,7 +48,6 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-import keel.Algorithms.Neural_Networks.RBFN_incremental_CL.RBFUtils;
 
 public class Rbfn {
 
