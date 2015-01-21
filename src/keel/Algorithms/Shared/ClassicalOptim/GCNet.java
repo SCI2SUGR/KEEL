@@ -163,6 +163,13 @@ public class GCNet {
 
     }
     
+    /**
+     * Returns the weights as a String for printing or storing purposes
+     * @return the weights in a String
+     */
+    public String printNet(){
+    	return Net.getWeightsAsString();
+    }
 }
 
 

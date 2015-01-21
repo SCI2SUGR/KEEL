@@ -743,7 +743,7 @@ public class ConjGradNN {
      *
      * @return a String with a printable version of x. 
      */	 
-    private void debugOutput() {
+    public void debugOutput() {
         double x[],y[],d[];
         System.out.println("Weight="+AString(weights));
         for (int i=0;i<Input.length;i++) {
@@ -781,6 +781,14 @@ public class ConjGradNN {
         for (int i=0;i<weights.length;i++)
             for (int j=0;j<weights[i].length;j++)
                 for (int k=0;k<weights[i][j].length;k++) weights[i][j][k]=(double)p[total++];
+    }
+    
+    /**
+     * Return the weights as a String to print them
+     * @return the weights in String format
+     */
+    public String getWeightsAsString(){
+    	return AString(weights);
     }
     
     

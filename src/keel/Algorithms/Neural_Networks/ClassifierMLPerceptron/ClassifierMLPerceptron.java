@@ -187,6 +187,11 @@ public class ClassifierMLPerceptron {
             }
             pc.results(Cp,Co);
             
+            Files.writeFile((String)pc.outputData.get(0), pd.getHeader() );
+            Files.addToFile((String)pc.outputData.get(0), "@data\n");gcn.printNet();
+            Files.addToFile((String)pc.outputData.get(0), gcn.printNet());
+
+            
         } catch(FileNotFoundException e) {
             System.err.println(e+" File not found");
         } catch(IOException e) {

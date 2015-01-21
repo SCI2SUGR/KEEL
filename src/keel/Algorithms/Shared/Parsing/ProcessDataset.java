@@ -672,5 +672,12 @@ public class ProcessDataset {
 
     }
 
+    /**
+     * Returns the header of the data set with the attributes' information
+     * @return The header of the data set
+     */
+    public String getHeader(){
+    	return IS.getHeader();
+    }
 }
 

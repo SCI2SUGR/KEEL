@@ -154,7 +154,10 @@ public class ModelMLPerceptron {
             
             System.out.println("Test MSE = "+RMS);
             pc.results(Yp,Yo); 
-            
+
+            Files.writeFile((String)pc.outputData.get(0), pd.getHeader() );
+            Files.addToFile((String)pc.outputData.get(0), "@data\n");gcn.printNet();
+            Files.addToFile((String)pc.outputData.get(0), gcn.printNet());
             
         } catch(FileNotFoundException e) {
             System.err.println(e+" File not found");
