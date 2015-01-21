@@ -254,7 +254,7 @@ public class Genesis {
 
         }
         if (global.save) {
-            neural.SaveNetwork("network", false);
+            neural.SaveNetwork(global.model_output, train.getInstaceSet().getHeader());
 
         }
         if (global.verbose) {

@@ -30,7 +30,6 @@
 package keel.Algorithms.Neural_Networks.net;
 
 import java.io.FileOutputStream;
-import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileInputStream;
@@ -39,6 +38,7 @@ import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 
 import keel.Dataset.*;
+import org.core.*;
 
 /**
  * <p>
@@ -453,46 +453,40 @@ public class Network {
      * @param file_name Output file name
      * @param append Append or overwrite flag
      */
-    public void SaveNetwork(String file_name, boolean append) {
+    public void SaveNetwork(String file_name, String header) {
 
         // Open file stream
         // Training data
-        try {
-            FileOutputStream file = new FileOutputStream(file_name, append);
-            DataOutputStream dataOut = new DataOutputStream(file);
+    	//header of KEEL dataset
+        Files.writeFile(file_name, header);
 
-            // Save network parameters
-            dataOut.writeInt(Nlayers);
-            for (int i = 0; i < Nlayers; i++) {
-                dataOut.writeInt(Nhidden[i]);
+        // Save network parameters
+    	Files.addToFile(file_name,"Hidden layers: " + Integer.toString(Nlayers) + "\n");
+    	Files.addToFile(file_name,"Neurons per layer:\n");
+        for (int i = 0; i < Nlayers; i++) {
+        	Files.addToFile(file_name,Integer.toString(Nhidden[i]) + "\n");
+        }
+        Files.addToFile(file_name,"Transfer function:\n");
+        for (int i = 0; i < Nlayers - 1; i++) {
+            if (transfer[i].compareToIgnoreCase("Log") == 0) {
+            	Files.addToFile(file_name,"Log\n");
+            } else if (transfer[i].compareToIgnoreCase("Htan") == 0) {
+            	Files.addToFile(file_name,"Htan\n");
+            } else {
+            	Files.addToFile(file_name,"Lin\n");
             }
+        }
 
-            for (int i = 0; i < Nlayers - 1; i++) {
-                if (transfer[i].compareToIgnoreCase("Log") == 0) {
-                    dataOut.writeInt(1);
-                } else if (transfer[i].compareToIgnoreCase("Htan") == 0) {
-                    dataOut.writeInt(2);
-                } else {
-                    dataOut.writeInt(3);
+        // Save weights
+        Files.addToFile(file_name,"Weights:\n");
+        for (int k = 0; k < Nlayers - 1; k++) {
+        	Files.addToFile(file_name,"\nLayer " + Integer.toString(k) + ":\n");
+            for (int i = 0; i < Nhidden[k + 1]; i++) {
+                for (int j = 0; j < Nhidden[k]; j++) {
+                	Files.addToFile(file_name,Double.toString(w[k][i][j])+" ");
+
                 }
             }
-
-            // Save weights
-            for (int k = 0; k < Nlayers - 1; k++) {
-                for (int i = 0; i < Nhidden[k + 1]; i++) {
-                    for (int j = 0; j < Nhidden[k]; j++) {
-                        dataOut.writeDouble(w[k][i][j]);
-
-                    }
-                }
-            }
-            dataOut.close();
-        } catch (FileNotFoundException ex) {
-            System.err.println("Unable to create network file");
-            System.exit(1);
-        } catch (IOException ex) {
-            System.err.println("IO exception");
-            System.exit(1);
         }
 
     }

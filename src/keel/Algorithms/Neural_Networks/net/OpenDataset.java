@@ -198,5 +198,13 @@ public class OpenDataset {
         }
 
     }
+    
+    /**
+     * Returns the InstanceSet associated
+     * @return the InstanceSet used by this object
+     */
+    public InstanceSet getInstaceSet(){
+    	return IS;
+    }
 }
 
