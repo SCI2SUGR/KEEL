@@ -67,11 +67,17 @@ public class LVQ extends Metodo {
 
 	double alpha = 0, nu = 0;
 
-	int n_p, T;
+	int n_p, T, nSel;
+	
+	/** Neurons*/
+	double conjS[][];
 
 	double datosTest[][];
 
 	int clasesTest[];
+	
+	/** Neurons' associated class */
+	int clasesS[];
 
 	public LVQ(String ficheroScript) {
 		super(ficheroScript);
@@ -98,12 +104,9 @@ public class LVQ extends Metodo {
 		boolean marcas[];
 		boolean notFound;
 
-		int nSel, init;
+		int init;
 		int clasSel[];
-		double conjS[][];
-
-		int clasesS[];
-
+		
 		int baraje[];
 
 		int pos, tmp;
@@ -339,6 +342,9 @@ public class LVQ extends Metodo {
 
 		escribeSalida(ficheroSalida[1], instanciasIN, instanciasOUT, entradas,
 				salida, nEntradas, relation);
+		
+		//Print the network to a file
+		printNetworkToFile(ficheroSalida[2],referencia.getHeader());
 
 	}
 
@@ -368,7 +374,7 @@ public class LVQ extends Metodo {
 
 		int i, j;
 
-		ficheroSalida = new String[2];
+		ficheroSalida = new String[3];
 
 		fichero = Fichero.leeFichero(ficheroScript);
 
@@ -445,6 +451,17 @@ public class LVQ extends Metodo {
 			;
 
 		ficheroSalida[1] = new String(line, i, j - i);
+		
+		
+		for (i = j + 1; line[i] != '\"'; i++)
+			;
+
+		i++;
+
+		for (j = i; line[j] != '\"'; j++)
+			;
+
+		ficheroSalida[2] = new String(line, i, j - i);
 
 		/* Getting the seed */
 
@@ -497,7 +514,7 @@ public class LVQ extends Metodo {
 		nu = Double.parseDouble(tokens.nextToken().substring(1));
 	}
 
-	public static void escribeSalida(String nombreFichero,
+	protected static void escribeSalida(String nombreFichero,
 			String instanciasIN[], String instanciasOUT[],
 			Attribute entradas[], Attribute salida, int nEntradas,
 			String relation) {
@@ -569,6 +586,30 @@ public class LVQ extends Metodo {
 
 		}
 		Fichero.AnadirtoFichero(nombreFichero, cadena);
+	}
+	
+	/**
+     * <p>
+     * Save network weights to a file
+     * </p>
+     * @param file_name Output file name
+     * @param header header of the data set for which the network has been adjusted to
+     */
+	protected void printNetworkToFile(String file_name, String header){
+		//write the header to the file
+		Files.writeFile(file_name, header);
+		
+		
+		Files.addToFile(file_name, "Number of neurons: " + nSel + "\n");
+		for(int i = 0; i < nSel; i++){
+			Files.addToFile(file_name, "\nNeuron " + i + "\n");
+			for(int j = 0; j < conjS[i].length;j++){
+				Files.addToFile(file_name, Double.toString(conjS[i][j])+" " );
+			}
+			Files.addToFile(file_name, " Class = " + clasesS[i] + "\n");
+		}
+		
+		
 	}
 
 	private void normalizarTest() {
