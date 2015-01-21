@@ -186,5 +186,13 @@ public class OpenDataset {
 		}
 
 	}
+	
+	/**
+	 * Returns the header of the data set with all the attributes information
+	 * @return the header of the InstanceSet associated
+	 */
+	public String getHeader(){
+		return IS.getHeader();
+	}
 }
 

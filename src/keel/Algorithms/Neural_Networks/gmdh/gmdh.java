@@ -33,6 +33,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Vector;
 
+import org.core.Files;
+
 
 /**
  * <p>
@@ -163,7 +165,8 @@ public class gmdh {
 	
     sonn SelfOrganizingNetwork = new sonn (global, data);
 
-    SelfOrganizingNetwork.SaveNetwork ("SONN_Network", global.seed, false);
+    Files.writeFile(global.model_output, train.getHeader());
+    SelfOrganizingNetwork.SaveNetwork (global.model_output, global.seed, true);
 
     if (global.problem.compareToIgnoreCase("Classification") == 0) {
       double result = SelfOrganizingNetwork.TestSONNInClassification (global, data.train, global.n_train_patterns);

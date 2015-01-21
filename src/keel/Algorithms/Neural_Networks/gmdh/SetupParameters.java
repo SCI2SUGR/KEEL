@@ -121,6 +121,9 @@ public class SetupParameters extends Parameters{
     pos1 = line.indexOf("\"", pos2 + 1);
     pos2 = line.indexOf("\"", pos1 + 1);
     test_output = line.substring(pos1 + 1, pos2);
+    pos1 = line.indexOf("\"", pos2 + 1);
+    pos2 = line.indexOf("\"", pos1 + 1);
+    model_output = line.substring(pos1 + 1, pos2);
 
     test_data = Boolean.valueOf(props.getProperty("Test_data")).booleanValue();
     tipify_inputs = Boolean.valueOf(props.getProperty("Tipify_inputs")).booleanValue();

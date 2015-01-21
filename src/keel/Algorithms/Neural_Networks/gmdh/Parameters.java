@@ -82,7 +82,7 @@ public class Parameters {
   public long seed;
   
   /** File names */
-  public String train_file, test_file, train_output, test_output, val_file;
+  public String train_file, test_file, train_output, test_output, model_output, val_file;
   
   /** Type of the problem ( CLASSIFICATION | REGRESSION ) */
   public String problem;
@@ -203,6 +203,10 @@ public class Parameters {
     pos1 = line.indexOf("\"", pos2 + 1);
     pos2 = line.indexOf("\"", pos1 + 1);
     test_output = line.substring(pos1 + 1, pos2);
+    
+    pos1 = line.indexOf("\"", pos2 + 1);
+    pos2 = line.indexOf("\"", pos1 + 1);
+    model_output = line.substring(pos1 + 1, pos2);
 
     cross_validation = Boolean.valueOf(props.getProperty("Crossvalidation")).
         booleanValue();
