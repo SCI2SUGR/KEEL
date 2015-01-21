@@ -2,7 +2,7 @@
   <name>Multilayer perceptron for classification problems, Conjugate Gradient based training</name>
   <nParameters>4</nParameters>
   <seed>1</seed>
-  <nOutput>0</nOutput>
+  <nOutput>1</nOutput>
   <parameter>
     <name>subAlgorithm</name>
     <type>list</type>
