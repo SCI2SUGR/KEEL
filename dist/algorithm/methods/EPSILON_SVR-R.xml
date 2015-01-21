@@ -12,7 +12,7 @@
       <item>RBF</item>
       <item>SIGMOID</item>
     </domain>
-    <default>POLY</default>
+    <default>RBF</default>
   </parameter>
   <parameter>
     <name>C</name>
