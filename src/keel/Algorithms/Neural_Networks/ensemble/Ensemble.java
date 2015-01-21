@@ -41,6 +41,8 @@ import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.DataInputStream;
 
+import org.core.Files;
+
 
 /**
  * <p>
@@ -343,36 +345,28 @@ public class Ensemble {
      * Save ensemble at file_name
      * </p>
      * @param file_name File name
+     * @param header header of the data set for which the network has been adjusted to
      */
-    public void SaveEnsemble(String file_name) {
-        String name;
+    public void SaveEnsemble(String file_name,String header) {
+    	String name;
 
-        // Save networks
-        for (int i = 0; i < Nnetworks; i++) {
-            name = file_name + "_net_" + i;
-            nets[i].SaveNetwork(name, false);
-        }
+    	//header of KEEL dataset
+    	Files.writeFile(file_name, header);
+    	// Save networks
+    	for (int i = 0; i < Nnetworks; i++) {
+    		Files.addToFile(file_name, "\n>>>>>>>>>>>>>>Network " + i + "\n");
+    		nets[i].SaveNetwork(file_name, header, true);
+    	}
 
-        // Save weigths
-        try {
-            FileOutputStream file = new FileOutputStream(file_name, false);
-            DataOutputStream dataOut = new DataOutputStream(file);
-
-            // Save weights
-            for (int i = 0; i < Noutputs; i++) {
-                for (int j = 0; j < Nnetworks; j++) {
-                    dataOut.writeDouble(weights[i][j]);
-                }
-            }
-
-            dataOut.close();
-        } catch (FileNotFoundException ex) {
-            System.err.println("Unable to open ensemble files");
-            System.exit(1);
-        } catch (IOException ex) {
-            System.err.println("IO exception");
-            System.exit(1);
-        }
+    	Files.addToFile(file_name, "\n\n********* Output weights:\n");
+    	// Save weigths
+    	// Save weights
+    	for (int i = 0; i < Noutputs; i++) {
+    		Files.addToFile(file_name, "Output: " + i +"\n");
+    		for (int j = 0; j < Nnetworks; j++) {
+    			Files.addToFile(file_name, Double.toString(weights[i][j])+" " );
+    		}
+    	}
 
     }
 

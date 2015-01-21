@@ -451,14 +451,14 @@ public class Network {
      * Save network weights to a file
      * </p>
      * @param file_name Output file name
-     * @param append Append or overwrite flag
+     * @param header header of the data set for which the network has been adjusted to
+     * @param append true = append the output to file_name, false = create a new file_name file for the output  
      */
-    public void SaveNetwork(String file_name, String header) {
+    public void SaveNetwork(String file_name, String header,boolean append) {
 
-        // Open file stream
-        // Training data
     	//header of KEEL dataset
-        Files.writeFile(file_name, header);
+        if(!append)
+        	Files.writeFile(file_name, header);
 
         // Save network parameters
     	Files.addToFile(file_name,"Hidden layers: " + Integer.toString(Nlayers) + "\n");

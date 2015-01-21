@@ -214,9 +214,9 @@ public class Genesis {
             }
         }
 
-        if (global.save) {
-            ensemble.SaveEnsemble("ensemble");
-        }
+        //if (global.save) {
+            ensemble.SaveEnsemble(global.model_output, train.getInstaceSet().getHeader());
+        //}
 
         if (global.verbose) {
             double res = ensemble.TestEnsembleInClassification(global,

@@ -253,10 +253,10 @@ public class Genesis {
             neural.TrainNetwork(global, data.train, global.n_train_patterns);
 
         }
-        if (global.save) {
-            neural.SaveNetwork(global.model_output, train.getInstaceSet().getHeader());
+        //if (global.save) {
+            neural.SaveNetwork(global.model_output, train.getInstaceSet().getHeader(),false);
 
-        }
+        //}
         if (global.verbose) {
             neural.PrintWeights();
 

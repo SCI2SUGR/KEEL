@@ -165,6 +165,10 @@ public class EnsembleParameters extends Parameters {
         pos1 = line.indexOf("\"", pos2 + 1);
         pos2 = line.indexOf("\"", pos1 + 1);
         test_output = line.substring(pos1 + 1, pos2);
+        
+        pos1 = line.indexOf("\"", pos2 + 1);
+        pos2 = line.indexOf("\"", pos1 + 1);
+        model_output = line.substring(pos1 + 1, pos2);
 
         cross_validation = Boolean.valueOf(props.getProperty("Crossvalidation")).
                            booleanValue();
