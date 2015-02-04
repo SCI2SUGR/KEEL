@@ -1,0 +1,290 @@
+﻿<method>
+
+	<name>SLAVEv0: Structural Learning Algorithm in a Vague Environment- original version of the algorithm</name>
+
+	<reference>  
+
+<ref>Gonzalez, A., Perez, R., “Completeness and consistency conditions for learning fuzzy rules”, Fuzzy Set and Systems, 96, 37–51 (1998).</ref>
+<ref>Garcia, D., Gonzalez, A., Perez, R., "Overview of the SLAVE learning algorithm: A review of its evolution and prospects", International Journal of Computational Intelligence Systems, 7 (6), 1194-1221 (2014).</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutionary Fuzzy Rule Based Classification System.</type>
+
+		<objective>To obtain a fuzzy classifier as a set of fuzzy rules representing the best way possible the training data.</objective>
+
+		<howWork> SLAVEv0 is a fuzzy rule learning algorithm based on the use of a sequential covering strategy.
+		It iteratively extracts a single rule which is added to the rule set. The selection of the best rule in
+		each iteration is carried out by means of a GA. The algorithm returns the final rule base obtained at
+		the end of the learning process. Some of its main characteristics are: it uses a one level codification
+		of the individuals of the population and the classes are learned in a specific order. It corresponds
+		to the SLAVE algorithm in the paper "Overview of the SLAVE learning algorithm: A review of its
+		evolution and prospects" cited above. This algorithm has been improved by the algorithms SLAVE2
+		and NSLV also described in this previous paper. 
+
+		</howWork>
+
+		<parameterSpec>  
+		    <param>Population Size</param>
+		    <param>Number of Iterations Allowed without Change</param>
+		    <param>Mutation Probability</param>
+		    <param>Crossover Probability</param>
+		    <param>Lambda</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+        Method: Clas-Fuzzy-SLAVEv0
+		Dataset: iris
+		Training set: iris-10-1tra.dat
+		Test set: iris-10-1tst.dat
+		Test Show results: Vis-Clas-Check
+        Parameters: default values
+
+		After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTSLAVEv0 folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= iris 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Fold 1 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 2 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 7 : CORRECT=1.0 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.039999999999999994 
+stddev Global Classification Error + N/C:
+0.04422166387140534 
+Correctly classified:
+0.96 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris 
+Summary of data, Classifiers: iris 
+Fold 0 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 1 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 2 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 3 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 4 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 5 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 6 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 7 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 8 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 9 : CORRECT=0.9703703703703703 N/C=0.0 
+Global Classification Error + N/C:
+0.027407407407407408 
+stddev Global Classification Error + N/C:
+0.004743054990691007 
+Correctly classified:
+0.9725925925925926 
+Global N/C:
+0.0 
+
+
+		We can see too the output and target classes for each case of the train set (result0s0.tra) in experiment/results/SLAVEv0.iris/:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+...
+
+
+		And the test results (result0s0.tst) in experiment/results/SLAVEv0.iris/:
+
+@relation  iris
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+
+        The file "experiment/results/SLAVEv0.iris/result0s0e0.txt" contains the following information:
+		 
+Experiment: ../datasets/iris/iris-10-1tra.dat
+===================================================
+
+
+===============
+ Run 
+===============
+Accuracy on training: 0.0
+Number of examples: 135
+Class 0: 45
+Class 1: 45
+Class 2: 45
+Accuracy on training: 0.3333333333333333
+Number of examples: 90
+Class 0: 1
+Class 1: 45
+Class 2: 45
+Accuracy on training: 0.3333333333333333
+Number of examples: 90
+Class 0: 45
+Class 1: 45
+Class 2: 45
+Accuracy on training: 0.6666666666666666
+Number of examples: 90
+Class 0: 45
+Class 1: 5
+Class 2: 45
+Accuracy on training: 0.6666666666666666
+Number of examples: 90
+Class 0: 45
+Class 1: 45
+Class 2: 45
+Accuracy on training: 0.9703703703703703
+Number of examples: 90
+Class 0: 45
+Class 1: 45
+Class 2: 3
+Successes: 131.0
+Errors:  4.0
+Not classified: 0.0
+	Rule 0: 42 / 0
+	Rule 1: 3 / 0
+	Rule 2: 41 / 0
+	Rule 3: 0 / 0
+	Rule 4: 45 / 4
+	Rule 5: 0 / 0
+Successes: 15.0
+Errors:  0.0
+Not classified: 0.0
+	Rule 0: 4 / 0
+	Rule 1: 1 / 0
+	Rule 2: 5 / 0
+	Rule 3: 0 / 0
+	Rule 4: 5 / 0
+	Rule 5: 0 / 0
+----------------------------------------------------
+Accuracy on training: 0.9703703703703703
+Accuracy on test: 1.0
+Number of rules: 6.0
+Variables per rule: 3.3333333333333335
+Variables used: 1.0
+Time: 1.0459999999999998
+Iterations: 29484
+Conditions: 20
+----------------------------------------------------
+------------------- RULES -------------------------
+----------------------------------------------------
+IF
+	sepalLength = { VeryLow Low Medium}
+	petalWidth = { VeryLow}
+THEN class IS Iris-setosa   W 1.0
+
+IF
+	sepalLength = { Low}
+	sepalWidth = { Medium}
+	petalLength = { VeryLow}
+	petalWidth = { Low}
+THEN class IS Iris-setosa   W 1.0
+
+IF
+	sepalLength = { Low Medium High}
+	petalLength = { VeryLow Low Medium}
+	petalWidth = { Medium}
+THEN class IS Iris-versicolor   W 0.96421985382504
+
+IF
+	sepalLength = { Medium High}
+	sepalWidth = { VeryLow Low Medium}
+	petalLength = { Low Medium}
+	petalWidth = { Medium}
+THEN class IS Iris-versicolor   W 0.7365372494859705
+
+IF
+	sepalWidth = { Low Medium High VeryHigh}
+	petalLength = { VeryLow High VeryHigh}
+	petalWidth = { High VeryHigh}
+THEN class IS Iris-virginica   W 0.8358717398515568
+
+IF
+	sepalLength = { VeryLow VeryHigh}
+	sepalWidth = { VeryLow Low High}
+	petalLength = { VeryLow Low Medium High}
+	petalWidth = { High}
+THEN class IS Iris-virginica   W 1.0
+
+	Accuracy on training set is: 0.9703703703703703
+	Accuracy on test set is: 1.0
+	Number of rules is: 6.0
+	Variables per rule is: 3.3333333333333335
+	Variables used is: 1.0
+	Time is: 1.0459999999999998
+	Iterations is: 29484
+	Conditions is: 20
+
+</example>
+
+</method>

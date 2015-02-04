@@ -1,0 +1,288 @@
+﻿<method>
+
+	<name>SLAVE2: Iterative Rule Learning of Fuzzy Rules with Feature Selection - implementation using feature selection</name>
+
+	<reference>  
+
+<ref>Gonzalez, A., Perez, R., “SLAVE: A genetic learning system based on an iterative approach”, IEEE Trans. on Fuzzy Systems, 7 (2), 176–191 (1999).</ref>
+<ref>Gonzalez, A., Perez, R., “Selection of relevant features in a fuzzy genetic learning algorithm”, IEEE Trans. on Systems, Man and Cybernetics-Part. B Cy- bernetics, 31 (3), 417–425 (2001).</ref>
+<ref>Castillo L., Gonzalez A., Perez R., “Including a simplicity criterion in the selection of the best rule in a genetic fuzzy learning algorithm”, Fuzzy Sets and Systems, 120 (2), 309–321 (2001).</ref>
+<ref>Garcia, D., Gonzalez, A., Perez, R., "Overview of the SLAVE learning algorithm: A review of its evolution and prospects", International Journal of Computational Intelligence Systems, 7 (6), 1194-1221 (2014).</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Evolutionary Fuzzy Rule Based Classification System.</type>
+
+		<objective>To obtain a fuzzy classifier as a set of fuzzy rules representing the best way possible the training data.</objective>
+
+		<howWork> SLAVE2 is a fuzzy rule learning algorithm based on the use of a sequential covering strategy.
+		It iteratively extracts a single rule which is added to the rule set. The selection of the best rule
+		in each iteration is carried out by means of a GA. The algorithm returns the final rule base obtained
+		at the end of the learning process.The algorithm was an extension of SLAVE cited above and described
+		in "Overview of the SLAVE learning algorithm: A review of its evolution and prospects" but including
+		feature selection and a simplicity criterion among other important aspects. This algorithm has been
+		improved by the algorithm NSLV also described in this previous paper. 
+
+		</howWork>
+
+		<parameterSpec>  
+		    <param>Population Size</param>
+		    <param>Number of Iterations Allowed without Change</param>
+		    <param>Binary Mutation Probability</param>
+		    <param>Binary Crossover Probability</param>
+		    <param>Real Mutation Probability</param>
+		    <param>Real Crossover Probability</param>
+		    <param>Lambda</param>
+		</parameterSpec>
+
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>Yes</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification
+        Method: Clas-Fuzzy-SLAVE2
+		Dataset: iris
+		Training set: iris-10-1tra.dat
+		Test set: iris-10-1tst.dat
+		Test Show results: Vis-Clas-Check
+        Parameters: default values
+
+		After the execution of RunKeel.jar we can see into the experiment/results/Vis-Clas-Check/TSTSLAVE2 folder the classification results for the test set:
+
+TEST RESULTS
+============
+Classifier= iris 
+Fold 0 : CORRECT=1.0 N/C=0.0 
+Fold 1 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 2 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 4 : CORRECT=1.0 N/C=0.0 
+Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 7 : CORRECT=1.0 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.039999999999999994 
+stddev Global Classification Error + N/C:
+0.04422166387140534 
+Correctly classified:
+0.96 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris 
+Summary of data, Classifiers: iris 
+Fold 0 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 1 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 2 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 3 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 4 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 5 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 6 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 7 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 8 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 9 : CORRECT=0.9703703703703703 N/C=0.0 
+Global Classification Error + N/C:
+0.026666666666666665 
+stddev Global Classification Error + N/C:
+0.003628873693012141 
+Correctly classified:
+0.9733333333333334 
+Global N/C:
+0.0 
+
+
+		We can see too the output and target classes for each case of the train set (result0s0.tra) in experiment/results/SLAVE2.iris/:
+
+@relation iris
+@attribute sepalLength real [4.3, 7.9]
+@attribute sepalWidth real [2.0, 4.4]
+@attribute petalLength real [1.0, 6.9]
+@attribute petalWidth real [0.1, 2.5]
+@attribute class {Iris-setosa, Iris-versicolor, Iris-virginica}
+@inputs sepalLength, sepalWidth, petalLength, petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+...
+
+
+		And the test results (result0s0.tst) in experiment/results/SLAVE2.iris/:
+
+@relation  iris
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-setosa Iris-setosa
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-versicolor Iris-versicolor
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+Iris-virginica Iris-virginica
+
+
+        The file "experiment/results/SLAVE2.iris/result0s0e0.txt" contains the following information:
+		 
+Experiment: ../datasets/iris/iris-10-1tra.dat
+===================================================
+
+
+===============
+ Run 
+===============
+Accuracy on training: 0.0
+Number of examples: 135
+Class 0: 45
+Class 1: 45
+Class 2: 45
+Accuracy on training: 0.3333333333333333
+Number of examples: 90
+Class 0: 1
+Class 1: 45
+Class 2: 45
+Accuracy on training: 0.3333333333333333
+Number of examples: 90
+Class 0: 45
+Class 1: 45
+Class 2: 45
+Accuracy on training: 0.6666666666666666
+Number of examples: 90
+Class 0: 45
+Class 1: 5
+Class 2: 45
+Accuracy on training: 0.6666666666666666
+Number of examples: 90
+Class 0: 45
+Class 1: 45
+Class 2: 45
+Accuracy on training: 0.9703703703703703
+Number of examples: 90
+Class 0: 45
+Class 1: 45
+Class 2: 3
+Successes: 131.0
+Errors:  4.0
+Not classified: 0.0
+	Rule 0: 38 / 0
+	Rule 1: 7 / 0
+	Rule 2: 41 / 0
+	Rule 3: 0 / 0
+	Rule 4: 45 / 4
+Successes: 15.0
+Errors:  0.0
+Not classified: 0.0
+	Rule 0: 4 / 0
+	Rule 1: 1 / 0
+	Rule 2: 5 / 0
+	Rule 3: 0 / 0
+	Rule 4: 5 / 0
+----------------------------------------------------
+Accuracy on training: 0.9703703703703703
+Accuracy on test: 1.0
+Number of rules: 5.0
+Variables per rule: 1.8
+Variables used: 0.75
+Time: 1.227
+Iterations: 52840
+Conditions: 9
+----------------------------------------------------
+------------------- RULES -------------------------
+----------------------------------------------------
+IF
+	sepalLength = { VeryLow Low}
+	sepalWidth = { Medium}
+	petalLength = { VeryLow}
+	petalWidth = { VeryLow}
+THEN class IS Iris-setosa   W 1.0
+
+IF
+	sepalLength = { Low}
+	sepalWidth = { Medium}
+	petalLength = { VeryLow}
+	petalWidth = { Low}
+THEN class IS Iris-setosa   W 1.0
+
+IF
+	sepalLength = { Low}
+	sepalWidth = { Medium}
+	petalLength = { Low Medium}
+	petalWidth = { Medium}
+THEN class IS Iris-versicolor   W 0.96421985382504
+
+IF
+	sepalLength = { Medium High VeryHigh}
+	sepalWidth = { Low VeryHigh}
+	petalLength = { VeryLow Low Medium}
+	petalWidth = { Medium}
+THEN class IS Iris-versicolor   W 0.7365372494859705
+
+IF
+	sepalLength = { Medium High}
+	sepalWidth = { Medium}
+	petalLength = { High VeryHigh}
+	petalWidth = { High VeryHigh}
+THEN class IS Iris-virginica   W 0.8358717398515568
+
+	Accuracy on training set is: 0.9703703703703703
+	Accuracy on test set is: 1.0
+	Number of rules is: 5.0
+	Variables per rule is: 1.8
+	Variables used is: 0.75
+	Time is: 1.227
+	Iterations is: 52840
+	Conditions is: 9
+
+</example>
+
+</method>
