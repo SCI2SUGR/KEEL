@@ -780,7 +780,7 @@
     <multiinstance>No</multiinstance> 
 	</output>
   </method>
-  <method>
+<!--<method>
     <name>SLAVE-C</name>
     <family>Evolutionary Fuzzy Rule Learning</family>
     <jar_file>SLAVE.jar</jar_file>
@@ -794,7 +794,7 @@
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     <multiinstance>No</multiinstance> 
-	</input>
+    </input>
     <output>
       <continuous>Yes</continuous>
       <integer>Yes</integer>
@@ -804,7 +804,87 @@
       <multiclass>Yes</multiclass>
       <multioutput>No</multioutput>
     <multiinstance>No</multiinstance> 
-	</output>
+    </output>
+  </method>
+-->
+
+   <method>
+    <name>NSLV-C</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
+    <jar_file>nslv_k.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>No</multiinstance> 
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>No</multiinstance> 
+    </output>
+  </method>
+  <method>
+    <name>SLAVEv0-C</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
+    <jar_file>slave_k.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>No</multiinstance> 
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>No</multiinstance> 
+    </output>
+  </method>
+  <method>
+    <name>SLAVE2-C</name>
+    <family>Evolutionary Fuzzy Rule Learning</family>
+    <jar_file>slave2_k.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>No</multiinstance> 
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>No</multiinstance> 
+    </output>
   </method>
   <method>
     <name>GFS-GCCL-C</name>

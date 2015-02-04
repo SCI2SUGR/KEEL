@@ -1856,6 +1856,36 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		
 		<!-- Genetic Fuzzy Rule Learning -->
 		
+<jar
+    jarfile="${distMet}/nslv_k.jar"
+    manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierNSLV/Manifest">
+    <fileset dir="${bin}"
+    includes="keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierNSLV/**/*.class
+    org/core/*.class">
+    </fileset>
+    <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+</jar>
+
+<jar
+    jarfile="${distMet}/slave_k.jar"
+    manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierSLAVEv0/Manifest">
+    <fileset dir="${bin}"
+    includes="keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierSLAVEv0/**/*.class
+    org/core/*.class">
+    </fileset>
+    <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+</jar>
+
+<jar
+    jarfile="${distMet}/slave2_k.jar"
+    manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierSLAVE2/Manifest">
+    <fileset dir="${bin}"
+    includes="keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierSLAVE2/**/*.class
+    org/core/*.class">
+    </fileset>
+    <fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
+</jar>
+
 		<jar
           jarfile="${distMet}/Thrift.jar"
           manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/Thrift/Manifest">
@@ -2050,7 +2080,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 					keel/Dataset/**/*.class"/>
         </jar>
 		
-		
+		<!--
 		<jar
 		 jarfile="${distMet}/SLAVE.jar"
 		 manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/ClassifierSLAVE/Manifest">
@@ -2060,6 +2090,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		</fileset>
 		<fileset dir="${bin}" includes="keel/Dataset/**/*.class"/>
 		</jar>
+		-->
 
 		<jar
 		 jarfile="${distMet}/Clas-Fuzzy-MOGUL.jar"
