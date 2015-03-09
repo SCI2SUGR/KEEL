@@ -3,7 +3,7 @@
     <name>FS-GGA-Binary-Inconsistency</name>
     <family>Feature Selection</family>
     <jar_file>FS-GGA-Binary-Inconsistency.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -29,7 +29,7 @@
     <name>FS-SSGA-Integer-knn</name>
     <family>Feature Selection</family>
     <jar_file>FS-SSGA-Integer-knn.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -55,7 +55,7 @@
     <name>FS-LVF</name>
     <family>Feature Selection</family>
     <jar_file>FS-LVF.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -81,7 +81,7 @@
     <name>FS-LVW</name>
     <family>Feature Selection</family>
     <jar_file>FS-LVW.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -107,7 +107,7 @@
     <name>FS-Focus</name>
     <family>Feature Selection</family>
     <jar_file>FS-Focus.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -133,7 +133,7 @@
     <name>FS-Relief</name>
     <family>Feature Selection</family>
     <jar_file>FS-Relief.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -159,7 +159,7 @@
     <name>FS-MIFS</name>
     <family>Feature Selection</family>
     <jar_file>FS-MIFS.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>Yes</continuous>
     	<integer>Yes</integer>

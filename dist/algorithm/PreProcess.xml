@@ -1224,7 +1224,7 @@
     <name>GGA-Binary-Inconsistency-FS</name>
     <family>Evolutionary Feature Selection</family>
     <jar_file>FS-GGA-Binary-Inconsistency.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1250,7 +1250,7 @@
     <name>SSGA-Integer-knn-FS</name>
     <family>Evolutionary Feature Selection</family>
     <jar_file>FS-SSGA-Integer-knn.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -1276,7 +1276,7 @@
     <name>LVF-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-LVF.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1302,7 +1302,7 @@
     <name>LVW-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-LVW.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1328,7 +1328,7 @@
     <name>Focus-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-Focus.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1354,7 +1354,7 @@
     <name>Relief-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-Relief.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1380,7 +1380,7 @@
     <name>MIFS-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-MIFS.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1407,7 +1407,7 @@
     <name>SA-LIU-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-SA-LIU.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1434,7 +1434,7 @@
     <name>Full-LIU-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-FULL-LIU.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1461,7 +1461,7 @@
     <name>SBS-LIU-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-SBS-LIU.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1488,7 +1488,7 @@
     <name>SFS-LIU-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-SFS-LIU.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1515,7 +1515,7 @@
     <name>ABB-LIU-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-ABB-LIU.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1542,7 +1542,7 @@
     <name>LVF-IEP-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-LVF-IEP.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1569,7 +1569,7 @@
     <name>SA-IEP-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-SA-IEP.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1595,7 +1595,7 @@
     <name>Full-IEP-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-FULL-IEP.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1621,7 +1621,7 @@
     <name>SBS-IEP-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-SBS-IEP.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1648,7 +1648,7 @@
     <name>SFS-IEP-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-SFS-IEP.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1674,7 +1674,7 @@
     <name>ABB-IEP-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-ABB-IEP.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input> 
       <continuous>No</continuous>
     	<integer>No</integer>
@@ -1700,7 +1700,7 @@
     <name>SFS-MI-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-SFS-MI.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>Yes</integer>
@@ -1726,7 +1726,7 @@
     <name>SBS-MI-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-SBS-MI.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>Yes</integer>
@@ -1752,7 +1752,7 @@
     <name>Relief-F-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-Relief-F.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
         <continuous>No</continuous>
     	<integer>Yes</integer>
@@ -1776,7 +1776,7 @@
     <name>SA-MI-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-SA-MI.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>Yes</integer>
@@ -1802,7 +1802,7 @@
     <name>FULL-MI-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-FULL-MI.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>Yes</integer>
@@ -1828,7 +1828,7 @@
     <name>ABB-MI-FS</name>
     <family>Feature Selection</family>
     <jar_file>FS-ABB-MI.jar</jar_file>
-    <problem_type>unspecified</problem_type>
+    <problem_type>classification</problem_type>
     <input>
       <continuous>No</continuous>
     	<integer>Yes</integer>
@@ -2372,7 +2372,7 @@
 	<name>ClassificationFilter-F</name>
 	<family>Noisy Data Filtering</family>
 	<jar_file>Filter-ClassificationFilter.jar</jar_file>
-	<problem_type>unspecified</problem_type>
+	<problem_type>supervised</problem_type>
 	<input>
 		<continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -2399,7 +2399,7 @@
 	<name>SaturationFilter-F</name>
 	<family>Noisy Data Filtering</family>
 	<jar_file>Filter-SaturationFilter.jar</jar_file>
-	<problem_type>unspecified</problem_type>
+	<problem_type>supervised</problem_type>
 	<input>
 		<continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -2425,7 +2425,7 @@
 	<name>ANR-F</name>
 	<family>Noisy Data Filtering</family>
 	<jar_file>Filter-ANR.jar</jar_file>
-	<problem_type>unspecified</problem_type>
+	<problem_type>supervised</problem_type>
 	<input>
 		<continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -2451,7 +2451,7 @@
 	<name>PANDA-F</name>
 	<family>Noisy Data Filtering</family>
 	<jar_file>Filter-PANDA.jar</jar_file>
-	<problem_type>unspecified</problem_type>
+	<problem_type>supervised</problem_type>
 	<input>
 		<continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -2477,7 +2477,7 @@
 	<name>EnsembleFilter-F</name>
 	<family>Noisy Data Filtering</family>
 	<jar_file>Filter-EnsembleFilter.jar</jar_file>
-	<problem_type>unspecified</problem_type>
+	<problem_type>supervised</problem_type>
 	<input>
 		<continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -2501,7 +2501,7 @@
 	<name>CVCommitteesFilter-F</name>
 	<family>Noisy Data Filtering</family>
 	<jar_file>Filter-CVCommitteesFilter.jar</jar_file>
-	<problem_type>unspecified</problem_type>
+	<problem_type>supervised</problem_type>
 	<input>
 		<continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -2525,7 +2525,7 @@
 	<name>IterativePartitioningFilter-F</name>
 	<family>Noisy Data Filtering</family>
 	<jar_file>Filter-IterativePartitioningFilter.jar</jar_file>
-	<problem_type>unspecified</problem_type>
+	<problem_type>supervised</problem_type>
 	<input>
 		<continuous>Yes</continuous>
     	<integer>Yes</integer>
@@ -2549,7 +2549,7 @@
 	<name>Metrics-DC</name>
 	<family>Data Complexity</family>
 	<jar_file>DC-Metrics.jar</jar_file>
-	<problem_type>unspecified</problem_type>
+	<problem_type>supervised</problem_type>
 	<input>
 		<continuous>Yes</continuous>
     	<integer>Yes</integer>

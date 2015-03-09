@@ -3266,7 +3266,6 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         }
 
         Element partitions = new Element("partitions");
-        JOptionPane.showMessageDialog(null,partitionComboBox.getSelectedIndex());
         if (!datasets) {
             if (partitionComboBox.getSelectedIndex() == 0) {
                 Element partition = new Element("partition");

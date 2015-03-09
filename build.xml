@@ -1895,6 +1895,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
                     keel/Dataset/**/*.class"/>
         </jar>
 		
+<!--
 		<jar
           jarfile="${distMet}/COR_GA.jar"
           manifest="${src}/keel/Algorithms/Fuzzy_Rule_Learning/Genetic/COR_GA/Manifest">
@@ -1904,7 +1905,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
                     keel/Dataset/**/*.class"/>
         </jar>
 
-    
+    -->
         
 		<jar
           jarfile="${distMet}/Ishib_Hybrid.jar"
@@ -2199,6 +2200,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		</jar>
 		
 		
+<!--
 		<jar jarfile="${distMet}/aprioriC.jar"
 			manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/apriori/Manifest">
 	        <fileset dir="${bin}"
@@ -2206,7 +2208,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
             org/core/**/*.class
             keel/Dataset/**/*.class"/>
         </jar>
-		
+-->		
 		
         <jar jarfile="${distMet}/LogenPro.jar"
           manifest="${src}/keel/Algorithms/Genetic_Rule_Learning/LogenPro/Manifest">
