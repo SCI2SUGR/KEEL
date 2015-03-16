@@ -1,11 +1,29 @@
 <algorithm_specification>
   <name>Fingrams</name>
-  <nParameters>1</nParameters>
+  <nParameters>5</nParameters>
   <seed>0</seed>
   <nOutput>1</nOutput>
   <nInput>1</nInput>
   <parameter>
-    <name>blankThreshold</name>
+    <name>Rules Selection -> Minimum Lift</name>
+    <type>real</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>1000</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+  <parameter>
+    <name>Fingrams Generation -> Metric</name>
+    <type>list</type>
+    <domain>
+      <item>Symmetric</item>
+      <item>Asymmetric</item>
+    </domain>
+    <default>Symmetric</default>
+  </parameter>
+  <parameter>
+    <name>Fingrams Generation -> Blank Threshold</name>
     <type>real</type>
     <domain>
       <lowerB>0</lowerB>
@@ -13,4 +31,25 @@
     </domain>
     <default>0.0</default>
   </parameter>
+  <parameter>
+    <name>Fingrams Scaling -> Pathfinder Parameter Q</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>0</lowerB>
+      <upperB>100</upperB>
+    </domain>
+    <default>0</default>
+  </parameter>
+  <parameter>
+    <name>Fingrams Drawing -> Layout</name>
+    <type>list</type>
+    <domain>
+      <item>Kamada-Kawai</item>
+      <item>Fruchterman-Reingold</item>
+    </domain>
+    <default>Kamada-Kawai</default>
+  </parameter>
+  
+  
+  
 </algorithm_specification>

@@ -57,7 +57,7 @@ public class Main {
     private void execute(String confFile) {
         parameters = new parseParameters();
         parameters.parseConfigurationFile(confFile);
-        Fingrams method = new Fingrams(parameters);
+        FingramsKEEL method = new FingramsKEEL(parameters);
         method.execute();
     }
 
@@ -75,7 +75,7 @@ public class Main {
      */
     public static void main(String args[]) {
         Main program = new Main();
-        System.out.println("Executing Algorithm.");
+        System.err.println("Constructing Fingrams.");
         program.execute(args[0]);
     }
 }

@@ -58,6 +58,7 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
     private Point originP = new Point();
     private Point destinationP = new Point();
     private int maxUnitIncrement = 10;
+	private boolean showMessageFingrams = false;
     public boolean paintGrid = false;
     protected boolean multipleSelection = false;
     protected Vector selectedN = new Vector();
@@ -1023,6 +1024,12 @@ public class GraphPanel extends JPanel implements KeyListener, MouseListener, Mo
                     this.setToolTipText("Click twice into a node to view its properties");
                     parent.testSelectionTree.setSelectionPath(null);
                     parent.visualizeSelectionTree.setSelectionPath(null);
+
+					if (dsc.nameJar[(dsc.nameJar.length)-1].equals("Fingrams.jar") && !showMessageFingrams) {
+					  JOptionPane.showMessageDialog(parent,"To use this node you should have installed Graphviz 2.36 or newer in C:\\Program Files (x86)\\Graphviz2.36\\bin\\dot.exe (Windows) or /usr/local/bin/dot (Linux/Mac).", "Graphviz", JOptionPane.WARNING_MESSAGE);
+					  showMessageFingrams = true;
+					}
+
                     // XXX DESCOMENTAR
                     //parent.cursorSelect.setSelected(true);
                     parent.status.setText("Click in a node to select it");
