@@ -72,9 +72,10 @@ After the execution of RunKeel.jar we can see XML representations of the mined a
 &lt;attribute name=&quot;assists_per_minuteReal&quot; value=&quot;[0.09132499999999999, 0.238475]&quot;/&gt;
 &lt;attribute name=&quot;heightInteger&quot; value=&quot;[183.0, 203.0]&quot;/&gt;
 &lt;attribute name=&quot;time_playedReal&quot; value=&quot;[20.1725, 35.4875]&quot;/&gt;
+&lt;attribute name=&quot;ageInteger&quot; value=&quot;[24.0, 31.0]&quot;/&gt;
 &lt;/antecedents&gt;
 &lt;consequents&gt;
-&lt;attribute name=&quot;ageInteger&quot; value=&quot;[24.0, 31.0]&quot;/&gt;
+&lt;attribute name=&quot;points_per_minuteReal&quot; value=&quot;[0.25125000000000003, 0.58615]&quot;/&gt;
 &lt;/consequents&gt;
 &lt;/rule&gt;
 ... ... ... ...
@@ -142,3 +143,4 @@ Algorithm Finished
 </example>
 
 </method>
+
