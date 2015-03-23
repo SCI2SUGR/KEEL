@@ -734,7 +734,7 @@ public abstract class LazyAlgorithm {
 		writeOutput(outFile[1], realClass, prediction);	
 	//System.out.println(name+" "+ relation + " Test " + testTime + "s");
 		
-		//printOutput();
+		printOutput();
 		
 	}//end-method 
 	
