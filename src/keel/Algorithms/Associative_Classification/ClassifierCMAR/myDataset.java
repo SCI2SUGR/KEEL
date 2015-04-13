@@ -27,7 +27,7 @@
   
 **********************************************************************/
 
-package keel.Algorithms.Associative_Classification.ClassifierCMAR;
+package keel.Algorithms.Associative_Classification.ClassifierCPAR;
 
 import java.io.IOException;
 import java.lang.String;
@@ -53,6 +53,7 @@ public class myDataset {
     private String[] output = null; //output of the data-set as string values
     private int[] emax; //max value of an attribute
     private int[] emin; //min value of an attribute
+    private double[] weight; //weight of each example
 
     private int nData; // Number of examples
     private int nVars; // Numer of variables
@@ -178,7 +179,6 @@ public class myDataset {
         return emin;
     }
 
-    
     /**
      * It returns the maximum value of the given attribute
      * 
@@ -292,14 +292,14 @@ public class myDataset {
             // Maximum and minimum of inputs
 			emax = new int[nInputs];      
 			emin = new int[nInputs];
+			weight = new double[nData];
 			for (int i = 0; i < nInputs; i++) {
 				if (Attributes.getInputAttribute(i).getNumNominalValues() > 0) {
 					emin[i] = 0;
 					emax[i] = Attributes.getInputAttribute(i).getNumNominalValues() - 1;
 				}
 				else {
-					System.out.println("This algorithm can not process datasets with real/integer attributes");
-					System.out.println("Zero-valued output generated");
+					System.out.println("This algorithm can not process datasets with numerical attributes. You can use discretized variables.");
 					noOutputs = true;
 					System.exit(1);
 				}
@@ -310,6 +310,7 @@ public class myDataset {
             // All values are casted into double/integer
             nClasses = 0;
             for (int i = 0; i < nData; i++) {
+				weight[i] = 1.0;
                 Instance inst = IS.getInstance(i);
                 for (int j = 0; j < nInputs; j++) {
                     X[i][j] = (int) IS.getInputNumericValue(i, j); 
@@ -318,15 +319,14 @@ public class myDataset {
                       X[i][j] = emin[j]-1;
                     }
                 }
+
                 if (noOutputs) {
                     outputInteger[i] = 0;
                     output[i] = "";
-                } 
-				else {
+                } else {
                     outputInteger[i] = (int) IS.getOutputNumericValue(i, 0);
                     output[i] = IS.getOutputNominalValue(i, 0);
                 }
-
                 if (outputInteger[i] > nClasses) {
                     nClasses = outputInteger[i];
                 }
@@ -360,17 +360,15 @@ public class myDataset {
 
     /**
      * It checks if the data-set has any real value
-     * 
      * @return boolean True if it has some real values, else false.
      */
     public boolean hasRealAttributes() {
         return Attributes.hasRealAttributes();
     }
-    
+
     
     /**
      * It checks if the data-set has any numerical value
-     * 
      * @return boolean True if it has some numerical values, else false.
      */
     public boolean hasNumericalAttributes() {
@@ -404,6 +402,7 @@ public class myDataset {
         return tam;
     }
 
+    
     /**
      * It return the size of the data-set
      * 
@@ -434,12 +433,43 @@ public class myDataset {
         return instancesCl[clas];
     }
 
+    
     /**
      * It returns the number of instances in the dataset for each class.
      * @return int [] Array of integers with the number of instances for each class.
      */
     public int [] returnNumberInstances() {
         return instancesCl;
+    }
+
+    /**
+     * It initializes the weights for each example to 1
+     * 
+     */
+    public void iniWeight() {
+		for (int i=0; i < this.nData; i++)	this.weight[i] = 1.0;
+    }
+
+    
+    /**
+     * It reduces the weight of the given example in a factor alfa
+     * 
+     * @param pos index of the example
+     * @param alfa reduction factor
+     * 
+     */
+    public void reduceWeight(int pos, double alfa) {
+		this.weight[pos] *= alfa;
+    }
+
+    /**
+     * It returns the weight of the given example
+     * 
+     * @param pos index of the example
+     * @return the weight of the given example
+     */
+    public double getWeight(int pos) {
+		return (this.weight[pos]);
     }
 
     /**
@@ -451,6 +481,7 @@ public class myDataset {
         return Attributes.getInputAttribute(attribute).getNumNominalValues();
     }
 
+    
     /**
      * It returns the output value (string) which matchs with a given integer value 
      * @param intValue int Given value
@@ -460,27 +491,31 @@ public class myDataset {
         return Attributes.getOutputAttribute(0).getNominalValue(intValue);
     }
 
+    
     /**
      * It returns the type of an attribute
      * @param variable Given attribute
      * @return int Type of the attribute, it is an integer which corresponds to an enummerate field
      */
     public int getTipo(int variable) {
-        if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).INTEGER) {
+        if (Attributes.getAttribute(variable).getType() ==
+            Attributes.getAttribute(0).INTEGER) {
             return this.INTEGER;
         }
-        if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).REAL) {
+        if (Attributes.getAttribute(variable).getType() ==
+            Attributes.getAttribute(0).REAL) {
             return this.REAL;
         }
-        if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).NOMINAL) {
+        if (Attributes.getAttribute(variable).getType() ==
+            Attributes.getAttribute(0).NOMINAL) {
             return this.NOMINAL;
         }
         return 0;
     }
 
     /**
-     * It returns the ranks of the input and output variables
-     * @return double[][] Minimum and maximum rank of each variable
+     * Devuelve el universo de discuros de las variables de entrada y salida
+     * @return double[][] El rango minimo y maximo de cada variable
      */
     public int [][] returnRanks(){
       int [][] rangos = new int[this.getnVars()][2];
@@ -507,6 +542,7 @@ public class myDataset {
       return names;
     }
 
+    
     /**
      * It returns the name of every output values (possible classes).
      * @return String [] Array of strings with the name of every output attribute's names.
@@ -521,3 +557,4 @@ public class myDataset {
   }
 
 }
+

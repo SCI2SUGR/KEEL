@@ -285,8 +285,7 @@ public class myDataset {
 					emax[i] = Attributes.getInputAttribute(i).getNumNominalValues() - 1;
 				}
 				else {
-					System.out.println("This algorithm can not process datasets without outputs");
-					System.out.println("Zero-valued output generated");
+					System.out.println("This algorithm can not process datasets with numerical attributes. You can use discretized variables.");
 					noOutputs = true;
 					System.exit(1);
 				}

@@ -59,7 +59,7 @@
 		</parameterSpec>
 
 		<properties>
-			<continuous>Yes</continuous>
+			<continuous>No</continuous>
 			<discretized>Yes</discretized>
 			<integer>Yes</integer>
 			<nominal>Yes</nominal>

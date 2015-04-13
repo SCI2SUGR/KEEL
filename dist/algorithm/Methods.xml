@@ -5370,8 +5370,8 @@
     <jar_file>Clas-CBA.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
+      <continuous>No</continuous>
+	    <integer>No</integer>
 	    <nominal>Yes</nominal>
 	    <missing>no</missing>
 	    <imprecise>No</imprecise>
@@ -5396,8 +5396,8 @@
     <jar_file>Clas-CBA2.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
+      <continuous>No</continuous>
+	    <integer>No</integer>
 	    <nominal>Yes</nominal>
 	    <missing>no</missing>
 	    <imprecise>No</imprecise>
@@ -5422,8 +5422,8 @@
     <jar_file>Clas-CPAR.jar</jar_file>
     <problem_type>classification</problem_type>
     <input>
-      <continuous>Yes</continuous>
-	    <integer>Yes</integer>
+      <continuous>No</continuous>
+	    <integer>No</integer>
 	    <nominal>Yes</nominal>
 	    <missing>no</missing>
 	    <imprecise>No</imprecise>
