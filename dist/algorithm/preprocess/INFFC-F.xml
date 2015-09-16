@@ -1,0 +1,111 @@
+<algorithm_specification>
+
+	<name>INFFC</name>
+	<nParameters>9</nParameters>
+  	<seed>1</seed>
+  	<nOutput>1</nOutput>
+
+	<parameter>
+	  	<name>option</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>classic</item>
+		   	<item>new</item>
+	  	</domain>
+	  	<default>new</default>
+		<disabled/>
+	</parameter>
+	
+	<parameter>
+    	<name>threshold</name>
+    	<type>real</type>
+    	<domain>
+      		<lowerB>-1</lowerB>
+      		<upperB>1</upperB>
+    	</domain>
+    	<default>0</default>
+  	</parameter>
+	
+	<parameter>
+    	<name>numPartitions</name>
+    	<type>integer</type>
+    	<domain>
+      		<lowerB>1</lowerB>
+      		<upperB>100</upperB>
+    	</domain>
+    	<default>1</default>
+		<disabled/>
+  	</parameter>
+
+	<parameter>
+	  	<name>filterType</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>consensus</item>
+	    	<item>majority</item>
+			<item>single</item>
+	  	</domain>
+	  	<default>majority</default>
+	   <disabled/>
+	</parameter>
+	
+
+
+
+  	<parameter>
+    	<name>k_value</name>
+    	<type>integer</type>
+    	<default>3</default>
+		<disabled/>
+  	</parameter>
+
+
+
+
+
+	<parameter>
+	  	<name>use_C45</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>true</item>
+		   	<item>false</item>
+	  	</domain>
+	  	<default>true</default>
+	<disabled/>
+	</parameter>
+	
+	
+	<parameter>
+	  	<name>use_KNN</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>true</item>
+		   	<item>false</item>
+	  	</domain>
+	  	<default>true</default>
+	<disabled/>
+	</parameter>
+	
+	<parameter>
+	  	<name>use_SVM</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>true</item>
+		   	<item>false</item>
+	  	</domain>
+	  	<default>false</default>
+	<disabled/>
+	</parameter>
+	
+	<parameter>
+	  	<name>use_LOG</name>
+	  	<type>list</type>
+	  	<domain>
+	    	<item>true</item>
+		   	<item>false</item>
+	  	</domain>
+	  	<default>true</default>
+		<disabled/>
+	</parameter>
+
+</algorithm_specification>
