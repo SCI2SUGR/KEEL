@@ -107,7 +107,7 @@ public class C45 extends Algorithm {
             //printTest();
             //printResult();
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            e.printStackTrace();
             System.exit( -1);
         }
 

@@ -258,7 +258,7 @@ public class PartitionScheme {
 		Attribute []att = Attributes.getInputAttributes();
 
   		String header = "";
-  		header = "@relation " + Attributes.getRelationName() + "\n";
+  		header = "@relation" + Attributes.getRelationName() + "\n";
   		header += Attributes.getInputAttributesHeader();
   		header += Attributes.getOutputAttributesHeader();
   		header += Attributes.getInputHeader() + "\n";
@@ -330,8 +330,8 @@ public class PartitionScheme {
         		outputTrain += newInstance;
         	}
 
-            Files.addToFile("train" + String.valueOf(i + 1) + ".dat", outputTrain);
-            Files.addToFile("test" + String.valueOf(i + 1) + ".dat", outputTest);
+            Files.writeFile("train" + String.valueOf(i + 1) + ".dat", outputTrain);
+            Files.writeFile("test" + String.valueOf(i + 1) + ".dat", outputTest);
         }
   		
   	}

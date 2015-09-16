@@ -317,10 +317,10 @@ public class IterativePartitioningFilter {
 		}
 		
 		// to create the train file-----------------------------------------
-		String header = "";
-		header = "@relation " + Attributes.getRelationName() + "\n";
-		header += Attributes.getInputAttributesHeader();
-		header += Attributes.getOutputAttributesHeader();
+		String header = is.getHeader();
+//		header = "@relation" + Attributes.getRelationName() + "\n";
+//		header += Attributes.getInputAttributesHeader();
+//		header += Attributes.getOutputAttributesHeader();
 		header += Attributes.getInputHeader() + "\n";
 		header += Attributes.getOutputHeader() + "\n";
 		header += "@data\n";
