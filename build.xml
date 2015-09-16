@@ -1242,6 +1242,23 @@
 				keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
 			</jar>
 		  
+		  <jar
+
+			jarfile="${distPre}/Filter-INFFC.jar"
+			manifest="${src}/keel/Algorithms/Preprocess/NoiseFilters/INFFC/Manifest">
+			<fileset dir="${bin}"
+				includes="	keel/Algorithms/Preprocess/NoiseFilters/INFFC/**/*.class
+							keel/Dataset/**/*.class
+							org/core/**/*.class
+							keel/Algorithms/Decision_Trees/C45/**/*.class
+					        keel/Algorithms/Lazy_Learning/KNN/**/*.class
+							keel/Algorithms/Lazy_Learning/*.class
+							keel/Algorithms/SVM/SMO/**/*.class
+							keel/Algorithms/Statistical_Classifiers/Logistic/**/*.class
+							keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class
+							keel/Algorithms/Statistical_Classifiers/Shared/**/*.class
+							keel/Algorithms/Shared/**/*.class"/>
+			</jar>
 		  
 		<!-- *****************************METHODS!!!***************************************** -->
 		
