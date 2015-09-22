@@ -7,11 +7,8 @@
     <property name="lib" location="lib"/>
     <property name="distGraph" location="dist"/>
     <property name="lib_graf" location="lib/Interfaz"/>
-    <property name="lib_xml" location="lib/XML"/>
-    <property name="lib_nnep" location="lib/nnep"/>
-	<property name="lib_jclec" location="lib/jclec"/>
-	<property name="lib_jclecmil" location="lib/MIL"/>
-	<property name="lib_math" location="lib/mathtools"/>
+    <property name="lib_jclec" location="lib/jclec"/>
+    <property name="lib_math" location="lib/mathtools"/>
     <property name="lib_jama" location="lib/Jama"/>
 	<property name="lib_javastat" location="lib/Javastat"/>
 	<property name="lib_olex" location="lib/olexgalib"/>
@@ -30,21 +27,13 @@
         <include name="**/*.jar"/>
     </fileset>
 	
-    <fileset id="lib_xml.jars" dir="${lib_xml}">
-        <include name="**/*.jar"/>
-    </fileset>
 
-    <fileset id="lib_nnep.jars" dir="${lib_nnep}">
-        <include name="**/*.jar"/>
-    </fileset>
+
 	
 	<fileset id="lib_jclec.jars" dir="${lib_jclec}">
 	        <include name="**/*.jar"/>
 	</fileset>
 	
-	<fileset id="lib_jclecmil.jars" dir="${lib_jclecmil}">
-	        <include name="**/*.jar"/>
-	</fileset>
 	<fileset id="lib_jama.jars" dir="${lib_jama}">
         <include name="**/*.jar"/>
     </fileset>
@@ -64,11 +53,8 @@
 	<!-- Libraries path-->
     <path id="lib.path">
         <fileset refid="lib_graph.jars"/>
-        <fileset refid="lib_xml.jars"/>
-        <fileset refid="lib_nnep.jars"/>
 		<fileset refid="lib_mathtools.jars"/>
 		<fileset refid="lib_jclec.jars"/>
-		<fileset refid="lib_jclecmil.jars"/>
 		<fileset refid="lib_jama.jars"/>
 		<fileset refid="lib_javastat.jars"/>
 		<fileset refid="lib_olex.jars"/>
@@ -82,9 +68,6 @@
     <pathelement location="${distGraph}"/>
     <!-- include our own libraries -->
 	<fileset refid="lib_graph.jars"/>
-    <fileset refid="lib_xml.jars"/>
-    <fileset refid="lib_nnep.jars"/>
-	<fileset refid="lib_jclecmil.jars"/>
 	<fileset refid="lib_jclec.jars"/>
 	<fileset refid="lib_jama.jars"/>
 	<fileset refid="lib_javastat.jars"/>
@@ -234,12 +217,9 @@
         <mkdir dir="${bin}"/>
         <mkdir dir="${lib}"/>
         <mkdir dir="${lib_graf}"/>
-        <mkdir dir="${lib_xml}"/>
-        <mkdir dir="${lib_nnep}"/>
 		<mkdir dir="${lib_jama}"/>
 		<mkdir dir="${lib_javastat}"/>
 		<mkdir dir="${lib_jclec}"/>
-    	<mkdir dir="${lib_jclecmil}"/>
 		<mkdir dir="${lib_olex}"/>
 		<!-- javac options (fork, memoryinitialsize, memoryinitialsize) added to give javac enough heap size to compile   (Joaquin - 4/08/2008) -->
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no"
@@ -1603,7 +1583,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
           <fileset dir="${bin}"
              includes="keel/Algorithms/Decision_Trees/CART/**/*.class
              			keel/Algorithms/Neural_Networks/NNEP_Common/**/*.class"/>
-          <zipgroupfileset refid="lib_nnep.jars"/>
+	  <zipfileset src="${lib}/Interfaz/libs-nnep.jar" excludes="META-INF/*" />
         </jar>
 		
          <jar
@@ -1612,7 +1592,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
           <fileset dir="${bin}"
              includes="keel/Algorithms/Decision_Trees/CART/**/*.class
              			keel/Algorithms/Neural_Networks/NNEP_Common/**/*.class"/>
-          <zipgroupfileset refid="lib_nnep.jars"/>
+	  <zipfileset src="${lib}/Interfaz/libs-nnep.jar" excludes="META-INF/*" />
         </jar>
 		
 		<jar
@@ -3793,7 +3773,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	             includes="keel/Algorithms/MIL/G3PMI/**/*.class 
 	             org/core/**/*.class">
 	       </fileset>
-   		   <zipgroupfileset refid="lib_jclecmil.jars"/>
+   		   <zipgroupfileset refid="lib_jclec.jars"/>
 
 		</jar>
 		
@@ -3975,7 +3955,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		       <fileset dir="${bin}"
 		             includes="keel/Algorithms/Neural_Networks/NNEP_Clas/**/*.class
                                        keel/Algorithms/Neural_Networks/NNEP_Common/**/*.class"/>
-		       <zipgroupfileset refid="lib_nnep.jars"/>
+			  <zipfileset src="${lib}/Interfaz/libs-nnep.jar" excludes="META-INF/*" />
 		</jar>
 
 		<jar
@@ -3984,7 +3964,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		       <fileset dir="${bin}"
 		             includes="keel/Algorithms/Neural_Networks/NNEP_Regr/**/*.class
                                        keel/Algorithms/Neural_Networks/NNEP_Common/**/*.class"/>
-		       <zipgroupfileset refid="lib_nnep.jars"/>
+			  <zipfileset src="${lib}/Interfaz/libs-nnep.jar" excludes="META-INF/*" />
 		</jar>
 
 		<jar
@@ -4001,7 +3981,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
                                        keel/Algorithms/Neural_Networks/NNEP_Common/data/**/*.class
                                        keel/Algorithms/Neural_Networks/NNEP_Common/problem/**/*.class
                                        keel/Algorithms/Neural_Networks/NNEP_Common/util/**/*.class"/>
-		       <zipgroupfileset refid="lib_nnep.jars"/>
+		      	  <zipfileset src="${lib}/Interfaz/libs-nnep.jar" excludes="META-INF/*" />
 		</jar>
 
 		<jar
@@ -4021,7 +4001,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
                                        keel/Algorithms/Neural_Networks/NNEP_Common/data/**/*.class
                                        keel/Algorithms/Neural_Networks/NNEP_Common/problem/**/*.class
                                        keel/Algorithms/Neural_Networks/NNEP_Common/util/**/*.class"/>
-		       <zipgroupfileset refid="lib_nnep.jars"/>
+		       	  <zipfileset src="${lib}/Interfaz/libs-nnep.jar" excludes="META-INF/*" />
 		</jar>
 
 		<!-- PSO Learning  -->
@@ -6040,7 +6020,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
           manifest="${src}/keel/RunKeelTxt/Manifest">
           <fileset dir="${bin}"
              includes="keel/RunKeelTxt/**/*.class"/>
-          <zipgroupfileset refid="lib_xml.jars"/>
+	  <zipfileset src="${lib}/Interfaz/jdom.jar" excludes="META-INF/*" />
         </jar>
         
     </target>
@@ -6124,7 +6104,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
     	        		<!-- for RunKeelTxtDocente -->
     	          		<zipgroupfileset refid="lib_graph.jars"/>
     	        		<!-- for RunKeelTxtDocente -->
-    	          		<zipgroupfileset refid="lib_xml.jars"/>
+				<zipfileset src="${lib}/Interfaz/jdom.jar" excludes="META-INF/*" />
+    	          		
 
       </jar>
 			<!-- RunKeelTxtDocente for Educational Keel Version -->
