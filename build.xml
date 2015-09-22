@@ -1209,18 +1209,6 @@
 				keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
 			</jar>
 			
-			
-			<jar
-
-			jarfile="${distPre}/Filter-INFFC.jar"
-			manifest="${src}/keel/Algorithms/Preprocess/NoiseFilters/IterativeMCSbFilter/Manifest">
-			<fileset dir="${bin}"
-				includes="keel/Algorithms/Preprocess/NoiseFilters/IterativeMCSbFilter	/**/*.class
-				keel/Dataset/**/*.class
-				org/core/**/*.class
-				keel/Algorithms/Decision_Trees/C45/**/*.class
-				keel/Algorithms/Genetic_Rule_Learning/Globals/**/*.class"/>
-			</jar>
 		  
 		  <jar
 
