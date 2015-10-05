@@ -2364,6 +2364,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
           <fileset dir="${bin}"
              includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/Bojarczuk_GP/**/*.class keel/Dataset/**/*.class"/>
           <zipgroupfileset refid="lib_jclec.jars"/>
+	<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />
 		</jar>
     	
     	<jar
@@ -2372,6 +2373,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
           <fileset dir="${bin}"
              includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/Falco_GP/**/*.class keel/Dataset/**/*.class"/>
           <zipgroupfileset refid="lib_jclec.jars"/>
+	  <zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />
 		</jar>
 
     	<jar
@@ -2380,6 +2382,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
           <fileset dir="${bin}"
              includes="org/core/**/*.class keel/Algorithms/Genetic_Rule_Learning/Tan_GP/**/*.class keel/Dataset/**/*.class"/>
           <zipgroupfileset refid="lib_jclec.jars"/>
+	<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />
 		</jar>   
 		
 		<jar
@@ -3678,7 +3681,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
  	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
  	             org/core/**/*.class">
  	       </fileset>  
-	       <zipgroupfileset refid="lib_jclec.jars"/>         
+	       <zipgroupfileset refid="lib_jclec.jars"/>
+		<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />         
 		</jar>
 
    		<jar
@@ -3688,7 +3692,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
 	             org/core/**/*.class">
 	       </fileset>  
-	       <zipgroupfileset refid="lib_jclec.jars"/>         
+	       <zipgroupfileset refid="lib_jclec.jars"/>        
+		<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />          
 		</jar>
     	
    		<jar
@@ -3698,7 +3703,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
 	             org/core/**/*.class">
 	       </fileset>  
-	       <zipgroupfileset refid="lib_jclec.jars"/>         
+	       <zipgroupfileset refid="lib_jclec.jars"/>  
+		<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />                
 		</jar>
     	
    		<jar
@@ -3708,7 +3714,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
 	             org/core/**/*.class">
 	       </fileset>  
-	       <zipgroupfileset refid="lib_jclec.jars"/>         
+	       <zipgroupfileset refid="lib_jclec.jars"/>   
+		<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />               
 		</jar>
     	
    		<jar
@@ -3718,7 +3725,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
 	             org/core/**/*.class">
 	       </fileset>  
-	       <zipgroupfileset refid="lib_jclec.jars"/>         
+	       <zipgroupfileset refid="lib_jclec.jars"/>
+		<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />                  
 		</jar>
     	
    		<jar
@@ -3728,7 +3736,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
 	             org/core/**/*.class">
 	       </fileset>  
-	       <zipgroupfileset refid="lib_jclec.jars"/>         
+	       <zipgroupfileset refid="lib_jclec.jars"/> 
+		<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />                 
 		</jar>
 		
    		<jar
@@ -3738,7 +3747,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
 	             org/core/**/*.class">
 	       </fileset>  
-	       <zipgroupfileset refid="lib_jclec.jars"/>         
+	       <zipgroupfileset refid="lib_jclec.jars"/>   
+		<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />               
 		</jar>
     	
    		<jar
@@ -3748,7 +3758,8 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	             includes="keel/Algorithms/MIL/**/*.class keel/Dataset/**/*.class
 	             org/core/**/*.class">
 	       </fileset>  
-	       <zipgroupfileset refid="lib_jclec.jars"/>         
+	       <zipgroupfileset refid="lib_jclec.jars"/> 
+		<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />                 
 		</jar>
 		
 		<jar
@@ -3759,6 +3770,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	             org/core/**/*.class">
 	       </fileset>
    		   <zipgroupfileset refid="lib_jclec.jars"/>
+		<zipfileset src="${lib}/Interfaz/org.apache.commons.configuration.jar" excludes="META-INF/*" />         
 
 		</jar>
 		
