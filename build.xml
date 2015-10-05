@@ -10,9 +10,9 @@
     <property name="lib_jclec" location="lib/jclec"/>
     <property name="lib_math" location="lib/mathtools"/>
     <property name="lib_jama" location="lib/Jama"/>
-	<property name="lib_javastat" location="lib/Javastat"/>
-	<property name="lib_olex" location="lib/olexgalib"/>
-	<property name="dirjavacc" location="resources/javacc.jar"/>
+    <property name="lib_javastat" location="lib/Javastat"/>
+    <property name="lib_olex" location="lib/olexgalib"/>
+    <property name="dirjavacc" location="resources/javacc.jar"/>
     <property name="dist"	location="${src}/keel/GraphInterKeel/resources/listAlgorithms"/>
     <property name="distMet" location="${distGraph}/algorithm/methods"/>
     <property name="distPre" location="${distGraph}/algorithm/preprocess"/>
@@ -26,9 +26,6 @@
     <fileset id="lib_graph.jars" dir="${lib_graf}">
         <include name="**/*.jar"/>
     </fileset>
-	
-
-
 	
 	<fileset id="lib_jclec.jars" dir="${lib_jclec}">
 	        <include name="**/*.jar"/>
@@ -53,11 +50,11 @@
 	<!-- Libraries path-->
     <path id="lib.path">
         <fileset refid="lib_graph.jars"/>
-		<fileset refid="lib_mathtools.jars"/>
-		<fileset refid="lib_jclec.jars"/>
-		<fileset refid="lib_jama.jars"/>
-		<fileset refid="lib_javastat.jars"/>
-		<fileset refid="lib_olex.jars"/>
+	<fileset refid="lib_mathtools.jars"/>
+	<fileset refid="lib_jclec.jars"/>
+	<fileset refid="lib_jama.jars"/>
+	<fileset refid="lib_javastat.jars"/>
+	<fileset refid="lib_olex.jars"/>
     </path>
 	
 	<!-- Define a classpath for use throughout the buildfile -->
