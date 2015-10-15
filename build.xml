@@ -3,6 +3,7 @@
 
 	<!-- Properties of the project-->
     <property name="src" location="src"/>
+    <property name="doc" location="javadoc"/>
     <property name="bin" location="bin"/>
     <property name="lib" location="lib"/>
     <property name="distGraph" location="dist"/>
@@ -6106,6 +6107,11 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 
       </jar>
 			<!-- RunKeelTxtDocente for Educational Keel Version -->
+    </target>
+
+    <target name="doc" description="generate documentation">
+        <mkdir dir="${doc}"/>
+        <javadoc sourcepath="${src}" destdir="${doc}"/>
     </target>
 
 </project>
