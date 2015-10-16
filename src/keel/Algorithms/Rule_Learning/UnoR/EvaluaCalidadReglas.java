@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@ package keel.Algorithms.Rule_Learning.UnoR;
 /**
  * <p>Title: Clase Evalua Calidad Reglas</p>
  *
- * <p>Description: Se encarga de obtener los datos estadï¿½ticos del algoritmo </p>
+ * <p>Description: Se encarga de obtener los datos estadisticos del algoritmo </p>
  *
  * <p>Copyright: Copyright Rosa (c) 2007</p>
  *
@@ -65,7 +65,7 @@ public class EvaluaCalidadReglas {
     private String[] valorNombreClasesTest;
 
     /**
-     * Calculas las estadï¿½ticas finales para un conjunto de reglas dado y un conjunto de datos.
+     * Calculas las estadisticas finales para un conjunto de reglas dado y un conjunto de datos.
      * @param conjreg Conjunto de reglas (complejos) final
      * @param conjTrn Conjunto de datos de entrenamiento
      * @param conjTst Conjunto de datos de test
@@ -128,8 +128,8 @@ public class EvaluaCalidadReglas {
     	return porcAciertoTst;
     }
     /**
-     * Imprime en una cadena las estadisticas (para test)
-     * @return una cadena con las estadï¿½ticas
+     * Imprime en una cadena con las estadisticas (para test)
+     * @return una cadena con las estadisticas
      */
     public String printString() {
         String cad = "####Average results for test data####\n";
@@ -150,7 +150,7 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * Calcula en si mismo todas las estadï¿½ticas, especialmente el porcentaje de aciertos
+     * Calcula en si mismo todas las estadisticas, especialmente el porcentaje de aciertos
      * @param datos Conjunto de datos (entrenamiento o test)
      * @param muestPorClase int[] Nmero de ejemplos por cada clase en el conjunto de datos
      * @param code Codigo para saber si estamos tratando con entrenamiento o test

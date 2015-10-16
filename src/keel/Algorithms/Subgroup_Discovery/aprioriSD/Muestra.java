@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,10 +30,10 @@
 package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 
 /**
- * <p>Título: Muestra</p>
- * <p>Descripción: Estructura de Muestra para los conjuntos de datos</p>
+ * <p>TÃ­tulo: Muestra</p>
+ * <p>DescripciÃ³n: Estructura de Muestra para los conjuntos de datos</p>
  * <p>Creado: 02-ago-2004 </p>
- * @author José Ramón Cano de Amo
+ * @author JosÃ© RamÃ³n Cano de Amo
  * @version 1.0
  */
 public class Muestra {
@@ -52,7 +52,7 @@ public class Muestra {
    * Constructor
    * @param m un vector de atributos (valores)
    * @param cl la clase a la que pertenece la muestra
-   * @param tamano el tamaño de la muestra (se puede obtener directamente de m.length)
+   * @param tamano el tamaÃ±o de la muestra (se puede obtener directamente de m.length)
    */
   public Muestra(double m[], int cl, int tamano) {
     super();
@@ -64,7 +64,7 @@ public class Muestra {
 
   /**
    * Constructor mas sencillo (sin datos)
-   * @param tamano El tamaño de la muestra (nº de atributos)
+   * @param tamano El tamaÃ±o de la muestra (nÂº de atributos)
    */
   public Muestra(int tamano) {
     super();
@@ -90,7 +90,7 @@ public class Muestra {
 
   /**
    * Asigna la clase
-   * @param i "número" de la clase
+   * @param i "nÃºmero" de la clase
    */
   public void setClase(int i) {
     clase = i;
@@ -133,8 +133,8 @@ public class Muestra {
   }
 
   /**
-   * Devuelve el número de atributos del ejemplo
-   * @return el nº de atributos
+   * Devuelve el nÃºmero de atributos del ejemplo
+   * @return el nÂº de atributos
    */
   public int getNatributos() {
     return tam;

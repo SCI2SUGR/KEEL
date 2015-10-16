@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -34,31 +34,31 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 /**
-ImplementaciÛn en Java del algoritmo SLIQ
-Basada parcialmente en el cÛdigo del algoritmo ID3 de CristÛbal Romero Morales (UCO)
-@author Francisco Charte Ojeda (pr·ctica ICO de la UJA)
+Implementaci√≥n en Java del algoritmo SLIQ
+Basada parcialmente en el c√≥digo del algoritmo ID3 de Crist√≥bal Romero Morales (UCO)
+@author Francisco Charte Ojeda (pr√°ctica ICO de la UJA)
 @version 1.0 (28/12/09 - 10/1/10)
  */
 public class SLIQ extends Algorithm {
 
-    /** RaÌz del ·rbol */
+    /** Ra√≠z del √°rbol */
     Node root;
-    // Para el proceso de divisiÛn
+    // Para el proceso de divisi√≥n
     Node subnodoIzquierdo, subnodoDerecho;
-    /** N˙mero de nodos existentes en el ·rbol */
+    /** N√∫mero de nodos existentes en el √°rbol */
     int NumberOfNodes;
-    /** N˙mero de hojas en el ·rbol */
+    /** N√∫mero de hojas en el √°rbol */
     int NumberOfLeafs;
     /** Lista con las clases */
     ListaClases[] listaClases;
     /** Listas con los atributos ordenados */
     Vector<ListaAtributos>[] listas;
-    /** Lista de nodos pendientes de procesar durante el crecimiento del ·rbol */
+    /** Lista de nodos pendientes de procesar durante el crecimiento del √°rbol */
     Queue<Node> listaNodos;
 
     /** Constructor.
      *
-     * @param paramFile			El archivo de par·metros.
+     * @param paramFile			El archivo de par√°metros.
      *
      */
     public SLIQ(String paramFile) {
@@ -66,7 +66,7 @@ public class SLIQ extends Algorithm {
             // Inicia el temporizador
             startTime = System.currentTimeMillis();
 
-            // Establecer las opciones de ejecuciÛn del algoritmo
+            // Establecer las opciones de ejecuci√≥n del algoritmo
             StreamTokenizer tokenizer = new StreamTokenizer(new BufferedReader(new FileReader(paramFile)));
             initTokenizer(tokenizer);
             setOptions(tokenizer);
@@ -80,11 +80,11 @@ public class SLIQ extends Algorithm {
             // Se generan la lista de clases y las listas de atributos, ya ordenadas
             generaListas();
 
-            // El ·rbol est· vacÌo
+            // El √°rbol est√° vac√≠o
             NumberOfNodes = 0;
             NumberOfLeafs = 0;
 
-            // Genera el ·rbol seg˙n el algoritmo SLIQ.
+            // Genera el √°rbol seg√∫n el algoritmo SLIQ.
             generateTree();
 
             // Imprimir los resultados generados
@@ -104,13 +104,13 @@ public class SLIQ extends Algorithm {
     protected void generaListas() {
         int n = 0; // Para contabilizar las clases
 
-        // La lista de clases tendr· tantas entradas como muestras de datos en el dataset
+        // La lista de clases tendr√° tantas entradas como muestras de datos en el dataset
         listaClases = new ListaClases[modelDataset.numItemsets()];
 
-        // La lista de listas de atributos tendr· un vector por atributo
+        // La lista de listas de atributos tendr√° un vector por atributo
         listas = (Vector<ListaAtributos>[]) Array.newInstance(Vector.class, modelDataset.numAttributes());
 
-        // y cada elemento de la lista ser· un vector que hay que crear
+        // y cada elemento de la lista ser√° un vector que hay que crear
         for (int indice = 0; indice < modelDataset.numAttributes(); indice++) {
             listas[indice] = new Vector<ListaAtributos>();
         }
@@ -124,11 +124,11 @@ public class SLIQ extends Algorithm {
             dato = (Itemset) datos.nextElement();
             listaClases[n] = new ListaClases((int) dato.getClassValue(), root);
 
-            // Agregar cada atributo a la lista correspondiente seg˙n el atributo
+            // Agregar cada atributo a la lista correspondiente seg√∫n el atributo
             Enumeration atributos = modelDataset.enumerateAttributes();
             while (atributos.hasMoreElements()) {
                 Attribute atributo = (Attribute) atributos.nextElement();
-                // Se introduce el atributo con el Ìndice que corresponde a la clase
+                // Se introduce el atributo con el √≠ndice que corresponde a la clase
                 listas[atributo.getIndex()].add(new ListaAtributos(dato.getValue(atributo.getIndex()), n));
             }
             n++;
@@ -136,20 +136,20 @@ public class SLIQ extends Algorithm {
 
         // Ahora hay que ordenar las listas de atributos
         for (int indice = 0; indice < modelDataset.numAttributes(); indice++) {
-            // Los atributos discretos (categÛricos) no hay que ordenarlos
+            // Los atributos discretos (categ√≥ricos) no hay que ordenarlos
             if (modelDataset.getAttribute(indice).isContinuous()) {
                 Collections.sort(listas[indice], new ListaAtributos.Comparador());
             }
         }
     }
 
-    /** MÈtodo que genera el ·rbol seg˙n el algoritmo SLIQ
+    /** M√©todo que genera el √°rbol seg√∫n el algoritmo SLIQ
      *
      */
     public void generateTree() {
-        // Se crea el nodo raÌz para todas las clases
+        // Se crea el nodo ra√≠z para todas las clases
         root = new Node(listaClases.length);
-        // Asoci·ndoles las listas de atributos con todos los valores
+        // Asoci√°ndoles las listas de atributos con todos los valores
         root.setData(listas);
 
         // y se agregan todas las clases
@@ -158,15 +158,15 @@ public class SLIQ extends Algorithm {
             root.agregaElemento(listaClases[indice].clase);
         }
 
-        // Se crea la cola de nodos para procesar el ·rbol en anchura, no en profundidad
+        // Se crea la cola de nodos para procesar el √°rbol en anchura, no en profundidad
         listaNodos = new LinkedList<Node>();
-        listaNodos.add(root); // y se agrega la raÌz
+        listaNodos.add(root); // y se agrega la ra√≠z
 
         // Mientras haya nodos a procesar en la cola
         while (!listaNodos.isEmpty()) {
             Node nodo = listaNodos.poll(); // Obtener el nodo a procesar
 
-            // Si no es un nodo puro y a˙n no ha sido dividido
+            // Si no es un nodo puro y a√∫n no ha sido dividido
             if (!nodo.esHoja() && nodo.numChildren() == 0) {
                 // Recorrer todos los atributos
                 for (int indice = 0; indice < nodo.getData().length; indice++) {
@@ -176,7 +176,7 @@ public class SLIQ extends Algorithm {
                     }
                 }
 
-                // Y a continuaciÛn aplicar ese corte a los nodos a dividir
+                // Y a continuaci√≥n aplicar ese corte a los nodos a dividir
                 for (int indice = 0; indice < listaClases.length; indice++) {
                     // que son aquellos no considerados hoja y a los que se ha agregado hijos
                     if (indice != modelDataset.getClassIndex() &&
@@ -193,7 +193,7 @@ public class SLIQ extends Algorithm {
 
     } // generateTree
 
-    /** MÈtodo que lleva a cabo la poda del ·rbol tras la fase de crecimiento
+    /** M√©todo que lleva a cabo la poda del √°rbol tras la fase de crecimiento
      *
      */
     protected void podaArbol() {
@@ -216,8 +216,8 @@ public class SLIQ extends Algorithm {
                     indice = -1;
                     break;
                 }
-                padre = padre.getParent(); // Subir por el ·rbol
-            } while (padre != null); // Hasta alcanzar la raÌz
+                padre = padre.getParent(); // Subir por el √°rbol
+            } while (padre != null); // Hasta alcanzar la ra√≠z
         }
 
         // Se inicia la segunda fase de la poda (pasos 2 a 4)
@@ -227,7 +227,7 @@ public class SLIQ extends Algorithm {
             if(!listaNodos.contains(listaClases[indice].hoja.getParent()))
                 listaNodos.add(listaClases[indice].hoja.getParent());
 
-        // Recorrer los nodos hoja, en este caso no hay que subir por el ·rbol
+        // Recorrer los nodos hoja, en este caso no hay que subir por el √°rbol
         //for (int indice = 0; indice < listaClases.length; indice++) {
         for(int indice = 0; indice < listaNodos.size(); indice++) {
             // Obtener la referencia al nodo padre, del que cuelga este nodo y otro
@@ -246,7 +246,7 @@ public class SLIQ extends Algorithm {
             int costeAmbos = padre.getCoste(); // Coste de tener ambos hijos
 
             // Costes teniendo solamente uno, se resta el coste de tener un hijo
-            // y se considera el error que se aÒadirÌa
+            // y se considera el error que se a√±adir√≠a
             int costeIzq = costeAmbos - Lt + padre.costeError(padre.getChildren(0));
             int costeDch = costeAmbos - Lt + padre.costeError(padre.getChildren(1));
 
@@ -260,23 +260,23 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** MÈtodo encargado de podar el nodo que se recibe como par·metro, eliminando sus hijos
+    /** M√©todo encargado de podar el nodo que se recibe como par√°metro, eliminando sus hijos
      *
-     * @param padre Nodo del que se podar·n los dos hijos
+     * @param padre Nodo del que se podar√°n los dos hijos
      */
     protected void podaNodoCompleto(Node padre) {
         // Se podan los dos hijos
         podaNodoParcial(padre, 0);
         podaNodoParcial(padre, 1);
 
-        // Marcar padre como nodo hoja, aunque tenga datos de m·s de una clase
+        // Marcar padre como nodo hoja, aunque tenga datos de m√°s de una clase
         padre.setHoja(true);
     }
 
-    /** MÈtodo encargado de podar un nodo hijo de un nodo padre
+    /** M√©todo encargado de podar un nodo hijo de un nodo padre
      *
      * @param padre     Nodo del que se va a podar
-     * @param indHijo   Õndice del nodo hijo a podar: 0-izquierdo, 1-derecho
+     * @param indHijo   √çndice del nodo hijo a podar: 0-izquierdo, 1-derecho
      */
     protected void podaNodoParcial(Node padre, int indHijo) {
         // Referencia al hijo que corresponda
@@ -289,10 +289,10 @@ public class SLIQ extends Algorithm {
         padre.getChildren()[indHijo] = null;
     }
 
-    /** MÈtodo que se encarga de agregar los datos de un hijo que va a
+    /** M√©todo que se encarga de agregar los datos de un hijo que va a
      *  podarse a la lista de datos de su padre
      *
-     * @param padre Nodo al que se agregar·n los datos
+     * @param padre Nodo al que se agregar√°n los datos
      * @param hijo  Nodo del que se toman los datos
      */
     protected void agregaDatos(Node padre, Node hijo) {
@@ -315,21 +315,21 @@ public class SLIQ extends Algorithm {
         padre.actualizaClasePrincipal();
     }
 
-    /** MÈtodo encargado de comprobar cu·l es el mejor corte para un cierto
+    /** M√©todo encargado de comprobar cu√°l es el mejor corte para un cierto
      *  atributo en un nodo dado
      *
-     * @param indAtributo   Õndice del atributo por el que se cortarÌa
+     * @param indAtributo   √çndice del atributo por el que se cortar√≠a
      * @param nodo          Nodo que se pretende dividir
      */
     protected void calculaMejorCorte(int indAtributo, Node nodo) {
-        // Se recorre la lista ordenada de valores para el atributo ÌndAtributo
+        // Se recorre la lista ordenada de valores para el atributo √≠ndAtributo
         for (int indice = 0; indice < nodo.getData()[indAtributo].size() - 1; indice++) {
             // Se obtiene el nodo hoja que pertenece al valor examinado
             Node nodoHoja = listaClases[nodo.getData()[indAtributo].get(indice).indice].hoja;
 
-            // Si es un nodo impuro que a˙n no ha sido dividido
+            // Si es un nodo impuro que a√∫n no ha sido dividido
             if (!nodoHoja.esHoja()) {
-                if (nodoHoja.numChildren() == 0) { // Si no tiene a˙n hijos
+                if (nodoHoja.numChildren() == 0) { // Si no tiene a√∫n hijos
                     nodoHoja.divide(); // dividirlo
 
                     // Y agregar a la lista de nodos pendientes de procesar
@@ -345,7 +345,7 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** MÈtodo que aplica en un nodo el mejor corte obtenido previamente
+    /** M√©todo que aplica en un nodo el mejor corte obtenido previamente
      *
      * @param nodo  Nodo a dividir
      */
@@ -355,40 +355,40 @@ public class SLIQ extends Algorithm {
         else                                                                                                                      aplicaMejorCorteContinuo(nodo);
     }
 
-    /** MÈtodo que divide un nodo por un atributo discreto
+    /** M√©todo que divide un nodo por un atributo discreto
      *
      * @param nodo  Nodo a dividir
      */
     protected void aplicaMejorCorteDiscreto(Node nodo) {
-        // Õndice del atributo por el que se dividir·
+        // √çndice del atributo por el que se dividir√°
         int indAtributo = nodo.getDecompositionAttribute();
 
         // Se toman las listas de atributos ordenadas del nodo a dividir
         Vector<ListaAtributos>[] listaI = nodo.getData().clone();
         Vector<ListaAtributos>[] listaD = nodo.getData().clone();
 
-        // Y se generan nuevas listas inicialmente vacÌas
+        // Y se generan nuevas listas inicialmente vac√≠as
         for (int indice = 0; indice < listaI.length; indice++) {
             listaI[indice] = new Vector<ListaAtributos>();
             listaD[indice] = new Vector<ListaAtributos>();
         }
 
-        // Referencias a los nodos hijo entre los que se repartir·n los datos
+        // Referencias a los nodos hijo entre los que se repartir√°n los datos
         Node nodoI = nodo.getChildren(0), nodoD = nodo.getChildren(1);
 
         // Procesar la lista de valores correspondiente a cada atributo
-        // y dividirla entre los dos nodos seg˙n el criterio Ä subconjunto
+        // y dividirla entre los dos nodos seg√∫n el criterio ¬Ä subconjunto
         for (int atributo = 0; atributo < nodo.getData().length; atributo++) {
             // Lista de valores a dividir
             Vector<ListaAtributos> lista = nodo.getData()[atributo];
             for (int indice = 0; indice < lista.size(); indice++) {
-                // Õndice del mejor subconjunto encontrado
+                // √çndice del mejor subconjunto encontrado
                 int indSubconjunto = (int) nodo.getDecompositionValue();
 
                 // Obtener el subconjunto que corresponde a indSubconjunto
                 while (indSubconjunto > 0) {
                     if (indSubconjunto % 2 != 0) {
-                        // indSubconjunto es el Ìndice del atributo que quedarÌa a la izquierda
+                        // indSubconjunto es el √≠ndice del atributo que quedar√≠a a la izquierda
                         if (modelDataset.itemset(lista.get(indice).indice).getValue(indAtributo) == indSubconjunto) {
                             nodoI.agregaElemento(listaClases[lista.get(indice).indice].clase);
                             listaI[atributo].add(lista.get(indice));
@@ -398,7 +398,7 @@ public class SLIQ extends Algorithm {
                         }
                     } else {
                         if (modelDataset.itemset(lista.get(indice).indice).getValue(indAtributo) == indSubconjunto) {
-                            // indSubconjunto es el Ìndice del atributo que quedarÌa a la derecha
+                            // indSubconjunto es el √≠ndice del atributo que quedar√≠a a la derecha
                             nodoD.agregaElemento(listaClases[lista.get(indice).indice].clase);
                             listaD[atributo].add(lista.get(indice));
                             // Se actualiza la entrada en la lista de clases para que apunte al nuevo nodo
@@ -415,32 +415,32 @@ public class SLIQ extends Algorithm {
         nodoD.setData(listaD);
     }
 
-    /** MÈtodo que divide un nodo por un atributo continuo
+    /** M√©todo que divide un nodo por un atributo continuo
      *
      * @param nodo  Nodo a dividir
      */
     protected void aplicaMejorCorteContinuo(Node nodo) {
 
-        // Õndice del atributo por el que se dividir·
+        // √çndice del atributo por el que se dividir√°
         int indAtributo = nodo.getDecompositionAttribute();
-        // Valor por el que se dividir·
+        // Valor por el que se dividir√°
         double valor = nodo.getDecompositionValue();
 
         // Se toman las listas de atributos ordenadas del nodo a dividir
         Vector<ListaAtributos>[] listaI = nodo.getData().clone();
         Vector<ListaAtributos>[] listaD = nodo.getData().clone();
 
-        // Y se generan nuevas listas inicialmente vacÌas
+        // Y se generan nuevas listas inicialmente vac√≠as
         for (int indice = 0; indice < listaI.length; indice++) {
             listaI[indice] = new Vector<ListaAtributos>();
             listaD[indice] = new Vector<ListaAtributos>();
         }
 
-        // Referencias a los nodos hijo entre los que se repartir·n los datos
+        // Referencias a los nodos hijo entre los que se repartir√°n los datos
         Node nodoI = nodo.getChildren(0), nodoD = nodo.getChildren(1);
 
         // Procesar la lista de valores correspondiente a cada atributo
-        // y dividirla entre los dos nodos seg˙n el criterio <= valor
+        // y dividirla entre los dos nodos seg√∫n el criterio <= valor
         for (int atributo = 0; atributo < nodo.getData().length; atributo++) {
             // Lista de valores a dividir
             Vector<ListaAtributos> lista = nodo.getData()[atributo];
@@ -466,25 +466,25 @@ public class SLIQ extends Algorithm {
         nodoD.setData(listaD);
 
     /**** Posiblemente nodo.data ya no sea necesario y pueda eliminarse,
-     *  reduciendo la ocupaciÛn en memoria
+     *  reduciendo la ocupaci√≥n en memoria
      */
     }
 
-    /** MÈtodo que comprueba la clase a la que corresponderÌa una muestra seg˙n el ·rbol generado
+    /** M√©todo que comprueba la clase a la que corresponder√≠a una muestra seg√∫n el √°rbol generado
      *
      * @param itemset		La muestra a evaluar
-     * @param node			El nodo que est· recorriÈndose.
+     * @param node			El nodo que est√° recorri√©ndose.
      *
-     * @return				El Ìndice de la clase predicha.
+     * @return				El √≠ndice de la clase predicha.
      */
     public int evaluateItemset(Itemset itemset, Node node) {
         try {
             // Si el nodo es una hoja
             if (node.esHoja() ||
-                    // o a pesar de no serlo tiene un solo hijo que corresponde a la condiciÛn a evaluar
+                    // o a pesar de no serlo tiene un solo hijo que corresponde a la condici√≥n a evaluar
                     itemset.getValue(node.getDecompositionAttribute()) <= node.getDecompositionValue() && node.getChildren(0) == null ||
                     itemset.getValue(node.getDecompositionAttribute()) > node.getDecompositionValue() && node.getChildren(1) == null) {
-                return node.getClase(); // Se devuelve el Ìndice de clase
+                return node.getClase(); // Se devuelve el √≠ndice de clase
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -498,15 +498,15 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** FunciÛn para contar el n˙mero de nodos y de hojas en el ·rbol
+    /** Funci√≥n para contar el n√∫mero de nodos y de hojas en el √°rbol
      *
      * @param node		El nodo actual.
      */
     public void cuentaNodosHojas(Node node) {
 
-        NumberOfNodes++;    // Contabilizar el n˙mero total de nodos
+        NumberOfNodes++;    // Contabilizar el n√∫mero total de nodos
 
-        // Descendiendo por el ·rbol
+        // Descendiendo por el √°rbol
         if (node.getChildren(0) != null) {
             cuentaNodosHojas(node.getChildren(0));
         }
@@ -555,7 +555,7 @@ public class SLIQ extends Algorithm {
         resultPrint.close();
     }
 
-    /** Eval˙a el dataset de entrenamiento y escribe el resultado en un archivo.
+    /** Eval√∫a el dataset de entrenamiento y escribe el resultado en un archivo.
      *
      */
     public void printTrain() {
@@ -586,7 +586,7 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** Eval˙a el dataset de pruebas y escribe el resultado en un archivo
+    /** Eval√∫a el dataset de pruebas y escribe el resultado en un archivo
      *
      */
     public void printTest() {
@@ -617,9 +617,9 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** MÈtodo encargado de leer las opciones de ejecuciÛn del archivo y establecer los par·metros adecuados.
+    /** M√©todo encargado de leer las opciones de ejecuci√≥n del archivo y establecer los par√°metros adecuados.
      *
-     * @param options 		El StreamTokenizer que lee del archivo de par·metros.
+     * @param options 		El StreamTokenizer que lee del archivo de par√°metros.
      *
      * @throws Exception	En caso de que el formato del archivo no sea el correcto.
      */
@@ -689,13 +689,13 @@ public class SLIQ extends Algorithm {
 
     } // setOptions
 
-    /** FunciÛn main.
+    /** Funci√≥n main.
      *
-     * @param args 			El archivo de par·metros.
+     * @param args 			El archivo de par√°metros.
      */
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.err.println("\nError: debe especificar el archivo de par·metros\n\tuso: java -jar SLIQ.jar archivoparametros.txt");
+            System.err.println("\nError: debe especificar el archivo de par√°metros\n\tuso: java -jar SLIQ.jar archivoparametros.txt");
             System.exit(-1);
         } else {
             new SLIQ(args[0]);

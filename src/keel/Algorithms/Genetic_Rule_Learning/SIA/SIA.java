@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ import org.core.*;
  * <p>Description: It contains the esential methods for the SIA algorithm</p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: KEEL</p>
- * @author Alberto Fern·ndez (University of Granada) 23/02/2005
+ * @author Alberto Fern√°ndez (University of Granada) 23/02/2005
  * @since JDK1.5
  * @version 1.8
  */
@@ -322,7 +322,7 @@ public class SIA {
                 if ((seguir) && (!(Double.isNaN(vars[j])))) { //If it is the first
                     bounds_aux[j][lims[j]] = (double) Math.round(vars[j] * 100) /
                                              100; //Adds the element
-                    //bounds_aux[j][lims[j]] = vars[j]; //AÒado el elemento
+                    //bounds_aux[j][lims[j]] = vars[j]; //A√±ado el elemento
                     lims[j]++;
                 }
             }
@@ -339,7 +339,7 @@ public class SIA {
                 }
             }
         }
-        bounds = new double[nAttributes][]; //tamaÒo max (todos !=)
+        bounds = new double[nAttributes][]; //tama√±o max (todos !=)
         for (int i = 0; i < nAttributes; i++) {
             /*while(lims[i] > trainData.size()){
               for (int j = 1, k = 2; j < lims[i]/2; j++, k+=2){

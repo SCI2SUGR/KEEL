@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -57,7 +57,7 @@ public class ConjReglas {
     }
 
     /**
-     * Aï¿½de todo un conjunto de reglas a la lista
+     * Anade todo un conjunto de reglas a la lista
      * @param r ConjReglas El conjunto de reglas
      */
     public void addReglas(ConjReglas r) {
@@ -68,8 +68,8 @@ public class ConjReglas {
     }
 
     /**
-     * Aï¿½de una regla a la lista
-     * @param regl Regla a aï¿½dir
+     * Anade una regla a la lista
+     * @param regl Regla a anadir
      */
     public void addRegla(Complejo regl) {
         reglas.add(regl);
@@ -84,7 +84,7 @@ public class ConjReglas {
     }
 
     /**
-     * Vacï¿½ el contenido del conjunto de reglas
+     * Vaciar el contenido del conjunto de reglas
      */
     public void deleteAll(){
         reglas.removeAll(reglas);
@@ -115,7 +115,7 @@ public class ConjReglas {
 
     /**
      * Devuelve el numero de reglas con las que estamos trabajando
-     * @return El tamaï¿½ del conjunto de reglas
+     * @return El tamano del conjunto de reglas
      */
     public int size() {
         return (reglas.size());
@@ -244,7 +244,7 @@ public class ConjReglas {
 
     /**
      * Eliminamos aquellos complejos repetidos (at1 = 0 ^ at2 = 0 -- at2 = 0 ^ at1 = 0)
-     * @param tam Tamaï¿½ de las estrella
+     * @param tam Tamano de las estrella
      */
     public void eliminaRepetidos(int tam) {
         //for (int i = 0; i < this.size() - 1; i++) {
@@ -269,7 +269,7 @@ public class ConjReglas {
                                 aux2.print();
                                 */
                                 seguir = false;
-                                this.deleteRegla(i); //borro porque estï¿½repe totalmente
+                                this.deleteRegla(i); //borro porque esta repe totalmente
                                 i--;
                             }
                         }
@@ -281,8 +281,8 @@ public class ConjReglas {
     }
 
     /**
-     * Elimino reglas que sean semï¿½ticamente iguales (At = 1, At <> 0, At = [0,1])
-     * @param tam int Tamaï¿½ de la estrella
+     * Elimino reglas que sean semanticamente iguales (At = 1, At <> 0, At = [0,1])
+     * @param tam int Tamano de la estrella
      */
     public void eliminaSubsumidos(int tam){
         //for (int i = 0; i < this.size() - 1; i++) {

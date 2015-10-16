@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -36,11 +36,11 @@ import keel.Dataset.*;
 
 
 /**
- * <p>TÌtulo: HibridaciÛn Pso Aco</p>
- * <p>DescripciÛn: Hibridacion entre los dos algoritmos Pso y Aco</p>
+ * <p>T√≠tulo: Hibridaci√≥n Pso Aco</p>
+ * <p>Descripci√≥n: Hibridacion entre los dos algoritmos Pso y Aco</p>
  * <p>Copyright: Copyright (c) 2008</p>
  * <p>Empresa: </p>
- * @author Vicente RubÈn del Pino
+ * @author Vicente Rub√©n del Pino
  * @version 1.0
  */
 
@@ -98,7 +98,7 @@ public class PsoAco {
      * @param semillaOriginal Semilla
      * @param maxCasosSinCubrirO Maximo de casos sin cubrir permitidos
      * @param numParticulasO Numero de particulas
-     * @param tamEntornoO TamaÒo del entorno
+     * @param tamEntornoO Tama√±o del entorno
      * @param maxIteracionesO Maximo de iteraciones que se pueden dar
      * @param minimoCasosCubiertosO Minimo casos cubiertos por una regla
      * @param xO X
@@ -208,7 +208,7 @@ public class PsoAco {
         //Crear lista de distintos atributos posibles
         listaAtributos = Attributes.getInputAttributes();
 
-        //Reservamos el tamaÒo para los intervalos, Dado que no sabemos el tamaÒo reservamos 2*nunAtributos
+        //Reservamos el tama√±o para los intervalos, Dado que no sabemos el tama√±o reservamos 2*nunAtributos
         intervalos = new float[Attributes.getNumAttributes() * 2][];
         for (int i = 0; i < Attributes.getNumAttributes() * 2; i++) {
             intervalos[i] = new float[3];
@@ -411,7 +411,7 @@ public class PsoAco {
                 if (X[i][j] == -1) { //Se encuentra perdido
                     at = new Atributo( -1, 0, 0);
                 } else {
-                    at = new Atributo((float) X[i][j], 0, 0); //Cogemos el puntero que seÒala al atributo almacenado en lista de valores
+                    at = new Atributo((float) X[i][j], 0, 0); //Cogemos el puntero que se√±ala al atributo almacenado en lista de valores
                 }
                 mt.insertarAtributo(at);
             }
@@ -805,7 +805,7 @@ public class PsoAco {
         float minimo;
         float maximo;
         float aleatoreo; //Para calcular la nueva posicion
-        float velocidad; //tamaÒo del intervalo
+        float velocidad; //tama√±o del intervalo
         Regla rule;
         int indice;
         int i = 0;
@@ -1069,7 +1069,7 @@ public class PsoAco {
             cTrain.eliminaMuestrasCubiertas(regla);
             tamanioDespues = cTrain.tamanio();
 
-            //AÒadir a reglas descubiertas
+            //A√±adir a reglas descubiertas
             if (tamanioDespues < tamanioAntes) {
                 particulasDescubiertas.addElement(regla);
             }

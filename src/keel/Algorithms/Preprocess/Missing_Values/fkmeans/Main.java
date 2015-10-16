@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
  * <p>
- * @author Written by Juli·n Luengo MartÌn 31/12/2006
+ * @author Written by Juli√°n Luengo Mart√≠n 31/12/2006
  * @version 0.3
  * @since JDK 1.5
  * </p>
@@ -37,7 +37,7 @@
 package keel.Algorithms.Preprocess.Missing_Values.fkmeans;
 /**
  *
- * @author Juli·n Luengo MartÌn
+ * @author Juli√°n Luengo Mart√≠n
  */
 public class Main {
     

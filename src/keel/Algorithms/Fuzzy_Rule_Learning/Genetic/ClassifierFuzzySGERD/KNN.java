@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@ import keel.Dataset.*;
 * Euclidean (L2), Manhattan (L1) and HVDM distances can be used as
 * distance function by the classifier.
 *
-* @author Written by Salvador GarcÌa LÛpez (University of Granada) 11/07/2004
+* @author Written by Salvador Garc√≠a L√≥pez (University of Granada) 11/07/2004
 * @author Modified by Joaquin Derrac (University of Granada) 3/11/2009
 * @version 1.1
 * @since JDK1.4
@@ -104,7 +104,7 @@ public class KNN extends Metodo {
 
         /*Check if dataset corresponding with a classification problem*/
         if (Attributes.getOutputNumAttributes() < 1) {
-            throw new CheckException("This dataset haven¥t outputs, so it not corresponding to a classification problem.");
+            throw new CheckException("This dataset haven¬¥t outputs, so it not corresponding to a classification problem.");
         } else if (Attributes.getOutputNumAttributes() > 1) {
             throw new CheckException("This dataset have more of one output.");
         }
@@ -167,7 +167,7 @@ public class KNN extends Metodo {
 
         /*Check if dataset corresponding with a classification problem*/
         if (Attributes.getOutputNumAttributes() < 1) {
-            throw new CheckException("This dataset haven¥t outputs, so it not corresponding to a classification problem.");
+            throw new CheckException("This dataset haven¬¥t outputs, so it not corresponding to a classification problem.");
         } else if (Attributes.getOutputNumAttributes() > 1) {
             throw new CheckException("This dataset have more of one output.");
         }

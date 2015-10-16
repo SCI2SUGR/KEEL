@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ import java.util.*;
  *
  * <p>Company: KEEL</p>
  *
- * @author Ismael Duque García
+ * @author Ismael Duque GarcÃ­a
  * @version 1.0
  */
 
@@ -62,14 +62,14 @@ public class InduceOneRule {
         LinkedList<Regla> new_partial_rules = new LinkedList <Regla> ();
         Regla best_rule = new Regla(train.getOutputAsString(s),train.getnInputs());
         
-        partial_rules.add(new Regla(best_rule));//Se añade la mjor regla a partial_rules
+        partial_rules.add(new Regla(best_rule));//Se aÃ±ade la mjor regla a partial_rules
         
         while(!partial_rules.isEmpty()){
             //Recorre todas las reglas contenidas en partial_rules
             
             for(int i=0; i<partial_rules.size();i++){
                 Regla rule =partial_rules.get(i);
-                //Devuelve la lista de atributos que no están contenidos en la regla actual
+                //Devuelve la lista de atributos que no estÃ¡n contenidos en la regla actual
                 LinkedList<Integer> atributos_no_contenidos = getListAttribNotRule(rule, train);
                 
                 for(int j=0; j<atributos_no_contenidos.size();j++){
@@ -81,17 +81,17 @@ public class InduceOneRule {
                         
                         Atributo_valor av_aux = new Atributo_valor(atributos_no_contenidos.get(j),valor);
                         Regla new_rule= new Regla(rule);//copia la regla que estamos viendo
-                        new_rule.addAntecedente(av_aux);//añade el atributo valor 
+                        new_rule.addAntecedente(av_aux);//aÃ±ade el atributo valor 
                         
                         if (new_rule.score(train)>best_rule.score(train))   best_rule = new Regla(new_rule);
                         
                         if ((coveredPositive(new_rule,train)<= min_positives) || 
                            (Math.abs((coveredNegative(rule,train))-(coveredNegative(new_rule,train)))<= min_negatives) || 
                             new_rule.getConsistencia()) {
-                            //si se cumple alguna de las condiciones anteriores, se añada como valor invalido a rule
+                            //si se cumple alguna de las condiciones anteriores, se aÃ±ada como valor invalido a rule
                             rule.addValoresInv(atributos_no_contenidos.get(j), valor);
                         }else{
-                            //si no se cumple alguna de las condiciones, se añada la nueva regla a new_partial_rules
+                            //si no se cumple alguna de las condiciones, se aÃ±ada la nueva regla a new_partial_rules
                             new_partial_rules.add(new Regla(new_rule));
                         }
                     }
@@ -105,7 +105,7 @@ public class InduceOneRule {
                 if (new_partial_rules.get(i).score(train)<= best_rule.score(train)){
                     //se toma el ultimo valor de la regla
                     Atributo_valor aux_av = new_partial_rules.get(i).getLastAV();
-                    //a la regla antecesora a la actual evaluda se le añade el atributo valor invalido
+                    //a la regla antecesora a la actual evaluda se le aÃ±ade el atributo valor invalido
                     new_partial_rules.get(i).parentRule().addValoresInv(aux_av.getAtributo(), aux_av.getValor());
                     //borrar la regla de new_partial_rules
                     new_partial_rules.remove(i);
@@ -118,7 +118,7 @@ public class InduceOneRule {
                 
                 for(int j=0; j<atrib_invalidos.size(); j++){//para cada atributo
                         for(int k=0; k<atrib_invalidos.get(j).size();k++){//para cada valor del atributo
-                            //se añaden a la regla de new_partial_rules todos los atibutos invalidos de su antecesor
+                            //se aÃ±aden a la regla de new_partial_rules todos los atibutos invalidos de su antecesor
                             new_partial_rules.get(i).addValoresInv(j,atrib_invalidos.get(j).get(k));
                         }
                 } 

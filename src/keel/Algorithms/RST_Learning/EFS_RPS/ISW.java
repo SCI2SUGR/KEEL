@@ -5,11 +5,11 @@
 
 	Copyright (C) 2004-2010
 	
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
-    S. GarcÌa (sglopez@ujaen.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
+    S. Garc√≠a (sglopez@ujaen.es)
     F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
+    L. S√°nchez (luciano@uniovi.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 
@@ -34,7 +34,7 @@
  * 
  * A implementation of a rough set based Instance Selection Wrapper class for EFS_RPS.
  * 
- * @author Written by JoaquÌn Derrac (University of Granada) 13/11/2011 
+ * @author Written by Joaqu√≠n Derrac (University of Granada) 13/11/2011 
  * @version 1.0 
  * @since JDK1.5
  * 

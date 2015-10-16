@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
- * @author Modified by Xavi SolÈ (La Salle, RamÛn Llull University - Barcelona) 16/12/2008
+ * @author Modified by Xavi Sol√© (La Salle, Ram√≥n Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
@@ -375,7 +375,7 @@ public class Complex implements Comparable {
     }
 
     /**
-     * Devuelve el valor de la distribuciÔøΩ para una clase dada
+     * Devuelve el valor de la distribucion para una clase dada
      * @param clase int El indice de la clase
      * @return double El valor de la distribucion
      */
@@ -384,7 +384,7 @@ public class Complex implements Comparable {
     }
 
     /**
-     * Devuelve el valor de la distribuciÔøΩ
+     * Devuelve el valor de la distribucion
      * @return double [] El valor de cada distribucion
      */
     public int[] getDistribution() {
@@ -495,9 +495,9 @@ public class Complex implements Comparable {
 	    	if (nValues.length > 1){
                 cad += " [" + nValues[0];
                 for (int i = 1; i < nValues.length - 1; i++) {
-                    cad += " ÔøΩ" + nValues[i];
+                    cad += " , " + nValues[i];
                 }
-                cad += " ,ÔøΩ" + nValues[nValues.length - 1] + "] ";
+                cad += " , " + nValues[nValues.length - 1] + "] ";
 		}
 		else{
 			cad += " " + nValues[0] + "";
@@ -507,7 +507,7 @@ public class Complex implements Comparable {
 	    	if (values.length > 1){
                 cad += " [" + values[0];
 		 for (int i = 1; i < values.length - 1; i++) {
-			cad += " ÔøΩ" + values[i];
+			cad += " , " + values[i];
 			}
                 cad += " , " + values[values.length - 1] + "]";
 		}

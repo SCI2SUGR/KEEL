@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -41,7 +41,7 @@ public class Tree {
 
   Tree hijoD, hijoI; //los dos hijos (arbol binario)
   Tree padre; //mi padre
-  Nodo nodo; //informacion relevante (<at,op,valor> Û clase>
+  Nodo nodo; //informacion relevante (<at,op,valor> √≥ clase>
   boolean marcado; //para el recuento
   myDataset train;
   int indiceNodoT, indiceNodo;

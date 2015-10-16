@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,9 +29,9 @@
 
 /**
  * <p>
- * @author Written by Francisco Fernández Navarro (University of Córdoba)
+ * @author Written by Francisco FernÃ¡ndez Navarro (University of CÃ³rdoba)
  * @author Modified by Juan Carlos Fernandez Caballerero (University of Cordoba)
- * @author Modified by Pedro Antonio Gutierrez Peña (University of Cordoba)
+ * @author Modified by Pedro Antonio Gutierrez PeÃ±a (University of Cordoba)
  * @version 1.0
  * @since JDK 1.5
  * </p>
@@ -351,7 +351,7 @@ public class EducationalRun extends javax.swing.JFrame implements WindowListener
         //Clean Report Area (right panel
         this.selectorTabbedPane.removeAll();
 
-        //Start button isn´t already pressed
+        //Start button isnÂ´t already pressed
         if(ejp==null)
         {
             this.stateLabel.setText("Running");

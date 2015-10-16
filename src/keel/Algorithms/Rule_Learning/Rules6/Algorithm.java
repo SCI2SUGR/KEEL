@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -135,7 +135,7 @@ public class Algorithm {
                             //se llama al procedimiento induce_one_rul, que devuelve una regla
                             Regla regla = InduceOneRule.induce_One_Rule(i, train, BeamWidth, minPos, minNeg);
                             //regla.mostrarRegla();
-                            //si la regla no es vacia, se marca el ejemplo a√±adiendolo a marcados
+                            //si la regla no es vacia, se marca el ejemplo a√É¬±adiendolo a marcados
                             if (!regla.getAntecedente().isEmpty()){
                                 marcados.put(i,true);
                                 RuleSet.add(regla);

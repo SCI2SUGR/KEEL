@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -41,7 +41,7 @@ import org.core.Files;
  * <p>Created: November 26th 2004</p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: KEEL</p>
- * @author Alberto Fern·ndez (University of Granada) 26/11/2004
+ * @author Alberto Fern√°ndez (University of Granada) 26/11/2004
  * @since JDK1.5
  * @version 1.6
  */
@@ -567,7 +567,7 @@ public class CN2 {
 
     /**
      * Test of Statistical Signficance . Complex c is significant if its value is higher than a given threshold
-     * <br/>The computation is carried out as 2*SUM[fi∑log(fi/ei)] where:
+     * <br/>The computation is carried out as 2*SUM[fi¬∑log(fi/ei)] where:
      * <br/>fi is the distribution of examples covered by c
      * <br/>ei is the distribution of examples randomly covered -> #examples of class i / #examples
      * @param c Complex The complex to analyse

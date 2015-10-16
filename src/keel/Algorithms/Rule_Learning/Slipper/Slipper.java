@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>
  * @author Written by Antonio Alejandro Tortosa  (University of Granada)  05/04/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @author Modified by Xavi SolÃ© (La Salle, RamÃ³n Llull University - Barcelona) 03/12/2008
  * @version 1.3
  * @since JDK1.2
  * </p>
@@ -357,7 +357,7 @@ public class Slipper {
 
   /**
    * It prunes a rule, minimizing with the heuristic:
-   * 1 - V+ + V_ + V+·exp(-Cr) + V_·exp(Cr)
+   * 1 - V+ + V_ + V+Â·exp(-Cr) + V_Â·exp(Cr)
    * V+: sum of the weights of the positive instances of the prune set that are covered by the current rule
    * V_: sum of the weights of the negative instances of the prune set that are covered by the current rule
    * Cr: rule confidence (computed in the grow set)
@@ -439,7 +439,7 @@ public class Slipper {
 
   /**
    * It reweights the instances, making use of the confidence of the last rule.
-   * <li>- For each xi e Rt, set D(i)<-D(i)/exp(yi·Cr) yi e {-1,1} </li>
+   * <li>- For each xi e Rt, set D(i)<-D(i)/exp(yiÂ·Cr) yi e {-1,1} </li>
    * <li>- Let Zt= S(D(i) i e [1-m] </li>
    * <li>- For each xi, set D(i)<-D(i)/Zt</li>
    * @param data the Dataset

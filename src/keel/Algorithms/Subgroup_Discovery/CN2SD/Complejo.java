@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@ import java.util.LinkedList;
  *
  * <p>Company: Mi Casa </p>
  *
- * @author Alberto Fernández
+ * @author Alberto FernÃ¡ndez
  * @version 1.0
  */
 public class Complejo implements Comparable {
@@ -51,8 +51,8 @@ public class Complejo implements Comparable {
     private LinkedList compl;
     private int clase;
     private int nClases;
-    private double distrib[]; //contiene porcentaje nº muestras por clase que satisfacen antecedente
-    private int distribEj[]; //contiene nº muestras por clase que satisfacen antecedente
+    private double distrib[]; //contiene porcentaje nÂº muestras por clase que satisfacen antecedente
+    private int distribEj[]; //contiene nÂº muestras por clase que satisfacen antecedente
     private double heuristica; // Coste segun heuristica
     private String [] nombreAtributos;
 
@@ -61,11 +61,11 @@ public class Complejo implements Comparable {
 
     /**
      * Constructor para el Complejo
-     * @param nClas int Número de clases
+     * @param nClas int NÃºmero de clases
      */
     public Complejo(int nClas) {
         compl = new LinkedList(); //Inicializo la lista
-        nClases = nClas; //Almaceno el nº de clases
+        nClases = nClas; //Almaceno el nÂº de clases
         distrib = new double[nClas]; //Distribucion para las clases
         distribEj = new int[nClas]; //Distribucion para las clases
         for (int i = 0; i < nClases; i++) {
@@ -77,8 +77,8 @@ public class Complejo implements Comparable {
     /**
      * Compara dos objetos de la clase Complejo
      * @param o Object Complejo a comparar
-     * @return int 0 si son iguales (misma heuristica y tamaño), -1 si es mejor (misma heur, menor tamaño || mayor heur)
-     * 1 si es peor (misma heur, mayor tamaño || menor heuristica).
+     * @return int 0 si son iguales (misma heuristica y tamaÃ±o), -1 si es mejor (misma heur, menor tamaÃ±o || mayor heur)
+     * 1 si es peor (misma heur, mayor tamaÃ±o || menor heuristica).
      */
     public int compareTo(Object o) {
         Complejo c2 = (Complejo) o;
@@ -117,7 +117,7 @@ public class Complejo implements Comparable {
 
 
     /**
-     * Añade el selector a la lista de selectores
+     * AÃ±ade el selector a la lista de selectores
      * @param s Selector el selector (conjunto atr. op. valor)
      */
     public void addSelector(Selector s) {
@@ -134,15 +134,15 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el tamaño del complejo
-     * @return int El número de selectores que posee el complejo
+     * Devuelve el tamaÃ±o del complejo
+     * @return int El nÃºmero de selectores que posee el complejo
      */
     public int size() {
         return compl.size();
     }
 
     /**
-     * Devuelve el nº de clases del problema
+     * Devuelve el nÂº de clases del problema
      * @return int idem.
      */
     public int getNClases() {
@@ -201,7 +201,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el valor heurístico del complejo
+     * Devuelve el valor heurÃ­stico del complejo
      * @return double idem
      */
     public double getHeuristica() {
@@ -226,7 +226,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Incrementa en 1 el nº de ejemplo para la clase 'clase' cubiertas por el complejo
+     * Incrementa en 1 el nÂº de ejemplo para la clase 'clase' cubiertas por el complejo
      * @param clase int El valor de la clase
      */
     public void incrementaDistrib(int clase) {
@@ -234,7 +234,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Convierte la distribución en un valor entre 0 y 1
+     * Convierte la distribuciÃ³n en un valor entre 0 y 1
      */
     public void ajustaDistrib() {
         double total = 0;
@@ -250,7 +250,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el valor de la distribución para una clase dada
+     * Devuelve el valor de la distribuciÃ³n para una clase dada
      * @param clase int El indice de la clase
      * @return double El valor de la distribucion
      */
@@ -259,7 +259,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el valor de la distribución
+     * Devuelve el valor de la distribuciÃ³n
      * @return double [] El valor de cada distribucion
      */
     public double[] getDistribucion() {
@@ -267,7 +267,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el valor de la distribución para una clase dada
+     * Devuelve el valor de la distribuciÃ³n para una clase dada
      * @param clase int El indice de la clase
      * @return int El valor de la distribucion
      */
@@ -276,7 +276,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el valor de la distribución
+     * Devuelve el valor de la distribuciÃ³n
      * @return int [] El valor de cada distribucion
      */
     public int[] getDistribucionEj() {
@@ -309,9 +309,9 @@ public class Complejo implements Comparable {
             if (valores.length > 1){
                 System.out.print(" " + valores[0]);
                 for (int i = 1; i < valores.length - 1; i++) {
-                    System.out.print(" ó " + valores[i]);
+                    System.out.print(" Ã³ " + valores[i]);
                 }
-                System.out.print(" ó " + valores[valores.length - 1] + ")");
+                System.out.print(" Ã³ " + valores[valores.length - 1] + ")");
             }
             else{
                 System.out.print(" " + valores[0]+")");
@@ -351,9 +351,9 @@ public class Complejo implements Comparable {
             if (valores.length > 1){
                 cad += " " + valores[0];
                 for (int i = 1; i < valores.length - 1; i++) {
-                    cad += " ó " + valores[i];
+                    cad += " Ã³ " + valores[i];
                 }
-                cad += " ó " + valores[valores.length - 1] + "";
+                cad += " Ã³ " + valores[valores.length - 1] + "";
             }
             else{
                 cad += " " + valores[0] + "";
@@ -366,7 +366,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Imprime por pantalla la distribución de clases para el complejo
+     * Imprime por pantalla la distribuciÃ³n de clases para el complejo
      */
     public void printDistribucion() {
         System.out.print("   [");
@@ -377,7 +377,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Imprime en un String la distribución de clases para el complejo
+     * Imprime en un String la distribuciÃ³n de clases para el complejo
      * @return String idem
      */
     public String printDistribucionString() {

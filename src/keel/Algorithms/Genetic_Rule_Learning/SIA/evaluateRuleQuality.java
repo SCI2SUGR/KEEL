@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,8 +32,8 @@ package keel.Algorithms.Genetic_Rule_Learning.SIA;
 /**
  * <p>Title: Evaluation of the quality of the rules</p>
  * <p>Description: This class computes the final statistics </p>
- * @author Written by JosÈ RamÛn Cano de Amo (University of JaÈn) 08/04/2004
- * @author Modified by Alberto Fern·ndez (University of Granada) 02/17/2005
+ * @author Written by Jos√© Ram√≥n Cano de Amo (University of Ja√©n) 08/04/2004
+ * @author Modified by Alberto Fern√°ndez (University of Granada) 02/17/2005
  * @version 1.3
  * @since JDK1.4
  */

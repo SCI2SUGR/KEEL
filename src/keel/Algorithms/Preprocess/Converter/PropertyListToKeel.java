@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ import java.util.regex.Pattern;
  *  un fichero de datos con formato property list (con sintaxis xml) a
  *  formato de datos Keel.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class PropertyListToKeel extends Importer {
@@ -88,7 +88,7 @@ public class PropertyListToKeel extends Importer {
         Element children;
         Element instance;
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"�", "�", "�", "�", "�", "�", "�", "�", "�", "�"};
+        String vowel_accent[] = {"á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú"};
 
         try {
 
@@ -96,7 +96,7 @@ public class PropertyListToKeel extends Importer {
 
             Document doc = builder.build(new File(pathnameInput));
 //construyo el arbol en memoria desde el fichero
-// que se lo pasaré por parametro.
+// que se lo pasarÃ© por parametro.
 
             root = doc.getRootElement();
 
@@ -107,7 +107,7 @@ public class PropertyListToKeel extends Importer {
 
             numElements = instances.size();
 
-//Buscamos un hijo con nombre dict para a partir de él saber el número de atributos
+//Buscamos un hijo con nombre dict para a partir de Ã©l saber el nÃºmero de atributos
             if (numElements > 0) {
                 i = 0;
                 children = (Element) instances.get(i);
@@ -137,7 +137,7 @@ public class PropertyListToKeel extends Importer {
             }
 
 
-//Reservamos memoria para almacenar la definición de los atributos y de los datos
+//Reservamos memoria para almacenar la definiciÃ³n de los atributos y de los datos
             attribute = new keel.Dataset.Attribute[numAttributes];
             data = new Vector[numAttributes];
             types = new Vector[numAttributes];
@@ -327,7 +327,7 @@ public class PropertyListToKeel extends Importer {
 
 
                     if (type == NOMINAL) {
-                        p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                        p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                         m = p.matcher(value);
 
                         if (m.find() && !value.startsWith("'") && !value.endsWith("'") && !value.equals("?")) {
@@ -408,9 +408,9 @@ public class PropertyListToKeel extends Importer {
     }//end Start()
 
     /*
-     *   Método encargado de recorrer todo el árbol xml para encontrar
-     *   el nodo padre del nodo o etiqueta cuyo nombre coincida con el valor del parámetro  childrenName.
-     *   El nodo padre de dicha etiqueta será asignado a la variable miembro
+     *   MÃ©todo encargado de recorrer todo el Ã¡rbol xml para encontrar
+     *   el nodo padre del nodo o etiqueta cuyo nombre coincida con el valor del parÃ¡metro  childrenName.
+     *   El nodo padre de dicha etiqueta serÃ¡ asignado a la variable miembro
      *   root.
      *
      *   @param  Element current. Elemento o nodo xml actual.
@@ -437,7 +437,7 @@ public class PropertyListToKeel extends Importer {
 
 
     /*
-     *  Método recursivo que devuelve el texto que contiene todos los descendientes
+     *  MÃ©todo recursivo que devuelve el texto que contiene todos los descendientes
      *  de un nodo o etiqueta de un elemento xml.
      *
      *   @param  Element current que indica que nodo o etiqueta xml actual.

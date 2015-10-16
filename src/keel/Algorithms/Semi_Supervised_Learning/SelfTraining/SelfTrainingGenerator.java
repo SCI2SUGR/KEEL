@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -219,7 +219,7 @@ public class SelfTrainingGenerator extends PrototypeGenerator {
 
 	  // In order to avoid problems with C45 and NB.
 	  for(int p=0; p<unlabeled.size(); p++){
-		  unlabeled.get(p).setFirstOutput(0); // todos con un valor válido.
+		  unlabeled.get(p).setFirstOutput(0); // todos con un valor vÃ¡lido.
 	  }
 	  
 	  

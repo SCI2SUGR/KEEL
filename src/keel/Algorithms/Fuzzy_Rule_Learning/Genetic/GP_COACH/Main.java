@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -34,7 +34,7 @@
  *
  * <p>Company: KEEL</p>
  *
- * @author Written by Alberto Fern·ndez (University of Granada)
+ * @author Written by Alberto Fern√°ndez (University of Granada)
  * @author Modified by Victoria Lopez (University of Granada) 11/01/2011
  * @version 1.0
  */
@@ -48,7 +48,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GP_COACH;
  *
  * <p>Company: KEEL</p>
  *
- * @author Written by Alberto Fern·ndez (University of Granada)
+ * @author Written by Alberto Fern√°ndez (University of Granada)
  * @author Modified by Victoria Lopez (University of Granada) 11/01/2011
  * @version 1.0
  */

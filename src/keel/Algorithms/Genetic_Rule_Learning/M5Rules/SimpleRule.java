@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -56,7 +56,7 @@ public class SimpleRule {
   * Constructs a SimpleRule with a given attribute and value
   * @param attribute int attribute's id (position of the attribute)
   * @param value double attribute's value
-  * @param operator int rule operator: >, = ó <=
+  * @param operator int rule operator: >, = Ã³ <=
   */
   public SimpleRule(int attribute,double value,int operator) {
     this.attribute=attribute;
@@ -98,7 +98,7 @@ public class SimpleRule {
    * Sets the attribute's id and the attribute's value
    * @param attribute int attribute's id (position of the attribute)
    * @param value attribute's value
-   * @param operator int rule operator: >, = ó <=
+   * @param operator int rule operator: >, = Ã³ <=
    */
   public void set(int attribute,double value,int operator){
     this.attribute=attribute;
@@ -124,7 +124,7 @@ public class SimpleRule {
 
   /**
    * Sets the rule operator
-   * @param operator int rule operator: >, = ó <=
+   * @param operator int rule operator: >, = Ã³ <=
    */
   public void setOperator(int operator){
     this.operator=operator;

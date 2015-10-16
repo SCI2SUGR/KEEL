@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@
 //
 //  Main.java
 //
-//  Salvador Garc�a L�pez
+//  Salvador García López
 //
-//  Created by Salvador Garc�a L�pez 23-2-2008.
+//  Created by Salvador García López 23-2-2008.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 

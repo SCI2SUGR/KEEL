@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -137,7 +137,7 @@ public class Algorithm {
         LinkedList<Double> fila;
         LinkedList<Integer> aux = new LinkedList <Integer> ();
         
-        if (regla.getAntecedente().size()>0){//si es vacía, no cubre nada
+        if (regla.getAntecedente().size()>0){//si es vacÃ­a, no cubre nada
             for(int i=0;i<instances.getnData();i++){ //Para cada fila
 
                 fila = instances.getExample(i); //cogemos la fila 
@@ -159,12 +159,12 @@ public class Algorithm {
                     aux.add(i);
                 }
             } 
-            instances.removeInstances(aux);//borra la lista de filas añadidas a aux
+            instances.removeInstances(aux);//borra la lista de filas aÃ±adidas a aux
         }
     }
     
     /**
-     * Cuenta el número de instancias positivas que hay en el dataset aun.
+     * Cuenta el nÃºmero de instancias positivas que hay en el dataset aun.
      * @param intances Instances Objeto que contiene las filas del datase
      * @param clases int El numero dela clase que estamos evaluando
      * @return int numero de instancias positvas en Instances
@@ -207,7 +207,7 @@ public class Algorithm {
                         if (Rule_Generation_Stopping_Criterion(regla,instances,clases)) exit = true;
                         else {
                              coveredPositives(regla,instances);//elimina las instancias cubiertas por la regla
-                             RuleSet.add(regla);//añade al data set
+                             RuleSet.add(regla);//aÃ±ade al data set
                         } 
                 }
             } 

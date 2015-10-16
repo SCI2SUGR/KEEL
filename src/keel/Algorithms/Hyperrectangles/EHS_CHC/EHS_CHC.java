@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
 * <p>
-* @author Written by Salvador Garcia (University of Jaén) 6/06/2009
+* @author Written by Salvador Garcia (University of JaÃ©n) 6/06/2009
 * @version 0.1
 * @since JDK1.5
 * </p>
@@ -132,7 +132,7 @@ public class EHS_CHC extends Metodo {
 		/* Check if dataset corresponding with a classification problem */
 		if (Attributes.getOutputNumAttributes() < 1) {
 			throw new CheckException(
-					"This dataset haven�t outputs, so it not corresponding to a classification problem.");
+					"This dataset haven't outputs, so it not corresponding to a classification problem.");
 		} else if (Attributes.getOutputNumAttributes() > 1) {
 			throw new CheckException("This dataset have more of one output.");
 		}
@@ -203,7 +203,7 @@ public class EHS_CHC extends Metodo {
 		/* Check if dataset corresponding with a classification problem */
 		if (Attributes.getOutputNumAttributes() < 1) {
 			throw new CheckException(
-					"This dataset haven�t outputs, so it not corresponding to a classification problem.");
+					"This dataset haven't outputs, so it not corresponding to a classification problem.");
 		} else if (Attributes.getOutputNumAttributes() > 1) {
 			throw new CheckException("This dataset have more of one output.");
 		}
@@ -268,7 +268,7 @@ public class EHS_CHC extends Metodo {
 		/* Check if dataset corresponding with a classification problem */
 		if (Attributes.getOutputNumAttributes() < 1) {
 			throw new CheckException(
-					"This dataset haven�t outputs, so it not corresponding to a classification problem.");
+					"This dataset haven't outputs, so it not corresponding to a classification problem.");
 		} else if (Attributes.getOutputNumAttributes() > 1) {
 			throw new CheckException("This dataset have more of one output.");
 		}

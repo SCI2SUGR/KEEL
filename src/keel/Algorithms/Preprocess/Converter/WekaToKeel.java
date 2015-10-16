@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -52,7 +52,7 @@ import com.Ostermiller.util.CSVParser;
  *  para leer datos localizados en ficheros con formato Weka
  * (fichero relacion-atributo) y convertirlos a formato keel.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class WekaToKeel extends Importer {
@@ -123,7 +123,7 @@ public class WekaToKeel extends Importer {
 
         reader = new BufferedReader(new FileReader(filename));
 
-        /* Contamos el número de atributos que existen*/
+        /* Contamos el nÃºmero de atributos que existen*/
         line = reader.readLine();
 
         token = new StringTokenizer(line, " ");
@@ -171,7 +171,7 @@ public class WekaToKeel extends Importer {
 
 
 
-// Insertamos la definición de los atributos en Attribute
+// Insertamos la definiciÃ³n de los atributos en Attribute
         reader = new BufferedReader(new FileReader(filename));
 
         line = reader.readLine();
@@ -270,11 +270,11 @@ public class WekaToKeel extends Importer {
 
                                             element = element.replace("\"", "");
 
-                                            p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                                            p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                                             m = p.matcher(element);
                                             /**
                                              * Cambio hecho para que los nominales con espacios en blanco se dejen
-                                             * con subrayado bajo "_" y sin comillas simples. Se añade la siguiente linea
+                                             * con subrayado bajo "_" y sin comillas simples. Se aÃ±ade la siguiente linea
                                              */
                                             element = element.replace(" ", "_");
 
@@ -344,7 +344,7 @@ public class WekaToKeel extends Importer {
          */
         BufferedWriter writer = new BufferedWriter(new FileWriter("temp"));
         while ((line = reader.readLine()) != null) {
-            // Saltamos las líneas comentadas
+            // Saltamos las lÃ­neas comentadas
             if (!line.startsWith("%") && !line.equals("\n") && !line.equals("\r") && !line.equals("")) {
                 writer.write(line + "\n");
             }
@@ -375,12 +375,12 @@ public class WekaToKeel extends Importer {
                 element = element.replace("\"", "");
 
                 if (type == NOMINAL) {
-                    p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                    p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                     m = p.matcher(element);
 
                     /**
                      * Cambio hecho para que los nominales con espacios en blanco se dejen
-                     * con subrayado bajo "_" y sin comillas simples. Se añade la siguiente linea
+                     * con subrayado bajo "_" y sin comillas simples. Se aÃ±ade la siguiente linea
                      */
                     element = element.replace(" ", "_");
 
@@ -407,7 +407,7 @@ public class WekaToKeel extends Importer {
 
 
         /* Recogemos la lista de valores nominales de los datos, para aquellos atributos que
-        no hayan definido la lista en la declaración */
+        no hayan definido la lista en la declaraciÃ³n */
         for (i = 0; i < data.length; i++) {
             type = attribute[i].getType();
 
@@ -424,7 +424,7 @@ public class WekaToKeel extends Importer {
 
 
         /* Leemos el rango de los datos, para aquellos atributos que no lo hayan definido
-        en la lista en la declaración */
+        en la lista en la declaraciÃ³n */
         for (i = 0; i < data[0].size(); i++) {
             for (j = 0; j < numAttributes; j++) {
                 type = attribute[j].getType();

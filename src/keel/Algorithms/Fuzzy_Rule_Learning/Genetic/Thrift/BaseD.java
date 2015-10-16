@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -74,7 +74,7 @@ class BaseD {
      * Rounds the generated value for the semantics
      * @param val valor a asignar
      * @param tope tope valor maximo
-     * @return 0 si es muy pequeño, tope si es cercano a éste y "valor" en otro caso
+     * @return 0 si es muy pequeÃ±o, tope si es cercano a Ã©ste y "valor" en otro caso
      */
     public double Asigna(double val, double tope) {
         if ((val > -1E-4) && (val < 1E-4)) {

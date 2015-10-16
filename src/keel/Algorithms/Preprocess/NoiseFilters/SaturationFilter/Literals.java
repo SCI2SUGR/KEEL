@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -483,7 +483,7 @@ public class Literals {
 	 */
 	private void addNominalLiterals(int[][] values, double[][][] valuesNoRep, int index, int i, boolean isInteger){
 		
-		//para cada valor positivo... lo añado
+		//para cada valor positivo... lo a¬ñado
 		for(int p = 0 ; p < values[POSITIVE][index] ; ++p){
 			
 			for(int k = 0 ; k < instances.length ; ++k){
@@ -497,7 +497,7 @@ public class Literals {
 			numlit++;
 		}
 		
-		//para cada valor negativo... lo añado
+		//para cada valor negativo... lo a¬ñado
 		for(int p = 0 ; p < values[NEGATIVE][index] ; ++p){
 			
 			for(int k = 0 ; k < instances.length ; ++k){

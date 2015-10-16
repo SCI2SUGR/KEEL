@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -410,7 +410,7 @@ public class StructuralMutator<I extends NeuralNetIndividual> extends NeuralNetM
             if((initial && randgen.raw()<temper) || (!initial && mutation==1)){
             	
                 int neuronsToAdd = (int) (minNeuronsAdd + ( randgen.raw()*temper*(maxNeuronsAdd-minNeuronsAdd) ));
-            	//System.out.println(neuronsToAdd + " neuronas aï¿½adidas");
+            	//System.out.println(neuronsToAdd + " neuronas anadidas");
                 
                 for(int i=0; i<neuronsToAdd; i++){
                     if( ANMutation(neuralNet) )
@@ -484,7 +484,7 @@ public class StructuralMutator<I extends NeuralNetIndividual> extends NeuralNetM
     	            	}
     	            }
             	}
-            	//System.out.println(linksToAdd + " enlaces aï¿½adidos");
+            	//System.out.println(linksToAdd + " enlaces anadidos");
 	            //System.out.println(neuralNet);
             }
             
@@ -622,8 +622,8 @@ public class StructuralMutator<I extends NeuralNetIndividual> extends NeuralNetM
 	 * 		<li>
 	 * 		<code>links-ranges[@relative] boolean (default=false)</code>
 	 *      If we use a relative number of links, then we have to specify
-	 *      a percentage of links added or deleted, dependind of the layer
-	 *      operatedï¿½
+	 *      a percentage of links added or deleted, depending of the layer
+	 *      operated
 	 * 		</li>
 	 * 		<li>
 	 * 		<code>links-ranges.added: complex</code>

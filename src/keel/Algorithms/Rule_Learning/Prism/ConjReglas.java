@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,8 @@
 
 /**
  * <p>
- * @author Written by Alberto Fern·ndez (University of Granada) 02/06/2008
- * @author Modified by Xavi SolÈ (La Salle, RamÛn Llull University - Barcelona) 16/12/2008
+ * @author Written by Alberto Fern√°ndez (University of Granada) 02/06/2008
+ * @author Modified by Xavi Sol√© (La Salle, Ram√≥n Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
@@ -268,7 +268,7 @@ public class ConjReglas {
                                 aux2.print();*/
                                 
                                 seguir = false;
-                                this.deleteRegla(i); //borro porque estÔøΩrepe totalmente
+                                this.deleteRegla(i); //borro porque esta repe totalmente
 				/*System.out.println("Se borra la regla "+(i+1));
 				aux.print();*/
                                 i--;

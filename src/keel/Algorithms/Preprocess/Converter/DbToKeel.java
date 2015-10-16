@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ import java.sql.*;
  * Esta clase es utilizada para leer datos localizados en tablas de bases de datos SQL
  * y convertirlos a formato keel.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class DbToKeel extends Importer {
@@ -56,22 +56,22 @@ public class DbToKeel extends Importer {
     private String driverName = new String();// Variable que almacena el nombre de la base de datos.
     private String databaseURL = new String();// Variable que almacena el nombre de  la tabla que contiene los datos a convertir.
     private String tableName = new String();// Variable que almacena el login o nombre de usuario de la base de datos.
-    private String login = new String();// Variable que almacena el password o contraseña de la base de datos.
+    private String login = new String();// Variable que almacena el password o contraseÃ±a de la base de datos.
     private String password = new String();
 
     /*
      * Constructor de la Clase DbToKeel. Inicializa los valores de las variables
      * miembro driverName, databaseURL, tableName, login y password
-     * con el valor de los parámetros driverNameUser, databaseURLUser, tableNameUser,
+     * con el valor de los parÃ¡metros driverNameUser, databaseURLUser, tableNameUser,
      * loginUser, passwordUser respectivamente.
      *
      * @param String driverNameUser Variable de tipo String con el valor del driver de la conexion a la base de datos.
      * @param String conecctionUser Variable de tipo String con el tipo de conexion a la base de datos.
-     * @param String databaseURL: Variable que almacena la dirección URL de la base de datos
+     * @param String databaseURL: Variable que almacena la direcciÃ³n URL de la base de datos
      * de la forma jdbc:subprotocol:subname donde subprotocol es el nombre
-     * del controlador, y subname es una referencia controlador-específica a la base de datos.
+     * del controlador, y subname es una referencia controlador-especÃ­fica a la base de datos.
      * @param String loginUser Variable de tipo String con el login o nombre de usuario para conectarse a la base de datos.
-     * @param String passwordUser Variable de tipo String con el password o contraseña para conectarse a la base de datos.
+     * @param String passwordUser Variable de tipo String con el password o contraseÃ±a para conectarse a la base de datos.
      *
      */
     public DbToKeel(String driverNameUser, String databaseURLUser, String tableNameUser, String loginUser, String passwordUser) {
@@ -106,9 +106,9 @@ public class DbToKeel extends Importer {
         double min;
         double max;
 
-//Se declara la variable de tipo conexion, que guardará la conexión a la base de datos
+//Se declara la variable de tipo conexion, que guardarÃ¡ la conexiÃ³n a la base de datos
         Connection conn;
-//Se declara la variable de tipo Statement que nos permitirá ejecutar sentencias
+//Se declara la variable de tipo Statement que nos permitirÃ¡ ejecutar sentencias
         Statement statement;
 //Se declara la variable de tipo Resulset para recoger lo que devuelve una sentencia SELECT
         ResultSet result;
@@ -125,7 +125,7 @@ public class DbToKeel extends Importer {
 
 
 
-        try {  // Se establece la conexión con la base de datos
+        try {  // Se establece la conexiÃ³n con la base de datos
             conn = DriverManager.getConnection(databaseURL, login, password); //URL BaseDatos, usuario, clave
             statement = conn.createStatement();
 
@@ -140,7 +140,7 @@ public class DbToKeel extends Importer {
 
 
 
-//Reservamos memoria para almacenar la definición de los atributos y de los datos
+//Reservamos memoria para almacenar la definiciÃ³n de los atributos y de los datos
 
                 attribute = new Attribute[numAttributes];
                 data = new Vector[numAttributes];
@@ -277,12 +277,12 @@ public class DbToKeel extends Importer {
 
 
                 if (type == NOMINAL) {
-                    p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                    p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                     m = p.matcher(element);
 
                     /**
                      * Cambio hecho para que los nominales con espacios en blanco se dejen
-                     * con subrayado bajo "_" y sin comillas simples. Se añade la siguiente linea
+                     * con subrayado bajo "_" y sin comillas simples. Se aÃ±ade la siguiente linea
                      */
                     element = element.replace(" ", "_");
 
@@ -351,8 +351,8 @@ public class DbToKeel extends Importer {
 
 
 
-        /* Insertamos el nombre de la relación que será el mismo que el del
-         * fichero pasado, pero sin extensión*/
+        /* Insertamos el nombre de la relaciÃ³n que serÃ¡ el mismo que el del
+         * fichero pasado, pero sin extensiÃ³n*/
 
 
         nameRelation = tableName;

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -35,7 +35,7 @@ import keel.Dataset.*;
 
 /**
  * Class to implement a chromosome for the EUS-CHC metho
- * @author Created by Salvador GarcÌa LÛpez (UJA) [19-07-2004]
+ * @author Created by Salvador Garc√≠a L√≥pez (UJA) [19-07-2004]
  * @author Modified by Mikel Galar Idoate (UPNA) [03-05-13]
  * @version 1.1 (12-05-14)
  * @since JDK 1.5
@@ -275,7 +275,7 @@ public class Chromosome implements Comparable {
 		}
 
 		if (anteriores[0] != null) {
-			/* Calcular la distancia de Hamming m√≠nima entre el cromosoma y anteriores[][] */
+			/* Calcular la distancia de Hamming m√É¬≠nima entre el cromosoma y anteriores[][] */
 			double q = -Double.MAX_VALUE;
 			for (i = 0; i < anteriores.length && anteriores[i] != null; i++) {
 				double qaux = Qstatistic(anteriores[i], cuerpo, clases.length);

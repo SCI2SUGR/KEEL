@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -42,21 +42,21 @@ import java.util.regex.Pattern;
  * <b> Importer </b>
  * </p>
  *
- * Clase abstracta que contiene los métodos para importar ficheros de
+ * Clase abstracta que contiene los mÃ©todos para importar ficheros de
  * distintos formatos a ficheros con formato Keel.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public abstract class Importer {
 
-    // Almacena la definición de los atributos del fichero.
+    // Almacena la definiciÃ³n de los atributos del fichero.
     keel.Dataset.Attribute attribute[];    // Almacena los datos del fichero.
     Vector data[];    //Almacena el tipo de cada dato del fichero.
     Vector types[];    // Almacena el valor nulo del fichero de datos
-    String nullValue = new String();    // Almacena el nombre de la relación
+    String nullValue = new String();    // Almacena el nombre de la relaciÃ³n
     String nameRelation = new String();    // Almacena el separador de los datos
-    String separator = new String();    // Almacena el número de atributos existentes en el fichero de datos
+    String separator = new String();    // Almacena el nÃºmero de atributos existentes en el fichero de datos
     int numAttributes = 0;    // Etiqueta para valores nominales.
     int NOMINAL = 0;    // Etiqueta para valores enteros.
     int INTEGER = 1;    // Etiqueta para valores reales.
@@ -77,8 +77,8 @@ public abstract class Importer {
 
 
     /*
-     * Este método crea el fichero de salida con formato keel en la ruta pasada,
-     * a partir de la información almacenada en las variables miembro
+     * Este mÃ©todo crea el fichero de salida con formato keel en la ruta pasada,
+     * a partir de la informaciÃ³n almacenada en las variables miembro
      * attribute[], data[], nameRelation y numAttributes.
      *
      * @param  String pathnameOutput Indica la ruta del fichero de salida con formato Keel.
@@ -99,7 +99,7 @@ public abstract class Importer {
         int j;
         int k;
 
-        /* Comprobamos si el nombre del fichero tiene la extensión .dat, si no la tiene
+        /* Comprobamos si el nombre del fichero tiene la extensiÃ³n .dat, si no la tiene
          * se la ponemos */
         if (pathnameOutput.endsWith(".dat")) {
             filename = pathnameOutput;
@@ -112,7 +112,7 @@ public abstract class Importer {
 
 
         /* Comprobamos si hay nombres de atributos repetidos
-         * y se le añade un número al final
+         * y se le aÃ±ade un nÃºmero al final
          *  Ej: Es decir que si los atributos son:  a,b,c,c,c
          * @attribute a ... @attribute b ... @attribute c1 ... @attribute c2 ... @attribute c3 ...
          *
@@ -204,14 +204,14 @@ public abstract class Importer {
 
 
     /*
-     * Método utilizado para poner en mayúscula el primer carácter de una cadena pasada
-     * por parámetro.
+     * MÃ©todo utilizado para poner en mayÃºscula el primer carÃ¡cter de una cadena pasada
+     * por parÃ¡metro.
      *
      * @param line. Variable String que almacena la cadena
-     * a la que se pretende poner el primer carácter en mayúscula.
+     * a la que se pretende poner el primer carÃ¡cter en mayÃºscula.
      *
-     * @return Devuelve una cadena igual a la cadena pasada por parámetro
-     * pero con el primer carácter en mayúscula.
+     * @return Devuelve una cadena igual a la cadena pasada por parÃ¡metro
+     * pero con el primer carÃ¡cter en mayÃºscula.
      */
     public String UcFirst(String line) {
         String lineTemp = "";
@@ -228,7 +228,7 @@ public abstract class Importer {
 
 
     /*
-     * Metodo que devuelve el tipo del elemento pasado por parámetros
+     * Metodo que devuelve el tipo del elemento pasado por parÃ¡metros
      *
      * @param item elemento pasado
      * @return int tipo del elemento pasado. 0 nominal, 1 entero y 2 real.

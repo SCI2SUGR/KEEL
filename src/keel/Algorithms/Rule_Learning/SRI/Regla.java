@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -46,7 +46,7 @@ import keel.Dataset.Attributes;
  *
  * <p>Company: KEEL</p>
  *
- * @author Ismael Duque García
+ * @author Ismael Duque GarcÃ­a
  * @version 1.0
  */
 
@@ -71,7 +71,7 @@ public class Regla {
         antecedentes = new LinkedList <Atributo_valor> ();
         consecuente = c;
         consistencia = false;
-        for (int i=0;i<numAtributos;i++){//para asegurar que tiene un tamaño distinto de 0
+        for (int i=0;i<numAtributos;i++){//para asegurar que tiene un tamaÃ±o distinto de 0
             valoresinvalidos.add(new LinkedList<Double>());
         }
     }
@@ -106,8 +106,8 @@ public class Regla {
     public String getConsecuente(){ return consecuente;}
     
     /**
-     * Devuelve el tamaño de la lista de antecedentes
-     * @return int tamaño de la lista de antecedentes
+     * Devuelve el tamaÃ±o de la lista de antecedentes
+     * @return int tamaÃ±o de la lista de antecedentes
      */
     public int getSizeAntecedentes(){ return antecedentes.size();}
     
@@ -119,7 +119,7 @@ public class Regla {
     
     /**
      * Devuelve verdadero o falso dependiendo de si un atributo  y su valor
-     * están en la lista de valores invalidos
+     * estÃ¡n en la lista de valores invalidos
      * @param atributo Integer Entero que representa el atributo
      * @param valor Double Doble que representa el valor del atributo
      * @return boolean Si la condicion es verdadera o falsa
@@ -137,7 +137,7 @@ public class Regla {
     }
     
     /**
-     * Devuelve el último Atributo_valor añadido de la lista de antecedentes
+     * Devuelve el Ãºltimo Atributo_valor aÃ±adido de la lista de antecedentes
      * @return Atributo_valor 
      */
     public Atributo_valor getLastAV(){
@@ -145,17 +145,17 @@ public class Regla {
     }
     
     /**
-     * Añade un Atributo_valor a la lista de antecedentes
-     * @param av Atributo_valor Objeto a añadir a la lista 
+     * AÃ±ade un Atributo_valor a la lista de antecedentes
+     * @param av Atributo_valor Objeto a aÃ±adir a la lista 
      */
     public void addAntecedente(Atributo_valor av){
         antecedentes.add(av);
     }
     
     /**
-     * Añade un Atributo_valor a la lista de valores invalidos
-     * @param i Integer Atributo a añadir a la lista 
-     * @param vinv Double Valor del atributo a añadir
+     * AÃ±ade un Atributo_valor a la lista de valores invalidos
+     * @param i Integer Atributo a aÃ±adir a la lista 
+     * @param vinv Double Valor del atributo a aÃ±adir
      */
     public void addValoresInv(Integer i,Double vinv){
         //si no esta ya contenido
@@ -165,8 +165,8 @@ public class Regla {
     
     /**
      * Elimina un Atributo_valor a la lista de valores invalidos
-     * @param i Integer Atributo a añadir a la lista 
-     * @param vinv Double Valor del atributo a añadir
+     * @param i Integer Atributo a aÃ±adir a la lista 
+     * @param vinv Double Valor del atributo a aÃ±adir
      */
     public void removeValorInv(Integer i,Double vinv){
         //si no esta ya contenido
@@ -181,7 +181,7 @@ public class Regla {
      */
     public boolean equals(Regla rule){
         boolean igual = true;
-        //si tiene el mismo tamaño en los antecedentes
+        //si tiene el mismo tamaÃ±o en los antecedentes
         if (this.antecedentes.size() == rule.getAntecedente().size()){
             for(int i=0; i<this.antecedentes.size();i++){
                 if(!rule.getAntecedente().get(i).equals(antecedentes.get(i)))
@@ -196,12 +196,12 @@ public class Regla {
     
     /**
      * Devuelve el padre de la regla, su antecesor de esta
-     * @return Regla La regla sin el ultimo valor añadido 
+     * @return Regla La regla sin el ultimo valor aÃ±adido 
      */
     public Regla parentRule(){
         //generamos la nueva regla, padre de la actual
         Regla parent = new Regla(this);
-        //se elimina el ultimo atributo añadido
+        //se elimina el ultimo atributo aÃ±adido
         Atributo_valor aux = parent.antecedentes.removeLast();
         //se elimina de la lista de valores invalidos si estuviera
         parent.removeValorInv(aux.getAtributo(),aux.getValor());

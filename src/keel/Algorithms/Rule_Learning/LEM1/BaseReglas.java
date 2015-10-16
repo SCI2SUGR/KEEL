@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -70,7 +70,7 @@ public class BaseReglas {
                 }
                                               
                 int i = 0;
-                while(antecedentes.size()>1 && i<antecedentes.size()){ //mientras que en el conjunto haya más de 1, y el índice i sea válido                  
+                while(antecedentes.size()>1 && i<antecedentes.size()){ //mientras que en el conjunto haya mÃ¡s de 1, y el Ã­ndice i sea vÃ¡lido                  
                     
                     
                     //Borramos, guardando una copia por si luego hay que volverlo a incluir
@@ -80,20 +80,20 @@ public class BaseReglas {
                     }                 
                     v_aux = antecedentes.remove(r_aux);
 
-                    //Si cubren diferentes conceptos los antecedentes (no son válidos)
+                    //Si cubren diferentes conceptos los antecedentes (no son vÃ¡lidos)
                     if (!valido(antecedentes)){
                         
-                        //Volvemos al estado anterior de R añadiendo lo que habíamos borrado con anterioridad
+                        //Volvemos al estado anterior de R aÃ±adiendo lo que habÃ­amos borrado con anterioridad
                         antecedentes.put(r_aux, v_aux);
                         //R.add(i,r_aux); 
-                        i++;  //incrementamos el contador para sacer el siguiente en la próxima pasada     
+                        i++;  //incrementamos el contador para sacer el siguiente en la prÃ³xima pasada     
  
                     }
                                      
                 }//Fin del while
-                //En este punto ya tenemos una regla para añadir
-               if (!base_de_reglas.contains(antecedentes)){ //Si el resultado (regla) no está repetido
-                    //Añadimos el par columnas-valores
+                //En este punto ya tenemos una regla para aÃ±adir
+               if (!base_de_reglas.contains(antecedentes)){ //Si el resultado (regla) no estÃ¡ repetido
+                    //AÃ±adimos el par columnas-valores
                     base_de_reglas.add((TreeMap<Integer,Double>)antecedentes.clone());
                     base_de_reglas_salida.add(train.getOutputAsString(j));
                     
@@ -165,7 +165,7 @@ public class BaseReglas {
                                     resultados.add(base_de_reglas_salida.get(i));//add
                                     encontrado = true;//regla encontrada, parar la busqueda para la fila
                                 }
-                            }//La columna está, pero valores distintos
+                            }//La columna estÃ¡, pero valores distintos
                         }//La columna no esta en el antecedente'
                     }
                     k++;
@@ -214,14 +214,14 @@ public class BaseReglas {
        
                 output +="BASE DE REGLAS: \n\n";
                 //Numero de reglas
-                output +="Número de reglas: "+ base_de_reglas.size() + " \n\n";
-                //Tamaño medio de las reglas obtenidas
+                output +="NÃºmero de reglas: "+ base_de_reglas.size() + " \n\n";
+                //TamaÃ±o medio de las reglas obtenidas
                 Double media_reglas = 0.0;
                 for (int i=0; i<base_de_reglas.size(); i++){
                     Integer aux = base_de_reglas.get(i).size()+1;
                     media_reglas += aux.doubleValue();
                 }
-                output +="Tamaño medio de las reglas obtenidas: "+ media_reglas/base_de_reglas.size() + " \n\n";
+                output +="TamaÃ±o medio de las reglas obtenidas: "+ media_reglas/base_de_reglas.size() + " \n\n";
                 
                 for (int i=0; i<base_de_reglas.size(); i++){
 

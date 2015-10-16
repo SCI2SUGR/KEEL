@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@
  * 
  * The CNN Instance Selection algorithm.
  * 
- * @author Written by Salvador Garc�a (University of Granada) 20/07/2004 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
  * @version 0.1 
  * @since JDK1.5
  * 
@@ -122,7 +122,7 @@ public class CNN extends Metodo {
 		}
 
 		/*Algorithm body. We resort randomly the instances of T and compare with the rest of S.
-		 If an instance doesn�t classified correctly, it is inserted in S*/
+		 If an instance doesn't classified correctly, it is inserted in S*/
 		do {
 		  continuar = false;
 		  baraje = new int[datosTrain.length];

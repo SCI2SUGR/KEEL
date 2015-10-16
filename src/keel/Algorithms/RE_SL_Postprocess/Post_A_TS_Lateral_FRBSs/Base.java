@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -200,9 +200,9 @@ void EmpMasCercanas (double [] entradas) {
 		   if (n_var_estado > 100)
 		   	System.exit(1);
 
-			rango(); /* Calculo del rango para normalizaciÛn de las distancias */
+			rango(); /* Calculo del rango para normalizaci√≥n de las distancias */
 
-			/* Busqueda de las dos reglas m·s cercanas */
+			/* Busqueda de las dos reglas m√°s cercanas */
 		   first = 0;
 			GradoEmp[0] = euclidea (entradas,0);
 		   for (i=1; i<n_reglas; i++) {
@@ -231,8 +231,8 @@ void EmpMasCercanas (double [] entradas) {
 					second = i;
 		   }
 
-			/* Si sus consecuentes son cercanos, mejor disparar la m·s cercana,
-		      ya que su informaciÛn ser· buena */
+			/* Si sus consecuentes son cercanos, mejor disparar la m√°s cercana,
+		      ya que su informaci√≥n ser√° buena */
 			if ((B[first][n_var_estado].x1() >= B[second][n_var_estado].x1() &&
 		   	B[first][n_var_estado].x0() < B[second][n_var_estado].x3())
 		      ||
@@ -245,13 +245,13 @@ void EmpMasCercanas (double [] entradas) {
 		   }
 
 			/* En otro caso se desplaza el punto dentro de la zona de cubrimiento:
-		      1) las coordenadas del punto que no est·n cubiertas por la regla m·s
+		      1) las coordenadas del punto que no est√°n cubiertas por la regla m√°s
 		         cercana toman como valor el centro de la correspondiente etiqueta
-		      2) Por otro lado, puesto que las salidas de las reglas m·s cercanas son muy
+		      2) Por otro lado, puesto que las salidas de las reglas m√°s cercanas son muy
 		         diferentes, en el caso de que esten muy cerca (y por lo tanto pueda haber
 		         cubrimiento de ambas) la salida en dicha zona debe ser por interpolacion
-		         de ambas. Por lo tanto, para evitar que la regla m·s cercana anule a
-		         la segunda, el resto de coordenadas (las que ya tenÌan cubrimiento) se
+		         de ambas. Por lo tanto, para evitar que la regla m√°s cercana anule a
+		         la segunda, el resto de coordenadas (las que ya ten√≠an cubrimiento) se
 		         acercan hacia la segunda regla. Para ello, las coordenadas se desplazan
 		         hacia el extremo de la primera regla que este mas cercano a la segunda,
 		         a un 10 por ciento de la longitud del soporte de dicha etiqueta

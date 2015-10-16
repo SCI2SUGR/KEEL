@@ -5,7 +5,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.
  * <p>Description: This class contains the representation of a fuzzy value</p>
  * <p>Copyright: Copyright KEEL (c) 2007</p>
  * <p>Company: KEEL </p>
- * @author Jesus Alcal· (University of Granada) 09/02/2011
+ * @author Jesus Alcal√° (University of Granada) 09/02/2011
  * @version 1.0
  * @since JDK1.6
  */

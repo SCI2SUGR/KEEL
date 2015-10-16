@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -43,10 +43,10 @@ import jxl.write.Number;
  * </p>
  *
  * Clase extendida de la clase Exporter. Esta clase permite convertir
- * un fichero de datos con formato Keel a una hoja de cálculo con formato
+ * un fichero de datos con formato Keel a una hoja de cÃ¡lculo con formato
  * microsoft Excel.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class KeelToExcel extends Exporter {
@@ -55,7 +55,7 @@ public class KeelToExcel extends Exporter {
     /*
      * Constructor de la Clase KeelToExcel. Inicializa el valor
      * de la variable miembro nullValue (valor nulo para un dato
-     * de una celda del fichero excel) con el valor del parámetro nullValueUser.
+     * de una celda del fichero excel) con el valor del parÃ¡metro nullValueUser.
      *
      * @param nullValueUser. Variable de tipo String con el valor nulo para un dato
      * de una celda del fichero excel
@@ -65,10 +65,10 @@ public class KeelToExcel extends Exporter {
     }
 
     /*
-     * Este método llama al método Start de la clase superior Exporter para
+     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
      * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al método Save() para crear el fichero de datos Excel indicado en el
-     * parámetro de entrada pathnameOutput.
+     * al mÃ©todo Save() para crear el fichero de datos Excel indicado en el
+     * parÃ¡metro de entrada pathnameOutput.
      *
      * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
      * @param  String pathnameOutput Variable con la ruta del fichero de datos
@@ -86,8 +86,8 @@ public class KeelToExcel extends Exporter {
     }//end Start()
 
     /*
-     * Método utilizado para crear una hoja de cálculo de microsoft Excel
-     * indicada la ruta por el parámetro pathnameOutput. Este fichero se crea a partir
+     * MÃ©todo utilizado para crear una hoja de cÃ¡lculo de microsoft Excel
+     * indicada la ruta por el parÃ¡metro pathnameOutput. Este fichero se crea a partir
      * de los datos almacenados en el vector de objetos de la clase
      * Attribute, el vector data[], y la variable nameRelation.
      *
@@ -104,7 +104,7 @@ public class KeelToExcel extends Exporter {
         String filename = new String();
         String element = new String();
 
-        /* Comprobamos si el nombre del fichero tiene la extensión .csv, si no la tiene
+        /* Comprobamos si el nombre del fichero tiene la extensiÃ³n .csv, si no la tiene
          * se la ponemos */
         if (pathnameOutput.endsWith(".xls")) {
             filename = pathnameOutput;

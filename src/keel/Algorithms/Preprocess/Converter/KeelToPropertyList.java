@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ import org.jdom.output.Format;
  * un fichero de datos con formato Keel a un fichero con formato Property list
  * (con sintaxis xml)
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class KeelToPropertyList extends Exporter {
@@ -55,7 +55,7 @@ public class KeelToPropertyList extends Exporter {
     /*
      * Constructor de la Clase KeelToPropertyList. Inicializa el valor
      * de la variable miembro nullValue (valor nulo para el texto de una etiqueta xml)
-     * a una cadena vacía.
+     * a una cadena vacÃ­a.
      *
      */
     public KeelToPropertyList() {
@@ -64,10 +64,10 @@ public class KeelToPropertyList extends Exporter {
 
 
     /*
-     * Este método llama al método Start de la clase superior Exporter para
+     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
      * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al método Save() para crear el fichero de datos Property List indicado en el
-     * parámetro de entrada pathnameOutput.
+     * al mÃ©todo Save() para crear el fichero de datos Property List indicado en el
+     * parÃ¡metro de entrada pathnameOutput.
      *
      * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
      * @param  String pathnameOutput Variable con la ruta del fichero de datos de salida
@@ -84,8 +84,8 @@ public class KeelToPropertyList extends Exporter {
     }//end Start()
 
     /*
-     * Método utilizado para crear el fichero con formato Property list (es un fichero con formato xml)
-     * indicada la ruta por el parámetro pathnameOutput. Este fichero se crea a partir
+     * MÃ©todo utilizado para crear el fichero con formato Property list (es un fichero con formato xml)
+     * indicada la ruta por el parÃ¡metro pathnameOutput. Este fichero se crea a partir
      * de los datos almacenados en el vector de objetos de la clase
      * Attribute, el vector data[], y la variable nameRelation.
      *
@@ -107,11 +107,11 @@ public class KeelToPropertyList extends Exporter {
         String labelType = new String();
         Element children;
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"�", "�", "�", "�", "�", "�", "�", "�", "�", "�"};
+        String vowel_accent[] = {"á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú"};
 
 
 
-        /* Comprobamos si el nombre del fichero tiene la extensión .xml, si no la tiene
+        /* Comprobamos si el nombre del fichero tiene la extensiÃ³n .xml, si no la tiene
          * se la ponemos */
         if (pathnameOutput.endsWith(".plist")) {
             filename = pathnameOutput;

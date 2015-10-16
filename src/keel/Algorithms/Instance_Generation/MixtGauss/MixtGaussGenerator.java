@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -96,7 +96,7 @@ public class MixtGaussGenerator extends PrototypeGenerator {
 
       this.numberOfClass = trainingDataSet.getPosibleValuesOfOutput().size();
       
-      this.numberOfGaussians = parameters.getNextAsInt(); // Lo tomo del patrï¿½n..
+      this.numberOfGaussians = parameters.getNextAsInt(); // Lo tomo del patron..
       this.numberOfPrototypes = getSetSizeFromPercentage(this.numberOfGaussians); // caluclo el porcentaje..
       //Calcluo el nuevo numer de gausisanas..
       
@@ -193,7 +193,7 @@ public class MixtGaussGenerator extends PrototypeGenerator {
 			      //E step
 				  
 			      sumPDFS = new double[perClass.size()];
-			      // Inicializaciï¿½n..
+			      // Inicializacion..
 				  for(int j=0; j< this.numberOfGaussians; j++){
 					  pdfs[j] = new double[perClass.size()]; // Save the probability Pm(xt, Cj)
 					  pdfsNum[j] = new double[perClass.size()];
@@ -317,7 +317,7 @@ public class MixtGaussGenerator extends PrototypeGenerator {
 				  }
 				  
 				  
-				  // ï¿½Seguir?
+				  // Seguir?
 				  acc = accuracy(nuevo , trainingDataSet);
 				  if(acc > acc2){
 					  //System.out.println("Mejora");

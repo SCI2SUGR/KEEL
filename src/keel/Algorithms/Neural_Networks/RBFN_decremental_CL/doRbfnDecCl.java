@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,10 +31,10 @@
  * doRbfnDecCL.java
 /** 
  * <p>
- * @author Writen by Maria Dolores Pï¿½rez Godoy, Antonio Rivera Rivas and Vï¿½ctor Manuel Rivas Santos (University of Jaï¿½n) 19/03/2004
- * @author Modified by Vï¿½ctor Rivas (University of Jaï¿½n)
- * @author Modified by Vï¿½ctor Rivas (University of Jaï¿½n) 24/06/2006
- * @author Modified by Marï¿½a Dolores Pï¿½rez Godoy (University of Jaï¿½n) 17/12/2008
+ * @author Writen by Maria Dolores Perez Godoy, Antonio Rivera Rivas and Victor Manuel Rivas Santos (University of Jaen) 19/03/2004
+ * @author Modified by Victor Rivas (University of Jaen)
+ * @author Modified by Victor Rivas (University of Jaen) 24/06/2006
+ * @author Modified by Maria Dolores Perez Godoy (University of Jaen) 17/12/2008
  * @version 1.0
  * @since JDK1.5
  * </p>

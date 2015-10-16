@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ package keel.RunKeelTxtDocente;
 
 /**
  * <p>
- * @author Written by Juan Carlos Fernández and Pedro Antonio Gutiérrez and(University of Córdoba) 07/07/2009
+ * @author Written by Juan Carlos FernÃ¡ndez and Pedro Antonio GutiÃ©rrez and(University of CÃ³rdoba) 07/07/2009
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -543,7 +543,7 @@ public class EducationalRunKeelTxt
 	 */
 	public void killProcess()
 	{
-		//The next time the thread don�t invoque to doIterate(),
+		//The next time the thread doesn't invoque to doIterate(),
 		//isFinished() return true
 		stop = true;
 		interrupted = true;

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -747,7 +747,7 @@ public class NeuralNetAlgorithm<I extends IIndividual> extends AbstractAlgorithm
 		evaluator.evaluate(bset);
 		
 		//long t2 = System.currentTimeMillis();
-		//System.out.println("Inicializaci√≥n " + (t2-t1));
+		//System.out.println("Inicializaci√É¬≥n " + (t2-t1));
 
 		// Select (populationSize) best individuals
 		doSort();
@@ -849,13 +849,13 @@ public class NeuralNetAlgorithm<I extends IIndividual> extends AbstractAlgorithm
 		//long t1 = System.currentTimeMillis();
 		cset = mutator1.mutate(pset1);
 		//long t2 = System.currentTimeMillis();
-		//System.out.println("MutaciÔøΩn Estructural => " + (t2-t1));
+		//System.out.println("Mutacion Estructural => " + (t2-t1));
 		
 		// Evaluate individuals
 		//t1 = System.currentTimeMillis();
 		evaluator.evaluate(cset);
 		//t2 = System.currentTimeMillis();
-		//System.out.println("EvaluaciÔøΩn Estructural => " + (t2-t1));
+		//System.out.println("Evaluacion Estructural => " + (t2-t1));
 		
 		// First mutated individual must be mutated
 		// with both mutators
@@ -869,13 +869,13 @@ public class NeuralNetAlgorithm<I extends IIndividual> extends AbstractAlgorithm
 		//t1 = System.currentTimeMillis();
 		cset.addAll(mutator2.mutate(pset2));
 		//t2 = System.currentTimeMillis();
-		//System.out.println("MutaciÔøΩn ParamÔøΩtrica => " + (t2-t1));
+		//System.out.println("Mutacion Parametrica => " + (t2-t1));
 		
 		// Evaluate individuals
 		//t1 = System.currentTimeMillis();
 		evaluator.evaluate(cset);
 		//t2 = System.currentTimeMillis();
-		//System.out.println("EvaluaciÔøΩn ParamÔøΩtrica => " + (t2-t1));
+		//System.out.println("Evaluacion Parametrica => " + (t2-t1));
 	}
 	
 	/**

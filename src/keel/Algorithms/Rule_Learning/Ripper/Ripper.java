@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>
  * @author Written by Alejandro Tortosa (University of Granada)  15/10/2008
- * @author Modified by Xavi SolÈ (La Salle, RamÛn Llull University - Barcelona) 03/12/2008
+ * @author Modified by Xavi Sol√© (La Salle, Ram√≥n Llull University - Barcelona) 03/12/2008
  * @version 1.4
  * @since JDK1.2
  * </p>
@@ -516,7 +516,7 @@ public class Ripper {
       //error_ratio=errors/prune_neg.getnActive();
       new_mdl=rules.getMDL(data,positives,negatives);
       if (new_mdl<=smallest_mdl+64){
-        System.out.println("Regla aÒadida\n"+new_rule);
+        System.out.println("Regla a√±adida\n"+new_rule);
         data.substract(positives,new_rule);
         data.substract(negatives,new_rule);
         if (new_mdl<smallest_mdl)

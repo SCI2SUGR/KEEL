@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -97,7 +97,7 @@ public class WrapperManager {
 			Itemset inst = trainingSet.itemset(i);
 			// memorizza quanto vale l'indice della classe per questa
 			// istanza
-			// System.out.println("Controlla --> double, int che è?????");
+			// System.out.println("Controlla --> double, int che Ã¨?????");
 			int classAttrV = (int) inst.getClassValue(); // inst.value(classAttribute);
 			// aggiungo l'istanza al training set
 			trainingSetDocumentsID.add(i);
@@ -245,7 +245,7 @@ public class WrapperManager {
 				double termAttribute = inst.getValue(i);
 				int classAttrValue = ((int) inst.getClassValue());
 
-				// salta l'istanza se l'attributo è missing
+				// salta l'istanza se l'attributo Ã¨ missing
 				if (inst.isMissing(i)) {
 					continue;
 				}
@@ -327,7 +327,7 @@ public class WrapperManager {
 		int i = 0;
 		for (; i < inst.values.length; i++) {
 			OlexGA_Attribute at = inst.getAttribute(i);
-			// L'attributo è presente nell'istanza corrente
+			// L'attributo Ã¨ presente nell'istanza corrente
 			if (inst.getValue(i) != 0.0) {
 				// il nome dell'attributo
 				String attributeName = at.name();
@@ -339,7 +339,7 @@ public class WrapperManager {
 		}
 
 		// l'istanza corrente NON contiene nemmeno un termine positivo
-		// non può essere classificata come appartenente alla categoria
+		// non puÃ² essere classificata come appartenente alla categoria
 		if (i == inst.values.length) {
 			return belongs;
 		}
@@ -351,14 +351,14 @@ public class WrapperManager {
 			// Verifico che l'attributo faccia parte dell'istanza in esame
 			if (inst.getValue(j) != 0.0) {
 				String attributeName = at.name();
-				// l'attributo corrente è un termine negativo
+				// l'attributo corrente Ã¨ un termine negativo
 				if (nTerms.get(attributeName) != null) {
 					break;
 				}
 			}
 		}
 		// ho scandito tutti gli attributi dell'istanza
-		// e nessuno di questi è un termine negativo
+		// e nessuno di questi Ã¨ un termine negativo
 		if (j == inst.values.length) {
 			belongs = 1;
 		}

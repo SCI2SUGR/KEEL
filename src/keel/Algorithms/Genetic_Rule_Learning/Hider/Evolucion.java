@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -856,11 +856,11 @@ public class Evolucion {
 
         for (int i = 0; i < limite; i++) {
             //System.out.println("Selecting individual "+(i+1)+" of "+limite+" for mutation");
-            //1∫ Select individual
+            //1¬∫ Select individual
             Vector individuo = new Vector();
             select(individuo);
 
-            //2∫ Mutate
+            //2¬∫ Mutate
             double aleatorio = Randomize.RandClosed(); //Math.random();
             if (aleatorio <= probMutacion) {
                 aleatorio = Randomize.RandClosed(); //Math.random();
@@ -878,7 +878,7 @@ public class Evolucion {
         //Crosses
         //Number of individual that will be crossed...
         for (int i = 0; i < numIndSigGen; i++) {
-            //1∫ Select individual
+            //1¬∫ Select individual
             //don't delete individual after crossing
             //System.err.println("Selecting individual "+(i+1)+" of "+numIndSigGen+" for croosing");
             Vector individuo1 = new Vector();

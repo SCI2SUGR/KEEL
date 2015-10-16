@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -192,19 +192,19 @@ public class ICPLGenerator extends PrototypeGenerator {
   /** 
    * ICPL2 - pseudo-code
    * ICPL2( T training)
-		1)	C1= abstracciï¿½n T
+		1)	C1= abstraccion T
 		2)	C2 = Filtrar T.
 		3)	S = C1
 		4)	Para cada prototipo P en  C2
 		Tmp = S U P.
-		Good = nï¿½mero de instancias de T correctamente clasificadas por P en Tmp.
-		Bad = nï¿½mero de instancias de T mal clasificadas por P en Tmp.
+		Good = numero de instancias de T correctamente clasificadas por P en Tmp.
+		Bad = numero de instancias de T mal clasificadas por P en Tmp.
 		Si(Good>Bad)
 		 	S= S U P. 
 		5)	Para cada prototipo P en  C1
 		Tmp = S\ P.
-		With= nï¿½mero de instancias de T correctamente clasificadas por S
-		Without = nï¿½mero de instancias de T correctament clasificadas por  Tmp.
+		With= numero de instancias de T correctamente clasificadas por S
+		Without = numero de instancias de T correctament clasificadas por  Tmp.
 		Si(Without>With)
 		 	S= S \ P. 
 		6)	Devolver S.
@@ -584,7 +584,7 @@ public class ICPLGenerator extends PrototypeGenerator {
 	 //this.k = 7;
 	  // Elimination rule kohonen
 	  int majority = this.k / 2 + 1;
-	 // System.out.println("Mayorï¿½a " + majority);
+	 // System.out.println("Mayoria " + majority);
 
 
 	  int toClean[] = new int [T.size()];

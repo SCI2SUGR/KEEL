@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -106,25 +106,25 @@ public class ChenGenerator extends PrototypeGenerator
         ArrayList<PrototypeSet> C = new ArrayList<PrototypeSet>(Np);
         Prototype P1 = null;
         Prototype P2 = null;
-        System.err.println("Le he dicho tamaño " + Np);
+        System.err.println("Le he dicho tamaÃ±o " + Np);
         for(int Nc=0; Nc<Np; Nc++)
         {
-            //Obtiene los 2 prototipos más lejanos
+            //Obtiene los 2 prototipos mÃ¡s lejanos
             Pair<Prototype,Prototype> Pi = D.farthestPrototypes();
             P1 = Pi.first();
             P2 = Pi.second();
             
-            //Haz partición de conjunto en función a la distancia a los prototipos
-            //anteriormente calculados (los más lejanos)
+            //Haz particiÃ³n de conjunto en funciÃ³n a la distancia a los prototipos
+            //anteriormente calculados (los mÃ¡s lejanos)
             Pair<PrototypeSet,PrototypeSet> Di = D.partIntoSubsetsWhichSeedPointsAre(P1,P2);
             PrototypeSet D1 = Di.first();
             PrototypeSet D2 = Di.second(); 
-            //System.err.println("Iteración " + Nc + " Tam C " + C.size());
+            //System.err.println("IteraciÃ³n " + Nc + " Tam C " + C.size());
             //System.err.println("PRototypos mas lejanos son " + P1.getIndex() + " y " + P2.getIndex());
             C.remove(D);
             C.add(D1);
             C.add(D2);            
-            //Encuentra el conjunto menos homogéneo
+            //Encuentra el conjunto menos homogÃ©neo
             ArrayList<PrototypeSet> I = null;
             ArrayList<PrototypeSet> I1 = new ArrayList<PrototypeSet>();
             ArrayList<PrototypeSet> I2 = new ArrayList<PrototypeSet>();
@@ -141,7 +141,7 @@ public class ChenGenerator extends PrototypeGenerator
                 I = I2;
             //System.err.println("I1 " + I1.size());
             //System.err.println("I2 " + I2.size());            
-            // Encuentra el conjunto en I con los 2 puntos más lejanos
+            // Encuentra el conjunto en I con los 2 puntos mÃ¡s lejanos
             double distMax = -1.0;
             PrototypeSet Qchosen = I.get(0);
             Pair<Prototype,Prototype> diameterPoints = null;

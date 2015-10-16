@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -162,19 +162,19 @@ public class AMPSOGenerator extends PrototypeGenerator {
 	  PrototypeSet g = new PrototypeSet();
 	  PrototypeSet b = new PrototypeSet();
 	  
- 		/*	suponte que en {g} tenemos tres patrones. D_{g,i} es la distancia de la partï¿½cula al patrï¿½n i-ï¿½simo. 
-		La expresiï¿½n G_f hace la sumatoria de todas ellas a la inversa. No tiene dificultad alguna.
-		Es un fitness local que se calcula por partï¿½cula. 
-		Una partï¿½cula clasificarï¿½ correcta e incorrectamente una seria de patrones 
-		(aquellos que la tienen de vecina mï¿½s cercana de la misma clase, los primeros; y de distinta clase, los segunndos). 
+ 		/*	suponte que en {g} tenemos tres patrones. D_{g,i} es la distancia de la particula al patron i-nesimo. 
+		La expresion G_f hace la sumatoria de todas ellas a la inversa. No tiene dificultad alguna.
+		Es un fitness local que se calcula por particula. 
+		Una particula clasificara correcta e incorrectamente una seria de patrones 
+		(aquellos que la tienen de vecina mas cercana de la misma clase, los primeros; y de distinta clase, los segunndos). 
 		Esos son el conjunto {b} y el {g}. Se calcula la distancia a cada uno de los ptarines para obtener la 
-		sumatorias de la derecha de la expresiï¿½n (3) y ya calcula el total fitness dependiendo si {b} o {g} estï¿½n vacï¿½os o no.
+		sumatorias de la derecha de la expresion (3) y ya calcula el total fitness dependiendo si {b} o {g} estan vacios o no.
 		 */
 	  
 	  // Respecto del Training Set. Conjunto de Patrones
 	  for(int i = 0; i< trainingDataSet.size(); i++){
 			  Prototype nearest = Population.nearestTo(trainingDataSet.get(i));
-		    // Compruebo si el prototipo mï¿½s cercano es particleIndex
+		    // Compruebo si el prototipo mas cercano es particleIndex
 	    	  if(nearest.equalsInputs(Population.get(particleIndex))){ // it must be the particle index.
 				  if(trainingDataSet.get(i).getOutput(0) == Population.get(particleIndex).getOutput(0)){
 					  g.add(trainingDataSet.get(i)); 
@@ -385,10 +385,10 @@ public PrototypeSet reduceSet()
 		   /*
 
 		    * En el punto 4(b), tienes que calcular los conjuntos competitivos y no competitivos para cada clase. 
-		    * Yo, por ejemplo, tendrï¿½a un vector de booleanos para cada conjunto que indica si pertenece o no al conjunto competitivo o no 
-		    * competitivo. Para ver si pertenecen, te ciï¿½es a lo que pone en la secciï¿½n 3.4: "Si un prototipo clasifica mal a otro,
-		    * se incluye en el set no-competing". Esto se traduce a que si el prototipo mï¿½s cercano a
-		    *  uno dado es de otra clase, ï¿½ste se incluye en el no-competing (pones su bit a true). IDEM para el set competing.
+		    * Yo, por ejemplo, tendria un vector de booleanos para cada conjunto que indica si pertenece o no al conjunto competitivo o no 
+		    * competitivo. Para ver si pertenecen, te cines a lo que pone en la seccion 3.4: "Si un prototipo clasifica mal a otro,
+		    * se incluye en el set no-competing". Esto se traduce a que si el prototipo mas cercano a
+		    *  uno dado es de otra clase, este se incluye en el no-competing (pones su bit a true). IDEM para el set competing.
 		    */
 		   
 		   boolean competing[][] = new boolean [this.numberOfClass][];
@@ -498,10 +498,10 @@ public PrototypeSet reduceSet()
 			   
 			   //Find the closet particle in the non-competing set for particle class.
 	   			/*
-	   			 * Justo despuï¿½s, en el punto 4(c) iii; que como ves se hace para cada partï¿½cula, se localiza el protitpo mï¿½s cercano
-	   			 *  a esta partï¿½cula que pertenezca al conjunto de no competitivos. Esto es, coges tu vector de booleanos no-competing 
-	   			 *  y calculas el prototipo mï¿½s cercano de aquellos cuyo bit estï¿½ a true. ï¿½ste es tu centro de atracciï¿½n
-	   			 *  (lï¿½gico, la partï¿½cula se mueve hacia un lugar donde pueda evitar una mal clasificaciï¿½n, y ï¿½ste serï¿½ el mï¿½s cercano).
+	   			 * Justo despues, en el punto 4(c) iii; que como ves se hace para cada particula, se localiza el protitpo mas cercano
+	   			 *  a esta particula que pertenezca al conjunto de no competitivos. Esto es, coges tu vector de booleanos no-competing 
+	   			 *  y calculas el prototipo mas cercano de aquellos cuyo bit esta a true. este es tu centro de atraccion
+	   			 *  (logico, la particula se mueve hacia un lugar donde pueda evitar una mal clasificacion, y este sera el mas cercano).
 	   			 *   IDEM para el punto iv.
 	   			 */			  
 			   

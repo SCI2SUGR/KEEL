@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,8 +30,8 @@
 package keel.Algorithms.Rule_Learning.UnoR;
 
 /**
- * <p>Tï¿½ulo: Clase Dataset</p>
- * <p>Descripciï¿½: Contiene los metodos de lectura del fichero de train y test</p>
+ * <p>Titulo: Clase Dataset</p>
+ * <p>Descripcion: Contiene los metodos de lectura del fichero de train y test</p>
  * <p>Copyright: Copyright Rosa (c) 2007</p>
  * <p>Empresa: Mi Casa</p>
  * @author Rosa Venzala
@@ -67,7 +67,7 @@ public class Dataset {
     private int []num_valores;//numero de valores distintos para cada entrada
     private double[][]sortedValuesList;//para cada entrada se tiene la lista de valores 
     					//ordenados en orden ascendente y sin repeticiones
-    private String []auxiliar2=null;//vector tamaÃ±o numero real de clases en train que contiene el nombre de las clases en nominal
+    private String []auxiliar2=null;//vector tamaÃƒÂ±o numero real de clases en train que contiene el nombre de las clases en nominal
 
     /**
      * Devuelve los valores de los atributos de entrada
@@ -323,7 +323,7 @@ public class Dataset {
     }
 
     /**
-     * Devuelve un array con los valores mï¿½imos de los atributos de entrada
+     * Devuelve un array con los valores minimos de los atributos de entrada
      * @return double[] idem
      */
     public double[] getemaximo() {
@@ -331,7 +331,7 @@ public class Dataset {
     }
 
     /**
-     * Devuelve un array con los valores mï¿½imos de los atributos de entrada
+     * Devuelve un array con los valores minimos de los atributos de entrada
      * @return double[] idem
      */
     public double[] geteminimo() {
@@ -371,7 +371,7 @@ public class Dataset {
     }
 
     /**
-     * Comprueba si un atributo estï¿½"perdido" o no
+     * Comprueba si un atributo esta "perdido" o no
      * @param i int Nmero de ejemplo
      * @param j int Nmero de atributo
      * @return boolean True si falta, False en otro caso
@@ -644,13 +644,13 @@ public class Dataset {
             }
         }
         else{
-            salida = null; //luego guardarï¿½el valor de las clases numï¿½icas
+            salida = null; //luego guardara el valor de las clases numericas
         }
         return salida;
     }
 
     /**
-     * Comprueba si en la base de datos hay alguna entrada de tipo real o contï¿½ua
+     * Comprueba si en la base de datos hay alguna entrada de tipo real o continua
      * @return boolean True si existe alguna entrada continua. False en caso contrario
      */
     public boolean hayAtributosContinuos(){

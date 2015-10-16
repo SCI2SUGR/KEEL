@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -45,12 +45,12 @@ import java.util.regex.Pattern;
  *
  * Clase extendida de la clase Exporter. Esta clase permite convertir
  * un fichero de datos con formato Keel a un fichero codificado en
- * formato Uci o C4.5. Los datos codificados según este formato están
+ * formato Uci o C4.5. Los datos codificados segÃºn este formato estÃ¡n
  * agrupados de tal manera contienen dos ficheros, un fichero de
- * nombres con extensión ".names" y un fichero de datos con extensión
+ * nombres con extensiÃ³n ".names" y un fichero de datos con extensiÃ³n
  * ".data".
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class KeelToUci extends Exporter {
@@ -59,8 +59,8 @@ public class KeelToUci extends Exporter {
     /*
      * Constructor de la Clase KeelToUci. Inicializa los valores
      * de las variables miembro nullValue (valor nulo para para el fichero de datos) con el valor
-     * del parámetro nullValueUser y la variable separator (el separador de los datos
-     * del fichero de datos ".data") con el valor del parámetro separatorUser.
+     * del parÃ¡metro nullValueUser y la variable separator (el separador de los datos
+     * del fichero de datos ".data") con el valor del parÃ¡metro separatorUser.
      *
      * @param  nullValueUser. Variable de tipo String con el valor nulo del fichero
      * de datos ".data" .
@@ -77,11 +77,11 @@ public class KeelToUci extends Exporter {
 
 
     /*
-     * Este método llama al método Start de la clase superior Exporter para
+     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
      * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al método Save() para crear los ficheros de datos con formato C4.5 indicado
-     * con los parámetros pathnameOutputData (fichero de datos con extensión ".data")
-     * y pathnameOutputNames (fichero de nombres con extensión ".names").
+     * al mÃ©todo Save() para crear los ficheros de datos con formato C4.5 indicado
+     * con los parÃ¡metros pathnameOutputData (fichero de datos con extensiÃ³n ".data")
+     * y pathnameOutputNames (fichero de nombres con extensiÃ³n ".names").
      *
      * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
      *
@@ -102,9 +102,9 @@ public class KeelToUci extends Exporter {
     }//end Start()
 
     /*
-     * Método utilizado para crear los ficheros con formato UCI (fichero
-     * de nombres con extensión ".names" y fichero de datos con extensión
-     * ".data") indicados por los parámetros pathnameOutputNames y pathnameOutputData.
+     * MÃ©todo utilizado para crear los ficheros con formato UCI (fichero
+     * de nombres con extensiÃ³n ".names" y fichero de datos con extensiÃ³n
+     * ".data") indicados por los parÃ¡metros pathnameOutputNames y pathnameOutputData.
      * Este fichero se crea a partir  de los datos almacenados en el vector de objetos de la clase
      * Attribute, el vector data[], y la variable nameRelation.
      *
@@ -209,12 +209,12 @@ public class KeelToUci extends Exporter {
             for (j = 0; j < numAttributes; j++) {
                 String element = (String) data[j].elementAt(i);
 
-                Pattern p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                Pattern p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                 Matcher m = p.matcher(element);
 
                 if ((m.find() && !element.equals("?") && !element.equals(nullValue) && attribute[j].getType() == NOMINAL) || element.contains(separator)) /**
                  * Cambio hecho para que los nominales con espacios en blanco se dejen
-                 * con "_". Se añade la segunda linea y se comenta la primera
+                 * con "_". Se aÃ±ade la segunda linea y se comenta la primera
                  */
                 //element="\""+element+"\"";
                 {

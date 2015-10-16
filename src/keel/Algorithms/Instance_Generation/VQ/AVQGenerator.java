@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -180,7 +180,7 @@ public class AVQGenerator extends PrototypeGenerator
         ArrayList<Cluster> clusters = new ArrayList<Cluster>(classPartition.size());
         for(PrototypeSet ps : classPartition)
         {
-            //Debug.errorln("Añado al cluster: center");
+            //Debug.errorln("AÃ±ado al cluster: center");
             Prototype center_ps = ps.avg();
             reduced.add(center_ps);            
             clusters.add(new Cluster(center_ps, ps));
@@ -195,9 +195,9 @@ public class AVQGenerator extends PrototypeGenerator
         {
             int Emax = Integer.MIN_VALUE;
             Cluster Cmax = null;
-            //Debug.errorln("Iteración " + it);
+            //Debug.errorln("IteraciÃ³n " + it);
             //Debug.errorln("I " + (i++));
-            //Buscamos el máximo Ec
+            //Buscamos el mÃ¡ximo Ec
             for(Cluster c : clusters)
             {
                 //Debug.errorln("Cluster ");

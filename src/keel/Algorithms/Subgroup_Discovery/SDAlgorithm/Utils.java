@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,9 +29,9 @@
 
 /**
  * <p>
- * @author Created by Pedro González (University of Jaen) 18/02/2004
- * @author Modified by Pedro González (University of Jaen) 4/08/2007
- * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
+ * @author Created by Pedro GonzÃ¡lez (University of Jaen) 18/02/2004
+ * @author Modified by Pedro GonzÃ¡lez (University of Jaen) 4/08/2007
+ * @author Modified by CristÃ³bal J. Carmona (University of Jaen) 20/04/2010
  * @version 2.0
  * @since JDK1.5
  * </p>

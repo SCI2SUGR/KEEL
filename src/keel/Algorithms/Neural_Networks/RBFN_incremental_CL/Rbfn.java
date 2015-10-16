@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -33,9 +33,9 @@
 
 /**
  * <p>
- * @author Writen by Antonio J. Rivera Rivas (University of Jaén) 03/03/2004
- * @author Modified by Víctor Rivas (University of Jaén) 23/06/2006
- * @author Modified by María Dolores Pérez Godoy (University of Jaén) 17/12/2008
+ * @author Writen by Antonio J. Rivera Rivas (University of JaÃ©n) 03/03/2004
+ * @author Modified by VÃ­ctor Rivas (University of JaÃ©n) 23/06/2006
+ * @author Modified by MarÃ­a Dolores PÃ©rez Godoy (University of JaÃ©n) 17/12/2008
  * @author Modified by Julian Luengo (University of Granada) 04/02/2013 
  * @version 1.0
  * @since JDK1.5
@@ -203,7 +203,7 @@ public class Rbfn {
      * 
      * 
      * @param X  Matrix of instances
-     * @param ndata  Number of instaces in X  @param nInpt Number of imputs of the net
+     * @param ndata  Number of instaces in X Â @param nInpt Number of imputs of the net
      * @param nOutp Number of outputs of the net
      * @param nNeuro Number of hidden neurons the net will have.
      */
@@ -344,7 +344,7 @@ public class Rbfn {
      * @param nNeuro Number of hidden neurons the net will have.
      * @param X Matrix of instances
      * @param ndata Number of instaces in X
-     *  @param nInpt Number of imputs of the net
+     * Â @param nInpt Number of imputs of the net
      * @param nOutpl Number of outputs of the net
      */
 

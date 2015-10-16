@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,8 +31,8 @@ package keel.Algorithms.Genetic_Rule_Learning.LogenPro;
 
 /**
  * <p>
- * @author Written by Alberto Fern·ndez (University of Granada) 01/01/2007
- * @author Modified by Francisco JosÈ Berlanga (University of JaÈn) 09/12/2008 
+ * @author Written by Alberto Fern√°ndez (University of Granada) 01/01/2007
+ * @author Modified by Francisco Jos√© Berlanga (University of Ja√©n) 09/12/2008 
  * @version 1.0
  * @since JDK 1.6
  * </p>
@@ -400,7 +400,7 @@ public class Algorithm {
        // atributo = Randomize.RandintClosed(0, train.getnInputs());
        //  hijo.setCondition(atributo, madre.getCondition(atributo));
 
-        //System.out.println("Cruce (" + pos1 + "," + pos2 + ") Hijo (despuÈs): " +
+        //System.out.println("Cruce (" + pos1 + "," + pos2 + ") Hijo (despu√©s): " +
         //                   hijo.printIndividual());
         poblacion.add(hijo);
     }
@@ -415,7 +415,7 @@ public class Algorithm {
     private void mutation(int pos) {
         Individual padre = poblacion.get(pos);
         Individual hijo = new Individual(padre);
-        //System.out.println("MutaciÛn (" + pos + ") Hijo (antes): " +
+        //System.out.println("Mutaci√≥n (" + pos + ") Hijo (antes): " +
         //                   hijo.printIndividual());
         int atributo = Randomize.RandintClosed(0, train.getnInputs() + 1);
         //System.out.println("Tiene "+train.getnInputs()+ " entradas ("+atributo+")");
@@ -424,7 +424,7 @@ public class Algorithm {
         } else {
             hijo.assignConditionNoAny(atributo, train);
         }
-        //System.out.println("MutaciÛn (" + pos + ") Hijo (despuÈs): " +
+        //System.out.println("Mutaci√≥n (" + pos + ") Hijo (despu√©s): " +
         //                   hijo.printIndividual());
         poblacion.add(hijo);
         //padre.printIndividual();
@@ -451,7 +451,7 @@ public class Algorithm {
                 atributo = Randomize.RandintClosed(0, train.getnInputs());
             } while (hijo.isAny(atributo));
             hijo.setAny(atributo, train.nameVar(atributo));
-            //System.out.println("Dropping (" + pos + ") Hijo (despuÈs): " +
+            //System.out.println("Dropping (" + pos + ") Hijo (despu√©s): " +
             //                   hijo.printIndividual());
             poblacion.add(hijo);
         }

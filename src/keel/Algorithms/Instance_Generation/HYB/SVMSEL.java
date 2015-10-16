@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@
 //
 //  SVMSEL.java
 //
-//  Diego J. Romero López, basado en el código de Salvador García López
+//  Diego J. Romero LÃ³pez, basado en el cÃ³digo de Salvador GarcÃ­a LÃ³pez
 //
-//  Created by Salvador Garc�a L�pez 16-7-2004.
+//  Created by Salvador García López 16-7-2004.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -50,7 +50,7 @@ import java.util.*;
 
 /**
  * SVM process of selection of prototype set.
- * @author Salvador García López, adapted by Diego J. Romero López
+ * @author Salvador GarcÃ­a LÃ³pez, adapted by Diego J. Romero LÃ³pez
  */
 public class SVMSEL extends PrototypeGenerator
 {

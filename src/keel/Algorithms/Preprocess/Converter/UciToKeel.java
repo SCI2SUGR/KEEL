@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -51,12 +51,12 @@ import com.Ostermiller.util.CSVParser;
  *
  * Clase extendida de la clase Importer. Esta clase permite convertir
  * un fichero de datos con formato Uci (con formato C4.5) a formato de
- * datos Keel. El fichero Uci está compuesto de dos ficheros, un
- * fichero de nombres con extensión ".names" que contiene la
- * definición de los atributos y un fichero de datos con extensión
+ * datos Keel. El fichero Uci estÃ¡ compuesto de dos ficheros, un
+ * fichero de nombres con extensiÃ³n ".names" que contiene la
+ * definiciÃ³n de los atributos y un fichero de datos con extensiÃ³n
  * ".data" que almacena los datos con formato csv.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class UciToKeel extends Importer {
@@ -68,7 +68,7 @@ public class UciToKeel extends Importer {
     /*
      * Constructor de la Clase UciToKeel. Inicializa los valores
      * de las variables miembro separator (separador de los datos del fichero de datos ".data" )
-     * con el valor del parámetro separatorUser.
+     * con el valor del parÃ¡metro separatorUser.
      *
      * @param separatorUser. Variable de tipo String con el separador de los
      * datos para el fichero de datos ".data".
@@ -79,7 +79,7 @@ public class UciToKeel extends Importer {
     }
 
     /*
-     * Método utilizado para convertir los datos de los ficheros
+     * MÃ©todo utilizado para convertir los datos de los ficheros
      * de entrada con formato UCI (fichero de datos con la variable
      * pathnameInputData y fichero de nombres con la variable pathnameInputNames)
      * a formato keel en el fichero indicado por la ruta pathnameOutput
@@ -113,7 +113,7 @@ public class UciToKeel extends Importer {
         double max;
 
 
-// Limpio los caracteres no válidos del ficheros de nombres
+// Limpio los caracteres no vÃ¡lidos del ficheros de nombres
         File fileInputNames = new File(pathnameInputNames);
         filenameNames = filenameNames.concat(fileInputNames.getName());
 
@@ -126,18 +126,18 @@ public class UciToKeel extends Importer {
             if (!line.equals("") && !line.startsWith("|")) {
                 //Quitamos los comentarios
                 if (line.contains("|")) {
-                    line = line.substring(0, line.indexOf('|'));                //Quitamos los espacios al principio de la línea
+                    line = line.substring(0, line.indexOf('|'));                //Quitamos los espacios al principio de la lÃ­nea
                 }
                 p = Pattern.compile("^\\s+");
                 m = p.matcher(line);
                 line = m.replaceAll("");
 
-                //Quitamos los espacios al final de la línea
+                //Quitamos los espacios al final de la lÃ­nea
                 p = Pattern.compile("\\s+$");
                 m = p.matcher(line);
                 line = m.replaceAll("");
 
-                // Quitamos el punto al final de la línea
+                // Quitamos el punto al final de la lÃ­nea
                 p = Pattern.compile("[.]$");
                 m = p.matcher(line);
                 line = m.replaceAll("");
@@ -147,12 +147,12 @@ public class UciToKeel extends Importer {
                 m = p.matcher(line);
                 line = m.replaceAll("");
 
-                //Quitamos los espacios delante y detrás de las comas
+                //Quitamos los espacios delante y detrÃ¡s de las comas
                 p = Pattern.compile("\\s*,\\s*");
                 m = p.matcher(line);
                 line = m.replaceAll(",");
 
-                //Quitamos los espacios delante y detrás de los dos puntos
+                //Quitamos los espacios delante y detrÃ¡s de los dos puntos
                 p = Pattern.compile("\\s*:\\s*");
                 m = p.matcher(line);
                 line = m.replaceAll(":");
@@ -169,7 +169,7 @@ public class UciToKeel extends Importer {
         auxFile.close();
         reader.close();
 
-// Limpio los caracteres no válidos del ficheros de datos
+// Limpio los caracteres no vÃ¡lidos del ficheros de datos
         File fileInputData = new File(pathnameInputData);
         filenameData = filenameData.concat(fileInputData.getName());
 
@@ -182,18 +182,18 @@ public class UciToKeel extends Importer {
             if (!line.equals("") && !line.startsWith("|")) {
                 //Quitamos los comentarios
                 if (line.contains("|")) {
-                    line = line.substring(0, line.indexOf('|'));                //Quitamos los espacios al principio de la línea
+                    line = line.substring(0, line.indexOf('|'));                //Quitamos los espacios al principio de la lÃ­nea
                 }
                 p = Pattern.compile("^\\s+");
                 m = p.matcher(line);
                 line = m.replaceAll("");
 
-                //Quitamos los espacios al final de la línea
+                //Quitamos los espacios al final de la lÃ­nea
                 p = Pattern.compile("\\s+$");
                 m = p.matcher(line);
                 line = m.replaceAll("");
 
-                // Quitamos el punto al final de la línea
+                // Quitamos el punto al final de la lÃ­nea
                 p = Pattern.compile("[.]$");
                 m = p.matcher(line);
                 line = m.replaceAll("");
@@ -203,7 +203,7 @@ public class UciToKeel extends Importer {
                 m = p.matcher(line);
                 line = m.replaceAll("");
 
-                //Quitamos los espacios delante y detrás de las comas
+                //Quitamos los espacios delante y detrÃ¡s de las comas
                 p = Pattern.compile("\\s*,\\s*");
                 m = p.matcher(line);
                 line = m.replaceAll(",");
@@ -236,7 +236,7 @@ public class UciToKeel extends Importer {
 
         numAttributes = i;
 
-//Reservamos memoria para almacenar la definición de los atributos y de los datos
+//Reservamos memoria para almacenar la definiciÃ³n de los atributos y de los datos
 
         attribute = new Attribute[numAttributes];
         data = new Vector[numAttributes];
@@ -248,10 +248,10 @@ public class UciToKeel extends Importer {
             types[i] = new Vector();
         }
 
-// Leo del fichero generado con valores válidos
+// Leo del fichero generado con valores vÃ¡lidos
         reader = new BufferedReader(new FileReader(filenameNames));
 
-//Saltamos la primera línea que corresponde al nombre de las clases.
+//Saltamos la primera lÃ­nea que corresponde al nombre de las clases.
         line = reader.readLine();
 
         i = 0;
@@ -300,11 +300,11 @@ public class UciToKeel extends Importer {
                             while (listValues.hasMoreTokens()) {
                                 element = (String) listValues.nextToken();
 
-                                p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                                p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                                 m = p.matcher(element);
                                 /**
                                  * Cambio hecho para que los nominales con espacios en blanco se dejen
-                                 * con subrayado bajo "_" y sin comillas simples. Se añade la siguiente linea
+                                 * con subrayado bajo "_" y sin comillas simples. Se aÃ±ade la siguiente linea
                                  */
                                 element = element.replace(" ", "_");
 
@@ -408,12 +408,12 @@ public class UciToKeel extends Importer {
 
 
                 if (type == NOMINAL) {
-                    p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                    p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                     m = p.matcher(element);
 
                     /**
                      * Cambio hecho para que los nominales con espacios en blanco se dejen
-                     * con subrayado bajo "_" y sin comillas simples. Se añade la siguiente linea
+                     * con subrayado bajo "_" y sin comillas simples. Se aÃ±ade la siguiente linea
                      */
                     element = element.replace(" ", "_");
 
@@ -482,8 +482,8 @@ public class UciToKeel extends Importer {
 
 
 
-        /* Insertamos el nombre de la relación que será el mismo que el del
-         * fichero pasado, pero sin extensión*/
+        /* Insertamos el nombre de la relaciÃ³n que serÃ¡ el mismo que el del
+         * fichero pasado, pero sin extensiÃ³n*/
 
         nameRelation = fileInputNames.getName();
         p = Pattern.compile("\\.[A-Za-z]+");
@@ -507,8 +507,8 @@ public class UciToKeel extends Importer {
     }
 
     /*
-     * Este método crea el fichero de salida con formato keel en la ruta pasada,
-     * a partir de la información almacenada en las variables miembro
+     * Este mÃ©todo crea el fichero de salida con formato keel en la ruta pasada,
+     * a partir de la informaciÃ³n almacenada en las variables miembro
      * attribute[], data[], nameRelation y numAttributes.
      * Aquellos atributos con etiqueta IGNORE en el fichero de nombres,
      * no son almacenados en el fichero de salida.
@@ -529,7 +529,7 @@ public class UciToKeel extends Importer {
         int cont = 0;
 
 
-        /* Comprobamos si el nombre del fichero tiene la extensión .dat, si no la tiene
+        /* Comprobamos si el nombre del fichero tiene la extensiÃ³n .dat, si no la tiene
          * se la ponemos */
         if (pathnameOutput.endsWith(".dat")) {
             filename = pathnameOutput;

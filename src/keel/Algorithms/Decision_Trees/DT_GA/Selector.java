@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ import org.core.Randomize;
 public class Selector {
 
   int atributo; //posicion del atributo/variable en el dataset
-  int operador; // =, <= Û >
+  int operador; // =, <= √≥ >
   public static int IGUAL = 0;
   public static int MENOR_IGUAL = 1;
   public static int MAYOR = 2;
@@ -146,7 +146,7 @@ public class Selector {
   public Selector copia(){
     Selector s = new Selector();
     s.atributo = atributo;
-    s.operador =  operador; // =, <= Û >
+    s.operador =  operador; // =, <= √≥ >
     s.valor = valor;
     s.valoresNom = new String[valoresNom.length];
     s.valoresNom = valoresNom.clone();

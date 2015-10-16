@@ -1166,7 +1166,7 @@ public class main_c {
 
 
 		nv = V.N_Antecedent();
-		// Reservo una matriz de tama–o nv*m
+		// Reservo una matriz de tamaÂ–o nv*m
 
 		double[][] matriz = new double[nv][];
 		for (int i=0; i<nv; i++)

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -264,7 +264,7 @@ public class Hider {
       }
     }
     /****** NUEVO ********/
-    //Añado la regla por defecto --> la clase mayoritaria de los ejemplos restantes
+    //AÃ±ado la regla por defecto --> la clase mayoritaria de los ejemplos restantes
     int[] ejemplos_clase = new int[ds.getnClasses()];
     mayoritaria = 0;
     int total = 0;
@@ -737,7 +737,7 @@ public class Hider {
      eliminaCubiertos(bc,r,d.getCortes());
 
     }
-    System.out.println("Sacabó del tó!!!");
+    System.out.println("SacabÃ³ del tÃ³!!!");
 
     //System.out.println("Aciertos: "+aciertos);
     //System.out.println("Errores: "+(bd.getNumEjemplos()-aciertos));

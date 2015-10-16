@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -224,8 +224,8 @@ public class Base {
 					second = i;
 		   }
 
-			/* Si sus consecuentes son cercanos, mejor disparar la más cercana,
-		      ya que su información será buena */
+			/* Si sus consecuentes son cercanos, mejor disparar la mÃ¡s cercana,
+		      ya que su informaciÃ³n serÃ¡ buena */
 			if ((B[first][n_var_estado].x1() >= B[second][n_var_estado].x1() &&
 					B[first][n_var_estado].x0() < B[second][n_var_estado].x3())
 		      ||
@@ -238,13 +238,13 @@ public class Base {
 		   }
 
 			/* En otro caso se desplaza el punto dentro de la zona de cubrimiento:
-		      1) las coordenadas del punto que no están cubiertas por la regla más
+		      1) las coordenadas del punto que no estÃ¡n cubiertas por la regla mÃ¡s
 		         cercana toman como valor el centro de la correspondiente etiqueta
-		      2) Por otro lado, puesto que las salidas de las reglas más cercanas son muy
+		      2) Por otro lado, puesto que las salidas de las reglas mÃ¡s cercanas son muy
 		         diferentes, en el caso de que esten muy cerca (y por lo tanto pueda haber
 		         cubrimiento de ambas) la salida en dicha zona debe ser por interpolacion
-		         de ambas. Por lo tanto, para evitar que la regla más cercana anule a
-		         la segunda, el resto de coordenadas (las que ya tenían cubrimiento) se
+		         de ambas. Por lo tanto, para evitar que la regla mÃ¡s cercana anule a
+		         la segunda, el resto de coordenadas (las que ya tenÃ­an cubrimiento) se
 		         acercan hacia la segunda regla. Para ello, las coordenadas se desplazan
 		         hacia el extremo de la primera regla que este mas cercano a la segunda,
 		         a un 10 por ciento de la longitud del soporte de dicha etiqueta

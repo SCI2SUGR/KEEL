@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,8 @@
 
 package keel.Algorithms.Rule_Learning.UnoR;
 /**
- * <p>Tï¿½ulo: Intervalos de los datos numericos</p>
- * <p>Descripciï¿½: Estructura para almacenar un intervalo</p>
+ * <p>Titulo: Intervalos de los datos numericos</p>
+ * <p>Descripcion: Estructura para almacenar un intervalo</p>
  * @author Rosa Venzala
  * @version 1.0
  */
@@ -55,7 +55,7 @@ public class Interval /*implements Comparable*/ {
 	clases=new int [tamanio];
     }
     
-    /*AÃ±ade un nuevo valor al intervalo
+    /*AÃƒÂ±ade un nuevo valor al intervalo
     */
     public void add(double dato){
     	if(numValues==0)low=dato;

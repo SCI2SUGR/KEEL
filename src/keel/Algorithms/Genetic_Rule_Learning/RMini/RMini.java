@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ package keel.Algorithms.Genetic_Rule_Learning.RMini;
  *
  * <p>Company: KEEL </p>
  *
- * @author Jesús Jiménez
+ * @author JesÃºs JimÃ©nez
  * @version 1.0
  */
 
@@ -866,7 +866,7 @@ public class RMini {
   		numMedioAntecedentes+=reglas.get(i).getAntecedentes();
   	}
   	tamMedioCubos/=(reglas.size()-1);
-  	output+="\nTamaño medio de los cubos: "+tamMedioCubos;
+  	output+="\nTamaÃ±o medio de los cubos: "+tamMedioCubos;
   	numMedioAntecedentes/=(reglas.size()-1);
   	output+="\nNumero medio de antecedentes: "+numMedioAntecedentes;
   	output+="\nNumero medio de casos bien clasificados en tra: "+bienClasificadosTra;

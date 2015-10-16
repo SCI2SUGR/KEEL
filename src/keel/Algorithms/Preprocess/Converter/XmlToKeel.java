@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ import java.util.regex.Pattern;
  *  los datos almacenados en un fichero con formato xml a un fichero con
  *  formato de datos Keel.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class XmlToKeel extends Importer {
@@ -62,8 +62,8 @@ public class XmlToKeel extends Importer {
 
     /*
      * Constructor de la Clase XmlToKeel. Inicializa los valores de las variables miembro
-     * nullValue (valor nulo para el texto de una etiqueta xml) con el valor del parámetro
-     * nullValueUser, y la variable nameChildrenMain con el valor del parámetro nameLabelUser.
+     * nullValue (valor nulo para el texto de una etiqueta xml) con el valor del parÃ¡metro
+     * nullValueUser, y la variable nameChildrenMain con el valor del parÃ¡metro nameLabelUser.
      *
      * @param nullValueUser. Variable de tipo String con el valor nulo para el texto de
      * una etiqueta xml.
@@ -110,7 +110,7 @@ public class XmlToKeel extends Importer {
         Vector nameLabel = new Vector();
         List<Element> firstInstance;
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"�", "�", "�", "�", "�", "�", "�", "�", "�", "�"};
+        String vowel_accent[] = {"á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú"};
         List elements;
 
         try {
@@ -118,7 +118,7 @@ public class XmlToKeel extends Importer {
             SAXBuilder builder = new SAXBuilder(false);
 
 //construyo el arbol en memoria desde el fichero
-// que se lo pasaré por parametro.
+// que se lo pasarÃ© por parametro.
             Document doc = builder.build(new File(pathnameInput));
 
 //Si el usuario no introduce ningun nombre de la etiqueta principal
@@ -192,7 +192,7 @@ public class XmlToKeel extends Importer {
 
 
 
-//Calculamos el número de hijos que tiene cada elemento
+//Calculamos el nÃºmero de hijos que tiene cada elemento
             if (numElements > 0) {
                 i = 0;
                 Element children = (Element) elements.get(i);
@@ -211,7 +211,7 @@ public class XmlToKeel extends Importer {
                 return;
             }
 
-//Reservamos memoria para almacenar la definición de los atributos y de los datos
+//Reservamos memoria para almacenar la definiciÃ³n de los atributos y de los datos
             numAttributes = firstInstance.size();
             attribute = new keel.Dataset.Attribute[numAttributes];
             data = new Vector[numAttributes];
@@ -383,12 +383,12 @@ public class XmlToKeel extends Importer {
 
 
                     if (type == NOMINAL) {
-                        p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                        p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                         m = p.matcher(value);
 
                         /**
                          * Cambio hecho para que los nominales con espacios en blanco se dejen
-                         * con subrayado bajo "_" y sin comillas simples. Se añade la siguiente linea
+                         * con subrayado bajo "_" y sin comillas simples. Se aÃ±ade la siguiente linea
                          */
                         value = value.replace(" ", "_");
 
@@ -482,7 +482,7 @@ public class XmlToKeel extends Importer {
 
 
     /*
-     *  Método recursivo que devuelve el texto que contiene todos los descendientes
+     *  MÃ©todo recursivo que devuelve el texto que contiene todos los descendientes
      *  de un nodo o etiqueta de un elemento xml.
      *
      *   @param  Element current que indica que nodo o etiqueta xml actual.
@@ -514,9 +514,9 @@ public class XmlToKeel extends Importer {
     } //end listChildrenText()
 
     /*
-     *   Método encargado de recorrer todo el árbol xml para encontrar
-     *   el nodo padre del nodo o etiqueta cuyo nombre coincida con el valor del parámetro  childrenName.
-     *   El nodo padre de dicha etiqueta será asignado a la variable miembro
+     *   MÃ©todo encargado de recorrer todo el Ã¡rbol xml para encontrar
+     *   el nodo padre del nodo o etiqueta cuyo nombre coincida con el valor del parÃ¡metro  childrenName.
+     *   El nodo padre de dicha etiqueta serÃ¡ asignado a la variable miembro
      *   root.
      *
      *   @param  Element current. Elemento o nodo xml actual.

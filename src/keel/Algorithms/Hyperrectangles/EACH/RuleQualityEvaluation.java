@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
- * @author Modified by Xavi SolÈ (La Salle, RamÛn Llull University - Barcelona) 16/12/2008
+ * @author Modified by Xavi Sol√© (La Salle, Ram√≥n Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
@@ -422,7 +422,7 @@ public class RuleQualityEvaluation {
 		if ((rules.getRule(j).isCovered(datos.getData(i)))) {
 		
 		if( (rules.getRule(j).getDimensions()< ndimensiones) ||((rules.getRule(j).getDimensions()==ndimensiones)&&(rules.getRule(j).getVolume()<volumen))){
-			//o tiene menos dimensiones o estas son iguales pero es mas peque√±o
+			//o tiene menos dimensiones o estas son iguales pero es mas peque√É¬±o
 		    clRegActivada=rules.getRule(j).getClassAttribute();
                     distribucion = rules.getRule(j).getDistribution();
                    /* for (int k = 0; k < nClases; k++) {

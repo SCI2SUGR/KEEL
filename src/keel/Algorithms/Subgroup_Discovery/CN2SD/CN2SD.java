@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -45,7 +45,7 @@ import org.core.Fichero;
  *
  * <p>Company: Mi casa </p>
  *
- * @author Alberto Fernández
+ * @author Alberto FernÃ¡ndez
  * @version 1.0
  */
 public class CN2SD {
@@ -59,7 +59,7 @@ public class CN2SD {
     private int muestPorClaseEval[];
     private int muestPorClaseTest[];
     private int[] valorClases;
-    private int nClases; // Numero máximo de clases
+    private int nClases; // Numero mÃ¡ximo de clases
 
     private Complejo almacenSelectores; // Almacena todos los posibles selectores
     private int tamanoEstrella;
@@ -101,19 +101,19 @@ public class CN2SD {
      * de los ficheros para su posterior uso;<br/>
      * Despues obtenemos todos los datos del fichero y los guardamos en un formato
      * reconocible por el programa.</br>
-     * Por último crea todos los posibles selectores que se puedan dar para el conjunto
+     * Por Ãºltimo crea todos los posibles selectores que se puedan dar para el conjunto
      * concreto de datos y los almacena.
      * @param ftrain Nombre del fichero donde reside el conjunto de entrenamiento
-     * @param feval Nombre del fichero donde reside el conjunto de validación
+     * @param feval Nombre del fichero donde reside el conjunto de validaciÃ³n
      * @param ftest Nombre del fichero donde reside el conjunto de test
      * @param fSalidaTr Nombre del fichero de salida donde guardaremos el resultado de entrenamiento
      * @param fSalidaTst Nombre del fichero de salida donde guardaremos el resultado de test
      * @param fsal Nombre del fichero donde guardaremos los datos generales de salida (reglas, tiempo...)
-     * @param tamEstrella es el tamaño máximo de la estrella para la busqueda (beam search)
+     * @param tamEstrella es el tamaÃ±o mÃ¡ximo de la estrella para la busqueda (beam search)
      * @param _nu es el valor del peso multiplicativo para el peso de los ejemplos
      * @param _seCubre porcentaje minimo para decir que una clase de ejemplos ya queda cubierta por un conjunto de reglas
-     * @param _multi Se refiere a si se utilizará el peso multiplicativo (1) o el aditivo (0)
-     * @param _eficacia Usamos un método supuestamente mas eficaz (más selectores) o más eficiente
+     * @param _multi Se refiere a si se utilizarÃ¡ el peso multiplicativo (1) o el aditivo (0)
+     * @param _eficacia Usamos un mÃ©todo supuestamente mas eficaz (mÃ¡s selectores) o mÃ¡s eficiente
      */
     public CN2SD(String ftrain, String feval, String ftest,
                  String fSalidaTr,
@@ -228,7 +228,7 @@ public class CN2SD {
             }
         }
 
-        tamanoEstrella = tamEstrella; // Establace el tamaño de la estrella
+        tamanoEstrella = tamEstrella; // Establace el tamaÃ±o de la estrella
         tiempo = System.currentTimeMillis(); // medimos tiempo
         div = (double) 1.0 / datosTrain.size();
 
@@ -251,11 +251,11 @@ public class CN2SD {
      */
     private ConjDatos creaConjunto(Dataset mis_datos) {
         ConjDatos datos = new ConjDatos(); //Creo un nuevo conjunto de datos
-        int tam = mis_datos.getnentradas(); //Pillo el número de atributos de entrada (suponemos una sola salida [clase])
-        double[] vars = new double[tam]; //Creamos el vector que guardará los valores de los atributos (aun siendo enteros o enum)
+        int tam = mis_datos.getnentradas(); //Pillo el nÃºmero de atributos de entrada (suponemos una sola salida [clase])
+        double[] vars = new double[tam]; //Creamos el vector que guardarÃ¡ los valores de los atributos (aun siendo enteros o enum)
         double[][] X;
         int[] C;
-        int clase = 0; //Variable que contendrá el valor para la clase
+        int clase = 0; //Variable que contendrÃ¡ el valor para la clase
         boolean salir = false;
         X = mis_datos.getX();
         C = mis_datos.getC();
@@ -296,7 +296,7 @@ public class CN2SD {
             for (int j = i+1; (j < conjReglasFinal.size())&&(!compara); j++){
                 compara = conjReglasFinal.getRegla(i).esIgual(conjReglasFinal.getRegla(j));
             }
-            if (compara){ //está
+            if (compara){ //estÃ¡
                 //System.out.println("entro");
                 conjReglasFinal.deleteRegla(i); //lo borro
                 i--;
@@ -311,7 +311,7 @@ public class CN2SD {
     }
 
     /**
-     * Crea el conjunto total selectores para obtener así todas las posibles reglas
+     * Crea el conjunto total selectores para obtener asÃ­ todas las posibles reglas
      */
     private void hazSelectores() {
         int totalAtributos = datosTrain.getDato(0).getNatributos();
@@ -327,7 +327,7 @@ public class CN2SD {
                 double valor = datosTrain.getDato(j).getMuest()[i];
                 int k = 0;
                 while (!(Double.isInfinite(lista[k][i]))) { //Mientras no vea la marca
-                    if (lista[k][i] == valor) { //Si está repe
+                    if (lista[k][i] == valor) { //Si estÃ¡ repe
                         break;
                     }
                     k++;
@@ -367,14 +367,14 @@ public class CN2SD {
                         /*System.out.print("\n Selector -> Atributo(" + i +
                                          ") = " + valores[0]);
                                              for (int x = 1; x < 2; x++) {
-                            System.out.print(" ó " + valores[x]);
+                            System.out.print(" Ã³ " + valores[x]);
                                              }*/
                         listaAux.add(valores);
                         Selector s = new Selector(i, 0, valores); //Tomo el valor de cada atributo (columna) [atr,op,valor]
                         almacenSelectores.addSelector(s); //Lo meto si no esta repetido
                     }
                 }
-                //Ahora voy a crear todos los subconjuntos a partir de los de tamaño 2:
+                //Ahora voy a crear todos los subconjuntos a partir de los de tamaÃ±o 2:
                 for (int l = 3; l < total - 2; l++) {
                     double[] auxi = new double[l - 1];
                     double[] auxi2 = new double[l - 1];
@@ -400,7 +400,7 @@ public class CN2SD {
                                 /*System.out.print("\n Selector -> Atributo(" + i +
                                                  ") = " + valores[0]);
                                  for (int x = 1; x < l; x++) {
-                                    System.out.print(" ó " + valores[x]);
+                                    System.out.print(" Ã³ " + valores[x]);
                                                              }*/
                                 almacenSelectores.addSelector(s);
                             }
@@ -502,7 +502,7 @@ public class CN2SD {
             for (int i = 0; (i < conjReglasFinal.size())&&(!compara); i++){
                 compara = star.getRegla(j).esIgual(conjReglasFinal.getRegla(i));
             }
-            if (compara){ //está
+            if (compara){ //estÃ¡
                 star.deleteRegla(j); //lo borro
                 j--;
             }
@@ -527,7 +527,7 @@ public class CN2SD {
                         Selector s2 = aux2.getSelector(h);
                         aux.addSelector(s2);
                         if (s2.compareTo(s) < 2) { //mismo atributo
-                            sigue = false; //no lo añado
+                            sigue = false; //no lo aÃ±ado
                         }
                     }
                     if (sigue) { //El selector no esta repetido en el complejo dado de "star"
@@ -545,14 +545,14 @@ public class CN2SD {
             //esSignificativa(mejorComplex);
             //mejorComplex = newStar.getUltimaRegla();
             eliminaNoValidos(newStar); //elimino repetidos y subsumidos para quedarme las tamEstrella mejores reglas
-            //Compruebo que el mejor complejo no está ya en mi conjunto de reglas
+            //Compruebo que el mejor complejo no estÃ¡ ya en mi conjunto de reglas
             /*compara = true;
             for (int j = 0; (j < newStar.size())&&(compara); j++){
                 compara = false;
                 for (int i = 0; (i < conjReglasFinal.size())&&(!compara); i++){
                     compara = newStar.getRegla(j).esIgual(conjReglasFinal.getRegla(i));
                 }
-                if (compara){ //está
+                if (compara){ //estÃ¡
                     newStar.deleteRegla(j); //lo borro
                     j--;
                 }
@@ -584,15 +584,15 @@ public class CN2SD {
         //Eliminamos los complejos que esten repetidos dentro de newStar!
         //newStar.eliminaRepetidos(tamanoEstrella); //Elimino hasta quedarme con "tamEstrella"
 
-        newStar.eliminaSubsumidos(tamanoEstrella); //Elimino reglas que sean semánticamente iguales (At = 1, At <> 0, At = [0,1])
+        newStar.eliminaSubsumidos(tamanoEstrella); //Elimino reglas que sean semÃ¡nticamente iguales (At = 1, At <> 0, At = [0,1])
 
     }
 
     /**
-     * Test de significancia estadística. El complejo c es significativo si su valor superar un umbral dado.
-     * <br/>El cálculo se realiza como 2*SUM[fi·log(fi/ei)] donde:
-     * <br/>fi es la distribución de ejemplos cubiertos por c -> Nº ej's cubiertos clase i / nº ejemplos
-     * <br/>ei es la distribución de ejemplos cubiertos supuestamente aleatoriamente -> Nº ej's clase i / nº ejemplos
+     * Test de significancia estadÃ­stica. El complejo c es significativo si su valor superar un umbral dado.
+     * <br/>El cÃ¡lculo se realiza como 2*SUM[fiÂ·log(fi/ei)] donde:
+     * <br/>fi es la distribuciÃ³n de ejemplos cubiertos por c -> NÂº ej's cubiertos clase i / nÂº ejemplos
+     * <br/>ei es la distribuciÃ³n de ejemplos cubiertos supuestamente aleatoriamente -> NÂº ej's clase i / nÂº ejemplos
      * @param c Complejo El complejo a analizar
      * @return boolean True si es significativa (supera el umbral dado) false en otro caso
      */
@@ -622,7 +622,7 @@ public class CN2SD {
 
     /**
      * ReCalcula el peso multiplicativo para un ejemplo
-     * @param i el número de reglas que cubren al ejemplo
+     * @param i el nÃºmero de reglas que cubren al ejemplo
      * @return el nuevo peso
      */
     private double pesoMultiplicativo(int i) {
@@ -633,7 +633,7 @@ public class CN2SD {
 
     /**
      * ReCalcula el peso aditivo para un ejemplo
-     * @param i int el número de reglas que cubren al ejemplo
+     * @param i int el nÃºmero de reglas que cubren al ejemplo
      * @return double el nuevo peso
      */
     private double pesoAditivo(int i) {
@@ -690,7 +690,7 @@ public class CN2SD {
     }
 
     /**
-     * Calcula los datos estadísticos necesarios y crea los ficheros KEEL de salida
+     * Calcula los datos estadÃ­sticos necesarios y crea los ficheros KEEL de salida
      */
     private void generaSalida() {
         Fichero f = new Fichero();

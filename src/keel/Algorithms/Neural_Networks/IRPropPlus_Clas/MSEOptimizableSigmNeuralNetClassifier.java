@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.LinkedNeuron;
 /**
  * <p> 
  * @author Written by Alfonso Carlos Martinez Estudillo (University of Cordoba) 5/11/2007
- * @author Written by Pedro Antonio Gutiérrez Peña (University of Crodoba) 5/11/2007
+ * @author Written by Pedro Antonio GutiÃ©rrez PeÃ±a (University of Crodoba) 5/11/2007
  * @version 0.1
  * @since JDK1.5
  * </p>

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,20 +32,20 @@ package keel.Algorithms.Decision_Trees.SLIQ;
 import java.util.*;
 
 /**
-Implementación en Java del algoritmo SLIQ
-Basada parcialmente en el código del algoritmo ID3 de Cristóbal Romero Morales (UCO)
-@author Francisco Charte Ojeda (práctica ICO de la UJA)
+ImplementaciÃ³n en Java del algoritmo SLIQ
+Basada parcialmente en el cÃ³digo del algoritmo ID3 de CristÃ³bal Romero Morales (UCO)
+@author Francisco Charte Ojeda (prÃ¡ctica ICO de la UJA)
 @version 1.0 (28/12/09 - 10/1/10)
  */
 
 /**
- *  Clase que representa un nodo del árbol
+ *  Clase que representa un nodo del Ã¡rbol
  */
 public class Node {
 
-    /** Histograma asociado al nodo. El primer índice es el índice de clase y
-     * el segundo es 0-izquierda ó 1-derecha, mientras que el valor indicaría
-     * la frecuencia de esa clase en la rama indicada. La clase 0 está reservada
+    /** Histograma asociado al nodo. El primer Ã­ndice es el Ã­ndice de clase y
+     * el segundo es 0-izquierda Ã³ 1-derecha, mientras que el valor indicarÃ­a
+     * la frecuencia de esa clase en la rama indicada. La clase 0 estÃ¡ reservada
      * para conservar el total de cada rama.
      */
     private int[][] histograma;
@@ -61,16 +61,16 @@ public class Node {
     private boolean esHoja;
     /** El conjunto de datos asociados al nodo. */
     private Vector<ListaAtributos>[] data;
-    /** El padre de este nodo.  En la raíz parent == null. */
+    /** El padre de este nodo.  En la raÃ­z parent == null. */
     private Node parent;
     /** Valor (atributos continuos) con el mejor corte o
-        índice del subconjunto (atributos discretos) con el mejor corte */
+        Ã­ndice del subconjunto (atributos discretos) con el mejor corte */
     private double mejorValor;
     /** En los nodos hoja, el atributo que se utiliza para dividir el conjunto de datos. */
     private int mejorAtributo;
     /** Coste del nodo (para la fase de poda) */
     private int coste = -1;
-    /** Número de clases existentes */
+    /** NÃºmero de clases existentes */
     private int numClases;
 
     /** Crea un nuevo nodo.
@@ -87,13 +87,13 @@ public class Node {
         children = new Node[2];
         children[0] = children[1] = null;
 
-        // Inicializar también el histograma asociado al nodo
+        // Inicializar tambiÃ©n el histograma asociado al nodo
         histograma = new int[nClases + 1][2];
         for (int indice = 0; indice <= nClases; indice++) {
             histograma[indice][0] = histograma[indice][1] = 0;
         }
 
-        // Conservar el número de clases
+        // Conservar el nÃºmero de clases
         numClases = nClases;
         parent = null;
     }
@@ -115,7 +115,7 @@ public class Node {
         histograma[0][0]++; // y en el total
     }
 
-    /** Método que divide el nodo actual en dos que se agregan como hijos
+    /** MÃ©todo que divide el nodo actual en dos que se agregan como hijos
      * 
      */
     public void divide() {
@@ -139,15 +139,15 @@ public class Node {
         histograma[0][1]++;
     }
 
-    /** Método que actualiza la clase principal del nodo contando la frecuencia
-     *  de las clases. Se usa después de podar un nodo
+    /** MÃ©todo que actualiza la clase principal del nodo contando la frecuencia
+     *  de las clases. Se usa despuÃ©s de podar un nodo
      */
     public void actualizaClasePrincipal() {
         int frecuenciaClase = 0;
 
         // Se recorren las clases
         for (int indice = 1; indice <= numClases; indice++) {
-            // quedándose siempre con la clase más representativa
+            // quedÃ¡ndose siempre con la clase mÃ¡s representativa
             if (histograma[indice][0] + histograma[indice][1] > frecuenciaClase) {
                 frecuenciaClase = histograma[indice][0] + histograma[indice][1];
                 primeraClase = indice - 1;
@@ -155,19 +155,19 @@ public class Node {
         }
     }
 
-    /** Método que prueba un corte y calcula la mejora que se obtendría. Para atributos discretos
+    /** MÃ©todo que prueba un corte y calcula la mejora que se obtendrÃ­a. Para atributos discretos
      *
      * @param indAtributo   indice del atributo
      * @param listaClases   Lista de clases
      * @param atributo      Referencia al atributo
      */
     public void pruebaCorte(int indAtributo, ListaClases[] listaClases, Attribute atributo) {
-        // Número máximo de valores a comprobar de manera exhaustiva, según la
-        // descripción del algoritmo SLIQ de Mehta
+        // NÃºmero mÃ¡ximo de valores a comprobar de manera exhaustiva, segÃºn la
+        // descripciÃ³n del algoritmo SLIQ de Mehta
         final int MAXSETSIZE = 10; 
 
-        int numValores = atributo.numValues(), // Número de valores distintos que puede tomar el atributo
-            numClases = listaClases.length;    // Número de clases a las que pueden pertenecer
+        int numValores = atributo.numValues(), // NÃºmero de valores distintos que puede tomar el atributo
+            numClases = listaClases.length;    // NÃºmero de clases a las que pueden pertenecer
 
         // Matriz de ocurrencias por valor y clase
         int[][] ocurrencias = new int[numClases][numValores];
@@ -202,11 +202,11 @@ public class Node {
         if (atributo.numValues() <= MAXSETSIZE) {
 
             for (int indice = 0; indice < ciclos; indice++) {
-                // Se obtiene el índice Gini para este subconjunto
+                // Se obtiene el Ã­ndice Gini para este subconjunto
                 giniActual = calculaGini(indice, ocurrencias, numValores, numClases, totalOcurrencias);
                 // Si es mejor que el mejor encontrado hasta ahora
                 if (giniActual < giniSubconjunto) {
-                    mejorSubconjunto = indice; // Se guarda el índice del subconjunto
+                    mejorSubconjunto = indice; // Se guarda el Ã­ndice del subconjunto
                     giniSubconjunto = giniActual; // y el nuevo Gini
                 }
             }
@@ -234,11 +234,11 @@ public class Node {
         // Anotar el mejor corte posible para este atributo
         indiceGini = giniSubconjunto;
         mejorAtributo = indAtributo;
-        // Se almacena como valor el índice del mejor subconjunto encontrado
+        // Se almacena como valor el Ã­ndice del mejor subconjunto encontrado
         mejorValor = mejorSubconjunto;
     }
 
-    /** Método que prueba un corte y calcula la mejora que se obtendría. Para atributos continuos
+    /** MÃ©todo que prueba un corte y calcula la mejora que se obtendrÃ­a. Para atributos continuos
      *
      * @param atributo  indice del atributo
      * @param listaClases   Lista de clases
@@ -246,36 +246,36 @@ public class Node {
      * @param siguiente Valor siguiente
      */
     public void pruebaCorte(int atributo, ListaClases[] listaClases, double valor, double siguiente) {
-        // Calcular el valor intermedio entre valor y el siguiente (la lista está ordenada)
+        // Calcular el valor intermedio entre valor y el siguiente (la lista estÃ¡ ordenada)
         double valorMedio = valor + (siguiente - valor) / 2;
 
         // Se guarda el histograma actual del nodo
         int[][] copiaHistograma = histograma.clone();
 
-        // Creo los dos nodos en los que se dividiría la lista de datos
+        // Creo los dos nodos en los que se dividirÃ­a la lista de datos
         Node nodoI = new Node(histograma.length), nodoD = new Node(histograma.length);
 
         // Se recorre la lista de valores del atributo indicado
-        for (int indice = 0; indice < data[atributo].size(); indice++) // y se agrega la distribución en el nodo que corresponda
+        for (int indice = 0; indice < data[atributo].size(); indice++) // y se agrega la distribuciÃ³n en el nodo que corresponda
         {
             if (data[atributo].get(indice).valor <= valorMedio) {
                 nodoI.agregaElemento(listaClases[data[atributo].get(indice).indice].clase);
             } else {
                 // Si el nodo cambia a la rama derecha
                 nodoD.agregaElemento(listaClases[data[atributo].get(indice).indice].clase);
-                // hay que actualizar también el histograma de este nodo
+                // hay que actualizar tambiÃ©n el histograma de este nodo
                 actualizaHistograma(listaClases[data[atributo].get(indice).indice].clase);
             }
         }
 
-        // Calcular el índice Gini
+        // Calcular el Ã­ndice Gini
         indiceGini = calculaGini();
 
-        // Proporción de entradas en cada nodo
+        // ProporciÃ³n de entradas en cada nodo
         double propIzq = nodoI.histograma[0][0] / (nodoI.histograma[0][0] + nodoD.histograma[0][0]),
                 propDcho = nodoD.histograma[0][0] / (nodoI.histograma[0][0] + nodoD.histograma[0][0]);
 
-        // Cálculo de la ganancia que se obtendría
+        // CÃ¡lculo de la ganancia que se obtendrÃ­a
         double GiniGain = indiceGini -
                 nodoI.calculaGini() * propIzq -
                 nodoD.calculaGini() * propDcho;
@@ -292,7 +292,7 @@ public class Node {
         histograma = copiaHistograma;
     }
 
-    /** Método encargado de calcular el índice Gini del nodo para atributos continuos
+    /** MÃ©todo encargado de calcular el Ã­ndice Gini del nodo para atributos continuos
      *
      */
     public double calculaGini() {
@@ -302,7 +302,7 @@ public class Node {
         double total = totalIzquierdo + totalDerecho;
         double probIzquierdo = 0, probDerecho = 0, prob = 0;
 
-        // Si todos los datos están en una rama
+        // Si todos los datos estÃ¡n en una rama
         if (totalIzquierdo == 0 || totalDerecho == 0) {
             return 1; // no hay nada que calcular
         }
@@ -315,21 +315,21 @@ public class Node {
             probDerecho += prob * prob;
         }
 
-        // Y calcular el índice a devolver
+        // Y calcular el Ã­ndice a devolver
         return (totalIzquierdo / total) * (1 - probIzquierdo) +
                 (totalDerecho / total) * (1 - probDerecho);
     }
 
-    /** Método encargado de calcular el índice Gini para atributos discretos.
-     *  Está basado parcialmente en la implementación de la clase count_matrix
-     *  de la tésis de Nathan Rountree titulada 'Initialising Neural Networks 
-     *  with Prior Knowledge', en la que hay un capítulo dedicado específicamente
-     *  al estudio de árboles, las técnicas de splitting y de poda.
+    /** MÃ©todo encargado de calcular el Ã­ndice Gini para atributos discretos.
+     *  EstÃ¡ basado parcialmente en la implementaciÃ³n de la clase count_matrix
+     *  de la tÃ©sis de Nathan Rountree titulada 'Initialising Neural Networks 
+     *  with Prior Knowledge', en la que hay un capÃ­tulo dedicado especÃ­ficamente
+     *  al estudio de Ã¡rboles, las tÃ©cnicas de splitting y de poda.
      *
      * @param indSubconjunto    indice del subconjunto a probar
      * @param ocurrencias       Matriz de ocurrencias
-     * @param numValores        Número de valores en la matriz
-     * @param numClases         Número de clases en la matriz
+     * @param numValores        NÃºmero de valores en la matriz
+     * @param numClases         NÃºmero de clases en la matriz
      * @param totalOcurrencias  Total de ocurrencias
      */
     public double calculaGini(int indSubconjunto, int[][] ocurrencias, int numValores, int numClases, int totalOcurrencias) {
@@ -340,12 +340,12 @@ public class Node {
                 peso, resultado;
         int[] subconjunto = new int[ciclos];
 
-        // Inicialización a cero de contadores
+        // InicializaciÃ³n a cero de contadores
         for (int ind = 0; ind < ciclos; ind++) {
             subconjunto[ind] = 0;
         }
 
-        // Contabilizar los datos que quedarían en el nodo izquierdo
+        // Contabilizar los datos que quedarÃ­an en el nodo izquierdo
         while (indSubconjunto > 0) {
             if (indSubconjunto % 2 != 0) { // Se dejan los valores impares en este subconjunto
                 subconjunto[indice] = 1;
@@ -360,7 +360,7 @@ public class Node {
         // Y en el nodo derecho
         totalDerecha = totalOcurrencias - totalIzquierda;
 
-        // Acumular las distribuciones de los datos según las clases
+        // Acumular las distribuciones de los datos segÃºn las clases
         for (int i = 0; i < numClases; i++) {
             for (int j = 0; j < numValores; j++) {
                 if (subconjunto[j] == 1) {
@@ -381,20 +381,20 @@ public class Node {
 
         }
 
-        // Calcular el índice Gini
+        // Calcular el Ã­ndice Gini
         resultado = (totalIzquierda * giniIzquierda + totalDerecha * giniDerecha) / totalOcurrencias;
 
         return resultado;
     }
 
-    /** Método que facilita el índice Gini asociado al índice
+    /** MÃ©todo que facilita el Ã­ndice Gini asociado al Ã­ndice
      *
      */
     public double getIndiceGini() {
         return indiceGini;
     }
 
-    /** Método para establecer los conjuntos de elementos que satisfacen la condición del nodo.
+    /** MÃ©todo para establecer los conjuntos de elementos que satisfacen la condiciÃ³n del nodo.
      *
      * @param newData 	Los conjuntos de elementos.
      */
@@ -411,7 +411,7 @@ public class Node {
         return this.esHoja;
     }
 
-    /** Establece la condición de hoja de un nodo
+    /** Establece la condiciÃ³n de hoja de un nodo
      *
      * @param b true si el nodo es hoja
      */
@@ -419,13 +419,13 @@ public class Node {
         esHoja = b;
     }
 
-    /** Devuelve los conjuntos de elementos que satisfacen la condición del nodo.
+    /** Devuelve los conjuntos de elementos que satisfacen la condiciÃ³n del nodo.
      */
     public Vector<ListaAtributos>[] getData() {
         return data;
     }
 
-    /** Facilita la clase más representativa del nodo
+    /** Facilita la clase mÃ¡s representativa del nodo
      *
      * @return indice de la clase
      */
@@ -433,7 +433,7 @@ public class Node {
         return primeraClase;
     }
 
-    /** Devuelve el índice del atributo usado para descomponer el nodo.
+    /** Devuelve el Ã­ndice del atributo usado para descomponer el nodo.
      *
      */
     public int getDecompositionAttribute() {
@@ -447,7 +447,7 @@ public class Node {
         return mejorValor;
     }
 
-    /** Método para establecer los hijos de un nodo.
+    /** MÃ©todo para establecer los hijos de un nodo.
      *
      * @param nodes 	Hijos del nodo.
      */
@@ -455,7 +455,7 @@ public class Node {
         children = nodes;
     }
 
-    /** M�todo para a�adir un hijo al nodo.
+    /** Metodo para anadir un hijo al nodo.
      *
      * @param node 	Nuevo hijo.
      */
@@ -463,7 +463,7 @@ public class Node {
         children[numChildren()] = node;
     }
 
-    /** Devuelve el número de hijos del nodo.
+    /** Devuelve el nÃºmero de hijos del nodo.
      *
      */
     public int numChildren() {
@@ -485,15 +485,15 @@ public class Node {
         return children;
     }
 
-    /** Devuelve el hijo correspondiente a un índice.
+    /** Devuelve el hijo correspondiente a un Ã­ndice.
      *
-     * @param index		�ndice del hijo.
+     * @param index		indice del hijo.
      */
     public Node getChildren(int index) {
         return children[index];
     }
 
-    /** Método para establecer el nodo padre.
+    /** MÃ©todo para establecer el nodo padre.
      *
      * @param node		El padre del nodo.
      */
@@ -520,9 +520,9 @@ public class Node {
         return coste;
     }
 
-    /** Método para calcular el coste de tener un nodo en el árbol
+    /** MÃ©todo para calcular el coste de tener un nodo en el Ã¡rbol
      *
-     * @param fase Indica si se está en la fase de poda 1 o en la 2
+     * @param fase Indica si se estÃ¡ en la fase de poda 1 o en la 2
      */
     public void calculaCoste(int fase) {
         coste = fase; // El coste es 1 para la primera fase y 2 para la segunda
@@ -539,8 +539,8 @@ public class Node {
             coste += children[1].getCoste();
         }
 
-        // Si éste es un nodo hoja o se está en la segunda fase de la poda
-        if (esHoja() || fase == 2) // agregar también el coste del error
+        // Si Ã©ste es un nodo hoja o se estÃ¡ en la segunda fase de la poda
+        if (esHoja() || fase == 2) // agregar tambiÃ©n el coste del error
         {
             for (int indice = 1; indice <= numClases; indice++) {
                 coste += histograma[indice][0] == primeraClase ? 0 : 1;
@@ -548,16 +548,16 @@ public class Node {
         }
     }
 
-    /** Método que calcula el coste del error al incorporar un nodo hijo
+    /** MÃ©todo que calcula el coste del error al incorporar un nodo hijo
      *
-     * @param hijo  Hijo cuyos datos se incorporarían al padre
+     * @param hijo  Hijo cuyos datos se incorporarÃ­an al padre
      * @return  Coste del error
      */
     public int costeError(Node hijo) {
         int suma = 0;
 
         // Sumar aquellos elementos cuya clase no coincida con la primeraClase
-        // del nodo padre al que se incorporarán los datos
+        // del nodo padre al que se incorporarÃ¡n los datos
         for (int indice = 1; indice <= numClases; indice++) {
             if(indice != primeraClase)
                 suma += hijo.histograma[indice][0];

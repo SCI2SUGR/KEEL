@@ -4,7 +4,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.
  * <p>Description: Fuzzy Data Base</p>
  * <p>Copyright: Copyright KEEL (c) 2008</p>
  * <p>Company: KEEL </p>
- * @author Written by Jesus Alcal· (University of Granada) 09/02/2011
+ * @author Written by Jesus Alcal√° (University of Granada) 09/02/2011
  * @version 1.0
  * @since JDK1.6
  */

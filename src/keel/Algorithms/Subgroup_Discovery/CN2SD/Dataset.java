@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,11 +30,11 @@
 package keel.Algorithms.Subgroup_Discovery.CN2SD;
 
 /**
- * <p>Título: Clase Dataset</p>
- * <p>Descripción: Contiene los metodos de lectura del fichero de train y test</p>
+ * <p>TÃ­tulo: Clase Dataset</p>
+ * <p>DescripciÃ³n: Contiene los metodos de lectura del fichero de train y test</p>
  * <p>Copyright: Copyright Alberto (c) 2005</p>
  * <p>Empresa: Mi Casa</p>
- * @author Alberto Fernández
+ * @author Alberto FernÃ¡ndez
  * @version 1.0
  */
 
@@ -82,7 +82,7 @@ public class Dataset {
     }
 
     /**
-     * Devuelve un array con los valores máximos de los atributos de entrada
+     * Devuelve un array con los valores mÃ¡ximos de los atributos de entrada
      * @return double[] idem
      */
     public double[] getemaximo() {
@@ -90,7 +90,7 @@ public class Dataset {
     }
 
     /**
-     * Devuelve un array con los valores mínimos de los atributos de entrada
+     * Devuelve un array con los valores mÃ­nimos de los atributos de entrada
      * @return double[] idem
      */
     public double[] geteminimo() {
@@ -98,23 +98,23 @@ public class Dataset {
     }
 
     /**
-     * Devuelve el número de datos
-     * @return int el número de ejemplos
+     * Devuelve el nÃºmero de datos
+     * @return int el nÃºmero de ejemplos
      */
     public int getndatos() {
         return ndatos;
     }
 
     /**
-     * Devuelve el número de variables
-     * @return int El número de variables (incluyendo entrada y salida)
+     * Devuelve el nÃºmero de variables
+     * @return int El nÃºmero de variables (incluyendo entrada y salida)
      */
     public int getnvariables() {
         return nvariables;
     }
 
     /**
-     * Devuelve el número de variables de entrada
+     * Devuelve el nÃºmero de variables de entrada
      * @return int El total de variables de entrada
      */
     public int getnentradas() {
@@ -122,17 +122,17 @@ public class Dataset {
     }
 
     /**
-     * Devuelve el número total de clases
-     * @return int el número de clases distintas
+     * Devuelve el nÃºmero total de clases
+     * @return int el nÃºmero de clases distintas
      */
     public int getnclases() {
         return nclases;
     }
 
     /**
-     * Comprueba si un atributo está "perdido" o no
-     * @param i int Número de ejemplo
-     * @param j int Número de atributo
+     * Comprueba si un atributo estÃ¡ "perdido" o no
+     * @param i int NÃºmero de ejemplo
+     * @param j int NÃºmero de atributo
      * @return boolean True si falta, False en otro caso
      */
     public boolean isMissing(int i, int j) {
@@ -313,8 +313,8 @@ public class Dataset {
     }
 
     /**
-     * Devuelve el valor mas común del atributo i-esimo
-     * @param i int Número de atributo
+     * Devuelve el valor mas comÃºn del atributo i-esimo
+     * @param i int NÃºmero de atributo
      * @return int Valor mas comnun para esta variable
      */
     public int masComun(int i) {
@@ -347,13 +347,13 @@ public class Dataset {
             }
         }
         else{
-            salida = null; //luego guardaré el valor de las clases numéricas
+            salida = null; //luego guardarÃ© el valor de las clases numÃ©ricas
         }
         return salida;
     }
 
     /**
-     * Comprueba si en la base de datos hay alguna entrada de tipo real o contínua
+     * Comprueba si en la base de datos hay alguna entrada de tipo real o contÃ­nua
      * @return boolean True si existe alguna entrada continua. False en caso contrario
      */
     public boolean hayAtributosContinuos(){

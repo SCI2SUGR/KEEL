@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -223,7 +223,7 @@ public class APSSCGenerator extends PrototypeGenerator {
 		  		//System.out.println("Max_j = " + max_j);
 		  		if(max_j > this.MT){
 		  			// We do not add the unlabeled data, but we assign the appropriate labeled data.
-		  			//System.out.println("Añado");
+		  			//System.out.println("AÃ±ado");
 		  			
 		  			ANTunlabeled.get(p).setFirstOutput(clasej);
 		  			

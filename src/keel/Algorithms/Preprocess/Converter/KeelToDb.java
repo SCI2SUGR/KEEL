@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -46,7 +46,7 @@ import java.sql.*;
  * un fichero de datos con formato Keel a una nueva tabla en una base de
  * datos SQL.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class KeelToDb extends Exporter {
@@ -55,22 +55,22 @@ public class KeelToDb extends Exporter {
     private String driverName = new String();// Variable que almacena el nombre de la base de datos.
     private String databaseURL = new String();// Variable que almacena el nombre de  la tabla que contiene los datos a convertir.
     private String tableName = new String();// Variable que almacena el login o nombre de usuario de la base de datos.
-    private String login = new String();// Variable que almacena el password o contraseña de la base de datos.
+    private String login = new String();// Variable que almacena el password o contraseÃ±a de la base de datos.
     private String password = new String();
 
     /*
      * Constructor de la Clase DbToKeel. Inicializa los valores de las variables
      * miembro driverName, databaseURL, tableName, login y password
-     * con el valor de los parámetros driverNameUser, databaseURLUser, tableNameUser, loginUser, passwordUser respectivamente.
-     * También inicializa el valor para la variable miembro nullValue a una cadena con valor "null".
+     * con el valor de los parÃ¡metros driverNameUser, databaseURLUser, tableNameUser, loginUser, passwordUser respectivamente.
+     * TambiÃ©n inicializa el valor para la variable miembro nullValue a una cadena con valor "null".
      *
      * @param String driverNameUser Variable de tipo String con el valor del driver de la conexion a la base de datos.
-     * @param String databaseURL: Variable que almacena la dirección URL de la base de datos
+     * @param String databaseURL: Variable que almacena la direcciÃ³n URL de la base de datos
      * de la forma jdbc:subprotocol:subname donde subprotocol es el nombre
-     * del controlador, y subname es una referencia controlador-específica a la base de datos.
+     * del controlador, y subname es una referencia controlador-especÃ­fica a la base de datos.
      * @param String tableNameUser Variable de tpo String con el nombre de la tabla que contiene los datos.
      * @param String loginUser Variable de tipo String con el login o nombre de usuario para conectarse a la base de datos.
-     * @param String passwordUser Variable de tipo String con el password o contraseña para conectarse a la base de datos.
+     * @param String passwordUser Variable de tipo String con el password o contraseÃ±a para conectarse a la base de datos.
      *
      */
     public KeelToDb(String driverNameUser, String databaseURLUser, String tableNameUser, String loginUser, String passwordUser) {
@@ -84,9 +84,9 @@ public class KeelToDb extends Exporter {
     }
 
     /*
-     * Este método llama al método Start de la clase superior Exporter para
+     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
      * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al método Save() para crear una nueva tabla en la base de datos.
+     * al mÃ©todo Save() para crear una nueva tabla en la base de datos.
      *
      * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
      *
@@ -103,7 +103,7 @@ public class KeelToDb extends Exporter {
     }//end Start()
 
     /*
-     * Método utilizado para crear la tabla en la base de datos SQL
+     * MÃ©todo utilizado para crear la tabla en la base de datos SQL
      * a partir de los datos almacenados en el vector de objetos de la clase
      * Attribute, el vector data[], y la variable nameRelation.
      *
@@ -121,9 +121,9 @@ public class KeelToDb extends Exporter {
         String line = new String();
         String nameAttribute = new String();
 
-//Se declara la variable de tipo conexion, que guardará la conexión a la base de datos
+//Se declara la variable de tipo conexion, que guardarÃ¡ la conexiÃ³n a la base de datos
         Connection conn;
-//Se declara la variable de tipo Statement que nos permitirá ejecutar sentencias
+//Se declara la variable de tipo Statement que nos permitirÃ¡ ejecutar sentencias
         Statement statement;
 //Se declara la variable de tipo Resulset para recoger lo que devuelve una sentencia SELECT
         ResultSet result;
@@ -139,7 +139,7 @@ public class KeelToDb extends Exporter {
         }
 
 
-        try {  // Se establece la conexión con la base de datos
+        try {  // Se establece la conexiÃ³n con la base de datos
             conn = DriverManager.getConnection(databaseURL, login, password); //URL BaseDatos, usuario, clave
             statement = conn.createStatement();
 
@@ -244,14 +244,14 @@ public class KeelToDb extends Exporter {
     }//end Save()
 
     /*
-     * Método utilizado para poner en mayúscula el primer carácter de una cadena pasada
-     * por parámetro.
+     * MÃ©todo utilizado para poner en mayÃºscula el primer carÃ¡cter de una cadena pasada
+     * por parÃ¡metro.
      *
      * @param line. Variable String que almacena la cadena
-     * a la que se pretende poner el primer carácter en mayúscula.
+     * a la que se pretende poner el primer carÃ¡cter en mayÃºscula.
      *
-     * @return Devuelve una cadena igual a la cadena pasada por parámetro
-     * pero con el primer carácter en mayúscula.
+     * @return Devuelve una cadena igual a la cadena pasada por parÃ¡metro
+     * pero con el primer carÃ¡cter en mayÃºscula.
      */
     public String UcFirst(String line) {
         String lineTemp = "";

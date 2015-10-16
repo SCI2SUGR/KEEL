@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,10 +30,10 @@
 package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 
 /**
- * <p>Título: Evaluación de calidad de las reglas</p>
- * <p>Descripción: Esta clase calcula las estadísticas finales</p>
+ * <p>TÃ­tulo: EvaluaciÃ³n de calidad de las reglas</p>
+ * <p>DescripciÃ³n: Esta clase calcula las estadÃ­sticas finales</p>
  * <p>Creado: 20-feb-2006 </p>
- * @author Alberto Fernández Hilario
+ * @author Alberto FernÃ¡ndez Hilario
  * @version 1.0
  */
 public class EvaluaCalidadReglas {
@@ -55,12 +55,12 @@ public class EvaluaCalidadReglas {
     private String[] valorNombreClases;
 
     /**
-     * Calculas las estadísticas finales para un conjunto de reglas dado y un conjunto de datos.
+     * Calculas las estadÃ­sticas finales para un conjunto de reglas dado y un conjunto de datos.
      * @param conjreg Conjunto de reglas (complejos) final
      * @param conjTrn Conjunto de datos de entrenamiento
      * @param conjTst Conjunto de datos de test
-     * @param muestPorClaseTrain Número de ejemplos por clase en Train
-     * @param muestPorClaseTest Número de ejemplos por clase en Test
+     * @param muestPorClaseTrain NÃºmero de ejemplos por clase en Train
+     * @param muestPorClaseTest NÃºmero de ejemplos por clase en Test
      * @param valorNombreClases String[] etiquetas para cada una de las clases
      */
     public EvaluaCalidadReglas(ConjReglas conjreg, ConjDatos conjTrn,
@@ -77,8 +77,8 @@ public class EvaluaCalidadReglas {
         // Calculos en Entrenamiento
         calculaIndices(train, muestPorClaseTrain, 0);
         System.out.print("\n\nIndices en Train: ");
-        System.out.print("\n\n Tamaño reglas: " + tam +
-                         "\nNº Atributos por regla medio: " + ant +
+        System.out.print("\n\n TamaÃ±o reglas: " + tam +
+                         "\nNÂº Atributos por regla medio: " + ant +
                          "\nCobertura: " +
                          cob);
 //        System.out.print("\n\t Confidence: " + conf + "  ComplMed: " + complmed +
@@ -89,8 +89,8 @@ public class EvaluaCalidadReglas {
 //		Calculos en test
         calculaIndices(test, muestPorClaseTest, 1);
         System.out.print("\n\nIndices en Test:");
-        System.out.print("\n\n Tamaño reglas: " + tam +
-                         "\nNº Atributos por regla medio: " + ant +
+        System.out.print("\n\n TamaÃ±o reglas: " + tam +
+                         "\nNÂº Atributos por regla medio: " + ant +
                          "\nCobertura: " +
                          cob);
         /*System.out.print("\n\t Confidence: " + conf +
@@ -105,7 +105,7 @@ public class EvaluaCalidadReglas {
 
     /**
      * Imprime en una cadena las estadisticas
-     * @return una cadena con las estadísticas
+     * @return una cadena con las estadÃ­sticas
      */
     public String printString() {
 	    String cad = "#### Final Results (on test) ####\n";	    
@@ -130,9 +130,9 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * Calcula en si mismo todas las estadísticas, especialmente el porcentaje de aciertos
+     * Calcula en si mismo todas las estadÃ­sticas, especialmente el porcentaje de aciertos
      * @param datos Conjunto de datos (entrenamiento o test)
-     * @param muestPorClase int[] Número de ejemplos por cada clase en el conjunto de datos
+     * @param muestPorClase int[] NÃºmero de ejemplos por cada clase en el conjunto de datos
      * @param code Codigo para saber si estamos tratando con entrenamiento o test
      */
     private void calculaIndices(ConjDatos datos, int[] muestPorClase, int code) {
@@ -147,15 +147,15 @@ public class EvaluaCalidadReglas {
 
         tam = reglas.size(); // calculamos Tam
 
-        // calculamos nº atributos por regla medio
+        // calculamos nÂº atributos por regla medio
         for (i = 0, ant = 0; i < reglas.size(); i++) {
             ant += reglas.getRegla(i).size();
         }
 
-        ant = (double) ant / tam; //Nº de atributos por regla medio
+        ant = (double) ant / tam; //NÂº de atributos por regla medio
 
         // calculamos la distrib
-        double muestCubiertas = 0; //nº ejemplos cubiertos por las reglas
+        double muestCubiertas = 0; //nÂº ejemplos cubiertos por las reglas
         int[][] instCubiertas = new int[tam][nClases];
 
         for (i = 0; i < reglas.size(); i++) {
@@ -178,9 +178,9 @@ public class EvaluaCalidadReglas {
         }
         //System.err.println("Muestras cubiertas -> "+muestCubiertas);
         //System.err.println("Total datos -> "+nDatos);
-        //cob = (double) muestCubiertas / (nDatos * tam * tam); //COV = 1/nR·SUM[Cov(Ri)] -- Cov(Ri) = n(Condi)/N //
+        //cob = (double) muestCubiertas / (nDatos * tam * tam); //COV = 1/nRÂ·SUM[Cov(Ri)] -- Cov(Ri) = n(Condi)/N //
         cob = (double)muestCubiertas / (tam * nDatos);
-        //Cobertura -> porcentaje de ejemplos cubiertos por cada regla / nº de reglas
+        //Cobertura -> porcentaje de ejemplos cubiertos por cada regla / nÂº de reglas
 
         // Calculamos la relevancia (significance)
         double sigParcial = 0;

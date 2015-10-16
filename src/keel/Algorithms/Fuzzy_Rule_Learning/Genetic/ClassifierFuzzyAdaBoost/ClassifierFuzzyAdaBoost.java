@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@ import org.core.*;
 * Boosting) class with the KEEL environment. 
 *
 * Detailed in 
-* M.J. del Jesus, F. Hoffmann, L. Junco, L. S·nchez. Induction of Fuzzy-Rule-
+* M.J. del Jesus, F. Hoffmann, L. Junco, L. S√°nchez. Induction of Fuzzy-Rule-
 * Based Classifiers With Evolutionary Boosting Algorithms. IEEE Transactions on 
 * Fuzzy Systems 12:3 (2004) 296-308.
 * </p> 

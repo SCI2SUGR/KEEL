@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ package keel.Algorithms.Preprocess.Basic;
  * This class defines the exception that will be thrown if the
  * dataset not corresponding with classification
  *
- * @author  Salvador GarcÌa LÛpez
+ * @author  Salvador Garc√≠a L√≥pez
  * @version keel0.1
  */
 public class CheckException  extends Exception{

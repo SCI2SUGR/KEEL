@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -33,11 +33,11 @@ import java.util.StringTokenizer;
 import org.core.Fichero;
 
 /**
- * <p>TÌtulo: HibridaciÛn Pso Aco</p>
- * <p>DescripciÛn: Hibridacion entre los dos algoritmos Pso y Aco</p>
+ * <p>T√≠tulo: Hibridaci√≥n Pso Aco</p>
+ * <p>Descripci√≥n: Hibridacion entre los dos algoritmos Pso y Aco</p>
  * <p>Copyright: Copyright (c) 2008</p>
  * <p>Empresa: </p>
- * @author Vicente RubÈn del Pino
+ * @author Vicente Rub√©n del Pino
  * @version 1.0
  */
 
@@ -116,7 +116,7 @@ public class Main {
 
         una_linea = linea.nextToken(); //Leo una linea
         datos = new StringTokenizer(una_linea, " = \" ");
-        datos.nextToken(); //TamaÒo de entorno
+        datos.nextToken(); //Tama√±o de entorno
         tamEntorno = Integer.parseInt(datos.nextToken());
 
         una_linea = linea.nextToken(); //Leo una linea
@@ -155,7 +155,7 @@ public class Main {
                            minimoCasosCubiertos);
         System.out.println("Maximo de iteraciones sin converger: " +
                            maxIteraciones);
-        System.out.println("TamaÒo de entorno: " + tamEntorno);
+        System.out.println("Tama√±o de entorno: " + tamEntorno);
         System.out.println("Variable X : " + x);
         System.out.println("Variable C1: " + c1);
         System.out.println("Variable C2: " + c2);

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>
  * @author Written by Rosa Venzala 19/09/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @author Modified by Xavi SolÃ© (La Salle, RamÃ³n Llull University - Barcelona) 16/12/2008
  * @version 1.2
  * @since JDK1.2
  * </p>
@@ -124,7 +124,7 @@ public class Selector implements Comparable {
 	 *          [new->] 2 (no same attribute and operator) 
 	 *          3 (different attrbute)).
 	 * 			-2 -> Same attribute, no same operator; 
-	 * 			-3 -> Same attribute, value = ï¿½+/- 1
+	 * 			-3 -> Same attribute, value = +/- 1
 	 */
 	public int compareTo(Object o) {
 		Selector s2 = (Selector) o;
@@ -205,7 +205,7 @@ public class Selector implements Comparable {
 		boolean outPut = false;
 		//Si los valores son iguales y el operador no es el contrario
 		outPut = (sameValue(values) && (!(this.contraryOperator(_operator))));
-		if (!outPut){ //No estï¿½subsumido...
+		if (!outPut){ //No esta subsumido...
 			if ((operator == _operator)&&(operator == 0)) { //Son iguales y es el ==
 				if (value.length < values.length) {
 					outPut = true;

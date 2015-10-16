@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -253,7 +253,7 @@ public class NumericalNaiveBayes extends LazyAlgorithm{
 		 likehood[1]= 0.0056
 		 likehood[2]= 0.0031
 		 
-		 Mucho ojo, no estan normalizadas. El NB no lo necesita, pero puede que para otros usos s� que haga falta...
+		 Mucho ojo, no estan normalizadas. El NB no lo necesita, pero puede que para otros usos si que haga falta...
 		 
 		*/
 		double max=-1;

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,10 +32,10 @@ package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 import java.util.*;
 
 /**
- * <p>Título: Conjunto de reglas</p>
- * <p>Descripción: Estructura para almacenar un conjunto completo de reglas</p>
+ * <p>TÃ­tulo: Conjunto de reglas</p>
+ * <p>DescripciÃ³n: Estructura para almacenar un conjunto completo de reglas</p>
  * <p>Creado: 23-feb-2006 </p>
- * @author Alberto Fernández Hilario
+ * @author Alberto FernÃ¡ndez Hilario
  * @version 1.0
  */
 public class ConjReglas {
@@ -53,8 +53,8 @@ public class ConjReglas {
     }
 
     /**
-     * Añade una regla a la lista
-     * @param regl Regla a añadir
+     * AÃ±ade una regla a la lista
+     * @param regl Regla a aÃ±adir
      */
     public void addRegla(Regla regl) {
         reglas.add(regl);
@@ -90,7 +90,7 @@ public class ConjReglas {
 
     /**
      * Devuelve el numero de reglas con las que estamos trabajando
-     * @return El tamaño del conjunto de reglas
+     * @return El tamaÃ±o del conjunto de reglas
      */
     public int size() {
         return (reglas.size());
@@ -156,8 +156,8 @@ public class ConjReglas {
     }
 
     /**
-     * Devuelve la última regla (normalmente aquella con mejor peso)
-     * @return la última regla de a lista
+     * Devuelve la Ãºltima regla (normalmente aquella con mejor peso)
+     * @return la Ãºltima regla de a lista
      */
     public Regla getUltimaRegla() {
         return (Regla) reglas.getLast();

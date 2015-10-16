@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -44,7 +44,7 @@ import java.io.File;
  * un fichero de datos con formato Keel a un fichero con formato Dif.
  * (fichero de intercambio de datos).
  *
- * @author Teresa Prieto Lï¿½pez (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class KeelToDif extends Exporter {
@@ -53,17 +53,17 @@ public class KeelToDif extends Exporter {
     /*
      * Constructor de la Clase KeelToDif. Inicializa el valor
      * de la variable miembro nullValue (valor nulo para un dato en el fichero)
-     * a una cadena vacï¿½a.
+     * a una cadena vacia.
      */
     public KeelToDif() {
         nullValue = "";
     }
 
     /*
-     * Este mï¿½todo llama al mï¿½todo Start de la clase superior Exporter para
+     * Este Metodo llama al Metodo Start de la clase superior Exporter para
      * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al mï¿½todo Save() para crear el fichero de datos Dif indicado en el
-     * parï¿½metro de entrada pathnameOutput.
+     * al Metodo Save() para crear el fichero de datos Dif indicado en el
+     * parametro de entrada pathnameOutput.
      *
      * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
      * @param  String pathnameOutput Variable con la ruta del fichero de datos de salida
@@ -81,8 +81,8 @@ public class KeelToDif extends Exporter {
     }//end Start()
 
     /*
-     * Mï¿½todo utilizado para crear el fichero con formato Dif
-     * indicada la ruta por el parï¿½metro pathnameOutput. Este fichero se crea a partir
+     * Metodo utilizado para crear el fichero con formato Dif
+     * indicada la ruta por el parametro pathnameOutput. Este fichero se crea a partir
      * de los datos almacenados en el vector de objetos de la clase
      * Attribute, el vector data[], y la variable nameRelation.
      *
@@ -100,7 +100,7 @@ public class KeelToDif extends Exporter {
         String element = new String();
 
 
-        /* Comprobamos si el nombre del fichero tiene la extensiï¿½n .csv, si no la tiene
+        /* Comprobamos si el nombre del fichero tiene la extension .csv, si no la tiene
          * se la ponemos */
         if (pathnameOutput.endsWith(".dif")) {
             filename = pathnameOutput;

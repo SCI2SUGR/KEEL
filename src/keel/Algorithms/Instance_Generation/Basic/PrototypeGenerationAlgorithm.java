@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -202,7 +202,7 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
     {
         if(args.length!=1)
             System.err.println("Error in parameters. One configuration file needed");
-        //Se supone que aquí lanzo una excepción o algo así
+        //Se supone que aquÃ­ lanzo una excepciÃ³n o algo asÃ­
     }
     
     /**

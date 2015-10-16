@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -38,8 +38,8 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Hybrid;
  *
  * <p>Company: KEEL </p>
  *
- * @author Written by Alberto Fern·ndez (University of Granada) 29/10/2007
- * @author Modified by Alberto Fern·ndez (University of Granada) 18/12/2008
+ * @author Written by Alberto Fern√°ndez (University of Granada) 29/10/2007
+ * @author Modified by Alberto Fern√°ndez (University of Granada) 18/12/2008
  * @version 1.2
  * @since JDK1.5
  */

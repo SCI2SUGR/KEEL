@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -274,7 +274,7 @@ public class BaseDatos {
           }
           else
           {
-              Exception e=new Exception("La base de datos est· mal formada");
+              Exception e=new Exception("La base de datos est√° mal formada");
               throw e;
           }
           valEnum.add(null);
@@ -284,7 +284,7 @@ public class BaseDatos {
          {
           int ini=0;
           int[] intervalo = new int[2];
-     if((ini=linea.indexOf("[")) >= 0) //Esto es siempre asÌ pero por si acaso...
+     if((ini=linea.indexOf("[")) >= 0) //Esto es siempre as√≠ pero por si acaso...
           {
            String inter=linea.substring(ini+1,linea.indexOf("]"));
            String[] intervAux=inter.split(",");
@@ -295,7 +295,7 @@ public class BaseDatos {
           }
           else
           {
-           System.out.println("La base de datos est· mal formada");
+           System.out.println("La base de datos est√° mal formada");
           }
 
           valEnum.add(null);
@@ -305,12 +305,12 @@ public class BaseDatos {
          }
          else
          {
-          System.out.println("La base de datos est· mal formada");
+          System.out.println("La base de datos est√° mal formada");
          }
         }
         else if(linea.startsWith("@output"))
         {
-         clase=nombres.indexOf(linea.split(" ")[1].trim()); //Cojo el Ìndice del atributo clase
+         clase=nombres.indexOf(linea.split(" ")[1].trim()); //Cojo el √≠ndice del atributo clase
         }
        }
 
@@ -339,7 +339,7 @@ public class BaseDatos {
           {
            if((aux[e].trim()).equals(((Vector)valEnum.get(e)).get(val)))
            {
-            ejemplo.add(new Integer(val)); //AsÌ codifico los valores del tipo enumerado como enteros
+            ejemplo.add(new Integer(val)); //As√≠ codifico los valores del tipo enumerado como enteros
             val=((Integer)rangos.get(e)).intValue();
            }
           }

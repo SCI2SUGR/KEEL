@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -53,7 +53,7 @@ import org.core.Files;
 
 /**
  *
- * @author Javier Rascón Mesa
+ * @author Javier RascÃ³n Mesa
  */
 public class swap1{
 
@@ -78,7 +78,7 @@ public class swap1{
     BufferedWriter bw_output;
 
     /**
-     * Indica a qué atributo pertenece la cadena
+     * Indica a quÃ© atributo pertenece la cadena
      */
     private class Attr_pos{
 	public String attr;
@@ -133,7 +133,7 @@ public class swap1{
 
         /**
          *
-	 * Hace un intercambio disminuyendo el número de errores
+	 * Hace un intercambio disminuyendo el nÃºmero de errores
 	 *
          * @return Una regla
          */
@@ -286,7 +286,7 @@ public class swap1{
 			copy.removeInstance(i);
 			copy.addInstance(new Instance(atributos_entrada.get(j).attr,false,copy.getNumInstances()),atributos_entrada.get(j).pos);
 
-			//cálculos
+			//cÃ¡lculos
 			curr_err=copy.n_errors();
 			if(curr_err<best_n_err && copy.num_covered_cases() != 0){
 			    found=true;
@@ -309,7 +309,7 @@ public class swap1{
 
 	/**
 	 *
-	 * @return true Si se ha añadido un atributo a la regla, false en caso contrario
+	 * @return true Si se ha aÃ±adido un atributo a la regla, false en caso contrario
 	 */
 	private boolean add_single_best() {
 
@@ -317,7 +317,7 @@ public class swap1{
 	    double p; //predictive value
 	    double p_best=this.predictive_level(); //best predictive value
 	    int best_covered=this.num_covered_cases();
-	    int best_pos=-1; //best predictive value position //si no se encuentra uno mejor, se añade el primero
+	    int best_pos=-1; //best predictive value position //si no se encuentra uno mejor, se aÃ±ade el primero
 
 	    for(int i=0;i<atributos_entrada.size();i++){
 		if(!this.attr_pos.contains(atributos_entrada.get(i).pos)){
@@ -413,7 +413,7 @@ public class swap1{
 
 	/**
 	 * 
-	 * Une la regla pasada por parámetro a this sin insertar los repetidos
+	 * Une la regla pasada por parÃ¡metro a this sin insertar los repetidos
 	 * 
 	 * @param _r Regla que unir
 	 */
@@ -466,7 +466,7 @@ public class swap1{
 
 	/**
 	 * 
-	 * @return true si la regla está vacía, false en caso contrario
+	 * @return true si la regla estÃ¡ vacÃ­a, false en caso contrario
 	 */
 	public boolean isEmpty(){
 	    return 0==super.getNumInstances();
@@ -474,7 +474,7 @@ public class swap1{
 
 	/**
 	 *
-	 * @return Clase sobre la que está trabajando la regla
+	 * @return Clase sobre la que estÃ¡ trabajando la regla
 	 */
 	public String get_clase(){
 	    return clase;
@@ -926,7 +926,7 @@ public class swap1{
 
     /**
      * 
-     * Busca la existencia de instancias de la clase indicada en el conjunto de elementos que todavía no están cubiertos
+     * Busca la existencia de instancias de la clase indicada en el conjunto de elementos que todavÃ­a no estÃ¡n cubiertos
      * 
      * @param clase Clase que se busca
      * @return true si quedan instancias de la clase indicada

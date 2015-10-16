@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@
 //
 //  MNV.java
 //
-//  Salvador GarcÌa LÛpez
+//  Salvador Garc√≠a L√≥pez
 //
-//  Created by Salvador GarcÌa LÛpez 22-2-2008.
+//  Created by Salvador Garc√≠a L√≥pez 22-2-2008.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -128,7 +128,7 @@ public class MNV extends Metodo {
     tamS++;
 
     /*Algorithm body. We resort randomly the instances of T and compare with the rest of S.
-     If an instance doesn¥t classified correctly, it is inserted in S*/
+     If an instance doesn¬¥t classified correctly, it is inserted in S*/
     do {
       continuar = false;
       for (i=0; i<datosTrain.length; i++) {
@@ -178,7 +178,7 @@ public class MNV extends Metodo {
     }
     
     /*RNN Process*/
-    /*InicializaciÛn del vector de instancias marcadas para su elminiaciÛn posterior*/
+    /*Inicializaci√≥n del vector de instancias marcadas para su elminiaci√≥n posterior*/
     marcas = new boolean[conjS.length];
     for (i=0; i<conjS.length; i++)
       marcas[i] = true;

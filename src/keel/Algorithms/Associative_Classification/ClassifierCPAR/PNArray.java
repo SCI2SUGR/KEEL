@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@ package keel.Algorithms.Associative_Classification.ClassifierCPAR;
  * satisfying the body of rule r', the rule constructed by appending p to r.
  * 
  *
- * @author Written by Jesus Alcal· (University of Granada) 09/02/2010
+ * @author Written by Jesus Alcal√° (University of Granada) 09/02/2010
  * @version 1.0
  * @since JDK1.5
  */

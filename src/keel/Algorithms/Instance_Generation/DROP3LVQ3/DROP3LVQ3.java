@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,9 +31,9 @@
 //  SSMA.javA  HIBRIDO  PSO
 
 //
-//  Salvador Garc�a L�pez
+//  Salvador García López
 //
-//  Created by Salvador Garc�a L�pez 3-10-2005.
+//  Created by Salvador García López 3-10-2005.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -63,10 +63,10 @@ public class DROP3LVQ3 extends Metodo {
   private int k;
  private double semilla;
  
-  public String Script; // para releer par�metros..
+  public String Script; // para releer parametros..
   private PrototypeSet trainingDataSet;
   private PrototypeGenerator generador;
-  //Par�metros LVQ3: Solo me hacen falta 4;
+  //parametros LVQ3: Solo me hacen falta 4;
 
   private int Maxiter;
   private double alpha0;
@@ -262,7 +262,7 @@ public class DROP3LVQ3 extends Metodo {
 	    /*Check if delete or not the instances considering the WITH and WITHOUT sets*/
 	    for (o=0; o<datosTrain.length; o++){
 	      i = orden[o].entero;
-	      if (marcas[i]) { //only for instances haven�t noise filtered
+	      if (marcas[i]) { //only for instances haven't noise filtered
 	        aciertosSin = 0;
 
 	        marcas[i] = false;
@@ -374,7 +374,7 @@ public class DROP3LVQ3 extends Metodo {
 	    OutputIS.escribeSalida(ficheroSalida[0], conjR, conjN, conjM, clasesS, entradas, salida, nEntradas, relation);
 	    OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
 	    
-	    /** AHORA A�ADO MI PSO!! **/
+	    /** AHORA Anado MI PSO!! **/
 	    Parameters.assertBasicArgs(ficheroSalida);
 	    
 	    PrototypeGenerationAlgorithm.readParametersFile(this.Script);

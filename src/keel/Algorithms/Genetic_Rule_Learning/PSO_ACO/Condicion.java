@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,11 +30,11 @@
 package keel.Algorithms.Genetic_Rule_Learning.PSO_ACO;
 
 /**
- * <p>TÌtulo: HibridaciÛn Pso Aco</p>
- * <p>DescripciÛn: Hibridacion entre los dos algoritmos Pso y Aco</p>
+ * <p>T√≠tulo: Hibridaci√≥n Pso Aco</p>
+ * <p>Descripci√≥n: Hibridacion entre los dos algoritmos Pso y Aco</p>
  * <p>Copyright: Copyright (c) 2008</p>
  * <p>Empresa: </p>
- * @author Vicente RubÈn del Pino
+ * @author Vicente Rub√©n del Pino
  * @version 1.0
  */
 

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -50,7 +50,7 @@ import java.util.Arrays;
  */
 public class Main {
     private String ficheroTrain; //Fichero de entramiento -> Por ejemplo discretizado
-    private String ficheroEval; //Fichero de evaluaciï¿½ -> original
+    private String ficheroEval; //Fichero de evaluacion -> original
     private String ficheroTest;
     private String ficheroSalidatr;
     private String ficheroSalidatst;
@@ -63,7 +63,7 @@ public class Main {
     }
 
     /**
-     * Obtiene toda la informaciï¿½ necesaria del fichero de parametros<br/>
+     * Obtiene toda la informacion necesaria del fichero de parametros<br/>
      * En primer lugar lee el nombre de los archivos de datos de entrenamiento y test<br/>
      * Posteriormente lee los ficheros donde queremos guardar las salidas<br/>
      * Por ltimo lee los parametros del algoritmo<br/>
@@ -83,7 +83,7 @@ public class Main {
         ficheroTrain = datos.nextToken();
 	ficheroTrain = datos.nextToken();
 	//System.err.println(ficheroTrain);
-       // ficheroEval = datos.nextToken(); //fichero de evaluaciï¿½
+       // ficheroEval = datos.nextToken(); //fichero de evaluacion
         ficheroTest = datos.nextToken();
         una_linea = linea.nextToken(); //Leo una linea
         datos = new StringTokenizer(una_linea, " = \" ");

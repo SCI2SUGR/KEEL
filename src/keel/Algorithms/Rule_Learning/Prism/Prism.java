@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>
  * @author Written by Rosa Venzala (University of Granada)  02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @author Modified by Xavi SolÃ© (La Salle, RamÃ³n Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
@@ -413,10 +413,10 @@ public class Prism {
 	private ConjDatos creaConjunto(Dataset mis_datos) {
         ConjDatos datos = new ConjDatos(); //Creo un nuevo conjunto de datos
         int tam = mis_datos.getnentradas(); //Pillo el nmero de atributos de entrada (suponemos una sola salida [clase])
-        double[] vars = new double[tam]; //Creamos el vector que guardarï¿½los valores de los atributos (aun siendo enteros o enum)
+        double[] vars = new double[tam]; //Creamos el vector que guardara los valores de los atributos (aun siendo enteros o enum)
         double[][] X;
         int[] C;
-        int clase = 0; //Variable que contendrï¿½el valor para la clase
+        int clase = 0; //Variable que contendra el valor para la clase
         X = mis_datos.getX();
         C = mis_datos.getC();
         for (int i = 0; i < mis_datos.getndatos(); i++) {

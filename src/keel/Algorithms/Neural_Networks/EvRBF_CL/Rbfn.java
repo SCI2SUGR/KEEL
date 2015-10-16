@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -745,14 +745,14 @@ public class Rbfn implements Cloneable {
     * @param min Class minimun identifier
     */
     public void classificationTest(double [][] X,int ndatos,int [] yieldedResults,int max,int min) {
-    	//System.out.println( "Test clasificación de red " );
+    	//System.out.println( "Test clasificaciÃ³n de red " );
 			for(int i=0; i<ndatos; ++i){
 					double tmpDoub=this.evalRbfn(X[i])[0];
 					yieldedResults[i]= (int)Math.round(tmpDoub);
 					// yieldedResults[i]= (int)RBFUtils.maxInVector(this.evalRbfn(X[i])); // Victor: 13-Oct-2005. Lo convierto en un metodo para n salidas 
 					if (yieldedResults[i]>max) yieldedResults[i]=max;
 					if (yieldedResults[i]<min) yieldedResults[i]=min;
-					//System.out.println( "Para patrón i: " );
+					//System.out.println( "Para patrÃ³n i: " );
 					//RBFUtils.printArray( X[i] );
 					//System.out.println( " tmpDoub es "+tmpDoub+ " y yieldedResults es "+yieldedResults[i] );
 			} 

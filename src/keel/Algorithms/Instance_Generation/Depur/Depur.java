@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@
 
 /*
 	Depur.java
-	Isaac Triguero Velï¿½zquez.
+	Isaac Triguero Velazquez.
 	
-	Created by Isaac Triguer o Velï¿½zquez  11-8-2008
+	Created by Isaac Triguer o Velazquez  11-8-2008
 	Copyright (c) 2008 __MyCompanyName__. All rights reserved.
 
 */
@@ -161,7 +161,7 @@ public class Depur extends Metodo {
             claseObt = KNN.evaluacionKNN3(k, conjS, conjR, conjN, conjM, clasesS, datosTrain[i], realTrain[i], nominalTrain[i], nulosTrain[i], nClases, distanceEu);
           
             /*
-            System.out.print("Las clases de los k vecinos mï¿½s cercanos son\n");
+            System.out.print("Las clases de los k vecinos mas cercanos son\n");
             for(int m=0;m<k;m++){
             	System.out.print(claseObt[m]+ "  ");
             }

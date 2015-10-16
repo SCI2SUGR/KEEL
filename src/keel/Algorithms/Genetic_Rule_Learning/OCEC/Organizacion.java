@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -158,7 +158,7 @@ public class Organizacion {
   }
 
   /**
-   * Seleccionar N ejemplos de las clases contrarias y ver la combinacion de atributos/valores est· en dichos ejemplos
+   * Seleccionar N ejemplos de las clases contrarias y ver la combinacion de atributos/valores est√° en dichos ejemplos
    * @param N int Numero de ejemplos a comprobar
    */
   public void actualizarUorg(int N){

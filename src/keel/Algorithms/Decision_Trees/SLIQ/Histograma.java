@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@ package keel.Algorithms.Decision_Trees.SLIQ;
 import java.util.Vector;
 
 /**
- * Clase que representa el histograma asociado a los nodos del árbol
+ * Clase que representa el histograma asociado a los nodos del Ã¡rbol
  *
  * @author Francisco Charte Ojeda
  * @version 1.0 (29-12-09)
@@ -44,7 +44,7 @@ public class Histograma {
             izquierda = new Vector<Integer>(),
             derecha = new Vector<Integer>();
 
-    // Número de elementos en cada parte
+    // NÃºmero de elementos en cada parte
     int totalIzquierda, totalDerecha, total;
 
     // Constructor por defecto
@@ -53,7 +53,7 @@ public class Histograma {
     }
 
 
-    // Constructor para un cierto número de clases
+    // Constructor para un cierto nÃºmero de clases
     Histograma(int numeroClases) {
         total = totalIzquierda = totalDerecha = 0;
 
@@ -63,7 +63,7 @@ public class Histograma {
         }
     }
 
-    // Actualización tras procesar una fila de datos
+    // ActualizaciÃ³n tras procesar una fila de datos
     void actualiza(int clase) {
        izquierda.set(clase, izquierda.get(clase) - 1);
        derecha.set(clase, derecha.get(clase) + 1);
@@ -92,7 +92,7 @@ public class Histograma {
         totalDerecha = 0;
     }
 
-    // Calcula el índice Gini a partir del histograma actual
+    // Calcula el Ã­ndice Gini a partir del histograma actual
     double gini() {
         double resultado = 0, frecuencia = 0.0, temporal = 1.0;
 

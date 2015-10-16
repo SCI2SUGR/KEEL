@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -44,7 +44,7 @@ import javax.swing.table.TableColumn;
 
 /**
  * <p>
- * @author Written by Juan Carlos Fern�ndez and Pedro Antonio Guti�rrez (University of C�rdoba) 23/10/2008
+ * @author Written by Juan Carlos Fernández and Pedro Antonio Gutierrez (University of Cordoba) 23/10/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -597,7 +597,7 @@ private void changejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 private void addjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addjButtonActionPerformed
 
     this.counter++;
-    //Se añade la nueva variable
+    //Se aÃ±ade la nueva variable
     this.editDataPanel.getData().getInputs().addElement(new String("newInput" + counter)); //Nueva variable input
     this.editDataPanel.getData().setNentradas(((this.editDataPanel.getData().getNInputs()) + 1));
     this.editDataPanel.getData().setNVariables((this.editDataPanel.getData().getNVariables()) + 1);

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 
 /**
  * <p>
- * @author Written by Diana MartÌn (dmartin@ceis.cujae.edu.cu) 
+ * @author Written by Diana Mart√≠n (dmartin@ceis.cujae.edu.cu) 
  * @version 1.1
  * @since JDK1.6
  * </p>
@@ -892,7 +892,7 @@ public class QAR_CIP_NSGAIIProcess {
 		cur = new Lists();
 		front_size = 0;
 
-		System.err.println ("TamaÒa de new_pop = " + new_pop.size() + "   TamaÒo que deberia tener = " + this.uPopSize);
+		System.err.println ("Tama√±a de new_pop = " + new_pop.size() + "   Tama√±o que deberia tener = " + this.uPopSize);
 
 		temp1 = orig;
 		for (i=0; i< this.uPopSize; i++) {

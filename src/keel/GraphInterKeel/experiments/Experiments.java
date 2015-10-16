@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -36,9 +36,9 @@
  * Modified on 12-may-2009
  * @author Ignacio Robles
  * @author Julian Luengo
- * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of CÃ³rdoba) 7/07/2009
+ * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of CÃÂ³rdoba) 7/07/2009
  * @author Modified by Ana Palacios Jimenez and Luciano Sanchez Ramos 23-4-2010 (University of Oviedo)
- * @author Modified by JoaquÃ­n Derrac 4-7-2010 (University of Granada)
+ * @author Modified by JoaquÃÂ­n Derrac 4-7-2010 (University of Granada)
  * @author Modified by Isaac Triguero 11-3-2014 to include SSL module (University of Granada)
  * @author Modified by Victoria Lopez 15-5-2014 to include a new imbalanced category (University of Granada)
     * @author Modified by Julian Luengo 25-11-2014 to globally store the last chosen path by the user (University of Burgos)
@@ -4972,7 +4972,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         boolean bResState;
         bResState = true;
         //Creo State i progresso per totes les etapes fent & (tela marinera!!)
-        //Comprobo que algun state Ã©s true i guardo a bResState
+        //Comprobo que algun state ÃÂ©s true i guardo a bResState
         return bResState;
     }
 

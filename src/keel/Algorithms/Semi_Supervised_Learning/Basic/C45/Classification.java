@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
 * <p>
-* @author Written by Cristobal Romero (Universidad de C�rdoba) 10/10/2007
+* @author Written by Cristobal Romero (Universidad de Cordoba) 10/10/2007
 * @version 0.1
 * @since JDK 1.5
 *</p>
@@ -129,7 +129,7 @@ public class Classification {
         }
     }
 
-    /** Function to create a new classification with only one value by merging all �
+    /** Function to create a new classification with only one value by merging all 
      * values of given classification.
      *
      * @param toMerge		The original classification to merge.

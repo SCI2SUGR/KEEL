@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -206,9 +206,9 @@ public class ART extends Algorithm
 
 
         /**
-         * Funcion art que construye el ·rbol
+         * Funcion art que construye el √°rbol
          * @param data	Vector que contiene los itemset a clasificar
-         * @param nodo	Nodo del ·rbol a expandir
+         * @param nodo	Nodo del √°rbol a expandir
 	 *
          */
         private void art(Vector data, Node nodo){
@@ -222,7 +222,7 @@ public class ART extends Algorithm
             int maxSupp, supp = 0;
             Vector datos;
 
-            //Mientras el tamaÒo del antecedente sea menor o igual al numero de
+            //Mientras el tama√±o del antecedente sea menor o igual al numero de
             //atributos y el arbol este vacio
             while(k <= MaxSize && nodo.getAttributes().size()==0){
                 

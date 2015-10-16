@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -113,7 +113,7 @@ public class GMCAGenerator extends MCAGenerator
                 for(Prototype p : clusterSet)
                     Tk.remove(p);               
             }
-            //Debug.endsIf(Tk.size()>0, "Tk no está vacío para k = " + k);
+            //Debug.endsIf(Tk.size()>0, "Tk no estÃ¡ vacÃ­o para k = " + k);
         }        
     }
     
@@ -252,7 +252,7 @@ public class GMCAGenerator extends MCAGenerator
         //return isPrototypeConsistent(modified);//last condition to be tested
     }
     
-     //El espíritu es el mismo, eso es lo que cuenta
+     //El espÃ­ritu es el mismo, eso es lo que cuenta
     @Override
     public PrototypeSet reduceSet()
     {
@@ -282,7 +282,7 @@ public class GMCAGenerator extends MCAGenerator
                 //Debug.errorln("Merge de " + + Cp.id + "("+ p.getIndex() + ") y "+ Cq.id +"(" + q.getIndex()+")");
                 Cluster mix = clusters.merge(Cp, Cq);
                 //Debug.errorln("Despues " + clusters.size());
-                //Debug.force(clusters.assignment.containsKey(m), "Mix no está");
+                //Debug.force(clusters.assignment.containsKey(m), "Mix no estÃ¡");
                 //clusters.save();
                 PrototypeSet modified = new PrototypeSet(V);                
                 modified.remove(p);
@@ -349,7 +349,7 @@ public class GMCAGenerator extends MCAGenerator
     	//resultingSet.save(args[1]);
         //System.out.println(resultingSet.toString());
         //int accuracyKNN = KNN.classficationAccuracy(resultingSet, test);
-        //Debug.errorln("Tamaño es " + resultingSet.size());
+        //Debug.errorln("TamaÃ±o es " + resultingSet.size());
         int accuracy1NN = KNN.classficationAccuracy1NN(resultingSet, test);
         generator.showResultsOfAccuracy(Parameters.getFileName(), accuracy1NN, test);
         //generator.showResultsOfAccuracy(accuracyKNN, accuracy1NN, KNN.k(), test);

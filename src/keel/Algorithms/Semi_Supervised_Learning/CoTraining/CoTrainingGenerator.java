@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -264,7 +264,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 
 	  // In order to avoid problems with C45 and NB.
 	  for(int p=0; p<unlabeled.size(); p++){
-		  unlabeled.get(p).setFirstOutput(0); // todos con un valor válido.
+		  unlabeled.get(p).setFirstOutput(0); // todos con un valor vÃ¡lido.
 		  unlabeled_sub1.get(p).setFirstOutput(0);
 		  unlabeled_sub2.get(p).setFirstOutput(0);
 		 // unlabeled.get(p).setIndex(p); // established the index value
@@ -705,7 +705,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 							  
 							  toCleanU2.add(nearFeatures);
 							  toCleanU1.add(pool1.get(nearUnlabeled.getIndex()));
-							//  System.out.println("Añadoo 1");
+							//  System.out.println("AÃ±adoo 1");
 						  }else{
 							  toClean.add(POOL.get(indexClase[j][z]));
 							  toCleanU1.add(new Prototype(pool1.get(POOL.get(indexClase[j][z]).getIndex())));
@@ -727,7 +727,7 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 							  labeled_sub1Prima.add(new Prototype(nearFeatures)); // to the 1st classifier
 							  toCleanU1.add(nearFeatures);
 							  toCleanU2.add(pool2.get(nearUnlabeled.getIndex()));
-							//  System.out.println("Añadoo 2");
+							//  System.out.println("AÃ±adoo 2");
 						  }else{
 							  toClean.add(POOL.get(indexClase2[j][z]));
 							  toCleanU1.add(new Prototype(pool1.get(POOL.get(indexClase2[j][z]).getIndex())));

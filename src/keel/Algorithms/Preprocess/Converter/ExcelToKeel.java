@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -44,17 +44,17 @@ import jxl.*;
  * <b> ExcelToKeel </b>
  * </p>
  *
- * Clase utilizada para leer datos localizados en hojas de cálculo con formato
+ * Clase utilizada para leer datos localizados en hojas de cÃ¡lculo con formato
  * microsoft Excel y convertirlos a formato keel.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class ExcelToKeel extends Importer {
 
     /*
      * Constructor de la Clase ExcelToKeel. Inicializa los valores
-     * de la variable miembro nullValue (valor nulo) con el valor del parámetro
+     * de la variable miembro nullValue (valor nulo) con el valor del parÃ¡metro
      * nullValueUser.
      *
      * @param nullValueUser. Variable de tipo String con el valor nulo del fichero Excel.
@@ -104,7 +104,7 @@ public class ExcelToKeel extends Importer {
 
             numAttributes = numColumns;
 
-//Reservamos memoria para almacenar la definición de los atributos y de los datos
+//Reservamos memoria para almacenar la definiciÃ³n de los atributos y de los datos
             String[][] values = new String[numRows][numColumns];
             attribute = new Attribute[numAttributes];
             data = new Vector[numAttributes];
@@ -151,7 +151,7 @@ public class ExcelToKeel extends Importer {
                 m = p.matcher(element);
                 element = m.replaceAll(" ");
 
-                // Elimino los espacios en blanco de los nombres de los atributos y pongo en manúscula
+                // Elimino los espacios en blanco de los nombres de los atributos y pongo en manÃºscula
                 // la primera letra de cada palabra.
                 if (element.contains(" ")) {
                     StringTokenizer tokenUcfirts = new StringTokenizer(element, " ");
@@ -245,12 +245,12 @@ public class ExcelToKeel extends Importer {
 
 
                     if (type == NOMINAL) {
-                        p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                        p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                         m = p.matcher(element);
 
                         /**
                          * Cambio hecho para que los nominales con espacios en blanco se dejen
-                         * con subrayado bajo "_" y sin comillas simples. Se añade la siguiente linea
+                         * con subrayado bajo "_" y sin comillas simples. Se aÃ±ade la siguiente linea
                          */
                         element = element.replace(" ", "_");
 
@@ -321,8 +321,8 @@ public class ExcelToKeel extends Importer {
 
 
 
-            /* Insertamos el nombre de la relación que será el mismo que el del
-             * fichero pasado, pero sin extensión*/
+            /* Insertamos el nombre de la relaciÃ³n que serÃ¡ el mismo que el del
+             * fichero pasado, pero sin extensiÃ³n*/
 
             nameRelation = fileInput.getName();
             p = Pattern.compile("\\.[A-Za-z]+");

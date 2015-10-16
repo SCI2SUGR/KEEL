@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@ package keel.Algorithms.Rule_Learning.Ritio;
  *
  * <p>Company: KEEL </p>
  *
- * @author Jesús Jiménez
+ * @author JesÃºs JimÃ©nez
  * @version 1.0
  */
 
@@ -155,7 +155,7 @@ public class Algorithm {
                         contador++; //contamos
                     }                    
                 }
-                porcentaje = (Double)(contador/nfilas); //filas en las que esté 'valor'                
+                porcentaje = (Double)(contador/nfilas); //filas en las que estÃ© 'valor'                
                 lista_aux.add(porcentaje);
                 contador=0;
             }
@@ -172,7 +172,7 @@ public class Algorithm {
             
             for (int j=0;j<porcentajes_salida.get(i).size();j++){
                 p = porcentajes_salida.get(i).get(j);
-                if (p!=0) aux = -1*p*(Math.log10(p)/Math.log10(2)) + aux; //En aux acumulo lo del paréntesis
+                if (p!=0) aux = -1*p*(Math.log10(p)/Math.log10(2)) + aux; //En aux acumulo lo del parÃ©ntesis
             }
             porcentaje = porcentajes.get(i);
             entropia = entropia + porcentaje*aux; //Multiplicamos y sumamos al resto
@@ -204,7 +204,7 @@ public class Algorithm {
                entropia = aux_entropia;
           }           
        }       
-       //System.out.println("El atributo con mayor entropia es el número "+atrib_max+" con una entropia de "+entropia); 
+       //System.out.println("El atributo con mayor entropia es el nÃºmero "+atrib_max+" con una entropia de "+entropia); 
        return atrib_max;
     }
     
@@ -245,7 +245,7 @@ public class Algorithm {
           
           
            if(menos_relevante_anterior>=0){
-                atributos.add(menos_relevante_anterior);//lo agregamos ahora, para que no afecte al cálculo de la máxima entropía
+                atributos.add(menos_relevante_anterior);//lo agregamos ahora, para que no afecte al cÃ¡lculo de la mÃ¡xima entropÃ­a
                 retain=true; //Si lo agregamos es porque nos encontramos en un retain_group, por tanto activamos el flag, 
                              //necesario para saber contra que filas calculamos la consistencia
            }
@@ -256,7 +256,7 @@ public class Algorithm {
            atributos_remove_group = (LinkedList<Integer>) atributos.clone(); //Al remove_group le quitamos el menos relevante          
            
            
-           //Calculamos ahora qué fila va a cada grupo:
+           //Calculamos ahora quÃ© fila va a cada grupo:
            if(!retain){ //si no es retain_group (es remove_group) hacemos el consistencia() solo con las filas actuales
                for (int i=0;i<filas.size();i++){ //Para cada fila
                    if (consistencia(filas,atributos,filas.get(i))){
@@ -294,12 +294,12 @@ public class Algorithm {
            }else{
                LinkedList<Integer> atributos_aux = (LinkedList<Integer>)atributos_remove_group.clone();
                
-               //No mandamos el menos_relevante porque al ser un remove_group no lo necesitará más
+               //No mandamos el menos_relevante porque al ser un remove_group no lo necesitarÃ¡ mÃ¡s
                TreeMap<Integer,LinkedList<Integer>> RS1 = partition(remove_group,atributos_remove_group,-1,level);
                
                //Ahora en vez de mandar los 'atributos_retain_group', mandamos por un lado los del remove, y aparte el menos relevante
-               //Así conseguimos que el menos relevante no se tenga en cuenta para calcular la entropía.
-               //Después se unirán (porque 'menos_relevante' es > 0) y se continuará con normalidad.
+               //AsÃ­ conseguimos que el menos relevante no se tenga en cuenta para calcular la entropÃ­a.
+               //DespuÃ©s se unirÃ¡n (porque 'menos_relevante' es > 0) y se continuarÃ¡ con normalidad.
                TreeMap<Integer,LinkedList<Integer>> RS2 = partition(retain_group,atributos_aux,menos_relevante,level);
                               
                RS1.putAll(RS2); //Unimos RS1 con RS2

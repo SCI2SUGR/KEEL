@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -147,7 +147,7 @@ public class Ecm {
 			 for (i=0;i<Bs.getN_variables();i++)
 				 this.Bs.setN_etiquetas(i,0);
 			
-			 /* ExtracciÛn de la BD */
+			 /* Extracci√≥n de la BD */
 			int k;
 			int  temp, num_etiq;
 			double ancho;
@@ -244,7 +244,7 @@ public class Ecm {
 				   			((Difuso) Bs.getBDatos(j,k+1)).set_difuso(Dtemp);
 				      	}
 			   
-				/* ExtracciÛn de la BR */
+				/* Extracci√≥n de la BR */
 			   for (j=0; j<Bs.getN_variables(); j++)
 				      for (i=0; i<Bs.getN_reglas(); i++) {
 				         for (k=0; k<Bs.getN_etiquetas(j); k++)

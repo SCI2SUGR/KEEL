@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,8 +31,8 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 
 /**
  * <p>
- * @author Alberto Fern·ndez
- * @author Modified by Diana MartÌn (dmartin@ceis.cujae.edu.cu)
+ * @author Alberto Fern√°ndez
+ * @author Modified by Diana Mart√≠n (dmartin@ceis.cujae.edu.cu)
  * @version 1.1
  * @since JDK1.6
  * </p>

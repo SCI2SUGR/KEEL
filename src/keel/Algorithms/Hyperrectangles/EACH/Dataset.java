@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @author Modified by Xavi SolÃ© (La Salle, RamÃ³n Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
@@ -41,7 +41,7 @@ package keel.Algorithms.Hyperrectangles.EACH;
 
 /**
 
- * <p>Descripciï¿½: Contiene los metodos de lectura del fichero de train y test</p>
+ * <p>Descripcion: Contiene los metodos de lectura del fichero de train y test</p>
  * <p>Copyright: Copyright Rosa (c) 2007</p>
  * <p>Empresa: Mi Casa</p>
  * @author Rosa Venzala
@@ -694,7 +694,7 @@ public class Dataset {
             }
         }
         else{
-            out = null; //luego guardarï¿½el valor de las clases numï¿½icas
+            out = null; //luego guardara el valor de las clases numericas
         }
         return out;
     }

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -124,7 +124,7 @@ public class RSPGenerator extends PrototypeGenerator {
 	 //this.k = 7;
 	  // Elimination rule kohonen
 	  int majority = 3/2 + 1;
-	 // System.out.println("Mayorï¿½a " + majority);
+	 // System.out.println("Mayoria " + majority);
 
 
 	  int toClean[] = new int [T.size()];
@@ -181,15 +181,15 @@ public PrototypeSet reduceSet()
 	  trainingDataSet = new PrototypeSet(ENN(trainingDataSet));
 	  /*
 	   * RSP3=
-	  En esta aproximaciï¿½n, el parï¿½metro inicial 'b' no es necesario. Siempre y cuando dentro
-	  de un bloque tengamos mezcla entre dos o mï¿½s clases, ese bloque se va a dividir. Por
-	  tanto, no se conoce apriori el nï¿½mero de bloques final.
+	  En esta aproximacion, el parametro inicial 'b' no es necesario. Siempre y cuando dentro
+	  de un bloque tengamos mezcla entre dos o mas clases, ese bloque se va a dividir. Por
+	  tanto, no se conoce apriori el numero de bloques final.
 
 	  Por ejemplo, suponte que tienes un bloque con 5 ejemplos de la clase A y 4 de la B.
-	  Divides, calculas los dos mï¿½s alejados y consigues un subbloque con 3 ejemplos de la
+	  Divides, calculas los dos mas alejados y consigues un subbloque con 3 ejemplos de la
 	  clase A y los 4 de la B, mientras que el otro tiene el resto (2 de la clase A). El
-	  primer bloque se tiene que dividir de nuevo (cuando le toque, dependerï¿½ del solapamiento
-	  y/o diï¿½metro comparado con los demï¿½s). El segundo ya es homogï¿½neo.
+	  primer bloque se tiene que dividir de nuevo (cuando le toque, dependeria del solapamiento
+	  y/o diametro comparado con los demas). El segundo ya es homogeneo.
 	  */
 	  
 	  if(this.numberOfBlocks == 0){
@@ -280,9 +280,9 @@ public PrototypeSet reduceSet()
           Pair<Prototype,Prototype> diameterPoints = null;
           
           
-         /* Esto solo modifica el punto 9, la selecciï¿½n del bloque mï¿½s apropiado entre los que
+         /* Esto solo modifica el punto 9, la sEleccion del bloque mas apropiado entre los que
           tienes disponibles.
-          Elegir entre ovelapping o distancia mï¿½s lejanos.
+          Elegir entre ovelapping o distancia mas lejanos.
           
            */
           for(PrototypeSet q : I)
@@ -334,7 +334,7 @@ public PrototypeSet reduceSet()
     		  //Calculate centroid.
     		  if(aux.size()>0){ // Checking there is this class in the subset.
 	    		  Prototype averaged = aux.avg();
-	    		  result.add(averaged.formatear()); // FORMATEANDO AQUï¿½
+	    		  result.add(averaged.formatear()); // FORMATEANDO AQUI
     		  }
                     
     	  }

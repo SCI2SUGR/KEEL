@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -33,11 +33,11 @@
 
 //
 
-//  Juli·n Luengo MartÌn
+//  Juli√°n Luengo Mart√≠n
 
 //
 
-//  Created by Juli·n Luengo MartÌn Julio 2007
+//  Created by Juli√°n Luengo Mart√≠n Julio 2007
 
 //  Proyecto KEEL
 
@@ -625,7 +625,7 @@ public class LVQ extends Metodo {
 
 		if (Attributes.getOutputNumAttributes() < 1) {
 			System.err
-					.println("This dataset haven¥t outputs, so it not corresponding to a classification problem.");
+					.println("This dataset haven¬¥t outputs, so it not corresponding to a classification problem.");
 			System.exit(-1);
 		} else if (Attributes.getOutputNumAttributes() > 1) {
 			System.err.println("This dataset have more of one output.");
@@ -681,7 +681,7 @@ public class LVQ extends Metodo {
 		/*Check if dataset corresponding with a classification problem*/
 
 		if (Attributes.getOutputNumAttributes() < 1) {
-			throw new CheckException ("This dataset haven¥t outputs, so it not corresponding to a classification problem.");
+			throw new CheckException ("This dataset haven¬¥t outputs, so it not corresponding to a classification problem.");
 		} else if (Attributes.getOutputNumAttributes() > 1) {
 			throw new CheckException ("This dataset have more of one output.");
 		}

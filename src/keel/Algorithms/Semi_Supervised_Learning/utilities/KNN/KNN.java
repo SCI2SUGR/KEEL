@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -219,7 +219,7 @@ public class KNN
                 i++;                
                 if(!classes.containsKey(class_n))
                 {
-                    if(maximumKey==-1)//Para el caso de la asignación inicial
+                    if(maximumKey==-1)//Para el caso de la asignaciÃ³n inicial
                         maximumKey = class_n;
                     classes.put(class_n, 1);
                 
@@ -475,7 +475,7 @@ public class KNN
                  i++;                
                 if(!classes.containsKey(class_n))
                 {
-                    if(maximumKey==-1){//Para el caso de la asignación inicial
+                    if(maximumKey==-1){//Para el caso de la asignaciÃ³n inicial
                         maximumKey = class_n;
                         predicted[index] = (int)maximumKey;
                     }
@@ -541,7 +541,7 @@ public class KNN
                  i++;                
                 if(!classes.containsKey(class_n))
                 {
-                    if(maximumKey==-1){//Para el caso de la asignación inicial
+                    if(maximumKey==-1){//Para el caso de la asignaciÃ³n inicial
                         maximumKey = class_n;
                         predicted[index] = (int)maximumKey;
                     }

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ public abstract class Sort {
 	/**
 	 * Actual implementation of the randomized quick sort used to sort a population based on a particular objective chosen
 	 * @param pop population to sort
-	 * @param objcount objetive´s number
+	 * @param objcount objetiveÂ´s number
 	 * @param obj_array objetive's array
 	 * @param left left index
 	 * @param right right index
@@ -93,7 +93,7 @@ public abstract class Sort {
 	/**
 	 * Randomized quick sort routine to sort a population based on a particular objective chosen 
 	 * @param pop population to sort
-	 * @param objcount objetive´s number
+	 * @param objcount objetiveÂ´s number
 	 * @param obj_array objetive's array
 	 * @param obj_array_size size of objetive's array
 	 */	

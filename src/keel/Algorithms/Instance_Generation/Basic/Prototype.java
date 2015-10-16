@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -159,7 +159,7 @@ public class Prototype
     	//this.inputs = inst.getNormalizedInputValues();
     	this.inputs = inst.getAllInputValues();
         //this.print();
-        //this.inputs = inst.getAllInputValues();              //Cambio para normalizaci�n.
+        //this.inputs = inst.getAllInputValues();              //Cambio para normalizacion.
     	this.outputs = inst.getNormalizedOutputValues();
         this.index = UNKNOW_INDEX;
         //System.out.println("INTPUTS");
@@ -763,7 +763,7 @@ public class Prototype
         }
         else
         {
-            //Como ya está desnormalizado, sólo extraemos el índice del atributo nominal
+            //Como ya estÃ¡ desnormalizado, sÃ³lo extraemos el Ã­ndice del atributo nominal
             indexOfNominalAttr = (int)(Math.round(inputs[i]));
         }
         return Attributes.getInputAttribute(i).getNominalValue(indexOfNominalAttr);
@@ -807,8 +807,8 @@ public class Prototype
                 v.add((double)i);
             return v;
         }
-        //¡Es real el atributo de salida!
-        //Incluye los extremos solamente ¡Es erroneo!
+        //Â¡Es real el atributo de salida!
+        //Incluye los extremos solamente Â¡Es erroneo!
         ArrayList<Double> v = new ArrayList<Double>();
         double max = a[0].getMaxAttribute();
         double min = a[0].getMinAttribute();

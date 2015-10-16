@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -36,13 +36,13 @@ import keel.Dataset.Attributes;
  * Clase base del algoritmo a implementar
  */
 public abstract class Algorithm {
-	/** Nombre del archivo que contiene la información para construir el modelo. */
+	/** Nombre del archivo que contiene la informaciÃ³n para construir el modelo. */
 	protected static String modelFileName = "";	 
 	
-	/** Nombre del archivo que contiene la información a usar para entrenamiento. */
+	/** Nombre del archivo que contiene la informaciÃ³n a usar para entrenamiento. */
 	protected static String trainFileName = "";	 
 	
-	/** Nombre del archivo que contiene la información a usar para pruebas. */
+	/** Nombre del archivo que contiene la informaciÃ³n a usar para pruebas. */
 	protected static String testFileName = "";	
 	
 	/** Nombre del archivo de salida del entrenamiento. */
@@ -75,7 +75,7 @@ public abstract class Algorithm {
 	/** Momento en que se pone en marcha el algoritmo. */
 	protected long startTime = System.currentTimeMillis();
 	
-	/** Método de inicialización del tokenizador.
+	/** MÃ©todo de inicializaciÃ³n del tokenizador.
 	 * 
 	 * @param tokenizer		El tokenizador.
 	 */
@@ -95,10 +95,10 @@ public abstract class Algorithm {
  	}
   	 
 
- 	/** Método para obtener el nombre de la relación y los nombres, tipos y posibles valores
+ 	/** MÃ©todo para obtener el nombre de la relaciÃ³n y los nombres, tipos y posibles valores
      *  de cada atributo del dataset.
   	 * 
-  	 * @return El nombre y los atributos de la relación.
+  	 * @return El nombre y los atributos de la relaciÃ³n.
   	 */
 	protected String getHeader() {
 		String header;		
@@ -112,27 +112,27 @@ public abstract class Algorithm {
 		return header;
 	}	
 	
-	/** Método para leer las opciones del archivo de ejecución y establecer los valores de configuración.
+	/** MÃ©todo para leer las opciones del archivo de ejecuciÃ³n y establecer los valores de configuraciÃ³n.
 	 * 
-	 * @param options 		El StreamTokenizer que lee el archivo de parámetros.
+	 * @param options 		El StreamTokenizer que lee el archivo de parÃ¡metros.
 	 * 
 	 * @throws Exception	Si el formato del archivo no es correcto.
 	 */ 
 	protected abstract void setOptions(StreamTokenizer options)  throws Exception;
 	
-    /** Evalúa el algoritmo y escribe los valores en el archivo.
+    /** EvalÃºa el algoritmo y escribe los valores en el archivo.
      * 
      * @exception 	Si no es posible escribir en el archivo.
      */
 	protected abstract void printResult() throws IOException;
 	
-    /** Evalúa el dataset de pruebas y escribe los resultdos en un archivo.
+    /** EvalÃºa el dataset de pruebas y escribe los resultdos en un archivo.
      * 
      * @exception 	Si no es posible escribir en el archivo.
      */
 	protected abstract void printTest() throws IOException;
 	
-    /** Evalúa el dataset de entrenamiento y escribe los resultados en el archivo.
+    /** EvalÃºa el dataset de entrenamiento y escribe los resultados en el archivo.
      * 
      * @exception 	Si no es posible escribir en el archivo.
      */

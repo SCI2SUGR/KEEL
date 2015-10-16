@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
  * <p>
- * @author Written by CristÛbal J. Carmona (University of Jaen) 11/08/2008
+ * @author Written by Crist√≥bal J. Carmona (University of Jaen) 11/08/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -526,7 +526,7 @@ public class IndCAN extends Individual {
 
         contents = "DistanceCrowding "+ this.getCrowdingDistance()+ "\n";
         contents+= "Evaluated - " + evaluado + "\n";
-        contents+= "EvaluaciÛn Generado " + n_eval + "\n\n";
+        contents+= "Evaluaci√≥n Generado " + n_eval + "\n\n";
         if (nFile=="")
             System.out.print (contents);
         else

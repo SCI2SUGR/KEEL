@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -33,8 +33,8 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.OptimLocal;
 /**
  * Main class of the Ameba algorithm.
  * <p>
- * @author Written by Luciano S·nchez (University of Oviedo) 03/03/2004
- * @author Modified by M.R. Su·rez (University of Oviedo) 18/12/2008
+ * @author Written by Luciano S√°nchez (University of Oviedo) 03/03/2004
+ * @author Modified by M.R. Su√°rez (University of Oviedo) 18/12/2008
  * @author Modified by Enrique A. de la Cal (University of Oviedo) 21/12/2008
  * @version 1.0
  * @since JDK1.5

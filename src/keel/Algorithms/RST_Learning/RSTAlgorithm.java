@@ -5,11 +5,11 @@
 
 	Copyright (C) 2004-2010
 	
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
-    S. GarcÌa (sglopez@ujaen.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
+    S. Garc√≠a (sglopez@ujaen.es)
     F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
+    L. S√°nchez (luciano@uniovi.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 
@@ -35,7 +35,7 @@
  * Main class for RST methods. Provides a basic framework for reading
  * and preprocessing data, conduct the experiment and report results
  * 
- * @author Written by JoaquÌn Derrac (University of Granada) 20/04/2010 
+ * @author Written by Joaqu√≠n Derrac (University of Granada) 20/04/2010 
  * @version 1.0 
  * @since JDK1.5
  * 
@@ -267,7 +267,7 @@ public abstract class RSTAlgorithm {
 	    //Check if dataset corresponding with a classification problem
 	    
 	    if (Attributes.getOutputNumAttributes() < 1) {
-			throw new DataException ("This dataset haven¥t outputs, so it not corresponding to a classification problem.");
+			throw new DataException ("This dataset haven¬¥t outputs, so it not corresponding to a classification problem.");
 	    } else if (Attributes.getOutputNumAttributes() > 1) {
 			throw new DataException ("This dataset have more of one output.");
 	    }
@@ -341,7 +341,7 @@ public abstract class RSTAlgorithm {
 	    //Check if dataset corresponding with a classification problem
 	    
 	    if (Attributes.getOutputNumAttributes() < 1) {
-			throw new DataException ("This dataset haven¥t outputs, so it not corresponding to a classification problem.");
+			throw new DataException ("This dataset haven¬¥t outputs, so it not corresponding to a classification problem.");
 	    } else if (Attributes.getOutputNumAttributes() > 1) {
 			throw new DataException ("This dataset have more of one output.");
 	    }
@@ -416,7 +416,7 @@ public abstract class RSTAlgorithm {
 	    //Check if dataset corresponding with a classification problem
 	    
 	    if (Attributes.getOutputNumAttributes() < 1) {
-			throw new DataException ("This dataset haven¥t outputs, so it not corresponding to a classification problem.");
+			throw new DataException ("This dataset haven¬¥t outputs, so it not corresponding to a classification problem.");
 	    } else if (Attributes.getOutputNumAttributes() > 1) {
 			throw new DataException ("This dataset have more of one output.");
 	    }

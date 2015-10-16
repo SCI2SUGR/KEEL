@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -67,7 +67,7 @@ public class Itemset {
         dataset = null;
     }
 
-    /** Devuelve el ï¿½ndice del atributo de clase.
+    /** Devuelve el indice del atributo de clase.
      * 
      */
     public int classIndex() {
@@ -78,7 +78,7 @@ public class Itemset {
         	return dataset.getClassIndex();
     }
 
-    /** Mï¿½todo que comprueba si falta el atributo de clase.
+    /** Metodo que comprueba si falta el atributo de clase.
      * 
      * @return	True si falta el valor del atributo de clase.
      */
@@ -89,7 +89,7 @@ public class Itemset {
         	return isMissing(classIndex());
     }
 
-    /** Devuelve el ï¿½ndice del valor de la clase
+    /** Devuelve el indice del valor de la clase
      *
      */
     public double getClassValue() {
@@ -100,7 +100,7 @@ public class Itemset {
         	return getValue(classIndex());
     }
 
-    /** Devuelve el nï¿½mero de valores de clase.
+    /** Devuelve el numero de valores de clase.
      * 
      */
     public int numClasses() {
@@ -111,7 +111,7 @@ public class Itemset {
         	return dataset.numClasses();
     }
 
-    /** Devuelve el atributo correspondiente al ï¿½ndice indicado.
+    /** Devuelve el atributo correspondiente al indice indicado.
      * 
      */
     public Attribute getAttribute(int index) {
@@ -122,9 +122,9 @@ public class Itemset {
         	return dataset.getAttribute(index);
     }
 
-    /** Mï¿½todo para establecer un valor.
+    /** Metodo para establecer un valor.
      * 
-     * @param index		ï¿½ndice del atributo.
+     * @param index		indice del atributo.
      * @param value		Valor.
      */
     public void setValue(int index, double value) {
@@ -142,7 +142,7 @@ public class Itemset {
         return values[index];
     }
 
-    /** Mï¿½todo para establecer el peso.
+    /** Metodo para establecer el peso.
      * 
      * @param w		Peso.
      */
@@ -164,7 +164,7 @@ public class Itemset {
         return dataset;
     }
 
-    /** Mï¿½todo para establecer el dataset.
+    /** Metodo para establecer el dataset.
      * 
      * @param data	El dataset.
      */
@@ -172,9 +172,9 @@ public class Itemset {
         dataset = data;
     }
 
-    /** Mï¿½todo para comprobar si falta un valor.
+    /** Metodo para comprobar si falta un valor.
      * 
-     * @param index	ï¿½ndice del atributo a comprobar.
+     * @param index	indice del atributo a comprobar.
      * 
      * @return		True si falta el valor del atributo. False en caso contrario.
      */
@@ -185,7 +185,7 @@ public class Itemset {
         	return false;
     }
 
-    /** Mï¿½todo para comprobar si falta un valor dado.
+    /** Metodo para comprobar si falta un valor dado.
      * 
      * @param val	El valor a comprobar.
      * 
@@ -202,7 +202,7 @@ public class Itemset {
         return MISSING_VALUE;
     }
 
-    /** Mï¿½todo para establecer como ausente el valor de clase.
+    /** Metodo para establecer como ausente el valor de clase.
      * 
      */
     public void setClassMissing() {
@@ -212,15 +212,15 @@ public class Itemset {
         	setMissing(classIndex());
     }
 
-    /** Mï¿½todo para establecer un valor como ausente.
+    /** Metodo para establecer un valor como ausente.
      * 
-     * @param index	El ï¿½ndice del atributo.
+     * @param index	El indice del atributo.
      */
     public final void setMissing(int index) {
         setValue( index, MISSING_VALUE );
     }
     
-    /** Mï¿½todo para copiar un conjunto de elementos.
+    /** Metodo para copiar un conjunto de elementos.
      * 
      * @return	El conjunto de elementos creado.
      */
@@ -231,7 +231,7 @@ public class Itemset {
         return result;
     }
     
-    /** Mï¿½todo para imprimir el conjunto de elementos.
+    /** Metodo para imprimir el conjunto de elementos.
      * 
      */
     @Override

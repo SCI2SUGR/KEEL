@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -322,10 +322,10 @@ protected PrototypeSet initDataSet()
 	  
   
 	  /*
-	   * 	la idea es ejecutar el k-medias C veces, siendo C el nï¿½mero de clases. Coges todos los
+	   * 	la idea es ejecutar el k-medias C veces, siendo C el numero de clases. Coges todos los
 			ejemplos de la clase 1 por separado, y ejecutas k-medias con un valor k entre 10 y 20
-			(dependerï¿½ del nï¿½mero de ejemplos que haya en esa clase). Te quedas con los k centroides
-			finales y repites el proceso con la segunda clase. Asï¿½ en todas las clases.
+			(dependeria del numero de ejemplos que haya en esa clase). Te quedas con los k centroides
+			finales y repites el proceso con la segunda clase. Asi en todas las clases.
 
 	   */
 	  for(int i= 0; i< this.numberOfClass; i++){
@@ -367,7 +367,7 @@ protected PrototypeSet initDataSet()
 	  //k = 20;
 	  // Elimination rule kohonen
 	  int majority = this.k / 2 + 1;
-	  //System.out.println("Mayorï¿½a " + majority);
+	  //System.out.println("Mayoria " + majority);
 
 
 	  int toClean[] = new int [initial.size()];
@@ -426,12 +426,12 @@ protected PrototypeSet initDataSet()
 	  
 	  
 	  // Van de Merckt elimination rule.
-	  /*  Para hacer esto, los prototipos se reordenan en funciï¿½n del tamaï¿½o de su correspondiente cluster.
+	  /*  Para hacer esto, los prototipos se reordenan en funcion del tamano de su correspondiente cluster.
 	   *-	Tercero,  una segunda regla para eliminar propuesta por Van de Merckt descarta prototipos
-	   * redundantes. (Aquellos que se pueden eliminar sin que decrezca la calidad de clasificaciï¿½n en 
-	   * el TS.) Para hacer esto, los prototipos se reordenan en funciï¿½n del tamaï¿½o de su correspondiente 
-	   * cluster. (nï¿½mero de patrones atraï¿½dos en el TS)., y a continuaciï¿½n se en ese orden creciente
-	   *  se calcula el ï¿½ndice de clasificaciï¿½n en Training, poniendo y quitando prototipos.
+	   * redundantes. (Aquellos que se pueden eliminar sin que decrezca la calidad de clasificacion en 
+	   * el TS.) Para hacer esto, los prototipos se reordenan en funcion del tamano de su correspondiente 
+	   * cluster. (numero de patrones atraidos en el TS)., y a continuacion se en ese orden creciente
+	   *  se calcula el indice de clasificacion en Training, poniendo y quitando prototipos.
 		Los prototipos que no contribuyen a una mejora se eliminan.*/
 	  
 	  
@@ -439,7 +439,7 @@ protected PrototypeSet initDataSet()
 	
 	  // sort descending order b distance of an instance to this nearest unlike neigbor.
 
-	  //Calculo el nï¿½mero de prototipos en cada cluster, por clase.
+	  //Calculo el numero de prototipos en cada cluster, por clase.
 		/*  int counter[] = new int[this.numberOfInitialCentroids];
 		  
 		 

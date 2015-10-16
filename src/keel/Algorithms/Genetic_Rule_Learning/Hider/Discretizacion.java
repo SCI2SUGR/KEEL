@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -348,7 +348,7 @@ public class Discretizacion {
            //Ordenamos el vector por el atributo i
      Collections.sort(bd.getBase(),new AtributoComparator(i,BaseDatos.getClase()));
 
-        //AÒadimos el primer elemento a los intervalos
+        //A√±adimos el primer elemento a los intervalos
            Corte cInicial=new Corte((Integer)((Vector)bd.getBase().get(0)).get(BaseDatos.getClase()),(Double)((Vector)bd.getBase().get(0)).get(i));
            cortesAtributo.add(cInicial);
 
@@ -385,18 +385,18 @@ public class Discretizacion {
                 Corte c=new Corte(clasej1,corte,bondadIntervalo);
                 cortesAtributo.add(c);
 
-                //El corte es tambiÈn el valor inicial del siguiente intervalo
+                //El corte es tambi√©n el valor inicial del siguiente intervalo
                 iniIntervaloActual=corte.doubleValue();
                }
               }
-        //AÒadimos el ˙ltimo elemento a los intervalos
+        //A√±adimos el √∫ltimo elemento a los intervalos
               Double corteFin=(Double)((Vector)bd.getBase().get(bd.getNumEjemplos()-1)).get(i);
      double bondadIntervalo=bondad(i,iniIntervaloActual,corteFin.doubleValue());
         Corte cFinal=new Corte((Integer)((Vector)bd.getBase().get(bd.getNumEjemplos()-1)).get(BaseDatos.getClase()),corteFin,bondadIntervalo);
            cortesAtributo.add(cFinal);
 
-           //AÒadimos el vector de cortes del atributo al vector general de cortes
-           //El tamaÒo del vector general ser· el n˙mero de atributos
+           //A√±adimos el vector de cortes del atributo al vector general de cortes
+           //El tama√±o del vector general ser√° el n√∫mero de atributos
            cortes.add(cortesAtributo);
           }
       }
@@ -407,7 +407,7 @@ public class Discretizacion {
 
 
     /**
-     * Inicializa los cortes para la discretizaciÛn
+     * Inicializa los cortes para la discretizaci√≥n
      * @param i
      * @throws Exception
      */
@@ -925,8 +925,8 @@ public class Discretizacion {
       private void obtieneFrecuencias(int campo)
       {
 
-      //El vector est· ordenado por los valores del campo 'campo'
-       //asÌ q nos permite utilizar la b˙squeda binaria
+      //El vector est√° ordenado por los valores del campo 'campo'
+       //as√≠ q nos permite utilizar la b√∫squeda binaria
 
      double actual;
      double anterior=-1;
@@ -957,7 +957,7 @@ public class Discretizacion {
          valorAnt=0;
         }
 
-        frecuencias.setElementAt(new Integer(valorAnt+1),clase);  //Apuntamos una ocurrencia m·s de la clase
+        frecuencias.setElementAt(new Integer(valorAnt+1),clase);  //Apuntamos una ocurrencia m√°s de la clase
 
         anterior=actual;
 
@@ -966,7 +966,7 @@ public class Discretizacion {
        }
        else
        {
-        //AÒadimos el vector de frecuencias para
+        //A√±adimos el vector de frecuencias para
         bd.addFrecuencias(frecuencias);
         //Comenzamos con un vector nuevo
         frecuencias=new Vector();
@@ -982,7 +982,7 @@ public class Discretizacion {
          valorAnt=0;
         }
 
-        frecuencias.setElementAt(new Integer(valorAnt+1),clase);  //Apuntamos una ocurrencia m·s de la clase
+        frecuencias.setElementAt(new Integer(valorAnt+1),clase);  //Apuntamos una ocurrencia m√°s de la clase
 
         anterior=actual;
 
@@ -997,7 +997,7 @@ public class Discretizacion {
         frecuencias.setSize(clase+1);
        valorAnt=0;
 
-       frecuencias.setElementAt(new Integer(valorAnt+1),clase);  //Apuntamos una ocurrencia m·s de la clase
+       frecuencias.setElementAt(new Integer(valorAnt+1),clase);  //Apuntamos una ocurrencia m√°s de la clase
 
        anterior=actual;
 

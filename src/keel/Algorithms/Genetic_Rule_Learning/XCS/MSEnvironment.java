@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,8 @@
 
 /**
  * <p>
- * @author Written by Albert Orriols (La Salle, RamÛn Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi SolÈ ((La Salle, RamÛn Llull University - Barcelona) 03/12/2008
+ * @author Written by Albert Orriols (La Salle, Ram√≥n Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Sol√© ((La Salle, Ram√≥n Llull University - Barcelona) 03/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>

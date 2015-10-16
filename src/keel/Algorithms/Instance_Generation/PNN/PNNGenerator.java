@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -147,13 +147,13 @@ public class PNNGenerator extends PrototypeGenerator
         {            
             Prototype arbitraryPoint = B.removeRandom();
             A.add(arbitraryPoint);
-            //Debug.println("Iteración " + (i++));
+            //Debug.println("IteraciÃ³n " + (i++));
             counterOfMerges = 0;
             //k=0;
             MatrixOfDistances dist = new MatrixOfDistances(A,B);
             while(B.size()>0)
             {
-                //Debug.println("SubIteración " + (k++));    
+                //Debug.println("SubIteraciÃ³n " + (k++));    
                 Pair<Prototype,Prototype> nearest = nearestPrototypesIn(A,B,dist);
                 Prototype p = nearest.first();
                 Prototype q = nearest.second();                
@@ -221,13 +221,13 @@ public class PNNGenerator extends PrototypeGenerator
         {            
             Prototype arbitraryPoint = B.removeRandom();
             A.add(arbitraryPoint);
-            //Debug.println("Iteración " + (i++));
+            //Debug.println("IteraciÃ³n " + (i++));
             counterOfMerges = 0;
             //k=0;
             MatrixOfDistances dist = new MatrixOfDistances(A,B);
             while(B.size()>0  &&  !sizeReached)
             {
-                //Debug.println("SubIteración " + (k++));    
+                //Debug.println("SubIteraciÃ³n " + (k++));    
                 //Debug.errorln("A.size(): " + A.size() + " de " + numberOfPrototypes);
                 Pair<Prototype,Prototype> nearest = nearestPrototypesIn(A,B,dist);
                 Prototype p = nearest.first();

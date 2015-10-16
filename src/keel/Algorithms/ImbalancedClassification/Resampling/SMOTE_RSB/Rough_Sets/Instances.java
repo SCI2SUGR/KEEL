@@ -1267,7 +1267,7 @@ public class Instances implements Serializable {
 	 * 
 	 * @return the dataset in ARFF format as a string
 	 */
-	public String toString() {//**aquí es donde se configura el header y donde quité los espacios**
+	public String toString() {//**aquÃ­ es donde se configura el header y donde quitÃ© los espacios**
 
 		StringBuffer text = new StringBuffer();
 

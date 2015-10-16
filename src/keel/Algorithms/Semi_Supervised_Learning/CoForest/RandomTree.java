@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -1105,7 +1105,7 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
       attIndicesWindow[windowSize - 1] = attIndex;
       windowSize--;
       
-	  //System.out.println("Número de clases: "+ this.nClasses);
+	  //System.out.println("NÃºmero de clases: "+ this.nClasses);
       splits[attIndex] = distribution(props, dists, attIndex, data);
       vals[attIndex] = gain(dists[attIndex], priorVal(dists[attIndex]));
       
@@ -1130,7 +1130,7 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
       m_Successors = new RandomTree[distribution.length];
       
       for (int i = 0; i < distribution.length; i++) {
-    //	  System.out.println("distribución: "+i);
+    //	  System.out.println("distribuciÃ³n: "+i);
         m_Successors[i] = new RandomTree();
         m_Successors[i].nClasses = this.nClasses;
         m_Successors[i].setKValue(m_KValue);

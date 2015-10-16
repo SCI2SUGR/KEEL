@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -453,11 +453,11 @@ public class SADEGenerator extends PrototypeGenerator {
 			  } 
 			  
 			  /* Step 3.2.*/
-			// Assign trial vector generation strategy: Lo eligo a posteriori antes de cada llamada a mutaci—n.
+			// Assign trial vector generation strategy: Lo eligo a posteriori antes de cada llamada a mutaciÂ—n.
 			  //System.out.println("Aplicamos las estrategia = "+ this.Strategy);
 			  
 			  // assign control parameter F . N(0.5,0.3)
-			          // if Z sigue una distrubuci—n 0,1, X = sigma*Z + mu sigue la dis n(mu,sigma) 
+			          // if Z sigue una distrubuciÂ—n 0,1, X = sigma*Z + mu sigue la dis n(mu,sigma) 
 			  for(int i=0; i< this.PopulationSize; i++){
 				  F[i]= RandomGenerator.RandGaussian()*0.3 + 0.5;
 			  }
@@ -500,7 +500,7 @@ public class SADEGenerator extends PrototypeGenerator {
 				   
 				   mutation[i] = new PrototypeSet(population[i].size());
 			   
-				   // Pasamos la poblaci—n, y la mejor actual, por si se usa /best/
+				   // Pasamos la poblaciÂ—n, y la mejor actual, por si se usa /best/
 				   mutation[i] = mutant(population, i,bestFitnessIndex).clone();
 	
 				   // Third: Crossver Operation.

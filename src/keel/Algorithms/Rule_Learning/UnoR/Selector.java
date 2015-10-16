@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,8 @@
 
 package keel.Algorithms.Rule_Learning.UnoR;
 /**
- * <p>Tï¿½ulo: Conjunto de reglas</p>
- * <p>Descripciï¿½: Estructura para almacenar un conjunto completo de reglas</p>
+ * <p>Titulo: Conjunto de reglas</p>
+ * <p>Descripcion: Estructura para almacenar un conjunto completo de reglas</p>
  * @author Rosa Venzala
  * @version 1.0
  */
@@ -81,7 +81,7 @@ public class Selector implements Comparable {
      *  (atributo operador valores)
      * @param atr atributo
      * @param op operador
-     * @param val un conjunto de valores (disjuntos -> at = a ï¿½b ï¿½c)
+     * @param val un conjunto de valores (disjuntos -> at = a , b , c)
      */
     public Selector(int atr, int op, double[] val,int util) {
         atributo = atr;
@@ -94,11 +94,11 @@ public class Selector implements Comparable {
 
 
     /**
-     * Funcion de comparaciï¿½ entre dos objetos de la clase selector
+     * Funcion de comparacion entre dos objetos de la clase selector
      * @param o Objeto selector a comparar
      * @return 0 si son iguales (mismo atributo,operador y valor ), -1 (mismo atributo, operador y menor valor), 1
      * (mismo atributo, operador y menor valor), [nuevo->] 2 (distinto atributo y operador) o 3 (distinto atributo)).
-     * -2 -> Mismo atributo, distinto operador; -3 -> mismo atributo, valor = ï¿½+/- 1 (uff) mirar comentario debajo)
+     * -2 -> Mismo atributo, distinto operador; -3 -> mismo atributo, valor = +/- 1 (uff) mirar comentario debajo)
      */
     public int compareTo(Object o) {
         Selector s2 = (Selector) o;
@@ -143,7 +143,7 @@ public class Selector implements Comparable {
     }
 
     /**
-     * Comprueba si los valores de un selector estï¿½ subsumidos en otro
+     * Comprueba si los valores de un selector esta subsumidos en otro
      * @param valores double[] Valores con los que comprueba
      * @param _operador int Operador con el que se comprueba
      * @return boolean True si el selector de la clase esta subsumido dentro de la clase con que compruebo. False en otro caso.
@@ -152,7 +152,7 @@ public class Selector implements Comparable {
         boolean salida = false;
         //Si los valores son iguales y el operador no es el contrario
         salida = (mismoValor(valores) && (!(this.opContrario(_operador))));
-        if (!salida){ //No estï¿½subsumido...
+        if (!salida){ //No esta subsumido...
             if ((operador == _operador)&&(operador == 0)) { //Son iguales y es el ==
                 if (valor.length < valores.length) {
                     salida = true;

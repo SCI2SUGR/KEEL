@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -57,7 +57,7 @@ public class ConjReglas {
     }
 
     /**
-     * Añade todo un conjunto de reglas a la lista
+     * AÃ±ade todo un conjunto de reglas a la lista
      * @param r ConjReglas El conjunto de reglas
      */
     public void addReglas(ConjReglas r) {
@@ -68,8 +68,8 @@ public class ConjReglas {
     }
 
     /**
-     * Añade una regla a la lista
-     * @param regl Regla a añadir
+     * AÃ±ade una regla a la lista
+     * @param regl Regla a aÃ±adir
      */
     public void addRegla(Complejo regl) {
         reglas.add(regl);
@@ -84,7 +84,7 @@ public class ConjReglas {
     }
 
     /**
-     * Vacía el contenido del conjunto de reglas
+     * VacÃ­a el contenido del conjunto de reglas
      */
     public void deleteAll() {
         reglas.removeAll(reglas);
@@ -101,7 +101,7 @@ public class ConjReglas {
 
     /**
      * Devuelve el numero de reglas con las que estamos trabajando
-     * @return El tamaño del conjunto de reglas
+     * @return El tamaÃ±o del conjunto de reglas
      */
     public int size() {
         return (reglas.size());
@@ -145,8 +145,8 @@ public class ConjReglas {
     }
 
     /**
-     * Devuelve la última regla (normalmente aquella con mejor peso)
-     * @return la última regla de a lista
+     * Devuelve la Ãºltima regla (normalmente aquella con mejor peso)
+     * @return la Ãºltima regla de a lista
      */
     public Complejo getUltimaRegla() {
         return (Complejo) reglas.getLast();
@@ -176,7 +176,7 @@ public class ConjReglas {
 
     /**
      * Eliminamos aquellos complejos repetidos (at1 = 0 ^ at2 = 0 -- at2 = 0 ^ at1 = 0)
-     * @param tam Tamaño de las estrella
+     * @param tam TamaÃ±o de las estrella
      */
     public void eliminaRepetidos(int tam) {
         //for (int i = 0; i < this.size() - 1; i++) {
@@ -201,7 +201,7 @@ public class ConjReglas {
                                                                  aux2.print();
                                  */
                                 seguir = false;
-                                this.deleteRegla(i); //borro porque está repe totalmente
+                                this.deleteRegla(i); //borro porque estÃ¡ repe totalmente
                                 i--;
                             }
                         }
@@ -213,8 +213,8 @@ public class ConjReglas {
     }
 
     /**
-     * Elimino reglas que sean semánticamente iguales (At = 1, At <> 0, At = [0,1])
-     * @param tam int Tamaño de la estrella
+     * Elimino reglas que sean semÃ¡nticamente iguales (At = 1, At <> 0, At = [0,1])
+     * @param tam int TamaÃ±o de la estrella
      */
     public void eliminaSubsumidos(int tam) {
         //for (int i = 0; i < this.size() - 1; i++) {

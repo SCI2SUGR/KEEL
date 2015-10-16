@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -208,7 +208,7 @@ public class JADEGenerator extends PrototypeGenerator {
 	   }else
 		 r2 = Archivo[number-population.length];
 	   
-	   // Tengo que sacar los 100p % mejores de la poblaci—n actual.
+	   // Tengo que sacar los 100p % mejores de la poblaciÂ—n actual.
 	  // System.out.println("Numero de p-best = "+ num_mejores);
 	  
 	   
@@ -388,7 +388,7 @@ public class JADEGenerator extends PrototypeGenerator {
 				   
 				   mutation[i] = new PrototypeSet(population[i].clone());
 			   
-				   // Pasamos la poblaci—n, y la mejor actual, por si se usa /best/
+				   // Pasamos la poblaciÂ—n, y la mejor actual, por si se usa /best/
 				   mutation[i] = mutant(population,fitness, i, Archivo, utilArchivo).clone();
 
 				   // Third: Crossver Operation.
@@ -451,7 +451,7 @@ public class JADEGenerator extends PrototypeGenerator {
 				  
 				  
 			   }
-			//  System.out.println("Best Fitness Generaci—n "+iter+" = " + bestFitness);
+			//  System.out.println("Best Fitness GeneraciÂ—n "+iter+" = " + bestFitness);
 			  // Now we remove solutions from A.
 			  
 			  if(utilArchivo > this.PopulationSize){

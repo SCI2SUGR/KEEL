@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@
 //
 //  Cromosoma.java
 //
-//  Salvador GarcÌa LÛpez
+//  Salvador Garc√≠a L√≥pez
 //
-//  Created by Salvador GarcÌa LÛpez 19-7-2004.
+//  Created by Salvador Garc√≠a L√≥pez 19-7-2004.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -149,7 +149,7 @@ public class Cromosoma implements Comparable {
       vecinoCercano = -1;
       minDist = Double.POSITIVE_INFINITY;
       for (j=0; j<datos.length; j++) {
-        if (cuerpo[j]) { //Est· en S
+        if (cuerpo[j]) { //Est√° en S
           dist = KNN.distancia(datos[i], real[i], nominal[i], nulos[i], datos[j], real[j], nominal[j], nulos[j], distanceEu);
           if (dist < minDist && dist != 0) {
             minDist = dist;

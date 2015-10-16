@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -341,12 +341,12 @@ public class Individuo
    * @return double la ganancia
    *
    * Info(G|cond_i) = [ - (|Vi|/|T|)*sum_{j=1}^c{(|Vij|/|Vi|)*(log_2{|Vij|/|Vi|})}
-   * - (|¬Vi|/|T|)*sum_{j=1}^c{(|¬Vij|/|¬Vi|)*(log_2{|¬Vij|/|¬Vi|})}
+   * - (|Â¬Vi|/|T|)*sum_{j=1}^c{(|Â¬Vij|/|Â¬Vi|)*(log_2{|Â¬Vij|/|Â¬Vi|})}
    *
    * |Vi| = numero de ejemplos que satisfacen la condicion <Ai OPi Vij>
    * |Vij| = numero de ejemplos que satisfacen la condicion <Ai OPi Vij> y tienen el valor j para la clase
-   * |¬Vi| = numero de ejemplos que NO satisfacen la condicion <Ai OPi Vij>
-   * |¬Vij| = numero de ejemplos que NO satisfacen la condicion <Ai OPi Vij> y tienen el valor j para la clase
+   * |Â¬Vi| = numero de ejemplos que NO satisfacen la condicion <Ai OPi Vij>
+   * |Â¬Vij| = numero de ejemplos que NO satisfacen la condicion <Ai OPi Vij> y tienen el valor j para la clase
    */
   private double infoGcondi(int atributo, int[] ejemplos, int T) {
     double info = 0;

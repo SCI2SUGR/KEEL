@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>
  * @author Administrator
- * @author Modified by Pedro Antonio Gutiérrez and Juan Carlos Fernández (University of Córdoba) 23/10/2008
+ * @author Modified by Pedro Antonio GutiÃ©rrez and Juan Carlos FernÃ¡ndez (University of CÃ³rdoba) 23/10/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -115,7 +115,7 @@ public class PartitionGenerator {
                 }
             }
 
-            if (!data.getAttributeTypeIndex(salPos).equalsIgnoreCase("real")) { //clasificaci�n
+            if (!data.getAttributeTypeIndex(salPos).equalsIgnoreCase("real")) { //clasificacion
                 if (data.getAttributeTypeIndex(salPos).equalsIgnoreCase("integer")) { //Integer class
                     for (i = data.getRangesInt(salPos, 0).intValue(); i <= data.getRangesInt(salPos, 1).intValue(); i++) {
                         salidas.addElement(String.valueOf(i));
@@ -155,7 +155,7 @@ public class PartitionGenerator {
                 for (i = 0; i < data.getNData(); i++) { //para cada clase
                     baraje[i % nOfPartitions].addElement(new Integer(repartidor[i]));
                 }
-            } else { //regresi�n
+            } else { //regresion
                 baraje = new Vector[nOfPartitions];
                 int repartidor[] = new int[data.getNData()];
                 for (i = 0; i < data.getNData(); i++) {
@@ -444,7 +444,7 @@ public class PartitionGenerator {
             boolean hecho, ok;
             String cadena, aux;
 
-            if (!data.getAttributeTypeIndex(salPos).equalsIgnoreCase("real")) { //clasificaci�n
+            if (!data.getAttributeTypeIndex(salPos).equalsIgnoreCase("real")) { //clasificacion
                 for (i = 0; i < data.getNVariables(); i++) {
                     if (data.getOutputs().contains(new String(data.getAttributeIndex(i)))) {
                         salPos = i;
@@ -691,7 +691,7 @@ public class PartitionGenerator {
                         }
                     }
                 }
-            } else { //regresión
+            } else { //regresiÃ³n
                 baraje = new Vector[2];
                 baraje[0] = new Vector();
                 baraje[1] = new Vector();

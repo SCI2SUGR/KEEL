@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@
 //
 //  SSMA.java
 //
-//  Salvador Garc�a L�pez
+//  Salvador García López
 //
-//  Created by Salvador Garc�a L�pez 3-10-2005.
+//  Created by Salvador García López 3-10-2005.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -68,11 +68,11 @@ public class SSMASFLSDE extends Metodo {
   private double pCross;
   private double pMut;
   private int kNeigh;
-  public String Script; // para releer par�metros..
+  public String Script; // para releer parametros..
   private PrototypeSet trainingDataSet;
   private PrototypeSet testDataSet;
   private PrototypeGenerator generador;
-  //Par�metros DE
+  //parametros DE
   private int k;
   
   private int PopulationSize; 
@@ -258,7 +258,7 @@ public class SSMASFLSDE extends Metodo {
   			   	   mutant = result.sumar(producto3);
     		       break;
     		       
-  		   	  /*// Para hacer esta estrat�gia, lo que hay que elegir es CrossoverType = Arithmetic
+  		   	  /*// Para hacer esta estrategia, lo que hay que elegir es CrossoverType = Arithmetic
   		   	   * case 7: //DE current to rand 1
   		   		   resta = r1.restar(population[actual]); 
   		   		   resta2 = r2.restar(r3);
@@ -923,7 +923,7 @@ public class SSMASFLSDE extends Metodo {
     OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
     
     
-    /** AHORA A�ADO MI DE!! **/
+    /** AHORA Anado MI DE!! **/
     Parameters.assertBasicArgs(ficheroSalida);
     
     if(!this.Script.equals("NOFILE")){

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -227,7 +227,7 @@ public class PSOGenerator extends PrototypeGenerator {
 		 // System.out.print("Fitness " + i + " = "+ fitness[i] + "\n");
 		  
 		  
-		  //System.out.print("\nPoblaciï¿½n " + i + "\n");
+		  //System.out.print("\nPoblacion " + i + "\n");
 		  //population[i].print();
 		  
 	  }*/
@@ -303,7 +303,7 @@ public class PSOGenerator extends PrototypeGenerator {
 					   if(velocidad[i][k][j]>VMax){
 						   velocidad[i][k][j] = VMax;  // The particles's velocities has a maximum velocity.
 					   }else if(velocidad[i][k][j]< -VMax){
-						   velocidad[i][k][j]=-VMax;      // absolute value. ï¿½? or -VMax , Vmax. ?
+						   velocidad[i][k][j]=-VMax;      // absolute value. ? or -VMax , Vmax. ?
 						   
 					   }
 					   

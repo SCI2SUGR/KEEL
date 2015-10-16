@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ import java.util.LinkedList;
  *
  * <p>Copyright: Alberto Copyright (c) 2006</p>
  *
- * <p>Compañia: Mi casa</p>
+ * <p>CompaÃ±ia: Mi casa</p>
  *
  * @author Alber
  * @version 1.0
@@ -50,7 +50,7 @@ public class Regla implements Comparable {
     private int support;
     private double heuristica;
     private int nClases;
-    private int distrib[]; //contiene nº muestras por clase que satisfacen antecedente
+    private int distrib[]; //contiene nÂº muestras por clase que satisfacen antecedente
 
     private String [] nombreAtributos;
 
@@ -90,7 +90,7 @@ public class Regla implements Comparable {
 
     /**
      * Constructor
-     * @param tam int Tamaño del antecedente
+     * @param tam int TamaÃ±o del antecedente
      * @param nClases int Numero de clases del problema
      */
     public Regla(int tam, int nClases) {
@@ -141,7 +141,7 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Añade un atributo a la regla
+     * AÃ±ade un atributo a la regla
      * @param i int Posicion dentro del antecedente
      * @param a int El valor del atributo
      */
@@ -150,7 +150,7 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Añade un atributo a la regla
+     * AÃ±ade un atributo a la regla
      * @param i int Posicion dentro del array
      * @param pos int Posicion del atributo
      */
@@ -169,8 +169,8 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Devuelve el tamaño de la regla (nº atributos en el antecedente)
-     * @return int El tamaño de la regla
+     * Devuelve el tamaÃ±o de la regla (nÂº atributos en el antecedente)
+     * @return int El tamaÃ±o de la regla
      */
     public int size() {
         return (antecedente.length - 1);
@@ -279,15 +279,15 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Ajusta el valor de la heurística WRAcc a un nuevo valor
-     * @param heu double El nuevo valor de la heurística para la regla
+     * Ajusta el valor de la heurÃ­stica WRAcc a un nuevo valor
+     * @param heu double El nuevo valor de la heurÃ­stica para la regla
      */
     public void setHeuristicaWRAcc(double heu) {
         heuristica = heu;
     }
 
     /**
-     * Devuelve el valor heurístico WRAcc de la regla
+     * Devuelve el valor heurÃ­stico WRAcc de la regla
      * @return double el valor heuristico
      */
     public double getHeuristica() {
@@ -306,7 +306,7 @@ public class Regla implements Comparable {
 
     /**
      * Devuelve el valor de la distribucion de la regla dada
-     * @return int[] El nº de ejemplos de train que cubre la regla para cada clase
+     * @return int[] El nÂº de ejemplos de train que cubre la regla para cada clase
      */
     public int[] getDistribucion() {
         int ret[] = new int[nClases];
@@ -319,7 +319,7 @@ public class Regla implements Comparable {
     /**
      * Devuelve la distribucion para una clase concreta
      * @param i int El identificador de la clase
-     * @return int El nº de ejemplos cubiertos por la regla
+     * @return int El nÂº de ejemplos cubiertos por la regla
      */
     public int getDistribucionClase(int i) {
         return distrib[i];
@@ -334,7 +334,7 @@ public class Regla implements Comparable {
   }
 
     /**
-     * Imprime la distribución de la regla
+     * Imprime la distribuciÃ³n de la regla
      */
     public void printDistribucion() {
         System.out.print("   [");
@@ -345,7 +345,7 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Guarda la distribución como un String
+     * Guarda la distribuciÃ³n como un String
      * @return String La distribucion ("visual")
      */
     public String printDistribucionString() {

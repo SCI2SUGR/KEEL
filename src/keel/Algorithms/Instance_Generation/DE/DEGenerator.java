@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -223,7 +223,7 @@ public class DEGenerator extends PrototypeGenerator {
 			   	   mutant = result.sumar(producto3);
   		       break;
   		       
-		   	  /*// Para hacer esta estratégia, lo que hay que elegir es CrossoverType = Arithmetic
+		   	  /*// Para hacer esta estrat¬égia, lo que hay que elegir es CrossoverType = Arithmetic
 		   	   * case 7: //DE current to rand 1
 		   		   resta = r1.restar(population[actual]); 
 		   		   resta2 = r2.restar(r3);
@@ -356,7 +356,7 @@ public class DEGenerator extends PrototypeGenerator {
 			   
 			   mutation[i] = new PrototypeSet(population[i].size());
 		   
-			   // Pasamos la población, y la mejor actual, por si se usa /best/
+			   // Pasamos la poblaci¬ón, y la mejor actual, por si se usa /best/
 			   mutation[i] = mutant(population, i,bestFitnessIndex).clone();
 
 			   // Third: Crossver Operation.

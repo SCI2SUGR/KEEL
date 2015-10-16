@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @author Modified by Xavi SolÃ© (La Salle, RamÃ³n Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
@@ -87,7 +87,7 @@ public class Selector implements Comparable {
      * </p>
      * @param attribute attribute
      * @param operation operator
-     * @param values set of values (at = a ï¿½b ï¿½c)
+     * @param values set of values (at = a b c)
      * @param util number of values
      */
     public Selector(int attribute, int operation, double[] values,int util) {
@@ -111,7 +111,7 @@ public class Selector implements Comparable {
      * @return 0 if are equals (same attribute,operator and value), -1 (same attribute, operator),
      * 		   1 (same attribute, operator and less value), [new->] 2 (different attribute and operator)
      * 		   3 (different attribute)).
-     *        -2 -> Same attribute, different operator; -3 -> same attribute, value = ï¿½+/- 1 
+     *        -2 -> Same attribute, different operator; -3 -> same attribute, value = +/- 1 
      */
     public int compareTo(Object o) {
         Selector s2 = (Selector) o;
@@ -169,7 +169,7 @@ public class Selector implements Comparable {
         boolean out = false;
         //Si los valores son iguales y el operador no es el contrario
         out = (sameValue(values) && (!(this.isCompOperator(op))));
-        if (!out){ //No estï¿½subsumido...
+        if (!out){ //No esta subsumido...
             if ((operator == op)&&(operator == 0)) { //Son iguales y es el ==
                 if (value.length < values.length) {
                     out = true;

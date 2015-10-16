@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -226,7 +226,7 @@ public class ENPCGenerator extends PrototypeGenerator {
 		 }
 		  
 		  
-		  /*// intento mï¿½ximo
+		  /*// intento maximo
 		  for(int j=0; j<this.numberOfClass; j++){
 			  if(V[i][j].size() > max || (V[i][j].size() == max && j != classifier.get(i).getOutput(0))){
 				  max = V[i][j].size();
@@ -284,7 +284,7 @@ public class ENPCGenerator extends PrototypeGenerator {
 		  PrototypeSet neighbors = KNN.getNearestNeighbors(classifier.get(i), classifier, k);
 		  neighbors.remove(classifier.get(i));
 		  
-		  // ï¿½Con que vecino luchamos?
+		  // Con que vecino luchamos?
 		 double max= Double.MIN_VALUE;
 		  Prototype select = new Prototype();
 		  for(Prototype p: neighbors){
@@ -324,7 +324,7 @@ public class ENPCGenerator extends PrototypeGenerator {
   
   
   /**
-   * Lo ï¿½ncio que hace esta funciï¿½n es llevarlo todo a su centroide.
+   * Lo ncio que hace esta funcion es llevarlo todo a su centroide.
    * @param classifier
    * @param V
    */
@@ -375,7 +375,7 @@ public class ENPCGenerator extends PrototypeGenerator {
   }
   
   /**
-   * Funciï¿½n que devuelve que prototipos de un conjunto dado pertenece a cada regiï¿½n (outputdatSet)
+   * funcion que devuelve que prototipos de un conjunto dado pertenece a cada region (outputdatSet)
    * @return
    */
   
@@ -396,7 +396,7 @@ public class ENPCGenerator extends PrototypeGenerator {
       {
     	  dMin = Double.POSITIVE_INFINITY;
     	  
-    	  for(Prototype q : outputDataSet){ // calculo cual es el mï¿½s cercano en los que tengo en el clasificador
+    	  for(Prototype q : outputDataSet){ // calculo cual es el mas cercano en los que tengo en el clasificador
     		  if(q!=null){
 	    		  double d = Distance.d(q, p);
 		          
@@ -408,14 +408,14 @@ public class ENPCGenerator extends PrototypeGenerator {
 	          }
           }
     	  
-    	  region[nearest.getIndex()].add(p); // lo aï¿½ado a la regiï¿½n perteneciente.
+    	  region[nearest.getIndex()].add(p); // lo Anado a la region perteneciente.
       }
 	  
 	  return region;
   }
   
   /**
-   * Funciï¿½n que devuelve que prototipos de un conjunto dado pertenece a cada conjunto Vij (outputdatSet)
+   * funcion que devuelve que prototipos de un conjunto dado pertenece a cada conjunto Vij (outputdatSet)
    * @return
    */
   
@@ -438,7 +438,7 @@ public class ENPCGenerator extends PrototypeGenerator {
       {
     	  dMin = Double.POSITIVE_INFINITY;
     	  
-    	  for(Prototype q:outputDataSet){ // calculo cual es el mï¿½s cercano en los que tengo en el clasificador
+    	  for(Prototype q:outputDataSet){ // calculo cual es el mas cercano en los que tengo en el clasificador
 	          double d = Distance.d(q, p);
 	          
 	          if(d < dMin  &&  q!=p)
@@ -448,7 +448,7 @@ public class ENPCGenerator extends PrototypeGenerator {
 	          }
           }
     	  
-    	  region[nearest.getIndex()][(int)p.getOutput(0)].add(p); // lo aï¿½ado a la Vij perteneciente.
+    	  region[nearest.getIndex()][(int)p.getOutput(0)].add(p); // lo Anado a la Vij perteneciente.
       }
 	  
 	  return region;
@@ -489,19 +489,19 @@ public PrototypeSet reduceSet()
     	 // System.out.println("Getting Information");
     	     	  
     	  /*
-    	   * La ecuaciï¿½n (4) define una funciï¿½n de pertenencia a los conjuntos de patrones, 
-    	   * mientras que la ecuaciï¿½n (6) define la funciï¿½n de pertenencia a los conjuntos de patrones.
-    	   *  Ademï¿½s, la ecuaciï¿½n (1) define la funciï¿½n de pertenencia a un conjunto de clase. 
-    	   *  Un prototipo pertenece a la clase Sj si es de la clase sj (ecuaciï¿½n 1).  Una instancia pertenece a 
-    	   *  un conjunto de prototipos Ri, si el prototipo ri es el mï¿½s cercano a la instancia (ecuaciï¿½n (6)); 
-    	   *  una instancia pertenece a un conjunto de patrones Vij. si es de la clase sj y su prototipo mï¿½s cercano es el prototipo Ri.
-    	   *  Si te fijas en la Figura 1, puede ver cï¿½mo un conjunto Vij no es mï¿½s que la intersecciï¿½n enter un Ri y un Sj. 
+    	   * La ecuacion(4) define una funcion de pertenencia a los conjuntos de patrones, 
+    	   * mientras que la ecuacion (6) define la funcion de pertenencia a los conjuntos de patrones.
+    	   *  Ademas, la ecuacion (1) define la funcion de pertenencia a un conjunto de clase. 
+    	   *  Un prototipo pertenece a la clase Sj si es de la clase sj (ecuacion 1).  Una instancia pertenece a 
+    	   *  un conjunto de prototipos Ri, si el prototipo ri es el mas cercano a la instancia (ecuacion (6)); 
+    	   *  una instancia pertenece a un conjunto de patrones Vij. si es de la clase sj y su prototipo mas cercano es el prototipo Ri.
+    	   *  Si te fijas en la Figura 1, puede ver como un conjunto Vij no es mas que la interseccion enter un Ri y un Sj. 
     	   
     	   *
     	   *
-    	   *La ï¿½nica distinciï¿½n es que Vij se corresponde con el conjunto de patrones que estï¿½n mï¿½s
-cerca del prototipo i-ï¿½simo que de cualquier otro y pertenecen a la clase j. Ri es el
-conjunto de patrones mï¿½s cercanos al prototipo i-ï¿½simo, sin tener en cuenta la clase.
+    	   *La unica distincion es que Vij se corresponde con el conjunto de patrones que estan mas
+cerca del prototipo i-esimo que de cualquier otro y pertenecen a la clase j. Ri es el
+conjunto de patrones mas cercanos al prototipo i-esimo, sin tener en cuenta la clase.
 Los autores se inventan dos nombres que no aclaran nada, pero la idea es esa (una chorrez).
     	   *
     	   *
@@ -634,7 +634,7 @@ Los autores se inventan dos nombres que no aclaran nada, pero la idea es esa (un
       
       /*
       System.out.println("Cleaning");
-	  // Limpiamos, aï¿½ado RNN para mejora los resultados
+	  // Limpiamos, Anado RNN para mejora los resultados
 	  
 	  boolean marcas[];
 	  marcas = new boolean[outputDataSet.size()];

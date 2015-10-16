@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@
  *
  * The graph of the experiment
  *
- * @author Juli�n Luengo Mart�n (modifications 19/04/2009)
+ * @author Julian Luengo Martin (modifications 19/04/2009)
  * @author Ana Palacios Jimenez and Luciano Sanchez Ramons 23-4-2010 (University of Oviedo)
  * @version 1.0
  * @since JDK1.5
@@ -198,11 +198,11 @@ public class Graph implements Serializable {
     /*   public void dropNodeLQD(Vector<Integer> N) {
     System.out.println("entramos en borrar un nodo");
 
-    System.out.println("el tamaño de nodos es "+this.numNodes());
+    System.out.println("el tamaÃ±o de nodos es "+this.numNodes());
     for(int i=0;i<N.size();i++)
     {
     nodes.removeElementAt(N.get(i));
-    System.out.println("el tamaño de nodos es "+this.numNodes());
+    System.out.println("el tamaÃ±o de nodos es "+this.numNodes());
     }
 
 
@@ -291,7 +291,7 @@ public class Graph implements Serializable {
                 System.out.println("el nodo destino del arco es " + this.getNodeAt(i).id);
                 //Remove the data of the node due to the conection is removed
                 Node destination = this.getNodeAt(i);
-                System.out.println("The destination node is " + destination.dsc.getName(0) + " y tamaño de enalces " + destination.dsc.arg.size());
+                System.out.println("The destination node is " + destination.dsc.getName(0) + " y tamaÃ±o de enalces " + destination.dsc.arg.size());
                 //we have to remove the information of the source node in this node.
                 int eliminated = -1;
                 for (int n = 0; n < destination.dsc.arg.size(); n++) {

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -40,8 +40,8 @@ import org.core.*;
  * </p>
  * 
  * <p>
- * @author Written by Francisco JosÈ Berlanga (University of JaÈn) 01/01/2007
- * @author Modified by Alberto Fern·ndez (University of JaÈn) 22/09/2010
+ * @author Written by Francisco Jos√© Berlanga (University of Ja√©n) 01/01/2007
+ * @author Modified by Alberto Fern√°ndez (University of Ja√©n) 22/09/2010
  * @version 1.1
  * @since JDK 1.6
  * </p>

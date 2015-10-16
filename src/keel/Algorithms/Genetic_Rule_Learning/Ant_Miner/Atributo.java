@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,10 +31,10 @@ package keel.Algorithms.Genetic_Rule_Learning.Ant_Miner;
 
 
 /**
- * <p>TÌtulo: Ant Colony Optimization</p>
- * <p>DescripciÛn:Clase Atributo necesaria para el ACO</p>
+ * <p>T√≠tulo: Ant Colony Optimization</p>
+ * <p>Descripci√≥n:Clase Atributo necesaria para el ACO</p>
  * <p>Copyright: Copyright (c) 2007</p>
- * @author Vicente RubÈn del Pino Ruiz
+ * @author Vicente Rub√©n del Pino Ruiz
  * @version 1.0
  */
 

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,9 +32,9 @@
  
 /**
  * <p>
- * @author Writen by Maria Dolores PÈrez Godoy, Antonio Rivera Rivas and VÌctor Manuel Rivas Santos (University of JaÈn) 19/03/2004
- * @author Modified by VÌctor Rivas (University of JaÈn)
- * @author Modified by MarÌa Dolores PÈrez Godoy (University of JaÈn) 17/12/2008
+ * @author Writen by Maria Dolores P√©rez Godoy, Antonio Rivera Rivas and V√≠ctor Manuel Rivas Santos (University of Ja√©n) 19/03/2004
+ * @author Modified by V√≠ctor Rivas (University of Ja√©n)
+ * @author Modified by Mar√≠a Dolores P√©rez Godoy (University of Ja√©n) 17/12/2008
  * @version 1.0
  * @since JDK1.5
  * </p>

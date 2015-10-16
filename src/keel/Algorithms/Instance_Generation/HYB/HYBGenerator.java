@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ import keel.Algorithms.Instance_Generation.BasicMethods.*;
 import keel.Algorithms.Instance_Generation.LVQ.*;
 import keel.Algorithms.Instance_Generation.PNN.*;
 import keel.Algorithms.Instance_Generation.VQ.*;
-//import keel.Algorithms.Instance_Generation.LVQ.*; Este serÃ¡ el SVM
+//import keel.Algorithms.Instance_Generation.LVQ.*; Este serÃƒÂ¡ el SVM
 import keel.Algorithms.Instance_Generation.BTS3.*;
 import keel.Algorithms.Instance_Generation.utilities.*;
 import org.core.*;
@@ -356,7 +356,7 @@ public class HYBGenerator extends PrototypeGenerator {
     	
         // We make the initial reduction
         PrototypeSet initialSet = initialReduction();
-        Debug.errorln("Tamaï¿½o " + initialSet.size());
+        Debug.errorln("Size " + initialSet.size());
        
         // Divide the training Set into two parts,  Placement and optimizing.
         
@@ -365,8 +365,6 @@ public class HYBGenerator extends PrototypeGenerator {
         PrototypeSet TpGlobal = Tglobal.first();//placement set
         PrototypeSet ToGlobal = Tglobal.second();//optimizing set
                
-        //Debug.errorln("Tamaï¿½o Tplacement " + TpGlobal.size());
-        //Debug.errorln("Tamaï¿½o Toptimization " + ToGlobal.size());
         double bestE = initE;
         double bestW = initW;
         

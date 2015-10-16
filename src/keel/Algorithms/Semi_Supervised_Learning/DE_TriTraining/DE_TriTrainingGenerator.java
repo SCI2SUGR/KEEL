@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -371,7 +371,7 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
 		  //System.out.println("Misma clase = "+ counter);
 		  if ( counter[maxClass] < this.k2){ // Sino llega a k' eliminar
 			  toClean [pos] = 1; // we will clean			  
-		  }else if(counter[maxClass] >= this.k2){ // si está entre k1 y k2, re-etiquetar.
+		  }else if(counter[maxClass] >= this.k2){ // si estÃ¡ entre k1 y k2, re-etiquetar.
 			  if(maxClass != class_p){
 				  p.setFirstOutput(maxClass);
 			  	//  System.out.println("RELABEL");
@@ -436,7 +436,7 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
       
 	  // In order to avoid problems with C45 and NB.
 	  for(int p=0; p<unlabeled.size(); p++){
-		  unlabeled.get(p).setFirstOutput(0); // todos con un valor válido.
+		  unlabeled.get(p).setFirstOutput(0); // todos con un valor vÃ¡lido.
 	  }
 	  
 
@@ -513,7 +513,7 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
 	            {
 	              curInst.setFirstOutput(classval); //  setClassValue(classval);
 	              Li[i].add(curInst);                //L_i <-- L_i \cup {(x, h_j(x))}
-	           //  System.out.println("añado instancia");
+	           //  System.out.println("aÃ±ado instancia");
 	            }
 	            
 	            

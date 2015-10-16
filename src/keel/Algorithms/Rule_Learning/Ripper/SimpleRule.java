@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,8 @@
 
 /**
  * <p>
- * @author Written by Alberto Fern·ndez (University of Granada)  01/07/2008
- * @author Modified by Xavi SolÈ (La Salle, RamÛn Llull University - Barcelona) 03/12/2008
+ * @author Written by Alberto Fern√°ndez (University of Granada)  01/07/2008
+ * @author Modified by Xavi Sol√© (La Salle, Ram√≥n Llull University - Barcelona) 03/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
@@ -68,7 +68,7 @@ public class SimpleRule {
   * Constructs a SimpleRule with a given attribute and value
   * @param attribute int attribute's id (position of the attribute)
   * @param value double attribute's value
-  * @param operator int rule operator: >, = Û <=
+  * @param operator int rule operator: >, = √≥ <=
   */
   public SimpleRule(int attribute,double value,int operator) {
     this.attribute=attribute;
@@ -110,7 +110,7 @@ public class SimpleRule {
    * Sets the attribute's id and the attribute's value
    * @param attribute int attribute's id (position of the attribute)
    * @param value attribute's value
-   * @param operator int rule operator: >, = Û <=
+   * @param operator int rule operator: >, = √≥ <=
    */
   public void set(int attribute,double value,int operator){
     this.attribute=attribute;
@@ -136,7 +136,7 @@ public class SimpleRule {
 
   /**
    * Sets the rule operator
-   * @param operator int rule operator: >, = Û <=
+   * @param operator int rule operator: >, = √≥ <=
    */
   public void setOperator(int operator){
     this.operator=operator;

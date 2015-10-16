@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
  * <p>
- * @author Writed by Cristóbal J. Carmona (University of Jaen) 24/06/2010
+ * @author Writed by CristÃ³bal J. Carmona (University of Jaen) 24/06/2010
  * @version 2.0
  * @since JDK1.5
  * </p>
@@ -421,7 +421,7 @@ public class SD {
                         Selector s2 = aux2.getSelector(h);
                         aux.addSelector(s2);
                         if (s2.compareTo(s) < 2) { // It is the same attribute
-                            sigue = false; // Don´t add this attribute
+                            sigue = false; // DonÂ´t add this attribute
                         }
                     }
                     if (sigue) { //This is a new selector to add to the rule

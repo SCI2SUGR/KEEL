@@ -1,6 +1,6 @@
 /**
  * <p>
- * @author Written by Juan Carlos Fernández and Pedro Antonio Gutiérrez (University of Córdoba) 23/08/2009
+ * @author Written by Juan Carlos FernÃ¡ndez and Pedro Antonio GutiÃ©rrez (University of CÃ³rdoba) 23/08/2009
  * @version 1.0
  * @since JDK1.5
  * </p>

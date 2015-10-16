@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -630,7 +630,7 @@ public class IPLDEGenerator extends PrototypeGenerator {
 		 
 			  if(!claseMarcada[objetivo]){
 				  PrototypeSet solucion2 = new PrototypeSet(solucion.clone());
-				 // solucion2.add(trainingDataSet.getFromClass(objetivo).getRandom()); // A–ado uno Y pruebo a optimizar.
+				 // solucion2.add(trainingDataSet.getFromClass(objetivo).getRandom()); // AÂ–ado uno Y pruebo a optimizar.
 				  solucion2.add(trainingDataSet.farthestTo(solucion.getFromClass(objetivo).getRandom())); 
 				  
 				  tester = basicDE(solucion2).clone();

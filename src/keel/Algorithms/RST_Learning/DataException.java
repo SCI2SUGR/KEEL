@@ -5,11 +5,11 @@
 
 	Copyright (C) 2004-2010
 	
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
-    S. GarcÌa (sglopez@ujaen.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
+    S. Garc√≠a (sglopez@ujaen.es)
     F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
+    L. S√°nchez (luciano@uniovi.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 
@@ -34,7 +34,7 @@
  * 
  * A new exception type defined to be thrown when a data set is incorrect
  * 
- * @author Written by JoaquÌn Derrac (University of Granada) 10/08/2008 
+ * @author Written by Joaqu√≠n Derrac (University of Granada) 10/08/2008 
  * @version 1.0 
  * @since JDK1.5
  * 

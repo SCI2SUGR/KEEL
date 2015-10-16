@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,9 +31,9 @@
 //  SSMA.javA  HIBRIDO  PSO
 
 //
-//  Salvador Garc�a L�pez
+//  Salvador García López
 //
-//  Created by Salvador Garc�a L�pez 3-10-2005.
+//  Created by Salvador García López 3-10-2005.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -64,10 +64,10 @@ public class SSMAPSO extends Metodo {
   private double pCross;
   private double pMut;
   private int kNeigh;
-  public String Script; // para releer par�metros..
+  public String Script; // para releer parametros..
   private PrototypeSet trainingDataSet;
   private PrototypeGenerator generador;
-  //Par�metros PSO
+  //parametros PSO
   private int SwarmSize; // SwarmSize == P
   private int ParticleSize; // ParticleSize == K  (in the article)
   private int MaxIter; 
@@ -306,7 +306,7 @@ public class SSMAPSO extends Metodo {
 					   if(velocidad[i][k][j]>VMax){
 						   velocidad[i][k][j] = VMax;  // The particles's velocities has a maximum velocity.
 					   }else if(velocidad[i][k][j]< -VMax){
-						   velocidad[i][k][j]=-VMax;      // absolute value. �? or -VMax , Vmax. ?
+						   velocidad[i][k][j]=-VMax;      // absolute value. ? or -VMax , Vmax. ?
 						   
 					   }
 					   
@@ -576,7 +576,7 @@ public class SSMAPSO extends Metodo {
     OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
     
     
-    /** AHORA A�ADO MI DE!! **/
+    /** AHORA Anado MI DE!! **/
     Parameters.assertBasicArgs(ficheroSalida);
     
     PrototypeGenerationAlgorithm.readParametersFile(this.Script);

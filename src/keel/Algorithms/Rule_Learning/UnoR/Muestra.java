@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,8 +30,8 @@
 package keel.Algorithms.Rule_Learning.UnoR;
 
 /**
- * <p>Tï¿½ulo: Muestra</p>
- * <p>Descripciï¿½: Estructura de Muestra para los conjuntos de datos</p>
+ * <p>Titulo: Muestra</p>
+ * <p>Descripcion: Estructura de Muestra para los conjuntos de datos</p>
  * @author Rosa Venzala
  * @version 1.0
  */
@@ -51,7 +51,7 @@ public class Muestra {
      * Constructor
      * @param m un vector de atributos (valores)
      * @param cl la clase a la que pertenece la muestra
-     * @param tamano el tamaï¿½ de la muestra (se puede obtener directamente de m.length)
+     * @param tamano el tamano de la muestra (se puede obtener directamente de m.length)
      */
     public Muestra(double m[], int cl, int tamano) {
         super();
@@ -63,7 +63,7 @@ public class Muestra {
 
     /**
      * Constructor mas sencillo (sin datos)
-     * @param tamano El tamaï¿½ de la muestra (n de atributos)
+     * @param tamano El tamano de la muestra (n de atributos)
      */
     public Muestra(int tamano) {
         tam = tamano;

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -46,7 +46,7 @@ import keel.Dataset.Attributes;
  *
  * <p>Company: KEEL</p>
  *
- * @author Ismael Duque García
+ * @author Ismael Duque GarcÃ­a
  * @version 1.0
  */
 
@@ -112,7 +112,7 @@ public class BaseReglas {
                                     resultados.add(base_de_reglas_salida.get(i));//add
                                     encontrado = true;//regla encontrada, parar la busqueda para la fila
                                 }
-                            }//La columna está, pero valores distintos
+                            }//La columna estÃ¡, pero valores distintos
                         }//La columna no esta en el antecedente'
                     }
                     k++;
@@ -153,7 +153,7 @@ public class BaseReglas {
     
     
     /**
-     * Genera un fichero con la reglas generada, así como unos datos estadísticos.
+     * Genera un fichero con la reglas generada, asÃ­ como unos datos estadÃ­sticos.
      * @param ficheroReglas String nombre del fichero a generar
      */
     public void ficheroReglas(String ficheroReglas){
@@ -169,14 +169,14 @@ public class BaseReglas {
 
             output +="BASE DE REGLAS: \n\n";
             //Numero de reglas
-            output +="Número de reglas: "+ base_de_reglas.size() + " \n\n";
-            //Tamaño medio de las reglas obtenidas
+            output +="NÃºmero de reglas: "+ base_de_reglas.size() + " \n\n";
+            //TamaÃ±o medio de las reglas obtenidas
             Double media_reglas = 0.0;
             for (int i=0; i<base_de_reglas.size(); i++){
                 Integer aux = base_de_reglas.get(i).size()+1;
                 media_reglas += aux.doubleValue();
             }
-            output +="Tamaño medio de las reglas obtenidas: "+ media_reglas/base_de_reglas.size() + " \n\n";
+            output +="TamaÃ±o medio de las reglas obtenidas: "+ media_reglas/base_de_reglas.size() + " \n\n";
 
             for (int i=0; i<base_de_reglas.size(); i++){
 

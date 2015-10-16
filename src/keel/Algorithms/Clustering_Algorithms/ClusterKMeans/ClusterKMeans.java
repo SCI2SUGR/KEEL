@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -199,7 +199,7 @@ class KMeans {
 	    else distintos = (features!=cclusters[i].length);
 	}
 	if (distintos) {
-	    System.out.println("Distinto n√∫mero de atributos por cluster...");
+	    System.out.println("Distinto n√É¬∫mero de atributos por cluster...");
 	    return;
 	}
 	for(int i=0; i < cclusters[0].length; i++) {

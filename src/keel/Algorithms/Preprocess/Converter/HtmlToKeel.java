@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ import org.w3c.tidy.Tidy;
  * Esta clase es utilizada para leer datos localizados en la tabla del fichero Html
  * y convertirlos a formato keel.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class HtmlToKeel extends Importer {
@@ -61,7 +61,7 @@ public class HtmlToKeel extends Importer {
     /*
      * Constructor de la Clase HtmlToKeel. Inicializa el valor
      * de la variable miembro nullValue (valor nulo para un dato dentro de
-     * la tabla Html) con el valor del parámetro nullValueUser.
+     * la tabla Html) con el valor del parÃ¡metro nullValueUser.
      *
      * @param nullValueUser. Variable de tipo String con el valor nulo para un dato dentro de
      * la tabla Html.
@@ -98,7 +98,7 @@ public class HtmlToKeel extends Importer {
         double max;
         List<Element> firstInstance;
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"�", "�", "�", "�", "�", "�", "�", "�", "�", "�"};
+        String vowel_accent[] = {"á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú"};
 
         File fileInput = new File(pathnameInput);
 
@@ -130,7 +130,7 @@ public class HtmlToKeel extends Importer {
 
 
 
-//Calculamos el número de hijos que tiene cada elemento
+//Calculamos el nÃºmero de hijos que tiene cada elemento
             if (numElements > 0) {
                 i = 0;
                 children = (Element) elements.get(i);
@@ -149,7 +149,7 @@ public class HtmlToKeel extends Importer {
                 return;
             }
 
-//Reservamos memoria para almacenar la definición de los atributos y de los datos
+//Reservamos memoria para almacenar la definiciÃ³n de los atributos y de los datos
             numAttributes = firstInstance.size();
             attribute = new keel.Dataset.Attribute[numAttributes];
             data = new Vector[numAttributes];
@@ -260,7 +260,7 @@ public class HtmlToKeel extends Importer {
 
 
 
-// Los demás hijos contienen los datos
+// Los demÃ¡s hijos contienen los datos
             while (it.hasNext()) {
                 children = (Element) it.next();
                 nameChildren = (String) children.getName();
@@ -353,11 +353,11 @@ public class HtmlToKeel extends Importer {
 
 
                     if (type == NOMINAL) {
-                        p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                        p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                         m = p.matcher(value);
                         /**
                          * Cambio hecho para que los nominales con espacios en blanco se dejen
-                         * con subrayado bajo "_" y sin comillas simples. Se añade la siguiente linea
+                         * con subrayado bajo "_" y sin comillas simples. Se aÃ±ade la siguiente linea
                          */
                         value = value.replace(" ", "_");
 
@@ -425,8 +425,8 @@ public class HtmlToKeel extends Importer {
             }//end while
 
 
-            /* Insertamos el nombre de la relación que será el mismo que el del
-             * fichero pasado, pero sin extensión*/
+            /* Insertamos el nombre de la relaciÃ³n que serÃ¡ el mismo que el del
+             * fichero pasado, pero sin extensiÃ³n*/
 
             nameRelation = fileInput.getName();
             p = Pattern.compile("\\.[A-Za-z]+");
@@ -457,7 +457,7 @@ public class HtmlToKeel extends Importer {
     }
 
     /*
-     *  Método recursivo que devuelve el texto que contiene todos los descendientes
+     *  MÃ©todo recursivo que devuelve el texto que contiene todos los descendientes
      *  de un nodo o etiqueta de un elemento xml.
      *
      *   @param  Element current que indica que nodo o etiqueta xml actual.
@@ -489,13 +489,13 @@ public class HtmlToKeel extends Importer {
     } //end listChildrenText()
 
 
-    /*  Método utilizado para convertir el fichero de datos con formato html
-     *   pasado por el parámetro fileHtml a un fichero con formato xhtml
-     *   en la ruta que indica el parámetro String fileXhtmlAux.
+    /*  MÃ©todo utilizado para convertir el fichero de datos con formato html
+     *   pasado por el parÃ¡metro fileHtml a un fichero con formato xhtml
+     *   en la ruta que indica el parÃ¡metro String fileXhtmlAux.
      *
      *   @param  String fileHtml fichero de datos html.
-     *   @param  String fileXhtmlAux ruta del fichero donde se almacenará el fichero
-     *   xhtml generado tras la conversión del fichero html a xhtml.
+     *   @param  String fileXhtmlAux ruta del fichero donde se almacenarÃ¡ el fichero
+     *   xhtml generado tras la conversiÃ³n del fichero html a xhtml.
      *
      *   @throws Exception
      */
@@ -535,9 +535,9 @@ public class HtmlToKeel extends Importer {
 
 
     /*
-     *   Método encargado de recorrer todo el árbol xml para encontrar
-     *   el nodo padre del nodo o etiqueta cuyo nombre coincida con el valor del parámetro  childrenName.
-     *   El nodo padre de dicha etiqueta será asignado a la variable miembro
+     *   MÃ©todo encargado de recorrer todo el Ã¡rbol xml para encontrar
+     *   el nodo padre del nodo o etiqueta cuyo nombre coincida con el valor del parÃ¡metro  childrenName.
+     *   El nodo padre de dicha etiqueta serÃ¡ asignado a la variable miembro
      *   root.
      *
      *   @param  Element current. Elemento o nodo xml actual.

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -50,9 +50,9 @@ public class Nodo {
   boolean nominal, isLeaf;
   String[] valoresNom;
   double valor;
-  int numAtributos; //uno, dos Û tres (combinaciÛn lineal)
+  int numAtributos; //uno, dos √≥ tres (combinaci√≥n lineal)
   int[] atributos;
-  double[] pesos; //para la combinaciÛn lineal
+  double[] pesos; //para la combinaci√≥n lineal
   myDataset train;
 
   public Nodo() {
@@ -78,7 +78,7 @@ public class Nodo {
 
   public void splitSet(int atributo,double prob1,double prob2){
     if (nominal) { //el atributo es cualitativo
-      //hago una divisiÛn en dos conjuntos (aunque solo necesito guardar uno)
+      //hago una divisi√≥n en dos conjuntos (aunque solo necesito guardar uno)
       int totalNominales = train.totalNominales(atributo);
       int nominalesEscogidos = Randomize.RandintClosed(1, totalNominales);
       valoresNom = new String[nominalesEscogidos];
@@ -98,7 +98,7 @@ public class Nodo {
       atributos[0] = atributo;
     }
     else { //es cuantitativo
-      //Hay dos opciones: a) At <= valor, b) Combinacion lineal: b.1) w1∑X1 + w2∑X2 <= w1∑s1+w2∑s2, b.2) 3 atributos
+      //Hay dos opciones: a) At <= valor, b) Combinacion lineal: b.1) w1¬∑X1 + w2¬∑X2 <= w1¬∑s1+w2¬∑s2, b.2) 3 atributos
       if (Randomize.Rand() <= prob1) { //At <= valor
         int ejemplo = Randomize.RandintClosed(0, train.size()-1);
         this.valor = train.getExample(ejemplo)[atributo];
@@ -229,9 +229,9 @@ public class Nodo {
 
   /*
     double valor;
-    int numAtributos; //uno, dos Û tres (combinaciÛn lineal)
+    int numAtributos; //uno, dos √≥ tres (combinaci√≥n lineal)
     int[] atributos;
-    double[] pesos; //para la combinaciÛn lineal
+    double[] pesos; //para la combinaci√≥n lineal
    */
   public boolean cubre(int posEjemplo) {
     double[] ejemplo = train.getExample(posEjemplo);

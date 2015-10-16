@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,13 +32,13 @@ package keel.Algorithms.Genetic_Rule_Learning.Ant_Miner_Plus;
 import java.util.*;
 
 /**
- * <p>TÌtulo: Ant Colony Optimization</p>
- * <p>DescripciÛn: Clase muestra.
+ * <p>T√≠tulo: Ant Colony Optimization</p>
+ * <p>Descripci√≥n: Clase muestra.
  *    Contiene una linea del fichero, cada linea tiene una muestra de la forma
  *    condiciones => clase </p>
  * <p>Copyright: Copyright (c) 2007</p>
  * <p>Empresa: </p>
- * @author Vicente RubÈn del Pino Ruiz
+ * @author Vicente Rub√©n del Pino Ruiz
  * @version 1.0
  */
 

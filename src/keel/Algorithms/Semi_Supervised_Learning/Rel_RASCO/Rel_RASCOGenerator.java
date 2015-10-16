@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -289,7 +289,7 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
 		  
 		  while(cont<dimension){
 			  
-			  if(relevance[indexes.get(size-1)] > relevance[indexes.get(size-2)]){  // ultimo y penúltimo.
+			  if(relevance[indexes.get(size-1)] > relevance[indexes.get(size-2)]){  // ultimo y penÃºltimo.
 				  indices[i][cont] = indexes.get(size-1);
 			  }else{
 				  indices[i][cont] = indexes.get(size-2);
@@ -396,7 +396,7 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
 
 	  // In order to avoid problems with C45 and NB.
 	  for(int p=0; p<unlabeled.size(); p++){
-		  unlabeled.get(p).setFirstOutput(0); // todos con un valor válido.
+		  unlabeled.get(p).setFirstOutput(0); // todos con un valor vÃ¡lido.
           for(int k=0; k<this.numberOfViews; k++){
 	    	  unlabeled_subX[k].get(p).setFirstOutput(0);
           }
@@ -647,7 +647,7 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
 						  if(predicho[indexClase[j][z]]==j){
 							  labeledPrima.add(new Prototype(nearUnlabeled));
 							  
-							//  System.out.println("Añadoo 1");
+							//  System.out.println("AÃ±adoo 1");
 						  }else{
 							  toClean.add(unlabeled.get(indexClase[j][z]));
 							//  System.err.println("ERRORRACO DE COJONES");

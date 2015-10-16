@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ import org.jdom.output.Format;
  * Clase extendida de la clase Exporter. Esta clase permite convertir
  * un fichero de datos con formato Keel a un fichero con formato Xml.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class KeelToXml extends Exporter {
@@ -57,7 +57,7 @@ public class KeelToXml extends Exporter {
     /*
      * Constructor de la Clase KeelToXml. Inicializa el valor
      * de la variable miembro nullValue (valor nulo para el texto de una etiqueta xml).
-     * Este valor se inicializa a cadena vacía.
+     * Este valor se inicializa a cadena vacÃ­a.
      *
      */
     public KeelToXml() {
@@ -65,10 +65,10 @@ public class KeelToXml extends Exporter {
     }
 
     /*
-     * Este método llama al método Start de la clase superior Exporter para
+     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
      * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al método Save() para crear el fichero de datos Xml indicado en el
-     * parámetro de entrada pathnameOutput.
+     * al mÃ©todo Save() para crear el fichero de datos Xml indicado en el
+     * parÃ¡metro de entrada pathnameOutput.
      *
      * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
      * @param  String pathnameOutput Variable con la ruta del fichero de datos
@@ -84,8 +84,8 @@ public class KeelToXml extends Exporter {
     }//end Start()
 
     /*
-     * Método utilizado para crear el fichero con formato Xml
-     * indicada la ruta por el parámetro pathnameOutput. Este fichero se crea a partir
+     * MÃ©todo utilizado para crear el fichero con formato Xml
+     * indicada la ruta por el parÃ¡metro pathnameOutput. Este fichero se crea a partir
      * de los datos almacenados en el vector de objetos de la clase
      * Attribute, el vector data[], y la variable nameRelation.
      *
@@ -103,9 +103,9 @@ public class KeelToXml extends Exporter {
         String filename = new String();
         String nameElement = new String();
         String vowel[] = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        String vowel_accent[] = {"�", "�", "�", "�", "�", "�", "�", "�", "�", "�"};
+        String vowel_accent[] = {"á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú"};
 
-        /* Comprobamos si el nombre del fichero tiene la extensión .xml, si no la tiene
+        /* Comprobamos si el nombre del fichero tiene la extensiÃ³n .xml, si no la tiene
          * se la ponemos */
         if (pathnameOutput.endsWith(".xml")) {
             filename = pathnameOutput;
@@ -167,8 +167,8 @@ public class KeelToXml extends Exporter {
 
 
     /*
-     * Método utilizado para convertir el nombre de un atributo del fichero
-     * keel a un nombre válido para una etiqueta xml.
+     * MÃ©todo utilizado para convertir el nombre de un atributo del fichero
+     * keel a un nombre vÃ¡lido para una etiqueta xml.
      *
      * @param String nameLabelUser. Variable de tipo String con
      * el nombre de un atributo del fichero keel.
@@ -198,7 +198,7 @@ public class KeelToXml extends Exporter {
         if (nameAux.startsWith("xml")) {
             nameLabel = nameLabel.substring(3);
         }
-        p = Pattern.compile("[^A-ZÑa-zñ0-9_]+");
+        p = Pattern.compile("[^A-ZÃa-zÃ±0-9_]+");
         m = p.matcher(nameLabel);
         nameLabel = m.replaceAll("");
 

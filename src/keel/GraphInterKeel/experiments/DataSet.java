@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -603,7 +603,7 @@ public final class DataSet extends Node {
         m_sDatasetHasMIL = "";
 
 
-        //Un Nodo puede contener m�s de un DataSet
+        //Un Nodo puede contener mas de un DataSet
         //lo busco y calculo el tipo de datos de este nodo
         for (int iname = 0; iname < dsc.name.length; iname++) {
             for (int i = 0; i < list_dataset.length; i++) {

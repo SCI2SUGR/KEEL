@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -111,7 +111,7 @@ public class LVQTC extends LVQ1
         counter = new HashMap<Prototype,HashMap<Double,Integer> >();
         sumCounter = new HashMap<Prototype,Integer>();
         wrong = new HashMap<Prototype,PrototypeSet>();
-        //veremos a ver qué pollas hacemos
+        //veremos a ver quÃ© pollas hacemos
     }
     
     //Inicializa el contador para el prototypo i
@@ -257,7 +257,7 @@ public class LVQTC extends LVQ1
         {
             penalize(nearest,i);
             updateCentroidOfWrongClass(nearest,i);
-            //wrong.put(nearest,i);//añadimos a wrong
+            //wrong.put(nearest,i);//aÃ±adimos a wrong
         }
         else
         {            
@@ -285,7 +285,7 @@ public class LVQTC extends LVQ1
                 pMC = p;
             }
         }
-        //System.out.println("Data tenía " + data.size());
+        //System.out.println("Data tenÃ­a " + data.size());
         //System.out.println("Edited tiene " + edited.size());
         if(edited.size() == 0)//
             edited.add(pMC);  //
@@ -342,7 +342,7 @@ public class LVQTC extends LVQ1
             reset(outputDataSet);
             outputDataSet = doEpoche(outputDataSet);
             outputDataSet = neuronPruning(outputDataSet);//eliminamos algunas neuronas
-            outputDataSet = neuronCreation(outputDataSet);//añadimos algunas neuronas
+            outputDataSet = neuronCreation(outputDataSet);//aÃ±adimos algunas neuronas
           //  Debug.println("Epoch number " + e);
             ++e;
             //reset(outputDataSet);

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -326,7 +326,7 @@ public class DEGLGenerator extends PrototypeGenerator {
 				   
 				   mutation[i] = new PrototypeSet(population[i].size());
 			   
-				   // Pasamos la poblaci—n, y la mejor actual, adem‡s del mejor del vecindario,
+				   // Pasamos la poblaciÂ—n, y la mejor actual, ademÂ‡s del mejor del vecindario,
 				   int bestNeighboor=0;
 				   double bestFitnessNeighboor = Double.MIN_VALUE;
 				   
@@ -426,7 +426,7 @@ public class DEGLGenerator extends PrototypeGenerator {
 				  }
 			  }
 			  
-			//  System.out.println("Best Fitness Generaci—n "+iter+" = " + bestFitness);
+			//  System.out.println("Best Fitness GeneraciÂ—n "+iter+" = " + bestFitness);
 			 // System.out.println("Acc= "+ bestFitness);
 
 	   } // End main LOOP

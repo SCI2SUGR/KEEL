@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -39,7 +39,7 @@ import java.io.IOException;
  * <p>Created: November 26th 2004</p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: KEEL</p>
- * @author Alberto Fern·ndez (University of Granada) 11/26/2004
+ * @author Alberto Fern√°ndez (University of Granada) 11/26/2004
  * @since JDK1.5
  * @version 1.6
  */
@@ -400,7 +400,7 @@ public class AQ {
                     i++;
                 }
             }
-//      System.out.println("\n*****N∫ Instances quedan: " + positives.size());
+//      System.out.println("\n*****N¬∫ Instances quedan: " + positives.size());
         }
         return reg;
     };
@@ -582,7 +582,7 @@ public class AQ {
             double peso = pos + excl;
             star.getRule(i).setWeight(peso); //asignamos el peso
         }
-//    Collections.sort(star.getruleSet()); //Ordena seg˙n el valor del peso :) [menos peso, lo ponemos antes]
+//    Collections.sort(star.getruleSet()); //Ordena seg√∫n el valor del peso :) [menos peso, lo ponemos antes]
     }
     ;
 
@@ -796,7 +796,7 @@ public class AQ {
     /**
      * Hace un Complex especifico para el example
      * @param example Instance example de entrada
-     * @return Complex El Complex m·s especÌfico que cubre al example
+     * @return Complex El Complex m√°s espec√≠fico que cubre al example
      */
     private Complex makeComplex(Instance example) {
         Selector s = new Selector(0, 0, example.getAttribute(0));

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -230,7 +230,7 @@ public class DistanceMatrixByClass
      * Returns the nearest prototype for each class in the set.
      * @return Hash with associations class, list with pairs of prototypes of each class sorted by distance between them.
      */
-    //Hashmap de clases -> lista de pares para esa clase, ordenados de más cercanía a menor cercanía
+    //Hashmap de clases -> lista de pares para esa clase, ordenados de mÃ¡s cercanÃ­a a menor cercanÃ­a
     public HashMap<Double,ArrayList<Pair<Prototype,Prototype>>> nearnestPrototypesForEachClass()
     {
         ArrayList<Double> labels = labels();

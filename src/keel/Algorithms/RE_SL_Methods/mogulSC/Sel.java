@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -107,7 +107,7 @@ class Sel {
     semilla = Double.parseDouble(valor.trim());
     Randomize.setSeed( (long) semilla); ;
 
-    for (i = 0; i < 8; i++) { //leo los 8 primeros parametros que son del mÈtodo anterior MOGUL
+    for (i = 0; i < 8; i++) { //leo los 8 primeros parametros que son del m√©todo anterior MOGUL
       sT.nextToken(); //nombre parametro
       sT.nextToken(); //valor parametro
     }

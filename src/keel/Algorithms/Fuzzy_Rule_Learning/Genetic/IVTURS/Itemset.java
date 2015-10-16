@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ import java.util.*;
  * <p>Description: This class contains the representation of a itemset</p>
  * <p>Copyright: Copyright KEEL (c) 2007</p>
  * <p>Company: KEEL </p>
- * @author Jesus Alcal· (University of Granada) 09/02/2011
+ * @author Jesus Alcal√° (University of Granada) 09/02/2011
  * @author Modified by Jose Antonio Sanz (University of Navarra) 19/12/2011
  * @author Modified by Alberto Fernandez (University of Jaen) 24/10/2013
  * @version 1.2

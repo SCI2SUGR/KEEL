@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -164,7 +164,7 @@ public class PrototypeGenerator {
             }
             HashSet<Integer> forbidden = new HashSet<Integer>();
             //Le metemos prototipos aleatorios mientras no se cumpla que se tiene
-            //el número de prototipos requerido
+            //el nÃºmero de prototipos requerido
             while (edited.size() < numberOfPrototypesSelected) {
                 int chosen;
                 do
@@ -209,7 +209,7 @@ public class PrototypeGenerator {
         startTimer();
         PrototypeSet resultSet = reduceSet();
         
-        // Aquí sería un punto bueno para añadir lodel Clasificador?
+        // AquÃ­ serÃ­a un punto bueno para aÃ±adir lodel Clasificador?
         
         
         
@@ -352,13 +352,13 @@ public class PrototypeGenerator {
         System.out.println("-------------------------------------------------");
         System.out.println("RESULTS (using " + k + "NN classifier):");
         System.out.println("Aciertos usando reducido: " + accuracyKNN + " de " + test_size + " prototipos (" + porc_aciertosKNN + "%)");
-        System.out.println("Reducción: " + generated_size + " de " + training_size + " prototipos (" + porc_reduction + "%)");
+        System.out.println("ReducciÃ³n: " + generated_size + " de " + training_size + " prototipos (" + porc_reduction + "%)");
         //System.out.println("Aciertos usando training: " + accuracyKNN + " de " + test_size + " prototipos (" + porc_aciertos_original + "%)");
 
         System.out.println("-------------------------------------------------");
         System.out.println("RESULTS (using 1NN classifier):");
         System.out.println("Aciertos usando reducido: " + accuracy1NN + " de " + test_size + " prototipos (" + porc_aciertos1NN + "%)");
-        System.out.println("Reducción: " + generated_size + " de " + training_size + " prototipos (" + porc_reduction + "%)");
+        System.out.println("ReducciÃ³n: " + generated_size + " de " + training_size + " prototipos (" + porc_reduction + "%)");
         //System.out.println("Aciertos usando training: " + accuracyKNN + " de " + test_size + " prototipos (" + porc_aciertos_original + "%)");
         System.out.println("-------------------------------------------------");
 
@@ -528,8 +528,8 @@ public class PrototypeGenerator {
     }
 
     /**
-     * Cuando quitas uno, con el inic vector, el desordenar no puede coger el �ltimo..
-     * necesito otro me�todo
+     * Cuando quitas uno, con el inic vector, el desordenar no puede coger el ultimo..
+     * necesito otro metodo
      * @param vector
      */
     public void desordenar_vector_sin(int vector[]){

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ package keel.Algorithms.Genetic_Rule_Learning.OIGA;
  * </p>
  * 
  * <p>
- * @author Written by Juli·n Luengo MartÌn 08/02/2007
+ * @author Written by Juli√°n Luengo Mart√≠n 08/02/2007
  * @version 0.2
  * @since JDK 1.5
  * </p>

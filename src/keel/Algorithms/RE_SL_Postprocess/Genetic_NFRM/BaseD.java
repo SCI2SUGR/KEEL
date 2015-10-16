@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -103,7 +103,7 @@ public class BaseD {
   public double pertenencia(int i, int j, double X) {
     if ((j == 0)&&(X <= baseDatos[i][j].x1)){ //si es la primera etiqueta y esta por debajo del valor maximo
       return 1.0; //El grado de pertenecia = 1 (barra horizontal hasta el eje de coordenadas)
-    }else if ((j == n_etiquetas-1)&&(X >= baseDatos[i][j].x1)){ //si es la ˙ltima etiqueta y esta por encima del valor maximo
+    }else if ((j == n_etiquetas-1)&&(X >= baseDatos[i][j].x1)){ //si es la √∫ltima etiqueta y esta por encima del valor maximo
       return 1.0;
     }
     return baseDatos[i][j].Fuzzifica(X);

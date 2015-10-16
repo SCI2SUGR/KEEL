@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 /**
  * <p>Title: Data-set</p>
  * <p>Description: It contains the methods for reading the training and test files</p>
- * @author Written by Alberto Fernández (University of Granada) 11/25/2004
+ * @author Written by Alberto FernÃ¡ndez (University of Granada) 11/25/2004
  * @version 1.0
  * @since JDK1.4
  */
@@ -130,9 +130,9 @@ public class Dataset {
     }
 
     /**
-     * Comprueba si un atributo est� "perdido" o no
-     * @param i int N�mero de ejemplo
-     * @param j int N�mero de atributo
+     * Comprueba si un atributo esta "perdido" o no
+     * @param i int numero de ejemplo
+     * @param j int numero de atributo
      * @return boolean True si falta, False en otro caso
      */
     public boolean isMissing(int i, int j) {

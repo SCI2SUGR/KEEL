@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,8 +32,8 @@ package keel.Algorithms.Rule_Learning.CN2;
 /**
  * <p>Title: Evaluation of the quality of the rules</p>
  * <p>Description: This class computes the final statistics </p>
- * @author Written by José Ramón Cano de Amo (University of Jaén) 08/04/2004
- * @author Modified by Alberto Fernández (University of Granada) 11/30/2004
+ * @author Written by JosÃ© RamÃ³n Cano de Amo (University of JaÃ©n) 08/04/2004
+ * @author Modified by Alberto FernÃ¡ndez (University of Granada) 11/30/2004
  * @version 1.1
  * @since JDK1.4
  */
@@ -87,8 +87,8 @@ public class evaluateRuleQuality {
         // Training computation
         calculaIndices(train, muestPorClaseTrain, 0);
         System.out.print("\n\nIndices en Train: ");
-        System.out.print("\n\n Tamaño reglas: " + tam +
-                         "\nNº Atributos por regla medio: " + ant +
+        System.out.print("\n\n TamaÃ±o reglas: " + tam +
+                         "\nNÂº Atributos por regla medio: " + ant +
                          "\nCobertura: " +
                          cob);
 //        System.out.print("\n\t Confidence: " + conf + "  ComplMed: " + complmed +
@@ -100,8 +100,8 @@ public class evaluateRuleQuality {
         //Test computation
         calculaIndices(test, muestPorClaseTest, 1);
         System.out.print("\n\nIndices en Test:");
-        System.out.print("\n\n Tamaño reglas: " + tam +
-                         "\nNº Atributos por regla medio: " + ant +
+        System.out.print("\n\n TamaÃ±o reglas: " + tam +
+                         "\nNÂº Atributos por regla medio: " + ant +
                          "\nCobertura: " +
                          cob);
         /*System.out.print("\n\t Confidence: " + conf +
@@ -188,7 +188,7 @@ public class evaluateRuleQuality {
                 }
             }
         }
-        //cob = (double) muestCubiertas / (nDatos * tam * tam); //COV = 1/nR·SUM[Cov(Ri)] -- Cov(Ri) = n(Condi)/N //
+        //cob = (double) muestCubiertas / (nDatos * tam * tam); //COV = 1/nRÂ·SUM[Cov(Ri)] -- Cov(Ri) = n(Condi)/N //
         cob = muestCubiertas / (tam * nDatos);
 
         compl = (double) muestBienCubiertas / nDatos;

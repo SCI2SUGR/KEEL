@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -42,11 +42,11 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 
 /**
- * <p>TÌtulo: Ant Colony Optimization</p>
- * <p>DescripciÛn: Algoritmo de clasificacion por ACO</p>
+ * <p>T√≠tulo: Ant Colony Optimization</p>
+ * <p>Descripci√≥n: Algoritmo de clasificacion por ACO</p>
  * <p>Copyright: Copyright (c) 2007</p>
  * <p>Empresa: </p>
- * @author Vicente RubÈn del Pino Ruiz
+ * @author Vicente Rub√©n del Pino Ruiz
  * @version 1.0
  */
 
@@ -108,7 +108,7 @@ public class ACO {
      *  umbrales definidos por el usuario
      *
      * @param fTrainPrep String Nombre del fichero de entrenamiento con preprocesamiento
-     * @param fTrain String Nombre del fichero de entrenamiento entero para validaciÛn
+     * @param fTrain String Nombre del fichero de entrenamiento entero para validaci√≥n
      * @param fTestOriginal String Nombre del fichero de prueba
      * @param fSalidaTrain String Nombre del fichero de salida para las pruebas al fichero de entrenamiento
      * @param fSalidaTest String Nombre del fichero de salida para las pruebas al fichero de test
@@ -230,7 +230,7 @@ public class ACO {
                             "El algoritmo no admite valores perdidos");
                     System.exit(0); //El algoritmo no admite valores perdidos
                 }
-                at = (Atributo) ((Vector) listaValores.get(j)).get((int) X[i][j]); //Cogemos el puntero que seÒala al atributo almacenado en lista de valores
+                at = (Atributo) ((Vector) listaValores.get(j)).get((int) X[i][j]); //Cogemos el puntero que se√±ala al atributo almacenado en lista de valores
                 mt.insertarAtributo(at);
             }
             at = (Atributo) listaClases.get(C[i]);
@@ -288,7 +288,7 @@ public class ACO {
                     posicion = posicion - 1; //En los enteros se empieza a contar desde 1 y el vector desde 0 [0,9] = [1,10]
                 }
                 //System.out.println("------->"+X[i][j]+"  "+posicion+"  "+i+"  "+j);
-                at = (Atributo) ((Vector) listaValores.get(j)).get(posicion); //Cogemos el puntero que seÒala al atributo almacenado en lista de valores
+                at = (Atributo) ((Vector) listaValores.get(j)).get(posicion); //Cogemos el puntero que se√±ala al atributo almacenado en lista de valores
                 mt.insertarAtributo(at);
             }
             at = (Atributo) listaClases.get(C[i]);
@@ -446,7 +446,7 @@ public class ACO {
             //Ordenamos las reglas de las hormigas de mayor calidad a menor
             c = Regla.obtenerComparador();
             Collections.sort(reglasHormigas, c);
-            //AÒade la mejor regla al conjunto de reglas descubiertas
+            //A√±ade la mejor regla al conjunto de reglas descubiertas
             mejor = (Regla) reglasHormigas.get(0);
             reglasDescubiertas.addElement(mejor);
             //Quitar del conjunto de entrenamiento los casos cubiertos
@@ -637,7 +637,7 @@ public class ACO {
         System.out.println("Reglas descubiertas ");
 
         numReglas = reglasDescubiertas.size();
-        for (i = 0; i < reglasDescubiertas.size() - 1; i++) { //La regla generica se enseÒa despues
+        for (i = 0; i < reglasDescubiertas.size() - 1; i++) { //La regla generica se ense√±a despues
             regla = (Regla) reglasDescubiertas.get(i);
             regla.ordenaAtributos();
             regla.imprime();
@@ -815,11 +815,11 @@ public class ACO {
 
 
     private void creaRegla(Regla regla, Randomize generadorA) {
-        int numMuestrasCubiertas = cTrain.tamanio(); //Antes de aÒadir terminos a la regla, esta cubre todos los datos
-        int atributosUsados = 0; //Numero de atributos que se han aÒadido a la regla
+        int numMuestrasCubiertas = cTrain.tamanio(); //Antes de a√±adir terminos a la regla, esta cubre todos los datos
+        int atributosUsados = 0; //Numero de atributos que se han a√±adido a la regla
         float calidadRegla;
-        Atributo siguiente; //Siguiente atributo a aÒadir a la regla
-        Atributo clase; //Clase que se asigna a la regla de que se han aÒadido todos los atributos
+        Atributo siguiente; //Siguiente atributo a a√±adir a la regla
+        Atributo clase; //Clase que se asigna a la regla de que se han a√±adido todos los atributos
         Regla reglaTemporal = new Regla(regla);
 
         while (atributosUsados <= numAtributos &&

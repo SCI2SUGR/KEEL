@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -425,7 +425,7 @@ public class RbfnPopulation {
             for( int i=0; i<indexes.length; ++i ) {
                 if( Randomize.Randdouble(0,1)<MUTATORS_INTERNAL_PROB ) { // Apply operator
                     Rbf tmpNeuron=_net.getRbf(indexes[i]);
-                    double radius=(double)Randomize.Randdouble(0.5,10); // ???? porqu√© 0.5 y 10??
+                    double radius=(double)Randomize.Randdouble(0.5,10); // ???? porqu√É¬© 0.5 y 10??
                     tmpNeuron.setRadius( radius );
                 }
             }

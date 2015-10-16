@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -53,8 +53,8 @@ public class Item {
     }
 
     /**
-     * Crea un K-item vacÌo
-     * @param k int N˙mero de items en este conjunto
+     * Crea un K-item vac√≠o
+     * @param k int N√∫mero de items en este conjunto
      */
     public Item(int k){
         item = new int[k];
@@ -64,7 +64,7 @@ public class Item {
     /**
      * Crea un 1-item
      * @param valor int valor del item
-     * @param columna int columna en la que est· dicho valor
+     * @param columna int columna en la que est√° dicho valor
      * @param support int Valor para el support de este item
      */
     public Item(int valor, int columna,int support){
@@ -76,7 +76,7 @@ public class Item {
     }
 
     /**
-     * Crea un nuevo Item (si es posible) de tamaÒo k+1 de dos items de tamaÒo k
+     * Crea un nuevo Item (si es posible) de tama√±o k+1 de dos items de tama√±o k
      * @param uno Item Primer ITEM
      * @param dos Item Segundo ITEM
      * @return True si se crea el Item, false en otro caso
@@ -136,7 +136,7 @@ public class Item {
     }
 
     /**
-     * AÒade el valor de support para este item concreto
+     * A√±ade el valor de support para este item concreto
      * @param support int El valor S
      */
     public void setSupport(int support){

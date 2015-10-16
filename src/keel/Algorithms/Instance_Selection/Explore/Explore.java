@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@
 //
 //  Explore.java
 //
-//  Salvador Garc�a L�pez
+//  Salvador García López
 //
-//  Created by Salvador Garc�a L�pez 1-8-2004.
+//  Created by Salvador García López 1-8-2004.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -197,7 +197,7 @@ public class Explore extends Metodo{
       baraje[pos] = tmp;
     }
 
-    /*2� part of ELGrow. Now, eliminate instances to see if the cost improves*/
+    /*2nd part of ELGrow. Now, eliminate instances to see if the cost improves*/
     for (i=0; i<datosTrain.length; i++) {
       if (marcas[baraje[i]]) { //It is in S
         marcas[baraje[i]] = false;
@@ -231,7 +231,7 @@ public class Explore extends Metodo{
       }
     }
 
-    /*3� part of Explore. Do 1000 randoms mutations and maintain the best results*/
+    /*3rd part of Explore. Do 1000 randoms mutations and maintain the best results*/
     for (i=0; i<1000; i++) {
       pos = Randomize.Randint (0, datosTrain.length-1);
       if (marcas[pos]) {

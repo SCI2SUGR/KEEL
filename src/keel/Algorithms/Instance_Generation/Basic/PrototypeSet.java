@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -604,7 +604,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     }
     
     /**
-     * Converts the dataset into a hashset ¿Para qué cojones se usa?
+     * Converts the dataset into a hashset Â¿Para quÃ© cojones se usa?
      * @return Hashset of the dataset
      */
     public HashSet<Prototype> toHashSet()
@@ -1557,7 +1557,6 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 
 					clusters[i] = pos;
 					
-					//System.out.println("Estas aki no mam�n");
 
 				}
 
@@ -1699,7 +1698,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
     
     /**
-     * SUMAR dos conjuntos de prototipos , uno a uno. De la misma dimensi�n.
+     * SUMAR dos conjuntos de prototipos , uno a uno. De la misma dimension.
      */
  
    public PrototypeSet sumar(PrototypeSet other){
@@ -1718,7 +1717,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
    
    
      /**
-      * Restar dos conjuntos de prototipos , uno a uno. De la misma dimensi�n.
+      * Restar dos conjuntos de prototipos , uno a uno. De la misma dimension.
       */
   
     public PrototypeSet restar(PrototypeSet other){
@@ -1786,10 +1785,10 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 			
 			if(number < 0) number = 0;
 			else if(number > 1) number = 1;
-			num = (int) (number/parametroConversion); // Nos quedamos con la parte entera de la conversi�n
+			num = (int) (number/parametroConversion); // Nos quedamos con la parte entera de la conversion
 			
 			aux = Integer.toBinaryString(num);
-			//Tendremos que a�adir ceros al a derecha...si es menor que 0.
+			//Tendremos que anadir ceros al a derecha...si es menor que 0.
 			while(aux.length()<8){
 				aux = "0"+aux;
 			}
@@ -1826,12 +1825,12 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 			
 			if(number < 0) number = 0;
 			else if(number > 1) number = 1;
-			num = (int) (number/parametroConversion); // Nos quedamos con la parte entera de la conversi�n
+			num = (int) (number/parametroConversion); // Nos quedamos con la parte entera de la conversion
 			
 			aux = Integer.toBinaryString(num);
 			
 			
-			//Tendremos que a�adir ceros al a derecha...si es menor que 0.
+			//Tendremos que anadir ceros al a derecha...si es menor que 0.
 			while(aux.length()<8){
 				aux = "0"+aux;
 			}
@@ -1890,12 +1889,12 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 			   num =0;
 			   String aux2 = ""; //datos[i][j];
 			   
-			   // Transfomraci�n Gray to binary..
-			   aux2 += datos[i][j].charAt(0); // El m�s a la izquierda es igual
+			   // Transformacion Gray to binary..
+			   aux2 += datos[i][j].charAt(0); // El mas a la izquierda es igual
 			   char uno, dos;
 			   
 			   for(int k=1; k< 8;k++){
-				   uno = aux2.charAt(k-1); // El primero de Binary con el 2� de Gray
+				   uno = aux2.charAt(k-1); // El primero de Binary con el 2 de Gray
 				   dos = datos[i][j].charAt(k);
 				   
 				   if(uno == '0' && dos == '0')
@@ -1980,7 +1979,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
            }
            HashSet<Integer> forbidden = new HashSet<Integer>();
            //Le metemos prototipos aleatorios mientras no se cumpla que se tiene
-           //el número de prototipos requerido
+           //el nÃºmero de prototipos requerido
            while (edited.size() < numberOfPrototypesSelected) {
                int chosen;
                do

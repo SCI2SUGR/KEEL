@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -222,7 +222,7 @@ public class SGPGenerator extends PrototypeGenerator {
 		  
 
 		  
-		  // Comprobamos si para cada grupo el vecino mï¿½s cercano eres tu mismo.(tu media)
+		  // Comprobamos si para cada grupo el vecino mas cercano eres tu mismo.(tu media)
 		  // First occur, All patterns of a gruop the closest prototype is the group prototype.
 		  // Then no modification is performed.
 		  
@@ -314,7 +314,7 @@ public class SGPGenerator extends PrototypeGenerator {
 						  G[k].remove(removed.get(i));
 					  
 					// Tenemos que tener en cuenta el Rmin.
-					  // si no tiene un minimo nï¿½mero se pueden descartar :)
+					  // si no tiene un minimo numero se pueden descartar :)
 					  if(removed.size()>Rmin){
 						  G[M] = new PrototypeSet(removed.size());
 						  
@@ -323,7 +323,7 @@ public class SGPGenerator extends PrototypeGenerator {
 						  
 						  
 							 outputDataSet.set(k, G[k].avg());
-							 // System.out.println("Tamaï¿½o output = "+ outputDataSet.size());
+							 // System.out.println("Tamano output = "+ outputDataSet.size());
 							  outputDataSet.add(G[M].avg());
 							  
 							  //Stablish the class too.
@@ -396,7 +396,7 @@ public class SGPGenerator extends PrototypeGenerator {
 				  
 				  }
 				  
-				  // Si tiene el mismo tamaï¿½o no vamos aborrar todos :)
+				  // Si tiene el mismo tamano no vamos aborrar todos :)
 				  if(removed.size() < G[k].size()){
 					  for(int i=0; i<removed.size();i++)
 						  G[k].remove(removed.get(i));
@@ -447,7 +447,7 @@ public class SGPGenerator extends PrototypeGenerator {
 							  // A == i, B == j
 							  //System.out.println("Clases Son iguales " +i+","+j);
 							  boolean continuar2 = true;
-							  // si para todos los prototipos el 2ï¿½ mï¿½s ceano es j.
+							  // si para todos los prototipos el 2o mas ceano es j.
 							  for(int m=0; m< G[i].size() && continuar2;m++){
 								  // obtain the index of the seconde nearest neighbor
 								  int indexSNN =outputDataSet.IndexSecondNearestTo(G[i].get(m));

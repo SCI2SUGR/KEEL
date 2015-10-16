@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -212,7 +212,7 @@ public class LinearSearchBrent {
       
       double y4=g(x4);
       if (!(xl<=x4 && x4<=xr)) {
-       System.out.println("Error en determinaci√≥n de x4, ajustar tolerancias");
+       System.out.println("Error en determinaci√É¬≥n de x4, ajustar tolerancias");
        System.out.println("xl="+xl+" yl="+yl);
        System.out.println("x="+x+" y="+y);
        System.out.println("xr="+xr+" yr="+yr);

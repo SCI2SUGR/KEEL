@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /** 
 * <p> 
-* @author Written by Luciano S�nchez (University of Oviedo) 10/03/2004
+* @author Written by Luciano Sánchez (University of Oviedo) 10/03/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
 * @author Modified by Victoria Lopez (University of Granada) 06/06/2010
 * @version 1.0 
@@ -641,12 +641,12 @@ public class ProcessConfig {
         }
         createResultFile = true;
 
-        //Nuevo: Para leer m�s ficheros de salida:
+        //Nuevo: Para leer mas ficheros de salida:
         while (tk.hasMoreTokens()) {
             tmp = tk.nextToken();
             tmp = tmp.trim();
             if (tmp.length() > 0) {
-                outputData.add(tmp); //A�ado la ruta del fichero de salida
+                outputData.add(tmp); //Anado la ruta del fichero de salida
             }
         }
 
@@ -1190,7 +1190,7 @@ public class ProcessConfig {
      */ 
     void doTableType1(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
-            throw new SyntaxError("Elecci�n de la tabla 1 no especificada");
+            throw new SyntaxError("Eleccion de la tabla 1 no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1209,7 +1209,7 @@ public class ProcessConfig {
      */ 
     void doTableType2(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
-            throw new SyntaxError("Elecci�n de la tabla 2 no especificada");
+            throw new SyntaxError("Eleccion de la tabla 2 no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1227,7 +1227,7 @@ public class ProcessConfig {
      */ 
     void doTableType3(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
-            throw new SyntaxError("Elecci�n de la tabla 3 no especificada");
+            throw new SyntaxError("Eleccion de la tabla 3 no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1246,7 +1246,7 @@ public class ProcessConfig {
     void doNumberLine(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
             throw new SyntaxError(
-                    "Elecci�n del n�mero de l�neas no especificada");
+                    "Eleccion del numero de lineas no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1265,7 +1265,7 @@ public class ProcessConfig {
     void doNumberLine1(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
             throw new SyntaxError(
-                    "Elecci�n del n�mero de l�neas no especificada");
+                    "Eleccion del numero de lineas no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1284,7 +1284,7 @@ public class ProcessConfig {
     void doNumberLine2(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
             throw new SyntaxError(
-                    "Elecci�n del n�mero de l�neas no especificada");
+                    "Eleccion del numero de lineas no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1303,7 +1303,7 @@ public class ProcessConfig {
     void doNumberLine3(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
             throw new SyntaxError(
-                    "Elecci�n del n�mero de l�neas no especificada");
+                    "Eleccion del numero de lineas no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1321,7 +1321,7 @@ public class ProcessConfig {
      */ 
     void doMatrixConfussion(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
-            throw new SyntaxError("Elecci�n de la tabla 2 no especificada");
+            throw new SyntaxError("Eleccion de la tabla 2 no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1339,7 +1339,7 @@ public class ProcessConfig {
      */ 
     void doDataTable1(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
-            throw new SyntaxError("Elecci�n de la tabla 3 no especificada");
+            throw new SyntaxError("Eleccion de la tabla 3 no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1357,7 +1357,7 @@ public class ProcessConfig {
      */ 
     void doDataTable2(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
-            throw new SyntaxError("Elecci�n de la tabla 3 no especificada");
+            throw new SyntaxError("Eleccion de la tabla 3 no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1375,7 +1375,7 @@ public class ProcessConfig {
      */ 
     void doDataTable3(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
-            throw new SyntaxError("Elecci�n de la tabla 3 no especificada");
+            throw new SyntaxError("Eleccion de la tabla 3 no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {
@@ -1393,7 +1393,7 @@ public class ProcessConfig {
      */ 
     void doDataMatrix(StringTokenizer tokens) throws SyntaxError {
         if (!tokens.hasMoreTokens()) {
-            throw new SyntaxError("Elecci�n de la tabla 3 no especificada");
+            throw new SyntaxError("Eleccion de la tabla 3 no especificada");
         }
         String tmp = tokens.nextToken();
         while (!tmp.equals("=")) {

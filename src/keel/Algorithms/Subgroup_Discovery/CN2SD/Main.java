@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -41,12 +41,12 @@ import org.core.Fichero;
  *
  * <p>Company: Yo</p>
  *
- * @author Alberto Fernández
+ * @author Alberto FernÃ¡ndez
  * @version 1.0
  */
 public class Main {
     private String ficheroTrain; //Fichero de entramiento -> Por ejemplo discretizado
-    private String ficheroEval; //Fichero de evaluación -> original
+    private String ficheroEval; //Fichero de evaluaciÃ³n -> original
     private String ficheroTest;
     private String ficheroSalidatr;
     private String ficheroSalidatst;
@@ -62,10 +62,10 @@ public class Main {
     }
 
     /**
-     * Obtiene toda la información necesaria del fichero de parametros<br/>
+     * Obtiene toda la informaciÃ³n necesaria del fichero de parametros<br/>
      * En primer lugar lee el nombre de los archivos de datos de entrenamiento y test<br/>
      * Posteriormente lee los ficheros donde queremos guardar las salidas<br/>
-     * Por último lee los parametros del algoritmo, tales como la semilla o el nº de iteraciones<br/>
+     * Por Ãºltimo lee los parametros del algoritmo, tales como la semilla o el nÂº de iteraciones<br/>
      *
      * @param nomFichero Nombre del fichero de parametros
      *
@@ -80,7 +80,7 @@ public class Main {
         datos = new StringTokenizer(una_linea, " = \" ");
         datos.nextToken(); //inputData
         ficheroTrain = datos.nextToken();
-        ficheroEval = datos.nextToken(); //fichero de evaluación
+        ficheroEval = datos.nextToken(); //fichero de evaluaciÃ³n
         ficheroTest = datos.nextToken();
         una_linea = linea.nextToken(); //Leo una linea
         datos = new StringTokenizer(una_linea, " = \" ");

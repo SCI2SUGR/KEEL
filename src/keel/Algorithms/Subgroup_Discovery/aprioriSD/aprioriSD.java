@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -36,18 +36,18 @@ import java.util.Collections;
 import org.core.Fichero;
 
 /**
- * <p>TÌtulo: Clase principal del algoritmo</p>
- * <p>DescripciÛn: Contiene los metodos esenciales del algoritmo APRIORISD</p>
- * @author Alberto Fern·ndez Hilario 31-01-2006.
+ * <p>T√≠tulo: Clase principal del algoritmo</p>
+ * <p>Descripci√≥n: Contiene los metodos esenciales del algoritmo APRIORISD</p>
+ * @author Alberto Fern√°ndez Hilario 31-01-2006.
  * @version 1.0
  */
 public class aprioriSD {
     public aprioriSD() {
     }
 
-    private int nClases; // Numero m·ximo de clases
-    private int datos; //n˙mero total de datos (transacciones)
-    private int entradas; //n˙mero total de entradas (variables / columnas)
+    private int nClases; // Numero m√°ximo de clases
+    private int datos; //n√∫mero total de datos (transacciones)
+    private int entradas; //n√∫mero total de entradas (variables / columnas)
 
     private double Smin;
     private double Cmin;
@@ -92,7 +92,7 @@ public class aprioriSD {
      * de los ficheros para su posterior uso;<br/>
      * Despues obtenemos todos los datos del fichero y los guardamos en un formato
      * reconocible por el programa.</br>
-     * Por ˙ltimo crea todos los posibles selectores que se puedan dar para el conjunto
+     * Por √∫ltimo crea todos los posibles selectores que se puedan dar para el conjunto
      * concreto de datos y los almacena.
      * @param ftrain Nombre del fichero donde reside el conjunto de entrenamiento
      * @param feval Nombre del fichero donde reside el conjunto de validacion
@@ -102,7 +102,7 @@ public class aprioriSD {
      * @param fsal Nombre del fichero donde guardaremos los datos generales de salida (reglas, tiempo...)
      * @param _Smin Minimo Support
      * @param _Cmin Minimo Confidence
-     * @param _N N˙mero m·ximo de reglas a generar
+     * @param _N N√∫mero m√°ximo de reglas a generar
      * @param _postpoda Se refiere al tipo de postpoda
      */
     public aprioriSD(String ftrain, String feval, String ftest, String fSalidaTr,
@@ -255,11 +255,11 @@ public class aprioriSD {
      */
     private ConjDatos creaConjunto(Dataset mis_datos) {
         ConjDatos datos = new ConjDatos(); //Creo un nuevo conjunto de datos
-        int tam = mis_datos.getnentradas(); //Pillo el n˙mero de atributos de entrada (suponemos una sola salida [clase])
-        double[] vars = new double[tam]; //Creamos el vector que guardar· los valores de los atributos (aun siendo enteros o enum)
+        int tam = mis_datos.getnentradas(); //Pillo el n√∫mero de atributos de entrada (suponemos una sola salida [clase])
+        double[] vars = new double[tam]; //Creamos el vector que guardar√° los valores de los atributos (aun siendo enteros o enum)
         int[][] X;
         int[] C;
-        int clase = 0; //Variable que contendr· el valor para la clase
+        int clase = 0; //Variable que contendr√° el valor para la clase
         boolean salir = false;
         X = mis_datos.getX();
         C = mis_datos.getC();
@@ -285,7 +285,7 @@ public class aprioriSD {
 
     /**
      * Busca y crea los 1-items, es decir, conjuntos de un elemento con un support >= Smin
-     * @param L ArrayList Lista donde guardarÈ los 1-items
+     * @param L ArrayList Lista donde guardar√© los 1-items
      */
     private void uno_items(ArrayList L) {
         int[] auxi = new int[datos];
@@ -304,19 +304,19 @@ public class aprioriSD {
             }
             valor = auxi[j];
             S = 0;
-            for (; valor != maximos[i]; j++) { //AÒado items por columnas en funcion de su support
+            for (; valor != maximos[i]; j++) { //A√±ado items por columnas en funcion de su support
                 if (valor == auxi[j]) { //cuento uno mas porque se repite
                     S++;
-                } else { //AÒado el item si tiene suficiente Support
+                } else { //A√±ado el item si tiene suficiente Support
                     if (S >= Smin) { //Tiene mayor support
                         Item item = new Item(valor, i, S);
-                        L.add(item); //aÒado el item
+                        L.add(item); //a√±ado el item
                     }
                     S = 1; //reinicio el contador de support
                     valor = auxi[j];
                 }
             }
-            S = datos - j + 1; //para el ˙ltimo (n∫ datos - los que ya he contado)
+            S = datos - j + 1; //para el √∫ltimo (n¬∫ datos - los que ya he contado)
             if (S >= Smin) {
                 Item item = new Item(maximos[i], i, S);
                 L.add(item);
@@ -324,7 +324,7 @@ public class aprioriSD {
             itemAct = maximos[i] + 1;
         }
 
-        //Ahora contamos las clases (deberÌan ser 1-items!!)
+        //Ahora contamos las clases (deber√≠an ser 1-items!!)
         for (int j = 0; j < datos; j++) {
             auxi[j] = C[j];
         }
@@ -334,7 +334,7 @@ public class aprioriSD {
         int valor = itemAct;
         S = 1;
         int j;
-        for (j = 1; valor != maximos[entradas]; j++) { //AÒado items por columnas en funcion de su support
+        for (j = 1; valor != maximos[entradas]; j++) { //A√±ado items por columnas en funcion de su support
             if (valor == auxi[j]) {
                 S++;
             } else {
@@ -363,7 +363,7 @@ public class aprioriSD {
     /**
      * Creacion de candidatos k-items de L(k-1)
      * @param L ArrayList Lista de k-1 items
-     * @param Cand ArrayList Lista que contendr· los k-items Candidatos
+     * @param Cand ArrayList Lista que contendr√° los k-items Candidatos
      */
     private void creaCandidatos(ArrayList L, ArrayList Cand) {
         for (int i = 0; i < L.size() - 1; i++) {
@@ -373,14 +373,14 @@ public class aprioriSD {
                 Item it = new Item(); //conjunto que voy a crear
                 boolean seguir = it.creaItem(aux, aux2); //intento hacer uno nuevo con esos 2
                 if (seguir) {
-                    Cand.add(it); //AÒado si lo he creado correctamente (todos los subconjuntos estan en L)
+                    Cand.add(it); //A√±ado si lo he creado correctamente (todos los subconjuntos estan en L)
                 }
             }
         }
     }
 
     /**
-     * Paso que elimina aquellos k-items no v·lidos (alguno de sus subconjuntos no pertenece a L)
+     * Paso que elimina aquellos k-items no v√°lidos (alguno de sus subconjuntos no pertenece a L)
      * @param L ArrayList Lista de k-1 Items
      * @param Cand ArrayList Lista de k-items candidatos
      * @param k int Valor de k con el que estamos trabajando actualmente
@@ -417,7 +417,7 @@ public class aprioriSD {
                 parar = false;
                 for (int j = 0; (j < L.size()) && !parar; j++) {
                     Item aux = (Item) L.get(j);
-                    int[] aux2 = aux.getItem(); //tomamos el item para ver si est·
+                    int[] aux2 = aux.getItem(); //tomamos el item para ver si est√°
                     seguir = true;
                     for (int l = 0; (l < k - 1) && seguir; l++) {
                         seguir = (aux2[l] == subconjunto[l]);
@@ -436,7 +436,7 @@ public class aprioriSD {
                     for (int j = 0; (j < L.size()) && !parar; j++) {
                         seguir = true;
                         Item aux = (Item) L.get(j);
-                        int[] aux2 = aux.getItem(); //tomamos el item para ver si est·
+                        int[] aux2 = aux.getItem(); //tomamos el item para ver si est√°
                         for (int l = 0; (l < k - 1) && seguir; l++) {
                             seguir = (aux2[l] == subconjunto[l]);
                         }
@@ -573,7 +573,7 @@ public class aprioriSD {
 
     /**
      * ReCalcula el peso multiplicativo para un ejemplo
-     * @param i el n˙mero de reglas que cubren al ejemplo
+     * @param i el n√∫mero de reglas que cubren al ejemplo
      * @return el nuevo peso
      */
     /*
@@ -586,7 +586,7 @@ public class aprioriSD {
 
     /**
      * ReCalcula el peso aditivo para un ejemplo
-     * @param i int el n˙mero de reglas que cubren al ejemplo
+     * @param i int el n√∫mero de reglas que cubren al ejemplo
      * @return double el nuevo peso
      */
     private double pesoAditivo(int i) {
@@ -679,7 +679,7 @@ public class aprioriSD {
                                Cand.size());
             //-----------------------
             if (k > 3) {
-                pruneStep(L, Cand, k); //En Cand solo quedan los 'v·lidos' (aunque habr· algunos que no se podr·n contar)
+                pruneStep(L, Cand, k); //En Cand solo quedan los 'v√°lidos' (aunque habr√° algunos que no se podr√°n contar)
                 //es decir, aquellos que tengan 2 items en la misma columna!
                 System.out.println(
                         "Candidate elimination step. Remaining: " +
@@ -693,9 +693,9 @@ public class aprioriSD {
             System.out.println(k + "-ITEMS COMPUTED!! Total: " + L.size());
             ponReglas(L); //introduzco nuevas reglas en el conjunto si procede
         }
-        //reglas.print(); //a ver quÈ sale...
+        //reglas.print(); //a ver qu√© sale...
 
-        //Ahora realizo el post-procesamiento: SelecciÛn de un subconjunto de reglas
+        //Ahora realizo el post-procesamiento: Selecci√≥n de un subconjunto de reglas
         System.out.println("\nPost-processing Rules!");
         boolean parar = false;
         //reglas.print();
@@ -706,7 +706,7 @@ public class aprioriSD {
                          (i < N) && (auxiliar.size() > 0) &&
                          (reglas.size() > 0) && (!parar);
                          i++) { //Hasta que me quede con N reglas o no haya ejemplos o no haya reglas
-                Collections.sort(reglas.getConjReglas()); //Ordeno las reglas en funcion de su support y tamaÒo
+                Collections.sort(reglas.getConjReglas()); //Ordeno las reglas en funcion de su support y tama√±o
                 cuentaEjCubiertos(reglas.getUltimaRegla(), auxiliar); //Ahora elimino los ejemplos cubiertos por la mejor regla
                 Regla r = reglas.getUltimaRegla().copiaRegla();
                 r.adjuntaNombreAtributos(nombreAtributos);
@@ -722,7 +722,7 @@ public class aprioriSD {
                              (i < N) && (auxiliar.size() > 0) &&
                              (reglas.size() > 0) && (!parar);
                              i++) { //Hasta que me quede con N reglas o no haya ejemplos o no haya reglas (para la clase)
-                    Collections.sort(reglas.getConjReglas()); //Ordeno las reglas en funcion de su support y tamaÒo
+                    Collections.sort(reglas.getConjReglas()); //Ordeno las reglas en funcion de su support y tama√±o
                     int l;
                     boolean seguir = true;
                     Regla r = new Regla();

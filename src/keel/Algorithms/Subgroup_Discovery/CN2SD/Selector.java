@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,15 +30,15 @@
 package keel.Algorithms.Subgroup_Discovery.CN2SD;
 
 /**
- * <p>TÌtulo: Conjunto de reglas</p>
- * <p>DescripciÛn: Estructura para almacenar un conjunto completo de reglas</p>
- * @author Alberto Fern·ndez
+ * <p>T√≠tulo: Conjunto de reglas</p>
+ * <p>Descripci√≥n: Estructura para almacenar un conjunto completo de reglas</p>
+ * @author Alberto Fern√°ndez
  * @version 1.0
  */
 
 public class Selector implements Comparable {
 
-    int atributo; // N∫ de columna en el dataset (0..m-1)
+    int atributo; // N¬∫ de columna en el dataset (0..m-1)
     int operador; // Operador-> 0:= 1:<> 2:<= 3:>
     double[] valor;
 
@@ -61,7 +61,7 @@ public class Selector implements Comparable {
      *  (atributo operador valores)
      * @param atr atributo
      * @param op operador
-     * @param val un conjunto de valores (disjuntos -> at = a Û b Û c)
+     * @param val un conjunto de valores (disjuntos -> at = a √≥ b √≥ c)
      */
     public Selector(int atr, int op, double[] val) {
         atributo = atr;
@@ -74,11 +74,11 @@ public class Selector implements Comparable {
 
 
     /**
-     * Funcion de comparaciÛn entre dos objetos de la clase selector
+     * Funcion de comparaci√≥n entre dos objetos de la clase selector
      * @param o Objeto selector a comparar
      * @return 0 si son iguales (mismo atributo,operador y valor ), -1 (mismo atributo, operador y menor valor), 1
      * (mismo atributo, operador y menor valor), [nuevo->] 2 (distinto atributo y operador) o 3 (distinto atributo)).
-     * -2 -> Mismo atributo, distinto operador; -3 -> mismo atributo, valor = Û +/- 1 (uff) mirar comentario debajo)
+     * -2 -> Mismo atributo, distinto operador; -3 -> mismo atributo, valor = √≥ +/- 1 (uff) mirar comentario debajo)
      */
     public int compareTo(Object o) {
         Selector s2 = (Selector) o;
@@ -123,7 +123,7 @@ public class Selector implements Comparable {
     }
 
     /**
-     * Comprueba si los valores de un selector est·n subsumidos en otro
+     * Comprueba si los valores de un selector est√°n subsumidos en otro
      * @param valores double[] Valores con los que comprueba
      * @param _operador int Operador con el que se comprueba
      * @return boolean True si el selector de la clase esta subsumido dentro de la clase con que compruebo. False en otro caso.
@@ -132,7 +132,7 @@ public class Selector implements Comparable {
         boolean salida = false;
         //Si los valores son iguales y el operador no es el contrario
         salida = (mismoValor(valores) && (!(this.opContrario(_operador))));
-        if (!salida){ //No est· subsumido...
+        if (!salida){ //No est√° subsumido...
             if ((operador == _operador)&&(operador == 0)) { //Son iguales y es el ==
                 if (valor.length < valores.length) {
                     salida = true;

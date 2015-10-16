@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -589,7 +589,7 @@ public class Datos {
     }
 
 
-    /** modulo que calcula la informacion mutua entre cada dos variables. Tambien se realizará una única vez cuando se
+    /** modulo que calcula la informacion mutua entre cada dos variables. Tambien se realizarÃ¡ una Ãºnica vez cuando se
         utilice la medida de IM 
         @return matriz de valores double con IM entre la variable i  y la variable j */
     public double[][]obtenerIMVars(){
@@ -598,7 +598,7 @@ public class Datos {
         int nx[], ny[], nxy[][];
         double px, py, pxy, suma;
 
-        /* primero hay que comprobar que los datos est� discretizados, es decir, no hay ningun valor no entero */
+        /* primero hay que comprobar que los datos esta discretizados, es decir, no hay ningun valor no entero */
         if(!areDiscretized){
             System.err.println("ERROR: Data values aren't discretized! This is an algorithm precondition");
             System.exit(0);

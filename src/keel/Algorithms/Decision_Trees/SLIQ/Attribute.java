@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -49,22 +49,22 @@ public class Attribute {
 	/** Valores para atributos que son una lista. */
 	private Vector values;					
 	
-	/** Menor valor para un atributo numÈrico. */
+	/** Menor valor para un atributo num√©rico. */
 	private float bottom;					
 	
-	/** Mayor valor para un atributo numÈrico. */
+	/** Mayor valor para un atributo num√©rico. */
 	private float top;
 	
-	/** Õndice asociado al atributo. */
+	/** √çndice asociado al atributo. */
 	private int index;
 	
-	/** øEst· incluido en las entradas o salidas?. */
+	/** ¬øEst√° incluido en las entradas o salidas?. */
 	private boolean used;					
 
   	/** Constructor para atributos continuos.
   	 * 
   	 * @param attributeName		Nombre del atributo.
-  	 * @param attributeIndex	Õndice del atributo.
+  	 * @param attributeIndex	√çndice del atributo.
   	 */
   	public Attribute(String attributeName, int attributeIndex) {
   		name = attributeName;
@@ -78,7 +78,7 @@ public class Attribute {
   	 * 
   	 * @param attributeName		Nombre del atributo.
   	 * @param attributeValues	Valores del atributo.
-  	 * @param attributeIndex	Õndice del atributo.
+  	 * @param attributeIndex	√çndice del atributo.
   	 */
   	public Attribute(String attributeName, Vector attributeValues, int attributeIndex ) {
   		name = attributeName;
@@ -93,11 +93,11 @@ public class Attribute {
 		}
 	}
 
-  	/** MÈtodo para obtener el Ìndice de un valor en una lista de valores.
+  	/** M√©todo para obtener el √≠ndice de un valor en una lista de valores.
   	 * 
   	 * @param value 	El valor.
   	 * 
-  	 * @return			Õndice que corresponde al valor.
+  	 * @return			√çndice que corresponde al valor.
   	 */
   	public final int valueIndex(String value)  {
   		int i = 0;
@@ -139,9 +139,9 @@ public class Attribute {
   		return name;
 	}
   
-   	/** MÈtodo para obtener el n˙mero de valores de un atributo discreto.
+   	/** M√©todo para obtener el n√∫mero de valores de un atributo discreto.
    	 * 
-   	 * @return	El n˙mero de valores del atributo.
+   	 * @return	El n√∫mero de valores del atributo.
    	 */
   	public final int numValues() {
   		if (!isDiscret())
@@ -150,9 +150,9 @@ public class Attribute {
   			return values.size();
 	}
 
-  	/** Devuelve el valor correspondiente a un Ìndice.
+  	/** Devuelve el valor correspondiente a un √≠ndice.
   	 * 
-  	 * @param valIndex	El Ìndice asociado al valor.
+  	 * @param valIndex	El √≠ndice asociado al valor.
   	 */
   	public final String value(int valIndex)  {
   		if (!isDiscret())
@@ -166,12 +166,12 @@ public class Attribute {
 
   	/** Establece el rango de un atributo continuo.
   	 * 
-  	 * @param minRange	MÌnimo valor del rango.
-  	 * @param maxRange	M·ximo valor del rango.
+  	 * @param minRange	M√≠nimo valor del rango.
+  	 * @param maxRange	M√°ximo valor del rango.
   	 */ 
     final void setRange(float minRange, float maxRange)  {
     	if(isDiscret()) 
-    		throw new IllegalArgumentException("Solamente puede aplicarse a atributos numÈricos");
+    		throw new IllegalArgumentException("Solamente puede aplicarse a atributos num√©ricos");
     	else {
     		bottom = minRange;
     		top = maxRange;
@@ -180,34 +180,34 @@ public class Attribute {
 
   	/** Establece el rango de un atributo continuo.
   	 * 
-  	 * @param minRange	MÌnimo valor del rango.
-  	 * @param maxRange	M·ximo valor del rango.
+  	 * @param minRange	M√≠nimo valor del rango.
+  	 * @param maxRange	M√°ximo valor del rango.
   	 */
     final void setRange(int minRange, int maxRange) {
     	if(isDiscret()) 
-    		throw new IllegalArgumentException("Solamente puede aplicarse a atributos numÈricos");
+    		throw new IllegalArgumentException("Solamente puede aplicarse a atributos num√©ricos");
     	else {
     		bottom = minRange;
     		top = maxRange;
     	}
   	}
 
-  	/** Devuelve el menor valor de un atributo numÈrico.
+  	/** Devuelve el menor valor de un atributo num√©rico.
   	 * 
   	 */
     public final float getMinRange() {
     	if(isDiscret()) 
-    		throw new IllegalArgumentException("Solamente puede aplicarse a atributos numÈricos");
+    		throw new IllegalArgumentException("Solamente puede aplicarse a atributos num√©ricos");
     	else
     		return bottom;
   	}
 
-  	/** Devuelve el mayor valor de un atributo numÈrico.
+  	/** Devuelve el mayor valor de un atributo num√©rico.
   	 * 
   	 */
     public final float getMaxRange() {
     	if(isDiscret()) 
-    		throw new IllegalArgumentException("Solamente puede aplicarse a atributos numÈricos");
+    		throw new IllegalArgumentException("Solamente puede aplicarse a atributos num√©ricos");
     	else
     		return top;
   	}
@@ -226,7 +226,7 @@ public class Attribute {
     	return used;
     }
 
-    /** Devuelve el Ìndice del atributo.
+    /** Devuelve el √≠ndice del atributo.
      * 
      */
     public int getIndex() {

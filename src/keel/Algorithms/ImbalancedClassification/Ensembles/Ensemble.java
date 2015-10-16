@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
 * <p>
-* @author Written by Mikel Galar Idoate (Universidad Pública de Navarra) 30/5/2010
+* @author Written by Mikel Galar Idoate (Universidad PÃºblica de Navarra) 30/5/2010
 * @author Modified by Sarah Vluymans (University of Ghent) 29/01/2014
 * @author Modified by Alberto Fernandez (University of Jaen) 28/05/2014
 * @version 0.1
@@ -895,7 +895,7 @@ class Ensemble {
       if (nSets == 0)
          return X;
       // Necesito, de los nominales, para cada clase los norminales
-      // Recorro todos los ejemplos y dep de la clase añado a uno o a otro
+      // Recorro todos los ejemplos y dep de la clase aÃ±ado a uno o a otro
       // se que de cada nominal hay nMaj y nMin, pero tengo que contar cuantos hay norminales
       // a la vez que cuento, guardo media y std para numericos
 
@@ -1225,7 +1225,7 @@ class Ensemble {
 	  
 	  //Step 3. Calculate the penalty value for every example x_i
 	  //amb_t(x_i) = 1/t sum_{j=1}^{t}(||H_t = y_i|| - ||h_j = y_i||)
-	  //H_t = arg_max (y) sum_{t=1}{T}(alfa_t · ||h_t(x) = y||) ** A partir de la segunda iteración! (variable t)
+	  //H_t = arg_max (y) sum_{t=1}{T}(alfa_t Â· ||h_t(x) = y||) ** A partir de la segunda iteraciÃ³n! (variable t)
 	  
 	  double [] amb_t = new double[originalDS.getnData()];
 	  int [] Hts = new int[originalDS.getnData()];
@@ -1256,7 +1256,7 @@ class Ensemble {
 	  }
 	  
 	  //Step 4. Calculate ht's weight alfa_t by error and penalty using:
-	  // alfa_t = 1/2 log (sum_{i, y_i = ht(x_i)}(D_t(x_i)·p_t(x_i)^l   /  sum_{i, y_i != ht(x_i)}(D_t(x_i)·p_t(x_i)^l )
+	  // alfa_t = 1/2 log (sum_{i, y_i = ht(x_i)}(D_t(x_i)Â·p_t(x_i)^l   /  sum_{i, y_i != ht(x_i)}(D_t(x_i)Â·p_t(x_i)^l )
 	  
 	  double sumatoriaPos = 0;
 	  double sumatoriaNeg = 0;
@@ -1276,7 +1276,7 @@ class Ensemble {
 	  }
 	  
 	  //Step 5. Update data weights Dt and obtain new weights Dt+1 by error and penalty
-	  //D_{t+1}(x_i) = p_t(x_i)^l · Dt(x_i)^(-alfa_t ||h_t(x_i)= y_i||) / Z_t
+	  //D_{t+1}(x_i) = p_t(x_i)^l Â· Dt(x_i)^(-alfa_t ||h_t(x_i)= y_i||) / Z_t
 	  //Z_t is a normalization factor
 	  double max = 0;
 	  for (int i = 0; i < originalDS.getnData(); i++){
@@ -1298,7 +1298,7 @@ class Ensemble {
 	  return false;
   }
   
-  //H_t = arg_max (y) sum_{t=1}{T}(alfa_t · ||h_t(x) = y||) ** From second iteration! (variable t)
+  //H_t = arg_max (y) sum_{t=1}{T}(alfa_t Â· ||h_t(x) = y||) ** From second iteration! (variable t)
   public int salidaEnsemble(double [] example){
 	  int clase = 0;
 	  double [] scores = new double[originalDS.getnClasses()];

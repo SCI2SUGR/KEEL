@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,8 @@
 
 /**
  * <p>
- * @author Written by Alberto Fern·ndez (University of Granada) 02/06/2008
- * @author Modified by Xavi SolÈ (La Salle, RamÛn Llull University - Barcelona) 16/12/2008
+ * @author Written by Alberto Fern√°ndez (University of Granada) 02/06/2008
+ * @author Modified by Xavi Sol√© (La Salle, Ram√≥n Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
@@ -93,7 +93,7 @@ public class Selector implements Comparable {
      * </p>
      * @param atr attribute
      * @param op operator
-     * @param val set of values (disjunct -> at = a ÔøΩb ÔøΩc)
+     * @param val set of values (disjunct -> at = a b c)
      */
     public Selector(int atr, int op, double[] val) {
         atributo = atr;
@@ -113,7 +113,7 @@ public class Selector implements Comparable {
      * @return 0 if are equals (same attribute,operator and value), -1 (same attribute, operator),
      * 		   1 (same attribute, operator and less value), [new->] 2 (different attribute and operator)
      * 		   3 (different attribute)).
-     *        -2 -> Same attribute, different operator; -3 -> same attribute, value = ÔøΩ+/- 1 
+     *        -2 -> Same attribute, different operator; -3 -> same attribute, value = +/- 1 
      */
     public int compareTo(Object o) {
         Selector s2 = (Selector) o;
@@ -171,7 +171,7 @@ public class Selector implements Comparable {
         boolean salida = false;
         //Si los valores son iguales y el operador no es el contrario
         salida = (mismoValor(valores) && (!(this.opContrario(_operador))));
-        if (!salida){ //No estÔøΩsubsumido...
+        if (!salida){ //No esta subsumido...
             if ((operador == _operador)&&(operador == 0)) { //Son iguales y es el ==
                 if (valor.length < valores.length) {
                     salida = true;

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -42,12 +42,12 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 
 /**
- * <p>TÌtulo: Ant Colony Optimization</p>
- * <p>DescripciÛn: Algoritmo de clasificacion por ACO</p>
+ * <p>T√≠tulo: Ant Colony Optimization</p>
+ * <p>Descripci√≥n: Algoritmo de clasificacion por ACO</p>
  * <p>Ant Miner +
  * <p>Copyright: Copyright (c) 2007</p>
  * <p>Empresa: </p>
- * @author Vicente RubÈn del Pino Ruiz
+ * @author Vicente Rub√©n del Pino Ruiz
  * @version 1.0
  */
 
@@ -271,7 +271,7 @@ public class ACO {
           at = (Atributo) listaAtributosVacios.get(j);
         }
         else {
-          at = (Atributo) ( (Vector) listaValores.get(j)).get( (int) X[i][j]); //Cogemos el puntero que seÒala al atributo almacenado en lista de valores
+          at = (Atributo) ( (Vector) listaValores.get(j)).get( (int) X[i][j]); //Cogemos el puntero que se√±ala al atributo almacenado en lista de valores
         }
         mt.insertarAtributo(at);
       }
@@ -329,7 +329,7 @@ public class ACO {
           at = (Atributo) listaAtributosVacios.get(j);
         }
         else {
-          at = (Atributo) ( (Vector) listaValores.get(j)).get(posicion); //Cogemos el puntero que seÒala al atributo almacenado en lista de valores
+          at = (Atributo) ( (Vector) listaValores.get(j)).get(posicion); //Cogemos el puntero que se√±ala al atributo almacenado en lista de valores
         }
         mt.insertarAtributo(at);
       }
@@ -718,7 +718,7 @@ public class ACO {
     System.out.println("Reglas descubiertas ");
 
     numReglas = reglasDescubiertas.size();
-    for (i = 0; i < reglasDescubiertas.size() - 1; i++) { //La regla generica se enseÒa despues
+    for (i = 0; i < reglasDescubiertas.size() - 1; i++) { //La regla generica se ense√±a despues
       regla = (Regla) reglasDescubiertas.get(i);
       regla.imprime(listaCondicionesVacias);
       salida.print("REGLA " + i + " : ");
@@ -774,14 +774,14 @@ public class ACO {
       primero = false;
     }
 
-    //Conjuntos pequeÒos
+    //Conjuntos peque√±os
     if (tamanioTrain <= tamanioTest * 0.1) {
       return true;
     }
     if (tamanioTrain > tamanioTest * 0.1) {
       return false;
     }
-    //Si el conjunto es pequeÒo y todas las muestras que quedan
+    //Si el conjunto es peque√±o y todas las muestras que quedan
     //son de la clase predefinida se sale
     if (cTrain.porcentajeMuestrasClase(predefinida) >= 0.9) {
       return true;
@@ -1554,7 +1554,7 @@ public class ACO {
     System.out.println("Reglas descubiertas ");
 
     numReglas = reglasDescubiertas.size();
-    for (i = 0; i < reglasDescubiertas.size() - 1; i++) { //La regla generica se enseÒa despues
+    for (i = 0; i < reglasDescubiertas.size() - 1; i++) { //La regla generica se ense√±a despues
       regla = (Regla) reglasDescubiertas.get(i);
       regla.ordenaCondiciones();
       regla.imprime(listaCondicionesVacias);

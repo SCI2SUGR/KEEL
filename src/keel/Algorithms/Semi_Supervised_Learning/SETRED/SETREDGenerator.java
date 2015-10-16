@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -421,7 +421,7 @@ public class SETREDGenerator extends PrototypeGenerator {
 			  
 			  int cont =labeledPrima.size()-1;
 			  
-			//  System.out.println("Número a añadir= "+ labeledPrima.size());
+			//  System.out.println("NÃºmero a aÃ±adir= "+ labeledPrima.size());
 			  
 			  
 			  for(int p=labeledUnion.size()-1; p>=(labeledUnion.size()-labeledPrima.size()); p--){
@@ -447,7 +447,7 @@ public class SETREDGenerator extends PrototypeGenerator {
 					  }
 				  }
 				  
-				  // adjacentes tiene el tamaño del vecindario.
+				  // adjacentes tiene el tamaÃ±o del vecindario.
 		
 				  int contador =0; // to determine the number in the neighborhood
 				  
@@ -494,7 +494,7 @@ public class SETREDGenerator extends PrototypeGenerator {
 				  }
 				  
 				  /*else{
-					  System.out.println("No lo Añado, está a la izquierda");
+					  System.out.println("No lo AÃ±ado, estÃ¡ a la izquierda");
 				  }*/
 				  
 			  }

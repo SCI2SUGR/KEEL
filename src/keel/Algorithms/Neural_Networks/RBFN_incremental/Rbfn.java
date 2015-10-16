@@ -6,10 +6,10 @@ classification, clustering, pattern mining and so on.
 Copyright (C) 2004-2010
 
 F. Herrera (herrera@decsai.ugr.es)
-L. S�nchez (luciano@uniovi.es)
-J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-S. Garc�a (sglopez@ujaen.es)
-A. Fern�ndez (alberto.fernandez@ujaen.es)
+L. Sánchez (luciano@uniovi.es)
+J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+S. García (sglopez@ujaen.es)
+A. Fernández (alberto.fernandez@ujaen.es)
 J. Luengo (julianlm@decsai.ugr.es)
 
 This program is free software: you can redistribute it and/or modify
@@ -33,9 +33,9 @@ along with this program.  If not, see http://www.gnu.org/licenses/
 
 /**
  * <p>
- * @author Writen by Antonio J. Rivera Rivas (University of Ja�n) 03/03/2004
- * @author Modified by V�ctor Rivas (University of Ja�n) 23/06/2006
- * @author Modified by Mar�a Dolores P�rez Godoy (University of Ja�n) 17/12/2008
+ * @author Writen by Antonio J. Rivera Rivas (University of Jaen) 03/03/2004
+ * @author Modified by Victor Rivas (University of Jaen) 23/06/2006
+ * @author Modified by Maria Dolores Perez Godoy (University of Jaen) 17/12/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -185,7 +185,8 @@ public class Rbfn {
      * 
      * 
      * @param X  Matrix of instances
-     * @param ndata  Number of instaces in X �@param nInpt Number of imputs of the net
+     * @param ndata  Number of instaces in X 
+     * @param nInpt Number of imputs of the net
      * @param nOutp Number of outputs of the net
      * @param nNeuro Number of hidden neurons the net will have.
      */
@@ -329,7 +330,7 @@ public class Rbfn {
      * @param nNeuro Number of hidden neurons the net will have.
      * @param X Matrix of instances
      * @param ndata Number of instaces in X
-     * �@param nInpt Number of imputs of the net
+     * @param nInpt Number of imputs of the net
      * @param nOutpl Number of outputs of the net
      */
     public Rbfn(int nNeuro, double[][] X, int ndata, int nInpt, int nOutpl) {

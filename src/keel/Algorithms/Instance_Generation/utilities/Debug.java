@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -82,8 +82,8 @@ public class Debug
     protected static void terminateProgram()
     {
         //System.exit(-1);
-        //ojo, debes cambiarlo cuando esté dentro de Keel
-        //por las dos siguiente líneas
+        //ojo, debes cambiarlo cuando estÃ© dentro de Keel
+        //por las dos siguiente lÃ­neas
         System.err.println("Program has commited and error");
         throw new RuntimeException();
     }

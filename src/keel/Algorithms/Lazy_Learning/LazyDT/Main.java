@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ package keel.Algorithms.Lazy_Learning.LazyDT;
  * This is the main class of the algorithm.
  * It gets the configuration script, builds the classifier and executes it.
  * 
- * @author Written by Victoria L√≥pez Morales (University of Granada) 20/8/2009 
+ * @author Written by Victoria L√É¬≥pez Morales (University of Granada) 20/8/2009 
  * @version 0.1 
  * @since JDK1.5
  * 

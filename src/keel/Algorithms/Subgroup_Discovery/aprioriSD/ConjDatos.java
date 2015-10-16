@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -32,10 +32,10 @@ package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 import java.util.*;
 
 /**
- * <p>TÌtulo: Conjunto de Datos</p>
- * <p>DescripciÛn: Maneja los conjuntos de datos</p>
+ * <p>T√≠tulo: Conjunto de Datos</p>
+ * <p>Descripci√≥n: Maneja los conjuntos de datos</p>
  * <p>Creado: 02-agosto 2004</p>
- * @author JosÈ RamÛn Cano de Amo
+ * @author Jos√© Ram√≥n Cano de Amo
  * @version 1.0
 */
 public class ConjDatos {
@@ -65,7 +65,7 @@ public class ConjDatos {
   }
 
   /**
-   * AÒade un dato
+   * A√±ade un dato
    * @param m Ejemplo
    */
   public void addDato(Muestra m) {
@@ -97,8 +97,8 @@ public class ConjDatos {
   }
 
   /**
-   * Devuelve el n˙mero de ejemplos de nuestro conjunto de datos
-   * @return El tamaÒo
+   * Devuelve el n√∫mero de ejemplos de nuestro conjunto de datos
+   * @return El tama√±o
    */
   public int size() {
     return (datos.size());
@@ -135,7 +135,7 @@ public class ConjDatos {
   }
 
   /**
-   * Hace que los atributos de todos los ejemplos estÈn en el intervalo [0,1]
+   * Hace que los atributos de todos los ejemplos est√©n en el intervalo [0,1]
    * @param datos Conjunto de datos
    */
   public void hazUniforme(Dataset datos){

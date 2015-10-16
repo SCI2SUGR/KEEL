@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -35,7 +35,7 @@ package keel.Algorithms.Decision_Trees.C45;
  * Class to handle the classifier tree
  * 
 * <p>
-* @author Written by Cristobal Romero (Universidad de CÛrdoba) 10/10/2007
+* @author Written by Cristobal Romero (Universidad de C√≥rdoba) 10/10/2007
 * @author Modified by Alberto Fernandez (UGR) 
 * @version 1.2 (29-04-10)
 * @since JDK 1.5

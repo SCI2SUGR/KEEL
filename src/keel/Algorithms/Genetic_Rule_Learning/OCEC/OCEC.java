@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@ package keel.Algorithms.Genetic_Rule_Learning.OCEC;
  *
  * <p>Company: KEEL </p>
  *
- * @author Alberto Fern·ndez
+ * @author Alberto Fern√°ndez
  * @version 1.0
  */
 
@@ -199,7 +199,7 @@ public class OCEC {
       for (int j = 0; j < p.length; j++) { //para todas las poblaciones
         //System.out.println("Working with population P[" + j + "]: "+p[j].size());
         //p[j].print();
-        while (p[j].size() > 1) { //Hay m·s de una organizacion
+        while (p[j].size() > 1) { //Hay m√°s de una organizacion
           //System.out.println("Working with population P[" + j + "]: "+p[j].size());
           //p[j].print();
           int aleat1, aleat2;
@@ -311,7 +311,7 @@ public class OCEC {
     }
     for (int i = 0; i < p.length; i++) {
       p[i].eliminarNoUtiles();
-      p[i].mezclar(); //junta dos organizaciones si los atributos ˙tiles de una estan contenidos en la otra (y tienen
+      p[i].mezclar(); //junta dos organizaciones si los atributos √∫tiles de una estan contenidos en la otra (y tienen
       //lo mismos valores, obviamente.
       baseReglas.incluir(p[i]); //construyo y almaceno las reglas de p[i]
     }
@@ -382,7 +382,7 @@ public class OCEC {
     int n_ = Math.min(n,
                       (int) Math.min(padre.miembros.length,
                                      madre.miembros.length));
-    //puedo intercambiar n Û, el minimo de miembros (padre Û madre)
+    //puedo intercambiar n √≥, el minimo de miembros (padre √≥ madre)
     int[] miembrosP = new int[n_]; //posiciones de los miembros a intercambiar
     int[] miembrosM = new int[n_]; //posiciones de los miembros a intercambiar
     int contador = 0;
@@ -442,7 +442,7 @@ public class OCEC {
             RandintClosed(
                 0, p[aleat].size()-1)); //org con clase !=
         if (orgPrima.estaYdistinto(i, org.ForgValue[i])) {
-          org.addU(i); //aÒadir a Uorg
+          org.addU(i); //a√±adir a Uorg
         }
         else {
           a.reducir(i); //reducir S_A_j

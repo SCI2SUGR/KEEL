@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -111,7 +111,7 @@ public class Algorithm {
                 //Guardamos la columna y su valor correspondiente
                 valor_atributo.put(j, train.getExample(i)[j]);                
             }
-            //añadimos todos los valores encontrados para la fila
+            //aÃ±adimos todos los valores encontrados para la fila
             bloques_atributo_valor.add(valor_atributo); 
         }
         
@@ -132,15 +132,15 @@ public class Algorithm {
                Double valor = bloques_atributo_valor.get(i).get(atributo);//saca el valor asociado
                
                Atributo_valor av_nuevo = new Atributo_valor(atributo,valor);//crea un nuevo Atributo_valor
-               //si encuentra el valor repetido, devuelve ese valor para poder añadir en su lista,
-               //en caso contrario devuelve null, para poder añadir el Atributo_valor a la nueva LinkedList
+               //si encuentra el valor repetido, devuelve ese valor para poder aÃ±adir en su lista,
+               //en caso contrario devuelve null, para poder aÃ±adir el Atributo_valor a la nueva LinkedList
                Atributo_valor av_lista = av_nuevo.findElement(lista_auxiliar);
 
                 if (av_lista!=null){
-                    av_lista.addFila(i);//añade a la lista del Atributo_valor repetido
+                    av_lista.addFila(i);//aÃ±ade a la lista del Atributo_valor repetido
                 }else{
-                    av_nuevo.addFila(i);//añade a la lista del Atributo_valor
-                    lista_auxiliar.add(av_nuevo);//añade el nuevo Atributo_valor
+                    av_nuevo.addFila(i);//aÃ±ade a la lista del Atributo_valor
+                    lista_auxiliar.add(av_nuevo);//aÃ±ade el nuevo Atributo_valor
                 }
            } 
         }
@@ -167,11 +167,11 @@ public class Algorithm {
                         //Anadimos el valor:
                         lista_valores.add(valor);
                         //Anadimos el atributo y la lista al mapa final:
-                        parejas_relevantes.put(atributo,lista_valores ); //Añadimos el atributo                    
-                    }else if (!parejas_relevantes.get(atributo).contains(valor)){ //Si el atributo está, pero no su valor
+                        parejas_relevantes.put(atributo,lista_valores ); //AÃ±adimos el atributo                    
+                    }else if (!parejas_relevantes.get(atributo).contains(valor)){ //Si el atributo estÃ¡, pero no su valor
                         //Anadimos el valor a la lista del mapa final
                         parejas_relevantes.get(atributo).add(valor);                    
-                    }//else{ /*Pareja repetida. No se añade*/}                
+                    }//else{ /*Pareja repetida. No se aÃ±ade*/}                
                 }
             }
 
@@ -206,14 +206,14 @@ public class Algorithm {
                      max = intersecciones;
                      cardinalidad = filas.size();
                      resultado = pareja;                     
-                 }else if(intersecciones == max){ //A igual n�mero de intersecciones, nos quedamos 
+                 }else if(intersecciones == max){ //A igual numero de intersecciones, nos quedamos 
                                                   //con el de menor cardinalidad
                      if (filas.size()<cardinalidad){
                          max = intersecciones;
                          cardinalidad = filas.size();                         
                          resultado = pareja;   
                      }//Si tiene igual o peor cardinalidad, no hacemos nada y nos quedamos con
-                      //el primero que apareci�
+                      //el primero que aparecio
                  }   
              }             
          }         
@@ -253,7 +253,7 @@ public class Algorithm {
                 LinkedList<Integer> G = (LinkedList<Integer>) B.clone();
 
 
-                //################ Calculo de los complejos m�nimos
+                //################ Calculo de los complejos minimos
                 LinkedList<LinkedList<Atributo_valor>> complejos_minimos = new LinkedList<LinkedList<Atributo_valor>>();
                 TreeMap<Integer,LinkedList<Double>> parejas_relevantes = new TreeMap<Integer,LinkedList<Double>>();
                 LinkedList<Integer> interseccion = new LinkedList<Integer>();
@@ -270,7 +270,7 @@ public class Algorithm {
                     //En base a T(G) y a las parejas, calculamos la mejor pareja
                     Atributo_valor mejor_pareja = calcula_mejor_pareja(G, lista_bloques_atributo_valor, parejas_relevantes);
                    
-                    // if(mejor_pareja.getAtributo() != null) System.out.println("La mejor pareja es "+ mejor_pareja.getAtributo() +" -- "+mejor_pareja.getValor()+" -tama�o- "+mejor_pareja.getListFilas().size());
+                    // if(mejor_pareja.getAtributo() != null) System.out.println("La mejor pareja es "+ mejor_pareja.getAtributo() +" -- "+mejor_pareja.getValor()+" -tamano- "+mejor_pareja.getListFilas().size());
 
                     //Calculamos la interseccion entre la nueva pareja, y las obtenidas con anterioridad
                     if(mejor_pareja.getAtributo() != null){//Controla que T(G) != 0
@@ -300,13 +300,13 @@ public class Algorithm {
                               }
                           }
 
-                          if(subconjunto){ //Si era subconjunto tenemos el primer complejo m�nimo
+                          if(subconjunto){ //Si era subconjunto tenemos el primer complejo minimo
       
                               lista_aux.add(mejor_pareja);
                               complejos_minimos.add((LinkedList<Atributo_valor>) lista_aux.clone());
                               lista_aux.clear();
 
-                              //Actualizamos G. Si queda vac�o acaba el algoritmo
+                              //Actualizamos G. Si queda vacio acaba el algoritmo
                               for(int i=0;i<interseccion.size();i++){
                                   G.remove((Integer) interseccion.get(i));                    
                               } 
@@ -328,7 +328,7 @@ public class Algorithm {
                 for (int i=0;i<complejos_minimos.size();i++){
 
                     int j = 0;
-                    //el while se ejecuta mientras el tamaño sea mayor de 1 o no haya comprobado todos los atributos
+                    //el while se ejecuta mientras el tamaÃ±o sea mayor de 1 o no haya comprobado todos los atributos
                     while(complejos_minimos.get(i).size()>1 && j<=complejos_minimos.get(i).size()){
                         Atributo_valor aux_av=complejos_minimos.get(i).removeFirst();
 
@@ -343,7 +343,7 @@ public class Algorithm {
                             }else{
                                 LinkedList<Integer> interseccion_aux = new LinkedList<Integer>();
                                 for (int n=0;n<inter.size();n++){
-                                    //Si est� en los dos, pertenece a la intersecci�n
+                                    //Si esta en los dos, pertenece a la interseccion
                                     if (complejos_minimos.get(i).get(m).getListFilas().contains(inter.get(n))){ 
                                        interseccion_aux.add(inter.get(n)); 
                                     }                
@@ -357,7 +357,7 @@ public class Algorithm {
                         for (int k=0;k<inter.size();k++){
                             if (!B.contains(inter.get(k))) subconjunto=false;
                         }
-                        if (!subconjunto){//si no es subconjunto añadimos a la lista
+                        if (!subconjunto){//si no es subconjunto aÃ±adimos a la lista
                             complejos_minimos.get(i).addLast(aux_av);
                             j++;
                         }
@@ -365,7 +365,7 @@ public class Algorithm {
 
                 }
                 
-                //se añaden las reglas a la base de reglas a partir de los complejos mínimos obtenidos
+                //se aÃ±aden las reglas a la base de reglas a partir de los complejos mÃ­nimos obtenidos
                 br.anadirReglas(complejos_minimos, pasada);
                 
 

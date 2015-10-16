@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -75,8 +75,8 @@ public class Complejo implements Comparable {
     /**
      * Compara dos objetos de la clase Complejo
      * @param o Object Complejo a comparar
-     * @return int 0 si son iguales (misma heuristica y tamaï¿½), -1 si es mejor (misma heur, menor tamaï¿½ || mayor heur)
-     * 1 si es peor (misma heur, mayor tamaï¿½ || menor heuristica).
+     * @return int 0 si son iguales (misma heuristica y tamano), -1 si es mejor (misma heur, menor tamano || mayor heur)
+     * 1 si es peor (misma heur, mayor tamano || menor heuristica).
      */
     public int compareTo(Object o) {
         Complejo c2 = (Complejo) o;
@@ -115,7 +115,7 @@ public class Complejo implements Comparable {
 
 
     /**
-     * Aï¿½de el selector a la lista de selectores
+     * Anade el selector a la lista de selectores
      * @param s Selector el selector (conjunto atr. op. valor)
      */
     public void addSelector(Selector s) {
@@ -168,7 +168,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el tamaï¿½ del complejo
+     * Devuelve el tamano del complejo
      * @return int El nmero de selectores que posee el complejo
      */
     public int size() {
@@ -269,7 +269,7 @@ public class Complejo implements Comparable {
                 for (int j = 0; (j < valor.length)&&(!cubierto); j++){
                     cubierto = (ejemplo[s.getAtributo()] == valor[j]); //en cuanto uno sea true me vale (or)
                 }
-		//AÃ‘ADIMOS LA SIGUIENTE CONDICION PARA CUANDO EL VALOR EXACTO NO SE ENCUENTRA
+		//AÃƒÂ‘ADIMOS LA SIGUIENTE CONDICION PARA CUANDO EL VALOR EXACTO NO SE ENCUENTRA
 		//EN LA LISTA PERO AL ESTAR ENTRE LOS EXTREMOS TAMBIEN PERTENECE AL INTERVALO
 		if(!cubierto){
 			if((ejemplo[s.getAtributo()]>=valor[0]) && (ejemplo[s.getAtributo()]<=valor[valor.length-1]))cubierto=true;
@@ -293,7 +293,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el valor heurï¿½tico del complejo
+     * Devuelve el valor heuristico del complejo
      * @return double idem
      */
     public double getHeuristica() {
@@ -326,7 +326,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el valor de la distribuciï¿½ para una clase dada
+     * Devuelve el valor de la distribucion para una clase dada
      * @param clase int El indice de la clase
      * @return double El valor de la distribucion
      */
@@ -335,7 +335,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el valor de la distribuciï¿½
+     * Devuelve el valor de la distribucion
      * @return double [] El valor de cada distribucion
      */
     public int[] getDistribucion() {
@@ -439,9 +439,9 @@ public class Complejo implements Comparable {
 	    	if (valoresN.length > 1){
                 cad += " " + valoresN[0];
                 for (int i = 1; i < valoresN.length - 1; i++) {
-                    cad += " ï¿½" + valoresN[i];
+                    cad += " , " + valoresN[i];
                 }
-                cad += " ï¿½" + valoresN[valoresN.length - 1] + "";
+                cad += " , " + valoresN[valoresN.length - 1] + "";
 		}
 		else{
 			cad += " " + valoresN[0] + "";
@@ -454,12 +454,12 @@ public class Complejo implements Comparable {
 	    	if (valores.length > 1){
                 cad += " [" + inf/*valores[0]*/;
 		 /*for (int i = 1; i < valores.length - 1; i++) {
-			cad += " ï¿½" + valores[i];
+			cad += " , " + valores[i];
 			}*/
 		if(ultima)
-                cad += " , ï¿½" + sup/*valores[valores.length - 1]*/ + "]";
+                cad += " , " + sup/*valores[valores.length - 1]*/ + "]";
 		else
-		cad += " , ï¿½" + sup/*valores[valores.length - 1]*/ + ")";
+		cad += " , " + sup/*valores[valores.length - 1]*/ + ")";
 		}
 		else{
 			cad += " " + valores[0] + "";
@@ -474,7 +474,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Imprime por pantalla la distribuciï¿½ de clases para el complejo
+     * Imprime por pantalla la distribucion de clases para el complejo
      */
     public void printDistribucion() {
         System.out.print("   [");
@@ -485,7 +485,7 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Imprime en un String la distribuciï¿½ de clases para el complejo
+     * Imprime en un String la distribucion de clases para el complejo
      * @return String idem
      */
     public String printDistribucionString() {

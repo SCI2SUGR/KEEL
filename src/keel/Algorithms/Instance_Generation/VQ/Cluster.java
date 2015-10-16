@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -263,8 +263,8 @@ public class Cluster
         int it=0;
         do
         {
-            //Debug.errorln("Iteración " + (it++));
-            //Partición por la nearest-neighbor condition
+            //Debug.errorln("IteraciÃ³n " + (it++));
+            //ParticiÃ³n por la nearest-neighbor condition
             Pair<Cluster, Cluster> P = partititonWhoseCentersAre(Y.first(), Y.second());
 
             double Dm = distorsion(Y, P);

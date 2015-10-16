@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -167,7 +167,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 	  double valor1, valor2;
 	  
 	  for(int i=0; i< binario[index].length; i++){ // Para cada uno de los atributos
-		  for(int j=0; j< binario[index][i].length(); j++){ // para cada uno de los dï¿½gitos de los atributos.
+		  for(int j=0; j< binario[index][i].length(); j++){ // para cada uno de los digitos de los atributos.
 			  valor1 = Character.getNumericValue(binario[index][i].charAt(j));
 			  valor2 = Character.getNumericValue(binarioTrain[pIndex][i].charAt(j));
 			  hamming += Math.abs(valor1-valor2);
@@ -191,7 +191,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 	  for(int i=0; i< binario.length; i++){ // Para cada uno de los atributos
 		  //System.out.println("Binario " + binario[i]);
 		  //System.out.println("BinarioTrain " + binarioTrain[i]);
-		  for(int j=0; j< binario[i].length(); j++){ // para cada uno de los dï¿½gitos de los atributos.
+		  for(int j=0; j< binario[i].length(); j++){ // para cada uno de los digitos de los atributos.
 			  valor1 = Character.getNumericValue(binario[i].charAt(j));
 			 // System.out.println(binario[i]);
 			  valor2 = Character.getNumericValue(binarioTrain[i].charAt(j));
@@ -281,8 +281,8 @@ public class PSCSAGenerator extends PrototypeGenerator {
 		//System.out.println("bj = "+ bj[0]);
 		//bj.print();
 		if(mut){ 
-			//System.out.println("COnfirmo mutaciï¿½n");
-			B[generados] = salida.first(); // Aï¿½ado el generado
+			//System.out.println("COnfirmo mutacion");
+			B[generados] = salida.first(); // Anado el generado
 			double random = RandomGenerator.Randdouble(0, 1);
 			double clase = RandomGenerator.Randint(0, this.numberOfClass);
 			  
@@ -364,7 +364,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 	  System.out.println("Mutado");
 	  bj.print();
 	 */
-	  //if(flag) System.out.println("Deberï¿½a entrar");
+	  //if(flag) System.out.println("Deberia entrar");
 	  Pair<String[],Boolean> part = new Pair<String[],Boolean>(bj,flag);
 	  return part;
   }
@@ -442,7 +442,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 			  numResAllowed =(totalNumResources)/ (2.*(this.numberOfClass-1)); // La otra mitad se divide entre las clones de otras clases
 	      }
 		  
-		  // Si no hay de una clase, lo lï¿½gico es que resALlocated sea 0.
+		  // Si no hay de una clase, lo logico es que resALlocated sea 0.
 		//System.out.println("totalNumReources = "+ totalNumResources);
 		  //System.out.println("NumResAllowed = "+ numResAllowed);
 		  //System.out.println("ResAllocated = "+ resAllocated);
@@ -460,7 +460,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 				  int remove =-1;
 				  for(int i=0; i<B.length; i++){
 					  /*
-					   * Hay que comprobar que no estï¿½ ya borrado.
+					   * Hay que comprobar que no esta ya borrado.
 					   */
 					  boolean seguir = true;
 					  if(utilborrar!=-1){
@@ -470,7 +470,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 							  }
 						  }
 					  }
-					  if(seguir){ // Si estï¿½ en el conjunto B actualmetn, sigo computando...
+					  if(seguir){ // Si esta en el conjunto B actualmetn, sigo computando...
 						  if(clasesB[i]==clases){
 							 // System.out.println("Stim que peta");
 							  //System.out.println(stim[i]);
@@ -490,7 +490,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 				  
 				  
 				  //
-				   if(resources[remove] <= numResRemove+1){ // Creo que es asï¿½.
+				   if(resources[remove] <= numResRemove+1){ // Creo que es asi.
 						//  System.out.println("Elimino el clone = "+remove);
 						  //B.remove(remove);
 					   utilborrar++;
@@ -544,7 +544,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 							  */
 					  }else{
 						 // System.out.println("HOOOOOOOOOOOLA");
-						  recursosRemovidos = resources[remove]; // me quedo con ï¿½l antes.
+						  recursosRemovidos = resources[remove]; // me quedo con el antes.
 						  resources[remove] = resources[remove] - numResRemove;
 						  
 					  }
@@ -619,7 +619,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 			  //Memory Replacement
 			  binario[matchIndex] = most;
 			  binarioClass[matchIndex] = mostC;
-			  classI = binarioClass.clone(); // Lo copio idï¿½ntico.
+			  classI = binarioClass.clone(); // Lo copio identico.
 			  Immune = binario.clone();
 		  }else{
 			//  System.out.println("Updated");
@@ -630,11 +630,11 @@ public class PSCSAGenerator extends PrototypeGenerator {
 				  Immune[i] = binario[i].clone(); //Hard-copy
 				  classI[i] = binarioClass[i];
 			  }
-			  Immune[binario.length] = most; // Al final aï¿½ado el mï¿½s estimulado
+			  Immune[binario.length] = most; // Al final Anado el mas estimulado
 			  classI[binario.length] = mostC;
 		  }
 	  }else{
-		  classI = binarioClass.clone(); // Lo copio idï¿½ntico.
+		  classI = binarioClass.clone(); // Lo copio identico.
 		  Immune = binario.clone();
 	  }
 	  
@@ -705,7 +705,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 		  // Clone Generation.
 		 // System.out.println("IM size = " + IM.size());
 		  
-	   // Inicializaciï¿½n
+	   // Inicializacion
 	      binario = IM.to8GrayString();
 		  for(int i=0; i<IM.size(); i++){
 			  binarioClass[i] = IM.get(i).getOutput(0);
@@ -713,7 +713,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 		  
 		  for(int p=0; p< trainingDataSet.size(); p++){ // For each training example.
 		  
-			  //agk = new Prototype(trainingDataSet.get(p)); //Cogemos un antï¿½geno,
+			  //agk = new Prototype(trainingDataSet.get(p)); //Cogemos un antigeno,
 			  									
 			   //System.out.println("Antigeno de la iter = "+ iter);
 			  //agk.print();
@@ -737,9 +737,9 @@ public class PSCSAGenerator extends PrototypeGenerator {
 				 }
 			  }
 			  
-		//	  System.out.println("El mas cercano estï¿½ a un stim de = "+ Cercano);
+		//	  System.out.println("El mas cercano esta a un stim de = "+ Cercano);
 			 
-			  //Mmatch = new Prototype( IM.get(indexCercano));  // Cogo el mï¿½s cercano!!
+			  //Mmatch = new Prototype( IM.get(indexCercano));  // Cogo el mas cercano!!
 			  String Match [] = binario[indexCercano].clone();
 			  double claseMatch = binarioClass[indexCercano];
 			  String Antigen [] = binarioTrain[p].clone();
@@ -891,7 +891,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 			     //System.out.println("sum 2 = " + sum2);
 			     stoppingCriteria = (sum1-sum2) > this.STIMULATION_THRESHOLD;
 			    		     
-			     numProlifer++; // Limito el nï¿½mero de proliferaciones.
+			     numProlifer++; // Limito el numero de proliferaciones.
 			     
 			     // if(sum2 ==0){ stoppingCriteria = true;}
 			    // agk = trainingDataSet.getRandom();

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -107,7 +107,7 @@ public class Algorithm {
             
             for(int i=0;i<train.getnData();i++){ //para cada fila
                 fila = train.getExample(i);                
-                for(int k=0;k<train.getnData();k++){ //vemos con qué otras filas coincide
+                for(int k=0;k<train.getnData();k++){ //vemos con quÃ© otras filas coincide
                     filaux = train.getExample(k);
                     boolean ok = true;
                     
@@ -118,7 +118,7 @@ public class Algorithm {
                     }
                     if (ok) particion.add(k);
                 }
-                if(!particiones.contains(particion)) particiones.add((LinkedList<Integer>)particion.clone()); //Guardamos la partición si no está ya                
+                if(!particiones.contains(particion)) particiones.add((LinkedList<Integer>)particion.clone()); //Guardamos la particiÃ³n si no estÃ¡ ya                
                 particion.clear();                
             }
             
@@ -139,12 +139,12 @@ public class Algorithm {
         
             for(int i=0;i<train.getnData();i++){ //para cada fila
                 fila = train.getOutputAsInteger(i);
-                for(int k=0; k<train.getnData(); k++){ //vemos con qué otras filas coincide
+                for(int k=0; k<train.getnData(); k++){ //vemos con quÃ© otras filas coincide
                     filaux = train.getOutputAsInteger(k);
                     if (fila==filaux) particion.add(k);
                 }
                 
-                if(!particiones.contains(particion)) particiones.add((LinkedList<Integer>)particion.clone()); //Guardamos la partición si no está ya                
+                if(!particiones.contains(particion)) particiones.add((LinkedList<Integer>)particion.clone()); //Guardamos la particiÃ³n si no estÃ¡ ya                
                 particion.clear();                
             }        
             //Mostramos las particiones
@@ -205,31 +205,31 @@ public class Algorithm {
     /**
      * 
      * @param A Lista con todos los inputs
-     * @param d Partición conjuntos elementales {d}*
+     * @param d ParticiÃ³n conjuntos elementales {d}*
      * @return Lista con los inputs que representan la cobertura global
      */
     private LinkedList<Integer> calcula_cobertura_global(LinkedList<Integer> A, LinkedList<LinkedList<Integer>> d){
         
         //################### Inicializamos P con todos los inputs##########
         LinkedList<Integer> P = A;                        
-        //################### Inicializamos R como vacío####################
+        //################### Inicializamos R como vacÃ­o####################
         LinkedList<Integer> R = new LinkedList<Integer>();
             
-        if (calcula_dependencia(calcula_conjuntos_elementales(A),d)){ //Se cumplirá siempre y cuando no haya inconsistencias
+        if (calcula_dependencia(calcula_conjuntos_elementales(A),d)){ //Se cumplirÃ¡ siempre y cuando no haya inconsistencias
             LinkedList<LinkedList<Integer>> particion = new LinkedList<LinkedList<Integer>>();
             for(int i=0;i<train.getnInputs();i++){                    
                 P.remove(new Integer(i));//quitamos el atributo i
                 particion = calcula_conjuntos_elementales(P); //calculamos la particion sin ese atributo
-                if (calcula_dependencia(particion,d)){ //¿Sigue siendo dependiente de {d}*?
-                    //P = Q; ya está hecho porque he hecho el remove antes
+                if (calcula_dependencia(particion,d)){ //Â¿Sigue siendo dependiente de {d}*?
+                    //P = Q; ya estÃ¡ hecho porque he hecho el remove antes
                 }else{
-                    P.add(i); //Volvemos al estado anterior de P añadiendo lo que habíamos borrado con anterioridad
+                    P.add(i); //Volvemos al estado anterior de P aÃ±adiendo lo que habÃ­amos borrado con anterioridad
                     Collections.sort(P);
                 }
             }
             R = P;
         }else{ 
-            System.out.println("El conjunto A de todos los atributos y la partición {d}* no son dependientes.");            
+            System.out.println("El conjunto A de todos los atributos y la particiÃ³n {d}* no son dependientes.");            
         }
         return R;
     }
@@ -251,7 +251,7 @@ public class Algorithm {
                 all_inputs.add(i);
             }
             
-            //###################Calcular partición {d}*########################
+            //###################Calcular particiÃ³n {d}*########################
             LinkedList<LinkedList<Integer>> d = calcula_conjunto_elemental_salida();
             
             //###################Calculamos la cobertura global#################

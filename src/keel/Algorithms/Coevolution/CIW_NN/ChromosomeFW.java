@@ -5,11 +5,11 @@
 
 	Copyright (C) 2004-2010
 	
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
-    S. GarcÌa (sglopez@ujaen.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
+    S. Garc√≠a (sglopez@ujaen.es)
     F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
+    L. S√°nchez (luciano@uniovi.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 
@@ -34,7 +34,7 @@
  * 
  * A chromosome implementation for FW population
  * 
- * @author Written by JoaquÌn Derrac (University of Granada) 13/1/2010 
+ * @author Written by Joaqu√≠n Derrac (University of Granada) 13/1/2010 
  * @version 1.0 
  * @since JDK1.5
  * 

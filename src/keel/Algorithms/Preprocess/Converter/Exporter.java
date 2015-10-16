@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -48,20 +48,20 @@ import com.Ostermiller.util.CSVParser;
  * <b> Exporter </b>
  * </p>
  *
- * Clase abstracta que contiene los métodos para exportar un fichero de
+ * Clase abstracta que contiene los mÃ©todos para exportar un fichero de
  * datos con formato keel a ficheros de distintos formatos.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public abstract class Exporter {
-    // Almacena la definición de los atributos del fichero.
+    // Almacena la definiciÃ³n de los atributos del fichero.
     keel.Dataset.Attribute attribute[];    // Almacena los datos del fichero.
     Vector data[];    //Almacena el tipo de cada dato del fichero.
     Vector types[];    // Almacena el valor nulo del fichero de datos a crear.
-    String nullValue = new String();    // Almacena el nombre de la relación del fichero
+    String nullValue = new String();    // Almacena el nombre de la relaciÃ³n del fichero
     String nameRelation = new String();    // Almacena el separador de los datos para el nuevo fichero generado.
-    String separator = new String();    // Almacena el número de atributos existentes en el fichero de datos
+    String separator = new String();    // Almacena el nÃºmero de atributos existentes en el fichero de datos
     int numAttributes = 0;    // Etiqueta para valores nominales.
     int NOMINAL = 0;    // Etiqueta para valores enteros.
     int INTEGER = 1;    // Etiqueta para valores reales.
@@ -69,12 +69,12 @@ public abstract class Exporter {
 
 
     /*
-     * Este método lee los datos almacenados en un fichero con formato keel
-     * correspondiente al parámetro de entrada pathnameInput y
-     * cargar la definición de los atributos en un vector de objetos de la
+     * Este mÃ©todo lee los datos almacenados en un fichero con formato keel
+     * correspondiente al parÃ¡metro de entrada pathnameInput y
+     * cargar la definiciÃ³n de los atributos en un vector de objetos de la
      * clase Attribute (del paquete keel.Dataset), los datos en el vector
-     * data[], y el nombre de la relación en la variable miembro
-     * nameRelation y el número de atributos en la variable miembro
+     * data[], y el nombre de la relaciÃ³n en la variable miembro
+     * nameRelation y el nÃºmero de atributos en la variable miembro
      * numAttributes.
      *
      * @param  String pathnameOutput Indica la ruta del fichero de entrada con formato Keel.
@@ -136,7 +136,7 @@ public abstract class Exporter {
 
         reader = new BufferedReader(new FileReader(filename));
 
-        /* Contamos el número de atributos que existen*/
+        /* Contamos el nÃºmero de atributos que existen*/
         line = reader.readLine();
         token = new StringTokenizer(line, " ");
 
@@ -170,7 +170,7 @@ public abstract class Exporter {
         }
 
 
-// Insertamos la definición de los atributos en Attribute
+// Insertamos la definiciÃ³n de los atributos en Attribute
         reader = new BufferedReader(new FileReader(filename));
 
         line = reader.readLine();
@@ -298,7 +298,7 @@ public abstract class Exporter {
          */
         BufferedWriter writer = new BufferedWriter(new FileWriter("temp"));
         while ((line = reader.readLine()) != null) {
-            // Saltamos las líneas comentadas
+            // Saltamos las lÃ­neas comentadas
             if (!line.startsWith("%") && !line.equals("\n") && !line.equals("\r") && !line.equals("")) {
                 line = line.replace("'", "\"");
                 writer.write(line + "\n");
@@ -331,7 +331,7 @@ public abstract class Exporter {
         }
 
         /* Recogemos la lista de valores nominales de los datos, para aquellos atributos que
-        no hayan definido la lista en la declaración */
+        no hayan definido la lista en la declaraciÃ³n */
         for (i = 0; i < numAttributes; i++) {
             type = attribute[i].getType();
 

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -244,7 +244,7 @@ public class POCGenerator extends PrototypeGenerator {
 			  double clasR1 =  Xp1.getOutput(0);
 			  double clasR2 = Xp2.getOutput(0);
 			  
-			  // 6. Find any misclassficiation in both regions. (errores de clasificaciï¿½n)
+			  // 6. Find any misclassficiation in both regions. (errores de clasificacion)
 			  int misR1=0, misR2=0;
 			 
 			  /*
@@ -289,7 +289,7 @@ public class POCGenerator extends PrototypeGenerator {
 				  }
 			  }
 			  
-			  // Borro lo que estï¿½ marcado como outliers!
+			  // Borro lo que esta marcado como outliers!
 			  for(int p=R1.size()-1; p> 0; p--){
 				  if(marcas[p]){
 					  R1.remove(p);
@@ -413,7 +413,7 @@ public class POCGenerator extends PrototypeGenerator {
 			  double clasR1 =  Xp1.getOutput(0);
 			  double clasR2 = Xp2.getOutput(0);
 			  
-			  // 6. Find any misclassficiation in both regions. (errores de clasificaciï¿½n)
+			  // 6. Find any misclassficiation in both regions. (errores de clasificacion)
 			  int misR1=0, misR2=0;
 			  
 			  
@@ -435,7 +435,7 @@ public class POCGenerator extends PrototypeGenerator {
 					  }
 				  }
 				  
-				  // Borro lo que estï¿½ marcado como outliers!
+				  // Borro lo que esta marcado como outliers!
 				  for(int p=R1.size()-1; p> 0; p--){
 					  if(marcas[p]){
 						  R1.remove(p);

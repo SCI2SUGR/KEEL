@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@
 //
 //  DROP3.java
 //
-//  Salvador GarcÌa LÛpez
+//  Salvador Garc√≠a L√≥pez
 //
-//  Created by Salvador GarcÌa LÛpez 16-7-2004.
+//  Created by Salvador Garc√≠a L√≥pez 16-7-2004.
 //  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
@@ -141,7 +141,7 @@ public class DROP3 extends Metodo {
     /*Check if delete or not the instances considering the WITH and WITHOUT sets*/
     for (o=0; o<datosTrain.length; o++){
       i = orden[o].entero;
-      if (marcas[i]) { //only for instances haven¥t noise filtered
+      if (marcas[i]) { //only for instances haven¬¥t noise filtered
         aciertosSin = 0;
 
         marcas[i] = false;

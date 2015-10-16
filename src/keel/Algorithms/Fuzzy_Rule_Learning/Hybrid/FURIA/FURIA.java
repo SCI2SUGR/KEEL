@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /*
  *    FURIA.java
- *    Copyright (C) 2008 Jens Christian Hï¿½hn
+ *    Copyright (C) 2008 Jens Christian HÃ¼hn
  *    
  *    (based upon) JRip.java
  *    Copyright (C) 2001 Xin Xu, Eibe Frank
@@ -50,7 +50,7 @@ import keel.Dataset.InstanceSet;
 
 /**
  <!-- globalinfo-start -->
- * This class implements the FURIA algorithm proposed by Hühn and Hüllermeier 2009<br/>
+ * This class implements the FURIA algorithm proposed by HÃ¼hn and HÃ¼llermeier 2009<br/>
  * <br/>
  * The FURIA algorithm is a fuzzy rule learner based on the JRip implementation (RIPRER). The main difference between FURIA and JRip is that FURIA makes no use of default rules. Furthermore FURIA has a changed pruning procedure, which means that the pruning during the IREP* runs was deactivated permanently. It was found out experimentally that this improved the classification rate. The following description from the JRip class was altered to describe the methodology of FURIA: <br/>
  * <br/>
@@ -88,7 +88,7 @@ import keel.Dataset.InstanceSet;
  * BibTeX:
  * <pre>
  *  &#64;article{huehn2009furia,
- *    author = {Jens Christian Hï¿½hn and Eyke Hï¿½llermeier},
+ *    author = {Jens Christian HÃ¼hn and Eyke HÃ¼llermeier},
  *    journal = {Data Mining and Knowledge Discovery},
  *    title = {FURIA: An Algorithm for Unordered Fuzzy Rule Induction},
  *    year = {to appear}
@@ -140,8 +140,8 @@ import keel.Dataset.InstanceSet;
  * 
  <!-- options-end -->
  *
- * @author written by Jens Christian Hühn (huehn@gmx.net)
- * @author modified for KEEL by Alberto Fernández (alberto.fernandez@ujaen.es) [University of Jaen] 23/10/2013
+ * @author written by Jens Christian HÃ¼hn (huehn@gmx.net)
+ * @author modified for KEEL by Alberto FernÃ¡ndez (alberto.fernandez@ujaen.es) [University of Jaen] 23/10/2013
  * @version $Revision: 1.1 $
  */
 public class FURIA extends Classifier implements WeightedInstancesHandler {    

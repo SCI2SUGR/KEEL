@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -45,7 +45,7 @@ import java.util.regex.Pattern;
  * Clase extendida de la clase Exporter. Esta clase permite convertir
  * un fichero de datos con formato Keel a un fichero con formato Csv.
  *
- * @author Teresa Prieto López (UCO)
+ * @author Teresa Prieto LÃ³pez (UCO)
  * @version 1.0
  */
 public class KeelToCsv extends Exporter {
@@ -55,7 +55,7 @@ public class KeelToCsv extends Exporter {
      * Constructor de la Clase KeelToCsv. Inicializa los valores
      * de las variables miembro nullValue (valor nulo) y separator
      * (el separador de los datos del fichero Csv) con los valores
-     * de los parámetros nullValueUser y separatorUser respectivamente.
+     * de los parÃ¡metros nullValueUser y separatorUser respectivamente.
      *
      * @param  nullValueUser. Variable de tipo String con el valor nulo del fichero Csv .
      * @param  separatorUser. Variable de tipo String con el valor del separador
@@ -68,10 +68,10 @@ public class KeelToCsv extends Exporter {
 
 
     /*
-     * Este método llama al método Start de la clase superior Exporter para
+     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
      * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al método Save() para crear el fichero de datos Csv indicado en el
-     * parámetro de entrada pathnameOutput.
+     * al mÃ©todo Save() para crear el fichero de datos Csv indicado en el
+     * parÃ¡metro de entrada pathnameOutput.
      *
      * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
      * @param  String pathnameOutput Variable con la ruta del fichero de datos
@@ -90,9 +90,9 @@ public class KeelToCsv extends Exporter {
 
 
     /*
-     * Método utilizado para crear el fichero con formato Csv
-     * (valores separados por comas) indicada la ruta por el parámetro
-     * pathnameOutput. Este fichero se creará a partir de los datos
+     * MÃ©todo utilizado para crear el fichero con formato Csv
+     * (valores separados por comas) indicada la ruta por el parÃ¡metro
+     * pathnameOutput. Este fichero se crearÃ¡ a partir de los datos
      * almacenados en el vector de objetos de la clase
      * Attribute, el vector data[], y la variable nameRelation.
      *
@@ -109,7 +109,7 @@ public class KeelToCsv extends Exporter {
         String element = new String();
 
 
-        /* Comprobamos si el nombre del fichero tiene la extensión .csv, si no la tiene
+        /* Comprobamos si el nombre del fichero tiene la extensiÃ³n .csv, si no la tiene
          * se la ponemos */
         if (pathnameOutput.endsWith(".csv")) {
             filename = pathnameOutput;
@@ -137,7 +137,7 @@ public class KeelToCsv extends Exporter {
             for (int j = 0; j < numAttributes; j++) {
                 element = (String) data[j].elementAt(i);
 
-                Pattern p = Pattern.compile("[^A-ZÑa-zñ0-9_-]+");
+                Pattern p = Pattern.compile("[^A-ZÃa-zÃ±0-9_-]+");
                 Matcher m = p.matcher(element);
 
                 if ((m.find() && !element.equals("?") && !element.equals(nullValue) && attribute[j].getType() == NOMINAL) || element.contains(separator)) {

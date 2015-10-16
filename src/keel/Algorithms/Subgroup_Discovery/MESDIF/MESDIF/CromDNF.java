@@ -1,8 +1,8 @@
 /**
  * <p>
- * @author Created by Pedro Gonz·lez (University of Jaen) 18/02/2004
- * @author Modified by Pedro Gonz·lez (University of Jaen) 4/08/2007
- * @author Modified by CristÛbal J. Carmona (University of Jaen) 30/06/2010
+ * @author Created by Pedro Gonz√°lez (University of Jaen) 18/02/2004
+ * @author Modified by Pedro Gonz√°lez (University of Jaen) 4/08/2007
+ * @author Modified by Crist√≥bal J. Carmona (University of Jaen) 30/06/2010
  * @version 2.0
  * @since JDK1.5
  * </p>

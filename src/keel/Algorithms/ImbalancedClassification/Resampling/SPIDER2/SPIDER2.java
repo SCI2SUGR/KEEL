@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -182,7 +182,7 @@ public class SPIDER2 extends Metodo {
     			neighbours = new int[k];
     			int n2 = evaluationKNNClass (k, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[i], realTrain[i], nominalTrain[i], nulosTrain[i], 2, distanceEu, neighbours, _posID, safe);
     			
-    			int n = n1-n2+1;// nº vecinos de la clase mayoritaria (max k) - nº vecinos de la clase minoritaria (max k ) + 1 ;
+    			int n = n1-n2+1;// nÂº vecinos de la clase mayoritaria (max k) - nÂº vecinos de la clase minoritaria (max k ) + 1 ;
 
     			amplify[i] += n;
     		}
@@ -204,7 +204,7 @@ public class SPIDER2 extends Metodo {
     				 neighbours = new int[k];
     				 int n2 = evaluationKNNClass (k, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[i], realTrain[i], nominalTrain[i], nulosTrain[i], 2, distanceEu, neighbours, _posID, safe);
     	    			
-    				 int n = (n1-n2)+1;// nº vecinos de la clase mayoritaria (max k) - nº vecinos de la clase minoritaria (max k ) + 1 ;
+    				 int n = (n1-n2)+1;// nÂº vecinos de la clase mayoritaria (max k) - nÂº vecinos de la clase minoritaria (max k ) + 1 ;
 
     	    		 amplify[i] += n;	 
     			 }
@@ -216,7 +216,7 @@ public class SPIDER2 extends Metodo {
     				 neighbours = new int[k+2];
     				 int n2 = evaluationKNNClass (k+2, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[i], realTrain[i], nominalTrain[i], nulosTrain[i], 2, distanceEu, neighbours, _posID, safe);
     	    			
-    				 int n = n1-n2+1;// nº vecinos de la clase mayoritaria (max k) - nº vecinos de la clase minoritaria (max k ) + 1 ;
+    				 int n = n1-n2+1;// nÂº vecinos de la clase mayoritaria (max k) - nÂº vecinos de la clase minoritaria (max k ) + 1 ;
 
     	    		 amplify[i] += n;
     			 }

@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -249,7 +249,7 @@ public class SelectData extends JPanel implements Scrollable {
 
     /**
      * Insert a new External Object Description (of a data set) in the list
-     * @param ds the new data sets�
+     * @param ds the new data sets
      * @param path the path to the data set(s) file(s)
      */
     public void insert(DatasetXML ds, String path) {
@@ -260,7 +260,7 @@ public class SelectData extends JPanel implements Scrollable {
 
     /**
      * Insert a new External Object Description (of a data set) in the list
-     * @param ds the new data sets�
+     * @param ds the new data sets
      * @param path the path to the data set(s) file(s)
      */
     public void insertC_LQD(DatasetXML ds, String path) {
@@ -271,7 +271,7 @@ public class SelectData extends JPanel implements Scrollable {
 
     /**
      * Insert a new External Object Description (of a data set) in the list
-     * @param ds the new data sets�
+     * @param ds the new data sets
      * @param path the path to the data set(s) file(s)
      */
     public void insertLQD_C(DatasetXML ds, String path) {
@@ -282,7 +282,7 @@ public class SelectData extends JPanel implements Scrollable {
 
     /**
      * Insert a new External Object Description (of a data set) in the list
-     * @param ds the new data sets�
+     * @param ds the new data sets
      * @param path the path to the data set(s) file(s)
      */
     public void insertC(DatasetXML ds, String path) {

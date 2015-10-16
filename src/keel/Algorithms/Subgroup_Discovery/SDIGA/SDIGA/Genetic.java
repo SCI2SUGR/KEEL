@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,9 +29,9 @@
 
 /**
  * <p>
- * @author Writed by Pedro Gonz·lez (University of Jaen) 22/08/2004
- * @author Modified by Pedro Gonz·lez (University of Jaen) 4/08/2007
- * @author Modified by CristÛbal J. Carmona (University of Jaen) 20/04/2010
+ * @author Writed by Pedro Gonz√°lez (University of Jaen) 22/08/2004
+ * @author Modified by Pedro Gonz√°lez (University of Jaen) 4/08/2007
+ * @author Modified by Crist√≥bal J. Carmona (University of Jaen) 20/04/2010
  * @version 2.0
  * @since JDK1.5
  * </p>
@@ -703,7 +703,7 @@ public class Genetic {
                        if (Des.getCromElemGene(descendientes, j, l)==1)
                           interv ++;
                     }
-                    // si no interviene ning˙n valor o intervienen todos, la variable no interviene
+                    // si no interviene ning√∫n valor o intervienen todos, la variable no interviene
                     if (interv==0 || interv==Variables.getNLabelVar(j))
                         Des.setCromElemGene(descendientes, j, Variables.getNLabelVar(j), 0);
                     else

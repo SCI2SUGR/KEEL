@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. SÃ¡nchez (luciano@uniovi.es)
+    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÃ­a (sglopez@ujaen.es)
+    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -191,7 +191,7 @@ public class PrototypeGenerator {
             }
             HashSet<Integer> forbidden = new HashSet<Integer>();
             //Le metemos prototipos aleatorios mientras no se cumpla que se tiene
-            //el número de prototipos requerido
+            //el nÃºmero de prototipos requerido
             while (edited.size() < numberOfPrototypesSelected) {
                 int chosen;
                 do
@@ -465,8 +465,8 @@ public class PrototypeGenerator {
     }
 
     /**
-     * Cuando quitas uno, con el inic vector, el desordenar no puede coger el �ltimo..
-     * necesito otro me�todo
+     * Cuando quitas uno, con el inic vector, el desordenar no puede coger el ultimo..
+     * necesito otro metodo
      * @param vector
      */
     public void desordenar_vector_sin(int vector[]){

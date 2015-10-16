@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,8 @@
 
 /**
  * <p>
- * @author Written by Alberto Fern·ndez (University of Granada) 02/06/2008
- * @author Modified by Xavi SolÈ (La Salle, RamÛn Llull University - Barcelona) 16/12/2008
+ * @author Written by Alberto Fern√°ndez (University of Granada) 02/06/2008
+ * @author Modified by Xavi Sol√© (La Salle, Ram√≥n Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
@@ -406,9 +406,9 @@ public class Complejo implements Comparable {
             if (valoresN.length > 1){
                 System.out.print(" " + valoresN[0]);
                 for (int i = 1; i < valoresN.length - 1; i++) {
-                    System.out.print(" ÔøΩ" + valoresN[i]);
+                    System.out.print(" ," + valoresN[i]);
                 }
-                System.out.print(" ÔøΩ" + valoresN[valoresN.length - 1] + ")");
+                System.out.print(" ," + valoresN[valoresN.length - 1] + ")");
             }
             else{
                 System.out.print(" " + valoresN[0]+")");
@@ -452,9 +452,9 @@ public class Complejo implements Comparable {
             if (valores.length > 1){
                 cad += " " + valoresN[0];
                 for (int i = 1; i < valores.length - 1; i++) {
-                    cad += " ÔøΩ" + valoresN[i];
+                    cad += " , " + valoresN[i];
                 }
-                cad += " ÔøΩ" + valoresN[valores.length - 1] + "";
+                cad += " , " + valoresN[valores.length - 1] + "";
             }
             else{
                 cad += " " + valoresN[0] + "";

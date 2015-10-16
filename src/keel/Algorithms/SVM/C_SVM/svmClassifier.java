@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S�nchez (luciano@uniovi.es)
-    J. Alcal�-Fdez (jalcala@decsai.ugr.es)
-    S. Garc�a (sglopez@ujaen.es)
-    A. Fern�ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
  * <p>
- * @author Written by Juli�n Luengo Mart�n 09/10/2007
+ * @author Written by Julian Luengo Martin 09/10/2007
  * @version 0.3
  * @since JDK 1.5
  * </p>
@@ -343,7 +343,7 @@ public class svmClassifier {
                             svm_predict(svr, SVMn))));
                 }
                 
-                // Added by Isaac and José Antonio para SSL.
+                // Added by Isaac and JosÃ© Antonio para SSL.
                 System.out.println("Calla cojones: "+probabilities[i][0]);
                 probabilities[i]=svm.probabilitiesPerClass.clone();
             }
@@ -556,7 +556,7 @@ public class svmClassifier {
                             svm_predict(svr, SVMn))));
                 }
                 
-                // Added by Isaac and José Antonio para SSL.
+                // Added by Isaac and JosÃ© Antonio para SSL.
                 System.out.println("Calla cojones: "+probabilities[i][0]);
                 probabilities[i]=svm.probabilitiesPerClass.clone();
             }

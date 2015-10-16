@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -33,11 +33,11 @@ import java.util.*;
 import org.core.*;
 
 /**
- * <p>TÌtulo: HibridaciÛn Pso Aco</p>
- * <p>DescripciÛn: Hibridacion entre los dos algoritmos Pso y Aco</p>
+ * <p>T√≠tulo: Hibridaci√≥n Pso Aco</p>
+ * <p>Descripci√≥n: Hibridacion entre los dos algoritmos Pso y Aco</p>
  * <p>Copyright: Copyright (c) 2008</p>
  * <p>Empresa: </p>
- * @author Vicente RubÈn del Pino
+ * @author Vicente Rub√©n del Pino
  * @version 1.0
  */
 
@@ -152,7 +152,7 @@ public class Particula {
         for (int i = 0; i < numCondiciones; i++) {
             condiciones = (Vector) listaCondiciones.get(i);
             numValores = condiciones.size();
-            feromona[i] = new float[numValores + 1]; //El +1 es por la posicion feromona de no aÒadir condicion
+            feromona[i] = new float[numValores + 1]; //El +1 es por la posicion feromona de no a√±adir condicion
         }
 
         for (int i = 0; i < numCondiciones; i++) {
@@ -256,7 +256,7 @@ public class Particula {
      * Modulo que actualiza la feromona de la particula
      * @param particulas Vector con todas las particulas del entorno
      * @param indice Posicion de la particula
-     * @param tamEntorno TamaÒo del entorno
+     * @param tamEntorno Tama√±o del entorno
      * @param listaCondiciones Lista de condiciones
      */
     public void actualizaFeromona(Vector particulas, int indice, int tamEntorno,
@@ -423,7 +423,7 @@ public class Particula {
             posicion.insertarCondicionNominal(elegir);
         }
 
-        //AÒadimos las condiciones Vacias
+        //A√±adimos las condiciones Vacias
         if (i < listaCondiciones.size()) { //Faltan por insertar los vacios
             for (int j = i; j < listaCondiciones.size(); j++) {
                 elegir = (Condicion) listaCondicionesVacias.get(j);
@@ -499,7 +499,7 @@ public class Particula {
     /**
      * Funcion que devuelve un vector con los n vecinos del entorno de la particula
      * @param indice Posicion de la particula
-     * @param tamEntorno TamaÒo del entorno de la particula
+     * @param tamEntorno Tama√±o del entorno de la particula
      * @param particulas Vector con las particulas
      * @return Vector con las particulas vecinas
      */
@@ -564,7 +564,7 @@ public class Particula {
      * Modulo que calcula la velocidad de la particula
      * @param numCondiciones Numero de condiciones continuas
      * @param particulas Vector con las particulas vecinas
-     * @param entorno TamaÒo del entorno de la particula
+     * @param entorno Tama√±o del entorno de la particula
      * @param indice Posicion de la particula
      * @param intervalos Intervalos para las condiciones continuas
      * @param x Factor X

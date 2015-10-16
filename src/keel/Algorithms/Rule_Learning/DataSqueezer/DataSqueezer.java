@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -483,7 +483,7 @@ public class DataSqueezer extends Algorithm {
 
                     if(l.check2(r)) {
                         Gpos.remove(r);
-                        e = Gpos.elements(); // Forzar reexploraci√≥n *** Quebradero de cabeza
+                        e = Gpos.elements(); // Forzar reexploraci√É¬≥n *** Quebradero de cabeza
                         notChange = false; // Gpos has changed
                     }
                 }
