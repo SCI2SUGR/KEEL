@@ -6111,7 +6111,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 
     <target name="doc" description="generate documentation">
         <mkdir dir="${doc}"/>
-        <javadoc sourcepath="${src}" destdir="${doc}"/>
+        <javadoc encoding="UTF-8" charset="UTF-8" docencoding="UTF-8" sourcepath="${src}" destdir="${doc}"/>
     </target>
 
 </project>
