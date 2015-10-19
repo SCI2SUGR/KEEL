@@ -43,20 +43,16 @@ public class Replace implements Comparable{
   int cRule;
 
   /**
-   * <p>
-   * Default Constructor
-   * </p>
+   * Default Constructor.
    */
   public Replace() {
   }
 
   /**
-   * <p>
-   * Parameters Constructor
-   * </p>
-   * @param cRule Position in the rule set for the rule that correctly classifies the "dID" instance
-   * @param dID Position of the correctly classified example
-   * @param y Class of the "dID" example
+   * Parameters Constructor.
+   * @param cRule Position in the rule set for the rule that correctly classifies the "dID" instance.
+   * @param dID Position of the correctly classified example.
+   * @param y Class of the "dID" example.
    */
   public Replace(int cRule, int dID, int y) {
 	this.cRule = cRule;
@@ -65,9 +61,8 @@ public class Replace implements Comparable{
   }
 
   /**
-   * <p>
-   * Clone function
-   * </p>
+   * Clone function.
+   * @return A copy of the Replace object.
    */
   public Replace clone () {
 	Replace r = new Replace (this.cRule, this.dID, this.y);
@@ -76,19 +71,15 @@ public class Replace implements Comparable{
   }
 
   /**
-   * <p>
-   * It returns the position in the training dataset for the example stored in the structure
-   * </p>
-   * @return int Position in the training dataset for the example stored in the structure
+   * It returns the position in the training dataset for the example stored in the structure.
+   * @return Position in the training dataset for the example stored in the structure
    */
   public int getdID () {
     return (this.dID);
   }
 
   /**
-   * <p>
-   * It sets in the structure the position in the training dataset of the wanted example
-   * </p>
+   * It sets in the structure the position in the training dataset of the wanted example.
    * @param dID Position in the training dataset of the wanted example
    */
   public void setdID (int dID) {
@@ -96,19 +87,15 @@ public class Replace implements Comparable{
   }
 
   /**
-   * <p>
-   * It returns the class for the example stored in the structure
-   * </p>
-   * @return int Class for the example stored in the structure
+   * It returns the class for the example stored in the structure.
+   * @return Class for the example stored in the structure
    */
   public int gety () {
     return (this.y);
   }
 
   /**
-   * <p>
-   * It sets in the structure the class of the example
-   * </p>
+   * It sets in the structure the class of the example.
    * @param y Class of the example
    */
   public void sety (int y) {
@@ -116,19 +103,15 @@ public class Replace implements Comparable{
   }
 
   /**
-   * <p>
-   * It returns the position of the best rule that correctly classifies the example stored in the structure
-   * </p>
-   * @return int Position of the best rule that correctly classifies the example stored in the structure
+   * It returns the position of the best rule that correctly classifies the example stored in the structure.
+   * @return Position of the best rule that correctly classifies the example stored in the structure
    */
   public int getcRule () {
     return (this.cRule);
   }
 
   /**
-   * <p>
-   * It sets the position of the best rule that correctly classifies the example stored in the structure
-   * </p>
+   * It sets the position of the best rule that correctly classifies the example stored in the structure.
    * @param cRule Position of the best rule that correctly classifies the example stored in the structure
    */
   public void setcRule (int cRule) {
@@ -136,9 +119,11 @@ public class Replace implements Comparable{
   }
 
   /**
-   * Function to compare objects of the Structure class
+   * Function to compare objects of the Structure class.
    * Necessary to be able to use "sort" function
    * It sorts in an decreasing order of example's position
+   * @param a Replace object to compare with.
+   * @return -1 if a is bigger, 1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
     if ( ( (Replace) a).dID < this.dID) {

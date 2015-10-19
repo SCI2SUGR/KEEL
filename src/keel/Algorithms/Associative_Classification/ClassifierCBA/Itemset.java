@@ -32,7 +32,8 @@ package keel.Algorithms.Associative_Classification.ClassifierCBA;
 import java.util.*;
 
 /**
- * This class stores an itemset representation for classification by association algorithms. Also, it stores some useful information to manage the itemset.
+ * This class stores an itemset representation for classification by association algorithms. 
+ * Also, it stores some useful information to manage the itemset.
  *
  * @author Jesus Alcalá (University of Granada) 09/02/2010
  * @version 1.0
@@ -48,17 +49,13 @@ public class Itemset implements Comparable {
 
 
   /**
-   * <p>
-   * Default Constructor
-   * </p>
+   * Default Constructor.
    */
   public Itemset() {
   }
 
   /**
-   * <p>
-   * Parameters Constructor
-   * </p>
+   * Parameters Constructor.
    * @param clas Associated output of the Itemset
    */
   public Itemset(int clas) {
@@ -72,9 +69,8 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
-   * Clone function
-   * </p>
+   * Clone function.
+   * @return A copy of the Itemset object.
    */
   public Itemset clone() {
     Itemset d = new Itemset(this.clas);
@@ -91,9 +87,7 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to add an item to our itemset
-   * </p>
+   * Function to add an item to our itemset.
    * @param item Element to be added
    */
   public void add (Item item) {
@@ -101,62 +95,50 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns the item located in the given position of the itemset
-   * </p>
+   * It returns the item located in the given position of the itemset.
    * @param pos Position of the requested item into the itemset
-   * @return Item The requested item of the itemset
+   * @return The requested item of the itemset
    */
   public Item get (int pos) {
 	  return (this.itemset.get(pos));
   }
 
   /**
-   * <p>
-   * Function to remove the item located in the given position
-   * </p>
+   * Function to remove the item located in the given position.
    * @param pos Position of the requested item into the itemset
-   * @return Item The removed item of the itemset
+   * @return The removed item of the itemset
    */
   public Item remove (int pos) {
 	  return (this.itemset.remove(pos));
   }
 
   /**
-   * <p>
-   * It returns the size of the itemset (the number of items it has)
-   * </p>
-   * @return int Number of items the itemset stores
+   * It returns the size of the itemset (the number of items it has).
+   * @return Number of items the itemset stores
    */
   public int size () {
 	  return (this.itemset.size());
   }
 
   /**
-   * <p>
-   * It returns the support of the antecedent of the itemset
-   * </p>
-   * @return double Support of the antecedent of the itemset
+   * It returns the support of the antecedent of the itemset.
+   * @return Support of the antecedent of the itemset
    */
   public double getSupport() {
 	return (this.support);
   }
 
   /**
-   * <p>
-   * It returns the support of the itemset for its related output class
-   * </p>
-   * @return double Support of the itemset for its related output class
+   * It returns the support of the itemset for its related output class.
+   * @return Support of the itemset for its related output class
    */
   public double getSupportClass() {
 	return (this.supportRule);
   }
 
   /**
-   * <p>
-   * It returns the number of hits of the itemset against the training set
-   * </p>
-   * @return int Number of hits of the itemset against the training set
+   * It returns the number of hits of the itemset against the training set.
+   * @return Number of hits of the itemset against the training set
    */
   public int getHits() {
 	return (this.hits);
@@ -164,28 +146,24 @@ public class Itemset implements Comparable {
 
   /**
    * <p>
-   * It returns the number of misses of the itemset against the training set
+   * It returns the number of misses of the itemset against the training set.
    * </p>
-   * @return int Number of misses of the itemset against the training set
+   * @return Number of misses of the itemset against the training set
    */
   public int getMisses() {
 	return (this.misses);
   }
 
   /**
-   * <p>
-   * It returns the Pessimistic Error Rate of the itemset
-   * </p>
-   * @return double Pessimistic Error Rate of the itemset
+   * It returns the Pessimistic Error Rate of the itemset.
+   * @return Pessimistic Error Rate of the itemset
    */
   public double getPer() {
 	return (this.per);
   }
 
   /**
-   * <p>
-   * It returns the output class of the itemset
-   * </p>
+   * It returns the output class of the itemset.
    * @return int output class of the itemset
    */
   public int getClas() {
@@ -193,9 +171,7 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
-   * Function which sets the itemset's output class
-   * </p>
+   * Function which sets the itemset's output class.
    * @param clas Itemset's output class
    */
   public void setClas(int clas) {
@@ -203,11 +179,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to check if an itemset is equal to another given
-   * </p>
+   * Function to check if an itemset is equal to another given.
    * @param a Itemset to compare with ours
-   * @return boolean true = they are equal, false = they aren't.
+   * @return true if they are equal, false if they aren't.
    */
   public boolean isEqual(Itemset a) {
 	  int i;
@@ -226,11 +200,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to check if the antecedent of our itemset is equal to another given
-   * </p>
+   * Function to check if the antecedent of our itemset is equal to another given.
    * @param a Itemset which antecedents we are going to compare with ours
-   * @return boolean true = they are equal, false = they aren't.
+   * @return true if they are equal, false if they aren't.
    */
   public boolean isEqualAnt(Itemset a) {
 	  int i;
@@ -247,11 +219,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to check if our itemset is Subitemset (can be contained) of a given itemset
-   * </p>
+   * Function to check if our itemset is Subitemset (can be contained) of a given itemset.
    * @param a Itemset to check if can contain ours
-   * @return boolean true = our itemset is subitemset of a, false = it isn't.
+   * @return true if our itemset is subitemset of a, false if it isn't.
    */
   public boolean isSubItemset(Itemset a) {
 	  int i, j;
@@ -277,9 +247,7 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
-   * It computes the support, rule support, hits, misses and PER of our itemset for a given dataset
-   * </p>
+   * It computes the support, rule support, hits, misses and PER of our itemset for a given dataset.
    * @param train Given training dataset to be able to calculate supports
    */
   public void calculateSupports(myDataset train) {
@@ -353,11 +321,13 @@ public class Itemset implements Comparable {
    } 
 
   /**
-   * Function to compare objects of the Itemset class
-   * Necessary to be able to use "sort" function
-   * It sorts in an decreasing order of attribute
-   * If equals, in an decreasing order of value of the attribute
-   * If equals, in an decreasing order of class
+   * Function to compare objects of the Itemset class.
+   * Necessary to be able to use "sort" function.
+   * It sorts in an decreasing order of attribute.
+   * If equals, in an decreasing order of value of the attribute.
+   * If equals, in an decreasing order of class.
+   * @param a Itemset object to compare with.
+   * @return -1 if a is bigger, 1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
 	int i;
