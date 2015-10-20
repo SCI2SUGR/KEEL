@@ -64,7 +64,7 @@ public class AssocRuleMining extends JFrame {
 	
     // Data structures
      
-    /** 2-D aray to hold input data from data file */
+    /** 2-D aray to hold input data from data file. */
     protected short[][] dataArray = null;
     /** 2-D array used to renumber coulmns for input data in terms of
     frequency of single attributes (reordering will enhance performance
@@ -140,7 +140,7 @@ public class AssocRuleMining extends JFrame {
         support = minSup;  
     }
 
-    /** Default constructor */
+    /** Default constructor. */
 
     public AssocRuleMining() {
     }
@@ -365,12 +365,13 @@ public class AssocRuleMining extends JFrame {
 		isOrderedFlag = true;
 	}
 	   
-    /* COUNT SINGLES */
     
-    /** Counts number of occurances of each single attribute in the
+    /** 
+    * Counts number of occurances of each single attribute in the
     input data.
-    @return 2-D array where first row represents column numbers
-    and second row represents support counts. */
+    * @param dataBase object where the examples to work with the algorithm and some other useful information are stored.
+    * @return 2-D array where first row represents column numbers and second row represents support counts. 
+    */
     
     protected int[][] countSingles(DataBase dataBase) {
 		// Dimension and initialize count array

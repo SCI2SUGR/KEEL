@@ -43,17 +43,17 @@ public class Selected implements Comparable{
   Rule rule;
 
   /**
-   * <p>
+   * 
    * Default Constructor
-   * </p>
+   * 
    */
   public Selected() {
   }
 
   /**
-   * <p>
+   * 
    * Parameters Constructor
-   * </p>
+   * 
    * @param rule Rule to sotre in the Selected structure
    * @param defaultClass Default class set for the rule
    * @param totalErrors Number of errors this rule has got while it was classifying
@@ -65,9 +65,8 @@ public class Selected implements Comparable{
   }
 
   /**
-   * <p>
-   * Clone function
-   * </p>
+   * Clone function.
+   * @return A copy of the Replace object.
    */
   public Selected clone () {
 	Selected s = new Selected (this.rule, this.defaultClass, this.totalErrors);
@@ -76,9 +75,9 @@ public class Selected implements Comparable{
   }
 
   /**
-   * <p>
+   * 
    * It returns the rule in the structure
-   * </p>
+   * 
    * @return Rule The rule stored in the structure
    */
   public Rule getRule () {
@@ -86,9 +85,9 @@ public class Selected implements Comparable{
   }
 
   /**
-   * <p>
+   * 
    * It sets the rule into the "selected" structure
-   * </p>
+   * 
    * @param rule Rule to store
    */
   public void setRule (Rule rule) {
@@ -96,9 +95,9 @@ public class Selected implements Comparable{
   }
 
   /**
-   * <p>
+   * 
    * It returns the default class in the structure
-   * </p>
+   * 
    * @return int The default class in the structure
    */
   public int getDefaultClass () {
@@ -106,9 +105,9 @@ public class Selected implements Comparable{
   }
 
   /**
-   * <p>
+   * 
    * It sets the default class into the "selected" structure
-   * </p>
+   * 
    * @param defaultClass Default class to store
    */
   public void setDefaultClass (int defaultClass) {
@@ -116,9 +115,9 @@ public class Selected implements Comparable{
   }
 
   /**
-   * <p>
+   * 
    * It returns the total of errors in the structure
-   * </p>
+   * 
    * @return int The total of errors made by the rule
    */
   public int getTotalErrors () {
@@ -126,9 +125,9 @@ public class Selected implements Comparable{
   }
 
   /**
-   * <p>
+   * 
    * It sets the total of errors made by the rule into the "selected" structure
-   * </p>
+   * 
    * @param totalErrors Number of errors the rule made while it was classifying examples
    */
   public void setTotalErrors (int totalErrors) {
@@ -136,9 +135,11 @@ public class Selected implements Comparable{
   }
 
   /**
-   * Function to compare objects of the Selected class
+   * Function to compare objects of the Selected class.
    * Necessary to be able to use "sort" function
    * It sorts in an decreasing order of total of errors
+   * @param a Rule object to compare with.
+   * @return -1 if a is bigger, 1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
     if ( ( (Selected) a).totalErrors < this.totalErrors) {

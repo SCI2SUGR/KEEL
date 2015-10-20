@@ -42,8 +42,19 @@ import keel.Dataset.*;
 
 public class myDataset {
 
+    /**
+     * Number to represent type of variable real or double.
+     */
     public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
     public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
     public static final int NOMINAL = 2;
 
     private int[][] X = null; //examples array
@@ -65,7 +76,7 @@ public class myDataset {
     private int instancesCl[];
 
     /**
-     * Init a new set of instances
+     * Init a new set of instances.
      */
     public myDataset() {
         IS = new InstanceSet();
@@ -80,7 +91,7 @@ public class myDataset {
     }
 
     /**
-     * Output a specific example
+     * Output a specific example.
      * @param pos position (id) of the example in the data-set
      * @return double[] the attributes of the given example
      */
@@ -90,7 +101,7 @@ public class myDataset {
 
 
     /**
-     * Returns the output of the data-set as integer values
+     * Returns the output of the data-set as integer values.
      * @return int[] an array of integer values corresponding to the output values of the dataset
      */
     public int[] getOutputAsInteger() {
@@ -102,7 +113,7 @@ public class myDataset {
     }
 
     /**
-     * Returns the output of the data-set as real values
+     * Returns the output of the data-set as real values.
      * @return double[] an array of real values corresponding to the output values of the dataset
      */
     public double[] getOutputAsReal() {
@@ -114,7 +125,7 @@ public class myDataset {
     }
 
     /**
-     * Returns the output of the data-set as nominal values
+     * Returns the output of the data-set as nominal values.
      * @return String[] an array of nomianl values corresponding to the output values of the dataset
      */
     public String[] getOutputAsString() {
@@ -126,7 +137,7 @@ public class myDataset {
     }
 
     /**
-     * It returns the output value of the example "pos"
+     * It returns the output value of the example "pos".
      * @param pos the position (id) of the example
      * @return String a string containing the output value
      */
@@ -135,7 +146,7 @@ public class myDataset {
     }
 
     /**
-     * It returns the input value of the example "pos" as string
+     * It returns the input value of the example "pos" as string.
      * @param var the variable (id) of the example
      * @param pos the position (id) of the example
      * @return String a string containing the input value
@@ -146,7 +157,7 @@ public class myDataset {
 
 
     /**
-     * It returns the output value of the example "pos"
+     * It returns the output value of the example "pos".
      * @param pos the position (id) of the example
      * @return an integer containing the output value
      */
@@ -155,7 +166,7 @@ public class myDataset {
     }
 
     /**
-     * It returns the output value of the example "pos"
+     * It returns the output value of the example "pos".
      * @param pos the position (id) of the example
      * @return a real containing the output value
      */
@@ -164,7 +175,7 @@ public class myDataset {
     }
 
     /**
-     * It returns an array with the maximum values of the attributes
+     * It returns an array with the maximum values of the attributes.
      * @return double[] an array with the maximum values of the attributes
      */
     public int[] getemax() {
@@ -172,23 +183,33 @@ public class myDataset {
     }
 
     /**
-     * It returns an array with the minimum values of the attributes
+     * It returns an array with the minimum values of the attributes.
      * @return double[] an array with the minimum values of the attributes
      */
     public int[] getemin() {
         return emin;
     }
 
+    /**
+     * Gets the maximum value of the variable as argument.
+     * @param variable index of the attribute/variable is being asked for
+     * @return the maximun value of the attribute as argument.
+     */
     public int getMax(int variable) {
         return emax[variable];
     }
 
+    /**
+     * Gets the minimum value of the variable as argument.
+     * @param variable index of the attribute/variable is being asked for
+     * @return the minimum value of the attribute as argument.
+     */
     public int getMin(int variable) {
         return emin[variable];
     }
 
     /**
-     * It gets the size of the data-set
+     * It gets the size of the data-set.
      * @return int the number of examples in the data-set
      */
     public int getnData() {
@@ -196,7 +217,7 @@ public class myDataset {
     }
 
     /**
-     * It gets the number of variables of the data-set (including the output)
+     * It gets the number of variables of the data-set (including the output).
      * @return int the number of variables of the data-set (including the output)
      */
     public int getnVars() {
@@ -204,7 +225,7 @@ public class myDataset {
     }
 
     /**
-     * It gets the number of input attributes of the data-set
+     * It gets the number of input attributes of the data-set.
      * @return int the number of input attributes of the data-set
      */
     public int getnInputs() {
@@ -212,7 +233,7 @@ public class myDataset {
     }
 
     /**
-     * It gets the number of output attributes of the data-set (for example number of classes in classification)
+     * It gets the number of output attributes of the data-set (for example number of classes in classification).
      * @return int the number of different output values of the data-set
      */
     public int getnClasses() {
@@ -220,7 +241,7 @@ public class myDataset {
     }
 
     /**
-     * This function checks if the attribute value is missing
+     * This function checks if the attribute value is missing.
      * @param i Example id
      * @param j Variable id
      * @return boolean True is the value is missing, else it returns false
@@ -230,7 +251,7 @@ public class myDataset {
     }
 
     /**
-     * This function checks if the attribute value is nominal
+     * This function checks if the attribute value is nominal.
      * @param i attribute id
      * @return boolean True is the value is nominal, else it returns false
      */
@@ -329,7 +350,7 @@ public class myDataset {
 
 
     /**
-     * It copies the header of the dataset
+     * It copies the header of the dataset.
      * @return String A string containing all the data-set information
      */
     public String copyHeader() {
@@ -344,20 +365,24 @@ public class myDataset {
     }
 
     /**
-     * It checks if the data-set has any real value
+     * It checks if the data-set has any real value.
      * @return boolean True if it has some real values, else false.
      */
     public boolean hasRealAttributes() {
         return Attributes.hasRealAttributes();
     }
 
+    /**
+     * Checks if the data-set has any numeric value.
+     * @return boolean True if it has some numeric value, else false.
+     */
     public boolean hasNumericalAttributes() {
         return (Attributes.hasIntegerAttributes() ||
                 Attributes.hasRealAttributes());
     }
 
     /**
-     * It checks if the data-set has any missing value
+     * It checks if the data-set has any missing value.
      * @return boolean True if it has some missing values, else false.
      */
     public boolean hasMissingAttributes() {
@@ -365,7 +390,7 @@ public class myDataset {
     }
 
     /**
-     * It return the size of the data-set without having account the missing values
+     * It return the size of the data-set without having account the missing values.
      * @return int the size of the data-set without having account the missing values
      */
     public int sizeWithoutMissing() {
@@ -382,12 +407,17 @@ public class myDataset {
         return tam;
     }
 
+    /**
+     * Returns the total number of instances in the data-set.
+     * @return Number of instances in the data-set.
+     */
     public int size() {
         return nData;
     }
 
-
-
+    /**
+     * Counts and stores the number of instances that belong to each class.
+     */
     public void computeInstancesPerClass() {
 		int i;
         this.instancesCl = new int[this.nClasses];
@@ -396,22 +426,47 @@ public class myDataset {
         for (i = 0; i < this.getnData(); i++)  this.instancesCl[this.outputInteger[i]]++;
     }
 
+    /**
+     * Returns the number of instances of the class with index passed as argument ("clas").
+     * @param clas Index of the class being asked.
+     * @return Number of instances of the class "clas"
+     */
     public int numberInstances(int clas) {
         return instancesCl[clas];
     }
 
+    /**
+     * Returns an Array with the number of instances that belong to each class.
+     * @return Number of instances of each class.
+     */
     public int [] returnNumberInstances() {
         return instancesCl;
     }
 
+    /**
+     * Returns the number of different values of the attribute with index passed as argument.
+     * @param attribute Index of the attribute being asked.
+     * @return Number of different values of the attribute passed as argument.
+     */
     public int numberValues(int attribute) {
         return Attributes.getInputAttribute(attribute).getNumNominalValues();
     }
 
+    /**
+     * Returns the nominal output value which corresponds to the integer passed as argument.
+     * @param intValue Integer value which determinate the nominal output.
+     * @return String value which corresponds to the integer passed as argument ("intValue"). 
+     */
     public String getOutputValue(int intValue) {
         return Attributes.getOutputAttribute(0).getNominalValue(intValue);
     }
 
+    /**
+     * Returns the type of the attribute with index passed as argument.
+     * Possible returned values: INTEGER(1), REAL(0), NOMINAL(2) and UNDEFINED(0)
+     * @param variable Index of the attribute.
+     * @return the type of the attribute as a integer value.
+     */
     public int getTipo(int variable) {
         if (Attributes.getAttribute(variable).getType() ==
             Attributes.getAttribute(0).INTEGER) {
@@ -429,8 +484,10 @@ public class myDataset {
     }
 
     /**
-     * Devuelve el universo de discuros de las variables de entrada y salida
-     * @return double[][] El rango minimo y maximo de cada variable
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
      */
     public int [][] returnRanks(){
       int [][] rangos = new int[this.getnVars()][2];
@@ -445,7 +502,10 @@ public class myDataset {
 	  return rangos;
     }
 
-
+    /**
+     * Returns the names of the different attributes of the data-set.
+     * @return An array with the manes of the attributes.
+     */
     public String [] names(){
       String names[] = new String[nInputs];
       for (int i = 0; i < nInputs; i++){
@@ -454,6 +514,10 @@ public class myDataset {
       return names;
     }
 
+    /**
+     * Returns the different classes in the data-set.
+     * @return An array with the different classes.
+     */
     public String [] clases(){
       String clases[] = new String[nClasses];
       for (int i = 0; i < nClasses; i++){

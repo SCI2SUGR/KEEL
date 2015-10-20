@@ -49,17 +49,17 @@ public class Itemset implements Comparable {
 
   
   /**
-   * <p>
+   * 
    * Default Constructor
-   * </p>
+   * 
    */
   public Itemset() {
   }
 
   /**
-   * <p>
+   * 
    * Parameters Constructor
-   * </p>
+   * 
    * @param clas Associated output of the Itemset
    */
   public Itemset(int clas) {
@@ -73,9 +73,8 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
-   * Clone function
-   * </p>
+   * Clone function.
+   * @return A copy of the Itemset object.
    */
   public Itemset clone() {
     Itemset d = new Itemset(this.clas);
@@ -92,9 +91,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * Function to add an item to our itemset
-   * </p>
+   * 
    * @param item Element to be added
    */
   public void add (Item item) {
@@ -102,9 +101,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the item located in the given position of the itemset
-   * </p>
+   * 
    * @param pos Position of the requested item into the itemset
    * @return Item The requested item of the itemset
    */
@@ -113,9 +112,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * Function to remove the item located in the given position
-   * </p>
+   * 
    * @param pos Position of the requested item into the itemset
    * @return Item The removed item of the itemset
    */
@@ -124,9 +123,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the size of the itemset (the number of items it has)
-   * </p>
+   * 
    * @return int Number of items the itemset stores
    */
   public int size () {
@@ -134,9 +133,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the support of the antecedent of the itemset
-   * </p>
+   * 
    * @return double Support of the antecedent of the itemset
    */
   public double getSupport() {
@@ -144,9 +143,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the support of the itemset for its related output class
-   * </p>
+   * 
    * @return double Support of the itemset for its related output class
    */
   public double getSupportClass() {
@@ -154,9 +153,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the number of hits of the itemset against the training set
-   * </p>
+   * 
    * @return int Number of hits of the itemset against the training set
    */
   public int getHits() {
@@ -164,9 +163,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the number of misses of the itemset against the training set
-   * </p>
+   * 
    * @return int Number of misses of the itemset against the training set
    */
   public int getMisses() {
@@ -174,9 +173,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the Pessimistic Error Rate of the itemset
-   * </p>
+   * 
    * @return double Pessimistic Error Rate of the itemset
    */
   public double getPer() {
@@ -184,9 +183,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the output class of the itemset
-   * </p>
+   * 
    * @return int output class of the itemset
    */
   public int getClas() {
@@ -194,9 +193,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * Function which sets the itemset's output class
-   * </p>
+   * 
    * @param clas Itemset's output class
    */
   public void setClas(int clas) {
@@ -204,9 +203,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * Function to check if an itemset is equal to another given
-   * </p>
+   * 
    * @param a Itemset to compare with ours
    * @return boolean true = they are equal, false = they aren't.
    */
@@ -227,9 +226,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * Function to check if the antecedent of our itemset is equal to another given
-   * </p>
+   * 
    * @param a Itemset which antecedents we are going to compare with ours
    * @return boolean true = they are equal, false = they aren't.
    */
@@ -248,9 +247,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * Function to check if our itemset is Subitemset (can be contained) of a given itemset
-   * </p>
+   * 
    * @param a Itemset to check if can contain ours
    * @return boolean true = our itemset is subitemset of a, false = it isn't.
    */
@@ -278,9 +277,9 @@ public class Itemset implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It computes the support, rule support, hits, misses and PER of our itemset for a given dataset
-   * </p>
+   * 
    * @param train Given training dataset to be able to calculate supports
    */
   public void calculateSupports(myDataset train) {
@@ -354,11 +353,13 @@ public class Itemset implements Comparable {
    } 
 
   /**
-   * Function to compare objects of the Itemset class
-   * Necessary to be able to use "sort" function
-   * It sorts in an decreasing order of attribute
-   * If equals, in an decreasing order of value of the attribute
-   * If equals, in an decreasing order of class
+   * Function to compare objects of the Itemset class.
+   * Necessary to be able to use "sort" function.
+   * It sorts in an decreasing order of attribute.
+   * If equals, in an decreasing order of value of the attribute.
+   * If equals, in an decreasing order of class.
+   * @param a Itemset object to compare with.
+   * @return -1 if a is bigger, 1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
 	int i;

@@ -59,10 +59,10 @@ public class parseParameters {
     }
 
     /**
-     * It obtains all the necesary information from the configuration file.<br/>
-     * First of all it reads the name of the input data-sets, training, validation and test.<br/>
-     * Then it reads the name of the output files, where the training (validation) and test outputs will be stored<br/>
-     * Finally it read the parameters of the algorithm, such as the random seed.<br/>
+     * It obtains all the necesary information from the configuration file.
+     * First of all it reads the name of the input data-sets, training, validation and test.
+     * Then it reads the name of the output files, where the training (validation) and test outputs will be stored.
+     * Finally it read the parameters of the algorithm, such as the random seed.
      *
      * @param fileName Name of the configuration file
      *
@@ -80,7 +80,7 @@ public class parseParameters {
     };
 
     /**
-     * It reads the name of the algorithm from the configuration file
+     * It reads the name of the algorithm from the configuration file.
      * @param line StringTokenizer It is the line containing the algorithm name.
      */
     private void readName(StringTokenizer line){

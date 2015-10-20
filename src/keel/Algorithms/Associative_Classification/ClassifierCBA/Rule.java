@@ -50,9 +50,9 @@ public class Rule implements Comparable {
   DataBase dataBase;
 
   /**
-   * <p>
-   * Copy Constructor
-   * </p>
+   * 
+   * Copy Constructor.
+   * 
    * @param r Rule to be copied
    */
   public Rule(Rule r) {
@@ -74,9 +74,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * Parameters Constructor
-   * </p>
+   * 
+   * Parameters Constructor.
+   * 
    * @param dataBase Set of training data which is necessary to generate a rule
    */
   public Rule(DataBase dataBase) {
@@ -97,9 +97,8 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * Clone Function
-   * </p>
+   * Clone function.
+   * @return A copy of the Rule object.
    */
   public Rule clone() {
     Rule r = new Rule(this.dataBase);
@@ -120,9 +119,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It sets the rule's antecedent
-   * </p>
+   * 
+   * It sets the rule's antecedent.
+   * 
    * @param antecedent Array of values. Each position in the array represents an attribute.
    */
   public void asignaAntecedente(int [] antecedent){
@@ -134,9 +133,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns the rule's consequent
-   * </p>
+   * 
+   * It returns the rule's consequent.
+   * 
    * @param clas Consequent of the rule
    */
   public void setConsequent(int clas) {
@@ -144,9 +143,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to check if a given example matchs with the rule (the rule correctly classifies it)
-   * </p>
+   * 
+   * Function to check if a given example matchs with the rule (the rule correctly classifies it).
+   * 
    * @param example Example to be classified
    * @return double 0.0 = doesn't match, >0.0 = does.
    */
@@ -166,19 +165,19 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to add a replace entry in the "Replace" list
-   * </p>
+   * 
+   * Function to add a replace entry in the "Replace" list.
+   * 
    * @param r Element to be inserted
    */
   public void addReplace(Replace r) {
-    this.replace.add(r);;
+    this.replace.add(r);
   }
 
   /**
-   * <p>
-   * Function to check if a rule is equal to another given
-   * </p>
+   * 
+   * Function to check if a rule is equal to another given.
+   * 
    * @param rule Rule to compare with ours
    * @return boolean true = they are equal, false = they aren't.
    */
@@ -194,9 +193,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It sets the rule's confidence
-   * </p>
+   * 
+   * It sets the rule's confidence.
+   * 
    * @param conf double Confidence to be set
    */
   public void setConfidence(double conf) {
@@ -204,9 +203,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It sets the rule's support
-   * </p>
+   * 
+   * It sets the rule's support.
+   * 
    * @param supp Support to be set
    */
   public void setSupport(double supp) {
@@ -214,9 +213,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It sets the rule's mark
-   * </p>
+   * 
+   * It sets the rule's mark.
+   * 
    * @param mark Whether the rule is marked (1) or not (0)
    */
   public void setMark (int mark) {
@@ -224,9 +223,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns the confidence of the rule
-   * </p>
+   * 
+   * It returns the confidence of the rule.
+   * 
    * @return double Confidence of the rule
    */
   public double getConfidence() {
@@ -234,9 +233,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns the Support of the rule
-   * </p>
+   * 
+   * It returns the Support of the rule.
+   * 
    * @return double Support of the rule
    */
   public double getSupport() {
@@ -244,9 +243,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns the output class of the rule
-   * </p>
+   * 
+   * It returns the output class of the rule.
+   * 
    * @return int Output class of the rule
    */
   public int getClas() {
@@ -254,9 +253,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns the time of the rule
-   * </p>
+   * 
+   * It returns the time of the rule.
+   * 
    * @return long Time the rule has been added to the rule set
    */
   public long getTime() {
@@ -264,9 +263,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It sets the time the rule was added to the rule set
-   * </p>
+   * 
+   * It sets the time the rule was added to the rule set.
+   * 
    * @param time long Time to be set
    */
   public void setTime(long time) {
@@ -274,9 +273,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns the mark of the rule
-   * </p>
+   * 
+   * It returns the mark of the rule.
+   * 
    * @return int 1 = rule is marked, 0 = rule isn't.
    */
   public int getMark() {
@@ -284,25 +283,25 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to mark the rule
-   * </p>
+   * 
+   * Function to mark the rule.
+   * 
    */
   public void onMark() {
     this.mark = 1;
   }
 
   /**
-   * Function to unmark the rule
+   * Function to unmark the rule.
    */
   public void offMark() {
     this.mark = 0;
   }
 
   /**
-   * <p>
-   * It returns the size of the Replace list in the rule
-   * </p>
+   * 
+   * It returns the size of the Replace list in the rule.
+   * 
    * @return int Size of the Replace list in the rule
    */
   public int getnReplace() {
@@ -310,9 +309,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns the Replace element of the rule in the position "pos"
-   * </p>
+   * 
+   * It returns the Replace element of the rule in the position "pos".
+   * 
    * @param pos Position of the "replace element" we are looking for
    * @return Replace Replace element of the rule in the position "pos"
    */
@@ -321,9 +320,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns if the rule is marked
-   * </p>
+   * 
+   * It returns if the rule is marked.
+   * 
    * @return boolean true = Rule is marked, false = rule is not.
    */
   public boolean isMark() {
@@ -331,9 +330,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * Function to know whether our rule has more precedence than another given or not.
-   * </p>
+   * 
    * @param r Given rule to compare
    * @return boolean true = our rule has more precedence, false = it hasn't.
    */
@@ -349,9 +348,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to increase in 1 the number of examples whose output class is the given class "clas" and are covered by this rule
-   * </p>
+   * 
+   * Function to increase in 1 the number of examples whose output class is the given class "clas" and are covered by this rule.
+   * 
    * @param clas Output class of the covered example
    */
   public void incrCovered (int clas) {
@@ -359,9 +358,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to decrease in 1 the number of examples whose output class is the given class "clas" and are covered by this rule
-   * </p>
+   * 
+   * Function to decrease in 1 the number of examples whose output class is the given class "clas" and are covered by this rule.
+   * 
    * @param clas Output class of the covered example
    */
   public void decrCovered (int clas) {
@@ -369,9 +368,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * It returns the number of examples covered by the rule for the class "class"
-   * </p>
+   * 
+   * It returns the number of examples covered by the rule for the class "class".
+   * 
    * @param clas Class to know how many examples with this class are covered by our rule
    * @return int Number of examples covered by our rule for the given class
    */
@@ -380,9 +379,9 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * Function to check whether our rule is subset of a given rule "a"
-   * </p>
+   * 
+   * Function to check whether our rule is subset of a given rule "a".
+   * 
    * @param a Given rule to compare
    * @return boolean true = our rule is subset of a, false = it isn't.
    */
@@ -399,7 +398,7 @@ public class Rule implements Comparable {
   }
 
   /**
-   * It sets the label for a given position in the antecedent (for a given attribute)
+   * It sets the label for a given position in the antecedent (for a given attribute).
    * @param pos Location of the attribute which we want to set the label
    * @param label New label value to set
    */
@@ -410,11 +409,13 @@ public class Rule implements Comparable {
   }
 
   /**
-   * Function to compare objects of the Rule class
+   * Function to compare objects of the Rule class.
    * Necessary to be able to use "sort" function
    * It sorts in an decreasing order of confidence
    * If equals, in an decreasing order of support
    * If equals, in an decreasing order of time
+   * @param a Rule object to compare with.
+   * @return -1 if a is bigger, 1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
 	  if (((Rule) a).conf < this.conf)  return -1;

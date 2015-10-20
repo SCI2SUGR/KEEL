@@ -42,17 +42,17 @@ public class Item implements Comparable {
   int variable, value;
 
   /**
-   * <p>
+   * 
    * Default Constructor
-   * </p>
+   * 
    */
   public Item() {
   }
 
   /**
-   * <p>
-   * Parameters Constructor
-   * </p>
+   * 
+   * Parameters Constructor.
+   * 
    * @param variable Value which represents an input attribute of a rule
    * @param value Value attached to the variable
    */
@@ -62,9 +62,9 @@ public class Item implements Comparable {
   }
 
   /**
-   * <p>
-   * It sets the pair of values to the item
-   * </p>
+   * 
+   * It sets the pair of values to the item.
+   * 
    * @param variable Value which represents an input attribute of a rule
    * @param value Value attached to the variable
    */
@@ -74,9 +74,9 @@ public class Item implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the variable of the item
-   * </p>
+   * 
    * @return int Input attribute
    */
   public int getVariable () {
@@ -84,9 +84,9 @@ public class Item implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * It returns the value of the item
-   * </p>
+   * 
    * @return int Value of the item
    */
   public int getValue () {
@@ -94,9 +94,8 @@ public class Item implements Comparable {
   }
 
   /**
-   * <p>
-   * Clone function
-   * </p>
+   * Clone function.
+   * @return A copy of the Item.
    */
   public Item clone(){
     Item d = new Item();
@@ -107,9 +106,9 @@ public class Item implements Comparable {
   }
 
   /**
-   * <p>
+   * 
    * Function to check if an item is equal to another given
-   * </p>
+   * 
    * @param a Item to compare with ours
    * @return boolean true = they are equal, false = they aren't.
    */
@@ -119,10 +118,12 @@ public class Item implements Comparable {
   }
 
   /**
-   * Function to compare objects of the Item class
-   * Necessary to be able to use "sort" function
-   * It sorts in an decreasing order of attribute
-   * If equals, in an decreasing order of attribute's value
+   * Function to compare objects of the Item class.
+   * Necessary to be able to use "sort" function.
+   * It sorts in an decreasing order of attribute.
+   * If equals, in an decreasing order of attribute's value.
+   * @param a Item object to compare with.
+   * @return -1 if a is bigger, 1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
     if (((Item) a).variable > this.variable) {

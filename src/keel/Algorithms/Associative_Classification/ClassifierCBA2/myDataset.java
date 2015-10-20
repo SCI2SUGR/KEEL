@@ -42,8 +42,19 @@ import keel.Dataset.*;
  */
 public class myDataset {
 
+    /**
+     * Number to represent type of variable real or double.
+     */
     public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
     public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
     public static final int NOMINAL = 2;
 
     private int[][] X = null; //examples array
@@ -410,7 +421,7 @@ public class myDataset {
 
 
     /**
-     * It computes the number the instances per class
+     * It computes the number the instances per class.
      */
     public void computeInstancesPerClass() {
 		int i;
@@ -494,8 +505,10 @@ public class myDataset {
     }
 
     /**
-     * Devuelve el universo de discuros de las variables de entrada y salida
-     * @return double[][] El rango minimo y maximo de cada variable
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
      */
     public int [][] returnRanks(){
       int [][] rangos = new int[this.getnVars()][2];
