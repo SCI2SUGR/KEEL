@@ -470,7 +470,7 @@ public class AssocRuleMining extends JFrame {
     /* DEFINE CONVERSION ARRAYS: */
     
     /** Defines conversion and reconversion arrays. 
-    @param countArray The 2-D array sorted by the <TT>orderCcountArray</TT> 
+    @param countArray The 2-D array sorted by the <TT>orderCountArray</TT> 
     method.*/
     
     protected void defConvertArrays(int[][] countArray) {
@@ -859,7 +859,7 @@ public class AssocRuleMining extends JFrame {
 
     /** Returns complement of first itemset with respect to second itemset.
     @param itemSet1 the first given item set.
-    @param itemSet1 the second given item set.
+    @param itemSet2 the second given item set.
     @return complement if <TT>itemSet1</TT> in <TT>itemSet2</TT>. */
 
     protected short[] complement(short[] itemSet1, short[] itemSet2) {
@@ -1271,8 +1271,9 @@ public class AssocRuleMining extends JFrame {
     /* OUTPUT ITEMSET */
     /* -------------- */
     /** Outputs a given item set.
-    @param itemSet the given item set. */
-
+    * @param itemSet the given item set. 
+    * @return The itemset as a String
+    */
     protected String outputItemSet(short[] itemSet) {
 		String stringOut = new String("");
 
@@ -1456,12 +1457,11 @@ public class AssocRuleMining extends JFrame {
  
     /* SIMILAR 2 DFECIMAL PLACES */ 
  
-    /* Compares two real numbers and returns true if the two numbers are 
+    /** Compares two real numbers and returns true if the two numbers are 
     the same within two decimal places. 
-    @param the first given real number. 
-    @param the second given number. 
-    @return true if similar within two decimal places ad false otherwise. */ 
- 
+    @param number1 first given real number. 
+    @param number2 second given number. 
+    @return true if similar within two decimal places ad false otherwise. */
     protected boolean similar2dec(double number1, double number2) { 
         // Convert to integers 
         int numInt1 = (int) ((number1+0.005)*100.0); 

@@ -115,9 +115,8 @@ public class Literal implements Comparable{
   }
 
   /**
-   * <p>
-   * Clone Function
-   * </p>
+   * Clone function.
+   * @return A copy of the Literal.
    */
   public Literal clone(){
     Literal d = new Literal();
@@ -129,10 +128,10 @@ public class Literal implements Comparable{
   }
 
   /**
-   * <p>
-   * Function neccessary to sort literals
+   * Function neccessary to sort literals.
    * It sorts in a decreasing gain order
-   * </p>
+   * @param a Literal object to compare with.
+   * @return 1 if a is bigger, -1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
     if ( ( (Literal) a).gain < this.gain) {

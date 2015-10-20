@@ -320,7 +320,6 @@ public class TotalSupportTree extends AssocRuleMining {
     {D,B,A} and {C,B,A}}. We know the first two are supported becuase they are
     contained in the current sub-branch of the T-tree, {D,B,A} and {C,B,A} are
     not.
-    </OL> 
     @param parentRef the reference to the level in the sub-branch of the T-tree
     under consideration.
     @param endIndex the index of the current node under consideration.
@@ -380,7 +379,8 @@ public class TotalSupportTree extends AssocRuleMining {
     itemSet2 = {C,D} (currentItemSet with first two elements removed)
     calculate combinations between {B,A} and {C,D}
     </PRE>
-    @param currentItemSet the given itemset.		*/
+    @param currentItemSet the given itemset.
+    @return true if combinations succeeded and false otherwise.		*/
     
     protected boolean testCombinations(short[] currentItemSet) {  
 	// No need to test 1- and 2-itemsets
@@ -1209,8 +1209,9 @@ public class TotalSupportTree extends AssocRuleMining {
 	}
     
     /* COUNT NUMBER OF FRQUENT SETS */
-    /** Commences process of counting the number of frequent (large/supported
-    sets conayoned in the T-tree. */
+    /** Commences process of counting the number of frequent (large/supported)
+    sets conayoned in the T-tree.
+    @return number of frequent sets conayoned in the T-tree */
     
     protected int countNumFreqSets() {
         // If emtpy tree return 0
@@ -1234,7 +1235,8 @@ public class TotalSupportTree extends AssocRuleMining {
     /** Counts the  number of supported nodes in a sub branch of the T-tree.
     @param size the length/size of the current array lavel in the T-tree.
     @param linkRef the reference to the current array lavel in the T-tree.
-    @param num the number of frequent serts sofar. */
+    @param num the number of frequent serts sofar.
+    @return number of supported nodes in the sub branch given */
 
     protected int countNumFreqSets(int size, TtreeNode[] linkRef, int num) {
 	
@@ -1363,8 +1365,8 @@ public class TotalSupportTree extends AssocRuleMining {
 	} 	
    
     /* CALCULATE STORAGE */
-    /** Commences process of claculating storage requirements for  T-tree. */
-    
+    /** Commences process of calculating storage requirements for  T-tree.
+     * @return the storage requirements for T-tree*/
     protected int calculateStorage() {
         // If emtpy tree (i.e. no supported serts) return 0
 	if (startTtreeRef ==  null) return(0);
@@ -1382,7 +1384,8 @@ public class TotalSupportTree extends AssocRuleMining {
         
     /** Calculate storage requirements for a sub-branch of the T-tree.
     @param localStorage the storage as calculated sofar (set to 0 at start).
-    @param linkRef the reference to the current sub-branch of the T-tree. */
+    @param linkRef the reference to the current sub-branch of the T-tree. 
+    @return the storage requirements for sub-branch of the T-tree given*/
     
     private int calculateStorage(int localStorage, TtreeNode[] linkRef) {
 	

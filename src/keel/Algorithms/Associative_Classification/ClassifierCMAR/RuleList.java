@@ -177,8 +177,8 @@ public class RuleList extends AssocRuleMining {
 
     /* ------ CONSTRUCTORS ------ */
 
-    /** Default constructor to create an instance of the class RuleList  */
-    	
+    /** Default constructor to create an instance of the class RuleList
+     * @param delta Minimum times a record mist be covered */
     public RuleList(int delta) {
 		MIN_COVER = delta;
     }
@@ -530,7 +530,8 @@ public class RuleList extends AssocRuleMining {
 
     /* CLASSIFY RECORD (USING WEIGHTED CHI SQUARED) */
     /** Selects the best rule in a rule list according to the Weighted Chi-
-    Squared (WCS) Value. <P> Proceed as follows: <OL>
+    Squared (WCS) Value. <P> Proceed as follows: </P>
+    <OL>
     <LI>Collect rules that satisfy the record. if
     <OL type="i">
     <LI>If consequents of all rules are all identical, or
@@ -539,10 +540,9 @@ public class RuleList extends AssocRuleMining {
     effect of the rules in each group, the classifier associated with
     the "strongest group" is then selected.
     </OL>
-    @param classification the possible classes.
-    @param itemset the record to be classified.
+    </OL>
+    @param itemSet the record to be classified.
     @return the class label (or 0 if no class found).	*/
-
     protected short classifyRecordWCS(short[] itemSet) {
 		RuleNodeCMAR linkRef = startCMARrulelist;
 		RuleNodeCMAR tempRulelist = startCMARrulelist;
@@ -826,30 +826,29 @@ public class RuleList extends AssocRuleMining {
 
     /* SET NUMBER OF ROWS */
 
-    /** Sets number of rows field. */
-
+    /** Sets number of rows field.
+     * @param numR  number of rows */
     protected void setNumRows(int numR) {
         numRows=numR;
 	}
 
     /* SET NUMBER OF CLASSES */
 
-    /** Sets number of rows field. */
-
+    /** Sets number of classes field.
+     * @param numC number of classes*/
     protected void setNumClasses(int numC) {
         numClasses=numC;
 	}
 
     /* SET NUMBER OF ONE ITEM SETS */
 
-    /** Sets number of one item sets field. */
-
+    /** Sets number of one item sets field.
+     * @param nois number of one item sets*/
     protected void setNumOneItemSets(int nois) {
         numOneItemSets=nois;
 	}
 
-    /* SET START CMAR RULE LIST TO NULL. */
-
+    /** Sets START CMAR RULE LIST to null. */
     protected void  setStartCMARrulelistToNull() {
         startCMARrulelist = null;
 	}
@@ -885,8 +884,8 @@ public class RuleList extends AssocRuleMining {
     /* ------------------------------ */
 
     /* OUTPUT CMAR RULE LINKED LIST */ 
-    /** Outputs contents of CMAR rule linked list (if any) */ 
-     
+    /** Outputs contents of CMAR rule linked list (if any)
+     * @param filename file's name where the rule linked list will be stored*/ 
     public void outputCMARrules(String filename) {
 		String stringOut = new String("");
 		stringOut = outputRules(startCMARrulelist);
@@ -901,8 +900,8 @@ public class RuleList extends AssocRuleMining {
 	} 
  
     /** Outputs given CMAR rule list. 
-    @param ruleList the given rule list. */ 
-     
+    * @param ruleList the given rule list. 
+    * @return the CMAR rule list given as argument as String*/ 
     public String outputRules(RuleNodeCMAR ruleList) { 
 		String stringOut = new String("");
 		int number, nAnt;
@@ -945,8 +944,9 @@ public class RuleList extends AssocRuleMining {
 	} 
     
     /* OUTPUT RULE LINKED LIST WITH RECONVERSION */   
-    /** Outputs contents of rule linked list (if any) with reconversion. */
-    
+    /** Outputs contents of rule linked list (if any) with reconversion.
+     * The list of rules are presented in the standard output.
+     * @param ruleList CMAR rule list given */
     public void outputRulesWithReconversion(RuleNodeCMAR ruleList) {
 		// Check for empty rule list
 		if (ruleList==null) System.out.println("No rules generated!");
