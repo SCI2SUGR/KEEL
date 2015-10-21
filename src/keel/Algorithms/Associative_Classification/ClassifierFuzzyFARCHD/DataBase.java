@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
 
+
+
+import org.core.Files;
+
 /**
  * <p>Title: DataBase</p>
  * <p>Description: Fuzzy Data Base</p>
@@ -38,9 +42,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
  * @version 1.0
  * @since JDK1.6
  */
-
-import org.core.Files;
-
 public class DataBase {
   int n_variables, partitions;
   int[] nLabels;
@@ -49,7 +50,11 @@ public class DataBase {
   Fuzzy[][] dataBaseIni;
   String names[];
 
-  public DataBase() {
+    /**
+     * Default constructor. 
+     * None attribute will be initialized.
+     */
+    public DataBase() {
   }
 
 /**
@@ -58,7 +63,6 @@ public class DataBase {
 * </p>
 * @param nLabels Number of Linguistic Values
 * @param train Training dataset
-* @return The databse
 */
 
   public DataBase(int nLabels, myDataset train) {
@@ -110,7 +114,11 @@ public class DataBase {
     return (val);
   }
 
-  public void decode(double[] gene) {
+    /**
+     * Decode the gene representation for the GA into the DataBase one based on the Triangular Membership Functions 
+     * @param gene Gene representation of the individual being decoded.
+     */
+    public void decode(double[] gene) {
 	  int i, j, pos;
 	  double displacement;
 
@@ -134,11 +142,23 @@ public class DataBase {
 	  }
   }
 
-  public int numVariables() {
+    /**
+   * <p>
+   * It returns the number of input attributes in the examples
+   * </p>
+   * @return The number of input attributes
+   */
+    public int numVariables() {
     return (this.n_variables);
   }
 
-  public int getnLabelsReal() {
+      /**
+   * <p>
+   * Returns the number of total real labels held by the input attributes.
+   * </p>
+   * @return The number of real labels
+   */
+    public int getnLabelsReal() {
 	  int i, count;
 
 	  count = 0;
@@ -150,20 +170,48 @@ public class DataBase {
 	  return (count);
   }
 
-  public int numLabels(int variable) {
+    /**
+   * <p>
+   * It returns the number of different labels that a specific input attribute can hold
+   * </p>
+   * @param variable The input attribute which we want to know the number of different labels it can have
+   * @return The number of labels
+   */
+    public int numLabels(int variable) {
     return (this.nLabels[variable]);
   }
 
+  /**
+   * <p>
+   * It return the whole array of number of labels for every attribute
+   * </p>
+   * @return the whole array of number of labels for every attribute
+   */
   public int[] getnLabels() {
     return (this.nLabels);
   }
 
-  public double matching(int variable, int label, double value) {
+    /**
+   * <p>
+   * Checks if the value of a specific label in a specific attribute matchs with a given value
+   * </p>
+   * @param variable Attribute which we are going to check
+   * @param label Attribute's label we are going to check
+   * @param value Value to be compared
+   * @return int 1 = Don't care, [0.0,1.0] = another one.
+   */
+    public double matching(int variable, int label, double value) {
 	if ((variable < 0) || (label < 0))  return (1);  // Don't care
     else  return (this.dataBase[variable][label].Fuzzifica(value));
   }
 
-  public String print_triangle(int var, int label) {
+    /**
+     * Return a String representation of the Triangular Membership Functions of the variable and its label given as arguments. 
+     * @param var Index of the variable given.
+     * @param label Index of the label given.
+     * @return String representation of the Triangular Membership Function.
+     */
+    public String print_triangle(int var, int label) {
     String cadena = new String("");
 
 	Fuzzy d = this.dataBase[var][label];
@@ -172,11 +220,25 @@ public class DataBase {
     return cadena;
   }
 
-  public String print(int var, int label) {
+    /**
+   * <p>
+   * It prints an attribute with its label in a string way
+   * </p>
+   * @param var Attribute to be printed
+   * @param label Attribute's label to be printed
+   * @return A string which represents the "string format" of the given input
+   */
+    public String print(int var, int label) {
 	return (this.dataBase[var][label].getName());
   }
 
-  public String printString() {
+    /**
+   * <p>
+   * It prints the whole database
+   * </p>
+   * @return The whole database
+   */
+    public String printString() {
     String string = new String("@Using Triangular Membership Functions as antecedent fuzzy sets");
     for (int i = 0; i < this.n_variables; i++) {
       string += "\n\n@Number of Labels in Variable " + (i+1) + ": " + this.nLabels[i];
@@ -188,7 +250,13 @@ public class DataBase {
     return string;
   }
 
-  public void saveFile(String filename) {
+    /**
+   * <p>
+   * It stores the data base in a given file
+   * </p>
+   * @param filename Name for the database file
+   */
+    public void saveFile(String filename) {
     String stringOut = new String("");
     stringOut = printString();
     Files.writeFile(filename, stringOut);

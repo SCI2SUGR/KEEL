@@ -194,8 +194,10 @@ public class RuleBase {
 	  return (this.ruleBase.remove(pos));
   }
 
-
-  public void removeRules() {
+    /**
+     * Removes the rules stored.
+     */
+    public void removeRules() {
 	  int i, pos;
 	  double minRate, rate;
 	  Rule rule;

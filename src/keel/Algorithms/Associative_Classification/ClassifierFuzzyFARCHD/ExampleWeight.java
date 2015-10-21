@@ -48,7 +48,6 @@ public class ExampleWeight{
 * Builder
 * </p>
 * @param K Covered patterns in the second stage are completely eliminated when they have been covered more than K times.
-* @return A object ExampleWeight
 */
   public ExampleWeight(int K) {
 	this.K = K;
@@ -56,22 +55,39 @@ public class ExampleWeight{
     this.weight = 1.0;
   }
 
-
-  public void incCount() {
+    /**
+     * Increments in 1 the number of times that it has been covered.
+     * If this number exceed the value K after been incremented, it is completely eliminated, reducing the weight to 0.
+     * Otherwise the weight is updated inversely proportional to the times covered.
+     */
+    public void incCount() {
     this.count++;
 	if (this.count >= this.K)  this.weight = 0.0;
 	else  this.weight = 1.0 / (count + 1.0);
   }
 
-  public int getCount() {
+    /**
+     * Returns the number of times counted.
+     * @return Number of times counted.
+     */
+    public int getCount() {
     return (this.count);
   }
 
-  public boolean isActive() {
+    /**
+     * Checks if the pattern is active. 
+     * This means checking if the number of times counted are smaller than the fixed K.
+     * @return True if the number of times counted are smaller than the fixed K. False otherwise.
+     */
+    public boolean isActive() {
     return (this.count < this.K);
   }
 
-  public double getWeight() {
+    /**
+     * Returns the weight given to the pattern.
+     * @return the weight given to the pattern
+     */
+    public double getWeight() {
     return (this.weight);
   }
 }

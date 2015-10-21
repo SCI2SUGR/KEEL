@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
 
+
+import org.core.Randomize;
+import java.lang.*;
+
 /**
  * <p>Title: Individual</p>
  *
@@ -43,9 +47,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
  * @since JDK1.6
  */
 
-import org.core.Randomize;
-import java.lang.*;
-
 public class Individual implements Comparable{
   double[] gene;
   int[] geneR;
@@ -53,7 +54,11 @@ public class Individual implements Comparable{
   int n_e, nGenes;
   RuleBase ruleBase;
 
-  public Individual() {
+    /**
+     * Default constructor. 
+     * None attribute will be initialized.
+     */
+    public Individual() {
   }
 
 /**
@@ -63,7 +68,6 @@ public class Individual implements Comparable{
 * @param ruleBase Rule set
 * @param dataBase Database
 * @param w1 Weight for the fitness function
-* @return Return a individual
 */
   public Individual(RuleBase ruleBase, DataBase dataBase, double w1) {
     this.ruleBase = ruleBase;
@@ -311,7 +315,6 @@ private int StringRep(Individual indiv, int BITS_GEN) {
 * <p>
 * Evaluate this individual (fitness function)
 * </p>
-* @return void
 */
   public void evaluate() {
 		  this.ruleBase.evaluate(this.gene, this.geneR);

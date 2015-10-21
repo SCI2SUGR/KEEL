@@ -44,7 +44,11 @@ public class DataBase {
   Fuzzy[][] dataBase;
   String names[];
 
-  public DataBase() {
+    /**
+     * Default constructor.
+     * None attribute will be initialized.
+     */
+    public DataBase() {
   }
 
   /**

@@ -415,7 +415,7 @@ public class Rule implements Comparable {
    * If equals, in an decreasing order of support
    * If equals, in an decreasing order of time
    * @param a Rule object to compare with.
-   * @return -1 if a is bigger, 1 if smaller and 0 otherwise.
+   * @return 1 if a is bigger, -1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
 	  if (((Rule) a).conf < this.conf)  return -1;

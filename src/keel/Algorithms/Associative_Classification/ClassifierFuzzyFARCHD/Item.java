@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
 
+
+
+import java.util.*;
+
 /**
  * <p>Title: Item</p>
  *
@@ -42,14 +46,14 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
  * @version 1.0
  * @since JDK1.6
  */
-
-import java.util.*;
-
-
 public class Item implements Comparable {
   int variable, value;
 
-  public Item() {
+    /**
+     * Default constructor. 
+     * None attribute will be initialized.
+     */
+    public Item() {
   }
 
 /**
@@ -58,23 +62,41 @@ public class Item implements Comparable {
 * </p>
 * @param variable Variable
 * @param value Value or Label of the variable
-* @return Return the item variable/value
 */
   public Item(int variable, int value) {
 	  this.variable = variable;
 	  this.value = value;
   }
 
-  public void setValues (int variable, int value) {
+    /**
+   * <p>
+   * It sets the pair of values to the item
+   * </p>
+   * @param variable Value which represents an input attribute of a rule
+   * @param value Value attached to the variable
+   */
+    public void setValues (int variable, int value) {
 	  this.variable = variable;
 	  this.value = value;
   }
 
-  public int getVariable () {
+    /**
+   * <p>
+   * It returns the variable of the item
+   * </p>
+   * @return Input attribute
+   */
+    public int getVariable () {
 	  return (this.variable);
   }
 
-  public int getValue () {
+    /**
+   * <p>
+   * It returns the value of the item
+   * </p>
+   * @return Value of the item
+   */
+    public int getValue () {
 	  return (this.value);
   }
 
@@ -86,12 +108,26 @@ public class Item implements Comparable {
 	return d;
   }
 
-  public boolean isEqual(Item a) {
+    /**
+   * <p>
+   * Function to check if an item is equal to another given
+   * </p>
+   * @param a Item to compare with ours
+   * @return boolean true = they are equal, false = they aren't.
+   */
+    public boolean isEqual(Item a) {
 	  if ((this.variable == a.variable) && (this.value == a.value))  return (true);
 	  else  return (false);
   }
 
-
+/**
+   * Function to compare objects of the Item class.
+   * Necessary to be able to use "sort" function.
+   * It sorts in an decreasing order of attribute.
+   * If equals, in an decreasing order of attribute's value.
+   * @param a Item object to compare with.
+   * @return -1 if a is bigger, 1 if smaller and 0 otherwise.
+   */
   public int compareTo(Object a) {
     if (((Item) a).variable > this.variable) {
       return -1;

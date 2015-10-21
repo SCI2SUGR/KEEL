@@ -523,7 +523,7 @@ public abstract class CoevolutionAlgorithm {
 	/** 
 	 * Generates a string with the contents of the instance
 	 * 
-	 * @param a Instance to print. 
+         * @param instance Instance to print
 	 * 
 	 * @return A string, with the values of the instance
 	 * 

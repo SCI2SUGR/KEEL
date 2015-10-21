@@ -29,6 +29,11 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
 
+
+
+import java.util.*;
+import org.core.*;
+
 /**
  * <p>Title: Population</p>
  * <p>Description: Class for the CHC algorithm</p>
@@ -38,10 +43,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
  * @version 1.2
  * @since JDK1.6
  */
-
-import java.util.*;
-import org.core.*;
-
 public class Population {
     ArrayList<Individual> Population;
     double alpha, w1, L, Lini;
@@ -53,6 +54,12 @@ public class Population {
     DataBase dataBase;
 	RuleBase ruleBase;
 
+    /**
+     * Maximization
+     * @param a int first number
+     * @param b int second number
+     * @return boolean true if a is greater than b
+     */
     public boolean BETTER(double a, double b) {
         if (a > b) {
             return true;
@@ -60,6 +67,10 @@ public class Population {
         return false;
     }
 
+    /**
+     * Default constructor.
+     * None attribute will be initialized.
+     */
     public Population() {
     }
 
@@ -69,12 +80,11 @@ public class Population {
 * </p>
 * @param train Training dataset
 * @param dataBase Data Base
-* @param RuleBase Rule set
+* @param ruleBase Rule set
 * @param size Population size
 * @param BITS_GEN Bits per gen
 * @param maxTrials Maximum number of evaluacions
 * @param alpha Parameter alpha
-* @return A population object
 */
     public Population(myDataset train, DataBase dataBase, RuleBase ruleBase, int size, int BITS_GEN, int maxTrials, double alpha) {
         this.dataBase = dataBase;
@@ -98,7 +108,6 @@ public class Population {
 * <p>
 * Run the CHC algorithm (Stage 3) 
 * </p>
-* @return void
 */
     public void Generation() {
         init();

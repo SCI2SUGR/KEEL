@@ -55,7 +55,7 @@ public class Population {
      * Maximization
      * @param a int first number
      * @param b int second number
-     * @return boolean true if a is better than b
+     * @return boolean true if a is greater than b
      */
     public boolean BETTER(double a, double b) {
         if (a > b) {

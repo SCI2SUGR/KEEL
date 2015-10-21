@@ -90,12 +90,12 @@ public class Rule implements Comparable {
 	this.WrongN = 0;
 	this.typeOrder = 0;
   }
-
-
+  
   /**
    * <p>
    * Clone Function
    * </p>
+   * @return Copy of the Rule object.
    */
   public Rule clone() {
     Rule r = new Rule(this.dataBase);
@@ -166,6 +166,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the confidence of the rule
    * </p>
+   * @param Dconf Confidence to be set
    */
   public void setConfidence(double Dconf) {
     this.Dconf = Dconf;
@@ -176,6 +177,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the support of the rule
    * </p>
+   * @param Dsupp Support to be set
    */
   public void setSupport(double Dsupp) {
     this.Dsupp = Dsupp;
@@ -186,6 +188,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the time of the rule
    * </p>
+   * @param time Time to be set
    */
   public void setTime(long time) {
     this.time = time;
@@ -339,8 +342,13 @@ public class Rule implements Comparable {
 
 
   /**
-   * Function to compare objects of the Rule class
+   * Function to compare objects of the Rule class.
    * Necessary to be able to use "sort" function
+   * It sorts in an decreasing order of confidence
+   * If equals, in an decreasing order of support
+   * If equals, in an decreasing order of time
+   * @param a Rule object to compare with.
+   * @return 1 if a is bigger, -1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
 	  if (this.typeOrder < 1) {

@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
 
+
+
+	 
+import java.util.*;
+import org.core.Randomize;
+
 /**
  * <p>Title: Rule</p>
  * <p>Description: This class codes a Fuzzy Rule</p>
@@ -38,11 +44,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
  * @version 1.0
  * @since JDK1.6
  */
-
-	 
-import java.util.*;
-import org.core.Randomize;
-
 public class Rule implements Comparable {
 
   int[] antecedent;
@@ -57,7 +58,6 @@ public class Rule implements Comparable {
 * Create a rule with another one
 * </p>
 * @param r This a rule
-* @return A copy of r
 */
   public Rule(Rule r) {
     this.antecedent = new int[r.antecedent.length];
@@ -78,7 +78,6 @@ public class Rule implements Comparable {
 * Create a new rule
 * </p>
 * @param dataBase The database
-* @return A rule
 */
   public Rule(DataBase dataBase) {
     this.antecedent = new int[dataBase.numVariables()];
@@ -171,7 +170,14 @@ public class Rule implements Comparable {
     return (this.clas);
   }
 
-  public boolean isSubset(Rule a) {
+    /**
+   * <p>
+   * Function to check if a given rule is a subrule of this rule
+   * </p>
+   * @param a Rule to be examinated
+   * @return false = it isn't, true = it is.
+   */
+    public boolean isSubset(Rule a) {
 	  if ((this.clas != a.clas) || (this.nAnts > a.nAnts))  return (false);
 	  else {
 		  for (int k = 0; k < this.antecedent.length; k++) {
@@ -185,11 +191,11 @@ public class Rule implements Comparable {
 
 /**
 * <p>
-* Calculate Wracc for this rule
+* Calculate Wracc for this rule.
+* The value of the measure Wracc for this rule will be stored on the attribute "wracc".
 * </p>
 * @param train Training dataset
 * @param exampleWeight Weights of the patterns
-* @return the value of the measure Wracc for this rule
 */
   public void calculateWracc (myDataset train, ArrayList<ExampleWeight> exampleWeight) {
 	  int i;
@@ -241,14 +247,24 @@ public class Rule implements Comparable {
 	  return (count);
   }
 
-
-
-  public void setLabel(int pos, int label) {
+   /**
+   * It sets the label for a given position in the antecedent (for a given attribute)
+   * @param pos Location of the attribute which we want to set the label
+   * @param label New label value to set
+   */
+    public void setLabel(int pos, int label) {
 	if ((antecedent[pos] < 0) && (label > -1))  this.nAnts++;
 	if ((antecedent[pos] > -1) && (label < 0))  this.nAnts--;
 	this.antecedent[pos] = label;
   }
 
+    /**
+   * Function to compare objects of the Rule class.
+   * Necessary to be able to use "sort" function
+   * It sorts in an decreasing order of wracc
+   * @param a Rule object to compare with.
+   * @return 1 if a is bigger, -1 if smaller and 0 otherwise.
+   */
   public int compareTo(Object a) {
 	  if (((Rule) a).wracc < this.wracc)  return -1;
 	  if (((Rule) a).wracc > this.wracc)  return 1;

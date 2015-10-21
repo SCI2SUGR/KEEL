@@ -53,7 +53,13 @@ public class Rule implements Comparable {
   public Rule() {
   }
 
-  public Rule(DataBase dataBase) {
+   /**
+   * 
+   * Parameters Constructor
+   * 
+   * @param dataBase Set of training data which is necessary to generate a rule
+   */
+    public Rule(DataBase dataBase) {
     this.antecedent = new int[dataBase.numVariables()];
     for (int i = 0; i < this.antecedent.length; i++)  this.antecedent[i] = -1;  // Don't care
 
@@ -67,7 +73,9 @@ public class Rule implements Comparable {
    * <p>
    * Parameters Constructor
    * </p>
+   * @param train myDataset Set of training data (not used)
    * @param dataBase DataBase Set of training data which is necessary to generate a rule
+   * @param clas output class value for the new rule
    */
   public Rule(myDataset train, DataBase dataBase, int clas) {
     this.antecedent = new int[dataBase.numVariables()];
@@ -80,9 +88,8 @@ public class Rule implements Comparable {
   }
 
   /**
-   * <p>
-   * Clone Function
-   * </p>
+   * Clone function.
+   * @return A copy of the Rule object.
    */
   public Rule clone() {
     Rule r = new Rule(this.dataBase);
@@ -165,7 +172,7 @@ public class Rule implements Comparable {
    * </p>
    * @param min_gain double Minimum gain threshold
    * @param A PNArray Training dataset splitted in Possitive and Negative examples
-   * @return ArrayList<Literal> Literals whose gain is higher than a minimum threshold
+   * @return ArrayList Literals whose gain is higher than a minimum threshold
    */
   public ArrayList<Literal> getGain (double min_gain, PNArray A) {
 	  int i, j;
@@ -215,9 +222,11 @@ public class Rule implements Comparable {
   }
 
   /**
-   * Function to compare objects of the Rule class
+   * Function to compare objects of the Rule class.
    * Necessary to be able to use "sort" function
    * It sorts in an decreasing order of laplace accuracy
+   * @param a Rule object to compare with.
+   * @return 1 if a is bigger, -1 if smaller and 0 otherwise.
    */
   public int compareTo(Object a) {
     if ( ( (Rule) a).laplaceAccuracy < this.laplaceAccuracy) {

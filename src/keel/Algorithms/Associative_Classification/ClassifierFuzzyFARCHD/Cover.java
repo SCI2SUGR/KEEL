@@ -42,15 +42,27 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
 public class Cover{
   int pos;
 
-  public Cover(int pos) {
+    /**
+     * Parameter constructor. 
+     * @param pos position of the covered example.
+     */
+    public Cover(int pos) {
     this.pos = pos;
   }
 
+    /**
+     * Returns a copy of the Cover object.
+     * @return Copy of the Cover object.
+     */
   public Cover clone() {
 	return (new Cover(this.pos));
   }
 
-  public int getPos() {
+    /**
+     * Returns the position of the covered example.
+     * @return position of the covered example.
+     */
+    public int getPos() {
     return (this.pos);
   }
 }

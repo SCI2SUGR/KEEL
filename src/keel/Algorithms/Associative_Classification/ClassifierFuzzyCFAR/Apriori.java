@@ -47,7 +47,7 @@ public class Apriori {
 
   /**
    * <p>
-   * Default Constructor
+   * Default Constructor.
    * </p>
    */
   public Apriori() {
@@ -74,8 +74,11 @@ public class Apriori {
   /**
    * <p>
    * Generates the Rule Base with the whole Classification Association Rules set
-   * by using the Apriori Method
+   * by using the Apriori Method.
    * </p>
+     * @param train Contains the train data set with the whole information to execute the algorithm
+     * @param nLabels Array of number of labels for every attribute
+     * 
    */
   public void generate (myDataset train, int[] nLabels) {
 	  int i, j;

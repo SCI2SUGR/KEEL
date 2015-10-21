@@ -72,6 +72,7 @@ public class Itemset {
    * <p>
    * Clone function
    * </p>
+     * @return Copy of the Itemset object.
    */
   public Itemset clone() {
     Itemset d = new Itemset(this.clas, this.MS);
@@ -169,6 +170,7 @@ public class Itemset {
    * <p>
    * It sets the cut threshold
    * </p>
+     * @param value Value to set the cut threshold (MS)
    */
   public void setMS(double value) {
 	this.MS = value;

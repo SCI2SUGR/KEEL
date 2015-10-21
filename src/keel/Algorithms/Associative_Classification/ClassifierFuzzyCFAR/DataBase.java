@@ -43,8 +43,12 @@ public class DataBase {
   int[] nLabels;
   Fuzzy[][] dataBase;
   String names[];
-
-  public DataBase() {
+  
+    /**
+     * Default constructor. 
+     * None attribute will be initialized.
+     */
+    public DataBase() {
   }
 
 
@@ -142,7 +146,13 @@ public class DataBase {
     else  return (this.dataBase[variable][label].Fuzzifica(value));
   }
 
-  public String print_triangle(int var, int label) {
+    /**
+     * Return a String representation of the Triangular Membership Functions of the variable and its label given as arguments. 
+     * @param var Index of the variable given.
+     * @param label Index of the label given.
+     * @return String representation of the Triangular Membership Function.
+     */
+    public String print_triangle(int var, int label) {
     String cadena = new String("");
 
 	Fuzzy d = this.dataBase[var][label];

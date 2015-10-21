@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
 
+
+
+import java.util.*;
+				 
 /**
  * <p>Title: Apriori</p>
  * <p>Description: This class mines the frecuent fuzzy itemsets and the fuzzy classification associacion rules</p>
@@ -38,10 +42,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
  * @version 1.0
  * @since JDK1.6
  */
-
-import java.util.*;
-				 
-
 public class Apriori {
   ArrayList<Itemset> L2;
   double minsup, minconf;
@@ -53,7 +53,12 @@ public class Apriori {
   myDataset train;
   DataBase dataBase;
 
-  public Apriori() {
+    /**
+   * <p>
+   * Default Constructor.
+   * </p>
+   */
+    public Apriori() {
   }
 
 /**
@@ -66,7 +71,6 @@ public class Apriori {
 * @param minsup Minimum support.
 * @param minconf Maximum Confidence.
 * @param depth Depth of the trees (Depthmax)
-* @return A object Apriori
 */
   public Apriori(RuleBase ruleBase, DataBase dataBase, myDataset train, double minsup, double minconf, int depth) {
 	  this.train = train;
@@ -87,7 +91,6 @@ public class Apriori {
 * <p>
 * Generate the rule set (Stage 1 and 2)
 * </p>
-* @return void
 */
   public void generateRB () {
 	  int i, j, uncover;
@@ -201,7 +204,11 @@ public class Apriori {
 	  return (true);
   }
 
-  public long getRulesStage1() {
+    /**
+     * Returns the rules generated on the Stage 1. 
+     * @return the rules of the Stage 1
+     */
+    public long getRulesStage1() {
 	  return (ruleStage1);
   }
 
