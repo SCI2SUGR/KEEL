@@ -79,6 +79,7 @@ public class Population {
      * @param size int population size
      * @param crossProb double crossover probability
      * @param mutProb double mutation probability
+     * @param lengthSC  int total length of the individuals
      * @param wCAR double relative weight of the classification accuracy rate
      * @param wV double relative weight of the number of fuzzy rules
      * @param n1 double learning rate (Nozaki method)

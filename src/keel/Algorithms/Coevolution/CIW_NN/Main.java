@@ -28,6 +28,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Coevolution.CIW_NN;
+
 /**
  * 
  * File: Main.java
@@ -40,9 +43,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Coevolution.CIW_NN;
-
 public class Main {
 	
 	//The classifier

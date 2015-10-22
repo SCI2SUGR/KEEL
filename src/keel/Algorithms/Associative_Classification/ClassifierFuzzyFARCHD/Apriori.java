@@ -135,8 +135,12 @@ public class Apriori {
 	  this.generateRules(this.L2, clas);
   }
 
-
-  public int hasUncoverClass(int clas) {
+    /**
+     * Indentifies how many times a class has been uncovered.
+     * @param clas Class given to compute the number of times.
+     * @return number of times that class has been uncovered.
+     */
+    public int hasUncoverClass(int clas) {
     int uncover;
 	double degree;
 	Itemset itemset;

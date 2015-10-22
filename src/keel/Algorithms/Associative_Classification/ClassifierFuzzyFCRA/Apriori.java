@@ -85,8 +85,10 @@ public class Apriori {
   /**
    * <p>
    * Generates the Rule Base with the whole Classification Association Rules set
-   * by using the Apriori Method
+   *  with a minimum value of support and confidence by using the Apriori Method
    * </p>
+     * @param minpsup Minimum Support for this problem.
+     * @param minpconf Minimum Confidence for this problem
    * @return RuleBase The whole CAR rule set
    */
   public RuleBase generateRB (double minpsup, double minpconf) {

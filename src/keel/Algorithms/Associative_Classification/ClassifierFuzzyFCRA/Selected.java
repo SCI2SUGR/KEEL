@@ -56,6 +56,7 @@ public class Selected implements Comparable{
    * Function to compare objects of the Selected class
    * Necessary to be able to use "sort" function
    * It sorts in an increasing order of probability
+     * @param a Selected object to compare with.
    */
   public int compareTo(Object a) {
     if ( ( (Selected) a).probability < this.probability) {

@@ -40,7 +40,11 @@ public class Fuzzy {
   double x0, x1, x3, y;
   String name;
 
-  public Fuzzy() {
+    /**
+     * Default Constructor.
+     * None attribute will be initialized
+     */
+    public Fuzzy() {
   }
 
 
@@ -74,6 +78,7 @@ public class Fuzzy {
    * <p>
    * Clone Function
    * </p>
+     * @return 
    */
   public Fuzzy clone(){
     Fuzzy d = new Fuzzy();

@@ -68,6 +68,7 @@ public class Itemset {
    * <p>
    * Clone function
    * </p>
+     * @return Copy of the Itemset.
    */
   public Itemset clone() {
     Itemset d = new Itemset(this.clas);

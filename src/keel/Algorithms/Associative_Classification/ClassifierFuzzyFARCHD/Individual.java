@@ -108,7 +108,10 @@ public class Individual implements Comparable{
 	return ind;
   }
 
-
+    /**
+     * Resets the gene with the same value.
+     * 
+   */
   public void reset() {
     if (this.nGenes > 0) {
 		for (int i = 0; i < this.nGenes; i++)  this.gene[i] = 0.5;
@@ -116,8 +119,12 @@ public class Individual implements Comparable{
     for (int i = 0; i < this.geneR.length; i++)  this.geneR[i] = 1;
   }
 
-
-  public void randomValues () {
+    /**
+   * <p>
+   * Initialization of the individual with random values.
+   * </p>
+   */
+    public void randomValues () {
     if (this.nGenes > 0) {
 		for (int i = 0; i < this.nGenes; i++)  this.gene[i] = Randomize.Rand();
     }
@@ -128,12 +135,21 @@ public class Individual implements Comparable{
     }
   }
 
-
-  public int size(){
+    /**
+   * <p>
+   * It returns the number of rules in the rule base
+   * </p>
+   * @return int Rule base's size
+   */
+    public int size(){
     return this.geneR.length;
   }
 
-  public int getnSelected() {
+    /**
+     * Returns the number of genes selected.
+     * @return the number of genes selected.
+     */
+    public int getnSelected() {
 	  int i, count;
 
 	  count = 0;
@@ -144,28 +160,55 @@ public class Individual implements Comparable{
 	  return (count);
   }
 
-
-  public boolean isNew () {
+    /**
+   * <p>
+   * Function to return if this individual is new in the population
+   * </p>
+   * @return boolean true = it is-, false = it isn't
+   */
+    public boolean isNew () {
 	  return (this.n_e == 1);
   }
 
-  public void onNew () {
+    /**
+     * Modifies the new flag to true. 
+     */
+    public void onNew () {
 	  this.n_e = 1;
   }
 
-  public void offNew () {
+    /**
+     * Modifies the new flag to false. 
+     */
+    public void offNew () {
 	  this.n_e = 0;
   }
 
-  public void setw1 (double value) {
+    /**
+     * Sets the value of w1 with the given argument. 
+     * @param value value given to set w1.
+     */
+    public void setw1 (double value) {
 	  this.w1 = value;
   }
 
-  public double getAccuracy() {
+    /**
+   * <p>
+   * Function to return the accuracy of the individual
+   * </p>
+   * @return double The accuracy of the individual
+   */
+    public double getAccuracy() {
 	  return  this.accuracy;
   }
 
-  public double getFitness() {
+    /**
+   * <p>
+   * Function to return the fitness of the individual
+   * </p>
+   * @return double The fitness of the individual
+   */
+    public double getFitness() {
 	  return  this.fitness;
   }
 
@@ -232,8 +275,14 @@ private int StringRep(Individual indiv, int BITS_GEN) {
   return  count;
 }
 
-
-  public int distHamming(Individual ind, int BITS_GEN) {
+    /**
+     * Computes the Hamming distance with the Individual given as a argument.
+     * In case a transformation from float representation to string is needed, the argument BITS_GEN will guide the process.
+     * @param ind Individual given to compute the distance.
+     * @param BITS_GEN Number of bits to guide the transformation of representation.
+     * @return Hamming distance with the Individual given.
+     */
+    public int distHamming(Individual ind, int BITS_GEN) {
 	  int i, count;
 
 	  count = 0;
@@ -246,7 +295,12 @@ private int StringRep(Individual indiv, int BITS_GEN) {
 	  return (count);
   }
 
-
+    /**
+     * Crosses the individuals using the HUX operator.
+     * Exactly half of the different bits are flipped.
+     * The results are stored in each Individual object, the method caller and the argument.
+     * @param indiv Individual to cross with.
+     */
   public void Hux(Individual indiv) {
 	 int i, dist, random, aux, nPos;
 	 int [] position;
@@ -278,7 +332,13 @@ private int StringRep(Individual indiv, int BITS_GEN) {
 	 }
   }
 
-  public void xPC_BLX(Individual indiv, double d) {
+    /**
+     * Crosses the individuals using the BLX operator.
+     * The results are stored in each Individual object, the method caller and the argument.
+     * @param indiv Individual to cross with.
+     * @param d proportion of the diference of each gene that BLX will allow to exceed.
+     */
+    public void xPC_BLX(Individual indiv, double d) {
 		double I, A1, C1;
 		int i;
 		
@@ -295,8 +355,13 @@ private int StringRep(Individual indiv, int BITS_GEN) {
 		}
   }
 
-
-  public RuleBase generateRB() {
+    /**
+   * <p>
+   * Generates the Rule Base with adjusted to the optimization done.
+   * </p>
+   * @return RuleBase The whole FARCHD rule set
+   */
+    public RuleBase generateRB() {
 	  int i, bestRule;
 	  RuleBase ruleBase = this.ruleBase.clone();
 

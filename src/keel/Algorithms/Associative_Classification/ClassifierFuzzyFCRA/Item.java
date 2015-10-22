@@ -97,6 +97,7 @@ public class Item implements Comparable {
    * <p>
    * Clone function
    * </p>
+     * @return Copy of the Item object.
    */
   public Item clone(){
     Item d = new Item();
@@ -124,6 +125,7 @@ public class Item implements Comparable {
    * Necessary to be able to use "sort" function
    * It sorts in an decreasing order of attribute
    * If equals, in an decreasing order of attribute's value
+     * @param a Item to compare with.
    */
   public int compareTo(Object a) {
     if (((Item) a).variable > this.variable) {

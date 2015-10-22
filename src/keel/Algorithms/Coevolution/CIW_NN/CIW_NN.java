@@ -28,6 +28,19 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Coevolution.CIW_NN;
+
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+import keel.Algorithms.Coevolution.CoevolutionAlgorithm;
+import keel.Dataset.Attribute;
+
+import org.core.Files;
+import org.core.Randomize;
+
 /**
  * 
  * File: CIW_NN.java
@@ -42,18 +55,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Coevolution.CIW_NN;
-
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
-import keel.Algorithms.Coevolution.CoevolutionAlgorithm;
-import keel.Dataset.Attribute;
-
-import org.core.Files;
-import org.core.Randomize;
-
 public class CIW_NN extends CoevolutionAlgorithm{
 
 	private int sizePop;

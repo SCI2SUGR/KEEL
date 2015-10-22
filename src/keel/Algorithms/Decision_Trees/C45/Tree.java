@@ -290,6 +290,7 @@ public class Tree {
 
     /** Function to print the tree.
      *
+     * @return String representation of the tree.
      */
     public String toString() {
         try {
@@ -308,6 +309,7 @@ public class Tree {
 
     /** 
      * Function to print the tree (OVO code).
+     * @return String representation of the tree (OVO code).
      */
     public String toStringOVO() {
         try {

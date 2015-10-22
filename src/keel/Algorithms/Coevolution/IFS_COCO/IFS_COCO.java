@@ -27,6 +27,19 @@
    along with this program.  If not, see http://www.gnu.org/licenses/
   
 **********************************************************************/
+
+
+package keel.Algorithms.Coevolution.IFS_COCO;
+
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+import keel.Algorithms.Coevolution.CoevolutionAlgorithm;
+import keel.Dataset.Attribute;
+
+import org.core.Files;
+import org.core.Randomize;
+
 /**
  * 
  * File: IFS_COCO.java
@@ -43,18 +56,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Coevolution.IFS_COCO;
-
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
-import keel.Algorithms.Coevolution.CoevolutionAlgorithm;
-import keel.Dataset.Attribute;
-
-import org.core.Files;
-import org.core.Randomize;
-
 public class IFS_COCO extends CoevolutionAlgorithm{
 
 	private String txtFitness,txtFitness1,txtFitness2,txtFitness3;

@@ -28,6 +28,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Coevolution.IFS_COCO;
+
 /**
  * 
  * File: Main.java
@@ -40,9 +44,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Coevolution.IFS_COCO;
-
 public class Main {
 	
 	//The classifier

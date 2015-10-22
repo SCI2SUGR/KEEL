@@ -75,6 +75,7 @@ public class Itemset {
 
     /** Returns the index of the class attribute.
      *
+     * @return the index of the class attribute.
      */
     public int classIndex() {
         if (dataset == null) {
@@ -100,6 +101,7 @@ public class Itemset {
 
     /** Returns the index of the value of the class.
      *
+     * @return the index of the value of the class.
      */
     public double getClassValue() {
         if (classIndex() < 0) {
@@ -112,6 +114,7 @@ public class Itemset {
 
     /** Returns the number of class values.
      *
+     * @return the number of class values.
      */
     public int numClasses() {
         if (dataset == null) {
@@ -124,6 +127,8 @@ public class Itemset {
 
     /** Returns the attribute with the given index.
      *
+     * @param index index of the attribute asked.
+     * @return the attribute with the given index.
      */
     public Attribute getAttribute(int index) {
         if (dataset == null) {
@@ -149,6 +154,8 @@ public class Itemset {
 
     /** Returns the value of the given attribute.
      *
+     * @param index Index of the attribute asked.
+     * @return the value of the given attribute.
      */
     public double getValue(int index) {
         return values[index];
@@ -164,6 +171,7 @@ public class Itemset {
 
     /** Returns the itemset weight.
      *
+     * @return the itemset weight.
      */
     public final double getWeight() {
         return weight;
@@ -171,6 +179,7 @@ public class Itemset {
 
     /** Returns the dataset of this itemset.
      *
+     * @return the dataset of this itemset.
      */
     public Dataset getDataset() {
         return dataset;
@@ -210,6 +219,7 @@ public class Itemset {
 
     /** Returns the missing value.
      *
+     * @return the missing value.
      */
     public static double getMissingValue() {
         return MISSING_VALUE;
@@ -247,6 +257,7 @@ public class Itemset {
 
     /** Function to print the itemset.
      *
+     * @return String representation of the itemset.
      */
     public String toString() {
         String result = "";

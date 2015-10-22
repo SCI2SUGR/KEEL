@@ -68,7 +68,14 @@ public class Individual implements Comparable{
     for (int i = 0; i < this.chromosome.length; i++)   this.chromosome[i] = chromosome[i];
   }
 
-  public Individual(double wCAR, double wV, int lengthSC) {
+    /**
+     * Constructor with parameters.
+     * Chromosome will be created empty.
+     * @param wCAR double relative weight of the classification accuracy rate
+     * @param wV double relative weight of the number of fuzzy rules
+     * @param lengthSC int total length of the individual
+     */
+    public Individual(double wCAR, double wV, int lengthSC) {
     this.wCAR = wCAR;
     this.wV = wV;
 	this.lengthSC = lengthSC;
@@ -126,6 +133,7 @@ public class Individual implements Comparable{
    * <p>
    * It applies the mutation operator
    * </p>
+     * @param prob Probability that a chromosome has to mutate.
    */
   public void mutation(double prob){
     for (int i = 0; i < this.chromosome.length; i++){
@@ -142,6 +150,7 @@ public class Individual implements Comparable{
    * <p>
    * Clone Function
    * </p>
+     * @return Copy of the Individual object.
    */
   public Individual clone(){
     Individual i = new Individual();
@@ -250,6 +259,7 @@ public class Individual implements Comparable{
    * <p>
    * Evaluates this individual
    * </p>
+   * @param apriori Apriori rules used to evaluates the individual
    * @param n1 double learning rate (Nozaki method)
    * @param n2 double learning rate (Nozaki method)
    * @param Jmax int number of iterations (Nozaki method)
@@ -273,6 +283,7 @@ public class Individual implements Comparable{
    * Function to compare objects of the Individual class
    * Necessary to be able to use "sort" function
    * It sorts in an increasing order of fitness
+     * @param a Individual to be compared.
    */
   public int compareTo(Object a) {
     if ( ( (Individual) a).fitness < this.fitness) {

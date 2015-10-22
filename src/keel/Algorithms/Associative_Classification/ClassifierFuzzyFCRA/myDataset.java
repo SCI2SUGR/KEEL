@@ -42,8 +42,19 @@ import keel.Dataset.*;
 
 public class myDataset {
 
+    /**
+     * Number to represent type of variable real or double.
+     */
     public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
     public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
     public static final int NOMINAL = 2;
 
     private double[][] X = null; //examples array
@@ -345,6 +356,7 @@ public class myDataset {
 
     /**
      * It copies the header of the dataset
+     * @param dataBase database with useful information.
      */
     public void createFGTTFS(DataBase dataBase) {
 		int i, j, k;

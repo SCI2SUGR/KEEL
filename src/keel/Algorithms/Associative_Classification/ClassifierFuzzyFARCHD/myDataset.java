@@ -29,6 +29,13 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
 
+
+
+import java.io.IOException;
+import java.lang.String;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,16 +47,21 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import java.lang.String;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
+    /**
+     * Number to represent type of variable real or double.
+     */
     public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
     public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
     public static final int NOMINAL = 2;
 
     private double[][] X = null; //examples array
@@ -176,10 +188,22 @@ public class myDataset {
         return emin;
     }
 
+    /**
+     * It returns the maximum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the maximum value of the attribute
+     */ 
     public double getMax(int variable) {
         return emax[variable];
     }
 
+    /**
+     * It returns the minimum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the minimum value of the attribute
+     */ 
     public double getMin(int variable) {
         return emin[variable];
     }
@@ -367,6 +391,10 @@ public class myDataset {
         return Attributes.hasRealAttributes();
     }
 
+    /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
     public boolean hasNumericalAttributes() {
         return (Attributes.hasIntegerAttributes() || Attributes.hasRealAttributes());
     }
@@ -395,10 +423,18 @@ public class myDataset {
 		return tam;
     }
 
+    /**
+     * It returns the number of examples
+     * 
+     * @return the number of examples
+     */
     public int size() {
         return nData;
     }
 
+     /**
+     * It computes the number the instances per class.
+     */
     public void computeInstancesPerClass() {
 		int i;
         this.instancesCl = new int[this.nClasses];
@@ -409,22 +445,52 @@ public class myDataset {
 		for (i = 0; i < this.nClasses; i++)  this.frecuentCl[i] = (1.0 * this.instancesCl[i]) / (double) this.nData;
     }
 
+    /**
+     * It returns the number of instances in the dataset of the given class
+     *
+     * @param clas the index of the class
+     * @return the number of instances in the dataset of the given class
+     */
     public int numberInstances(int clas) {
         return this.instancesCl[clas];
     }
 
+    /**
+     * It returns the ratio of instances of the given class in the dataset
+     *
+     * @param clas the index of the class
+     * @return the ratio of instances of the given class in the dataset
+     */
     public double frecuentClass(int clas) {
         return frecuentCl[clas];
     }
 
+    /**
+     * It returns the number of different values of an attribute
+     *
+     *@param attribute the index of the attribute
+     * @return the number of different values of an attribute
+     */
     public int numberValues(int attribute) {
         return Attributes.getInputAttribute(attribute).getNumNominalValues();
     }
 
+    /**
+     * It returns the name of the class of index intValue
+     *
+     * @param intValue the index of the class
+     * @return the name of the class of index intValue
+     */
     public String getOutputValue(int intValue) {
         return Attributes.getOutputAttribute(0).getNominalValue(intValue);
     }
 
+    /**
+     * It returns the type of the attribute specified
+     *
+     * @param variable index of the attribute
+     * @return the type of the attribute specified
+     */
     public int getTipo(int variable) {
         if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).INTEGER)   return this.INTEGER;
         if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).REAL)  return this.REAL;
@@ -456,7 +522,11 @@ public class myDataset {
       return rangos;
     }
 
-
+    /**
+     * It returns the name of the attributes
+     * 
+     * @return the name of the attributes
+     */
     public String [] names(){
       String names[] = new String[nInputs];
       for (int i = 0; i < nInputs; i++){
@@ -465,6 +535,11 @@ public class myDataset {
       return names;
     }
 
+    /**
+     * It returns the name of the classes
+     * 
+     * @return the name of the classes
+     */
     public String [] clases(){
       String clases[] = new String[nClasses];
       for (int i = 0; i < nClasses; i++){

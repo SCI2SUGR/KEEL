@@ -347,6 +347,8 @@ public class RuleBase {
    * It stores the rule base in a given file
    * </p>
    * @param filename String Name for the rulebase file
+     * @param minFS Minimum Support
+     * @param minFC Minimum Confidence
    */
   public void saveFile(String filename, double minFS, double minFC) {
     String stringOut = new String("");

@@ -53,7 +53,7 @@ public class RuleBase {
    * Maximization
    * @param a first number
    * @param b second number
-   * @return boolean true if a is better than b
+   * @return boolean true if a is greater than b
    */
   public boolean BETTER(int a, int b) {
     if (a > b)  return true;

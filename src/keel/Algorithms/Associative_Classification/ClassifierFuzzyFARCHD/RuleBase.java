@@ -29,6 +29,11 @@
 
 package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
 
+
+
+import java.util.*;
+import org.core.*;
+
 /**
  * <p>Title: RuleBase</p>
  * <p>Description: This class contains the representation of a Rule Set</p>
@@ -38,10 +43,6 @@ package keel.Algorithms.Associative_Classification.ClassifierFuzzyFARCHD;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.util.*;
-import org.core.*;
-
 public class RuleBase {
   ArrayList<Rule> ruleBase;
   DataBase dataBase;
@@ -50,12 +51,23 @@ public class RuleBase {
   int[] nUncoverClas;
   double fitness;
 
-  public boolean BETTER(int a, int b) {
+    /**
+   * Maximization
+   * @param a first number
+   * @param b second number
+   * @return boolean true if a is greater than b
+   */
+    public boolean BETTER(int a, int b) {
     if (a > b)  return true;
     return  false;
   }
 
-  public RuleBase() {
+    /**
+   * 
+   * Default Constructor.
+   * 
+   */
+    public RuleBase() {
   }
 
 /**
@@ -66,7 +78,6 @@ public class RuleBase {
 * @param train Training dataset
 * @param K Covered patterns in the second stage are completely eliminated when they have been covered more than K times.
 * @param typeInference Two option: 0) the class of the rule with the best matching; 1) the class with the best matching
-* @return Rule Base
 */
 public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
     this.ruleBase = new ArrayList<Rule> ();
@@ -106,12 +117,22 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
 	return (br);
   }
 
-
-  public void add(Rule rule) {
+    /**
+   * <p>
+   * It adds a rule to the rule base
+   * </p>
+   * @param rule Rule to be added
+   */
+    public void add(Rule rule) {
 	  this.ruleBase.add(rule);
   }
-
-  public void add(RuleBase ruleBase) {
+    /**
+    * <p>
+    * It adds the rules of the RuleBase given.
+    * </p>
+    * @param ruleBase Rules to be added
+    */
+    public void add(RuleBase ruleBase) {
 	  int i;
 
 	  for (i=0; i<ruleBase.size(); i++) {
@@ -119,8 +140,13 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
 	  }
   }
 
-
-  public void add(Itemset itemset) {
+    /**
+   * <p>
+   * It adds a rule to the rule base
+   * </p>
+   * @param itemset itemset to be added
+   */
+    public void add(Itemset itemset) {
 	  int i;
 	  Item item;
 
@@ -140,36 +166,78 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
       this.ruleBase.add(r);
   }
 
-  public Rule get(int pos) {
+    /**
+   * <p>
+   * Function to get a rule from the rule base
+   * </p>
+   * @param pos Position in the rule base where the desired rule is stored
+   * @return The desired rule
+   */
+    public Rule get(int pos) {
 	  return (this.ruleBase.get(pos));
   }
 
-  public int size() {
+   /**
+   * <p>
+   * It returns the number of rules in the rule base
+   * </p>
+   * @return Rule base's size
+   */
+    public int size() {
 	  return (this.ruleBase.size());
   }
 
-  public void sort () {
+    /**
+   * <p>
+   * Function to sort the rule base
+   * </p>
+   */
+    public void sort () {
 	  Collections.sort(this.ruleBase);
   }
 
-  public Rule remove(int pos) {
+    /**
+   * <p>
+   * It removes the rule stored in the given position
+   * </p>
+   * @param pos Position where the rule we want to remove is
+   * @return Removed rule
+   */
+    public Rule remove(int pos) {
 	  return (this.ruleBase.remove(pos));
   }
 
-  public void clear() {
+    /**
+     * Removes the rules stored.
+     */
+    public void clear() {
 	  this.ruleBase.clear();
 	  this.fitness = 0.0;
   }
 
+  /**
+   * Returns the type of inference used to build the rules.
+   * @return  the type of inference used.
+   */  
   public int getTypeInference() {
     return  (this.typeInference);
   }
 
-  public double getAccuracy() {
+    /**
+   * <p>
+   * Function to return the fitness of the rule base
+   * </p>
+   * @return Fitness of the rule base
+   */
+    public double getAccuracy() {
     return  (this.fitness);
   }
 
-  public void setDefaultRule() {
+    /**
+     * Sets the default rule.
+     * The default rule classifies all the examples to the majority class.
+     */
+    public void setDefaultRule() {
 	  int i, bestRule;
 
 	  bestRule = 0;
@@ -180,20 +248,35 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
 	  this.defaultRule = bestRule;
   }
 
-
-  public boolean hasUncover() {
+    /**
+     * Checks if there are examples uncovered by the rules.
+     * @return True if there are some examples, False otherwise.
+     */
+    public boolean hasUncover() {
     return  (this.nUncover > 0);
   }
 
-  public int getUncover() {
+    /**
+     * Returns the number of examples uncovered by the rules
+     * @return Number of examples uncovered
+     */
+    public int getUncover() {
     return  (this.nUncover);
   }
 
-  public int getK() {
+    /**
+     * Returns the value of the parameter K.
+     * (The maximum times covered letting an example active.
+     * @return the value of the parameter K.
+     */
+    public int getK() {
     return  (this.K);
   }
 
-  public void evaluate() {
+    /**
+   * Function to evaluate the whole rule base by using the training dataset.
+   */
+    public void evaluate() {
     int nHits, prediction;
 	
 	nHits = 0;
@@ -212,9 +295,12 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
 	this.fitness = (100.0 * nHits) / (1.0 * this.train.size());
   }
 
-
-
-  public void evaluate(double[] gene, int[] selected) {
+    /**
+     * Function to evaluate the selected rules by using the training dataset and the fuzzy functions stored in the gene given.
+     * @param gene Representation where the fuzzy functions needed to evaluate are stored
+     * @param selected Selection of rules to be evaluated
+     */
+    public void evaluate(double[] gene, int[] selected) {
     int nHits, prediction;
 
 	this.dataBase.decode(gene);
@@ -235,12 +321,23 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
 	this.fitness = (100.0 * nHits) / (1.0 * this.train.size());
   }
 
+  /**
+     * Predicts the class value for a given example, using the rules and type of inference stored on the RuleBase. 
+     * @param example Example to be predicted.
+     * @return Class predicted.
+     */  
   public int FRM(double[] example) {
     if (this.typeInference == 0)  return FRM_WR(example);
     else  return FRM_AC(example);
   }
 
-  public int FRM(double[] example, int[] selected) {
+    /**
+     * Predicts the class value for a given example, using the selected rules and type of inference stored on the RuleBase. 
+     * @param example Example to be predicted.
+     * @param selected Selection of rules to be considered for the class prediction.
+     * @return Class predicted.
+     */
+    public int FRM(double[] example, int[] selected) {
     if (this.typeInference == 0)  return FRM_WR(example, selected);
     else  return FRM_AC(example, selected);
   }						  
@@ -348,8 +445,12 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
 
     return clas;
   }
-
-  public int hasClassUncovered (int[] selected) {
+    /**
+     * Indentifies how many classes are uncovered with a selection of rules.
+     * @param selected rules selected to be tested
+     * @return number of classes uncovered.
+     */
+    public int hasClassUncovered (int[] selected) {
 	  int i, count;
 	  int[] cover;
 	  
@@ -373,8 +474,11 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
 	  return count;
   }
 
-
-  public void reduceRules(int clas) {
+    /**
+   * Function to eliminate the rules that are not needed (Redundant, not enough accurate,...) for a given class.
+   * @param clas class whose rules are being tested
+   */
+    public void reduceRules(int clas) {
 	  ArrayList<ExampleWeight> exampleWeight;
 	  int i, posBestWracc, nExamples, nRuleSelect; 
 	  double bestWracc;
@@ -424,6 +528,12 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
   }
 
 
+   /**
+   * <p>
+   * It prints the whole rulebase
+   * </p>
+   * @return The whole rulebase
+   */
   public String printString() {
     int i, j, ant;
     String [] names = this.train.names();
@@ -466,7 +576,13 @@ public RuleBase(DataBase dataBase, myDataset train, int K, int typeInference) {
 	return (stringOut);
   }
 
-  public void saveFile(String filename) {
+    /**
+   * <p>
+   * It stores the rule base in a given file
+   * </p>
+   * @param filename Name for the rulebase file
+   */
+    public void saveFile(String filename) {
     String stringOut = new String("");
     stringOut = printString();
     Files.writeFile(filename, stringOut);

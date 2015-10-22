@@ -114,7 +114,13 @@ public class Rule implements Comparable {
     return (r);
   }
 
-  public void asignaAntecedente(int [] antecedent){
+    /**
+   * <p>
+   * It sets the antecedent of the rule
+   * </p>
+     * @param antecedent Antecedent of the rule
+   */
+    public void asignaAntecedente(int [] antecedent){
 	this.nAnts = 0;
     for (int i = 0; i < antecedent.length; i++) {
 		this.antecedent[i] = antecedent[i];
@@ -122,12 +128,24 @@ public class Rule implements Comparable {
 	}
   }
 
-  public void setConsequent(int clas) {
+    /**
+   * <p>
+   * It sets the consequent of the rule
+   * </p>
+   * @param clas Class of the rule
+   */
+    public void setConsequent(int clas) {
     this.clas = clas;
   }
 
-
-  public double matching(double[] example) {
+    /**
+   * <p>
+   * Function to check if a given example matchs with the rule (the rule correctly classifies it)
+   * </p>
+     * @param example  Example to be classified
+   * @return 0.0 = doesn't match, >0.0 = does.
+   */
+    public double matching(double[] example) {
     return (this.degreeProduct(example));
   }
 
@@ -142,31 +160,72 @@ public class Rule implements Comparable {
     return (degree * this.conf);
   }
 
-  public void setConfidence(double conf) {
+    /**
+   * <p>
+   * It sets the confidence of the rule
+   * </p>
+   * @param conf Confidence to be set
+   */
+    public void setConfidence(double conf) {
     this.conf = conf;
   }
 
-  public void setSupport(double supp) {
+    /**
+   * <p>
+   * It sets the support of the rule
+   * </p>
+     * @param supp  Support to be set
+   */
+    public void setSupport(double supp) {
     this.supp = supp;
   }
-
+    /**
+   * <p>
+   * It sets the Wracc of the rule
+   * </p>
+   * @param wracc Wracc to be set
+   */
   public void setWracc(double wracc) {
     this.wracc = wracc;
   }
 
-  public double getConfidence() {
+    /**
+   * <p>
+   * It returns the Confidence of the rule
+   * </p>
+   * @return Confidence of the rule
+   */
+    public double getConfidence() {
     return (this.conf);
   }
 
-  public double getSupport() {
+    /**
+   * <p>
+   * It returns the support of the rule
+   * </p>
+   * @return Support of the rule
+   */
+    public double getSupport() {
     return (this.supp);
   }
 
-  public double getWracc() {
+    /**
+   * <p>
+   * It returns the Wracc of the rule
+   * </p>
+   * @return Wracc of the rule
+   */
+    public double getWracc() {
     return (this.wracc);
   }
 
-  public int getClas() {
+    /**
+   * <p>
+   * It returns the output class of the rule
+   * </p>
+   * @return Output class of the rule
+   */
+    public int getClas() {
     return (this.clas);
   }
 
@@ -226,9 +285,14 @@ public class Rule implements Comparable {
 	  if ((n_A < 0.0000000001) || (n_AC < 0.0000000001) || (n_C < 0.0000000001))  this.wracc = -1.0;
 	  else  this.wracc = (n_AC / n_C) * ((n_AC / n_A) - train.frecuentClass(this.clas));
   }
-
-
-  public int reduceWeight (myDataset train, ArrayList<ExampleWeight> exampleWeight) {
+  
+    /**
+     * Reduces the weight of the examples that match with the rule (the rule correctly classifies them)
+     * @param train training examples given to match them to the rule.
+     * @param exampleWeight Each example weight to be updated.
+     * @return Number of examples that have become not active after the weight reduction.
+     */
+    public int reduceWeight (myDataset train, ArrayList<ExampleWeight> exampleWeight) {
 	  int i, count;
 	  ExampleWeight ex;
 

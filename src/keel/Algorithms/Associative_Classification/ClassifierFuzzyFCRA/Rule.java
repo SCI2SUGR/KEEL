@@ -86,6 +86,7 @@ public class Rule implements Comparable {
    * <p>
    * Clone Function
    * </p>
+     * @return Copy of the Rule object.
    */
   public Rule clone() {
     Rule r = new Rule(this.dataBase);
@@ -152,6 +153,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the confidence of the rule
    * </p>
+     * @param conf confidence of the rule
    */
   public void setConfidence(double conf) {
     this.conf = conf;
@@ -161,6 +163,7 @@ public class Rule implements Comparable {
    * <p>
    * It sets the support of the rule
    * </p>
+     * @param supp support of the rule
    */
   public void setSupport(double supp) {
     this.supp = supp;
@@ -230,6 +233,7 @@ public class Rule implements Comparable {
    * Function to compare objects of the Rule class
    * Necessary to be able to use "sort" function
    * It sorts in an decreasing order of laplace accuracy
+     * @param a Rule to compare with.
    */
   public int compareTo(Object a) {
 	  if (((Rule) a).nAnts < this.nAnts)  return 1;
