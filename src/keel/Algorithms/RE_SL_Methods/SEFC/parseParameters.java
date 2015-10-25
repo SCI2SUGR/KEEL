@@ -29,6 +29,11 @@
 
 package keel.Algorithms.RE_SL_Methods.SEFC;
 
+
+import java.util.StringTokenizer;
+import java.util.ArrayList;
+import org.core.Files;
+
 /**
  * <p>
  * @author Written by Alberto Fernández (University of Granada) 01/01/2007
@@ -38,10 +43,6 @@ package keel.Algorithms.RE_SL_Methods.SEFC;
  * </p>
  */
  
-import java.util.StringTokenizer;
-import java.util.ArrayList;
-import org.core.Files;
-
 public class parseParameters {
 /**	
  * <p>

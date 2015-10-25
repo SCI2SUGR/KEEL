@@ -41,7 +41,13 @@ import java.util.StringTokenizer;
 import java.util.ArrayList;
 import org.core.Files;
 
-
+/**
+ * <p>
+ * @author Written by Alvaro Lopez
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class parseParameters {
 	/**
 	 * <p>
@@ -145,35 +151,87 @@ public class parseParameters {
         //If the algorithm is non-deterministic the first parameter is the Random SEED
     }
 
+    
+    /**
+     * <p>       
+     * It returns the name of the transactions input file
+     * @return String the name of the transactions input file
+     * </p>        
+     */
     public String getTransactionsInputFile(){
         return this.transactionsFile;
     }
 
+    /**
+     * <p>       
+     * It returns the name of the algorithm
+     * @return String the name of the algorithm
+     * </p>        
+     */
     public String getAlgorithmName(){
         return this.algorithmName;
     }
 
+    /**
+     * <p>       
+     * It returns all the parameters as an array of Strings
+     * @return String [] all the parameters of the algorithm
+     * </p>        
+     */
     public String [] getParameters(){
         String [] param = (String []) parameters.toArray();
         return param;
     }
 
+    /**
+     * <p>       
+     * It returns the parameter in the position "pos"
+     * @param pos int Position of the parameter
+     * @return String [] the parameter of the algorithm in position "pos"
+     * </p>        
+     */
     public String getParameter(int pos){
         return (String)parameters.get(pos);
     }
 
+    /**
+     * <p>       
+     * It returns all the input files
+     * @return String [] all the input files
+     * </p>        
+     */
     public String [] getInputFiles(){
         return (String []) inputFiles.toArray();
     }
 
+    /**
+     * <p>       
+     * It returns the input file in the position "pos"
+     * @param pos int Position of the input file
+     * @return String [] the input file of the algorithm in position "pos"
+     * </p>        
+     */
     public String getInputFile(int pos){
         return (String)this.inputFiles.get(pos);
     }
 
+    /**
+     * <p>       
+     * It returns all the output files
+     * @return String [] all the output files
+     * </p>        
+     */
     public String [] getOutputFiles(){
         return (String [])this.outputFiles.toArray();
     }
 
+    /**
+     * <p>       
+     * It returns the output file in the position "pos"
+     * @param pos int Position of the output file
+     * @return String [] the output file of the algorithm in position "pos"
+     * </p>        
+     */
     public String getOutputFile(int pos){
         return (String)this.outputFiles.get(pos);
     }

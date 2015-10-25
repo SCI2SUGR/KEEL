@@ -29,14 +29,7 @@
 
 //package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierSLAVE;
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada) 01/01/2007
- * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
- * @version 1.0
- * @since JDK 1.6
- * </p>
- */
+
  
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierSLAVE2;
@@ -45,7 +38,14 @@ import java.util.StringTokenizer;
 import java.util.ArrayList;
 import org.core.Files;
 
-
+/**
+ * <p>
+ * @author Written by Alberto Fernández (University of Granada) 01/01/2007
+ * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
+ * @version 1.0
+ * @since JDK 1.6
+ * </p>
+ */
 public class parseParameters {
 /**	
  * <p>
