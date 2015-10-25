@@ -225,7 +225,8 @@ public class ResultPrinter {
 	/**
 	 * This method print the output file in Keel format for classification problems
 	 * 
-	 * @param predictedTrain Output class as binary in rows, patterns in cols.
+	 * @param predictedTrain Output class as binary in rows, patterns in cols for the training data.
+         * @param predictedTest Output class as binary in rows, patterns in cols for the test data.
 	 */ 
 
 	@SuppressWarnings("unchecked")
@@ -285,7 +286,8 @@ public class ResultPrinter {
 	 * 
 	 * This method print the output file in Keel format for regression problems
 	 * 
-	 * @param predictedTrain Output class as binary in rows, patterns in cols.
+	 * @param predictedTrain Output class as binary in rows, patterns in cols for training.
+         * @param predictedTest Output class as binary in rows, patterns in cols for test.
 	 */ 
 
 	@SuppressWarnings("unchecked")

@@ -45,7 +45,10 @@ public class RuleBase {
   ArrayList<Rule> ruleBase;
   myDataset train;
 
-  public RuleBase() {
+    /**
+     * Default constructor.
+     */
+    public RuleBase() {
     ruleBase = new ArrayList<Rule> ();
   }
 
@@ -65,7 +68,11 @@ public class RuleBase {
     }
   }
 
-  public String printString() {
+    /**
+   * It prints the whole rulebase
+   * @return String The whole rulebase
+   */
+    public String printString() {
     String cadena = new String("");
     cadena += "Number of Rules: " + ruleBase.size() + "\n";
     for (int i = 0; i < ruleBase.size(); i++) {
@@ -74,7 +81,11 @@ public class RuleBase {
     return cadena;
   }
 
-  public String printStringF() {
+    /**
+   * It prints the whole rulebase with float representation.
+   * @return String The whole rulebase
+   */
+    public String printStringF() {
     String cadena = new String("");
     cadena += "Number of Rules: " + ruleBase.size() + "\n";
     for (int i = 0; i < ruleBase.size(); i++) {
@@ -83,7 +94,11 @@ public class RuleBase {
     return cadena;
   }
 
-  public int size() {
+    /**
+   * Returns the number of rules in the rule base
+   * @return int Rule base's size
+   */
+    public int size() {
     return ruleBase.size();
   }
 

@@ -79,7 +79,9 @@ public class TreeNode
 	// ------------------------------------------------------ Constructor
 	/////////////////////////////////////////////////////////////////////
 	/**
-	 * Default Constructor
+	 * Default Constructor.
+         * Sets the tree parent node.
+         * @param parent parent node to be set to the new node.
 	 */
 	public TreeNode(TreeNode parent) {
 		super();
@@ -87,7 +89,9 @@ public class TreeNode
 	}
 
 	/**
-	 * Constructor
+	 * Constructor.
+         * Sets the tree parent node and patterns.
+         * @param parent parent node to be set to the new node.
 	 * @param patterns Index of patterns in this node
 	 */
 	public TreeNode(TreeNode parent, int[] patterns) {
@@ -278,8 +282,10 @@ public class TreeNode
 	}
 
 	/**
+         * Given a instance, returns its class or regression value.
 	 * @param pattern pattern to evaluate
 	 * @param regression flag to determine whether it is a regression or classification problem
+         * @return class or regression value.
 	 */
 	public double evaluate(double [] pattern, boolean regression) {
 
@@ -300,6 +306,8 @@ public class TreeNode
 
 	/**
 	 * {@inheritDoc}
+         * Returns a String representation of the node and its descendents.
+         * @return String representation of the node and its descendents.
 	 */
 	public String toString() {
 		String result = new String();

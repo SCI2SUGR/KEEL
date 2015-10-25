@@ -27,6 +27,12 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Decision_Trees.C45_Binarization;
+
+import org.core.*;
+import java.util.StringTokenizer;
+
 /**
  * 
  * File: ENN.java
@@ -38,12 +44,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Decision_Trees.C45_Binarization;
-
-import org.core.*;
-import java.util.StringTokenizer;
-
 public class ENN extends Metodo {
 
 	/*Own parameters of the algorithm*/
@@ -53,6 +53,7 @@ public class ENN extends Metodo {
     /**
      * Default builder. Construct the algoritm by using the superclass builder.
 	 *
+     * @param ficheroScript Name of the configuration files.
      */
 	public ENN (String ficheroScript) {
 		super (ficheroScript);
@@ -65,14 +66,34 @@ public class ENN extends Metodo {
 		
 	}//end-method 
 	
-        public void setK(int k) {
+    /**
+     * Sets the number of NN used.
+     * @param k number of NN used.
+     */
+    public void setK(int k) {
             this.k = k;
         }
-        public int getK() {
+
+    /**
+     * Returns the number k of the NN used.
+     * @return the number k of the NN used.
+     */
+    public int getK() {
             return k;
         }
         
-        public int evaluaKNN(int i, int[] vecinos, double[] distancias, int[] votos, boolean test, boolean distanceEu) {
+    
+    /**
+     * Executes KNN to predict the class of the instance i.
+     * @param i Index of the instance to predict.
+     * @param vecinos Resulting neighbors of the new instance.
+     * @param distancias Resulting distances to each neighbor.
+     * @param votos Resulting votes for each class.
+     * @param test True if the instance belong to the test dataset.
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     * @return Class of the new instance
+     */
+    public int evaluaKNN(int i, int[] vecinos, double[] distancias, int[] votos, boolean test, boolean distanceEu) {
             if (!test)
                 return KNN.evaluacionKNN2 (k, datosTrain, realTrain, nominalTrain, nulosTrain, clasesTrain, datosTrain[i], realTrain[i], nominalTrain[i], nulosTrain[i], nClases, distanceEu, vecinos, distancias, votos);
             else
@@ -179,7 +200,7 @@ public class ENN extends Metodo {
 	/** 
 	 * Reads configuration script, and extracts its contents.
 	 * 
-	 * @param script Name of the configuration script  
+	 * @param ficheroScript Name of the configuration script  
 	 * 
 	 */	
 	public void leerConfiguracion (String ficheroScript) {

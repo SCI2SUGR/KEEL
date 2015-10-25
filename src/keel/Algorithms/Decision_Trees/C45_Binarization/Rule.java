@@ -101,11 +101,19 @@ public class Rule {
 		clase = campo.nextToken();
 	}
 
-	public void incluyeSelector(Selector s) {
+    /**
+     * Includes a selector given as an argument into the list of antecedents.
+     * @param s Selector given.
+     */
+    public void incluyeSelector(Selector s) {
 		antecedent.add(s);
 	}
 
-	public String printString() {
+    /**
+     * Returns the rule as a String
+     * @return String representation of the rule.
+     */
+    public String printString() {
 		String cadena = new String("");
 		cadena += "IF ";
 		for (int i = 0; i < antecedent.size()-1; i++) {
@@ -116,7 +124,11 @@ public class Rule {
 		return cadena;
 	}
 
-	public String printStringF() {
+    /**
+     * Returns the rule as a String (float representation of covers instances).
+     * @return String representation of the rule.
+     */
+    public String printStringF() {
 		String cadena = new String("");
 		cadena += "IF ";
 		for (int i = 0; i < antecedent.size()-1; i++) {
@@ -149,11 +161,19 @@ public class Rule {
 		return r;
 	}
 
-	public int covered(){
+    /**
+     * Returns the instances covered by the rule.
+     * @return instances covered by the rule.
+     */
+    public int covered(){
 		return nCubiertos;
 	}
 
-	public int positiveCovered(){
+    /**
+     * Returns the instances covered by the rule and are correctly classified.
+     * @return instances covered by the rule.
+     */
+    public int positiveCovered(){
 		return nCubiertosOK;
 	}
 
@@ -209,15 +229,28 @@ public class Rule {
 		return cubierto;
 	}
 
-	public int size(){
+    /**
+     * Returns the number of selectors in the rule.
+     * @return Number of selectors in the rule.
+     */
+    public int size(){
 		return antecedent.size();
 	}
 
-	public double confidence(){
+    /**
+     * Returns the confidence of the rule.
+     * @return The confidence of the rule.
+     */
+    public double confidence(){
 		return 1.0*nCubiertosOK/nCubiertos;
 	}
 		
-	public boolean contieneAtributo(int att){
+    /**
+     * Checks if an attribute given as a argument is considered in the rule.
+     * @param att attribute given to check.
+     * @return True if it is considered, False otherwise.
+     */
+    public boolean contieneAtributo(int att){
 		boolean contiene = false;
 		for (int i = 0; i < antecedent.size() && !contiene; i++){
 			contiene = (antecedent.get(i).attribute == att);

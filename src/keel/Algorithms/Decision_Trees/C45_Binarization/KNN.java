@@ -27,6 +27,18 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Decision_Trees.C45_Binarization;
+
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+import keel.Dataset.InstanceSet;
+
+import keel.Algorithms.Preprocess.Basic.Referencia;
+
+import org.core.Files;
+
 /**
  * 
  * File: KNN.java
@@ -39,17 +51,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Decision_Trees.C45_Binarization;
-
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-import keel.Dataset.InstanceSet;
-
-import keel.Algorithms.Preprocess.Basic.Referencia;
-
-import org.core.Files;
-
 public class KNN {
 
 
@@ -61,6 +62,9 @@ public class KNN {
 	 * @param filename Name of output file
 	 * @param realClass Real output of instances
 	 * @param prediction Predicted output for instances
+         * @param inputs Inputs attributes
+         * @param output Output attribute
+         * @param relation String relation
 	 */
 	public static void writeOutput(String filename, int [][] realClass, int [][] prediction, Attribute inputs[], Attribute output, String relation) {
 	
@@ -199,6 +203,10 @@ public class KNN {
 	 * Evaluates a instance to predict its class.
 	 * 
 	 * @param example Instance evaluated 
+         * @param trainData Training input data
+         * @param nClasses Number of classes
+         * @param trainOutput Training output data
+         * @param k Number of neighbors considered
 	 * @return Class predicted
 	 * 
 	 */
@@ -960,6 +968,8 @@ public class KNN {
 	 * @param nClases Number of classes of the problem
 	 * @param distance True= Euclidean distance; False= HVDM
 	 * @param vecinos Neighbors of the new instance
+         * @param minDistanciasSal Resulting distances to each neighbor.
+         * @param votosSal Resulting votes for each class.
 	 *
 	 * @return Class of the new instance
 	 */	   

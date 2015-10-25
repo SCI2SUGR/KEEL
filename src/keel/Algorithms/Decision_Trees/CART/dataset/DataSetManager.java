@@ -93,8 +93,10 @@ public class DataSetManager
 	 * Reads schema from the KEEL file
 	 * 
 	 * @param fileName Name of the KEEL dataset file
+         * @return Vector of correct read flags. Vector has the number of atttributes size. Value 1 means input attributes; value 2, output attribute and -1, not used.
+         * @throws java.io.IOException if the file can not be read.
+         * @throws keel.Algorithms.Neural_Networks.NNEP_Common.data.DatasetException if the file can not be read.
 	 */
-
 	public static byte[] readSchema(String fileName) throws IOException, DatasetException{
 
 		KeelDataSet dataset = new KeelDataSet(fileName);

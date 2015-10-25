@@ -27,19 +27,7 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: Metodo.java
- * 
- * An auxiliary class to initialize Instance Selection algorithms
- * 
- * @author Written by Salvador Garc?a (University of Granada) 20/07/2004 
- * @author Modified by Isaac Triguero (University of Granada) 22/06/2010 
- * @author Modified by Victoria Lopez (University of Granada) 21/09/2010 
- * @version 0.1 
- * @since JDK1.5
- * 
- */
+
 package keel.Algorithms.Decision_Trees.C45_Binarization;
 
 import keel.Dataset.*;
@@ -47,43 +35,146 @@ import keel.Algorithms.Preprocess.Basic.CheckException;
 
 import java.util.StringTokenizer;
 
+/**
+ * 
+ * File: Metodo.java
+ * 
+ * An auxiliary class to initialize Instance Selection algorithms
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @author Modified by Isaac Triguero (University of Granada) 22/06/2010 
+ * @author Modified by Victoria Lopez (University of Granada) 21/09/2010 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Metodo {
 
 	  /*Path and names of I/O files*/
+
+    /**
+     * Training file name.
+     */
+    
 	  protected String ficheroTraining;
-	  protected String ficheroTest;
-	  protected String ficheroSalida[];
+
+    /**
+     * Test file name.
+     */
+    protected String ficheroTest;
+
+    /**
+     * Output files names.
+     */
+    protected String ficheroSalida[];
 
 	  /*Data Structures*/
+
+    /**
+     * Training dataset.
+     */
+    
 	  protected InstanceSet training;
-	  protected InstanceSet test;
-	  protected Attribute entradas[];
-	  protected Attribute salida;
-	  protected int nEntradas;
-	  protected String relation;
+
+    /**
+     * Test dataset.
+     */
+    protected InstanceSet test;
+
+    /**
+     * Input attributes.
+     */
+    protected Attribute entradas[];
+
+    /**
+     * Output attribute.
+     */
+    protected Attribute salida;
+
+    /**
+     * Number of inputs.
+     */
+    protected int nEntradas;
+
+    /**
+     * Relation string.
+     */
+    protected String relation;
 
 	  /*Data Matrix*/
+
+    /**
+     * Training input data.
+     */
+    
 	  protected double datosTrain[][];
-	  protected int clasesTrain[];
+
+    /**
+     * Training output data.
+     */
+    protected int clasesTrain[];
           
           
           	  /*Data Matrix*/
+
+    /**
+     * Test input data.
+     */
+    
 	  protected double datosTest[][];
-	  protected int clasesTest[];
+
+    /**
+     * Test output data.
+     */
+    protected int clasesTest[];
 
 	  /*Extra*/
+
+    /**
+     * Training Missing values.
+     */
+    
 	  protected boolean nulosTrain[][];
-	  protected int nominalTrain[][];
-	  protected double realTrain[][];
+
+    /**
+     * Training Nominal values.
+     */
+    protected int nominalTrain[][];
+
+    /**
+     * Training Real values.
+     */
+    protected double realTrain[][];
           
-          protected boolean nulosTest[][];
-	  protected int nominalTest[][];
-	  protected double realTest[][];
+    /**
+     * Test Missing values.
+     */
+    protected boolean nulosTest[][];
+
+    /**
+     * Test Nominal values.
+     */
+    protected int nominalTest[][];
+
+    /**
+     * Test Real values.
+     */
+    protected double realTest[][];
 	  
-	  protected boolean distanceEu;
+    /**
+     * Flag type of distance (true = euclidean, false = HVDM).
+     */
+    protected boolean distanceEu;
 	  
-	  static protected double nominalDistance[][][];
-	  static protected double stdDev[];
+    /**
+     * Nominal distance.
+     */
+    static protected double nominalDistance[][][];
+
+    /**
+     * Standard deviation.
+     */
+    static protected double stdDev[];
 	  
   	/**
 	 * Default builder
@@ -211,6 +302,7 @@ public class Metodo {
 
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+            * @throws keel.Algorithms.Preprocess.Basic.CheckException if dataset do not correspond to a classification problem.
 	 */	
 	protected void normalizar () throws CheckException {
 

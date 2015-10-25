@@ -101,6 +101,7 @@ public class DecisionTree {
 	 * {@inheritDoc}
 	 * 
 	 * Returns tree as a String in preorder format.
+         * @return String representation of the tree.
 	 */
 	@Override
 	public String toString() {

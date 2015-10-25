@@ -29,6 +29,15 @@
 
 package keel.Algorithms.Decision_Trees.C45_Binarization;
 
+
+import java.io.IOException;
+import java.util.StringTokenizer;
+import java.util.Vector;
+
+import org.core.*;
+
+import keel.Algorithms.Decision_Trees.C45.*;
+
 /**
  * <p>Title: Multiclassifier</p>
  * <p>Description: This class implements the Main execution class for the Binarization methodology (OVO and OVO )
@@ -38,14 +47,6 @@ package keel.Algorithms.Decision_Trees.C45_Binarization;
  * @version 1.2
  * @since JDK1.6
  */
-import java.io.IOException;
-import java.util.StringTokenizer;
-import java.util.Vector;
-
-import org.core.*;
-
-import keel.Algorithms.Decision_Trees.C45.*;
-
 public class Multiclassifier {
 
 	myDataset train, val, test;
@@ -483,10 +484,10 @@ public class Multiclassifier {
 
 	/**
 	 * It computes the output class according to the learned system 
-	 * @param x
-	 * @param y
-	 * @param example
-	 * @return
+	 * @param x first class in the classification.
+         * @param y second class in the classification.
+	 * @param example given example to compute its class.
+	 * @return the output class of the given example.
 	 */
 	protected int obtainClass(int x, int y, double[] example){
 		int i = 0;
@@ -506,7 +507,15 @@ public class Multiclassifier {
 			return -1;
 	}
 
-	protected double[] obtainConfidence(int x, int y, double[] example){
+    /**
+     * Computes and returns the confidence vector for a given example for the classification class x vs class y. 
+     * The vector is two-dimensional. The first position is the confidence for the class x and the second for the class y. 
+     * @param x first class in the classification.
+     * @param y second class in the classification.
+     * @param example example given to compute the matrix.
+     * @return OVA vector for the given example.
+     */
+    protected double[] obtainConfidence(int x, int y, double[] example){
 		int i = 0;
 		double[] salida = new double[2];
 		for (int i2 = 0; i2 < x; i2++)
@@ -538,7 +547,13 @@ public class Multiclassifier {
 		}
 	}
 
-	protected double[][] ovo_table(double[] example)
+    /**
+     * Computes and returns the one-vs-one matrix for a given example. 
+     * In this matrix, the value table[x][y] represents the confidence of the fact that the example given belong to the class x in the classification x vs y.
+     * @param example example given to compute the matrix.
+     * @return OVO matrix for the given example.
+     */
+    protected double[][] ovo_table(double[] example)
 	{
 		double[][] tabla = new double[nClasses][nClasses];
 		int x, y;
@@ -576,7 +591,13 @@ public class Multiclassifier {
 		return tabla;
 	}
 
-	protected double [] ova_table(double [] example){
+    /**
+     * Computes and returns the one-vs-all vector for a given example. 
+     * In this vector, the value table[x] represents the confidence of the fact that the example given belong to the class x in the classification x vs the rest.
+     * @param example example given to compute the matrix.
+     * @return OVA vector for the given example.
+     */
+    protected double [] ova_table(double [] example){
 		double[] grado_asoc = new double[this.n_classifiers];
 		for (int i = 0; i < this.n_classifiers; i++) {
 			if (valid[i]) {

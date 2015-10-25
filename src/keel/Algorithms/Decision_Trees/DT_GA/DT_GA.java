@@ -29,17 +29,6 @@
 
 package keel.Algorithms.Decision_Trees.DT_GA;
 
-/**
- * <p>Title: Algorithm</p>
- *
- * <p>Description: It contains the implementation of the algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
- *
- * @author Alberto Fernández
- * @version 1.0
- */
 
 import java.io.IOException;
 import org.core.*;
@@ -48,6 +37,15 @@ import keel.Algorithms.Decision_Trees.DT_GA.C45.C45;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+/**
+ * <p>Description: It contains the implementation of the algorithm DT_GA.</p>
+ *
+ *
+ * <p>Company: KEEL </p>
+ *
+ * @author Alberto Fernández
+ * @version 1.0
+ */
 public class DT_GA {
 
   myDataset train, val, test;
@@ -60,8 +58,15 @@ public class DT_GA {
   BaseR baseReglasTree, baseReglasGA;
   Clasificador clasif;
 
-  public static int GA_SMALL = 0;
-  public static int GA_LARGE_SN = 1;
+    /**
+     * Number to represent type of GA used (Small scheme).
+     */
+    public static int GA_SMALL = 0;
+
+    /**
+     * Number to represent type of GA used (Large_SN scheme).
+     */
+    public static int GA_LARGE_SN = 1;
 
   private boolean somethingWrong = false; //to check if everything is correct.
 
@@ -274,7 +279,12 @@ public class DT_GA {
     baseReglasTree = new BaseR(train, reglas);
   }
 
-  public void escribeSalidas(double accTr, double accTst){
+    /**
+     * Writes all the output files, including statistics and the generated rules for the model.
+     * @param accTr Accuracy for the training dataset.
+     * @param accTst Accuracy for the test dataset.
+     */
+    public void escribeSalidas(double accTr, double accTst){
     System.out.println("Number of Rules (Tree): " + baseReglasTree.size());
     System.out.println(""+baseReglasTree.printString());
     System.out.println("Number of Rules (GA): " + baseReglasGA.size());

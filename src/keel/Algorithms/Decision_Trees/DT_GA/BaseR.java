@@ -29,28 +29,38 @@
 
 package keel.Algorithms.Decision_Trees.DT_GA;
 
-/**
- * @author 
- * @version 1.0
- */
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+
+/**
+ * This class contains the representation of a Rule Set.
+ *
+ *
+ * <p>Company: KEEL </p>
+ *
+ * @author Alberto Fernández
+ * @version 1.0
+ * @since JDK1.5
+ */
 public class BaseR {
 
   ArrayList<Regla> baseReglas;
   myDataset train;
   int umbralS;
 
-  public BaseR() {
+    /**
+     * Default constructor.
+     */
+    public BaseR() {
     baseReglas = new ArrayList<Regla> ();
   }
 
   /**
-   * Obtengo la base de reglas a traves del fichero de reglas (extraido a partir del arbol de decision)
-   * @param reglas String
-   * @param train myDataset conjunto de datos de entrenamiento
+   * Creates a rulebase using the rules of a existing decision tree given as an argument.
+   * @param reglas String file name that contains a rulabase.
+   * @param train myDataset training dataset.
    */
   public BaseR(myDataset train, String reglas) {
     baseReglas = new ArrayList<Regla> ();
@@ -64,7 +74,17 @@ public class BaseR {
     }
   }
 
-  public BaseR genetico(int type, int S, int nGenerations, int popSize,
+    /**
+     * Executes a genetic algorithm to generate the rules of the cassifier.
+     * @param type type of the GA: 0 Small scheme or 1 Large_SN scheme
+     * @param S rules covers threshold.
+     * @param nGenerations number of generation for the genetic optimization.
+     * @param popSize size of the population used in the GA.
+     * @param crossProb Cross probability.
+     * @param mutProb Mutation probability. 
+     * @return Returns the generated rulebase by the GA.
+     */
+    public BaseR genetico(int type, int S, int nGenerations, int popSize,
                         double crossProb, double mutProb) {
     BaseR br = new BaseR();
     br.train = this.train;
@@ -114,7 +134,11 @@ public class BaseR {
     return br;
   }
 
-  public String printString() {
+    /**
+     * Returns a String representation of all the rules collected.
+     * @return String representation of the rulebase.
+     */
+    public String printString() {
     String cadena = new String("");
     cadena += "Number of Rules: " + baseReglas.size() + "\n";
     for (int i = 0; i < baseReglas.size(); i++) {
@@ -123,12 +147,16 @@ public class BaseR {
     return cadena;
   }
 
-  public int size() {
+    /**
+     * Return the number of existing rules in the rulebase.
+     * @return size of the rulebase.
+     */
+    public int size() {
     return baseReglas.size();
   }
 
   /**
-   * Detecta las reglas que cubren un small-disjunt
+   * Detect the rules that cover a small-disjunct set of instances.
    */
   public void cubrirEjemplos() {
     for (int i = 0; i < this.size(); i++) {
@@ -137,11 +165,11 @@ public class BaseR {
   }
 
   /**
-   * Clasifica un ejemplo
-   * @param tree true si la regla es de tipo "arbol", false si es de tipo "GA"
-   * @param ejemplo double[] el ejemplo a clasificar (valores de los atributos de entrada)
-   * @param clase_ StringBuffer el valor de la clase que se va a devolver
-   * @return boolean true si la regla que lo clasifica pertence a un small disjunct
+   * Classifies an example given as an argument using rather a decision tree based rules or genetic algorithm based.
+   * @param tree true if the rules are DT based or false if they are GA based.
+   * @param ejemplo example to be classified.
+   * @param clase_ StringBuffer value of the class predicted after the execution of this method.
+   * @return boolean true if the rule which classifies it belongs to a small-dijunct.  
    */
   public boolean clasifica(boolean tree, double [] ejemplo, StringBuffer clase_){
     boolean smallDisjunct = false;

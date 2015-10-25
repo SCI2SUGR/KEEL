@@ -61,11 +61,15 @@ public abstract class RunCART
 
 	/** The name of the file that contains the information to make the training. */
 	protected static String trainFileName = "";
-	protected DoubleTransposedDataSet trainData;
+
+        /** Training dataset read. */
+        protected DoubleTransposedDataSet trainData;
 
 	/** The name of the file that contains the information to make the test. */
 	protected static String testFileName = "";
-	protected DoubleTransposedDataSet testData;
+
+        /** Test dataset read. */
+        protected DoubleTransposedDataSet testData;
 
 	/** The name of the train output file. */
 	protected static String trainOutputFileName;

@@ -524,6 +524,7 @@ public class CART
 	/**
 	 * It checks if the stop criteria has been reached
 	 * 
+         * @param node Node to be checked
 	 * @return true if stop criteria has been reached. False otherwise
 	 */
 	public boolean stopCriteria(TreeNode node) {

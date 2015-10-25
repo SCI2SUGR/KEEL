@@ -66,8 +66,7 @@ public class Gini implements IImpurityFunction {
 	 * 
 	 * @param patterns index of patterns from dataset associated to node to evaluate
 	 * @param cost Associated cost
-	 * @return Impurity value associated
-	 * @throws Exception 
+	 * @return Impurity value associated 
 	 * 
 	 */
 	public double impurities(int [] patterns, double cost) {

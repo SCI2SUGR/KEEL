@@ -30,15 +30,12 @@
 package keel.Algorithms.Decision_Trees.DT_GA;
 
 /**
- * <p>Title: </p>
+ * <p>Description: It contains the implementation of the classifier DT_GA.</p>
  *
- * <p>Description: </p>
  *
- * <p>Copyright: Copyright (c) 2007</p>
+ * <p>Company: KEEL </p>
  *
- * <p>Company: </p>
- *
- * @author not attributable
+ * @author Alberto Fernández
  * @version 1.0
  */
 public class Clasificador {
@@ -48,10 +45,22 @@ public class Clasificador {
   int tipoGA;
   String claseMayoritaria;
 
-  public Clasificador() {
+    /**
+     * Default Constructor.
+     * None attributes will be initialized.
+     */
+    public Clasificador() {
   }
 
-  public Clasificador(BaseR reglasArbol, BaseR reglasGA, int tipoGA,
+    /**
+     * Parameters Constructor.
+     * @param reglasArbol Tree Rulebase
+     * @param reglasGA Genetic algorithm Rulebase.
+     * @param tipoGA Genetic algorithm type.
+     * @param umbralS Rule covers threshold.
+     * @param claseMay Majority class.
+     */
+    public Clasificador(BaseR reglasArbol, BaseR reglasGA, int tipoGA,
                       int umbralS,String claseMay) {
     this.reglasArbol = reglasArbol;
     this.reglasGA = reglasGA;
@@ -61,9 +70,9 @@ public class Clasificador {
   }
 
   /**
-   * Clasifica un ejemplo
-   * @param ejemplo El ejemplo a clasificar
-   * @return el valor de la clase predicha
+   * Classifies an example
+   * @param ejemplo example to be classified.
+   * @return predicted class value.
    */
   public String clasifica(double[] ejemplo) {
     boolean smallDisjunct = false;

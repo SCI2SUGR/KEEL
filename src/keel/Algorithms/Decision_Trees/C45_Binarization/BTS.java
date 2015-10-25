@@ -267,6 +267,7 @@ public class BTS {
 	 * Binary Tree of Classifiers constructor
 	 * @param classifier The OVO classifier
 	 * @param threshold The minimum threshold for accepting a class being only in one node
+         * @param ovo The OVO methodology
 	 */
 	public BTS(Multiclassifier classifier, float threshold, OVO ovo)
 	{

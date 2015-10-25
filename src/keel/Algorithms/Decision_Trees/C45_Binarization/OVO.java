@@ -104,14 +104,18 @@ public class OVO {
 	  Files.writeFile("ENNConf.txt", content);
   }
   
-  public void clearTables(boolean test){
+    /**
+     * Clear the existing tables and identifies if is test or not.
+     * @param test boolean to identifies if is test or not.
+     */
+    public void clearTables(boolean test){
 	  count = 0;
 	  this.test = test;
   }
 
   /**
    * It finishes the operations needed before classifying but after 
-   * constructing the classifiers (for BTS!)
+   * constructing the classifiers (for BTS!).
    */ 
   public void classifierTrainFinished() {
       /* Initialize and construct the binary tree if BTS is the selected aggregation */
@@ -529,7 +533,12 @@ public class OVO {
     return classScores;
   }
 
-  protected double[] computeClassScoresWeighted(double[] tabla)
+    /**
+   * It computes the confidence vector for the classes using weighted method.
+   * @param tabla array containing the outputs of the classifiers for the instance
+   * @return the confidence vector
+   */
+    protected double[] computeClassScoresWeighted(double[] tabla)
   {
     double [] max = new double[nClasses];
     for (int i = 0; i < nClasses; i++) {
@@ -542,7 +551,12 @@ public class OVO {
     return max;
   }  
   
-  protected String computeClassScoresDynamic(int i) {
+    /**
+    * It computes the confidence vector for the classes using Dynamic method and returns class as String with the maximum confidence.
+    * @param i index of the instance in the dataset.
+    * @return class as String with the maximum confidence.
+    */
+    protected String computeClassScoresDynamic(int i) {
 	    // String output = new String("?");
 	    double[] max;
 	    String output = "?";
@@ -651,9 +665,9 @@ public class OVO {
   
   
   /**
-   * It obtains the class scores for the OVO scheme
-   * @param example
-   * @return
+   * It obtains the class scores for the OVA scheme
+   * @param example given example.
+   * @return The class scores as a String.
    */
   protected String computeClassScoresOVA(double[] example) {
 	  String output = new String("?");
@@ -664,9 +678,8 @@ public class OVO {
 
   /**
    * Retrieves the preference, conflict and ignorance matrices for a single instance
-   * @param inst The instance for which the PCI-matrices shall be created
+     * @param tabla The instance for which the PCI-matrices shall be created
    * @return [0][][] preference matrix, [1][][] conflict matrix, [2][][] ignorance matrix
-   * @throws Exception
    */
   public double[][][] relationsForInstance(double[][] tabla) {
     double[][] prefRelation = new double[nClasses][nClasses];
