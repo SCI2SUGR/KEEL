@@ -52,7 +52,7 @@ public class myDataset {
   /**
      * Number to represent type of variable real or double.
      */
-    public static final int REAL = 0;
+    public static final int REAL = 2;
 
     /**
      * Number to represent type of variable integer.
@@ -62,7 +62,7 @@ public class myDataset {
     /**
      * Number to represent type of variable nominal.
      */
-    public static final int NOMINAL = 2;
+    public static final int NOMINAL = 0;
   
   private double[][] trueTransactions = null; //true transactions array
   private boolean[][] missing = null; //possible missing values
