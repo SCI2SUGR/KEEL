@@ -56,6 +56,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Fuzzy_Instance_Based_Learning.GAFuzzyKNN;
+
 /**
  * 
  * File: Main.java
@@ -68,9 +71,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Fuzzy_Instance_Based_Learning.GAFuzzyKNN;
-
 public class Main {
 	
 	//The classifier

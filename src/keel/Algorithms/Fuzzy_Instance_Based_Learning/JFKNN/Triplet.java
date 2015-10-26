@@ -56,6 +56,11 @@
   
 **********************************************************************/
 
+
+ package keel.Algorithms.Fuzzy_Instance_Based_Learning.JFKNN;
+
+import java.util.Arrays;
+
 /**
  * 
  * File: Triplet.java
@@ -67,11 +72,6 @@
  * @since JDK1.5
  * 
  */
-
- package keel.Algorithms.Fuzzy_Instance_Based_Learning.JFKNN;
-
-import java.util.Arrays;
-
 public class Triplet {
 	
 	public double w [][];

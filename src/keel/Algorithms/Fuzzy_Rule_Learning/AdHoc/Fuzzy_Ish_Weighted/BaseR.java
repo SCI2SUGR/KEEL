@@ -29,6 +29,11 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
+
+
+import java.util.*;
+import org.core.*;
+
 /**
  * <p>Title: BaseR</p>
  *
@@ -42,10 +47,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
  * @since JDK1.5
  * @version 1.0
  */
-
-import java.util.*;
-import org.core.*;
-
 public class BaseR {
 
   ArrayList<Regla> ruleBase;
@@ -65,8 +66,8 @@ public class BaseR {
    * @param dataBase DataBase the Data Base containing the fuzzy partitions
    * @param train myDataset the set of training examples
    * @param ruleWeight int the rule weight heuristic
-   * @param inferenceType int the inference type for the FRM
-   * @param compatibilityType int the compatibility type for the t-norm
+   * @param infType int the inference type for the FRM
+   * @param compType int the compatibility type for the t-norm
    */
   public BaseR(BaseD dataBase, myDataset train, int ruleWeight,
                int infType, int compType) {

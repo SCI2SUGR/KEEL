@@ -57,6 +57,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Fuzzy_Instance_Based_Learning;
+
 /**
  * 
  * File: Timer.java
@@ -68,8 +71,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Fuzzy_Instance_Based_Learning;
-
 public class Timer{
 	
 	private static long initialTime;

@@ -606,6 +606,7 @@ public class M5Attribute implements Serializable {
 
     /**
      * Simple main method for testing this class.
+     * @param ops main args.
      */
     public static void main(String[] ops) {
 

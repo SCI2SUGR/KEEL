@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
+
 
 package keel.Algorithms.Decision_Trees.M5;
 
@@ -41,9 +35,12 @@ import java.lang.*;
 import java.io.*;
 
 /**
- * Class for handing options
- */
-
+* <p>Class for handing options.
+* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
+*</p>
+*/
 public final class InformationHandler implements Serializable {
 
     boolean smooth; // =true, smoothed result; otherwise, unsmoothed result
@@ -61,6 +58,10 @@ public final class InformationHandler implements Serializable {
 
     final static String VERSION = "v1.1";
 
+    /**
+     * Constructor. Store all the information related to the configuration.
+     * @param inst dataset
+     */
     public InformationHandler(M5Instances inst) {
         smooth = true;
         randomSeed = 1;
@@ -260,6 +261,7 @@ public final class InformationHandler implements Serializable {
      * Prints information stored in an 'InformationHandler' object, basically containing
      *     command line options
      * @param inst a dataset
+     * @return all stored information as a String.
      * @exception Exception if something goes wrong
      */
     public final String toString(M5Instances inst) throws Exception {

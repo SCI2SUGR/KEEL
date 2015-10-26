@@ -29,15 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Alatasetal;
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada)
- * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
- * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -48,6 +40,15 @@ import org.core.*;
 
 import keel.Dataset.*;
 
+/**
+ * <p>It gathers all the parameters, launches the algorithm, and prints out the results
+ * @author Written by Alberto Fernández (University of Granada)
+ * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class Alatasetal {
 	/**
 	 * <p>
@@ -225,6 +226,9 @@ public class Alatasetal {
         }
     }
     
+    /**
+     *Write the time of the execution on the output file.
+     */
     public void writeTime() {
     	long seg, min, hor;
         String stringOut = new String("");

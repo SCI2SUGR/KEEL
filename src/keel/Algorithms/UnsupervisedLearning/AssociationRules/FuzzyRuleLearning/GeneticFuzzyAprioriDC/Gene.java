@@ -29,15 +29,17 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyAprioriDC;
 
+
+import java.util.Arrays;
+
 /**
+ * It is used for representing and handling a gene throughout the evolutionary learning.
  * <p>
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.Arrays;
 
 public class Gene {
 	/**

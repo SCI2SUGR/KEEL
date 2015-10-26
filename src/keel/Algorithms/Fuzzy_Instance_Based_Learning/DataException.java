@@ -56,6 +56,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Fuzzy_Instance_Based_Learning;
+
 /**
  * 
  * File: DataException.java
@@ -67,9 +71,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Fuzzy_Instance_Based_Learning;
-
 public class DataException  extends Exception{
 
 	private static final long serialVersionUID = 1L;

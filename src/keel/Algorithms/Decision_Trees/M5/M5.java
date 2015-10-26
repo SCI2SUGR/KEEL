@@ -27,19 +27,20 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
+
 
 package keel.Algorithms.Decision_Trees.M5;
 
 import java.io.*;
 import java.util.*;
 
+/**
+* <p> M5 algorithm main class.
+* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
+*</p>
+*/
 public final class M5 {
 
     /** The root node */
@@ -66,10 +67,25 @@ public final class M5 {
     /** Filter for replacing nominal attributes with numeric binary ones. */
     private NominalToBinaryFilter m_NominalToBinaryFilter;
 
+    /**
+     * Number to represent type of model used (Lineal regression).
+     */
     public static final int MODEL_LINEAR_REGRESSION = M5TreeNode.
             LINEAR_REGRESSION;
+
+    /**
+     * Number to represent type of model used (tree regression).
+     */
     public static final int MODEL_REGRESSION_TREE = M5TreeNode.REGRESSION_TREE;
+
+    /**
+     * Number to represent type of model used (tree model).
+     */
     public static final int MODEL_MODEL_TREE = M5TreeNode.MODEL_TREE;
+
+    /**
+     * Tags for the model types.
+     */
     public static final Association[] TAGS_MODEL_TYPES = {
             new Association(MODEL_LINEAR_REGRESSION, "Simple linear regression"),
             new Association(MODEL_REGRESSION_TREE, "Regression tree"),
@@ -147,7 +163,8 @@ public final class M5 {
      * Name: setOptions
      * Sets the option of the execution of the algorithm, reading them from an input file.
      *
-     * @param option: the tokenizer used to tokenize the input file.
+     * @param options the tokenizer used to tokenize the input file.
+     * @throws java.lang.Exception if the configuration files can not be read correctly.
      */
     protected static void setOptions(StreamTokenizer options) throws Exception {
         //read the next token
@@ -265,7 +282,11 @@ public final class M5 {
         }
     }
 
-
+    /**
+     * Extracts the header of the file given.
+     * @param fileName file's name give.
+     * @return The sring read.
+     */
     public static String getHeader(String fileName) {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new
@@ -299,6 +320,11 @@ public final class M5 {
         return "";
     }
 
+    /**
+     * Extracts the header of the file given, when the data is not specified.
+     * @param fileName file's name give.
+     * @return The sring read.
+     */
     public static String getHeaderNoData(String fileName) {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new
@@ -729,6 +755,13 @@ public final class M5 {
         m_Verbosity = v;
     }
 
+    /**
+     * Allows to construct the M5 classifier calling it by its name and options.
+     * @param classifierName name of the classifier.
+     * @param options Options used.
+     * @return Instance of the M5 classifier.
+     * @throws Exception
+     */
     public static M5 forName(String classifierName, String[] options) throws
             Exception {
 
@@ -1066,7 +1099,7 @@ public final class M5 {
     /**
      * Deletes the trailing zeros and decimal point in a stringBuffer
      * @param stringBuffer string buffer
-     * return string buffer with deleted trailing zeros and decimal point
+     * @return string buffer with deleted trailing zeros and decimal point
      */
     public final static StringBuffer deleteTrailingZerosAndDot(StringBuffer
             stringBuffer) {
@@ -1161,6 +1194,7 @@ public final class M5 {
 
     /**
      * Prints sepearating line
+     * @return sepearating line string.
      */
     public final static String separatorToString() {
         return "--------------------------------------------------------------------------------\n";
@@ -1168,6 +1202,7 @@ public final class M5 {
 
     /**
      * Prints the head lines of the output
+     * @return head lines of the output as string.
      */
     public final static String headToString() {
 

@@ -29,17 +29,18 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyAprioriDC;
 
+
+
+import java.util.*;
+import org.core.Randomize;
+
 /**
- * <p>
+ * <p>It provides the implementation of the algorithm to be run in a process.
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.*;
-import org.core.Randomize;
-
 public class GeneticFuzzyAprioriDCProcess {
   /**
    * <p>

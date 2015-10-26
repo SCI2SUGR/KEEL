@@ -284,6 +284,7 @@ public class Interval implements Serializable {
      * @param indices an array containing indices to select.
      * Since the array will typically come from a program, indices are assumed
      * from 0, and thus will have 1 added in the String representation.
+     * @return string representation of the indices
      */
     public static String indicesToRangeList(int[] indices) {
 

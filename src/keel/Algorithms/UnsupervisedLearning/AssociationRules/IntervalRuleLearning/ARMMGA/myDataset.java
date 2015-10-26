@@ -47,9 +47,20 @@ import keel.Dataset.*;
 
 public class myDataset {
 
-  public static final int NOMINAL = 0;
-  public static final int INTEGER = 1;
-  public static final int REAL = 2;
+    /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 2;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
+    public static final int NOMINAL = 0;
   
   private double[][] realTransactions = null; //transactions array
   private boolean[][] missing = null; //possible missing values
@@ -143,7 +154,6 @@ public class myDataset {
   /**
    * This function checks if the attribute value is missing
    * @param i int Example id
-   * @param j int Variable id
    * @return boolean True is the value is missing, else it returns false
    */
   public boolean isNominal(int i) {
@@ -155,7 +165,7 @@ public class myDataset {
 
   /**
    * This function return the type of the attribute
-   * @param value int Attribute
+   * @param variable int Attribute
    * @return int: if NOMINAL = 0; if INTEGER = 1; if REAL = 2; 
    */
  /* public int getType(int value) {

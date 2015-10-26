@@ -56,17 +56,6 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: IFV_NP.java
- * 
- * The IFV_NP algorithm. 
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
 
 
 package keel.Algorithms.Fuzzy_Instance_Based_Learning.IFV_NP;
@@ -83,6 +72,17 @@ import keel.Algorithms.Fuzzy_Instance_Based_Learning.ReportTool;
 import keel.Algorithms.Fuzzy_Instance_Based_Learning.Timer;
 import keel.Algorithms.Fuzzy_Instance_Based_Learning.Util;
 
+/**
+ * 
+ * File: IFV_NP.java
+ * 
+ * The IFV_NP algorithm. 
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
 public class IFV_NP extends FuzzyIBLAlgorithm {
 
 	private int K;

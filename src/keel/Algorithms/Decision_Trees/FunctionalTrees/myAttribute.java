@@ -300,6 +300,7 @@ public class myAttribute {
 	/** 
      * Gets the value of a nominal attribute from the position in the list of possible values
      *
+     * @param j position of the value asked.
      * @return the value of a nominal attribute from the position in the list of possible values
      */
     public String getValue (int j) {

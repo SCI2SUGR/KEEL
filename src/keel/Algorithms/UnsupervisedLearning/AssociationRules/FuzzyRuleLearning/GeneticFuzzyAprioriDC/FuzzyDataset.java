@@ -29,16 +29,17 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyAprioriDC;
 
+
+
+import java.util.ArrayList;
+
 /**
- * <p>
+ * <p>It represents a fuzzy dataset which is based on the original dataset and handles fuzzy transactions.
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.ArrayList;
-
 public class FuzzyDataset {
 	/**
 	 * <p>

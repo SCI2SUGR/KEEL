@@ -164,7 +164,7 @@ public class FuzzyGPClassifier extends GeneticIndividualForClassification {
 * </p> 
 * @param alpha   this parameter is fixed according to {@link GenotypeFuzzyGP}
 * @param mutationID the type of mutation operation as stated in {@link GenotypeFuzzyGP}.
-* @throws {@link invalidOptim} if non supported mutationID
+* @throws invalidMutation if non supported mutationID
 */ 	
     public void mutation(double alpha, int mutationID) throws invalidMutation {
         g.mutation(alpha,mutationID);
@@ -182,7 +182,7 @@ public class FuzzyGPClassifier extends GeneticIndividualForClassification {
 * @param p3      the first crossed {@link GeneticIndividual}
 * @param p4      the second crossed {@link GeneticIndividual}
 * @param crossoverID this value should be fixed according to {@link GenotypeFuzzyGP}
-* @throws {@link invalidCrossover} in case of invalid crossoverID
+* @throws invalidCrossover in case of invalid crossoverID
 */ 	
     public void crossover(GeneticIndividual p2, GeneticIndividual p3, GeneticIndividual p4, int crossoverID) throws invalidCrossover {
 
@@ -211,6 +211,7 @@ public class FuzzyGPClassifier extends GeneticIndividualForClassification {
     * This method performs the debug operation, which allow to analyze the behaviour
     * of the learning process.
     * </p> 
+     * @return Output of algorithm executed.
     */ 	
     public String output() { return c.output(); } // Overload debug from GeneticIndividualForClassification    
     
@@ -222,7 +223,7 @@ public class FuzzyGPClassifier extends GeneticIndividualForClassification {
 * @param MAXITER   an integer with the maximum number of iterations in the
 *                  local optimization loop
 * @param loOptID   the chosen local optimization method
-* @throws {@link invalidOptim}
+* @throws invalidOptim
 */ 	
 	public void localOptimization(int MAXITER, int loOptID) throws invalidOptim {
 	   throw new invalidOptim("Local optimization is not supported for FuzzyGPClassifier");

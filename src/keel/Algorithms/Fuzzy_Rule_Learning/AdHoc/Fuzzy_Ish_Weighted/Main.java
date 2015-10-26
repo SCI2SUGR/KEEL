@@ -30,7 +30,7 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.AdHoc.Fuzzy_Ish_Weighted;
 
 /**
- * It reads the configuration file (data-set files and parameters) and launch the algorithm</p>
+ * It reads the configuration file (data-set files and parameters) and launch the algorithm
  *
  * @author Alberto Fernández
  * @version 1.0

@@ -29,20 +29,21 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Apriori;
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada)
- * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Hashtable;
 import keel.Dataset.*;
 
+/**
+ * <p>It contains the methods to read a Dataset for the Association Rules Mining problem
+ * @author Written by Alberto Fernández (University of Granada)
+ * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class myDataset {
   /**
    * <p>
@@ -50,10 +51,21 @@ public class myDataset {
    * </p>
    */
 
-  public static final int NOMINAL = 0;
-  public static final int INTEGER = 1;
-  public static final int REAL = 2;
-  
+    /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 2;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
+    public static final int NOMINAL = 0;
+    
   private double[][] trueTransactions = null; //true transactions array
   private boolean[][] missing = null; //possible missing values
   private double[] emax; //max value of an attribute

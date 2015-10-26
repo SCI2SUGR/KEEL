@@ -71,9 +71,11 @@ public class Attribute
 	/** Is included in the inputs or outputs?. */	
 	private boolean used;					
 
-  	/** Constructor for continuous attributes. 
-  	 * 
-  	 */
+  	/** Constructor for continuous attributes.
+     *
+     * @param attributeName attribute name given to be constructed.
+     * @param attributeIndex attribute index given to be constructed.
+     */
   	public Attribute( String attributeName, int attributeIndex  ) 
 	{
   		name = attributeName;
@@ -132,33 +134,33 @@ public class Attribute
 	}
 
   	/** Returns if the attribute is discret or not.
-  	 * 
-  	 */
-  	public final boolean isDiscret() 
-	{
-  		return ( type == DISCRET );
-	}
+     *
+     * @return True if the attribute is discret, false otherwise.
+     */
+    public final boolean isDiscret() {
+        return (type == DISCRET);
+    }
 
-  	/** Returns if the attribute is continuous or not.
-  	 * 
-  	 */
-  	public final boolean isContinuous()
-	{
-  		return ( type == CONTINUOUS );
-	}
+    /** Returns if the attribute is continuous or not.
+     *
+     * @return True if the attribute is continuous, false otherwise.
+     */
+    public final boolean isContinuous() {
+        return (type == CONTINUOUS);
+    }
 
-  	/** Returns the name of the attribute.
-  	 * 
-  	 */
-  	public final String name() 
-	{
-  		return name;
-	}
-  
-   	/** Function to get the number of values of a discret attribute.
-   	 * 
-   	 * @return	The number of values of the attribute.
-   	 */
+    /** Returns the name of the attribute.
+     *
+     * @return name of the attribute.
+     */
+    public final String name() {
+        return name;
+    }
+
+    /** Function to get the number of values of a discret attribute.
+     *
+     * @return	The number of values of the attribute.
+     */
   	public final int numValues()
 	{
   		if ( !isDiscret() )
@@ -170,6 +172,7 @@ public class Attribute
   	/** Returns the value with the given index.
   	 * 
   	 * @param valIndex	The index of the value.
+         * @return value with the given index in the attribut
   	 */
   	public final String value( int valIndex ) 
 	{
@@ -217,6 +220,7 @@ public class Attribute
 
   	/** Returns the minor value of a continuous attribute. 
   	 * 
+         * @return minor value of a continuous attribute.
   	 */
     public final float getMinRange() 
   	{
@@ -228,6 +232,7 @@ public class Attribute
 
   	/** Gets the bigger value of a continuous attribute. 
   	 * 
+         * @return the bigger value of a continuous attribute.
   	 */
     public final float getMaxRange() 
   	{
@@ -247,6 +252,7 @@ public class Attribute
     
     /** Returns true if this attribute used in output or input clause. 
      * 
+     * @return true if this attribute used in output or input clause.
      */
     public boolean isActive()
 	{
@@ -255,6 +261,7 @@ public class Attribute
 
     /** Returns the index of the attribute.
      * 
+     * @return the index of the attribute.
      */
     public int getIndex()
 	{

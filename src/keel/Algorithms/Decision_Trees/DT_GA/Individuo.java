@@ -104,7 +104,13 @@ public class Individuo
     n_e = true;
   }
 
-  public Individuo(Individuo padre, Individuo madre, int puntoCorte) {
+    /**
+     * Create a new individual by crossing other two at the position given.
+     * @param padre
+     * @param madre
+     * @param puntoCorte
+     */
+    public Individuo(Individuo padre, Individuo madre, int puntoCorte) {
     antecedente = new Selector[padre.size()];
     seleccionado = new boolean[padre.size()];
     for (int i = 0; i < puntoCorte; i++) {

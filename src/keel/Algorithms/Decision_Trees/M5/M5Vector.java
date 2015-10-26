@@ -163,6 +163,8 @@ public class M5Vector implements Serializable {
      * increment and capacity mulitplier.
      *
      * @param capacity the vector's initial capacity
+     * @param capIncrement capacity to be incremented
+     * @param capMultiplier capacity to be multipliered
      */
     public M5Vector(int capacity, int capIncrement,
                     double capMultiplier) {

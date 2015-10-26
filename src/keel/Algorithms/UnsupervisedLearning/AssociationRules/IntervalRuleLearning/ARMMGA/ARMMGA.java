@@ -29,13 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.ARMMGA;
 
-/**
- * <p>
- * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -47,6 +41,13 @@ import org.core.*;
 import keel.Dataset.*;
 
 
+/**
+ * <p>It gathers all the parameters, launches the algorithm, and prints out the results.
+ * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class ARMMGA {
 	/**
 	 * <p>
@@ -207,7 +208,10 @@ public class ARMMGA {
 		}
 	}
 
-	public void writeTime() {
+    /**
+     *Write the time of the execution on the output file.
+     */
+    public void writeTime() {
 		long seg, min, hor;
 		String stringOut = new String("");
 

@@ -56,17 +56,7 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: FRNN.java
- * 
- * The FRNN algorithm. 
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
+
 
 package keel.Algorithms.Fuzzy_Instance_Based_Learning.FRNN;
 
@@ -82,6 +72,17 @@ import keel.Algorithms.Fuzzy_Instance_Based_Learning.ReportTool;
 import keel.Algorithms.Fuzzy_Instance_Based_Learning.Timer;
 import keel.Algorithms.Fuzzy_Instance_Based_Learning.Util;
 
+/**
+ * 
+ * File: FRNN.java
+ * 
+ * The FRNN algorithm. 
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
 public class FRNN extends FuzzyIBLAlgorithm {
 
 	private double instance [];

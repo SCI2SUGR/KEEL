@@ -227,6 +227,7 @@ public final class M5TreeNode implements Serializable {
 
     /**
      * Counts the number of linear models in the tree.
+     * @return number of linear models
      */
     public final int numberOfLinearModels() {
 
@@ -641,6 +642,7 @@ public final class M5TreeNode implements Serializable {
     /**
      * Converts the predictions by the tree under this node to a string
      * @param inst instances
+     * @param lmNo lm No
      * @param smooth =ture using the smoothed models; otherwise, the unsmoothed
      * @return the converted string
      * @exception Exception if something goes wrong
@@ -816,6 +818,7 @@ public final class M5TreeNode implements Serializable {
     /**
      * Computes performance measures for both unsmoothed and smoothed models
      * @param inst instances
+     * @return performance measures of the models
      * @exception Exception if something goes wrong
      */
     public final Measures[] validation(M5Instances inst) throws Exception {

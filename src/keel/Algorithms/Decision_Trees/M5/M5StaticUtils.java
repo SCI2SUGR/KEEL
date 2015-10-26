@@ -376,6 +376,7 @@ public final class M5StaticUtils {
      *
      * @param a a double
      * @param b a double
+     * @return true if they are equals.
      */
     public static boolean eq(double a, double b) {
 
@@ -760,6 +761,7 @@ public final class M5StaticUtils {
      *
      * @param a a double
      * @param b a double
+     * @return True if smaller or equal.
      */
     public static boolean smOrEq(double a, double b) {
 
@@ -771,6 +773,7 @@ public final class M5StaticUtils {
      *
      * @param a a double
      * @param b a double
+     * @return True if greater or equal
      */
     public static boolean grOrEq(double a, double b) {
 
@@ -782,6 +785,7 @@ public final class M5StaticUtils {
      *
      * @param a a double
      * @param b a double
+     * @return True if smaller.
      */
     public static boolean sm(double a, double b) {
 
@@ -789,10 +793,11 @@ public final class M5StaticUtils {
     }
 
     /**
-     * Tests if a is smaller than b.
+     * Tests if a is greater than b.
      *
      * @param a a double
      * @param b a double
+     * @return True if greater
      */
     public static boolean gr(double a, double b) {
 
@@ -803,6 +808,7 @@ public final class M5StaticUtils {
      * Returns the logarithm of a for base 2.
      *
      * @param a a double
+     * @return the log2 of a.
      */
     public static double log2(double a) {
 

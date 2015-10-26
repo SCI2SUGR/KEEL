@@ -45,7 +45,10 @@ public class Nodo {
   int ejemplos[], ejemplosI[], ejemplosD[];
   int n_ejemplos, n_ejemplos_i, n_ejemplos_d, nGenerations;
 
-  public Nodo() {
+    /**
+     *
+     */
+    public Nodo() {
 
   }
 

@@ -105,6 +105,12 @@ public final class Function implements Serializable {
         return fcopy;
     }
 
+    /**
+     * Copy the first n elements of the array a.
+     * @param a array to copy.
+     * @param n number of elements copied. Element at position n is not included.
+     * @return New array with the first n elements of the array a. 
+     */
     public static final double[] dVectorCopy(double a[], int n) {
 
         int i;
@@ -117,6 +123,12 @@ public final class Function implements Serializable {
         return b;
     }
 
+    /**
+     * Copy the first n elements of the array a.
+     * @param a array to copy.
+     * @param n number of elements copied. Element at position n is not included.
+     * @return New array with the first n elements of the array a. 
+     */
     public final static int[] iVectorCopy(int a[], int n) {
         int i, b[];
 
@@ -187,6 +199,12 @@ public final class Function implements Serializable {
         return f;
     }
 
+    /**
+     * Combine two vectors in one maintaining an ascending order.
+     * @param list1 first vector.
+     * @param list2 second vector.
+     * @return combiation of the two vector.
+     */
     public final static int[] iVectorCombine(int[] list1, int[] list2) {
         int i, j, k, count;
         int[] list;

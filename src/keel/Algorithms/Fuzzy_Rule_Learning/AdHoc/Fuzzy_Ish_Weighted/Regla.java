@@ -65,8 +65,8 @@ public class Regla{
 
   /**
    * Constructor with parameters
-   * @param n_variables int
-   * @param compatibilityType int
+     * @param dataBase database to set to the rule.
+   * @param compatibilityType int compatibility type.
    */
   public Regla(BaseD dataBase, int compatibilityType) {
     this.dataBase = dataBase;
@@ -74,7 +74,11 @@ public class Regla{
     this.compatibilityType = compatibilityType;
   }
 
-  public void assignAntecedent(int [] antecedent){
+    /**
+     * Sets the antecedents with the given array. 
+     * @param antecedent antecedents to be set.
+     */
+    public void assignAntecedent(int [] antecedent){
     for (int i = 0; i < antecedent.length; i++){
       this.antecedent[i] = antecedent[i];
     }

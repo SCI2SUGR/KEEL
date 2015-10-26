@@ -56,17 +56,6 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: JFKNN.java
- * 
- * The JFKNN algorithm. 
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
 
 package keel.Algorithms.Fuzzy_Instance_Based_Learning.JFKNN;
 
@@ -82,6 +71,17 @@ import keel.Algorithms.Fuzzy_Instance_Based_Learning.ReportTool;
 import keel.Algorithms.Fuzzy_Instance_Based_Learning.Timer;
 import keel.Algorithms.Fuzzy_Instance_Based_Learning.Util;
 
+/**
+ * 
+ * File: JFKNN.java
+ * 
+ * The JFKNN algorithm. 
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
 public class JFKNN extends FuzzyIBLAlgorithm {
 
 	private double distances[][];

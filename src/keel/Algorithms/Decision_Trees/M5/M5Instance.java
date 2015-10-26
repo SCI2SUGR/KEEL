@@ -119,8 +119,7 @@ public class M5Instance implements Serializable {
      *
      * @param index the attribute's index
      * @return the attribute at the given position
-     * @throws Exception
-     * @exception UnassignedDatasetException if instance doesn't have access to a
+     * @throws Exception if instance doesn't have access to a
      * dataset
      */
     public M5Attribute attribute(int index) throws Exception {
@@ -137,8 +136,7 @@ public class M5Instance implements Serializable {
      *
      * @param indexOfIndex the index of the attribute's index
      * @return the attribute at the given position
-     * @throws Exception
-     * @exception UnassignedDatasetException if instance doesn't have access to a
+     * @throws Exception if instance doesn't have access to a
      * dataset
      */
     public M5Attribute attributeSparse(int indexOfIndex) throws Exception {
@@ -153,8 +151,7 @@ public class M5Instance implements Serializable {
      * Returns class attribute.
      *
      * @return the class attribute
-     * @throws Exception
-     * @exception UnassignedDatasetException if the class is not set or the
+     * @throws Exception if the class is not set or the
      * instance doesn't have access to a dataset
      */
     public M5Attribute classAttribute() throws Exception {
@@ -169,8 +166,7 @@ public class M5Instance implements Serializable {
      * Returns the class attribute's index.
      *
      * @return the class index as an integer
-     * @throws Exception
-     * @exception UnassignedDatasetException if instance doesn't have access to a dataset
+     * @throws Exception if instance doesn't have access to a dataset
      */
     public int classIndex() throws Exception {
 
@@ -184,8 +180,7 @@ public class M5Instance implements Serializable {
      * Tests if an instance's class is missing.
      *
      * @return true if the instance's class is missing
-     * @throws Exception
-     * @exception UnassignedClassException if the class is not set or the instance doesn't
+     * @throws Exception if the class is not set or the instance doesn't
      * have access to a dataset
      */
     public boolean classIsMissing() throws Exception {
@@ -203,8 +198,7 @@ public class M5Instance implements Serializable {
      * @return the corresponding value as a double (If the
      * corresponding attribute is nominal (or a string) then it returns the
      * value's index as a double).
-     * @throws Exception
-     * @exception UnassignedClassException if the class is not set or the instance doesn't
+     * @throws Exception if the class is not set or the instance doesn't
      * have access to a dataset
      */
     public double classValue() throws Exception {
@@ -264,8 +258,7 @@ public class M5Instance implements Serializable {
      * Returns an enumeration of all the attributes.
      *
      * @return enumeration of all the attributes
-     * @throws Exception
-     * @exception UnassignedDatasetException if the instance doesn't
+     * @throws Exception if the instance doesn't
      * have access to a dataset
      */
     public Enumeration enumerateAttributes() throws Exception {
@@ -282,8 +275,7 @@ public class M5Instance implements Serializable {
      * @param inst another instance
      * @return true if the header of the given instance is
      * equivalent to this instance's header
-     * @throws Exception
-     * @exception UnassignedDatasetException if instance doesn't have access to any
+     * @throws Exception if instance doesn't have access to any
      * dataset
      */
     public boolean equalHeaders(M5Instance inst) throws Exception {
@@ -332,6 +324,7 @@ public class M5Instance implements Serializable {
      * Tests if a specific value is "missing".
      *
      * @param attIndex the attribute's index
+     * @return True if the value is missing, false otherwise.
      */
     public boolean isMissing(int attIndex) {
 
@@ -346,6 +339,7 @@ public class M5Instance implements Serializable {
      * the same thing as isMissing() if applied to an Instance.
      *
      * @param indexOfIndex the index of the attribute's index
+     * @return True if the value is missing, false otherwise.
      */
     public boolean isMissingSparse(int indexOfIndex) {
 
@@ -360,6 +354,7 @@ public class M5Instance implements Serializable {
      * The given attribute has to belong to a dataset.
      *
      * @param att the attribute
+     * @return True if the value is missing, false otherwise.
      */
     public boolean isMissing(M5Attribute att) {
 
@@ -422,8 +417,7 @@ public class M5Instance implements Serializable {
      *
      * @return the number of class labels as an integer if the
      * class attribute is nominal, 1 otherwise.
-     * @throws Exception
-     * @exception UnassignedDatasetException if instance doesn't have access to any
+     * @throws Exception if instance doesn't have access to any
      * dataset
      */
     public int numClasses() throws Exception {
@@ -471,10 +465,7 @@ public class M5Instance implements Serializable {
      * Sets the class value of an instance to be "missing". A deep copy of
      * the vector of attribute values is performed before the
      * value is set to be missing.
-     * @throws Exception
-     *
-     * @exception UnassignedClassException if the class is not set
-     * @exception UnassignedDatasetException if the instance doesn't
+     * @throws Exception if the class is not set or if the instance doesn't
      * have access to a dataset
      */
     public void setClassMissing() throws Exception {
@@ -493,9 +484,7 @@ public class M5Instance implements Serializable {
      * @param value the new attribute value (If the corresponding
      * attribute is nominal (or a string) then this is the new value's
      * index as a double).
-     * @throws Exception
-     * @exception UnassignedClassException if the class is not set
-     * @exception UnaddignedDatasetException if the instance doesn't
+     * @throws Exception if the class is not set or if the instance doesn't
      * have access to a dataset
      */
     public void setClassValue(double value) throws Exception {
@@ -514,10 +503,7 @@ public class M5Instance implements Serializable {
      * @param value the new class value (If the class
      * is a string attribute and the value can't be found,
      * the value is added to the attribute).
-     * @throws Exception
-     * @exception UnassignedClassException if the class is not set
-     * @exception UnassignedDatasetException if the dataset is not set
-     * @exception IllegalArgumentException if the attribute is not
+     * @throws Exception if the class is not set, if the dataset is not set or if the attribute is not
      * nominal or a string, or the value couldn't be found for a nominal
      * attribute
      */
@@ -608,9 +594,7 @@ public class M5Instance implements Serializable {
      * @param value the new attribute value (If the attribute
      * is a string attribute and the value can't be found,
      * the value is added to the attribute).
-     * @throws Exception
-     * @exception UnassignedDatasetException if the dataset is not set
-     * @exception IllegalArgumentException if the selected
+     * @throws Exception if the dataset is not set or if the selected
      * attribute is not nominal or a string, or the supplied value couldn't
      * be found for a nominal attribute
      */
@@ -708,10 +692,8 @@ public class M5Instance implements Serializable {
      *
      * @param attIndex the attribute's index
      * @return the value as a string
-     * @throws Exception
-     * @exception IllegalArgumentException if the attribute is not a nominal
-     * (or string) attribute.
-     * @exception UnassignedDatasetException if the instance doesn't belong
+     * @throws Exception if the attribute is not a nominal
+     * (or string) attribute or if the instance doesn't belong
      * to a dataset.
      */
     public final String stringValue(int attIndex) throws Exception {
@@ -734,10 +716,8 @@ public class M5Instance implements Serializable {
      *
      * @param att the attribute
      * @return the value as a string
-     * @throws Exception
-     * @exception IllegalArgumentException if the attribute is not a nominal
-     * (or string) attribute.
-     * @exception UnassignedDatasetException if the instance doesn't belong
+     * @throws Exception if the attribute is not a nominal
+     * (or string) attribute or if the instance doesn't belong
      * to a dataset.
      */
     public final String stringValue(M5Attribute att) throws Exception {

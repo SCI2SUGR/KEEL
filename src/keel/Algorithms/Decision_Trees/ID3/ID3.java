@@ -594,7 +594,7 @@ public class ID3 extends Algorithm
     
     /** Writes the tree and the results of the training and the test in the file.
      * 
-     * @exception 	If the file cannot be written.
+     * @throws java.io.IOException If the file cannot be written.
      */
   	public void printResult() throws IOException 
   	{

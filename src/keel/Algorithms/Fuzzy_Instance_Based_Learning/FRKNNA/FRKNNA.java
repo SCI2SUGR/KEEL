@@ -56,17 +56,7 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: FRKNNA.java
- * 
- * The FRKNNA algorithm. 
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
+
 
 package keel.Algorithms.Fuzzy_Instance_Based_Learning.FRKNNA;
 
@@ -82,6 +72,17 @@ import keel.Algorithms.Fuzzy_Instance_Based_Learning.ReportTool;
 import keel.Algorithms.Fuzzy_Instance_Based_Learning.Timer;
 import keel.Algorithms.Fuzzy_Instance_Based_Learning.Util;
 
+/**
+ * 
+ * File: FRKNNA.java
+ * 
+ * The FRKNNA algorithm. 
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
 public class FRKNNA extends FuzzyIBLAlgorithm {
 
 	private int K; //K value for Fuzzy K-NN

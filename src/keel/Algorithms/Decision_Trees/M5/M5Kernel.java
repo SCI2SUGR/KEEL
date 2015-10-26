@@ -237,7 +237,8 @@ public class M5Kernel {
         return sum / m_SumOfWeights;
     }
 
-    /** Display a representation of this estimator */
+    /** Display a representation of this estimator
+     * @return  String representation of this estimator*/
     public String toString() {
 
         String result = m_NumValues + " Normal Kernels. \nStandardDev = "

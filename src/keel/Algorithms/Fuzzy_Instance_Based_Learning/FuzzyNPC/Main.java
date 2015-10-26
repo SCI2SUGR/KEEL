@@ -56,6 +56,8 @@
   
 **********************************************************************/
 
+package keel.Algorithms.Fuzzy_Instance_Based_Learning.FuzzyNPC;
+
 /**
  * 
  * File: Main.java
@@ -68,8 +70,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Fuzzy_Instance_Based_Learning.FuzzyNPC;
 
 public class Main {
 	

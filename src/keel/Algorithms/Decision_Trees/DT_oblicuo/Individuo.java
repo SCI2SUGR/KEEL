@@ -75,7 +75,14 @@ public class Individuo
     fitness = 0.0;
   }
 
-  public Individuo(Individuo padre, Individuo madre, int puntoCorte){
+    /**
+     * Create a new individual by crossing other two at the position given.
+     * For 0 to puntoCorte are first individual values and the rest, second individual values.
+     * @param padre First individual.
+     * @param madre Second individual.
+     * @param puntoCorte Cross point.
+     */
+    public Individuo(Individuo padre, Individuo madre, int puntoCorte){
     cromosoma = new double[padre.size()];
     for (int i = 0; i < puntoCorte; i++){
       cromosoma[i] = padre.cromosoma[i];
@@ -86,7 +93,15 @@ public class Individuo
     fitness = 0.0;
   }
 
-  public Individuo(Individuo padre, Individuo madre, boolean [] mascara){
+    /**
+     * Create a new individual by crossing other two using a mask given as an argument.
+     * If the mask value for a given position is true, the new individual will receive the value from the first individual.
+     * Otherwise, the second will give its value.
+     * @param padre First individual.
+     * @param madre Second individual.
+     * @param mascara boolean mask.
+     */
+    public Individuo(Individuo padre, Individuo madre, boolean [] mascara){
     cromosoma = new double[padre.size()];
     for (int i = 0; i < cromosoma.length; i++){
       if (mascara[i])
@@ -107,7 +122,14 @@ public class Individuo
     return (aux >= 0);
   }
 
-  public double impureza(double[][] ejemplos, int clases[], int n_clases) {
+    /**
+     * Returns the impurity used as fitness of each individual.
+     * @param ejemplos dataset's examples.
+     * @param clases classes considered.
+     * @param n_clases number of classes considered
+     * @return the impurity of this individual.
+     */
+    public double impureza(double[][] ejemplos, int clases[], int n_clases) {
     double imp = Double.MIN_VALUE;
     int ejemplos_ii[], ejemplos_di[];
     int n_ejemplos_i, n_ejemplos_d;
@@ -150,7 +172,11 @@ public class Individuo
     return i;
   }
 
-  public int size(){
+    /**
+     * Returns the size of the chromosome.  
+     * @return the size of the chromosome.  
+     */
+    public int size(){
     return cromosoma.length;
   }
 

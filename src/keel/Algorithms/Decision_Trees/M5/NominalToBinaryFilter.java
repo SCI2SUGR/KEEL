@@ -315,6 +315,9 @@ public class NominalToBinaryFilter {
     }
 
     /**
+     * @param instanceInfo
+     * @return 
+     * @throws java.lang.Exception
      * @deprecated use <code>setInputFormat(Instances)</code> instead.
      */
     public boolean inputFormat(M5Instances instanceInfo) throws Exception {
@@ -324,6 +327,7 @@ public class NominalToBinaryFilter {
 
 
     /**
+     * @return 
      * @deprecated use <code>getOutputFormat()</code> instead.
      */
     public final M5Instances outputFormat() {
@@ -479,6 +483,7 @@ public class NominalToBinaryFilter {
     /**
      * Method for testing filters.
      *
+     * @param filter filter to transform nominal values into binary.
      * @param options should contain the following arguments: <br>
      * -i input_file <br>
      * -o output_file <br>
@@ -644,6 +649,7 @@ public class NominalToBinaryFilter {
     /**
      * Method for testing filters ability to process multiple batches.
      *
+     * @param filter  filter to transform nominal values into binary.
      * @param options should contain the following arguments:<br>
      * -i (first) input file <br>
      * -o (first) output file <br>
@@ -848,6 +854,12 @@ public class NominalToBinaryFilter {
         }
     }
 
+    /**
+     * Store the input formats
+     * @param instanceInfo input information as Dataset.
+     * @return false
+     * @throws Exception if the information can not be extracted.
+     */
     public boolean superSetInputFormat(M5Instances instanceInfo) throws
             Exception {
 

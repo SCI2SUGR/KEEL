@@ -31,6 +31,13 @@ package keel.Algorithms.Discretizers.ExtendedChi2_Discretizer;
 
 import keel.Algorithms.Genetic_Rule_Learning.Globals.Parameters;
 
+/**
+ * <p>
+ * @author Written by Salvador García (University of Jaén - Jaén) 3/04/2009
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 	public class Interval {
 	/**
 	 * <p>
@@ -49,10 +56,11 @@ import keel.Algorithms.Genetic_Rule_Learning.Globals.Parameters;
 		 * <p>
 		 * Compute the interval ratios.
 		 * </p>
-		 * @param _attribute
-		 * @param _values
-		 * @param _begin
-		 * @param _end
+		 * @param _attribute attribute to compute the ratios
+		 * @param _values different values of the attribute
+		 * @param _begin begining index
+		 * @param _end ending index
+                 * @param classes number of instances per classes
 		 */
 		public Interval(int _attribute,int []_values,int _begin,int _end,int classes[]) {
 			attribute=_attribute;

@@ -64,6 +64,7 @@ public class Information {
      * @param description the option's description
      * @param name the option's name
      * @param numArguments the number of arguments
+     * @param synopsis the option's synopsis
      */
     public Information(String description, String name,
                        int numArguments, String synopsis) {

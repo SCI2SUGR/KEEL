@@ -33,10 +33,15 @@ import java.util.*;
 import java.io.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
+/**
+ * Parser for the package Discretizers.
+ * @author unknown
+ */
 public class ParserParameters {
 	static BufferedReader br;
 	
-	/** Creates a new instance of ParserParameters */
+	/** Creates a new instance of ParserParameters
+     * @param fileName file to parse*/
 	public static void doParse(String fileName) {
 		try {
 			br=new BufferedReader(new FileReader(fileName));

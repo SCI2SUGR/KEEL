@@ -56,6 +56,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Fuzzy_Instance_Based_Learning;
+
 /**
  * 
  * File: Util.java
@@ -67,8 +70,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Fuzzy_Instance_Based_Learning;
-
 public class Util{
 	
 	/** 
@@ -138,10 +139,7 @@ public class Util{
 	/** 
 	 * Generates a string with the contents of the instance
 	 * 
-	 * @param a Instance to print. 
-	 * 
-	 * @return A string, with the values of the instance
-	 * 
+	 * @param instance Instance to print. 
 	 */	
 	public static void printInstance(double instance[]){
 		
@@ -159,9 +157,8 @@ public class Util{
 	/** 
 	 * Generates a string with the contents of a data matrix
 	 * 
-	 * @param a Data matrix to print. 
+	 * @param data Data matrix to print. 
 	 * 
-	 * @return A string, with the values of the data matrix
 	 * 
 	 */	
 	public static void printMatrix(double data[][]){

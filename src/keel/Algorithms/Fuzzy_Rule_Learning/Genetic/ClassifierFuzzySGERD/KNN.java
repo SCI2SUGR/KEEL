@@ -57,7 +57,7 @@ public class KNN extends Metodo {
     private int k_dif;
     private boolean distanceEu;
 
-    /*Data structures*/
+    /**Data structures*/
     protected InstanceSet referencia;
 
     /*Data matrix*/

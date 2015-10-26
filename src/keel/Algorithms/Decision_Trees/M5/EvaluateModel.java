@@ -249,7 +249,15 @@ public class EvaluateModel {
                            data, numFolds);
     }
 
-
+    /**
+     * Evaluate the model M5 by executing the function evaluateModel(M5 classifier,
+                                       String[] options). 
+     * Check documentation for more information in the documentation of the function: evaluateModel(M5 classifier,
+                                       String[] options)
+     * @param classifierString classifier name.
+     * @param options the array of string containing the options
+     * @exception Exception if model could not be evaluated successfully
+     * @return a string describing the results */
     public static String evaluateModel(String classifierString,
                                        String[] options) throws Exception {
 
@@ -741,6 +749,7 @@ public class EvaluateModel {
      *
      * @param dist the supplied distribution
      * @param instance the test instance to be classified
+     * @return predition done.
      * @exception Exception if model could not be evaluated
      * successfully
      */
@@ -1209,6 +1218,7 @@ public class EvaluateModel {
      *
      * @param printComplexityStatistics if true, complexity statistics are
      * returned as well
+     * @return String summarizing details of the model and its statistics.
      */
     public String toSummaryString(boolean printComplexityStatistics) {
 
@@ -1413,6 +1423,11 @@ public class EvaluateModel {
         return text.toString();
     }
 
+    /**
+     * Returns a string with the deatails of this class.
+     * @return string with the deatails of this class.
+     * @throws Exception
+     */
     public String toClassDetailsString() throws Exception {
 
         return toClassDetailsString("=== Detailed Accuracy By Class ===\n");
@@ -1426,6 +1441,7 @@ public class EvaluateModel {
      *
      * @param title the title to prepend the stats string with
      * @return the statistics presented as a string
+     * @throws java.lang.Exception if the class is not nominal.
      */
     public String toClassDetailsString(String title) throws Exception {
 
@@ -1948,7 +1964,13 @@ public class EvaluateModel {
     }
 
 
-    /* To round to 4 decimal in a double */
+
+    /**To round to 4 decimal in a double. 
+     *
+     * @param num number to round
+     * @return rounded number.
+     */
+    
     public static double roundNum(double num) {
         double valor = 0;
 

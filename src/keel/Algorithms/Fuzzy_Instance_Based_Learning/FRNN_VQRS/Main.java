@@ -56,6 +56,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Fuzzy_Instance_Based_Learning.FRNN_VQRS;
+
 /**
  * 
  * File: Main.java
@@ -68,9 +72,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Fuzzy_Instance_Based_Learning.FRNN_VQRS;
-
 public class Main {
 	
 	//The classifier

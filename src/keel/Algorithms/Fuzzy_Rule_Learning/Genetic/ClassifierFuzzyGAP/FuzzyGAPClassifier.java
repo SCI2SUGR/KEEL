@@ -165,7 +165,7 @@ public class FuzzyGAPClassifier extends GeneticIndividualForClassification {
 * </p> 
 * @param alpha   this parameter is fixed according to {@link GenotypeFuzzyGAP}
 * @param mutationID the type of mutation operation as stated in {@link GenotypeFuzzyGAP}.
-* @throws {@link invalidOptim} if non supported mutationID
+* @throws keel.Algorithms.Shared.Exceptions.invalidMutation  if non supported mutationID
 */ 	
     public void mutation(double alpha, int mutationID) throws invalidMutation {
         g.mutation(alpha,mutationID);
@@ -185,7 +185,7 @@ public class FuzzyGAPClassifier extends GeneticIndividualForClassification {
 * @param croosoverID this value should be fixed to:
 *	OperatorIdent.GAPCRUCEGA for a genetic algorithm crossover
 *	OperatorIdent.GAPCRUCEGP for genetic programming crossover
-* @throws {@link invalidCrossover} in case of invalid crossoverID
+* @throws invalidCrossover in case of invalid crossoverID
 */ 	
     public void crossover(GeneticIndividual p2, GeneticIndividual p3, GeneticIndividual p4, int croosoverID) throws invalidCrossover {
         
@@ -217,7 +217,7 @@ public class FuzzyGAPClassifier extends GeneticIndividualForClassification {
 * @param MAXITER   an integer with the maximum number of iterations in the
 *                  local optimization loop
 * @param loOptID   the chosen local optimization method
-* @throws {@link invalidOptim}
+* @throws invalidOptim
 */ 	
 	public void localOptimization(int MAXITER, int loOptID) throws invalidOptim {
 	   throw new invalidOptim("Local optimization is not developed for the FuzzyGAPClassifier class");

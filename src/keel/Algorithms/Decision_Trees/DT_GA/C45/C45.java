@@ -118,8 +118,6 @@ public class C45
    * @param pruned indicates if the tree is going to be pruned or not
    * @param confidence confidence
    * @param instancesPerLeaf minimun number of instances per leaf
-   *
-   * @throws Exception	If the algorithm cannot be executed.
    */
   public C45(String fichTrain, boolean pruned, float confidence,
              int instancesPerLeaf) {
@@ -291,6 +289,7 @@ public class C45
    * @param itemset		The itemset to evaluate.
    *
    * @return				The index of the class index predicted.
+   * @throws java.lang.Exception if the itemset can not be evaluated.
    */
   public double evaluateItemset(Itemset itemset) throws Exception {
     Itemset classMissing = (Itemset) itemset.copy();
@@ -348,6 +347,7 @@ public class C45
   /** Returns class probabilities for an itemset.
    *
    * @param itemset		The itemset.
+   * @return class probabilities for an itemset.
    *
    * @throws Exception	If cannot compute the classification.
    */
@@ -397,6 +397,7 @@ public class C45
   /** Returns index of maximum element in a given array of doubles. First maximum is returned.
    *
    * @param doubles		The array of elements.
+   * @return index of maximum element
    *
    */
   public static int maxIndex(double[] doubles) {
@@ -459,7 +460,7 @@ public class C45
 
   /** Writes the tree and the results of the training and the test in the file.
    *
-   * @exception 	If the file cannot be written.
+     * @throws java.io.IOException If the file cannot be written.
    */
   public void printResult() throws IOException {
     long totalTime = (System.currentTimeMillis() - startTime) / 1000;
@@ -505,7 +506,6 @@ public class C45
 
   /** Evaluates the training dataset and writes the results in the file.
    *
-   * @exception 	If the file cannot be written.
    */
   public void printTrain() {
     String text = getHeader();
@@ -542,7 +542,6 @@ public class C45
 
   /** Evaluates the test dataset and writes the results in the file.
    *
-   * @exception 	If the file cannot be written.
    */
   public void printTest() {
     String text = getHeader();
@@ -578,6 +577,7 @@ public class C45
 
   /** Function to print the tree.
    *
+     * @return String representation of the tree.
    */
   public String toString() {
     return root.toString();
@@ -586,8 +586,6 @@ public class C45
   /** Main function.
    *
    * @param args 			The parameters file.
-   *
-   * @throws Exception 	If the algorithm cannot been executed properly.
    */
   public static void main(String[] args) {
     try {

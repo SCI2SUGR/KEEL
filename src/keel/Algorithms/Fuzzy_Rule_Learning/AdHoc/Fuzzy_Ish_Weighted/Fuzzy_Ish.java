@@ -49,19 +49,70 @@ public class Fuzzy_Ish {
   BaseD dataBase;
   BaseR ruleBase;
 
-  public static final int MINIMUM = 0;
-  public static final int PRODUCT = 1;
-  public static final int CF = 0;
-  public static final int PCF_IV = 1;
-  public static final int MCF = 2;
-  public static final int PCF_II = 3;
-  public static final int WINNING_RULE = 0;
-  public static final int ADDITIVE = 1;
-  public static final int NONE = 0;
-  public static final int PROPORTIONAL = 1;
-  public static final int HALF = 2;
-  public static final int YES = 0;
-  public static final int NO = 1;
+    /**
+     * Configuration flags.
+     */
+    public static final int MINIMUM = 0;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int PRODUCT = 1;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int CF = 0;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int PCF_IV = 1;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int MCF = 2;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int PCF_II = 3;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int WINNING_RULE = 0;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int ADDITIVE = 1;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int NONE = 0;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int PROPORTIONAL = 1;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int HALF = 2;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int YES = 0;
+
+    /**
+     * Configuration flags.
+     */
+    public static final int NO = 1;
 
   //We may declare here the algorithm's parameters
 

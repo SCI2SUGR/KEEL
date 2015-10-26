@@ -58,6 +58,9 @@ public class M5SparseInstance extends M5Instance {
     /** The maximum number of values that can be stored. */
     protected int m_NumAttributes;
 
+    /**
+     * Default Constructor.
+     */
     protected M5SparseInstance() {
 
     }
@@ -207,8 +210,7 @@ public class M5SparseInstance extends M5Instance {
      *
      * @param indexOfIndex the index of the attribute's index
      * @return the attribute at the given position
-     * @throws Exception
-     * @exception UnassignedDatasetException if instance doesn't have access to a
+     * @throws Exception if instance doesn't have access to a
      * dataset
      */
     public M5Attribute attributeSparse(int indexOfIndex) throws Exception {
@@ -249,6 +251,7 @@ public class M5SparseInstance extends M5Instance {
      * Tests if a specific value is "missing".
      *
      * @param attIndex the attribute's index
+     * @return True if is missing, fals otherwise.
      */
     public boolean isMissing(int attIndex) {
 
@@ -262,6 +265,7 @@ public class M5SparseInstance extends M5Instance {
      * Locates the greatest index that is not greater than the
      * given index.
      *
+     * @param index index given.
      * @return the internal index of the attribute index. Returns
      * -1 if no index with this property couldn't be found
      */
@@ -609,6 +613,7 @@ public class M5SparseInstance extends M5Instance {
 
     /**
      * Main method for testing this class.
+     * @param options main args.
      */
     public static void main(String[] options) {
 

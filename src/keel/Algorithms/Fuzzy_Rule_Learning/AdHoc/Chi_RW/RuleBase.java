@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import org.core.Files;
 
 /**
- * This class contains the representation of a Rule Set</p>
+ * This class contains the representation of a Rule Set
  *
  * @author Written by Alberto Fernández (University of Granada) 29/10/2007
  * @version 1.0

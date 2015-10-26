@@ -28,6 +28,12 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Coevolution.CIW_NN;
+
+import java.util.Arrays;
+
+
 /**
  * 
  * File: WKNN.java
@@ -39,11 +45,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Coevolution.CIW_NN;
-
-import java.util.Arrays;
-
 class WKNN{
 
 	private static double data[][];

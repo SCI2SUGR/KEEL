@@ -283,6 +283,7 @@ public class M5Instances implements Serializable {
      * the instance and the ranges of the values for
      * nominal and string attributes.
      *
+     * @param instance instance to check.
      * @return true if the instance is compatible with the dataset
      */
     public final boolean checkInstance(M5Instance instance) {
@@ -312,8 +313,7 @@ public class M5Instances implements Serializable {
      * Returns the class attribute.
      *
      * @return the class attribute
-     * @throws Exception
-     * @exception UnassignedClassException if the class is not set
+     * @throws Exception if the class is not set
      */
     public final M5Attribute classAttribute() throws Exception {
 
@@ -455,9 +455,7 @@ public class M5Instances implements Serializable {
     /**
      * Removes all instances with a missing class value
      * from the dataset.
-     * @throws Exception
-     *
-     * @exception UnassignedClassException if class is not set
+     * @throws Exception if class is not set
      */
     public final void deleteWithMissingClass() throws Exception {
 
@@ -642,8 +640,7 @@ public class M5Instances implements Serializable {
      *
      * @return the number of class labels as an integer if the class
      * attribute is nominal, 1 otherwise.
-     * @throws Exception
-     * @exception UnassignedClassException if the class is not set
+     * @throws Exception if the class is not set
      */
     public final int numClasses() throws Exception {
 
@@ -1012,8 +1009,7 @@ public class M5Instances implements Serializable {
      * stratified cross-validation can be performed).
      *
      * @param numFolds the number of folds in the cross-validation
-     * @throws Exception
-     * @exception UnassignedClassException if the class is not set
+     * @throws Exception if the class is not set
      */
     public final void stratify(int numFolds) throws Exception {
 

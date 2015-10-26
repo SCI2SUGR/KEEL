@@ -136,7 +136,7 @@ public class PittsburghClassifier extends GeneticIndividualForClassification {
 * </p> 
 * @param alpha   this parameter is fixed according to {@link GenotypePitts}
 * @param mutationID the type of mutation operation as stated in {@link GenotypePitts}.
-* @throws {@link invalidOptim} if non supported mutationID
+* @throws invalidMutation if non supported mutationID
 */ 	
     public void mutation(double alpha, int mutationID) throws invalidMutation {
         g.mutation(alpha, mutationID);
@@ -154,7 +154,7 @@ public class PittsburghClassifier extends GeneticIndividualForClassification {
 * @param p3      the first crossed {@link GeneticIndividual}
 * @param p4      the second crossed {@link GeneticIndividual}
 * @param croosoverID this value should be fixed according to {@link GenotypePitts}
-* @throws {@link invalidCrossover} in case of invalid crossoverID
+* @throws invalidCrossover in case of invalid crossoverID
 */ 	
     public void crossover(GeneticIndividual p2, GeneticIndividual p3, GeneticIndividual p4, int croosoverID) throws invalidCrossover {
         g.crossover(((PittsburghClassifier)p2).g,
@@ -184,7 +184,7 @@ public class PittsburghClassifier extends GeneticIndividualForClassification {
 * @param MAXITER   an integer with the maximum number of iterations in the
 *                  local optimization loop
 * @param loOptID   the chosen local optimization method
-* @throws {@link invalidOptim} for all local optimization method
+* @throws invalidOptim for all local optimization method
 */ 	
 	public void localOptimization(int MAXITER, int loOptID) throws invalidOptim {
 	   throw new invalidOptim("Unsupported local optimization method for the PittsburghClasifier");

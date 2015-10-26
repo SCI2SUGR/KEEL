@@ -70,6 +70,7 @@ public class Distributions {
      *
      * @param x the value
      * @param df the number of degrees of freedom
+     * @return chi-squared probability
      */
     public static double chiSquaredProbability(double x, int df) {
 
@@ -266,6 +267,7 @@ public class Distributions {
 
     /**
      * Main method for testing this class.
+     * @param ops main args.
      */
     public static void main(String[] ops) {
 

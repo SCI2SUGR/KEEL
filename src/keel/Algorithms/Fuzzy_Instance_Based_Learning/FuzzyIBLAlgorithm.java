@@ -56,6 +56,16 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Fuzzy_Instance_Based_Learning;
+
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+import keel.Dataset.*;
+
+import org.core.Files;
+
 /**
  * 
  * File: FuzzyIBLAlgorithm.java
@@ -68,15 +78,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Fuzzy_Instance_Based_Learning;
-
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
-import keel.Dataset.*;
-
-import org.core.Files;
-
 public abstract class FuzzyIBLAlgorithm {
 
 	//Files
