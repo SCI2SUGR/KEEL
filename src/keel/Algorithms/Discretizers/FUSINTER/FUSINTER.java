@@ -52,6 +52,8 @@ public class FUSINTER extends Discretizer {
 	/**
 	* Builder
 	* 
+        * @param _lambda lambda parameter for FUSINTER.
+        * @param _alpha lambda parameter for FUSINTER.
 	*/
 	public FUSINTER(double _lambda, double _alpha) {
 		lambda = _lambda;

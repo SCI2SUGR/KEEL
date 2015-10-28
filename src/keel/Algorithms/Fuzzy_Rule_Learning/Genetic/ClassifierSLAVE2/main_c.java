@@ -8,19 +8,19 @@ import org.core.Files;
 import org.core.Randomize;
 
 
-
-public class main_c {
-	
-	/**	
+/**	
 	 * <p>
 	 * Main Class of the Program
 	 * It reads the configuration file (data-set files and parameters) and launch the algorithm
 	 * </p>
 	 */
+public class main_c {
+	
+	
 	
 	static final double MISSING = -999999999;
 
-	
+	/**Default constructor. */
 	public main_c (){
 	}
 	
@@ -30,6 +30,7 @@ public class main_c {
   * It launches the algorithm
   * </p>
   * @param parameters parseParameters It contains the input files, output files and parameters.
+     * @throws java.io.IOException if the algorithm can not be executed.
   */
 	
 	public void execute(parseParameters parameters) throws IOException{

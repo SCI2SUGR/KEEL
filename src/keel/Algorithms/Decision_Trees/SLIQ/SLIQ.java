@@ -522,7 +522,7 @@ public class SLIQ extends Algorithm {
 
     /** Escribe en el archivo los resultados de entrenamiento y pruebas.
      *
-     * @exception 	Si no es posible escribir en el archivo.
+     * @exception IOException	Si no es posible escribir en el archivo.
      */
     public void printResult() throws IOException {
         long totalTime = (System.currentTimeMillis() - startTime) / 1000;

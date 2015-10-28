@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
- /** 
- * <p> 
- * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
- * @author Modified by J.R. Villar (University of Oviedo) 18/12/2008
- * @version 1.0 
- * @since JDK1.4 
- * </p> 
- */ 
+
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes;
 import java.util.Vector;
@@ -46,8 +39,6 @@ import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 
 
-
-public class GenotypeFuzzyGAP extends Genotype {
 /** 
 * <p> 
 * GenotypeFuzzyGAP is the base clase to represent the genotype when a fuzzy
@@ -57,7 +48,15 @@ public class GenotypeFuzzyGAP extends Genotype {
 * The Fuzzy model variables are characterized with {@link FuzzyPartition}s.
 * The root node is a {@link NodeRuleBase}.
 * </p> 
-*/ 
+ * <p> 
+ * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
+ * @author Modified by J.R. Villar (University of Oviedo) 18/12/2008
+ * @version 1.0 
+ * @since JDK1.4 
+ * </p> 
+ */ 
+public class GenotypeFuzzyGAP extends Genotype {
+
     // Sintactical tree is representation of an individual, 
     // so the fenotype is the same as genotype
     // Maximum height of the generated trees
@@ -168,7 +167,7 @@ public class GenotypeFuzzyGAP extends Genotype {
 * @param mutationID an int with the crossover operation to be carried out:
 *                   OperatorIdent.GAPMUTAGA for the genetic algorithm mutation
 *                   OperatorIdent.GAPMUTAGP for the genetic programming mutation
-* @throws {@link invalidMutation} if mutationID is not valid
+* @throws invalidMutation if mutationID is not valid
 */
     public void mutation(double alpha, int mutationID) throws invalidMutation {
         
@@ -250,7 +249,7 @@ public class GenotypeFuzzyGAP extends Genotype {
 * @param crossoverID an int with the crossover operation to be carried out:
 *                    OperatorIdent.GAPCRUCEGA for genetic algorithm crossover
 *                    OperatorIdent.GAPCRUCEGP for genetic programming crossover
-* @throws {@link invalidCrossover} if crossoverID is not valid
+* @throws invalidCrossover if crossoverID is not valid
 */
     public void crossover(Genotype parent, Genotype of1, Genotype of2, int crossoverID) throws invalidCrossover {
         

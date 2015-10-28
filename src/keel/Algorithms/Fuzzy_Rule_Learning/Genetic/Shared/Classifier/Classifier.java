@@ -27,7 +27,14 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier;
+
 /** 
+* <p> 
+* Classifier is the base clase for all fuzzy rule learned classifier. This class
+* is inherit by {@link FuzzyClassifier} and by {@link FuzzyFGPClassifier}.
+* </p> 
 * <p> 
 * @author Written by Luciano Sanchez (University of Oviedo) 21/01/2004 
 * @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
@@ -35,16 +42,8 @@
 * @since JDK1.4 
 * </p> 
 */ 
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier;
-
-
 public abstract class Classifier {
-/** 
-* <p> 
-* Classifier is the base clase for all fuzzy rule learned classifier. This class
-* is inherit by {@link FuzzyClassifier} and by {@link FuzzyFGPClassifier}.
-* </p> 
-*/ 
+
 
 /** 
 * <p> 
@@ -89,6 +88,7 @@ public abstract class Classifier {
     * <p> 
     * abstract method to print information useful for debugging purposes
     * </p>
+     * @return information for debugging purposes as String.
     */ 	
     public abstract String output();    
 }

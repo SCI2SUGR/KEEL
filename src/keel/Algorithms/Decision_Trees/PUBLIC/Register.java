@@ -190,6 +190,7 @@ public class Register implements Comparable <Register> {
      * Overriden function that symbolizes if the other register is equal, greater or smaller than the original
      * register with a integer as response
      *
+     * @param other_register Register object to compare with.
      * @return 0 if both registers are equal, 1 if this register is greater than the other register, -1 if 
      * this register is smaller than the other register
      *

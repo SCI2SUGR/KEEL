@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GP_COACH;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: myDataset</p>
  *
@@ -43,16 +49,22 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GP_COACH;
  * @version 1.3
  * @since JDK1.5
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
-  public static final int REAL = 0;
-  public static final int INTEGER = 1;
-  public static final int NOMINAL = 2;
+    /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
+    public static final int NOMINAL = 2;
 
   private double[][] X = null; //examples array
   private boolean[][] missing = null; //possible missing values
@@ -175,10 +187,22 @@ public class myDataset {
     return emin;
   }
 
+  /**
+     * It returns the maximum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the maximum value of the given attribute
+     */
   public double getMax(int variable) {
     return emax[variable];
   }
 
+  /**
+     * It returns the minimum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the minimum value of the given attribute
+     */
   public double getMin(int variable) {
     return emin[variable];
   }
@@ -528,26 +552,49 @@ public class myDataset {
     return average[position];
   }
 
-  public void computeInstancesPerClass() {
+    /**
+     * It computes the number of instances of the dataset match to each existing class.
+     */
+    public void computeInstancesPerClass() {
     instancesCl = new int[nClasses];
     for (int i = 0; i < this.getnData(); i++) {
       instancesCl[this.outputInteger[i]]++;
     }
   }
 
-  public int numberInstances(int clas) {
+    /**
+     * It returns the number of instances in the data set for a given class.
+     * @param clas int Given class.
+     * @return int Number of instances for the given class.
+     */
+    public int numberInstances(int clas) {
     return instancesCl[clas];
   }
 
-  public int numberValues(int attribute) {
+    /**
+     * Function to get the number of different feasible values for a given attribute 
+     * @param attribute int Given attribute
+     * @return int Number of different feasible values for a given attribute
+     */
+    public int numberValues(int attribute) {
     return Attributes.getInputAttribute(attribute).getNumNominalValues();
   }
 
-  public String getOutputValue(int intValue) {
+    /**
+     * It returns the output value (string) which matchs with a given integer value 
+     * @param intValue int Given value
+     * @return String Output value in an understanding way
+     */
+    public String getOutputValue(int intValue) {
     return Attributes.getOutputAttribute(0).getNominalValue(intValue);
   }
 
-  public int getTipo(int variable) {
+    /**
+     * It returns the type of an attribute
+     * @param variable Given attribute
+     * @return int Type of the attribute, it is an integer which corresponds to an enummerate field
+     */
+    public int getTipo(int variable) {
     if (Attributes.getAttribute(variable).getType() ==
         Attributes.getAttribute(0).INTEGER) {
       return this.INTEGER;
@@ -627,7 +674,8 @@ public class myDataset {
   
   /**
    * It returns an array with boolean values stating the missing values for an individual
-   * @return String[] an array with boolean values stating the missing values
+     * @param pos individual ID.
+   * @return boolean[] an array with boolean values stating the missing values
    */
   public boolean [] getMissing(int pos){
       return this.missing[pos];

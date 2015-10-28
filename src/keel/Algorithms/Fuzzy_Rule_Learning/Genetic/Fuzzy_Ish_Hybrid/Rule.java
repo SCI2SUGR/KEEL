@@ -29,6 +29,11 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Hybrid;
 
+
+
+import java.util.*;
+import org.core.Randomize;
+
 /**
  * <p>Title: Rule</p>
  *
@@ -43,10 +48,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Hybrid;
  * @version 1.5
  * @since JDK1.5
  */
-
-import java.util.*;
-import org.core.Randomize;
-
 public class Rule
     implements Comparable {
 

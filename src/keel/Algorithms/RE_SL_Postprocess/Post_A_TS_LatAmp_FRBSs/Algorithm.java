@@ -114,7 +114,8 @@ public class Algorithm {
 
     /**
      * It launches the algorithm
-     * @param lanzar 
+     * @param lanzar CHC cycle
+     * @param fich output file's name.
      */
     public void execute(Chc lanzar,String fich) {
         if (somethingWrong) { //We do not execute the program

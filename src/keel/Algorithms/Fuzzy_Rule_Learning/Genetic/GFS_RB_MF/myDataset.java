@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GFS_RB_MF;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,15 +46,21 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GFS_RB_MF;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
+    /**
+     * Number to represent type of variable real or double.
+     */
     public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
     public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
     public static final int NOMINAL = 2;
 
     private double[][] X = null; //examples array
@@ -172,10 +184,22 @@ public class myDataset {
         return emin;
     }
 
+    /**
+     * It returns the maximum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the maximum value of the given attribute
+     */
     public double getMax(int variable) {
         return emax[variable];
     }
 
+    /**
+     * It returns the minimum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the minimum value of the given attribute
+     */
     public double getMin(int variable) {
         return emin[variable];
     }
@@ -419,6 +443,10 @@ public class myDataset {
         return Attributes.hasRealAttributes();
     }
 
+    /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
     public boolean hasNumericalAttributes() {
         return (Attributes.hasIntegerAttributes() ||
                 Attributes.hasRealAttributes());
@@ -450,6 +478,11 @@ public class myDataset {
         return tam;
     }
 
+    /**
+     * It return the size of the data-set
+     * 
+     * @return the size of the data-set
+     */
     public int size() {
         return nData;
     }
@@ -514,6 +547,9 @@ public class myDataset {
         return average[position];
     }
 
+    /**
+     * It computes the number of instances of the dataset match to each existing class.
+     */
     public void computeInstancesPerClass() {
         instancesCl = new int[nClasses];
         for (int i = 0; i < this.getnData(); i++) {
@@ -521,18 +557,38 @@ public class myDataset {
         }
     }
 
+    /**
+     * It returns the number of instances in the data set for a given class.
+     * @param clas int Given class.
+     * @return int Number of instances for the given class.
+     */
     public int numberInstances(int clas) {
         return instancesCl[clas];
     }
 
+    /**
+     * Function to get the number of different feasible values for a given attribute 
+     * @param attribute int Given attribute
+     * @return int Number of different feasible values for a given attribute
+     */
     public int numberValues(int attribute) {
         return Attributes.getInputAttribute(attribute).getNumNominalValues();
     }
 
+    /**
+     * It returns the output value (string) which matchs with a given integer value 
+     * @param intValue int Given value
+     * @return String Output value in an understanding way
+     */
     public String getOutputValue(int intValue) {
         return Attributes.getOutputAttribute(0).getNominalValue(intValue);
     }
 
+    /**
+     * It returns the type of an attribute
+     * @param variable Given attribute
+     * @return int Type of the attribute, it is an integer which corresponds to an enummerate field
+     */
     public int getTipo(int variable) {
         if (Attributes.getAttribute(variable).getType() ==
             Attributes.getAttribute(0).INTEGER) {
@@ -550,8 +606,10 @@ public class myDataset {
     }
 
     /**
-     * Devuelve el universo de discuros de las variables de entrada y salida
-     * @return double[][] El rango minimo y maximo de cada variable
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
      */
     public double [][] devuelveRangos(){
       double [][] rangos = new double[this.getnVars()][2];
@@ -569,6 +627,10 @@ public class myDataset {
       return rangos;
     }
 
+    /**
+     * Computes the summation of the output values as real.
+     * @return the summation of the output values
+     */
     public double sumatoria(){
       double suma = 0;
       for (int i = 0; i < this.size(); i++){

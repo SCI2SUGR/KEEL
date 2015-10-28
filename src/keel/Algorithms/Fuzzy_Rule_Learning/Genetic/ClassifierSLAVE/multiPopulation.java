@@ -29,17 +29,18 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierSLAVE;
 
+
+ 
+import java.util.ArrayList;
+import org.core.Randomize;
+
 /**
- * <p>
+ * <p>It creates a multipopulation.
  * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
  * @version 1.0
  * @since JDK 1.6
  * </p>
  */
- 
-import java.util.ArrayList;
-import org.core.Randomize;
-
 public class multiPopulation {
 /**
  * <p>

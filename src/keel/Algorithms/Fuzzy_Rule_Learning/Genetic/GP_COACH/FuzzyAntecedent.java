@@ -85,7 +85,7 @@ public class FuzzyAntecedent implements Comparable {
      * 
      * @param label	Fuzzy label given to create this fuzzy antecedent
      * @param var_selected	Specified variable that uses this antecedent
-     * @param max_label	Maximum number of labels this antecedent can tolerate
+     * @param max	Maximum number of labels this antecedent can tolerate
      */
 	public FuzzyAntecedent (Fuzzy label, int var_selected, int max) {
 		max_label = max;
@@ -223,7 +223,7 @@ public class FuzzyAntecedent implements Comparable {
 	 * Change the labels associated to this fuzzy antecedent with the labels of the given
 	 * antecedent
 	 * 
-	 * @param var	antecedent whose labels are going to be assigned to this antecedent
+	 * @param var_fuzzy	antecedent whose labels are going to be assigned to this antecedent
 	 * @param data	data base containing all the information about the labels used in this
 	 * program
 	 */
@@ -245,7 +245,7 @@ public class FuzzyAntecedent implements Comparable {
 	 * Mix the labels associated to this FuzzyAntecedent with the labels associated to 
 	 * another FuzzyAntecedent
 	 * 
-	 * @param var	antecedent whose labels are going to be mixed to this antecedent
+	 * @param var_fuzzy	antecedent whose labels are going to be mixed to this antecedent
 	 */
 	public void mixLabels (FuzzyAntecedent var_fuzzy) {
 		Fuzzy label;
@@ -373,6 +373,7 @@ public class FuzzyAntecedent implements Comparable {
     /**
      * Compares this object with the specified object for order, according to the number of variable measure 
      * 
+     * @param a Object to compare with.
      * @return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
      */
     public int compareTo(Object a) {

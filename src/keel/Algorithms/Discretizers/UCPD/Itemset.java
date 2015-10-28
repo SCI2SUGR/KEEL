@@ -194,7 +194,7 @@ public class Itemset {
 	 * <p>
 	 * It sets the support of this itemset
 	 * </p>
-	 * @value sup the new support
+	 * @param sup the new support
 	 */
 	public void setSupport(double sup){
 		

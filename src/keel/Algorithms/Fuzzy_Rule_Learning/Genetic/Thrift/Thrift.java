@@ -29,6 +29,11 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Thrift;
 
+
+
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,10 +45,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Thrift;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class Thrift {
 
     myDataset train, val, test;

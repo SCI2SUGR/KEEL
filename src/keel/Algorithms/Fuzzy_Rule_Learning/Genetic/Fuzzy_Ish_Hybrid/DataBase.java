@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Hybrid;
 
+
+
+import org.core.Files;
+
 /**
  * <p>Title: DataBase</p>
  *
@@ -43,9 +47,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Hybrid;
  * @version 1.2
  * @since JDK1.5
  */
-
-import org.core.Files;
-
 public class DataBase {
   int n_variables;
   Fuzzy[][][] dataBase;

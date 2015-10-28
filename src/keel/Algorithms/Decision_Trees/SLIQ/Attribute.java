@@ -31,41 +31,41 @@ package keel.Algorithms.Decision_Trees.SLIQ;
 import java.util.*;
 
 /** 
- * Clase que representa un atributo
+ * Class to implement an attribute
  */
 public class Attribute {
-	/** Atributo continuo (real o entero). */
+	  /** Continuous attribute. */
 	public final static int CONTINUOUS = 0;
 	
-	/** Atributo discreto (conjunto de elementos). */
+	/** Discret attribute. */
 	public final static int DISCRET = 1;	
 	
-	/** Nombre del atributo.*/
+	/** The name.*/
 	private String name;					
 	
-	/** Tipo del atributo. */
+	/** The type. */
 	private int type;			
 	
-	/** Valores para atributos que son una lista. */
+	/** Values of a list attribute. */
 	private Vector values;					
 	
-	/** Menor valor para un atributo numérico. */
+	/** The minor value of a numeric attribute. */
 	private float bottom;					
 	
-	/** Mayor valor para un atributo numérico. */
+	/** The bigger value of a numeric attribute. */
 	private float top;
 	
-	/** Índice asociado al atributo. */
+	/** The index. */
 	private int index;
 	
-	/** ¿Está incluido en las entradas o salidas?. */
+	/** Is included in the inputs or outputs?. */
 	private boolean used;					
 
-  	/** Constructor para atributos continuos.
-  	 * 
-  	 * @param attributeName		Nombre del atributo.
-  	 * @param attributeIndex	Índice del atributo.
-  	 */
+  	/** Constructor for continuous attributes.
+     *
+     * @param attributeName Name of the attribute
+     * @param attributeIndex Index of the attribute
+     */
   	public Attribute(String attributeName, int attributeIndex) {
   		name = attributeName;
   		index = attributeIndex;
@@ -74,12 +74,12 @@ public class Attribute {
   		used = false;
 	}
 
-  	/** Constructor para atributos discretos.
-  	 * 
-  	 * @param attributeName		Nombre del atributo.
-  	 * @param attributeValues	Valores del atributo.
-  	 * @param attributeIndex	Índice del atributo.
-  	 */
+  	/** Constructor for discret attributes.
+     *
+     * @param attributeName		The name of the attribute.
+     * @param attributeValues	The values of the attributes.
+     * @param attributeIndex	The index of the attribute.
+     */
   	public Attribute(String attributeName, Vector attributeValues, int attributeIndex ) {
   		name = attributeName;
   		index = attributeIndex;
@@ -93,12 +93,12 @@ public class Attribute {
 		}
 	}
 
-  	/** Método para obtener el índice de un valor en una lista de valores.
-  	 * 
-  	 * @param value 	El valor.
-  	 * 
-  	 * @return			Índice que corresponde al valor.
-  	 */
+  	/** Function to get the index of a value in the list of values.
+     *
+     * @param value 	The value.
+     *
+     * @return			The index of the value.
+     */
   	public final int valueIndex(String value)  {
   		int i = 0;
   		if (!isDiscret())
@@ -118,31 +118,34 @@ public class Attribute {
   		return -1;
 	}
 
-  	/** Devuelve si el atributo es discreto o no.
-  	 * 
-  	 */
+  	/** Returns if the attribute is discret or not.
+     *
+     * @return True if the attribute is discret, False otherwise.
+     */
   	public final boolean isDiscret() {
   		return (type == DISCRET);
 	}
 
-  	/** Devuelve si el atributo es continuo o no.
-  	 * 
-  	 */
+  	/** Returns if the attribute is continuous or not.
+     *
+     * @return  True if the attribute is continuous, False otherwise.
+     */
   	public final boolean isContinuous() {
   		return (type == CONTINUOUS);
 	}
 
-  	/** Devuelve el nombre del atributo.
-  	 * 
-  	 */
+  	/** Returns the name of the attribute.
+     *
+     * @return The name of the attribute
+     */
   	public final String name() {
   		return name;
 	}
   
-   	/** Método para obtener el número de valores de un atributo discreto.
-   	 * 
-   	 * @return	El número de valores del atributo.
-   	 */
+   	/** Function to get the number of values of a discret attribute.
+     *
+     * @return	The number of values of the attribute.
+     */
   	public final int numValues() {
   		if (!isDiscret())
   			return 0;
@@ -150,10 +153,11 @@ public class Attribute {
   			return values.size();
 	}
 
-  	/** Devuelve el valor correspondiente a un índice.
-  	 * 
-  	 * @param valIndex	El índice asociado al valor.
-  	 */
+  	/** Returns the value with the given index.
+     *
+     * @param valIndex	The index of the value.
+     * @return The value with the given index
+     */
   	public final String value(int valIndex)  {
   		if (!isDiscret())
   			return "";
@@ -164,11 +168,11 @@ public class Attribute {
   		}
 	}
 
-  	/** Establece el rango de un atributo continuo.
-  	 * 
-  	 * @param minRange	Mínimo valor del rango.
-  	 * @param maxRange	Máximo valor del rango.
-  	 */ 
+  	/** Sets the range of a continuous attribute.
+     *
+     * @param minRange	The minimum value of the range.
+     * @param maxRange	The maximum value of the range.
+     */
     final void setRange(float minRange, float maxRange)  {
     	if(isDiscret()) 
     		throw new IllegalArgumentException("Solamente puede aplicarse a atributos numéricos");
@@ -178,11 +182,11 @@ public class Attribute {
     	}
   	}
 
-  	/** Establece el rango de un atributo continuo.
-  	 * 
-  	 * @param minRange	Mínimo valor del rango.
-  	 * @param maxRange	Máximo valor del rango.
-  	 */
+  	/** Sets the range of a continuous attribute.
+     *
+     * @param minRange	The minimum value of the range.
+     * @param maxRange	The maximum value of the range.
+     */
     final void setRange(int minRange, int maxRange) {
     	if(isDiscret()) 
     		throw new IllegalArgumentException("Solamente puede aplicarse a atributos numéricos");
@@ -192,9 +196,10 @@ public class Attribute {
     	}
   	}
 
-  	/** Devuelve el menor valor de un atributo numérico.
-  	 * 
-  	 */
+  	/** Returns the minor value of a continuous attribute.
+     *
+     * @return The minor value of a continuous attribute.
+     */
     public final float getMinRange() {
     	if(isDiscret()) 
     		throw new IllegalArgumentException("Solamente puede aplicarse a atributos numéricos");
@@ -202,9 +207,10 @@ public class Attribute {
     		return bottom;
   	}
 
-  	/** Devuelve el mayor valor de un atributo numérico.
-  	 * 
-  	 */
+  	/** Gets the bigger value of a continuous attribute.
+     *
+     * @return The bigger value of a continuous attribute.
+     */
     public final float getMaxRange() {
     	if(isDiscret()) 
     		throw new IllegalArgumentException("Solamente puede aplicarse a atributos numéricos");
@@ -212,22 +218,23 @@ public class Attribute {
     		return top;
   	}
     
-    /** Establece el atributo como utilizado.
-     * 
+    /** Sets the attribute as used.
+     *
      */
     public void activate() {
     	used = true;
     }
     
-    /** Devuelve true si el atributo es utilizado como entrada o salida.
-     * 
+    /** Returns true if this attribute used in output or input clause.
+     *
+     * @return true if this attribute used, false otherwise.
      */
     public boolean isActive() {
     	return used;
     }
 
-    /** Devuelve el índice del atributo.
-     * 
+    /** Returns the index of the attribute.
+     * @return index of the attribute.
      */
     public int getIndex() {
     	return index;

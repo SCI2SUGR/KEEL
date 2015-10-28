@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
- /** 
- * <p> 
- * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
- * @author Modified by J.R. Villar (University of Oviedo) 18/12/2008
- * @version 1.0 
- * @since JDK1.4 
- * </p> 
- */ 
+ 
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes;
 import java.util.Vector;
@@ -45,7 +38,6 @@ import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 
-public class GenotypePitts extends  Genotype {
 /** 
 * <p> 
 * GenotypePitts is the base clase to represent the genotype when a fuzzy
@@ -53,7 +45,15 @@ public class GenotypePitts extends  Genotype {
 * approach.
 * 
 * </p> 
-*/ 
+ * <p> 
+ * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
+ * @author Modified by J.R. Villar (University of Oviedo) 18/12/2008
+ * @version 1.0 
+ * @since JDK1.4 
+ * </p> 
+ */ 
+public class GenotypePitts extends  Genotype {
+ 
  
     //The allele for the involved rule allele
     private int[] involvedRuleAllele;
@@ -158,7 +158,7 @@ public class GenotypePitts extends  Genotype {
 * @param offspng2 the {@link Genotype} object with the second offspring
 * @param crossoverID an int with the crossover operation to be carried out:
 *                    OperatorIdent.CRUCEGENERICO for genetic algorithm crossover
-* @throws {@link invalidCrossover} if crossoverID is not valid
+* @throws  invalidCrossover if crossoverID is not valid
 */
     public void crossover(Genotype padre2, Genotype offspng1, Genotype offspng2, int crossoverID) throws invalidCrossover {
         // Rules weights: Uniform Arithmetic Crossover
@@ -204,7 +204,7 @@ public class GenotypePitts extends  Genotype {
 * @param alpha double value kept for compatibility, not used.
 * @param mutationID an int with the crossover operation to be carried out:
 *                   OperatorIdent.MUTACIONGENERICA for the genetic algorithm mutation
-* @throws {@link invalidMutation} if mutationID is not valid
+* @throws  invalidMutation if mutationID is not valid
 */
     public void mutation(double alpha, int mutationID) throws invalidMutation {
 	

@@ -45,7 +45,12 @@ public class Selectos implements Comparable{
   double probabilidad;
   int posicion;
 
-  public Selectos(double prob, int pos) {
+    /**
+     * Parameters constructor.
+     * @param prob probability given.
+     * @param pos position given.
+     */
+    public Selectos(double prob, int pos) {
     this.probabilidad = prob;
     this.posicion = pos;
   }

@@ -70,7 +70,9 @@ public class SelectedAssociation {
         throw new IllegalArgumentException("Selected tag is not valid");
     }
 
-    /** Returns true if this SelectedAssociation equals another object */
+    /** Returns true if this SelectedAssociation equals another object.
+     * @param o object to compare with.
+     * @return true if the object given is equal to this one.  */
     public boolean equals(Object o) {
         if ((o == null) || !(o.getClass().equals(this.getClass()))) {
             return false;

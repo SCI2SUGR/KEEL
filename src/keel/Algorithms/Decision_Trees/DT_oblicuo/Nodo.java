@@ -30,7 +30,7 @@
 package keel.Algorithms.Decision_Trees.DT_oblicuo;
 
 /**
- * 
+ * Tree node.
  *
  * @author Anonymous - 2011
  * @version 1.0
@@ -46,7 +46,7 @@ public class Nodo {
   int n_ejemplos, n_ejemplos_i, n_ejemplos_d, nGenerations;
 
     /**
-     *
+     * Default constructor.
      */
     public Nodo() {
 

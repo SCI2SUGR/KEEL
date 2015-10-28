@@ -27,22 +27,13 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
-* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/ 
+
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms;
 import org.core.*;
 import keel.Algorithms.Shared.Exceptions.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 
-
-public class GeneticAlgorithmSteady extends GeneticAlgorithm {
 /** 
 * <p> 
 * GeneticAlgorithmSteady is the genetic algorithm (GA) algorithm when
@@ -50,7 +41,15 @@ public class GeneticAlgorithmSteady extends GeneticAlgorithm {
 * given method is marked.
 * This class is an specification of {@link GeneticAlgorithm}.
 * </p> 
+* <p> 
+* @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
+* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
 */ 
+public class GeneticAlgorithmSteady extends GeneticAlgorithm {
+
 
     //The array of the populations for each iteration or generation
     GeneticIndividual [][] population;
@@ -185,8 +184,9 @@ public class GeneticAlgorithmSteady extends GeneticAlgorithm {
 * </p> 
 * @param MAXITER an integer with the number of iterations torun in the evolucion
 * @return the best {@link GeneticIndividual} found
-* @throws {@link invalidCrossover}, {@link invalidMutation} of {@link invalidOptim}
-*         in case of unsupported crossover, mutation or local optimization operations.
+     * @throws keel.Algorithms.Shared.Exceptions.invalidCrossover in case of unsupported crossover.
+     * @throws keel.Algorithms.Shared.Exceptions.invalidMutation in case of unsupported mutation.
+     * @throws keel.Algorithms.Shared.Exceptions.invalidOptim in case of local optimization operations..
 */ 	
     public GeneticIndividual evolve(int MAXITER) throws invalidCrossover, invalidMutation, invalidOptim {
 

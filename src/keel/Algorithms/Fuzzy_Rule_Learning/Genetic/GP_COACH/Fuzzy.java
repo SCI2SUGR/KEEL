@@ -95,6 +95,7 @@ public class Fuzzy implements Comparable {
   /**
    * Compares this object with the specified object for order, according to the number of label measure 
    * 
+     * @param a Object to compare with.
    * @return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
    */
   public int compareTo(Object a) {

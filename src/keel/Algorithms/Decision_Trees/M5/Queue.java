@@ -57,6 +57,7 @@ public class Queue extends Object implements Serializable {
 
         /**
          * Creates a queue node with the given contents
+         * @param contents contents of the queue.
          */
         public QueueNode(Object contents) {
 
@@ -66,6 +67,8 @@ public class Queue extends Object implements Serializable {
 
         /**
          * Sets the next node in the queue, and returns it.
+         * @param next node to insert in the queue.
+         * @return the node inserted.
          */
         public QueueNode next(QueueNode next) {
 
@@ -74,6 +77,7 @@ public class Queue extends Object implements Serializable {
 
         /**
          * Gets the next node in the queue.
+         * @return the next node in the queue
          */
         public QueueNode next() {
 
@@ -82,6 +86,8 @@ public class Queue extends Object implements Serializable {
 
         /**
          * Sets the contents of the node.
+         * @param contents the contents of the node to insert
+         * @return the contents of the node inserted.
          */
         public Object contents(Object contents) {
 
@@ -90,6 +96,7 @@ public class Queue extends Object implements Serializable {
 
         /**
          * Returns the contents in the node.
+         * @return the contents in the node.
          */
         public Object contents() {
 

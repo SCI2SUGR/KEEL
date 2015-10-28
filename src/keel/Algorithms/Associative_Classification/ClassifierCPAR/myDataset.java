@@ -454,7 +454,7 @@ public class myDataset {
     }
 
     /**
-     * It initializes the weights for each example to 1
+     * It initializes the weights for each example to 1.
      * 
      */
     public void iniWeight() {

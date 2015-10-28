@@ -123,19 +123,19 @@ public abstract class Algorithm
 	
     /** Evaluates the algorithm and writes the results in the file.
      * 
-     * @exception 	If the file cannot be written.
+     * @exception IOException	If the file cannot be written.
      */
 	protected abstract void printResult() throws IOException;
 	
     /** Evaluates the test dataset and writes the results in the file.
      * 
-     * @exception 	If the file cannot be written.
+     * @exception IOException	If the file cannot be written.
      */
 	protected abstract void printTest() throws IOException;
 	
     /** Evaluates the training dataset and writes the results in the file.
      * 
-     * @exception 	If the file cannot be written.
+     * @exception IOException	If the file cannot be written.
      */
 	protected abstract void printTrain() throws IOException;
 }

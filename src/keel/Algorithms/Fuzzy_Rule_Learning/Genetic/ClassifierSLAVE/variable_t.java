@@ -382,7 +382,7 @@ public class variable_t {
 
 	/**
 	 * <p>
-	 * Returns a <domain_t> object with the definition of the variable's domain
+	 * Returns a domain_t object with the definition of the variable's domain
 	 * </p>
 	 * @return domain_t A domain_t object with the definition of the variable's domain	 
 	 */

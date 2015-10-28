@@ -63,7 +63,15 @@ public class CADDDiscretizer extends Discretizer {
 		numIntervals = _nint;
 	}
 
-	protected Vector discretizeAttribute(int attribute,int []values,int begin,int end) {
+    /**
+     *
+     * @param attribute
+     * @param values
+     * @param begin
+     * @param end
+     * @return
+     */
+    protected Vector discretizeAttribute(int attribute,int []values,int begin,int end) {
 		
 		int numInt;
 		int sumaAbajo[], sumaDerecha[], total[], quanta[][];

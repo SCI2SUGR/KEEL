@@ -182,6 +182,7 @@ public class SerializedObject implements Serializable {
 
     /**
      * Test routine, reads text from stdin and measures memory usage
+     * @param args main args.
      */
     public static void main2(String[] args) {
 
@@ -238,6 +239,7 @@ public class SerializedObject implements Serializable {
     /**
      * Test routine, reads an data file from stdin and measures memory usage
      * (the data file should have long string attribute values)
+     * @param args main args.
      */
     public static void main(String[] args) {
 

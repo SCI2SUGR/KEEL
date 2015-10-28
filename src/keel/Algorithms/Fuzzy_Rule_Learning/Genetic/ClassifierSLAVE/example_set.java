@@ -29,16 +29,17 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierSLAVE;
 
+
+
+import org.core.*;
+
 /**
- * <p>
+ * <p>Encodes a set of examples (including information about if the example is covered by a rule, the coverage degree, ...).
  * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
  * @version 1.0
  * @since JDK 1.6
  * </p>
  */
-
-import org.core.*;
-
 public class example_set {
 /**
  * <p>

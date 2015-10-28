@@ -27,6 +27,13 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms;
+import org.core.*;
+import keel.Algorithms.Shared.Exceptions.*;
+import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
+
 /** 
 * <p> 
 * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
@@ -34,23 +41,15 @@
 * @version 1.0 
 * @since JDK1.4 
 * </p> 
-*/ 
-
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms;
-import org.core.*;
-import keel.Algorithms.Shared.Exceptions.*;
-import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
-
-
-public class AlgorithmGAPNiches extends GeneticAlgorithm {
-/** 
 * <p> 
 * AlgorithmGAPNiches is the genetic algorithm and programming (GAP) algorithm when
 * the steady with niches options are chosen, that is, the Steady and the Niches 
 * parameters of the given method are marked.
 * This class is an specification of {@link GeneticAlgorithm}.
 * </p> 
-*/ 
+*/
+public class AlgorithmGAPNiches extends GeneticAlgorithm {
+ 
     
     final boolean debug=false;     //This Flag indicates if trace execution is printed on the standard out or not.
     
@@ -233,8 +232,9 @@ public class AlgorithmGAPNiches extends GeneticAlgorithm {
 * </p> 
 * @param MAXITER an integer with the number of iterations torun in the evolucion
 * @return the best {@link GeneticIndividual} found
-* @throws {@link invalidCrossover}, {@link invalidMutation} of {@link invalidOptim}
-*         in case of unsupported crossover, mutation or local optimization operations.
+     * @throws keel.Algorithms.Shared.Exceptions.invalidCrossover in case of unsupported crossover.
+     * @throws keel.Algorithms.Shared.Exceptions.invalidMutation in case of unsupported mutation.
+     * @throws keel.Algorithms.Shared.Exceptions.invalidOptim in case of local optimization operations.
 */ 	
     public GeneticIndividual evolve(int MAXITER) throws invalidCrossover, invalidMutation, invalidOptim {
         

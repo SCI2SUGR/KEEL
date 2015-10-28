@@ -52,9 +52,7 @@ import java.util.Vector;
 
 import org.core.*;
 
-
-public class ModelFuzzyGP {
-	/** 
+/** 
 	* <p> 
 	* ModelFuzzyGP is intended to generate a Fuzzy Rule Based System
 	* (FRBS) model using an Genetic Programming (GP). 
@@ -74,6 +72,8 @@ public class ModelFuzzyGP {
 	* 
 	* </p> 
 	*/ 
+public class ModelFuzzyGP {
+	
 		
 	//The Randomize object used in this class
 	static Randomize rand;

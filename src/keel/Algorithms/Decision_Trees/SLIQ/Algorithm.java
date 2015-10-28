@@ -33,52 +33,52 @@ import java.io.*;
 import keel.Dataset.Attributes;
 
 /**
- * Clase base del algoritmo a implementar
+ * Abstract class of the algorithm implemented.
  */
 public abstract class Algorithm {
-	/** Nombre del archivo que contiene la información para construir el modelo. */
+	/** File's name which contains all the information needed to build the model. */
 	protected static String modelFileName = "";	 
 	
-	/** Nombre del archivo que contiene la información a usar para entrenamiento. */
+	/** Training dataset file's name. */
 	protected static String trainFileName = "";	 
 	
-	/** Nombre del archivo que contiene la información a usar para pruebas. */
+	/** Test dataset file's name. */
 	protected static String testFileName = "";	
 	
-	/** Nombre del archivo de salida del entrenamiento. */
+	/** Name of the training output file. */
 	protected static String trainOutputFileName;
 	
-	/** Nombre del archivo de salida de las pruebas. */
+	/** Name of the test output file. */
 	protected static String testOutputFileName;	
 	
-	/** Nombre del archivo de resultados. */
+	/** Results file's name. */
 	protected static String resultFileName;		
 	
-	/** Conjunto de elementos clasificado correctamente. */
+	/** Number of correctly classified example from training dataset. */
 	protected int correct = 0;					
 	
-	/** Clasificados correctamente en las pruebas. */
+	/** Number of correctly classified example from test dataset. */
 	protected int testCorrect = 0;				
 	
-	/** El dataset modelo. */
+	/** Model dataset. */
 	protected Dataset modelDataset;
 	
-	/** El dataset de entrenamiento. */
+	/** Training dataset. */
 	protected Dataset trainDataset;				
 	
-	/** El dataset de pruebas. */
+	/** Test dataset. */
 	protected Dataset testDataset;				
 	
-	/** Archivo de registro. */
+	/** Log buffer. */
 	protected static BufferedWriter log;		
 	
-	/** Momento en que se pone en marcha el algoritmo. */
+	/** Starting time of the execution. */
 	protected long startTime = System.currentTimeMillis();
 	
-	/** Método de inicialización del tokenizador.
-	 * 
-	 * @param tokenizer		El tokenizador.
-	 */
+	/** Function to initialize the stream tokenizer.
+     *
+     * @param tokenizer		The tokenizer.
+     */
  	protected void initTokenizer(StreamTokenizer tokenizer) {
  		tokenizer.resetSyntax();         
  		tokenizer.whitespaceChars( 0, ' ' );    
@@ -95,11 +95,11 @@ public abstract class Algorithm {
  	}
   	 
 
- 	/** Método para obtener el nombre de la relación y los nombres, tipos y posibles valores
-     *  de cada atributo del dataset.
-  	 * 
-  	 * @return El nombre y los atributos de la relación.
-  	 */
+ 	/** Function to get the name of the relation and the names, types and possible values of every attribute in
+     *  a dataset.
+     *
+     * @return The name and the attributes of the relation.
+     */
 	protected String getHeader() {
 		String header;		
 		header = "@relation "+Attributes.getRelationName()+"\n";
@@ -112,29 +112,29 @@ public abstract class Algorithm {
 		return header;
 	}	
 	
-	/** Método para leer las opciones del archivo de ejecución y establecer los valores de configuración.
-	 * 
-	 * @param options 		El StreamTokenizer que lee el archivo de parámetros.
-	 * 
-	 * @throws Exception	Si el formato del archivo no es correcto.
-	 */ 
+	/** Function to read the options from the execution file and assign the values to the parameters.
+     *
+     * @param options 		The StreamTokenizer that reads the parameters file.
+     *
+     * @throws Exception	If the format of the file is not correct.
+     */
 	protected abstract void setOptions(StreamTokenizer options)  throws Exception;
 	
-    /** Evalúa el algoritmo y escribe los valores en el archivo.
-     * 
-     * @exception 	Si no es posible escribir en el archivo.
+    /** Evaluates the algorithm and writes the results in the file.
+     *
+     * @throws java.io.IOException If the file cannot be written.
      */
 	protected abstract void printResult() throws IOException;
 	
-    /** Evalúa el dataset de pruebas y escribe los resultdos en un archivo.
-     * 
-     * @exception 	Si no es posible escribir en el archivo.
+    /** Evaluates the test dataset and writes the results in the file.
+     *
+     * @throws java.io.IOException If the file cannot be written.
      */
 	protected abstract void printTest() throws IOException;
 	
-    /** Evalúa el dataset de entrenamiento y escribe los resultados en el archivo.
-     * 
-     * @exception 	Si no es posible escribir en el archivo.
+    /** Evaluates the training dataset and writes the results in the file.
+     *
+     * @throws java.io.IOException If the file cannot be written.
      */
 	protected abstract void printTrain() throws IOException;
 }

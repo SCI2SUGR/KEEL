@@ -50,7 +50,10 @@ public class Opt {
 	boolean clean;
 	int max;
 	
-	public Opt(){
+    /**
+     * Dafault constructor.
+     */
+    public Opt(){
 		_value = Double.NaN;
 		count = null;
 		clean = false;

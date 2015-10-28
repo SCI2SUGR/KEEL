@@ -102,7 +102,8 @@ protected int m_KValue = 0;
 
 // private String final_classifier; 
 
-  protected int numberOfPrototypes;  // Particle size is the percentage
+ /// Particle size is the percentage 
+  protected int numberOfPrototypes;  
   protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;

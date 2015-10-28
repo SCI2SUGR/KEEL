@@ -273,6 +273,7 @@ public class fuzzy_t {
 	 * <p>
 	 * Returns a fuzzy_t object with the label
 	 * </p>
+     * @return fuzzy_t object with the label
 	 */	 
     public fuzzy_t FuzzyLabel() {
         fuzzy_t aux = new fuzzy_t(this);
@@ -335,6 +336,7 @@ public class fuzzy_t {
 	 * <p>
 	 * Returns the area of the label.
 	 * </p>
+     * @return the area of the label.
 	 */
     public double Area() {
         return ((b - a) / 2.0) + ((d - c) / 2.0) + (c - d);

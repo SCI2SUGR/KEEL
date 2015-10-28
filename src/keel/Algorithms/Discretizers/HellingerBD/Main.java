@@ -87,6 +87,7 @@ public class Main {
 	 * <p>
 	 * 	- output attribute is not nominal
 	 * </p>
+         * @param is dataset to check.
 	 */
 	public static void checkDataset(InstanceSet is){
 		

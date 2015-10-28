@@ -29,18 +29,19 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierSLAVE;
 
-/**
- * <p>
- * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
- * @version 1.0
- * @since JDK 1.6
- * </p>
- */
+
 
 import java.io.IOException;
 import java.util.*;
 import org.core.*;
 
+/**
+ * <p>It contains the implementation of the algorithm.
+ * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
+ * @version 1.0
+ * @since JDK 1.6
+ * </p>
+ */
 public class Algorithm {
 /**	
  * <p>

@@ -43,8 +43,16 @@ package keel.Algorithms.Discretizers.UCPD;
 public class Quicksort {
 	
 	// tags
-	static public final int LOWEST_FIRST = 0;
-	static public final int HIGHEST_FIRST = 1;
+
+    /**
+     * Configuration tags.
+     */
+    	static public final int LOWEST_FIRST = 0;
+
+    /**
+     * Configuration tags.
+     */
+    static public final int HIGHEST_FIRST = 1;
 	static private int option;
 	
 	// this class is used to keep values and their original position

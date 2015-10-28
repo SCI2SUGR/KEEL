@@ -27,19 +27,11 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sanchez (University of Oviedo) 21/01/2004 
-* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/ 
+
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier;
 //import keel.Algorithms.Fuzzy_Rule_Learning.Shared.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 
-public class FuzzyClassifier extends Classifier {
 /** 
 * <p> 
 * FuzzyClassifier is designed to allow a Fuzzy Classifier evolve by means of
@@ -47,7 +39,15 @@ public class FuzzyClassifier extends Classifier {
 * {@link Classifier}.
 * 
 * </p> 
+* <p> 
+* @author Written by Luciano Sanchez (University of Oviedo) 21/01/2004 
+* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
 */ 
+public class FuzzyClassifier extends Classifier {
+
 	//The rule base of the classifier
     RuleBase R;
 
@@ -109,6 +109,7 @@ public class FuzzyClassifier extends Classifier {
     * <p> 
     * This method prints information about the Rule Base useful for debugging purposes
     * </p>
+     * @return String with information about the Rule Base (No information given).
     */ 	
         public String output() {
             return ("no output available");
@@ -148,6 +149,7 @@ public class FuzzyClassifier extends Classifier {
 * <p> 
 * This method returns a {@link FuzzyRule} component.
 * </p> 
+     * @param n position of the component.
 * @return    the desired {@link FuzzyRule} component.
 */ 	
     public FuzzyRule getComponent(int n) {

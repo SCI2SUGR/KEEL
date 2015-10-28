@@ -53,8 +53,6 @@ import java.util.Vector;
 
 import org.core.*;
 
-
-public class ModelFuzzyPittsBurgh {
 /** 
 * <p> 
 * ModelFuzzyPittsBurgh is intended to generate a Fuzzy Rule Based System
@@ -76,7 +74,9 @@ public class ModelFuzzyPittsBurgh {
 * 1995
 * 
 * </p> 
-*/ 
+*/
+public class ModelFuzzyPittsBurgh {
+ 
 	
 	//The Randomize object used in this class
 	static Randomize rand;

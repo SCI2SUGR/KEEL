@@ -29,6 +29,14 @@
 
 package keel.Algorithms.Decision_Trees.C45_Binarization;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
+import java.util.Vector;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -38,31 +46,20 @@ package keel.Algorithms.Decision_Trees.C45_Binarization;
  * @author Alberto Fernández (University of Jaén - 27-09-2010)
  * @version 1.2
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
-import java.util.Vector;
-
-/**
- *
- * @author sergio
- */
 public class myDataset {
 
     /**
-     *
+     * Number to represent type of variable real or double.
      */
     public static final int REAL = Attribute.REAL;
 
     /**
-     *
+     * Number to represent type of variable integer.
      */
     public static final int INTEGER = Attribute.INTEGER;
 
     /**
-     *
+     * Number to represent type of variable nominal.
      */
     public static final int NOMINAL = Attribute.NOMINAL;
 

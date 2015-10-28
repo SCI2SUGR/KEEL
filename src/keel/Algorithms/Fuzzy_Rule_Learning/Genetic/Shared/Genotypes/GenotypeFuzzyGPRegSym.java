@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
- /** 
- * <p> 
- * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
- * @author Modified by J.R. Villar (University of Oviedo) 18/12/2008
- * @version 1.0 
- * @since JDK1.4 
- * </p> 
- */ 
+ 
 
 // If you like add a new node, you must modidy RandomTree, mutacion, cruce functions
 
@@ -48,8 +41,6 @@ import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 
-
-public class GenotypeFuzzyGPRegSym extends Genotype {
 /** 
 * <p> 
 * GenotypeFuzzyGPRegSym is the base clase to represent the genotype when a fuzzy
@@ -59,7 +50,15 @@ public class GenotypeFuzzyGPRegSym extends Genotype {
 * The Fuzzy model variables are characterized with {@link FuzzyPartition}s.
 * The root node is a {@link NodeExprHold}.
 * </p> 
-*/ 
+ * <p> 
+ * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
+ * @author Modified by J.R. Villar (University of Oviedo) 18/12/2008
+ * @version 1.0 
+ * @since JDK1.4 
+ * </p> 
+ */ 
+public class GenotypeFuzzyGPRegSym extends Genotype {
+
     // Sintactical tree is representation of an individual,
     // so the fenotype is the same as genotype    
     // Maximum height of the generated trees
@@ -176,6 +175,10 @@ public class GenotypeFuzzyGPRegSym extends Genotype {
 */
     public void rebuild(Genotype g) {};
     
+    /**
+     * Returns the number of inputs
+     * @return the number of inputs
+     */
     public int getNumInputs() {
         return nInputs;
     }
@@ -188,7 +191,7 @@ public class GenotypeFuzzyGPRegSym extends Genotype {
 * @param mutationID an int with the crossover operation to be carried out:
 *                   OperatorIdent.GAPMUTAGA for the genetic algorithm mutation
 *                   OperatorIdent.GAPMUTAGP for the genetic programming mutation
-* @throws {@link invalidMutation} if mutationID is not valid
+* @throws invalidMutation if mutationID is not valid
 */
     public void mutation(double AMPL, int mutationID) throws invalidMutation {
       // Part of one sub-tree is replaced with other one generated at random
@@ -256,7 +259,7 @@ public class GenotypeFuzzyGPRegSym extends Genotype {
 * @param crossoverID an int with the crossover operation to be carried out:
 *                    OperatorIdent.GAPCRUCEGA for genetic algorithm crossover
 *                    OperatorIdent.GAPCRUCEGP for genetic programming crossover
-* @throws {@link invalidCrossover} if crossoverID is not valid
+* @throws invalidCrossover if crossoverID is not valid
 */
     public void crossover(Genotype p2, Genotype p3, Genotype p4, int crossoverID) throws invalidCrossover {
        // Two sub-trees are swaped, avoiding raise the maximum allowed heigth

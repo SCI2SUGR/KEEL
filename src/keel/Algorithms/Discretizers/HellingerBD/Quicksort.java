@@ -43,7 +43,9 @@ package keel.Algorithms.Discretizers.HellingerBD;
 public class Quicksort {
 	
 	// tags
+        /** Configuration tag (Lowest first). */
 	static public final int LOWEST_FIRST = 0;
+        /** Configuration tag (Lowest first). */
 	static public final int HIGHEST_FIRST = 1;
 	static private int option;
 	

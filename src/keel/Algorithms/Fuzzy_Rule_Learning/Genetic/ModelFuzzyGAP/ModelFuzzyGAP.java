@@ -51,9 +51,7 @@ import java.util.Vector;
 
 import org.core.*;
 
-
-public class ModelFuzzyGAP {
-	/** 
+/** 
 	* <p> 
 	* ModelFuzzyGAP is intended to generate a Fuzzy Rule Based System
 	* (FRBS) model using an Genetic Algorithm and Programming (GAP). 
@@ -73,6 +71,8 @@ public class ModelFuzzyGAP {
 	* 
 	* </p> 
 	*/ 
+public class ModelFuzzyGAP {
+	
 		
 	//The Randomize object used in this class
 	static Randomize rand;

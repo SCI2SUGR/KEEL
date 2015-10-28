@@ -39,7 +39,7 @@ import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
  * This class implements the Fixed Frequency discretizer.
  * </p>
  *
- * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004 </p>
+ * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
  * Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
  * @version 1.1
  * @since JDK1.5

@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
- /** 
- * <p> 
- * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
- * @author Modified by J.R. Villar (University of Oviedo) 18/12/2008
- * @version 1.0
- * @since JDK1.4 
- * </p> 
- */ 
+ 
 
 // 1.- This representation doesn't evolve fuzzy partitions
 // 2.- Each weights rules is '1'
@@ -50,8 +43,6 @@ import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 
-
-public class GenotypeFuzzyGP extends Genotype {
 /** 
 * <p> 
 * GenotypeFuzzyGP is the base clase to represent the genotype when a fuzzy
@@ -61,7 +52,15 @@ public class GenotypeFuzzyGP extends Genotype {
 * The Fuzzy model variables are characterized with {@link FuzzyPartition}s.
 * The root node is a {@link NodeRuleBase}.
 * </p> 
-*/ 
+ * <p> 
+ * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
+ * @author Modified by J.R. Villar (University of Oviedo) 18/12/2008
+ * @version 1.0
+ * @since JDK1.4 
+ * </p> 
+ */ 
+public class GenotypeFuzzyGP extends Genotype {
+
     // Sintactical tree is representation of an individual,
     // so the fenotype is the same as genotype
     // Maximum height of the generated trees
@@ -163,7 +162,7 @@ public class GenotypeFuzzyGP extends Genotype {
 * @param alpha double value kept for compatibility, not used.
 * @param mutationID an int with the crossover operation to be carried out:
 *                   OperatorIdent.MUTACIONGENERICA for the genetic algorithm mutation
-* @throws {@link invalidMutation} if mutationID is not valid
+* @throws invalidMutation if mutationID is not valid
 */
     public void mutation(double alpha, int mutationID) throws invalidMutation {
 
@@ -244,7 +243,7 @@ public class GenotypeFuzzyGP extends Genotype {
 * @param p4 the {@link Genotype} object with the second offspring
 * @param crossoverID an int with the crossover operation to be carried out:
 *                    OperatorIdent.CRUCEGENERICO for genetic algorithm crossover
-* @throws {@link invalidCrossover} if crossoverID is not valid
+* @throws invalidCrossover if crossoverID is not valid
 */
     public void crossover(Genotype p2, Genotype p3, Genotype p4, int crossoverID) throws invalidCrossover {
        // Two sub-trees are swaped, avoiding raise the maximum allowed heigth

@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Salvador García (University of Jaén - Jaén) 25/03/2009
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Discretizers.ModifiedChi2_Discretizer;
 
@@ -41,6 +35,14 @@ import keel.Dataset.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 import keel.Algorithms.Discretizers.Basic.*;
 
+
+/**
+ * <p>Main class Chi2 discretizer.
+ * @author Written by Salvador García (University of Jaén - Jaén) 25/03/2009
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Main {
 /**
  * <p>

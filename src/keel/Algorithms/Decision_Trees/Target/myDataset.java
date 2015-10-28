@@ -48,9 +48,20 @@ import java.util.Vector;
  */
 public class myDataset {
 
-  public static final int REAL = 0;
-  public static final int INTEGER = 1;
-  public static final int NOMINAL = 2;
+    /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
+    public static final int NOMINAL = 2;
 
   private double[][] X = null; //examples array
   private boolean[][] missing = null; //possible missing values
@@ -172,11 +183,22 @@ public class myDataset {
   public double[] getemin() {
     return emin;
   }
-
+ /**
+     * It returns the maximum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the maximum value of the attribute
+     */    
   public double getMax(int variable) {
     return emax[variable];
   }
 
+  /**
+     * It returns the minimum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the minimum value of the attribute
+     */  
   public double getMin(int variable) {
     return emin[variable];
   }
@@ -423,7 +445,11 @@ public class myDataset {
     return Attributes.hasRealAttributes();
   }
 
-  public boolean hasNumericalAttributes() {
+    /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
+    public boolean hasNumericalAttributes() {
     return (Attributes.hasIntegerAttributes() ||
             Attributes.hasRealAttributes());
   }
@@ -454,6 +480,11 @@ public class myDataset {
     return tam;
   }
 
+   /**
+     * It returns the number of examples
+     * 
+     * @return the number of examples
+     */
   public int size() {
     return nData;
   }
@@ -518,25 +549,52 @@ public class myDataset {
     return average[position];
   }
 
-  public void computeInstancesPerClass() {
+    /**
+     * It computes the number the instances per class.
+     */
+    public void computeInstancesPerClass() {
     instancesCl = new int[nClasses];
     for (int i = 0; i < this.getnData(); i++) {
       instancesCl[this.outputInteger[i]]++;
     }
   }
 
-  public int numberInstances(int clas) {
+    /**
+     * It returns the number of instances in the dataset of the given class
+     *
+     * @param clas the index of the class
+     * @return the number of instances in the dataset of the given class
+     */
+    public int numberInstances(int clas) {
     return instancesCl[clas];
   }
 
-  public int numberValues(int attribute) {
+    /**
+     * It returns the number of different values of an attribute
+     *
+     *@param attribute the index of the attribute
+     * @return the number of different values of an attribute
+     */
+    public int numberValues(int attribute) {
     return Attributes.getInputAttribute(attribute).getNumNominalValues();
   }
 
-  public String getOutputValue(int intValue) {
+    /**
+     * It returns the name of the class of index intValue
+     *
+     * @param intValue the index of the class
+     * @return the name of the class of index intValue
+     */
+    public String getOutputValue(int intValue) {
     return Attributes.getOutputAttribute(0).getNominalValue(intValue);
   }
 
+  /**
+     * It returns the type of the attribute specified
+     *
+     * @param variable index of the attribute
+     * @return the type of the attribute specified
+     */
   public int getTipo(int variable) {
     if (Attributes.getInputAttribute(variable).getType() ==
         Attributes.getInputAttribute(0).INTEGER) {
@@ -554,9 +612,11 @@ public class myDataset {
   }
 
   /**
-   * Devuelve el universo de discuros de las variables de entrada y salida
-   * @return double[][] El rango minimo y maximo de cada variable
-   */
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
+     */
   public double[][] devuelveRangos() {
     double[][] rangos = new double[this.getnVars()][2];
     for (int i = 0; i < this.getnInputs(); i++) {
@@ -577,6 +637,11 @@ public class myDataset {
     return rangos;
   }
 
+  /**
+     * Returns the name of the attribute with the id given.
+     * @param pos attribute's id.
+     * @return name of the attribute.
+     */
   public String nombreVar(int pos) {
     if (pos < this.nInputs){
       return Attributes.getInputAttribute(pos).getName();
@@ -586,17 +651,18 @@ public class myDataset {
   }
 
   /**
-   * Devuelve el valor nominal correspondiente a la clase con valor numerico "clase"
-   * @param clase int
-   * @return String
-   */
+     * It returns the name of the class of index intValue
+     *
+     * @param clase the index of the class
+     * @return the name of the class of index intValue
+     */
   public String nombreClase(int clase) {
     return Attributes.getOutputAttribute(0).getNominalValue(clase);
   }
 
   /**
-   * Discretizacion en anchura uniforme
-   * @param intervalos int Numero de intervalos a discretizar
+   * Uniform width discretization
+   * @param intervalos int Number of intervals
    */
   public void discretize(int intervalos){
     for (int i = 0; i < nInputs; i++){
@@ -617,6 +683,11 @@ public class myDataset {
     }
   }
 
+  /**
+     * It returns the name of the attributes
+     * 
+     * @return the name of the attributes
+     */
   public String [] nombres(){
     String nombres[] = new String[nInputs];
     for (int i = 0; i < nInputs; i++){
@@ -625,22 +696,43 @@ public class myDataset {
     return nombres;
   }
 
-  public static double valorReal(int atributo, String valorNominal){
+    /**
+     * Returns a real representation of a attribute's nominal value given as argument.
+     * @param atributo Attribute given.
+     * @param valorNominal Nominal value of the attribute given.
+     * @return Returns a real representation of a attribute's nominal value.
+     */
+    public static double valorReal(int atributo, String valorNominal){
     Vector nominales = Attributes.getInputAttribute(atributo).getNominalValuesList();
     int aux = nominales.indexOf(valorNominal);
     return 1.0*aux;
   }
 
-  public static String valorNominal(int atributo, double valorReal){
+    /**
+     * Returns a nominal representation of a attribute's real value given as argument.
+     * @param atributo Attribute given.
+     * @param valorReal Real value of the attribute given.
+     * @return Returns a nominal representation of a attribute's real value.
+     */
+    public static String valorNominal(int atributo, double valorReal){
     Vector nominales = Attributes.getInputAttribute(atributo).getNominalValuesList();
     return (String)nominales.get((int)valorReal);
   }
 
-  public int totalNominales(int atributo){
+    /**
+   * It returns the number of nominal values for a given variable
+   * @param atributo variable id
+   * @return the number of nominal values for a given variable
+   */
+    public int totalNominales(int atributo){
     return Attributes.getInputAttribute(atributo).getNumNominalValues();
   }
 
-  public String claseMasFrecuente(){
+    /**
+   * It returns the most frequent class in the dataset
+   * @return the most frequent class in the dataset
+   */
+    public String claseMasFrecuente(){
     int [] clases = new int[nClasses];
     for (int i = 0; i < this.outputInteger.length; i++){
       clases[outputInteger[i]]++;
@@ -655,10 +747,11 @@ public class myDataset {
   }
 
   /**
-   * Obtiene el numero de ejemplos para la clase i-esima
-   * @param clase int codigo de clase
-   * @return int numero de ejemplos pertenencientes a dicha clase
-   */
+     * It returns the number of instances in the dataset of the given class
+     *
+     * @param clase the index of the class
+     * @return the number of instances in the dataset of the given class
+     */
   public int numEjemplos(int clase){
     int ejemplos = 0;
     for (int i = 0; i < outputInteger.length; i++){
@@ -668,11 +761,20 @@ public class myDataset {
     return ejemplos;
   }
 
-  public boolean esNominal(int atributo){
+    /**
+     * This function checks if the attribute value is nominal
+     * @param atributo attribute id
+     * @return boolean True is the value is nominal, else it returns false
+     */
+    public boolean esNominal(int atributo){
     return (this.getTipo(atributo) == this.NOMINAL);
   }
 
-  public int numCuantitativos(){
+    /**
+     * Returns number of quantitative attributes.
+     * @return number of quantitative attributes.
+     */
+    public int numCuantitativos(){
     int numero = 0;
     for (int i = 0; i < nInputs; i++){
       if (this.getTipo(i) != this.NOMINAL){

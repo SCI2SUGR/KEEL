@@ -27,24 +27,13 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
-* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/ 
+ 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms;
 import org.core.*;
 import keel.Algorithms.Shared.Exceptions.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 
 
-// Simulated Annealing in "Combining GP operators with SA search
-// 
-// 
-public class SimulatedAnnealing extends GeneticAlgorithm {
 /** 
 * <p> 
 * SimulatedAnnealing is the simulated annealing evolutionary algorithm and 
@@ -52,8 +41,16 @@ public class SimulatedAnnealing extends GeneticAlgorithm {
 * search to evolve fuzzy rule based classifiers", Sanchez, Couso, Corrales
 * Information Sciences 136 (2001).
 * This class is an specification of {@link GeneticAlgorithm}.
+* </p>
+* <p> 
+* @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
+* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
+* @version 1.0 
+* @since JDK1.4 
 * </p> 
-*/ 
+*/
+public class SimulatedAnnealing extends GeneticAlgorithm {
+
     
 	//The random number generator to be used
     static Randomize rand;
@@ -166,8 +163,8 @@ public class SimulatedAnnealing extends GeneticAlgorithm {
 * </p> 
 * @param MAXITER an integer with the number of iterations torun in the evolucion
 * @return the best {@link GeneticIndividual} found
-* @throws {@link invalidCrossover}, {@link invalidMutation} of {@link invalidOptim}
-*         in case of unsupported crossover, mutation or local optimization operations.
+     * @throws keel.Algorithms.Shared.Exceptions.invalidMutation in case of unsupported mutation.
+     * @throws keel.Algorithms.Shared.Exceptions.invalidOptim in case of local optimization operations.
 */ 	
     public GeneticIndividual evolve(int MAXITER) throws invalidMutation, invalidOptim {
         

@@ -73,6 +73,7 @@ public final class SplitInfo implements Serializable {
 
     /**
      * Makes a copy of this SplitInfo object
+     * @return copy of this SplitInfo object
      */
     public final SplitInfo copy() {
 
@@ -111,6 +112,7 @@ public final class SplitInfo implements Serializable {
     /**
      * Converts the spliting information to string
      * @param inst the instances
+     * @return String representation of the spliting information.
      */
     public final String toString(M5Instances inst) {
 

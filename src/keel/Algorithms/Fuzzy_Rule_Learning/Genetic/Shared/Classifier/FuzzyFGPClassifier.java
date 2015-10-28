@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sanchez (University of Oviedo) 21/01/2004 
-* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/ 
+
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Classifier;
 //import keel.Algorithms.Fuzzy_Rule_Learning.Shared.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node.*;
@@ -42,15 +35,22 @@ import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 
 
-public class FuzzyFGPClassifier extends Classifier {
 /** 
 * <p> 
 * FuzzyFGPClassifier is designed to allow a Fuzzy Classifier evolve by means of
 * an Genetic Programming (GP). This class is a specification of the class
 * {@link Classifier}.
 * 
+* </p>
+* <p> 
+* @author Written by Luciano Sanchez (University of Oviedo) 21/01/2004 
+* @author Modified by J.R. Villar (University of Oviedo) 19/12/2008
+* @version 1.0 
+* @since JDK1.4 
 * </p> 
 */ 
+public class FuzzyFGPClassifier extends Classifier {
+ 
 	//The rule base of the classifier
     NodeRuleBase R; 
  	//The class variable or output variable partitions or classes
@@ -103,6 +103,7 @@ public class FuzzyFGPClassifier extends Classifier {
     * <p> 
     * This method prints information about the Rule Base useful for debugging purposes
     * </p>
+     * @return String with information about the Rule Base.
     */
         public String output() {
             return R.output();

@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Hybrid;
 
+
+import java.util.*;
+import org.core.*;
+
 /**
  * <p>Title: Populatoin</p>
  *
@@ -43,9 +47,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Hybrid;
  * @version 1.2
  * @since JDK1.5
  */
-import java.util.*;
-import org.core.*;
-
 public class Population {
     ArrayList<RuleBase> population;
     ArrayList<RuleBase> offspring;

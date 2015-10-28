@@ -34,30 +34,30 @@ import keel.Dataset.*;
 
 
 /** 
- * Clase que representa un dataset o conjunto de datos
+ * Class to implement the dataset
  */
 
 public class Dataset {
-	/** Nombre del dataset. */
+	/** The name of the dataset. */
 	protected String name = "";
 	
-	/** Atributos que contiene. */
+	/** The attributes. */
 	protected Vector attributes;
 	
-	/** Conjuntos de elementos. */
+	/** The itemsets. */
 	protected Vector itemsets;	
 		
-	/** indice del atributo de clase. */
+	/** The index of the class attribute. */
 	protected int classIndex;
 	
 	/** Keel dataset InstanceSet **/
 	protected InstanceSet IS;
 
-	/** MÃ©todo encargado de leer el archivo .dat que contiene la informaciÃ³n del dataset.
-	 * 
-	 * @param name 		El objeto lector en el que serÃ¡n leidos los conjuntos de elementos.
-	 * @param train     Indica si el fichero es de entrenamiento
-	 */
+	/** Function to read the .dat file that contains the information of the dataset.
+     *
+     * @param name 		The reader object where the itemsets are readed.
+     * @param train     The flag if the file is for training
+     */
   	public Dataset(String name, boolean train) {
  		try {
             // Crea el conjunto de instancias
@@ -83,21 +83,21 @@ public class Dataset {
   		getItemsetFull();  		  		
 	}
  
-	/** Constructor que obtiene una copia de un dataset.
-	 * 
-	 * @param dataset		El dataset a copiar.
-	 */
+	/** Constructor that copies another dataset.
+     *
+     * @param dataset		The dataset to be copied.
+     */
   	public Dataset(Dataset dataset) {
   		this(dataset, dataset.numItemsets());
   		dataset.copyItemsets(0, this, dataset.numItemsets());
 	}
   	
   	
-  	/** Constructor para copiar todos los atributos de otro dataset excepto los conjuntos de elementos.
-  	 * 
-  	 * @param dataset		El dataset a copiar.
-  	 * @param capacity		El numero de conjuntos de elementos.
-  	 */
+  	/** Constructor to copy all the attributes of another dataset but the itemsets.
+     *
+     * @param dataset		The dataset to be copied.
+     * @param capacity		The number of itemsets.
+     */
   	public Dataset(Dataset dataset, int capacity)  {
   		if(capacity < 0) 
   			capacity = 0;
@@ -108,9 +108,9 @@ public class Dataset {
   		itemsets = new Vector(capacity);
 	}
 
-  	/** MÃ©todo para almacenar la cabecera de un archivo de datos.
-  	 * 
-   	 */ 
+  	/** Function to stores header of a data file.
+     *
+     */
   	private void readHeader()  {
   		String attributeName;
   		Vector attributeValues;
@@ -163,11 +163,12 @@ public class Dataset {
 
   	
   	
-  	/** MÃ©todo para leer un conjunto de elementos y aÃ±adirlo al dataset
-  	 * 
-  	 * @return					True si se ha leÃ­do el conjunto de elementos sin problemas.
-  	 * 
-  	 */
+  	/** Function to read an itemset and appends it to the dataset.
+     *
+     *
+     * @return					True if the itemset was readed succesfully.
+     *
+     */
   	private boolean getItemsetFull()  {
    		// rellenar el conjunto de elementos
   		for(int j=0; j<IS.getNumInstances(); j++) {
@@ -212,10 +213,10 @@ public class Dataset {
   		return true;
 	}
 
-	/** MÃ©todo para agregar un conjunto de elementos al dataset.
-	 * 
-	 * @param itemset	El conjunto de elementos a aÃ±adir.
-	 */
+	/** Function to add one itemset.
+     *
+     * @param itemset	The itemset to add to the dataset.
+     */
   	public final void addItemset(Itemset itemset) {
   		Itemset newItemset = (Itemset)itemset.copy();
  		
@@ -223,25 +224,28 @@ public class Dataset {
   		itemsets.addElement(newItemset);  		  	  		
 	}
 
-  	/** Devuelve el nombre del dataset.
-  	 * 
-  	 */
+  	/** Returns the name of the dataset.
+     *
+     * @return the name of the dataset.
+     */
   	public String getName() {
   		return name;
   	}
 
-  	/** Devuelve el atributo correspondiente a un cierto Ã­ndice.
-  	 * 
-  	 * @param index		El Ã­ndice del atributo.
-  	 */
+  	/** Returns the attribute that has the index.
+     *
+     * @param index		The index of the attribute.
+     * @return the attribute that has the index.
+     */
 	public final Attribute getAttribute(int index) {
   		return (Attribute) attributes.elementAt(index);
 	}
 
-  	/** Devuelve el atributo que tiene un cierto nombre.
-  	 * 
-  	 * @param name	El nombre del atributo.
-  	 */
+  	/** Returns the attribute that has the name.
+     *
+     * @param name	The name of the attribute.
+     * @return the attribute that has the name.
+     */
 	public final Attribute getAttribute(String name) {
   		for(int i=0; i<attributes.size(); i++)
   			if(((Attribute)attributes.elementAt(i)).name().equalsIgnoreCase(name)) 
@@ -250,9 +254,10 @@ public class Dataset {
   		return null;
 	}
 
-	/** Devuelve el atributo de clase.
-	 * 
-	 */
+	/** Returns class attribute.
+     *
+     * @return class attribute.
+     */
 	public final Attribute getClassAttribute() {
   		if(classIndex < 0) {
   			System.err.println("indice de clase incorrecto:"+classIndex);
@@ -261,23 +266,26 @@ public class Dataset {
   		return getAttribute(classIndex);
 	}
 
-	/** Devuelve el Ã­ndice del atributo de clase.
-	 * 
-	 */
+	/** Returns the index of the class attribute.
+     *
+     * @return the index of the class attribute.
+     */
 	public final int getClassIndex() {
   		return classIndex;
 	}
  
-	/** Devuelve el nÃºmero de atributos.
-	 * 
-	 */
+	/** Returns the number of attributes.
+     *
+     * @return the number of attributes.
+     */
 	public final int numAttributes() {
   		return attributes.size();
 	}
 
-	/** Devuelve el nÃºmero de posibles valores del atributo de clase.
-	 * 
-	 */
+	/** Returns the number of possible values of the class attribute.
+     *
+     * @return the number of possible values of the class attribute.
+     */
 	public final int numClasses() {
   		if (classIndex < 0) {
   			System.err.println("indice de clase erroneo:"+classIndex);
@@ -286,25 +294,26 @@ public class Dataset {
    		return getClassAttribute().numValues();
 	}
 
-	/** Devuelve el nÃºmero de conjuntos de datos.
-	 * 
-	 */
+	/** Returns the number of itemsets.
+     *
+     * @return the number of itemsets.
+     */
 	public final int numItemsets() {
   		return itemsets.size();
 	}
 
-  	/** MÃ©todo que elimina el conjunto de elementos correspondiente a un Ã­ndice.
-  	 * 
-  	 * @param index 	indice del conjunto de datos a borrar.
-  	 */
+  	/** Function to remove an itemset at the given position.
+     *
+     * @param index 	The index of the itemset to be deleted.
+     */
   	public final void delete(int index) {
   		itemsets.removeElementAt(index);
 	}
 
-	/** MÃ©todo para eliminar todos los atributos en los que falten valores.
-	 * 
-	 * @param attIndex		indice del atributo.
-	 */
+	 /** Function to remove all the attributes with missing value in the given attribute.
+     *
+     * @param attIndex		The index of the attribute.
+     */
   	public final void deleteWithMissing(int attIndex) {
   		Vector newItemsets = new Vector(numItemsets());
 
@@ -315,10 +324,10 @@ public class Dataset {
   		itemsets = newItemsets;
 	}
 
-	/** Enumera todos los atributos.
-	 * 
-	 * @return Una enumeraciÃ³n que contiene todos los atributos.
-	 */
+	/** Enumerates all the attributes.
+     *
+     * @return An enumeration that contains all the attributes.
+     */
 	public Enumeration enumerateAttributes()  {
   		Vector help = new Vector(attributes.size() - 1);
   		
@@ -329,45 +338,47 @@ public class Dataset {
   		return help.elements();
 	}
 
-	/** Enumera todos los conjuntos de elementos.
-	 * 
-	 * @return	Una enumeraciÃ³n que contiene todos los conjutnos de elementos.
-	 */
+	/** Enumerates all the itemsets.
+     *
+     * @return	An enumeration that contains all the itemsets.
+     */
 	public final Enumeration enumerateItemsets() {
   		return itemsets.elements();
 	}
 
-	/** Devuelve el conjunto de elementos de una cierta posiciÃ³n.
-	 * 
-	 * @param index	El Ã­ndice del conjunto de elementos.
-	 */	
+	/** Returns the itemset at the given position.
+     *
+     * @param index	The index of the itemset.
+     * @return the itemset at the given position.
+     */
 	public final Itemset itemset(int index) {
   		return (Itemset)itemsets.elementAt(index);
 	}
 
-	/** Devuelve el Ãºltimo conjunto de elementos.
-	 * 
-	 */
+	/** Returns the last itemset.
+     *
+     * @return the last itemset.
+     */
 	public final Itemset lastItemset() {
   		return (Itemset)itemsets.lastElement();
 	}
 
 	
-  	/** MÃ©todo para agregar las instancias de un conjunto al final de otro.
-  	 * 
-  	 * @param from	El Ã­ndice del primero a copiar.
-  	 * @param dest	El dataset al que van a copiarse los conjuntos de elementos.
-  	 * @param num	NÃºmero de conjuntos de elementos a copiar.
-  	 */
+  	/** Function to add  the instances of one set to the end of another.
+     *
+     * @param from	The index of the first that is going to be copied.
+     * @param dest	The dataset where the itemsets are going to be copied.
+     * @param num	The number of itemsets to copy.
+     */
   	private void copyItemsets(int from, Dataset dest, int num) {
 	    for(int i=0; i<num; i++)
 	      dest.addItemset(itemset(from + i));
     }
 
-  	/** MÃ©todo que calcula la suma de los pesos de todos los conjuntos de elementos.
-  	 * 
-  	 * @return	El peso de todos los conjuntos de elementos.
-  	 */
+  	/** Function to compute the sum of all the weights of the itemsets.
+     *
+     * @return	The weight of all the itemsets.
+     */
   	public final double sumOfWeights() {
   		double sum = 0;
 
@@ -377,10 +388,10 @@ public class Dataset {
   		return sum;
 	}
 
-  	/** MÃ©todo para ordenar el dataset en base a un atributo dado.
-  	 * 
-  	 * @param attIndex	Ã­ndice del atributo.
-  	 */
+  	/** Function to sort the dataset based on an attribute.
+     *
+     * @param attIndex	The index of the attribute.
+     */
   	public final void sort(int attIndex)  {
   		int i, j;
 
@@ -403,12 +414,12 @@ public class Dataset {
   		quickSort(attIndex, 0, j);
 	}
 
-  	/** MÃ©todo que implementa el algoritmo quicksort.
-  	 * 
-  	 * @param attIndex		indice del atributo utilizado para ordenar.
-  	 * @param lo0			Valor mÃ­nimo.
-  	 * @param hi0			Valor mÃ¡ximo.
-  	 */
+  	/** Function to implementate the quicksort method.
+     *
+     * @param attIndex		The index of the attribute used to sort the itemsets.
+     * @param lo0			Minimum value.
+     * @param hi0			Maximum value.
+     */
   	private void quickSort(int attIndex, int lo0, int hi0) {
   		int lo = lo0, hi = hi0;
   		double mid, midPlus, midMinus;
@@ -452,11 +463,11 @@ public class Dataset {
   		}
 	}
 
-  	/** Function to swap two itemsets. 
-  	 * 
-  	 * @param i		The first itemset.
-  	 * @param j		The second itemset.
-  	 */
+  	/** Function to swap two itemsets.
+     *
+     * @param i		The first itemset.
+     * @param j		The second itemset.
+     */
   	private void swap(int i, int j) {
         Object help = itemsets.elementAt( i );
 

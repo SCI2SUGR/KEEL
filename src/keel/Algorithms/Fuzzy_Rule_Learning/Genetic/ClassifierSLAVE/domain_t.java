@@ -386,6 +386,7 @@ public class domain_t {
 	 * Prints as a String the name of the label number i in the domain
 	 * </p>
 	 * @param i int The label's number
+         * @return the name of the label number i as String
 	 */
     public String SPrint(int i) {
         return label[i].SPrint();
@@ -420,9 +421,9 @@ public class domain_t {
 
 	/**
 	 * <p>
-	 * Returns if the <domain_t> object is formed by labels with all their domain been crisp.
+	 * Returns if the domain_t object is formed by labels with all their domain been crisp.
 	 * </p>
-	 * @return boolean TRUE the <domain_t> object is formed by labels with all their domain been crisp. FALSE otherwise
+	 * @return boolean TRUE the domain_t object is formed by labels with all their domain been crisp. FALSE otherwise
 	 */
     public boolean IsDiscrete() {
         int i = 0;
@@ -436,9 +437,9 @@ public class domain_t {
 
 	/**
 	 * <p>
-	 * Returns if the <domain_t> object is formed by labels with all their domain been intervals.
+	 * Returns if the domain_t object is formed by labels with all their domain been intervals.
 	 * </p>
-	 * @return boolean TRUE if the <domain_t> object is formed by labels with all their domain been intervals. FALSE otherwise
+	 * @return boolean TRUE if the domain_t object is formed by labels with all their domain been intervals. FALSE otherwise
 	 */
     public boolean IsInterval() {
         int i = 0;
@@ -452,9 +453,9 @@ public class domain_t {
 
 	/**
 	 * <p>
-	 * Returns if the <domain_t> object is formed by labels with all their domain been fuzzy.
+	 * Returns if the domain_t object is formed by labels with all their domain been fuzzy.
 	 * </p>
-	 * @return boolean TRUE if the <domain_t> object is formed by labels with all their domain been fuzzy. FALSE otherwise
+	 * @return boolean TRUE if the domain_t object is formed by labels with all their domain been fuzzy. FALSE otherwise
 	 */
     public boolean IsFuzzy() {
         int i = 0;
@@ -480,9 +481,9 @@ public class domain_t {
 
 	/**
 	 * <p>
-	 * Returns an <domain_t> object with the domain
+	 * Returns an domain_t object with the domain
 	 * </p>
-	 * @return domain_t A <domain_t> object with the domain
+	 * @return domain_t A domain_t object with the domain
 	 */
     public domain_t Domain() {
         domain_t aux = new domain_t(this);

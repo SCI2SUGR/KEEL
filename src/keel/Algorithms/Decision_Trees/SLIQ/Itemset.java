@@ -31,24 +31,24 @@ package keel.Algorithms.Decision_Trees.SLIQ;
 
 
 /**
- * Clase para manipular un conjunto de elementos
+ * Class to manipulate an itemset.
  */
 public class Itemset {
-	/** Conjunto de datos al que tiene acceso el conjunto de elementos. */
+	/** The dataset which the itemset has access to. */
 	protected Dataset dataset;		
 	
-	/** Valores del conjunto de elementos. */
+	/** Values of the itemset. */
     protected double[] values;	
     
-    /** El peso del conjunto de elementos. */
+    /** The weight of the itemset. */
     protected double weight;		
 
-    /** Constante que representa valores que faltan. */
+    /** Constant that represents the missing value. */
     protected final static double MISSING_VALUE = Double.NaN;	
 
-    /** Constructor que copia los valores y el peso
-     * 
-     * @param itemset		El conjunto de elementos a copiar
+    /** Constructor that copies the values and the weight.
+     *
+     * @param itemset		The itemset to copy.
      */
     public Itemset(Itemset itemset) {
         values = itemset.values;
@@ -56,10 +56,10 @@ public class Itemset {
         dataset = null;
     }
 
-    /** Constructor que establece los valores y el peso.
-     * 
-     * @param w					El peso.
-     * @param attributeValues	Los valores.
+    /** Constructor that sets the values and the weight.
+     *
+     * @param w					The weight.
+     * @param attributeValues	The values.
      */
     public Itemset(double w, double[] attributeValues) {
         values = attributeValues;
@@ -67,8 +67,9 @@ public class Itemset {
         dataset = null;
     }
 
-    /** Devuelve el indice del atributo de clase.
-     * 
+    /** Returns the index of the class attribute.
+     *
+     * @return the index of the class attribute.
      */
     public int classIndex() {
         if (dataset == null) {
@@ -78,9 +79,9 @@ public class Itemset {
         	return dataset.getClassIndex();
     }
 
-    /** Metodo que comprueba si falta el atributo de clase.
-     * 
-     * @return	True si falta el valor del atributo de clase.
+    /** Function to test if the class attribute is missing.
+     *
+     * @return	True if the value of the class attribute is missing.
      */
     public boolean classIsMissing() {
         if(classIndex() < 0) 
@@ -89,8 +90,9 @@ public class Itemset {
         	return isMissing(classIndex());
     }
 
-    /** Devuelve el indice del valor de la clase
+    /** Returns the index of the value of the class.
      *
+     * @return the index of the value of the class.
      */
     public double getClassValue() {
         if(classIndex() < 0) {
@@ -100,8 +102,9 @@ public class Itemset {
         	return getValue(classIndex());
     }
 
-    /** Devuelve el numero de valores de clase.
-     * 
+    /** Returns the number of class values.
+     *
+     * @return the number of class values.
      */
     public int numClasses() {
     	if(dataset == null) {
@@ -111,8 +114,10 @@ public class Itemset {
         	return dataset.numClasses();
     }
 
-    /** Devuelve el atributo correspondiente al indice indicado.
-     * 
+    /** Returns the attribute with the given index.
+     *
+     * @param index index of the attribute asked.
+     * @return the attribute with the given index.
      */
     public Attribute getAttribute(int index) {
         if(dataset == null) {
@@ -122,10 +127,10 @@ public class Itemset {
         	return dataset.getAttribute(index);
     }
 
-    /** Metodo para establecer un valor.
-     * 
-     * @param index		indice del atributo.
-     * @param value		Valor.
+    /** Function to set a value.
+     *
+     * @param index		The index of the attribute.
+     * @param value		The value.
      */
     public void setValue(int index, double value) {
         double[] help = new double[values.length];
@@ -135,48 +140,52 @@ public class Itemset {
         values[index] = value;
     }
 
-    /** Devuelve el valor del atributo indicado.
-     * 
+    /** Returns the value of the given attribute.
+     *
+     * @param index Index of the attribute asked.
+     * @return the value of the given attribute.
      */
     public double getValue(int index) {
         return values[index];
     }
 
-    /** Metodo para establecer el peso.
-     * 
-     * @param w		Peso.
+    /** Function to set the weight.
+     *
+     * @param w		The weight.
      */
     public final void setWeight(double w) {
         weight = w;
     }
 
-    /** Devuelve el peso asociado.
-     * 
+   /** Returns the itemset weight.
+     *
+     * @return the itemset weight.
      */
     public final double getWeight() {
         return weight;
     }
     
-    /** Devuelve el dataset asociado.
-     * 
+    /** Returns the dataset of this itemset.
+     *
+     * @return the dataset of this itemset.
      */
     public Dataset getDataset() {
         return dataset;
     }
 
-    /** Metodo para establecer el dataset.
-     * 
-     * @param data	El dataset.
+    /** Function to set the dataset.
+     *
+     * @param data	The dataset.
      */
     public final void setDataset(Dataset data) {
         dataset = data;
     }
 
-    /** Metodo para comprobar si falta un valor.
-     * 
-     * @param index	indice del atributo a comprobar.
-     * 
-     * @return		True si falta el valor del atributo. False en caso contrario.
+    /** Function to check if a value is missing.
+     *
+     * @param index	The index of the attribute to check.
+     *
+     * @return		True is the value of the attribute is missing. False otherwise.
      */
     public boolean isMissing(int index) {
         if(Double.isNaN(values[index])) 
@@ -185,25 +194,26 @@ public class Itemset {
         	return false;
     }
 
-    /** Metodo para comprobar si falta un valor dado.
-     * 
-     * @param val	El valor a comprobar.
-     * 
-     * @return		True si dicho valor falta. False en caso contrario.
+    /** Function to check if the value given is the missing value.
+     *
+     * @param val	The value to check.
+     *
+     * @return		True if the value given is the missing value. False otherwise.
      */
     public static boolean isMissingValue(double val) {
         return Double.isNaN( val );
     }
 
-    /** Devuelve el valor que falta.
-     * 
+    /** Returns the missing value.
+     *
+     * @return the missing value.
      */
     public static double getMissingValue()  {
         return MISSING_VALUE;
     }
 
-    /** Metodo para establecer como ausente el valor de clase.
-     * 
+    /** Function to set as missing the class value.
+     *
      */
     public void setClassMissing() {
         if (classIndex() < 0)
@@ -212,17 +222,17 @@ public class Itemset {
         	setMissing(classIndex());
     }
 
-    /** Metodo para establecer un valor como ausente.
-     * 
-     * @param index	El indice del atributo.
+    /** Function to set a value as missing.
+     *
+     * @param index	The index of the attribute.
      */
     public final void setMissing(int index) {
         setValue( index, MISSING_VALUE );
     }
     
-    /** Metodo para copiar un conjunto de elementos.
-     * 
-     * @return	El conjunto de elementos creado.
+    /** Function to copy an itemset.
+     *
+     * @return	The itemset created.
      */
     public Object copy() {
         Itemset result = new Itemset(this);
@@ -231,8 +241,9 @@ public class Itemset {
         return result;
     }
     
-    /** Metodo para imprimir el conjunto de elementos.
-     * 
+    /** Function to print the itemset.
+     *
+     * @return String representation of the itemset.
      */
     @Override
     public String toString()

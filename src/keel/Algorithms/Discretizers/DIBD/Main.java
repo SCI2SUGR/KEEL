@@ -41,7 +41,6 @@ import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
  * @author Written by Jose A. Saez (University of Granada), 21/12/2009
  * @version 1.0
  * @since JDK1.6
- * </p>
  */
 public class Main {
 
@@ -91,10 +90,11 @@ public class Main {
 
 	/**
 	 * <p>
-	 * It checks the dataset and exits the program if there are errors:</p>
-	 * 	- more than one output</p>
+	 * It checks the dataset and exits the program if there are errors:
+	 * 	- more than one output
 	 * 	- output attribute is not nominal
 	 * </p>
+         * @param is dataset to check.
 	 */
 	public static void checkDataset(InstanceSet is){
 		

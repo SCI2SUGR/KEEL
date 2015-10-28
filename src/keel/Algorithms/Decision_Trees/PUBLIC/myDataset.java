@@ -465,6 +465,7 @@ public class myDataset {
     /** 
      * Gets all the information about ith the attribute that the dataset uses
      *
+     * @param i attribute's index.
      * @return all the information about the ith attribute that the dataset uses
      */
     public myAttribute getAttributeI (int i) {
@@ -524,6 +525,7 @@ public class myDataset {
     /** 
      * Gets the number of instances of each class that there are in the dataset
      *
+     * @param i class index asked for.
      * @return the number of instances of each class that there are in the dataset
      */
     public int getNInstancesI (int i) {
@@ -543,6 +545,8 @@ public class myDataset {
     /** 
      * Gets the value of the jth attribute for the ith instance in the dataset
      *
+     * @param i instance's index.
+     * @param j attribute's index.
      * @return the value of the jth attribute for the ith instance in the dataset
      */
     public double getDataI (int i, int j) {
@@ -552,6 +556,7 @@ public class myDataset {
     /** 
      * Gets the value of the ith instance in the dataset
      *
+     * @param i instance's index.
      * @return the value of the ith instance in the dataset
      */
     public double [] getDataItem (int i) {
@@ -572,6 +577,7 @@ public class myDataset {
     /** 
      * Gets the class of each instance in the dataset
      *
+     * @param i instance's index.
      * @return the class of each instance in the dataset
      */
     public int getOutputI (int i) {

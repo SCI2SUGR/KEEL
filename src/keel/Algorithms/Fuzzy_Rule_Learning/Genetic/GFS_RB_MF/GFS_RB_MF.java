@@ -29,6 +29,11 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GFS_RB_MF;
 
+
+
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,10 +45,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GFS_RB_MF;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class GFS_RB_MF {
 
   myDataset train, val, test;

@@ -69,7 +69,7 @@ public abstract class Genotype {
 * @param ofs2 the {@link Genotype} object with the second offspring
 * @param crossoverID an int with the crossover operation to be carried out. Refer to inherited classes for
 *                    specification of the valid values
-* @throws {@link invalidCrossover} if crossoverID is not valid
+* @throws invalidCrossover if crossoverID is not valid
 */
     public abstract void crossover(Genotype parent, Genotype ofs1, Genotype ofs2, int crossoverID) throws invalidCrossover;
 /**
@@ -86,7 +86,7 @@ public abstract class Genotype {
 *                    specification of the valid values.
 * @param mutationID an int with the mutation operation to be carried out. Refer to inherited classes for
 *                    specification of the valid values.
-* @throws {@link invalidMutation} if mutationID is not valid
+* @throws invalidMutation if mutationID is not valid
 */
     public abstract void mutation(double alpha, int mutationID) throws invalidMutation;
 /**
@@ -106,6 +106,7 @@ public abstract class Genotype {
 * <p>
 * abstract method for determining if the given {@link Genotype} is similar to current one.
 * </p>
+     * @param g the {@link Genotype} to compare with.
 * @return true if both {@link Genotype} are similar, otherwise it returns in false.
 */
     public abstract boolean isRelated(Genotype g);

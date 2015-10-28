@@ -49,6 +49,7 @@ public class HDD extends Discretizer {
 	
 	/**
 	* Builder
+     * @param _coefficient R coefficient used by HDD discretizer.
 	*/
 	public HDD (double _coefficient) {
 		R = _coefficient;
