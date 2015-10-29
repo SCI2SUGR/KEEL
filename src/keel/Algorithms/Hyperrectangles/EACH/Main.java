@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Rosa Venzala (University of Granada) 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Hyperrectangles.EACH;
 
@@ -46,6 +39,14 @@ import keel.Dataset.*;
 import java.util.Arrays;
 
 
+/**
+ * <p>Main class of the Each algorithm.
+ * @author Written by Rosa Venzala (University of Granada) 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class Main {
 /**
  * <p>
@@ -63,7 +64,9 @@ public class Main {
     private double delta;
     private int second_chance;
 
-
+    /**
+     * Default constructor.
+     */
     public Main() {
     }
 

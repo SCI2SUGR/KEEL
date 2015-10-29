@@ -44,8 +44,15 @@ package keel.Algorithms.Genetic_Rule_Learning.OIGA;
  */
 public class AttributeCR implements Comparable{
 	
-	public int attribute;
-	public double CR;
+    /**
+     * Attribute ID.
+     */
+    public int attribute;
+
+    /**
+     * Classification rate.
+     */
+    public double CR;
 	
 	/**
 	 * <p>

@@ -199,6 +199,11 @@ public class OpenDataset {
 
     }
     
+    /**
+     * Returns the class of a given element.
+     * @param element element's index.
+     * @return the class of a given element.
+     */
     public int getClassAt (int element) {
     	int c = (int)IS.getInstance(element).getOutputRealValues(0);
     	

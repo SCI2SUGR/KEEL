@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
- * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.UCS;
 
@@ -44,7 +37,16 @@ import java.util.*;
 
 
 
-
+/**
+ * <p> This is the main class of the genetic algorithm. It has an object of
+ * crossover and selection, that can take different selection and crossover
+ * models.
+ * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class GA {
 /**
  * <p>
@@ -160,7 +162,8 @@ public class GA {
  * @param parent2 is the second parent.
  * @param child1 is the first child.
  * @param child2 is the second child.
- * @param actionMutated2 indicates if the action has been mutated
+ * @param actionMutated1 indicates if the action 1 has been mutated
+ * @param actionMutated2 indicates if the action 2 has been mutated
  * @param envState is the environmental state.
  */
 

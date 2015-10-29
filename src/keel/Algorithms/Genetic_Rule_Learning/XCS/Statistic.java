@@ -43,7 +43,27 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>This class is used to show and configurate all the possible statistics.
+ * In the normal mode, it will generate four statistic output files: The
+ * INC file that contains the incremental results of the execution. The TRN
+ * and the TST file, that have the final result statistic of the a train o
+ * a test execution. And finally, it generates the PLT (population) file,
+ * that contains all the resulting classifiers of the execution. The
+ * statistics that will be written on that files are: iterations, number of
+ * good classifications, number of bad classifications, number of not
+ * covered classifications, total number of examples, percentage of correct
+ * classification of the covered examples, percentage of correct
+ * classifications of the whole number of examples, number of macro
+ * classifiers of the population, percentage of the optimal population that
+ * has been reached already, the percentage of generalitzation and the
+ * number of micro classifiers of the population.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class Statistic {
 /**
  * <p>

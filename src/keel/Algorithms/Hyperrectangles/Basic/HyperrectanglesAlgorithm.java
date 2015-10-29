@@ -27,6 +27,19 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Hyperrectangles.Basic;
+
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+import keel.Dataset.InstanceSet;
+
+import org.core.Files;
+
 /**
  *
  * File: HyperrectanglesAlgorithm.java
@@ -43,79 +56,201 @@
  * @since JDK1.5
  *
  */
-package keel.Algorithms.Hyperrectangles.Basic;
-
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-import keel.Dataset.InstanceSet;
-
-import org.core.Files;
-
 public abstract class HyperrectanglesAlgorithm {
 
 	//Files
 
+	/**
+     * Output files names
+     */
+    
 	protected String outFile[];
-	protected String testFile;
-	protected String trainFile;
-	protected String referenceFile;
+
+    /**
+     * Test file name
+     */
+    protected String testFile;
+
+    /**
+     * Train file name
+     */
+    protected String trainFile;
+
+    /**
+     * Reference file name
+     */
+    protected String referenceFile;
 	
 	//Instance Sets
 	
+	/**
+     * Training dataset
+     */
+    	
 	protected InstanceSet train;
-	protected InstanceSet test;
-	protected InstanceSet reference;
+
+    /**
+     * Test dataset
+     */
+    protected InstanceSet test;
+
+    /**
+     * Reference dataset
+     */
+    protected InstanceSet reference;
 	
-	protected Instance temp;	
+    /**
+     * Temporal instance.
+     */
+    protected Instance temp;	
 	
 	//Data
 	
+	/**
+     * Number of input attributes
+     */
+    	
 	protected int inputAtt;
-	protected Attribute[] inputs;
-	protected Attribute output;
-	protected boolean[] nulls;
+
+    /**
+     * Inputs attributes
+     */
+    protected Attribute[] inputs;
+
+    /**
+     * Output attribute
+     */
+    protected Attribute output;
+
+    /**
+     * Missing values of a instance
+     */
+    protected boolean[] nulls;
 	
-	protected double trainData[][];
-	protected int trainOutput[];
-	protected double testData[][];
-	protected int testOutput[];
-	protected double referenceData[][];
-	protected int referenceOutput[];
-	protected String relation;
+    /**
+     * Training input data.
+     */
+    protected double trainData[][];
+
+    /**
+     * Training output data.
+     */
+    protected int trainOutput[];
+
+    /**
+     * Test input data.
+     */
+    protected double testData[][];
+
+    /**
+     * Test output data.
+     */
+    protected int testOutput[];
+
+    /**
+     * Reference input data.
+     */
+    protected double referenceData[][];
+
+    /**
+     * Reference output data.
+     */
+    protected int referenceOutput[];
+
+    /**
+     * Relation string.
+     */
+    protected String relation;
 	
-	protected int nClasses;
-	protected int nInstances[];
+    /**
+     * Number of classes.
+     */
+    protected int nClasses;
+
+    /**
+     * Number of instances of each classes.
+     */
+    protected int nInstances[];
 	
-	//Timing
+    /**
+     * Initial time.
+     */
+    protected long initialTime;
 	
-	protected long initialTime;
+    /**
+     * Generation model time.
+     */
+    protected double modelTime;
+
+    /**
+     * Training prediction time.
+     */
+    protected double trainingTime;
+
+    /**
+     * Test prediction time.
+     */
+    protected double testTime;
 	
-	protected double modelTime;
-	protected double trainingTime;
-	protected double testTime;
-	
-	//Naming
-	
+	/**
+     *Naming.
+     */
+    	
 	protected String name;
+
 	
-	//Random seed
-	
+    /**
+     *Random seed.
+     */
+    	
 	protected long seed;
 	
 	//Results
-	protected int confMatrix[][];
-	protected int unclassified;
-	protected int realClass[][];
-	protected int prediction[][];
-	protected int trainConfMatrix[][];
-	protected int trainUnclassified;
-	protected int trainRealClass[][];
-	protected int trainPrediction[][];
-	protected String ruleSetText;
+
+    /**
+     * Confusion matrix for test
+     */
+    	protected int confMatrix[][];
+
+    /**
+     * number of instances unclassified for test
+     */
+    protected int unclassified;
+
+    /**
+     * real classes values for test
+     */
+    protected int realClass[][];
+
+    /**
+     * predictions for test
+     */
+    protected int prediction[][];
+
+    /**
+     * Confusion matrix for training
+     */
+    protected int trainConfMatrix[][];
+
+    /**
+     * number of instances unclassified for training
+     */
+    protected int trainUnclassified;
+
+    /**
+     * real classes values for training
+     */
+    protected int trainRealClass[][];
+
+    /**
+     * Predictions for training
+     */
+    protected int trainPrediction[][];
+
+    /**
+     * Rules set text
+     */
+    protected String ruleSetText;
 	
 	/** 
 	 * Read the configuration and data files, and process it.
@@ -274,6 +409,7 @@ public abstract class HyperrectanglesAlgorithm {
 	
 	/** 
 	 * This function builds the data matrix for training data and normalizes inputs values
+     * @throws keel.Algorithms.Hyperrectangles.Basic.DataException if the data cant be read correctly
 	 */	
 	protected void normalizeTrain() throws DataException {
 
@@ -348,6 +484,7 @@ public abstract class HyperrectanglesAlgorithm {
 
 	/** 
 	 * This function builds the data matrix for test data and normalizes inputs values
+     * @throws keel.Algorithms.Hyperrectangles.Basic.DataException if the data cant be read correctly
 	 */	
 	protected void normalizeTest() throws DataException {
 
@@ -423,6 +560,7 @@ public abstract class HyperrectanglesAlgorithm {
 	
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+     * @throws keel.Algorithms.Hyperrectangles.Basic.DataException if the data cant be read correctly
 	 */	
 	protected void normalizeReference() throws DataException {
 

@@ -181,7 +181,8 @@ public class Corte {
     }
 
     /**
-     *
+     * Returns the object Corte (Cut) as a String
+     * @return a String representatio of this object.
      */
     public String toString() {
         String s = "";

@@ -35,7 +35,7 @@ import java.util.Vector;
 /**
  * <p>
  * Representation of a disjuction of rules with a common consecuent.
- * It may be represented as: <b>if (rule1 || rule2) then output=consecuent<\b>
+ * It may be represented as: if (rule1 || rule2) then output=consecuent
  * </p>
  * 
  * <p>

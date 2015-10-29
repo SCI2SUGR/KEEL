@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Genetic_Rule_Learning.CORE;
+
 /**
  * <p>
  * @author Written by Julián Luengo Martín 08/02/2007
@@ -34,8 +37,6 @@
  * @since JDK 1.5
  * </p>
  */
-package keel.Algorithms.Genetic_Rule_Learning.CORE;
-
 public class Main {
 
 	/**

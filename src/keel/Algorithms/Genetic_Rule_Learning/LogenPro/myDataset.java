@@ -30,7 +30,7 @@
 package keel.Algorithms.Genetic_Rule_Learning.LogenPro;
 
 /**
- * <p>
+ * <p>It contains the methods to read a Classification/Regression Dataset.
  * @author Written by Alberto Fernández (University of Granada) 01/01/2007
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
  * @version 1.0
@@ -50,8 +50,19 @@ public class myDataset {
  * </p>
  */	
 
+    /**
+     * Number to represent type of variable real or double.
+     */
     public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
     public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
     public static final int NOMINAL = 2;
 
     private double[][] X = null; //examples array
@@ -626,7 +637,7 @@ public class myDataset {
      * It returns the nominal value for the class in the position "intValue"
      * </p>   
      * @param intValue int class id (position of the class)          
-     * Return String the nominal value for the class in the position "intValue"            
+     * @return String the nominal value for the class in the position "intValue"            
      */      
     public String getOutputValue(int intValue) {
         return Attributes.getOutputAttribute(0).getNominalValue(intValue);
@@ -637,7 +648,7 @@ public class myDataset {
      * It returns the type for the attribute "variable"
      * </p>    
      * @param variable int attribute id (position of the attribute)           
-     * Return int 1 if "variable" is an integer attribute; 0 if "variable" is a real attribute;
+     * @return int 1 if "variable" is an integer attribute; 0 if "variable" is a real attribute;
      * 2 if "variable" is a nominal attribute; 0 (real) by default; 
      */         
     public int getType(int variable) {
@@ -661,7 +672,7 @@ public class myDataset {
      * It returns an array showing if the value of each attribute for the instance "pos" is missing (TRUE) or not (FALSE)
      * </p>        
      * @param pos int Instance id         
-     * Return bolean[] an array showing if the value of each attribute for the instance "pos" is missing (TRUE) or not (FALSE)     
+     * @return bolean[] an array showing if the value of each attribute for the instance "pos" is missing (TRUE) or not (FALSE)     
      */       
     public boolean[] getMissing(int pos) {
         return this.missing[pos];
@@ -672,7 +683,7 @@ public class myDataset {
      * It returns the name of the atribute in position "pos"
      * </p>    
      * @param pos int Variable id         
-     * Return String the name of the atribute in position "pos"      
+     * @return String the name of the atribute in position "pos"      
      */         
     public String nameVar(int pos) {
         return Attributes.getInputAttribute(pos).getName();

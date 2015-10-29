@@ -29,6 +29,15 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.olexGA;
 
+/**
+ * Class to implement the results given by the algorithm olexGA
+ * 
+* <p>
+* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
+*</p>
+*/
 public class OlexResult {
 	
 	

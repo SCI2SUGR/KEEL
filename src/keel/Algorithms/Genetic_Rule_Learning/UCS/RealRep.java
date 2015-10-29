@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
- * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.UCS;
 
@@ -43,7 +36,15 @@ import java.lang.*;
 import java.io.*;
 
 
-
+/**
+ * <p>This class implements the Lower-Upper Bound Representation, i.e., an attribute is represented by
+ * [l_i, u_i]. If some operator modifies the interval limits so that l_i > u_i, then, both bounds are swapped.
+ * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class RealRep implements Attribute{
 /**
  * <p>

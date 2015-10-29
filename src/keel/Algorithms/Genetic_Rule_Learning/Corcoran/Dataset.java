@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.Corcoran;
 
+
+
+import java.io.*;
+import keel.Dataset.*;
+import java.util.Arrays;
+
 /**
  * <p>Title: Data-set</p>
  * <p>Description: It contains the methods for reading the training and test files</p>
@@ -36,11 +42,6 @@ package keel.Algorithms.Genetic_Rule_Learning.Corcoran;
  * @version 1.0
  * @since JDK1.4
  */
-
-import java.io.*;
-import keel.Dataset.*;
-import java.util.Arrays;
-
 public class Dataset {
 
     private double[][] X = null;
@@ -129,11 +130,11 @@ public class Dataset {
     }
 
     /**
-     * Comprueba si un atributo está "perdido" o no
-     * @param i int Número de ejemplo
-     * @param j int Número de atributo
-     * @return boolean True si falta, False en otro caso
-     */
+   * This function checks if the attribute value is missing
+   * @param i int Example id
+   * @param j int Variable id
+   * @return boolean True is the value is missing, else it returns false
+   */
     public boolean isMissing(int i, int j) {
         // True is the value is missing (0 in the table)
         return missing[i][j];

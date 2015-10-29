@@ -27,13 +27,6 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Cordoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
 
 package keel.Algorithms.ImbalancedClassification.CSMethods.C45CS;
 
@@ -41,6 +34,9 @@ import java.util.*;
 
 /**
  * Class to implement an attribute
+ * @author Written by Cristobal Romero (Universidad de Cordoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
  */
 public class Attribute {
     /** Continuous attribute. */
@@ -72,6 +68,8 @@ public class Attribute {
 
     /** Constructor for continuous attributes.
      *
+     * @param attributeName attribute name.
+     * @param attributeIndex attribute index.
      */
     public Attribute(String attributeName, int attributeIndex) {
         name = attributeName;
@@ -130,6 +128,7 @@ public class Attribute {
 
     /** Returns if the attribute is discret or not.
      *
+     * @return True if the attribute is discret 
      */
     public final boolean isDiscret() {
         return (type == DISCRET);
@@ -137,6 +136,7 @@ public class Attribute {
 
     /** Returns if the attribute is continuous or not.
      *
+     * @return True if the attribute is continuous
      */
     public final boolean isContinuous() {
         return (type == CONTINUOUS);
@@ -144,6 +144,7 @@ public class Attribute {
 
     /** Returns the name of the attribute.
      *
+     * @return the name of the attribute.
      */
     public final String name() {
         return name;
@@ -164,6 +165,7 @@ public class Attribute {
     /** Returns the value with the given index.
      *
      * @param valIndex	The index of the value.
+     * @return  the value with the given index.
      */
     public final String value(int valIndex) {
         if (!isDiscret()) {
@@ -207,6 +209,7 @@ public class Attribute {
 
     /** Returns the minor value of a continuous attribute.
      *
+     * @return  the minor value of a continuous attribute.
      */
     public final float getMinRange() {
         if (isDiscret()) {
@@ -219,6 +222,7 @@ public class Attribute {
 
     /** Gets the bigger value of a continuous attribute.
      *
+     * @return the bigger value of a continuous attribute.
      */
     public final float getMaxRange() {
         if (isDiscret()) {
@@ -238,6 +242,7 @@ public class Attribute {
 
     /** Returns true if this attribute used in output or input clause.
      *
+     * @return  true if this attribute used in output or input clause.
      */
     public boolean isActive() {
         return used;

@@ -27,6 +27,14 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Hyperrectangles.INNER;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+import keel.Dataset.Attribute;
+
 /**
  *
  * File: Rule.java
@@ -38,13 +46,6 @@
  * @since JDK1.5
  *
  */
-package keel.Algorithms.Hyperrectangles.INNER;
-
-import java.util.Arrays;
-import java.util.Comparator;
-
-import keel.Dataset.Attribute;
-
 public class Rule implements Comparator{
 	
 	private static int problemSize;   //attributes of the problem
@@ -588,6 +589,7 @@ public class Rule implements Comparator{
 	/**
 	* Computes the impurity level of a rule, by considering only those instances which are not already covered by other rules
 	*
+     * @param ruleset other rules to cosider.
 	* @return Impurity level
 	*/	
 	public double getSpecialImpurityLevel(Rule ruleset[]){
@@ -681,6 +683,7 @@ public class Rule implements Comparator{
 
 	/**
 	* Returns the impurity level of a rule
+     * @return the impurity level of a rule
 	*/
 	public double getImpurityLevel(){
 		

@@ -43,7 +43,14 @@ import java.lang.*;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * <p>This is the typical example for a single step problem, the parity problem.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class PAREnvironment extends SSEnvironment {
 /**
  * <p>
@@ -295,6 +302,7 @@ public class PAREnvironment extends SSEnvironment {
  * <p>
  * It returns the new Example of a single step file environment.
  * </p>
+     * @return the new Example of a single step file environment.
  */ 
     public double[] getSequentialState(){return null;}
     
@@ -303,6 +311,7 @@ public class PAREnvironment extends SSEnvironment {
  * It returns the number of examples of the database. It is only
  * used in file environments. 
  * </p>
+     * @return the number of examples of the database.
  */    
     public int getNumberOfExamples(){return 0;}
     
@@ -311,6 +320,7 @@ public class PAREnvironment extends SSEnvironment {
  * It deletes the examples of the database that match with the 
  * classifier given as a parameter. It is only used in the file environment. 
  * </p>
+     * @param cl classifier given
  */    
     public void deleteMatchedExamples(Classifier cl){}
 

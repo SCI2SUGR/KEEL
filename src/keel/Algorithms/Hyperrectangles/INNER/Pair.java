@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Hyperrectangles.INNER;
+
 /**
  *
  * File: Pair.java
@@ -38,8 +41,6 @@
  * @since JDK1.5
  *
  */
-package keel.Algorithms.Hyperrectangles.INNER;
-
 public class Pair implements Comparable{
 	
 	private int ruleA;       //first rule

@@ -29,19 +29,20 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.LogenPro;
 
+
+ 
+import java.util.StringTokenizer;
+import java.util.ArrayList;
+import org.core.Files;
+
 /**
- * <p>
+ * <p>It reads the configuration file (data-set files and parameters)
  * @author Written by Alberto Fernández (University of Granada) 01/01/2007
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
  * @version 1.0
  * @since JDK 1.6
  * </p>
  */
- 
-import java.util.StringTokenizer;
-import java.util.ArrayList;
-import org.core.Files;
-
 public class parseParameters {
 /**	
  * <p>

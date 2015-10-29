@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.ImbalancedClassification.CSMethods.C_SVMCost;
+
 /**
  * <p>
  * File: Main.java
@@ -40,9 +43,6 @@
  * @since JDK 1.5
  * </p>
  */
-package keel.Algorithms.ImbalancedClassification.CSMethods.C_SVMCost;
-
-
 public class Main {
     
     /** 

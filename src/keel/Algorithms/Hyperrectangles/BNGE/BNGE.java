@@ -27,6 +27,18 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Hyperrectangles.BNGE;
+
+import java.util.StringTokenizer;
+
+import org.core.*;
+
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Algorithms.Hyperrectangles.Basic.HyperrectanglesAlgorithm;
+
 /**
  *
  * File: BNGE.java
@@ -43,17 +55,6 @@
  * @since JDK1.5
  *
  */
-
-package keel.Algorithms.Hyperrectangles.BNGE;
-
-import java.util.StringTokenizer;
-
-import org.core.*;
-
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Algorithms.Hyperrectangles.Basic.HyperrectanglesAlgorithm;
-
 public class BNGE extends HyperrectanglesAlgorithm{
 	
 	Rule ruleset[];

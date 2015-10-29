@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Salvador Garcia (University of JaÃ©n) 6/06/2009
-* @version 0.1
-* @since JDK1.5
-* </p>
-*/
+
 
 package keel.Algorithms.Hyperrectangles.EHS_CHC;
 
@@ -44,6 +38,14 @@ import keel.Algorithms.Preprocess.Basic.*;
 import keel.Dataset.*;
 
 import org.core.*;
+
+/**EHS_CHC algorithm.
+* <p>
+* @author Written by Salvador Garcia (University of JaÃ©n) 6/06/2009
+* @version 0.1
+* @since JDK1.5
+* </p>
+*/
 
 public class EHS_CHC extends Metodo {
 
@@ -81,7 +83,11 @@ public class EHS_CHC extends Metodo {
 	double realTest[][];
 	double realReferencia[][];
 
-	public EHS_CHC(String ficheroScript) {
+    /**
+     *
+     * @param ficheroScript
+     */
+    public EHS_CHC(String ficheroScript) {
 
 		/* Read of the script file */
 		leerConfiguracion(ficheroScript);

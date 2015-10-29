@@ -27,10 +27,6 @@
   
 **********************************************************************/
 
-/*
- * Created on 12-feb-2005
- *
- */
 package keel.Algorithms.Genetic_Rule_Learning.Hider;
 
 import java.io.FileNotFoundException;
@@ -39,8 +35,14 @@ import java.io.IOException;
 
 /**
  * @author Sebas
+ *  Created on 12-feb-2005
  */
 public final class Main {
+
+    /**
+     * Main function for the algorithm Hider.
+     * @param args main args. parameters file should be passed.
+     */
     public static void main(String[] args) {
         if (args.length != 1) {
             System.err.println("Error. Only a parameter is needed.");

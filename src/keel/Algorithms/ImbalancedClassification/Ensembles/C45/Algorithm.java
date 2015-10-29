@@ -33,6 +33,15 @@ import java.io.*;
 
 import keel.Dataset.Attributes;
 
+/**
+* The abstract class to be implemented by C45 based algorithms
+* 
+* <p>
+* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
+*</p>
+*/
 public abstract class Algorithm {
     /** The name of the file that contains the information to build the model. */
     protected static String modelFileName = "";

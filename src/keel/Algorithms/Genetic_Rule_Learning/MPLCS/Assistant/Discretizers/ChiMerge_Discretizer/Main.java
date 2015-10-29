@@ -44,7 +44,7 @@ import java.util.*;
 import keel.Dataset.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Globals.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Discretizers.Basic.*;
-
+/** Main class for algorithm MPLCS. */
 public class Main {
 	
 	/** Creates a new instance of Main */

@@ -31,8 +31,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
 
 
 /** 
-* <p>
-* <pre> 
 * Represents an alpha-cut for any type of fuzzy number (triangular, trapezoidal and singleton).
 *  
 * An alpha cut is defined as:
@@ -71,8 +69,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
 * Detailed in:
 * 
 * Zadeh, L. Fuzzy logic, IEEE Computer, 1:83, (1988)
-* <pre>
-* </p>
+
 *  
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 23/01/2004

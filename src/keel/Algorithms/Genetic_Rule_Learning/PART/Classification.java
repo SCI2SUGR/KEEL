@@ -173,8 +173,6 @@ public class Classification{
    *
    * @param source The dataset that contains all the itemsets.
    * @param attIndex The index of the attribute with possible unknown values.
-   *
-   * @throws Exception
    */
   public final void addWithUnknownValue( MyDataset source, int attIndex )
   {
@@ -223,8 +221,6 @@ public class Classification{
    * @param source The source of the data.
    * @param start The index of the first itemset to add.
    * @param end The index of the first itemset that will not be added.
-   *
-   * @throws Exception
    */
   public final void addRange( int valueIndex, MyDataset source, int start, int end )
   {

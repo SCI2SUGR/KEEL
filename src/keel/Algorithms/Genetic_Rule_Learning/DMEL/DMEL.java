@@ -29,6 +29,13 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.DMEL;
 
+
+
+import java.io.IOException;
+import java.util.*;
+
+import org.core.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,12 +47,6 @@ package keel.Algorithms.Genetic_Rule_Learning.DMEL;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import java.util.*;
-
-import org.core.*;
-
 public class DMEL {
 
     myDataset train, val, test;

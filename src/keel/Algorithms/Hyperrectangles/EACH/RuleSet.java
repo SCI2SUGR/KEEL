@@ -27,20 +27,21 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Hyperrectangles.EACH;
+
+import java.util.*;
+
 /**
- * <p>
+ * <p>Set of rules.
+ * Defines a set of rules or complex
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Hyperrectangles.EACH;
-
-import java.util.*;
-
-
 public class RuleSet {
 /**
  * <p>
@@ -139,6 +140,7 @@ public class RuleSet {
      * <p>
      * Prints on the screen the set of rules
      * </p>
+     * @param nominal nominal value of the rule.
      */
     public void print(int nominal) {
         for (int i = 0; i < rules.size(); i++) {
@@ -154,6 +156,7 @@ public class RuleSet {
      * <p>
      * Prints on a string the set of rules
      * </p>
+     * @param numValues number of values.
      * @return A strign that stores the set of rules
      */
     public String printString(int []numValues) {

@@ -101,10 +101,18 @@ public class Rule {
 		clase = campo.nextToken();
 	}
 
+        /**
+     * Includes a selector given as an argument into the list of antecedents.
+     * @param s Selector given.
+     */
 	public void incluyeSelector(Selector s) {
 		antecedent.add(s);
 	}
 
+        /**
+     * Returns the rule as a String
+     * @return String representation of the rule.
+     */
 	public String printString() {
 		String cadena = new String("");
 		cadena += "IF ";
@@ -116,6 +124,10 @@ public class Rule {
 		return cadena;
 	}
 
+        /**
+     * Returns the rule as a String (float representation of covers instances).
+     * @return String representation of the rule.
+     */
 	public String printStringF() {
 		String cadena = new String("");
 		cadena += "IF ";
@@ -148,11 +160,19 @@ public class Rule {
 		r.codigoRule = codigoRule;
 		return r;
 	}
-
-	public int covered(){
+        
+/**
+     * Returns the instances covered by the rule.
+     * @return instances covered by the rule.
+     */
+    public int covered(){
 		return nCubiertos;
 	}
 
+    /**
+     * Returns the instances covered by the rule and are correctly classified.
+     * @return instances covered by the rule.
+     */
 	public int positiveCovered(){
 		return nCubiertosOK;
 	}
@@ -209,10 +229,19 @@ public class Rule {
 		return cubierto;
 	}
 
+        /**
+     * Returns the number of selectors in the rule.
+     * @return Number of selectors in the rule.
+     */
 	public int size(){
 		return antecedent.size();
 	}
 
+        /**
+     * Checks if an attribute given as a argument is considered in the rule.
+     * @param att attribute given to check.
+     * @return True if it is considered, False otherwise.
+     */
 	public boolean contieneAtributo(int att){
 		boolean contiene = false;
 		for (int i = 0; i < antecedent.size() && !contiene; i++){

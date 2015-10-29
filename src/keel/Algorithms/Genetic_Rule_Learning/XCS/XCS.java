@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
 import  keel.Algorithms.Genetic_Rule_Learning.XCS.KeelParser.Config;
@@ -44,6 +37,56 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
+/**
+ * <p>
+ * This is the main class of the XCS. 
+ *
+ * The input parameters to run the aplication are:
+ *
+ * IN THE TRAIN MODE:
+ *         java XCS  train  type_of_problem  configuration_file [descriptorFile]*  [examplesFile]*
+ *
+ * 		.The configuration_file is the file that contains all the initial values for XCS parameters, 
+ * 		and it has to be parsed by the application.
+ *
+ * 		.The type_of_problem parameter indicates the problem to be executed. For each type 
+ *		of problem, an environment has to be implemented. 
+ * 
+ * 		.The []* parameters are only necessary in single step file problems. In the descriptor file, 
+ * 		the type of attributes are specified, while all the examples are in the examples file.
+ *
+ * IN THE TEST MODE:
+ *         java XCS  test input_file type_of_problem  configuration_file  [descriptorFile]*  [examplesFile]*          
+ * 		
+ *		. The input_file is the file where the classifiers of a train execution have been stored. So, first of
+ *		all, the aplication will read all the classifiers in the file, and then will start the test execution.		
+ *
+ *
+ * IN THE REDUCTION MODE:
+ *	   java XCS reduction input_rules_file configuration_file
+ *
+ *		In case of being a reduction, the rules are read from a file, and the reduction chosen in the 
+ * 		configuration file is made.
+ *
+ * 		. The input_rules_file is the file that contains the input rules that have to be reduced.
+ *
+ *		. The configuration_file is the file that contains all the inital values for XCS parameters, 
+ *		and it has to be parsed by the application.
+ *
+ * </p>
+ * <p>
+ * This class contains the XCS itself. It has the population, the prediction array, and the test, train 
+ * and reduction environments, and objects of statistics and reduction classes. It is highly configurable, 
+ * so, using a configuration file, usally with the extension ".kcf" (keel configuration), almost any possible
+ * configuration can be defined.
+ * </p>
+ * <p>
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class XCS {
 /**
  * <p>
@@ -171,8 +214,10 @@ public class XCS {
  */
     private String typeOfRun = null;
 
-
-  public void run (){ 	
+    /**
+     * Execute the algorithm XCS
+     */
+    public void run (){ 	
     long iTime = System.currentTimeMillis();
     if (typeOfRun.equals("train")){ // Train run
         startTrainXCS();
@@ -455,7 +500,7 @@ public class XCS {
  * set (0) or testing with the train set (1)
  * @param globalResults contains the addition of all classified, not classified and correct 
  * and wrong classified examples of the exploit executions in the train.
- * </p>
+     * @param writeExpOut true if it is wanted to write out the experiment.
  */
 
   public void doOneTestExperiment(Environment tEnv, int typeOfTest,int [] globalResults, boolean writeExpOut){
@@ -549,6 +594,8 @@ public class XCS {
  * Performs one single step exploit. It only chooses the best prediction 
  * from the prediction array (it is not stochastic)
  * </p>
+     * @param tEnv is the environment to do the test. It can be the same or different from 
+ * the train environment. 
  * @param envState is the new example that has to be classified. 
  * @param acTime is the current time stamp of the system. It's used to 
  * decide if the GA has to be applied, and to create new classifiers. 
@@ -556,6 +603,7 @@ public class XCS {
  * down to make statistics. 
  * @param sysError is an array where the errors in the predictions are 
  * set down to make posterior statistics. 
+     * @param isTest indicates if the envariment is a test one.
  * @param typeOfTest indicates the test set kind (if is the test set (0) or the train
  * set (1) ) of the run.
  * @param writeExpOut determines is an output file with expected-real 
@@ -764,6 +812,7 @@ public class XCS {
 /**
  * Creates and initializes an integer vector of size N
  * @param N is the size of the vector that has to be created
+     * @return an integer vector of size N
  */
   public int [] createAndInitArray(int N){
     int [] vect = new int[N];

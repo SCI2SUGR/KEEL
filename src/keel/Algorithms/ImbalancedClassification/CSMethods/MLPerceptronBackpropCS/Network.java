@@ -822,7 +822,9 @@ public class Network {
      * @param data Input data
      * @param n Data matrix order (number of rows and columns)
      * @param problem Type of problem (CLASSIFICATION | REGRESSION )
-     * @throws IOException
+     * @param positive_class positive classes.
+     * @param positive_cost positive cost.
+     * @param negative_cost negative cost.
      */
     public void SaveOutputFile(String file_name, double data[][], int n,
                                String problem, int positive_class, double positive_cost, double negative_cost) {

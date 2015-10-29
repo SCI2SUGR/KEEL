@@ -29,10 +29,16 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.OCEC;
 
+
+
+import java.io.IOException;
+import org.core.*;
+import java.util.Arrays;
+
 /**
- * <p>Title: Algorithm</p>
+ * <p>Title: Algorithm OCEC</p>
  *
- * <p>Description: It contains the implementation of the algorithm</p>
+ * <p>Description: It contains the implementation of the algorithm OCEC</p>
  *
  *
  * <p>Company: KEEL </p>
@@ -40,16 +46,22 @@ package keel.Algorithms.Genetic_Rule_Learning.OCEC;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-import java.util.Arrays;
-
 public class OCEC {
 
-  public static int MIGRATING = 0;
-  public static int EXCHANGING = 1;
-  public static int MERGING = 2;
+    /**
+     * Number to indentify the different types of scheme (MIGRATING).
+     */
+    public static int MIGRATING = 0;
+
+    /**
+     * Number to indentify the different types of scheme (EXCHANGING).
+     */
+    public static int EXCHANGING = 1;
+
+    /**
+     * Number to indentify the different types of scheme (MERGING).
+     */
+    public static int MERGING = 2;
 
   myDataset train, val, test;
   String outputTr, outputTst, ficheroBR;

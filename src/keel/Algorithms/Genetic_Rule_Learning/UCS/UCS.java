@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
- * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
- * @version 1.2
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.UCS;
 
@@ -42,7 +35,16 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
- 
+ /**
+ * <p>This class controls the UCS run. The core of UCS is a population of classifiers (pop). 
+ * Moreover, it has a set of objects to implement the different operators and mechanisms:
+ * environments, GA, prediction array, etc.
+ * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
+ * @version 1.2
+ * @since JDK1.2
+ * </p>
+ */
 public class UCS {
 /**
  * <p>
@@ -281,7 +283,6 @@ public class UCS {
  * set (0) or testing with the train set (1)
  * @param globalResults contains the addition of all classified, not classified and correct 
  * and wrong classified examples of the exploit executions in the train.
- * </p>
  */
 
   public void doOneTestExperiment( Environment tEnv, int typeOfTest, int [] globalResults, boolean writeExpOut ){
@@ -507,6 +508,7 @@ public class UCS {
 /**
  * Creates and initializes an integer vector of size N
  * @param N is the size of the vector that has to be created
+     * @return an integer vector of size N
  */
   public int [] createAndInitArray(int N){
     int [] vect = new int[N];

@@ -61,8 +61,6 @@ public class MLPerceptronBackpropCS {
      * Main function
      * </p>
      * @param args Arguments to main method
-     * @throws FileNotFoundException
-     * @throws IOException
      */
     public static void main(String[] args) {
         if (args.length <= 0) {

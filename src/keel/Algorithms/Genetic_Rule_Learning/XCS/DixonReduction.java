@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
@@ -44,7 +37,17 @@ import java.lang.*;
 import java.io.*;
 
 
-
+/**
+ * <p>This class implements the reduction Interface. It codifies  
+ * Dixon et al's reduction algorithm proposed in [Dixon et al, 2003]. 
+ * Some extra decisions taken, not clearly explained in the paper,
+ * are detailed in the algorithmic description by Albert Orriols.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class DixonReduction implements Reduction {
 /**
  * <p>

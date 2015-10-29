@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé ((La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
@@ -44,7 +37,14 @@ import java.io.*;
 import java.util.*;
 
 
-
+/**
+ * <p>It is the base class for all the multiple step problems.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé ((La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class MSEnvironment implements Environment{
 /**
  * <p>
@@ -253,6 +253,7 @@ public class MSEnvironment implements Environment{
  * <p>
  * It returns the new Example of a single step file environment.
  * </p>
+     * @return the new Example of a single step file environment.
  */ 
     public double[] getSequentialState(){return null;}
     
@@ -261,6 +262,7 @@ public class MSEnvironment implements Environment{
  * It returns the number of examples of the database. It's only
  * used in the file environments. 
  * </p>
+     * @return the number of examples of the database.
  */    
     public int getNumberOfExamples(){return 0;}
     
@@ -269,6 +271,7 @@ public class MSEnvironment implements Environment{
  * It deletes the examples of the database that match with de 
  * classifier given as a parameter. It's only used in the file environment. 
  * </p>
+     * @param cl classifier given.
  */    
     public void deleteMatchedExamples(Classifier cl){}
 

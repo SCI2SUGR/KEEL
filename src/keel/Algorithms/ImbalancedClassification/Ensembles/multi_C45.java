@@ -56,7 +56,11 @@ public class multi_C45 {
 
   parseParameters parameters;
   myDataset train, val, test;
-  public static String outputTr;
+
+    /**
+     *Training output filename.
+     */
+    public static String outputTr;
 	String outputTst, ruleBaseFile;
 	int instancesPerLeaf, n_classifiers, lambda;
   float confidence;
@@ -499,8 +503,9 @@ public class multi_C45 {
 
 	/**
 	 * It writes on a file the full ensemble (C4.5 rule sets)
-	 * @param accTr Training accuracy
-	 * @param accTst Test accuracy
+	 * @param pairTra Training accuracy (AUC)
+	 * @param pairTst Test accuracy (AUC)
+        * @param ruleBaseFile RuleBase filename.
 	 */
   public void writeOutput (AccAUC pairTra, AccAUC pairTst, String ruleBaseFile) {    
     Files.writeFile(ruleBaseFile,"");

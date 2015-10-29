@@ -29,6 +29,13 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.Hider;
 
+
+
+import java.io.IOException;
+import java.util.Vector;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,17 +47,22 @@ package keel.Algorithms.Genetic_Rule_Learning.Hider;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import java.util.Vector;
-
-import keel.Dataset.*;
-
 public class Dataset {
 
-  public static final int REAL = 0;
-  public static final int INTEGER = 1;
-  public static final int NOMINAL = 2;
+  /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
+    public static final int NOMINAL = 2;
 
   private double[][] X = null; //examples array
   private String[][] Nominal = null;
@@ -175,13 +187,26 @@ public class Dataset {
     return emin;
   }
 
-  public double getMax(int variable) {
-    return emax[variable];
-  }
+    /**
+     * It returns the maximum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the maximum value of the given attribute
+     */
+    public double getMax(int variable) {
+        return emax[variable];
+    }
 
-  public double getMin(int variable) {
-    return emin[variable];
-  }
+    
+    /**
+     * It returns the minimum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the minimum value of the given attribute
+     */
+    public double getMin(int variable) {
+        return emin[variable];
+    }
 
   /**
    * It gets the size of the data-set
@@ -199,7 +224,11 @@ public class Dataset {
     return nVars;
   }
 
-  /* Devuelve el tipo del atributo de indice index */
+    /**
+     * Returns the type of the attribute given.
+     * @param index attribute's index.
+     * @return the type of the attribute given.
+     */
   public String getTiposIndex(int index) {
     int tipo = Attributes.getAttribute(index).getType();
     if ( (tipo == Attributes.getAttribute(0).INTEGER) ||
@@ -209,7 +238,12 @@ public class Dataset {
     return "enumerado";
   }
 
-  public String getTiposIndex2(int index) {
+    /**
+     * Returns the type of the attribute given.
+     * @param index attribute's index.
+     * @return the type of the attribute given.
+     */
+    public String getTiposIndex2(int index) {
     //int tipo = Attributes.getAttribute(index).getType();
     //if (tipo == Attributes.getAttribute(0).INTEGER)
     //return "integer";
@@ -226,7 +260,11 @@ public class Dataset {
     }
   }
 
-  public Vector getTipos() {
+    /**
+     * Returns the types of every attribute.
+     * @return the types of every attribute.
+     */
+    public Vector getTipos() {
     Vector salida = new Vector();
     for (int i = 0; i < nVars; i++) {
       //String cadena = new String(this.getTiposIndex2(i));
@@ -236,7 +274,11 @@ public class Dataset {
     return salida;
   }
 
-  public Vector getAtributos() {
+    /**
+     * Returns the all attributes names.
+     * @return the all attributes names.
+     */
+    public Vector getAtributos() {
     Vector salida = new Vector();
     for (int i = 0; i < nVars; i++) {
       String cadena = new String(Attributes.getAttribute(i).getName());
@@ -483,7 +525,11 @@ public class Dataset {
     return Attributes.hasRealAttributes();
   }
 
-  public boolean hasNumericalAttributes() {
+    /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
+    public boolean hasNumericalAttributes() {
     return (Attributes.hasIntegerAttributes() ||
             Attributes.hasRealAttributes());
   }
@@ -514,7 +560,12 @@ public class Dataset {
     return tam;
   }
 
-  public int size() {
+    /**
+     * It return the size of the data-set
+     * 
+     * @return the size of the data-set
+     */
+    public int size() {
     return nData;
   }
 
@@ -578,30 +629,59 @@ public class Dataset {
     return average[position];
   }
 
-  public void computeInstancesPerClass() {
+    /**
+     * It computes the number of instances of the dataset match to each existing class.
+     */
+    public void computeInstancesPerClass() {
     instancesCl = new int[nClasses];
     for (int i = 0; i < this.getNdatos(); i++) {
       instancesCl[this.outputInteger[i]]++;
     }
   }
 
-  public int numberInstances(int clas) {
+    /**
+     * It returns the number of instances in the data set for a given class.
+     * @param clas int Given class.
+     * @return int Number of instances for the given class.
+     */
+    public int numberInstances(int clas) {
     return instancesCl[clas];
   }
 
-  public int numberValues(int attribute) {
+    /**
+     * Function to get the number of different feasible values for a given attribute 
+     * @param attribute int Given attribute
+     * @return int Number of different feasible values for a given attribute
+     */
+    public int numberValues(int attribute) {
     return Attributes.getInputAttribute(attribute).getNumNominalValues();
   }
 
-  public String getOutputValue(int intValue) {
+    /**
+     * It returns the output value (string) which matchs with a given integer value 
+     * @param intValue int Given value
+     * @return String Output value in an understanding way
+     */
+    public String getOutputValue(int intValue) {
     return Attributes.getOutputAttribute(0).getNominalValue(intValue);
   }
 
-  public String getDatosIndex(int i, int j) {
+    /**
+     * Returns the value of a given attribute for a given instance.
+     * @param i instance's index.
+     * @param j attribute's index.
+     * @return String values of a given attribute for a given instance.
+     */
+    public String getDatosIndex(int i, int j) {
     return Nominal[i][j];
   }
 
-  public int getTipo(int variable) {
+    /**
+     * It returns the type of an attribute
+     * @param variable Given attribute
+     * @return int Type of the attribute, it is an integer which corresponds to an enummerate field
+     */
+    public int getTipo(int variable) {
     /*if (Attributes.getAttribute(variable).getType() ==
         Attributes.getAttribute(0).INTEGER) {
         return this.INTEGER;
@@ -624,9 +704,11 @@ public class Dataset {
   }
 
   /**
-   * Devuelve el universo de discuros de las variables de entrada y salida
-   * @return double[][] El rango minimo y maximo de cada variable
-   */
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
+     */
   public double[][] devuelveRangos() {
     double[][] rangos = new double[this.getNvariables()][2];
     for (int i = 0; i < this.getnInputs(); i++) {
@@ -647,11 +729,23 @@ public class Dataset {
     return rangos;
   }
 
-  public void ponValor(int ejemplo, int atributo, String valor) {
+    /**
+     * Sets a value to an attribute of a given instance.
+     * @param ejemplo instance's index.
+     * @param atributo attribute's index.
+     * @param valor value to set.
+     */
+    public void ponValor(int ejemplo, int atributo, String valor) {
     Nominal[ejemplo][atributo] = valor;
   }
 
-  public Vector getRangos() {
+    /**
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
+     */
+    public Vector getRangos() {
     Vector salida = new Vector();
     double[][] rangos = this.devuelveRangos();
     for (int i = 0; i < nVars; i++) {
@@ -682,7 +776,11 @@ public class Dataset {
     return salida;
   }
 
-  public String printString() {
+    /**
+     * Returns a String representation of the dataset (A list of all the instances).
+     * @return a String representation of the dataset.
+     */
+    public String printString() {
     String cadena = new String("");
     cadena += this.copyHeader();
     for (int i = 0; i < this.size(); i++) {
@@ -694,7 +792,10 @@ public class Dataset {
     return cadena;
   }
 
-  public void print() {
+    /**
+     * Prints the String representation given by {@link printString}.
+     */
+    public void print() {
     System.out.println(this.printString());
   }
 

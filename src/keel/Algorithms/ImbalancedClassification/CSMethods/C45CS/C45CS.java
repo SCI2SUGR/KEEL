@@ -27,13 +27,6 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Cordoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
 
 package keel.Algorithms.ImbalancedClassification.CSMethods.C45CS;
 
@@ -314,6 +307,7 @@ public class C45CS extends Algorithm {
      * @param isTrain	It indicates if the current instance belongs to the training set or not
      *
      * @return				The index of the class index predicted.
+     * @throws java.lang.Exception if the itemset can not be evaluated.
      */
     public double evaluateItemset(Itemset itemset, int index, boolean isTrain) throws Exception {
         Itemset classMissing = (Itemset) itemset.copy();
@@ -421,6 +415,7 @@ public class C45CS extends Algorithm {
     /** Returns class probabilities for an itemset.
      *
      * @param itemset		The itemset.
+     * @return class probabilities for an itemset.
      *
      * @throws Exception	If cannot compute the classification.
      */
@@ -469,6 +464,7 @@ public class C45CS extends Algorithm {
     /** Returns index of maximum element in a given array of doubles. First maximum is returned.
      *
      * @param doubles		The array of elements.
+     * @return index of maximum element in a given array of doubles.
      *
      */
     public static int maxIndex(double[] doubles) {
@@ -489,6 +485,7 @@ public class C45CS extends Algorithm {
     /** Returns index of minimum element in a given array of doubles. First minimum is returned.
     *
     * @param doubles		The array of elements.
+     * @return index of minimum element in a given array of doubles.
     *
     */
    public static int minIndex(double[] doubles) {
@@ -532,7 +529,7 @@ public class C45CS extends Algorithm {
 
     /** Writes the tree and the results of the training and the test in the file.
      *
-     * @exception 	If the file cannot be written.
+     * @exception IOException	If the file cannot be written.
      */
     public void printResult() throws IOException {
         long totalTime = (System.currentTimeMillis() - startTime) / 1000;
@@ -580,7 +577,6 @@ public class C45CS extends Algorithm {
 
     /** Evaluates the training dataset and writes the results in the file.
      *
-     * @exception 	If the file cannot be written.
      */
     public void printTrain() {
         String text = getHeader();
@@ -617,7 +613,7 @@ public class C45CS extends Algorithm {
 
     /** Evaluates the test dataset and writes the results in the file.
      *
-     * @exception 	If the file cannot be written.
+     * 
      */
     public void printTest() {
         String text = getHeader();
@@ -653,13 +649,13 @@ public class C45CS extends Algorithm {
 
 
     /** Function to print the tree.
-     *
+     * @return a String representation of the tree
      */
     public String toString() {
         return root.toString();
     }
     
-    /*
+    /**
      * Calculates the AUC for the training set
      *
      * @return			The AUC value associated to the training set
@@ -668,7 +664,7 @@ public class C45CS extends Algorithm {
         return CalculateAUC.calculate(valsForAUCTrain);
     }
     
-    /*
+    /**
      * Calculates the AUC for the test set
      *
      * @return			The AUC value associated to the test set
@@ -681,7 +677,6 @@ public class C45CS extends Algorithm {
      *
      * @param args 			The parameters file.
      *
-     * @throws Exception 	If the algorithm cannot been executed properly.
      */
     public static void main(String[] args) {
         try {

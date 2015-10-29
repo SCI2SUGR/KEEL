@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
- * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.UCS;
 
@@ -42,7 +35,22 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>This class contains a rule-set. It is used to create the folowing sets:
+ * population [P], match set [M], and correct set [C].
+ *
+ * There are three different constructors, one for each set. 
+ * There are a lot of access methods to the population parameters, such as the
+ * numerosities sums, get and set classifiers, etc. 
+ * Moreover, there are specific methods used by UCS, like methods that
+ * insert, insert subsuming, insert deleting, deletes, subsumes new classifiers 
+ * in the population.
+ * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class Population {
 /**
  * <p>

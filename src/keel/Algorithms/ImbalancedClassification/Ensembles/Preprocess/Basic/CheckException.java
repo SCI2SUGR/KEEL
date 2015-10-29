@@ -61,7 +61,6 @@ public class CheckException  extends Exception{
  * Does instance a new CheckException with the message
  * specified and the Vector with all the errors.
  * @param msg is the message of the exception
- * @param _errors is a vector with all the errors.
  */
   public CheckException(String msg){
     super(msg);

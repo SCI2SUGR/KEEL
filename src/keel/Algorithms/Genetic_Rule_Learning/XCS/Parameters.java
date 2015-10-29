@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
@@ -43,7 +36,14 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>In this class there are all the classifier parameters of XCS.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class Parameters {
 /**
  * <p>
@@ -252,6 +252,7 @@ public class Parameters {
  * Constructs a Parameters Object initializing its attributes from another Parameters object.
  * </p>
  * @param p is the origin of the copy.
+     * @param tStamp time stamp.
  */
     public Parameters (Parameters p, int tStamp){
 	prediction = p.prediction;
@@ -640,6 +641,7 @@ public class Parameters {
  * <p>
  * Increases the numerosity of the classifier.
  * </p>
+     * @param num number to increase.
  */
     public void increaseNumerosity(int num) {        
         numerosity += num;
@@ -711,6 +713,7 @@ public class Parameters {
 /**
  * Indicates if the classifier is accurate and experienced enough
  * to not be removed from the population
+     * @return True if the classifier is accurate and experienced enough or false otherwise.
  */
    public boolean couldComp(){
 	if (experience > Config.theta_reduct && predError > Config.epsilon_reduct) return false;
@@ -757,8 +760,9 @@ public class Parameters {
     	fout.print ("  "+timeOfCl);
     }
 
-
-
+    /**
+     * Prints the classifier into standard output.
+     */
     public void print (){
     	System.out.print ("\t Pred: "+prediction);
     	System.out.print ("\t PredErr: "+predError);

@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
@@ -44,7 +37,20 @@ import java.io.*;
 import java.util.*;
 
 
-
+/**
+ * <p>This interface is the environment interface. It has to be implemented for
+ * all the environment problems. At first, it is extended in three classes, the
+ * single step environment problems (SSEnvirontment), the single step
+ * environment problems that have to be read from a file
+ * (SSFileEnvironment), an the multiple step environment problems
+ * (MSEnvironment). To implement a new problem environment it's necessary
+ * to extend one of these three classes, defining all their functions.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public interface Environment {
 /**
  * <p>
@@ -147,6 +153,7 @@ public interface Environment {
  * <p>
  * It returns the new Example of a single step file environment.
  * </p>
+     * @return the new Example of a single step file environment.
  */ 
     public double[] getSequentialState();
     
@@ -155,6 +162,7 @@ public interface Environment {
  * It returns the number of examples of the database. It is only
  * used in the file environments. 
  * </p>
+     * @return the number of examples of the database.
  */    
     public int getNumberOfExamples();
     
@@ -163,6 +171,7 @@ public interface Environment {
  * It deletes the examples of the database that match with the 
  * given classifier. It is only used in the file enviornment. 
  * </p>
+     * @param cl classifier given.
  */    
     public void deleteMatchedExamples(Classifier cl);
 	

@@ -504,14 +504,14 @@ public class BaseDatos {
     }
 
     /**
-     * @return Returns the rangos.
+     * @return Returns the ranks.
      */
     public Vector getRangos() {
         return rangos;
     }
 
     /**
-     * @return Returns the rangos(i).
+     * @return Returns the ranks(i).
      */
     public Object getRangos(int i) {
         return rangos.get(i);

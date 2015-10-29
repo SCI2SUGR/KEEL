@@ -29,6 +29,10 @@
 
 package keel.Algorithms.ImbalancedClassification.Ensembles;
 
+
+
+import org.core.Randomize;
+
 /**
  * <p>Title: Selector</p>
  * <p>Description: This class implements an attribute condition of a rule
@@ -37,16 +41,24 @@ package keel.Algorithms.ImbalancedClassification.Ensembles;
  * @version 1.1
  * @since JDK1.6
  */
-
-import org.core.Randomize;
-
 public class Selector {
 
   int attribute; //position of the attribute/variable in the dataset
   int operator; // =, <= or >
-  public static int EQUAL = 0;
-  public static int LESS_EQUAL = 1;
-  public static int GREATER = 2;
+  /**
+     * Number to represent equality.
+     */
+    public static int EQUAL = 0;
+
+    /**
+     * Number to represent lesser.
+     */
+    public static int LESS_EQUAL = 1;
+
+    /**
+     * Number to represent greater.
+     */
+    public static int GREATER = 2;
   double value; //if attribute is real
   String nominalValues[]; //if attribute is nominal (for printing)
   double values[]; //if attribute is nominal (checking)
@@ -128,11 +140,19 @@ public class Selector {
     }
   }
 
+  /**
+     * Sets the attributes names inside the Selector.
+     * @param attributes attributes names to be set.
+     */
   public void adjuntaNombres(String[] attributes) {
     attNames = new String[attributes.length];
     attNames = attributes.clone();
   }
 
+  /**
+     * Returns a String representation of the selector.
+     * @return Selector as a String.
+     */
   public String printString() {
     String cadena = new String("");
     cadena += " " + attNames[attribute];
@@ -192,6 +212,10 @@ public class Selector {
     return cubierto;
   }
 
+  /**
+     * Returns the attribute considered in this selector.
+     * @return the attribute considered.
+     */
   public int getattribute(){
     return attribute;
   }

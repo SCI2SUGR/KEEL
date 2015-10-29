@@ -287,6 +287,7 @@ public class Tree {
 
     /** Function to print the tree.
      *
+     * @return String representation of the tree.
      */
     public String toString() {
         try {

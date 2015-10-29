@@ -176,7 +176,7 @@ public class myDataset {
 
     /**
      * It returns an array with the maximum values of the attributes
-     * @return double[] an array with the maximum values of the attributes
+     * @return int[] an array with the maximum values of the attributes
      */
     public int[] getemax() {
         return emax;
@@ -184,7 +184,7 @@ public class myDataset {
 
     /**
      * It returns an array with the minimum values of the attributes
-     * @return double[] an array with the minimum values of the attributes
+     * @return int[] an array with the minimum values of the attributes
      */
     public int[] getemin() {
         return emin;

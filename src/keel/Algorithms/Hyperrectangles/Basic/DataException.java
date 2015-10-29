@@ -27,6 +27,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Hyperrectangles.Basic;
+
 /**
  * 
  * File: DataException.java
@@ -38,9 +42,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Hyperrectangles.Basic;
-
 public class DataException  extends Exception{
 
 	private static final long serialVersionUID = 1L;

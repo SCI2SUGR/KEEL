@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
- * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.UCS;
 
@@ -42,7 +35,18 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>This class performs the niched mutation. The changes made in the
+ * classifier cannot result in another classifier that does not match with the
+ * environment (we can change a don't care for the value of the parent, or
+ * a value for a don't care value, but, for example, we would never change
+ * a '0' for a '1').
+ * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class RNichedMutation implements RealMutation {
 /**
  * <p>

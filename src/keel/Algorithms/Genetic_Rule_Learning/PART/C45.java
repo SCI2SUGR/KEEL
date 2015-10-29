@@ -569,7 +569,6 @@ public class C45 extends Algorithm{
 
   /** Evaluates the training dataset and writes the results in the file.
    *
-   * @exception If the file cannot be written.
    */
   public void printTrain()
   {
@@ -609,7 +608,6 @@ public class C45 extends Algorithm{
 
   /** Evaluates the test dataset and writes the results in the file.
    *
-   * @exception If the file cannot be written.
    */
   public void printTest()
   {

@@ -27,20 +27,20 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Hyperrectangles.EACH;
+
+import java.util.*;
+
 /**
- * <p>
+ * <p>Stores a set of data with the form: attribute, attribute, , class
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Hyperrectangles.EACH;
-
-import java.util.*;
-
-
 public class EachDataSet {
 /**
  * Stores a set of data with the form: attribute attribute... class

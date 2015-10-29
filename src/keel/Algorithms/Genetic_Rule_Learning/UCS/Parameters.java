@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
- * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.UCS;
 
@@ -42,7 +35,14 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>In this class there are all the classifier parameters of UCS.
+ * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class Parameters {
 /**
  * <p>
@@ -264,8 +264,8 @@ public class Parameters {
 
 
 /**
- * <p>
- * Returns the fitness of the current micro-classifier
+ * Returns the fitness of the current micro-classifier.
+     * @return the fitness of the current micro-classifier
  */
   public double getMicroClFitness() {        
 	return fitness/((double)numerosity);
@@ -343,6 +343,7 @@ public class Parameters {
 
 /**
  * Increases the numerosity of the classifier.
+     * @param num amount to increase
  */
     public void increaseNumerosity(int num) {        
         numerosity += num;
@@ -400,9 +401,10 @@ public class Parameters {
    	fout.print ("  "+timeOfCl);
    }//end print
 
-
-
-  public void print (){
+    /**
+     * Prints the classifier statistics to the standard output.
+     */
+    public void print (){
     System.out.print ("\t Acc: "+accuracy);
     String fit = new Double(fitness).toString();
     if (fit.length() > 4) fit = fit.substring(0,4);

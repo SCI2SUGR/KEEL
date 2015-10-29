@@ -43,7 +43,17 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>This is the interface for all the reduction methods classes in the XCS.
+ * By now, the Wilson Reduction and the Dixon Reduction (in two versions,
+ * the strict one and the weak one) classes implement this interface. To
+ * make other reduction methods, you only have to implement this class.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public interface Reduction {
 /**
  * <p>

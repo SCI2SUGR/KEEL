@@ -855,9 +855,7 @@ public class MyDataset
   /**
    * Removes all itemsets with a missing class value
    * from the dataset.
-   * @throws Exception
-   *
-   * @exception UnassignedClassException if class is not set
+   * @throws Exception UnassignedClassException if class is not set
    */
   public final void deleteWithMissingClass() throws Exception {
 
@@ -897,8 +895,7 @@ public class MyDataset
    * stratified cross-validation can be performed).
    *
    * @param numFolds the number of folds in the cross-validation
-   * @throws Exception
-   * @exception UnassignedClassException if the class is not set
+   * @throws Exception UnassignedClassException if the class is not set
    */
   public final void stratify(int numFolds) throws Exception {
 

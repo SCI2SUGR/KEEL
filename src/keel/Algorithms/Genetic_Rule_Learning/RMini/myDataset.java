@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.RMini;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,16 +46,22 @@ package keel.Algorithms.Genetic_Rule_Learning.RMini;
  * @author Alberto FernÃ¡ndez
  * @version 1.0
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
-	public static final int REAL = 0;
-	public static final int INTEGER = 1;
-	public static final int NOMINAL = 2;
+    /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
+    public static final int NOMINAL = 2;
 
 	private double[][] X = null; //examples array
 	private String[][] Xs = null;
@@ -190,13 +202,25 @@ public class myDataset {
 		return emin;
 	}
 
-	public double getMax(int variable) {
-		return emax[variable];
-	}
+    /**
+     * It returns the maximum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the maximum value of the attribute
+     */    
+  public double getMax(int variable) {
+    return emax[variable];
+  }
 
-	public double getMin(int variable) {
-		return emin[variable];
-	}
+  /**
+     * It returns the minimum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the minimum value of the attribute
+     */  
+  public double getMin(int variable) {
+    return emin[variable];
+  }
 
 	/**
 	 * It gets the size of the data-set
@@ -441,7 +465,11 @@ public class myDataset {
 		return Attributes.hasRealAttributes();
 	}
 
-	public boolean hasNumericalAttributes() {
+    /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
+    public boolean hasNumericalAttributes() {
 		return (Attributes.hasIntegerAttributes() ||
 				Attributes.hasRealAttributes());
 	}
@@ -472,7 +500,12 @@ public class myDataset {
 		return tam;
 	}
 
-	public int size() {
+    /**
+     * It returns the number of examples
+     * 
+     * @return the number of examples
+     */
+    public int size() {
 		return nData;
 	}
 
@@ -533,33 +566,69 @@ public class myDataset {
 		return average[position];
 	}
 
-	public void computeInstancesPerClass() {
+    /**
+     * It computes the number the instances per class.
+     */
+    public void computeInstancesPerClass() {
 		instancesCl = new int[nClasses];
 		for (int i = 0; i < this.getnData(); i++) {
 			instancesCl[this.outputInteger[i]]++;
 		}
 	}
 
-	public int numberInstances(int clas) {
+     /**
+     * It returns the number of instances in the dataset of the given class
+     *
+     * @param clas the index of the class
+     * @return the number of instances in the dataset of the given class
+     */
+    public int numberInstances(int clas) {
 		return instancesCl[clas];
 	}
 
-	public int numberValues(int attribute) {
+    /**
+     * It returns the number of different values of an attribute
+     *
+     *@param attribute the index of the attribute
+     * @return the number of different values of an attribute
+     */
+    public int numberValues(int attribute) {
 		return Attributes.getInputAttribute(attribute).getNumNominalValues();
 	}
 
-	public String getOutputValue(int intValue) {
+    /**
+     * It returns the name of the class of index intValue
+     *
+     * @param intValue the index of the class
+     * @return the name of the class of index intValue
+     */
+    public String getOutputValue(int intValue) {
 		return Attributes.getOutputAttribute(0).getNominalValue(intValue);
 	}
 	
-	public int getNumOutputValue() {
+    /**
+ * It returns the number of different values that can take the class.
+ * @return an int with the number of different values that can take the class.
+ */
+    public int getNumOutputValue() {
 		return Attributes.getOutputAttribute(0).getNumNominalValues();
 	}
-	public String getOutputName() {
+
+    /**
+     * Returns the class name.
+     * @return the class name.
+     */
+    public String getOutputName() {
 		return Attributes.getOutputAttribute(0).getName();
 	}
 
-	public int getTipo(int variable) {
+    /**
+     * It returns the type of the attribute specified
+     *
+     * @param variable index of the attribute
+     * @return the type of the attribute specified
+     */
+    public int getTipo(int variable) {
 		if (Attributes.getAttribute(variable).getType() ==
 			Attributes.getAttribute(0).INTEGER) {
 			return this.INTEGER;
@@ -576,9 +645,11 @@ public class myDataset {
 	}
 	
 	/**
-	 * Devuelve el universo de discuros de las variables de entrada y salida
-	 * @return double[][] El rango minimo y maximo de cada variable
-	 */
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
+     */
 	public double [][] devuelveRangos(){
 	  double [][] rangos = new double[this.getnVars()][2];
 	  for (int i = 0; i < this.getnInputs(); i++){
@@ -595,7 +666,13 @@ public class myDataset {
 	  return rangos;
 	}
 	
-	public int posValorAtt(String ex, int posAtt){
+    /**
+     * Returns the position of the value given in the attribute given.
+     * @param ex value given.
+     * @param posAtt attribute id.
+     * @return the position of the value given in the attribute given. (-1, if the value does not exist).
+     */ 
+    public int posValorAtt(String ex, int posAtt){
 		Attribute att=Attributes.getInputAttribute(posAtt);
 		int pos=-1;
 		
@@ -605,11 +682,22 @@ public class myDataset {
 		return pos;
 	}
 	
-	public String nombreAtributo(int atributo){
+    /**
+     * Returns the name of the attribute with the id given.
+     * @param atributo attribute's id.
+     * @return name of the attribute.
+     */
+    public String nombreAtributo(int atributo){
 		return Attributes.getInputAttribute(atributo).getName();
 	}
 	
-	public String valorAtributo(int atributo, int i){
+    /**
+ * It returns de ith value of the nominal given attribute
+ * @param atributo attribute id.
+ * @param i indicate which attribute value is wanted.
+ * @return a string with the value.
+ */
+    public String valorAtributo(int atributo, int i){
 		return Attributes.getInputAttribute(atributo).getNominalValue(i);
 	}
 

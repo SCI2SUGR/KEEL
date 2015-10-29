@@ -42,6 +42,12 @@ package keel.Algorithms.Genetic_Rule_Learning.XCS.KeelParser;
 /**
  * An implementation of interface CharStream, where the stream is assumed to
  * contain only ASCII characters (without unicode processing).
+ * <p>
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
 
 public class SimpleCharStream

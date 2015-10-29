@@ -29,19 +29,20 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.LogenPro;
 
+
+ 
+import java.io.IOException;
+import java.util.*;
+import org.core.*;
+
 /**
- * <p>
+ * <p>It contains the implementation of the algorithm
  * @author Written by Alberto Fernández (University of Granada) 01/01/2007
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
  * @version 1.0
  * @since JDK 1.6
  * </p>
  */
- 
-import java.io.IOException;
-import java.util.*;
-import org.core.*;
-
 public class Algorithm {
 /**	
  * <p>

@@ -29,17 +29,7 @@
 
 package keel.Algorithms.ImbalancedClassification.Ensembles;
 
-/**
- * <p>Title: Dataset</p>
- *
- * <p>Description: It contains the methods to read a Classification/Regression Dataset</p>
- *
- *
- * <p>Company: KEEL </p>
- *
- * @author Alberto Fernandez
- * @version 1.0
- */
+
 
 import java.io.IOException;
 import java.util.AbstractList;
@@ -51,12 +41,34 @@ import keel.Dataset.*;
 import java.util.Vector;
 import org.core.Randomize;
 
+/**
+ * <p>Title: Dataset</p>
+ *
+ * <p>Description: It contains the methods to read a Classification/Regression Dataset</p>
+ *
+ *
+ * <p>Company: KEEL </p>
+ *
+ * @author Alberto Fernandez
+ * @version 1.0
+ */
 public class myDataset {
 
-  public static final int REAL = 0;
-  public static final int INTEGER = 1;
-  public static final int NOMINAL = 2;
+  /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 0;
 
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
+    public static final int NOMINAL = 2;
+    
   private double[][] X = null; //examples array
 //  private double[][] X_normalized = null;
   private boolean[][] missing = null; //possible missing values
@@ -123,6 +135,10 @@ public class myDataset {
     //this.computeStatisticsPerClass();
   }
 
+  /**
+   * Generates a new binary dataset by copying it from the dataset given.
+   * @param copia the original training dataset
+   */
   public myDataset(myDataset copia){
     nVars = copia.getnVars();
     nInputs = copia.getnInputs();
@@ -133,6 +149,12 @@ public class myDataset {
     this.IS = new InstanceSet(copia.IS);
   }
 
+  /**
+   * It generates a new binary dataset
+   * @param copia the original training dataset
+   * @param clase_1 first class
+   * @param clase_2 second class
+   */
   public myDataset(myDataset copia, int clase_1, int clase_2){
     nVars = copia.getnVars();
     nInputs = copia.getnInputs();
@@ -167,6 +189,11 @@ public class myDataset {
     }
   }
 
+  /**
+   * Generates a new binary dataset by copying it from the dataset given and preprocessing it.
+   * @param copia the original training dataset
+   * @param bagType type of preprocessing algorithm (OVERBAGGING, UNDERBAGGING)
+   */
     public myDataset(myDataset copia, String bagType){
     nVars = copia.getnVars();
     nInputs = copia.getnInputs();
@@ -234,6 +261,13 @@ public class myDataset {
     computeInstancesPerClass();
   }
 
+    /**
+   * It generates a new binary dataset by copying the instances indicated by the value 1 in the array given.
+   * @param copia the original training dataset
+   * @param clase_1 first class
+   * @param clase_2 second class
+   * @param empate the instances with the value 1 in this array will be copied.
+   */
   public myDataset(myDataset copia, int clase_1, int clase_2, int[] empate){
     nVars = copia.getnVars();
     nInputs = copia.getnInputs();
@@ -268,7 +302,15 @@ public class myDataset {
     }
   }
 
-   public myDataset(myDataset copia, int majC, double[][] Xmaj, int minC, double[][] Xmin) {
+    /**
+     * It generates a new binary dataset
+    * @param copia the original training dataset
+     * @param majC majority class.
+     * @param Xmaj instances belonging to majority class.
+     * @param minC minority class.
+     * @param Xmin instances belonging to minority class.
+     */
+    public myDataset(myDataset copia, int majC, double[][] Xmaj, int minC, double[][] Xmin) {
     nVars = copia.getnVars();
     nInputs = copia.getnInputs();
     nClasses = copia.getnClasses();
@@ -307,8 +349,12 @@ public class myDataset {
     computeInstancesPerClass();
    }
 
-  /* Original dataset to take examples from and
-   * the % of majority class in the new data set */
+  /** Original dataset to take examples from and
+   * the % of majority class in the new data set
+     * @param copia original training dataset.
+     * @param majC majority class.
+     * @param N number instances to be selected
+     * @return  array of selected instances indeces.*/
   public int[] randomUnderSampling(myDataset copia, int majC, int N)
   {
      
@@ -365,7 +411,15 @@ public class myDataset {
     return selected;
   }
 
-  public int[] randomSampling(myDataset copia, int majC, int minC, int a)
+    /**
+     * Random undersampling of the dataset given. Original dataset to take examples from and
+    * the % of majority class in the new data set
+     * @param copia original dataset.
+     * @param majC majority class.
+     * @param minC minority class.
+     * @param a % of majority class to be selected.
+     * @return  array of selected instances indeces.*/
+    public int[] randomSampling(myDataset copia, int majC, int minC, int a)
   {
 
     int[] majExamples = new int[copia.size()];
@@ -426,6 +480,14 @@ public class myDataset {
     return selected;
   }
 
+    /**
+     * Random undersampling of the dataset given. 
+     * @param copia original dataset.
+     * @param majC majority class.
+     * @param minC minority class.
+     * @param nMaj number of majority class instances to be selected.
+     * @param nMin number of minority class instances to be selected.
+     * @return  array of selected instances indeces.*/
   public int[] randomSampling(myDataset copia, int majC, int minC, int nMaj, int nMin)
   {
 
@@ -499,8 +561,15 @@ public class myDataset {
     return selected;
   }
 
-
-  public boolean[] importanceSampling(myDataset copia, int size, boolean[] oob, double oobErr)
+    /**
+     * Importance undersampling of the dataset given. 
+     * @param copia original dataset.
+     * @param size size of the sampling.
+     * @param oob oob to be considered.
+     * @param oobErr oob error.
+     * @return boolean array of selected instances (true if they are).
+     */
+    public boolean[] importanceSampling(myDataset copia, int size, boolean[] oob, double oobErr)
   {
 
     boolean[] selected = new boolean[copia.getnData()]; // we store the selected examples indexes
@@ -647,11 +716,23 @@ public class myDataset {
   public double[] getemin() {
     return emin;
   }
-
-  public double getMax(int variable) {
+  
+    /**
+     * It returns the maximum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the maximum value of the given attribute
+     */
+    public double getMax(int variable) {
     return emax[variable];
   }
 
+    /**
+     * It returns the minimum value of the given attribute
+     * 
+     * @param variable the index of the attribute
+     * @return the minimum value of the given attribute
+     */
   public double getMin(int variable) {
     return emin[variable];
   }
@@ -796,6 +877,7 @@ public class myDataset {
     /**
    * It reads the whole input data-set and it stores each example and its associated output value in
    * local arrays to ease their use.
+     * @param IS Instance set given.
    * @throws IOException If there ocurs any problem with the reading of the data-set
    */
   public void readInstanceSet(InstanceSet IS) throws
@@ -996,10 +1078,19 @@ public class myDataset {
     }
   }
 
+  /**
+     * Returns the average values per class.
+     * @return the average values per class.
+     */
   public double[][] getAveragePerClass()
   {
       return this.averagePerClass;
   }
+  
+  /**
+     * Returns the standard deviation per class.
+     * @return the standard deviation per class.
+     */
   public double[][] getStdPerClass()
   {
       return this.stdevPerClass;
@@ -1013,6 +1104,10 @@ public class myDataset {
     return Attributes.hasRealAttributes();
   }
 
+  /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
   public boolean hasNumericalAttributes() {
     return (Attributes.hasIntegerAttributes() ||
             Attributes.hasRealAttributes());
@@ -1044,6 +1139,11 @@ public class myDataset {
     return tam;
   }
 
+  /**
+     * It return the size of the data-set
+     * 
+     * @return the size of the data-set
+     */
   public int size() {
     return nData;
   }
@@ -1108,6 +1208,10 @@ public class myDataset {
     return average[position];
   }
 
+  /**
+     * It computes the number of examples per class.
+     * 
+     */
   public void computeInstancesPerClass() {
     instancesCl = new int[nClasses];
     for (int i = 0; i < this.getnData(); i++) {
@@ -1115,11 +1219,19 @@ public class myDataset {
     }
   }
 
+  /**
+     * It returns the number of instances in the data set for a given class.
+     * @param clas int Given class.
+     * @return int Number of instances for the given class.
+     */
   public int numberInstances(int clas) {
     return instancesCl[clas];
   }
   
-  public void computeIR(){
+    /**
+     * Computes the Imbalanced Rate for each class.
+     */
+    public void computeIR(){
 	  ir = new double[nClasses];
 	  double max = 0;
 	  for (int i = 0; i < ir.length; i++){
@@ -1137,19 +1249,39 @@ public class myDataset {
 	  }
 	  //System.exit(0);
   }
-  
+    
+  /**
+     * Returns the Imbalanced Rate for the class given.
+     * @param clase class id.
+     * @return the Imbalanced Rate for the class given.
+     */
   public double getIR(int clase){
 	  return ir[clase];
   }
 
+  /**
+     * Function to get the number of different feasible values for a given attribute 
+     * @param attribute int Given attribute
+     * @return int Number of different feasible values for a given attribute
+     */
   public int numberValues(int attribute) {
     return Attributes.getInputAttribute(attribute).getNumNominalValues();
   }
 
+  /**
+     * It returns the output value (string) which matchs with a given integer value 
+     * @param intValue int Given value
+     * @return String Output value in an understanding way
+     */
   public String getOutputValue(int intValue) {
     return Attributes.getOutputAttribute(0).getNominalValue(intValue);
   }
 
+  /**
+     * It returns the type of an attribute
+     * @param variable Given attribute
+     * @return int Type of the attribute, it is an integer which corresponds to an enummerate field
+     */
   public int getTipo(int variable) {
     if (Attributes.getInputAttribute(variable).getType() ==
         Attributes.getInputAttribute(0).INTEGER) {
@@ -1167,9 +1299,11 @@ public class myDataset {
   }
 
   /**
-   * Devuelve el universo de discuros de las variables de entrada y salida
-   * @return double[][] El rango minimo y maximo de cada variable
-   */
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
+     */
   public double[][] devuelveRangos() {
     double[][] rangos = new double[this.getnVars()][2];
     for (int i = 0; i < this.getnInputs(); i++) {
@@ -1190,22 +1324,27 @@ public class myDataset {
     return rangos;
   }
 
+  /**
+   * It returns the attribute name of a given variable
+   * @param pos variable id.
+   * @return attribute name of a given variable
+   */
   public String nombreVar(int pos) {
     return Attributes.getInputAttribute(pos).getName();
   }
 
   /**
-   * Devuelve el valor nominal correspondiente a la clase con valor numerico "clase"
-   * @param clase int
-   * @return String
+   * Returns the nominal value for a class represented by the integer given.
+   * @param clase integer representation of the class.
+   * @return String nominal value for the class
    */
   public String nombreClase(int clase) {
     return Attributes.getOutputAttribute(0).getNominalValue(clase);
   }
 
   /**
-   * Discretizacion en anchura uniforme
-   * @param intervalos int Numero de intervalos a discretizar
+   * Uniform width discretization
+   * @param intervalos int Number of intervals
    */
   public void discretize(int intervalos){
     for (int i = 0; i < nInputs; i++){
@@ -1226,6 +1365,10 @@ public class myDataset {
     }
   }
 
+  /**
+   * It returns the names for all input variables
+   * @return names for all input variables
+   */
   public String [] nombres(){
     String nombres[] = new String[nInputs];
     for (int i = 0; i < nInputs; i++){
@@ -1234,27 +1377,53 @@ public class myDataset {
     return nombres;
   }
 
+  /**
+     * Returns a real representation of a attribute's nominal value given as argument.
+     * @param atributo Attribute given.
+     * @param valorNominal Nominal value of the attribute given.
+     * @return Returns a real representation of a attribute's nominal value.
+     */
   public static double valorReal(int atributo, String valorNominal){
     Vector nominales = Attributes.getInputAttribute(atributo).getNominalValuesList();
     int aux = nominales.indexOf(valorNominal);
     return 1.0*aux;
   }
 
+  /**
+     * Returns a numeric representation of a class nominal value given as argument.
+     * @param valorNominal class nominal value.
+     * @return Numeric representation of a class nominal value.
+     */
   public int claseNumerica(String valorNominal){
     Vector nominales = Attributes.getOutputAttribute(0).getNominalValuesList();
     int aux = nominales.indexOf(valorNominal);
     return aux;
   }
 
+  /**
+     * Returns a nominal representation of a attribute's real value given as argument.
+     * @param atributo Attribute given.
+     * @param valorReal Real value of the attribute given.
+     * @return Returns a nominal representation of a attribute's real value.
+     */
   public static String valorNominal(int atributo, double valorReal){
     Vector nominales = Attributes.getInputAttribute(atributo).getNominalValuesList();
     return (String)nominales.get((int)valorReal);
   }
 
+  /**
+   * It returns the number of nominal values for a given variable
+   * @param atributo variable id
+   * @return the number of nominal values for a given variable
+   */
   public int totalNominales(int atributo){
     return Attributes.getInputAttribute(atributo).getNumNominalValues();
   }
 
+  /**
+   * It returns the most frequent class in the dataset
+   * @return the most frequent class in the dataset
+   */
   public String claseMasFrecuente(){
     int [] clases = new int[nClasses];
     for (int i = 0; i < this.outputInteger.length; i++){
@@ -1270,10 +1439,10 @@ public class myDataset {
   }
 
   /**
-   * Obtiene el numero de ejemplos para la clase i-esima
-   * @param clase int codigo de clase
-   * @return int numero de ejemplos pertenencientes a dicha clase
-   */
+     * It returns the number of instances in the data set for a given class.
+     * @param clas int Given class.
+     * @return int Number of instances for the given class.
+     */
   public int numEjemplos(int clase){
     int ejemplos = 0;
     for (int i = 0; i < outputInteger.length; i++){
@@ -1283,14 +1452,22 @@ public class myDataset {
     return ejemplos;
   }
 
-  public boolean vacio(){
+    /**
+     * Checks if there is a class without instances.
+     * @return true if there is a class without instances, false otherwise.
+     */
+    public boolean vacio(){
     if ((this.numberInstances(list_of_classes[0]) == 0)||(this.numberInstances(list_of_classes[1]) == 0)){
       return true;
     }
     return false;
   }
 
-  public String printDataSet(){
+    /**
+     * Returns a string representation of the dataset.
+     * @return a string representation of the dataset.
+     */
+    public String printDataSet(){
      System.out.println("Printing data-set...");
     String cadena = new String("");
     cadena += this.copyHeader();
@@ -1317,7 +1494,12 @@ public class myDataset {
     return cadena;
   }
 
-  public List<Integer> asList(final int[] is)
+    /**
+     * Returns a List with the elements of the array given.
+     * @param is array given.
+     * @return a List with the elements of the array given.
+     */
+    public List<Integer> asList(final int[] is)
  {
          return new AbstractList<Integer>() {
                  public Integer get(int i) { return is[i]; }
@@ -1361,7 +1543,11 @@ public class myDataset {
 
    }
 
-  public InstanceSet getIS()
+    /**
+     * Returns the Instance set stored.
+     * @return the Instance set stored.
+     */
+    public InstanceSet getIS()
   {
      return this.IS;
   }

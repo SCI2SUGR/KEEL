@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
 import  keel.Algorithms.Genetic_Rule_Learning.XCS.KeelParser.Config;
@@ -44,7 +37,19 @@ import java.io.*;
 
 
 
-
+/**
+ * <p>A classifer can contain three types of representations: ternary
+ * representatiton (each alelle can take 3 possible values, 0, 1 or don't
+ * care), real representation, where each alelle can take any real value,
+ * and the mixed one, that can take character or real representation for
+ * each alelle. In fact, the real representation is the mixed representation
+ * with all the alelles being reals.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class Representation {
 /**
  * <p>
@@ -259,7 +264,7 @@ public class Representation {
  * Mutates the classifier. It mutates the action and the condition,
  * according to the probability of mutation.
  * </p>
- * return a boolean indicating if the action has been mutated.
+ * @return a boolean indicating if the action has been mutated.
  */
   public boolean mutate(double[] currentState) {        
     int i=0;
@@ -279,7 +284,7 @@ public class Representation {
  * <p>
  * Mutates the action of the classifier.
  * </p>
- * return a boolean indicating if the action has been mutated.
+ * @return a boolean indicating if the action has been mutated.
  */
   public boolean mutateAction() {    
     int act = 0;

@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Salvador Garcia (University of JaÃ©n) 12/09/2009
-* @version 0.1
-* @since JDK1.5
-* </p>
-*/
+
 
 package keel.Algorithms.Hyperrectangles.EHS_CHC;
 
@@ -41,6 +35,13 @@ import org.core.*;
 import java.util.Arrays;
 import java.util.Vector;
 
+/**
+* <p> Chromosome structure for algorithm EHS_CHC.
+* @author Written by Salvador Garcia (University of Jaen) 12/09/2009
+* @version 0.1
+* @since JDK1.5
+* </p>
+*/
 public class Cromosoma implements Comparable {
 
   /*Cromosome data structure*/
@@ -53,7 +54,8 @@ public class Cromosoma implements Comparable {
   double errorRate;
   public double cover;
 
-  /*Construct a random cromosome of specified size(OK)*/
+  /**Construct a random chromosome of specified size
+     * @param size size of the chromosome*/
   public Cromosoma (int size) {
 
     double u;
@@ -73,7 +75,9 @@ public class Cromosoma implements Comparable {
     cover=0.0;
   }
 
-  /*Create a copied cromosome (OK)*/
+  /**Create a copied chromosome 
+     * @param size size of the chromosome.
+     * @param a chromosomo to copy*/
   public Cromosoma (int size, Cromosoma a) {
     int i;
 
@@ -86,7 +90,8 @@ public class Cromosoma implements Comparable {
     cover=a.cover;
   }
 
-  /*Cronstruct a cromosome from a bit array (OK)*/
+  /**Cronstruct a cromosome from a bit array 
+     * @param datos bit array given.*/
   public Cromosoma (boolean datos[]) {
     int i;
 

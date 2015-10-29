@@ -189,11 +189,19 @@ public class Atributo {
     return c;
   }
 
-  public boolean getTipo() {
+    /**
+     *
+     * @return
+     */
+    public boolean getTipo() {
     return tipo;
   }
 
-  public void setTipo(boolean tip) {
+    /**
+     *
+     * @param tip
+     */
+    public void setTipo(boolean tip) {
     tipo = tip;
   }
 

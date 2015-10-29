@@ -27,6 +27,11 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Hyperrectangles.RISE;
+
+import keel.Dataset.Attribute;
+
 /**
  *
  * File: Rule.java
@@ -38,10 +43,6 @@
  * @since JDK1.5
  *
  */
-package keel.Algorithms.Hyperrectangles.RISE;
-
-import keel.Dataset.Attribute;
-
 public class Rule {
 	
 	private static int size;   //attributes of the rule

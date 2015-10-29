@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
@@ -43,7 +36,22 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>This class is a classifier set. It is used to create the folowing sets:
+ * match set [P], action set [A] and the population P, where all the classifiers belong to.
+ *
+ * There are three different constructors, one for each set. 
+ * There are a lot of access methods to the population parameters, such as the
+ * numerosities sums, get and set classifiers, etc. 
+ * Moreover, there are specific methods used by XCS, like methods that
+ * insert, insert subsuming, insert deleting, deletes, subsumes new classifiers 
+ * in the population.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class Population {
 /**
  * <p>

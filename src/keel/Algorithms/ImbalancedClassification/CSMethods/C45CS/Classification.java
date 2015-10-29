@@ -27,13 +27,6 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Cordoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
 
 package keel.Algorithms.ImbalancedClassification.CSMethods.C45CS;
 
@@ -41,7 +34,9 @@ import java.util.*;
 
 /**
  * Class to handle a classification of class values.
- *
+ *@author Written by Cristobal Romero (Universidad de Cordoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
  */
 public class Classification {
     /** Weight of itemsets per class per value. */
@@ -171,7 +166,6 @@ public class Classification {
      * @param source			The dataset that contains all the itemsets.
      * @param attIndex			The index of the attribute with possible unknown values.
      *
-     * @throws Exception
      */
     public final void addWithUnknownValue(Dataset source, int attIndex) {
         double[] probs;
@@ -218,7 +212,6 @@ public class Classification {
      * @param start				The index of the first itemset to add.
      * @param end				The index of the first itemset that will not be added.
      *
-     * @throws Exception
      */
     public final void addRange(int valueIndex, Dataset source, int start,
                                int end) {
@@ -287,6 +280,7 @@ public class Classification {
 
     /** Returns index of value containing maximum number of itemsets.
      *
+     * @return index of value containing maximum number of itemsets.
      */
     public final int maxValue() {
         double max;
@@ -307,6 +301,7 @@ public class Classification {
 
     /** Returns class with highest frequency over all values.
      *
+     * @return class with highest frequency over all values.
      */
     public final int maxClass() {
         double maxCount = 0;
@@ -326,6 +321,7 @@ public class Classification {
     /** Returns class with highest frequency for given value.
      *
      * @param index			The index of the value.
+     * @return class with highest frequency for given value.
      */
     public final int maxClass(int index) {
         double maxCount = 0;
@@ -348,6 +344,7 @@ public class Classification {
 
     /** Returns number of values.
      *
+     * @return number of values.
      */
     public final int numValues() {
         return perValue.length;
@@ -355,6 +352,7 @@ public class Classification {
 
     /** Returns number of classes.
      *
+     * @return number of classes.
      */
     public final int numClasses() {
         return perClass.length;
@@ -362,13 +360,15 @@ public class Classification {
 
     /** Returns the weight of all itemsets of the class with highest frequency.
      *
+     * @return the weight of all itemsets of the class with highest frequency.
      */
     public final double numCorrect() {
         return perClass[maxClass()];
     }
 
-    /** Returns incorrectly classifed
+    /** Returns incorrectly classifed items
      *
+     * @return incorrectly classifed items
      */
     public final double numIncorrect() {
         return total - numCorrect();
@@ -377,6 +377,7 @@ public class Classification {
     /** Returns the number of incorrectly classified itemsets for the given value.
      *
      * @param index		The index of the value.
+     * @return the number of incorrectly classified itemsets for the given value.
      */
     public final double numIncorrect(int index) {
         return perValue[index] - numCorrect(index);
@@ -385,6 +386,7 @@ public class Classification {
     /** Returns the number of correctly classified itemsets for the given value.
      *
      * @param index		The index of the value.
+     * @return the number of correctly classified itemsets for the given value.
      */
     public final double numCorrect(int index) {
         return perClassPerValue[index][maxClass(index)];
@@ -392,6 +394,7 @@ public class Classification {
 
     /** Returns total weight of itemsets.
      *
+     * @return total weight of itemsets.
      */
     public final double getTotal() {
         return total;
@@ -401,6 +404,7 @@ public class Classification {
      *
      * @param valueIndex		The index of the value.
      * @param classIndex		The index of the class.
+     * @return number of itemsets of given class in given value.
      */
     public final double perClassPerValue(int valueIndex, int classIndex) {
         return perClassPerValue[valueIndex][classIndex];
@@ -409,6 +413,7 @@ public class Classification {
     /** Returns number of (possibly fractional) itemsets in given value.
      *
      * @param valueIndex		The index of the value.
+     * @return number of (possibly fractional) itemsets in given value.
      */
     public final double perValue(int valueIndex) {
         return perValue[valueIndex];
@@ -417,6 +422,7 @@ public class Classification {
     /** Returns number of itemsets of given class.
      *
      * @param classIndex		The index of the class.
+     * @return  number of itemsets of given class.
      */
     public final double perClass(int classIndex) {
         return perClass[classIndex];
@@ -425,6 +431,7 @@ public class Classification {
     /** Returns relative frequency of class over all values.
      *
      * @param classIndex		The index of the class.
+     * @return relative frequency of class over all values.
      */
     public final double probability(int classIndex) {
         if (total != 0) {
@@ -438,6 +445,7 @@ public class Classification {
      *
      * @param classIndex		The index of the class.
      * @param attIndex			The index of the attribute.
+     * @return relative frequency of class for given value.
      */
     public final double probability(int classIndex, int attIndex) {
         if (perValue[attIndex] > 0) {

@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
@@ -43,7 +36,14 @@ import java.lang.*;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * <p>This is the typical example for a single step problem, the multiplexer.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class DECEnvironment extends SSEnvironment {
 /**
  * <p>
@@ -287,6 +287,7 @@ public class DECEnvironment extends SSEnvironment {
  * <p>
  * It returns the new Example of a single step file environment.
  * </p>
+     * @return the new Example of a single step file environment.
  */ 
     public double[] getSequentialState(){return null;}
     
@@ -295,6 +296,7 @@ public class DECEnvironment extends SSEnvironment {
  * It returns the number of examples of the database. It is only
  * used in the file environments. 
  * </p>
+     * @return the number of examples of the database
  */    
     public int getNumberOfExamples(){return 0;}
     
@@ -303,6 +305,7 @@ public class DECEnvironment extends SSEnvironment {
  * It deletes the examples of the database that match with the 
  * given classifier. It is only used in the file environment. 
  * </p>
+     * @param cl classifier given.
  */    
     public void deleteMatchedExamples(Classifier cl){}
 

@@ -27,17 +27,17 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Hyperrectangles.EHS_CHC;
+
 /**
-* <p>
+* <p>Hyper class.
 * @author Written by Salvador Garcia (University of Jaén) 6/06/2009
 * @version 0.1
 * @since JDK1.5
 * </p>
 */
-
-package keel.Algorithms.Hyperrectangles.EHS_CHC;
-
-
 public class Hyper {
 	
 	public double x[];

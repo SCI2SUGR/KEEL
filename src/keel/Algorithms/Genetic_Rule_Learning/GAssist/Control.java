@@ -27,6 +27,12 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Genetic_Rule_Learning.GAssist;
+
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+
+
 /**
  * <p>
  * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
@@ -35,11 +41,6 @@
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Genetic_Rule_Learning.GAssist;
-
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-
 public class Control {
 
   /** Creates a new instance of Control */

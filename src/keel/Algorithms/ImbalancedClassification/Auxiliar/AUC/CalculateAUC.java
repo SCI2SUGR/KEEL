@@ -43,6 +43,7 @@ import java.util.Arrays;
  * Class to compute the AUC values
  * @author Written by Sarah Vluymans (University of Ghent) 27/01/2014
  * @version 1.1 (27-01-14)
+ * @since JDK 1.5
  */
 public class CalculateAUC {
     

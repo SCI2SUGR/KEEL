@@ -27,18 +27,19 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Hyperrectangles.EACH;
+
+
 /**
- * <p>
+ * <p>To evaluate the rules
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Hyperrectangles.EACH;
-
-
 public class RuleQualityEvaluation {
 /**
  * <p>
@@ -77,7 +78,8 @@ public class RuleQualityEvaluation {
      * @param conjTst Set of data Test
      * @param muestPorClaseTrain int[] Number of examples of each class in the Train set
      * @param muestPorClaseTest int[] Number of examples of each class in the Test set
-     * @param valorNombreClases String[] Labels for each class
+     * @param valorNombreClases String[] Labels for each class in the Train set
+     * @param valorNombreClasesTest  String[] Labels for each class in the test set
      */
     public RuleQualityEvaluation(RuleSet conjreg, EachDataSet conjTrn,
                                EachDataSet conjTst, int[] muestPorClaseTrain,
@@ -378,6 +380,7 @@ public class RuleQualityEvaluation {
      * Generates a string with out-put lists 
      * </p>
      * @param datos Set of data to compare with the set of rules
+     * @param train true if the data is from training dataset.
      * @return A string with pairs (original class; calculated class;)
      */
     public String out(EachDataSet datos,boolean train) {

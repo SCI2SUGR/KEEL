@@ -40,7 +40,7 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 
 /**
- * <p>
+ * <p>Falco classification algorithm
  * @author Written by Jose Maria Luna, Juan Luis Olmo, Alberto Cano (Universidad de Cordoba) 05/07/2010
  * @version 0.1
  * @since JDK1.5
@@ -63,6 +63,7 @@ public class Main
 	 * <p>
 	 * Main method
 	 * </p>
+        * @param args Main args. Configuration filename is needed.
 	 */
 	public static void main(String[] args) {
 		configureJob(args[0]);

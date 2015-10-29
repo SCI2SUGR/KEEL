@@ -143,8 +143,7 @@ public class Itemset
    * Returns class attribute.
    *
    * @return the class attribute
-   * @throws Exception
-   * @exception UnassignedDatasetException if the class is not set or the
+   * @throws Exception UnassignedDatasetException if the class is not set or the
    * instance doesn't have access to a dataset
    */
   public MyAttribute getClassAttribute() throws Exception {
@@ -207,8 +206,7 @@ public class Itemset
    *
    * @param indexOfIndex the index of the attribute's index
    * @return the attribute at the given position
-   * @throws Exception
-   * @exception UnassignedDatasetException if instance doesn't have access to a
+   * @throws Exception UnassignedDatasetException if instance doesn't have access to a
    * dataset
    */
   public MyAttribute attributeSparse(int indexOfIndex) throws Exception {
@@ -289,9 +287,7 @@ public class Itemset
    * @param value the new attribute value (If the attribute
    * is a string attribute and the value can't be found,
    * the value is added to the attribute).
-   * @throws Exception
-   * @exception UnassignedDatasetException if the dataset is not set
-   * @exception IllegalArgumentException if the selected
+   * @throws Exception UnassignedDatasetException if the dataset is not set or IllegalArgumentException if the selected
    * attribute is not nominal or a string, or the supplied value couldn't
    * be found for a nominal attribute
    */
@@ -648,8 +644,7 @@ public class Itemset
    * @param inst another instance
    * @return true if the header of the given instance is
    * equivalent to this instance's header
-   * @throws Exception
-   * @exception UnassignedDatasetException if instance doesn't have access to any
+   * @throws Exception UnassignedDatasetException if instance doesn't have access to any
    * dataset
    */
   public boolean equalHeaders(Itemset inst) throws Exception {
@@ -664,8 +659,7 @@ public class Itemset
    * Returns an enumeration of all the attributes.
    *
    * @return enumeration of all the attributes
-   * @throws Exception
-   * @exception UnassignedDatasetException if the instance doesn't
+   * @throws Exception UnassignedDatasetException if the instance doesn't
    * have access to a dataset
    */
   public java.util.Enumeration enumerateAttributes() throws Exception {
@@ -773,6 +767,9 @@ public class Itemset
       values = newValues;
   }
 
-  protected Itemset(){}
+    /**
+     * Default Constructor.
+     */
+    protected Itemset(){}
 
 }

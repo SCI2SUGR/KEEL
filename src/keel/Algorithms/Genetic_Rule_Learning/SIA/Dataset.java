@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.SIA;
 
+
+
+import java.io.*;
+import keel.Dataset.*;
+import java.util.Arrays;
+
 /**
  * <p>Title: Data-set</p>
  * <p>Description: It contains the methods for reading the training and test files</p>
@@ -37,11 +43,6 @@ package keel.Algorithms.Genetic_Rule_Learning.SIA;
  * @version 1.2
  * @since JDK1.4
  */
-
-import java.io.*;
-import keel.Dataset.*;
-import java.util.Arrays;
-
 public class Dataset {
 
     private double[][] X = null;
@@ -403,8 +404,8 @@ public class Dataset {
     }
 
     /**
-     * Devuelve el nombre de cada valor para los distintos atributos
-     * @return String[][] Una cadena con el valor de cada atributo en formato CADENA (sea nominal o numerico)
+     * Returns the values as String for every attribute.
+     * @return String[][] array of String, the values for every attribute. 
      */
     public String[][] dameValores() {
         String[][] salida = new String[nentradas][];

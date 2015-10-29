@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
@@ -44,7 +37,15 @@ import java.lang.*;
 import java.io.*;
 
 
-
+/**
+ * <p>It's the real lower-upper bound representation. It's not unordered, so, when changing interval values 
+ * (mutation, crossover, etc., the consistence of interval has to be verified (lowerBound <= upperBound)
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class RealRep implements Attribute{
 /**
  * <p>

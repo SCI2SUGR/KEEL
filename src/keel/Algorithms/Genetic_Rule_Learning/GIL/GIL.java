@@ -29,6 +29,13 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.GIL;
 
+
+
+import java.io.IOException;
+import java.util.Arrays;
+
+import org.core.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,12 +47,6 @@ package keel.Algorithms.Genetic_Rule_Learning.GIL;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import java.util.Arrays;
-
-import org.core.*;
-
 public class GIL {
 
     myDataset train, val, test;

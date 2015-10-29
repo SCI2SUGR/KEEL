@@ -44,10 +44,20 @@ package keel.Algorithms.Genetic_Rule_Learning.PART;
  */
 public class Pair {
 
-  public int key;
-  public double value;
+    /**
+     * Pair's key.
+     */
+    public int key;
 
-  public Pair() {
+    /**
+     * Pair's value.
+     */
+    public double value;
+
+    /**
+     * Default constructor.
+     */
+    public Pair() {
   }
 
 }

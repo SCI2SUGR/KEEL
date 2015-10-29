@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
@@ -44,7 +37,16 @@ import java.io.*;
 import java.util.*;
 
 
-
+/**
+ * <p>This is the base class for all the single step problems environments
+ * that read the examples from a file. It uses the Dataset API to get all
+ * the information needed from the file.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class SSFileEnvironment implements Environment {
 /**
  * <p>
@@ -502,6 +504,7 @@ public class SSFileEnvironment implements Environment {
  * <p>
  * It returns the new Example of a single step file environment.
  * </p>
+     * @return the new Example of a single step file environment.
  */ 
   public double[] getSequentialState(){
     boolean found = false;
@@ -521,6 +524,7 @@ public class SSFileEnvironment implements Environment {
  * It return the number of the examples of the database. It's only
  * used in the file environments. 
  * </p>
+     * @return the number of the examples of the database.
  */    
   public int getNumberOfExamples(){
     return numOfExamples;

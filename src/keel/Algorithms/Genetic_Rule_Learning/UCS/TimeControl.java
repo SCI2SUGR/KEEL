@@ -28,14 +28,7 @@
 **********************************************************************/
 
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
- * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.UCS;
 
@@ -43,7 +36,14 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>This class makes the UCS time control.
+ * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class TimeControl {
 /**
  * <p>
@@ -56,10 +56,9 @@ public class TimeControl {
     
     private long t_CVTrain=0, t_CVTest=0, t_CVTrainTest=0;
 
-
-
-
-
+    /**
+     * Default Constructor. 
+     */
     public TimeControl(){
     }
 
@@ -103,7 +102,10 @@ public class TimeControl {
 	t_Test += System.currentTimeMillis() - iTestTime;   
    }
   
-
+/**
+ * Update the total time
+ * @param iTime is the incremental time to sum to the total time of the execution.
+ */
    public void updateTotalTime(long iTime){
 	t_totalTime += iTime;
    }  

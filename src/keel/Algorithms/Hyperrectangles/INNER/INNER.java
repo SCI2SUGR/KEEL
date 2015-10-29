@@ -27,20 +27,6 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: INNER.java
- * 
- * The INNER Algorithm.
- * It proceeds by selecting a random set of initial examples and inflating them to rules.
- * The rules obtained are postprocessed to obtain a suitable set, read to classify
- * new instaces based on both rule and distances approaches.
- * 
- * @author Written by Joaquin Derrac (University of Granada) 8/7/2009
- * @version 1.1
- * @since JDK1.5
- * 
- */
 
 package keel.Algorithms.Hyperrectangles.INNER;
 
@@ -55,6 +41,21 @@ import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 import keel.Algorithms.Hyperrectangles.Basic.HyperrectanglesAlgorithm;
 
+
+/**
+ * 
+ * File: INNER.java
+ * 
+ * The INNER Algorithm.
+ * It proceeds by selecting a random set of initial examples and inflating them to rules.
+ * The rules obtained are postprocessed to obtain a suitable set, read to classify
+ * new instaces based on both rule and distances approaches.
+ * 
+ * @author Written by Joaquin Derrac (University of Granada) 8/7/2009
+ * @version 1.1
+ * @since JDK1.5
+ * 
+ */
 public class INNER extends HyperrectanglesAlgorithm{
 	
 	private int initialInstances;

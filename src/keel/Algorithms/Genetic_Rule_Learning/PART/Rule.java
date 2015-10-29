@@ -46,11 +46,11 @@ import java.util.Vector;
  */
 public class Rule {
 	
-  // operator >
+  /**  number to indentify the operator >. */
   public static int GREATER=SimpleRule.GREATER; 
-  //operator <=
+  /**  number to indentify operator <=. */
   public static int LOWER=SimpleRule.LOWER; 
-  //operator =
+  /**  number to indentify operator =. */
   public static int EQUAL=SimpleRule.EQUAL; 
   //string of simple rules
   private Vector chain; 

@@ -27,18 +27,18 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Hyperrectangles.EACH;
+
 /**
- * <p>
+ * <p>Stores one data with the form: attribute attribute class
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Hyperrectangles.EACH;
-
-
 public class Sample {
 /**
  * <p>
@@ -205,9 +205,10 @@ public class Sample {
 
     /**
      * <p>
-     * Do a copy of the example
+     * Checks if the Sample objects are equals
      * </p>
-     * @return A new copy of the example
+     * @param m Sample object to compare with
+     * @return true if they are equals
      */
     public boolean compare(Sample m) {
         boolean bEquals = true;

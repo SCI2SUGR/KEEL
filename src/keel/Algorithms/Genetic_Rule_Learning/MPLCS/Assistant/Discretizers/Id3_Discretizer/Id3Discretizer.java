@@ -27,10 +27,7 @@
   
 **********************************************************************/
 
-/*
- * Id3Discretizer.java
- *
- */
+
 
 /**
  *
@@ -42,6 +39,10 @@ import java.util.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Globals.*;
 
+/*
+ * Id3Discretizer.java
+ *
+ */
 public class Id3Discretizer extends Discretizer {
 	protected Vector discretizeAttribute(int attribute,int []values,int begin,int end) {
 		Vector cd=classDistribution(attribute,values,begin,end);

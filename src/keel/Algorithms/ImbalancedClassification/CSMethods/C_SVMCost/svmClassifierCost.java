@@ -612,7 +612,7 @@ public class svmClassifierCost {
       }
     }
     
-    /*
+    /**
      * Calculates the AUC for the training set
      *
      * @return			The AUC value associated to the training set
@@ -621,7 +621,7 @@ public class svmClassifierCost {
         return CalculateAUC.calculate(valsForAUCTrain);
     }
     
-    /*
+    /**
      * Calculates the AUC for the test set
      *
      * @return			The AUC value associated to the test set

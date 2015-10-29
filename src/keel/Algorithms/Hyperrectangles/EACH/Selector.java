@@ -27,19 +27,19 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Hyperrectangles.EACH;
+
 /**
- * <p>
+ * <p>Class to stores selectors with the form (attribute operator values)
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Hyperrectangles.EACH;
-
-
 public class Selector implements Comparable {
 /**
  * <p>
@@ -272,6 +272,11 @@ public class Selector implements Comparable {
     public String[] getNValues() {
         return valueN;
     }
+
+    /**
+     * Returns the number of values for this selector
+     * @return the number of values for this selector
+     */
     public int getNumValues(){
     	return numValues;
     }

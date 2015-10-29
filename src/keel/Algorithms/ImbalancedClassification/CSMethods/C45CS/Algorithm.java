@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Cordoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
+
 
 package keel.Algorithms.ImbalancedClassification.CSMethods.C45CS;
 
@@ -41,6 +35,13 @@ import java.io.*;
 
 import keel.Dataset.Attributes;
 
+/**
+* <p> Abstract class for the CS methods
+* @author Written by Cristobal Romero (Universidad de Cordoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
+*</p>
+*/
 public abstract class Algorithm {
     /** The name of the file that contains the information to build the model. */
     protected static String modelFileName = "";

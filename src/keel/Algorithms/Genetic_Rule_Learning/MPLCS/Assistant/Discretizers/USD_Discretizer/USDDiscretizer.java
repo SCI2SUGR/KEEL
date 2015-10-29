@@ -42,6 +42,10 @@ import java.util.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Discretizers.Basic.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Globals.*;
 
+/*
+ * USDDiscretizer.java
+ *
+ */
 public class USDDiscretizer extends Discretizer {
 	private class Interval {
 		int attribute;

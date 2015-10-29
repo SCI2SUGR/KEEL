@@ -71,6 +71,8 @@ public class OlexGA_Attribute {
 
     /** Constructor for continuous attributes.
      *
+     * @param attributeName Attribute's name.
+     * @param attributeIndex Attribute's index.
      */
     public OlexGA_Attribute(String attributeName, int attributeIndex) {
         name = attributeName;
@@ -129,6 +131,8 @@ public class OlexGA_Attribute {
 
     /** Returns if the attribute is discret or not.
      *
+     * @return true if the attribute is discret
+     *
      */
     public final boolean isDiscret() {
         return (type == DISCRET);
@@ -136,6 +140,7 @@ public class OlexGA_Attribute {
 
     /** Returns if the attribute is continuous or not.
      *
+     * @return  true if the attribute is continuous
      */
     public final boolean isContinuous() {
         return (type == CONTINUOUS);
@@ -143,6 +148,7 @@ public class OlexGA_Attribute {
 
     /** Returns the name of the attribute.
      *
+     * @return the name of the attribute.
      */
     public final String name() {
         return name;
@@ -163,6 +169,7 @@ public class OlexGA_Attribute {
     /** Returns the value with the given index.
      *
      * @param valIndex	The index of the value.
+     * @return the value with the given index.
      */
     public final String value(int valIndex) {
         if (!isDiscret()) {
@@ -206,6 +213,7 @@ public class OlexGA_Attribute {
 
     /** Returns the minor value of a continuous attribute.
      *
+     * @return  the minor value of a continuous attribute.
      */
     public final float getMinRange() {
         if (isDiscret()) {
@@ -218,6 +226,7 @@ public class OlexGA_Attribute {
 
     /** Gets the bigger value of a continuous attribute.
      *
+     * @return the bigger value of a continuous attribute.
      */
     public final float getMaxRange() {
         if (isDiscret()) {
@@ -237,6 +246,7 @@ public class OlexGA_Attribute {
 
     /** Returns true if this attribute used in output or input clause.
      *
+     * @return true if this attribute used in output or input clause.
      */
     public boolean isActive() {
         return used;

@@ -39,14 +39,7 @@
 
 package keel.Algorithms.Hyperrectangles.EACH;
 
-/**
 
- * <p>Descripcion: Contiene los metodos de lectura del fichero de train y test</p>
- * <p>Copyright: Copyright Rosa (c) 2007</p>
- * <p>Empresa: Mi Casa</p>
- * @author Rosa Venzala
- * @version 1.0
- */
 
 import java.io.*;
 import keel.Dataset.*;
@@ -54,6 +47,12 @@ import java.util.*;
 //import java.util.Arrays;
 import org.core.*;
 
+/**
+
+ * <p> Class to manage data sets</p>
+ * @author Rosa Venzala
+ * @version 1.0
+ */
 public class Dataset {
 /**
  * <p>
@@ -98,6 +97,12 @@ public class Dataset {
         return X;
     }
     
+    /**
+     * <p>
+     * Return the values of the in-put attributes
+     * </p>
+     * @return double[][] An array with the in-put attributes
+     */
     public String[][]getX2(){
     	return X2;
     }
@@ -113,11 +118,22 @@ public class Dataset {
     	return X[pos];
     }
     
+    /**
+     * <p>
+     * Return the normalized values of the in-put attributes for an instance
+     * </p>
+     * @param pos The position of the instance in the set of values
+     * @return double[] An array with the normalized in-put attributes for the instance
+     */
     public double []getXNor(int pos){
     	normalize();
     	return X[pos];
     }
     
+    /**
+     * Returns the instance set
+     * @return the instance set
+     */
     public InstanceSet getInstanceSet(){
     	return IS;
     }
@@ -126,6 +142,9 @@ public class Dataset {
      * <p>
      * Returns the nominal value of the double value of the attribute
      * </p>
+     * @param atr attribute id.
+     * @param valor attribute id.
+     * @return the nominal value of the double value of the attribute
      */
     public String findNominalValue(int atr,double valor){
     	String dev="";
@@ -165,6 +184,7 @@ public class Dataset {
      * <p>
      * Gets for each attribute the sorted list of its possible values
      * </p>
+     * @return list with each attribute the sorted list of its possible values
      */
     public double [][]getListValues(){
     	double [][]valuesList=new double[nInputs] [nData];
@@ -260,6 +280,8 @@ public class Dataset {
      * <p>
      * Returns a vector with the optimum class for each pair attribute-value
      * </p>
+     * @param Count each pair attribute-value
+     * @param seed seed.
      * @return int [][] vector with the optimum classes
      */
     public int [][]getOptimumClass(int [][][]Count,long seed){
@@ -302,6 +324,8 @@ public class Dataset {
      * <p>
      * Returns the index where is the maximum in an array of doubles
      * </p>
+     * @param num array of doubles given.
+     * @param seed seed
     * @return int index where is the aximum value
     */
     public int getMax(double []num, long seed){
@@ -366,6 +390,12 @@ public class Dataset {
         return retorno;
     }
     
+    /**
+     * <p>
+     * Returns the values for the out-put(class)
+     * </p>
+     * @return int[] An array with the values of the class
+     */
     public String[] getC2() {
         String[] retorno = new String[C2.length];
         for (int i = 0; i < C2.length; i++) {

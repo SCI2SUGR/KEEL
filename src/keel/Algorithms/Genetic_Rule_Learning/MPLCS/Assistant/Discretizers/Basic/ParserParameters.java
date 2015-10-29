@@ -27,10 +27,7 @@
   
 **********************************************************************/
 
-/*
- * ParserParameters.java
- *
- */
+
 
 /**
  *
@@ -41,10 +38,15 @@ import java.util.*;
 import java.io.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Globals.*;
 
+/*
+ * ParserParameters.java
+ *
+ */
 public class ParserParameters {
 	static BufferedReader br;
 	
-	/** Creates a new instance of ParserParameters */
+	/** Creates a new instance of ParserParameters
+        * @param fileName file wehere to parse the parameters*/
 	public static void doParse(String fileName) {
 		try {
 			br=new BufferedReader(new FileReader(fileName));

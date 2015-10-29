@@ -45,6 +45,7 @@ import keel.Dataset.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Globals.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Discretizers.Basic.*;
 
+/** Main class for algorithm MPLCS UniformWidth_Discretizer. */ 
 public class Main {
 	
 	/** Creates a new instance of Main */

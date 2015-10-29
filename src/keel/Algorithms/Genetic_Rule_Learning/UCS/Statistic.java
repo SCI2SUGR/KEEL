@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
- * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
- * @version 1.3
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.UCS;
@@ -43,7 +36,27 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>This class is used to show and configurate all the possible statistics.
+ * In the normal mode, it will generate four statistic output files: The
+ * INC file that contains the incremental results of the execution. The TRN
+ * and the TST file, that have the final result statistic of the a train o
+ * a test execution. And finally, it generates the PLT (population) file,
+ * that contains all the resulting classifiers of the execution. The
+ * statistics that will be written on that files are: iterations, number of
+ * good classifications, number of bad classifications, number of not
+ * covered classifications, total number of examples, percentage of correct
+ * classification of the covered examples, percentage of correct
+ * classifications of the whole number of examples, number of macro
+ * classifiers of the population, percentage of the optimal population that
+ * has been reached already, the percentage of generalitzation and the
+ * number of micro classifiers of the population.
+ * @author Written by Albert Orriols (La Salle University Ramón Lull, Barcelona)  28/03/2004
+ * @author Modified by Xavi Solé (La Salle University Ramón Lull, Barcelona) 03/12/2008
+ * @version 1.3
+ * @since JDK1.2
+ * </p>
+ */
 public class Statistic {
 /**
  * <p>
@@ -237,6 +250,7 @@ public class Statistic {
  * of examples that have been correctly classified. In the second it
  * contains the number of failed classifications, and in the third one
  * the number of not covered classifications.
+     * @param typeOfTest identify the type of test.
   */
   public void makeTestStatistics(Population pop, int iteration, int []executionResults, int typeOfTest) {        
     if (Config.doStatistics && typeOfTest == 0 && fTest != null ){

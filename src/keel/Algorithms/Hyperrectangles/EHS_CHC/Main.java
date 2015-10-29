@@ -27,18 +27,24 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Hyperrectangles.EHS_CHC;
+
 /**
-* <p>
+* <p>Main class.
 * @author Written by Salvador Garcia (University of JaÃ©n) 6/06/2009
 * @version 0.1
 * @since JDK1.5
 * </p>
 */
-
-package keel.Algorithms.Hyperrectangles.EHS_CHC;
-
 public class Main {
-  public static void main (String args[]) {
+
+    /**
+     * Main function.
+     * @param args main args. Configuration filename is needed.
+     */
+    public static void main (String args[]) {
 
     EHS_CHC ehs;
 

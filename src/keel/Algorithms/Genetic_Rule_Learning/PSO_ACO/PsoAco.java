@@ -84,6 +84,7 @@ public class PsoAco {
     private float porcentajeTrain, porcentajeTest;
     private int bandera;
 
+    
     public PsoAco() {
     }
 

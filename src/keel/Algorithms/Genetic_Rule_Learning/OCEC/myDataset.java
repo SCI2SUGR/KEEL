@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.OCEC;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,16 +46,22 @@ package keel.Algorithms.Genetic_Rule_Learning.OCEC;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
-  public static final int REAL = 0;
-  public static final int INTEGER = 1;
-  public static final int NOMINAL = 2;
+    /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
+    public static final int NOMINAL = 2;
 
   private double[][] X = null; //examples array
   private boolean[][] missing = null; //possible missing values
@@ -172,11 +184,23 @@ public class myDataset {
     return emin;
   }
 
+    /**
+     * It returns the maximum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the maximum value of the attribute
+     */    
   public double getMax(int variable) {
     return emax[variable];
   }
 
-  public double getMin(int variable) {
+  /**
+     * It returns the minimum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the minimum value of the attribute
+     */  
+    public double getMin(int variable) {
     return emin[variable];
   }
 
@@ -422,7 +446,11 @@ public class myDataset {
     return Attributes.hasRealAttributes();
   }
 
-  public boolean hasNumericalAttributes() {
+    /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
+    public boolean hasNumericalAttributes() {
     return (Attributes.hasIntegerAttributes() ||
             Attributes.hasRealAttributes());
   }
@@ -453,7 +481,12 @@ public class myDataset {
     return tam;
   }
 
-  public int size() {
+    /**
+     * It returns the number of examples
+     * 
+     * @return the number of examples
+     */
+    public int size() {
     return nData;
   }
 
@@ -517,26 +550,53 @@ public class myDataset {
     return average[position];
   }
 
-  public void computeInstancesPerClass() {
+    /**
+     * It computes the number the instances per class.
+     */
+    public void computeInstancesPerClass() {
     instancesCl = new int[nClasses];
     for (int i = 0; i < this.getnData(); i++) {
       instancesCl[this.outputInteger[i]]++;
     }
   }
 
-  public int numberInstances(int clas) {
+    /**
+     * It returns the number of instances in the dataset of the given class
+     *
+     * @param clas the index of the class
+     * @return the number of instances in the dataset of the given class
+     */
+    public int numberInstances(int clas) {
     return instancesCl[clas];
   }
 
-  public int numberValues(int attribute) {
+    /**
+     * It returns the number of different values of an attribute
+     *
+     *@param attribute the index of the attribute
+     * @return the number of different values of an attribute
+     */
+    public int numberValues(int attribute) {
     return Attributes.getInputAttribute(attribute).getNumNominalValues();
   }
 
-  public String getOutputValue(int intValue) {
+    /**
+     * It returns the name of the class of index intValue
+     *
+     * @param intValue the index of the class
+     * @return the name of the class of index intValue
+     */
+    public String getOutputValue(int intValue) {
     return Attributes.getOutputAttribute(0).getNominalValue(intValue);
   }
 
-  public int getTipo(int variable) {
+    /**
+     * It returns the type of the attribute specified
+     *
+     * @param variable index of the attribute
+     * @return the type of the attribute specified
+     */
+    public int getTipo(int variable) {
     if (Attributes.getInputAttribute(variable).getType() ==
         Attributes.getInputAttribute(0).INTEGER) {
       return this.INTEGER;
@@ -553,9 +613,11 @@ public class myDataset {
   }
 
   /**
-   * Devuelve el universo de discuros de las variables de entrada y salida
-   * @return double[][] El rango minimo y maximo de cada variable
-   */
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
+     */
   public double[][] devuelveRangos() {
     double[][] rangos = new double[this.getnVars()][2];
     for (int i = 0; i < this.getnInputs(); i++) {
@@ -576,22 +638,28 @@ public class myDataset {
     return rangos;
   }
 
-  public String nombreVar(int pos) {
+    /**
+     * Returns the name of the attribute with the id given.
+     * @param pos attribute's id.
+     * @return name of the attribute.
+     */
+    public String nombreVar(int pos) {
     return Attributes.getInputAttribute(pos).getName();
   }
 
   /**
-   * Devuelve el valor nominal correspondiente a la clase con valor numerico "clase"
-   * @param clase int
-   * @return String
-   */
+     * It returns the name of the class of index intValue
+     *
+     * @param clase the index of the class
+     * @return the name of the class of index intValue
+     */
   public String nombreClase(int clase) {
     return Attributes.getOutputAttribute(0).getNominalValue(clase);
   }
 
-  /**
-   * Discretizacion en anchura uniforme
-   * @param intervalos int Numero de intervalos a discretizar
+ /**
+   * Uniform width discretization
+   * @param intervalos int Number of intervals
    */
   public void discretize(int intervalos){
     for (int i = 0; i < nInputs; i++){
@@ -613,7 +681,12 @@ public class myDataset {
     }
   }
 
-  public String [] nombres(){
+    /**
+     * It returns the name of the attributes
+     * 
+     * @return the name of the attributes
+     */
+    public String [] nombres(){
     String nombres[] = new String[nInputs];
     for (int i = 0; i < nInputs; i++){
       nombres[i] = Attributes.getInputAttribute(i).getName();
@@ -621,7 +694,11 @@ public class myDataset {
     return nombres;
   }
 
-  public int sumMinorityClasses(){
+    /**
+     * Returns the summation of the number of instances that belong to the minority classes
+     * @return number of instances that belong to the minority classes.
+     */
+    public int sumMinorityClasses(){
     int majority = 0;
     int sum = numberInstances(majority);
     for (int i = 1; i < this.getnClasses(); i++){

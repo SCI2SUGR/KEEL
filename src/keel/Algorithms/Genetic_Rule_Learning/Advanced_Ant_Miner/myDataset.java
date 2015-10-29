@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.Advanced_Ant_Miner;
 
+
+
+import java.io.*;
+import keel.Dataset.*;
+import java.util.Arrays;
+
 /**
  * <p>Title: myDataset</p>
  *
@@ -39,11 +45,6 @@ package keel.Algorithms.Genetic_Rule_Learning.Advanced_Ant_Miner;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.*;
-import keel.Dataset.*;
-import java.util.Arrays;
-
 public class myDataset {
 
     private double[][] X = null;
@@ -61,22 +62,23 @@ public class myDataset {
 
     final static boolean debug = false;
 
+    /** The whole instance set. */
     public InstanceSet IS;
 
     private int[] comunes;
 
     /**
-     * Devuelve los valores de los atributos de entrada
-     * @return double[][] Un array con los atributos de entrada
-     */
+   * Outputs an array of examples with their corresponding attribute values.
+   * @return double[][] an array of examples with their corresponding attribute values
+   */
     public double[][] getX() {
         return X;
     }
 
     /**
-     * Devuelve los valores para la salida (clase)
-     * @return int[] Un array con los valores de la clase
-     */
+   * Returns the output of the data-set as integer values
+   * @return int[] an array of integer values corresponding to the output values of the dataset
+   */
     public int[] getC() {
         int[] retorno = new int[C.length];
         for (int i = 0; i < C.length; i++) {
@@ -86,66 +88,66 @@ public class myDataset {
     }
 
     /**
-     * Devuelve un array con los valores máximos de los atributos de entrada
-     * @return double[] idem
-     */
+   * It returns an array with the maximum values of the attributes
+   * @return double[] an array with the maximum values of the attributes
+   */
     public double[] getemaximo() {
         return emaximo;
     }
 
     /**
-     * Devuelve un array con los valores mínimos de los atributos de entrada
-     * @return double[] idem
-     */
+   * It returns an array with the minimum values of the attributes
+   * @return double[] an array with the minimum values of the attributes
+   */
     public double[] geteminimo() {
         return eminimo;
     }
 
     /**
-     * Devuelve el número de datos
-     * @return int el número de ejemplos
-     */
+   * It gets the size of the data-set
+   * @return int the number of examples in the data-set
+   */
     public int getndatos() {
         return ndatos;
     }
 
     /**
-     * Devuelve el número de variables
-     * @return int El número de variables (incluyendo entrada y salida)
-     */
+   * It gets the number of variables of the data-set (including the output)
+   * @return int the number of variables of the data-set (including the output)
+   */
     public int getnvariables() {
         return nvariables;
     }
 
     /**
-     * Devuelve el número de variables de entrada
-     * @return int El total de variables de entrada
-     */
+   * It gets the number of input attributes of the data-set
+   * @return int the number of input attributes of the data-set
+   */
     public int getnentradas() {
         return nentradas;
     }
 
     /**
-     * Devuelve el número total de clases
-     * @return int el número de clases distintas
-     */
+   * It gets the number of output attributes of the data-set (for example number of classes in classification)
+   * @return int the number of different output values of the data-set
+   */
     public int getnclases() {
         return nclases;
     }
 
     /**
-     * Comprueba si un atributo está "perdido" o no
-     * @param i int Número de ejemplo
-     * @param j int Número de atributo
-     * @return boolean True si falta, False en otro caso
-     */
+   * This function checks if the attribute value is missing
+   * @param i int Example id
+   * @param j int Variable id
+   * @return boolean True is the value is missing, else it returns false
+   */
     public boolean isMissing(int i, int j) {
         // True is the value is missing (0 in the table)
         return missing[i][j];
     }
 
     /**
-     * Constructor. Crea un nuevo conjunto de instancias
+     * Constructor. Create a new instance set.
      */
     public myDataset() {
         IS = new InstanceSet(); // Init a new set of instances
@@ -243,8 +245,8 @@ public class myDataset {
     }
 
     /**
-     * Devuelve los tipos de cada entrada (NOMINAL[0] o NUMERICO[1])
-     * @return int[] Un vector que contiene 0 o 1 en funcion de si los atributos son nominales o numericos
+     * Returns the type of each input attribute (NOMINAL = 0 OR NUMERIC = 1)
+     * @return int[] Vector with binary values, indicating if the attributes are nominal or numeric.
      */
     public int[] tiposVar() {
         int[] tipos = new int[this.nentradas];
@@ -258,7 +260,7 @@ public class myDataset {
     }
 
     /**
-     * Calcula los valores mas comunes para cada columna o atributo
+     * Computes the most frequent values for every attribute.
      */
     public void calculaMasComunes() {
         comunes = new int[nentradas];
@@ -298,35 +300,37 @@ public class myDataset {
     }
 
     /**
-     * Devuelve el valor mas común del atributo i-esimo
-     * @param i int Número de atributo
-     * @return int Valor mas comnun para esta variable
+     * Returns the most frequent value of the ith attribute.
+     * @param i int Number of the attribute
+     * @return int The most frequent value of that attribute.
      */
     public int masComun(int i) {
         return comunes[i];
     }
 
     /**
-     * Devuelve el rango superior del atributo i-esimo
-     * @param i int Numero de atributo de entrada
-     * @return double Valor maximo que puede tomar el atributo
+     * Returns the greater value of the attribute given.
+     * @param i int attribute's id.
+     * @return double the greater value of the attribute given.
      */
     private double dameRangoSup(int i) {
         return Attributes.getAttribute(i).getMaxAttribute();
     }
 
     /**
-     * Devuelve el rango inferior del atributo i-esimo
-     * @param i int Numero de atributo de entrada
-     * @return double Valor minimo que puede tomar el atributo
+     * Returns the lesser value of the attribute given.
+     * @param i int attribute's id.
+     * @return double the lesser value of the attribute given.
      */
     private double dameRangoInf(int i) {
         return Attributes.getAttribute(i).getMinAttribute();
     }
 
     /**
-     * Devuelve el rango superior e inferior para cada atributo de la base de datos
-     * @return double[][] Un array de dos valores para cada atributo: rango superior, rango inferior
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
      */
     public double[][] dameRangos() {
         double rangos[][] = new double[this.getnentradas()][2];
@@ -338,8 +342,8 @@ public class myDataset {
     }
 
     /**
-     * Devuelve los tipos de cada atributo
-     * @return int[] Un array de enteros, cada uno representa un tipo (NOMINAL,NUMERICO)
+     * Returns the type of each input attribute
+     * @return int[] the type of each input attribute
      */
     public int[] dameTipos() {
         int tipos[] = new int[this.getnentradas()];
@@ -350,8 +354,8 @@ public class myDataset {
     }
 
     /**
-     * Devuelve el nombre de las variables del problema
-     * @return String[] Un Array con los nombres de las variables del problema
+     * It returns the name of every input attributes.
+     * @return String [] Array of strings with the name of every input attribute's names.
      */
     public String[] dameNombres() {
         String[] salida = new String[nvariables];
@@ -363,8 +367,8 @@ public class myDataset {
     }
 
     /**
-     * Devuelve el valor de las clases
-     * @return String[] Un array con el valor para las distintas salidas (clases)
+     * It returns the name of every output values (possible classes).
+     * @return String [] Array of strings with the name of every output attribute's names.
      */
     public String[] dameClases() {
         String[] salida = new String[nclases];
@@ -380,8 +384,8 @@ public class myDataset {
     }
 
     /**
-     * Devuelve el nombre de cada valor para los distintos atributos
-     * @return String[][] Una cadena con el valor de cada atributo en formato CADENA (sea nominal o numerico)
+     * Returns the values as String for every attribute.
+     * @return String[][] array of String, the values for every attribute. 
      */
     public String[][] dameValores() {
         String[][] salida = new String[nentradas][];
@@ -407,6 +411,10 @@ public class myDataset {
         return salida;
     }
 
+    /**
+     * It returns an array with the minimum values of the attributes
+     * @return double[] an array with the minimum values of the attributes
+     */
     public double[] valoresMin() {
         double[] min = new double[nentradas];
         for (int i = 0; i < nentradas; i++) {
@@ -421,8 +429,8 @@ public class myDataset {
     }
 
     /**
-     * Comprueba si en la base de datos hay alguna entrada de tipo real o contínua
-     * @return boolean True si existe alguna entrada continua. False en caso contrario
+     * It checks if the data-set has any real value
+     * @return boolean True if it has some real values, else false.
      */
     public boolean hayAtributosContinuos() {
         return Attributes.hasRealAttributes();

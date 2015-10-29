@@ -61,6 +61,7 @@ public class Main
 	 * <p>
 	 * Main method
 	 * </p>
+         * @param args main args. the first argument should be the configuration file name.
 	 */
 	public static void main(String[] args) {
 		configureJob(args[0]);

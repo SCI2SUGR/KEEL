@@ -38,8 +38,11 @@ import keel.Dataset.Attributes;
  */
 public class SimpleRule {
 
+    /** number to indentify the operator >. */
   public static int GREATER=0; // operator >
+  /** number to indentify the operator <=. */
   public static int LOWER=1; // operator <=
+  /** number to indentify the operator =. */
   public static int EQUAL=2; // operator =
 
   private int attribute; //atribute's id

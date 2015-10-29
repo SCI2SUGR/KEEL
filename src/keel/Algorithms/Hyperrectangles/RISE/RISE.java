@@ -27,6 +27,18 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Hyperrectangles.RISE;
+
+import java.util.StringTokenizer;
+
+import org.core.*;
+
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Algorithms.Hyperrectangles.Basic.HyperrectanglesAlgorithm;
+
 /**
  * 
  * File: RISE.java
@@ -41,17 +53,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Hyperrectangles.RISE;
-
-import java.util.StringTokenizer;
-
-import org.core.*;
-
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Algorithms.Hyperrectangles.Basic.HyperrectanglesAlgorithm;
-
 public class RISE extends HyperrectanglesAlgorithm{
 	
 	private int Q;  //SVDM parameter

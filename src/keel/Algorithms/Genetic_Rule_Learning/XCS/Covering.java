@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.XCS;
 import  keel.Algorithms.Genetic_Rule_Learning.XCS.KeelParser.Config;
@@ -42,7 +35,15 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
+/**
+ * <p>This class implements the covering operator. It creates new classifiers that match with the environmental
+ * state when an input is not covered.
+ * @author Written by Albert Orriols (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class Covering {
 /**
  * <p>
@@ -78,6 +79,7 @@ public class Covering {
  * @param matchSet is the match set where the new classifiers have to be introduced to.
  * @param envState is the environmental state.
  * @param tStamp is the current time stamp.
+     * @param actionCovered identify if the action is covered or not.
  */
  
       public void coverActions(Population pop, Population matchSet,double[] envState,int tStamp,boolean [] actionCovered) {        
