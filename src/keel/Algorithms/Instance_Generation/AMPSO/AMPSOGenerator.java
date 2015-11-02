@@ -59,10 +59,7 @@ import java.util.LinkedList;
 
 /**
  * 
- * @param  k
- * @param  MaxIter
- * @param SwarmSize
- * @param c1, c2, c3
+ * AMPSOGenerator.java
  * 
  * @author Isaac Triguero
  * @version 1.0
@@ -84,7 +81,8 @@ public class AMPSOGenerator extends PrototypeGenerator {
   private double ProbR;
   private double ProbD;
   
-  protected int numberOfPrototypes;  // Swarmsize is the percentage
+   /** Swarmsize is the percentage */
+  protected int numberOfPrototypes; 
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
   protected int numberOfClass;

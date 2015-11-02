@@ -38,9 +38,17 @@
 
 package keel.Algorithms.ImbalancedClassification.Resampling.SMOTE_TomekLinks;
 
+/**
+ * Main.java
+ * @author Salvador García López
+ */
 public class Main {
 
-  public static void main (String args[]) {
+    /**
+     * Main function
+     * @param args main args.
+     */
+    public static void main (String args[]) {
 
     SMOTE_TomekLinks smotetl;
 

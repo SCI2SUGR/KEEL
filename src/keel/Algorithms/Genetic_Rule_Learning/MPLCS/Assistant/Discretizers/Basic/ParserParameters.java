@@ -38,7 +38,7 @@ import java.util.*;
 import java.io.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Globals.*;
 
-/*
+/**
  * ParserParameters.java
  *
  */

@@ -151,12 +151,14 @@ public class LVQPRU extends PrototypeGenerator
 
     /**
      * Builds a LVQPRU algorithm.
+     * @param _trainingDataSet Training dataset
      * @param numIter Number of iterations of the process.
      * @param pcNpc Percentage of number of prototypes per class. Used in initial reduction.
      * @param pcN Percentage of number of prototypes.
      * @param numIterLVQ2_1 Number iterations performed by the LVQ2.1 algorithm.
      * @param a Alpha parameter of the LVQ2.1 algorithm.
      * @param w Window width of the LVQ2.1 associated algorithm.          
+     * @param k K parameter  of the LVQ2.1 algorithm.     
      * 
      */
     public LVQPRU(PrototypeSet _trainingDataSet, int numIter, double pcNpc, double pcN, int numIterLVQ2_1, double a, double w, int k)

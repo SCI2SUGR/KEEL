@@ -88,7 +88,7 @@ public class CHC {
      * @param n_high	Number of high granularity rules in the rule base
      * @param eval	Maximum number of evaluations in the CHC algorithm
      * @param popLength	Size of the population in the CHC algorithm
-     * @param int bits_per_gene	Bits per gene for the gray code associated to the real part of the CHC algorithm (lateral tuning)
+     * @param bits_per_gene Bits per gene for the gray code associated to the real part of the CHC algorithm (lateral tuning)
      */
     public CHC (myDataset current_dataset, GP_COACH_H gp_coach_data, double alpha, ArrayList <Rule> pop, int n_low, int n_high, int eval, int popLength, int bits_per_gene) {
     	dataset = current_dataset;
@@ -109,7 +109,6 @@ public class CHC {
 	/**
      * Run the CHC algorithm for the data in this population
      * 
-     * @return	boolean array with the rules selected for the final population
      */
     public void runCHC () {
     	ArrayList <CHC_Chromosome> C_population;

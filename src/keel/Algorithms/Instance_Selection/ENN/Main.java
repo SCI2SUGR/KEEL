@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Instance_Selection.ENN;
+
 /**
  * 
  * File: Main.java
@@ -39,9 +42,8 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Instance_Selection.ENN;
-
 public class Main {
+    
 	/** 
 	 * <p>
 	 * The main method of the class

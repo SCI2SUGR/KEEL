@@ -121,6 +121,7 @@ public class MatrixOfDistances
      /**
      * Remove a prototype to the matrix of distances.
      * @param a prototype to be erased.
+     * @return True if the prototype has been correctly removed.
      */
     public boolean removeFromA(Prototype a)
     {

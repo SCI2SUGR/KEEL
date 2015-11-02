@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.LogenPro;
 
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+import java.util.Vector;
+
 /**
  * <p>It contains the methods to read a Classification/Regression Dataset.
  * @author Written by Alberto Fernández (University of Granada) 01/01/2007
@@ -37,11 +43,6 @@ package keel.Algorithms.Genetic_Rule_Learning.LogenPro;
  * @since JDK 1.6
  * </p>
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-import java.util.Vector;
 
 public class myDataset {
 /**	

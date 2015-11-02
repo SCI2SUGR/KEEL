@@ -52,9 +52,10 @@ import java.util.*;
 public class PSOAlgorithm extends PrototypeGenerationAlgorithm<PSOGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new PSOGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new PSOGenerator.
      */
     protected PSOGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

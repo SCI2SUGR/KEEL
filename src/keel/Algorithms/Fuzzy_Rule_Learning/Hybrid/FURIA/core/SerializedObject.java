@@ -166,7 +166,6 @@ public class SerializedObject implements Serializable {
      * for more details).
      *
      * @return the restored object
-     * @exception Exception if the object couldn't be restored
      */
     public Object getObject() {
 

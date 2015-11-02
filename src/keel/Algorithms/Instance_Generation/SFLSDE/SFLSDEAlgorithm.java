@@ -52,9 +52,10 @@ import java.util.*;
 public class SFLSDEAlgorithm extends PrototypeGenerationAlgorithm<SFLSDEGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new SFLSDEGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new SFLSDEGenerator.
      */
     protected SFLSDEGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

@@ -72,6 +72,7 @@ public class LVQ3 extends LVQ2
     
     /**WITH INITIAL CODE-BOOKS
      * Construct a new LVQ3 algorithm.
+     * @param InitialSet Initial dataset
      * @param tDataSet Training data set.
      * @param iter Number of iteratios of the algorithm.
      * @param nProt Number of prototypes generated.

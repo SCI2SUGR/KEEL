@@ -27,17 +27,18 @@
   
 **********************************************************************/
 
-/*
- * Parameters.java
- *
- * This class contains all the parameters of the system
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.Globals;
 
 import java.util.*;
 import java.io.*;
 
+/**
+ * Parameters.java
+ *
+ * This class contains all the parameters of the system
+ */
 public final class Parameters {
 	public static String algorithmName;
 

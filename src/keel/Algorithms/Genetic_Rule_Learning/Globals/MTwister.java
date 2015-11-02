@@ -122,7 +122,7 @@ package keel.Algorithms.Genetic_Rule_Learning.Globals;
 //  Any feedback is very welcome.
 //  http://www.math.keio.ac.jp/matumoto/emt.html
 //  email: matumoto@math.keio.ac.jp
-
+ 
 public class MTwister {
 	long[] state=new long[624];
 	int left = 1;

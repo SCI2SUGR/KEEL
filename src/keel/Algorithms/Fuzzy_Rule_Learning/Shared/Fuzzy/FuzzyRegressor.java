@@ -43,19 +43,20 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
 * </p> 
 */
 public abstract class FuzzyRegressor {
-    //the type for fuzzy regressors based on crisp sets (singleton fuzzy sets) 
+    /** the type for fuzzy regressors based on crisp sets (singleton fuzzy sets). */
 	public final static int Crisp=0;
-	//the type for fuzzy regressors based on interval sets (interval fuzzy sets)
+	/** the type for fuzzy regressors based on interval sets (interval fuzzy sets). */
     public final static int Interval=1;
-    //the type for fuzzy regressors based on fuzzy sets (triangular fuzzy sets)
+    /**the type for fuzzy regressors based on fuzzy sets (triangular fuzzy sets). */
     public final static int Fuzzy=2;
-    //the type of constants (Crisp, Interval and Fuzzy) to manage in derived classes. 
+    /**the type of constants (Crisp, Interval and Fuzzy) to manage in derived classes.  */
     protected static int constType; 
     /** 
      * <p> 
      * Creates and returns a fuzzy alpha-cut with result of the run.
      * 
      * </p>
+     * @param x a initial fuzzy alpha-cut
      * @return a fuzzy alpha-cut with result of the run. 
      */
     public abstract FuzzyAlphaCut output(FuzzyAlphaCut[] x);

@@ -41,7 +41,11 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.IVTURS;
 public class Cover{
   int pos;
 
-  public Cover(int pos) {
+    /**
+     * Parameters Constructor.
+     * @param pos position to be set.
+     */
+    public Cover(int pos) {
     this.pos = pos;
   }
 
@@ -49,7 +53,11 @@ public class Cover{
 	return (new Cover(this.pos));
   }
 
-  public int getPos() {
+    /**
+     * Returns the position stored.
+     * @return the position stored.
+     */
+    public int getPos() {
     return (this.pos);
   }
 }

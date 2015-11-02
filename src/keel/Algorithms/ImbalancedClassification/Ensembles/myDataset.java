@@ -98,7 +98,12 @@ public class myDataset {
     IS = new InstanceSet();
   }
 
-  public myDataset(myDataset copia, double[] distribution){
+    /**
+     * Generates a new binary dataset by copying it from the dataset given.
+     * @param copia the original training dataset
+     * @param distribution dataset distribution.
+     */
+    public myDataset(myDataset copia, double[] distribution){
     nVars = copia.getnVars();
     nInputs = copia.getnInputs();
     nClasses = copia.getnClasses();
@@ -1440,7 +1445,7 @@ public class myDataset {
 
   /**
      * It returns the number of instances in the data set for a given class.
-     * @param clas int Given class.
+     * @param clase int Given class.
      * @return int Number of instances for the given class.
      */
   public int numEjemplos(int clase){

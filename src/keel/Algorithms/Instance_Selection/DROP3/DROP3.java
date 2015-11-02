@@ -45,15 +45,35 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import java.util.Arrays;
 
+/**
+ * 
+ * File: DROP3.java
+ * 
+ * The DROP3 Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class DROP3 extends Metodo {
 
   /*Own parameters of the algorithm*/
   private int k;
 
+  /**
+	 * Builder. Creates the basic structures of the algorithm
+	 *
+	 * @param ficheroScript Configuration script
+	 */
   public DROP3 (String ficheroScript) {
     super (ficheroScript);
   }
 
+
+  /**
+     * Executes the DROP3 algorithm.
+     */
   public void ejecutar () {
 
     int i, j, l, m, n, o;

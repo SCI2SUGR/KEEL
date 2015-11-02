@@ -212,7 +212,11 @@ public class FURIA extends Classifier implements WeightedInstancesHandler {
 	/** filter: No normalization/standardization */
 	public static final int FILTER_NONE = 2;
 
-	public FURIA(parseParameters params) {
+    /**
+     * Constructor. Build the FURIA object and parse all parameters with the parser given.
+     * @param params given parser.
+     */
+    public FURIA(parseParameters params) {
 		m_Seed = Long.parseLong(params.getParameter(0));
 		m_Optimizations = Integer.parseInt(params.getParameter(1));//2
 		m_Folds = Integer.parseInt(params.getParameter(2));//3
@@ -297,7 +301,6 @@ public class FURIA extends Classifier implements WeightedInstancesHandler {
 	 * (i.e. InstanceSet).
 	 * @param is The KEEL Instance set
 	 * @param preprocessType An integer with the type of preprocess done before exporting data to Weka format (0 = normalize, 1 = standardize, 2 = do nothing).
-	 * @param nominal2binary True if the nominal values must be converted in a set of binary ones (one bit per value of the nominal attribute).
 	 * @return A new allocated WEKA formatted Instance set
 	 */
 	protected Instances InstancesKEEL2Weka(InstanceSet is, int preprocessType) {
@@ -922,6 +925,7 @@ public class FURIA extends Classifier implements WeightedInstancesHandler {
 	 * @param data the given data
 	 * @param classIndex the given class index
 	 * @param defDL the default DL in the data
+     * @return ruleset for the given class according to the given data
 	 * @throws Exception if the ruleset can be built properly
 	 */
 	protected Instances rulesetForOneClass(double expFPRate, 
@@ -1340,16 +1344,15 @@ public class FURIA extends Classifier implements WeightedInstancesHandler {
 		return sb.toString();
 	}
 
-	/**
-	 * Main method.
-	 *
-	 * @param args the options for the classifier
-	 * @throws Exception 
-	 */
 	//public static void main(String[] args) throws Exception {
 	// runClassifier(new FURIA(), args);
 	//}
 
+    /**
+     * Returns revision ( string "1.0")
+     * @return  revision ( string "1.0")
+     */
+    
 	public String getRevision() {
 		return "1.0";
 	}

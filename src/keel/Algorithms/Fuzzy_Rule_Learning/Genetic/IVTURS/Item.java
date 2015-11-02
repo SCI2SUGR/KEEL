@@ -47,7 +47,10 @@ import java.util.*;
 public class Item implements Comparable {
 	int variable, value;
 
-	public Item() {
+    /**
+     *Default constructor.
+     */
+    public Item() {
 	}
 
 	/**
@@ -56,7 +59,6 @@ public class Item implements Comparable {
 	 * </p>
 	 * @param variable Variable
 	 * @param value Value or Label of the variable
-	 * @return Return the item variable/value
 	 */
 	public Item(int variable, int value) {
 		this.variable = variable;

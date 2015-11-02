@@ -29,6 +29,11 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Hybrid;
 
+
+
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: Fuzzy_Ish</p>
  *
@@ -42,10 +47,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Hybrid;
  * @version 1.4
  * @since JDK1.5
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class Fuzzy_Ish {
 
   myDataset train, val, test;
@@ -56,14 +57,45 @@ public class Fuzzy_Ish {
   DataBase dataBase;
   RuleBase ruleBase;
 
-  public static final int MINIMUM = 0;
-  public static final int PRODUCT = 1;
-  public static final int CF = 0;
-  public static final int PCF_IV = 1;
-  public static final int MCF = 2;
-  public static final int PCF_II = 3;
-  public static final int WINNING_RULE = 0;
-  public static final int ADDITIVE_COMBINATION = 1;
+    /**
+     * Configuration flag (MINIMUM).
+     */
+    public static final int MINIMUM = 0;
+
+    /**
+     * Configuration flag (PRODUCT).
+     */
+    public static final int PRODUCT = 1;
+
+    /**
+     * Configuration flag (CF).
+     */
+    public static final int CF = 0;
+
+    /**
+     * Configuration flag (PCF_IV).
+     */ 
+    public static final int PCF_IV = 1;
+
+    /**
+     * Configuration flag (MCF).
+     */
+    public static final int MCF = 2;
+
+    /**
+     * Configuration flag (PCF_II).
+     */
+    public static final int PCF_II = 3;
+
+    /**
+     * Configuration flag (WINNING_RULE ).
+     */
+    public static final int WINNING_RULE = 0;
+
+    /**
+     * Configuration flag (ADDITIVE_COMBINATION).
+     */
+    public static final int ADDITIVE_COMBINATION = 1;
 
   private boolean somethingWrong = false; //to check if everything is correct.
 

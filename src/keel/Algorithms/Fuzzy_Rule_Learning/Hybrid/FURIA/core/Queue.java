@@ -86,6 +86,7 @@ public class Queue extends Object implements Serializable {
 
     /**
      * Creates a queue node with the given contents
+       * @param contents given contents.
      */
     //@ requires contents != null;
     //@ assignable m_Contents, m_Next;
@@ -98,6 +99,8 @@ public class Queue extends Object implements Serializable {
 
     /**
      * Sets the next node in the queue, and returns it.
+       * @param next next queue's node to be set.
+       * @return the next node.
      */
     //@ requires next != this ;
     //@ assignable m_Next;
@@ -108,6 +111,7 @@ public class Queue extends Object implements Serializable {
 
     /**
      * Gets the next node in the queue.
+       * @return the next node in the queue.
      */
     //@ ensures \result == m_Next;
     public /*@ pure @*/ QueueNode next() {
@@ -115,7 +119,9 @@ public class Queue extends Object implements Serializable {
     }
 
     /**
-     * Sets the contents of the node.
+     * Sets the contents of the node and returns them.
+       * @param contents contents to be set.
+       * @return the contents of the node.
      */
     //@ requires contents != null;
     //@ assignable m_Contents;
@@ -126,6 +132,7 @@ public class Queue extends Object implements Serializable {
 
     /**
      * Returns the contents in the node.
+       * @return the contents in the node.
      */
       //@ ensures \result == m_Contents;
     public /*@ pure @*/ Object contents() {

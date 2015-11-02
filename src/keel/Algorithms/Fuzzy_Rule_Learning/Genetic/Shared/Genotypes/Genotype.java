@@ -40,7 +40,20 @@ import org.core.*;
 import keel.Algorithms.Shared.Parsing.*;
 import keel.Algorithms.Shared.Exceptions.*;
 
-
+/** 
+* <p> 
+* Genotype is the base clase to represent the genotype of any GeneticIndividual. 
+* This class is inherit by the following classes: {@link GenotypeFuzzyGAP}, 
+* {@link GenotypeFuzzyGP}, {@link GenotypeFuzzyGPRegSym}, and
+* {@link GenotypePitts}.
+* </p> 
+* <p> 
+ * @author Written by Luciano Sanchez (University of Oviedo) 20/01/2004 
+ * @author Modified by J.R. Villar (University of Oviedo) 18/12/2008
+ * @version 1.0
+ * @since JDK1.4 
+ * </p> 
+*/ 
 public abstract class Genotype {
 /** 
 * <p> 

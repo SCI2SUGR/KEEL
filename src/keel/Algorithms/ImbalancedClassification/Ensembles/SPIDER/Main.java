@@ -37,8 +37,18 @@
 
 package keel.Algorithms.ImbalancedClassification.Ensembles.SPIDER;
 
+/**
+ * Main.java
+ * Main class for the algorithm SPIDER.
+ * @author Mikel Galar Idoate 
+ */
+
 public class Main {
 
+    /**
+     * Main function. Execute the algorithm SPIDER with the configuration file passed as argument.
+     * @param args main args. Configuration filename is needed.
+     */
   public static void main (String args[]) {
 
     SPIDER spider;

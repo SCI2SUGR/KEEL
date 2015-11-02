@@ -47,8 +47,7 @@ import java.util.StringTokenizer;
 
 
 /** 
- * @param  k
- * @param  k'
+ * Depur algorithm
  * @author Isaac Triguero
  * @version 1.0
  */
@@ -72,7 +71,10 @@ public class Depur extends Metodo {
     super (ficheroScript);
   }
 
-  public void ejecutar () {
+    /**
+     * Execute the algorithm Depur.
+     */
+    public void ejecutar () {
 
     double conjS[][];
     double conjR[][];

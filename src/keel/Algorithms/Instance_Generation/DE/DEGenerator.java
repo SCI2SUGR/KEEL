@@ -60,13 +60,7 @@ import java.util.StringTokenizer;
 
 
 /**
- * @param k Number of neighbors
- * @param Population Size.
- * @param ParticleSize.
- * @param Scaling Factor.
- * @param Crossover rate.
- * @param Strategy (1-5).
- * @param MaxIter
+ * DEGenerator
  * @author Isaac Triguero
  * @version 1.0
  */
@@ -85,7 +79,9 @@ public class DEGenerator extends PrototypeGenerator {
   private int Strategy;
   private String CrossoverType; // Binomial, Exponential, Arithmetic
   
+  /** number of classes*/
   protected int numberOfClass;
+  /** number of Prototypes*/
   protected int numberOfPrototypes;  // Particle size is the percentage
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;

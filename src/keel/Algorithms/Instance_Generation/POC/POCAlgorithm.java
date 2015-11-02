@@ -53,6 +53,7 @@ public class POCAlgorithm extends PrototypeGenerationAlgorithm<POCGenerator>
      * Builds a new POCGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new POCGenerator.
      */
     protected POCGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

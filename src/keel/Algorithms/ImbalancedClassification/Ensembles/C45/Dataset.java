@@ -89,6 +89,12 @@ public class Dataset {
 
     }
 
+    /**
+     * Creates a new dataset.
+     * @param name dataset's name.
+     * @param train true if the dataset is for training, false if it's for test.
+     * @param weights weights for every instance.
+     */
     public Dataset(String name, boolean train, double[] weights) {
         try {
             // create the set of instances
@@ -115,7 +121,12 @@ public class Dataset {
 
     }
 
-     public Dataset(InstanceSet IS, double[] weights) {
+    /**
+     * Create a new dataset by copying the instances of the InstanceSet given.
+     * @param IS InstanceSet given.
+     * @param weights weights of every instance.
+     */
+    public Dataset(InstanceSet IS, double[] weights) {
 
         this.IS = IS;
 
@@ -426,6 +437,7 @@ public class Dataset {
 
     /** Returns the name of the dataset.
      *
+     * @return the name of the dataset.
      */
     public String getName() {
         return name;
@@ -434,6 +446,7 @@ public class Dataset {
     /** Returns the attribute that has the index.
      *
      * @param index		The index of the attribute.
+     * @return the attribute that has the index.
      */
     public final Attribute getAttribute(int index) {
         return (Attribute) attributes.elementAt(index);
@@ -442,6 +455,7 @@ public class Dataset {
     /** Returns the attribute that has the name.
      *
      * @param name	The name of the attribute.
+     * @return the attribute that has the name.
      */
     public final Attribute getAttribute(String name) {
         for (int i = 0; i < attributes.size(); i++) {
@@ -456,6 +470,7 @@ public class Dataset {
 
     /** Returns class attribute.
      *
+     * @return class attribute.
      */
     public final Attribute getClassAttribute() {
         if (classIndex < 0) {
@@ -467,6 +482,7 @@ public class Dataset {
 
     /** Returns the index of the class attribute.
      *
+     * @return the index of the class attribute.
      */
     public final int getClassIndex() {
         return classIndex;
@@ -474,6 +490,7 @@ public class Dataset {
 
     /** Returns the number of attributes.
      *
+     * @return the number of attributes. 
      */
     public final int numAttributes() {
         return attributes.size();
@@ -481,6 +498,7 @@ public class Dataset {
 
     /** Returns the number of possible values of the class attribute.
      *
+     * @return  the number of possible values of the class attribute.
      */
     public final int numClasses() {
         if (classIndex < 0) {
@@ -492,6 +510,7 @@ public class Dataset {
 
     /** Returns the number of itemsets.
      *
+     * @return the number of itemsets. 
      */
     public final int numItemsets() {
         return itemsets.size();
@@ -548,6 +567,7 @@ public class Dataset {
     /** Returns the itemset at the given position.
      *
      * @param index	The index of the itemset.
+     * @return  the itemset at the given position.
      */
     public final Itemset itemset(int index) {
         return (Itemset) itemsets.elementAt(index);
@@ -555,6 +575,7 @@ public class Dataset {
 
     /** Returns the last itemset.
      *
+     * @return  the last itemset.
      */
     public final Itemset lastItemset() {
         return (Itemset) itemsets.lastElement();

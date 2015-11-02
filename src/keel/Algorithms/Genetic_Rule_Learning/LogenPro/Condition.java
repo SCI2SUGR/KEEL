@@ -30,7 +30,7 @@
 package keel.Algorithms.Genetic_Rule_Learning.LogenPro;
 
 /**
- * <p>
+ * <p>Condition
  * @author Written by Alberto Fernández (University of Granada) 01/01/2007
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
  * @version 1.0
@@ -39,20 +39,50 @@ package keel.Algorithms.Genetic_Rule_Learning.LogenPro;
  */
  
 public class Condition {
-/**	
- * <p>
- * Gene in the tree of the individual
- * </p>
- */
  
+    /**
+     * Tag (ANY).
+     */
     public static final int ANY = -1;
+
+    /**
+     * Tag (EQUAL).
+     */
     public static final int IGUAL = 0;
+
+    /**
+     * Tag (NOT EQUAL).
+     */
     public static final int DISTINTO = 1;
+
+    /**
+     * Tag (LESSER EQUAL).
+     */
     public static final int MENORIGUAL = 2;
+
+    /**
+     * Tag (GREATER EQUAL).
+     */
     public static final int MAYORIGUAL = 3;
+
+    /** 
+     * Tag (LESSER).
+     */
     public static final int MENOR = 4;
+
+    /**
+     * Tag (GREATER).
+     */
     public static final int MAYOR = 5;
+
+    /**
+     * Tag (BETWEEN).
+     */
     public static final int ENTRE = 6;
+
+    /**
+     * Tag (MAX TYPE).
+     */
     public static final int TIPOMAX = 6;
 
     private double valor1, valor2;

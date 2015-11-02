@@ -51,6 +51,7 @@ public class VQAlgorithm extends PrototypeGenerationAlgorithm<VQGenerator>
      * Builds a new VQGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new VQGenerator.
      */
     protected VQGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

@@ -52,7 +52,10 @@ public class DataBase {
 	double[] aut2; //array for storing the values of the 1st automorphism for each variable
 	String names[];
 
-	public DataBase() {
+    /**
+     * Default constructor.
+     */
+    public DataBase() {
 	}
 
 	/**
@@ -61,7 +64,6 @@ public class DataBase {
 	 * </p>
 	 * @param nLabels Number of Linguistic Values
 	 * @param train Training dataset
-	 * @return The databse
 	 */
 	public DataBase(int nLabels, myDataset train) {
 		double mark, value, rank, labels;

@@ -176,6 +176,9 @@ public class ClusterSet
         return copy;
     }
     
+    /**
+     * Default constructor.
+     */
     public ClusterSet()
     {
         clusters = new ArrayList<Cluster>();

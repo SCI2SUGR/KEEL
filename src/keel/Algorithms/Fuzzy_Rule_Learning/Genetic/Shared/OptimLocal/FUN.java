@@ -47,7 +47,15 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.OptimLocal;
 abstract public class FUN {
 
     // Virtual class with a double [] to double function 
-    protected boolean []used;
+
+    /**
+     * Mark the used rules
+     */
+        protected boolean []used;
+
+    /**
+     * A set of initial rules
+     */
     protected double []initial;
     
     /**

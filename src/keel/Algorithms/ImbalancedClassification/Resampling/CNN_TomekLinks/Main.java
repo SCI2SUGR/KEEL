@@ -27,6 +27,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.CNN_TomekLinks;
+
 /**
  * <p>
  * File: Main.java
@@ -38,10 +42,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.CNN_TomekLinks;
-
-
 public class Main {
 
   /**

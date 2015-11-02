@@ -52,6 +52,7 @@ public class BioHEL {
 
 //*******************************************************************************************************************************
 
+            /**Default constructor. */
 	public BioHEL(){
 		
 		if(Parameters.defClass.equals("disabled"))
@@ -81,6 +82,10 @@ public class BioHEL {
 	
 //*******************************************************************************************************************************
 
+    /**
+     * Execute the alforithm BioHEL.
+     */
+    
 	public void run(){
 		
 		LogManager.initLogManager();
@@ -187,6 +192,11 @@ public class BioHEL {
 
 //*******************************************************************************************************************************
 
+    /**
+     * Execute the Genetic Algorithm, returning the classifier that has been optimized
+     * @return the classifier that has been optimized
+     */
+    
 	public classifier runGA(){
 		
 		stop=false;

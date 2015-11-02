@@ -27,6 +27,19 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.ImbalancedClassification.Resampling.SBC;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+
+import org.core.*;
+
+import java.util.StringTokenizer;
+import java.util.Vector;
+
 /**
  * <p>
  * File: SBC.java
@@ -42,18 +55,6 @@
  * @since JDK1.5
  *
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.SBC;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-
-import org.core.*;
-
-import java.util.StringTokenizer;
-import java.util.Vector;
 
 public class SBC extends Metodo {
   /**
@@ -348,6 +349,7 @@ public class SBC extends Metodo {
   
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+	* @throws keel.Algorithms.Preprocess.Basic.CheckException Can not be normalized
 	 */	
 	protected void normalizar () throws CheckException {
 

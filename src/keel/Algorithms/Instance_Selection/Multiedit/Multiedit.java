@@ -43,6 +43,17 @@ import keel.Algorithms.Preprocess.Basic.*;
 import org.core.*;
 import java.util.StringTokenizer;
 
+/**
+ * 
+ * File: Multiedit.java
+ * 
+ * The Multiedit Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Multiedit extends Metodo {
 
  /*Own parameters of the algorithm*/
@@ -50,10 +61,17 @@ public class Multiedit extends Metodo {
   private int k;
   private int B;
 
+  /**
+     * Default constructor. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
   public Multiedit (String ficheroScript) {
     super (ficheroScript);
   }
 
+  /**
+	 * Executes the algorithm
+	 */ 
   public void ejecutar () {
 
     int i, j, l, m;

@@ -27,6 +27,13 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
+
+import keel.Dataset.*;
+import org.core.*;
+
 /**
  * 
  * File: OutputIFS.java
@@ -38,12 +45,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
-
-import keel.Dataset.*;
-import org.core.*;
-
 public class OutputFS {
 
 	/** 

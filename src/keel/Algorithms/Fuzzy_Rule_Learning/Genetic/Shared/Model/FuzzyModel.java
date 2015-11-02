@@ -44,6 +44,15 @@ import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Individual.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 
 // Wrappers used with genetic algorithms
+/**
+ * <p> Fuzzy model. Wrappers used with genetic algorithms
+ * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
+ * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
+ * @author Modified by Enrique A. de la Cal (University of Oviedo) 21/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class FuzzyModel extends Model {
 	/**
 	 * <p>

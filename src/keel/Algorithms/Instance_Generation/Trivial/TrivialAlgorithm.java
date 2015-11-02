@@ -40,17 +40,29 @@ import keel.Algorithms.Instance_Generation.*;
 import keel.Algorithms.Instance_Generation.utilities.*;
 import java.util.*;
 
-/**
+
+    
+/**Main class
  *
  * @author diegoj
  */
 public class TrivialAlgorithm extends PrototypeGenerationAlgorithm<PrototypeGenerator>
 {
+    /**
+     * Builds a new PrototypeGenerator.
+     * @param train Training data set.
+     * @param params Parameters of the method.
+     * @return a new PrototypeGenerator.
+     */
     protected PrototypeGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {
        return new PrototypeGenerator(train, params);    
     }
     
+    /** Main Function.
+     * 
+     * @param args main args. Configuration filename is needed.
+     */
     public static void main(String args[])
     {
         TrivialAlgorithm algo = new TrivialAlgorithm();

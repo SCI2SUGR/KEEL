@@ -27,9 +27,15 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
+
+import keel.Dataset.*;
+import org.core.*;
+
 /**
  * 
- * File: Referencia.java
+ * File: OutputIS.java
  * 
  * An auxiliary class to write result files for Instance Selection algorithms
  * 
@@ -38,11 +44,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
-
-import keel.Dataset.*;
-import org.core.*;
-
 public class OutputIS {
 
 	/**
@@ -256,7 +257,7 @@ public class OutputIS {
 	 * @param instanciasIN Instances to write
 	 * @param instanciasOUT Instances to mantain
 	 * @param entradas Input attributes characteristics
-	 * @param salida Output attribute characteristics
+	 * @param salidas Output attribute characteristics
 	 * @param nEntradas Number of input attributes
 	 * @param nSalidas Number of output attributes
 	 * @param relation Name of the data set
@@ -398,7 +399,7 @@ public class OutputIS {
 	 * @param instanciasIN Instances to write
 	 * @param instanciasOUT Instances to mantain
 	 * @param entradas Input attributes characteristics
-	 * @param salida Output attribute characteristics
+	 * @param salidas Output attribute characteristics
 	 * @param nEntradas Number of input attributes
 	 * @param nSalidas Number of output attributes
 	 * @param relation Name of the data set

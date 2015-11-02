@@ -27,6 +27,19 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.CPM;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import keel.Algorithms.Preprocess.Basic.CheckException;
+import keel.Dataset.*;
+
+import org.core.*;
+
+import java.util.StringTokenizer;
+import java.util.Vector;
+
 /**
  * <p>
  * File: CPM.java
@@ -42,18 +55,6 @@
  * @since JDK1.5
  *
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.CPM;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import keel.Algorithms.Preprocess.Basic.CheckException;
-import keel.Dataset.*;
-
-import org.core.*;
-
-import java.util.StringTokenizer;
-import java.util.Vector;
-
 public class CPM extends Metodo {
   /**
    * <p>
@@ -317,6 +318,7 @@ public class CPM extends Metodo {
 
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+     * @throws keel.Algorithms.Preprocess.Basic.CheckException Can not be normalized.
 	 */	
 	protected void normalizar () throws CheckException {
 

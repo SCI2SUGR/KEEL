@@ -27,6 +27,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.SPIDER2;
+
 /**
  * <p>
  * File: Main.java
@@ -38,9 +42,6 @@
  * @since JDK1.6
  * </p>
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.SPIDER2;
-
 public class Main {
 
         /**

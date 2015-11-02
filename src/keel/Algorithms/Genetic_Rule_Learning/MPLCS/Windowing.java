@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 23/12/2008
- * @author Modified by Jose A. Saez Munoz (ETSIIT, Universidad de Granada - Granada) 10/09/10
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Genetic_Rule_Learning.MPLCS;
@@ -43,14 +35,17 @@ import java.util.*;
 import keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Globals.*;
 
 
-
-public class Windowing {
 /**
- * <p>
- * Manages the subset of training instances
+ * <p>Manages the subset of training instances
  * that is used at each iteration to perform the fitness computations
+ * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 23/12/2008
+ * @author Modified by Jose A. Saez Munoz (ETSIIT, Universidad de Granada - Granada) 10/09/10
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Windowing {
 	
   InstanceWrapper[] is;
   InstanceWrapper[][] strata;

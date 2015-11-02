@@ -50,6 +50,7 @@ public class LVQTCAlgorithm extends PrototypeGenerationAlgorithm<LVQTC>
      * Builds a new LVQTC object.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new LVQTC object.
      */
     protected LVQTC buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

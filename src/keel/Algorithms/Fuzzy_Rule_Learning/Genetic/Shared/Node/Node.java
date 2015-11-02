@@ -56,6 +56,19 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 
 
+/**
+ * <p>The class defines the characteristics of a node.
+ * Every variable has the same linguistic labels and does not use weights
+
+// Terminal nodes have the same own attributes and  haven't got pointer to children.
+// Internal nodes only have got pointer to children.
+ * @author Written by Luciano Sánchez (University of Oviedo) 20/01/2004
+ * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
+ * @author Modified by Enrique A. de la Cal (University of Oviedo) 21/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public abstract class Node {
 /**
  * <p>
@@ -168,8 +181,9 @@ public abstract class Node {
     
     /**
      * <p>
-     * This abstrac method is for debug
+     * This abstrac method returns the output of the node.
      * </p>
+     * @return  the output of the node.
      */
     public abstract String output();
     /**

@@ -87,6 +87,7 @@ public class LVQ1 extends LVQGenerator
     
     /** WITH INITIAL CODE-BOOKS
      * Constructs a new LVQ1 algorithm.
+     * @param InitialSet Initial dataset.
      * @param traDataSet Training data prototypes
      * @param it Number of iterations that will execute the algorithm.
      * @param numProt Number of prototypes to be returned.

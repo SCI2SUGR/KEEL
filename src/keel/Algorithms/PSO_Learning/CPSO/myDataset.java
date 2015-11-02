@@ -29,6 +29,10 @@
 
 package keel.Algorithms.PSO_Learning.CPSO;
 
+
+import java.io.IOException;
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,9 +44,6 @@ package keel.Algorithms.PSO_Learning.CPSO;
  * @author Jose A. Saez Munoz
  * @version 1.0
  */
-
-import java.io.IOException;
-import keel.Dataset.*;
 
 public class myDataset {
 

@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Instance_Selection.SSMA;
+
 /**
  * 
  * File: Main.java
@@ -39,8 +42,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Instance_Selection.SSMA;
-
 public class Main {
 	/** 
 	 * <p>

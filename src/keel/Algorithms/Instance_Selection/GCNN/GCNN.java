@@ -45,15 +45,33 @@ import org.core.*;
 import java.util.StringTokenizer;
 import java.util.Arrays;
 
+/**
+ * 
+ * File: GCNN.java
+ * 
+ * The GCNN Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class GCNN extends Metodo {
 
 	/*Own parameters of the algorithm*/
 	private double P;
 
+        /**
+     * Default constructor. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
 	public GCNN (String ficheroScript) {
 		super (ficheroScript);
 	}
 
+        /**
+	 * Executes the algorithm
+	 */ 
 	public void ejecutar () {
 
 		int S[];

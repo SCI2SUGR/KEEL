@@ -27,25 +27,21 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Genetic_Rule_Learning.GAssist;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
+
 /**
- * <p>
+ * <p>Base class for all classifiers (knowledge representations)
  * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 23/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Genetic_Rule_Learning.GAssist;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
-
 abstract public class Classifier {
-/**
- * <p>
- * Base class for all classifiers (knowledge representations)
- * </p>
- */
 
   protected boolean isEvaluated;
 

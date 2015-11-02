@@ -41,7 +41,7 @@ import keel.Algorithms.Instance_Generation.utilities.*;
 import java.util.*;
 
 /**
- *
+ *BTS3Algorithm.
  * @author diegoj
  */
 public class BTS3Algorithm extends PrototypeGenerationAlgorithm<BTS3Generator>
@@ -51,6 +51,14 @@ public class BTS3Algorithm extends PrototypeGenerationAlgorithm<BTS3Generator>
        return new BTS3Generator(train, params);    
     }
     
+    /** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
     public static void main(String args[])
     {
         BTS3Algorithm algo = new BTS3Algorithm();

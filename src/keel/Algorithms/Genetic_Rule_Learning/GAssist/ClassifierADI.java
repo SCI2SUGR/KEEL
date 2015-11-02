@@ -27,27 +27,23 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 23/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.GAssist;
 
 import keel.Dataset.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
-public class ClassifierADI
-    extends Classifier implements Cloneable {
 /**
- * <p>
- * Contains the classifier for the ADI knowledge representation
+ * <p>Contains the classifier for the ADI knowledge representation
+ * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 23/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class ClassifierADI
+    extends Classifier implements Cloneable {
 	
   // The cromosome
   int[] crm;

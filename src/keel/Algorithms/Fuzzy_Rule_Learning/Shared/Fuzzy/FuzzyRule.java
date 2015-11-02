@@ -44,8 +44,16 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy;
 */
 public class FuzzyRule {
    // The consequent is codified in rule position in the BaseRule 
-   public  int consequent;
-   public  double weight;
+
+    /**
+     * Consequent of the rule.
+     */
+       public  int consequent;
+
+    /**
+     * Weight of the rule.
+     */
+    public  double weight;
    /** 
     * <p> 
     * Constructor by default. It creates a fuzzy rule with consequent 0 and weight 0. 

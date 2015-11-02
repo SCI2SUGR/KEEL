@@ -55,7 +55,10 @@ public class Individual implements Comparable{
 	RuleBase ruleBase;
 	double[][] gInt;//min and max values for the genes
 
-	public Individual() {
+    /**
+     * Default constructor.
+     */
+    public Individual() {
 	}
 
 	/**
@@ -65,7 +68,6 @@ public class Individual implements Comparable{
 	 * @param ruleBase Rule set
 	 * @param dataBase Database
 	 * @param w1 Weight for the fitness function
-	 * @return Return a individual
 	 */
 	public Individual(RuleBase ruleBase, DataBase dataBase, double w1, int tipoAjuste) {
 
@@ -471,7 +473,6 @@ public class Individual implements Comparable{
 	* <p>
 	* Evaluate this individual (fitness function)
 	* </p>
-	* @return void
 	*/
 	public void evaluate() {
 		this.ruleBase.evaluate(this.gene, this.geneR, this.ajuste);

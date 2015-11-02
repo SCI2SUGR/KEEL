@@ -53,6 +53,7 @@ public class ICPLAlgorithm extends PrototypeGenerationAlgorithm<ICPLGenerator>
      * Builds a new ICPLGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new ICPLGenerator.
      */
     protected ICPLGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

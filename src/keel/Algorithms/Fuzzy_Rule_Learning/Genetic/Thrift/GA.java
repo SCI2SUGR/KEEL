@@ -33,13 +33,12 @@ import org.core.*;
 import java.util.ArrayList;
 
 /**
- * <p>Title: </p>
+ * <p>Title: Genetic algorithm</p>
  *
- * <p>Description: </p>
+ * <p>Description: Genetic algorithm for Thrift</p>
  *
- * <p>Copyright: Copyright (c) 2007</p>
  *
- * <p>Company: </p>
+ * <p>Company: KELL </p>
  *
  * @author not attributable
  * @version 1.0

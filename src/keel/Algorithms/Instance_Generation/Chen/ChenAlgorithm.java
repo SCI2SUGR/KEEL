@@ -50,6 +50,7 @@ public class ChenAlgorithm extends PrototypeGenerationAlgorithm<ChenGenerator>
      * Builds a new ChenGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new ChenGenerator
      */
     protected ChenGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Instance_Selection.CNN;
+
+import keel.Algorithms.Preprocess.Basic.*;
+
+import org.core.*;
+
+import java.util.StringTokenizer;
+import java.util.Arrays;
+
 /**
  * 
  * File: CNN.java
@@ -39,15 +49,6 @@
  * 
  */
 
-package keel.Algorithms.Instance_Selection.CNN;
-
-import keel.Algorithms.Preprocess.Basic.*;
-
-import org.core.*;
-
-import java.util.StringTokenizer;
-import java.util.Arrays;
-
 public class CNN extends Metodo {
 
 	/*Own parameters of the algorithm*/
@@ -57,6 +58,7 @@ public class CNN extends Metodo {
 	/**
      * Default builder. Construct the algoritm by using the superclass builder.
 	 *
+     * @param ficheroScript Configuration filename
      */
 	public CNN (String ficheroScript) {
 		super (ficheroScript);

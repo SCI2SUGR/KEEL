@@ -46,6 +46,7 @@ public class LVQ2_1 extends LVQ2
      * Construct an LVQ2.1 algorithm.
      * @param T training data set.
      * @param iterations Number of iterations to be performed.
+     * @param n_prot  Number of prototypes to be returned.
      * @param alpha_0 Alpha constant of the algorithm.
      * @param windowWidth Window width parameter.
      */

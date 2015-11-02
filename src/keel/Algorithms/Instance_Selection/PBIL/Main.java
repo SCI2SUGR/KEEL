@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Instance_Selection.PBIL;
+
 /**
  * 
  * File: Main.java
@@ -39,8 +42,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Instance_Selection.PBIL;
-
 public class Main {
 	/** 
 	 * <p>

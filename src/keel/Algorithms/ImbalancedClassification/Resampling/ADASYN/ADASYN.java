@@ -27,6 +27,21 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.ADASYN;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+
+import org.core.*;
+
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
 /**
  * <p>
  * File: ADASYN.java
@@ -42,20 +57,6 @@
  * @since JDK1.5
  *
  */
-
-
-package keel.Algorithms.ImbalancedClassification.Resampling.ADASYN;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-
-import org.core.*;
-
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
 public class ADASYN extends Metodo {
   /**
    * <p>
@@ -682,6 +683,7 @@ public class ADASYN extends Metodo {
   
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+     * @throws keel.Algorithms.Preprocess.Basic.CheckException if the dataset can not be normalized.
 	 */	
 	protected void normalizar () throws CheckException {
 

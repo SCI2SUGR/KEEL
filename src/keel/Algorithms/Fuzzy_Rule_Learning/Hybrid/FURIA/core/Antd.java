@@ -83,6 +83,7 @@ public abstract class Antd implements Copyable, WeightedInstancesHandler, Serial
 
 	/** 
 	 * Constructor
+        * @param a Weka attribute.
 	 */
 	public Antd(AttributeWeka a){
 		att=a;

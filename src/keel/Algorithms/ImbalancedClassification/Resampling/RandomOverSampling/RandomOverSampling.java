@@ -27,6 +27,18 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.RandomOverSampling;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+
+import org.core.*;
+import java.util.StringTokenizer;
+
 /**
  * <p>
  * File: RandomOverSampling.java
@@ -42,17 +54,6 @@
  * @since JDK1.5
  *
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.RandomOverSampling;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-
-import org.core.*;
-import java.util.StringTokenizer;
-
 public class RandomOverSampling extends Metodo {
   /**
    * <p>
@@ -219,6 +220,7 @@ public class RandomOverSampling extends Metodo {
   
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+	* @throws keel.Algorithms.Preprocess.Basic.CheckException Can not be normalized
 	 */	
 	protected void normalizar () throws CheckException {
 

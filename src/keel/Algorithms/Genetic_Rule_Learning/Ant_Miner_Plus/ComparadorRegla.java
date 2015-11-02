@@ -32,28 +32,36 @@ package keel.Algorithms.Genetic_Rule_Learning.Ant_Miner_Plus;
 import java.util.Comparator;
 
 /**
- * <p>Título: Ant Colony Optimization</p>
- * <p>Descripción:Comparador entre reglas</p>
+ * <p>Ant Colony Optimization. </p>
+ * <p>Rules comparative method.</p>
  * <p>Copyright: Copyright (c) 2007</p>
  * @author Vicente Rubén del Pino Ruiz
- * @author Victoria Lopez (University of Granada) 22/07/2014 - Correcting bugs in the compare method, it did not return 0 for equal
  * @version 1.0
  */
 
 public class ComparadorRegla implements Comparator {
-    public ComparadorRegla() {
-    }
 
     /**
-     * Compara dos reglas
-     *
-     * @param o1 Object Regla a comparar
-     * @param o2 Object Regla a comparar
-     * @return int Devuelve 0 si tienen la misma posicion, 1 si el primero esta
-     * antes, -1 si el primero esta despues.
-     *
-     *
+     *Default constructor.
      */
+    public ComparadorRegla() {
+  }
+
+  /*
+  * OJO!!!! Como el Collections.sort ordena de mayor a menor y el orden que interesa
+   * que tengan los atributos es de menor a mayor, este CompareTo esta trucado al reves
+   * es decir cuando es menor devuelve mayor y cuando es mayor devuelve menor.
+   */
+  
+  /**
+   * Compares two rules.
+   *
+   * @param o1 Object Attribute to compare
+   * @param o2 Object Attribute to compare
+   * @return int 0 if both have the same position, 1 if first element comes before, -1 if the first element comes after.
+   *
+   
+   */
     public int compare(Object o1, Object o2) {
         float calidad1;
         float calidad2;

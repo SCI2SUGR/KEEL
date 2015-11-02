@@ -49,7 +49,7 @@ import org.core.*;
  */
 public class RandomSelector extends PrototypeGenerator
 {
-    //! Number of prototypes that will contain the generated data set (prototypes extracted from the training data set).
+    /** Number of prototypes that will contain the generated data set (prototypes extracted from the training data set). */
     protected int numberOfPrototypesSelected;
     
     /**

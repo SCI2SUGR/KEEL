@@ -1099,6 +1099,7 @@ public class Rule implements Comparable {
     /**
      * Compares this object with the specified object for order, according to the raw_fitness measure 
      * 
+     * @param a object to compare with.
      * @return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
      */
     public int compareTo(Object a) {
@@ -1223,6 +1224,8 @@ public class Rule implements Comparable {
     /**
      * String representation of a Fuzzy Rule in the GP-COACH-H algorithm.
      *
+     * @param names attributes names.
+     * @param classes classes considered.
      * @return String an string containing the Fuzzy Rule
      */
     public String printString (String [] names, String [] classes) {

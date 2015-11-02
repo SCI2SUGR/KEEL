@@ -535,6 +535,7 @@ public class Ilga {
 	
 	/**
 	 * @param sem the SEM model evolved for the actual attribute
+     * @param whichSEM the rule set from which we will append the attributes
 	 */
 	public void IGA(SEM sem, int whichSEM){
 		int sel;

@@ -45,6 +45,7 @@ public class HYBAlgorithm extends PrototypeGenerationAlgorithm<HYBGenerator>
      * Builds a new HYBGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new HYBGenerator.
      */
     protected HYBGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

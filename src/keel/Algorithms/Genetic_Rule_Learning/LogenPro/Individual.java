@@ -389,6 +389,7 @@ public class Individual implements Comparable {
      * <p>
      * It checks is the example in position "idEjemplo" is covered by the individual
      * </p>
+     * @param idEjemplo example id (position)
      * @return boolean TRUE if the example in position "idEjemplo" is covered. FALSE otherwise
      */
     public boolean isCovered(int idEjemplo) {
@@ -399,6 +400,7 @@ public class Individual implements Comparable {
      * <p>
      * It checks is the condition for the variable in position "atributo" is equal to ANY
      * </p>
+     * @param atributo attribute id.
      * @return boolean TRUE if the condition is ANY. FALSE otherwise
      */
     public boolean isAny(int atributo) {
@@ -451,6 +453,7 @@ public class Individual implements Comparable {
      * <p>
      * Compares the fitness value of two individuals
      * </p>
+     * @param a object to compare with.
      * @return int Returns -1 if the the fitness of the first individual is lesser than the fitness of the second one.
      * 1 if the the fitness of the first individual is greater than the fitness of the second one.
      * 0 if both individuals have the same fitness value

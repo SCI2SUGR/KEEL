@@ -52,9 +52,10 @@ import java.util.*;
 public class JADEAlgorithm extends PrototypeGenerationAlgorithm<JADEGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new JADEGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new JADEGenerator.
      */
     protected JADEGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

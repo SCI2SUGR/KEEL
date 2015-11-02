@@ -38,8 +38,16 @@
 
 package keel.Algorithms.Instance_Generation.SSMASFLSDE;
 
+/**Main class
+ * 
+ * @author Salvador García López
+ */
 public class Main {
 
+    /** Main Function.
+     * 
+     * @param args main args. Configuration filename is needed.
+     */
   public static void main (String args[]) {
 
     SSMASFLSDE ssma;

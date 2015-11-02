@@ -41,7 +41,7 @@ import keel.Algorithms.Instance_Generation.utilities.*;
 import java.util.*;
 
 /**
- *
+ * Main class.
  * @author diegoj
  */
 public class ARSAlgorithm extends PrototypeGenerationAlgorithm<ARS>
@@ -51,6 +51,10 @@ public class ARSAlgorithm extends PrototypeGenerationAlgorithm<ARS>
        return new ARS(train, params);    
     }
     
+    /**
+     * Main function.
+     * @param args main args. Configuration filename is needed.
+     */
     public static void main(String args[])
     {
         ARSAlgorithm algo = new ARSAlgorithm();

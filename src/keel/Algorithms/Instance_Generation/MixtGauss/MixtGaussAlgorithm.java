@@ -50,9 +50,10 @@ import java.util.*;
 public class MixtGaussAlgorithm extends PrototypeGenerationAlgorithm<MixtGaussGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new MixtGaussGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new MixtGaussGenerator.
      */
     protected MixtGaussGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

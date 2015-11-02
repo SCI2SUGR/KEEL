@@ -47,7 +47,7 @@ import java.util.Arrays;
  */
 public class CalculateAUC {
     
-    /*
+    /**
      * Method to calculate the Area Under The Curve (AUC)
      *
      * @param probs: array of pairs, representing the actual class and the 

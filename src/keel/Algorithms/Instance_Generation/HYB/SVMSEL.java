@@ -102,6 +102,7 @@ public class SVMSEL extends PrototypeGenerator
         
     /**
      * Performs an selection of the training data set using SVM.     
+     * @param _trainingDataSet training dataset
      * @param kernelType {LINEAR, POLY, RBF, SIGMOID} linear: u'*v; polynomial: (gamma*u'*v + coef0)^degree; radial basis function: exp(-gamma*|u-v|^2); sigmoid: tanh(gamma*u'*v + coef0)
      * @param C Parameter C of C-SVC, epsilon-SVR, and nu-SVR (default 1).
      * @param eps Epsilon in loss function of epsilon-SVR (default 0.1)
@@ -127,6 +128,7 @@ public class SVMSEL extends PrototypeGenerator
     
     /**
      * Performs an selection of the training data set using SVM.     
+     * @param _trainingDataSet training dataset.
      * @param kernelType {LINEAR, POLY, RBF, SIGMOID} linear: u'*v; polynomial: (gamma*u'*v + coef0)^degree; radial basis function: exp(-gamma*|u-v|^2); sigmoid: tanh(gamma*u'*v + coef0)
      * */
         public SVMSEL(PrototypeSet _trainingDataSet, String kernelType)

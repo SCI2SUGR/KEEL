@@ -38,10 +38,19 @@
 
 package keel.Algorithms.ImbalancedClassification.Ensembles.SMOTE;
 
+/**
+ * Main.java
+ * Main class for the algorithm SMOTE.
+ * @author Salvador García López
+ */
 
 public class Main {
 
-  public static void main (String args[]) {
+    /**
+     * Main function. Execute the algorithm SMOTE with the configuration file passed as argument.
+     * @param args main args. Configuration filename is needed.
+     */
+    public static void main (String args[]) {
 
     SMOTE smote;
 

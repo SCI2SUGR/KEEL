@@ -25,7 +25,10 @@ public class SparseInstance extends Instance {
   /** The maximum number of values that can be stored. */
   protected int m_NumAttributes;
 
-  protected SparseInstance() {
+    /**
+     * Dafault constructor.
+     */
+    protected SparseInstance() {
 
   }
 
@@ -218,6 +221,7 @@ public class SparseInstance extends Instance {
    * Tests if a specific value is "missing".
    *
    * @param attIndex the attribute's index
+     * @return True if it is missing.
    */
   public boolean isMissing(int attIndex) {
 
@@ -231,6 +235,7 @@ public class SparseInstance extends Instance {
    * Locates the greatest index that is not greater than the
    * given index.
    *
+     * @param index given index.
    * @return the internal index of the attribute index. Returns
    * -1 if no index with this property could be found
    */
@@ -590,6 +595,7 @@ public class SparseInstance extends Instance {
 
   /**
    * Main method for testing this class.
+     * @param options mains args.
    */
   public static void main(String[] options) {
 

@@ -1053,7 +1053,15 @@ public class Attribute implements Copyable, Serializable {
 	}
 
 	// @ requires isDate();
-	public/* @pure@ */String formatDate(double date) {
+	public/* @pure@ */
+
+    /**
+     * Gives a date format to a time given as argument.
+     * 
+     * @param date time given.
+     * @return String with the date format.
+     */
+    String formatDate(double date) {
 		switch (m_Type) {
 		case DATE:
 			return m_DateFormat.format(new Date((long) date));
@@ -1065,7 +1073,14 @@ public class Attribute implements Copyable, Serializable {
 
 	// @ requires isDate();
 	// @ requires string != null;
-	public double parseDate(String string) throws ParseException {
+
+    /**
+     * Parse a date from a string given.
+     * @param string string given.
+     * @return time of the date parsed.
+     * @throws ParseException if the string is not a date.
+     */
+    	public double parseDate(String string) throws ParseException {
 		switch (m_Type) {
 		case DATE:
 			long time = m_DateFormat.parse(string).getTime();
@@ -1186,6 +1201,7 @@ public class Attribute implements Copyable, Serializable {
 	/**
 	 * Determines whether a value lies within the bounds of the attribute.
 	 * 
+        * @param value value given.
 	 * @return whether the value is in range
 	 */
 	public final/* @ pure @ */boolean isInRange(double value) {
@@ -1448,6 +1464,7 @@ public class Attribute implements Copyable, Serializable {
 
 	/**
 	 * Simple main method for testing this class.
+     * @param ops main args.
 	 */
 	// @ requires ops != null;
 	// @ requires \nonnullelements(ops);

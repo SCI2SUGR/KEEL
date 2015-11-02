@@ -62,7 +62,14 @@ public abstract class LVQGenerator extends PrototypeGenerator
     /** Number of prototypes of the resulting set. */
     protected int numberOfPrototypesGenerated = 10;
     
+    /**
+     * If the initialset is set.
+     */
     protected boolean initialset = false;
+
+    /**
+     * Initial Prototype set.
+     */
     protected PrototypeSet initial;
     
     /**
@@ -81,7 +88,8 @@ public abstract class LVQGenerator extends PrototypeGenerator
     
     /** WITH INITIAL CODE-BOOKS
      * Constructs a new LVQGenerator algorithm. NOTE: this class is abstract.
-     * @param _trainingDataSet
+     * @param InitialSet Initial datset
+     * @param _trainingDataSet training dataset
      * @param iterations Iterations that will execute the algorithm.
      * @param n Number of prototypes to be returned.
      */

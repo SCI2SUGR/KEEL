@@ -1,16 +1,4 @@
-/**
- * <p>
- * File: SMOTE_RSB.java
- * </p>
- *
- * The SMOTE_RSB algorithm is an oversampling method used to deal with the imbalanced
- * problem.
- *
- * @author Written by Enislay Ramentol (University of Camagüey) 07/09/2011 
- * @version 0.1
- * @since JDK1.5
- *
- */
+
 
 package keel.Algorithms.ImbalancedClassification.Resampling.SMOTE_RSB;
 
@@ -36,6 +24,19 @@ import keel.Algorithms.ImbalancedClassification.Resampling.SMOTE_RSB.Rough_Sets.
 import keel.Algorithms.ImbalancedClassification.Resampling.SMOTE_RSB.Rough_Sets.RoughSetsCuttoff;
 import keel.Algorithms.ImbalancedClassification.Resampling.SMOTE_RSB.Rough_Sets.RoughSetsOriginal;
 
+/**
+ * <p>
+ * File: SMOTE_RSB.java
+ * </p>
+ *
+ * The SMOTE_RSB algorithm is an oversampling method used to deal with the imbalanced
+ * problem.
+ *
+ * @author Written by Enislay Ramentol (University of Camagüey) 07/09/2011 
+ * @version 0.1
+ * @since JDK1.5
+ *
+ */
 public class SMOTE_RSB extends Metodo {
 	private long semilla;
 	private int kSMOTE;

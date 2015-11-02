@@ -27,6 +27,15 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Instance_Selection.SGA;
+
+import keel.Algorithms.Preprocess.Basic.*;
+
+import org.core.*;
+import java.util.StringTokenizer;
+import java.util.Arrays;
+
 /**
  * 
  * File: SGA.java
@@ -38,14 +47,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Instance_Selection.SGA;
-
-import keel.Algorithms.Preprocess.Basic.*;
-
-import org.core.*;
-import java.util.StringTokenizer;
-import java.util.Arrays;
-
 public class SGA extends Metodo {
 
 	/*Own parameters of the algorithm*/
@@ -62,6 +63,7 @@ public class SGA extends Metodo {
 	/**
      * Default builder. Construct the algoritm by using the superclass builder.
 	 *
+     * @param ficheroScript Configuration script
      */
 	public SGA (String ficheroScript) {
 		super (ficheroScript);

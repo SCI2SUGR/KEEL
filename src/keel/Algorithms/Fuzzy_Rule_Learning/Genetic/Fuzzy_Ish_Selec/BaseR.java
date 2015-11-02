@@ -30,13 +30,12 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Selec;
 
 /**
- * <p>Title: </p>
+ * <p>Title: BaseR</p>
  *
- * <p>Description: </p>
+ * <p>Description: Rules set. All the generated rules will be stored in this class. </p>
  *
- * <p>Copyright: Copyright (c) 2007</p>
  *
- * <p>Company: </p>
+ * <p>Company: KEEL</p>
  *
  * @author not attributable
  * @version 1.0

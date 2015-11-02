@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
+
 /**
  * 
  * File: Referencia.java
@@ -38,13 +41,19 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
-
 public class Referencia implements Comparable {
 
 	//values of the reference
-	public int entero;
-	public double real;
+
+    /**
+     * Integer value.
+     */
+    	public int entero;
+
+    /**
+     * Real value.
+     */
+    public double real;
 
 	/**
 	 * Default builder

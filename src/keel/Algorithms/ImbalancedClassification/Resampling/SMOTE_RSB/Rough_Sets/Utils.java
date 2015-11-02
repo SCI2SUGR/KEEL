@@ -427,6 +427,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double
+     * @return True if they are equals.
    */
   public static /*@pure@*/ boolean eq(double a, double b){
     
@@ -758,6 +759,7 @@ public final class Utils {
    *
    * @param quotedOptionString the string containing the options
    * @return the array of options
+     * @throws java.lang.Exception
    */
   public static String [] splitOptions(String quotedOptionString) throws Exception{
 
@@ -913,6 +915,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double
+     * @return  True if a is smaller or equal to b.
    */
   public static /*@pure@*/ boolean smOrEq(double a,double b) {
     
@@ -924,6 +927,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double
+     * @return True if a is greater or equal to b.
    */
   public static /*@pure@*/ boolean grOrEq(double a,double b) {
     
@@ -935,6 +939,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double
+     * @return True if a is smaller than b.
    */
   public static /*@pure@*/ boolean sm(double a,double b) {
     
@@ -946,6 +951,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double 
+     * @return  True if a is greater than b.
    */
   public static /*@pure@*/ boolean gr(double a,double b) {
     
@@ -992,6 +998,7 @@ public final class Utils {
    * Returns the logarithm of a for base 2.
    *
    * @param a a double
+     * @return  the logarithm of a for base 2.
    */
   public static /*@pure@*/ double log2(double a) {
     
@@ -1189,6 +1196,7 @@ public final class Utils {
    * the original double.
    *
    * @param value the double value
+     * @param rand Random object.
    * @return the resulting integer value
    */
   public static int probRound(double value, Random rand) {

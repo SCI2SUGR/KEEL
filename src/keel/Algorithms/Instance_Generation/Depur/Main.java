@@ -38,8 +38,16 @@
 
 package keel.Algorithms.Instance_Generation.Depur;
 
+/**Main class
+ * 
+ * @author Isaac Triguero Velazquez.
+ */
 public class Main {
 
+    /** Main Function.
+     * 
+     * @param args main args. Configuration filename is needed.
+     */
   public static void main (String args[]) {
 
     Depur isaak;

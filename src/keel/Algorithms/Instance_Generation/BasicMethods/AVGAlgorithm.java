@@ -41,7 +41,7 @@ import keel.Algorithms.Instance_Generation.utilities.*;
 import java.util.*;
 
 /**
- *
+ * Main class.
  * @author diegoj
  */
 public class AVGAlgorithm extends PrototypeGenerationAlgorithm<AVG>
@@ -51,6 +51,10 @@ public class AVGAlgorithm extends PrototypeGenerationAlgorithm<AVG>
        return new AVG(train, params);    
     }
     
+    /**
+     * Main function.
+     * @param args main args. Configuration filename is needed.
+     */
     public static void main(String args[])
     {
         AVGAlgorithm algo = new AVGAlgorithm();

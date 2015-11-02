@@ -50,6 +50,7 @@ public class LVQ2Algorithm extends PrototypeGenerationAlgorithm<LVQ2>
      * Builds a new LVQ2 object.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new LVQ2 object.
      */
     protected LVQ2 buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

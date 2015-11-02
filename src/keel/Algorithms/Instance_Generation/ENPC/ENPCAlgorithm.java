@@ -50,9 +50,10 @@ import java.util.*;
 public class ENPCAlgorithm extends PrototypeGenerationAlgorithm<ENPCGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new ENPCGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new ENPCGenerator
      */
     protected ENPCGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

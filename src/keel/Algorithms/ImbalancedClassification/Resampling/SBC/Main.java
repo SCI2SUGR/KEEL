@@ -27,6 +27,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.SBC;
+
 /**
  * <p>
  * File: Main.java
@@ -38,10 +42,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.SBC;
-
-
 public class Main {
 
   /**

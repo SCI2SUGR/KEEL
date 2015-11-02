@@ -29,16 +29,17 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierSLAVE;
 
+
+
+import java.util.*;
+
 /**
- * <p>
+ * <p>Defines a list of variables
  * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
  * @version 1.0
  * @since JDK 1.6
  * </p>
  */
-
-import java.util.*;
-
 public class VectorVar {
 /**
  * <p>
@@ -196,7 +197,7 @@ public class VectorVar {
 	 * <p>
 	 * Obtains the number of active antecedent variables and consequent variables in the list
 	 * </p>
-	 * @param milista ArrayList<Integer> It keeps the the number of active antecedent variables and consequent variables in the list
+	 * @param milista ArrayList It keeps the the number of active antecedent variables and consequent variables in the list
 	 */
     public void Encode(ArrayList<Integer> milista) {
         Integer tb, te;
@@ -229,6 +230,7 @@ public class VectorVar {
 	 * <p>
 	 * Prints in the standard output the definition of the variable in position "variable" in the list
 	 * </p>
+     * @param variable variable id.
 	 */
     public void PrintDefinition(int variable) {
         if (variable >= 0 && variable < numero) {
@@ -267,6 +269,7 @@ public class VectorVar {
 	 * <p>
 	 * Prints in the standard output the name of the variable in position "variable" in the list
 	 * </p>
+     * @param variable variable id.
 	 */
     public void PrintVar(int variable) {
         lista[variable].PrintVar();
@@ -276,6 +279,7 @@ public class VectorVar {
 	 * <p>
 	 * Returns a string with the name of the variable in position "variable" in the list
 	 * </p>
+     * @param variable variable id.
 	 * @return String The name of the variable in position "variable" in the list
 	 */
     public String SPrintVar(int variable) {
@@ -498,7 +502,7 @@ public class VectorVar {
 	 * @param regla String The set of rules
 	 * @param var double[] Contains the information measure for each variable
 	 * @param umbral double Activation threshold (only variable with its information measure equal o greater than this value are considered in the rule).
-	 * @param milista ArrayList<Double> Keeps the simplicity of the rule	 
+	 * @param milista ArrayList Double Keeps the simplicity of the rule	 
 	 * @return boolean TRUE if all the rules in the set of rules are valid. FALSE otherwise
 	 */
     public boolean Is_Valid(String regla, double[] var, double umbral,

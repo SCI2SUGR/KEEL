@@ -51,6 +51,7 @@ public class PNNAlgorithm extends PrototypeGenerationAlgorithm<PNNGenerator>
      * Builds a new PNNGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new PNNGenerator.
      */
     protected PNNGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

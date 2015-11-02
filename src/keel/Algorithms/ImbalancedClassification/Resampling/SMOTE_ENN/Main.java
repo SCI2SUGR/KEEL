@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+package keel.Algorithms.ImbalancedClassification.Resampling.SMOTE_ENN;
+
+
 /**
  * <p>
  * File: Main.java
@@ -38,8 +41,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.SMOTE_ENN;
 
 public class Main {
 

@@ -38,15 +38,46 @@
 
 package keel.Algorithms.Instance_Selection.MNV;
 
+/**
+ * 
+ * File: ReferenciaMNV.java
+ * 
+ * Simple structure used on MNV algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class ReferenciaMNV implements Comparable {
 	
-  public int entero;
-  public double real;
-  public double dist;
+    /**
+     * Integer value.
+     */
+    public int entero;
 
-  public ReferenciaMNV () {}
+    /**
+     * Real value.
+     */
+    public double real;
 
-  public ReferenciaMNV (int a, double b, double c) {
+    /**
+     * Distance. 
+     */
+    public double dist;
+
+    /**
+     * Default constructor.
+     */
+    public ReferenciaMNV () {}
+
+    /**
+     * Parameters constructor.
+     * @param a integer value to be set.
+     * @param b real value to be set.
+     * @param c distance to be set.
+     */
+    public ReferenciaMNV (int a, double b, double c) {
     entero = a;
     real = b;
     dist = c;

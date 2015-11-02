@@ -29,6 +29,13 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GP_COACH;
 
+
+
+import java.io.IOException;
+import java.util.*;
+
+import org.core.*;
+
 /**
  * <p>Title: GP-COACH</p>
  *
@@ -40,12 +47,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GP_COACH;
  * @author Written by Victoria Lopez (University of Granada) 11/01/2011
  * @version 1.0
  */
-
-import java.io.IOException;
-import java.util.*;
-
-import org.core.*;
-
 public class GP_COACH {
 
     myDataset train, val, test;
@@ -67,16 +68,59 @@ public class GP_COACH {
     int tournamentSize; // Tournament Selection Size
     double w1, w2, w3, w4; // Global Fitness Weights
     
+    /**
+     * Configuration flag (CF). 
+     */
     public static final int CF = 0;
+
+    /**
+     * Configuration flag (PCF_IV). 
+     */
     public static final int PCF_IV = 1;
+
+    /**
+     * Configuration flag (PCF_II). 
+     */
     public static final int PCF_II = 2;
+
+    /**
+     * Configuration flag (NO_RW). 
+     */
     public static final int NO_RW = 3;
+
+    /**
+     * Configuration flag (MINIMUM). 
+     */
     public static final int MINIMUM = 0;
+
+    /**
+     * Configuration flag (PRODUCT). 
+     */
     public static final int PRODUCT = 1;
+
+    /**
+     * Configuration flag (MAXIMUM). 
+     */
     public static final int MAXIMUM = 0;
+
+    /**
+     * Configuration flag (PROBABILISTIC_SUM). 
+     */
     public static final int PROBABILISTIC_SUM = 1;
+
+    /**
+     * Configuration flag (WINNING_RULE). 
+     */
     public static final int WINNING_RULE = 0;
+
+    /**
+     * Configuration flag (NORMALIZED_SUM). also known as additive combination
+     */
     public static final int NORMALIZED_SUM = 1; // also known as additive combination
+
+    /**
+     * Configuration flag (ARITHMETIC_MEAN). 
+     */
     public static final int ARITHMETIC_MEAN = 2;
     
     // Population of the genetic algorithm

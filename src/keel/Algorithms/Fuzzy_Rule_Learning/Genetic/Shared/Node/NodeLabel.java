@@ -27,8 +27,14 @@
   
 **********************************************************************/
 
+
+
+//Generic Fuzzy Set
+package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node;
+import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
+
 /**
- * <p>
+ * <p>Class for management terminal nodes witch are evaluated as linguistic fuzzy labels
  * @author Written by Luciano Sánchez (University of Oviedo) 21/01/2004
  * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
  * @author Modified by Enrique A. de la Cal (University of Oviedo) 21/12/2008
@@ -36,11 +42,6 @@
  * @since JDK1.5
  * </p>
  */
-
-//Generic Fuzzy Set
-package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Node;
-import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
-
 public class NodeLabel extends Node {
 /**
  * <p>
@@ -89,6 +90,7 @@ public class NodeLabel extends Node {
      * This method evaluate if a Node is teh same type as another one
      * </p>
      * @param n The node to be evaluated (Node)
+     * @return true if the node given is  teh same type, false otherwise.
      */
     protected boolean compatibleData(Node n) {
         if (mytypeid!=n.mytypeid) return false;
@@ -125,10 +127,11 @@ public class NodeLabel extends Node {
     }
     
     /**
-     * <p>
-     * This method is for debug
-     * </p>
-     */
+         * <p>
+         *Returns the output of the node.
+         * </p>
+     * @return the output of the node.
+         */
     public String output() {
     	return B.aString();
     }

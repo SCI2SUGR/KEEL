@@ -52,9 +52,10 @@ import java.util.*;
 public class OBDEAlgorithm extends PrototypeGenerationAlgorithm<OBDEGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new OBDEGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new OBDEGenerator.
      */
     protected OBDEGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

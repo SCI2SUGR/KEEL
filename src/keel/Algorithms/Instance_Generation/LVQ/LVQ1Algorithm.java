@@ -51,6 +51,7 @@ public class LVQ1Algorithm extends PrototypeGenerationAlgorithm<LVQ1>
      * Builds a new LVQ1 object.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new LVQ1 object.
      */
     protected LVQ1 buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

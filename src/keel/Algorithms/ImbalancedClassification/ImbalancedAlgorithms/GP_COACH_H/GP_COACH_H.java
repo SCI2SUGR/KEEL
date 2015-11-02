@@ -29,6 +29,13 @@
 
 package keel.Algorithms.ImbalancedClassification.ImbalancedAlgorithms.GP_COACH_H;
 
+
+
+import java.io.IOException;
+import java.util.*;
+
+import org.core.*;
+
 /**
  * <p>Title: GP-COACH</p>
  *
@@ -40,12 +47,6 @@ package keel.Algorithms.ImbalancedClassification.ImbalancedAlgorithms.GP_COACH_H
  * @author Written by Victoria Lopez (University of Granada) 11/01/2011
  * @version 1.0
  */
-
-import java.io.IOException;
-import java.util.*;
-
-import org.core.*;
-
 public class GP_COACH_H {
 
     myDataset train, val, test;
@@ -611,7 +612,7 @@ public class GP_COACH_H {
      * @param pop Current rule base that contains the rules that compose the whole population
      * @param example double[] the input example
      * @param missing boolean[] containing the missing values of the input example
-     * @param classifying_rules	ArrayList <Integer> containing the rules that are used to classify a specific example
+     * @param classifying_rules	ArrayList  containing the rules that are used to classify a specific example
      * @return int the class label for the rule with highest membership degree to the example
      */
     protected int FRM_WR (ArrayList <Rule> pop, double[] example, boolean [] missing, ArrayList <Integer> classifying_rules) {
@@ -644,7 +645,7 @@ public class GP_COACH_H {
      * @param pop Current rule base that contains the rules that compose the whole population
      * @param example double[] the input example
      * @param missing boolean[] containing the missing values of the input example
-     * @param classifying_rules	ArrayList <Integer> containing the rules that are used to classify a specific example
+     * @param classifying_rules	ArrayList containing the rules that are used to classify a specific example
      * @return int the class label for the set of rules with the highest sum of membership degree per class
      */    
     protected int FRM_NS (ArrayList <Rule> pop, double[] example, boolean [] missing, ArrayList <Integer> classifying_rules) {

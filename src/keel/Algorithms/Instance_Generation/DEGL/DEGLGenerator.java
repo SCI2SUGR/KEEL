@@ -62,6 +62,8 @@ import java.util.StringTokenizer;
 
 
 /**
+ * DEGL.java
+	Isaac Triguero Velazquez.
  * @param k Number of neighbors
  * @param Population Size.
  * @param ParticleSize.

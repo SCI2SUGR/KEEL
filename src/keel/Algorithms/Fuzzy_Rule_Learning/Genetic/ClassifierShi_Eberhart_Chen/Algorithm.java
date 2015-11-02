@@ -29,18 +29,19 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierShi_Eberhart_Chen;
 
-/**
- * <p>
- * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
- * @version 1.0
- * @since JDK 1.6
- * </p>
- */
+
  
 import java.io.IOException;
 import java.util.*;
 import org.core.*;
 
+/**
+ * <p>It contains the implementation of the algorithm
+ * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
+ * @version 1.0
+ * @since JDK 1.6
+ * </p>
+ */
 public class Algorithm {
 /**	
  * <p>
@@ -577,6 +578,7 @@ public class Algorithm {
      * <p>
      * It evaluate the RB encoded in the individual "indiv"
      * </p>
+     * @param indiv individula to be evaluated.
      * @return double The correct percentage accuracy in training examples
      */  
         public double eval(Individual indiv){
@@ -913,6 +915,7 @@ public class Algorithm {
      * <p>
      * It evaluate the RB encoded in the individual "indiv"
      * </p>
+     * @param indiv individual to be evaluated.
      * @return double The correct percentage accuracy in test examples
      */  
         public double eval_test(Individual indiv){

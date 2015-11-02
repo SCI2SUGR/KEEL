@@ -50,6 +50,7 @@ public class DSMAlgorithm extends PrototypeGenerationAlgorithm<DSMGenerator>
      * Builds a new DSMGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new DSMGenerator.
      */
     protected DSMGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

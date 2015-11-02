@@ -66,6 +66,7 @@ public class FuzzyRuleSet {
 	 * Builds a new Fuzzy Rule Set from a Binary SMO
 	 * @param smo The reference binary SMO
 	 * @param data The data from the binary SMO was built
+        * @param kern Kernel for the Binary SMO.
 	 */
 	public FuzzyRuleSet(BinarySMO smo,Instances data,Kernel kern){
 		double lagrange[];

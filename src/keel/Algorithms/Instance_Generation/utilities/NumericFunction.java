@@ -37,6 +37,7 @@ package keel.Algorithms.Instance_Generation.utilities;
 /**
  *
  * @author diegoj
+ * @param <IndexType> Type of the elements of the NumericFunction.
  */
 public class NumericFunction<IndexType>
 {

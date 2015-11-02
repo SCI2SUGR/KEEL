@@ -42,6 +42,17 @@ import keel.Algorithms.Preprocess.Basic.*;
 import org.core.*;
 import java.util.Vector;
 
+/**
+ * 
+ * File: Cromosoma.java
+ * 
+ * Auxiliriary class to represent chromosomes for Instance selection methods
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Cromosoma implements Comparable {
 
   /*Cromosome data structure*/
@@ -53,7 +64,11 @@ public class Cromosoma implements Comparable {
   boolean valido;
   double errorRate;
 
-  /*Construct a random cromosome of specified size*/
+  /**
+	 * Builder. Construct a random chromosome of specified size
+	 *
+	 * @param size Size of the chromosome
+	 */
   public Cromosoma (int size) {
 
     double u;
@@ -72,7 +87,12 @@ public class Cromosoma implements Comparable {
     valido = true;
   }
 
-  /*Create a copied cromosome*/
+  /**
+	 * Builder. Copies a chromosome of specified size
+	 *
+	 * @param size Size of the chromosome
+	 * @param a Chromosome to copy
+	 */
   public Cromosoma (int size, Cromosoma a) {
     int i;
 
@@ -85,7 +105,11 @@ public class Cromosoma implements Comparable {
     valido = true;
   }
 
-  /*Construct a cromosome from a bit array*/
+  /**
+	 * Builder. Construct a chromosome from a binary array
+	 *
+	 * @param datos Initial data of the chromosome
+	 */
   public Cromosoma (boolean datos[]) {
     int i;
 
@@ -96,19 +120,47 @@ public class Cromosoma implements Comparable {
     valido = true;
   }
 
+  /**
+	 * Get the value of a gene
+	 *
+	 * @param indice Index of the gene
+	 *
+	 * @return Value of the especified gene
+	 */
   public boolean getGen (int indice) {
     return cuerpo[indice];
   }
 
+  /**
+	 * Get the quality of a chromosome
+	 *
+	 * @return Quality of the chromosome
+	 */
   public double getCalidad () {
     return calidad;
   } 
 
+  /**
+	 * Get the error rate of a chromosome
+	 *
+	 * @return the error rate of the chromosome
+	 */
   public double getErrorRate () {
     return errorRate;
   }
 
   /*Function that calculates the error threshold of a cromosome*/
+
+    /**
+     *Function that calculates the error threshold of a cromosome
+     * @param datos Reference to the training set
+	 * @param real  Reference to the training set (real valued)
+	 * @param nominal  Reference to the training set (nominal valued)	 
+	 * @param nulos  Reference to the training set (null values)	 	 
+	 * @param clases Output attribute of each instance
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     */
+    
   public void evaluaError (double datos[][], double real[][], int nominal[][], boolean nulos[][], int clases[], boolean distanceEu) {
 
     int i, j;
@@ -167,6 +219,18 @@ public class Cromosoma implements Comparable {
   }
 
   /*Function that returns the best neighbor in N+*/
+
+    /**
+     *Function that returns the best neighbor in N+
+     * @param datos Reference to the training set
+	 * @param real  Reference to the training set (real valued)
+	 * @param nominal  Reference to the training set (nominal valued)	 
+	 * @param nulos  Reference to the training set (null values)	 	 
+	 * @param clases Output attribute of each instance
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     * @param movs movements vector
+     * @return the best neighbor in N+
+     */
   public Cromosoma getSnextNplus (double datos[][], double real[][], int nominal[][], boolean nulos[][], int clases[], boolean distanceEu, Vector movs) {
 
     int i, j, k;
@@ -295,6 +359,18 @@ public class Cromosoma implements Comparable {
   }
 
   /*Function that return the best neighbor in N-*/
+
+    /**
+     *Function that returns the best neighbor in N-
+     * @param datos Reference to the training set
+	 * @param real  Reference to the training set (real valued)
+	 * @param nominal  Reference to the training set (nominal valued)	 
+	 * @param nulos  Reference to the training set (null values)	 	 
+	 * @param clases Output attribute of each instance
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     * @param movs movements vector
+     * @return the best neighbor in N+
+     */
   public Cromosoma getSnextNminus (double datos[][], double real[][], int nominal[][], boolean nulos[][], int clases[], boolean distanceEu, Vector movs) {
 
     int i;
@@ -336,6 +412,17 @@ public class Cromosoma implements Comparable {
   }
 
   /*Function that calculates the distance between the train set and the cromosome*/
+
+    /**
+     * Function that calculates the distance between the train set and the cromosome
+     * @param datos Reference to the training set
+	 * @param real  Reference to the training set (real valued)
+	 * @param nominal  Reference to the training set (nominal valued)	 
+	 * @param nulos  Reference to the training set (null values)	 	 
+	 * @param clases Output attribute of each instance
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     * @return the distance between the train set and the cromosome
+     */
   public double distancia (double datos[][], double real[][], int nominal[][], boolean nulos[][], int clases[], boolean distanceEu) {
 
     int i, j;
@@ -358,7 +445,11 @@ public class Cromosoma implements Comparable {
     return suma;
   }
 
-  public int genesActivos () {
+    /**
+     * Return the number of actived genes
+     * @return the number of actived genes
+     */
+    public int genesActivos () {
 	  
     int i, suma = 0;
 
@@ -380,6 +471,14 @@ public class Cromosoma implements Comparable {
 
   /*Function that informs about if a cromosome is different only in a bit, and obtains the
    position of this bit. In case of have more differences, it returns -1*/
+
+    /**
+     * Function that informs about if a cromosome is different only in a bit, and obtains the
+   position of this bit. In case of have more differences, it returns 
+     * @param a Chromosome to be checked.
+     * @return -1 if it differs more than 1. Else, the position  of the difference.
+     */
+    
   public int differenceAtOne (Cromosoma a) {
 
     int i;

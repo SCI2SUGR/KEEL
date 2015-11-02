@@ -52,9 +52,10 @@ import java.util.*;
 public class SADEAlgorithm extends PrototypeGenerationAlgorithm<SADEGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new SADEGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new SADEGenerator.
      */
     protected SADEGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

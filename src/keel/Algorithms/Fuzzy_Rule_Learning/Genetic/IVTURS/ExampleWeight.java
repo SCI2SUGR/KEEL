@@ -47,7 +47,7 @@ public class ExampleWeight{
   * Builder
   * </p>
   * @param K Covered patterns in the second stage are completely eliminated when they have been covered more than K times.
-  * @return A object ExampleWeight
+
   */
   public ExampleWeight(int K) {
 	this.K = K;

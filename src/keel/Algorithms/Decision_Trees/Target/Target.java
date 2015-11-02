@@ -29,10 +29,15 @@
 
 package keel.Algorithms.Decision_Trees.Target;
 
+
+
+import java.io.IOException;
+import org.core.*;
+
 /**
- * <p>Title: Algorithm</p>
+ * <p>Title: Target</p>
  *
- * <p>Description: It contains the implementation of the algorithm</p>
+ * <p>Description: It contains the implementation of the algorithm Target</p>
  *
  *
  * <p>Company: KEEL </p>
@@ -40,10 +45,6 @@ package keel.Algorithms.Decision_Trees.Target;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class Target {
 
   myDataset train, val, test;

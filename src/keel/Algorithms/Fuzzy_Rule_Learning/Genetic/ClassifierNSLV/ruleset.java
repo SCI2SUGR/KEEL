@@ -724,6 +724,7 @@ public class ruleset {
 	 * Writes each rule of the rule base in file "fich".
 	 * </p>
 	 * @param fich String Name of the output file
+     * @throws java.io.IOException if the file can not be read.
 	 */
 	
 	public void SaveRuleInterpreted_append (String fich) throws IOException{

@@ -44,6 +44,17 @@ import org.core.*;
 import java.util.StringTokenizer;
 import java.util.Arrays;
 
+/**
+ * 
+ * File: GA_MSE_CC_FSM.java
+ * 
+ * The GA MSE CC FSM Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class GA_MSE_CC_FSM extends Metodo {
 
   /*Own parameters of the algorithm*/
@@ -52,10 +63,17 @@ public class GA_MSE_CC_FSM extends Metodo {
   private int nGen;
   private int kNeigh;
 
+  /**
+     * Default constructor. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
   public GA_MSE_CC_FSM (String ficheroScript) {
     super (ficheroScript);
   }
 
+  /**
+	 * Executes the algorithm
+	 */
   public void ejecutar () {
 
     int i, j, l;
@@ -167,7 +185,13 @@ public class GA_MSE_CC_FSM extends Metodo {
 
   }
   
-  public int [] kMeans (double datos[][], int nClus) {
+    /**
+     * Execute the kMeans algorithm with the training data given and the number of clusters
+     * @param datos dataset in real values.
+     * @param nClus number of clusters considered.
+     * @return clusters found.
+     */
+    public int [] kMeans (double datos[][], int nClus) {
 	
 	  int clusters[];
 	  int orden[];
@@ -251,7 +275,15 @@ public class GA_MSE_CC_FSM extends Metodo {
 	  return clusters;
   }
 
-  public void cruceCC (Cromosoma poblacion[], Cromosoma newPob[], int nClus, int clusters[], int size) {
+    /**
+     * Computes a new generation of the GA with the clusters given.
+     * @param poblacion actual population.
+     * @param newPob new population.
+     * @param nClus number of clusters.
+     * @param clusters clusters found.
+     * @param size size of a chromosome.
+     */
+    public void cruceCC (Cromosoma poblacion[], Cromosoma newPob[], int nClus, int clusters[], int size) {
 	  
 	  int i, j, k;
 	  int pos1, pos2;

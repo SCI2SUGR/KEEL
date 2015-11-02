@@ -55,6 +55,7 @@ public class AMPSOAlgorithm extends PrototypeGenerationAlgorithm<AMPSOGenerator>
      * Builds a new ChenGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new AMPSOGenerator.
      */
     protected AMPSOGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

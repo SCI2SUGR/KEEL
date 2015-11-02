@@ -51,6 +51,7 @@ public class LVQPRUAlgorithm extends PrototypeGenerationAlgorithm<LVQPRU>
      * Builds a new LVQPRU object.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new LVQPRU object.
      */
     protected LVQPRU buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

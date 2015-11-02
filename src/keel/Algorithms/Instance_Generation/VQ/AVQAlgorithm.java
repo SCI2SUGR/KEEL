@@ -50,6 +50,7 @@ public class AVQAlgorithm extends PrototypeGenerationAlgorithm<AVQGenerator>
      * Builds a new AVQGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new AVQGenerator.
      */
     protected AVQGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

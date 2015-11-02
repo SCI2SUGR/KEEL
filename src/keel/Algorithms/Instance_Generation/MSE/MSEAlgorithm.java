@@ -50,9 +50,10 @@ import java.util.*;
 public class MSEAlgorithm extends PrototypeGenerationAlgorithm<MSEGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new MSEGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new MSEGenerator.
      */
     protected MSEGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

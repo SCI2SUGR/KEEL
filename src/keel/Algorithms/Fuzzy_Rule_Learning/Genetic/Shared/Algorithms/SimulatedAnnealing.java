@@ -108,6 +108,7 @@ public class SimulatedAnnealing extends GeneticAlgorithm {
 * @param pPROBMUTAGA a double with the mutation probability
 * @param p0 the desired initial temperature
 * @param p1 the desired final temperature
+     * @param KM The mean temperature coefficient to allow mutation operations
 * @param pNSUB an int with the number of individuals to be analized in each iteration
 * @param r the {@link Randomize} object
 * @param pGAMutationID the genetic algorithm mutation operation used attending the the current Genotype

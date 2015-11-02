@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Luciano Sánchez (University of Oviedo) 21/01/2004
- * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
- * @author Modified by Enrique A. de la Cal (University of Oviedo) 21/12/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Model;
 
@@ -49,6 +41,15 @@ import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Algorithms.*;
 import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes.*;
 import keel.Algorithms.Shared.Exceptions.*;
 
+/**
+ * <p>Class for management fuzzy individuals in GAP models
+ * @author Written by Luciano Sánchez (University of Oviedo) 21/01/2004
+ * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
+ * @author Modified by Enrique A. de la Cal (University of Oviedo) 21/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class FuzzyGAPModelIndividual extends GeneticIndividualForModels {
 /**
  * <p>
@@ -103,6 +104,7 @@ public class FuzzyGAPModelIndividual extends GeneticIndividualForModels {
      * <p>
      * This method clone a fuzzy individual for GAP model
      * </p>
+     * @return clone of the fuzzy individual for GAP model
      */
     public GeneticIndividual clone() {
         return new FuzzyGAPModelIndividual(this);
@@ -203,7 +205,7 @@ public class FuzzyGAPModelIndividual extends GeneticIndividualForModels {
 	 * </p>
 	 * @param MAXITER Maximun number of iterations
 	 * @param idoptimization Type of optimization
-	 * @throws idoptimization Message if error
+     * @throws keel.Algorithms.Shared.Exceptions.invalidOptim invalid optimization Message if error
 	 */
     public void localOptimization(int MAXITER, int idoptimization) throws invalidOptim {
 	   throw new invalidOptim("Optimizacion local no implementada en FuzzyGAPModelIndividual");

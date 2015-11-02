@@ -154,6 +154,7 @@ public class AVQGenerator extends PrototypeGenerator
     /**
      * Performs Q - R for a cluster.
      * @param c Cluster to be computed Q - R.
+     * @return incorrectly classified smaples.
      */
     protected int incorrectlyClassifiedSamples(Cluster c)
     {

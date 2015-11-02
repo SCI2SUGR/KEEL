@@ -352,6 +352,7 @@ public class Instance implements Copyable, Serializable {
    * Tests if a specific value is "missing".
    *
    * @param attIndex the attribute's index
+     * @return True if it is missing.
    */
   public /*@pure@*/ boolean isMissing(int attIndex) {
 
@@ -365,7 +366,8 @@ public class Instance implements Copyable, Serializable {
    * Tests if a specific value is "missing". Does
    * the same thing as isMissing() if applied to an Instance.
    *
-   * @param indexOfIndex the index of the attribute's index 
+   * @param indexOfIndex the index of the attribute's index
+     * @return  true if it is missing.
    */
   public /*@pure@*/ boolean isMissingSparse(int indexOfIndex) {
 
@@ -380,6 +382,7 @@ public class Instance implements Copyable, Serializable {
    * The given attribute has to belong to a dataset.
    *
    * @param att the attribute
+     * @return True if it is missing.
    */
   public /*@pure@*/ boolean isMissing(Attribute att) {
 
@@ -516,8 +519,6 @@ public class Instance implements Copyable, Serializable {
    * attribute is nominal (or a string) then this is the new value's
    * index as a double).  
    * @exception UnassignedClassException if the class is not set
-   * @exception UnaddignedDatasetException if the instance doesn't
-   * have access to a dataset 
    */
   //@ requires classIndex() >= 0;
   public void setClassValue(double value) {
@@ -1000,6 +1001,7 @@ public class Instance implements Copyable, Serializable {
 
   /**
    * Main method for testing this class.
+     * @param options main args. requires options != null
    */
   //@ requires options != null;
   public static void main(String[] options) {

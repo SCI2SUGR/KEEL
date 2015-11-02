@@ -50,10 +50,14 @@ import keel.Algorithms.Instance_Generation.utilities.*;
 public class MCAGenerator extends PNNGenerator
 {
     
+    /**
+     * Algorithm Accuracy.
+     */
     protected double currentAccuracy = 0.0;
     
     /**
      * Build a new algorithm MCAGenerator that will reduce a prototype set.
+     * @param _trainingDataSet training dataset.
      * @param parameters Parameters needed for the algoritm, in this case, random seedDefaultValueList only.
      */
     public MCAGenerator(PrototypeSet _trainingDataSet, Parameters parameters) {
@@ -63,6 +67,7 @@ public class MCAGenerator extends PNNGenerator
 
     /**
      * Build a new algorithm PNNGenerator that will reduce a prototype set.
+     * @param _trainingDataSet training dataset.
      */
     public MCAGenerator(PrototypeSet _trainingDataSet) {
         super(_trainingDataSet);

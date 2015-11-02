@@ -30,13 +30,12 @@
 package keel.Algorithms.Decision_Trees.Target;
 
 /**
- * <p>Title: </p>
+ * <p>Title: Regla</p>
  *
- * <p>Description: </p>
+ * <p>Description: Rule in the decision tree target</p>
  *
- * <p>Copyright: Copyright (c) 2007</p>
  *
- * <p>Company: </p>
+ * <p>Company: KEEL </p>
  *
  * @author not attributable
  * @version 1.0
@@ -45,7 +44,10 @@ public class Regla {
 
   String clase;
 
-  public Regla() {
+    /**
+     * Default constructor.
+     */
+    public Regla() {
   }
 }
 

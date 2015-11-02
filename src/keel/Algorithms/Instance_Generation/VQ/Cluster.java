@@ -195,6 +195,7 @@ public class Cluster
     
     /**
      * Distorsion of the cluster (sum of distances of the prototypes to the center).
+     * @param center cluster center.
      * @return Sumatory of the distances of the set to the center.
      */
     protected double distorsion(Prototype center)

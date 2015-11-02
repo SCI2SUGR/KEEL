@@ -62,6 +62,11 @@ public class CNN extends PrototypeGenerator
         algorithmName="CNN";
     }
     
+    /**
+     * Creates a CNN algorithm.
+     * @param _trainingDataSet original training data.
+     * @param k  Neighborhood size in KNN 
+     */
     public CNN(PrototypeSet _trainingDataSet, int k)
     {
         super(_trainingDataSet);

@@ -53,6 +53,7 @@ public class SGPAlgorithm extends PrototypeGenerationAlgorithm<SGPGenerator>
      * Builds a new SGPGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new SGPGenerator.
      */
     protected SGPGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

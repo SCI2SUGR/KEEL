@@ -27,24 +27,20 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Genetic_Rule_Learning.MPLCS;
+
 /**
- * <p>
+ * <p>  Measure and count the amount of time that the system spends in each GA stage
  * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 23/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Genetic_Rule_Learning.MPLCS;
-
 public class Chronometer {
-/**
- * <p>
- * Measure and count the amount of time that the system spends in each GA stage
- * </p> 
- */
 
   /************************************
    *  Parameters controlling evaluation time

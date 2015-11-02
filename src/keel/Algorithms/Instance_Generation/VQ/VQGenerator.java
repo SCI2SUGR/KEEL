@@ -89,6 +89,7 @@ public class VQGenerator extends LVQ1
     /**
      * Constructs a new VQGenerator algorithm (using K-Np rule).
      * @param t Training data prototypes. 
+     * @param param Parameters of the method.
      */
     public VQGenerator(PrototypeSet t, Parameters param)
     {

@@ -32,6 +32,17 @@ package keel.Algorithms.Genetic_Rule_Learning.Ant_Miner_Plus;
 import java.util.StringTokenizer;
 import org.core.Fichero;
 
+/**
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the algorithm and executes it.
+ * @author Vicente Rubén del Pino Ruiz 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Main {
 
     private int numHormigas;
@@ -56,6 +67,9 @@ public class Main {
 
     private ACO algoritmo;
 
+    /**
+     *Default constructor.
+     */
     public Main() {
 
     }
@@ -174,6 +188,14 @@ public class Main {
         }
     }
 
+    /** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
     public static void main(String[] args) {
         Main ppal = new Main();
         ppal.extraeArgumentos(args[0]);

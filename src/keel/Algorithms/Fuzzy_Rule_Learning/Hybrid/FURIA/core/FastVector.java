@@ -298,9 +298,11 @@ public class FastVector implements Copyable, Serializable {
   }
 
     /**
-     * added by akibriya
+     * Checks if the given object is contained in the vector.
+     * @param o given object to be checked.
+     * @return True if it is contained, fale otherwise.
      */
-  public /*@pure@*/ boolean contains(Object o) {
+    public /*@pure@*/ boolean contains(Object o) {
       if(o==null)
 	  return false;
 

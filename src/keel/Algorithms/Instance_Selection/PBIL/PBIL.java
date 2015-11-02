@@ -27,17 +27,7 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: GGA.java
- * 
- * Population Based Incremental Learning for Instance Selection.
- * 
- * @author Written by Salvador García (University of Granada) 20/07/2004 
- * @version 0.1 
- * @since JDK1.5
- * 
- */
+
 package keel.Algorithms.Instance_Selection.PBIL;
 
 import keel.Algorithms.Preprocess.Basic.*;
@@ -46,6 +36,17 @@ import org.core.*;
 import java.util.StringTokenizer;
 import java.util.Arrays;
 
+/**
+ * 
+ * File: PBIL.java
+ * 
+ * Population Based Incremental Learning for Instance Selection.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class PBIL extends Metodo {
 
     /*Own parameters of the algorithm*/
@@ -62,7 +63,7 @@ public class PBIL extends Metodo {
   
 	/**
      * Default builder. Construct the algoritm by using the superclass builder.
-	 *
+	 * @param ficheroScript Configuration script
      */
 	public PBIL (String ficheroScript) {
 		super (ficheroScript);

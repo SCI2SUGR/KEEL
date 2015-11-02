@@ -49,12 +49,16 @@ package keel.Algorithms.Instance_Selection.DROP1;
 
 
 
-
-
+/**Main class
+ * 
+ * @author Salvador García López
+ */
 public class Main {
 
-
-
+    /** Main Function.
+     * 
+     * @param args main args. Configuration filename is needed.
+     */
   public static void main (String args[]) {
 
 

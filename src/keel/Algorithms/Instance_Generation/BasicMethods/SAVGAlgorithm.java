@@ -41,7 +41,7 @@ import keel.Algorithms.Instance_Generation.utilities.*;
 import java.util.*;
 
 /**
- *
+ * Main class.
  * @author diegoj
  */
 public class SAVGAlgorithm extends PrototypeGenerationAlgorithm<SAVG>
@@ -51,6 +51,11 @@ public class SAVGAlgorithm extends PrototypeGenerationAlgorithm<SAVG>
        return new SAVG(train, params);    
     }
     
+    /**
+   * Main method
+   * 
+   * @param args Arguments of the program
+   */
     public static void main(String args[])
     {
         SAVGAlgorithm algo = new SAVGAlgorithm();

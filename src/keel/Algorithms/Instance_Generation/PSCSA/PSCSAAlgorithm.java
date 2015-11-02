@@ -52,9 +52,10 @@ import java.util.*;
 public class PSCSAAlgorithm extends PrototypeGenerationAlgorithm<PSCSAGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new PSCSAGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new PSCSAGenerator.
      */
     protected PSCSAGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

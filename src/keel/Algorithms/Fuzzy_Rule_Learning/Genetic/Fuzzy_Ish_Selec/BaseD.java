@@ -32,13 +32,12 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Selec;
 import org.core.Fichero;
 
 /**
- * <p>Title: </p>
+ * <p>Title: BaseD</p>
  *
- * <p>Description: </p>
+ * <p>Description:  data set. All the data will be stored in this class.</p>
  *
- * <p>Copyright: Copyright (c) 2007</p>
  *
- * <p>Company: </p>
+ * <p>Company: KEEL</p>
  *
  * @author not attributable
  * @version 1.0
@@ -48,7 +47,10 @@ public class BaseD {
   Difuso[][][] baseDatos;
   String nombres[];
 
-  public BaseD() {
+    /**
+     * Default constructor.
+     */
+    public BaseD() {
   }
 
   public BaseD(int particiones, int n_variables, double[][] rangos, String [] nombres) {

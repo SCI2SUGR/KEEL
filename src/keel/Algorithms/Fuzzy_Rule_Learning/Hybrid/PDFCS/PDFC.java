@@ -157,6 +157,7 @@ public class PDFC extends SMO{
 	 * Estimates class probabilities for given instance.
 	 * 
 	 * @param inst the instance to compute the probabilities for
+        * @return class probabilities for given instance.
 	 * @throws Exception in case of an error
 	 */
 	public double[] distributionForInstance(Instance inst) throws Exception {

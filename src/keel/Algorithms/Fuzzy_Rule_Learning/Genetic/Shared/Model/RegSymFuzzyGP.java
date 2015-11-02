@@ -50,6 +50,15 @@ import keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Genotypes.*;
 import keel.Algorithms.Shared.Exceptions.*;
 import keel.Algorithms.Shared.Parsing.*;
 
+/**
+ * <p> fuzzy system of symbolic regression
+ * @author Written by Luciano Sánchez (Universisty of Oviedo) 25/01/2004
+ * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
+ * @author Modified by Enrique A. de la Cal (University of Oviedo) 21/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class RegSymFuzzyGP extends GeneticIndividualForSymbRegr {
    
     static double KMIN, KMAX;
@@ -96,6 +105,7 @@ public class RegSymFuzzyGP extends GeneticIndividualForSymbRegr {
      * <p>
      * This method clone a fuzzy system of symbolic regession
      * </p>
+     * @return clone of a fuzzy system of symbolic regession
      */
     
     public GeneticIndividual clone() {

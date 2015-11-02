@@ -27,6 +27,19 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.CNN_TomekLinks;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import keel.Dataset.*;
+
+import org.core.*;
+
+import java.util.StringTokenizer;
+import java.util.Vector;
+import java.util.Arrays;
+
 /**
  * <p>
  * File: CNN_TomekLinks.java
@@ -42,18 +55,6 @@
  * @since JDK1.5
  *
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.CNN_TomekLinks;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import keel.Dataset.*;
-
-import org.core.*;
-
-import java.util.StringTokenizer;
-import java.util.Vector;
-import java.util.Arrays;
-
 public class CNN_TomekLinks extends Metodo {
   /**
 	* <p>
@@ -324,6 +325,7 @@ public class CNN_TomekLinks extends Metodo {
   
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+     * @throws keel.Algorithms.Preprocess.Basic.CheckException Can not be normalized.
 	 */	
 	protected void normalizar () throws CheckException {
 

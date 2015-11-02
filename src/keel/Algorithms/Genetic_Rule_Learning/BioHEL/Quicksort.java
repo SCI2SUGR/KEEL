@@ -27,13 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
 
 package keel.Algorithms.Genetic_Rule_Learning.BioHEL;
 
@@ -42,13 +35,24 @@ package keel.Algorithms.Genetic_Rule_Learning.BioHEL;
  * <p>
  * This class implements the Quicksort algorithm. It lets sort an array of values from lowest to highest and
  * vice versa basing on an option
+ * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class Quicksort {
 	
 	// tags
-	static public final int LOWEST_FIRST = 0;
-	static public final int HIGHEST_FIRST = 1;
+
+    /**
+     * LOWEST_FIRST tag.
+     */
+    	static public final int LOWEST_FIRST = 0;
+
+    /**
+     * HIGHEST_FIRST tag.
+     */
+    static public final int HIGHEST_FIRST = 1;
 	static private int option;
 	
 	// this class is used to keep values and their original position

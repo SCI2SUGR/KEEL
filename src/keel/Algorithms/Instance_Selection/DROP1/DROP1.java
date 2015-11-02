@@ -57,7 +57,17 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 
-
+/**
+ * 
+ * File: DROP1.java
+ * 
+ * The DROP1 algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class DROP1 extends Metodo {
 
 
@@ -67,13 +77,19 @@ public class DROP1 extends Metodo {
 
   private int k;
 
-
+ /**
+	 * Builder. Creates the basic structures of the algorithm
+	 *
+	 * @param ficheroScript Configuration script
+	 */
   public DROP1 (String ficheroScript) {
     super (ficheroScript);
   }
 
-
-  public void ejecutar () {
+    /**
+     * Executes the DROP1 algorithm.
+     */
+    public void ejecutar () {
 
 
 

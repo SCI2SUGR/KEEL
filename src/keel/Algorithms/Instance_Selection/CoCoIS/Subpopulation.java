@@ -27,6 +27,14 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Instance_Selection.CoCoIS;
+
+import java.util.Arrays;
+
+import org.core.Randomize;
+
 /**
  * 
  * File: Subpopulation.java
@@ -38,13 +46,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Instance_Selection.CoCoIS;
-
-import java.util.Arrays;
-
-import org.core.Randomize;
-
 public class Subpopulation{
 
 	private int ID; //identifier of the population

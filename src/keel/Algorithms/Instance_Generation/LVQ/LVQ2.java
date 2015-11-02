@@ -79,6 +79,7 @@ public class LVQ2 extends LVQ1
     
     /**WITH INITIAL CODE-BOOKS
      * Constructs a new LVQ2 algorithm.
+     * @param InitialSet Initial dataset.
      * @param traDataSet Training data prototypes
      * @param it Number of iterations that will execute the algorithm.
      * @param nProt Number of prototypes to be returned.

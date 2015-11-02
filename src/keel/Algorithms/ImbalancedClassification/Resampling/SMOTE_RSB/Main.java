@@ -1,3 +1,7 @@
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.SMOTE_RSB;
+
 /**
  * <p>
  * File: Main.java
@@ -9,10 +13,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.SMOTE_RSB;
-
-
 public class Main {
 	
   /**

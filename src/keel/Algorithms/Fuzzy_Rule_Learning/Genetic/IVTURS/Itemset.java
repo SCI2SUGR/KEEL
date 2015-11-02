@@ -47,7 +47,10 @@ public class Itemset {
 	int clas;
 	double support[], supportRule[];
 
-	public Itemset() {
+    /**
+     *Default constructor.
+     */
+    public Itemset() {
 	}
 
 	/**
@@ -55,7 +58,6 @@ public class Itemset {
 	 * Builder
 	 * </p>
 	 * @param clas Class
-	 * @return Return a itemset for the class clas
 	 */
 	public Itemset(int clas) {
 		this.itemset = new ArrayList<Item> ();

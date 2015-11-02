@@ -64,7 +64,10 @@ public class Population {
 		return false;
 	}
 
-	public Population() {
+    /**
+     * Default constructor.
+     */
+    public Population() {
 	}
 
 	/**
@@ -73,13 +76,13 @@ public class Population {
 	 * </p>
 	 * @param train Training dataset
 	 * @param dataBase Data Base
-	 * @param RuleBase Rule set
+	 * @param ruleBase Rule set
 	 * @param size Population size
 	 * @param BITS_GEN Bits per gen
 	 * @param maxTrials Maximum number of evaluations
 	 * @param alpha Parameter alpha
 	 * @param tipoAjuste several types of tuning can be carried out, which are combinations between: lateral, amplitude and similarity
-	 * @return A population object
+
 	 */
 	public Population(myDataset train, DataBase dataBase, RuleBase ruleBase, int size, int BITS_GEN, int maxTrials, double alpha, int tipoAjuste) {
 		this.dataBase = dataBase;
@@ -107,7 +110,6 @@ public class Population {
 	* <p>
 	* Run the CHC algorithm (Stage 3) 
 	* </p>
-	* @return void
 	*/
 	public void Generation() {
 		init();

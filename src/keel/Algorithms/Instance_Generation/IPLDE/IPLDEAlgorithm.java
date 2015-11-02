@@ -51,9 +51,10 @@ import java.util.*;
 public class IPLDEAlgorithm extends PrototypeGenerationAlgorithm<IPLDEGenerator>
 {
     /**
-     * Builds a new IPADE algorithm
+     * Builds a new IPADEGenerator
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new IPADEGenerator
      */
     protected IPLDEGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

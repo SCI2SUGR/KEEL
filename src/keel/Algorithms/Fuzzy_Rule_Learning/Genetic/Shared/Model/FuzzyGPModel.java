@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Luciano Sánchez (University of Oviedo) 21/01/2004
- * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
- * @author Modified by Enrique A. de la Cal (University of Oviedo) 21/12/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Shared.Model;
@@ -46,6 +38,15 @@ import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
 
 
 // Wrappers used with genetic algorithms
+/**
+ * <p>Class for management fuzzy models in GP. Wrappers used with genetic algorithms
+ * @author Written by Luciano Sánchez (University of Oviedo) 21/01/2004
+ * @author Modified by M.R. Suárez (University of Oviedo) 18/12/2008
+ * @author Modified by Enrique A. de la Cal (University of Oviedo) 21/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class FuzzyGPModel extends Model {
 /**
  * Class for management fuzzy models in GP
@@ -96,6 +97,7 @@ public class FuzzyGPModel extends Model {
      * <p>
      * This method clone a fuzzy model for GP
      * </p>
+     * @return clone of the fuzzy model for GP
      */
     public Model clone()  {
         return new FuzzyGPModel(this);
@@ -115,6 +117,7 @@ public class FuzzyGPModel extends Model {
      * This method return the output of the model defuzzified
      * </p>
      * @param x The output
+     * @return the output of the model defuzzified
      */
     public double output(double [] x) {
 		

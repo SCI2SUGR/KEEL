@@ -50,6 +50,7 @@ public class LVQ3Algorithm extends PrototypeGenerationAlgorithm<LVQ3>
      * Builds a new LVQ3 object.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return a new LVQ3 object.
      */
     protected LVQ3 buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

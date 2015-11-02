@@ -52,9 +52,10 @@ import java.util.*;
 public class DEAlgorithm extends PrototypeGenerationAlgorithm<DEGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new DEGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new DEGenerator
      */
     protected DEGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

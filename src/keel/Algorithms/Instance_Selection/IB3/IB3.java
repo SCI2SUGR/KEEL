@@ -43,6 +43,17 @@ import keel.Algorithms.Preprocess.Basic.*;
 import org.core.*;
 import java.util.StringTokenizer;
 
+/**
+ * 
+ * File: IB3.java
+ * 
+ * The IB3 Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class IB3 extends Metodo {
 
  /*Own parameters of the algorithm*/
@@ -53,10 +64,17 @@ public class IB3 extends Metodo {
   /*Another data*/
   int nClases;
 
+  /**
+     * Default constructor. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
   public IB3 (String ficheroScript) {
     super (ficheroScript);
   }
 
+  /**
+	 * Executes the algorithm
+	 */
   public void ejecutar () {
 
     int i, j, o;

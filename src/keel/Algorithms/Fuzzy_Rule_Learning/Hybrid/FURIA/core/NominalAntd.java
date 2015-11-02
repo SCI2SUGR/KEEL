@@ -44,6 +44,8 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Hybrid.FURIA.core;
 
 /**
  * The antecedent with nominal attribute
+ * @author not attributable
+ * @version 1.0
  */
 public class NominalAntd extends Antd{
 
@@ -57,6 +59,7 @@ public class NominalAntd extends Antd{
 
 	/** 
 	 * Constructor
+     * @param a Weka attribute.
 	 */
 	public NominalAntd(AttributeWeka a){ 
 		super(a);    

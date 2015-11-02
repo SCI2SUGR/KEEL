@@ -38,12 +38,13 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Hybrid.FURIA.core;
  *
  * <p>Company: </p>
  *
- * @author not attributable
- * @version 1.0
+ * 
  */
 
 /**
  * The antecedent with numeric attribute
+ * @author not attributable
+ * @version 1.0
  */
 public class 
 NumericAntd extends Antd {
@@ -62,6 +63,7 @@ NumericAntd extends Antd {
 
 	/** 
 	 * Constructor
+     * @param a Weka attribute
 	 */
 	public NumericAntd(AttributeWeka a){ 
 		super(a);

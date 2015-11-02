@@ -29,21 +29,21 @@
 
 package keel.Algorithms.Decision_Trees.Target;
 
+
+
+import org.core.Randomize;
+
 /**
- * <p>Title: </p>
+ * <p>Title: Tree </p>
  *
- * <p>Description: </p>
+ * <p>Description: It contains the implementation of the tree structure </p>
  *
- * <p>Copyright: Copyright (c) 2007</p>
  *
- * <p>Company: </p>
+ * <p>Company: KEEL </p>
  *
  * @author not attributable
  * @version 1.0
  */
-
-import org.core.Randomize;
-
 public class Tree
     implements Comparable {
 

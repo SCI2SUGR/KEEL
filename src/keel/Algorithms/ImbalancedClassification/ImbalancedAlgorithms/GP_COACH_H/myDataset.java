@@ -29,6 +29,12 @@
 
 package keel.Algorithms.ImbalancedClassification.ImbalancedAlgorithms.GP_COACH_H;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: myDataset</p>
  *
@@ -43,16 +49,22 @@ package keel.Algorithms.ImbalancedClassification.ImbalancedAlgorithms.GP_COACH_H
  * @version 1.3
  * @since JDK1.5
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
-  public static final int REAL = 0;
-  public static final int INTEGER = 1;
-  public static final int NOMINAL = 2;
+    /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable nominal.
+     */
+    public static final int NOMINAL = 2;
 
   private double[][] X = null; //examples array
   private boolean[][] missing = null; //possible missing values
@@ -175,13 +187,25 @@ public class myDataset {
     return emin;
   }
 
-  public double getMax(int variable) {
-    return emax[variable];
-  }
+    /**
+     * It returns the maximum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the maximum value of the attribute
+     */    
+    public double getMax(int variable) {
+        return emax[variable];
+    }
 
-  public double getMin(int variable) {
-    return emin[variable];
-  }
+    /**
+     * It returns the minimum value of the attribute specified
+     * 
+     * @param variable index of the attribute
+     * @return the minimum value of the attribute
+     */    
+    public double getMin(int variable) {
+        return emin[variable];
+    }
 
   /**
    * It gets the size of the data-set
@@ -528,26 +552,53 @@ public class myDataset {
     return average[position];
   }
 
-  public void computeInstancesPerClass() {
+    /**
+     * It computes the number the instances per class.
+     */
+    public void computeInstancesPerClass() {
     instancesCl = new int[nClasses];
     for (int i = 0; i < this.getnData(); i++) {
       instancesCl[this.outputInteger[i]]++;
     }
   }
 
-  public int numberInstances(int clas) {
+    /**
+     * It returns the number of instances in the dataset of the given class
+     *
+     * @param clas the index of the class
+     * @return the number of instances in the dataset of the given class
+     */
+    public int numberInstances(int clas) {
     return instancesCl[clas];
   }
 
-  public int numberValues(int attribute) {
+    /**
+     * It returns the number of different values of an attribute
+     *
+     *@param attribute the index of the attribute
+     * @return the number of different values of an attribute
+     */
+    public int numberValues(int attribute) {
     return Attributes.getInputAttribute(attribute).getNumNominalValues();
   }
 
-  public String getOutputValue(int intValue) {
+   /**
+     * It returns the name of the class of index intValue
+     *
+     * @param intValue the index of the class
+     * @return the name of the class of index intValue
+     */
+    public String getOutputValue(int intValue) {
     return Attributes.getOutputAttribute(0).getNominalValue(intValue);
   }
 
-  public int getTipo(int variable) {
+    /**
+     * It returns the type of the attribute specified
+     *
+     * @param variable index of the attribute
+     * @return the type of the attribute specified
+     */
+    public int getTipo(int variable) {
     if (Attributes.getAttribute(variable).getType() ==
         Attributes.getAttribute(0).INTEGER) {
       return this.INTEGER;
@@ -627,6 +678,7 @@ public class myDataset {
   
   /**
    * It returns an array with boolean values stating the missing values for an individual
+     * @param pos individual's id.
    * @return String[] an array with boolean values stating the missing values
    */
   public boolean [] getMissing(int pos){

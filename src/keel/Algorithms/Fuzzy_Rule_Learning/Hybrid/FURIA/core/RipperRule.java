@@ -65,7 +65,8 @@ public class RipperRule extends Rule{
     m_Antds = new FastVector();
   }
   
-  /** Constructor */
+  /** Constructor
+     * @param aprioriClassDistribution  apriori class distribution to be set.*/
   public RipperRule(double [] aprioriClassDistribution){    
     m_Antds = new FastVector();	
     this.aprioriDistribution = aprioriClassDistribution.clone();
@@ -485,7 +486,12 @@ public class RipperRule extends Rule{
     m_Antds = newAntds;		
   }
 
-  public void findAndSetSupportBoundForKnownAntecedents(Instances thisClassifiersExtension, boolean allWeightsAreOne){
+    /**
+     * Finds and sets the support bound for the known antecedents.
+     * @param thisClassifiersExtension instances to extend the classifier.
+     * @param allWeightsAreOne true if all weights are one.
+     */
+    public void findAndSetSupportBoundForKnownAntecedents(Instances thisClassifiersExtension, boolean allWeightsAreOne){
     if (m_Antds == null) return;
 
     double maxPurity = Double.NEGATIVE_INFINITY;
@@ -639,7 +645,12 @@ public class RipperRule extends Rule{
 
   }
   
-  public void calculateConfidences(Instances data) throws Exception{
+    /**
+     * Computes the confidences of the given data.
+     * @param data given data.
+     * @throws Exception if the data is not correct.
+     */
+    public void calculateConfidences(Instances data) throws Exception{
     RipperRule tempRule = (RipperRule) this.copy();
     
     while(tempRule.hasAntds()){
@@ -661,14 +672,20 @@ public class RipperRule extends Rule{
     }
   }
   
-  
-  
-  public double getConfidence(){
+    /**
+     * Returns the confidence of the last element of the antecetents.
+     * @return the confidence of the last element of the antecetents.
+     */
+    public double getConfidence(){
     if (!hasAntds()) return Double.NaN;
     return ((Antd)m_Antds.lastElement()).m_confidence;
   }
 
-  public String getRevision() {
+    /**
+     * String "1.0"
+     * @return "1.0"
+     */
+    public String getRevision() {
     return "1.0";
   }
   

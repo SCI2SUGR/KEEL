@@ -27,6 +27,17 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.ImbalancedAlgorithms.GP_COACH_H;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import keel.Dataset.*;
+
+import org.core.*;
+
+import java.util.StringTokenizer;
+
 /**
  * <p>
  * File: SMOTE.java
@@ -42,16 +53,6 @@
  * @since JDK1.5
  *
  */
-
-package keel.Algorithms.ImbalancedClassification.ImbalancedAlgorithms.GP_COACH_H;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import keel.Dataset.*;
-
-import org.core.*;
-
-import java.util.StringTokenizer;
-
 public class SMOTE extends Metodo {
   /**
    * <p>
@@ -677,6 +678,7 @@ public class SMOTE extends Metodo {
 	
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+         * @throws keel.Algorithms.Preprocess.Basic.CheckException if the dataset can not be normalized.
 	 */	
 	protected void normalizar () throws CheckException {
 
@@ -689,7 +691,7 @@ public class SMOTE extends Metodo {
 		/*Check if dataset corresponding with a classification problem*/
 
 		if (Attributes.getOutputNumAttributes() < 1) {
-		  throw new CheckException ("This dataset haven?t outputs, so it not corresponding to a classification problem.");
+		  throw new CheckException ("This dataset haven't outputs, so it not corresponding to a classification problem.");
 		} else if (Attributes.getOutputNumAttributes() > 1) {
 		  throw new CheckException ("This dataset have more of one output.");
 		}

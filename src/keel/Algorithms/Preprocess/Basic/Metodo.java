@@ -27,6 +27,13 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Basic;
+
+import keel.Dataset.*;
+
+import java.util.StringTokenizer;
+
 /**
  * 
  * File: Metodo.java
@@ -40,12 +47,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Preprocess.Basic;
-
-import keel.Dataset.*;
-
-import java.util.StringTokenizer;
-
 public class Metodo {
 
 	  /*Path and names of I/O files*/

@@ -91,6 +91,7 @@ public class PNNGenerator extends PrototypeGenerator
 
     /**
      * Build a new algorithm PNNGenerator that will reduce a prototype set.
+     * @param _trainingDataSet training datast.
      * @param parameters Parameters needed for the algoritm, in this case, random seedDefaultValueList only.
      */
     public PNNGenerator(PrototypeSet _trainingDataSet, Parameters parameters)
@@ -109,6 +110,7 @@ public class PNNGenerator extends PrototypeGenerator
      * Returns the two nearest prototypes in two different sets.
      * @param A Set which first prototype belongs to.
      * @param B Set which second prototype belongs to.
+     * @param m matrix of distances.
      * @return A pair which elements are the nearest prototypes in A and B (first and second, resp.).
      */
     protected Pair<Prototype,Prototype> nearestPrototypesIn(PrototypeSet A, PrototypeSet B, MatrixOfDistances m)

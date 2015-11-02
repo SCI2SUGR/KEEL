@@ -5,14 +5,14 @@ import java.io.*;
 
 import org.core.Files;
 
-
-public class ruleset {
-	
-	/**	
+/**	
 	 * <p>
 	 * It contains the methods for handling the set of learned rules
 	 * </p>
 	 */
+public class ruleset {
+	
+	
 
 	int reservado;
 	int n_rule;
@@ -485,6 +485,7 @@ public class ruleset {
 	 * Writes each rule of the rule base in file "fich".
 	 * </p>
 	 * @param fich OutputStream Output file
+     * @throws java.io.IOException the file can not be written.
 	 */
 	
 	public void SaveRuleInterpreted_append (OutputStream fich) throws IOException{
@@ -507,6 +508,7 @@ public class ruleset {
 	 * Writes each rule of the rule base in file "fich".
 	 * </p>
 	 * @param fich String Name of the output file
+     * @throws java.io.IOException the file can not be written.
 	 */
 	
 	public void SaveRuleInterpreted_append (String fich) throws IOException{

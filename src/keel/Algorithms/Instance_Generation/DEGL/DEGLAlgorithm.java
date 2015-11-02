@@ -52,9 +52,10 @@ import java.util.*;
 public class DEGLAlgorithm extends PrototypeGenerationAlgorithm<DEGLGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new DEGLGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new DEGLGenerator.
      */
     protected DEGLGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

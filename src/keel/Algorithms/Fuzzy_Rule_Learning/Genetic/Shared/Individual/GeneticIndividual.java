@@ -51,11 +51,25 @@ import keel.Algorithms.Shared.Parsing.*;
  */
 public abstract class GeneticIndividual {
 
-        public static final int STANDARD=OperatorIdent.GI_STANDARD;
-		public static final int CUSTOM_CESAR=OperatorIdent.GI_CUSTOM_CESAR;
+    /**
+     * Operator flag (STANDARD).
+     */
+    public static final int STANDARD=OperatorIdent.GI_STANDARD;
 
-        public Genotype g;
-		protected int fitnessType;
+    /**
+     * Operator flag (CUSTOM_CESAR).
+     */
+    public static final int CUSTOM_CESAR=OperatorIdent.GI_CUSTOM_CESAR;
+
+    /**
+     * The genotype of the individual.
+     */
+    public Genotype g;
+
+    /**
+     * The fitness type.
+     */
+    protected int fitnessType;
 
 		/**
 		 * <p>

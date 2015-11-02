@@ -27,15 +27,8 @@
   
 **********************************************************************/
 
-/*
- * FileManagement.java
- *
- * Created on 9 de abril de 2004, 20:19
- */
 
-/**
- * Generic class to manage text files
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.Globals;
 
@@ -45,6 +38,12 @@ import java.io.OutputStream;
 import java.util.*;
 import java.lang.*;
 
+/**
+ * FileManagement.java.
+ * Generic class to manage text files
+ *
+ * Created on 9 de abril de 2004, 20:19
+ */
 public class FileManagement {
     FileInputStream fileInput;
     FileOutputStream fileOutput;
@@ -56,6 +55,7 @@ public class FileManagement {
     /**
      *  Init a file for reading.
      *  @param _name path+name of file to read.
+     * @throws java.lang.Exception if the file does not exist or can not be read or written.
      */
     public void initRead(String _name) throws Exception {
 	fileInput = new FileInputStream(_name);
@@ -64,6 +64,7 @@ public class FileManagement {
     /**
      *  Init a file for reading.
      *  @param _name path+name of file to read.
+     * @throws java.lang.Exception if the file does not exist or can not be read or written.
      */
     public void initWrite(String _name) throws Exception {
 	fileOutput = new FileOutputStream(_name);
@@ -72,6 +73,7 @@ public class FileManagement {
     /**
      *	Reades a char from file.
      *	@return Character readed.
+     * @throws java.lang.Exception if the file does not exist or can not be read or written.
      */
     public char readChar() throws Exception {
         return (char)fileInput.read();
@@ -79,6 +81,8 @@ public class FileManagement {
     
     /**
      *	Writes a char from file.
+     * @param _c char to write.
+     * @throws java.lang.Exception if the file does not exist or can not be read or written.
      */
     public void writeChar(char _c) throws Exception {
         byte[] b=new byte[1];
@@ -89,6 +93,7 @@ public class FileManagement {
     /**
      *	Reads a line from the file.
      *	@return Line readed.
+     * @throws java.lang.Exception if the file does not exist or can not be read or written.
      */
     public String readLine() throws Exception {
             char c;
@@ -104,6 +109,11 @@ public class FileManagement {
             return a;		
     }
 
+    /**
+     * Write a line given.
+     * @param _line line given.
+     * @throws Exception f the file does not exist or can not be read or written.
+     */
     public void writeLine(String _line) throws Exception {
         for (int i=0; i<_line.length(); i++)
             writeChar(_line.charAt(i));
@@ -112,6 +122,7 @@ public class FileManagement {
     /**
      *	Indicates if we've achieved to the end of file.
      *	@return Returns 0 if we've arrived to the end.
+     * @throws java.lang.Exception if the file does not exist or can not be read or written.
      */
     public int fin() throws Exception {
         return fileInput.available();	
@@ -119,6 +130,7 @@ public class FileManagement {
 
     /**
      *	Close the file we've read.
+     * @throws java.lang.Exception if the file does not exist or can not be read or written.
      */
     public void closeRead() throws Exception {
 	fileInput.close();
@@ -126,6 +138,7 @@ public class FileManagement {
     
     /**
      *	Close the file we've writen.
+     * @throws java.lang.Exception if the file does not exist or can not be read or written.
      */
     public void closeWrite() throws Exception {
 	fileOutput.close();
@@ -133,6 +146,7 @@ public class FileManagement {
     
     /**
      *	Reads a whole file
+     * @return the whole file 
      */
      public String readAllFile() {
         String ret="";

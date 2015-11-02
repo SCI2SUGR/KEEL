@@ -50,6 +50,7 @@ public class GENNAlgorithm extends PrototypeGenerationAlgorithm<GENNGenerator>
      * Builds a new GENNGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new GENNGenerator.
      */
     protected GENNGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

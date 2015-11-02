@@ -27,6 +27,18 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.SPIDER2;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+import org.core.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
 /**
  * <p>
  * File: SPIDER2.java
@@ -41,17 +53,6 @@
  * @since JDK1.5
  *
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.SPIDER2;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-import org.core.*;
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
 public class SPIDER2 extends Metodo {
     /**
      * <p>
@@ -290,6 +291,7 @@ public class SPIDER2 extends Metodo {
      * If true the distance used is the euclidean, if false the HVMD distance is used
      * @param vecinos   Array that will have the nearest neighbours id for the current specific item
      * @param clase Class of the neighbours searched for the item
+     * @param isSafe true if it is safe.
      * @return the majority class for all the neighbors of the item
      */
     public int evaluationKNNClass (int nvec, double conj[][], double real[][], int nominal[][], boolean nulos[][], int clases[], double ejemplo[], double ejReal[], int ejNominal[], boolean ejNulos[], int nClases, boolean distance, int vecinos[], int clase, boolean[] isSafe) {
@@ -351,7 +353,29 @@ public class SPIDER2 extends Metodo {
     }
 
     
-    
+    /**
+     * <p>
+     * Computes the k nearest neighbors SPIDER of a given item.
+     * </p>
+     *
+     * @param nvec  Number of nearest neighbors that are going to be searched
+     * @param conj  Matrix with the data of all the items in the dataset
+     * @param real  Matrix with the data associated to the real attributes of the dataset
+     * @param nominal   Matrix with the data associated to the nominal attributes of the dataset
+     * @param nulos Matrix with the data associated to the missing values of the dataset
+     * @param clases    Array with the associated class for each item in the dataset
+     * @param ejemplo   Array with the data of the specific item in the dataset used
+     * as a reference in the nearest neighbor search
+     * @param ejReal    Array with the data of the real attributes of the specific item in the dataset
+     * @param ejNominal Array with the data of the nominal attributes of the specific item in the dataset
+     * @param ejNulos   Array with the data of the missing values of the specific item in the dataset
+     * @param nClases   Class of the specific item in the dataset
+     * @param distance  Kind of distance used in the nearest neighbors computation.
+     * If true the distance used is the euclidean, if false the HVMD distance is used
+     * @param vecinos   Array that will have the nearest neighbours id for the current specific item
+     * @param isSafe true if it is safe.
+     * @return the majority class for all the neighbors of the item
+     */
     public int evaluationKNN_SPIDER2 (int nvec, double conj[][], double real[][], int nominal[][], boolean nulos[][], int clases[], double ejemplo[], double ejReal[], int ejNominal[], boolean ejNulos[], int nClases, boolean distance, int vecinos[], boolean[] isSafe) {
 
         int i, j, l;

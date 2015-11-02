@@ -486,7 +486,7 @@ public class C45
 
   /** Writes the tree and the results of the training and the test in the file.
    *
-   * @exception 	If the file cannot be written.
+   * @exception IOException	If the file cannot be written.
    */
   public void printResult() throws IOException {
     long totalTime = (System.currentTimeMillis() - startTime) / 1000;
@@ -532,7 +532,6 @@ public class C45
 
   /** Evaluates the training dataset and writes the results in the file.
    *
-   * @exception 	If the file cannot be written.
    */
   public void printTrain() {
     String text = getHeader();
@@ -569,7 +568,6 @@ public class C45
 
   /** Evaluates the test dataset and writes the results in the file.
    *
-   * @exception 	If the file cannot be written.
    */
   public void printTest() {
     String text = getHeader();
@@ -614,7 +612,6 @@ public class C45
    *
    * @param args 			The parameters file.
    *
-   * @throws Exception 	If the algorithm cannot been executed properly.
    */
   public static void main(String[] args) {
     try {

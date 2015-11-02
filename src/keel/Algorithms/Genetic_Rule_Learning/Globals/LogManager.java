@@ -27,16 +27,17 @@
   
 **********************************************************************/
 
-/*
- * LogManager.java
- *
- * Class that controls the file where all log messages are sent
- */
+
 
 package keel.Algorithms.Genetic_Rule_Learning.Globals;
 
 import java.util.*;
 
+/**
+ * LogManager.java.
+ *
+ * Class that controls the file where all log messages are sent
+ */
 public class LogManager {
    	static FileManagement logFile;
    

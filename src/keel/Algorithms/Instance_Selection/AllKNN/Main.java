@@ -38,9 +38,17 @@
 
 package keel.Algorithms.Instance_Selection.AllKNN;
 
+/**Main class
+ * 
+ * @author Salvador García López
+ */
 public class Main {
 
-  public static void main (String args[]) {
+    /** Main Function.
+     * 
+     * @param args main args. Configuration filename is needed.
+     */
+    public static void main (String args[]) {
 
     AllKNN allKNN;
 

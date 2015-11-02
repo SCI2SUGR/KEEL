@@ -57,6 +57,10 @@ import java.util.StringTokenizer;
 import java.util.Arrays;
 import java.util.Vector;
 
+/**
+ * DROP3LVQ3
+ * @author Salvador García López
+ */
 public class DROP3LVQ3 extends Metodo {
 
   /*Own parameters of the algorithm*/

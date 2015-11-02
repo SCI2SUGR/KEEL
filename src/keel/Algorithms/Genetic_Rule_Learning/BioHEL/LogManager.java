@@ -29,15 +29,16 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.BioHEL;
 
+
+
+import java.util.*;
+import keel.Algorithms.Genetic_Rule_Learning.Globals.FileManagement;
+
 /*
  * LogManager.java
  *
  * Class that controls the file where all log messages are sent
  */
-
-
-import java.util.*;
-import keel.Algorithms.Genetic_Rule_Learning.Globals.FileManagement;
 
 public class LogManager {
    	static FileManagement logFile;

@@ -35,12 +35,17 @@
 package keel.Algorithms.Instance_Generation.utilities;
 
 /**
- *
- * @param T Type of the elements of the pair.
+ * Implements a homogenous pair.
  * @author diegoj
+ * @param <T> Type of the elements of the pair.
  */
 public class HomogenousPair<T> extends Pair<T, T>
 {
+    /**
+ * Contructor.
+     * @param first first element of the pair
+     * @param second second element of the pair
+ */
     public HomogenousPair(T first, T second)
     {
         super(first,second);

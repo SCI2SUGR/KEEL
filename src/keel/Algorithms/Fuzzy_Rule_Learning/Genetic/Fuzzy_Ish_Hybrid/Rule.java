@@ -232,7 +232,12 @@ public class Rule
     }
   }
 
-  public double compatibility(double[] example) {
+    /**
+     * Computes the compatibility of a given example with the rule.
+     * @param example example to be tested.
+     * @return the compatibility of a given example 
+     */
+    public double compatibility(double[] example) {
     if (compatibilityType == Fuzzy_Ish.MINIMUM) {
       return minimum_t_norm(example);
     }

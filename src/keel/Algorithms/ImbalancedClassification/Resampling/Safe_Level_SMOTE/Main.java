@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.ImbalancedClassification.Resampling.Safe_Level_SMOTE;
+
 /**
  * <p>
  * File: Main.java
@@ -38,9 +41,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.Safe_Level_SMOTE;
-
 
 public class Main {
 

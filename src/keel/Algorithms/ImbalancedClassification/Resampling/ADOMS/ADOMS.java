@@ -27,6 +27,20 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.ADOMS;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+import javastat.multivariate.PCA;
+import org.core.*;
+
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
 /**
  * <p>
  * File: ADOMS.java
@@ -43,26 +57,7 @@
  * @since JDK1.5
  *
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.ADOMS;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-import javastat.multivariate.PCA;
-import org.core.*;
-
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
 public class ADOMS extends Metodo {
-  /**
-   * <p>
-   * The SMOTE algorithm is an oversampling method used to deal with the imbalanced
-   * problem.
-   * </p>
-   */
 	
   /*Own parameters of the algorithm*/
   private long semilla;
@@ -586,7 +581,8 @@ public class ADOMS extends Metodo {
   
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
-	 */	
+	  * @throws keel.Algorithms.Preprocess.Basic.CheckException if the dataset can not be normalized.
+         */	
 	protected void normalizar () throws CheckException {
 
 		int i, j, k;

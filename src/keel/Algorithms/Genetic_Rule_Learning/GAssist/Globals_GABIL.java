@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 23/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 /*
  * Globals_GABIL.java
@@ -45,6 +38,14 @@ package keel.Algorithms.Genetic_Rule_Learning.GAssist;
 import keel.Dataset.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.Parameters;
 
+/**
+ * <p>Computes and maintains global information for the GABIL KR
+ * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 23/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class Globals_GABIL {
 /**
  * <p>

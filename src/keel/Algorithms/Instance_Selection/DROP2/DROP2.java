@@ -59,7 +59,17 @@ import java.util.Vector;
 import java.util.Arrays;
 
 
-
+/**
+ * 
+ * File: DROP2.java
+ * 
+ * The DROP2 algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class DROP2 extends Metodo {
 
 
@@ -70,11 +80,19 @@ public class DROP2 extends Metodo {
   private int k;
 
 
+  /**
+	 * Builder. Creates the basic structures of the algorithm
+	 *
+	 * @param ficheroScript Configuration script
+	 */
   public DROP2 (String ficheroScript) {
     super (ficheroScript);
   }
 
 
+  /**
+     * Executes the DROP2 algorithm.
+     */
   public void ejecutar () {
 
 

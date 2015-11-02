@@ -43,16 +43,27 @@ import keel.Algorithms.Preprocess.Basic.*;
 import org.core.*;
 import java.util.StringTokenizer;
 
+/**BSE method
+ * 
+ * @author Salvador García López
+ */
 public class BSE extends Metodo {
 
  /*Own parameters of the algorithm*/
   private int k;
 
-  public BSE (String ficheroScript) {
+    /**
+     * Constructor
+     * @param ficheroScript Configuration filename.
+     */
+    public BSE (String ficheroScript) {
     super (ficheroScript);
   }
 
-  public void ejecutar () {
+    /**
+     * execute the method.
+     */
+    public void ejecutar () {
 
     int i, j, l, m;
     int nClases;

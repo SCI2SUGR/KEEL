@@ -56,12 +56,20 @@ public class RuleBase {
 	// Fuzzy partition with consequents.
 	FuzzyPartition partition;
 	final static int minimum = 0;
-	public final static int product = 1;
+
+    /**
+     * Product configuration flag.
+     */
+    public final static int product = 1;
 	final static int maximum = 0;
-	public final static int sum = 1;
-	// Defuzzification by mass center
+
+    /**
+     * Sum configuration flag.
+     */
+    public final static int sum = 1;
+	/** Defuzzification by mass center. */
 	public final static int DEFUZCDM = 0;
-	// Defuzzification by maximum
+	/** Defuzzification by maximum. */
 	public final static int DEFUZMAX = 1;
 	long[] rules;
 
@@ -149,6 +157,7 @@ public class RuleBase {
      * Returns the number of rules.
      * 
      * </p> 
+     * @return the number of rules.
      */
 	public int size() {
 		return content.length;
@@ -159,6 +168,7 @@ public class RuleBase {
      * 
      * </p> 
      * @param n the number of rule.
+     * @return rule n.
      */
 	public FuzzyRule getComponent(int n) {
 		return content[n];
@@ -197,6 +207,7 @@ public class RuleBase {
      * 
      * </p> 
      * @param r the number of rule whose antecedents are to be printed.
+     * @return a String with the antecedents (Vi) of rule r.
      */
 	public String variableNames(long r) {
 		int[] d = decodifyRule(r);
@@ -215,6 +226,7 @@ public class RuleBase {
      * </p> 
      * @param x the membership grade of one individual.
      * @param y the membership grade of one individual.
+     * @return the T-Norm of two membership values.
      */
 	public double tnorm(double x, double y) {
 		if (tnr == minimum) {
@@ -249,6 +261,7 @@ public class RuleBase {
      * </p> 
      * @param r a rule index.
      * @param x individual.
+     * @return Grade of Membership of x to rule r antecedent.
      */
 	public double evaluateMembership(long r, double[] x) {
 		int[] d = decodifyRule(r);
@@ -265,6 +278,7 @@ public class RuleBase {
      * 
      * </p> 
      * @param x individual.
+     * @return output (Wang-Mendel) for input x.
      */
 	public double[] output(double[] x) {
 		// It calculates the output WM for input x
@@ -321,6 +335,7 @@ public class RuleBase {
      * Returns the number of consequents in RuleBase.
      * 
      * </p> 
+     * @return the number of consequents in RuleBase.
      */
 	public int numConsequents() {
 		return partition.size();
@@ -349,6 +364,7 @@ public class RuleBase {
      * </p> 
      * @param output vector with the output to be defuzzified.
      * @param IDDEFUZZIFY type of defuzzification to run (RuleBase.DEFUZCDM or RuleBase.DEFUZMAX).       
+     * @return mass center.    
      */
 	public double defuzzify(double[] output, int IDDEFUZZIFY) {
 

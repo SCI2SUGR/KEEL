@@ -27,6 +27,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.ImbalancedClassification.Resampling.RandomOverSampling;
+
 /**
  * <p>
  * File: Main.java
@@ -38,9 +42,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.RandomOverSampling;
-
 public class Main {
 
 

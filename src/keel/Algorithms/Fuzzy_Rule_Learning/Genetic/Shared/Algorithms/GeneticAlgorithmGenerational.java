@@ -93,8 +93,10 @@ public class GeneticAlgorithmGenerational extends GeneticAlgorithm {
 * </p>
 * @param initialIndividual a {@link GeneticIndividual} to start the search process with the desired type of individual
 * @param pPopSize an int with the population size
+     * @param nGenerations number of generations.
 * @param PM a double with the mutation probability
 * @param AMP a double with the mutation amplitude
+     * @param PMIG The migration probability
 * @param pLOptProb a double with the local optimization method probability
 * @param NOL an int with the number of iterations in the local optimization method
 * @param IOL an int with the local identification method identidication

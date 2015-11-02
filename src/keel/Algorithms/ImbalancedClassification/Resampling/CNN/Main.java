@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.ImbalancedClassification.Resampling.CNN;
+
 /**
  * <p>
  * File: Main.java
@@ -38,9 +41,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.ImbalancedClassification.Resampling.CNN;
-
 
 public class Main {
 

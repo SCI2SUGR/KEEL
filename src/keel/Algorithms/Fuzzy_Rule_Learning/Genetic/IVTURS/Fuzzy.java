@@ -44,7 +44,10 @@ public class Fuzzy {
 	double x0, x1, x3, b1, b3, b4, y;
 	String name;
 
-	public Fuzzy() {
+    /**
+     * Default constructor.
+     */
+    public Fuzzy() {
 	}
 
 	public double[] Fuzzifica(double X) {

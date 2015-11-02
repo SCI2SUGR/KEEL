@@ -50,6 +50,7 @@ public class GMCAAlgorithm extends PrototypeGenerationAlgorithm<GMCAGenerator>
      * Builds a new GMCAGenerator.
      * @param train Training data set.
      * @param params Parameters of the method.
+     * @return new GMCAGenerator.
      */
     protected GMCAGenerator buildNewPrototypeGenerator(PrototypeSet train, Parameters params)
     {

@@ -44,15 +44,33 @@ import org.core.*;
 import java.util.StringTokenizer;
 import java.util.Arrays;
 
+/**
+ * 
+ * File: ENRBF.java
+ * 
+ * The ENRBF Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class ENRBF extends Metodo {
 
   /*Own parameters of the algorithm*/
   double alpha, sigma;
 
+  /**
+     * Default builder. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
   public ENRBF (String ficheroScript) {
     super (ficheroScript);
   }
 
+  /**
+	 * Executes the algorithm
+	 */ 
   public void ejecutar () {
 
     int i, j, k, l;
