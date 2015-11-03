@@ -10,6 +10,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
@@ -89,6 +90,7 @@
         <Component class="javax.swing.JButton" name="suspendResumenButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Suspend/Resume"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="suspendResumenButton" noResource="true"/>
           </Properties>
           <Events>
@@ -103,6 +105,7 @@
         <Component class="javax.swing.JButton" name="stopButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Stop"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[121, 23]"/>
             </Property>
