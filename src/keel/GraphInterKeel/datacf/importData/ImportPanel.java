@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. SÃ¡nchez (luciano@uniovi.es)
-    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÃ­a (sglopez@ujaen.es)
-    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
+    L. Sánchez (luciano@uniovi.es)
+    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
+    S. García (sglopez@ujaen.es)
+    A. Fernández (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -89,7 +89,7 @@ import org.jdom.output.XMLOutputter;
 
 /**
  * <p>
- * @author Written by Pedro Antonio Gutierrez and Juan Carlos Fernández (University of Cordoba) 23/10/2008
+ * @author Written by Pedro Antonio Gutierrez and Juan Carlos Fernandez (University of Cordoba) 23/10/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -980,10 +980,16 @@ private void nextBrowserButtonActionPerformed(java.awt.event.ActionEvent evt) {/
         }
     } else {
         outputFileName = convert(null, System.getProperty("java.io.tmpdir"));
+        
+        if (outputFileName == null) {
+            return;
+        } else if (outputFileName.equals("")) {
+            return;
+        }
     }
     tmpTrainingImportedFile = new File(outputFileName);
 
-    if (!ext.equals("xls") && !ext.equals("DISABLED")) {
+    if (!ext.equals("xls") && !ext.equals("DISABLE")) {
         showText(originalFile, originalTextArea);
     } else {
         originalTextArea.setText("Previsualization not available!");
@@ -992,7 +998,7 @@ private void nextBrowserButtonActionPerformed(java.awt.event.ActionEvent evt) {/
 
     informationPreviewLabel.setText("This is a previsualization of the result of importing the file you have given");
     String format = ((String) outputFormatComboBox.getSelectedItem());
-    if (!ext.equals("DISABLED")) {
+    if (!ext.equals("DISABLE")) {
         originalLabel.setText("Original File " + originalFile.getName() + " (" + format.substring(0, format.length() - 7) + " format)");
     } else {
         originalLabel.setText("Original Database (" + format.substring(0, format.length() - 7) + " format)");
@@ -2575,7 +2581,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
 
         // Database
         // --------
-        if (ext.equals("DISABLED")) {
+        if (ext.equals("DISABLE")) {
 
 
 

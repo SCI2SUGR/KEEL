@@ -224,7 +224,7 @@
                       <Component id="outputFormatComboBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="optionsButton" min="-2" pref="83" max="-2" attributes="0"/>
-                      <EmptySpace pref="268" max="32767" attributes="0"/>
+                      <EmptySpace pref="285" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -264,7 +264,7 @@
             <Component class="javax.swing.JComboBox" name="outputFormatComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="11">
+                  <StringArray count="10">
                     <StringItem index="0" value="Keel to CSV"/>
                     <StringItem index="1" value="Keel to TXT"/>
                     <StringItem index="2" value="Keel to PRN"/>
@@ -275,7 +275,6 @@
                     <StringItem index="7" value="Keel to Weka"/>
                     <StringItem index="8" value="Keel to XML"/>
                     <StringItem index="9" value="Keel to HTML Tab"/>
-                    <StringItem index="10" value="Keel to Database SQL"/>
                   </StringArray>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Select Output Format"/>
@@ -411,14 +410,16 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="originalScrollPanel" pref="332" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
                               <Component id="originalSeparator" alignment="1" pref="344" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="originalLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="179" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="originalScrollPanel" alignment="0" pref="332" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="originalLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="173" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -502,14 +503,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="resultScrollPanel" pref="332" max="32767" attributes="0"/>
-                              </Group>
                               <Component id="resultSeparator" alignment="1" pref="344" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="resultsLabel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="resultScrollPanel" alignment="0" pref="332" max="32767" attributes="0"/>
+                                      <Component id="resultsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>

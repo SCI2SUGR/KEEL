@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sanchez (luciano@uniovi.es)
+    J. Alcala-Fdez (jalcala@decsai.ugr.es)
+    S. Garcia (sglopez@ujaen.es)
+    A. Fernandez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -59,7 +59,7 @@ import keel.Algorithms.Preprocess.Converter.KeelToXml;
 
 /**
  * <p>
- * @author Written by  Pedro Antonio GutiÃ©rrez and Juan Carlos FernÃ¡ndez(University of CÃ³rdoba) 23/10/2008
+ * @author Written by  Pedro Antonio Gutiérrez and Juan Carlos Fernández(University of Córdoba) 23/10/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
@@ -285,7 +285,7 @@ public class ExportPanel extends javax.swing.JPanel {
         outputFormatLabel.setText("Select Output Format");
         outputFormatLabel.setName("outputFormatLabel"); // NOI18N
 
-        outputFormatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Keel to CSV", "Keel to TXT", "Keel to PRN", "Keel to C4.5", "Keel to Excel", "Keel to Dif", "Keel to PropertyList", "Keel to Weka", "Keel to XML", "Keel to HTML Tab", "Keel to Database SQL" }));
+        outputFormatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Keel to CSV", "Keel to TXT", "Keel to PRN", "Keel to C4.5", "Keel to Excel", "Keel to Dif", "Keel to PropertyList", "Keel to Weka", "Keel to XML", "Keel to HTML Tab" }));
         outputFormatComboBox.setToolTipText("Select Output Format");
         outputFormatComboBox.setName("outputFormatComboBox"); // NOI18N
         exportOptionsDialog = new OptionsDialog(parent, true);
@@ -308,7 +308,7 @@ public class ExportPanel extends javax.swing.JPanel {
                 .addComponent(outputFormatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
         buttonPanelLayout.setVerticalGroup(
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,13 +410,14 @@ public class ExportPanel extends javax.swing.JPanel {
             .addGroup(leftPreviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(leftPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(leftPreviewPanelLayout.createSequentialGroup()
-                        .addComponent(originalScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
-                        .addContainerGap())
                     .addComponent(originalSeparator, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                     .addGroup(leftPreviewPanelLayout.createSequentialGroup()
-                        .addComponent(originalLabel)
-                        .addContainerGap(179, Short.MAX_VALUE))))
+                        .addGroup(leftPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(originalScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                            .addGroup(leftPreviewPanelLayout.createSequentialGroup()
+                                .addComponent(originalLabel)
+                                .addGap(0, 173, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         leftPreviewPanelLayout.setVerticalGroup(
             leftPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,13 +464,12 @@ public class ExportPanel extends javax.swing.JPanel {
             rightPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPreviewPanelLayout.createSequentialGroup()
                 .addGroup(rightPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, rightPreviewPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(resultScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))
                     .addComponent(resultSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, rightPreviewPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(resultsLabel)))
+                        .addGroup(rightPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(resultScrollPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                            .addComponent(resultsLabel, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addContainerGap())
         );
         rightPreviewPanelLayout.setVerticalGroup(
