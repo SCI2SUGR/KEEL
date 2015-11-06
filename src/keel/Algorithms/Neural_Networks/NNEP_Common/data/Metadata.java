@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * <p>
+ * <p>Implementation of IMetadata interface.
  * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

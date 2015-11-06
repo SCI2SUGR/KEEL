@@ -41,7 +41,15 @@ import java.util.ArrayList;
  */
 public class Parameters extends ArrayList<String>
 {
+
+    /**
+     * Text flag (Seed).
+     */
     public static final String SEED_TXT = "seed";
+
+    /**
+     *  Text flag (size).
+     */
     public static final String PERC_SIZE_TXT = "reduction size respect training size";
     
     /** Names of the parameteres. */
@@ -50,13 +58,23 @@ public class Parameters extends ArrayList<String>
     /** Contains the message of correct use to the user of the program. */
     protected static String use = null;
     
+    /**
+     * Configuration file name.
+     */
     protected static String name = null;
     
     /** Current parameter */
     int current=0;
     
+    /**
+     * Extended argument index.
+     */
     protected static int indexExtendedArg = 2;
     
+    /**
+     * Returns the file
+     * @return
+     */
     public static String getFileName()
     {
         if(name==null)
@@ -72,11 +90,19 @@ public class Parameters extends ArrayList<String>
         Debug.goout(use);
     }
     
+    /**
+     * Constructor. Create a Parameters object with the given number of parameters.
+     * @param _size number of parameters
+     */
     public Parameters(int _size)
     {
         super(_size);
     }
     
+    /**
+     * Constructor. Create a Parameters object with the given not parsed parameters.
+     * @param args list of not parsed parameters
+     */
     public Parameters(String[] args)
     {
         super(args.length);
@@ -84,6 +110,10 @@ public class Parameters extends ArrayList<String>
             add(s);
     }
     
+    /**
+     * Constructor. Create a Parameters object with the given not parsed parameters.
+     * @param args list of not parsed parameters
+     */
     public Parameters(ArrayList<String> args)
     {
         super(args.size());
@@ -91,6 +121,11 @@ public class Parameters extends ArrayList<String>
             add(s);
     }
     
+    /**
+     * Constructor. Create a Parameters object with the given not parsed parameters (names and values).
+     * @param names parameters name.
+     * @param args list of not parsed parameters.
+     */
     public Parameters(String[] names, String[] args)
     {
         super(args.length);
@@ -111,11 +146,21 @@ public class Parameters extends ArrayList<String>
         return names.get(index);
     }
     
+    /**
+     * Parses the parameter with the index given and returns it as integer
+     * @param index asked parameter index.
+     * @return the parameter value as integer
+     */
     public int getInt(int index)
     {
         return Integer.parseInt(get(index));
     }
     
+    /**
+     * Parses the parameter with the index given and returns it as real
+     * @param index asked parameter index.
+     * @return the parameter value as real
+     */
     public double getDouble(int index)
     {
         return Double.parseDouble(get(index));
@@ -162,6 +207,10 @@ public class Parameters extends ArrayList<String>
         return stringArray;
     }
     
+    /**
+     * Returns the remained not parsed parameters 
+     * @return the remained not parsed parameters 
+     */
     public String[] getRemainingParameters()
     {
         int _size = size();

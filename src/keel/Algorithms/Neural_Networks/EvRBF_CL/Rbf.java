@@ -27,8 +27,15 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Neural_Networks.EvRBF_CL;
+
+import org.core.*;
+
 /**
- * <p>
+ * <p> Class representing a Radial Basis Function Neuron. Needed to implement RBF Neural Networks
  * @file Rbf.java
  * @author Written by Antonio Jesus Rivera Rivas (University of Jaen) 03/03/2004
  * @author Modified by Victor Manuel Rivas Santos (University of Jaen) 03/03/2004
@@ -36,12 +43,6 @@
  * @since JDK1.5
  *</p>
  */
-
-
-package keel.Algorithms.Neural_Networks.EvRBF_CL;
-
-import org.core.*;
-
 public class Rbf implements Cloneable {
 /**
  * <p>
@@ -89,7 +90,8 @@ public class Rbf implements Cloneable {
     /** 
      * <p>
      * Clones a neuron/rbf 
-     * </p>*/
+     * </p>
+     * @return a neuron/rbf copied object*/
     public Object clone  () {
         try{
             Rbf rbf=(Rbf)super.clone();

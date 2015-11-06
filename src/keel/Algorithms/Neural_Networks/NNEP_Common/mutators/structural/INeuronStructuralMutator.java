@@ -37,10 +37,11 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.LinkedLayer;
 import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.LinkedNeuron;
 
 /**  
- * <p>
+ * <p>Structural Mutator of a specific neuron
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1
+ * @param <N> Type of the INeuronStructuralMutator
  * @since JDK1.5
  * </p>
  */
@@ -88,6 +89,7 @@ public interface INeuronStructuralMutator<N extends LinkedNeuron> {
 	 * @param previousLayer Previous layer to the selected hidden layer
 	 * @param indexNeuron Index of neuron to add the link
 	 * @param indexOrigin Index of neuron that its link come from in the previous layer
+         * @return true if all went right
 	 */
 	
 	public boolean addLink(N neuron, LinkedLayer layer, ILayer<? extends INeuron> previousLayer,
@@ -100,6 +102,7 @@ public interface INeuronStructuralMutator<N extends LinkedNeuron> {
 	 * </p>
 	 * @param neuron Neuron to remove the link
 	 * @param indexOrigin Index of neuron that its link come from in the previous layer
+         * @return  true if all went right
 	 */
 	
 	public boolean removeLink(N neuron, int indexOrigin);

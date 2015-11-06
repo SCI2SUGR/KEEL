@@ -63,7 +63,7 @@ public class fun_aux {
 
     /**
      * Convert the number in fuzzy
-     * @param number interval to fuzzy.
+     * @param numero interval to fuzzy.
      * @return fuzzy value for the given number.
      */
 	public static Interval to_fuzzy(String numero)

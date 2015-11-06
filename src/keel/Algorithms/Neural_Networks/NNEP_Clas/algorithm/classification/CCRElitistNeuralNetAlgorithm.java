@@ -40,9 +40,10 @@ import net.sf.jclec.IEvaluator;
 import net.sf.jclec.base.AbstractIndividual;
 
 /**
- * <p> 
+ * <p> Base implementation for all classification neural net algorithms.
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @version 0.1
+ * @param <I> Object Type which should extend from AbstractIndividual
  * @since JDK1.5
  */
 
@@ -151,7 +152,7 @@ public class CCRElitistNeuralNetAlgorithm<I extends AbstractIndividual<IClassifi
 	 * <p>
 	 * Returns best individual of a list of individuals using the MSEErrorFunction
 	 *
-	 * @param individuals List<I> list of individuals to obtain best
+	 * @param individuals list of individuals to obtain best
 	 * @param evaluator NeuralNetEvaluator to use in individual evaluation
 	 * 
 	 * @return I Best classifier of the ensemble

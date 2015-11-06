@@ -37,10 +37,10 @@
 package keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms;
 
 /**
- * 
+ * Abstract class Chromosome that defines a generalization of CromosomaBinario & CromosomaEntero 
  * @author Manuel Chica Serrano
  *
- * Abstract class Chromosome that defines a generalization of CromosomaBinario & CromosomaEntero */
+ * */
 public abstract class Cromosoma {
     
     /** chromosome length */

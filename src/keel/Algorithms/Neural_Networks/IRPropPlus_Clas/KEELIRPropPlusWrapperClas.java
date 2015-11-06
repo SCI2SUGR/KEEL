@@ -69,7 +69,7 @@ import org.apache.commons.configuration.XMLConfiguration;
 
 
 /**
- * <p>
+ * <p>Wrapper of iRProp+ algorithm for KEEL
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 5/11/2007
  * @author Modified by Juan Carlos Fernandez Caballero (University of Cordoba) 5/11/2007
  * @version 0.1
@@ -190,8 +190,8 @@ public class KEELIRPropPlusWrapperClas implements IPopulation<AbstractIndividual
 	 * <p>
 	 * Main method
 	 * </p>
+         * @param args Name of the KEEL file with properties of the execution
 	 */
-	
 	public static void main(String[] args) {
 		configureJob(args[0]);
 		executeJob();

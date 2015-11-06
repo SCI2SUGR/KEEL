@@ -237,7 +237,11 @@ public class Population {
 		//System.out.println("Accuracy / Fitness in the evaluacion " + this.nTrials + ": " + this.Population.get(0).getAccuracy() + " / " + this.best_fitness);
 	}
 
-	public String getEvolution() {
+    /**
+     * Type of evolution
+     * @return type of evolution
+     */
+    public String getEvolution() {
 		return (this.evolution);
 	}
 

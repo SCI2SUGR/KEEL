@@ -189,7 +189,14 @@ public class Cromosoma implements Comparable {
     errorRate = (double)(fallos)/(double)(datos.length);
   }
 
-  /*Funcion that calculate the error threshold of a cromosome*/
+  /**Funcion that calculate the error threshold of a cromosome.
+   * @param datos Reference to the training set
+	 * @param real  Reference to the training set (real valued)
+	 * @param nominal  Reference to the training set (nominal valued)	 
+	 * @param nulos  Reference to the training set (null values)	 	 
+	 * @param clases Output attribute of each instance
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     */
   private double evaluaError2 (double datos[][], double real[][], int nominal[][], boolean nulos[][], int clases[], boolean distanceEu) {
 
     int i, j;
@@ -460,7 +467,13 @@ public class Cromosoma implements Comparable {
     return suma;
   }
 
-  /*Function that lets compare cromosomes to sort easily*/
+  /**
+	 * Compare to Method
+	 *
+	 * @param o1 Chromosome to compare
+	 *
+	 * @return Relative order between the chromosomes
+	 */
   public int compareTo (Object o1) {
     if (this.calidad > ((Cromosoma)o1).calidad)
       return -1;
@@ -495,6 +508,11 @@ public class Cromosoma implements Comparable {
     else return pos;
   }
 
+  /**
+	 * To String Method
+	 *
+	 * @return String representation of the chromosome
+	 */
   public String toString() {
 	  
     int i;

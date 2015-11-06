@@ -27,6 +27,15 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Lazy_Learning.CW;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
+import java.util.*;
+
+import org.core.Files;
+
 /**
  * 
  * File: CW.java
@@ -40,14 +49,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Lazy_Learning.CW;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
-import java.util.*;
-
-import org.core.Files;
-
 public class CW extends LazyAlgorithm{
 	
 	//Parameters

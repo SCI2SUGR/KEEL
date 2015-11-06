@@ -30,7 +30,7 @@
 package keel.Algorithms.Neural_Networks.NNEP_Common.data;
 
 /**
- * <p>
+ * <p>Dataset Attributes.
  * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -69,6 +69,7 @@ public interface IAttribute
 	/**
 	 * <p>
 	 * Check if this internal attribute value is valid
+         * @param internalValue value to check
 	 * </p>
 	 * @return true|false
 	 */	
@@ -89,6 +90,7 @@ public interface IAttribute
 	 * <p>
 	 * Show an String which represents a given real value
 	 * </p>
+         * @param internalValue internal value asked.
 	 * @return The real value of the attribute
 	 */	
 	public String show(double internalValue);
@@ -98,6 +100,7 @@ public interface IAttribute
 	 * Parse an  external value to obtain  the internal value of the 
 	 * Attribute
 	 * </p>
+         * @param externalValue external value to parse
 	 * @return The external value of the attribute
 	 */
 	public double parse(String externalValue);

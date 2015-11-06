@@ -40,7 +40,7 @@ import net.sf.jclec.fitness.SimpleValueFitness;
 
 
 /**
- * <p>
+ * <p>Individuals with a INeuralNet as genotype
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1
@@ -170,6 +170,7 @@ public class NeuralNetIndividual extends AbstractIndividual<INeuralNet> {
 	 * <p>
 	 * Hamming distance
 	 * 
+         * @param other other individual to compute the distance with.
 	 * @return double Hamming distance between genotypes
 	 * </p>
 	 */

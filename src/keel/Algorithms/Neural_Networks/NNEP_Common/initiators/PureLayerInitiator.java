@@ -43,7 +43,7 @@ import net.sf.jclec.ISystem;
 import net.sf.jclec.util.random.IRandGen;
 
 /**
- * <p>
+ * <p>Abstract implementation for IInitiator
  * @author Written by Pedro Antonio Gutierrez Penna, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

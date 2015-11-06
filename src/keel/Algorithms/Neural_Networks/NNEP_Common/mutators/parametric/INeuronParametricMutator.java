@@ -35,10 +35,11 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.LinkedLayer;
 import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.LinkedNeuron;
 
 /**  
- * <p>
+ * <p> Parametric Mutator of a specific neuron
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1
+ * @param <N> Type for the Neuron Mutator
  * @since JDK1.5
  * </p>
  */

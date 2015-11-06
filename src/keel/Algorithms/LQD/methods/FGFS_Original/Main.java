@@ -99,6 +99,7 @@ public class Main {
 	 * </p> 
 	 * 
 	 * @param args Arguments of the program (a configuration script, generally)  
+     * @throws java.io.IOException  Configuration file can not be read.
 	 * 
 	 */
     public static void main(String[] args) throws IOException {

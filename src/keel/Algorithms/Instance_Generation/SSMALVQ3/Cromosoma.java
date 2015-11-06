@@ -43,6 +43,17 @@ import java.util.Arrays;
 import keel.Algorithms.Preprocess.Basic.*;
 import org.core.*;
 
+/**
+ * 
+ * File: Cromosoma.java
+ * 
+ * Auxiliriary class to represent chromosomes for Instance Generation methods
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Cromosoma implements Comparable {
 
 	/*Cromosome data structure*/
@@ -57,7 +68,17 @@ public class Cromosoma implements Comparable {
 	boolean evaluado;
 	boolean valido;
   
-	/*Construct a random cromosome of specified size (OK)*/
+        /**
+     *Construct a random chromosome of specified size and evaluate it.
+     * @param K Number of neighbors
+     * @param size Size of the chromosome
+     * @param dMatrix data matrix.
+     * @param datos Reference to the training set
+     * @param real Reference to the training set (real valued)
+     * @param nominal  Reference to the training set (nominal valued)
+     * @param nulo Reference to the training set (null values)
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     */
 	public Cromosoma (int K, int size, double dMatrix[][], double datos[][], double real[][], int nominal[][], boolean nulo[][], boolean distanceEu) {
 
 		double u;
@@ -83,7 +104,11 @@ public class Cromosoma implements Comparable {
 		}
 	}
   
-	/*Create a copied cromosome*/
+	/**Create a copied chromosome
+     * @param K Number of neighbors
+     * @param size Chromosome size.
+     * @param a Chromosome to copy.
+         */
 	public Cromosoma (int K, int size, Cromosoma a) {
 		
 		int i, j;
@@ -102,7 +127,13 @@ public class Cromosoma implements Comparable {
 	    valido = true;
 	}
 
-  /*Construct a cromosome throught crossover than other two parents (OK)*/
+  /**Construct a chromosome throught crossover than other two parents
+     * @param K  Number of neighbors
+     * @param a first father
+     * @param b second father.
+     * @param pCross crossover probability
+     * @param size Chromosome size.
+     */
   public Cromosoma (int K, Cromosoma a, Cromosoma b, double pCross, int size) {
 
     int i;
@@ -121,6 +152,17 @@ public class Cromosoma implements Comparable {
     valido = true;
   }
 
+  /**
+     * Function that does the mutation 
+     * @param K Number of neighbors
+     * @param pMut Mutation probability.
+     * @param dMatrix data matrix.
+     * @param datos Reference to the training set
+     * @param real Reference to the training set (real valued)
+     * @param nominal  Reference to the training set (nominal valued)
+     * @param nulo Reference to the training set (null values)
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     */
   public void mutation (int K, double pMut, double dMatrix[][], double datos[][], double real[][], int nominal[][], boolean nulo[][], boolean distanceEu) {
 
 	  int i, j;
@@ -137,7 +179,17 @@ public class Cromosoma implements Comparable {
 	  }
   }
 
-  /*Obtain the nearest neighbour given a mask (cromosome)*/
+  /** Obtains the nearest neighbour given a mask (chromosome)
+     * @param vecinos the nearest neighbour
+     * @param J chromosome size.
+     * @param dMatrix data matrix.
+     * @param index example index.
+     * @param datos Reference to the training set
+     * @param real Reference to the training set (real valued)
+     * @param nominal  Reference to the training set (nominal valued)
+     * @param nulo Reference to the training set (null values)
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     * @return minimum position of the nearest neighbour of the vector of neighbours  */
   public int obtenerCercano (int vecinos[], int J, double dMatrix[][], int index, double datos[][], double real[][], int nominal[][], boolean nulo[][], boolean distanceEu) {
 
     double minDist;
@@ -219,23 +271,51 @@ public class Cromosoma implements Comparable {
     return minPos;
   }
 
+  /**
+	 * Get the value of a gene
+	 *
+	 * @param indice Index of the gene
+	 *
+	 * @return Value of the especified gene
+	 */
   public boolean getGen (int indice) {
     return cuerpo[indice];
   }
 
+    /**
+     * Get the neighbour with the given indeces.
+     *
+     * @param indicei gene index.
+     * @param indicej neighbour index
+     * @return  the neighbour with the given indeces.
+     */
   public int getVecino (int indicei, int indicej) {
 	    return vecinos[indicei][indicej];
   }
 
+  /**
+	 * Get the fitness of a chromosome
+	 *
+	 * @return fitness of the chromosome
+	 */
   public double getFitness () {
     return fitness;
   }
 
+  /**
+	 * Get the accuracy fitness of a chromosome
+	 *
+	 * @return accuracy fitness of the chromosome
+	 */
   public double getFitnessAc () {
     return fitnessAc;
   }
 
-  /*Function that evaluates a cromosome completely*/
+  /**Function that evaluates a cromosome completely
+     * @param nClases number of classes
+     * @param K Number of neighbors
+     * @param clases  Output attribute of each instance
+     */
   public void evaluacionCompleta (int nClases, int K, int clases[]) {
 
     double contador = 0;
@@ -267,22 +347,46 @@ public class Cromosoma implements Comparable {
     evaluado = true;
   }
 
+  /**
+	 * Marks a chromosome for deletion.
+	 */
   public void borrar () {
     valido = false;
   }
 
+  /**
+	 * Tests if the chromosome is valid
+	 *
+	 * @return True if the chromosome is valid. False, if not.
+	 */
   public boolean esValido () {
     return valido;
   }
 
+  /**
+	 * Set the value of a gene
+	 *
+	 * @param pos Index of the gene
+	 * @param valor Value to set
+	 */
   public void setGen (int pos, boolean valor) {
     cuerpo[pos] = valor;
   }
 
+  /**
+	 * Tests if the chromosome is already evaluated
+	 *
+	 * @return True if the chromosome is already evaluated. False, if not.
+	 */
   public boolean estaEvaluado () {
     return evaluado;
   }
 
+  /**
+	 * Count the number of genes set to 1
+	 *
+	 * @return Number of genes set to 1 in the chromosome
+	 */
   public int genesActivos () {
     int i, suma = 0;
 
@@ -293,6 +397,21 @@ public class Cromosoma implements Comparable {
     return suma;
   }
 
+  /**
+   * Local optimization for the chromosome as Memetic algorithm
+    * @param nClases number of classes
+     * @param K Number of neighbors
+     * @param clases  Output attribute of each instance
+   * @param dMatrix data matrix.
+   * @param umbral Threshold.
+   * * @param vecinos the nearest neighbours
+     * @param datos Reference to the training set
+     * @param real Reference to the training set (real valued)
+     * @param nominal  Reference to the training set (nominal valued)
+     * @param nulo Reference to the training set (null values)
+     * @param distanceEu True= Euclidean distance; False= HVDM
+   * @return number of evaluations
+   */
   public double optimizacionLocal (int nClases, int K, int clases[], double dMatrix[][], double umbral, double datos[][], double real[][], int nominal[][], boolean nulo[][], boolean distanceEu) {
 
 	  int n, pos, i, j, k, tmp;
@@ -346,6 +465,22 @@ public class Cromosoma implements Comparable {
 	  return evaluaciones;
   }
 
+  /**
+   * Partial evaluation.
+    * @param nClases number of classes
+     * @param K Number of neighbors
+     * @param clases  Output attribute of each instance
+     * @param ref reference id.
+   * @param dMatrix data matrix.
+   * @param umbral Threshold.
+   * * @param vecinos the nearest neighbours
+     * @param datos Reference to the training set
+     * @param real Reference to the training set (real valued)
+     * @param nominal  Reference to the training set (nominal valued)
+     * @param nulo Reference to the training set (null values)
+     * @param distanceEu True= Euclidean distance; False= HVDM
+   * @return partial evaluations.
+   */
   public double evaluacionParcial (int nClases, int K, int clases[], int ref, double dMatrix[][], double umbral, double datos[][], double real[][], int nominal[][], boolean nulo[][], boolean distanceEu) {
 
 	  int i, j;
@@ -422,7 +557,13 @@ public class Cromosoma implements Comparable {
   }
   
 
-  /*Function that lets compare cromosomes to sort easily*/
+  /**
+	 * Compare to Method
+	 *
+	 * @param o1 Chromosome to compare
+	 *
+	 * @return Relative order between the chromosomes
+	 */
   public int compareTo (Object o1) {
     double valor1 = this.fitness;
     double valor2 = ((Cromosoma)o1).fitness;
@@ -434,8 +575,13 @@ public class Cromosoma implements Comparable {
   }
 
 
-  /*Function that inform about if a cromosome is different only in a bit, obtain the
-   position of this bit. In case of have more differences, it returns -1*/
+  /**
+	 * Test if two chromosome differ in only one gene
+	 *
+	 * @param a Chromosome to compare
+	 *
+	 * @return Position of the difference, if only one is found. Otherwise, -1
+	 */
   public int differenceAtOne (Cromosoma a) {
 
     int i;
@@ -453,7 +599,11 @@ public class Cromosoma implements Comparable {
   }
 
 
-
+/**
+	 * To String Method
+	 *
+	 * @return String representation of the chromosome
+	 */
   public String toString() {
 
     int i;

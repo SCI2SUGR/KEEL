@@ -27,19 +27,9 @@
   
 **********************************************************************/
 
-/*
 
- * rbfn.java
 
-/**
- * <p>
- * @author Writen by Antonio J. Rivera Rivas (University of Jaen) 03/03/2004
- * @author Modified by Victor Rivas (University of Jaen) 23/06/2006
- * @author Modified by Maria Dolores Perez Godoy (University of Jaen) 17/12/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
  
 package keel.Algorithms.Neural_Networks.RBFN;
 
@@ -51,7 +41,15 @@ import java.io.*;
 
 import keel.Algorithms.Neural_Networks.RBFN.RBFUtils;
 
-
+/**
+ * <p> This class codified a Radial Basis Function Network 
+ * @author Writen by Antonio J. Rivera Rivas (University of Jaen) 03/03/2004
+ * @author Modified by Victor Rivas (University of Jaen) 23/06/2006
+ * @author Modified by Maria Dolores Perez Godoy (University of Jaen) 17/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Rbfn {
 /**
  * <p>

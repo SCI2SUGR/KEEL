@@ -30,7 +30,7 @@
 package keel.Algorithms.Neural_Networks.NNEP_Common.data;
 
 /**
- * <p>
+ * <p> IDataset abstract implementation
  * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -231,7 +231,7 @@ public abstract class AbstractDataset implements IDataset
      * @return     the total number of instances read into the buffer, 
      * 			   or <code>-1</code> is there is no more data because 
      * 			   the end of the stream has been reached
-     * @exception  MiningException  if an error occurs
+     * @exception  DatasetException  if an error occurs
      */   
     public int read(IInstance [] buffer) throws DatasetException
     {
@@ -242,6 +242,9 @@ public abstract class AbstractDataset implements IDataset
 	 * <p>
 	 * Returns cursor instance
 	 * </p>
+     * @param b Instances stored when they are read.
+     * @param off offset in the vector b.
+     * @param len total number of instances to read.
 	 * @return Actual instance (if exists)
 	 * @throws DatasetException if a source access error occurs
 	 */
@@ -269,7 +272,15 @@ public abstract class AbstractDataset implements IDataset
 	/////////////////////////////////////////////////////////////////
 	// --------------------------------------------- Internal classes
 	/////////////////////////////////////////////////////////////////
-	
+    
+        /**
+        * <p>
+        * Implementation of the IInstance interface
+        * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
+        * @version 0.1
+        * @since JDK1.5
+        * </p>
+        */
 	protected class Instance implements IInstance
 	{
 
@@ -331,7 +342,7 @@ public abstract class AbstractDataset implements IDataset
 		 * Sets a string value in the specified attribute index
 		 * </p>
 		 * @param attributeIndex Index to set the value
-		 * @param attributeValue Value to set
+		 * @param attributeString Value to set
 		 */	
 		public final void setValue(int attributeIndex, String attributeString)
 		{

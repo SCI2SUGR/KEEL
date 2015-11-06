@@ -34,7 +34,14 @@ package keel.Algorithms.Neural_Networks.NNEP_Common.mutators.parametric;
 import keel.Algorithms.Neural_Networks.NNEP_Common.NeuralNetIndividual;
 
 /**  
- * <p>
+* <p>Parametric mutator for neural nets, mutate the weights of the neural nets
+* mutated. This implementation uses the "1/5 Success Rule of Rechenberg" 
+* method to update alpha values.
+* 
+* IMPORTANT NOTE: Parametric mutator works directly with  he individuals instead
+*                 of returning a mutated copy of them. This is for performance 
+*                 reasons. If you want to use another mutator you have to consider 
+*                 that individuals will be changed when you use parametric mutation
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @param <I> Type of individuals to mutate
@@ -55,7 +62,7 @@ public class ParametricSRMutator<I extends NeuralNetIndividual> extends Parametr
 	 * IMPORTANT NOTE: Parametric mutator works directly with  he individuals instead
 	 *                 of returning a mutated copy of them. This is for performance 
 	 *                 reasons. If you want to use another mutator you have to consider 
-	 *                 that individuals will be changed when you use parametric mutatio
+	 *                 that individuals will be changed when you use parametric mutation
 	 * </p>                
 	 */
 	

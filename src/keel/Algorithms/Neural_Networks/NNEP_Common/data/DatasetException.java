@@ -30,7 +30,7 @@
 package keel.Algorithms.Neural_Networks.NNEP_Common.data;
 
 /**
- * <p>
+ * <p> Dataset exception.
  * @author Written by Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

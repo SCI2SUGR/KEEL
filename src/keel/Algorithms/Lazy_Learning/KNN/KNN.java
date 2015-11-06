@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning.KNN;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+import keel.Dataset.Attribute;
+
+import org.core.Files;
+import java.util.StringTokenizer;
+
 /**
  * 
  * File: KNN.java
@@ -44,15 +54,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.KNN;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-import keel.Dataset.Attribute;
-
-import org.core.Files;
-import java.util.StringTokenizer;
-
 public class KNN extends LazyAlgorithm{
 
 	//Parameters

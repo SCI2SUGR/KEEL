@@ -27,6 +27,15 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Lazy_Learning.PW;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
+import java.util.*;
+
+import org.core.Files;
+
 /**
  * 
  * File: PW.java
@@ -40,14 +49,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Lazy_Learning.PW;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
-import java.util.*;
-
-import org.core.Files;
-
 public class PW extends LazyAlgorithm{
 
 	//Parameters

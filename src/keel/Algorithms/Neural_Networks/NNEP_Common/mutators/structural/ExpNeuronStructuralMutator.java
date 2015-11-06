@@ -41,7 +41,7 @@ import net.sf.jclec.util.random.IRandGen;
 
 
 /**  
- * <p>
+ * <p>Structural Mutator of Product Unit Neurons.
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1
@@ -274,6 +274,7 @@ public class ExpNeuronStructuralMutator implements INeuronStructuralMutator<ExpN
 	 * @param previousLayer Previous layer to the selected hidden layer
 	 * @param indexNeuron Index of neuron to add the link
 	 * @param indexOrigin Index of neuron that its link come from in the previous layer
+         * @return  true
 	 */
 	
 	public boolean addLink(ExpNeuron neuron, LinkedLayer layer, ILayer<? extends INeuron> previousLayer, 
@@ -296,6 +297,7 @@ public class ExpNeuronStructuralMutator implements INeuronStructuralMutator<ExpN
 	 * </p>
 	 * @param neuron Neuron to remove the link
 	 * @param indexOrigin Index of neuron that its link come from in the previous layer
+         * @return true
 	 */
 	
 	public boolean removeLink(ExpNeuron neuron, int indexOrigin) {

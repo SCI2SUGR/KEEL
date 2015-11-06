@@ -43,6 +43,12 @@ import java.util.Arrays;
 
 import org.core.*;
 
+/**
+ * 
+ * 
+ * @author sergio
+ * 
+ */
 public class Cromosoma implements Comparable {
 
   /*Cromosome data structure*/
@@ -59,6 +65,20 @@ public class Cromosoma implements Comparable {
   double Bnk[];
 
   /*Construct a random cromosome of specified size(OK)*/
+
+    /**
+     *Construct a random chromosome of specified size and evaluate it.
+     * @param size Size of the chromosome
+     * @param nClases Number of classes of the problem
+     * @param datosTrain Reference to the training set
+     * @param realTrain Reference to the training set (real valued)
+     * @param nominalTrain  Reference to the training set (nominal valued)
+     * @param nulosTrain Reference to the training set (null values)
+     * @param clasesTrain Output attribute of each instance
+     * @param kNeigh Number of neighbors for the KNN algorithm
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     */
+    
   public Cromosoma (int size, int nClases, double datosTrain[][], double realTrain[][], int nominalTrain[][], boolean nulosTrain[][], int clasesTrain[], int kNeigh, boolean distanceEu) {
 
     double u;
@@ -122,27 +142,58 @@ public class Cromosoma implements Comparable {
     }    
   }
 
-  /*Create a copied cromosome (OK)*/
+  /**
+	 *
+	 * @param size
+	 */
   public Cromosoma (int size) {
     cuerpo = new boolean[size];
   }
 
-  /*OK*/
+  /**
+	 * Get the value of a gene
+	 *
+	 * @param indice Index of the gene
+	 *
+	 * @return Value of the especified gene
+	 */
   public boolean getGen (int indice) {
     return cuerpo[indice];
   }
 
-  /*OK*/
+  /**
+	 * Get the quality of a chromosome
+	 *
+	 * @return Quality of the chromosome
+	 */
   public double getCalidad () {
     return calidad;
   }
 
-  /*OK*/
+  /**
+	 * Set the value of a gene
+	 *
+	 * @param indice Index of the gene
+	 * @param valor Value to set
+	 */
   public void setGen (int indice, boolean valor) {
     cuerpo[indice] = valor;
   }
 
   /*Construct a random cromosome of specified size(OK)*/
+
+    /**
+     * Construct a random chromosome of specified size and it is prepared to be evaluated.
+     * @param size Size of the chromosome
+     * @param nClases Number of classes of the problem
+     * @param datosTrain Reference to the training set
+     * @param realTrain Reference to the training set (real valued)
+     * @param nominalTrain  Reference to the training set (nominal valued)
+     * @param nulosTrain Reference to the training set (null values)
+     * @param clasesTrain Output attribute of each instance
+     * @param kNeigh Number of neighbors for the KNN algorithm
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     */
   public void prepare (int size, int nClases, double datosTrain[][], double realTrain[][], int nominalTrain[][], boolean nulosTrain[][], int clasesTrain[], int kNeigh, boolean distanceEu) {
 
     int i, j, l;
@@ -198,6 +249,13 @@ public class Cromosoma implements Comparable {
 
   
   /*Function that evaluates a cromosome (OK)*/
+
+    /**
+     * Function that evaluates a chromosome 
+     * @param clases Output attribute of each instance
+     * @param kNeigh  Number of neighbors for the KNN algorithm
+     * @param nClases Number of classes of the problem
+     */
   public void evalua (int clases[], int kNeigh, int nClases) {
 
 	int i, j;
@@ -218,6 +276,22 @@ public class Cromosoma implements Comparable {
 }
 
   /*Function that does the mutation (OK)*/
+
+    /**
+     * Function that does the mutation 
+     * @param nClus cluster considered to mutate.
+     * @param clusters clusters information.
+     * @param size number of clusters 
+     * @param nClases Number of classes of the problem
+     * @param datosTrain Reference to the training set
+     * @param realTrain Reference to the training set (real valued)
+     * @param nominalTrain Reference to the training set (nominal valued)
+     * @param nulosTrain Reference to the training set (null values)
+     * @param clasesTrain Output attribute of each instance
+     * @param kNeigh Number of neighbors for the KNN algorithm
+     * @param distanceEu True= Euclidean distance; False= HVDM
+     */
+    
   public void mutacion (int nClus, int clusters[], int size, int nClases, double datosTrain[][], double realTrain[][], int nominalTrain[][], boolean nulosTrain[][], int clasesTrain[], int kNeigh, boolean distanceEu) {
 	  
 	  int i, j, k, l;
@@ -342,12 +416,19 @@ public class Cromosoma implements Comparable {
 
   }
 
-  /*OK*/
+  /**
+	 * Tests if the chromosome is already evaluated
+	 *
+	 * @return True if the chromosome is already evaluated. False, if not.
+	 */	
   public boolean estaEvaluado () {
     return !cruzado;
   }
 
-  /*OK*/
+  /**
+	 *
+	 * @return
+	 */
   public int genesActivos () {
     int i, suma = 0;
 
@@ -358,17 +439,27 @@ public class Cromosoma implements Comparable {
     return suma;
   }
 
-  /*OK*/
+  /**
+	 *
+	 * @return
+	 */
   public boolean esValido () {
     return valido;
   }
 
-  /*OK*/
+  /**
+	 * Marks a chromosome for deletion
+	 */
   public void borrar () {
     valido = false;
   }
 
-  /*Function that lets compare cromosomes to sort easily (OK)*/
+  /**
+	 *
+	 * @param o1
+	 *
+	 * @return
+	 */
   public int compareTo (Object o1) {
     if (this.calidad > ((Cromosoma)o1).calidad)
       return -1;
@@ -377,8 +468,15 @@ public class Cromosoma implements Comparable {
     else return 0;
   }
 
-  /*Function that inform about if a cromosome is different only in a bit, obtain the
-   position of this bit. In case of have more differences, it returns -1 (OK)*/
+
+  /**
+	 * Test if two chromosome differ in only one gene.
+	 * Function that inform about if a cromosome is different only in a bit, obtain the
+   position of this bit. In case of have more differences, it returns -1
+	 * @param a Chromosome to compare
+	 *
+	 * @return Position of the difference, if only one is found. Otherwise, -1
+	 */
   public int differenceAtOne (Cromosoma a) {
 
     int i;
@@ -395,7 +493,10 @@ public class Cromosoma implements Comparable {
     else return pos;
   }
 
-  /*OK*/
+  /**
+	 *
+	 * @return
+	 */
   public String toString() {
 	  
     int i;

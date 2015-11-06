@@ -27,20 +27,21 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @file RbfnPopulation.java
- * @author Written by Victor Manuel Rivas Santos (University of Jaen) 15/08/2007
- * @version 0.1
- * @since JDK1.5
- *</p>
-**/
+
 package keel.Algorithms.Neural_Networks.EvRBF_CL;
 
 import org.core.*;
 import java.util.*;
 import java.io.*;
 
+/**
+ * <p> Implements a population of Radial basis Function Neural Networks to be evolved with EvRBFN_CL.
+ * @file RbfnPopulation.java
+ * @author Written by Victor Manuel Rivas Santos (University of Jaen) 15/08/2007
+ * @version 0.1
+ * @since JDK1.5
+ *</p>
+**/
 public class RbfnPopulation {
 /**
 * <p>

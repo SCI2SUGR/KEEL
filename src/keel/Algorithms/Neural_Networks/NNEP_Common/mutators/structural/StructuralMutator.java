@@ -53,10 +53,17 @@ import net.sf.jclec.util.range.Interval;
 import org.apache.commons.configuration.Configuration;
 
 /**  
- * <p>
+ * <p>Structural mutator for neural nets
+     * 
+     * IMPORTANT NOTE: Structural mutator works directly with  he individuals instead
+     *                 of returning a mutated copy of them. This is for performance 
+     *                 reasons. If you want to use another mutator you have to consider 
+     *                 that individuals will be changed when you use structural mutation
+     *
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1
+ * @param <I> Type of StructuralMutator
  * @since JDK1.5
  * </p>
  */
@@ -573,16 +580,16 @@ public class StructuralMutator<I extends NeuralNetIndividual> extends NeuralNetM
 	 * @param settings Settings to configure
 	 * <ul>
 	 * <li>
-	 * <code>temperature-exponent[@value] double (default=1)</code></p>
+	 * <code>temperature-exponent[@value] double (default=1)</code>
 	 * Temperature exponent to be used for obtaining temperature
 	 * of each indivual mutated.
 	 * </li>
 	 * <li>
-	 * <code>significative-weigth[@value] double (default=0.0000001)</code></p>
+	 * <code>significative-weigth[@value] double (default=0.0000001)</code>
 	 * Minimum value of new weigths.
 	 * </li>
 	 * <li>
-	 * <code>neurons-ranges: complex</code></p> 
+	 * <code>neurons-ranges: complex</code> 
 	 * Ranges of neurons added or deleted.
 	 * <ul>
 	 * 		<li>
@@ -616,7 +623,7 @@ public class StructuralMutator<I extends NeuralNetIndividual> extends NeuralNetM
 	 * </ul> 
 	 * </li>
 	 * <li>
-	 * <code>links-ranges: complex</code></p> 
+	 * <code>links-ranges: complex</code> 
 	 * Ranges of links added or deleted.
 	 * <ul>
 	 * 		<li>

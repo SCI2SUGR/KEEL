@@ -40,7 +40,7 @@ import net.sf.jclec.util.range.Interval;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
- * <p>
+ * <p> Base implementation of a neuron of a hidden or output layer
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -156,6 +156,7 @@ public abstract class LinkedNeuron implements INeuron {
      * <p>
 	 * Returns the link with the neuron specified (0 is bias neuron)
      * </p>
+     * @param neuron neuron's index
 	 * @return Link Link specified
 	 */
     public Link getLink(int neuron) {

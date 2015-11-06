@@ -27,6 +27,15 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning.IDIBL;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
+import java.util.*;
+import org.core.*;
+
 /**
  * 
  * File: IDIBL.java
@@ -41,14 +50,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.IDIBL;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
-import java.util.*;
-import org.core.*;
-
 public class IDIBL extends LazyAlgorithm{
 	
 	//Parameters

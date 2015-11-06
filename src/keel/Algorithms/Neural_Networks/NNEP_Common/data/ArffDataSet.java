@@ -38,7 +38,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 /**
- * <p>
+ * <p> ArffDataset implementation (Weka dataset).
  * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -145,7 +145,6 @@ public class ArffDataSet extends FileDataset{
 	 * <p>
 	 * Open dataset 	 
 	 * </p>
-	 * @throws DatasetException If dataset can't be opened
 	 */
 	@Override
 	public void open(){
@@ -162,7 +161,6 @@ public class ArffDataSet extends FileDataset{
 	 * <p>
 	 * Reset dataset
 	 * </p>
-	 * @throws DatasetException if a source access error occurs
 	 */		
 	@Override
 	public void reset(){

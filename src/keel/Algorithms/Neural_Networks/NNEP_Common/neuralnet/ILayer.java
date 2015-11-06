@@ -30,9 +30,10 @@
 package keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet;
 
 /**
- * <p>
+ * <p> Represents a layer in the neural net
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
+ * @param <N> Type for ILayer.
  * @since JDK1.5
  * </p>
  */
@@ -97,9 +98,9 @@ public interface ILayer<N extends INeuron> {
     public boolean equals(ILayer<N> other);
     
 	/**
-	 * </p>
-	 * Returns an integer number that identifies the layer
 	 * <p>
+	 * Returns an integer number that identifies the layer
+	 * </p>
 	 * @return int Hashcode
 	 */
     public int hashCode();

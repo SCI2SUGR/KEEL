@@ -27,6 +27,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning.CenterNN;
+
 /**
  * 
  * File: Main.java
@@ -39,9 +43,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.CenterNN;
-
 public class Main {
 
 	//The classifier

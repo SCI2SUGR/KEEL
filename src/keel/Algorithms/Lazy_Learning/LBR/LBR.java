@@ -27,6 +27,13 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning.LBR;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+import keel.Algorithms.Lazy_Learning.Statistics;
+
 /**
  * 
  * File: LBR.java
@@ -41,12 +48,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.LBR;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-import keel.Algorithms.Lazy_Learning.Statistics;
-
 public class LBR extends LazyAlgorithm{
 		
 	int [] query;

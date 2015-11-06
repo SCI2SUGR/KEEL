@@ -52,7 +52,11 @@ import org.apache.commons.configuration.Configuration;
 
 
 /**  
- * <p>
+ * <p>Parametric mutator for neural nets, mutate the weights of the neural nets mutated.
+* IMPORTANT NOTE: Parametric mutator works directly with  he individuals instead
+*                 of returning a mutated copy of them. This is for performance 
+*                 reasons. If you want to use another mutator you have to consider 
+*                 that individuals will be changed when you use parametric mutation
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @param <I> Type of individuals to mutate
@@ -575,40 +579,41 @@ public abstract class ParametricMutator<I extends NeuralNetIndividual> extends N
 	 * </p>
 	 * <ul>
 	 * <li>
-	 * <code>[@selective] boolean (default=false)</code></p>
-	 * If this parameter is set to <code>true</true> only certain randomly
+	 * <code>[@selective] boolean (default=false)</code>
+	 * If this parameter is set to <code>true</code> only certain randomly
 	 * selected nodes are parametrically mutated.
 	 * </li>
 	 * <li>
-	 * <code>temperature-exponent[@value] double (default=1)</code></p>
+	 * <code>temperature-exponent[@value] double (default=1)</code>
 	 * Temperature exponent to be used for obtaining temperature
 	 * of each indivual mutated.
 	 * </li>
 	 * <li>
-	 * <code>amplitude[@value] double (default=5)</code></p>
+	 * <code>amplitude[@value] double (default=5)</code>
 	 * Amplitude factor to increase the range of parametric variations
 	 * of mutated weights.
 	 * </li>
 	 * <li>
-	 * <code>fitness-difference[@value] double (default=0.0000001)</code></p>
+	 * <code>fitness-difference[@value] double (default=0.0000001)</code>
 	 * Difference between two fitnesses that we consider
      * enoung to say that the fitness has improved
 	 * </li>
 	 * <li>
-	 * <code>initial-alpha-values: complex</code></p> 
+	 * <code>initial-alpha-values: complex</code>
 	 * Initial values of alpha parameters.
 	 * <ul>
 	 * 		<li>
-	 * 		<code>initial-alpha-values[@input] double (default=0.5)</code></p>
+	 * 		<code>initial-alpha-values[@input] double (default=0.5)</code>
 	 * 		Initial value of alpha parameter used for input weights.
 	 * 		</li>
 	 * 		<li>
-	 * 		<code>initial-alpha-values[@ouput] double (default=1)</code></p>
+	 * 		<code>initial-alpha-values[@ouput] double (default=1)</code>
 	 * 		Initial value of alpha parameter used for output weights.
 	 * 		</li>
 	 * </ul> 
 	 * </li>
 	 * </ul>
+         * @param settings configuration settings for the mutator.
 	 */
 	
 	public void configure(Configuration settings)

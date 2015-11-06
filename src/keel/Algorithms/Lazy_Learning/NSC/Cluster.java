@@ -27,6 +27,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning.NSC;
+
 /**
  * 
  * File: Cluster.java
@@ -40,9 +44,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.NSC;
-
 public class Cluster{
 
 	private int content [];
@@ -86,6 +87,7 @@ public class Cluster{
 	/** 
 	 * Clone method.
 	 * 
+         * @return Cluster copied object.
 	 */
 	public Cluster clone(){
 		

@@ -40,7 +40,7 @@ import org.apache.commons.configuration.ConfigurationRuntimeException;
 import org.apache.commons.lang.builder.EqualsBuilder;
 
 /**
- * <p>
+ * <p> Individuals that use a INeuralNet as genotype
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1
@@ -417,6 +417,7 @@ public class NeuralNetIndividualSpecies extends AbstractNeuralNetSpecies<NeuralN
 	/**
 	 * <p>
 	 * Compare two individuals
+         * @param other other individual to compare with.
 	 * @return True if the two individuals are equals
 	 * </p>
 	 */

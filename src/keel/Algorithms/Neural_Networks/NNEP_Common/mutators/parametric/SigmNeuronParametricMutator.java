@@ -40,7 +40,7 @@ import net.sf.jclec.util.range.Interval;
 
 
 /**  
- * <p>
+ * <p>Parametric Mutator of Sigmoidal Neurons.
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1

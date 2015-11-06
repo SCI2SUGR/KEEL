@@ -28,16 +28,7 @@
 **********************************************************************/
 
 
- /* rbf.java
  
-/**
- * <p>
- * @author Writen by Antonio J. Rivera Rivas (University of Jaen) 03/03/2004
- * @author Modified by Maria Dolores Perez Godoy (University of Jaen) 17/12/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
 
 package keel.Algorithms.Neural_Networks.RBFN;
 
@@ -45,6 +36,14 @@ package keel.Algorithms.Neural_Networks.RBFN;
 import org.core.*;
 
 
+/**
+ * <p>This class codified a neuron or a RBF
+ * @author Writen by Antonio J. Rivera Rivas (University of Jaen) 03/03/2004
+ * @author Modified by Maria Dolores Perez Godoy (University of Jaen) 17/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 
 public class Rbf implements Cloneable {
 /**
@@ -123,9 +122,7 @@ public class Rbf implements Cloneable {
     }
     
    /**
-     * <w>
      * Sets the main parameters of a neuron
-     * </w>
      * 
      * @param c Vector of centres
      * @param r Radius
@@ -142,9 +139,7 @@ public class Rbf implements Cloneable {
     }
     
    /**
-     * <w>
      * Sets the main parameters of a neuron
-     * </w>
      * 
      * 
      * @param c Vector of centres
@@ -217,9 +212,7 @@ public class Rbf implements Cloneable {
    }
    
   /**
-     * <w>
      * Sets the weights of a neuron
-     * </w>
      * 
      * @param w A vector of doubles with the weights of a neuron
      */

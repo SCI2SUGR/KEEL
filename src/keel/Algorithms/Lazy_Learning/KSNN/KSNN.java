@@ -27,6 +27,15 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning.KSNN;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
+import java.util.*;
+import org.core.*;
+
 /**
  * 
  * File: KSNN.java
@@ -42,14 +51,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.KSNN;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
-import java.util.*;
-import org.core.*;
-
 public class KSNN extends LazyAlgorithm{
 
 	//Parameters

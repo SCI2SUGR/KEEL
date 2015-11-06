@@ -511,6 +511,7 @@ public class BaseDatos {
     }
 
     /**
+     * @param i
      * @return Returns the ranks(i).
      */
     public Object getRangos(int i) {

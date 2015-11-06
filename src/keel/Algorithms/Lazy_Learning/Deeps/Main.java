@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Lazy_Learning.Deeps;
+
 /**
  * 
  * File: Main.java
@@ -39,9 +42,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.Deeps;
-
 public class Main {
 
 	//The classifier

@@ -38,7 +38,7 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.LinkedNeuron;
 import net.sf.jclec.IIndividual;
 
 /**
- * <p>
+ * <p> Random initiator both conections and weights
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

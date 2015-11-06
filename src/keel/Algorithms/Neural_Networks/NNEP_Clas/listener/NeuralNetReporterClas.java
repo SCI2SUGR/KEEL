@@ -53,7 +53,7 @@ import net.sf.jclec.base.AbstractIndividual;
 
 
 /**
- * <p>
+ * <p>Generation reporter of neural net algorithms
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2009
  * @author Modified by Aaron Ruiz Mora (University of Cordoba) 16/7/2009
  * @version 0.1
@@ -457,7 +457,7 @@ public class NeuralNetReporterClas implements IAlgorithmListener<NeuralNetAlgori
 	 * <p>
 	 * Renders a NeuralNetIndividual to a String
 	 *
-	 * @param nnind IGenotype<INeuralNet> to render
+	 * @param nnind IGenotype(INeuralNet) to render
 	 * @param evaluator NeuralNetEvaluator to use in individual evaluation
 	 * 
 	 * @return String String with the render of a NeuralNetIndividual

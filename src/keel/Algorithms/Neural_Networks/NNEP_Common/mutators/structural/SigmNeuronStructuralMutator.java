@@ -40,7 +40,7 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.SigmNeuron;
 import net.sf.jclec.util.random.IRandGen;
 
 /**  
- * <p>
+ * <p>Structural Mutator of Sigmoidal Neurons.
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1
@@ -274,6 +274,7 @@ public class SigmNeuronStructuralMutator implements INeuronStructuralMutator<Sig
 	 * @param previousLayer Previous layer to the selected hidden layer
 	 * @param indexNeuron Index of neuron to add the link
 	 * @param indexOrigin Index of neuron that its link come from in the previous layer
+     * @return  true if all went right
 	 */
 
 	public boolean addLink(SigmNeuron neuron, LinkedLayer layer, ILayer<? extends INeuron> previousLayer, 
@@ -296,6 +297,7 @@ public class SigmNeuronStructuralMutator implements INeuronStructuralMutator<Sig
 	 * </p>
 	 * @param neuron Neuron to remove the link
 	 * @param indexOrigin Index of neuron that its link come from in the previous layer
+     * @return  true if all went right
 	 */
 
 	public boolean removeLink(SigmNeuron neuron, int indexOrigin) {

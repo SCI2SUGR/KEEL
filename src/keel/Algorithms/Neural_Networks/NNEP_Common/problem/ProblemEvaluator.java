@@ -42,9 +42,10 @@ import net.sf.jclec.util.range.Interval;
 import org.apache.commons.configuration.Configuration;
 
 /**
- * <p>
+ * <p>Abstract implementation of an individuals evaluator of a dataset problem
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
+ * @param <I> IIndividual's type.
  * @since JDK1.5
  * </p>
  */
@@ -315,7 +316,7 @@ public abstract class ProblemEvaluator<I extends IIndividual> extends AbstractEv
 	 * 
 	 * <ul>
 	 * <li>
-	 * <code>train-data: complex</code></p> 
+	 * <code>train-data: complex</code>
 	 * Train data set used in individuals evaluation.
 	 * <ul>
 	 * 		<li>
@@ -325,7 +326,7 @@ public abstract class ProblemEvaluator<I extends IIndividual> extends AbstractEv
 	 * </ul> 
 	 * </li>
 	 * <li>
-	 * <code>test-data: complex</code></p> 
+	 * <code>test-data: complex</code> 
 	 * Test data set used in individuals evaluation.
 	 * <ul>
 	 * 		<li>
@@ -335,16 +336,16 @@ public abstract class ProblemEvaluator<I extends IIndividual> extends AbstractEv
 	 * </ul> 
 	 * </li>
 	 * <li>
-	 * <code>[@normalize-data]: boolean (default = false)</code></p>
-	 * If this parameter is set to <code>true</true> data sets values are
+	 * <code>[@normalize-data]: boolean (default = false)</code>
+	 * If this parameter is set to <code>true</code> data sets values are
 	 * normalizated after reading their contents
 	 * </li>
 	 * <li>
-	 * <code>[input-interval] (complex)</code></p>
+	 * <code>[input-interval] (complex)</code>
 	 *  Input interval of normalization.
 	 * </li>
 	 * <li>
-	 * <code>[output-interval] (complex)</code></p>
+	 * <code>[output-interval] (complex)</code>
 	 *  Output interval of normalization.
 	 * </li>
 	 * </ul>
@@ -546,6 +547,11 @@ public abstract class ProblemEvaluator<I extends IIndividual> extends AbstractEv
 	// --------------------------------------------- Abstract methods
 	/////////////////////////////////////////////////////////////////
     
+    /**
+     * Evaluates a individual
+     * @param ind individual to be evaluated
+     */
+        
 	@Override
 	public abstract void evaluate(I ind);
 	

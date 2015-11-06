@@ -174,8 +174,10 @@ public class RandomGenerator extends Randomize
     
     /**
      * Select by random method between two objects
+     * @param <T> Type of the objects given
      * @param a One object.
      * @param b Other object.
+     * @return the object a or b.
      */
     public static <T> T randomSelector(T a, T b)
     {

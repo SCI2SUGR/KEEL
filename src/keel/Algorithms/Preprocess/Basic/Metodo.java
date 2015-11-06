@@ -40,7 +40,7 @@ import java.util.StringTokenizer;
  * 
  * An auxiliary class to initialize Instance Selection algorithms
  * 
- * @author Written by Salvador Garc?a (University of Granada) 20/07/2004 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
  * @author Modified by Isaac Triguero (University of Granada) 22/06/2010 
  * @author Modified by Victoria Lopez (University of Granada) 21/09/2010 
  * @version 0.1 

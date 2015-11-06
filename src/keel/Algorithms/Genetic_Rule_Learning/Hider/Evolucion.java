@@ -58,6 +58,7 @@ public class Evolucion {
      * Constructor
      * @param basec
      * @param probMut
+     * @param filename
      */
     public Evolucion(Vector basec, double probMut, String filename) {
         bc = (Vector) basec.clone();
@@ -1307,6 +1308,7 @@ public class Evolucion {
     }
 
     /**
+     * @param i
      * @return Returns the erroresClase.
      */
     public Entero[] getErroresClase(int i) {

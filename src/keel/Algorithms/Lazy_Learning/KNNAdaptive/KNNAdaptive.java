@@ -27,6 +27,15 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Lazy_Learning.KNNAdaptive;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
+import org.core.*;
+import java.util.StringTokenizer;
+
+
 /**
  * 
  * File: KNNAdaptive.java
@@ -40,14 +49,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.KNNAdaptive;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
-import org.core.*;
-import java.util.StringTokenizer;
-
 public class KNNAdaptive extends LazyAlgorithm{
 
 	//Parameters

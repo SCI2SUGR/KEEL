@@ -109,9 +109,7 @@ public class LazyDT extends LazyAlgorithm {
 	/**
      * Classifies a given item with the information stored using the LazyDT algorithm
      * 
-     * @param item  Data attribute values for the item we are classifying
-     * @param atts  Attributes in the data set that are used for building the tree and describing the 
-     * instance given
+     * @param example  Data attribute values for the item we are classifying
      * @return the class asigned to the item given
      */
 	protected int evaluate (double example[]) {

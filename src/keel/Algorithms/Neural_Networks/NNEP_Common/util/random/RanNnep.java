@@ -40,6 +40,15 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
  * <p>
+	 * RandNnep is a random number generator proposed in 
+	 * <code>
+	 * "Turbo C. Advance programming" Herbert Schildt. 
+	 * Borland-Osborne/McGraw-Hill (1990).
+	 * Chapter 9.
+	 * ISBN:84-7615-508-5
+	 * </code>
+	 * </p>
+ * <p>
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -170,6 +179,7 @@ public class RanNnep extends AbstractRandGen
      * <p>
      * Returns a String representation of the random generator
      * </p>
+     * @return String representation of the random generator
      */
     public String toString() 
     {
@@ -203,6 +213,7 @@ public class RanNnep extends AbstractRandGen
      * <p>
      * Compares if two random generators are equal
      * </p>
+     * @param other object to compare with.
      * @return true if the generators are equals
      */
 	public boolean equals(Object other)

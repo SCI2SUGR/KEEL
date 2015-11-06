@@ -33,7 +33,7 @@ import net.sf.jclec.util.random.AbstractRandGenFactory;
 import net.sf.jclec.util.random.IRandGen;
 
 /**  
- * <p>
+ * <p>Factory for RanNnep random generators
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1

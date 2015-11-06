@@ -49,10 +49,28 @@ package keel.Algorithms.Neural_Networks.LVQ;
 
 
 
+/**
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the algorithm and executes it.
+ * 
+ * @author Written by Salvador García (University of Granada) 14/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Main {
-
-
-
+    
+	/** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
   public static void main (String args[]) {
 
 

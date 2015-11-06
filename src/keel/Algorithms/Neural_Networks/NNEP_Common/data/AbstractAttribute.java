@@ -30,7 +30,7 @@
 package keel.Algorithms.Neural_Networks.NNEP_Common.data;
 
 /**
- * <p>
+ * <p> IAttribute abstract implementation
  * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -126,6 +126,7 @@ public abstract class AbstractAttribute implements IAttribute
 	 * <p>
 	 * Check if this internal attribute value is valid
 	 * </p>
+     * @param internalValue value to check
 	 * @return true|false
 	 */	
 	public abstract boolean isValid(double internalValue);
@@ -144,6 +145,7 @@ public abstract class AbstractAttribute implements IAttribute
 	 * Parse an  external value to obtain  the internal value of the 
 	 * Attribute
 	 * </p>
+     * @param externalValue external value to parse
 	 * @return The external value of the attribute
 	 */
 	public abstract double parse(String externalValue);
@@ -152,6 +154,7 @@ public abstract class AbstractAttribute implements IAttribute
 	 * <p>
 	 * Show an String which represents a given real value
 	 * </p>
+     * @param internalValue internal value asked.
 	 * @return The real value of the attribute
 	 */	
 	public abstract String show(double internalValue);

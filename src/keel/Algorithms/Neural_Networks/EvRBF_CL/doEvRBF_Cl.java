@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Modified by Maria Dolores Perez Godoy (University of Jaen)
- * @author Modified by Antonio J. Rivera Rivas (University of Jaen) 
- * @author Modified by Victor M. Rivas Santos (University of Jaen) 
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Neural_Networks.EvRBF_CL;
 
@@ -43,7 +35,19 @@ import org.core.*;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * <p>This class allows the building of an Evolutionary Algorithm to generate
+ * RBF Neural Networks.
+ * This class contains a MAIN function that reads parameters, builds the net, 
+ * and produces the results yielded by the net when is applied to the test 
+ * data set.
+ * @author Modified by Maria Dolores Perez Godoy (University of Jaen)
+ * @author Modified by Antonio J. Rivera Rivas (University of Jaen) 
+ * @author Modified by Victor M. Rivas Santos (University of Jaen) 
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class doEvRBF_Cl {
 /**
  * <p>
@@ -292,6 +296,7 @@ private static void set_test( ProcDataset DData ) {
     * Main Function: reads the parameters, creates the population, evolves it, gets the best individual, writes results and finishes.
     * </p>
     * @param args the Command line arguments. Only one is processed: the name of the file containing the	parameters
+     * @throws java.io.IOException if the algorithm exits with an error.
     */
     public static void main(String[] args) throws IOException{
         Rbfn red;

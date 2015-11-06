@@ -40,7 +40,7 @@ import net.sf.jclec.IConfigure;
 import org.apache.commons.configuration.Configuration;
 
 /**
- * <p>
+ * <p> Set of data of a problem (Transposed).
  * @author Written by Pedro Antonio Gutierrez Penna, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -779,7 +779,7 @@ public class DoubleTransposedDataSet implements IConfigure
 	 * 
 	 * <ul>
 	 * <li>
-	 * <code>[@file-name] (String)</code></p>
+	 * <code>[@file-name] (String)</code>
 	 *  File name. Name of the file that stores the neccesary information
 	 *             for this data set.
 	 * </li>

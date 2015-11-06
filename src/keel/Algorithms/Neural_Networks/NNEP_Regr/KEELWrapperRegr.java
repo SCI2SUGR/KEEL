@@ -61,7 +61,7 @@ import net.sf.jclec.util.intset.Interval;
 import org.apache.commons.configuration.XMLConfiguration;
 
 /**  
- * <p>
+ * <p>Wrapper of Neural Net Evolutionary Programming for KEEL
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1
@@ -99,6 +99,8 @@ public class KEELWrapperRegr
 	 * <p>
 	 * Main method
 	 * </p>
+     * @param args main args. Name of the KEEL file with properties of the
+	 *                    execution
 	 */
 	public static void main(String[] args) {
 

@@ -789,6 +789,7 @@ public class Statistics {
    * @param aa the alpha parameter of the beta distribution.
    * @param bb the beta parameter of the beta distribution.
    * @param xx the integration end point.
+   * @return the Incomplete Beta Function
    */
   public static double incompleteBeta( double aa, double bb, double xx ) {
 
@@ -1072,6 +1073,7 @@ public class Statistics {
 
   /**
    * Main method for testing this class.
+     * @param ops main args.
    */
   public static void main(String[] ops) {
 

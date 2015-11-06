@@ -30,7 +30,7 @@
 package keel.Algorithms.Neural_Networks.NNEP_Common.data;
 
 /**
- * <p>
+ * <p> Dataset spectification
  * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

@@ -33,7 +33,7 @@ import net.sf.jclec.IConfigure;
 import net.sf.jclec.JCLEC;
 
 /**
- * <p>
+ * <p> Dataset Interface
  * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -151,7 +151,7 @@ public interface IDataset extends JCLEC, IConfigure
      * @return     the total number of instances read into the buffer, 
      * 			   or <code>-1</code> is there is no more data because 
      * 			   the end of the stream has been reached
-     * @exception  MiningException  if an error occurs
+     * @exception  DatasetException  if an error occurs
      */    
     public int read(IInstance[] buffer) throws DatasetException;
     
@@ -179,6 +179,11 @@ public interface IDataset extends JCLEC, IConfigure
 	// --------------------------------------------- Internal classes
 	/////////////////////////////////////////////////////////////////
 	
+        /**
+        * <p>
+        * Dataset instance
+        * </p>
+        */
 	public interface IInstance
 	{
 		/**

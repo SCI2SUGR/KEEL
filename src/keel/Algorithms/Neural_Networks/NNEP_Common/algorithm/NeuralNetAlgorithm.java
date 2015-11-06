@@ -53,10 +53,11 @@ import org.apache.commons.configuration.ConfigurationRuntimeException;
 import org.apache.commons.lang.builder.EqualsBuilder;
 
 /**
- * <p>
+ * <p>Base implementation for all neural net algorithms
  * @author Written by Pedro Antonio Gutierrez Penna (University of Cordoba) 17/07/2007
  * @author Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
+ * @param <I> Type of individuals in population
  * @since JDK1.5
  * </p>
  */
@@ -505,7 +506,7 @@ public class NeuralNetAlgorithm<I extends IIndividual> extends AbstractAlgorithm
 	 * <p>
 	 * Returns first individual mutator
 	 * </p>
-	 * @return IMutator<I> First individual mutator
+	 * @return IMutator First individual mutator
 	 */
 	public IMutator<I> getMutator1() 
 	{
@@ -530,7 +531,7 @@ public class NeuralNetAlgorithm<I extends IIndividual> extends AbstractAlgorithm
 	 * <p>
 	 * Returns first second mutator
 	 * </p>
-	 * @return IMutator<I> Second individual mutator
+	 * @return IMutator Second individual mutator
 	 */
 	public IMutator<I> getMutator2() 
 	{
@@ -666,6 +667,7 @@ public class NeuralNetAlgorithm<I extends IIndividual> extends AbstractAlgorithm
 	 * <p>
 	 * Compare this algorithm to another
 	 * </p>
+         * @param other Object to compare with.
 	 * @return a boolean indicating if the algorithms are equal
 	 */
 	@Override
@@ -974,51 +976,52 @@ public class NeuralNetAlgorithm<I extends IIndividual> extends AbstractAlgorithm
 	/**
 	 * <p>
 	 * Configuration parameters for NeuralNetAlgorithm class are:
-	 * 
+         * 
 	 * <ul>
 	 * <li>
-	 * <code>species: ISpecies (complex)</code></p>
+	 * <code>species: ISpecies (complex)</code>
 	 * Individual species
-	 * </li><li>
-	 * <code>evaluator IEvaluator (complex)</code></p>
+	 * </li> 
+         * <li>
+	 * <code>evaluator IEvaluator (complex)</code>
 	 * Individuals evaluator
 	 * </li><li>
-	 * <code>population-size (int)</code></p>
+	 * <code>population-size (int)</code>
 	 * Population size
 	 * </li><li>
-	 * <code>max-of-generations (int)</code></p>
+	 * <code>max-of-generations (int)</code>
 	 * Maximum number of generations
 	 * </li>
 	 * <li>
-	 * <code>provider: IProvider (complex)</code></p>
+	 * <code>provider: IProvider (complex)</code>
 	 * Individuals provider
 	 * </li>
 	 * <li>
-	 * <code>mutator1: IMutator<I> (complex)</code></p>
+	 * <code>mutator1: IMutator (complex)</code>
 	 * Individuals mutator1
 	 * </li>
 	 * <li>
-	 * <code>mutator2: IMutator<I> (complex)</code></p>
+	 * <code>mutator2: IMutator (complex)</code>
 	 * Individuals mutator2
 	 * </li>
 	 * <li>
-	 * <code>creation-ratio (double)</code></p>
+	 * <code>creation-ratio (double)</code>
 	 * Ratio "elements created"/"elements remaining"
 	 * </li>
 	 * <li>
-	 * <code>percentage-second-mutator (int)</code></p>
+	 * <code>percentage-second-mutator (int)</code>
 	 * Percentage of individuals mutated with second mutator
 	 * </li>
 	 * <li>
-	 * <code>max-generations-without-improving-mean (int)</code></p>
+	 * <code>max-generations-without-improving-mean (int)</code>
 	 * Maximum number of generations without improving mean fitness
 	 * </li>
 	 * <li>
-	 * <code>max-generations-without-improving-best (int)</code></p>
+	 * <code>max-generations-without-improving-best (int)</code>
 	 * Maximum number of generations without improving best fitness
 	 * </li>
 	 * <li>
-	 * <code>fitness-difference (double)</code></p>
+	 * <code>fitness-difference (double)</code>
 	 * Difference between two fitness that we consider
      * enough to say that the fitness has improved
 	 * </li>

@@ -32,7 +32,7 @@ package keel.Algorithms.Neural_Networks.NNEP_Common;
 import net.sf.jclec.util.range.Interval;
 
 /**
- * <p>
+ * <p> Abstract implementation for INeuralNetSpecies.
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @param <I> Type of represented individuals
  * @version 0.1

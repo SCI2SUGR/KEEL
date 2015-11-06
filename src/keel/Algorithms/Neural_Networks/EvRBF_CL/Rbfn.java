@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @file Rbfn.java
- * @author Written by Antonio Jesus Rivera Rivas (University of Jaen) 03/03/2004
- * @author Modified by Victor Manuel Rivas Santos (University of Jaen) 15/07/2004
- * @version 0.1
- * @since JDK1.5
- *</p>
- */
+
 
 package keel.Algorithms.Neural_Networks.EvRBF_CL;
 
@@ -43,6 +35,15 @@ import org.core.*;
 import java.util.*;
 import java.io.*;
 
+/**
+ * <p> Class representing a Radial Basis Function Neural Network for the EvRBF_CL algorithm
+ * @file Rbfn.java
+ * @author Written by Antonio Jesus Rivera Rivas (University of Jaen) 03/03/2004
+ * @author Modified by Victor Manuel Rivas Santos (University of Jaen) 15/07/2004
+ * @version 0.1
+ * @since JDK1.5
+ *</p>
+ */
 public class Rbfn implements Cloneable {
 /**
  * <p>
@@ -216,6 +217,7 @@ public class Rbfn implements Cloneable {
     * <p>
     * Clones a RBFN neural network
     * </p>
+     * @return a RBFN neural network object.
     */
     public Object clone  () {
         try{
@@ -329,6 +331,7 @@ public class Rbfn implements Cloneable {
     * Gets an RBF from the net given its identifier
     * </p>
     * @param id RBF's identifier
+     * @return  the RBF object with the given identifier.
     */
     public Rbf getRbf(String id){
         return ((Rbf)this.rbfn.get(id));
@@ -339,6 +342,7 @@ public class Rbfn implements Cloneable {
     * <p>
     * Returns the list on index of the net neurons.
     * </p>
+     * @return the list on index of the net neurons.
     */
     public String [] getIndexes(){
         String [] vect=new String[this.rbfSize()];
@@ -360,6 +364,10 @@ public class Rbfn implements Cloneable {
     * <p>
     * Sets the fitness of a RBFN for classification problems    
     * </p>
+     * @param _X input dataset.
+     * @param _Y output dataset.
+     * @param _nDatos number of examples (_X length).
+     * @param _nClases number of classes (_Y length).
     */
     public void setFitness_Cl(double [][] _X,  double [][] _Y, int _nDatos, int _nClases ) {
        try {

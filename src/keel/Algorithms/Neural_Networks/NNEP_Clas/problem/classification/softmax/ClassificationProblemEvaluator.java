@@ -42,7 +42,7 @@ import net.sf.jclec.base.AbstractIndividual;
 import net.sf.jclec.fitness.ValueFitnessComparator;
 
 /**
- * <p>
+ * <p> Classification problem evaluator
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Modified by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1

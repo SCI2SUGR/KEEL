@@ -54,6 +54,17 @@ import java.util.StringTokenizer;
 
 import java.util.Vector;
 
+/**
+ * 
+ * File: LVQ.java
+ * 
+ * The LVQ Neural Networks algorithm.
+ * 
+ * @author Written by Julián Luengo Martín (University of Granada) 01/07/2007
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class LVQ extends Metodo {
 
 	String ficheroReferencia;
@@ -79,6 +90,11 @@ public class LVQ extends Metodo {
 	/** Neurons' associated class */
 	int clasesS[];
 
+        /**
+	 * Constructor. Creates the basic structures of the algorithm
+	 *
+	 * @param ficheroScript Configuration script
+	 */
 	public LVQ(String ficheroScript) {
 		super(ficheroScript);
 		try {
@@ -93,6 +109,9 @@ public class LVQ extends Metodo {
 		}
 	}
 
+        /**
+         * Executes the LVQ algorithm.
+         */
 	public void ejecutar() {
 
 		int i, j, l, m;
@@ -348,7 +367,14 @@ public class LVQ extends Metodo {
 
 	}
 
-	protected int NN(int nSel, double conj[][], double ejemplo[]) {
+    /**
+     * Computes and returns the Nearest Neighbour (NN) of the given example in the given dataset.
+     * @param nSel number of examples in the given dataset.
+     * @param conj given dataset.
+     * @param ejemplo example given to compute its NN.
+     * @return index of the NN in the dataset given. 
+     */
+    protected int NN(int nSel, double conj[][], double ejemplo[]) {
 		double mindist, dist;
 		int nneigh = -1;
 
@@ -514,7 +540,17 @@ public class LVQ extends Metodo {
 		nu = Double.parseDouble(tokens.nextToken().substring(1));
 	}
 
-	protected static void escribeSalida(String nombreFichero,
+    /**
+     * Prints on the given file the output values given as arguments.
+     * @param nombreFichero output filename.
+     * @param instanciasIN Real classes for each example.
+     * @param instanciasOUT Predicted classes for each example.
+     * @param entradas Input attributes.
+     * @param salida Output attributes.
+     * @param nEntradas Number of input attributes.
+     * @param relation Relation string.
+     */
+    protected static void escribeSalida(String nombreFichero,
 			String instanciasIN[], String instanciasOUT[],
 			Attribute entradas[], Attribute salida, int nEntradas,
 			String relation) {

@@ -37,34 +37,76 @@ public class Cromosoma {
 	private double Perf;
 	private int HaEntrado;
 	
-	
+	/**
+	 * Get the value of a gene
+	 *
+	 * @param pos Index of the gene
+	 *
+	 * @return Value of the especified gene
+	 */
 	public double gene(int pos){
 		return Gene[pos];
 	}
 	
+        /**
+	 * Get the performance of a chromosome
+	 *
+	 * @return performance of the chromosome
+	 */
 	public double perf(){
 		
 		return Perf;
 	}
+        
+        /**
+	 * Returns the values of all genes
+	 *
+	 * @return the values of all genes
+	 */
 	public double [] Gene(){
 		
 		return Gene;
 	}
+        
+        /**
+	 * Set the performance of a chromosome
+	 *
+         * @param value the performance to be set.
+	 */
 	public void set_perf(double value){
 		Perf=value;
 		
 	}
+        
+        /**
+	 * Returns the flag value that carry the information about if this chromosome has been selected to be crossed or not.
+	 * @return the flag value (1 = has been selected for the crossover, 0 = not selected yet)
+	 */
 	public int entrado(){
 		
 		return HaEntrado;
 	}
+        
+        /**
+	 * Sets the flag value that carry the information about if this chromosome has been selected to be crossed or not.
+	 * @param value the flag value to set (1 = has been selected for the crossover, 0 = not selected yet)
+	 */
 	public void set_entrado(int value){
 		HaEntrado=value;
 		
 	}
+        /**
+         * Creates a new chromosome with the size given.
+         * @param Genes number of genes or size of the chromosome representation.
+         */
 	public Cromosoma(int Genes) {
         Gene = new double [Genes];
     }
+        /**
+         * Set the value given to a given gene
+         * @param pos position of the gene to be modified.
+         * @param value given value to be set
+         */
 	public void set_gene(int pos , double value){
 		Gene[pos]=value;
 	}

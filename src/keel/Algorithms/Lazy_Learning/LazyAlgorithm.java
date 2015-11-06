@@ -27,6 +27,20 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning;
+
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+import keel.Dataset.InstanceSet;
+
+import org.core.Files;
+
 /**
  * 
  * File: LazyAlgorithm.java
@@ -43,88 +57,215 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning;
-
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-import keel.Dataset.InstanceSet;
-
-import org.core.Files;
-
 public abstract class LazyAlgorithm {
 
 	//Files
+    
+    /**
+     * Output files names.
+     */
+    protected String outFile[];
 
-	protected String outFile[];
-	protected String testFile;
-	protected String trainFile;
-	protected String referenceFile;
+    /**
+     * Test file name.
+     */
+    protected String testFile;
+
+    /**
+     * Train file name.
+     */
+    protected String trainFile;
+
+    /**
+     * Reference file name.
+     */
+    protected String referenceFile;
 	
 	//Instance Sets
 	
-	protected InstanceSet train;
-	protected InstanceSet test;
-	protected InstanceSet reference;
+    /**
+     * Training dataset.
+     */
+    protected InstanceSet train;
+
+    /**
+     * Test dataset.
+     */
+    protected InstanceSet test;
+
+    /**
+     * Reference dataset.
+     */
+    protected InstanceSet reference;
 	
-	protected Instance temp;	
+    /**
+     * Temporal instance.
+     */
+    protected Instance temp;	
 	
 	//Data
 	
-	protected int inputAtt;
-	protected Attribute[] inputs;
-	protected Attribute output;
-	protected boolean[] nulls;
+    /**
+    * Number of input attributes.
+    */
+    protected int inputAtt;
+
+    /**
+     * Inputs attributes.
+     */
+    protected Attribute[] inputs;
+
+    /**
+     * Output attribute.
+     */
+    protected Attribute output;
+
+    /**
+     * Missing values of a instance.
+     */
+    protected boolean[] nulls;
 	
-	protected double trainData[][];
-	protected int trainOutput[];
-	protected double testData[][];
-	protected int testOutput[];
-	protected double referenceData[][];
-	protected int referenceOutput[];
-	protected String relation;
-	public int[] predictions;
-	public double probabilities[][];
+    
+    /**
+     * Training input data.
+     */
+    protected double trainData[][];
+
+    /**
+     * Training output data.
+     */
+    protected int trainOutput[];
+
+    /**
+     * Test input data.
+     */
+    protected double testData[][];
+
+    /**
+     * Test output data.
+     */
+    protected int testOutput[];
+
+    /**
+     * Reference input data.
+     */
+    protected double referenceData[][];
+
+    /**
+     * Reference output data.
+     */
+    protected int referenceOutput[];
+
+    /**
+     * Relation string.
+     */
+    protected String relation;
+    
+    /**
+     * Class predictions for the examples.
+     */
+    public int[] predictions;
+
+    /**
+     * Class probabilities for the examples.
+     */
+    public double probabilities[][];
 	
-	protected int nClasses;
-	protected int nInstances[];
+    /**
+     * Number of classes.
+     */
+    protected int nClasses;
+
+    /**
+     * Number of instances of each classes.
+     */
+    protected int nInstances[];
 	
 	//Timing
+    /**
+     * Initial time.
+     */
+    protected long initialTime;
 	
-	protected long initialTime;
+    /**
+     * Generation model time.
+     */
+    protected double modelTime;
+
+    /**
+     * Training prediction time.
+     */
+    protected double trainingTime;
+
+    /**
+     * Test prediction time.
+     */
+    protected double testTime;
 	
-	protected double modelTime;
-	protected double trainingTime;
-	protected double testTime;
-	
-	//Naming
-	
-	protected String name;
-	
-	//Random seed
-	
-	protected long seed;
+    //Naming
+    /**
+    * Naming.
+    */
+    protected String name;
+
+    //Random seed
+    /**
+    * Random seed.
+    */
+    protected long seed;
 	
 	//Results
-	protected int confMatrix[][];
-	protected int unclassified;
-	protected int realClass[][];
-	protected int prediction[][];
-	protected int trainConfMatrix[][];
-	protected int trainUnclassified;
-	protected int trainRealClass[][];
-	protected int trainPrediction[][];
+
+    /**
+     * Test Confusion matrix.
+     */
+    	protected int confMatrix[][];
+
+    /**
+     * Number of unclassified test instances.
+     */
+    protected int unclassified;
+
+    /**
+     * Real classes of the test instances.
+     */
+    protected int realClass[][];
+
+    /**
+     * Predited classes of the test instances.
+     */
+    protected int prediction[][];
+
+    /**
+     * Training Confusion matrix.
+     */
+    protected int trainConfMatrix[][];
+
+    /**
+     *  Number of unclassified training instances.
+     */
+    protected int trainUnclassified;
+
+    /**
+     *  Real classes of the training instances.
+     */
+    protected int trainRealClass[][];
+
+    /**
+     * Predited classes of the training instances.
+     */
+    protected int trainPrediction[][];
 	
 	
 	/** 
-	 * Read the configuration and data files, and process it. FOR NB
+	 * Set the training and the test dataset with their classes given as argument. 
+	 *  
 	 * 
-	 * @param script Name of the configuration script  
-	 * 
+     * @param train training dataset given.
+     * @param clasesTrain training examples classes.
+     * @param test  test dataset given.
+     * @param clasesTest  test examples classes.
+     * @param clases number of classes.
 	 */
 	protected void readDataFiles(double [][] train, int [] clasesTrain, double [][] test, int [] clasesTest, int clases){
 	    
@@ -167,9 +308,12 @@ public abstract class LazyAlgorithm {
 	
 	
 	/** 
-	 * Read the configuration and data files, and process it.
+	 * Read the configuration and data files, process it.
 	 * 
 	 * @param script Name of the configuration script  
+     * @param train training dataset given as {@link InstanceSet} object. 
+     * @param test  test dataset given as {@link InstanceSet} object. 
+     * @param reference  reference dataset given as {@link InstanceSet} object. 
 	 * 
 	 */
 	protected void readDataFiles(String script, InstanceSet train, InstanceSet test, InstanceSet reference){
@@ -402,6 +546,7 @@ public abstract class LazyAlgorithm {
 	
 	/** 
 	 * This function builds the data matrix for training data and normalizes inputs values
+     * @throws keel.Algorithms.Lazy_Learning.DataException if the dataset is not appropriate for problem.
 	 */	
 	protected void normalizeTrain() throws DataException {
 
@@ -480,6 +625,7 @@ public abstract class LazyAlgorithm {
 
 	/** 
 	 * This function builds the data matrix for test data and normalizes inputs values
+     * @throws keel.Algorithms.Lazy_Learning.DataException if the dataset is not appropriate for problem.
 	 */	
 	protected void normalizeTest() throws DataException {
 
@@ -555,6 +701,7 @@ public abstract class LazyAlgorithm {
 	
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+     * @throws keel.Algorithms.Lazy_Learning.DataException if the dataset is not appropriate for problem.
 	 */	
 	protected void normalizeReference() throws DataException {
 
@@ -752,10 +899,17 @@ public abstract class LazyAlgorithm {
 	 */
 	protected abstract int evaluate(double example[]);
 	
-	
+	/** 
+	 * Evaluates a instance to predict its class probabilities.
+	 * 
+	 * @param example Instance evaluated 
+	 * @return Vector with the probability for each class.
+	 * 
+	 */
 	protected double[] evaluate2(double example[]){
 		return null;
 	};
+        
 	/** 
 	 * Calculates the Euclidean distance between two instances
 	 * 
@@ -821,7 +975,7 @@ public abstract class LazyAlgorithm {
 	/** 
 	 * Generates a string with the contents of the instance
 	 * 
-	 * @param a Instance to print. 
+	 * @param instance Instance to print. 
 	 * 
 	 * @return A string, with the values of the instance
 	 * 

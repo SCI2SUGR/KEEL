@@ -31,6 +31,10 @@ package keel.Algorithms.Neural_Networks.NNEP_Common.problem.errorfunctions;
 
 /**
  * <p>
+ * Interface of an error function
+ * </p>
+ * @param <T> Type of evaluated entities
+ * <p>
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

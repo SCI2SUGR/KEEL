@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import org.apache.commons.configuration.Configuration;
 
 /**
- * <p>
+ * <p> ArrayDataset implementation (dataset populated with an array)
  * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

@@ -37,7 +37,7 @@ import net.sf.jclec.IIndividual;
 import net.sf.jclec.ISystem;
 
 /**
- * <p>
+ * <p>Initiate links of a linked layer
  * @author Written by Pedro Antonio Gutierrez Penna, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

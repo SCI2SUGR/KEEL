@@ -42,6 +42,17 @@ import keel.Algorithms.Preprocess.Basic.*;
 
 import org.core.*;
 
+/**
+ * 
+ * File: Cromosoma.java
+ * 
+ * Auxiliriary class to represent chromosomes for Instance selection methods
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Cromosoma implements Comparable {
 
   /*Cromosome data structure*/
@@ -53,7 +64,11 @@ public class Cromosoma implements Comparable {
   boolean valido;
   double errorRate;
 
-  /*Construct a random cromosome of specified size*/
+  /**
+	 * Builder. Construct a random chromosome of specified size
+	 *
+	 * @param size Size of the chromosome
+	 */
   public Cromosoma (int size) {
 
     double u;
@@ -72,7 +87,12 @@ public class Cromosoma implements Comparable {
     valido = true;
   }
 
-  /*Create a copied cromosome*/
+  /**
+	 * Builder. Copies a chromosome of specified size
+	 *
+	 * @param size Size of the chromosome
+	 * @param a Chromosome to copy
+	 */
   public Cromosoma (int size, Cromosoma a) {
     int i;
 
@@ -85,7 +105,11 @@ public class Cromosoma implements Comparable {
     valido = true;
   }
 
-  /*Cronstruct a cromosome from a bit array*/
+  /**
+	 * Builder. Construct a chromosome from a binary array
+	 *
+	 * @param datos Initial data of the chromosome
+	 */
   public Cromosoma (boolean datos[]) {
     int i;
 
@@ -96,24 +120,58 @@ public class Cromosoma implements Comparable {
     valido = true;
   }
 
+  /**
+	 * Get the value of a gene
+	 *
+	 * @param indice Index of the gene
+	 *
+	 * @return Value of the especified gene
+	 */
   public boolean getGen (int indice) {
     return cuerpo[indice];
   }
 
-  
+  /**
+	 * Get the quality of a chromosome
+	 *
+	 * @return Quality of the chromosome
+	 */
   public double getCalidad () {
     return calidad;
   }
 
+  /**
+	 * Get the error rate of a chromosome
+	 *
+	 * @return error rate of the chromosome
+	 */
   public double getErrorRate () {
     return errorRate;
   }
 
+  /**
+	 * Set the value of a gene
+	 *
+	 * @param indice Index of the gene
+	 * @param valor Value to set
+	 */
   public void setGen (int indice, boolean valor) {
     cuerpo[indice] = valor;
   }
 
-  /*Function that evaluates a cromosome (OK)*/
+  /**
+	 * Evaluates a chromosome
+	 *
+	 * @param datos Reference to the training set
+	 * @param real  Reference to the training set (real valued)
+	 * @param nominal  Reference to the training set (nominal valued)	 
+	 * @param nulos  Reference to the training set (null values)	 	 
+	 * @param clases Output attribute of each instance
+	 * @param alfa Alpha value of the fitness function
+	 * @param kNeigh Number of neighbors for the KNN algorithm
+	 * @param nClases Number of classes of the problem
+	 * @param distanceEu True= Euclidean distance; False= HVDM
+	 */
   public void evalua (double datos[][], double real[][], int nominal[][], boolean nulos[][], int clases[], double alfa, int kNeigh, int nClases, boolean distanceEu) {
 
     int i, j, l, m;
@@ -183,7 +241,12 @@ public class Cromosoma implements Comparable {
 }
 
 
-  /*Function that does the mutation (OK)*/
+  /**
+	 * Mutation operator
+	 *
+	 * @param pMutacion1to0 Probability of change 1 to 0
+	 * @param pMutacion0to1 Probability of change 0 to 1	  
+	 */
   public void mutacion (double pMutacion1to0, double pMutacion0to1) {
 
     int i;
@@ -203,6 +266,11 @@ public class Cromosoma implements Comparable {
     }
   }
 
+  /**
+	 * Count the number of genes set to 1
+	 *
+	 * @return Number of genes set to 1 in the chromosome
+	 */
   public int genesActivos () {
 	  
     int i, suma = 0;
@@ -214,15 +282,32 @@ public class Cromosoma implements Comparable {
     return suma;
   }
 
+  /**
+	 * Tests if the chromosome is valid
+	 *
+	 * @return True if the chromosome is valid. False, if not.
+	 */	
   public boolean esValido () {
     return valido;
   } 
   
+  
+  /**
+	 * Chromosome size
+	 *
+	 * @return Chromosome size
+         */
   public int getSize() { 
 	  return cuerpo.length;
   }
 
-  /*Function that lets compare cromosomes to sort easily*/
+  /**
+	 * Compare to Method
+	 *
+	 * @param o1 Chromosome to compare
+	 *
+	 * @return Relative order between the chromosomes
+	 */
   public int compareTo (Object o1) {
     if (this.calidad > ((Cromosoma)o1).calidad)
       return -1;
@@ -231,6 +316,11 @@ public class Cromosoma implements Comparable {
     else return 0;
   }
 
+  /**
+	 * To String Method
+	 *
+	 * @return String representation of the chromosome
+	 */
   public String toString() {
 
     int i;

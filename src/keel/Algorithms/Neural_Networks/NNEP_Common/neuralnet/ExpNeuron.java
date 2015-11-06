@@ -30,7 +30,7 @@
 package keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet;
 
 /**
- * <p>
+ * <p> Represents a exponential neuron (exp transformated Product Unit) of a neural net
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -57,6 +57,10 @@ public class ExpNeuron extends LinkedNeuron {
 	// -------------------------------------------------- Constructor
 	/////////////////////////////////////////////////////////////////
 	
+    /**
+     *Default constructor.
+     */
+    	
 	public ExpNeuron() {
         super();
     }

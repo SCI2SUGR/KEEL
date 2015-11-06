@@ -46,7 +46,7 @@ import net.sf.jclec.base.AbstractIndividual;
 
 
 /**
- * <p> 
+ * <p> Reporter for iRProp+ algorithm
  * @author Pedro Antonio Gutierrez Penia (University of Cordoba)27/10/2007
  * @version 0.1
  * @since JDK1.5
@@ -323,7 +323,7 @@ public class IRPropPlusReporterClas {
 	 * <p>
 	 * Renders a NeuralNetIndividual to a String
 	 *
-	 * @param nnind IGenotype<INeuralNet> to render
+	 * @param nnind IGenotypeI(NeuralNet) to render
 	 * @param evaluator NeuralNetEvaluator to use in individual evaluation
 	 * 
 	 * @return String String with the render of a NeuralNetIndividual

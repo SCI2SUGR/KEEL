@@ -40,7 +40,7 @@ import net.sf.jclec.base.AbstractCreator;
 import org.apache.commons.lang.builder.EqualsBuilder;
 
 /**
- * <p>
+ * <p> Creation of NeuralNetIndividual (and subclasses).
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Written by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @param <I> Type of individuals in population

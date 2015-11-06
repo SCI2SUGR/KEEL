@@ -31,7 +31,7 @@ package keel.Algorithms.Neural_Networks.NNEP_Clas.problem.classification;
 
 
 /**
- * <p>
+ * <p>Generic classifier.
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Modified by Aaron Ruiz Mora (University of Cordoba)16/7/2007
  * @version 0.1

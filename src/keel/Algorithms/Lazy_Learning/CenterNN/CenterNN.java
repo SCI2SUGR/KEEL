@@ -27,6 +27,12 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning.CenterNN;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
 /**
  * 
  * File: CenterNN.java
@@ -41,12 +47,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.CenterNN;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
-
 public class CenterNN extends LazyAlgorithm{
 	
 	//Adictional structures

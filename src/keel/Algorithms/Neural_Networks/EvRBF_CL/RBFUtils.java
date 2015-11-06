@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
- /**
- * <p>
- * @file RBFUtils.java
- * @author Writen by Victor Manuel Rivas Santos (University of JaÃ©n) 22/07/2004
- * @author Modified by MarÃ­a Dolores PÃ©rez Godoy (University of JaÃ©n) 17/12/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
  package keel.Algorithms.Neural_Networks.EvRBF_CL;
 
 import org.core.*;
@@ -43,6 +35,15 @@ import java.lang.*;
 import java.io.*;
 import java.util.*;
 
+  /**
+ * <p> A set of useful functions to be used in EvRBF_CL.
+ * @file RBFUtils.java
+ * @author Writen by Victor Manuel Rivas Santos (University of JaÃ©n) 22/07/2004
+ * @author Modified by MarÃ­a Dolores PÃ©rez Godoy (University of JaÃ©n) 17/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class RBFUtils {
 /**
 * <p>
@@ -129,6 +130,7 @@ public class RBFUtils {
     * @param _inpDim Input dimension
     * @param _input Array in which INPUT  values are returned
     * @param _output Array in which OUTPUT values are returned
+    * @throws java.io.IOException if the dimension of inputs or outputs is 0
     */
     public static void vector2InputOutput( Vector _v, int _inpDim, double [] _input, double [] _output )  throws IOException {
         if( _input.length>0 ) {
@@ -158,6 +160,7 @@ public class RBFUtils {
     * @param _v The vector
     * @param _inpDim Input dimension
     * @return The array containing the values
+     * @throws java.io.IOException if the dimension of inputs is 0
     */
     public static double[] vector2Input( Vector _v, int _inpDim ) throws IOException {
     	if( _inpDim>0 ) {
@@ -180,6 +183,7 @@ public class RBFUtils {
     * @param _v The vector
     * @param _outDim Output dimension
     * @return The array containing the values
+    * @throws java.io.IOException if the dimension of outputs is 0
     */
     public static double[] vector2Output( Vector _v, int _outDim )  throws IOException {
         if( _outDim>0 ) {
@@ -437,6 +441,7 @@ public class RBFUtils {
     * <p>
     * Creates a unique identifier to be used for a RBF
     * </p>
+     * @return the unique identifier of the RBF
     */
     public static String createIdRbf(){
       return (Long.toString((new Date().getTime()))+Double.toString(Randomize.Randdouble(0,10)));

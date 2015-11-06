@@ -321,7 +321,7 @@ public class Cromosoma implements Comparable {
 	}//end-method
 
 	/**
-	 * Marks a chromosome for deletion
+	 * Marks a chromosome for deletion.
 	 */	
 	public void borrar () {
 		valido = false;

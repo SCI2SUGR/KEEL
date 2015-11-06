@@ -45,7 +45,7 @@ import net.sourceforge.jclec.util.dataset.IDataset.IInstance;
 
 
 /**
- * Diverse Density
+ * Diverse Density.
  * 
  * O. Maron and T. Lozano-Perez. A Framework for Multiple Instance Learning. Neural Information Processing Systems, 10, 1998.
  */

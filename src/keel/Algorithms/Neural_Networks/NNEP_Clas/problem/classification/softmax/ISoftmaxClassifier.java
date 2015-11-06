@@ -34,7 +34,7 @@ package keel.Algorithms.Neural_Networks.NNEP_Clas.problem.classification.softmax
 import keel.Algorithms.Neural_Networks.NNEP_Clas.problem.classification.IClassifier;
 
 /**
- * <p>
+ * <p> Generic softmax classifier.
  * @author Written Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Modified by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1

@@ -102,27 +102,58 @@ public class Cromosoma implements Comparable {
     valido = true;
   }
 
-  /*OK*/
+  /**
+	 * Get the value of a gene
+	 *
+	 * @param indice Index of the gene
+	 *
+	 * @return Value of the especified gene
+	 */
   public boolean getGen (int indice) {
     return cuerpo[indice];
   }
 
-  /*OK*/
+  /**
+	 * Get the body of a chromosome (all values)
+	 *
+	 * @return body of the chromosome (all boolean values)
+	 */
   public boolean [] getBody () {
     return cuerpo;
   }
 
-  /*OK*/
+  /**
+	 * Get the quality of a chromosome
+	 *
+	 * @return Quality of the chromosome
+	 */
   public double getCalidad () {
     return calidad;
   }
 
-  /*OK*/
+  /**
+	 * Set the value of a gene
+	 *
+	 * @param indice Index of the gene
+	 * @param valor Value to set
+	 */
   public void setGen (int indice, boolean valor) {
     cuerpo[indice] = valor;
   }
 
-  /*Function that evaluates a cromosome (OK)*/
+  /**
+	 * Evaluates a chromosome
+	 *
+	 * @param datos Reference to the training set
+	 * @param nominal  Reference to the training set (nominal valued)	 
+	 * @param missing  Reference to the training set (null values)	 	 
+	 * @param clases Output attribute of each instance
+         * @param database Hyper database
+         * @param distans distances between elements
+	 * @param alfa Alpha value of the fitness function
+	 * @param nClases Number of classes of the problem
+         * @param beta Beta value of the fitness function
+	 */
   public void evalua (double datos[][], int nominal[][], boolean missing[][], int clases[], Hyper database[], double distans[][],double alfa, int nClases, double beta) {
 
     int i, j;
@@ -193,7 +224,12 @@ public class Cromosoma implements Comparable {
     cruzado = false;
 }
 
-  /*Function that does the mutation (OK)*/
+  /**
+	 * Mutation operator
+	 *
+	 * @param pMutacion1to0 Probability of change 1 to 0
+	 * @param pMutacion0to1 Probability of change 0 to 1	  
+	 */
   public void mutacion (double pMutacion1to0, double pMutacion0to1) {
 
     int i;
@@ -213,7 +249,13 @@ public class Cromosoma implements Comparable {
     }
   }
 
-  /*Function that does the CHC diverge*/
+  /**
+	 * Reinitializes the chromosome by using CHC diverge procedure
+	 *
+	 * @param r R factor of diverge
+	 * @param mejor Best chromosome found so far
+	 * @param prob Probability of setting a gen to 1
+	 */
   public void divergeCHC (double r, Cromosoma mejor, double prob) {
 	  
     int i;
@@ -232,12 +274,20 @@ public class Cromosoma implements Comparable {
     cruzado = true;
   }
 
-  /*OK*/
+  /**
+	 * Tests if the chromosome is already evaluated
+	 *
+	 * @return True if the chromosome is already evaluated. False, if not.
+	 */	
   public boolean estaEvaluado () {
     return !cruzado;
   }
 
-  /*OK*/
+  /**
+	 * Count the number of genes set to 1
+	 *
+	 * @return Number of genes set to 1 in the chromosome
+	 */
   public int genesActivos () {
     int i, suma = 0;
 
@@ -248,17 +298,29 @@ public class Cromosoma implements Comparable {
     return suma;
   }
 
-  /*OK*/
+  /**
+	 * Tests if the chromosome is valid
+	 *
+	 * @return True if the chromosome is valid. False, if not.
+	 */
   public boolean esValido () {
     return valido;
   }
 
-  /*OK*/
+  /**
+	 * Marks a chromosome for deletion.
+	 */
   public void borrar () {
     valido = false;
   }
 
-  /*Function that lets compare cromosomes to sort easily (OK)*/
+  /**
+	 * Compare to Method
+	 *
+	 * @param o1 Chromosome to compare
+	 *
+	 * @return Relative order between the chromosomes
+	 */
   public int compareTo (Object o1) {
     if (this.calidad > ((Cromosoma)o1).calidad)
       return -1;
@@ -267,8 +329,14 @@ public class Cromosoma implements Comparable {
     else return 0;
   }
 
-  /*Function that inform about if a cromosome is different only in a bit, obtain the
-   position of this bit. In case of have more differences, it returns -1 (OK)*/
+  
+  /**
+	 * Test if two chromosome differ in only one gene
+	 *
+	 * @param a Chromosome to compare
+	 *
+	 * @return Position of the difference, if only one is found. Otherwise, -1
+	 */
   public int differenceAtOne (Cromosoma a) {
 
     int i;
@@ -285,7 +353,11 @@ public class Cromosoma implements Comparable {
     else return pos;
   }
 
-  /*OK*/
+  /**
+	 * To String Method
+	 *
+	 * @return String representation of the chromosome
+	 */
   public String toString() {
 	  
     int i;

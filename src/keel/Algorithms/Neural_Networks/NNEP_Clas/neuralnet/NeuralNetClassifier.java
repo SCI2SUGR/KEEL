@@ -35,7 +35,7 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.AbstractNeuralNet;
 
 
 /**
- * <p> 
+ * <p> Neural net used as a classifier, with the posibility of estimating probability of each class.
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Modified by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * </p>

@@ -27,6 +27,14 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Lazy_Learning.NSC;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
+import java.util.*;
+import org.core.*;
+
 /**
  * 
  * File: NSC.java
@@ -40,14 +48,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.NSC;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
-import java.util.*;
-import org.core.*;
-
 public class NSC extends LazyAlgorithm{
 	
 	//Parameters

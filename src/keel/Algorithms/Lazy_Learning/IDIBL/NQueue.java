@@ -27,6 +27,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning.IDIBL;
+
 /**
  * 
  * File: NQueue.java
@@ -39,9 +43,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.IDIBL;
-
 public class NQueue {
 
 	private static int MAX_SIZE; 

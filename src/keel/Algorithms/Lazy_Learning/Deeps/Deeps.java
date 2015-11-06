@@ -27,6 +27,14 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Lazy_Learning.Deeps;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
+import java.util.*;
+import org.core.*;
+
 /**
  * 
  * File: Deeps.java
@@ -40,13 +48,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Lazy_Learning.Deeps;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
-import java.util.*;
-import org.core.*;
-
 public class Deeps extends LazyAlgorithm{
 	
 	//Parameters

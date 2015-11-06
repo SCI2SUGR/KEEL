@@ -27,17 +27,7 @@
   
 **********************************************************************/
 
-/*
- * doRbfn.java
-/**
- * <p>
- * @author Writen by Maria Dolores Perez Godoy, Antonio Rivera Rivas and Victor Manuel Rivas Santos (University of Jaen) 19/03/2004
- * @author Modified by Victor Rivas (University of Jaen)
- * @author Modified by Maria Dolores Perez Godoy (University) 17/12/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
  
  
 package keel.Algorithms.Neural_Networks.RBFN;
@@ -46,7 +36,17 @@ import org.core.*;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * <p>This class allows the building of RBF neural networks with a decremental algorithm.
+ * This class contains a MAIN function that reads parameters, builds the net, and produces the results
+ * yielded by the net when is applied to the test data set.
+ * @author Writen by Maria Dolores Perez Godoy, Antonio Rivera Rivas and Victor Manuel Rivas Santos (University of Jaen) 19/03/2004
+ * @author Modified by Victor Rivas (University of Jaen)
+ * @author Modified by Maria Dolores Perez Godoy (University) 17/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class doRbfn {
 /**
  * <p>
@@ -157,13 +157,13 @@ public class doRbfn {
 			    	"For:     Keel Project.\n\n" );
     }
 
+
     /**
      * Main Function
      * @param args the Command line arguments. Only one is processed: the name of the file containing the
-     *				parameters
+				parameters
+     * @throws java.io.IOException if the file can not be processed.
      */
-
-
     public static void main(String[] args) throws IOException{
         double [][] X;
         double [][] Y;

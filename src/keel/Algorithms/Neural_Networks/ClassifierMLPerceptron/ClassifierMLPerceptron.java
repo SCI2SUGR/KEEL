@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 21/07/2005
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Neural_Networks.ClassifierMLPerceptron;
 import keel.Algorithms.Shared.Parsing.*;
@@ -45,6 +38,15 @@ import java.io.*;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+/** 
+* <p> Classification model by means of a multi-layered perceptron.
+* This class is a wrapper for classification problems to solve using conjugated gradient algorithm.
+* @author Written by Luciano Sánchez (University of Oviedo) 21/07/2005
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
 public class ClassifierMLPerceptron {
 	/** 
 	* <p> 
@@ -53,9 +55,10 @@ public class ClassifierMLPerceptron {
 	* 
 	* </p> 
 	*/
-	//Random seed generator
+	/**Random seed generator*/
 	static Randomize rand;
 	/** 
+         * 
      * <p> 
      *  Returns the index corresponding to the maximum value of vector x.
      * 

@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 21/07/2005
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Neural_Networks.ModelMLPerceptron;
 import keel.Algorithms.Shared.Parsing.*;
@@ -47,7 +40,15 @@ import java.util.Vector;
 
 
 
-
+/** 
+* <p> Regression model by means of a multi-layered perceptron.
+* This class is a wrapper for regression problems to solve using conjugated gradient algorithm.
+* @author Written by Luciano Sánchez (University of Oviedo) 21/07/2005
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
 public class ModelMLPerceptron {
 	/** 
 	* <p> 

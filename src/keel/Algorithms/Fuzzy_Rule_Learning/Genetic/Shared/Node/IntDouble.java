@@ -49,10 +49,7 @@ public class IntDouble {
  */
 	public int consequent;
         
-        /**
- * <p>
- * Weight to be displayed.
- * </p>
+        /** Weight to be displayed.
  */
     public double weight;
     

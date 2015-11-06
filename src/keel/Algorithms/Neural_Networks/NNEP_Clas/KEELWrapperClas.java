@@ -100,6 +100,7 @@ public class KEELWrapperClas
 	 * <p>
 	 * Main method
 	 * </p>
+         * @param args Name of the KEEL file with properties of the execution
 	 */
 	public static void main(String[] args) {
 

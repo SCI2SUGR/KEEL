@@ -36,7 +36,7 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.data.DoubleTransposedDataSet;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
- * <p>
+ * <p> Input Neuron of a neural net
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

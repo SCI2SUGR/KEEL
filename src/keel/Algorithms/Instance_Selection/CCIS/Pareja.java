@@ -31,21 +31,34 @@
 
 package keel.Algorithms.Instance_Selection.CCIS;
 
+/**
+ * Pair implementation.
+ * This class implements a pair (integer, real) structure to be used on the CCIS algorithm.
+ * @author Salvador Garcia
+ */
 public class Pareja implements Comparable {
 
+    /**
+     * Integer element of the pair.
+     */
+    public int entero;
 
+    /**
+     * Real element of the pair.
+     */
+    public double real;
 
-  public int entero;
+    /**
+     * Default constructor.
+     */
+    public Pareja () {}
 
-  public double real;
-
-
-
-  public Pareja () {}
-
-
-
-  public Pareja (int a, double b) {
+    /**
+     * Parameter constructor. Create a pair with the given numbers.
+     * @param a Integer value of the pair.
+     * @param b Real value of the pair.
+     */
+    public Pareja (int a, double b) {
 
     entero = a;
 

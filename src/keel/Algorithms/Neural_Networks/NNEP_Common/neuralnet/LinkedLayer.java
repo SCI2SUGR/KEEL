@@ -37,7 +37,7 @@ import javolution.xml.XmlFormat;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
- * <p>
+ * <p> Base implementation of a hidden or output layer
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -394,6 +394,7 @@ public abstract class LinkedLayer implements ILayer<LinkedNeuron>{
      * <p>
      * Checks if this layer is full of links
      * </p>
+     * @param previous the previous layer to check with
      * @return true if the layer is full of links
      */
     public boolean linksFull(ILayer<? extends INeuron> previous){

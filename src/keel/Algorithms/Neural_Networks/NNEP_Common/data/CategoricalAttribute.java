@@ -40,7 +40,7 @@ import java.util.Hashtable;
 //import com.sun.org.apache.xalan.internal.xsltc.runtime.Hashtable;
 
 /**
- * <p>
+ * <p> Categorical attributes
  * @author Written by Amelia Zafra, Sebastian Ventura (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5
@@ -188,6 +188,7 @@ public class CategoricalAttribute extends AbstractAttribute {
 	/**
 	 * <p>
 	 * Check if this internal attribute value is valid
+         * @param internalValue value to check
 	 * </p>
 	 * @return true|false
 	 */	
@@ -218,6 +219,7 @@ public class CategoricalAttribute extends AbstractAttribute {
 	 * <p>
 	 * Parse an  external value to obtain  the internal value of the 
 	 * Attribute
+         * @param externalValue Value to check
 	 * </p>
 	 * @return The external value of the attribute
 	 */
@@ -233,6 +235,7 @@ public class CategoricalAttribute extends AbstractAttribute {
 	 * <p>
 	 * Show an String which represents a given real value
 	 * </p>
+         * @param internalValue internal value asked.
 	 * @return The real value of the attribute
 	 */	
 	@Override

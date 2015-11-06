@@ -27,6 +27,12 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Lazy_Learning.NM;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
+
 /**
  * 
  * File: NM.java
@@ -40,11 +46,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.NM;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
 public class NM extends LazyAlgorithm{
 	
 	//Adictional structures

@@ -43,7 +43,7 @@ import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationRuntimeException;
 
 /**
- * <p>
+ * <p> Softmax Classification problem evaluator
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Modified by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1
@@ -135,6 +135,7 @@ public class SoftmaxClassificationProblemEvaluator extends ClassificationProblem
 	 * <p>
 	 * Returns a ValueFitnessComparator
 	 * </p> 
+     * @return a ValueFitnessComparator
 	 */
 	
 	public Comparator<IFitness> getComparator() {

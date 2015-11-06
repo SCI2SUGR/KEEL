@@ -27,6 +27,13 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Preprocess.Instance_Selection.PBIL;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import org.core.*;
+
 /**
  * 
  * File: Cromosoma.java
@@ -38,12 +45,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Preprocess.Instance_Selection.PBIL;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import org.core.*;
-
 public class Cromosoma implements Comparable {
 
 	/*Cromosome data structure*/

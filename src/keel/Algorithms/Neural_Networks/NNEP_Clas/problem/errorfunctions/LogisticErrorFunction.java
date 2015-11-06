@@ -34,7 +34,7 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.problem.errorfunctions.IError
 
 
 /**
- * <p>
+ * <p>Logistic Error Function.
  * @author Written by Pedro Antonio Gutierrez Penia (University of Cordoba) 16/7/2007
  * @author Modified by Aaron Ruiz Mora (University of Cordoba) 16/7/2007
  * @version 0.1

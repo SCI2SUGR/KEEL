@@ -33,7 +33,7 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.data.DoubleTransposedDataSet;
 import net.sf.jclec.util.range.Interval;
 
 /**
- * <p>
+ * <p>Represents a problem with training and test data
  * @author Written by Pedro Antonio Gutierrez Penya, Aaron Ruiz Mora (University of Cordoba) 17/07/2007
  * @version 0.1
  * @since JDK1.5

@@ -27,6 +27,15 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Lazy_Learning.CamNN;
+
+import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
+
+import org.core.*;
+import java.util.StringTokenizer;
+
 /**
  * 
  * File: CamNN.java
@@ -39,14 +48,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Lazy_Learning.CamNN;
-
-import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
-
-import org.core.*;
-import java.util.StringTokenizer;
-
 public class CamNN extends LazyAlgorithm{
 
 	//Parameters

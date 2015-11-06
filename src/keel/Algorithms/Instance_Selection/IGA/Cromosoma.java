@@ -300,7 +300,13 @@ public class Cromosoma implements Comparable {
 	  return cuerpo.length;
   }
 
-  /*Function that lets compare cromosomes to sort easily*/
+  /**
+	 * Test if two chromosome differ in only one gene
+	 *
+	 * @param a Chromosome to compare
+	 *
+	 * @return Position of the difference, if only one is found. Otherwise, -1
+	 */
   public int compareTo (Object o1) {
     if (this.calidad > ((Cromosoma)o1).calidad)
       return -1;
@@ -309,6 +315,11 @@ public class Cromosoma implements Comparable {
     else return 0;
   }
 
+  /**
+	 * To String Method
+	 *
+	 * @return String representation of the chromosome
+	 */
   public String toString() {
 
     int i;

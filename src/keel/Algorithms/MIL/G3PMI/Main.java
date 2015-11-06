@@ -43,7 +43,7 @@ import org.apache.commons.configuration.XMLConfiguration;
 
 
 /**
- * <p>Title: MIDD Main Program</p>
+ * <p>Title: MIDD Main Program. </p>
  * <p>Description: This is the main class, which is executed when we launch the program</p>
  * @version 1.0
  * @since JDK1.4
@@ -62,6 +62,7 @@ public class Main
 	 * <p>
 	 * Main method
 	 * </p>
+         * @param args Arguments of the program (a configuration script, generally)  
 	 */
 	public static void main(String[] args) {
 		configureJob(args[0]);
