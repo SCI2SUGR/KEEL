@@ -27,13 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 07/03/2006
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Preprocess.Missing_Values.svmImpute;
 
 /**
@@ -41,10 +34,23 @@ package keel.Algorithms.Preprocess.Missing_Values.svmImpute;
  * This class stores a frequency list of classes for a given value, i.e. for a same value in a attribute, 
  * it stores the number of times a determined class is associated with the value. 
  * </p>
+ * <p>
+ * @author Written by Julián Luengo Martín 07/03/2006
+ * @version 0.3
+ * @since JDK 1.5
+ * </p>
  */
 public class valueAssociations {
+    /**
+     * Frequency list of classes for a given value
+     */
     protected FreqList list = null;
+
+    /**
+     * Associated value.
+     */
     protected double value;
+    
 
     /**
      * <p> 

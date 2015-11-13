@@ -44,6 +44,17 @@ import java.util.Vector;
 import java.util.Arrays;
 import org.core.*;
 
+/**
+ * 
+ * File: IGA.java
+ * 
+ * The IGA Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class IGA extends Metodo {
 
   /*Own parameters of the algorithm*/
@@ -55,10 +66,18 @@ public class IGA extends Metodo {
   private double alpha;
   private int kNeigh;
 
+  /**
+     * Default constructor. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
   public IGA (String ficheroScript) {
     super (ficheroScript);
   }
 
+  /**
+	 * Executes the algorithm
+	 */ 
+  
   public void ejecutar () {
 
     int i, j, l;
@@ -145,7 +164,18 @@ public class IGA extends Metodo {
     OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
   }
 
-  /*Function that implements the uniform crossover between two selected cromosomes*/
+  /**
+     *Function that implements the uniform crossover between two selected cromosomes
+     * @param poblacion Population of chromosomes
+     * @param newPob New population
+     * @param sel1 First parent
+     * @param sel2 Second parent
+     * @param pos Position of the chromosomes in the new population
+     * @param nEv actual number of evaluations
+     * @param nEval limited number of evalutations
+     * @param nClases number of classes
+     * @return number of evaluations done during the execution of the function.
+     */
   public int cruceOrtogonal (Cromosoma poblacion[], Cromosoma newPob[], int sel1, int sel2, int pos, int nEv, int nEval, int nClases) {
 
     int i, j;

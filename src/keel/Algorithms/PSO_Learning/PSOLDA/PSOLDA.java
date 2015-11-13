@@ -29,6 +29,13 @@
 
 package keel.Algorithms.PSO_Learning.PSOLDA;
 
+
+
+
+import java.io.IOException;
+import org.core.*;
+import keel.Dataset.*;
+
 /**
  * <p>Title: Algorithm PSOLDA</p>
  *
@@ -40,12 +47,6 @@ package keel.Algorithms.PSO_Learning.PSOLDA;
  * @author Jose A. Saez Munoz
  * @version 1.0
  */
-
-
-import java.io.IOException;
-import org.core.*;
-import keel.Dataset.*;
-
 public class PSOLDA{
 
     myDataset train, val, test;
@@ -342,6 +343,9 @@ public class PSOLDA{
     //***************** To do the output files ****************************
     //*********************************************************************
     
+    /**
+     * Prints on the ouput fuctions file the fuctions inferenced by the algorithm.
+     */
     public void PrintOutputFunctions(){
     	
     	String cad="Warning: Examples should be standardized in the interval [0,1] to use these functions\n\n";

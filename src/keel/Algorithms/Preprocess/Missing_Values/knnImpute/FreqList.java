@@ -27,13 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 31/12/2005
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Preprocess.Missing_Values.knnImpute;
 import java.util.*;
 
@@ -41,10 +34,26 @@ import java.util.*;
  * <p>
  * This class represents a list of frequencies of Strings
  * </p>
+ * <p>
+ * @author Written by Julián Luengo Martín 31/12/2005
+ * @version 0.3
+ * @since JDK 1.5
+ * </p>
  */
 public class FreqList {
+    /**
+     * Frequencies vector of strings.
+     */
     protected Vector freqs = null;
+
+    /**
+     * Iterator index.
+     */
     protected int index = 0;
+
+    /**
+     * Total elements in the list.
+     */
     protected int totalElements = 0;
     
     

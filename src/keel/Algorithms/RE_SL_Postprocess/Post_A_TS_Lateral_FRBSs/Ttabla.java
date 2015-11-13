@@ -34,8 +34,20 @@ package keel.Algorithms.RE_SL_Postprocess.Post_A_TS_Lateral_FRBSs;
  *
  */
 public class Ttabla {
-	public double [] ejemplo; 
-	public double nivel_cubrimiento, maximo_cubrimiento;
+    /**
+     * Example vector.
+     */
+    public double [] ejemplo; 
+    
+    /**
+     *  cover level
+     */
+	public double nivel_cubrimiento,
+
+    /**
+     * maximum covers
+     */
+    maximo_cubrimiento;
     int cubierto;
  
 /**

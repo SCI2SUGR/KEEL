@@ -29,10 +29,15 @@
 
 package keel.Algorithms.RE_SL_Postprocess.Genetic_NFRM;
 
+
+
+import java.io.IOException;
+import org.core.*;
+
 /**
- * <p>Title: Algorithm</p>
+ * <p>Title: Fuzzy_GB_NFRM</p>
  *
- * <p>Description: It contains the implementation of the algorithm</p>
+ * <p>Description: It contains the implementation of the Fuzzy_GB_NFRM</p>
  *
  *
  * <p>Company: KEEL </p>
@@ -40,10 +45,6 @@ package keel.Algorithms.RE_SL_Postprocess.Genetic_NFRM;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class Fuzzy_GB_NFRM {
 
   myDataset train, val, test;

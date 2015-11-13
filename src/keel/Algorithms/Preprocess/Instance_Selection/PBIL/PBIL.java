@@ -27,9 +27,17 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Instance_Selection.PBIL;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import org.core.*;
+import java.util.StringTokenizer;
+import java.util.Arrays;
+
 /**
  * 
- * File: GGA.java
+ * File: PBIL.java
  * 
  * Population Based Incremental Learning for Instance Selection.
  * 
@@ -38,13 +46,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Preprocess.Instance_Selection.PBIL;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import org.core.*;
-import java.util.StringTokenizer;
-import java.util.Arrays;
-
 public class PBIL extends Metodo {
 
     /*Own parameters of the algorithm*/
@@ -61,7 +62,7 @@ public class PBIL extends Metodo {
   
 	/**
      * Default builder. Construct the algoritm by using the superclass builder.
-	 *
+	 * @param ficheroScript Configuration script
      */
 	public PBIL (String ficheroScript) {
 		super (ficheroScript);

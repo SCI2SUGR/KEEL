@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * Datos.java
- *
- * @author Manuel Chica Serrano (University of Jaen) 22/8/2005
- * @author Modified by Ignacio Robles Paiz (University of Granada) 27/06/2010
- * @author Modified by Ignacio Robles Paiz (University of Granada) 02/07/2010
- */
+
 
 package keel.Algorithms.Preprocess.Feature_Selection;
 
@@ -42,7 +36,13 @@ import java.util.*;
 import org.core.Fichero;
 import keel.Algorithms.Preprocess.Basic.CheckException;
 
-
+/**
+ * Datos.java
+ * Data structure used for Feature Selection preprocessing.
+ * @author Manuel Chica Serrano (University of Jaen) 22/8/2005
+ * @author Modified by Ignacio Robles Paiz (University of Granada) 27/06/2010
+ * @author Modified by Ignacio Robles Paiz (University of Granada) 02/07/2010
+ */
 public class Datos {
 
     /** the pathnames of training and test datasets */
@@ -78,7 +78,10 @@ public class Datos {
     private boolean areDiscretized;
 
 
-    /** Creates a new instance of Datos */
+    /** Creates a new instance of Datos
+     * @param trainFileNames1 Training filename.
+     * @param testFileNames1 Test filename.
+     * @param k number of nearest neighbours to consider. */
     public Datos(String trainFileNames1, String testFileNames1, int k) {
 
 
@@ -761,7 +764,12 @@ public class Datos {
         return count/(double)train.getNumInstances();
     }
     
-
+    /**
+     * Sums the prior probabilities of the classes that are different to the one of the example given.
+     * @param posExample example id.
+     * @param feature feature id.
+     * @return Sums the prior probabilities of the classes that are different to the one of the example given.
+     */
     public double sumDifferentClasses(int posExample, int feature){
         double [] classes = getAllClassesTrain();
         double exampleClass = train.getInstance(posExample).getOutputRealValues(0);

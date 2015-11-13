@@ -27,15 +27,20 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 01/01/2006
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Preprocess.Missing_Values.AllPossibleValues;
 
+/**
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the algorithm and executes it.
+ * 
+ * @author Written by Julián Luengo Martín 01/01/2006
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Main {
     
     /** Creates a new instance of Main */

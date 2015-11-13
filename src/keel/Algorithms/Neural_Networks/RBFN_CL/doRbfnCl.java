@@ -27,19 +27,7 @@
   
 **********************************************************************/
 
-/*
- * doRbfn.java
 
-/**
- *<p>
- * @author Writen by Maria Dolores Pérez Godoy, Antonio Rivera Rivas and Víctor Manuel Rivas Santos (University of Jaén) 19/03/2004
- * @author Modified by Víctor Rivas (University of Jaén)
- * @author Modified by Víctor Rivas (University of Jaén) 24/06/2006
- * @author Modified by María Dolores Pérez Godoy (University of Jaén) 17/12/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
  
 package keel.Algorithms.Neural_Networks.RBFN_CL;
 import org.core.*;
@@ -49,17 +37,24 @@ import java.io.*;
 import java.util.*;
 
 
-
-
-public class doRbfnCl {
-
 /**
  * <p>
  * This class allows the building of RBF neural networks with a decremental algorithm
  * This class contains a MAIN function that reads parameters, builds the net, and produces the results
  * yielded by the net when is applied to the test data set.
  * </p>
+  *<p>
+ * @author Writen by Maria Dolores Pérez Godoy, Antonio Rivera Rivas and Víctor Manuel Rivas Santos (University of Jaén) 19/03/2004
+ * @author Modified by Víctor Rivas (University of Jaén)
+ * @author Modified by Víctor Rivas (University of Jaén) 24/06/2006
+ * @author Modified by María Dolores Pérez Godoy (University of Jaén) 17/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
  */
+public class doRbfnCl {
+
+
 
 	// Filename for training data set
 	static String trnFile;
@@ -166,9 +161,8 @@ public class doRbfnCl {
      * Main Function
      * @param args the Command line arguments. Only one is processed: the name of the file containing the
      *				parameters
+     * @throws java.io.IOException if the algorithm exits with an error.
      */
-
-
     public static void main(String[] args) throws IOException{
         double [][] X;
         double [][] Y;

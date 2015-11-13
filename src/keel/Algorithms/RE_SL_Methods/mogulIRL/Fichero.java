@@ -29,25 +29,19 @@
 
 package keel.Algorithms.RE_SL_Methods.mogulIRL;
 
-/**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
 import java.io.*;
 import java.util.*;
 
+/**
+ * File class.
+ * @author Jesús Alcalá Fernández
+ */
 public class Fichero{
 
 
-        /* Function for reading a data file in a String Object */
+        /** Function for reading a data file in a String Object
+        * @param nombreFichero file name.
+        * @return  the content of the file as String.*/
         public static String leeFichero(String nombreFichero) {
                 String cadena = "";
 
@@ -76,7 +70,10 @@ public class Fichero{
         }
 
 
-        /* Function for writing a String Object in a file */
+        /** Function for writing a String Object in a file
+     * @param nombreFichero file name to be written.
+     * @param cadena String to write.
+         */
         public static void escribeFichero (String nombreFichero, String cadena) {
             try {
                         FileOutputStream f = new FileOutputStream(nombreFichero);
@@ -93,7 +90,9 @@ public class Fichero{
         }
 
 
-        /* Function for adding a String Object to a file */
+        /** Function for adding a String Object to a file
+     * @param nombreFichero  file name to be written.
+     * @param cadena String to add. */
         public static void AnadirtoFichero (String nombreFichero, String cadena) {
             try {
                         RandomAccessFile fis = new RandomAccessFile(nombreFichero, "rw");

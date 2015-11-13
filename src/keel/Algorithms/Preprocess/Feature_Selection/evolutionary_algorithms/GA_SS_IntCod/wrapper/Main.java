@@ -38,13 +38,31 @@
  */
 package keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.GA_SS_IntCod.wrapper;
 
-public class Main {
 /**
- * <p> 
- * This class realizes the call to the main method
- * </p>
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the classifier and executes it.
+ * 
+ * @author Written by Manuel Chica Serrano (University of Jaen) 28/08/2005
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
+ * @author Modified by Cristobal Carmona del Jesus (University of Jaen) 19/12/2008
+ * @version 0.1 
+ * @since JDK1.5
+ * 
  */
+public class Main {
 
+
+    /** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
   public static void main (String args[]) {
 
     SSGAIntegerLVO agee;

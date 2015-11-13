@@ -86,11 +86,17 @@ public class RFreeMutation implements RealMutation {
 /**
  * <p>
  * Mutates the upper real value.
- * </p>
- * <p>
+* <p>
  * 
+ * @param lowerValue is the current lower value of this classifier position
  * </p>
  * <p>
+ * @param upperValue is the current upper value of this classifier position.
+ * </p>
+ * <p>
+ * @param currentState is the current State of the environment for this
+ * allele of the classifier.
+ * </p>
  * 
  * @return a double with the mutated value.
  * </p>

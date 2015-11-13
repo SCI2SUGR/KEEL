@@ -355,8 +355,19 @@ public class TernaryRep implements Attribute{
 	public double getUpperAllele(){ return (double)pos;}
 	public double getLowerAllele(){ return (double)pos;}
 	public void verifyInterval(){}
+        /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     */
 	public void printNotNorm(PrintWriter fout, double lo){ print ( fout ); }
-	public void printNotNorm(PrintWriter fout, double lo, double up){ print ( fout ); }
+	/**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     * @param up upper value in the interval.
+     */
+        public void printNotNorm(PrintWriter fout, double lo, double up){ print ( fout ); }
 
 } // end TernaryRep
 

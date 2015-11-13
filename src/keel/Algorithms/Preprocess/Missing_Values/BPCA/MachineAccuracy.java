@@ -69,13 +69,17 @@ public class MachineAccuracy
 	// Public stuff
 	//
 
-	/** machine accuracy constant */
+	/** Machine accuracy constant */
 	public static double EPSILON = 2.220446049250313E-16;
 	
+        /** SQRT Machine accuracy constant */
 	public static double SQRT_EPSILON = 1.4901161193847656E-8;
+        
+        /** SQRT SQRT Machine accuracy constant */
 	public static double SQRT_SQRT_EPSILON = 1.220703125E-4;
 
-	/** compute EPSILON from scratch */
+	/** Compute EPSILON from scratch
+         * @return EPSILON from scratch  */
 	public static double computeEpsilon()
 	{
 		double eps = 1.0;
@@ -89,7 +93,9 @@ public class MachineAccuracy
 		return eps;
 	}
 
-	/**
+	/** Checks if the two numbers given are the same within a certain threshold.
+         * @param a first number to compare.
+         * @param b second number to compare.
 	 * @return true if the relative difference between the two parameters
 	 * is smaller than SQRT_EPSILON.
 	 */

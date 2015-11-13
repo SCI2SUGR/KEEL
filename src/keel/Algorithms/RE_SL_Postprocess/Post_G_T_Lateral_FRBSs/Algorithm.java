@@ -29,6 +29,10 @@
 
 package keel.Algorithms.RE_SL_Postprocess.Post_G_T_Lateral_FRBSs;
 
+
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,9 +44,6 @@ package keel.Algorithms.RE_SL_Postprocess.Post_G_T_Lateral_FRBSs;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
 
 public class Algorithm {
 

@@ -115,7 +115,8 @@ public abstract class Cromosoma {
     public abstract void mutar();
     
     
-    /** it prints a chromosome, gene by gene */
+    /** it prints a chromosome, gene by gene.
+     * @return String representation of the chromosome. */
     public abstract String print();    
     
     
@@ -139,14 +140,17 @@ public abstract class Cromosoma {
     }
     
     
-    /** return the length of the chromosome */
+    /** return the length of the chromosome
+     * @return  the length of the chromosome
+     */
     public int devolverTamCromosoma(){
         return tamCromosoma;
     }
     
     
-    /** this boolean method return true if two chromosomes are equal in all of its gens 
-        @param cr is the other chromosome to compare */
+    /** this boolean method return true if two chromosomes are equal in all of its genes 
+        @param cr is the other chromosome to compare
+     * @return  true if two chromosomes are equal in all of their genes */
     public boolean isEqual(Cromosoma cr){
         if(tamCromosoma != cr.devolverTamCromosoma()){
             System.err.println("ERROR: Chromosome length isn't equal");

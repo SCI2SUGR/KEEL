@@ -261,6 +261,7 @@ public class SSGABinaryLVO {
     /* ------------ METHODS ------------ */    
     /**
      * Creates a new instance of SSGABinaryLVO 
+     * @param ficParametros Configuration file
      */
     public SSGABinaryLVO(String ficParametros) {
         

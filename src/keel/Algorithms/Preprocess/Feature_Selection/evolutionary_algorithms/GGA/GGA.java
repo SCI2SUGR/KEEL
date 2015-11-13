@@ -27,17 +27,7 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: GGA.java
- * 
- * A Generational Genetic algorithm for Feature Selection
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
+
 
 package keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.GGA;
 
@@ -49,6 +39,17 @@ import org.core.*;
 import java.util.StringTokenizer;
 import java.util.Arrays;
 
+/**
+ * 
+ * File: GGA.java
+ * 
+ * A Generational Genetic algorithm for Feature Selection
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
 public class GGA extends FSAlgorithm{
 
 	/*Own parameters of the algorithm*/

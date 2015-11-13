@@ -43,43 +43,35 @@ import java.io.*;
  * <p>
  * <b> CsvToKeel </b>
  * </p>
+ * This class extends from the Importer class. It is used to read 
+ * data with csv format and transform them to the KEEL format.
  *
- *  Clase extendida de la clase Importer. Esta clase se utiliza
- * para leer datos localizados en ficheros con formato Csv
- * (valores separados por comas) y convertirlos a formato keel.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
- */
-
-/*
-Clase utilizada para leer datos localizados en ficheros Csv y
-convertirlos a formato keel
  */
 public class CsvToKeel extends Importer {
 
-    /* Constructor de la Clase CsvToKeel.
-     * Inicializa los valores de las variables miembro nullValue (valor nulo)
-     * y separator (el separador de los datos) con los valores de los
-     * parÃ¡metros nullValueUser y separatorUser respectivamente.
+    /** CsvToKeel class Constructor.
+     * Initializes the variables that store the symbols used to identify null 
+     * values and separator between data.
      *
-     * @param  nullValueUser. Variable de tipo String con el valor nulo del fichero Csv .
-     * @param  separatorUser. Variable de tipo String con el valor del separador
-     * de los datos del fichero Csv .
+     * @param  nullValueUser. Null value symbols.
+     * @param  separatorUser. Separator symbols used in the csv format.
      */
     public CsvToKeel(String nullValueUser, String separatorUser) {
         separator = separatorUser;
         nullValue = nullValueUser;
     }
 
-    /* Metodo utilizado para convertir los datos del fichero Csv indicado
-     * mediante la variable pathnameInput a formato keel en el fichero
-     * indicado por la ruta pathnameOutput
+    /**
+     * Method used to transform the data from the csv file given as parameter to 
+     * KEEL format file which will be stored in the second file given.
      *
-     * @param pathnameInput ruta con los datos en formato csv
-     * @param pathnameOutput ruta para el fichero de datos Keel.
+     * @param pathnameInput CSV file path.
+     * @param pathnameOutput KEEL file path.
      *
-     * @throws Exception */
+     * @throws Exception if the files can not be read or written.
+     */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
         Pattern p;
         Matcher m;

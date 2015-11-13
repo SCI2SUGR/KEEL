@@ -50,38 +50,120 @@ import java.util.StringTokenizer;
 public class Metodo {
 
 	  /*Path and names of I/O files*/
+    
+        /**
+         * Train file name
+         */
 	  protected String ficheroTraining;
+          
+          /**
+            * Reference file name
+            */
 	  protected String ficheroValidation;
+          
+          /**
+          * Test file name
+          */
 	  protected String ficheroTest;
+          
+          /**
+     * Output files names
+     */
 	  protected String ficheroSalida[];
 
 	  /*Data Structures*/
+          
+          /**
+            * Training dataset
+            */
 	  protected InstanceSet training;
+          
+          /**
+            * Test dataset
+            */
 	  protected InstanceSet test;
-	  protected Attribute entradas[];
-	  protected Attribute salida;
-	  protected int nEntradas;
-	  protected String relation;
-
-	  /*Data Matrix*/
-	  protected double datosTrain[][];
-	  protected int clasesTrain[];
           
-          
-          	  /*Data Matrix*/
-	  protected double datosTest[][];
-	  protected double realTest[][];
-	  protected int clasesTest[];
+     /**
+     * Inputs attributes
+     */
+    protected Attribute entradas[];
+    
+    /**
+     * Output attribute
+     */
+    protected Attribute salida;
+    
+    /**
+     * Number of input attributes
+     */
+    protected int nEntradas;
+    
+    /**
+     * Relation string.
+     */
+    protected String relation;
 
-	  /*Extra*/
-	  protected boolean nulosTrain[][];
-	  protected int nominalTrain[][];
-	  protected double realTrain[][];
-	  
-	  protected boolean distanceEu;
-	  
-	  static protected double nominalDistance[][][];
-	  static protected double stdDev[];
+    /*Data Matrix*/
+    
+    /**
+     * Training input data.
+     */
+    protected double datosTrain[][];
+    
+    /**
+     * Training output data.
+     */
+    protected int clasesTrain[];
+
+
+            /*Data Matrix*/
+    
+    /**
+     * Test input data.
+     */
+    protected double datosTest[][];
+    
+    /**
+     * Test input data.
+     */
+    protected double realTest[][];
+    
+    /**
+     * Test output data.
+     */
+    protected int clasesTest[];
+
+    /*Extra*/
+
+    /**
+     * Training null data.
+     */
+    protected boolean nulosTrain[][];
+
+    /**
+     * Training Nominal input data.
+     */
+    protected int nominalTrain[][];
+
+    /**
+     * Training input data.
+     */
+    protected double realTrain[][];
+
+    /**
+     * True if euclidean distance is used, false if HVDM is used.
+     */
+    protected boolean distanceEu;
+
+    /**
+     * Nominal distances.
+     */
+    static protected double nominalDistance[][][];
+
+    /**
+     * Standard deviation.
+     */
+    static protected double stdDev[];
 	  
   	/**
 	 * Default builder
@@ -209,8 +291,12 @@ public class Metodo {
   
 	} //end-method
 	
-	
-	public Metodo (String ficheroScript, InstanceSet train) {
+    /**
+     * Parameter constructor. Construct the main class of the algorithm by reading the configuration file and using as training and test, the dataset given as a parameter.
+     * @param ficheroScript configuration filename.
+     * @param train given dataset.
+     */
+    public Metodo (String ficheroScript, InstanceSet train) {
 
 		int nClases, i, j, l, m, n;
 		double VDM;
@@ -319,6 +405,7 @@ public class Metodo {
 
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+     * @throws keel.Algorithms.Preprocess.Basic.CheckException if the dataset is not appropiate.
 	 */	
 	protected void normalizar () throws CheckException {
 

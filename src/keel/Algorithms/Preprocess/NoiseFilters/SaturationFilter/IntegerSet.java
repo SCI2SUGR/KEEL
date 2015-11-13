@@ -73,6 +73,7 @@ public class IntegerSet {
 	 * <p>
 	 * Constructor with initial size 
 	 * </p>
+     * @param _maxsize initial size of the set.
 	 */	
 	public IntegerSet(int _maxsize){
 		

@@ -47,11 +47,10 @@ import com.Ostermiller.util.CSVParser;
  * <p>
  * <b> Exporter </b>
  * </p>
+ * Abstract class that contains the methods to export a file with KEEL format 
+ * to other different formats.
  *
- * Clase abstracta que contiene los mÃ©todos para exportar un fichero de
- * datos con formato keel a ficheros de distintos formatos.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public abstract class Exporter {
@@ -68,18 +67,13 @@ public abstract class Exporter {
     int REAL = 2;
 
 
-    /*
-     * Este mÃ©todo lee los datos almacenados en un fichero con formato keel
-     * correspondiente al parÃ¡metro de entrada pathnameInput y
-     * cargar la definiciÃ³n de los atributos en un vector de objetos de la
-     * clase Attribute (del paquete keel.Dataset), los datos en el vector
-     * data[], y el nombre de la relaciÃ³n en la variable miembro
-     * nameRelation y el nÃºmero de atributos en la variable miembro
-     * numAttributes.
+    /**
+     * This method reads the data stored in KEEL format file and initializes all
+     * the structures needed to export the data to other formats.
      *
-     * @param  String pathnameOutput Indica la ruta del fichero de entrada con formato Keel.
+     * @param  pathnameInput KEEL file path to read. 
      *
-     * @throws Exception
+     * @throws Exception if the file can not be read.
      */
     public void Start(String pathnameInput) throws Exception {
         BufferedReader reader;

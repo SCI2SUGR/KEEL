@@ -47,25 +47,24 @@ import com.Ostermiller.util.CSVParser;
  * <p>
  * <b> WekaToKeel </b>
  * </p>
+ * This class extends from the Importer class. It is used to read 
+ * data with Weka format and transform them to the KEEL format.
  *
- *  Clase extendida de la clase Importer. Esta clase se utiliza
- *  para leer datos localizados en ficheros con formato Weka
- * (fichero relacion-atributo) y convertirlos a formato keel.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class WekaToKeel extends Importer {
 
 
-    /* Metodo utilizado para convertir los datos del fichero indicado
-     * mediante la variable pathnameInput a formato keel en el fichero
-     * indicado por la ruta pathnameOutput
+    /**
+     * Method used to transform the data from the Weka file given as parameter to 
+     * KEEL format file which will be stored in the second file given.
      *
-     * @param pathnameInput ruta con los datos en formato Weka
-     * @param pathnameOutput ruta para el fichero de datos Keel.
+     * @param pathnameInput Weka file path.
+     * @param pathnameOutput KEEL file path.
      *
-     * @throws Exception */
+     * @throws Exception if the files can not be read or written.
+     */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
         BufferedReader reader;
         Pattern p;

@@ -59,7 +59,17 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 
-
+/**
+ * 
+ * File: ENNRS.java
+ * 
+ * The ENN Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class ENNRS extends Metodo{
 
 
@@ -75,13 +85,17 @@ public class ENNRS extends Metodo{
   private int n;
 
 
-
+/**
+     * Default builder. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
   public ENNRS (String ficheroScript) {
     super (ficheroScript);
   }
 
-
-
+/**
+	 * Executes the algorithm
+	 */
   public void ejecutar () {
 
 

@@ -29,24 +29,24 @@
 
 package keel.Algorithms.RE_SL_Methods.SEFC;
 
-/**
+
+ 
+import java.io.IOException;
+import java.util.*;
+import org.core.*;
+
+/**	
+ * <p>
+ * It contains the implementation of the algorithm
+ * </p>
  * <p>
  * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
  * @version 1.0
  * @since JDK 1.6
  * </p>
  */
- 
-import java.io.IOException;
-import java.util.*;
-import org.core.*;
-
 public class Algorithm {
-/**	
- * <p>
- * It contains the implementation of the algorithm
- * </p>
- */
+
  
     myDataset train, val, test;
     String outputTr, outputTst, outputBC;
@@ -350,6 +350,7 @@ public class Algorithm {
      * <p>
      * It Evaluates the performance of the fuzzy system. The Mean Square Error (MSE) by training is used
      * </p>
+     * @return The Mean Square Error (MSE) of training instances.
      */       
     public double Evaluate_fuzzy_system(){
         int i;

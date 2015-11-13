@@ -28,9 +28,20 @@
 **********************************************************************/
 
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering.Stat;
+
+/**
+ * Histomgram, Statistics class that extends Sample and computes statistical values as percentiles.
+ * @author unknown
+ */
 public class Histogram extends Sample {
 
-public Histogram(int bins, double binsize, double base) {
+    /**
+     * Parameter constructor.
+     * @param bins number of bins.
+     * @param binsize Histogram Bin size.
+     * @param base Base of the histogram.
+     */
+    public Histogram(int bins, double binsize, double base) {
    this.base=base;
    this.bins=bins;
    this.binsize=binsize;
@@ -39,11 +50,20 @@ public Histogram(int bins, double binsize, double base) {
    maxbin=-1;
 }
 
-public Histogram(int bins, double binsize) {
+    /**
+     * Parameter constructor. when base is equal to 0.
+     * @param bins number of bins.
+     * @param binsize Histogram Bin size.
+     */
+    public Histogram(int bins, double binsize) {
    this(bins,binsize,0);
 }
 
-public void add(double X) {
+    /**
+     * Add one to the bins summation of th one determinated by the given number 
+     * @param X number given.
+     */
+    public void add(double X) {
     super.add(X);
     int j = (int)Math.floor( (X-base) / binsize); 
     if (j>=0 && j<bins) {
@@ -54,35 +74,63 @@ public void add(double X) {
     cml = null;  // cummulative is not valid anymore
 }
 
-public void reset() {
+    /**
+     * Resets the statisticals variables.
+     */
+    public void reset() {
    super.reset();
    bin = new int[bins];
    cml = null;
    maxbin=-1;
 }
 
-public int getBin(int i) {
+    /**
+     * Returns the bin summation in the given position.
+     * @param i position given.
+     * @return the bin summation in the given position.
+     */
+    public int getBin(int i) {
    if (i>=0 && i<bins) return bin[i];
    return 0;
 }
 
-public int[] getBins() {
+    /**
+     * Returns all the Bins values.
+     * @return  all the Bins values.
+     */
+    public int[] getBins() {
    return bin;
 }
 
-public double getBinsize() {
+    /**
+     * Returns the Histogram Bin size.
+     * @return the Histogram Bin size.
+     */
+    public double getBinsize() {
    return binsize;
 }
 
-public double getBase() {
+    /**
+     * Returns the Base of the histogram.
+     * @return the Base of the histogram.
+     */
+    public double getBase() {
    return base;
 }
 
-public int getNumBins() {
+    /**
+     * Returns the number of the bins.
+     * @return the number of the bins.
+     */
+    public int getNumBins() {
    return bins;
 }
 
-public double[] getCummulative() {
+    /**
+     * Returns the cummulative bins.
+     * @return the cummulative bins.
+     */
+    public double[] getCummulative() {
   cml = new double[bins];
   double sum=0;
   int n = getSampleSize();
@@ -93,34 +141,63 @@ public double[] getCummulative() {
   return cml;
 }
 
-public double getPercentile(double p) {
+    /**
+     * Returns percentile value with the percentage given.
+     * @param p percentage given.
+     * @return percentile value with the percentage given.
+     */
+    public double getPercentile(double p) {
    if (cml==null) getCummulative();
    for (int j=0; j<bins; j++)     
       if (cml[j]>=p) return base + j*binsize;
    return base + bins*binsize;
 }
 
-public double getMedian() {
+    /**
+     * Returns the median.
+     * @return the median.
+     */
+    public double getMedian() {
    return getPercentile(0.5);
 }
 
-public double getLowerQuartile() {
+    /**
+     * Returns the lower quartile.
+     * @return the lower quartile.
+     */
+    public double getLowerQuartile() {
    return getPercentile(0.25);
 }
 
-public double getUpperQuartile() {
+    /**
+     * Returns the upper quartile.
+     * @return the upper quartile.
+     */
+    public double getUpperQuartile() {
    return getPercentile(0.75);
 }
 
-public double getInterQuartileRange() {
+    /**
+     * Returns the interquartile range.
+     * @return the interquartile range.
+     */
+    public double getInterQuartileRange() {
    return getUpperQuartile() - getLowerQuartile();
 }
 
-public double getMode() {
+    /**
+     * Returns the mode.
+     * @return the mode.
+     */
+    public double getMode() {
    return base + maxbin*binsize;
 }
 
-public String summary() {
+    /**
+     * Returns a String summary with all the statistical variables
+     * @return a String summary with all the statistical variables
+     */
+    public String summary() {
   String s="Sample Summary\n";
   s=s+"====================================\n";
   s=s+"Sample size          "+getSampleSize() + "\n";
@@ -140,8 +217,11 @@ public String summary() {
   return s;
 }
 
-
-public String boxplot() {
+    /**
+     * Return the boxplot (median, lowerquartile, upperquartile, P0.05, P0.95).
+     * @return  the boxplot (median, lowerquartile, upperquartile, P0.05, P0.95).
+     */
+    public String boxplot() {
   String s = getMedian()+" "+getLowerQuartile() +" "+getUpperQuartile() + " " +
       getPercentile(0.05) +" "+getPercentile(0.95);
   return s;

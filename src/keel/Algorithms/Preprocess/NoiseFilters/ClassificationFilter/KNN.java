@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.ClassificationFilter;
 
@@ -53,6 +45,13 @@ import java.util.Arrays;
  * Euclidean (L2), Manhattan (L1) and HVDM distances can be used as
  * distance function by the classifier.
  * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
  */
 public class KNN {
 
@@ -69,31 +68,95 @@ public class KNN {
 	private double stdDev [];
 	private double nominalDistance [][][];
 	
+        /**
+        * Temporal instance.
+        */
 	protected Instance temp;	
 	
 	//Data
-	protected int inputAtt;
-	protected Attribute[] inputs;
-	protected Attribute output;
-	protected boolean[] nulls;
-	
-	protected double trainData[][];
-	protected int trainOutput[];
-	protected double testData[][];
-	protected int testOutput[];
-	protected String relation;
-	
-	protected int nClasses;
-	protected int nInstances[];
+    /**
+     * Number of input attributes
+     */
+    protected int inputAtt;
+    
+    /**
+     * Inputs attributes
+     */
+    protected Attribute[] inputs;
 
-	//Random seed
-	protected long seed;
-	
-	//Results
-	protected int realClass[];
-	protected int prediction[];
-	protected int trainRealClass[];
-	protected int trainPrediction[];
+    /**
+     * Output attribute
+     */
+    protected Attribute output;
+
+    /**
+     * Missing values of a instance
+     */
+    protected boolean[] nulls;
+
+    /**
+     * Training input data.
+     */
+    protected double trainData[][];
+
+    /**
+     * Training output data.
+     */
+    protected int trainOutput[];
+
+    /**
+     * Test input data.
+     */
+    protected double testData[][];
+
+    /**
+     * Test output data.
+     */
+    protected int testOutput[];
+
+    /**
+     * Relation string.
+     */
+    protected String relation;
+
+    /**
+     * Number of classes.
+     */
+    protected int nClasses;
+
+    /**
+     * Number of instances of each classes.
+     */
+    protected int nInstances[];
+
+    //Random seed
+
+    /**
+     *Random seed.
+     */
+        protected long seed;
+
+    //Results
+
+    /**
+     * Real test classes.
+     */
+        protected int realClass[];
+
+    /**
+     * Test predicted classes.
+     */
+    protected int prediction[];
+
+    /**
+     * Real training classes.
+     */
+    protected int trainRealClass[];
+
+    /**
+     * Training predicted classes.
+     */
+    protected int trainPrediction[];
 	
 	private Instance[] trainInst;
 	private Instance[] testInst;
@@ -101,6 +164,8 @@ public class KNN {
 	/** 
 	 * The main method of the class
 	 * 
+         * @param trainI training instances.
+         * @param testI test instances.
 	 */
 	public KNN(Instance[] trainI, Instance[] testI) {
 		
@@ -154,7 +219,11 @@ public class KNN {
 		}
 	}
 
-	public int[] getPredictions(){
+    /**
+     * Returns the predicted classes for each test instance.
+     * @return the predicted classes for each test instance.
+     */
+    public int[] getPredictions(){
 		return prediction;
 	}
 	

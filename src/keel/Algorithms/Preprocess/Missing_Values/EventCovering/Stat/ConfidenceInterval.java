@@ -28,12 +28,32 @@
 **********************************************************************/
 
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering.Stat;
+
+/**
+ * Class that implements a confidence interval.
+ * @author unknown
+ */
 public class ConfidenceInterval {
 
-  public double min;
-  public double value;
-  public double max;
-  public double confidence;
+    /**
+     * Minimum value of the interval.
+     */
+    public double min;
+
+    /**
+     * Value inside the interval.
+     */
+    public double value;
+
+    /**
+     * Maximum value of the interval.
+     */
+    public double max;
+
+    /**
+     * Confidence of the value in the interval.
+     */
+    public double confidence;
 
   public String toString() {
     return value+" ["+min+","+max+"]("+(confidence*100)+"%)";

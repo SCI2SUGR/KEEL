@@ -47,15 +47,23 @@ import java.io.*;
 import java.util.*;
 
 
-
-public class doRbfnDecCl {
 /**
  * <p>
  * This class allows the building of RBF neural networks with a decremental algorithm
  * This class contains a MAIN function that reads parameters, builds the net, and produces the results
  * yielded by the net when is applied to the test data set.
  * </p>
+ *  <p>
+ * @author Writen by Maria Dolores Perez Godoy, Antonio Rivera Rivas and Victor Manuel Rivas Santos (University of Jaen) 19/03/2004
+ * @author Modified by Victor Rivas (University of Jaen)
+ * @author Modified by Victor Rivas (University of Jaen) 24/06/2006
+ * @author Modified by Maria Dolores Perez Godoy (University of Jaen) 17/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
  */
+public class doRbfnDecCl {
+
 
 
 	// Filename for training data set
@@ -261,6 +269,7 @@ public class doRbfnDecCl {
      * Main Function
      * @param args the Command line arguments. Only one is processed: the name of the file containing the
      *				parameters
+     * @throws java.io.IOException if the algorithm exits with an error.
      */
 
 

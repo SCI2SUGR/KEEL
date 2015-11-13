@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Instance_Selection.ENN;
+
 /**
  * 
  * File: Main.java
@@ -39,8 +42,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Preprocess.Instance_Selection.ENN;
-
 public class Main {
 	/** 
 	 * <p>

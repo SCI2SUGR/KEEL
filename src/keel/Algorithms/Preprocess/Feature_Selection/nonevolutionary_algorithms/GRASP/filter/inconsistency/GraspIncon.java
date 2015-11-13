@@ -233,7 +233,8 @@ public class GraspIncon {
     
     }
 
-    /** Creates a new instance of GraspIncon  */
+    /** Creates a new instance of GraspIncon
+     * @param ficParametros Configuration file. */
     public GraspIncon(String ficParametros) {
         
         /* loads the parameter file */

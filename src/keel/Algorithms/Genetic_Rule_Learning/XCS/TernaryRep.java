@@ -221,8 +221,10 @@ public class TernaryRep implements Attribute{
         return (double)pos;
     } // end getAllele        
 
-
-
+    /**
+     * Returns the attribute of this allele
+     * @return  the attribute of this allele
+     */
     public Attribute getAttributeAllele(){
 	return this;
     }
@@ -405,8 +407,26 @@ public class TernaryRep implements Attribute{
 
    public void verifyInterval(){}
 
+   /**
+     *  Prints the classifier representation on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param conv covariance matrix
+     */
    public void printNotNorm(PrintWriter fout, Vector conv){}
+   
+   /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     */
    public void printNotNorm(PrintWriter fout, int lo){}
+   
+   /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     * @param up upper value in the interval.
+     */
    public void printNotNorm(PrintWriter fout, double lo, double up){}
 	
 

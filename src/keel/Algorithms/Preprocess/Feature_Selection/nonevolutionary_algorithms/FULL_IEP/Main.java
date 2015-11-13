@@ -27,24 +27,30 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.FULL_IEP;
+
 /**
+ * <p>
+ * This class calls the main method
+ * </p>
  * <p>
  * @author Ignacio Robles Paiz (University of Granada) 26/06/2010
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.FULL_IEP;
-
 public class Main {
-/**
- * <p>
- * This class calls the main method
- * </p>
- */
 
 
+/** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 */
   public static void main (String args[]) {
 
     Full alg;

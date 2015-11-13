@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Basic;
+
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+import keel.Dataset.InstanceSet;
+
+import org.core.Files;
+
 /**
  * 
  * File: KNN.java
@@ -39,15 +49,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Preprocess.Basic;
-
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-import keel.Dataset.InstanceSet;
-
-import org.core.Files;
-
 public class KNN {
 
 
@@ -59,6 +60,9 @@ public class KNN {
 	 * @param filename Name of output file
 	 * @param realClass Real output of instances
 	 * @param prediction Predicted output for instances
+     * @param inputs input attributes.
+     * @param output output attribute.
+     * @param relation Relation String.
 	 */
 	public static void writeOutput(String filename, int [][] realClass, int [][] prediction, Attribute inputs[], Attribute output, String relation) {
 	
@@ -197,6 +201,10 @@ public class KNN {
 	 * Evaluates a instance to predict its class.
 	 * 
 	 * @param example Instance evaluated 
+     * @param trainData Training dataset. 
+     * @param nClasses number of classes.
+     * @param trainOutput classes of the examples in the training dataset.
+     * @param k number of nearest neighbours considered.
 	 * @return Class predicted
 	 * 
 	 */

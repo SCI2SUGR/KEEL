@@ -27,16 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Manuel Chica Serrano (University of Jaen) 01/09/2005
- * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
- * @author Modified by Cristobal Jose Carmona del Jesus (University of Jaen) 19/12/2008
- * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 03/02/2009
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.FOCUS;
 
@@ -45,8 +36,7 @@ import java.util.*;
 import keel.Dataset.*;
 import keel.Algorithms.Preprocess.Feature_Selection.Datos;
 
-public class FocusIncon {
-    /**
+/**
      * <p>
      * Main class of focus method for feature selection using inconsistency ratio as evaluation measure.
      * 
@@ -54,7 +44,17 @@ public class FocusIncon {
  		 * all posible features subsets. The stopping criteria will be satisfy a determinate inconsistency ratio
  		 * (read as parameter)
      * </p>
-     */    
+     * <p>
+ * @author Written by Manuel Chica Serrano (University of Jaen) 01/09/2005
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
+ * @author Modified by Cristobal Jose Carmona del Jesus (University of Jaen) 19/12/2008
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 03/02/2009
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
+public class FocusIncon {
+        
     
     /** Datos class with all information about datasets and feature selection methods  */
     private Datos data;

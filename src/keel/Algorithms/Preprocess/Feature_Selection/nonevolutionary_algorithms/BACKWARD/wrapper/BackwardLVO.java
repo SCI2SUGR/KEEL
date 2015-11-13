@@ -202,6 +202,7 @@ public class BackwardLVO {
     /**         METHODS             */
     /**
      * Creates a new instance of BackwardLVO
+     * @param paramsFile Configuration file.
      */
     public BackwardLVO(String paramsFile) {
         

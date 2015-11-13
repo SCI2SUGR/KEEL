@@ -260,7 +260,8 @@ public class SSGAIntegerIncon {
     
     /* ------------ METHODS ------------ */
     
-    /** Creates a new instance of SSGAIntegerIncon */
+    /** Creates a new instance of SSGAIntegerIncon
+     * @param ficParametros Configuration file*/
     public SSGAIntegerIncon(String ficParametros) {
         
         /* load the parameter file from the Parametros class */

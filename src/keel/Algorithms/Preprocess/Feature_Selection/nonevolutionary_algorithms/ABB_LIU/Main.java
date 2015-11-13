@@ -36,15 +36,25 @@
  */
 
 package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.ABB_LIU;
-
-public class Main {
 /**
  * <p>
  * This class calls the main method
+ * @author Ignacio Robles Paiz (University of Granada) 26/06/2010
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
+public class Main {
 
 
+/** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
   public static void main (String args[]) {
 
     ABB alg;

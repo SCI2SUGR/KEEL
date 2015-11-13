@@ -63,14 +63,7 @@ import java.util.StringTokenizer;
 
 /**
  * DEGL.java
-	Isaac Triguero Velazquez.
- * @param k Number of neighbors
- * @param Population Size.
- * @param ParticleSize.
- * @param Scaling Factor.
- * @param Crossover rate.
- * @param Strategy (1-5).
- * @param MaxIter
+ * DEGL prototype generator.
  * @author Isaac Triguero
  * @version 1.0
  */
@@ -90,7 +83,15 @@ public class DEGLGenerator extends PrototypeGenerator {
   private double WeightFactorAdap[];
   private int neighboors; /// numbers of neighboor to search.
   private String WeightScheme;
-  protected int numberOfPrototypes;  // Particle size is the percentage
+
+    /**
+     * Number of prototypes considered
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+    
+  /**
+     * Number of classes considered
+     */
   protected int numberOfClass;  // Particle size is the percentage
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
@@ -98,8 +99,15 @@ public class DEGLGenerator extends PrototypeGenerator {
   
   /**
    * Build a new DEGLGenerator Algorithm
+     * @param _trainingDataSet training dataset to build the model.
+     * @param neigbors Number of neighbors to consider
+     * @param poblacion population size.
+     * @param F Scaling factor
+     * @param iteraciones maximum number of iterations.
+     * @param perc particle size.
+     * @param CR cross rate.
+     * @param strg strategy of the algorithm (from 1 to 5)
    */
-  
   public DEGLGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double F, double CR, int strg)
   {
       super(_trainingDataSet);
@@ -143,8 +151,15 @@ public class DEGLGenerator extends PrototypeGenerator {
       //numberOfPrototypes = getSetSizeFromPercentage(parameters.getNextAsDouble());
   }
   
-  
-  public PrototypeSet mutant(PrototypeSet population[], int actual, int bestFitnessIndex, int bestNeighboor){
+    /**
+     * Mutation operator.
+     * @param population set of populations.
+     * @param actual actual population.
+     * @param bestFitnessIndex best fitness index.
+     * @param bestNeighboor best neighbour index.
+     * @return prototype set after the mutation operator.
+     */
+    public PrototypeSet mutant(PrototypeSet population[], int actual, int bestFitnessIndex, int bestNeighboor){
 	  
 	  
 	  PrototypeSet mutant = new PrototypeSet(population[actual].size());

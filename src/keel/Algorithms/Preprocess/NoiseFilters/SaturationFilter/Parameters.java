@@ -53,21 +53,60 @@ public class Parameters {
 	private static BufferedReader br;
 	
 	// parameters of the algorithm ------------------
-	public static String algorithmName;
+     /**
+     * Algorithm name.
+     */
+    	public static String algorithmName;
 	
-	public static String trainInputFile;
-	public static String testInputFile;
+    /**
+     * Original Training data filename.
+     */
+    public static String trainInputFile;
+
+    /**
+     * Original Test data filename.
+     */
+    public static String testInputFile;
 	
-	public static String trainOutputFile;
-	public static String testOutputFile;
-	public static String logOutputFile;
+    /**
+     *  Modified Training data filename.
+     */
+    public static String trainOutputFile;
+
+    /**
+     *  Modified Training data filename.
+     */
+    public static String testOutputFile;
+
+    /**
+     * Log information output file.
+     */
+    public static String logOutputFile;
 	
-	public static int numClasses;
-	public static int numAttributes;
-	public static int numInstances;
+    /**
+     * Number of classes.
+     */
+    public static int numClasses;
+
+    /**
+     * Number of attributes.
+     */
+    public static int numAttributes;
+
+    /**
+     * Number of instances.
+     */
+    public static int numInstances;
 	
-	public static long seed;
-	public static double noiseSensitivity;
+    /**
+     * Seed for random purposes.
+     */
+    public static long seed;
+
+    /**
+     * Noise Sensitivity.
+     */
+    public static double noiseSensitivity;
 	// ----------------------------------------------
 	
 

@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Preprocess.Instance_Selection.GGA;
+
+import keel.Algorithms.Preprocess.Basic.*;
+
+import org.core.*;
+import java.util.StringTokenizer;
+import java.util.Arrays;
+
 /**
  * 
  * File: GGA.java
@@ -38,15 +48,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Preprocess.Instance_Selection.GGA;
-
-import keel.Algorithms.Preprocess.Basic.*;
-
-import org.core.*;
-import java.util.StringTokenizer;
-import java.util.Arrays;
-
 public class GGA extends Metodo {
 
 	/*Own parameters of the algorithm*/
@@ -63,6 +64,7 @@ public class GGA extends Metodo {
     /**
      * Default builder. Construct the algoritm by using the superclass builder.
 	 *
+     * @param ficheroScript Configuration file.
      */
 	 public GGA (String ficheroScript) {
 		super (ficheroScript);

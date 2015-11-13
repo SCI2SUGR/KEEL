@@ -27,23 +27,34 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 31/12/2005
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
+
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering;
 
 /**
  * <p>
  * this class store a pair of values (String) and their frequency (int)
  * </p>
+ *  <p>
+ * @author Written by Julián Luengo Martín 31/12/2005
+ * @version 0.3
+ * @since JDK 1.5
+ * </p>
  */
 public class ValuesFreq {
+    
+    /**
+     * First String value.
+     */
     protected String Value1;
+    
+    /**
+     * Second String value.
+     */
     protected String Value2;
+    
+    /**
+     * Frequecy of the value.
+     */
     protected int Freq;
 
     /**

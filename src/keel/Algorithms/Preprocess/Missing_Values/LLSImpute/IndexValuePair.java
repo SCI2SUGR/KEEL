@@ -29,11 +29,28 @@
 
 package keel.Algorithms.Preprocess.Missing_Values.LLSImpute;
 
+/**
+ * Index value pair. To be able to sort elements with this structure.
+ * @author unknown
+ */
 public class IndexValuePair implements Comparable{
-	public double value;
-	public int index;
+
+    /**
+     * Value stored.
+     */
+    public double value;
+
+    /**
+     * Index of the value stored.
+     */
+    public int index;
 	
-	public IndexValuePair(double newvalue,int newindex){
+    /**
+     * Parameter construnctor.
+     * @param newvalue value to set.
+     * @param newindex index to set.
+     */
+    public IndexValuePair(double newvalue,int newindex){
 		value = newvalue;
 		index = newindex;
 	}

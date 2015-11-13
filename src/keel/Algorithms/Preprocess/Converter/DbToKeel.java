@@ -42,12 +42,10 @@ import java.sql.*;
  * <p>
  * <b> DbToKeel </b>
  * </p>
+ * This class extends from the Importer class. It is used to read 
+ * data from a SQL database table and transform them to the KEEL format.
  *
- * Clase extendida de la clase Importer.
- * Esta clase es utilizada para leer datos localizados en tablas de bases de datos SQL
- * y convertirlos a formato keel.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class DbToKeel extends Importer {
@@ -59,19 +57,15 @@ public class DbToKeel extends Importer {
     private String login = new String();// Variable que almacena el password o contraseÃ±a de la base de datos.
     private String password = new String();
 
-    /*
-     * Constructor de la Clase DbToKeel. Inicializa los valores de las variables
-     * miembro driverName, databaseURL, tableName, login y password
-     * con el valor de los parÃ¡metros driverNameUser, databaseURLUser, tableNameUser,
-     * loginUser, passwordUser respectivamente.
+    /**
+     * DbToKeel class Constructor.
+     * Initializes the variables driverName, databaseURL, tableName, login y password.
      *
-     * @param String driverNameUser Variable de tipo String con el valor del driver de la conexion a la base de datos.
-     * @param String conecctionUser Variable de tipo String con el tipo de conexion a la base de datos.
-     * @param String databaseURL: Variable que almacena la direcciÃ³n URL de la base de datos
-     * de la forma jdbc:subprotocol:subname donde subprotocol es el nombre
-     * del controlador, y subname es una referencia controlador-especÃ­fica a la base de datos.
-     * @param String loginUser Variable de tipo String con el login o nombre de usuario para conectarse a la base de datos.
-     * @param String passwordUser Variable de tipo String con el password o contraseÃ±a para conectarse a la base de datos.
+     * @param driverNameUser driver value to make the connection with the database. 
+     * @param databaseURLUser database URL with the format jdbc:subprotocol:subname.
+     * @param tableNameUser table name to read and transform.
+     * @param loginUser Database user login.
+     * @param passwordUser user password.
      *
      */
     public DbToKeel(String driverNameUser, String databaseURLUser, String tableNameUser, String loginUser, String passwordUser) {
@@ -84,14 +78,13 @@ public class DbToKeel extends Importer {
     }
 
 
-    /*
-     * Metodo utilizado para convertir los datos de la tabla dentro de una base
-     * de datos SQL a un fichero de datos con formato keel en el fichero
-     * indicado por la ruta pathnameOutput.
+    /**
+     * Method used to transform the data from the SQL database table to 
+     * KEEL format file which will be stored in the second file given.
      *
-     * @param pathnameOutput ruta con los datos en formato keel
+     * @param pathnameOutput KEEL file path.
      *
-     * @throws Exception
+     * @throws Exception if the files can not be read or written or the connection can not be done.
      */
     public void Start(String pathnameOutput) throws Exception {
         Pattern p;

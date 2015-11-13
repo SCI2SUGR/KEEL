@@ -29,9 +29,29 @@
 
 package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.BACKWARD.filter;
 
+/**
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the classifier and executes it.
+ * 
+ * @author Undefined
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Main {
 
 
+    /** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
   public static void main (String args[]) {
 
     BackwardIncon bck;

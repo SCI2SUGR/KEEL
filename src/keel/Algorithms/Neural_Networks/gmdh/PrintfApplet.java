@@ -75,6 +75,10 @@ import java.awt.event.ItemListener;
 import java.awt.event.TextEvent;
 import java.awt.event.TextListener;
 
+/**
+ * Applet to print the different configurations and results of the NN.
+ * @author undefined
+ */
 public class PrintfApplet extends Applet {
   public void init() {
     setLayout(new BorderLayout());

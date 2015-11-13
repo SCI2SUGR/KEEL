@@ -43,30 +43,23 @@ import java.util.regex.Pattern;
  * <b> KeelToUci </b>
  * </p>
  *
- * Clase extendida de la clase Exporter. Esta clase permite convertir
- * un fichero de datos con formato Keel a un fichero codificado en
- * formato Uci o C4.5. Los datos codificados segÃºn este formato estÃ¡n
- * agrupados de tal manera contienen dos ficheros, un fichero de
- * nombres con extensiÃ³n ".names" y un fichero de datos con extensiÃ³n
- * ".data".
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * This class extends from the Exporter class. It is used to read 
+ * data with KEEL format and transform them to the UCI format. 
+ * This format has two different files:
+ *  - Name file that stores all the names of the attributes and class ".names".
+ *  - Data file with all the data ".data".
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class KeelToUci extends Exporter {
 
 
-    /*
-     * Constructor de la Clase KeelToUci. Inicializa los valores
-     * de las variables miembro nullValue (valor nulo para para el fichero de datos) con el valor
-     * del parÃ¡metro nullValueUser y la variable separator (el separador de los datos
-     * del fichero de datos ".data") con el valor del parÃ¡metro separatorUser.
+    /** KeelToUci class Constructor.
+     * Initializes the variables that store the symbols used to identify null 
+     * values and separator between data.
      *
-     * @param  nullValueUser. Variable de tipo String con el valor nulo del fichero
-     * de datos ".data" .
-     *
-     * @param  separatorUser. Variable de tipo String con el separador de los datos
-     * para el fichero de datos ".data".
+     * @param  nullValueUser. Null value symbols.
+     * @param  separatorUser. Separator symbols used in the csv format.
      */
     public KeelToUci(String nullValueUser, String separatorUser) {
 
@@ -76,22 +69,16 @@ public class KeelToUci extends Exporter {
     }
 
 
-    /*
-     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
-     * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al mÃ©todo Save() para crear los ficheros de datos con formato C4.5 indicado
-     * con los parÃ¡metros pathnameOutputData (fichero de datos con extensiÃ³n ".data")
-     * y pathnameOutputNames (fichero de nombres con extensiÃ³n ".names").
+    /**
+     * Method used to transform the data from the KEEL file given as parameter to 
+     * UCI format files which will be stored in the second file given. It calls the method
+     * Start of its super class Exporter and then call the method Save.
      *
-     * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
+     * @param pathnameInput KEEL file path.
+     * @param pathnameOutputData UCI data file path.
+     * @param pathnameOutputNames UCI names file path.
      *
-     * @param  String pathnameOutputData Variable con la ruta del fichero de datos de salida
-     * con formato C4.5. (fichero ".data").
-     *
-     * @param  String pathnameOutputNames Variable con la ruta del fichero de nombres de salida
-     * con formato C4.5. (fichero ".names").
-     *
-     * @throws Exception.
+     * @throws Exception if the files can not be read or written.
      */
     public void Start(String pathnameInput, String pathnameOutputData, String pathnameOutputNames) throws Exception {
         super.Start(pathnameInput);
@@ -101,21 +88,12 @@ public class KeelToUci extends Exporter {
 
     }//end Start()
 
-    /*
-     * MÃ©todo utilizado para crear los ficheros con formato UCI (fichero
-     * de nombres con extensiÃ³n ".names" y fichero de datos con extensiÃ³n
-     * ".data") indicados por los parÃ¡metros pathnameOutputNames y pathnameOutputData.
-     * Este fichero se crea a partir  de los datos almacenados en el vector de objetos de la clase
-     * Attribute, el vector data[], y la variable nameRelation.
-     *
-     * @param String pathnameOutputNames. Variable de tipo String con
-     * la ruta del fichero de nombres (".names") de salida.
-     *
-     * @param String pathnameOutputData. Variable de tipo String con
-     * la ruta del fichero de datos (".data") de salida.
-     *
-     * @throws Exception.
-     *
+    /**
+     * Method that creates the output files with UCI format given as parameter 
+     * using all the structures built by the start method of the Exporter class.  
+     * @param pathnameOutputNames UCI names file path to generate (".names"). 
+     * @param pathnameOutputData UCI data file path to generate (".data"). 
+     * @throws Exception if the file can not be written.
      */
     public void Save(String pathnameOutputNames, String pathnameOutputData) throws Exception {
         Attribute attributeCurrent = new Attribute();

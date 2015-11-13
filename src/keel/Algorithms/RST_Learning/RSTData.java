@@ -28,6 +28,14 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.RST_Learning;
+
+import java.util.Arrays;
+
+import keel.Algorithms.RST_Learning.Operators;
+
 /**
  * 
  * File: RSTData.java
@@ -39,13 +47,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.RST_Learning;
-
-import java.util.Arrays;
-
-import keel.Algorithms.RST_Learning.Operators;
-
 public class RSTData {
 
 	private static double data[][];

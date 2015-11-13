@@ -26,15 +26,7 @@
 	along with this program.  If not, see http://www.gnu.org/licenses/
   
 **********************************************************************/
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.CVCommitteesFilter;
 
@@ -54,6 +46,13 @@ import org.core.Randomize;
  * <p>
  * This class implements a stratified scheme (equal number of examples of each class in each partition) to partition a dataset
  * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
  */
 public class PartitionScheme {
 
@@ -71,6 +70,8 @@ public class PartitionScheme {
 	 * <p>
 	 * It reads the training set and creates the partitions
 	 * </p>
+     * @param source_file Training data filename.
+     * @param np number of partitions.
 	 */
 	public PartitionScheme(String source_file, int np){
 			
@@ -238,9 +239,9 @@ public class PartitionScheme {
 	
 	/**
 	 * <p>
-	 * It returns the indexes of the original instances in all partitions
+	 * It returns the indeces of the original instances in all partitions
 	 * </p>
-	 * @return the indexes of the instances in each partition
+	 * @return the indeces of the instances in each partition
 	 */
 	public Vector[] getPartitions(){
 		return partitions;
@@ -354,8 +355,13 @@ public class PartitionScheme {
 		}
   	}
   	
-  	
-  	public int getPartitionOfInstance(int instanceIndex){
+    /**
+     * Returns the partition where the instance with the given index belongs to.
+     * @param instanceIndex given instance's index.
+     * @return  the partition where the instance with the given index belongs to.
+     *
+     */
+    public int getPartitionOfInstance(int instanceIndex){
   		
   		return belongTo[instanceIndex];
   	}

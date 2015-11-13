@@ -283,6 +283,8 @@ public class UCS {
  * set (0) or testing with the train set (1)
  * @param globalResults contains the addition of all classified, not classified and correct 
  * and wrong classified examples of the exploit executions in the train.
+     * @param writeExpOut determines is an output file with expected-real 
+ * output has to be writen.
  */
 
   public void doOneTestExperiment( Environment tEnv, int typeOfTest, int [] globalResults, boolean writeExpOut ){
@@ -333,6 +335,7 @@ public class UCS {
  * GA and the update parameters routines if it is necessary. 
  * </p>
  * @param envState is the new example that has to be classified. 
+     * @param classOfExample  example class.
  * @param tStamp is the current time stamp of the system. It is used to decide 
  * if the GA has to be applied, and to create new classifiers. 
  */		
@@ -361,13 +364,15 @@ public class UCS {
  * from the prediction array (it is not stochastic)
  * </p>
  * @param envState is the new example that has to be classified. 
+     * @param classOfExample  example class. 
  * @param tStamp is the current time stamp of the system. It's used to 
  * decide if the GA has to be applied, and to create new classifiers. 
  * @param windowExecutionResults is an array where the results are set 
  * down to make statistics. 
  * @param typeOfTest indicates the test set kind (if is the test set (0) or the train
  * set (1) ) of the run.
- * @param writeExpOut determines is an output file with expected-real 
+     * @param isTest determines if it is a test result or not.
+ * @param writeExpOut determines if an output file with expected-real 
  * output has to be writen.
  */
 

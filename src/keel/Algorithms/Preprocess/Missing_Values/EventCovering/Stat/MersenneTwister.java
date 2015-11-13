@@ -207,9 +207,8 @@ public class MersenneTwister extends java.util.Random implements Serializable
 	mag01[1] = MATRIX_A;
         }
     
-    /**
-     * Returns an integer with <i>bits</i> bits filled with a random number.
-     */
+    
+    @Override
     synchronized protected int next(int bits)
 	{
 	int y;
@@ -261,13 +260,12 @@ public class MersenneTwister extends java.util.Random implements Serializable
 	in.defaultReadObject();
 	}    
 
-    /** This method is missing from jdk 1.0.x and below.  JDK 1.1
-	includes this for us, but what the heck.*/
+    
+    @Override
     public boolean nextBoolean() {return next(1) != 0;}
 
-    /** This method is missing from JDK 1.1 and below.  JDK 1.2
-	includes this for us, but what the heck. */
-
+    
+    @Override
     public int nextInt(int n) {
         if (n<=0)
             throw new IllegalArgumentException("n must be positive");
@@ -283,17 +281,16 @@ public class MersenneTwister extends java.util.Random implements Serializable
         return val;
     }
 
-    /** A bug fix for versions of JDK 1.1 and below.  JDK 1.2 fixes
-	this for us, but what the heck. */
+   
+    @Override
     public double nextDouble()
 	{
 	return (((long)next(26) << 27) + next(27))
 	    / (double)(1L << 53);
 	}
 
-    /** A bug fix for versions of JDK 1.1 and below.  JDK 1.2 fixes
-	this for us, but what the heck. */
-
+    
+    @Override
     public float nextFloat()
 	{
 	return next(24) / ((float)(1 << 24));
@@ -309,22 +306,25 @@ public class MersenneTwister extends java.util.Random implements Serializable
 	    bytes[x] = (byte)next(8);
 	}
 
-    /** For completeness' sake, though it's not in java.util.Random.  */
-    
+    /** Returns the next pseudo-random char. For completeness' sake, though it's not in java.util.Random.
+     * @return  the next pseudo-random char
+     */
     public char nextChar()
 	{
 	// chars are 16-bit UniCode values
 	return (char)(next(16));
 	}
 
-    /** For completeness' sake, though it's not in java.util.Random. */
+    /** Returns the next pseudo-random char. For completeness' sake, though it's not in java.util.Random.
+     * @return  the next pseudo-random short.  */
     
     public short nextShort()
 	{
 	return (short)(next(16));
 	}
 
-    /** For completeness' sake, though it's not in java.util.Random.  */
+    /** Returns the next pseudo-random Byte. For completeness' sake, though it's not in java.util.Random.
+     * @return the next pseudo-random Byte. */
 
     public byte nextByte()
 	{
@@ -334,6 +334,7 @@ public class MersenneTwister extends java.util.Random implements Serializable
 
     /**
      * Tests the code.
+     * @param args main args.
      */
     public static void main(String args[])
         { 

@@ -29,6 +29,10 @@
 
 package keel.Algorithms.PSO_Learning.PSOLDA;
 
+
+
+import keel.Algorithms.Statistical_Classifiers.Shared.MatrixCalcs.*;
+
 /**
  * <p>Title: AD</p>
  *
@@ -37,10 +41,6 @@ package keel.Algorithms.PSO_Learning.PSOLDA;
  * @author Jose A. Saez Munoz
  * @version 1.0
  */
-
-
-import keel.Algorithms.Statistical_Classifiers.Shared.MatrixCalcs.*;
-
 
 public class AD{
 	
@@ -53,7 +53,11 @@ public class AD{
     int nelem;
     int nejemplos[];
     
-    
+    /**
+     * Parameter constructor.
+     * @param vejemplos examples considered.
+     * @param vdeseado examples desired.
+     */
     public AD(double [][]vejemplos, double [][]vdeseado) {
         ejemplos=vejemplos; deseado=vdeseado;
         nentradas=ejemplos[0].length; nsalidas=deseado[0].length;
@@ -67,6 +71,11 @@ public class AD{
         }
     }
         
+    /**
+     * Computes the different parameters for the algorithm PSOLDA
+     * @throws ErrorDimension Dimension matrix error.
+     * @throws ErrorSingular Sigular matrix error.
+     */
     public void CalculaParametros() 
     
     	throws ErrorDimension, ErrorSingular {
@@ -108,7 +117,13 @@ public class AD{
         }               
     }
                                      
-    
+    /**
+     * Computes the distances for the values given.
+     * @param x values given to compute the distance.
+     * @return the distances computed.
+     * @throws ErrorDimension Dimension matrix error.
+     * @throws ErrorSingular Sigular matrix error.
+     */
     public  double [] distancias(double []x) throws ErrorDimension,ErrorSingular {
     	
     	// Distance from each example to each prototype is calculated
@@ -137,7 +152,12 @@ public class AD{
         return d;
     }
     
-    
+    /**
+     * Computes the Coeficients 
+     * @return the Coeficients 
+     * @throws ErrorDimension Dimension matrix error.
+     * @throws ErrorSingular Sigular matrix error.
+     */
     public String[] Coeficientes() throws ErrorDimension,ErrorSingular {
     	
     	String res="";    	
@@ -175,7 +195,11 @@ public class AD{
         return discriminantes;
     }
                        
-                        
+    /**
+     * Returns the index of the maximum element of the array given.
+     * @param x array given.
+     * @return the index of the maximum element of the array given.
+     */
     public int argmax(double []x){
     	double max=x[0]; int imax=0;
     	for (int i=1;i<x.length;i++)

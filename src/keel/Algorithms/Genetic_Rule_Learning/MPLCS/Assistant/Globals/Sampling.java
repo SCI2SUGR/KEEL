@@ -29,12 +29,9 @@
 
 package keel.Algorithms.Genetic_Rule_Learning.MPLCS.Assistant.Globals;
 
-/*
- * Sampling.java
- *
- */
 
 /**
+ * Sampling.java
  * This class helps managing a sampling without replacement process 
  */
 public class Sampling {
@@ -47,13 +44,21 @@ public class Sampling {
 		num=maxSize;
 	}
 
-	public Sampling(int _maxSize) {
+    /**
+     * Parameter Constructor. Generates a new Sampling object with the maximum size given.
+     * @param _maxSize maximum size given for the Sampling object.
+     */
+    public Sampling(int _maxSize) {
 		maxSize=_maxSize;
 		sample=new int[maxSize];
 		initSampling();
 	}
 
-	public int getSample() {
+    /**
+     * Returns a sample contained sampling vector. if the Sampling vector is not instantiated, the function will do it.
+     * @return a sample contained sampling vector.
+     */
+    public int getSample() {
 		int pos=Rand.getInteger(0,num-1);
 		int value=sample[pos];
 		sample[pos]=sample[num-1];

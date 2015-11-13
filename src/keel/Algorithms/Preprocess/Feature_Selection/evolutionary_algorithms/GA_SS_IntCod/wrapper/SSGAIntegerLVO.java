@@ -27,17 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * SSGAIntegerLVO.java
- * @author Written by Manuel Chica Serrano (University of Jaen) 01/09/2005
- * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
- * @author Modified by Cristobal Jose Carmona del Jesus (University of Jaen) 19/12/2008
- * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 03/02/2009
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 
 package keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.GA_SS_IntCod.wrapper;
@@ -48,11 +38,10 @@ import keel.Dataset.Attributes;
 import keel.Algorithms.Preprocess.Feature_Selection.Datos;
 import keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.*;
 
-
-public class SSGAIntegerLVO {
-    /**
-     * <p>
-     * Main class for stationary state GA with integer encoding for feature selection using LVO as wrapper algorithm
+/**
+ * <p>
+ * SSGAIntegerLVO.java
+ * Main class for stationary state GA with integer encoding for feature selection using LVO as wrapper algorithm
      * Inputs: seed, nearest neighbours for KNN Classifier, population size, number of evaluations, number of selected features
      * Encoding: Integer
      * Selection: NO SELECTION. The two best individual have been selected
@@ -60,8 +49,15 @@ public class SSGAIntegerLVO {
      * Crossover and mutation in one point
      * Fitness: %hits
      * Stopping criteria: number of evaluations
-     * </p>
-     */
+ * @author Written by Manuel Chica Serrano (University of Jaen) 01/09/2005
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
+ * @author Modified by Cristobal Jose Carmona del Jesus (University of Jaen) 19/12/2008
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 03/02/2009
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
+public class SSGAIntegerLVO {
 
     /** Datos class with all information about datasets and feature selection methods  */
     private Datos data;

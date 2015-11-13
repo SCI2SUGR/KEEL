@@ -29,13 +29,7 @@
 
 package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.SFS_LIU_FS;
 
-/**
- * <p>
- * @author Written by Ignacio Robles Paiz (University of Granada) 23/06/2010
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 import java.util.*;
 import org.core.*;
@@ -44,7 +38,13 @@ import keel.Dataset.*;
 import keel.Algorithms.Preprocess.Feature_Selection.*;
 
 
-
+/**
+ * <p> SFS Algorithm
+ * @author Written by Ignacio Robles Paiz (University of Granada) 23/06/2010
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class SFS {
 /**
  * <p>
@@ -234,6 +234,7 @@ public class SFS {
      * <p>
      * Creates a new instance of SA
      * </p>
+     * @param ficParametros Configuration file.
      */
     public SFS(String ficParametros) {
 

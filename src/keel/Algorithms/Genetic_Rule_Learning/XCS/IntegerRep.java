@@ -103,6 +103,7 @@ public class IntegerRep implements Attribute{
  * Does create a Integer representation for de environmental value given as a parameter
  * </p>
  * @param env is the environmental attribute state 
+     * @param i index of the attribute bound to mutate with.
  */
  
   public IntegerRep (double env, int i){
@@ -170,6 +171,8 @@ public class IntegerRep implements Attribute{
  * </p>
  * @param lValue is the lower bound value.
  * @param rValue is the upper bound value.
+     * @param udLimit is the lower limit value.
+     * @param upLimit is the upper limit value.
  */
   public  IntegerRep(int lValue, int rValue,int udLimit, int upLimit){        
     minimumValue = udLimit;
@@ -335,6 +338,7 @@ public class IntegerRep implements Attribute{
  * <p>
  * Muates the 2 reals contained in the representation.
  * </p>
+     * @param currentState environmental current state.
  */
   public void mutate(double currentState) {        
     lowerBound = integerMutation.mutateLower(lowerBound,upperBound, (int)currentState, (maximumValue-minimumValue+1));
@@ -452,15 +456,30 @@ public class IntegerRep implements Attribute{
 	return 0.0;
    }
 
+   /**
+     *  Prints the classifier representation on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param conv covariance matrix
+     */
    public void printNotNorm(PrintWriter fout, Vector conv){
    	fout.println("  "+((String)conv.elementAt(lowerBound))+"  "+((String)conv.elementAt(lowerBound))+"  ");	
    }
    
+   /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     */
    public void printNotNorm(PrintWriter fout, int lo){
    	fout.print (" "+(lowerBound+lo)+" "+(upperBound+lo)+" ");
    }
    
-   
+   /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     * @param up upper value in the interval.
+     */
    public void printNotNorm(PrintWriter fout, double lo, double up){}
 	
 

@@ -41,12 +41,10 @@ import java.sql.*;
  * <p>
  * <b> KeelToDb </b>
  * </p>
+ * This class extends from the Exporter class. It is used to read 
+ * data with KEEL format and transform them to a new SQL database table. 
  *
- * Clase extendida de la clase Exporter. Esta clase permite convertir
- * un fichero de datos con formato Keel a una nueva tabla en una base de
- * datos SQL.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class KeelToDb extends Exporter {
@@ -58,19 +56,16 @@ public class KeelToDb extends Exporter {
     private String login = new String();// Variable que almacena el password o contraseÃ±a de la base de datos.
     private String password = new String();
 
-    /*
-     * Constructor de la Clase DbToKeel. Inicializa los valores de las variables
-     * miembro driverName, databaseURL, tableName, login y password
-     * con el valor de los parÃ¡metros driverNameUser, databaseURLUser, tableNameUser, loginUser, passwordUser respectivamente.
-     * TambiÃ©n inicializa el valor para la variable miembro nullValue a una cadena con valor "null".
+    
+    /**
+     * KeelToDb class Constructor.
+     * Initializes the variables driverName, databaseURL, tableName, login y password.
      *
-     * @param String driverNameUser Variable de tipo String con el valor del driver de la conexion a la base de datos.
-     * @param String databaseURL: Variable que almacena la direcciÃ³n URL de la base de datos
-     * de la forma jdbc:subprotocol:subname donde subprotocol es el nombre
-     * del controlador, y subname es una referencia controlador-especÃ­fica a la base de datos.
-     * @param String tableNameUser Variable de tpo String con el nombre de la tabla que contiene los datos.
-     * @param String loginUser Variable de tipo String con el login o nombre de usuario para conectarse a la base de datos.
-     * @param String passwordUser Variable de tipo String con el password o contraseÃ±a para conectarse a la base de datos.
+     * @param driverNameUser driver value to make the connection with the database. 
+     * @param databaseURLUser database URL with the format jdbc:subprotocol:subname.
+     * @param tableNameUser table name to read and transform.
+     * @param loginUser Database user login.
+     * @param passwordUser user password.
      *
      */
     public KeelToDb(String driverNameUser, String databaseURLUser, String tableNameUser, String loginUser, String passwordUser) {
@@ -83,14 +78,13 @@ public class KeelToDb extends Exporter {
 
     }
 
-    /*
-     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
-     * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al mÃ©todo Save() para crear una nueva tabla en la base de datos.
+    /**
+     * Method used to transform the data from the KEEL file given as parameter to 
+     * a new SQL database table. It calls the method Start of its super class Exporter and then call the method Save.
      *
-     * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
+     * @param pathnameInput KEEL file path.
      *
-     * @throws Exception.
+     * @throws Exception if the files can not be read or written or the connection can not be done.
      */
     @Override
     public void Start(String pathnameInput) throws Exception {
@@ -102,13 +96,11 @@ public class KeelToDb extends Exporter {
 
     }//end Start()
 
-    /*
-     * MÃ©todo utilizado para crear la tabla en la base de datos SQL
-     * a partir de los datos almacenados en el vector de objetos de la clase
-     * Attribute, el vector data[], y la variable nameRelation.
-     *
-     * @throws Exception.
-     *
+    
+    /**
+     * Method that creates the new SQL database table 
+     * using all the structures built by the start method of the Exporter class.  
+     * @throws Exception if the connection can not be done.
      */
     public void Save() throws Exception {
         Pattern p;
@@ -243,15 +235,10 @@ public class KeelToDb extends Exporter {
 
     }//end Save()
 
-    /*
-     * MÃ©todo utilizado para poner en mayÃºscula el primer carÃ¡cter de una cadena pasada
-     * por parÃ¡metro.
-     *
-     * @param line. Variable String que almacena la cadena
-     * a la que se pretende poner el primer carÃ¡cter en mayÃºscula.
-     *
-     * @return Devuelve una cadena igual a la cadena pasada por parÃ¡metro
-     * pero con el primer carÃ¡cter en mayÃºscula.
+    /**
+     * Sets as capital letter the first one of the line given as parameter.
+     * @param line line given.
+     * @return Same line with the first letter being capital.
      */
     public String UcFirst(String line) {
         String lineTemp = "";

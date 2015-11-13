@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Instance_Selection.GGA;
+
 /**
  * 
  * File: Main.java
@@ -39,8 +42,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Preprocess.Instance_Selection.GGA;
-
 public class Main {
 	/** 
 	 * <p>

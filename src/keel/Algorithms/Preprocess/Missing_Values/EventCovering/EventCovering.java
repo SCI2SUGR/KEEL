@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 06/03/2006
- * @version 0.5
- * @since JDK 1.5
- * </p>
- */
+
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering;
 import java.io.BufferedReader;
 import java.io.File;
@@ -82,6 +76,11 @@ class IPComp implements Comparator {
  * With the developed inference method, we are able to estimate the MVs in the data. 
  * This method assumes the data is DISCRETIZED (but won't throw any error with continuous
  * data).
+ * <p>
+ * @author Written by Julián Luengo Martín 06/03/2006
+ * @version 0.5
+ * @since JDK 1.5
+ * </p>
  */
 public class EventCovering {
     
@@ -849,6 +848,17 @@ public class EventCovering {
         return Clusters;
     }
     
+    /**
+     * Returns the NS value of a instance given.
+     * @param inst instance given.
+     * @param numCluster number of cluster considered.
+     * @param sizeCluster size of the cluster.
+     * @param R Double array R parameter.
+     * @param acj_xk Frequencies list pair.
+     * @param Ekc Ekc matrix.
+     * @param NS_denom NS fraction to divide the NS value.
+     * @return the NS value of a instance given.
+     */
     protected double NS(Instance inst,int numCluster,int sizeCluster,double[] R,FreqListPair [] acj_xk,Vector [] Ekc,double NS_denom){
         double prob;
         double temp;
@@ -895,6 +905,14 @@ public class EventCovering {
         return NSvalue;
     }
     
+    /**
+     * Computes the minimum Hamming distance between the instance given and one
+     * of the instances in the set given.
+     * @param x instance given.
+     * @param S instances set given.
+     * @return the minimum Hamming distance between the instance given and one
+     * of the instances in the set given.
+     */
     protected double D(Instance x,Vector S){
         double dmin;
         double d;

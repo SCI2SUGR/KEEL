@@ -52,8 +52,15 @@ public class CHC_Chromosome implements Comparable {
 	private double fitness;// Fitness associated to the rule base represented by the boolean array
 	private int n_rules; // Fitness associated to the rule base, it indicates the number of rules that it contains
 	
-	public static final double MIN_LATERAL_TUNING = 0.0;
-	public static final double MAX_LATERAL_TUNING = 1.0;
+    /**
+     * Minimum lateral tuning.
+     */
+    public static final double MIN_LATERAL_TUNING = 0.0;
+
+    /**
+     * Maximum lateral tuning.
+     */
+    public static final double MAX_LATERAL_TUNING = 1.0;
 	
     /**
      * Default constructor
@@ -87,7 +94,7 @@ public class CHC_Chromosome implements Comparable {
      * Creates a random CHC_Chromosome of specified size
      * 
      * @param size_rule	Size of the new chromosome considering the number of rules in the rule base
-     * @param size_rule	Size of the new chromosome considering the number fuzzy labels in the data base
+     * @param size_tuning Size of the new chromosome considering the number fuzzy labels in the data base
      */
     public CHC_Chromosome (int size_rule, int size_tuning) {
     	double u;
@@ -144,8 +151,8 @@ public class CHC_Chromosome implements Comparable {
     /**
      * Creates a CHC chromosome from a boolean array representing a chromosome
      * 
-     * @param data_rule	boolean array representing the rule part of a chromosome
-     * @param data_rule	boolean array representing the tuning part of a chromosome
+     * @param data_rules boolean array representing the rule part of a chromosome
+     * @param data_tuning boolean array representing the tuning part of a chromosome
      */
     public CHC_Chromosome (boolean data_rules[], double data_tuning[]) {
     	rule_selection = new boolean [data_rules.length];
@@ -332,6 +339,7 @@ public class CHC_Chromosome implements Comparable {
      * Obtains the Hamming distance between this and another chromosome
      * 
      * @param ch_b	Other chromosome that we want to compute the Hamming distance to
+     * @param bitsgen	Number of bits per gen in the gray codification
      * @return	the Hamming distance between this and another chromosome
      */
     public int hammingDistance (CHC_Chromosome ch_b, int bitsgen) {
@@ -544,6 +552,7 @@ public class CHC_Chromosome implements Comparable {
     /**
      * Compares this object with the specified object for order, according to the fitness measure 
      * 
+     * @param aThat object to compare with.
      * @return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
      */
     public int compareTo (Object aThat) {

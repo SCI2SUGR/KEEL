@@ -280,6 +280,7 @@ public class GGABinaryLVO {
     
     /**
      * Creates a new instance of GGABinaryLVO
+     * @param ficParametros Configuration file.
      */
     public GGABinaryLVO(String ficParametros) {
         

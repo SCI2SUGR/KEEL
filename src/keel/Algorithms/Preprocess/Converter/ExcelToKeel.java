@@ -43,35 +43,34 @@ import jxl.*;
  * <p>
  * <b> ExcelToKeel </b>
  * </p>
+ * This class extends from the Importer class. It is used to read 
+ * data with Excel format and transform them to the KEEL format.
  *
- * Clase utilizada para leer datos localizados en hojas de cÃ¡lculo con formato
- * microsoft Excel y convertirlos a formato keel.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class ExcelToKeel extends Importer {
 
-    /*
-     * Constructor de la Clase ExcelToKeel. Inicializa los valores
-     * de la variable miembro nullValue (valor nulo) con el valor del parÃ¡metro
-     * nullValueUser.
+    /** ExcelToKeel class Constructor.
+     * Initializes the variables that stores the symbols used to identify null 
+     * values and separator between data.
      *
-     * @param nullValueUser. Variable de tipo String con el valor nulo del fichero Excel.
-     *
+     * @param  nullValueUser. Null value symbols.
+     * 
      */
     public ExcelToKeel(String nullValueUser) {
         nullValue = nullValueUser;
     }
 
-    /* Metodo utilizado para convertir los datos del fichero indicado
-     * mediante la variable pathnameInput a formato keel en el fichero
-     * indicado por la ruta pathnameOutput
+    /**
+     * Method used to transform the data from the excel file given as parameter to 
+     * KEEL format file which will be stored in the second file given.
      *
-     * @param pathnameInput ruta con los datos en formato excel
-     * @param pathnameOutput ruta con los datos en formato keel
+     * @param pathnameInput Excel file path.
+     * @param pathnameOutput KEEL file path.
      *
-     * @throws Exception */
+     * @throws Exception if the files can not be read or written.
+     */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
         Pattern p;
         Matcher m;

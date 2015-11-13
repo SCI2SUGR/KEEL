@@ -311,6 +311,7 @@ public class RealRep implements Attribute{
  * <p>
  * Mutates the 2 reals contained in the representation.
  * </p>
+     * @param currentState current state used to mutate.
  */
     public void mutate(double currentState) {        
         double tmp = 0.0;
@@ -415,7 +416,9 @@ public class RealRep implements Attribute{
     }
 
 
-
+/**
+     *  Prints the classifier representation on standard output.
+     */
    public void print(){
    	String s1 = new Double(lowerBound).toString();
    	if (s1.length() > 4) s1 = s1.substring(0,4);
@@ -425,12 +428,21 @@ public class RealRep implements Attribute{
    }
 
 
+   /**
+     *  Prints the classifier representation on the PrintWriter object given.
+     * @param out PrintWriter object given to write on.
+     */
    public void print (PrintWriter out){
 	out.print (" "+lowerBound+" "+upperBound+" ");
    }
 
 
-   
+   /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     * @param up upper value in the interval.
+     */
    public void printNotNorm(PrintWriter fout, double lo, double up){
    	double lb = lowerBound * (up-lo) + lo;
    	double ub = upperBound * (up-lo) + lo;
@@ -441,11 +453,21 @@ public class RealRep implements Attribute{
 
 // These methods have to be implemented because they are declared in the interface
    public double getAllele(){return 0.0;}
+   
+   /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     */
    public void printNotNorm(PrintWriter fout, int lo){}
+   /**
+     *  Prints the classifier representation on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param conv covariance matrix
+     */
    public void printNotNorm(PrintWriter fout, Vector conv){}
    
 } // end 2RealRep
 
 
-
-
+        

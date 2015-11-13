@@ -46,38 +46,34 @@ import java.util.regex.Pattern;
  * <p>
  * <b> TxtToKeel </b>
  * </p>
+ * This class extends from the Importer class. It is used to read 
+ * data with TXT format and transform them to the KEEL format.
  *
- *  Clase extendida de la clase Importer. Esta clase se utiliza
- *  para leer datos localizados en ficheros con formato Txt
- * (datos separados por tabuladores) y convertirlos a formato keel.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class TxtToKeel extends Importer {
 
-    /*
-     * Constructor de la Clase TxtToKeel. Inicializa los valores
-     * de las variables miembro nullValue (valor nulo) con el valor del parÃ¡metro
-     * nullValueUser y la variable miembro separator (el separador de los datos)
-     * al carÃ¡cter tabulador.
+    /** TxtToKeel class Constructor.
+     * Initializes the variables that store the symbols used to identify null 
+     * values and separator between data.
      *
-     * @param nullValueUser. Variable de tipo String con el valor nulo del fichero Txt.
-     *
+     * @param  nullValueUser. Null value symbols.
      */
     public TxtToKeel(String nullValueUser) {
         separator = "\t";
         nullValue = nullValueUser;
     }
 
-    /* Metodo utilizado para convertir los datos del fichero Txt indicado
-     * mediante la variable pathnameInput a formato keel en el fichero
-     * indicado por la ruta pathnameOutput
+    /**
+     * Method used to transform the data from the TXT file given as parameter to 
+     * KEEL format file which will be stored in the second file given.
      *
-     * @param pathnameInput ruta con los datos en formato csv
-     * @param pathnameOutput ruta para el fichero de datos Keel.
+     * @param pathnameInput TXT file path.
+     * @param pathnameOutput KEEL file path.
      *
-     * @throws Exception */
+     * @throws Exception if the files can not be read or written.
+     */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
         BufferedReader reader;
         Pattern p;

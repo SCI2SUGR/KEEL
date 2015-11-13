@@ -28,10 +28,19 @@
 **********************************************************************/
 
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering.Stat;
+
+/**
+ * Statistics class that works as a Sample and computes statistical values as mean, variace, squares sum,...
+ * @author unknown
+ */
 public class Sample {
 
-
-public void add(double X) {
+    /**
+     * Add the given number to the summation and squares summation for mean and squares summation.
+     * Increases the counter of elements in one.
+     * @param X number given.
+     */
+    public void add(double X) {
     x += X; xx += X*X;
     n++;
     if (!mset) { 
@@ -42,7 +51,10 @@ public void add(double X) {
     }
 }
 
-public void reset() {
+    /**
+     * Resets the statisticals variables.
+     */
+    public void reset() {
    n=0;
    x=0;
    xx=0;
@@ -50,19 +62,79 @@ public void reset() {
    min=0; max=0;
 }
 
-public int getSampleSize()           { return n; }
-public double getSum()               { return x; }
-public double getMean()              { return x/n; }
-public double getSumSquares()        { return xx; }
-public double getMeanSquares()       { return xx/n; }
-public double getVariance()          { return (xx - x*x/n)/(n-1); }
-public double getStandardDeviation() { return Math.sqrt(getVariance()); }
-public double getMin()               { return min; }
-public double getMax()               { return max; }
-public double getRange()             { return max-min; }
-public double getCoefficientOfVariation() { return getStandardDeviation()/getMean(); }
+    /**
+     * Returns the number of samples.
+     * @return the number of samples.
+     */
+    public int getSampleSize()           { return n; }
 
-public ConfidenceInterval getMean(double confidence, double sigma)  { 
+    /**
+     * Returns the summation of samples values.
+     * @return  the summation of samples values.
+     */
+    public double getSum()               { return x; }
+
+    /**
+     * Returns the mean
+     * @return the mean
+     */
+    public double getMean()              { return x/n; }
+
+    /**
+     * Returns the summation of the samples squares.
+     * @return the summation of the samples squares.
+     */
+    public double getSumSquares()        { return xx; }
+
+    /**
+     * Returns the mean of the samples squares.
+     * @return the mean of the samples squares.
+     */
+    public double getMeanSquares()       { return xx/n; }
+
+    /**
+     * Returns the variance.
+     * @return the variance.
+     */
+    public double getVariance()          { return (xx - x*x/n)/(n-1); }
+
+    /**
+     * Returns the Standard deviation.
+     * @return the Standard deviation.
+     */
+    public double getStandardDeviation() { return Math.sqrt(getVariance()); }
+
+    /**
+     * Returns the minimum value of all samples.
+     * @return the minimum value of all samples.
+     */
+    public double getMin()               { return min; }
+
+    /**
+     * Returns the maximum value of all samples.
+     * @return the maximum value of all samples.
+     */
+    public double getMax()               { return max; }
+
+    /**
+     * Returns the range (max-min).
+     * @return the range (max-min).
+     */
+    public double getRange()             { return max-min; }
+
+    /**
+     * Returns the Variation coefficient.
+     * @return the Variation coefficient.
+     */
+    public double getCoefficientOfVariation() { return getStandardDeviation()/getMean(); }
+
+    /**
+     * Returns a Confidence Interval for the mean value with the given confidence and sigma.
+     * @param confidence confidence given.
+     * @param sigma sigma given.
+     * @return a Confidence Interval for the mean value with the given confidence and sigma.
+     */
+    public ConfidenceInterval getMean(double confidence, double sigma)  { 
   ConfidenceInterval c = new ConfidenceInterval();
   c.value = x/n;
   c.confidence = confidence;
@@ -74,9 +146,12 @@ public ConfidenceInterval getMean(double confidence, double sigma)  {
   return c;
 }
 
-
-
-public ConfidenceInterval getMean(double confidence)  { 
+    /**
+     * Returns a Confidence Interval for the mean value with the given confidence.
+     * @param confidence confidence given.
+     * @return a Confidence Interval for the mean value with the given confidence.
+     */
+    public ConfidenceInterval getMean(double confidence)  { 
   ConfidenceInterval c = new ConfidenceInterval();
   c.value = x/n;
   c.confidence = confidence;
@@ -87,8 +162,12 @@ public ConfidenceInterval getMean(double confidence)  {
   return c;
 }
 
-
-public ConfidenceInterval getVariance(double confidence)  { 
+    /**
+     * Returns a Confidence Interval for the variance value with the given confidence.
+     * @param confidence confidence given.
+     * @return a Confidence Interval for the variance value with the given confidence.
+     */
+    public ConfidenceInterval getVariance(double confidence)  { 
  ConfidenceInterval c = new ConfidenceInterval();
  c.value = getVariance();
  c.confidence = confidence;
@@ -101,7 +180,12 @@ public ConfidenceInterval getVariance(double confidence)  {
  return c;
 }
 
-public ConfidenceInterval getStandardDeviation(double confidence) { 
+    /**
+     * Returns a Confidence Interval for the standard deviation value with the given confidence.
+     * @param confidence confidence given.
+     * @return a Confidence Interval for the standard deviation value with the given confidence.
+     */
+    public ConfidenceInterval getStandardDeviation(double confidence) { 
  ConfidenceInterval c = getVariance(confidence);
  c.min = Math.sqrt(c.min);
  c.max = Math.sqrt(c.max);

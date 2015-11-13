@@ -39,14 +39,29 @@ package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.
 
 
 
-public class Main {
 /**
- * <p>
- * This class calls the main method
- * </p>
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the classifier and executes it.
+ * 
+ * @author Ignacio Robles Paiz (University of Granada) 26/06/2010
+ * @version 0.1 
+ * @since JDK1.5
+ * 
  */
+public class Main {
 
 
+    /** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
   public static void main (String args[]) {
     SFS alg;
 

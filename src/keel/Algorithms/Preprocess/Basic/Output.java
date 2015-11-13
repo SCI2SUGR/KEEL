@@ -27,22 +27,23 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Basic;
+
+import keel.Dataset.*;
+import org.core.*;
+
 /**
  * 
- * File: Referencia.java
+ * File: Output.java
  * 
- * An auxiliary class to write result files for Instance Selection algorithms
+ * An auxiliary class to write result files for Preprocess algorithms
  * 
  * @author Written by Salvador García (University of Granada) 20/07/2004 
  * @version 0.1 
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Preprocess.Basic;
-
-import keel.Dataset.*;
-import org.core.*;
-
 public class Output {
 
 	/**

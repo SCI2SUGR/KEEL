@@ -154,6 +154,7 @@ public class Population {
  * @param matchSet is the match set of the population
  * @param envState is the input example.
  * @param classOfExample is the class of the input example.
+ * @param tStamp the time to count.
  */
   public Population( Population matchSet, double []envState, int classOfExample, int tStamp ) {        
 	int pos;
@@ -311,6 +312,7 @@ public class Population {
  * not null.
  * </p>
  * @param cl  is the classifier that has to be inserted in the population.
+ * @param ASet Population where the classifier will be inserted.
  */
   public void insertInPopulation( Classifier cl, Population ASet ) {        
     boolean found = false;
@@ -609,6 +611,7 @@ public class Population {
  * </p>
  * @param tStamp is the actual time
  * @param envState is the environment state.
+     * @param classOfExample example's class.
  */
     public void runGA(int tStamp, double[] envState, int classOfExample ) {        
         if ((double)tStamp - getAverageClTime() >= Config.theta_GA && macroClSum > 0){ 
@@ -625,6 +628,7 @@ public class Population {
  * The tournament Selection has been implemented as defined by Butz.
  * It possible to choose the same classifier in [A] to be
  * the parent of both tournaments
+ * @return Classifier selected by tournament.
  */
 
   public Classifier tournamentSelection(){
@@ -654,6 +658,7 @@ public class Population {
  * <p>
  * Initializes the classifiers' time stamp to the tStamp value
  * </p>
+ * @param tStamp time to be set.
  */
     public void setTimeOfClassifiers (int tStamp){
     	for (int i=0; i<macroClSum; i++){
@@ -815,8 +820,9 @@ public class Population {
 		}
     } // end printPopulationToFile
 
-
-
+    /**
+     * Prints on standard output the population representation.
+     */
     public void print(){
 	System.out.println ("POPULATION: ");
 	System.out.println ("\tmacroClassifierSum = "+macroClSum);	

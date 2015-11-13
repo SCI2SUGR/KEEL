@@ -40,7 +40,7 @@ package keel.Algorithms.Neural_Networks.gann;
 
 public class ConnNetwork extends Network {
 	
-  // Matrix containing the connections of the neural net
+  /** Matrix containing the connections of the neural net. */
   public boolean conns[][][];
   
   /**

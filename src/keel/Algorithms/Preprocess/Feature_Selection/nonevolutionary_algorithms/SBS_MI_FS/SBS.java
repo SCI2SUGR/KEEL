@@ -29,13 +29,7 @@
 
 package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.SBS_MI_FS;
 
-/**
- * <p>
- * @author Written by Ignacio Robles Paiz (University of Granada) 23/06/2010
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 import java.util.*;
 import org.core.*;
@@ -44,7 +38,13 @@ import keel.Dataset.*;
 import keel.Algorithms.Preprocess.Feature_Selection.*;
 
 
-
+/**
+ * <p> SBS algorithm
+ * @author Written by Ignacio Robles Paiz (University of Granada) 23/06/2010
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class SBS {
 /**
  * <p>
@@ -237,6 +237,7 @@ public class SBS {
      * <p>
      * Creates a new instance of SA
      * </p>
+     * @param ficParametros Configuration file.
      */
     public SBS(String ficParametros) {
 

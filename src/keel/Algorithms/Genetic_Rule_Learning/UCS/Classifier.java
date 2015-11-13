@@ -79,6 +79,8 @@ public class Classifier {
  * It's used by the covering operator.
  * </p>
  * <p>
+ * @param envState environmental state.
+ * @param classOfExample classes considered.
  * @param size is the size of the set.
  * @param tStamp is the time
  * </p>
@@ -116,6 +118,7 @@ public class Classifier {
  * classifier passed as a parameter.
  * </p>
  * @param cl is the classifier to be copied to the new classifier.
+ * @param tStamp is the time
  */
 
   public Classifier ( Classifier cl, int tStamp ){
@@ -325,6 +328,7 @@ public class Classifier {
  * decide where to cross the interval. It it's crossed within the inteval, 
  * the crossAllele method will do it. 
  * </p>
+     * @param i position where to cross.
  * @param parent1 is the first parent classifier. 
  * @param parent2 is the second parent classifier. 
  */
@@ -490,6 +494,7 @@ public class Classifier {
  * <p>
  * Sets the numerosity of the classifier.
  * </p>
+ * @param num numerosity value to set.
  */
     public void setNumerosity(int num) {        
         parameters.setNumerosity(num);

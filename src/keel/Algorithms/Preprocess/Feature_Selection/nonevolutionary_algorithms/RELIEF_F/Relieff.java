@@ -41,6 +41,17 @@ import org.core.*;
 import keel.Dataset.*;
 import keel.Algorithms.Preprocess.Feature_Selection.Datos;
 
+/**
+ * <p>
+ * Main class of relief-F method using difference between nearest neighbours as evalution measure.
+ * Relief Method are based in a selection of relevant features. A feature will be relevant if (ideal case):
+ * I is a random instance, H and J the nearest instances to I, and H's class is equal to I's class and different to J's class. 
+ * Then, a feature X will be relevant if its instance values are equal to I and H ones, and very different to I and J
+ * </p>
+ * @author Written by Ignacio Robles Paiz (University of Granada) 2/7/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 public class Relieff {
 
     

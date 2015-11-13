@@ -28,6 +28,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.RST_Learning;
+
 /**
  * 
  * File: Operators.java
@@ -39,8 +42,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.RST_Learning;
-
 public class Operators{
 	
 	/**
@@ -65,13 +66,25 @@ public class Operators{
 		
 	}
 	
-	public static double TNormMin(double a, double b){
+    /**
+     * Returns the smaller of two {@code double} values.
+     * @param   a   an argument.
+     * @param   b   another argument.
+     * @return  the smaller of {@code a} and {@code b}.
+     */
+    public static double TNormMin(double a, double b){
 		
 		return Math.min(a,b);
 		
 	}
 	
-	public static double TNormProd(double a, double b){
+    /**
+     * Returns the product of two {@code double} values.
+     * @param   a   an argument.
+     * @param   b   another argument.
+     * @return  the product of two {@code double} values.
+     */
+    public static double TNormProd(double a, double b){
 		
 		if(a==0){
 			return 0;

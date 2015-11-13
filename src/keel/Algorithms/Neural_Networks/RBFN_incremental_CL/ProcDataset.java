@@ -51,6 +51,13 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
   * <p>
   * Process the KEEL dataset
   * </p>
+  * <p>
+ * @author Writen by Luciando Sánchez (University of Oviedo) 
+ * @author Modified by Antonio J. Rivera Rivas (University of Jaen) 
+ * @author Modified by Maria Dolores Perez Godoy (University of Jaen) 17/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
   */ 
   
  public class ProcDataset {
@@ -71,18 +78,79 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
   
      final static boolean debug = false;
 
-     public double[][] getX() { return X; }
-     public double [] getY() { return Y; }
-     public int [] getC() { return C; }
-     public double [] getimax() { return imax; }
-     public double [] getimin() { return imin; }
-     public double getomax() { return omax; }
-     public double getomin() { return omin; }
-     public int getndata() { return ndata; }
-     public int getnvariables() { return nvariables; }
-     public int getninputs() { return ninputs; }
-     public int getnclasses() { return nclasses; }
-     public boolean isMissing(int i, int j) {
+     /**
+     * Returns the whole input data.
+     * @return the whole input data.
+     */
+    public double[][] getX() { return X; }
+
+    /**
+     * Returns the outputs of each example (regression).
+     * @return the outputs of each example (regression).
+     */
+    public double [] getY() { return Y; }
+
+    /**
+     * Returns the outputs of each example (classification).
+     * @return the outputs of each example (classification).
+     */
+    public int [] getC() { return C; }
+
+    /**
+     * Returns the maximum values of each input attribute.
+     * @return the maximum values of each input attribute.
+     */
+    public double [] getimax() { return imax; }
+
+    /**
+     * Returns the minimum values of each input attribute.
+     * @return the minimum values of each input attribute.
+     */
+    public double [] getimin() { return imin; }
+
+    /**
+     * Returns the maximum value of the output.
+     * @return the maximum value of the output.
+     */
+    public double getomax() { return omax; }
+
+    /**
+     * Returns the minimun value of the output.
+     * @return the minimun value of the output.
+     */
+    public double getomin() { return omin; }
+
+    /**
+     * Returns the number of examples.
+     * @return the number of examples.
+     */
+    public int getndata() { return ndata; }
+
+    /**
+     * Returns the number of variables.
+     * @return the number of variables.
+     */
+    public int getnvariables() { return nvariables; }
+
+    /**
+     * Returns the number of input attributes.
+     * @return the number of input attributes.
+     */
+    public int getninputs() { return ninputs; }
+
+    /**
+     * Returns the number of classes.
+     * @return the number of classes.
+     */
+    public int getnclasses() { return nclasses; }
+
+    /**
+     * Returns True if the value of j-th attribute of the i-th instance is missing and false, otherwise.
+     * @param i instance's position.
+     * @param j attribute's position.
+     * @return True if the value of j-th attribute of the i-th instance is missing and false, otherwise.
+     */
+    public boolean isMissing(int i, int j) {
    // True is the value is missing (0 in the table)
      return missing[i][j];
      }
@@ -97,7 +165,8 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
      * </p>
      * @param nfexamples Name of the dataset file
      * @param train The dataset file is for training or for test
-     */
+     * @throws IOException if there is any semantical, lexical or sintactical error in the input file.
+ */
  public ProcDataset(String nfexamples,boolean train) throws IOException{
    
    try {  
@@ -130,6 +199,7 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
   * Process a dataset for classification
   * </p>
   * 
+  * @throws java.io.IOException if the dataset is not appropriate for this algorithm
   */
  public void processClassifierDataset() throws IOException {
   try {
@@ -186,6 +256,7 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
   * Process a dataset for modelling
   * </p>
   *   
+  * @throws java.io.IOException if the dataset is not appropriate for this algorithm
   */
  
  public void processModelDataset()  throws IOException {
@@ -243,6 +314,7 @@ package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
   * @param nfexamples 
   * @param train 
   * 
+  * @throws java.io.IOException if the dataset is not appropriate for this algorithm
   */
  public void processClusterDataset(String nfexamples, boolean train) throws 
  IOException {

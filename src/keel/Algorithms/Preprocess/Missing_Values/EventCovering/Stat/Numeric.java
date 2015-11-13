@@ -29,10 +29,21 @@
 
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering.Stat;
 
+/**
+ *Class to implements some Numeric operation.
+ * @author sergio
+ */
 public class Numeric {
 
-
-  public static double secant(DoubleFunc fun, double a, double x0, double x1) {
+    /**
+     * Computes the secant between the function and the numbers given.
+     * @param fun function to compute with.
+     * @param a offset. number used to compute the y values of the evalution of x0 and x1 (yi = fun.F(x0)-a)
+     * @param x0 first element given.
+     * @param x1 second element given.
+     * @return the secant between the function and the numbers given.
+     */
+    public static double secant(DoubleFunc fun, double a, double x0, double x1) {
        double xi = x0, xii= x1, x;
        double yi = fun.F(x0)-a, yii = fun.F(x1)-a, y;
 
@@ -51,6 +62,11 @@ public class Numeric {
     * find inverse x of fun.F so that a = F(x), 
     * where x>=0, and fun.F is monotonically increasing.
     * start is a starting point, >= 0.
+     * @param fun Function given.
+     * @param a offset. number used to compute the y values (y_start = fun.F(start)-a)
+     * @param start a starting point, >= 0.
+     * @return inverse x of fun.F so that a = F(x), 
+    * where x>=0, and fun.F is monotonically increasing.
     **/
    public static double binsearch(DoubleFunc fun, double a, double start) {
         double xl = 0, xh = start, w = xh - xl;
@@ -74,6 +90,9 @@ public class Numeric {
         return xm;
    }
 
-   public static double PRECISION = 1e-14;
+    /**
+     * Precision on the numeric operations.
+     */
+    public static double PRECISION = 1e-14;
 }
 

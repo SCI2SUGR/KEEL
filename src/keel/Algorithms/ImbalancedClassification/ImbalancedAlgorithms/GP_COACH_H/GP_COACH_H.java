@@ -73,15 +73,54 @@ public class GP_COACH_H {
     int populationCHCSize; // Population size for the CHC procedure    
     int bitsgeneCHC; // Number of bits per gene for the CHC procedure    
     
+    /**
+     * Configuration flag (CF)
+     */
     public static final int CF = 0;
+
+    /**
+     * Configuration flag (PCF_IV)
+     */
     public static final int PCF_IV = 1;
+
+    /**
+     * Configuration flag (PCF_II)
+     */
     public static final int PCF_II = 2;
+
+    /**
+     * Configuration flag (NO_RW)
+     */
     public static final int NO_RW = 3;
+
+    /**
+     * Configuration flag (MINIMUM)
+     */
     public static final int MINIMUM = 0;
+
+    /**
+     * Configuration flag (PRODUCT)
+     */
     public static final int PRODUCT = 1;
+
+    /**
+     * Configuration flag (MAXIMUM)
+     */
     public static final int MAXIMUM = 0;
+
+    /**
+     * Configuration flag (PROBABILISTIC_SUM)
+     */
     public static final int PROBABILISTIC_SUM = 1;
+
+    /**
+     * Configuration flag (WINNING_RULE)
+     */
     public static final int WINNING_RULE = 0;
+
+    /**
+     * Configuration flag (NORMALIZED_SUM)
+     */
     public static final int NORMALIZED_SUM = 1; // also known as additive combination
     
     // Population of the genetic algorithm

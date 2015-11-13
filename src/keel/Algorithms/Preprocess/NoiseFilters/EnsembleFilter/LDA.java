@@ -38,15 +38,26 @@ import keel.Dataset.HeaderFormatException;
 import keel.Dataset.Instance;
 import keel.Dataset.InstanceSet;
 
+/**
+ * Linear Discriminant Analysis class.
+ * @author unknown.
+ */
 public class LDA {
 	
 	int[] predict;
 	
-	public LDA(){}
+    /**
+     * Default constructor.
+     */
+    public LDA(){}
 	
 	/**
 	* <p>
 	* In this method, a classifier is estimated using Linear Discriminant Analysis
+     * @param train_file Training data filename.
+     * @param test_file Test data filename.
+     * @param train training dataset.
+     * @param test test dataset.
 	*/
 	public void runMethod(String train_file, String test_file, Instance[] train, Instance[] test){
 		
@@ -160,6 +171,10 @@ public class LDA {
             //pc.results(Cp,Co);
     }
     
+    /**
+     * Returns the predicted classes for each test instance.
+     * @return the predicted classes for each test instance.
+     */
     public int[] getPredictions(){
     	return predict;
     }

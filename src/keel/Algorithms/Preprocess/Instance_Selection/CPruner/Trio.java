@@ -38,18 +38,46 @@
 
 package keel.Algorithms.Preprocess.Instance_Selection.CPruner;
 
+/**
+ * Trio implementation.
+ * It implements a simple trio  (id, distance, number of vector) to be sorted by vector number and distance and to be used in the CPruner algorithm.  
+ * @author Salvador García López 
+ */
 public class Trio implements Comparable {
-  public int id;
-  public double distancia;
-  public int nVec;
+    
+  /**
+     * Element id.
+     */
+    public int id;
 
+    /**
+     * Distance.
+     */
+    public double distancia;
+
+    /**
+     * Vector number.
+     */
+    public int nVec;
+
+    /**
+     * Default constructor.
+     */
   public Trio () {}
+  
+  /**
+     * Parameter constructor. Create a trio with the given value.
+     * @param a element id.
+     * @param c vector number.
+     * @param b distance.
+     */
   public Trio (int a, int c, double b) {
 	  
     id = a;
     distancia = b;
     nVec = c;
   }
+  
   public int compareTo (Object o1) {
     if (this.nVec > ((Trio)o1).nVec)
       return -1;

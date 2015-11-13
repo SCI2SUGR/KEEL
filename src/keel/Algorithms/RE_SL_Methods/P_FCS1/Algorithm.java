@@ -29,24 +29,20 @@
 
 package keel.Algorithms.RE_SL_Methods.P_FCS1;
 
-/**
- * <p>
- * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
- * @version 1.0
- * @since JDK 1.6
- * </p>
- */
+
  
 import java.io.IOException;
 import java.util.*;
 import org.core.*;
 
-public class Algorithm {
-/**	
- * <p>
- * It contains the implementation of the algorithm
+/**
+ * <p> It contains the implementation of the algorithm
+ * @author Written by Francisco José Berlanga (University of Jaén) 01/01/2007
+ * @version 1.0
+ * @since JDK 1.6
  * </p>
  */
+public class Algorithm {
  
     myDataset train, val, test;
     String outputTr, outputTst, outputBC;

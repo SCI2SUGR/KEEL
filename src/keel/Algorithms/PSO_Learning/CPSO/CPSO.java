@@ -29,6 +29,14 @@
 
 package keel.Algorithms.PSO_Learning.CPSO;
 
+
+
+
+import java.io.IOException;
+import java.util.Vector;
+import keel.Dataset.Attributes;
+import org.core.*;
+
 /**
  * <p>Title: Algorithm CPSO</p>
  *
@@ -40,17 +48,22 @@ package keel.Algorithms.PSO_Learning.CPSO;
  * @author Jose A. Saez Munoz
  * @version 1.0
  */
-
-
-import java.io.IOException;
-import java.util.Vector;
-import keel.Dataset.Attributes;
-import org.core.*;
-
-
 public class CPSO {
 
-    static public myDataset train, val, test;
+    /**
+     * Training dataset.
+     */
+    static public myDataset train,
+
+    /**
+     * Validation dataset.
+     */
+    val,
+
+    /**
+     * Test dataset.
+     */
+    test;
     String outputTr, outputTst, outputRules;
     
     //parameters
@@ -445,6 +458,10 @@ public class CPSO {
    //***************** Remove classified instances ***********************
    //*********************************************************************   
    
+    /**
+     * Removes from the dataset the instances that are correctly classified by the rule contained in the particle given as argument.
+     * @param p particle that contains the rule to check with.
+     */
    public void EliminarInstanciasClasificadas(Particle p){
 
        for(int i=0 ; i<NumInstances ; ++i){
@@ -459,6 +476,9 @@ public class CPSO {
    //***************** To do outputs files *******************************
    //********************************************************************* 
 
+    /**
+     * Prints on the ouput rules file the rules inferenced by the algorithm.
+     */
    public void PrintOutputRules(){
 	   
 	   double valor1, valor2;

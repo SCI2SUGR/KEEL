@@ -38,8 +38,29 @@
 
 package keel.Algorithms.Preprocess.Instance_Selection.AllKNN;
 
+/**
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the classifier and executes it.
+ * 
+ * @author Salvador Garcia Lopez
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class Main {
 
+
+    /** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
   public static void main (String args[]) {
 
     AllKNN allKNN;

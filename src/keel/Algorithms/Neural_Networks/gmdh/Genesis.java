@@ -58,8 +58,6 @@ public class Genesis {
    * Main function
    * </p>
    * @param args to the main method
-   * @throws FileNotFoundException
-   * @throws IOException
    */
   public static void main(String[] args) {
     if (args.length <= 0) {

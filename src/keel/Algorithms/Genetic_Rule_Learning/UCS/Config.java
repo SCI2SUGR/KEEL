@@ -324,10 +324,18 @@ public class Config {
     public static int statisticWindowSize = 1000;
 
 /**
- * It is the name of the file where the statistics will be written in.
+ * It is the name of the file where the statistics will be written in ("outFile1.txt").
  */
     public static String statisticFileOutName1 = "outFile1.txt";
+
+/**
+ * It is the name of the file where the statistics will be written in ("outFile2.txt").
+ */
     public static String statisticFileOutName2 = "outFile2.txt";
+    
+/**
+ * It is the name of the file where the statistics will be written in ("outFile3.txt").
+ */
     public static String statisticFileOutName3 = "outFile3.txt";
     
 

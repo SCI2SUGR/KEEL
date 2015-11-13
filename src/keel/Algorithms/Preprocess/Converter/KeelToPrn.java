@@ -42,22 +42,20 @@ import java.util.regex.Pattern;
  * <b> KeelToPrn </b>
  * </p>
  *
- * Clase extendida de la clase Exporter. Esta clase permite convertir
- * un fichero de datos con formato Keel a un fichero con formato Prn.
+ *This class extends from the Exporter class. It is used to read 
+ * data with KEEL format and transform them to the PRN format.
  *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class KeelToPrn extends Exporter {
 
 
-    /*
-     * Constructor de la Clase KeelToPrn. Inicializa los valores
-     * de las variables miembro nullValue (valor nulo) con el valor
-     * del parÃ¡metro nullValueUser y la variable separator (el separador de los datos
-     * del fichero Prn) con un espacio en blanco.
+    /** KeelToPrn class Constructor.
+     * Initializes the variables that store the symbols used to identify null 
+     * values and separator between data.
      *
-     * @param  nullValueUser. Variable de tipo String con el valor nulo del fichero Prn .
+     * @param  nullValueUser. Null value symbols.
      */
     public KeelToPrn(String nullValueUser) {
         nullValue = nullValueUser;
@@ -65,17 +63,15 @@ public class KeelToPrn extends Exporter {
     }
 
 
-    /*
-     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
-     * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al mÃ©todo Save() para crear el fichero de datos Prn indicado en el
-     * parÃ¡metro de entrada pathnameOutput.
+    /**
+     * Method used to transform the data from the KEEL file given as parameter to 
+     * PRN format file which will be stored in the second file given. It calls the method
+     * Start of its super class Exporter and then call the method Save.
      *
-     * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
-     * @param  String pathnameOutput Variable con la ruta del fichero de datos
-     * de salida con formato Prn.
+     * @param pathnameInput KEEL file path.
+     * @param pathnameOutput PRN file path.
      *
-     * @throws Exception.
+     * @throws Exception if the files can not be read or written.
      */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
 
@@ -85,17 +81,11 @@ public class KeelToPrn extends Exporter {
 
     }//end Start()
 
-    /*
-     * MÃ©todo utilizado para crear el fichero con formato Prn (valores separados por
-     * espacios)  indicada la ruta por el parÃ¡metro pathnameOutput. Este fichero se crea a partir
-     * de los datos almacenados en el vector de objetos de la clase
-     * Attribute, el vector data[], y la variable nameRelation.
-     *
-     * @param String pathnameOutput. Variable de tipo String con
-     * la ruta del fichero de datos de salida con formato Weka.
-     *
-     * @throws Exception.
-     *
+    /**
+     * Method that creates the output file with PRN format given as parameter 
+     * using all the structures built by the start method of the Exporter class.  
+     * @param pathnameOutput PRN file path to generate.
+     * @throws Exception if the file can not be written.
      */
     public void Save(String pathnameOutput) throws Exception {
         int i;

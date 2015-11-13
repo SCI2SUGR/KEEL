@@ -38,16 +38,35 @@ public class Gen {
    	private double min;
 	private double max;
 
-	public double min(){
+        	/**
+     * Returns the minimum variable.
+     * @return the minimum variable.
+     */
+    public double min(){
 		return min;
 	}
-	public double max(){
+
+    /**
+     * Returns the maximum variable.
+     * @return  the maximum variable.
+     */
+    public double max(){
 		return max;
 	}
-	public void set_min(double value){
+
+    /**
+     * Sets the minimum variable with the value given.
+     * @param value value given to set.
+     */
+    public void set_min(double value){
 		min=value;
 	}
-	public void set_max(double value){
+
+    /**
+     * Sets the maximum  variable with the value given.
+     * @param value value given to set.
+     */
+    public void set_max(double value){
 		max=value;
 	}
 

@@ -38,9 +38,20 @@ import org.core.*;
  *
  */
 public class EscribeBCLing {
-	public int numReglas;
-	public double []base;
-	public double exit;
+/**
+     * Number of rules.
+     */
+    public int numReglas;
+
+    /**
+     * Rules base vector.
+     */
+    public double []base;
+
+    /**
+     * Exit value.
+     */
+    public double exit;
 	
 
 	/**

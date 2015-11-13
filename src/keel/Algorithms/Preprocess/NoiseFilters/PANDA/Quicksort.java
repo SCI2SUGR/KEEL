@@ -29,13 +29,7 @@
 
 package keel.Algorithms.Preprocess.NoiseFilters.PANDA;
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 
 
@@ -44,12 +38,25 @@ package keel.Algorithms.Preprocess.NoiseFilters.PANDA;
  * This class implements the Quicksort algorithm. It lets sort an array of values from lowest to highest and
  * vice versa basing on an option
  * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
  */
 public class Quicksort {
 	
 	// tags
-	static public final int LOWEST_FIRST = 0;
-	static public final int HIGHEST_FIRST = 1;
+
+    /**
+     * Configuration tag (LOWEST_FIRST). Order followed.
+     */
+    	static public final int LOWEST_FIRST = 0;
+
+    /**
+     * Configuration tag (HIGHEST_FIRST). Order followed.
+     */
+    static public final int HIGHEST_FIRST = 1;
 	static private int option;
 	
 	// this class is used to keep values and their original position

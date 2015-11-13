@@ -203,7 +203,9 @@ public class CromosomaBinario extends Cromosoma {
     }
     
     
-    /** it prints a chromosome, gene by gene */
+    /** it prints a chromosome, gene by gene
+     * @return  String representation of the chromosome.
+     */
     public String print(){
         String res = new String();
         

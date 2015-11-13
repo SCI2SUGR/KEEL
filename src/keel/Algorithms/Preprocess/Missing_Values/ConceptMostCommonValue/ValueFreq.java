@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 31/12/2005
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
+
 package keel.Algorithms.Preprocess.Missing_Values.ConceptMostCommonValue;
 
 
@@ -41,9 +35,22 @@ package keel.Algorithms.Preprocess.Missing_Values.ConceptMostCommonValue;
  * <p>
  * this class store a value (String) and its frequency (int)
  * </p>
+ * <p>
+ * @author Written by Julián Luengo Martín 31/12/2005
+ * @version 0.3
+ * @since JDK 1.5
+ * </p>
  */
 public class ValueFreq {
+    
+    /**
+     * String value.
+     */
     protected String Value;
+
+    /**
+     * Frequecy of the value.
+     */
     protected int Freq;
 
     /**

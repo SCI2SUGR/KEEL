@@ -43,34 +43,33 @@ import java.util.regex.Pattern;
  * <b> DifToKeel </b>
  * </p>
  *
- * Clase utilizada para leer datos localizados en ficheros con formato Dif
- * (fichero de intercambio de datos) y convertirlos a formato keel.
+ * This class extends from the Importer class. It is used to read 
+ * data with DIF format and transform them to the KEEL format.
  *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class DifToKeel extends Importer {
 
-    /*
-     * Constructor de la Clase DifToKeel. Inicializa el valor de la variable
-     * miembro nullValue (valor nulo del fichero Dif) con el valor
-     * del parÃ¡metro nullValueUser.
+    /** DifToKeel class Constructor.
+     * Initializes the variables that stores the symbols used to identify null 
+     * values.
      *
-     * @param nullValueUser.Variable de tipo String con el valor nulo del
-     * fichero Dif.
+     * @param  nullValueUser. Null value symbols.
      */
     public DifToKeel(String nullValueUser) {
         nullValue = nullValueUser;
     }
 
-    /* Metodo utilizado para convertir los datos del fichero indicado
-     * mediante la variable pathnameInput a formato keel en el fichero
-     * indicado por la ruta pathnameOutput
+    /**
+     * Method used to transform the data from the DIF file given as parameter to 
+     * KEEL format file which will be stored in the second file given.
      *
-     * @param pathnameInput ruta con los datos en formato dif
-     * @param pathnameOutput ruta con los datos en formato keel
+     * @param pathnameInput DIF file path.
+     * @param pathnameOutput KEEL file path.
      *
-     * @throws Exception */
+     * @throws Exception if the files can not be read or written.
+     */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
         BufferedReader reader;
         Pattern p;

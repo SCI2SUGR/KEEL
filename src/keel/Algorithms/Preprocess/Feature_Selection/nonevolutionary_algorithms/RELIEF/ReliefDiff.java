@@ -44,7 +44,6 @@ import org.core.*;
 import keel.Dataset.*;
 import keel.Algorithms.Preprocess.Feature_Selection.Datos;
 
-public class ReliefDiff {
 /**
  * <p>
  * Main class of relief method using difference between nearest neighbours as evalution measure.
@@ -52,7 +51,15 @@ public class ReliefDiff {
  * I is a random instance, H and J the nearest instances to I, and H's class is equal to I's class and different to J's class. 
  * Then, a feature X will be relevant if its instance values are equal to I and H ones, and very different to I and J
  * </p>
+ * @author Written by Manuel Chica Serrano (University of Jaen) 01/09/2005
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
+ * @author Modified by Cristobal Jose Carmona del Jesus (University of Jaen) 19/12/2008
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 03/02/2009
+ * @version 1.0
+ * @since JDK1.5
  */
+public class ReliefDiff {
+
     
     /** Datos class with all information about datasets and feature selection methods  */
     private Datos data;

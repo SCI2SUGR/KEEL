@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.ANR;
 
@@ -43,8 +36,7 @@ import java.util.Vector;
 
 import org.core.*;
 
-public class ConjGradNN {
-	/** 
+/** 
 	* <p> 
 	* <pre>
 	* Optimized Classificator/Model by Conjugated Gradient.
@@ -64,9 +56,16 @@ public class ConjGradNN {
     *			   | I			  H							  -
     *			   | I			  H							
     *			    - 
-	* <pre>
+	* </pre>
 	* </p> 
-	*/ 
+* <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class ConjGradNN {
 	//Random seed generator
     static Randomize r;
     //Number of Layers
@@ -525,10 +524,19 @@ public class ConjGradNN {
     
     //**********************************************************************************
     
+    /**
+     * Returns the SSE statistical variable
+     * @return  the SSE statistical variable
+     */
     public double getSSEadj(){
     	return best_SSE_adj;
     }
     
+    /**
+     * Computes the atanh of the given number.
+     * @param x given number between [-1, 1]. 
+     * @return the atanh of the given number.
+     */
     public double atanh(double x){
     	
     	if (x > 1 || x < -1){
@@ -540,6 +548,10 @@ public class ConjGradNN {
     	
     }
     
+    /**
+     * Returns a vector with the noisy instances.
+     * @return a vector with the noisy instances.
+     */
     public Vector getNoisyInstances(){
     	Vector res = new Vector();
     	
@@ -551,7 +563,10 @@ public class ConjGradNN {
     	return res;
     }
     
-    
+    /**
+     * Computes the SSE statistical variable
+     * @return  the SSE statistical variable
+     */
     public double computeSSEadj(){
     	
         // sum of square error

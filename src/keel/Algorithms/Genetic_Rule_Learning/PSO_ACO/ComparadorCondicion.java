@@ -42,6 +42,7 @@ import java.util.Comparator;
 
 public class ComparadorCondicion implements Comparator {
 
+    
     public ComparadorCondicion() {
     }
 

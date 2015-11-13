@@ -27,13 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 14/05/2006
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering;
 import java.util.*;
 import keel.Dataset.*;
@@ -42,8 +35,17 @@ import keel.Dataset.*;
  * <p>
  * This class is a cluster C for the EventCovering method
  * </p>
+ * <p>
+ * @author Written by Julián Luengo Martín 14/05/2006
+ * @version 0.3
+ * @since JDK 1.5
+ * </p>
  */
 public class Cluster {
+
+    /**
+     * Vector that stores the representation of the cluster.
+     */
     public Vector C;
     int number;
     

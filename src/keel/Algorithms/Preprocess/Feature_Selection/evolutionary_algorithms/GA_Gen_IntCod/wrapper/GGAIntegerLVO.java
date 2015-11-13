@@ -280,6 +280,7 @@ public class GGAIntegerLVO {
     
     /**
      * Creates a new instance of GGAIntegerLVO 
+     * @param ficParametros Configuration file.
      */
     public GGAIntegerLVO(String ficParametros) {
         

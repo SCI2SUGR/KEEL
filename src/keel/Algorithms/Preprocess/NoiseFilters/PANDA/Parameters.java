@@ -27,16 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Preprocess.NoiseFilters.PANDA;
 
 import java.util.*;
@@ -49,35 +39,103 @@ import keel.Dataset.InstanceSet;
  * <p>
  * Main class to parse the parameters of the algorithm
  * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
  */
 public class Parameters {
 	
 	private static BufferedReader br;
 	
 	// parameters of the algorithm ------------------
-	public static String algorithmName;
+	/**
+     * Algorithm name.
+     */
+    	public static String algorithmName;
 	
-	public static String trainInputFile;
-	public static String testInputFile;
-	
-	public static String trainOutputFile;
-	public static String testOutputFile;
-	public static String logOutputFile;
-	
-	public static int numClasses;
-	public static int numAttributes;
-	public static int numInstances;
-	
-	public static long seed;
+    /**
+     * Original Training data filename.
+     */
+    public static String trainInputFile;
 
+    /**
+     * Original Test data filename.
+     */
+    public static String testInputFile;
+	
+    /**
+     *  Modified Training data filename.
+     */
+    public static String trainOutputFile;
+
+    /**
+     *  Modified Training data filename.
+     */
+    public static String testOutputFile;
+
+    /**
+     * Log information output file.
+     */
+    public static String logOutputFile;
+	
+    /**
+     * Number of classes.
+     */
+    public static int numClasses;
+
+    /**
+     * Number of attributes.
+     */
+    public static int numAttributes;
+
+    /**
+     * Number of instances.
+     */
+    public static int numInstances;
+	
+    /**
+     * Seed for random purposes.
+     */
+    public static long seed;
+
+    /**
+     * Instance Set.
+     */
 	public static InstanceSet is;
+        
+     /**
+     * Instances.
+     */
 	public static Instance[] instances;
 
-	public static String function;
-	public static double estimatedNoiseLevel;
-	public static int minIntervals;
-	public static int maxIntervals;
-	public static int numExecutions;
+    /**
+     * Function used.
+     */
+    public static String function;
+
+    /**
+     * Estimated Noise level.
+     */
+    public static double estimatedNoiseLevel;
+
+    /**
+     * Minimum number of intervals.
+     */
+    public static int minIntervals;
+
+    /**
+     * Maximum number of intervals.
+     */
+    public static int maxIntervals;
+
+    /**
+     * Number of executions.
+     */
+    public static int numExecutions;
 	// ----------------------------------------------
 	
 

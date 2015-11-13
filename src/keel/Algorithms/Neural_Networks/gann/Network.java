@@ -677,7 +677,6 @@ public class Network {
    * @param data Input data
    * @param n Data matrix order (number of rows and columns)
    * @param problem Type of problem (CLASSIFICATION | REGRESSION )
-   * @throws IOException
    */
   public void SaveOutputFile(String file_name, double data[][], int n, String problem) {
     String line;

@@ -43,14 +43,32 @@ import java.util.StringTokenizer;
 import java.util.Arrays;
 import org.core.*;
 
+/**
+ * 
+ * File: PSRCG.java
+ * 
+ * The PSRCG Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class PSRCG extends Metodo {
 
  /*Own parameters of the algorithm*/
 
+    /**
+     * Default constructor. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
     public PSRCG (String ficheroScript) {
     super (ficheroScript);
   }
 
+    /**
+	 * Executes the algorithm
+	 */
   public void ejecutar () {
 
     int i, j, l;

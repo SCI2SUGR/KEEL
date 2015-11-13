@@ -121,7 +121,6 @@ public class EncodingLength {
      * @param n second integer
      * @return the combinatory number.
      */
-    
   public static double combinatoria (int m, int n) {
 
     double result = 1;

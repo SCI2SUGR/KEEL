@@ -71,6 +71,7 @@ public class LM {
    * @param da Auxiliar variable in each iteration
    * @param oneda Auxiliar variable in each iteration
    * @param global Global parameters of the algorithm
+     * @return true in case of singular matrix
    */
   public static boolean mrqmin(
       double x[][],

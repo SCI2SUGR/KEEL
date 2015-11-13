@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Ignacio Robles Paiz (University of Granada) 23/06/2010
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.FULL_MI;
 
@@ -46,7 +40,13 @@ import keel.Dataset.*;
 import keel.Algorithms.Preprocess.Feature_Selection.*;
 
 
-
+/**
+ * <p>Simulated Annealing Algorithm
+ * @author Written by Ignacio Robles Paiz (University of Granada) 23/06/2010
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class Full {
 /**
  * <p>
@@ -245,6 +245,7 @@ public class Full {
      * <p>
      * Creates a new instance of SA
      * </p>
+     * @param ficParametros Configuration file.
      */
     public Full(String ficParametros) {
 

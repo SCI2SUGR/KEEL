@@ -28,6 +28,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.RST_Learning;
+
 /**
  * 
  * File: Timer.java
@@ -39,8 +42,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.RST_Learning;
-
 public class Timer{
 	
 	private static long initialTime;

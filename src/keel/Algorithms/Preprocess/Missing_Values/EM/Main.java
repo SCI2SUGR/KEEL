@@ -28,9 +28,19 @@
 **********************************************************************/
 
 package keel.Algorithms.Preprocess.Missing_Values.EM;
+
+
 /**
- *
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the algorithm and executes it.
+ * 
  * @author Julián Luengo Martín
+ * @version 0.1 
+ * @since JDK1.5
+ * 
  */
 public class Main {
     

@@ -40,9 +40,8 @@ import java.io.File;
  * <b> KeelToDif </b>
  * </p>
  *
- * Clase extendida de la clase Exporter. Esta clase permite convertir
- * un fichero de datos con formato Keel a un fichero con formato Dif.
- * (fichero de intercambio de datos).
+ * This class extends from the Exporter class. It is used to read 
+ * data with KEEL format and transform them to the DIF format.
  *
  * @author Teresa Prieto López (UCO)
  * @version 1.0
@@ -50,26 +49,23 @@ import java.io.File;
 public class KeelToDif extends Exporter {
 
 
-    /*
-     * Constructor de la Clase KeelToDif. Inicializa el valor
-     * de la variable miembro nullValue (valor nulo para un dato en el fichero)
-     * a una cadena vacia.
+    /** KeelToDif class Constructor.
+     * Initializes the variable that stores the symbols used to identify null 
+     * values.
      */
     public KeelToDif() {
         nullValue = "";
     }
 
-    /*
-     * Este Metodo llama al Metodo Start de la clase superior Exporter para
-     * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al Metodo Save() para crear el fichero de datos Dif indicado en el
-     * parametro de entrada pathnameOutput.
+    /**
+     * Method used to transform the data from the KEEL file given as parameter to 
+     * DIF format file which will be stored in the second file given. It calls the method
+     * Start of its super class Exporter and then call the method Save.
      *
-     * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
-     * @param  String pathnameOutput Variable con la ruta del fichero de datos de salida
-     * con formato Dif.
+     * @param pathnameInput KEEL file path.
+     * @param pathnameOutput DIF file path.
      *
-     * @throws Exception.
+     * @throws Exception if the files can not be read or written.
      */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
 
@@ -80,17 +76,11 @@ public class KeelToDif extends Exporter {
 
     }//end Start()
 
-    /*
-     * Metodo utilizado para crear el fichero con formato Dif
-     * indicada la ruta por el parametro pathnameOutput. Este fichero se crea a partir
-     * de los datos almacenados en el vector de objetos de la clase
-     * Attribute, el vector data[], y la variable nameRelation.
-     *
-     * @param String pathnameOutput. Variable de tipo String con
-     * la ruta del fichero de datos de salida con formato Dif.
-     *
-     * @throws Exception.
-     *
+    /**
+     * Method that creates the output file with DIF format given as parameter 
+     * using all the structures built by the start method of the Exporter class.  
+     * @param pathnameOutput DIF file path to generate.
+     * @throws Exception if the file can not be written.
      */
     public void Save(String pathnameOutput) throws Exception {
         int i;

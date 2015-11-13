@@ -52,7 +52,11 @@ public class Cromosoma implements Comparable {
   boolean cruzado;
   boolean valido;
   double errorRate;
-  public double cover;
+
+    /**
+     * covered percentage
+     */
+    public double cover;
 
   /**Construct a random chromosome of specified size
      * @param size size of the chromosome*/

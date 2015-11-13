@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 21/07/2005
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.ANR;
 
@@ -47,15 +40,21 @@ import keel.Dataset.Attributes;
 import keel.Dataset.Instance;
 import keel.Dataset.InstanceSet;
 
-
-public class ClassifierMLPerceptron {
-	/** 
+/** 
 	* <p> 
 	* Classification model by means of a multi-layered perceptron. 
 	* This class is a wrapper for classification problems to solve using conjugated gradient algorithm.
 	* 
 	* </p> 
-	*/
+	*
+* <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 21/07/2005
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class ClassifierMLPerceptron {
 	//Random seed generator
 	static Randomize rand;
 	static Vector noisyInstances;
@@ -253,6 +252,10 @@ public class ClassifierMLPerceptron {
 	 * <p>
 	 * It apllies the changes to remove the noise 
 	 * </p>
+     * @param trainIN Original training data file.
+     * @param trainOUT Modified training data file.
+     * @param testIN Original test data file.
+     * @param testOUT Modified test data file.
 	 */
 	public static void createDatasets(String trainIN, String trainOUT, String testIN, String testOUT){
 		

@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Preprocess.Instance_Selection.CoCoIS;
+
+import keel.Algorithms.Preprocess.Basic.*;
+
+import org.core.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
 /**
  * 
  * File: CoCoIS.java
@@ -39,15 +49,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Preprocess.Instance_Selection.CoCoIS;
-
-import keel.Algorithms.Preprocess.Basic.*;
-
-import org.core.*;
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
 public class CoCoIS extends Metodo{
 
 	//Parameters 

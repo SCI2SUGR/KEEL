@@ -94,6 +94,7 @@ public class Token {
 
   /**
    * Returns the image.
+     * @return the string image of the token.
    */
   public String toString()
   {
@@ -111,6 +112,9 @@ public class Token {
    *
    * to the following switch statement. Then you can cast matchedToken
    * variable to the appropriate type and use it in your lexical actions.
+     * @param ofKind it is the ID of the new token
+     * @return a new Token.
+     * 
    */
   public static final Token newToken(int ofKind)
   {

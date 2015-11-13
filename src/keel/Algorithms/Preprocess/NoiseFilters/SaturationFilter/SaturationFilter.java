@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.SaturationFilter;
 
@@ -57,6 +49,13 @@ import keel.Algorithms.Genetic_Rule_Learning.Globals.FileManagement;
 /**
  * <p>
  * This class implements the Gamberger's algorithm to remove class noise
+ * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class SaturationFilter {
@@ -140,6 +139,8 @@ public class SaturationFilter {
 	 * <p>
 	 * Constructor of the class
 	 * </p>
+     * @param positiveClass positive class id.
+     * @return  boolean vector which indicates for each instance if it is noisy or not.
 	 */
 	public boolean[] saturationFilter(int positiveClass){
 		
@@ -240,6 +241,9 @@ public class SaturationFilter {
 	 * <p>
 	 * It runs the algorithm
 	 * </p>
+     * @param positiveClass
+     * @param U
+     * @return 
 	 */
 	public Vector<Integer> minimalCov(int positiveClass, Vector<pnPair> U){
 		
@@ -303,6 +307,8 @@ public class SaturationFilter {
 	 * <p>
 	 * It runs the algorithm
 	 * </p>
+     * @param indexLit
+     * @param Uaux
 	 */
 	public void remove(int indexLit, Vector<pnPair> Uaux){
 		
@@ -321,6 +327,7 @@ public class SaturationFilter {
 	 * </p>
 	 * @param indexLit
 	 * @param Uaux
+     * @return 
 	 */
 	public double sumOfWeights(int indexLit, Vector<pnPair> Uaux){
 		
@@ -339,6 +346,10 @@ public class SaturationFilter {
 	 * <p>
 	 * It apllies the changes to remove the noise 
 	 * </p>
+     * @param trainIN
+     * @param trainOUT
+     * @param testIN
+     * @param testOUT
 	 */
 	public void createDatasets(String trainIN, String trainOUT, String testIN, String testOUT){
 		

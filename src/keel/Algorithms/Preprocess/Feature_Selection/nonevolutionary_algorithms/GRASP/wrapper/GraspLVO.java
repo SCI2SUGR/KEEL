@@ -230,7 +230,8 @@ public class GraspLVO {
     
     }
 
-    /** Creates a new instance of GraspLVO  */
+    /** Creates a new instance of GraspLVO
+     * @param ficParametros configuration file. */
     public GraspLVO(String ficParametros) {
         
         /* loads the parameter file */

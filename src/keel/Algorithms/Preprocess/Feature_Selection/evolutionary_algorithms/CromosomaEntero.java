@@ -266,7 +266,8 @@ public class CromosomaEntero extends Cromosoma{
     }
     
     
-    /** this method can't be applied to integer chromosome. This is a EMPTY METHOD */
+    /** this method can't be applied to integer chromosome. This is a EMPTY METHOD
+     * @return  False*/
     public boolean cruzarHUX(Cromosoma padre2, Cromosoma hijo1, Cromosoma hijo2, int umbral){        
         return false;
     }     
@@ -293,7 +294,9 @@ public class CromosomaEntero extends Cromosoma{
     }
     
     
-    /** it prints a chromosome, gene by gene */
+    /** it prints a chromosome, gene by gene
+     * @return  String representation of the chromosome
+     */
     public String print(){
         String res = new String();
         

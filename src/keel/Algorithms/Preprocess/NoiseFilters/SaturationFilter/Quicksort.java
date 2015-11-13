@@ -47,7 +47,14 @@ package keel.Algorithms.Preprocess.NoiseFilters.SaturationFilter;
 public class Quicksort {
 	
 	// tags
-	static public final int LOWEST_FIRST = 0;
+    /**
+     * Configuration tag (LOWEST_FIRST). Order followed.
+     */
+    	static public final int LOWEST_FIRST = 0;
+
+    /**
+     * Configuration tag (HIGHEST_FIRST). Order followed.
+     */
 	static public final int HIGHEST_FIRST = 1;
 	static private int option;
 	

@@ -42,15 +42,33 @@ import keel.Algorithms.Preprocess.Basic.*;
 import org.core.*;
 import java.util.StringTokenizer;
 
+/**
+ * 
+ * File: RNN.java
+ * 
+ * The RNN Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class RNN extends Metodo {
 
  /*Own parameters of the algorithm*/
   private int k;
   
+  /**
+     * Default constructor. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
   public RNN (String ficheroScript) {
     super (ficheroScript);
   }
-
+  
+  /**
+	 * Executes the algorithm
+	 */ 
   public void ejecutar () {
 
     int i, j, l, m;

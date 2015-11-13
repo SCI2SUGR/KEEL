@@ -47,37 +47,34 @@ import com.Ostermiller.util.CSVParser;
  * <p>
  * <b> PrnToKeel </b>
  * </p>
+ * This class extends from the Importer class. It is used to read 
+ * data with PRN format and transform them to the KEEL format.
  *
- * Clase extendida de la clase Importer. Esta clase se utiliza
- * para leer datos localizados en ficheros con formato Prn
- * (datos separados por espacios en blanco) y convertirlos a formato keel.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class PrnToKeel extends Importer {
 
 
-    /*
-     * Constructor de la Clase PrnToKeel. Inicializa el valor
-     * de la variable miembro nullValue (valor nulo) con el valor del parÃ¡metro
-     * nullValueUser.
+    /** PrnToKeel class Constructor.
+     * Initializes the variable that stores the symbols used to identify null 
+     * values.
      *
-     * @param nullValueUser. Variable de tipo String con el valor nulo del fichero Prn
-     * pasado por el usuario.
+     * @param  nullValueUser. Null value symbols.
      */
     public PrnToKeel(String nullValueUser) {
         nullValue = nullValueUser;
     }
 
-    /* Metodo utilizado para convertir los datos del fichero indicado
-     * mediante la variable pathnameInput a formato keel en el fichero
-     * indicado por la ruta pathnameOutput.
+    /**
+     * Method used to transform the data from the PRN file given as parameter to 
+     * KEEL format file which will be stored in the second file given.
      *
-     * @param pathnameInput ruta con los datos en formato Prn.
-     * @param pathnameOutput ruta para el fichero de datos Keel.
+     * @param pathnameInput PRN file path.
+     * @param pathnameOutput KEEL file path.
      *
-     * @throws Exception */
+     * @throws Exception if the files can not be read or written.
+     */
     @SuppressWarnings("empty-statement")
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
 

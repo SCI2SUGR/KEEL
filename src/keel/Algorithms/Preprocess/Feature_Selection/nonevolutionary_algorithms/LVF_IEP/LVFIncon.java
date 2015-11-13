@@ -46,7 +46,22 @@ import org.core.*;
 import keel.Dataset.*;
 import keel.Algorithms.Preprocess.Feature_Selection.Datos;
 
-
+/**
+ * <p>
+ * Las Vegas filter for feature selection
+ *
+ * This class implements LVF algorithm. It selects a random subset of features and checks its inconsistency ratio.
+ * </p>
+ * <p>
+ * @author Written by Manuel Chica Serrano (University of Jaen) 01/09/2005
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
+ * @author Modified by Cristobal Jose Carmona del Jesus (University of Jaen) 19/12/2008
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 03/02/2009
+ * @author Modified by Ignacio Robles Paiz (University of Granada) 24/06/2010
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class LVFIncon {
 /**
  * <p>

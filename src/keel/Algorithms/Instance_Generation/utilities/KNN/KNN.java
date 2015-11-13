@@ -169,7 +169,7 @@ public class KNN
      * Informs of the number of prototypes with correct class. Uses 1NN to perform nearest prototype.
      * @param training Training data prototype set
      * @param test Test data prototype set
-     * @return Number of prototypes well classificated
+     * @return Number of prototypes well classified  and number of the not well classified
      */
     public static Pair<Integer,Integer> classficationAccuracyAndError1NN(PrototypeSet training, PrototypeSet test)
     {

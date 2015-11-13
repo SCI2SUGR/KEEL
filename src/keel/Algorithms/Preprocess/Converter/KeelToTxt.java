@@ -41,23 +41,20 @@ import java.util.regex.Pattern;
  * <p>
  * <b> KeelToTxt </b>
  * </p>
+* This class extends from the Exporter class. It is used to read 
+ * data with KEEL format and transform them to the TXT format.
  *
- * Clase extendida de la clase Exporter. Esta clase permite convertir
- * un fichero de datos con formato Keel a un fichero con formato Txt.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class KeelToTxt extends Exporter {
 
 
-    /*
-     * Constructor de la Clase KeelToTxt. Inicializa los valores
-     * de las variables miembro nullValue (valor nulo) con el valor
-     * del parÃ¡metro nullValueUser y la variable separator (el separador de los datos
-     * del fichero Txt) con un carÃ¡cter tabulador.
+    /** KeelToTxt class Constructor.
+     * Initializes the variables that store the symbols used to identify null 
+     * values and separator between data ("\t").
      *
-     * @param  nullValueUser. Variable de tipo String con el valor nulo del fichero Txt .
+     * @param  nullValueUser. Null value symbols.
      */
     public KeelToTxt(String nullValueUser) {
         nullValue = nullValueUser;
@@ -65,17 +62,15 @@ public class KeelToTxt extends Exporter {
     }
 
 
-    /*
-     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
-     * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al mÃ©todo Save() para crear el fichero de datos Txt indicado en el
-     * parÃ¡metro de entrada pathnameOutput.
+    /**
+     * Method used to transform the data from the KEEL file given as parameter to 
+     * TXT format file which will be stored in the second file given. It calls the method
+     * Start of its super class Exporter and then call the method Save.
      *
-     * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
-     * @param  String pathnameOutput Variable con la ruta del fichero de datos
-     * de salida con formato Txt.
+     * @param pathnameInput KEEL file path.
+     * @param pathnameOutput TXT file path.
      *
-     * @throws Exception.
+     * @throws Exception if the files can not be read or written.
      */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
 
@@ -85,17 +80,11 @@ public class KeelToTxt extends Exporter {
 
     }//end Start()
 
-    /*
-     * MÃ©todo utilizado para crear el fichero con formato Txt
-     * (indicada la ruta por el parÃ¡metro pathnameOutput) a partir
-     * de los datos almacenados en el vector de objetos de la clase
-     * Attribute, el vector data[], y la variable nameRelation.
-     *
-     * @param String pathnameOutput. Variable de tipo String con
-     * la ruta del fichero de datos de salida con formato Txt.
-     *
-     * @throws Exception.
-     *
+    /**
+     * Method that creates the output file with TXT format given as parameter 
+     * using all the structures built by the start method of the Exporter class.  
+     * @param pathnameOutput TXT file path to generate.
+     * @throws Exception if the file can not be written.
      */
     public void Save(String pathnameOutput) throws Exception {
 

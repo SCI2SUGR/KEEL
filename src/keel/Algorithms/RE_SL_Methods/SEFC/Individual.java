@@ -95,6 +95,7 @@ public class Individual implements Comparable {
      * <p>
      * Compares the fitness value of two individuals
      * </p>
+     * @param a Object to compare with.
      * @return int Returns -1 if the the fitness of the first individual is lesser than the fitness of the second one.
      * 1 if the the fitness of the first individual is greater than the fitness of the second one.
      * 0 if both individuals have the same fitness value

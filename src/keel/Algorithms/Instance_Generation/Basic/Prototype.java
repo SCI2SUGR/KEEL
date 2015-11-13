@@ -55,6 +55,13 @@ public class Prototype
     /** Nominal type of attributes. */
     public static final int NOMINAL = 2;
     
+    /**
+     * Normalizes a given value using the maximum and minimum value given.
+     * @param min interval minimum value.
+     * @param max interval maximum value.
+     * @param value value to normalize.
+     * @return the result of the normalization.
+     */
     protected static double normalize(double min, double max, double value)
     {
         if(value <= min)
@@ -85,6 +92,7 @@ public class Prototype
      /**
      * Return the type of the attribute.
      * @param i ith attribute.
+     * @return the type of the attribute.
      */
     public static int getTypeOfAttribute(int i)
     {
@@ -116,8 +124,8 @@ public class Prototype
     protected double[] outputs = null; //output of the example  
     
     
-    /*
-     *   constructs a null prototype.
+    /**
+     *   Constructs a null prototype.
      * 
      */
     public Prototype(){
@@ -128,7 +136,10 @@ public class Prototype
     
     
     /**
+     * Parameter Constructor.
      * 
+     * @param numInput number of inputs.
+     * @param numOutput number of outputs.
      */
     
     public Prototype(int numInput, int numOutput){
@@ -348,6 +359,7 @@ public class Prototype
     /**
      * Multiply component by component like a scalar product.
      * 
+     * @param other prototype to multiply.
      * @return A prototype which inputs product with other..
      */ 
     public Prototype mul(Prototype other)
@@ -369,8 +381,9 @@ public class Prototype
     }
  
     /**
-     * Multiply component by component like a scalar product.
-     * @return A prototype which inputs product with other..
+     * Multiplies component by component like a scalar product and sums the products.
+     * @param other  prototype to multiply.
+     * @return addition of the element by element products.
      */ 
     public double mulEscalar(Prototype other)
     {
@@ -438,7 +451,7 @@ public class Prototype
     
     
     /**
-     * 
+     * Computes the module of a Prototype.
      * @return the module of a Prototype, like the sqrt(a1^2 + a2^2...)
      */
     public double module(){
@@ -455,6 +468,7 @@ public class Prototype
     /**
      * Add an increment to all the inputs of the prototype
      * @param increment
+     * @return prototype resulting from the operation.
      *
      */
     public Prototype add(double increment){
@@ -645,6 +659,11 @@ public class Prototype
         return result;
     }
     
+    /**
+     * Rounds a number given.
+     * @param value given number to round.
+     * @return number rounded
+     */
     protected static double round(double value)
     {
         String s = Double.toString(value);
@@ -914,8 +933,8 @@ public class Prototype
     
     
     /**
-     * Opuesto de un prototipo
-     *
+     * Computes inverse prototype, element by element. (1 - value)
+     * @return inverse prototype, element by element. (1 - value)
      */
     
     public Prototype opposite(){
@@ -929,8 +948,9 @@ public class Prototype
     }
     
     /**
-     * This function is for NOminal adaptation...
+     * Resets the prototype. This function is for NOminal adaptation...
      * 
+     * @return prototype resulting from the operation.
      */
     public Prototype formatear(){
     	Prototype formateado = new Prototype(this);

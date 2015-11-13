@@ -27,19 +27,7 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: FSAlgorithm.java
- * 
- * A general framework for FS Algorithms.
- * This class contains all common operations in the developement of a 
- * FS algorithm. 
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
+
 
 package keel.Algorithms.Preprocess.Feature_Selection.Shared;
 
@@ -53,52 +41,154 @@ import keel.Dataset.InstanceSet;
 
 import org.core.Files;
 
+/**
+ * 
+ * File: FSAlgorithm.java
+ * 
+ * A general framework for FS Algorithms.
+ * This class contains all common operations in the developement of a 
+ * FS algorithm. 
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/11/2008 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
 public abstract class FSAlgorithm {
 
 	//Files
-
+    /**
+     * Output files names
+     */
+    
 	protected String outFile[];
-	protected String testFile;
-	protected String trainFile;
-	protected String referenceFile;
+
+    /**
+     * Test file name
+     */
+    protected String testFile;
+
+    /**
+     * Train file name
+     */
+    protected String trainFile;
+
+    /**
+     * Reference file name
+     */
+    protected String referenceFile;
 	
 	//Instance Sets
 	
+	/**
+     * Training dataset
+     */
+    	
 	protected InstanceSet train;
-	protected InstanceSet test;
+
+    /**
+     * Test dataset
+     */
+    protected InstanceSet test;
+
 	
-	protected Instance temp;	
+    /**
+     * Temporal instance.
+     */
+    protected Instance temp;	
 	
 	//Data
 	
+	/**
+     * Number of input attributes
+     */
+    	
 	protected int inputAtt;
-	protected Attribute[] inputs;
-	protected Attribute output;
-	protected boolean[] nulls;
+
+    /**
+     * Inputs attributes
+     */
+    protected Attribute[] inputs;
+
+    /**
+     * Output attribute
+     */
+    protected Attribute output;
+
+    /**
+     * Missing values of a instance
+     */
+    protected boolean[] nulls;
 	
+    /**
+     * Training input data.
+     */
 	protected double trainData[][];
+        
+     /**
+     * Training real input data.
+     */
 	protected double trainReal[][];
+        
+     /**
+     * Training output data.
+     */
 	protected int trainOutput[];
+     
+     /**
+     * Training nominal input data.
+     */
 	protected int trainNominal[][];
+        
+     /**
+     * Training missing input data.
+     */
 	protected boolean trainNulls[][];
+        
+     /**
+     * Test input data.
+     */
 	protected double testData[][];
+        
+     /**
+     * Test output data.
+     */
 	protected int testOutput[];
 
+     /**
+     * Relation string.
+     */
 	protected String relation;
 	
+     /**
+     * Number of classes.
+     */
 	protected int nClasses;
+        
+     /**
+     * Number of instances of each classes.
+     */
 	protected int nInstances[];
 	
 	//Timing
 	
+     /**
+     * Initial time.
+     */
 	protected long initialTime;
 	
 	//Naming
 	
+     /**
+     *Naming.
+     */
 	protected String name;
 	
 	//Random seed
 	
+     /**
+     *Random seed.
+     */
 	protected long seed;
 	
 	/** 
@@ -227,6 +317,7 @@ public abstract class FSAlgorithm {
 	
 	/** 
 	 * This function builds the data matrix for training data and normalizes inputs values
+         * @throws keel.Algorithms.Preprocess.Basic.CheckException if the dataset is not appropiate for this algorithm.
 	 */	
 	protected void normalize() throws CheckException {
 

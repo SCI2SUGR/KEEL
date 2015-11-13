@@ -303,7 +303,7 @@ public class Cromosoma implements Comparable {
   /**
 	 * Test if two chromosome differ in only one gene
 	 *
-	 * @param a Chromosome to compare
+	 * @param o1 Chromosome to compare
 	 *
 	 * @return Position of the difference, if only one is found. Otherwise, -1
 	 */

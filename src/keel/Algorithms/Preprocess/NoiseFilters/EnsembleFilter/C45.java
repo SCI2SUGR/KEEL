@@ -27,16 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
-
 package keel.Algorithms.Preprocess.NoiseFilters.EnsembleFilter;
 
 import java.io.*;
@@ -50,6 +40,13 @@ import keel.Dataset.Attributes;
 
 /**
  * Class to implement the C4.5 algorithm
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
  */
 public class C45 extends Algorithm {
     /** Decision tree. */
@@ -78,6 +75,8 @@ public class C45 extends Algorithm {
 
     /** Constructor.
      *
+     * @param trainfn Training dataset filename.
+     * @param testfn Test dataset filename.
      * @throws Exception	If the algorithm cannot be executed.
      */
     public C45(String trainfn, String testfn) throws Exception {
@@ -112,6 +111,10 @@ public class C45 extends Algorithm {
 
     }
 
+    /**
+     * Returns the predicted classes for each test instance.
+     * @return the predicted classes for each test instance.
+     */
     public int[] getPredictions(){
     	int[] classesp = new int[testDataset.numItemsets()];
     	 for(int i = 0 ; i < testDataset.numItemsets() ; ++i)
@@ -129,8 +132,9 @@ public class C45 extends Algorithm {
 
     /** Function to read the options from the execution file and assign the values to the parameters.
      *
-     * @param options 		The StreamTokenizer that reads the parameters file.
      *
+     * @param trainfn Training data filename.
+     * @param testfn Test data filename.
      * @throws Exception	If the format of the file is not correct.
      */
     protected void setOptions(String trainfn, String testfn) throws Exception {
@@ -171,6 +175,7 @@ public class C45 extends Algorithm {
      * @param itemset		The itemset to evaluate.
      *
      * @return				The index of the class index predicted.
+     * @throws java.lang.Exception if the instance can not be evaluated.
      */
     public double evaluateItemset(Itemset itemset) throws Exception {
         Itemset classMissing = (Itemset) itemset.copy();
@@ -228,6 +233,7 @@ public class C45 extends Algorithm {
     /** Returns class probabilities for an itemset.
      *
      * @param itemset		The itemset.
+     * @return  class probabilities for an itemset.
      *
      * @throws Exception	If cannot compute the classification.
      */
@@ -276,6 +282,7 @@ public class C45 extends Algorithm {
     /** Returns index of maximum element in a given array of doubles. First maximum is returned.
      *
      * @param doubles		The array of elements.
+     * @return index of maximum element in a given array of doubles.
      *
      */
     public static int maxIndex(double[] doubles) {
@@ -320,7 +327,7 @@ public class C45 extends Algorithm {
 
     /** Writes the tree and the results of the training and the test in the file.
      *
-     * @exception 	If the file cannot be written.
+     * @exception IOException	If the file cannot be written.
      */
     public void printResult() throws IOException {
         long totalTime = (System.currentTimeMillis() - startTime) / 1000;
@@ -366,7 +373,6 @@ public class C45 extends Algorithm {
 
     /** Evaluates the training dataset and writes the results in the file.
      *
-     * @exception 	If the file cannot be written.
      */
     public void printTrain() {
         String text = getHeader();
@@ -401,7 +407,6 @@ public class C45 extends Algorithm {
 
     /** Evaluates the test dataset and writes the results in the file.
      *
-     * @exception 	If the file cannot be written.
      */
     public void printTest() {
         String text = getHeader();
@@ -434,7 +439,7 @@ public class C45 extends Algorithm {
 
 
     /** Function to print the tree.
-     *
+     * @return a String representation of the tree.
      */
     public String toString() {
         return root.toString();

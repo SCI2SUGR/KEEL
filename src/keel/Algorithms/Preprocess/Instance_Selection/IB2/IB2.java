@@ -56,7 +56,17 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 
-
+/**
+ * 
+ * File: IB2.java
+ * 
+ * The IB2 Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class IB2 extends Metodo {
 
 
@@ -68,12 +78,17 @@ public class IB2 extends Metodo {
 
   private int k;
 
-
+/**
+     * Default constructor. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
   public IB2 (String ficheroScript) {
     super (ficheroScript);
   }
 
-
+/**
+	 * Executes the algorithm
+	 */ 
   public void ejecutar () {
 
 

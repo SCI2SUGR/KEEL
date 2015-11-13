@@ -43,12 +43,10 @@ import java.util.regex.Pattern;
  * <p>
  * <b> PropertyListToKeel </b>
  * </p>
+ * This class extends from the Importer class. It is used to read 
+ * data with PropertyList (xml) format and transform them to the KEEL format.
  *
- *  Clase extendida de la clase Importer. Esta clase permite convertir
- *  un fichero de datos con formato property list (con sintaxis xml) a
- *  formato de datos Keel.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class PropertyListToKeel extends Importer {
@@ -57,15 +55,15 @@ public class PropertyListToKeel extends Importer {
     private String lineAux = new String();//Variable almacena el elemento o etiqueta principal que forma el documento xml.
     private Element root;
 
-    /*
-     *   Metodo utilizado para convertir los datos almacenados dentro del fichero
-     *   con formato property list indicado mediante la variable pathnameInput a
-     *   formato keel en el fichero indicado por la ruta pathnameOutput
+    /**
+     * Method used to transform the data from the PropertyList file given as parameter to 
+     * KEEL format file which will be stored in the second file given.
      *
-     * @param pathnameInput ruta del fichero con formato property list.
-     * @param pathnameOutput ruta con los datos en formato keel.
+     * @param pathnameInput PropertyList file path.
+     * @param pathnameOutput KEEL file path.
      *
-     * @throws Exception */
+     * @throws Exception if the files can not be read or written.
+     */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
 
         Pattern p;
@@ -407,16 +405,11 @@ public class PropertyListToKeel extends Importer {
 
     }//end Start()
 
-    /*
-     *   MÃ©todo encargado de recorrer todo el Ã¡rbol xml para encontrar
-     *   el nodo padre del nodo o etiqueta cuyo nombre coincida con el valor del parÃ¡metro  childrenName.
-     *   El nodo padre de dicha etiqueta serÃ¡ asignado a la variable miembro
-     *   root.
-     *
-     *   @param  Element current. Elemento o nodo xml actual.
-     *   @param  String childrenName. Variable String que indica el
-     *   nombre de la etiqueta a buscar.
-     *
+    /**
+     * Searchs in the whole xml tree to find the parent of the node or xaml tag whose name is 
+     * equals to the one given as parameter. The node found will be assigned to the member variable "root".
+     * @param current actual node or xml tag.
+     * @param childrenName name node asked.
      */
     public void FindParent(Element current, String childrenName) {
 
@@ -436,18 +429,11 @@ public class PropertyListToKeel extends Importer {
     } //end FindParent()
 
 
-    /*
-     *  MÃ©todo recursivo que devuelve el texto que contiene todos los descendientes
-     *  de un nodo o etiqueta de un elemento xml.
-     *
-     *   @param  Element current que indica que nodo o etiqueta xml actual.
-     *   @param  int cont Variable que se utiliza como contador de descendientes.
-     *
-     *   @return String . Devuelve el valor de la variable auxiliar lineAux
-     *   que almacena el texto de todos los descendientes de un nodo separado
-     *   cada uno por un espacio en blanco.
-     *
-     *   @throws Exception
+    /**
+     * Recursive method that returns the text containing all the descendants of a xml tag.
+     * @param current actual node or xml tag.
+     * @param cont  descendants counter.
+     * @return the text containing all the descendants of a xml tag, separated by blanks.
      */
     public String ListChildrenText(Element current, int cont) {
 

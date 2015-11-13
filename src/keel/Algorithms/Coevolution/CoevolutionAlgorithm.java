@@ -123,8 +123,7 @@ public abstract class CoevolutionAlgorithm {
     /**
      * Number of input attributes
      */
-    	
-	protected int inputAtt;
+    protected int inputAtt;
 
     /**
      * Inputs attributes

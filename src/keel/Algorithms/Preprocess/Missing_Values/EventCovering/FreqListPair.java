@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 14/05/2006
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
+
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering;
 import java.util.*;
 
@@ -42,10 +36,26 @@ import java.util.*;
  * This class represents a list of pairs frequency (i.e. the frequency associated to a 
  * determined pair of strings).
  * </p>
+ *  <p>
+ * @author Written by Julián Luengo Martín 14/05/2006
+ * @version 0.3
+ * @since JDK 1.5
+ * </p>
  */
 public class FreqListPair {
+    /**
+     * Frequencies vector of strings.
+     */
     protected Vector freqs = null;
+
+    /**
+     * Iterator index.
+     */
     protected int index = 0;
+
+    /**
+     * Total elements in the list.
+     */
     protected int totalElements = 0;
     
     /**

@@ -44,7 +44,13 @@ import keel.Dataset.*;
 import keel.Algorithms.Preprocess.Feature_Selection.*;
 
 
-
+/**
+ * <p>Simulated Annealing Algorithm
+ * @author Written by Ignacio Robles Paiz (University of Granada) 23/06/2010
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class SA {
 /**
  * <p>
@@ -250,6 +256,7 @@ public class SA {
      * <p>
      * Creates a new instance of SA
      * </p>
+     * @param ficParametros Configuration file.
      */
     public SA(String ficParametros) {
 

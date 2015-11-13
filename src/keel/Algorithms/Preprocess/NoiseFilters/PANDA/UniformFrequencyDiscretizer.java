@@ -29,7 +29,15 @@
 
 package keel.Algorithms.Preprocess.NoiseFilters.PANDA;
 
+
+import java.util.*;
+
+import org.core.Randomize;
+
 /**
+ * <p>
+ * This class implements the Uniform Frequency discretizer.
+ * </p>
  * <p>
  * @author Written by Jaume Bacardit (La Salle, Ramón Llull University - Barcelona) 28/03/2004
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -37,18 +45,8 @@ package keel.Algorithms.Preprocess.NoiseFilters.PANDA;
  * @since JDK1.5
  * </p>
  */
-
-
-import java.util.*;
-
-import org.core.Randomize;
-
 public class UniformFrequencyDiscretizer extends Discretizer {
-/**
- * <p>
- * This class implements the Uniform Frequency discretizer.
- * </p>
- */
+
 		
 	double numInt;
 

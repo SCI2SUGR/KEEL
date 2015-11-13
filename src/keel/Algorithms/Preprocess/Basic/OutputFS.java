@@ -27,9 +27,16 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Preprocess.Basic;
+
+import keel.Dataset.*;
+import org.core.*;
+
 /**
  * 
- * File: OutputIFS.java
+ * File: OutputFS.java
  * 
  * General Framework to print results of performing either instance or feature selection
  * 
@@ -38,12 +45,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Preprocess.Basic;
-
-import keel.Dataset.*;
-import org.core.*;
-
 public class OutputFS {
 
 	/** 

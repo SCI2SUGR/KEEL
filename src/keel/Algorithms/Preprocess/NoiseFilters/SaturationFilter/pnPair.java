@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.SaturationFilter;
 
@@ -46,6 +38,13 @@ import keel.Dataset.Instance;
 /**
  * <p>
  * This class lets to handle pnPair structure
+ * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class pnPair {
@@ -189,7 +188,10 @@ public class pnPair {
 	 * <p>
 	 * It checks if only the literal lit covers the pnPair and the other do not
 	 * </p>
-	 * @return true or false
+     * @param literals
+     * @param L
+     * @param lit
+	 * @return true if only the literal lit covers the pnPair and the other do not
 	 */
 	public boolean onlyOneLiteral(boolean[][] literals, Vector<Integer> L, int lit){
 		
@@ -211,6 +213,9 @@ public class pnPair {
 	 * <p>
 	 * It checks if only the literal lit covers the pnPair and the other do not
 	 * </p>
+     * @param literals
+     * @param lit
+     * @return True if only the literal lit covers the pnPair and the other do not
 	 */
 	public boolean isCovered(boolean[][] literals, int lit){
 		
@@ -225,6 +230,14 @@ public class pnPair {
 	
 //******************************************************************************************************
 	
+    /**
+     * Returns the PN pairs with the integer set and instances given.
+     * @param E integer set.
+     * @param instances instances set.
+     * @param positiveClass positive class id.
+     * @return the PN pairs with the integer set and instances given.
+     */
+    	
 	static public Vector<pnPair> getPNpairs(IntegerSet E, Instance[] instances, int positiveClass){
 		
 		Vector<pnPair> U = new Vector<pnPair>();
@@ -241,7 +254,10 @@ public class pnPair {
 		return U;
 	}
 	
-	public void print(){
+    /**
+     * Prints on the standard output a representation of the pnPair.
+     */
+    public void print(){
 		System.out.println("(" + posEx + " , " + negEx +"), weight = " + weight);
 	}
 	

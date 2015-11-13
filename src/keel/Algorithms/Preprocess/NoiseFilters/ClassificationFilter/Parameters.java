@@ -27,23 +27,10 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
 
-package keel.Algorithms.Preprocess.NoiseFilters.ClassificationFilter;/**
+package keel.Algorithms.Preprocess.NoiseFilters.ClassificationFilter;
 
- * @author Written by Jose A. Saez Munoz (SCI2S research group, DECSAI in ETSIIT, University of Granada), 21/12/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 import java.util.*;
 import java.io.*;
@@ -53,37 +40,107 @@ import java.io.*;
  * <p>
  * Main class to parse the parameters of the algorithm
  * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
  */
 public class Parameters {
 	
 	private static BufferedReader br;
 	
 	// parameters of the algorithm ------------------
-	public static String algorithmName;
+     /**
+     * Algorithm name.
+     */
+    	public static String algorithmName;
 	
-	public static String trainInputFile;
-	public static String testInputFile;
+    /**
+     * Original Training data filename.
+     */
+    public static String trainInputFile;
+
+    /**
+     * Original Test data filename.
+     */
+    public static String testInputFile;
 	
-	public static String trainOutputFile;
-	public static String testOutputFile;
-	public static String logOutputFile;
+    /**
+     *  Modified Training data filename.
+     */
+    public static String trainOutputFile;
+
+    /**
+     *  Modified Training data filename.
+     */
+    public static String testOutputFile;
+
+    /**
+     * Log information output file.
+     */
+    public static String logOutputFile;
 	
-	public static int numClasses;
-	public static int numAttributes;
-	public static int numInstances;
+    /**
+     * Number of classes.
+     */
+    public static int numClasses;
+
+    /**
+     * Number of attributes.
+     */
+    public static int numAttributes;
+
+    /**
+     * Number of instances.
+     */
+    public static int numInstances;
 	
-	public static long seed;
-	public static int numPartitions;
-	public static String classifier;
+    /**
+     * Seed for random purposes.
+     */
+    public static long seed;
+
+    /**
+     * Number of partitions.
+     */
+    public static int numPartitions;
+
+    /**
+     * Classifier used (knn or c45).
+     */
+    public static String classifier;
 	
 	// K-NN
-	public static int numNeighbors;
-	public static String distanceType;
+
+    /**
+     * Number of nearest neighbours considered.
+     */
+    	public static int numNeighbors;
+
+    /**
+     * Distance used.
+     */
+    public static String distanceType;
 	
 	// C4.5
-	public static boolean prune;
-	public static double confidence;
-	public static int itemsetsPerLeaf;
+
+    /**
+     * Prune flag (True, prune method will be executed).
+     */
+    	public static boolean prune;
+
+    /**
+     * Confidence value for prune purposes.
+     */
+    public static double confidence;
+
+    /**
+     * Minimun items per leaf.
+     */
+    public static int itemsetsPerLeaf;
 	// ----------------------------------------------
 	
 

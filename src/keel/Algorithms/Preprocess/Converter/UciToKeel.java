@@ -49,14 +49,12 @@ import com.Ostermiller.util.CSVParser;
  * <b> UciToKeel </b>
  * </p>
  *
- * Clase extendida de la clase Importer. Esta clase permite convertir
- * un fichero de datos con formato Uci (con formato C4.5) a formato de
- * datos Keel. El fichero Uci estÃ¡ compuesto de dos ficheros, un
- * fichero de nombres con extensiÃ³n ".names" que contiene la
- * definiciÃ³n de los atributos y un fichero de datos con extensiÃ³n
- * ".data" que almacena los datos con formato csv.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+* This class extends from the Importer class. It is used to read 
+ * data with UCI format and transform them to the KEEL format. 
+ * UCI format has two different files:
+ *  - Name file that stores all the names of the attributes and class ".names".
+ *  - Data file with all the data ".data".
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class UciToKeel extends Importer {
@@ -65,32 +63,25 @@ public class UciToKeel extends Importer {
     int IGNORE = -2;
 
 
-    /*
-     * Constructor de la Clase UciToKeel. Inicializa los valores
-     * de las variables miembro separator (separador de los datos del fichero de datos ".data" )
-     * con el valor del parÃ¡metro separatorUser.
+    /** UciToKeel class Constructor.
+     * Initializes the variables that store the symbols separator between data.
      *
-     * @param separatorUser. Variable de tipo String con el separador de los
-     * datos para el fichero de datos ".data".
-     *
+     * @param  separatorUser. Separator symbols used in the csv format.
      */
     public UciToKeel(String separatorUser) {
         separator = separatorUser;
     }
 
-    /*
-     * MÃ©todo utilizado para convertir los datos de los ficheros
-     * de entrada con formato UCI (fichero de datos con la variable
-     * pathnameInputData y fichero de nombres con la variable pathnameInputNames)
-     * a formato keel en el fichero indicado por la ruta pathnameOutput
+    /**
+     * Method used to transform the data from the UCI file given as parameter to 
+     * KEEL format file which will be stored in the second file given.
      *
-     * @param pathnameInputNames Variable String que almacena
-     * la ruta del fichero de nombres (".names").
-     * @param pathnameInputData Variable String que almacena
-     * la ruta del fichero de datos (".data").
-     * @param pathnameOutput ruta para el fichero de datos Keel.
+     * @param pathnameInputNames UCI names file path.
+     * @param pathnameInputData UCI data file path.
+     * @param pathnameOutput KEEL file path.
      *
-     * @throws Exception */
+     * @throws Exception if the files can not be read or written.
+     */
     public void Start(String pathnameInputNames, String pathnameInputData, String pathnameOutput) throws Exception {
 
         Pattern p;
@@ -506,16 +497,11 @@ public class UciToKeel extends Importer {
 
     }
 
-    /*
-     * Este mÃ©todo crea el fichero de salida con formato keel en la ruta pasada,
-     * a partir de la informaciÃ³n almacenada en las variables miembro
-     * attribute[], data[], nameRelation y numAttributes.
-     * Aquellos atributos con etiqueta IGNORE en el fichero de nombres,
-     * no son almacenados en el fichero de salida.
-     *
-     * @param  String pathnameOutput Indica la ruta del fichero de salida con formato Keel.
-     *
-     * @throws Exception
+    /**
+     * Method that creates the output file with KEEL format given as parameter 
+     * using all the structures built by the start method.  
+     * @param pathnameOutput KEEL file path to generate.
+     * @throws Exception if the file can not be written.
      */
     @Override
     public void Save(String pathnameOutput) throws Exception {

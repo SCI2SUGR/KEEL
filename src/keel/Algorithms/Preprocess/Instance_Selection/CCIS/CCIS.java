@@ -45,12 +45,23 @@ import java.util.StringTokenizer;
 import java.util.Arrays;
 import java.util.Vector;
 
+/**CCIS method
+ * 
+ * @author Salvador García López
+ */
 public class CCIS extends Metodo {
 
+    /**
+     * Constructor
+     * @param ficheroScript Configuration filename.
+     */
 	public CCIS (String ficheroScript) {
 		super (ficheroScript);
 	}
 
+        /**
+     * execute the method.
+     */
 	public void ejecutar () {
 
 		int i, j, k, m, l;

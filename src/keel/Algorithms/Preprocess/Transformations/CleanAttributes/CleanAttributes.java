@@ -27,13 +27,8 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 10/11/2005
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
+
+
 package keel.Algorithms.Preprocess.Transformations.CleanAttributes;
 import java.io.*;
 import java.util.*;
@@ -45,6 +40,11 @@ import keel.Algorithms.Preprocess.Basic.*;
  * This class performs the decimal scaling transformation on the data.
  * It finds the minimum power of ten for each attribute such that dividing all
  * the attribute values, the new values are always less than 1.0
+ * </p>
+ * <p>
+ * @author Written by Julián Luengo Martín 10/11/2005
+ * @version 0.3
+ * @since JDK 1.5
  * </p>
  */
 public class CleanAttributes {
@@ -381,6 +381,11 @@ public class CleanAttributes {
         }
     }
     
+    /**
+     * Returns true if the attribute given is useful, false otherwise.
+     * @param at attribute class given.
+     * @return  true if the attribute given is useful, false otherwise.
+     */
     public boolean usefulAttribute(Attribute at){
     	if(at.getType()==Attribute.NOMINAL && at.getNumNominalValues()<2){
     		return false;    		

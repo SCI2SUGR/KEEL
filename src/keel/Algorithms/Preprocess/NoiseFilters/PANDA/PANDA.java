@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.PANDA;
 
@@ -62,6 +54,13 @@ import keel.Dataset.InstanceSet;
  * relative to the other instances in the data set. After obtaining a noise ranking, some of the instances may be discarded
  * from the data set, which would result in a cleaner data set with which to perform additional analysis.
  * Reference: 2007-Hulse-KIS
+ * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class PANDA {
@@ -174,7 +173,10 @@ public class PANDA {
 		createDatasets(Parameters.trainInputFile,Parameters.trainOutputFile,Parameters.testInputFile,Parameters.testOutputFile);
 	}
 	
-	public void CalculateNoiseFactor(){
+    /**
+     * Computes the noise factor.
+     */
+    public void CalculateNoiseFactor(){
 		
 		double[][][] s;
 		
@@ -249,7 +251,15 @@ public class PANDA {
 		
 	}
 	
-	public double computeMean(int j, int k, int l){
+    /**
+     * Computes mean for the values attribute k whose discretized value j is equal to l.
+     * @param j discretized value id.
+     * @param k attribute id given.
+     * @param l value given.
+     * @return mean for the values attribute k whose discretized value j is equal to l.
+     *
+     */
+    public double computeMean(int j, int k, int l){
 		
 		double mean = 0;
 		int numExamples = 0;
@@ -268,7 +278,15 @@ public class PANDA {
 		return mean;
 	}
 	
-	
+	/**
+     * Computes deviation for the values attribute k whose discretized value j is equal to l.
+     * @param j discretized value id.
+     * @param k attribute id given.
+     * @param l value given.
+     * @param mean given mean.
+     * @return deviation for the values attribute k whose discretized value j is equal to l.
+     *
+     */
 	public double computeDesv(int j, int k, int l, double mean){
 		
 		double sum = 0;
@@ -295,6 +313,10 @@ public class PANDA {
 	 * <p>
 	 * It apllies the changes to remove the noise 
 	 * </p>
+     * @param trainIN Original Training dataset filename.
+     * @param trainOUT Modified Training dataset filename.
+     * @param testIN Original test dataset filename.
+     * @param testOUT Modified test dataset filename.
 	 */
 	public void createDatasets(String trainIN, String trainOUT, String testIN, String testOUT){
 		

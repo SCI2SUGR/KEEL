@@ -65,11 +65,11 @@ public class INichedMutation implements IntegerMutation {
 /**
  * <p>
  * Mutates the lower real value.
- * </p>
  * @param lowerValue is the current lower value of this classifier position
  * @param upperValue is the current upper value of this classifier position.
  * @param currentState is the current State of the environment for this
  * allele of the classifier.
+     * @param scale values scale.
  * @return a double with the mutated value
  */
  public int mutateLower(int lowerValue, int upperValue, int currentState, int scale) {        
@@ -88,6 +88,11 @@ public class INichedMutation implements IntegerMutation {
  * <p>
  * Mutates the upper real value.
  * </p>
+ * @param lowerValue is the current lower value of this classifier position
+ * @param upperValue is the current upper value of this classifier position.
+ * @param currentState is the current State of the environment for this
+ * allele of the classifier.
+     * @param scale values scale.
  * <p>
  * @return a double with the mutated value.
  * </p>

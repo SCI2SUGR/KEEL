@@ -219,9 +219,21 @@ import keel.Algorithms.Preprocess.Missing_Values.EM.util.*;
  * @author Julian Luengo Martin
  */
 public class EM{
-	final public static int TTLS = 1;
-	final public static int MRIDGE = 2;
-	final public static int IRIDGE = 3;
+
+    /**
+     * TTLS flag.
+     */
+    final public static int TTLS = 1;
+
+    /**
+     * MRIDGE flag.
+     */
+    final public static int MRIDGE = 2;
+
+    /**
+     * IRIDGE flag.
+     */
+    final public static int IRIDGE = 3;
 
 	DenseMatrix m;
 	double eps = MachineAccuracy.EPSILON; //Floating-point relative accuracy

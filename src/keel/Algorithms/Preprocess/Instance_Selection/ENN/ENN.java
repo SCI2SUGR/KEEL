@@ -27,6 +27,14 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Preprocess.Instance_Selection.ENN;
+
+import keel.Algorithms.Preprocess.Basic.*;
+import org.core.*;
+import java.util.StringTokenizer;
+
 /**
  * 
  * File: ENN.java
@@ -38,13 +46,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Preprocess.Instance_Selection.ENN;
-
-import keel.Algorithms.Preprocess.Basic.*;
-import org.core.*;
-import java.util.StringTokenizer;
-
 public class ENN extends Metodo {
 
 	/*Own parameters of the algorithm*/
@@ -53,6 +54,7 @@ public class ENN extends Metodo {
     /**
      * Default builder. Construct the algoritm by using the superclass builder.
 	 *
+     * @param ficheroScript Configuration file.
      */
 	public ENN (String ficheroScript) {
 		super (ficheroScript);

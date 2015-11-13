@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Instance_Selection.SGA;
+
 /**
  * 
  * File: Main.java
@@ -39,9 +42,8 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Preprocess.Instance_Selection.SGA;
-
 public class Main {
+
 	/** 
 	 * <p>
 	 * The main method of the class

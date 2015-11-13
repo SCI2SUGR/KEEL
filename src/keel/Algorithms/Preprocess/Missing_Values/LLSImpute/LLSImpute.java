@@ -127,8 +127,10 @@ public class LLSImpute {
 	String temp = new String();
 	String data_out = new String("");
 	
-	
-	public LLSImpute(){
+    /**
+     * Default constructor.
+     */
+    public LLSImpute(){
 		super();
 	}
 	
@@ -605,6 +607,7 @@ public class LLSImpute {
 	 * @param miss_matrix The original matrix with all missing values
 	 * @param minexp The minimum number of non-missing values to compute the row-average
 	 * @param IS The reference InstanceSet
+         * @return the row-average dense matrix.
 	 *
 	 */
 	public DenseMatrix impute_rowavg(DenseMatrix miss_matrix,int minexp,InstanceSet IS){

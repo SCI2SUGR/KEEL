@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 08/03/2006
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
+
 package keel.Algorithms.Preprocess.Missing_Values.ConceptAllPossibleValues;
 import java.util.Vector;
 
@@ -42,9 +36,22 @@ import java.util.Vector;
  * This class stores a list of Value-attribute elements. This list contains a FreqList associated to each class,
  * i.e. stores the frequency of each classes associated to a given value.
  * </p>
+ *  <p>
+ * @author Written by Julián Luengo Martín 08/03/2006
+ * @version 0.3
+ * @since JDK 1.5
+ * </p>
  */
 public class VAList {
+
+    /**
+     * Value-attribute elements list.
+     */
     protected Vector elemsList = null;
+
+    /**
+     * Total number of elements in the list.
+     */
     protected int totalElems = 0;
     
     /** 

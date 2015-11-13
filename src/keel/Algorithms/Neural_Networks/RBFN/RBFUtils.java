@@ -62,8 +62,6 @@ public class RBFUtils {
     * @param _hashtable The hashtable containing the parameters.
     * @return Verbosity value
     */
-    
-   
     public static boolean setVerbosity( Hashtable _hashtable ) {
     	return ( verbosityValue=_hashtable.containsKey ( "verbose" ) );
     }
@@ -326,6 +324,8 @@ public class RBFUtils {
      * <p>
      * Computes the geometric mean of the distance between the given center and the 2 nearest vectors in a double[][]
      * </p>
+     * @param center centers given.
+     * @param nCenter number of centers
      * @param _values The array containing the vectors
      * @return The maximun distance between vectors in a double[][]
      */
@@ -363,7 +363,10 @@ public class RBFUtils {
       * <p>
       * Computes the RMSdistance between the given center and the n nearest vectors in a double[][]
       * </p>
+     * @param center centers given.
       * @param _values The array containing the vectors
+     * @param nCenter number of centers
+     * @param N number of nearest elements
       * @return The maximun distance between vectors in a double[][]
       */
 

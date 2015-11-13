@@ -61,9 +61,19 @@
 
 package keel.Algorithms.Preprocess.Missing_Values.SVDimpute;
 
-// Interface for Regression class
-// Sum of squares function for non-linear regression methods
+/**
+ *Interface for Regression class
+ * Sum of squares function for non-linear regression methods
+ * @author unknown.
+ */
 public interface RegressionFunction{
+
+    /**
+     * To implement non-linear the regression funciont
+     * @param param parameters given.
+     * @param x values to perform the regression.
+     * @return regression result.
+     */
     double function(double[]param, double[] x);
 }
 

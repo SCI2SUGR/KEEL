@@ -57,19 +57,11 @@ public interface IntegerMutation {
 /**
  * <p>
  * Mutates the lower real value of the interval.
- * </p>
- * <p>
- * 
  * @param lowerValue is the current lower value of this classifier position
- * </p>
- * <p>
  * @param upperValue is the current upper value of this classifier position.
- * </p>
- * <p>
  * @param currentState is the current State of the environment for this
  * allele of the classifier.
- * </p>
- * <p>
+     * @param scale values scale.
  * @return a double with the mutated value
  * </p>
  */
@@ -79,7 +71,11 @@ public interface IntegerMutation {
 /**
  * <p>
  * Mutates the upper real value.
- * 
+ * @param lowerValue is the current lower value of this classifier position
+ * @param upperValue is the current upper value of this classifier position.
+ * @param currentState is the current State of the environment for this
+ * allele of the classifier.
+     * @param scale values scale.
  * @return a double with the mutated value
  * </p>
  */

@@ -221,6 +221,8 @@ public class Population {
  * </p>
  * @param reward is the reward given by the environment.
  * @param maxPA is the maximum prediction obtained in the prediction array.
+ * * @param envState is the input example
+ * @param tStamp is the current time stamp
  */
   public void updateParametersSet(double reward,double maxPA,double [] envState, int tStamp) {        
 	int i = 0;
@@ -357,6 +359,7 @@ public class Population {
  * not null.
  * </p>
  * @param cl  is the classifier that has to be inserted in the population.
+ * @param ASet Population where the classifier will be inserted.
  */
   public void insertInPopulation(Classifier cl,Population ASet) {        
     boolean found = false;
@@ -398,6 +401,7 @@ public class Population {
  * not null.
  * </p>
  * @param cl  is the classifier that has to be inserted in the population.
+ * @param ASet Population where the classifier will be inserted.
  */
   public void insertInPSubsumingCl(Classifier cl,Population ASet) {        
     int i=0;
@@ -704,6 +708,7 @@ public class Population {
  * <p>
  * Initializes the classifiers' time stamp to the tStamp value
  * </p>
+ * @param tStamp time to be set.
  */
     public void setTimeOfClassifiers (int tStamp){
     	
@@ -719,6 +724,7 @@ public class Population {
  * <p>
  * Initializes the classifiers' reduction time stamp to the tStamp value
  * </p>
+ * @param tStamp is the time stamp
  */
     public void setTCompOfClassifiers (int tStamp){
     	
@@ -776,6 +782,8 @@ public class Population {
   * a population with the minimum number of classifiers that cover
   * all the input examples.
   * </p>
+     * @param env Environment to be set in the new population.
+     * @return the D population created
   */
     public Population createMCompPopulation (Environment env){
     	int moreMatches=0, maxMatched=0;
@@ -905,6 +913,7 @@ public class Population {
  * <p>
  * It initialitzes all the useful params of the population.
  * </p>
+     * @param value boolean to be set.
  */
 
    public void setUseful (boolean value){
@@ -1255,6 +1264,9 @@ public class Population {
 
 
 
+    /**
+     * Prints on standard output the population representation.
+     */
     public void print(){
 	System.out.println ("POPULATION: ");
 	System.out.println ("\tmacroClassifierSum = "+macroClSum);	

@@ -121,8 +121,8 @@ public class C45
    * @param pruned indicates if the tree is going to be pruned or not
    * @param confidence confidence
    * @param instancesPerLeaf minimun number of instances per leaf
+     * @param weights weights used to build the tree.
    *
-   * @throws Exception	If the algorithm cannot be executed.
    */
   public C45(String fichTrain, boolean pruned, float confidence,
              int instancesPerLeaf, double[] weights) {
@@ -150,8 +150,7 @@ public class C45
    * @param pruned indicates if the tree is going to be pruned or not
    * @param confidence confidence
    * @param instancesPerLeaf minimun number of instances per leaf
-   *
-   * @throws Exception	If the algorithm cannot be executed.
+     * @param weights weights used to build the tree.
    */
   public C45(InstanceSet IS, boolean pruned, float confidence,
              int instancesPerLeaf, double[] weights) {
@@ -174,8 +173,11 @@ public class C45
 
   }
 
-
-  public void generateTree() throws Exception{
+    /**
+     * Generates the tree with the model dataset.
+     * @throws Exception if the tree can not be built.
+     */
+    public void generateTree() throws Exception{
     try{
       generateTree(modelDataset);
     }catch (Exception e) {
@@ -321,6 +323,7 @@ public class C45
    * @param itemset		The itemset to evaluate.
    *
    * @return				The index of the class index predicted.
+     * @throws java.lang.Exception if the itemset can not be evaluated.
    */
   public double evaluateItemset(Itemset itemset) throws Exception {
     Itemset classMissing = (Itemset) itemset.copy();
@@ -378,6 +381,7 @@ public class C45
   /** Returns class probabilities for an itemset.
    *
    * @param itemset		The itemset.
+     * @return class probabilities for an itemset.
    *
    * @throws Exception	If cannot compute the classification.
    */
@@ -427,6 +431,7 @@ public class C45
   /** Returns index of maximum element in a given array of doubles. First maximum is returned.
    *
    * @param doubles		The array of elements.
+     * @return index of maximum element in a given array of doubles.
    *
    */
   public static int maxIndex(double[] doubles) {
@@ -472,7 +477,11 @@ public class C45
     }
   }
 
-  public String printString(){
+    /**
+     * Returns a String representation of the tree.
+     * @return a String representation of the tree.
+     */
+    public String printString(){
     String tree = new String("");
     toString();
     tree += "@TotalNumberOfNodes " + root.NumberOfNodes;
@@ -603,6 +612,7 @@ public class C45
 
   /** Function to print the tree.
    *
+     * @return String representation of the tree.
    */
   public String toString() {
     return root.toString();
@@ -629,7 +639,11 @@ public class C45
     }
   }
 
-  public double[] getPriorProbabilities()
+    /**
+     * Returns the prior probabilities
+     * @return the prior probabilities
+     */
+    public double[] getPriorProbabilities()
   {
      return this.priorsProbabilities;
   }

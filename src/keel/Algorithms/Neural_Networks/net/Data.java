@@ -54,8 +54,10 @@ public class Data {
     /** Testing data */
     public double test[][];
 
-    /** Scaling parameters */
+    /** Scaling parameters (a) */
     public double [] a = null;
+
+    /** Scaling parameters (b) */
     public double [] b = null;
 
     /**

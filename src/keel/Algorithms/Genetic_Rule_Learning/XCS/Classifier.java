@@ -128,6 +128,7 @@ public class Classifier {
  * classifier passed as a parameter.
  * </p>
  * @param cl is the classifier to be copied to the new classifier.
+     * @param tStamp is the current time stamp.
  */
 
   public Classifier (Classifier cl, int tStamp){
@@ -155,6 +156,7 @@ public class Classifier {
  * It creates a new classifier with the parameters contained in the String. 
  * It is used when reading the classifiers from a file.
  * </p>
+     * @param t StringTokenizer to get the parameters
  */
 
   public Classifier(StringTokenizer t){
@@ -300,6 +302,7 @@ public class Classifier {
  * decide where to cross the interval. It it's crossed within the inteval, 
  * the crossAllele method will do it. 
  * </p>
+     * @param i position to cross.
  * @param parent1 is the first parent classifier. 
  * @param parent2 is the second parent classifier. 
  */
@@ -551,6 +554,7 @@ public class Classifier {
  * <p>
  * Sets the numerosity of the classifier.
  * </p>
+     * @param num numerosity to set.
  */
     public void setNumerosity(int num) {        
         parameters.setNumerosity(num);
@@ -727,9 +731,12 @@ public class Classifier {
 	parameters.addUsefulTimes(num);
    } 
 
-
-
-   public boolean couldComp(){
+    /**
+ * Indicates if the classifier is accurate and experienced enough
+ * to not be removed from the population
+     * @return True if the classifier is accurate and experienced enough or false otherwise.
+ */
+    public boolean couldComp(){
 	return parameters.couldComp();
    }
 

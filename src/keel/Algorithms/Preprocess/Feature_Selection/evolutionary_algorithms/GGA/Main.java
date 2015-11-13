@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.GGA;
+
 /**
  * 
  * File: Main.java
@@ -39,8 +42,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.GGA;
-
 public class Main {
 
 	/** 

@@ -439,7 +439,14 @@ public class sonn {
     return nodes[output].NodeOutput(input, nodes);
   }
 
-  public double TestSONNInRegression(SetupParameters global, double data[][],
+    /**
+     * Test the SONN algorithm in a regression problem
+     * @param global setup parameters
+     * @param data regression data.
+     * @param npatterns number of patterns in the problem.
+     * @return the fitness of the algorithm.
+     */
+    public double TestSONNInRegression(SetupParameters global, double data[][],
                                      int npatterns) {
     double fitness, RMS = 0.0, error, out;
 

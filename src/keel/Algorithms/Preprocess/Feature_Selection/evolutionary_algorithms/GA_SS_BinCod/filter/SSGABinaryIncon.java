@@ -262,6 +262,7 @@ public class SSGABinaryIncon {
     /* ------------ METHODS ------------ */    
     /**
      * Creates a new instance of SSGABinaryIncon 
+     * @param ficParametros Configuration file.
      */
     public SSGABinaryIncon(String ficParametros) {
         

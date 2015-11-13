@@ -29,7 +29,16 @@
 
 package keel.Algorithms.RE_SL_Methods.P_FCS1;
 
-/**
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
+/**	
+ * <p>
+ * It contains the methods to read a Classification/Regression Dataset
+ * </p>
  * <p>
  * @author Written by Alberto Fernández (University of Granada) 01/01/2007
  * @author Modified by Francisco José Berlanga (University of Jaén) 09/12/2008 
@@ -37,20 +46,22 @@ package keel.Algorithms.RE_SL_Methods.P_FCS1;
  * @since JDK 1.6
  * </p>
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
-/**	
- * <p>
- * It contains the methods to read a Classification/Regression Dataset
- * </p>
- */
 
+
+    /**
+     * Number to represent type of variable real or double.
+     */
     public static final int REAL = 0;
+    
+    /**
+     * Number to represent type of variable integer.
+     */
     public static final int ENTERO = 1;
+    
+    /**
+     * Number to represent type of variable nominal.
+     */
     public static final int NOMINAL = 2;
 
     private double[][] X = null; //examples array
@@ -631,7 +642,7 @@ public class myDataset {
      * It returns the nominal value for the class in the position "intValue"
      * </p>   
      * @param intValue int class id (position of the class)          
-     * Return String the nominal value for the class in the position "intValue"            
+     * @return String the nominal value for the class in the position "intValue"            
      */     
     public String getOutputValue(int intValue){
         return Attributes.getOutputAttribute(0).getNominalValue(intValue);
@@ -642,7 +653,7 @@ public class myDataset {
      * It returns the type for the attribute "variable"
      * </p>    
      * @param variable int attribute id (position of the attribute)           
-     * Return int 1 if "variable" is an integer attribute; 0 if "variable" is a real attribute;
+     * @return int 1 if "variable" is an integer attribute; 0 if "variable" is a real attribute;
      * 2 if "variable" is a nominal attribute; 0 (real) by default; 
      */      
     public int getType(int variable){
@@ -660,7 +671,7 @@ public class myDataset {
      * It returns an array showing if the value of each attribute for the instance "pos" is missing (TRUE) or not (FALSE)
      * </p>        
      * @param pos int Instance id         
-     * Return bolean[] an array showing if the value of each attribute for the instance "pos" is missing (TRUE) or not (FALSE)     
+     * @return bolean[] an array showing if the value of each attribute for the instance "pos" is missing (TRUE) or not (FALSE)     
      */   
     public boolean [] getMissing(int pos){
         return this.missing[pos];

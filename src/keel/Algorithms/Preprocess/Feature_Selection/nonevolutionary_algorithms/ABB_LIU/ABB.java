@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Ignacio Robles Paiz (University of Granada) 25/06/2010
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.ABB_LIU;
 
@@ -45,13 +39,14 @@ import keel.Dataset.*;
 import keel.Algorithms.Preprocess.Feature_Selection.*;
 
 
-
-public class ABB {
 /**
- * <p>
- * Automatic Branch and Bound
+ * <p>Automatic Branch and Bound
+ * @author Written by Ignacio Robles Paiz (University of Granada) 25/06/2010
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
+public class ABB {
 
     /** Datos class with all information about datasets and feature selection methods  */
     private Datos data;
@@ -238,6 +233,7 @@ public class ABB {
      * <p>
      * Creates a new instance of ABB
      * </p>
+     * @param ficParametros Configuration file.
      */
     public ABB(String ficParametros) {
 

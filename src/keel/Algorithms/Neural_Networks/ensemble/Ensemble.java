@@ -55,10 +55,35 @@ import org.core.Files;
 public class Ensemble {
 
     EnsembleNetwork nets[];
-    public double weights[][], betta[], cache[][][][];
+    /**
+     * Ensemble weights.
+     */
+    public double weights[][],
+
+    /**
+     * Ensemble betta.
+     */
+
+    /**
+     * Ensemble cache.
+     */
+    betta[], cache[][][][];
     int Nnetworks, Ninputs, Noutputs;
     private final double TH_COS = 0.99619;
-    public final int TRAIN = 0, TEST = 1, VAL = 2;
+    /**
+     * Training flag.
+     */
+    public final int TRAIN = 0,
+
+    /**
+     * Test flag.
+     */
+    TEST = 1,
+
+    /**
+     * Validation flag.
+     */
+    VAL = 2;
 
     /**
      * <p>
@@ -531,7 +556,8 @@ public class Ensemble {
      * @param data Data to be saved
      * @param n No of patterns
      * @param problem Type of problem (CLASSIFICATION | REGRESSION)
-     * @throws IOException
+     * @param a Scaling parameter (a).
+     * @param b Scaling parameter (b).
      */
     public void SaveOutputFile(String file_name, double data[][], int n,
                                String problem, double[] a, double[] b) {

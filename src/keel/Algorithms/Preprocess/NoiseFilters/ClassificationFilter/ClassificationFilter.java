@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.ClassificationFilter;
 
@@ -60,6 +52,13 @@ import keel.Dataset.Instance;
  * algorithm that induces a hypothesis (a classifier) Hy. Those examples from Ei for which the hypothesis Hy does not give the
  * correct classification are added to A as potentially noisy examples.
  * Reference: 1999-Gamberger-ICML
+ * </p>
+  * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class ClassificationFilter {
@@ -178,6 +177,7 @@ public class ClassificationFilter {
 	 * <p>
 	 * It apllies the changes to remove the noise 
 	 * </p>
+         * @param out Training data output file.
 	 */
 	public void createDataset(String out){
 		

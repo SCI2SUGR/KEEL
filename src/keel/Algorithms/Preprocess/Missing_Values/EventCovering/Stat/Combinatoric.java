@@ -30,11 +30,22 @@
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering.Stat;
 import java.util.Vector;
 
+/**
+ * combinatorical functions
+ * Source: S.Gill Williamson (1985) Combinatorics for Computer Science, Computer Science Press
+ * @author  S.Gill Williamson
+ */
 public class Combinatoric {
 
 // combinatorical functions
 // Source: S.Gill Williamson (1985) Combinatorics for Computer Science, Computer Science Press
 
+    /**
+     * Returns the combinatory number of the two number given.
+     * @param n first number given.
+     * @param m secod number given.
+     * @return the combinatory number of the two number given.
+     */
 public static long over(int n, int m) {
    if (n<=0 || n<m || m<0) return 0;
    if (m==0 || m==n) return 1;
@@ -68,8 +79,14 @@ private static void bintab(int n) {
 
 private static Vector binom = new Vector();
 
-// Rank of increasing function a[] in colex order
-public static long colexIncFuncRank(int[] a) {
+
+
+    /**
+     * Rank of increasing function a[] in colex order
+     * @param a increasing function given.
+     * @return Rank of the function.
+     */
+    public static long colexIncFuncRank(int[] a) {
    int d = a.length;
    long sum=0;
    for (int i=0; i<d; i++) 
@@ -79,7 +96,15 @@ public static long colexIncFuncRank(int[] a) {
 
 // Rank of increasing function a[] (r^d) in lex order
 // d = length(a)
-public static long lexIncFuncRank(int[] a, int r) {
+
+    /**
+     * Rank of increasing function a[] (r^d) in lex order.
+     * d = length(a)
+     * @param a increasing function given.
+     * @param r r value given.
+     * @return Rank of the function.
+     */
+    public static long lexIncFuncRank(int[] a, int r) {
    int d = a.length;
    long sum=0;
    for (int i=0; i<d; i++)  
@@ -90,7 +115,15 @@ public static long lexIncFuncRank(int[] a, int r) {
 
 // Rank of nondecreasing function a[] (r^d) in lex order
 // d = length(a)
-public static long lexNondecFuncRank(int[] a, int r) {
+
+    /**
+     *Rank of nondecreasing function a[] (r^d) in lex order.
+     * d = length(a)
+     * @param a nondecreasing function given.
+     * @param r scalar value given.
+     * @return Rank of the function.
+     */
+    public static long lexNondecFuncRank(int[] a, int r) {
    int d = a.length;
    long sum=0;
    int pos=0;
@@ -103,7 +136,14 @@ public static long lexNondecFuncRank(int[] a, int r) {
 
 // Rank of composition a[] (d balls in r=a.length boxes) in lex order
 // is mapped to nondecreasing function r^d
-public static long lexCompositionRank(int[] a) {
+
+    /**
+     * Rank of composition a[] (d balls in r=a.length boxes) in lex order
+     * is mapped to nondecreasing function r^d.
+     * @param a composition given.
+     * @return Rank of the composition.
+     */
+    public static long lexCompositionRank(int[] a) {
    int d = 0, r = a.length;
    for (int i=0; i<r; i++) d+=a[i];
    long sum=0;
@@ -122,7 +162,14 @@ public static long lexCompositionRank(int[] a) {
 
 // next nondecreasing function (r^d) in lex order
 // return false at last function
-public static boolean nextNondecFunc(int[] a, int r) {
+
+    /**
+     * next nondecreasing function (r^d) in lex order
+     * @param a nondecreasing function function.
+     * @param r scalar given.
+     * @return false at last function
+     */
+    public static boolean nextNondecFunc(int[] a, int r) {
   int d = a.length;
   for (int i=d-1; i>=0; i--) {
      if (a[i]<r-1) { 

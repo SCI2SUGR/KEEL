@@ -265,6 +265,7 @@ public class CHCBinaryLVO {
     
     /**
      * Creates a new instance of CHCBinaryLVO 
+     * @param ficParametros Configuration file.
      */
     public CHCBinaryLVO(String ficParametros) {
         

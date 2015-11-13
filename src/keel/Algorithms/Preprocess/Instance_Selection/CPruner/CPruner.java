@@ -45,15 +45,34 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import java.util.Arrays;
 
+/**
+ * 
+ * File: CPruner.java
+ * 
+ * The CPruner algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class CPruner extends Metodo {
 
   /*Own parameters of the algorithm*/
   private int k;
 
+  /**
+	 * Builder. Creates the basic structures of the algorithm
+	 *
+	 * @param ficheroScript Configuration script
+	 */
   public CPruner (String ficheroScript) {
     super (ficheroScript);
   }
   
+  /**
+     * Executes the CPruner algorithm.
+     */
   public void ejecutar () {
 
     int i, j, l, m;

@@ -29,6 +29,11 @@
 
 package keel.Algorithms.PSO_Learning.REPSO;
 
+
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 /**
  * <p>Title: Crono</p>
  *
@@ -37,11 +42,6 @@ package keel.Algorithms.PSO_Learning.REPSO;
  * @author Jose A. Saez Munoz
  * @version 1.0
  */
-
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-
 public class Crono{ 
 
 	private Calendar inicio;
@@ -54,6 +54,9 @@ public class Crono{
     //***************** Constructor ***************************************
     //*********************************************************************
 
+    /**
+     * Default Constructor.
+     */
     public Crono(){
     }
 
@@ -62,11 +65,16 @@ public class Crono{
     //***************** Initialization and stop ***************************
     //*********************************************************************
 
+    /**
+     * Initialization. Chronometer starts running.
+     */
     public void inicializa() { 
         inicio = new GregorianCalendar();
      }
 
-    
+    /**
+     * Stops the chronometer and computes the time consumed.
+     */
     public void fin(){
 
         fin = new GregorianCalendar();
@@ -80,6 +88,10 @@ public class Crono{
     //***************** Print total time **********************************
     //*********************************************************************
 
+    /**
+     * Returns the total time recorded.
+     * @return String representation of the total time recorded. 
+     */
    public String tiempoTotal(){
 	   
 	   String tpo="";

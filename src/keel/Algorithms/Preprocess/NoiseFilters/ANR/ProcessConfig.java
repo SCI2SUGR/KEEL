@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 10/03/2004
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.ANR;
 
@@ -43,18 +36,26 @@ import java.io.*;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-
-public class ProcessConfig {
-	/**
-	 * <p>
-	 * Class that process the configuration file for KEEL algorithms.
-	 * </p>
+/** 
 	 * 
-	 */
+* @author sergio 
+*/
+public class ProcessConfig {
 
-    public final static int IndexTrain = 0; // First file in inputData
-    public final static int IndexTestKMeans = 1; // Test file in clustering algorithms
-    public final static int IndexTest = 2; // It ignores the repetition of train file
+    /**
+     * First file in inputData
+     */
+    public final static int IndexTrain = 0; 
+
+    /**
+     * Test file in clustering algorithms
+     */
+    public final static int IndexTestKMeans = 1;  
+
+    /**
+     * It ignores the repetition of train file
+     */
+    public final static int IndexTest = 2; 
     /**
      * <p> 
      * Constructor that initializes input/output parameters.
@@ -103,76 +104,341 @@ public class ProcessConfig {
     private boolean createResultFile = false; 		// Results File
 
     // Configuration parameters for algorithms
-    public static boolean parNewFormat = true; 		// Keel format or not
+
+    /**
+     * Keel format or not
+     */
+        public static boolean parNewFormat = true; 		// Keel format or not
+
+    /**
+     *  Algorithm to execute
+     */
     public static int parAlgorithmType = 0; 		// Algorithm to execute    
+
+    /**
+     * Input Train and Test names
+     */
     public static Vector parInputData; 				// Train and Test names
+
+    /**
+     * Output Train and Test names
+     */
     public static Vector parOutputData;
+
+    /**
+     * NEW: All the output files are stored in this vector (in the doOutputData method)
+     */
     public static Vector outputData; 				// NEW: All the output files are stored in this vector (in the doOutputData method)
 
+    /**
+     * Result file name for Trail file
+     */
     public static String parResultTrainName = "resultTrain.log"; // Result file name for Trail file
+
+    /**
+     * Global results file
+     */
     public static String parResultName = "resultTest.log"; // Global results file
+
+    /**
+     * Results label
+     */
     public static String parResultLabel;    // Results label
+
+    /**
+     *  Partition label
+     */
     public static int parPartitionLabelNum; // Partition label
+
+    /**
+     * Population size
+     */
     public static int parPopSize = 30;     // Population size
+
+    /**
+     *Number of populations
+     */
     public static int parIslandNumber = 5; // Number of populations
+
+    /**
+     * Steady or not
+     */
     public static boolean parSteady; // Steady or not
+
+    /**
+     *  Number of iterations (generations of crosses)
+     */
     public static int parIterNumber = 100; // Number of iterations (generations of crosses)
+
+    /**
+     *Tournament size
+     */
     public static int parTourSize = 4; // Tournament size
+
+    /**
+     *  Mutation probability
+     */
     public static double parMutProb = 0.01; // Mutation probability
+
+    /**
+     * Mutation amplitude
+     */
     public static double parMutAmpl = 0.1; // Mutation amplitude
+
+    /**
+     * Migration probability
+     */
     public static double parMigProb = 0.001; // Migration probability
+
+    /**
+     * Local Optimization probability
+     */
     public static double parLoProb = 0; // Local Optimization probability
+
+    /**
+     * NUmber of iterations for Local Optimization * used nvar
+     */
     public static int parLoIterNumber = 2; // NUmber of iterations for Local Optimization * used nvar
+
+    /**
+     *  Local Optimization Algorithm
+     */
     public static int parLoId = OperatorIdent.AMEBA; // Local Optimization Algorithm
+
+    /**
+     * Maximum height for each individual
+     */
     public static int parMaxHeigth = 10; // Maximum height for each individual
+
+    /**
+     * Using GA-P niches
+     */
     public static boolean parNiche = false; // Using GA-P niches
+
+    /**
+     * Maximum number of individuls by niche
+     */
     public static int parMaxNiche = 10; // Maximum number of individuls by niche
+
+    /**
+     * Crossing probability intra-niche
+     */
     public static double parIntraNicheProb = 0.5; // Crossing probability intra-niche
+
+    /**
+     *  Waited fitness increment for a SAP overcrossing
+     */
     public static double parDeltaFit = 1; // Waited fitness increment for a SAP overcrossing
+
+    /**
+     * Accepting probability -deltafit on 0 iteration SAP
+     */
     public static double parP0 = 0.25; // Accepting probability -deltafit on 0 iteration SAP
+
+    /**
+     * Accepting probability -deltafit on iteration SAP
+     */
     public static double parP1 = 0.01; // Accepting probability -deltafit on iteration SAP
+
+    /**
+     * Number of iterations for each temperature SAP
+     */
     public static int parNSUB = 25; // Number of iterations for each temperature SAP
+
+    /**
+     * GA Cross probability
+     */
     public static double parCrGAProb = 0.5; // GA Cross probability
+
+    /**
+     * GA Mutation probability
+     */
     public static double parMuGAProb = 0.5; // GA Mutation probability
+
+    /**
+     *Number of rules (Boosting and FSS98)
+     */
     public static int parRuleNumber = 5; // Number of rules (Boosting and FSS98)
+
+    /**
+     *Type of cross operator
+     */
     public static int parCrossId1 = OperatorIdent.GENERICROSSOVER; // Type of cross operator
+
+    /**
+     *Type of mutation operator
+     */
     public static int parMutaId1 = OperatorIdent.GENERICMUTATION; // Type of mutation operator
+
+    /**
+     *Type of cross operator GAP
+     */
     public static int parCrossId2 = OperatorIdent.GAPCROSSGA; // // Type of cross operator GAP
+
+    /**
+     *Type of mutation operator GAP
+     */
     public static int parMutaId2 = OperatorIdent.GAPMUTAGA; // Type of mutation operator GAP
+
+    /**
+     *Type of cross operator GAP
+     */
     public static int parCrossId3 = OperatorIdent.GAPCROSSGP; // // Type of cross operator GAP
+
+    /**
+     *Type of mutation operator GAP
+     */
     public static int parMutaId3 = OperatorIdent.GAPMUTAGP; // Type of mutation operator GAP
+
+    /**
+     *Type of fitness
+     */
     public static int parFitnessType = OperatorIdent.GI_STANDARD; // Type of fitness
+
+    /**
+     *Neural Network topology
+     */
     public static int[] parNetTopo; // Neural Network topology
+
+    /**
+     *Kernel parameter
+     */
     public static double parKernel = 1; // Kernel parameter
+
+    /**
+     *Number of means
+     */
     public static int parNMeans = 1; // Number of means
+
+    /**
+     *Number of parameters for GA string (GAP)
+     */
     public static int parGALen = 10; // Number of parameters for GA string (GAP)
+
+    /**
+     *Initial Covariance in FSS98
+     */
     public static double parSigma = 0.0001; // Initial Covariance in FSS98
+
+    /**
+     *Contrast Significance Level
+     */
     public static double parSignificanceLevel = 0.95; // Contrast Significance Level
+
+    /**
+     *Random seed
+     */
     public static long parSeed = 1; // Random seed
+
+    /**
+     *Number of cluster in clustering problems
+     */
     public static int parNClusters = 1; // Number of cluster in clustering problems
+
+    /**
+     *Tolerance added to input examples in Fuzzy Symbolic Regression
+     */
     public static double fuzzyTolerance = 0.1; // Tolerance added to input examples in Fuzzy Symbolic Regression
 
+    /**
+     * tableType1 (YES or NO)
+     */
     public static String tableType1 = "YES";
+
+    /**
+     * tableType2 (YES or NO)
+     */
     public static String tableType2 = "YES";
+
+    /**
+     * tableType3 (YES or NO)
+     */
     public static String tableType3 = "YES";
+
+    /**
+     * Number of line
+     */
     public static int numberLine = 2;
+
+    /**
+     * Number of line 1
+     */
     public static int numberLine1 = 1;
+
+    /**
+     *  Number of line 2
+     */
     public static int numberLine2 = 1;
+
+    /**
+     *  Number of line 3
+     */
     public static int numberLine3 = 1;
+
+    /**
+     * Data table order 1
+     */
     public static String dataTable1 = "TEST-TRAIN";
+
+    /**
+     * Data table order 2
+     */
     public static String dataTable2 = "TEST-TRAIN";
+
+    /**
+     * Data table order 3
+     */
     public static String dataTable3 = "TEST-TRAIN";
+
+    /**
+     * Data matrix
+     */
     public static String dataMatrix = "TEST-TRAIN";
+
+    /**
+     * Confussion matrix (YES-NO)
+     */
     public static String matrixConfussion = "YES";
     //public static int numDataset = 0;
-    public static int curDataset = 0;
+
+    /**
+     * Dataset
+     */
+        public static int curDataset = 0;
+
+    /**
+     * file name
+     */
     public static String nameFile;
 
+    /**
+     * Iman boolean
+     */
     public static boolean Iman;
+
+    /**
+     * Nem boolean
+     */
     public static boolean Nem;
+
+    /**
+     * Bon boolean
+     */
     public static boolean Bon;
+
+    /**
+     * Holm boolean
+     */
     public static boolean Holm;
+
+    /**
+     * Hoch boolean
+     */
     public static boolean Hoch;
+
+    /**
+     * Hommel boolean
+     */
     public static boolean Hommel;
 
     private int nl;
@@ -1768,6 +2034,7 @@ public class ProcessConfig {
      *  
      * </p>
      * @param in the stream to read.
+     * @return rest of the results file without hearder.
      */
     public String[] skipHeader(BufferedReader in) {
 
@@ -1858,6 +2125,8 @@ public class ProcessConfig {
      * Writes the result file with pattern and obtained data for clustering problems.
      *</p>
      *
+     * @param pattern patterns given to write.
+     * @param obtained obtained data given to write.
      */
     public void results(double[][] pattern, int[] obtained) {
         createResults(pattern, obtained);
@@ -1888,6 +2157,8 @@ public class ProcessConfig {
      * Writes the training result file with pattern and obtained data for clustering problems.
      *</p>
      * 
+     * @param pattern patterns given to write.
+     * @param obtained obtained data given to write.
      */
     public void trainingResults(double[][] pattern, int[] obtained) {
         createTrainingResults(pattern, obtained);

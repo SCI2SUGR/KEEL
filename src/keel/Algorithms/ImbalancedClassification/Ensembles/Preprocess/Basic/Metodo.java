@@ -27,6 +27,14 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
+
+import keel.Dataset.*;
+
+import java.util.StringTokenizer;
+import keel.Algorithms.ImbalancedClassification.Ensembles.multi_C45;
+
 /**
  * 
  * File: Metodo.java
@@ -40,13 +48,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
-
-import keel.Dataset.*;
-
-import java.util.StringTokenizer;
-import keel.Algorithms.ImbalancedClassification.Ensembles.multi_C45;
-
 public class Metodo {
 
 	  /*Path and names of I/O files*/
@@ -214,6 +215,7 @@ public class Metodo {
 
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+         * @throws keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic.CheckException if the dataset is not appropiate.
 	 */	
 	protected void normalizar () throws CheckException {
 
@@ -226,7 +228,7 @@ public class Metodo {
 		/*Check if dataset corresponding with a classification problem*/
 
 		if (Attributes.getOutputNumAttributes() < 1) {
-		  throw new CheckException ("This dataset haven?t outputs, so it not corresponding to a classification problem.");
+		  throw new CheckException ("This dataset haven't outputs, so it not corresponding to a classification problem.");
 		} else if (Attributes.getOutputNumAttributes() > 1) {
 		  throw new CheckException ("This dataset have more of one output.");
 		}

@@ -28,6 +28,13 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.RST_Learning;
+
+import java.util.Arrays;
+
+import org.core.Files;
+
 /**
  * 
  * File: ReportTool.java
@@ -39,12 +46,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.RST_Learning;
-
-import java.util.Arrays;
-
-import org.core.Files;
-
 public class ReportTool{
 	
 	private static int trOrig [];

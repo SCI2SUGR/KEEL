@@ -62,7 +62,6 @@ public class Genesis {
      * Main function
      * </p>
      * @param args
-     * @throws IOException
      */
     public static void main(String[] args) {
 

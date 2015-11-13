@@ -26,15 +26,7 @@
 	along with this program.  If not, see http://www.gnu.org/licenses/
   
 **********************************************************************/
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.CVCommitteesFilter;
 
@@ -56,6 +48,13 @@ import keel.Dataset.InstanceSet;
  * <p>
  * The Ensemble Filter...
  * Reference: 1999-Brodley-JAIR
+ * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class CVCommitteesFilter {
@@ -186,6 +185,10 @@ public class CVCommitteesFilter {
 	 * <p>
 	 * It apllies the changes to remove the noise 
 	 * </p>
+     * @param trainIN Original training data filename.
+     * @param trainOUT Modified training data filename.
+     * @param testIN Original test data filename.
+     * @param testOUT Modified test data filename.
 	 */
 	public void createDatasets(String trainIN, String trainOUT, String testIN, String testOUT){
 		

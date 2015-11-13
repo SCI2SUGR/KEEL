@@ -29,6 +29,10 @@
 
 package keel.Algorithms.PSO_Learning.CPSO;
 
+
+
+import org.core.*;
+
 /**
  * <p>Title: Particle</p>
  *
@@ -37,9 +41,6 @@ package keel.Algorithms.PSO_Learning.CPSO;
  * @author Jose A. Saez Munoz
  * @version 1.0
  */
-
-import org.core.*;
-
 public class Particle {
 	
     public double[] X;				//position

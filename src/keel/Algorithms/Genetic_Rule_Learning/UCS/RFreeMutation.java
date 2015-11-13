@@ -87,12 +87,10 @@ public class RFreeMutation implements RealMutation {
 /**
  * <p>
  * Mutates the upper real value.
- * </p>
- * <p>
  * 
- * </p>
- * <p>
- * 
+     * @param lowerValue lower value, untouched.
+     * @param upperValue upper value to mutate.
+     * @param currentState environmental current state, untouched.
  * @return a double with the mutated value.
  * </p>
  */

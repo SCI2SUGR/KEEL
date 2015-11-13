@@ -27,20 +27,6 @@
   
 **********************************************************************/
 
-/*
-
- * rbfn.java
-
-/**
- * <p>
- * @author Writen by Antonio J. Rivera Rivas (University of Jaén) 03/03/2004
- * @author Modified by Víctor Rivas (University of Jaén) 23/06/2006
- * @author Modified by María Dolores Pérez Godoy (University of Jaén) 17/12/2008
- * @author Modified by Julian Luengo (University of Granada) 04/02/2013 
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
  
 package keel.Algorithms.Neural_Networks.RBFN_incremental_CL;
 
@@ -51,6 +37,16 @@ import java.lang.*;
 import java.io.*;
 
 
+/**
+ * <p>This class codified a Radial Basis Function Network 
+ * @author Writen by Antonio J. Rivera Rivas (University of Jaén) 03/03/2004
+ * @author Modified by Víctor Rivas (University of Jaén) 23/06/2006
+ * @author Modified by María Dolores Pérez Godoy (University of Jaén) 17/12/2008
+ * @author Modified by Julian Luengo (University of Granada) 04/02/2013 
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Rbfn {
 /**
  * <p>
@@ -204,6 +200,7 @@ public class Rbfn {
      * 
      * @param X  Matrix of instances
      * @param ndata  Number of instaces in X  @param nInpt Number of imputs of the net
+     * @param nInpt Number of imputs of the net
      * @param nOutp Number of outputs of the net
      * @param nNeuro Number of hidden neurons the net will have.
      */
@@ -344,7 +341,7 @@ public class Rbfn {
      * @param nNeuro Number of hidden neurons the net will have.
      * @param X Matrix of instances
      * @param ndata Number of instaces in X
-     *  @param nInpt Number of imputs of the net
+     * @param nInpt Number of imputs of the net
      * @param nOutpl Number of outputs of the net
      */
 

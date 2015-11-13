@@ -27,16 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Manuel Chica Serrano (University of Jaen) 01/09/2005
- * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
- * @author Modified by Cristobal Jose Carmona del Jesus (University of Jaen) 19/12/2008
- * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 03/02/2009
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.GA_Gen_BinCod.filter;
 
@@ -46,9 +37,7 @@ import keel.Dataset.Attributes;
 import keel.Algorithms.Preprocess.Feature_Selection.Datos;
 import keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.*;
 
- 
- public class GGABinaryIncon {
-      /**
+/**
      * <p>
      * Main class of Generational Genetic Algorithm for feature selection using inconsistency ratio as evaluation measure
      * This class implements a Generational GA with binary representation for feature selection Inconsistency ratio (FILTER) 
@@ -61,7 +50,18 @@ import keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.*;
      *  Fitness: (1-alfa)*%hits + alfa*features_selected
      *  Stopping criteria: number of evaluations 
      * </p>
-     */    
+ 
+ * <p>
+ * @author Written by Manuel Chica Serrano (University of Jaen) 01/09/2005
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
+ * @author Modified by Cristobal Jose Carmona del Jesus (University of Jaen) 19/12/2008
+ * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 03/02/2009
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
+ public class GGABinaryIncon {
+         
 
     /** Datos class with all information about datasets and feature selection methods  */
     private Datos data;
@@ -287,7 +287,7 @@ import keel.Algorithms.Preprocess.Feature_Selection.evolutionary_algorithms.*;
      * <p>
      * Creates a new instance of GGABinaryIncon
      * </p>
-     * param ficParametros is the name of the parameter file
+     * @param ficParametros the name of the parameter file
      */
     public GGABinaryIncon(String ficParametros) {
         

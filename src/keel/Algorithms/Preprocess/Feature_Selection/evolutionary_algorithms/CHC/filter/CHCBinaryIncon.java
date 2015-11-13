@@ -264,6 +264,7 @@ public class CHCBinaryIncon {
     
     /**
      * Creates a new instance of CHCBinaryIncon 
+     * @param ficParametros Configuration file.
      */
     public CHCBinaryIncon(String ficParametros) {
         

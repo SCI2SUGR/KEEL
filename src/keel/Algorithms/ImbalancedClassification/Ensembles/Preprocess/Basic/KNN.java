@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
+
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+import keel.Dataset.Instance;
+import keel.Dataset.InstanceSet;
+
+import org.core.Files;
+
 /**
  * 
  * File: KNN.java
@@ -39,15 +49,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Basic;
-
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-import keel.Dataset.Instance;
-import keel.Dataset.InstanceSet;
-
-import org.core.Files;
-
 public class KNN {
 
 

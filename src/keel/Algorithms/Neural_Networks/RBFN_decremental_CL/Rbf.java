@@ -28,16 +28,7 @@
 **********************************************************************/
 
 
- /* rbf.java
- 
-/**
- * <p>
- * @author Writen by Antonio J. Rivera Rivas (University of Jaén) 03/03/2004
- * @author Modified by María Dolores Pérez Godoy (University of Jaén) 17/12/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Neural_Networks.RBFN_decremental_CL;
 
@@ -45,7 +36,14 @@ package keel.Algorithms.Neural_Networks.RBFN_decremental_CL;
 import org.core.*;
 
 
-
+/**
+ * <p>This class codified a neuron or a RBF
+ * @author Writen by Antonio J. Rivera Rivas (University of Jaén) 03/03/2004
+ * @author Modified by María Dolores Pérez Godoy (University of Jaén) 17/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Rbf implements Cloneable {
 /**
  * <p>
@@ -60,7 +58,15 @@ public class Rbf implements Cloneable {
     int vectors;
     double radius;
     double [] centre;
+
+    /**
+     * RBF Weights.
+     */
     public double [] weight;
+
+    /**
+     * RBF id.
+     */
     public String idRbf;
 
 
@@ -123,9 +129,9 @@ public class Rbf implements Cloneable {
     }
     
    /**
-     * <w>
+     * 
      * Sets the main parameters of a neuron
-     * </w>
+     * 
      * 
      * @param c Vector of centres
      * @param r Radius
@@ -143,9 +149,9 @@ public class Rbf implements Cloneable {
     }
     
    /**
-     * <w>
+     * 
      * Sets the main parameters of a neuron
-     * </w>
+     * 
      * 
      * 
      * @param c Vector of centres
@@ -221,9 +227,9 @@ public class Rbf implements Cloneable {
    }
    
   /**
-     * <w>
+     * 
      * Sets the weights of a neuron
-     * </w>
+     * 
      * 
      * @param w A vector of doubles with the weights of a neuron
      * 

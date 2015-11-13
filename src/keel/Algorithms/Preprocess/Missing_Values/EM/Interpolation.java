@@ -76,6 +76,15 @@ public class Interpolation {
 				M[i][j]=(M[i+1][j-1]-M[i][j-1])/(x[i+j]-x[i]);
 		return M[0]; }
 
+        /**
+	 * Interpolates with Horners-s method, computing the polynomial
+	 * a0+(t-x0)(a1+(t-x1)(a2+(t-x2)(a3+(...(an-1+(t-an))...)))))). 
+         * The coefficients vector a is computed with divDif(x,y).
+	 * @param y the vector of y coordinates of nodes to be interpolated
+	 * @param x the vector of x coordinates of nodes to be interpolated
+	 * @return the polynomial function
+	 * a0+(t-x0)(a1+(t-x1)(a2+(t-x2)(a3+(...(an-1+(t-an))...))))))
+	 */
 	public static final Function newtonInterp(final double[] x, final double[] y) {
 		final double[] a=divDif(x,y);
 		return new Function() {

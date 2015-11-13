@@ -45,36 +45,32 @@ import org.jdom.output.Format;
  * <b> KeelToXml </b>
  * </p>
  *
- * Clase extendida de la clase Exporter. Esta clase permite convertir
- * un fichero de datos con formato Keel a un fichero con formato Xml.
+ * This class extends from the Exporter class. It is used to read 
+ * data with KEEL format and transform them to the XML format.
  *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class KeelToXml extends Exporter {
 
 
-    /*
-     * Constructor de la Clase KeelToXml. Inicializa el valor
-     * de la variable miembro nullValue (valor nulo para el texto de una etiqueta xml).
-     * Este valor se inicializa a cadena vacÃ­a.
-     *
+    /** KeelToXml class Constructor.
+     * Initializes the variable that stores the symbols used to identify null 
+     * values.
      */
     public KeelToXml() {
         nullValue = "";
     }
 
-    /*
-     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
-     * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al mÃ©todo Save() para crear el fichero de datos Xml indicado en el
-     * parÃ¡metro de entrada pathnameOutput.
+    /**
+     * Method used to transform the data from the KEEL file given as parameter to 
+     * XML format file which will be stored in the second file given. It calls the method
+     * Start of its super class Exporter and then call the method Save.
      *
-     * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
-     * @param  String pathnameOutput Variable con la ruta del fichero de datos
-     * de salida con formato Xml.
+     * @param pathnameInput KEEL file path.
+     * @param pathnameOutput XML file path.
      *
-     * @throws Exception.
+     * @throws Exception if the files can not be read or written.
      */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
         super.Start(pathnameInput);
@@ -83,17 +79,11 @@ public class KeelToXml extends Exporter {
 
     }//end Start()
 
-    /*
-     * MÃ©todo utilizado para crear el fichero con formato Xml
-     * indicada la ruta por el parÃ¡metro pathnameOutput. Este fichero se crea a partir
-     * de los datos almacenados en el vector de objetos de la clase
-     * Attribute, el vector data[], y la variable nameRelation.
-     *
-     * @param String pathnameOutput. Variable de tipo String con
-     * la ruta del fichero de datos de salida con formato Xml.
-     *
-     * @throws Exception.
-     *
+    /**
+     * Method that creates the output file with XML format given as parameter 
+     * using all the structures built by the start method of the Exporter class.  
+     * @param pathnameOutput XML file path to generate.
+     * @throws Exception if the file can not be written.
      */
     public void Save(String pathnameOutput) throws Exception {
         int i;
@@ -166,16 +156,10 @@ public class KeelToXml extends Exporter {
     }//end Save()
 
 
-    /*
-     * MÃ©todo utilizado para convertir el nombre de un atributo del fichero
-     * keel a un nombre vÃ¡lido para una etiqueta xml.
-     *
-     * @param String nameLabelUser. Variable de tipo String con
-     * el nombre de un atributo del fichero keel.
-     *
-     * @return String. Devuelve el nombre del atributo pasado pero con algunos cambios
-     * para poder ser el nombre de una etiqueta xml.
-     *
+    /**
+     * Transforms an attribute name given of the KEEL file to a valid xml tag. 
+     * @param nameLabelUser attribute name with KEEL format.
+     * @return valid xml tag of the attribute name given.
      * @throws Exception
      */
     public String NameLabelValid(String nameLabelUser) throws Exception {

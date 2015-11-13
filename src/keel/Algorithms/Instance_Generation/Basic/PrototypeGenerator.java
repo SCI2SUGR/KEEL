@@ -107,6 +107,7 @@ public class PrototypeGenerator {
     /**
      * Number of prototypes corresponding of the desired percentage of the reduced set.
      * @param percentage Percentage of size that will have reduced set.
+     * @return Number of prototypes corresponding of the desired percentage of the reduced set.
      */
     protected int getSetSizeFromPercentage(double percentage)
     {
@@ -117,6 +118,7 @@ public class PrototypeGenerator {
      * Number of prototypes corresponding of the desired percentage of the reduced set.
      * @param set Original prototype set.
      * @param percentage Percentage of size that will have reduced set.
+     * @return Number of prototypes corresponding of the desired percentage of the reduced set.
      */
     protected static int getSetSizeFromPercentage(PrototypeSet set, double percentage)
     {
@@ -284,6 +286,7 @@ public class PrototypeGenerator {
      * Calculate the absolute accuracy between two sets
      * @param condensed Reduced data set
      * @param test Test data set
+     * @param k number of neighbour
      * @return Number of prototypes of test set that has been well classificate with KNN on condensed.
      * @author Isaac Triguero
      */
@@ -309,6 +312,12 @@ public class PrototypeGenerator {
         return 100.0 * (absAccuracy / (double)test.size());
     }
     
+    /**
+     * Calculate the percetage of well classificated prototypes of one set using 1NN in a reduced set.
+     * @param condensed Reduced data set
+     * @param test Test data set
+     * @return Percetage of well classificated prototypes of test in condendesd set.
+     */
     public double accuracy2(PrototypeSet condensed, PrototypeSet test)
     {
         double absAccuracy =  (double)absoluteAccuracy(condensed, test);
@@ -318,6 +327,7 @@ public class PrototypeGenerator {
      * Calculate the absolute accuracy between two sets
      * @param condensed Reduced data set
      * @param test Test data set
+     * @return Number of prototypes well classified and number of the not well classified
      */
     protected static Pair<Integer,Integer> absoluteAccuracyAndError(PrototypeSet condensed, PrototypeSet test)
     {
@@ -393,6 +403,7 @@ public class PrototypeGenerator {
      * @param name Name of the data set.
      * @param algoName Name of the algorithm.
      * @param accuracy1NN Number of well-classificated prototypes with KNN.
+     * @param training_size Training dataset size (number of examples).
      * @param test Test prototype set.
      * @return Return the results of the accuracy. 
      */
@@ -513,13 +524,20 @@ public class PrototypeGenerator {
             KeelFile.write(fileName, data);
     }
 
-    
-    
+    /**
+     * Sets each position of the vector given as parameter with the i-th number.
+     * @param vector vector to complete.
+     */
     public void inic_vector(int vector[]){
 
     	for(int i=0; i<vector.length; i++) vector[i] = i; // Lo inicializo de 1 a n-1
     }
 
+    /**
+     * Sets each position of the vector given as parameter with the i-th, skipping the position given as argument.
+     * @param vector vector to complete.
+     * @param without position to skip.
+     */
     public void inic_vector_sin(int vector[], int without){
 
     	for(int i=0; i<vector.length; i++) 
@@ -528,9 +546,8 @@ public class PrototypeGenerator {
     }
 
     /**
-     * Cuando quitas uno, con el inic vector, el desordenar no puede coger el ultimo..
-     * necesito otro metodo
-     * @param vector
+     * Shuffles the values of the vector given as parameter, maintaining the last element value.
+     * @param vector vector to shuffle.
      */
     public void desordenar_vector_sin(int vector[]){
     	int tmp, pos;
@@ -542,6 +559,10 @@ public class PrototypeGenerator {
     	}
     }
 
+    /**
+     * Shuffles the values of the vector given as parameter.
+     * @param vector vector to shuffle.
+     */
     public void desordenar_vector(int vector[]){
     	int tmp, pos;
     	for(int i=0; i<vector.length; i++){

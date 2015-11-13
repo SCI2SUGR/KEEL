@@ -28,6 +28,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.RST_Learning;
+
 /**
  * 
  * File: DataException.java
@@ -39,9 +43,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.RST_Learning;
-
 public class DataException  extends Exception{
 
 	private static final long serialVersionUID = 1L;

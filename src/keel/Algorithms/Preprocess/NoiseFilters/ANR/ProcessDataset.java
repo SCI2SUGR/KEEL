@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 15/02/2004
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
 
 // Wrapper for KEEL's Dataset class
 package keel.Algorithms.Preprocess.NoiseFilters.ANR;
@@ -47,12 +39,19 @@ import java.util.Vector;
 
 import keel.Dataset.*;
 
-public class ProcessDataset {
-   /**
+/**
 	 * <p> 
 	 * Wrapper for KEEL's Dataset class.
 	 * </p>
-	 */
+	 * <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 15/02/2004
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class ProcessDataset {
+   
 	 //Input examples
      private double[][] X = null;
      //Missing examples
@@ -197,6 +196,15 @@ public class ProcessDataset {
      * @return true is the value is missing (0 in the table); 0 otherwise;
      */
   
+    /**
+     * <p> 
+ Returns if an example is missing. 
+ 
+ </p>
+     * @param i example id.
+     * @param j attribute id.
+     * @return true is the value is missing (0 in the table); false otherwise;
+     */
     public boolean isMissing(int i, int j) {
         // True is the value is missing (0 in the table)
         return missing[i][j];
@@ -222,6 +230,7 @@ public class ProcessDataset {
      * </p>
      * @param nfejemplos Name of the dataset file
      * @param train The dataset file is for training or for test
+     * @throws java.io.IOException if the file can not be read
      *
      */
     public void processClassifierDataset(String nfejemplos, boolean train) throws
@@ -310,6 +319,15 @@ public class ProcessDataset {
      *
      */
 
+    /**
+     * <p>
+ Process a dataset file for a modelling problem.
+ 
+ </p>
+     * @param nfexamples Name of the dataset file
+     * @param train The dataset file is for training or for test
+     * @throws java.io.IOException if the file can not be read
+     */
     public void processModelDataset(String nfexamples, boolean train) throws
             IOException {
 
@@ -394,6 +412,15 @@ public class ProcessDataset {
      *
      */
 
+    /**
+     * <p>
+ Process a dataset file for a clustering problem.
+ 
+ </p>
+     * @param nfexamples Name of the dataset file
+     * @param train The dataset file is for training or for test
+     * @throws java.io.IOException if the file can not be read.
+     */
     public void processClusterDataset(String nfexamples, boolean train) throws
             IOException {
 

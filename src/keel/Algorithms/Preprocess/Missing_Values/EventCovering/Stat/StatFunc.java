@@ -39,12 +39,18 @@ public class StatFunc {
 
   /**
    * Density function of the Standard Normal Distribution.
+     * @param x real value given.
+     * @return density for X.
    **/
   public static double gaussianDensity(double x) { return Zn(x); }
 
   /**
    * Density function of the Normal Distribution with given mean
    * and standard deviation.
+     * @param x real value given.
+     * @param mean mean given.
+     * @param stdev standard deviation given.
+     * @return density for X.
    **/
   public static double gaussianDensity(double x, double mean, double stdev) { 
          return Zn((mean + x)/stdev); 
@@ -52,11 +58,17 @@ public class StatFunc {
 
   /**
    * Standard Normal Distribution Function.
+     * @param x real value given.
+     * @return Standard Normal Distribution for X.
    **/
   public static double gaussian(double x) { return Pn(x); }
 
   /**
    * Normal Distribution Function with given mean and standard deviation.
+     * @param x real value given.
+     * @param mean mean given.
+     * @param stdev standard deviation given.
+     * @return Normal Distribution Function for X.
    **/
   public static double gaussian(double x, double mean, double stdev) { 
          return Pn((x - mean)/stdev);
@@ -65,12 +77,19 @@ public class StatFunc {
   /**
    * Percentage point of the standard normal distribution.
    * (Inverse of the distribution function.)
+     * @param p given percentage.
+     * @return percentage point of the standard normal distribution.
    **/
   public static double gaussianPercentage(double p) { return Pninv(p); }
 
 
   /**
    * Percentage point of the normal distribution with given mean
+   * and standard deviation.
+     * @param p given percentage.
+     * @param mean mean given.
+     * @param stdev standard deviation given.
+     * @return Percentage point of the normal distribution with given mean
    * and standard deviation.
    **/
   public static double gaussianPercentage(double p, double mean, double stdev) {
@@ -79,11 +98,17 @@ public class StatFunc {
 
   /**
    * Error function.
+     * @param x real value given.
+     * @return error resultant.
    **/
    public static double erf(double x) { return 2.0 * Pn( x * Math.sqrt(2)) - 1; }
 
   /**
    * Density function of the Bivariate Standard Normal Distribution.
+     * @param x X value given.
+     * @param y Y value given.
+     * @param ro RO for Bivariate Standard Normal Distribution.
+     * @return Density for X
    **/
   public static double bivariateDensity(double x, double y, double ro) { 
          double b = Math.sqrt(1 - ro*ro);
@@ -93,6 +118,9 @@ public class StatFunc {
 
   /**
    * Chi Square Distribution Function.
+     * @param chisq chi value given.
+     * @param n n value.
+     * @return Chi Square Distribution value for chisq and n.
    **/
   public static double chiSquare(double chisq, int n) { 
       return Pc(Math.sqrt(chisq),n); 
@@ -102,6 +130,9 @@ public class StatFunc {
   /**
    * Percentage point of the chi square distribution.
    * (Inverse of the distribution function.)
+     * @param p percentage given.
+     * @param n n value.
+     * @return Percentage point of the chi square distribution for p.
    **/
   public static double chiSquarePercentage(double p, int n) { 
      double y = Pcinv(p,n);
@@ -112,6 +143,9 @@ public class StatFunc {
 
   /**
    * Student t Distribution Function.
+     * @param t Student T.
+     * @param n value given.
+     * @return Student t Distribution value for n.
    **/
   public static double student(double t, int n) { 
       return As(t,n); 
@@ -121,6 +155,9 @@ public class StatFunc {
   /**
    * Percentage point of the student t distribution.
    * (Inverse of the distribution function.)
+     * @param p percentage given.
+     * @param n value given.
+     * @return Percentage point of the student t distribution value for n. 
    **/
   public static double studentPercentage(double p, int n) { 
      return Asinv(p,n); 
@@ -323,7 +360,11 @@ public class StatFunc {
   static double PRECISION = 1e-30;
   static double sqrt2pi = Math.sqrt(2*Math.PI);
 
-   public static void main(String[] args) {
+    /**
+     * Main function. Computes Pcinv(1.0*i/100.0,50) for i from 0 to 100.
+     * @param args main args.
+     */
+    public static void main(String[] args) {
 
       for (int i=0; i<100; i++) 
         System.out.println(i+" "+Pcinv(1.0*i/100.0,50));  

@@ -27,6 +27,12 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Preprocess.Feature_Selection.Shared;
+
+import org.core.*;
+
 /**
  * 
  * File: Chromosome.java
@@ -38,11 +44,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.Preprocess.Feature_Selection.Shared;
-
-import org.core.*;
-
 public class Chromosome implements Comparable<Object> {
 
 	//Cromosome data structure
@@ -252,8 +253,8 @@ public class Chromosome implements Comparable<Object> {
 		return length;
 	}
 
-	/*
-	 * Fitness function
+	/**
+	 * Fitness function. Evalutes the chromosome.
 	 */
 	public void evaluate () {
 

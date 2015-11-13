@@ -28,17 +28,30 @@
 **********************************************************************/
 
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering.Stat;
+
+/**
+ * Statistics class used for linear regression stats.
+ * @author sergio
+ */
 public class LinearRegression {
 
-
-public void add(double X, double Y) {
+    /**
+     * Add the given numbers to the summation and squares summation for mean and squares summation.
+     * Increases the counter of elements in one.
+     * @param X function x value given.
+     * @param Y function y value given.
+     */
+    public void add(double X, double Y) {
     x += X; xx += X*X;
     y += Y; yy += Y*Y;
     xy += X*Y;
     n++;
 }
 
-public void reset() {
+    /**
+     *  Resets the statisticals variables.
+     */
+    public void reset() {
    n=0;
    x=0;
    xx=0;
@@ -47,58 +60,210 @@ public void reset() {
    xy=0;
 }
 
-public int getN()     { return n; }
-public double getX()     { return x; }
-public double getY()     { return y; }
-public double getXavg()  { return x/n; }
-public double getYavg()  { return y/n; }
-public double getXX()    { return xx; }
-public double getYY()    { return yy; }
-public double getXY()    { return xy; }
-public double getXXavg() { return xx/n; }
-public double getYYavg() { return yy/n; }
-public double getXYavg() { return xy/n; }
-public double getSxx()   { return xx - x*x/n; }
-public double getSyy()   { return yy - y*y/n; }
-public double getSxy()   { return xy - x*y/n; }
+    /**
+     * Returns the number of samples.
+     * @return the number of samples.
+     */
+    public int getN()     { return n; }
+
+    /**
+     * Returns the summation of X samples values.
+     * @return  the summation of X samples values.
+     */
+    public double getX()     { return x; }
+
+    /**
+     * Returns the summation of Y samples values.
+     * @return  the summation of Y samples values.
+     */
+    public double getY()     { return y; }
+
+    /**
+     * Returns the X values mean
+     * @return the X values mean
+     */
+    public double getXavg()  { return x/n; }
+
+    /**
+     * Returns the Y values mean
+     * @return the Y values mean
+     */
+    public double getYavg()  { return y/n; }
+
+    /**
+     * Returns the summation of the X samples squares.
+     * @return the summation of the X samples squares.
+     */
+    public double getXX()    { return xx; }
+
+    /**
+     * Returns the summation of the Y samples squares.
+     * @return the summation of the Y samples squares.
+     */
+    public double getYY()    { return yy; }
+
+    /**
+     * Returns the summation of the X-Y products.
+     * @return the summation of the X-Y products.
+     */
+    public double getXY()    { return xy; }
+
+    /**
+     * Returns the mean of the X samples squares.
+     * @return the mean of the X samples squares.
+     */
+    public double getXXavg() { return xx/n; }
+
+    /**
+     * Returns the mean of the Y samples squares.
+     * @return the mean of the Y samples squares.
+     */
+    public double getYYavg() { return yy/n; }
+
+    /**
+     * Returns the mean of the X-Y products.
+     * @return the mean of the X-Y products.
+     */
+    public double getXYavg() { return xy/n; }
+
+    /**
+     * Returns the statistical Sxx.
+     * @return the statistical Sxx.
+     */
+    public double getSxx()   { return xx - x*x/n; }
+
+    /**
+     * Returns the statistical Syy.
+     * @return the statistical Syy.
+     */
+    public double getSyy()   { return yy - y*y/n; }
+
+    /**
+     * Returns the statistical Sxy.
+     * @return the statistical Sxy
+.     */
+    public double getSxy()   { return xy - x*y/n; }
 
 
 // beta1
-public double getBeta1() { return getSxy() / getSxx(); }
-public double getSlope() { return getBeta1(); }
+
+    /**
+     * Returns the regression Slope (Beta1)
+     * @return the regression Slope (Beta1)
+     */
+    public double getBeta1() { return getSxy() / getSxx(); }
+
+    /**
+     * Returns the regression Slope (Beta1)
+     * @return the regression Slope (Beta1)
+     */
+    public double getSlope() { return getBeta1(); }
 
 // beta0
-public double getBeta0() { return (y/n) - getSlope() * (x/n); }
-public double getIntercept() { return getBeta0(); }
+
+    /**
+     * Returns the regression intercept (Beta0)
+     * @return the regression intercept (Beta0)
+     */
+    public double getBeta0() { return (y/n) - getSlope() * (x/n); }
+
+    /**
+     * Returns the regression intercept (Beta0)
+     * @return the regression intercept (Beta0)
+     */
+    public double getIntercept() { return getBeta0(); }
 
 // SSe
-public double getSSe() { return getSyy() - getBeta1()*getSxy(); }
-public double getErrorSumOfSquares() { return getSSe(); }
 
-public double getSSr() { return getBeta1() * getSyy(); }
+    /**
+     * Returns the sum of squared errors (SSe)
+     * @return the sum of squared errors (SSe)
+     */
+    public double getSSe() { return getSyy() - getBeta1()*getSxy(); }
+
+    /**
+     * Returns the sum of squared errors (SSe)
+     * @return the sum of squared errors (SSe)
+     */
+    public double getErrorSumOfSquares() { return getSSe(); }
+
+    /**
+     * Returns the sum of squares due to regression (SSr)
+     * @return the sum of squares due to regression (SSr)
+     */
+    public double getSSr() { return getBeta1() * getSyy(); }
 
 // sigma^2
-public double getSigmaSq() { return getSSe() / (n-2); }
-public double getErrorVariance() { return getSigmaSq(); }
+
+    /**
+     * Returns the variance error (sigma^2)
+     * @return the variance error (sigma^2)
+     */
+    public double getSigmaSq() { return getSSe() / (n-2); }
+
+    /**
+     * Returns the variance error (sigma^2)
+     * @return the variance error (sigma^2)
+     */
+    public double getErrorVariance() { return getSigmaSq(); }
 
 // se(beta1)
-public double getSeBeta1() { return Math.sqrt( getSigmaSq() / getSxx()); }
-public double getStdErrorSlope() { return getSeBeta1(); }
+
+    /**
+     * Returns the Standard errors slope - Se(beta1)
+     * @return the Standard errors slope - Se(beta1)
+     */
+    public double getSeBeta1() { return Math.sqrt( getSigmaSq() / getSxx()); }
+
+    /**
+     * Returns the Standard errors slope - Se(beta1)
+     * @return the Standard errors slope - Se(beta1)
+     */
+    public double getStdErrorSlope() { return getSeBeta1(); }
 
 // se(beta0)
-public double getSeBeta0() { 
+ 
+    /**
+     * Returns the Standard errors intercept - Se(beta0)
+     * @return the Standard errors slope - Se(beta0)
+     */
+    public double getSeBeta0() { 
   return Math.sqrt( getSigmaSq() * ( 1/n +  (x/n) * (x/n) / getSxx()) ); }
-public double getStdErrorIntercept() { return getSeBeta0(); }
 
-public double getF0() { return getSSr() / getSigmaSq(); }
+    /**
+     * Returns the Standard errors intercept - Se(beta0)
+     * @return the Standard errors slope - Se(beta0)
+     */
+    public double getStdErrorIntercept() { return getSeBeta0(); }
+
+    /**
+     * Returns the statistical F0.
+     * @return the statistical F0.
+     */
+    public double getF0() { return getSSr() / getSigmaSq(); }
 
 
 // correlation
-public double getR() { return getSxy() / Math.sqrt(getSxx() * getSyy()); }
-public double getCorrelation() { return getR(); }
+
+    /**
+     * Returns the correlation value R.
+     * @return  the correlation value R.
+     */
+    public double getR() { return getSxy() / Math.sqrt(getSxx() * getSyy()); }
+
+    /**
+     * Returns the correlation value R.
+     * @return  the correlation value R.
+     */
+    public double getCorrelation() { return getR(); }
 
 //
-public double getT0() { 
+ 
+    /**
+     * Returns the statistical T0.
+     * @return the statistical T0.
+     */
+    public double getT0() { 
   double r = getR();
   return r * Math.sqrt(n-2) / Math.sqrt(1 - r*r); 
 }

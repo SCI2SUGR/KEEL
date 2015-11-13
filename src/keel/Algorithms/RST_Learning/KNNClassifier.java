@@ -28,6 +28,11 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.RST_Learning;
+
+import java.util.Arrays;
+
 /**
  * 
  * File: KNNClassifier.java
@@ -40,10 +45,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.RST_Learning;
-
-import java.util.Arrays;
-
 public class KNNClassifier{
 	
 	private static int K;
@@ -151,13 +152,19 @@ public class KNNClassifier{
 		
 	}//end-method 
 	
-	public static void setAllInstances(){
+    /**
+     * On the instance selector vector, sets the all the instances to 1 (selected)
+     */
+    public static void setAllInstances(){
 		
 		Arrays.fill(IS,1);
 		
 	}//end-method 
 	
-	public static void setAllFeatures(){
+    /**
+     *  On the features selector vector, sets the all the features to 1 (selected)
+     */
+    public static void setAllFeatures(){
 		
 		Arrays.fill(FS,1);
 		
@@ -578,7 +585,11 @@ public class KNNClassifier{
 		
 	}//end-method 
 	
-	public static String printFS(){
+    /**
+     * Returns a string representation of the features selection vector
+     * @return a string representation of the features selection vector
+     */
+    public static String printFS(){
 		
 		String aux="";
 		

@@ -27,25 +27,24 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
+
+
+package keel.Algorithms.Preprocess.NoiseFilters.ANR;
+/**
+     * <p>
+     * Derived class from FUN that implements the error for a perceptron trained with conjugated gradient.
+     * 
+     * </p>
+     * 
+     * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
 * @version 1.0 
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Preprocess.NoiseFilters.ANR;
-
 public class SquaresErrorNN extends FUN {
-    /**
-     * <p>
-     * Derived class from FUN that implements the error for a perceptron trained with conjugated gradient.
-     * 
-     * </p>
-     * 
-     */
+    
 	
 	//Neural network container. 
     public ConjGradNN Net;

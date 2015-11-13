@@ -28,6 +28,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.RST_Learning;
+
 /**
  * 
  * File: Util.java
@@ -39,8 +42,6 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.RST_Learning;
-
 public class Util{
 	
 	/** 

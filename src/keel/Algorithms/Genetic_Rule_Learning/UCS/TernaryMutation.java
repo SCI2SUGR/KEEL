@@ -63,6 +63,8 @@ public interface TernaryMutation {
  * </p>
  * <p>
  * 
+     * @param pos char to be mutated
+     * @param currentState environmental currect state.
  * @return a char with the mutated character.
  * </p>
  */

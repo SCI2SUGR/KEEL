@@ -41,12 +41,8 @@ import org.core.*;
 
 //import Jama.Matrix;
 //import Jama.Matrix.*;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 import java.util.Arrays;
+
 /**
  * Represents a prototype set.
  * @author diegoj and Isaac
@@ -117,8 +113,10 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     }
     
     /**
-     * Return all the prototype in (this) that has other like the nearest neighbor
+     * Return all the prototypes in (this) that has "other" as the nearest neighbour
      *
+     * @param other element to be considered as the nearest neighbour.
+     * @return all the prototypes that has the element given as nearest neighbour
      */
     public PrototypeSet isTheNearPrototype(Prototype other){
     	PrototypeSet result = new PrototypeSet();
@@ -136,7 +134,11 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     }
   
     /**
-     * Return all the prototype in (this) that has other like the nearest neighbor with the class given.
+     * Return all the prototypes in (this) that has "other" as the nearest neighbour with the class given.
+     *
+     * @param other element to be considered as the nearest neighbour.
+     * @param clase given class to check.
+     * @return all the prototypes that has the element given as nearest neighbour with the class given.
      * 
      */
     public PrototypeSet isTheNearPrototypeWithClass(Prototype other, double clase){
@@ -1077,7 +1079,9 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
     
     /**
-     *  Returns a copy of the set without an prototype.
+     *  Removes a prototype given as parameter from the set.
+     * @param other prototype to remove from this set.
+     * @return true if the prototype has been removed, false otherwise.
      */
     public boolean remove(Prototype other){
     	
@@ -1094,7 +1098,9 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     }
     
     /**
-     *  Comprueba si existen en el conjunto....
+     * Checks the existence of the prototype given as argument in this set.
+     * @param other the prototype to check.
+     * @return True if the prototype given is in this set, false otherwise.
      */
     public boolean pertenece(Prototype other){
     	
@@ -1320,8 +1326,11 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     }
     
     /**
-     * return the smallest distance between uno and all prototypes of the particle.
+     * Returns the smallest distance between uno and all prototypes of the particle.
      *
+     * @param uno prototype given to compute the distance with.
+     * @return the smallest distance between uno and all prototypes of the particle.
+     * 
      */
     
     public double minDist ( Prototype uno)
@@ -1393,10 +1402,11 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 
     
     /**
-     * 
-     * @param datosTrain
-     * @param C
-     * @param centers
+     * Executes the k means algorithm.
+     * @param datosTrain training dataset.
+     * @param C number of clusters used.
+     * @param centers centers of the different clusters
+     * @return the clusters for this training dataset. (vector with the same size of the dataset, indicating in which cluster each example is set.
      * 
      */
     
@@ -1581,7 +1591,9 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 
     /**
      * 
-     * PrototypeSet to double. 
+     * PrototypeSet from double values. Includes all the data given as doubles, coverting them to prototype type. 
+     * @param datos input values of the data to include.
+     * @param clase output values of the data to include.
      */
     
     public void doubleToprototypeSet(double datos[][], int clase[]){
@@ -1614,7 +1626,8 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
     /**
      * 
-     * PrototypeSet to double.
+     * PrototypeSet to double. Returns a double matrix representation of the prototypes included in this set.
+     * @return a double matrix representation of the prototypes included in this set.
      */
     
     public double[][] prototypeSetTodouble(){
@@ -1638,7 +1651,8 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
      /**
      * 
-     * PrototypeSet to double.
+     * Returns the classes, as a vector of integers, of all the prototypes included in this set. 
+     * @return the classes, as a vector of integers, of all the prototypes included in this set. 
      */
     
     public int[] getClases(){
@@ -1659,9 +1673,10 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
     /**
      * 
-     * PrototypeSet to double.
+     * PrototypeSet from double values. Includes all the data given as doubles, coverting them to prototype type. 
+     * @param datos input values of the data to include.
+     * @param clase output values of the data to include.
      */
-    
     public void doubleToprototypeSet(double datos[][], int clase){
     	int j;
     	
@@ -1698,9 +1713,10 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
     
     /**
-     * SUMAR dos conjuntos de prototipos , uno a uno. De la misma dimension.
+     * Sums two prototype sets, element by element. They should have the same dimension.
+     * @param other the prototype to sum.
+     * @return the prototype set resulting from the operation. Null if the sets have not the same size.
      */
- 
    public PrototypeSet sumar(PrototypeSet other){
    	PrototypeSet suma = new PrototypeSet();
  
@@ -1717,9 +1733,10 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
    
    
      /**
-      * Restar dos conjuntos de prototipos , uno a uno. De la misma dimension.
-      */
-  
+     * Subtracts two prototype sets, element by element. They should have the same dimension.
+     * @param other the prototype to subtract.
+     * @return the prototype set resulting from the operation. Null if the sets have not the same size.
+     */
     public PrototypeSet restar(PrototypeSet other){
     	PrototypeSet resta = new PrototypeSet();
   
@@ -1734,10 +1751,11 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     	return resta;
     }
 
-    /**
-     * Multiplicar un conjunto por un Escalar.
+   /**
+     * Multiply the set by a number given.
+     * @param escalar number to multiply
+     * @return the prototype set resulting from the operation.
      */
- 
    public PrototypeSet mulEscalar(double escalar){
    	PrototypeSet result = new PrototypeSet();
  
@@ -1749,10 +1767,9 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
    }
 
    /**
-    * Calculaa el opuesto de un conjunto .
-    * 
-    */
-   
+     * Computes inverse set, element by element. (1 - value)
+     * @return the prototype set resulting from the operation.
+     */
    public PrototypeSet opposite(){
 	   
 	   PrototypeSet opuesto = new PrototypeSet();
@@ -1767,6 +1784,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
    /**
     * Transform the prototypeSet (this) in a matrix of binary string 8-bit codification.
     * 
+     * @return Transformation done.
     */
    public String [][] toBinaryString (){
    	String datos[][] = new String[this.size()][];
@@ -1806,7 +1824,7 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
    
    /**
     * Transform the prototypeSet (this) in a matrix of binary string Gray Code
-    * 
+    * @return Transformation done.
     */
    public String [][] to8GrayString (){
    	String datos[][] = new String[this.size()][];
@@ -1872,7 +1890,8 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     
    /**
     * Transform  a matrix of binary string 8-bit codification in a double PrototypeSEt
-    * 
+    * @param datos input values of the data to include.
+    * @param clases output values of the data to include.
     */
    public void toPrototypeSet (String datos[][], double clases[]){
 	   int num;
@@ -1926,9 +1945,11 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
 	   }
    }
    
-   
-   
-   public void formatear(PrototypeSet initial){
+    /**
+     * Adds the elements of a reset set given.
+     * @param initial given set.
+     */
+    public void formatear(PrototypeSet initial){
 	   new PrototypeSet();
 	   
 	   for(int i=0; i< initial.size(); i++){
@@ -1939,13 +1960,13 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
    }
    
    /**
-    * Obtener un sub-conjunto aleatorio de otro dado.
-    * @param original
-    * @param numberOfPrototypesSelected
-    * @param usePriorProb
+    * Returns a random subset of the given one as parameter with the size given.
+    * @param original original set.
+    * @param numberOfPrototypesSelected number of prototypes to select from the original set.
+    * @param usePriorProb True if prior probabilities should be used, false otherwise.
+    * @return a random subset of the given one as parameter with the size given.
     *
     */
-   
    public static PrototypeSet selecRandomSet(PrototypeSet original, int numberOfPrototypesSelected, boolean usePriorProb) {
        //Debug.errorln("selecRandomSet");
        //Debug.errorln("num " + numberOfPrototypesSelected);

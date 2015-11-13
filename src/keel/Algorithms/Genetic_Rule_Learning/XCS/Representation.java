@@ -264,6 +264,7 @@ public class Representation {
  * Mutates the classifier. It mutates the action and the condition,
  * according to the probability of mutation.
  * </p>
+     * @param currentState vector of the different environmental states
  * @return a boolean indicating if the action has been mutated.
  */
   public boolean mutate(double[] currentState) {        
@@ -527,11 +528,10 @@ public class Representation {
  	return false;
     }
 
-
-
-
-
-   public void print (){
+    /**
+     * Prints on the standard output a String representation of the Representation object.
+     */
+    public void print (){
    	System.out.print ("\t Act: "+action);
    	System.out.print ("\t Cond: ");
    	

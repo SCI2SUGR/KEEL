@@ -41,11 +41,11 @@ import java.util.regex.Pattern;
  * <p>
  * <b> Importer </b>
  * </p>
+ * 
+ * Abstract class that contains the methods to import different format files
+ * to files with KEEL format.
  *
- * Clase abstracta que contiene los mÃ©todos para importar ficheros de
- * distintos formatos a ficheros con formato Keel.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public abstract class Importer {
@@ -62,11 +62,11 @@ public abstract class Importer {
     int INTEGER = 1;    // Etiqueta para valores reales.
     int REAL = 2;
     
-    // Property for considering or not the header with the attributes names
-    // (only used for CSV, TXT, Excel, HTML and PRN formats)
+    /** Property for considering or not the header with the attributes names
+    only used for CSV, TXT, Excel, HTML and PRN formats). */
     protected boolean processHeader = true;
 
-    /*
+    /**
      * Method for setting a boolean indicating if the header must be processed
      *
      * @param processHeader Boolean
@@ -75,15 +75,11 @@ public abstract class Importer {
         this.processHeader = processHeader;
     }
 
-
-    /*
-     * Este mÃ©todo crea el fichero de salida con formato keel en la ruta pasada,
-     * a partir de la informaciÃ³n almacenada en las variables miembro
-     * attribute[], data[], nameRelation y numAttributes.
-     *
-     * @param  String pathnameOutput Indica la ruta del fichero de salida con formato Keel.
-     *
-     * @throws Exception
+    /**
+     * Method that creates the output file with KEEL format given as parameter 
+     * using all the structures built by the start method of not abstract classes.  
+     * @param pathnameOutput KEEL file path to generate.
+     * @throws Exception if the file can not be written.
      */
     public void Save(String pathnameOutput) throws Exception {
         keel.Dataset.Attribute attributeCurrent = new keel.Dataset.Attribute();
@@ -203,15 +199,11 @@ public abstract class Importer {
     } //end save()
 
 
-    /*
-     * MÃ©todo utilizado para poner en mayÃºscula el primer carÃ¡cter de una cadena pasada
-     * por parÃ¡metro.
-     *
-     * @param line. Variable String que almacena la cadena
-     * a la que se pretende poner el primer carÃ¡cter en mayÃºscula.
-     *
-     * @return Devuelve una cadena igual a la cadena pasada por parÃ¡metro
-     * pero con el primer carÃ¡cter en mayÃºscula.
+
+    /**
+     * Sets as capital letter the first one of the line given as parameter.
+     * @param line line given.
+     * @return Same line with the first letter being capital.
      */
     public String UcFirst(String line) {
         String lineTemp = "";
@@ -232,6 +224,12 @@ public abstract class Importer {
      *
      * @param item elemento pasado
      * @return int tipo del elemento pasado. 0 nominal, 1 entero y 2 real.
+     */
+
+    /**
+     * Returns the type of the element given as argument.
+     * @param item element given.
+     * @return type of the element (0 nominal, 1 integer y 2 real).
      */
     public int DataType(String item) {
 

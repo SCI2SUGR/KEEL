@@ -76,13 +76,16 @@ public interface RealMutation {
 /**
  * <p>
  * Mutates the upper real value.
+ * 
+     * @param lowerValue is the current lower value of this classifier position
  * </p>
  * <p>
- * 
+ * @param upperValue is the current upper value of this classifier position.
  * </p>
  * <p>
- * 
- * @return a double with ...
+ * @param currentState is the current State of the environment for this
+ * allele of the classifier.
+ * @return a double with the mutation done.
  * </p>
  */
     public double mutateUpper(double lowerValue, double upperValue, double currentState);

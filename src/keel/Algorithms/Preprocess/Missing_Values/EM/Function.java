@@ -29,6 +29,10 @@
 
 package keel.Algorithms.Preprocess.Missing_Values.EM;
 
+/**
+ * Abstract class that contains all the neeaded methods to implement function of several variables
+ * @author Julian Luengo Martin
+ */
 public abstract class Function {
 
 	  /**

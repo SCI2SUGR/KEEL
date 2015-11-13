@@ -280,6 +280,7 @@ public class GGAIntegerIncon {
     
     /**
      * Creates a new instance of GGAIntegerIncon 
+     * @param ficParametros Configuration file.
      */
     public GGAIntegerIncon(String ficParametros) {
         

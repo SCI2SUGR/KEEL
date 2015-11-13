@@ -45,8 +45,23 @@ import java.io.*;
 import java.util.*;
 import java.lang.*;
 
+/**
+ * Main function class.
+ * Created on 07-feb-2004
+ *
+ * @author Jesus Alcala Fernandez
+ *
+ */
 public class Lanzar {
 
+    /** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
     public static void main(String[] args) {
                 if (args.length != 1) {
                         System.out.println ("Remember: java Lanzar <file_configuration>");

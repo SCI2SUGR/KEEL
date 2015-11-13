@@ -283,6 +283,8 @@ public class RealRep implements Attribute{
  * <p>
  * Mutates the 2 reals contained in the representation.
  * </p>
+     * @param currentState  is the current State of the environment for this
+ * allele of the classifier.
  */
     public void mutate(double currentState) {        
         double tmp = 0.0;
@@ -396,18 +398,32 @@ public class RealRep implements Attribute{
 	System.out.print ("; "+s1+", "+ s2);
    }
 
-
-   public void print ( PrintWriter out ){
+    /**
+     *  Prints the classifier representation on the PrintWriter object given.
+     * @param out PrintWriter object given to write on.
+     */
+    public void print ( PrintWriter out ){
 	out.print (" "+lowerBound+" "+upperBound+" ");
    }
 
-   public void printNotNorm(PrintWriter fout, double lo, double up){
+    /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     * @param up upper value in the interval.
+     */
+    public void printNotNorm(PrintWriter fout, double lo, double up){
    	double lb = lowerBound * (up-lo) + lo;
    	double ub = upperBound * (up-lo) + lo;
    	fout.print (" "+lb+" "+ub+" ");	
    }
 
-  public void printNotNorm(PrintWriter fout, double lo){ 
+    /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     */
+    public void printNotNorm(PrintWriter fout, double lo){ 
 	int a = (int) (lowerBound + lo);
 	int b = (int) (upperBound + lo);
 	fout.print (" "+a+"  "+b+" ");

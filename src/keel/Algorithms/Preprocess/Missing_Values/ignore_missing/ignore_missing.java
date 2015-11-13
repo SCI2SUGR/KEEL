@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julián Luengo Martín 10/11/2005
- * @version 0.2
- * @since JDK 1.5
- * </p>
- */
+
 package keel.Algorithms.Preprocess.Missing_Values.ignore_missing;
 import java.io.*;
 import java.util.*;
@@ -43,6 +37,11 @@ import keel.Algorithms.Preprocess.Basic.*;
 /**
  * <p>
  * This class delete all instances with at least one missing value from the data set
+ * </p>
+ * <p>
+ * @author Written by Julián Luengo Martín 10/11/2005
+ * @version 0.2
+ * @since JDK 1.5
  * </p>
  */
 public class ignore_missing {

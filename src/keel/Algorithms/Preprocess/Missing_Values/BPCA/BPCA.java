@@ -47,6 +47,17 @@ import org.core.Fichero;
 import jp.ac.naist.dynamix.mpca.BPCAFill;
 import keel.Dataset.*;
 
+/**
+ * 
+ * File: BPCA.java
+ * 
+ * The BPCA Missing Values Imputation algorithm.
+ * 
+ * @author Written by Julian Luengo
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class BPCA {
 	InstanceSet IStrain;
 	InstanceSet IStest;
@@ -198,7 +209,9 @@ public class BPCA {
 	
 	
 	
-//	Read the pattern file, and parse data into strings
+	/**Read the pattern file, and parse data into strings
+            * @param fileParam Configuration file.
+        */
 	protected void config_read(String fileParam) {
 		File inputFile = new File(fileParam);
 
@@ -320,7 +333,11 @@ public class BPCA {
 		
 	}
 	
-//	Write data matrix X to disk, in KEEL format
+    /** Write data matrix X to disk, in KEEL format
+     * @param output output filename to write in.
+     * @param X data matrix to write.
+     * @param IS Instance set to take the header for the new file.
+     */
     protected void write_results(String output,String[][] X,InstanceSet IS){
         //File OutputFile = new File(output_train_name.substring(1, output_train_name.length()-1));
         try {

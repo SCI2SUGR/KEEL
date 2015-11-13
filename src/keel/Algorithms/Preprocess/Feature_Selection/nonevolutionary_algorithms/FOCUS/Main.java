@@ -27,7 +27,13 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.FOCUS;
+
 /**
+ * <p> 
+ * This class realizes the call to the main method
+ * </p>
  * <p>
  * @author Written by Manuel Chica Serrano (University of Jaen) 01/09/2005
  * @author Modified by Jose Joaquin Aguilera Garcia (University of Jaen) 19/12/2008
@@ -36,16 +42,16 @@
  * @since JDK1.5
  * </p>
  */
-package keel.Algorithms.Preprocess.Feature_Selection.nonevolutionary_algorithms.FOCUS;
-
 public class Main {
-/**
- * <p> 
- * This class realizes the call to the main method
- * </p>
- */
 
-
+/** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
   public static void main (String args[]) {
 
     FocusIncon focus;

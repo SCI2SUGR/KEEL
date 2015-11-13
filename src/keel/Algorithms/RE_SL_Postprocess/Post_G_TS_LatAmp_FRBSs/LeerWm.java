@@ -40,9 +40,20 @@ public class LeerWm {
 
 
 	private String rutaFichero;
-	public int numReglas;
-	public double []base;
-	public double exit;
+/**
+     * Number of rules.
+     */
+    public int numReglas;
+
+    /**
+     * Rules base vector.
+     */
+    public double []base;
+
+    /**
+     * Exit value.
+     */
+    public double exit;
 	/**
 	 * It stores the name of the file
 	 * @param ruta it contains the name of the file

@@ -41,43 +41,37 @@ import java.util.regex.Pattern;
  * <p>
  * <b> KeelToCsv </b>
  * </p>
+ * This class extends from the Exporter class. It is used to read 
+ * data with KEEL format and transform them to the CSV format.
  *
- * Clase extendida de la clase Exporter. Esta clase permite convertir
- * un fichero de datos con formato Keel a un fichero con formato Csv.
- *
- * @author Teresa Prieto LÃ³pez (UCO)
+ * @author Teresa Prieto López (UCO)
  * @version 1.0
  */
 public class KeelToCsv extends Exporter {
 
 
-    /*
-     * Constructor de la Clase KeelToCsv. Inicializa los valores
-     * de las variables miembro nullValue (valor nulo) y separator
-     * (el separador de los datos del fichero Csv) con los valores
-     * de los parÃ¡metros nullValueUser y separatorUser respectivamente.
+    /** KeelToCsv class Constructor.
+     * Initializes the variables that store the symbols used to identify null 
+     * values and separator between data.
      *
-     * @param  nullValueUser. Variable de tipo String con el valor nulo del fichero Csv .
-     * @param  separatorUser. Variable de tipo String con el valor del separador
-     * de los datos del fichero Csv .
+     * @param  nullValueUser. Null value symbols.
+     * @param  separatorUser. Separator symbols used in the csv format.
      */
     public KeelToCsv(String nullValueUser, String separatorUser) {
         nullValue = nullValueUser;
         separator = separatorUser;
     }
 
-
-    /*
-     * Este mÃ©todo llama al mÃ©todo Start de la clase superior Exporter para
-     * cargar los datos del fichero Keel y posteriormente hace una llamada
-     * al mÃ©todo Save() para crear el fichero de datos Csv indicado en el
-     * parÃ¡metro de entrada pathnameOutput.
+    
+    /**
+     * Method used to transform the data from the KEEL file given as parameter to 
+     * CSV format file which will be stored in the second file given. It calls the method
+     * Start of its super class Exporter and then call the method Save.
      *
-     * @param  String pathnameInput Variable con la ruta del fichero de datos keel.
-     * @param  String pathnameOutput Variable con la ruta del fichero de datos
-     * de salida con formato Csv.
+     * @param pathnameInput KEEL file path.
+     * @param pathnameOutput CSV file path.
      *
-     * @throws Exception.
+     * @throws Exception if the files can not be read or written.
      */
     public void Start(String pathnameInput, String pathnameOutput) throws Exception {
 
@@ -89,18 +83,12 @@ public class KeelToCsv extends Exporter {
     }//end Start()
 
 
-    /*
-     * MÃ©todo utilizado para crear el fichero con formato Csv
-     * (valores separados por comas) indicada la ruta por el parÃ¡metro
-     * pathnameOutput. Este fichero se crearÃ¡ a partir de los datos
-     * almacenados en el vector de objetos de la clase
-     * Attribute, el vector data[], y la variable nameRelation.
-     *
-     * @param String pathnameOutput. Variable de tipo String con
-     * la ruta del fichero de datos salida con formato Csv.
-     *
-     * @throws Exception.
-     *
+    
+    /**
+     * Method that creates the output file with CSV format given as parameter 
+     * using all the structures built by the start method of the Exporter class.  
+     * @param pathnameOutput CSV file path to generate.
+     * @throws Exception if the file can not be written.
      */
     public void Save(String pathnameOutput) throws Exception {
 

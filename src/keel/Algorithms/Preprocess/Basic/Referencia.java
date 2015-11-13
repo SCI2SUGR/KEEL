@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Preprocess.Basic;
+
 /**
  * 
  * File: Referencia.java
@@ -38,13 +41,19 @@
  * @since JDK1.5
  * 
  */
-package keel.Algorithms.Preprocess.Basic;
-
 public class Referencia implements Comparable {
 
 	//values of the reference
-	public int entero;
-	public double real;
+
+    /**
+     * Reference value (integer).
+     */
+    	public int entero;
+
+    /**
+     * Reference value (real).
+     */
+    public double real;
 
 	/**
 	 * Default builder

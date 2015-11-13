@@ -47,6 +47,14 @@ import java.lang.*;
 import java.io.*;
 import java.util.*;
 
+ /**
+ * <p>Offers several utilities
+ * @author Writen by Victor Manuel Rivas Santos (University of Jaen) 22/07/2004
+ * @author Modified by Maria Dolores Perez Godoy (University of Jaen) 17/12/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class RBFUtils {
 
     /**
@@ -136,7 +144,7 @@ public class RBFUtils {
     * @param _inpDim Input dimension
     * @param _input Array in which INPUT  values are returned
     * @param _output Array in which OUTPUT values are returned
-    * 
+    * @throws java.io.IOException if the dimension of inputs or outputs is 0 
     */
     public static void vector2InputOutput( Vector _v, int _inpDim, double [] _input, double [] _output )  throws IOException {
         if( _input.length>0 ) {
@@ -165,6 +173,7 @@ public class RBFUtils {
     * @param _v The vector
     * @param _inpDim Input dimension
     * @return The array containing the values
+    * @throws java.io.IOException if the dimension of inputs is 0
     */
     public static double[] vector2Input( Vector _v, int _inpDim ) throws IOException {
     	if( _inpDim>0 ) {
@@ -187,6 +196,7 @@ public class RBFUtils {
     * @param _v The vector
     * @param _outDim Output dimension
     * @return The array containing the values
+    * @throws java.io.IOException if the dimension of outputs is 0
     */
     public static double[] vector2Output( Vector _v, int _outDim )  throws IOException {
         if( _outDim>0 ) {
@@ -327,6 +337,8 @@ public class RBFUtils {
      * <p>
      * Computes the geometric mean of the distance between the given center and the 2 nearest vectors in a double[][]
      * </p>
+     * @param center centers given.
+     * @param nCenter number of centers
      * @param _values The array containing the vectors
      * @return The maximun distance between vectors in a double[][]
      */
@@ -364,7 +376,10 @@ public class RBFUtils {
       * <p>
       * Computes the RMSdistance between the given center and the n nearest vectors in a double[][]
       * </p>
+      * @param center centers given.
       * @param _values The array containing the vectors
+     * @param nCenter number of centers
+     * @param N number of nearest elements
       * @return The maximun distance between vectors in a double[][]
       */
 

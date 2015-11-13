@@ -29,7 +29,17 @@
 
 package keel.Algorithms.Preprocess.Missing_Values.EventCovering.Stat;
 
+/**
+ * Double Function interface
+ * @author unknown 
+ */
 public interface DoubleFunc {
+
+    /**
+     * Function that receive a double as input and returns a double.
+     * @param x input double.
+     * @return output double.
+     */
     public double F(double x);
 }
 

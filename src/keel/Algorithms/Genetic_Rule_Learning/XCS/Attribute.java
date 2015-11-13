@@ -59,8 +59,16 @@ public interface Attribute{
  * </p>
  */
 	
-	/** In case of being  a character attribute, the char value is set as a double in the lowerValue parameter) */
+	/** In case of being  a character attribute, the char value is set as a double in the lowerValue parameter) 
+         * @param lowerValue lower value of the allele.
+         * @param UpperValue upper value of the allele.
+         */
 	public void setAllele(double lowerValue, double UpperValue);
+        
+        /**
+     * Sets an Allele (attribute) with the attribute given as parameter.
+     * @param at Attribute given.
+     */
 	public void setAllele(Attribute at);
 	
 	
@@ -70,55 +78,101 @@ public interface Attribute{
 	public Attribute getAttributeAllele();
 	
 	/** It returns the lower allele. If is a ternary representation, it returns the character of the position as
-	a double*/
+	a double
+        * @return the lower allele.
+          */
 	public double getLowerAllele();
 	
 	/** It returns the upper allele. If is a ternary representation, it returns the character of the position as
-	a double*/
+	a double
+        * @return the upper allele.
+          */
 	public double getUpperAllele();
 
 	
 	/** Returns the generality of the attribute. In ternary representation a 1 is returned if the symbol is a
-	don't care, and in other representations the diference of the intervals is returned */	
+	don't care, and in other representations the diference of the intervals is returned
+        * @return the generality of the attribute
+         */
 	public double getGenerality ();
 
 	/** Does verify that the interval construction is correct*/
 	public void verifyInterval();
 	
-	/** It applies the specify operator. The environmental value is needed*/
+	/** It applies the specify operator. The environmental value is needed
+         * @param env  environmental value to be set. 
+         */
 	public void makeSpecify(double env);
 	
 	
 	/** The mutation is done from the environmental state. The position i is needed for integer representation to
-	know the bounds of the intervals*/
+	know the bounds of the intervals
+          * @param envState environmental state needed for the mutation operator. 
+          */
 	public void mutate(double envState);
 	
 
-	/** It checks if the position of the classifier matches with the value in the environment*/
+	/** It checks if the position of the classifier matches with the value in the environment
+         * @param env environmental value to be checked.
+         * @return True if the classifier's position matches the environmental value, false otherwise.
+         */
 	public boolean match(double env);
 
-	/** It checks if two attributes are equal*/
+	/** It checks if two attributes are equal
+         * @param at attribute to be checked
+         * @return True if both attributes are equal, if not false
+         */
 	public boolean equals(Attribute at);
 	
 	/** It checks if that attribute of the representation of the classifier can subsume the attribute passed as a
-	parameter*/
+	parameter
+        * @param at attribute to be checked
+        * @return True if the attribute can subsume the attribute passed as a parameter, if not false
+        */
 	public boolean subsumes(Attribute at);
 
 	/** If it's a ternary representation it returns 1 if is # and 0 otherwise. In representations with intervals
-	it returns the diference between them*/
+	it returns the diference between them
+        * @return 1 if is # and 0 otherwise*/
 	public double isDontCareSymbol();
 	
-	/** Returns if the current interval is more general than the interval given as a parameter */
+	/** Returns if the current interval is more general than the interval given as a parameter 
+          * @param at attribute given to check.
+        * @return True if the current interval is more general than the interval given, false otherwise.
+        */
 	public boolean isMoreGeneral(Attribute at);
 	
 
 
 	/** Prints the classifier representation */
 	public void print();
+        
+        /**
+     *  Prints the classifier representation on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     */
 	public void print(PrintWriter fout);
 	
+        /**
+     *  Prints the classifier representation on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param conv covariance matrix
+     */
 	public void printNotNorm(PrintWriter fout, Vector conv);
+        
+        /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     */
 	public void printNotNorm(PrintWriter fout, int lo);
+        
+        /**
+     * Prints the classifier representation not normalized on the PrintWriter object given.
+     * @param fout PrintWriter object given to write on.
+     * @param lo lower value in the interval.
+     * @param up upper value in the interval.
+     */
 	public void printNotNorm(PrintWriter fout, double lo, double up);
 	
 	

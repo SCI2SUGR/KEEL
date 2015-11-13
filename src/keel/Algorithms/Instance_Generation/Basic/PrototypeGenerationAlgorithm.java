@@ -39,7 +39,7 @@ import org.core.*;
 /**
  * Template used by children classes to executes its algorithms.
  * @author diegoj
- * @param T Type of the algorithm
+ * @param <T> Type of the algorithm
  */
 public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
 {
@@ -291,6 +291,9 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
 	 * @param filename Name of output file
 	 * @param realClass Real output of instances
 	 * @param prediction Predicted output for instances
+     * @param inputs Input attributes.
+     * @param output Output attribute.
+     * @param relation Relation string.
 	 */
 	public static void writeOutput(String filename, int [][] realClass, int [][] prediction, Attribute inputs[], Attribute output, String relation) {
 	
@@ -428,6 +431,10 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
 	 * Evaluates a instance to predict its class.
 	 * 
 	 * @param example Instance evaluated 
+         * @param trainData Training data.
+         * @param nClasses number of classes.
+         * @param trainOutput training instance's classes.
+         * @param k Number of Nearest Neighbour to consider 
 	 * @return Class predicted
 	 * 
 	 */

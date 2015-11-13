@@ -55,7 +55,17 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 
-
+/**
+ * 
+ * File: RENN.java
+ * 
+ * The RENN Instance Selection algorithm.
+ * 
+ * @author Written by Salvador García (University of Granada) 20/07/2004 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
+ */
 public class RENN extends Metodo {
 
 
@@ -65,12 +75,17 @@ public class RENN extends Metodo {
 
   private int k;
 
-
+/**
+     * Default constructor. Construct the algoritm by using the superclass builder.
+	  * @param ficheroScript Configuration script
+     */
   public RENN (String ficheroScript) {
     super (ficheroScript);
   }
 
-
+/**
+	 * Executes the algorithm
+	 */ 
   public void ejecutar () {
 
 
