@@ -9,20 +9,39 @@ KEEL description papers:
 
 - J. Alcalá-Fdez, A. Fernandez, J. Luengo, J. Derrac, S. García, L. Sánchez, F. Herrera. KEEL Data-Mining Software Tool: Data Set Repository, Integration of Algorithms and Experimental Analysis Framework. Journal of Multiple-Valued Logic and Soft Computing 17:2-3 (2011) 255-287. 
 
-# Quick installation
+# Getting started with the pre-compiled version (www.keel.es -> Download)
 
-Note that Java version 7 needs to be installed on your system for this to work. Depending on your computing platform you may have to download and install it separately. It is available for free from Sun GET JAVA. If you have Java already installed in your system, please, update it to the latest version if you want to use the newest KEEL versions
+1. First, note that Java version 7 needs to be installed on your system for this to work. Depending on your computing platform you may have to download and install it separately. It is available for free from Sun GET JAVA. If you have Java already installed in your system, please, update it to the latest version if you want to use the newest KEEL versions
 
-To execute this program, simply execute the "GraphInterKeel.jar" file. To do this, there are two ways:
 
-Right click on the jar icon by using the navigation utility of the OS
-or
+2. Navigate into dist folder
 
-Execute the command java -jar GraphInterKeel.jar if you prefer to use a shell command.
-If you want to compile KEEL source code it is advisable to use the Apache Ant Tool (available for download at the The Apache Ant Project web page). The KEEL Software tool includes a "build.xml" file to be used together with ant. To compile the KEEL project (assuming you have already installed ant) you just have to type the following commands:
+3. Run the program: simply execute the "<b>GraphInterKeel.jar</b>" file
 
-Execute the command ant cleanAll. This command erases previous binary files so that there aren't any conflicts with new binary builts.
-Execute the command ant. This command builds the whole KEEL project binaries using the available source code.
+  Option 1: Right click on the jar icon by using the navigation utility of the OS
+
+  Option 2: Execute the following command if you prefer to use a shell.
+
+<pre>
+java -jar <path>/dist/GraphInterKeel.jar
+</pre>
+
+# Getting started with the source code.
+
+If you want to compile KEEL source code it is advisable to use the Apache Ant Tool (available for download at the The Apache Ant Project web page: http://ant.apache.org/). The KEEL Software tool includes a "<b>build.xmlz</b>" file to be used together with ant. To compile the KEEL project (assuming you have already installed ant) you just have to type the following commands:
+
+<pre>
+ant cleanAll
+</pre>
+
+This command erases previous binary files so that there aren't any conflicts with new binary builts.
+
+<pre>
+ant
+</pre>
+
+This command builds the whole KEEL project binaries using the available source code.
+
 The installation of new data sets into the application can be done by importing them through the Data Management module or the Experiments module. These modules can convert data from several formats (CVS, ARFF, plain text) to KEEL format, thus allowing the user to quickly integrate them.
 
 If you are interested on submitting some code to the KEEL project, please contact the Webmaster Team.
