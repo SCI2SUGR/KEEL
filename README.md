@@ -23,7 +23,7 @@ KEEL description papers:
   Option 2: Execute the following command if you prefer to use a shell.
 
 <pre>
-java -jar <path>/dist/GraphInterKeel.jar
+java -jar ./dist/GraphInterKeel.jar
 </pre>
 
 # Getting started with the source code.
