@@ -27,17 +27,22 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.Calculate;
+
+import org.core.Files;
+
 /**
- * <p>
+ * <p> Defines the structure and manage the contents of a rule
+     * This implementation uses only integer values to store the gens.
+     * So, variables values must be discretized (if they are continuous)
+     * or translated into integers (if they are enumerated)
+     * Uses Keel defined Random
  * @author Written by Pedro González (University of Jaen) 18/02/2004
  * @version 1.0
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.NMEEFSD.Calculate;
-
-import org.core.Files;
 
 public class Chromosome {
     /**

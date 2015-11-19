@@ -35,8 +35,9 @@
 package keel.Algorithms.Semi_Supervised_Learning.utilities;
 
 /**
- *
+ * Numeric function class
  * @author diegoj
+ * @param <IndexType> Index type of this function.
  */
 public class NumericFunction<IndexType>
 {

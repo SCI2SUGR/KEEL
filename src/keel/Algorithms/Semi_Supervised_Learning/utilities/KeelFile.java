@@ -108,6 +108,7 @@ public class KeelFile
      * Copy a Keel-style file to another.
      * @param fromFileName Name of the original file.
      * @param toFileName Name of the destination file.
+     * @throws java.io.IOException if the file content can not be copied. (files don't exist or are unreadable)
      */
     public static void copy(String fromFileName, String toFileName)
       throws IOException {

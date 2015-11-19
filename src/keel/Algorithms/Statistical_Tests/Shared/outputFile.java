@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 24/02/2005
-* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
+
 
 package keel.Algorithms.Statistical_Tests.Shared;
 
@@ -56,13 +49,19 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileOutputStream;
 
-
-public class outputFile {
 	/**
 	* <p>
 	* Appends the results of an experiment to a file
 	* </p>
-	*/
+	* <p>
+* @author Written by Luciano Sanchez (University of Oviedo) 24/02/2005
+* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
+public class outputFile {
+
 	
 	/**
 	* <p>

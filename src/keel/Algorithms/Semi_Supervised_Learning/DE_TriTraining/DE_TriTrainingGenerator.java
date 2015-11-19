@@ -83,7 +83,14 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
  private double [][][] probabilities;
 // private String final_classifier; 
 
-  protected int numberOfPrototypes;  // Particle size is the percentage
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+
+    /**
+     * Number of classes.
+     */
   protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
@@ -101,10 +108,17 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
   
   /**
    * Build a new DE_TriTrainingGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public DE_TriTrainingGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -118,7 +132,8 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
    * Build a new DE_TriTrainingGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public DE_TriTrainingGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -146,7 +161,9 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
 
   }
   
-  
+      /**
+     * Asks for the garbage collector.
+     */
   public void getSolicitaGarbageColector(){
 
 	  try{
@@ -168,11 +185,11 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
   
   /**
    * Classify a test set with the algorithm specified.
-   * @param algorithm
-   * @param train
-   * @param test
+   * @param idAlg specified algorithm id.
+   * @param train training dataset to build the model.
+   * @param test test dataset to be classified.
    * @param save. It indicates if it will save the results in the variable PREDICTIONS!
-   * @return
+   * @return the predicted classes of the test instances.
    * @throws Exception
    */
   
@@ -260,7 +277,6 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
   /**
    * Measure combined error excluded the classifier 'id' on the given data set
    *
-   * @param train data set.
    * @param data Instances The data set
    * @param id int The id of classifier to be excluded
    * @return double The error
@@ -291,9 +307,12 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
     return err;
   }
 
-  
-  
-  public int votingRule(int InstanceID){
+    /**
+     * Classifies the instance with the index given.
+     * @param InstanceID instance index given.
+     * @return the predicted class of the instances index given.
+     */
+    public int votingRule(int InstanceID){
 	  
 	    double[] res = new double[this.numberOfClass];
 	    for(int j = 0; j < 3; j++)
@@ -332,8 +351,10 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
   
   /**
    * 
-   * Depuration algorithm
-   * @return
+   * Filtration algorithm. Refines the prototype set given T by eleminating some prototypes and relabaling others.
+     * @param T given prototype set to be refined.
+     * @param labeled labeled prototype set to build the model used to relabel the rest.
+   * @return refined version of the given prototype set T.
    */
   protected PrototypeSet Depur (PrototypeSet T, PrototypeSet labeled)
   {
@@ -403,10 +424,9 @@ public class DE_TriTrainingGenerator extends PrototypeGenerator {
   
   /**
    * Apply the DE_TriTrainingGenerator method.
-   * @return 
-   */
-  
-  
+     * @return transductive test sets.
+     * @throws java.lang.Exception if the algorithm can not be applied.
+     */
   public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm TRI-TRAINING is starting...\n Computing...\n");

@@ -32,6 +32,10 @@ import java.io.*;
 
 import keel.Dataset.Attributes;
 
+/**
+ * Abstract class that contains the basic structures to implements Rule learining algorithms.
+ * @author unknown
+ */
 public abstract class Algorithm
 {
 	/** The name of the file that contains the information to build the model. */

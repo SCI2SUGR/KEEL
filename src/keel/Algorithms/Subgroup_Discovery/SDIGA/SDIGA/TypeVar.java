@@ -27,8 +27,15 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
+
+import java.util.Vector;
+
 /**
- * <p>
+ * <p> Class defined to store the attributes characteristics
+     *
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
@@ -36,17 +43,8 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
-
-import java.util.Vector;
-
 public class TypeVar {
-    /**
-     * <p>
-     * Class defined to store the attributes characteristics
-     * </p>
-     */
+    
 
     private String nombre;        // Name of the variable stored in the dataset
     private char tipoDato;        // 'i': integer, 'r':real, 'e':enumerated

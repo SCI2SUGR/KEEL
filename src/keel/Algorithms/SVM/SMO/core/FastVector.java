@@ -296,8 +296,10 @@ public class FastVector
     return new FastVectorEnumeration(this, index);
   }
 
-    /**
-     * added by akibriya
+    /** 
+     * Checks if the object given as parameter is contained in the vector.
+     * @param o object given to check.
+     * @return True if the object given is contained in the vector, False otherwise.
      */
   public /*@pure@*/ boolean contains(Object o) {
       if(o==null)

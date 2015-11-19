@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
 
 package keel.Algorithms.Rule_Learning.C45RulesSA;
 
@@ -42,12 +34,15 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 
-public class Cut{
 /**
- * <p>
- * Class to implement the calculus of the cut point
+ * <p> Class to implement the calculus of the cut point
+ * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Cut{
 	
   /**Classification of class values. */
   protected Classification classification;
@@ -848,7 +843,11 @@ public class Cut{
     return new String( result );
   }
 
-  public double getCutPoint(){
+    /**
+     * Returns the cut point where the node will be divided in its children.
+     * @return the cut point.
+     */
+    public double getCutPoint(){
     return cutPoint;
   }
 }

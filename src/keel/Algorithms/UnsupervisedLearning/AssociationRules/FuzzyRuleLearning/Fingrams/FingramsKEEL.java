@@ -29,13 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
-/**
- * <p>
- * @author Written by Alvaro Lopez
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -47,13 +41,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
-public class FingramsKEEL {
-	/**
-	 * <p>
-	 * It gathers all the parameters, launches the algorithm, and prints out the
+/**
+ * <p>It gathers all the parameters, launches the algorithm, and prints out the
 	 * results
-	 * </p>
-	 */
+	 *
+ * @author Written by Alvaro Lopez
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
+public class FingramsKEEL {
+    
 
 	private myDataset dataset;
 	private DataBase database;
@@ -76,7 +74,7 @@ public class FingramsKEEL {
 											// correct.
 
 	/**
-	 * Default constructor
+	 * Default constructor.
 	 */
 	public FingramsKEEL() {
 	}

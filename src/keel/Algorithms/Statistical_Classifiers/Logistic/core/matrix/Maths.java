@@ -76,6 +76,9 @@ public class Maths {
 
   /** 
    * sqrt(a^2 + b^2) without under/overflow. 
+     * @param a first cathetus.
+     * @param b second cathetus.
+     * @return sqrt(a^2 + b^2) without under/overflow. 
    */
   public static double hypot(double a, double b) {
     double r;
@@ -106,6 +109,7 @@ public class Maths {
   /**
    *  Returns the cumulative probability of the standard normal.
    *  @param x the quantile
+     * @return the cumulative probability of the standard normal.
    */
   public static double  pnorm( double x ) 
   {
@@ -117,6 +121,7 @@ public class Maths {
    *  @param x the quantile
    *  @param mean the mean of the normal distribution
    *  @param sd the standard deviation of the normal distribution.
+     * @return the cumulative probability of a normal distribution.
    */
   public static double  pnorm( double x, double mean, double sd ) 
   {
@@ -243,6 +248,7 @@ public class Maths {
 
   /** Returns the cumulative probability of the Chi-squared distribution
    *  @param x the quantile
+     * @return the cumulative probability of the Chi-squared distribution
    */
   public static double  pchisq( double x ) 
   {
@@ -253,7 +259,9 @@ public class Maths {
   /** Returns the cumulative probability of the noncentral Chi-squared
    *  distribution.
    *  @param x the quantile
-   *  @param ncp the noncentral parameter */
+   *  @param ncp the noncentral parameter
+     * @return the cumulative probability of the noncentral Chi-squared
+   *  distribution. */
   public static double  pchisq( double x, double ncp ) 
   {
     double mean = Math.sqrt( ncp );
@@ -264,7 +272,9 @@ public class Maths {
   /** Returns the cumulative probability of a set of noncentral Chi-squared
    *  distributions.
    *  @param x the quantile
-   *  @param ncp the noncentral parameters */
+   *  @param ncp the noncentral parameters
+     * @return  the cumulative probability of a set of noncentral Chi-squared
+   *  distributions.*/
   public static DoubleVector  pchisq( double x, DoubleVector ncp )
   {
     int n = ncp.size();
@@ -293,6 +303,8 @@ public class Maths {
   /** Returns the density of the noncentral Chi-squared distribution.
    *  @param x the quantile
    *  @param ncp the noncentral parameter
+     * @return the density of the noncentral Chi-squared distribution.
+   *  
    */
   public static double  dchisq( double x, double ncp ) 
   {
@@ -305,6 +317,8 @@ public class Maths {
   /** Returns the density of the noncentral Chi-squared distribution.
    *  @param x the quantile
    *  @param ncp the noncentral parameters 
+     * @return  the density of the noncentral Chi-squared distribution.
+   *  
    */
   public static DoubleVector  dchisq( double x, DoubleVector ncp )
   {
@@ -347,7 +361,10 @@ public class Maths {
   /** Returns the log-density of a set of noncentral Chi-squared
    *  distributions.
    *  @param x the quantile
-   *  @param ncp the noncentral parameters */
+   *  @param ncp the noncentral parameters
+     * @return  the log-density of a set of noncentral Chi-squared
+   *  distributions.
+   */
   public static DoubleVector  dchisqLog( double x, DoubleVector ncp )
   {
     DoubleVector dLog = new DoubleVector( ncp.size() );

@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Writed by Alberto FernÃ¡ndez (University of Granada) 15/01/2006
- * @author Modified by CristÃ³bal J. Carmona (University of Jaen) 24/06/2010
- * @version 2.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDAlgorithm;
 
@@ -43,6 +36,14 @@ import java.text.DecimalFormat;
 
 import keel.Dataset.*;
 
+/**
+ * <p> This class has the different selectors for the dataset
+ * @author Writed by Alberto Fernández (University of Granada) 15/01/2006
+ * @author Modified by Cristóbal J. Carmona (University of Jaen) 24/06/2010
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Complex implements Comparable {
 
     /**
@@ -61,6 +62,9 @@ public class Complex implements Comparable {
     private double FP;
     private String [] nameAttributes;
 
+    /**
+     * Default constructor.
+     */
     public Complex() {
     }
 

@@ -41,14 +41,30 @@ import java.io.IOException;
 
 import keel.Algorithms.Semi_Supervised_Learning.Basic.*;
 
+/**
+ * Utilities class.
+ */
 public class Utilidades {
 		
-	public static void quicksort(double[] main, int[] index) {
+    /**
+     * Performs a quicksort over the vectors given.
+     * @param main values vector.
+     * @param index indices vector.
+     */
+    public static void quicksort(double[] main, int[] index) {
 	    quicksort(main, index, 0, index.length - 1);
 	}
 
 	// quicksort a[left] to a[right]
-	public static void quicksort(double[] a, int[] index, int left, int right) {
+
+    /**
+     * Performs a quicksort over the vectors given as recursive method.
+     * @param a values vector.
+     * @param index indices vector.
+     * @param left left partition of the recursive method.
+     * @param right right partition of the recursive method.
+     */
+    	public static void quicksort(double[] a, int[] index, int left, int right) {
 	    if (right <= left) return;
 	    int i = partition(a, index, left, right);
 	    quicksort(a, index, left, i-1);

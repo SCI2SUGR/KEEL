@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Statistical_Classifiers.Naive_Bayes;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -41,11 +47,6 @@ package keel.Algorithms.Statistical_Classifiers.Naive_Bayes;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
     private double[][] X = null; //examples array
@@ -405,6 +406,10 @@ public class myDataset {
         return Attributes.hasRealAttributes();
     }
 
+  /**
+     * It checks if the data-set has any numerical value
+     * @return boolean True if it has some numerical values, else false.
+     */
     public boolean hasNumericalAttributes(){
         return (Attributes.hasIntegerAttributes() || Attributes.hasRealAttributes());
     }

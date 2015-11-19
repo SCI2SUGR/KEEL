@@ -27,24 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Pedro González (University of Jaen) 15/08/2004
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate;
 
 import java.util.Vector;
 
+/**
+ * <p>Class defined to store the attributes characteristics
+     *
+ * @author Written by Pedro González (University of Jaen) 15/08/2004
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class TypeVar {
-    /**
-     * <p>
-     * Class defined to store the attributes characteristics
-     * </p>
-     */
+    
 
     String nombre;           // Name of the variable stored in the dataset
     char tipoDato;           // 'i': integer, 'r':real, 'e':enumerated

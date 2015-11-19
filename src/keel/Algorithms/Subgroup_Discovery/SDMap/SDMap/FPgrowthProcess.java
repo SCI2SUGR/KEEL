@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
- * @author Modified by Cristobal J. Carmona (University of Jaen) 10/07/2010
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDMap.SDMap;
 
@@ -42,6 +35,15 @@ import java.util.*;
 
 import keel.Algorithms.Subgroup_Discovery.SDMap.FPTree.FPtree;
 
+/**
+ * <p> It provides the implementation of the algorithm to be run in a process
+   *
+ * @author Written by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
+ * @author Modified by Cristobal J. Carmona (University of Jaen) 10/07/2010
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class FPgrowthProcess {
   /**
    * <p>

@@ -515,7 +515,7 @@ public class ART extends Algorithm
     
     /** Writes the tree and the results of the training and the test in the file.
      * 
-     * @exception 	If the file cannot be written.
+     * @exception IOException	If the file cannot be written.
      */
   	public void printResult() throws IOException 
   	{

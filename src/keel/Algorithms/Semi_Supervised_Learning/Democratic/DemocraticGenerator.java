@@ -67,7 +67,7 @@ import java.util.StringTokenizer;
 
 /**
  * This class implements the Co-traning wrapper. You can use: Knn, C4.5, SMO and  as classifiers.
- * @author triguero
+ * @author Isaac Triguero
  *
  */
 
@@ -75,9 +75,18 @@ public class DemocraticGenerator extends PrototypeGenerator {
 
   /*Own parameters of the algorithm*/
 
- 
+    /**
+     * Number of classifiers considered for the ensemble.
+     */
   protected int numberOfClassifiers = 3;
-  protected int numberOfPrototypes;  // Particle size is the percentage
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+
+    /**
+     * Number of classes.
+     */
   protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
@@ -93,10 +102,17 @@ public class DemocraticGenerator extends PrototypeGenerator {
   
   /**
    * Build a new DemocraticGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public DemocraticGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -110,7 +126,8 @@ public class DemocraticGenerator extends PrototypeGenerator {
    * Build a new DemocraticGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public DemocraticGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -164,8 +181,10 @@ public class DemocraticGenerator extends PrototypeGenerator {
 	  return predicho;
   }
 
-  
-  public void getSolicitaGarbageColector(){
+    /**
+     * Asks for the garbage collector.
+     */
+    public void getSolicitaGarbageColector(){
 
 	  try{
 	//  System.out.println( "********** INICIO: 'LIMPIEZA GARBAGE COLECTOR' **********" );
@@ -186,11 +205,11 @@ public class DemocraticGenerator extends PrototypeGenerator {
   
   /**
    * Classify and calculing intervals of confidence
-   * @param train
-   * @param test
-   * @throws Exception
+   * @param train Training prototype sets to build the classifier models. One for each considered classifier.
+   * @param test Test prototype set to be classied.
+     * @return preditec classes of the test prototypes.
+   * @throws Exception if the prototypeset can not be classified.
    */
-  
   public double[] clasificar(PrototypeSet train[], PrototypeSet test) throws Exception{
 	  
 	  double predicho[] = new double[test.size()];
@@ -287,11 +306,9 @@ public class DemocraticGenerator extends PrototypeGenerator {
   }
   /**
    * Apply the DemocraticGenerator method with 3 classifiers:  C45, NB, and 3NN
-   * 
-   * @return 
-   */
-  
-  
+     * @return transductive test sets.
+     * @throws java.lang.Exception if the algorithm can not be applied.
+     */
   public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm Democratic-CoLearning is starting...\n Computing...\n");

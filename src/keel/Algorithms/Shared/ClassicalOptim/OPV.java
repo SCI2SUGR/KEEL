@@ -27,7 +27,15 @@
   
 **********************************************************************/
 
-/** 
+
+
+package keel.Algorithms.Shared.ClassicalOptim;
+import org.core.*;
+
+	/**
+	 * <p>
+	 * Vector operations class.
+	 * </p>
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,16 +43,8 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Shared.ClassicalOptim;
-import org.core.*;
-
 public class OPV {
-	/**
-	 * <p>
-	 * Vector operations class.
-	 * </p>
-	 */
+
 	/**
 	 * <p>
 	 * returns the sum of vector a and b.

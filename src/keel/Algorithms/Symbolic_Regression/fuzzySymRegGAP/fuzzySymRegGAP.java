@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2007
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Symbolic_Regression.fuzzySymRegGAP;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
@@ -42,12 +35,17 @@ import keel.Algorithms.Symbolic_Regression.Shared.*;
 import keel.Algorithms.Shared.Parsing.*;
 import org.core.*;
 
-
-
-public class fuzzySymRegGAP {
 	/**
 	 * Wrapper for symbolicRegression with fuzzy sets and based on GAP (Genetic Algorithm Programming) paradigm).
-	 */
+	 * <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2007
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class fuzzySymRegGAP {
+
 	//Random number generator
 	static Randomize rand;
 	/**

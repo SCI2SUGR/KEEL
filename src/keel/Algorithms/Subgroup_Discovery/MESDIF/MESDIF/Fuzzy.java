@@ -1,5 +1,8 @@
+
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
+
 /**
- * <p>
+ * <p> Class for fuzzy set definition 
  * @author Created by Pedro González (University of Jaen) 27/08/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 30/06/2010
@@ -7,8 +10,6 @@
  * @since JDK1.5
  * </p>
  */
-package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
-
 public class Fuzzy {
     /**
      * <p>

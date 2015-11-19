@@ -27,15 +27,6 @@
 
  **********************************************************************/
 
-/**
- * <p>
- * @author Written by I. Triguero and J. A. SÃ¡ez, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 10/02/11
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
 
 package keel.Algorithms.Semi_Supervised_Learning.Basic;
 
@@ -44,15 +35,45 @@ import java.io.*;
 
 /**
  * Class to implement Parameters the SMO algorithm
+ * <p>
+ * @author Written by I. Triguero and J. A. SÃ¡ez, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 10/02/11
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
  */
 public class ParametersSMO {
 
-        static public int numPartitions;
-        static public int numInstances;
-        static public int numClasses;
-        static public String trainInputFile;
-        static public String testInputFile;
-        static public String seed;
+    /**
+     * Number of partitions.
+     */
+    static public int numPartitions;
+
+    /**
+     * Number of instances.
+     */
+    static public int numInstances;
+
+    /**
+     * Number of classes.
+     */
+    static public int numClasses;
+
+    /**
+     * Training input filename.
+     */
+    static public String trainInputFile;
+
+    /**
+     * Test input filename.
+     */
+    static public String testInputFile;
+
+    /**
+     * Seed for random purpose.
+     */
+    static public String seed;
   }
 
 

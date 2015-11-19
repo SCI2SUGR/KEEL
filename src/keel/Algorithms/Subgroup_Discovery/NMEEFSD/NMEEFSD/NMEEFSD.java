@@ -27,18 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * NMEEFSD
- * Non-dominated Multi-objective Evolutionary algorithm for Extracting Fuzzy rules in Subgroup Discovery
- * </p>
- * <p>
- * Algorithm for the discovery of rules describing subgroups
- * @author Cristóbal J. Carmona
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
@@ -52,6 +41,18 @@ import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.StringTokenizer;
 
+/**
+ * <p>
+ * NMEEFSD
+ * Non-dominated Multi-objective Evolutionary algorithm for Extracting Fuzzy rules in Subgroup Discovery
+ * </p>
+ * <p>
+ * Algorithm for the discovery of rules describing subgroups
+ * @author Cristóbal J. Carmona
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class NMEEFSD {
 
     private static int seed;                // Seed for the random generator
@@ -226,6 +227,7 @@ public class NMEEFSD {
     * <p>
     * Read the dataset and stores the values
     * </p>
+     * @throws java.io.IOException if the file can not be read.
     */
     public static void CaptureDataset () throws IOException   {
 
@@ -422,6 +424,8 @@ public class NMEEFSD {
       * <p>
       * Main method of the algorithm
       * </p>
+     * @param args Arguments of the program (a configuration script, generally)  
+     * @throws java.lang.Exception if the algorithm can not be executed.
       **/
     public static void main(String[] args) throws Exception {
 

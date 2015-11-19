@@ -105,8 +105,15 @@ protected int m_KValue = 0;
 
 // private String final_classifier; 
 
-  protected int numberOfPrototypes;  // Particle size is the percentage
-  protected int numberOfClass;
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+
+    /**
+     * Number of classes.
+     */
+    protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
 
@@ -116,10 +123,17 @@ protected int m_KValue = 0;
   
   /**
    * Build a new CLCCGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public CLCCGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -133,7 +147,8 @@ protected int m_KValue = 0;
    * Build a new CLCCGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public CLCCGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -389,8 +404,13 @@ protected int m_KValue = 0;
     else return false;
   }
 
-  
-  public int votingRule(Prototype inst) throws Exception{
+    /**
+     * Returns the predicted class for a given prototype.
+     * @param inst given prototype.
+     * @return the predicted class for a given prototype.
+     * @throws Exception
+     */
+    public int votingRule(Prototype inst) throws Exception{
 	  
 	    double[] res = new double[this.numberOfClass];
 	    for(int j = 0; j < this.num_classifier; j++)
@@ -597,8 +617,13 @@ protected int m_KValue = 0;
 	    return tranductive;
   }
   
-  
-  public double penalty(int numCluster, int n){
+    /**
+     * Returns the penalty for the cluster given.
+     * @param numCluster number of clusters
+     * @param n number of instances.
+     * @return the penalty for the cluster given.
+     */
+    public double penalty(int numCluster, int n){
 	  
 	  if (numCluster >= this.numberOfClass){
 		  return Math.sqrt((numCluster-this.numberOfClass)/(n*1.));
@@ -607,7 +632,14 @@ protected int m_KValue = 0;
 	  }
   }
   
-  public double objetiveFunction(PrototypeSet[] cluster, PrototypeSet Lstar, PrototypeSet centers){ //int currentCluster, int Nj
+    /**
+     * Returns the objective function value of the clusters given.
+     * @param cluster vector that codes the clusters.
+     * @param Lstar prototype set to evaluate the clusters.
+     * @param centers center of each cluster.
+     * @return the objective function value of the clusters given.
+     */
+    public double objetiveFunction(PrototypeSet[] cluster, PrototypeSet Lstar, PrototypeSet centers){ //int currentCluster, int Nj
 	  double result =0;
 	  int n = Lstar.size();
 	  
@@ -630,12 +662,11 @@ protected int m_KValue = 0;
   
 
   /**
-   * Create a cluster from the centers and the complete set of prototypes
-   * @param centers
-   * @param set
-   * @return
+   * Creates a cluster from the centers and the complete set of prototypes
+   * @param clusterCenters cluster centers given.
+   * @param Lstar complete prototype set.
+   * @return the clusters.
    */
-  
   public PrototypeSet[] createCluster(PrototypeSet clusterCenters, PrototypeSet Lstar){
 	  PrototypeSet clusters [] = null;
 	  
@@ -655,8 +686,9 @@ protected int m_KValue = 0;
   }
   
   /**
-   * 
-   * @param Lstar
+   * Returns the local cluster centers for a given prototype set.
+   * @param Lstar given prototype set.
+     * @return  the local cluster centers for a given prototype set.
    */
   public PrototypeSet[] localClusterCenter(PrototypeSet Lstar){
 	 
@@ -800,9 +832,10 @@ protected int m_KValue = 0;
    
   
   /**
-   * 
-   * @param CX
-   * @return
+   * Process the cluster given to obtain the best cluster evaluated with the data given.
+  * @param CX Clusters centers.
+   * @param Lstar prototype set to evaluate the different clusters.
+   * @return Prototypes belonging to the best cluster.
    */
   public PrototypeSet ProcessCluster(PrototypeSet [] CX, PrototypeSet Lstar){
 	  PrototypeSet LabeledStarStar = new PrototypeSet(Lstar.clone()); // the generated prototypeSet.
@@ -900,10 +933,9 @@ protected int m_KValue = 0;
   
   /**
    * Apply the CLCCGenerator method.
-   * @return 
-   */
-  
-  
+   * @return transductive test sets.
+     * @throws java.lang.Exception if the algorithm can not be applied.
+     */
   public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm CLCC is starting...\n Computing...\n");

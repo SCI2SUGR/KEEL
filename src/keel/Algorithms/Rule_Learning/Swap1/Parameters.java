@@ -29,16 +29,7 @@
 
 package keel.Algorithms.Rule_Learning.Swap1;
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, member of the research group SCI2S (Soft Computing and Intelligent Information Systems)
- * and who works at the laboratory EFDAMIS (Evolutionary and Fuzzy DAta Mining and Intelligent Systems),
- * within DECSAI (DEpartment of Computer Science and Artificial Intelligence) in ETSIIT, at University of Granada - Spain.
- * Date: 03/04/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 
 import java.util.*;
@@ -48,6 +39,14 @@ import java.io.*;
 /**
  * <p>
  * Main class to parse the parameters of the algorithm
+ * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, member of the research group SCI2S (Soft Computing and Intelligent Information Systems)
+ * and who works at the laboratory EFDAMIS (Evolutionary and Fuzzy DAta Mining and Intelligent Systems),
+ * within DECSAI (DEpartment of Computer Science and Artificial Intelligence) in ETSIIT, at University of Granada - Spain.
+ * Date: 03/04/10
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class Parameters {

@@ -27,27 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada) 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.Prism;
 
 import java.util.*;
 
-public class ConjReglas {
 /**
- * <p>
- * Set of rules
- * Defines a set of rules or complex
+ * <p> Set of rules. Defines a set of rules or complex
+ * @author Written by Alberto Fernández (University of Granada) 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
- */	
+ */
+public class ConjReglas {
 
     private LinkedList reglas;
     private String nombreClase;

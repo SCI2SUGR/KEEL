@@ -28,19 +28,7 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: EIS_RFS.java
- * 
- * The EIS_RFS Algorithm.
- * EIS = Evolutionary Instance Selection (using a SSGA)
- * RFS = Rough Set based Feature Selection
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/04/2010 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
+
 
 package keel.Algorithms.RST_Learning.EIS_RFS;
 
@@ -58,7 +46,19 @@ import keel.Algorithms.RST_Learning.Timer;
 import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 
-
+/**
+ * 
+ * File: EIS_RFS.java
+ * 
+ * The EIS_RFS Algorithm.
+ * EIS = Evolutionary Instance Selection (using a SSGA)
+ * RFS = Rough Set based Feature Selection
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/04/2010 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
 public class EIS_RFS extends RSTAlgorithm{
 
 	private int K; //K value for K-NN

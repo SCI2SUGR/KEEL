@@ -27,23 +27,20 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Rule_Learning.Prism;
+
 /**
- * <p>
+ * <p> Get the statistical data from the algorithm. In particular, it evaluates the quality of the rules generated.
  * @author Written by Alberto Fernández (University of Granada) 02/06/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Rule_Learning.Prism;
-
-
 public class EvaluaCalidadReglas {
-/**
- * Get the statistical data from the algorithm
- */
 	
     private int nClases;
     private int nDatos;

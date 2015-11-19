@@ -51,9 +51,12 @@ import java.util.*;
 public class ADE_CoForestAlgorithm extends PrototypeGenerationAlgorithm<ADE_CoForestGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new ADE_CoForestGenerator.
      * @param train Training data set.
+     * @param unlabeled unlabeled data set.
+     * @param test Test data set.
      * @param params Parameters of the method.
+     * @return a new Generator object.
      */
     protected ADE_CoForestGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

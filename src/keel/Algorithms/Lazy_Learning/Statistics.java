@@ -50,22 +50,30 @@ package keel.Algorithms.Lazy_Learning;
  */
 public class Statistics {
 
-  /** Some constants */
+  /** MACHEP constant */
   protected static final double MACHEP =  1.11022302462515654042E-16;
+  /** Maximum logarithm value*/
   protected static final double MAXLOG =  7.09782712893383996732E2;
+  /** Minimum logarithm value*/
   protected static final double MINLOG = -7.451332191019412076235E2;
+  /** Maximun gamma value*/
   protected static final double MAXGAM = 171.624376956302725;
+  /** squared root of PI*/
   protected static final double SQTPI  =  2.50662827463100050242E0;
+  /** squared root of H*/
   protected static final double SQRTH  =  7.07106781186547524401E-1;
+  /** Logarithm of PI*/
   protected static final double LOGPI  =  1.14472988584940017414;
   
+  /** Big number*/
   protected static final double big    =  4.503599627370496e15;
+  /** Inverse big number*/
   protected static final double biginv =  2.22044604925031308085e-16;
 
   /*************************************************
    *    COEFFICIENTS FOR METHOD  normalInverse()   *
    *************************************************/
-  /* approximation for 0 <= |y - 0.5| <= 3/8 */
+  /** approximation for 0 <= |y - 0.5| <= 3/8 */
   protected static final double P0[] = {
     -5.99633501014107895267E1,
     9.80010754185999661536E1,

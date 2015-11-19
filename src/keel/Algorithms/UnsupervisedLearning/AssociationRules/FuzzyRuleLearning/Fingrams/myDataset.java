@@ -29,27 +29,33 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
-/**
- * <p>
- * @author Written by Alvaro Lopez
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
 
 import java.io.IOException;
 import java.util.ArrayList;
 import keel.Dataset.*;
 
+/**
+ * <p> It contains the methods to read a Dataset for the Association Rules Mining problem
+ * @author Written by Alvaro Lopez
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class myDataset {
-  /**
-   * <p>
-   * It contains the methods to read a Dataset for the Association Rules Mining problem
-   * </p>
-   */
+    
 
+        /**
+     * Number to represent type of variable nominal.
+     */
   public static final int NOMINAL = 0;
+  
+      /**
+     * Number to represent type of variable integer.
+     */
   public static final int INTEGER = 1;
+    /**
+     * Number to represent type of variable real or double.
+     */
   public static final int REAL = 2;
   
   private double[][] trueTransactions = null; //true transactions array
@@ -70,8 +76,7 @@ public class myDataset {
 	 * <p>
 	 * Initialize a new set of instances
 	 * </p>
-	 * @param nFuzzyRegionsForNumericAttributes The number of fuzzy regions with which numeric attributes are evaluated
-	 */
+	*/
   public myDataset() {
 	  IS = new InstanceSet();
   }
@@ -380,6 +385,12 @@ public class myDataset {
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getNumNominalValues() );
   }
 
+   /**
+     * It returns the type of the attribute specified
+     *
+     * @param variable index of the attribute
+     * @return the type of the attribute specified
+     */
     public int getType(int variable) {
         if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).INTEGER)   return this.INTEGER;
         if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).REAL)  return this.REAL;
@@ -388,6 +399,12 @@ public class myDataset {
 		return 0;
     }
 
+      /**
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
+     */
     public double [][] returnRanks(){
       double [][] rangos = new double[this.getnVars()][2];
       for (int i = 0; i < this.nInputs; i++){
@@ -413,6 +430,11 @@ public class myDataset {
       return rangos;
     }
 
+      /**
+     * It returns the name of the attributes
+     * 
+     * @return the name of the attributes
+     */
     public String [] names(){
       String names[] = new String[nVars];
       for (int i = 0; i < this.nVars; i++){
@@ -422,7 +444,13 @@ public class myDataset {
       return names;
     }
 
-     public String nameNominal (int variable, int value){
+    /**
+     * Returns the nominal representation of the given value of the given attribute.
+     * @param variable attribute's id.
+     * @param value value asked.
+     * @return the nominal representation of the given value of the given attribute.
+     */
+    public String nameNominal (int variable, int value){
       if (this.getAttributeType(variable) == Attributes.getAttribute(0).NOMINAL) {
 		  if (variable < this.nInputs)  return Attributes.getInputAttribute(variable).getNominalValue(value);
 		  else  return Attributes.getOutputAttribute(variable - this.nInputs).getNominalValue(value);
@@ -430,14 +458,25 @@ public class myDataset {
 	  else  return (null);
     }
 
-     public int posVariable (String variable){
+    /**
+     * Returns the id (position) of an attribute with the given name.
+     * @param variable given attribute's name.
+     * @return the id (position) of an attribute with the given name.
+     */
+    public int posVariable (String variable){
 	  for (int i=0; i < this.nVars; i++) {
 		  if (this.getAttributeName(i).equalsIgnoreCase(variable))  return (i);
       }
 	  return (-1);
     }
 
-     public int posValueNominal (int variable, String value){
+    /**
+     * Returns the integer representation (id or position) of the given attribute's value.
+     * @param variable attribute's id.
+     * @param value value asked.
+     * @return the integer representation (id or position) of the given attribute's value.
+     */
+    public int posValueNominal (int variable, String value){
 	  int i, n;
       if (this.getAttributeType(variable) == Attributes.getAttribute(0).NOMINAL) {
 		  if (variable < this.nInputs) {

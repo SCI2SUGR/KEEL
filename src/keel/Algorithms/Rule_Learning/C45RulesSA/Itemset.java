@@ -27,8 +27,13 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Rule_Learning.C45RulesSA;
+
+import keel.Dataset.Attribute;
+
 /**
- * <p>
+ * <p> Class to manipulate an itemset.
  * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
@@ -36,17 +41,7 @@
  * </p>
  */
 
-package keel.Algorithms.Rule_Learning.C45RulesSA;
-
-import keel.Dataset.Attribute;
-
-
 public class Itemset{
-/**
- * <p>
- * Class to manipulate an itemset.
- * </p>
- */
 	
 	
   /** The dataset which the itemset has access to. */

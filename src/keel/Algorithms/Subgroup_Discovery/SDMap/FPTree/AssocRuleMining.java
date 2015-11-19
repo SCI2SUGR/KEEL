@@ -38,15 +38,7 @@
 /*                                                                           */
 /* ------------------------------------------------------------------------- */
 
-/**
- * <p>
- * @author Written by Frans Coenen (University of Liverpool) 09/01/2003
- * @author Modified by Frans Coenen (University of Liverpool) 03/02/2005
- * @author Modified by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDMap.FPTree;
 
@@ -55,6 +47,16 @@ import java.util.ArrayList;
 import keel.Algorithms.Subgroup_Discovery.SDMap.SDMap.AssociationRule;
 import keel.Algorithms.Subgroup_Discovery.SDMap.SDMap.myDataset;
 
+/**
+ * <p>Set of utilities to support various Association Rule Mining (ARM)
+	* 
+ * @author Written by Frans Coenen (University of Liverpool) 09/01/2003
+ * @author Modified by Frans Coenen (University of Liverpool) 03/02/2005
+ * @author Modified by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class AssocRuleMining {
 	/**
 	* <p>
@@ -64,8 +66,7 @@ public class AssocRuleMining {
 
     /* ------ FIELDS ------ */
 
-    // Inner class for storing linked list of ARs or CARs as appropriate.
-
+    /** Inner class for storing linked list of ARs or CARs as appropriate. */
     protected class RuleNode {
     	/** Antecedent of AR. */
 	protected short[] antecedent;
@@ -131,6 +132,9 @@ public class AssocRuleMining {
     /** The number of one itemsets (singletons). */
     protected int numOneItemSets = 0;
     
+    /**
+     * Dataset.
+     */
     protected myDataset dataset;
 
     // Flags
@@ -517,7 +521,8 @@ public class AssocRuleMining {
     @param antecedent the antecedent (LHS) of the rule.
     @param consequent the consequent (RHS) of the rule.
     @param confidenceForRule the associated confidence value.
-    @param supportForRule the associated support value.  */
+    @param supportForRule the associated support value.
+    @param supportForAntecedent  the antecedent support value.  */
     
     protected void insertRuleintoRulelist(short[] antecedent,
     				short[] consequent, double confidenceForRule, double supportForRule, double supportForAntecedent) {
@@ -676,6 +681,11 @@ public class AssocRuleMining {
 	return(newItemSet);
 	}
 
+    /** Resizes given array so that its length is increased by one element
+    and new element added to front
+    @param oldItemSet the original item set
+    @param newElement the new element/attribute to be appended
+    @return the combined item set */
     protected short[] realloc2_new(short[] oldItemSet, short newElement) {
 
 	// No old array

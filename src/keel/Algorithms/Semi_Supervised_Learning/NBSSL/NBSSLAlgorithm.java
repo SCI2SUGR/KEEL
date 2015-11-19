@@ -51,9 +51,12 @@ import java.util.*;
 public class NBSSLAlgorithm extends PrototypeGenerationAlgorithm<NBSSLGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+    /**
+     * Builds a new NBSSLGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype NBSSLGenerator object with data and parameters full load. 
      */
     protected NBSSLGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

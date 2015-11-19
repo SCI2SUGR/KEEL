@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 24/02/2005
-* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
+
 
 package keel.Algorithms.Statistical_Tests.Shared;
 
@@ -45,11 +38,22 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import java.util.regex.*;
 
+/**
+* <p> Parse a list of files and perform certain the statistical test.
+* @author Written by Luciano Sanchez (University of Oviedo) 24/02/2005
+* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
 public class ParseFileList {
 	/**
 	* <p>
 	* Parse a list of files and perform certain the statistical test identified by 'selector' over them
 	* </p>
+     * @param selector statistical test identifier.
+     * @param tty (not used).
+     * @param pc Object to read the configuration file and extract the parameters needed for the statistical test.
 	*/
     public void statisticalTest(int selector, boolean tty, ProcessConfig pc) {
         Vector nameResults = new Vector();

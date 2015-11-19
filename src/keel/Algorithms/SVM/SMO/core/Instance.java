@@ -590,8 +590,7 @@ implements Serializable {
 	 * @param value the new attribute value (If the corresponding
 	 * attribute is nominal (or a string) then this is the new value's
 	 * index as a double).  
-	 * @throws UnassignedClassException if the class is not set
-	 * @throws UnaddignedDatasetException if the instance doesn't
+	 * @throws UnassignedClassException if the class is not set or if the instance doesn't
 	 * have access to a dataset 
 	 */
 	//@ requires classIndex() >= 0;

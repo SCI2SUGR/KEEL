@@ -27,18 +27,21 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Pedro Gonzalez (University of Jaen) 15/02/2004
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDIGA.Calculate;
 
 import org.core.Files;
 
+/**
+ * <p> Defines an individual, composed by a cromosome.
+     * Includes variables to store the size, the fitness, and if the individual is evaluated or not
+     * 
+ * @author Written by Pedro Gonzalez (University of Jaen) 15/02/2004
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Individual {
 
     /**
@@ -123,6 +126,7 @@ public class Individual {
      * </p>
      * @param pos       Position of the variable in the Chromosome
      * @param elem      Position of the gen of the variable
+     * @param val       The value to insert in the gene
      */
     public void setCromElem (int pos, int elem, int val) {
         cromosoma.setCromElem(pos, elem, val);

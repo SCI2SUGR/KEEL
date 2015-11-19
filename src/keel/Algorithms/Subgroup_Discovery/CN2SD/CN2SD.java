@@ -37,13 +37,11 @@ import java.util.Collections;
 import org.core.Fichero;
 
 /**
- * <p>Title: Clase CN2SD</p>
+ * <p>Title: CN2SD</p>
  *
  * <p>Description: Contiene los metodos principales del algoritmo cn2sd</p>
  *
- * <p>Copyright: Copyright Alberto (c) 2006</p>
  *
- * <p>Company: Mi casa </p>
  *
  * @author Alberto Fernández
  * @version 1.0

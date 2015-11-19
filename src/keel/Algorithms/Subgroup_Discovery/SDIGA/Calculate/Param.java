@@ -28,7 +28,8 @@
 **********************************************************************/
 
 /**
- * <p>
+ * <p>This class manages the values of the variables defined by the parameters file
+     * 
  * @author Written by Pedro González (University of Jaen) 15/08/2004
  * @version 1.0
  * @since JDK1.5
@@ -38,18 +39,45 @@
 package keel.Algorithms.Subgroup_Discovery.SDIGA.Calculate;
 
 public class Param {
+    
     /**
-     * <p>
-     * This class manages the values of the variables defined by the parameters file
-     * </p>
+     * Training Input mandatory file
      */
     public String input_file_tra;   // Input mandatory file
+
+    /**
+     *  Test Input mandatory file
+     */
     public String input_file_tst;   // Input mandatory file
+
+    /**
+     *  Training output mandatory file 
+     */
     public String output_file_tra;   // Input mandatory file
+
+    /**
+     * Test output mandatory file
+     */
     public String output_file_tst;   // Input mandatory file
+
+    /**
+     * Auxiliary input file with rules
+     */
     public String rul_file;         // Auxiliary input file with rules
+
+    /**
+     * Auxiliary output file for quality measures of the rules
+     */
     public String measure_file;     // Auxiliary output file for quality measures of the rules
+
+    /**
+     *  Number of labels
+     */
     public int n_etiq;              // Number of labels
+
+    /**
+     *  Number of rules
+     */
     public int long_poblacion;      // Number of rules
 
     /**

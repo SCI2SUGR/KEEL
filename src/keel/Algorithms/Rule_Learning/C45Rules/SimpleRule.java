@@ -27,7 +27,19 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Rule_Learning.C45Rules;
+
+import keel.Dataset.Attributes;
+
 /**
+ * <p>
+ * Represent one single rule of the form: <b>exemple[a]==v</b>,
+ * <b>exemple[a]>=v</b> or <b>exemple[a]<=v</b>.
+ * a is one of the exemple's attributes and v is a legal value for a.
+ * </p>
  * <p>
  * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 12/12/2008
@@ -35,27 +47,19 @@
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Rule_Learning.C45Rules;
-
-import keel.Dataset.Attributes;
-
-
 public class SimpleRule {
-/**
- * <p>
- * Represent one single rule of the form: <b>exemple[a]==v</b>,
- * <b>exemple[a]>=v</b> or <b>exemple[a]<=v</b>.
- * a is one of the exemple's attributes and v is a legal value for a.
- * </p>
- */
   
-  // operator >
+  /**
+     * Flag for greater operator 
+     */
   public static int GREATER=0; 
-  //operator <=
+  /**
+     * Flag for lower operator 
+     */
   public static int LOWER=1; 
-  //operator =
+  /**
+     * Flag for equal operator 
+     */
   public static int EQUAL=2; 
   //atribute's id
   private int attribute; 

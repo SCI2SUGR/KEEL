@@ -27,16 +27,18 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.Calculate;
+
 /**
- * <p>
+ * <p> Used to store the quality measures for the generated rule
+     *
  * @author Written by Pedro González (University of Jaen) 15/08/2004
  * @version 1.0
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.Calculate;
-
 public class Result {
 
     /**

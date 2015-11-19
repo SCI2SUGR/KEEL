@@ -51,9 +51,11 @@ import java.util.*;
 public class SETREDAlgorithm extends PrototypeGenerationAlgorithm<SETREDGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new SETREDGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype SETREDGenerator object with data and parameters full load. 
      */
     protected SETREDGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

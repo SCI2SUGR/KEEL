@@ -27,20 +27,11 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Shared.ClassicalOptim;
 import org.core.*;
 import java.util.Vector;
-
-public class LinearSearchBrent {
     /**
      * <p>
      * <pre>
@@ -52,7 +43,15 @@ public class LinearSearchBrent {
      *  Brent (1973). Algorithms for Minimization without Derivatives. Prentice-Hall, Englewood Cliffs, NJ.
      *  </pre>
      *  </p>
-     */
+* <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class LinearSearchBrent {
+
     // xbus and dbus are represented in matrix format to reuse it like weights
     // store and optimization process    
     double [][][] dSearch;    // Search direction
@@ -149,7 +148,7 @@ public class LinearSearchBrent {
         f3*(x-x1)*(x-x2)/(x3-x1)/(x3-x2);
         
     }
-    /*
+    /**
      * <p>
      *   Minimize function g(). Function g() is the error of the neural network.
      * </p>

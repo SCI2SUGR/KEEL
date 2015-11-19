@@ -29,12 +29,7 @@
 
 package keel.Algorithms.SVM.SMO.supportVector;
 
-/**
- * Positive-Definite Reference Function  Kernel
- * To be used with PDFS algorithm
- * @author Julian Luengo Martin
- * 
- */
+
 import keel.Algorithms.SVM.SMO.core.Instance;
 import keel.Algorithms.SVM.SMO.core.Instances;
 import keel.Algorithms.SVM.SMO.core.Option;
@@ -42,16 +37,43 @@ import keel.Algorithms.SVM.SMO.core.Utils;
 
 import java.util.Enumeration;
 import java.util.Vector;
+
+/**
+ * Positive-Definite Reference Function  Kernel
+ * To be used with PDFS algorithm
+ * @author Julian Luengo Martin
+ * 
+ */
 public class PDRFKernel
 extends CachedKernel {
 
-	/** Type of Positive Definite Functions supported **/
+	/** Type of Positive Definite Functions supported (Symmetric Triangle) **/
 	public static int SymmetricTriangle = 1;
-	public static int Gaussian = 2;
-	public static int Cauchy = 3;
-	public static int Laplace = 4;
-	public static int HyperbolicSecant = 5;
-	public static int SquaredSinc = 6;
+
+    /**
+     *  Type of Positive Definite Functions supported (Gaussian)
+     */
+    public static int Gaussian = 2;
+
+    /**
+     *  Type of Positive Definite Functions supported (Cauchy)
+     */
+    public static int Cauchy = 3;
+
+    /**
+     *  Type of Positive Definite Functions supported (Laplace)
+     */
+    public static int Laplace = 4;
+
+    /**
+     *  Type of Positive Definite Functions supported (Hyperbolic secant)
+     */
+    public static int HyperbolicSecant = 5;
+
+    /**
+     *  Type of Positive Definite Functions supported (Squared sinc)
+     */
+    public static int SquaredSinc = 6;
 
 	/** for serialization */
 	static final long serialVersionUID = 7672176272736783265L;
@@ -245,7 +267,13 @@ extends CachedKernel {
 		return m_d;
 	}
 	
-	public void setPDRFType(int type){
+    /**
+     * Sets the Type of Positive Definite Functions used. 
+     * SymmetricTriangle = 1, Gaussian = 2, Cauchy = 3, 
+     * Laplace = 4, HyperbolicSecant = 5, SquaredSinc = 6.
+     * @param type integer that indentify the function used.
+     */
+    public void setPDRFType(int type){
 		m_type = type;
 	}
 

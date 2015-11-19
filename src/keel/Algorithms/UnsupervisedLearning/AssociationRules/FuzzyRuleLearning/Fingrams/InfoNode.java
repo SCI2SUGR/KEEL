@@ -1,5 +1,10 @@
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
+/**
+ * InfoNode Class.
+ * InfoNode objects store graphical information of a node used when the Figrams are displayed
+ * @author sergio
+ */
 public class InfoNode {
 
 	// Info printed in the node
@@ -27,7 +32,11 @@ public class InfoNode {
 	// /////////// METHODS /////////////
 
 	// // // // BUILDERS // // // //
-	public InfoNode(){
+
+    /**
+     * Default Constructor. Initiates all basic structures.
+     */
+    	public InfoNode(){
 		super();
 		this.nodeInfo = "";
 		this.nodeInfoToolTipText = "";
@@ -37,7 +46,18 @@ public class InfoNode {
 		this.fontSize = 0.0f;
 		this.fontColor = "";
 	}
-	public InfoNode(String nodeInfo, String nodeInfoToolTipText,
+
+    /**
+     * Parameter Constructor. Initiates all basic structures with the arguments given. 
+     * @param nodeInfo given Info printed in the node.
+     * @param nodeInfoToolTipText given Text showed when moving the mouse over a node.
+     * @param nodeSize given Size of the node.
+     * @param nodeColor given Color of the node.
+     * @param borderColor given Color of the border of the node.
+     * @param fontSize given Font size.
+     * @param fontColor given Font color of the node.
+     */
+    public InfoNode(String nodeInfo, String nodeInfoToolTipText,
 			double nodeSize, String nodeColor, String borderColor, double fontSize, String fontColor) {
 		super();
 		this.nodeInfo = nodeInfo;
@@ -51,37 +71,59 @@ public class InfoNode {
 
 	// // // // GETS & SETS // // // //
 
+    /**
+     * Returns Info printed in the node 
+     * @return Info printed in the node
+     */
 	public String getNodeInfo() {
 		return nodeInfo;
 	}
 
-
-	public String getNodeInfoToolTipText() {
+    /**
+     * Returns Text showed when moving the mouse over a node.
+     * @return Text showed when moving the mouse over a node.
+     */
+    public String getNodeInfoToolTipText() {
 		return nodeInfoToolTipText;
 	}
 
-
-	public double getNodeSize() {
+    /**
+     * Returns Size of the node.
+     * @return Size of the node.
+     */
+    public double getNodeSize() {
 		return nodeSize;
 	}
 
-
-	public String getNodeColor() {
+    /**
+     * Returns the Color of the node.
+     * @return the Color of the node.
+     */
+    public String getNodeColor() {
 		return nodeColor;
 	}
 
-	
-	public String getBorderColor() {
+    /**
+     * Returns the Color of the border of the node.
+     * @return the Color of the border of the node.
+     */
+    public String getBorderColor() {
 		return borderColor;
 	}
 	
-	
-	public double getFontSize() {
+    /**
+     * Returns the Font size.
+     * @return the Font size.
+     */
+    public double getFontSize() {
 		return fontSize;
 	}
 
-
-	public String getFontColor() {
+    /**
+     * Returns the Font color of the node.
+     * @return the Font color of the node.
+     */ 
+    public String getFontColor() {
 		return fontColor;
 	}
 	

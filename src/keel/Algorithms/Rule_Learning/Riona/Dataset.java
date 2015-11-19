@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Rosa Venzala 19/09/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.3
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.Riona;
@@ -44,12 +37,16 @@ import keel.Dataset.*;
 import java.util.*;
 import org.core.*;
 
-public class Dataset {
 /**
- * <p>
- * Methods for reading the train & test file
+ * <p> Methods for reading the train & test file
+ * @author Written by Rosa Venzala 19/09/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.3
+ * @since JDK1.2
  * </p>
  */
+public class Dataset {
+    
 	private double[][] X = null;
 	private String [][]X2=null;
 	private boolean[][] missing = null;

@@ -27,7 +27,13 @@
   
 **********************************************************************/
 
-/** 
+
+package keel.Algorithms.Shared.Parsing;
+
+	/**
+	 * <p>
+	 * Class with constant identifiers of operators and methods.
+	 * </p>
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 26/02/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,30 +41,54 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Shared.Parsing;
-
-
 public class OperatorIdent {
-	/**
-	 * <p>
-	 * Class with constant identifiers of operators and methods.
-	 * </p>
-	 */
+
 
      // Identifiers for crossover and mutation operators  
+    /**
+     * Indentifier for generic crossover.
+     */
 	public static final int GENERICROSSOVER = 1;
-	public static final int GENERICMUTATION = 2;
-	public static final int GAPCROSSGA = 1001;
+
+    /**
+     * Indentifier for generic mutation.
+     */
+    public static final int GENERICMUTATION = 2;
+
+    /**
+     * Indentifier for GAPCROSSGA crossover.
+     */
+    public static final int GAPCROSSGA = 1001;
+
+    /**
+     * Indentifier for GAPCROSSGP crossover.
+     */
     public static final int GAPCROSSGP = 1002;
-	public static final int GAPMUTAGA = 1003;
+
+    /**
+     * Indentifier for GAPMUTAGA mutation.
+     */
+    public static final int GAPMUTAGA = 1003;
+
+    /**
+     * Indentifier for GAPMUTAGP mutation.
+     */
     public static final int GAPMUTAGP = 1004;
-	
      //Identifiers for local optimizations	
-	public static final int AMEBA = 2001;
+    /**
+     * Identifier for local optimization (AMEBA).
+     */
+    	public static final int AMEBA = 2001;
 	
-	public static final int GI_STANDARD = 0;
-	public static final int GI_CUSTOM_CESAR = 1;
+    /**
+     * Identifier for local optimization (GI_STANDARD).
+     */
+    public static final int GI_STANDARD = 0;
+
+    /**
+     * Identifier for local optimization (GI_CUSTOM_CESAR).
+     */
+    public static final int GI_CUSTOM_CESAR = 1;
 
 
 }

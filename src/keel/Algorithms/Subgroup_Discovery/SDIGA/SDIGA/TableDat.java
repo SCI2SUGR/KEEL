@@ -27,8 +27,14 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
+
+import keel.Dataset.*;
+
 /**
- * <p>
+ * <p>Class defined to store the information of the complete dataset
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
@@ -36,17 +42,8 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
-
-import keel.Dataset.*;
-
 public class TableDat {
-    /**
-     * <p>
-     * Class defined to store the information of the complete dataset
-     * </p>
-     */
+    
 
     private int n_eje;		    // Number of examples in dataset
     private TypeDat[] dat;          // Dataset instances
@@ -212,6 +209,7 @@ public class TableDat {
      * Returns the class of the example in position pos
      * </p>
      * @param pos       Position of the example
+     * @return the class of the example in position pos 
      */
     public int getClass (int pos) {
         return dat[pos].getClas();
@@ -258,6 +256,7 @@ public class TableDat {
      * </p>
      * @param numEx     Position of the example
      * @param pos       Position of the variable
+     * @return the value of the variable "pos" of the example "numEj"
      */
     public float getDat (int numEx, int pos) {
         return dat[numEx].getDat(pos);

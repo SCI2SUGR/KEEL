@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Alberto Fernandez (University of Granada) 01/02/2006
- * @author Modified by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
- * @author Modified by Cristobal J. Carmona (University of Jaen) 10/07/2010
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDMap.SDMap;
 
@@ -49,6 +41,16 @@ import java.text.DecimalFormat;
 import keel.Dataset.*;
 import org.core.Files;
 
+/**
+ * <p> It gathers all the parameters, launches the algorithm, and prints out the results
+	 * 
+ * @author Written by Alberto Fernandez (University of Granada) 01/02/2006
+ * @author Modified by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
+ * @author Modified by Cristobal J. Carmona (University of Jaen) 10/07/2010
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class FPgrowth {
 	/**
 	 * <p>

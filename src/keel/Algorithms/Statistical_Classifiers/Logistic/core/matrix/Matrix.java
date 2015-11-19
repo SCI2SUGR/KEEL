@@ -272,6 +272,7 @@ public class Matrix
   /** 
    * Construct a matrix from a copy of a 2-D array.
    * @param A    Two-dimensional array of doubles.
+     * @return  a matrix from a copy of a 2-D array.
    * @throws  IllegalArgumentException All rows must have the same length
    */
   public static Matrix constructWithCopy(double[][] A) {
@@ -293,6 +294,7 @@ public class Matrix
 
   /** 
    * Make a deep copy of a matrix
+     * @return a deep copy of the matrix
    */
   public Matrix copy() {
     Matrix X = new Matrix(m,n);
@@ -307,6 +309,7 @@ public class Matrix
 
   /** 
    * Clone the Matrix object.
+     * @return the Matrix cloned object.
    */
   public Object clone() {
     return this.copy();
@@ -1271,6 +1274,8 @@ public class Matrix
    * is used (from the original keel.Algorithms.Statistical_Classifiers.Logistic.core.Matrix class).
    *
    * @param input the input stream.
+     * @return a matrix from the given stream.
+     * @throws java.io.IOException if the things read are not the ones expected. (Different rows sizes or unexpected EOF).
    * @see #Matrix(Reader)
    * @see #write(Writer)
    */
@@ -1426,6 +1431,7 @@ public class Matrix
    * creates a matrix from the given Matlab string.
    * @param matlab  the matrix in matlab format
    * @return        the matrix represented by the given string
+     * @throws java.lang.Exception if the string is not well formated.
    * @see           #toMatlab()
    */
   public static Matrix parseMatlab(String matlab) throws Exception {
@@ -1465,6 +1471,7 @@ public class Matrix
   
   /**
    * Main method for testing this class.
+     * @param args main args.
    */
   public static void main(String[] args) {
     Matrix        I;

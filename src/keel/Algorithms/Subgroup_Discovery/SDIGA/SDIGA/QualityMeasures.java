@@ -27,8 +27,14 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
+
+import org.core.*;
+
 /**
- * <p>
+ * <p>Defines the quality measurements of the individual
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
@@ -36,17 +42,7 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
-
-import org.core.*;
-
 public class QualityMeasures {
-    /**
-     * <p>
-     * Defines the quality measures of the individual
-     * </p>
-     */
 
     private float fitness;  // Performance (fitness)
     private float sup;      // Support - Objective 1

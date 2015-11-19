@@ -29,10 +29,14 @@
 
 package keel.Algorithms.Statistical_Classifiers.Shared.MatrixCalcs;
 
+/**
+ * Implements a Exception used just for singular errors for matrices.
+ */
 public class ErrorSingular extends Exception {
     ErrorSingular(String reason) {
 		super(reason);
     }
+    @Override
     public String toString() {
 		return "Matriz singular: " +getMessage();
     }

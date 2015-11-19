@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Writed by CristÃ³bal J. Carmona (University of Jaen) 24/06/2010
- * @version 2.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDAlgorithm;
 
@@ -44,6 +38,13 @@ import java.util.Collections;
 
 import org.core.Files;
 
+/**
+ * <p> It is the main class of the SD algorithm
+ * @author Writed by CristÃ³bal J. Carmona (University of Jaen) 24/06/2010
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
 public class SD {
 
     /**
@@ -92,6 +93,10 @@ public class SD {
     private String[] nameClasses;
     private boolean Continuous = false;
 
+    /**
+     * Checks if the algorithm is working fine.
+     * @return True if the algorithm is working fine. 
+     */
     public boolean isOk(){
         return (!Continuous);
     }

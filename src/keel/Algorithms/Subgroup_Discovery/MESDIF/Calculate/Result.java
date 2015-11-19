@@ -27,23 +27,21 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate;
+
 /**
- * <p>
+ * <p>Used to store the quality measures for the generated rule
+     *
  * @author Written by Pedro González (University of Jaen) 15/08/2004
  * @version 1.0
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate;
-
 public class Result {
 
-    /**
-     * <p>
-     * Used to store the quality measures for the generated rule
-     * </p>
-     */
+    
 
     // Contents of Result are accessed directly, not by methods
     float perf;    // Performance (fitness)

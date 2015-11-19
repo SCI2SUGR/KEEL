@@ -27,42 +27,106 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
+/**
+ * @author sergio
+ */
 public abstract class Individual {
 
-      public int tamano;      
-      public boolean evaluado;
-      public boolean cubre[]; 
+    /**
+     * Size of the individual.
+     */
+    public int tamano;      
+
+    /**
+     * Evaluated flag.
+     */
+    public boolean evaluado;
+ 
+    /**
+     * Stores if the invididual covers each example.
+     */
+    public boolean cubre[]; 
       
-      public int rank;
-      public double overallConstraintViolation;
-      public int numberOfViolatedConstraints;
-      public double crowdingDistance;
+    /**
+     * Rank.
+     */
+    public int rank;
 
-      public float cubr;
-      public int n_eval;             
+    /**
+     * Overall Constraint Violation percentage.
+     */
+    public double overallConstraintViolation;
 
-      public QualityMeasures medidas;
+    /**
+     * Number of Violated Constraints.
+     */
+    public int numberOfViolatedConstraints;
 
+    /**
+     * Crowding Distance.
+     */
+    public double crowdingDistance;
+
+    /**
+     * Cover percentage.
+     */
+    public float cubr;
+             
+    /**
+     * Number of evalutations.
+     */
+    public int n_eval;             
+
+    /**
+     * Measurements of the individual.
+     */
+    public QualityMeasures medidas;
+
+    /**
+     * Default Constructor.
+     */
     public Individual() {
 
     }
 
+     /**
+     * <p>
+     * Creates random instance of individual
+     * </p>
+     * @param Variables             Variables structure
+     * @param neje                  Number of exaples
+     * @param nFile                 Fichero to write the individual
+     */
     public abstract void RndInitInd(TableVar Variables, int neje, String nFile);
 
 
+        /**
+     * <p>
+     * Creates biased instance of individual
+     * </p>
+     * @param Variables             Variables structure
+     * @param porcVar               Percentage of variables to form the individual
+     * @param neje                  Number of exaples
+     * @param nFile                 Fichero to write the individual
+     */
     public abstract void BsdInitInd(TableVar Variables, float porcVar, int neje, String nFile);
 
 
+        /**
+     * <p>
+     * Creates nstance of individual based on coverage
+     * </p>
+     * @param pop           Actual population
+     * @param Variables     Variables structure
+     * @param Examples      Examples structure
+     * @param porcCob       Percentage of variables to form the individual
+     * @param nobj          Number of objectives
+     * @param nFile         Fichero to write the individual
+     */
     public abstract void CobInitInd(Population pop, TableVar Variables, TableDat Examples, float porcCob, int nobj, String nFile);
 
     /**
@@ -248,21 +312,95 @@ public abstract class Individual {
         return medidas.getCnf();
     }
 
+    /**
+     * <p>
+     * Returns the indicated gene of the Chromosome
+     * </p>
+     * @param pos               Position of the gene
+     * @return                  Value of the gene
+     */
     public abstract int getCromElem(int pos);
+
+    /**
+     * Sets a value in a given position in the chromosome.
+     * @param pos given position.
+     * @param val given value.
+     */
     public abstract void setCromElem (int pos, int val);
 
+    /**
+     * <p>
+     * Retuns the value of the gene indicated
+     * </p>
+     * @param pos          Position of the variable in the chromosome
+     * @param elem              Position of the gene of the variable
+     * @return                  Value of the gene
+     */
     public abstract boolean getCromGeneElem(int pos, int elem);
+
+    /**
+     * <p>
+     * Sets the value of the indicated gene of the Chromosome
+     * </p>
+     * @param pos               Position of the variable
+     * @param elem              Position of the gene
+     * @param val               Value of the variable
+     */
     public abstract void setCromGeneElem(int pos, int elem, boolean val);
 
+    /**
+     * <p>
+     * Returns the Canonical Chromosome
+     * </p>
+     * @return             Canonical Chromosome
+     */
     public abstract CromCAN getIndivCromCAN();
+
+    /**
+     * <p>
+     * Returns the DNF Chromosome
+     * </p>
+     * @return             DNF Chromosome
+     */
     public abstract CromDNF getIndivCromDNF();
 
+    /**
+     * Copies an individual given.
+     * @param indi given individual to be copied.
+     * @param nobj object number.
+     * @param neje examples number.
+     */
     public abstract void copyIndiv (Individual indi, int nobj, int neje);
 
+    /**
+     * <p>
+     * Evaluate a individual. This function evaluates an individual.
+     * </p>
+     * @param AG                Genetic algorithm
+     * @param Variables         Variables structure
+     * @param Examples          Ejemplos structure
+     */
     public abstract void evalInd (Genetic AG, TableVar Variables, TableDat Examples);
     
+    /**
+     * <p>
+     * Returns the number of the interval of the indicated variable to which belongs
+     * the value. It is performed seeking the greater belonging degree of the
+     * value to the fuzzy sets defined for the variable
+     * </p>
+     * @param valor                 Value to calculate
+     * @param num_var               Number of the variable
+     * @param Variables             Variables structure
+     * @return                      Number of the interval
+     */
     public abstract int NumInterv (float valor, int num_var, TableVar Variables);
 
+    /**
+     * <p>
+     * Method to print the contents of the individual
+     * </p>
+     * @param nFile             File to write the individual
+     */
     public abstract void Print(String nFile);
 
     

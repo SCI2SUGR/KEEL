@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
-* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
 
 
 package keel.Algorithms.Statistical_Classifiers.ClassifierPolQuadraticLMS;
@@ -49,14 +41,20 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 
-
-
-public class ClassifierPolQuadraticLMS {
 	/**
 	* <p>
 	* In this class, a quadratic polynomial classifier using Least Squares is implemented 
 	* </p>
-	*/	
+	
+* <p>
+* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
+* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
+public class ClassifierPolQuadraticLMS {
+	
  
 	static Randomize rand;
 	/**

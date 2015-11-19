@@ -29,13 +29,6 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyAprioriDC;
 
-/**
- * <p>
- * @author Written by Alvaro Lopez
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -43,6 +36,14 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import org.core.Randomize;
 
+
+/**
+ * <p>
+ * @author Written by Alvaro Lopez
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class GeneticFuzzyAprioriDC {
 	/**
 	 * <p>

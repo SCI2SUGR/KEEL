@@ -34,14 +34,14 @@ package keel.Algorithms.PSO_Learning.PSOLDA;
 import keel.Algorithms.Statistical_Classifiers.Shared.MatrixCalcs.*;
 
 /**
- * <p>Title: AD</p>
- *
+ * <p>Title: AD.</p>
+ * Linear and Quadratic discriminant analysis,
+ with a normal distribution of the examples for each class.
  * <p>Company: KEEL</p>
  *
  * @author Jose A. Saez Munoz
  * @version 1.0
  */
-
 public class AD{
 	
     double COVAR[][][];

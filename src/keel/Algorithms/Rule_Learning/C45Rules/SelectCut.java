@@ -27,27 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 12/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.C45Rules;
 
 import java.util.Enumeration;
 
-
-public class SelectCut{
 /**
- * <p>
- * Class to select a cut point in a dataset.
+ * <p> Class to select a cut point in a dataset.
+ * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 12/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class SelectCut{
 	
   /** Minimum number of objects in interval. */
   private int minItemsets;

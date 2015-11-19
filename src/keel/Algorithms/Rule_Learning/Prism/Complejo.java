@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada) 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.Prism;
@@ -42,11 +35,16 @@ package keel.Algorithms.Rule_Learning.Prism;
 import java.util.LinkedList;
 import keel.Dataset.*;
 
-
-public class Complejo implements Comparable {
 /**
- * Define a complex or a rule, stores selectors
+ * <p> Define a complex or a rule, stores selectors
+ * @author Written by Alberto Fernández (University of Granada) 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
+public class Complejo implements Comparable {
+    
     private LinkedList compl;
     private int clase;
     private int nClases;
@@ -56,6 +54,9 @@ public class Complejo implements Comparable {
     private double heuristica;
     private String [] nombreAtributos;
 
+    /**
+     * Default constructor.
+     */
     public Complejo() {
     }
 

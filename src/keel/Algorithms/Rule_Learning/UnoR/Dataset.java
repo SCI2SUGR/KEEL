@@ -29,14 +29,7 @@
 
 package keel.Algorithms.Rule_Learning.UnoR;
 
-/**
- * <p>Titulo: Clase Dataset</p>
- * <p>Descripcion: Contiene los metodos de lectura del fichero de train y test</p>
- * <p>Copyright: Copyright Rosa (c) 2007</p>
- * <p>Empresa: Mi Casa</p>
- * @author Rosa Venzala
- * @version 1.0
- */
+
 
 import java.io.*;
 import keel.Dataset.*;
@@ -44,6 +37,13 @@ import java.util.*;
 //import java.util.Arrays;
 import org.core.*;
 
+/**
+ * <p>Title: Data-set</p>
+ * <p>Description: It contains the methods for reading the training and test files</p>
+ * @author Written by Rosa Venzala 2007
+ * @version 1.0
+ * @since JDK1.4
+ */
 public class Dataset {
 
     private double[][] X = null;
@@ -70,8 +70,8 @@ public class Dataset {
     private String []auxiliar2=null;//vector tamaÃ±o numero real de clases en train que contiene el nombre de las clases en nominal
 
     /**
-     * Devuelve los valores de los atributos de entrada
-     * @return double[][] Un array con los atributos de entrada
+     * It returns the values of the input attributes
+     * @return double[][] An array with the input attributes
      */
     public double[][] getX() {
         return X;

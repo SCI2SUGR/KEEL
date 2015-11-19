@@ -87,7 +87,14 @@ public class TriTrainingGenerator extends PrototypeGenerator {
  private double [][][] probabilities;
 // private String final_classifier; 
 
-  protected int numberOfPrototypes;  // Particle size is the percentage
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+
+    /**
+     * Number of classes.
+     */
   protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
@@ -99,10 +106,17 @@ public class TriTrainingGenerator extends PrototypeGenerator {
   
   /**
    * Build a new TriTrainingGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public TriTrainingGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -116,7 +130,8 @@ public class TriTrainingGenerator extends PrototypeGenerator {
    * Build a new TriTrainingGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public TriTrainingGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -141,9 +156,10 @@ public class TriTrainingGenerator extends PrototypeGenerator {
 
   }
   
-  
-  
-  public void getSolicitaGarbageColector(){
+    /**
+     * Asks for the garbage collector.
+     */
+    public void getSolicitaGarbageColector(){
 
 	  try{
 	//  System.out.println( "********** INICIO: 'LIMPIEZA GARBAGE COLECTOR' **********" );
@@ -164,11 +180,11 @@ public class TriTrainingGenerator extends PrototypeGenerator {
   
   /**
    * Classify a test set with the algorithm specified.
-   * @param algorithm
-   * @param train
-   * @param test
+   * @param idAlg classifier id to use (KNN, C4.5, SMO or NB)
+   * @param train training dataset to build the model.
+   * @param test test dataset to evaluate.
    * @param save. It indicates if it will save the results in the variable PREDICTIONS!
-   * @return
+   * @return predicted classes for the test instances.
    * @throws Exception
    */
   
@@ -259,7 +275,6 @@ public class TriTrainingGenerator extends PrototypeGenerator {
   /**
    * Measure combined error excluded the classifier 'id' on the given data set
    *
-   * @param train data set.
    * @param data Instances The data set
    * @param id int The id of classifier to be excluded
    * @return double The error
@@ -290,9 +305,12 @@ public class TriTrainingGenerator extends PrototypeGenerator {
     return err;
   }
 
-  
-  
-  public int votingRule(int InstanceID){
+    /**
+     * Classifies a instance with the given index.
+     * @param InstanceID index of the instance to classify.
+     * @return predicted class of the instance given.
+     */
+    public int votingRule(int InstanceID){
 	  
 	    double[] res = new double[this.numberOfClass];
 	    for(int j = 0; j < 3; j++)
@@ -329,10 +347,9 @@ public class TriTrainingGenerator extends PrototypeGenerator {
   
   /**
    * Apply the TriTrainingGenerator method.
-   * @return 
-   */
-  
-  
+     * @return transductive test sets.
+     * @throws java.lang.Exception if the algorithm can not be applied.
+     */
   public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm TRI-TRAINING is starting...\n Computing...\n");

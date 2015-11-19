@@ -27,20 +27,21 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Writed by Alberto FernÃ¡ndez (University of Granada) 15/01/2006
- * @author Modified by CristÃ³bal J. Carmona (University of Jaen) 24/06/2010
- * @version 2.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDAlgorithm;
 
 import java.text.DecimalFormat;
 import org.core.Files;
 
+/**
+ * <p>Evaluate the rules obtained by the algorithm
+ * @author Writed by Alberto FernÃ¡ndez (University of Granada) 15/01/2006
+ * @author Modified by CristÃ³bal J. Carmona (University of Jaen) 24/06/2010
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
 public class EvaluateRules {
 
     /**
@@ -506,7 +507,6 @@ public class EvaluateRules {
     /**
      * <p>
      * Generate a string with the classification of the total examples for a data set
-     * </p>
      * </p>
      * @param Data      The data set to study
      * @return          String with the result

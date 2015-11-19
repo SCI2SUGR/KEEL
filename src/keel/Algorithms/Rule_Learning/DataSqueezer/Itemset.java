@@ -72,6 +72,7 @@ public class Itemset
 
     /** Returns the index of the class attribute. 
      * 
+     * @return the index of the class attribute.  
      */
     public int classIndex()
 	{    	
@@ -98,6 +99,7 @@ public class Itemset
 
     /** Returns the index of the value of the class.
      *
+     * @return  the index of the value of the class.
      */
     public double getClassValue() 
 	{
@@ -112,6 +114,7 @@ public class Itemset
 
     /** Returns the number of class values.
      * 
+     * @return the number of class values. 
      */
     public int numClasses() 
 	{
@@ -126,6 +129,8 @@ public class Itemset
 
     /** Returns the attribute with the given index. 
      * 
+     * @param index given index.
+     * @return the attribute with the given index.  
      */
     public Attribute getAttribute( int index )
 	{
@@ -156,6 +161,8 @@ public class Itemset
 
     /** Returns the value of the given attribute.
      * 
+     * @param index given index attribute.
+     * @return  the value of the given attribute.
      */
     public double getValue( int index )
 	{
@@ -173,6 +180,7 @@ public class Itemset
 
     /** Returns the itemset weight.
      * 
+     * @return  the itemset weight.
      */
     public final double getWeight() 
 	{
@@ -181,6 +189,7 @@ public class Itemset
     
     /** Returns the dataset of this itemset.
      * 
+     * @return  the dataset of this itemset.
      */
     public Dataset getDataset()
 	{
@@ -223,6 +232,7 @@ public class Itemset
 
     /** Returns the missing value.
      * 
+     * @return the missing value. 
      */
     public static double getMissingValue() 
 	{
@@ -263,6 +273,7 @@ public class Itemset
     
     /** Function to print the itemset.
      * 
+     * @return String representation of the itemset.
      */
     public String toString()
 	{

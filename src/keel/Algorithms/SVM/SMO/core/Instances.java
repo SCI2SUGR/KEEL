@@ -2090,6 +2090,11 @@ implements Serializable {
 //		}
 //	}
 	
+            /**
+     * Returns the index of the attribute given.
+     * @param att attribute given.
+     * @return the index of the attribute given.
+     */
 	protected int indexOf(Attribute att){
 		int index = -1;
 		for(int i=0;i<Attributes.getNumAttributes() && index==-1;i++){
@@ -2099,7 +2104,13 @@ implements Serializable {
 		return index;
 	}
 	
-	protected int indexOfValue(Attribute att,String value){
+    /**
+     * Returns the index of the value given of the attribute given.
+     * @param att attribute given.
+     * @param value value given.
+     * @return the index of the value given of the attribute given.
+     */
+    protected int indexOfValue(Attribute att,String value){
 		Vector vals = att.getNominalValuesList();
 		String s;
 		int index = -1;

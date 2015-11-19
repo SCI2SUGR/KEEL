@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Rosa Venzala 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.Riona;
@@ -42,12 +35,15 @@ package keel.Algorithms.Rule_Learning.Riona;
 import java.util.LinkedList;
 import keel.Dataset.*;
 
-public class Complex implements Comparable {
 /**
- * <p>
- * Stores conjunctions of selectors
+ * <p> Stores conjunctions of selectors
+ * @author Written by Rosa Venzala 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Complex implements Comparable {
 	
     private LinkedList compl;
     // Class of the rule
@@ -65,6 +61,9 @@ public class Complex implements Comparable {
     // dimension of H  hole(0), lina(1), rectangle(2)
     private int nDimensions;
 
+    /**
+     * Default constructor.
+     */
     public Complex() {
     }
 
@@ -434,6 +433,7 @@ public class Complex implements Comparable {
      * <p>
      * Print the complex content using a string (List->Attribute operator value)
      * </p>
+     * @param numValues number of values.
      * @return String string with the content of the complex
      */
     public String printString(int []numValues) {
@@ -537,6 +537,7 @@ public class Complex implements Comparable {
      * Return an array of size numAttributes.
      * Each content 1 if selector exists, 0 otherwise
      * </p>
+     * @return  an array of size numAttributes.
      */
     public int []existingSelectors(){
     	int []conditions=new int[nameAttributes.length];

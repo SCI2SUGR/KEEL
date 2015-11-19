@@ -27,18 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
-* @author Modified by Jose Otero (University of Oviedo) 01/10/2008
-* @author Modified by Amelia Zafra (University of Granada) 01/01/2006
-* @author Modified by Alberto Fernandez (University of Granada)01/01/2008
-* @author Modified by Salvador Garcia (University of Granada) 01/01/2007
-* @author Modified by Joaquin Derrac (University of Granada)29/04/2010
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
+
 
 package keel.Algorithms.Statistical_Tests.Shared;
 
@@ -52,6 +41,19 @@ import keel.GraphInterKeel.experiments.Experiments;
 import org.core.Fichero;
 import keel.Algorithms.Statistical_Tests.Shared.nonParametric.*;
 
+/**
+* <p> In this class all the statistical tests and output modules are defined
+	*
+* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
+* @author Modified by Jose Otero (University of Oviedo) 01/10/2008
+* @author Modified by Amelia Zafra (University of Granada) 01/01/2006
+* @author Modified by Alberto Fernandez (University of Granada)01/01/2008
+* @author Modified by Salvador Garcia (University of Granada) 01/01/2007
+* @author Modified by Joaquin Derrac (University of Granada)29/04/2010
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
 public class StatTest {
 	/**
 	* <p>
@@ -63,62 +65,210 @@ public class StatTest {
 	// plus a R for regression or C for classification
 	
 	// Dietterich 5x2cv
+    
+    /**
+     * Regression Dietterich 5x2cv Stat-test identifier.
+     */
     public final static int Dietterich5x2cvR = 0;
+
+    /**
+     * Classification Dietterich 5x2cv Stat-test identifier.
+     */
     public final static int Dietterich5x2cvC = 1;
     //t test
-    public final static int tR = 2;
+
+    /**
+     * Regression t Stat-test identifier.
+     */
+        public final static int tR = 2;
+
+    /**
+     *  Classification t Stat-test identifier.
+     */
     public final static int tC = 3;
     //shapiro wilk
-    public final static int ShapiroWilkR = 4;
+
+    /**
+     *  Regression Shapiro Wilk Stat-test identifier.
+     */
+        public final static int ShapiroWilkR = 4;
+
+    /**
+     *  Classification Shapiro Wilk Stat-test identifier.
+     */
     public final static int ShapiroWilkC = 5;
     //Wilcoxon signed ranks
-    public final static int WilcoxonR = 6;
+
+    /**
+     *  Regression Wilcoxon signed ranks Stat-test identifier.
+     */
+        public final static int WilcoxonR = 6;
+
+    /**
+     * Classification Wilcoxon signed ranks Stat-test identifier.
+     */
     public final static int WilcoxonC = 7;
     //Mann-Whitney u
-    public final static int MannWhitneyR = 8;
+
+    /**
+     * Regression Mann-Whitney Stat-test identifier.
+     */
+        public final static int MannWhitneyR = 8;
+
+    /**
+     * Classification Mann-Whitney Stat-test identifier.
+     */
     public final static int MannWhitneyC = 9;
     //F test
-    public final static int fM = 10;
+
+    /**
+     * Regression F Stat-test identifier.
+     */
+        public final static int fM = 10;
+
+    /**
+     * Classification F Stat-test identifier.
+     */
     public final static int fC = 11;
     //Summary of data, 1 algorithm
-    public final static int summaryC = 12;
+
+    /**
+     * First classification algorithm summary of data identifier.
+     */
+        public final static int summaryC = 12;
+
+    /**
+     * First regression algorithm summary of data identifier.
+     */
     public final static int summaryR = 13;
     //Summary of data, multiple algorithms
-    public final static int generalC = 14;
+
+    /**
+     * Summary of classification data for  multiple algorithms identifier.
+     */
+        public final static int generalC = 14;
+
+    /**
+     * Summary of regression data for  multiple algorithms identifier.
+     */
     public final static int generalR = 15;
+
+    /**
+     * Summary of classification data for  multiple algorithms identifier.
+     */
     public final static int tabularC = 16;
+
+    /**
+     * Summary of regression data for  multiple algorithms identifier.
+     */
     public final static int tabularR = 17;
     // Summary of data, train & test, one algorithm
-    public final static int trainTestR = 18;
+
+    /**
+     * Summary of data, train & test, one algorithm identifier (regression).
+     */
+        public final static int trainTestR = 18;
+
+    /**
+     * Summary of data, train & test, one algorithm identifier (classification).
+     */
     public final static int trainTestC = 19;
     //Wilcoxon Test
-    public final static int globalWilcoxonC = 20;
+
+    /**
+     *  Classification Wilcoxon Stat-test identifier.
+     */
+        public final static int globalWilcoxonC = 20;
+
+    /**
+     * Regression Wilcoxon Stat-test identifier.
+     */
     public final static int globalWilcoxonR = 21;
     //Friedman
-    public final static int FriedmanC = 22;
+
+    /**
+     * Classification Friedman Stat-test identifier.
+     */
+        public final static int FriedmanC = 22;
+
+    /**
+     *  Regression Friedman Stat-test identifier.
+     */
     public final static int FriedmanR = 23;
+
+    /**
+     *  Classification Aligned Friedman Stat-test identifier.
+     */
     public final static int FriedmanAlignedC = 24;
+
+    /**
+     * Regression Aligned Friedman Stat-test identifier.
+     */
     public final static int FriedmanAlignedR = 25;
+
+    /** 
+     * Classification Quade Stat-test identifier.
+     */
     public final static int QuadeC = 26;
+
+    /**
+     * Regression Quade Stat-test identifier.
+     */
     public final static int QuadeR = 27;   
     //Constrast
-    public final static int ContrastC = 28;
+
+    /**
+     * Classification Contrast Stat-test identifier.
+     */
+        public final static int ContrastC = 28;
+
+    /**
+     * Regression Contrast Stat-test identifier.
+     */
     public final static int ContrastR = 29;
     //Multiple test
-    public final static int MultipleC = 30;
+
+    /**
+     * Classification Multiple Stat-test identifier.
+     */
+        public final static int MultipleC = 30;
+
+    /**
+     * Regression Multiple Stat-test identifier.
+     */
     public final static int MultipleR = 31;
     
     // Visualize Imbalanced
     //Summary of data, 1 algorithm imbalanced
-    public final static int summaryI = 32;
+
+    /**
+     * Summary of data, 1 algorithm imbalanced
+     */
+        public final static int summaryI = 32;
     //Summary of data, multiple algorithms
-    public final static int generalI = 33;
+
+    /**
+     * Summary of data, multiple algorithms imbalanced
+     */
+        public final static int generalI = 33;
+
+    /**
+     * Summary of data, multiple algorithms imbalanced
+     */
     public final static int tabularI = 34;
     // Tests for imbalanced
     //Wilcoxon Test
-    public final static int globalWilcoxonI = 35;
+
+    /**
+     * Imbalanced Wilcoxon Stat-test identifier.
+     */
+        public final static int globalWilcoxonI = 35;
     //Friedman
-    public final static int FriedmanI = 36;
+
+    /**
+     * Imbalanced Friedman Stat-test identifier.
+     */
+        public final static int FriedmanI = 36;
     Friedman stat;
     double[] mean;
     int[] nResults;
@@ -5422,7 +5572,18 @@ p.println();
 
     }
 
-
+        /**
+    	* <p>
+    	* Class to store general information of the algorithms.
+        * Class properties:
+    	* Class name
+    	* Number of correct classifications
+    	* Number of mistakes
+    	* List of incorrect classes
+    	* Number of not classified
+    	* Number of examples of this class
+    	* </p>
+    	*/
     public class InformationAboutClass {
     	/**
     	* <p>
@@ -5449,7 +5610,7 @@ p.println();
         //Number of examples of this class
         int totalNumberClass;
         
-        //Constructor
+        /** Default Constructor */
         public InformationAboutClass() {
             super();
             name = new String();
@@ -5460,6 +5621,10 @@ p.println();
             mistakeClass = new ArrayList();
         }
 
+        /**
+         * Parameter Constructor. Creates an InformationAboutClass object with the algorithm's name given.
+         * @param name name given.
+         */
         public InformationAboutClass(String name) {
             super();
             this.name = name;
@@ -5471,50 +5636,100 @@ p.println();
         }
 
         //Setters and getters
-        public void setName(String name) {
+
+        /**
+         * Sets the algorithm's name with the one given.
+         * @param name given name.
+         */ 
+                public void setName(String name) {
             this.name = name;
         }
 
+        /**
+         * Returns the algorithm's name.
+         * @return the algorithm's name. 
+         */
         public String getName() {
             return name;
         }
 
+        /**
+         * Sets the number of correct classifications done with the one given.
+         * @param correctClassifications number given.
+         */
         public void setCorrectClassifications(int correctClassifications) {
             this.correctClassifications = correctClassifications;
         }
 
+        /**
+         * Returns the number of correct classifications done.
+         * @return the number of correct classifications done.
+         */
         public int getCorrectClassifications() {
             return correctClassifications;
         }
 
+        /**
+         *Sets the number of incorrect classifications done with the one given.
+         * @param mistakeClassifications  number given.
+         */
         public void setMistakeClassifications(int mistakeClassifications) {
             this.mistakeClassifications = mistakeClassifications;
         }
 
+        /**
+         * Returns the number of incorrect classifications done.
+         * @return the number of incorrect classifications done.
+         */
         public int getMistakeClassifications() {
             return mistakeClassifications;
         }
 
+        /**
+         *Sets the number of not classified examples with the one given.
+         * @param notClassified  number given.
+         */
         public void getNotClassified(int notClassified) {
             this.notClassified = notClassified;
         }
 
+        /**
+         * Returns the number of not classified examples
+         * @return the number of not classified examples
+         */
         public int getNotClassified() {
             return notClassified;
         }
 
+        /**
+         * Sets the total number of classes of the problem with the one given.
+         * @param totalNumberClass given number of classes.
+         */
         public void setTotalNumberClass(int totalNumberClass) {
             this.totalNumberClass = totalNumberClass;
         }
 
+        /**
+         * Returns the total number of classes of the problem.
+         *
+         * @return the total number of classes of the problem.
+         */
         public int getTotalNumberClass() {
             return totalNumberClass;
         }
 
+        /**
+         * Adds the mistaken class given as arguments.
+         * @param mistakeClass mistaked class to be added.
+         */
         public void setMistakeClass(String mistakeClass) {
             this.mistakeClass.add(mistakeClass);
         }
 
+        /**
+         * Returns the list of  mistaken classes
+         * @return the list of  mistaken classes
+         */
         public List getMistakeClass() {
             return mistakeClass;
         }

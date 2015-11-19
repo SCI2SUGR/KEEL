@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada) 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.Prism;
@@ -43,12 +36,16 @@ import java.io.*;
 import keel.Dataset.*;
 import java.util.Arrays;
 
-public class Dataset {
 /**
- * <p>
- * Class to manage data sets
+ * <p> Class to manage data sets
+ * @author Written by Alberto Fernández (University of Granada) 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Dataset {
+    
     private double[][] X = null;
     // for the nominal values
     private String [][]X2=null;
@@ -84,6 +81,12 @@ public class Dataset {
         return X;
     }
     
+    /**
+     * <p>
+     * Return the string values of the in-put attributes
+     * </p>
+     * @return string[][] An array with the in-put attributes
+     */
     public String[][]getX2(){
     	return X2;
     }
@@ -99,6 +102,10 @@ public class Dataset {
     	return X[pos];
     }
     
+    /**
+     * Returns the instances set.
+     * @return  the instances set.
+     */
     public InstanceSet getInstanceSet(){
     	return IS;
     }
@@ -144,6 +151,12 @@ public class Dataset {
         return retorno;
     }
     
+    /**
+     * <p>
+     * Returns the string values for the out-put(class)
+     * </p>
+     * @return string[] An array with the values of the class
+     */
     public String[] getC2() {
         String[] retorno = new String[C2.length];
         for (int i = 0; i < C2.length; i++) {

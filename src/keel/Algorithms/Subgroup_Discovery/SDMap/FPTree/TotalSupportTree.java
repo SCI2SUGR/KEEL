@@ -39,15 +39,7 @@
 /*                                                                           */
 /* ------------------------------------------------------------------------- */
 
-/**
- * <p>
- * @author Written by Frans Coenen (University of Liverpool) 09/01/2003
- * @author Modified by Frans Coenen (University of Liverpool) 03/02/2005
- * @author Modified by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDMap.FPTree;
 
@@ -56,6 +48,17 @@ import java.util.Hashtable;
 
 import keel.Algorithms.Subgroup_Discovery.SDMap.SDMap.myDataset;
 
+/**
+ * <p> Methods concerned with the generation, processing and manipulation of T-tree data
+	* storage structures used to hold the total support counts for large itemsets
+	*
+ * @author Written by Frans Coenen (University of Liverpool) 09/01/2003
+ * @author Modified by Frans Coenen (University of Liverpool) 03/02/2005
+ * @author Modified by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class TotalSupportTree extends AssocRuleMining {
 	/**
 	* <p>
@@ -420,8 +423,9 @@ public class TotalSupportTree extends AssocRuleMining {
 	    
     /* COUNT NUMBER OF FREQUENT SETS */
     /** Commences process of counting the number of frequent (large/supported
-    sets contained in the T-tree. */
-    
+    sets contained in the T-tree.
+     * @return  number of frequent sets.
+     */
     protected int countNumFreqSets() {
         // If empty tree return 0
 	if (startTtreeRef ==  null) return(0);
@@ -444,7 +448,8 @@ public class TotalSupportTree extends AssocRuleMining {
     /** Counts the number of supported nodes in a sub branch of the T-tree.
     @param size the length/size of the current array level in the T-tree.
     @param linkRef the reference to the current array level in the T-tree.
-    @param num the number of frequent sets sofar. */
+    @param num the number of frequent sets sofar.
+     * @return  the number of supported nodes */
 
     protected int countNumFreqSets(int size, TtreeNode[] linkRef, int num) {
 	
@@ -479,6 +484,11 @@ public class TotalSupportTree extends AssocRuleMining {
     		return ( countNumFreqSets() );
 	}
     
+    /**
+     * Retrieves the records of given itemset which are covered by the association rules
+     * @param itemset given itemset.
+     * @return a set of TIDs representing the covered records.
+     */
     protected HashSet<Integer> getCoveredRecords(short[] itemset) {
   	  Hashtable<Integer, HashSet<Integer>> tid_list = this.dataset.getTIDList();	  
   	  HashSet<Integer> toIntersect = new HashSet<Integer>( tid_list.get((int)itemset[0]) );

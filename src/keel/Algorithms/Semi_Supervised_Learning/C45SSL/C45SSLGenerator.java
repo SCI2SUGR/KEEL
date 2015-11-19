@@ -79,19 +79,32 @@ public class C45SSLGenerator extends PrototypeGenerator {
  private double confidence;
  private int minItemsets;
  
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
 
-  protected int numberOfPrototypes;  // Particle size is the percentage
-  protected int numberOfClass;
+    /**
+     * Number of classes.
+     */
+    protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
 
   
   /**
    * Build a new C45SSLGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public C45SSLGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -105,7 +118,8 @@ public class C45SSLGenerator extends PrototypeGenerator {
    * Build a new C45SSLGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public C45SSLGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -135,7 +149,14 @@ public class C45SSLGenerator extends PrototypeGenerator {
 
   }
   
-  public int [] applyC45(PrototypeSet labeled, PrototypeSet unlabeled)  throws Exception{
+    /**
+     * Applies the C4.5 algorithm for the dataset given.
+     * @param labeled labeled dataset to build the model.
+     * @param unlabeled unlabeled dataset to obtain their predicted classes.
+     * @return  predicted classes for the unlabeled dataset.
+     * @throws Exception
+     */
+    public int [] applyC45(PrototypeSet labeled, PrototypeSet unlabeled)  throws Exception{
 
   
 	  //labeled.save("labeled.dat");
@@ -151,13 +172,13 @@ public class C45SSLGenerator extends PrototypeGenerator {
       return pre;
   }
   
-  /**
-   * Apply the C45SSLGenerator method.
-   * @return 
-   */
   
-  
-  public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
+    /**
+     * Apply the C45SSLGenerator method.
+     * @return transductive test sets.
+     * @throws java.lang.Exception if the algorithm can not be applied.
+     */
+    public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm SELF TRAINING is starting...\n Computing...\n");
 	  

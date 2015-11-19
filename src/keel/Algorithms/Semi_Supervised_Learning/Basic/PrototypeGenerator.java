@@ -42,18 +42,28 @@ import org.core.*;
 
 /**
  * Implements a generic Semi-supervised method
- * @author Isaak
+ * @author Isaac Triguero 
  */
 public class PrototypeGenerator {
     
-    /** Original data set to be condensed */
+    /** Original training data set to be condensed */
     public static InstanceSet Instancetrain;
+    /** Original test data set to be condensed */
     public static InstanceSet Instancetest;
     
+    /**
+     * Training prototype set.
+     */
     protected PrototypeSet trainingDataSet;
     
+    /**
+     * Transductive prototype set.
+     */
     protected PrototypeSet transductiveDataSet;
     
+    /**
+     * Test prototype set.
+     */
     protected PrototypeSet testDataSet;
     
     /** Condensed data */
@@ -101,14 +111,19 @@ public class PrototypeGenerator {
     }
     
     
-    /**.
-     * @param _seed Seed value.
+    /**
+     * Sets the training instances set given.
+     * @param uno the training instances set to set.
      */
     public static void setInstanceTrain(InstanceSet uno)
     {
         Instancetrain = new InstanceSet(uno);
     }
     
+     /**
+     * Sets the test instances set given.
+     * @param uno the test instances set to set.
+     */
     public static void setInstanceTest(InstanceSet uno)
     {
         Instancetest = new InstanceSet(uno);
@@ -134,6 +149,8 @@ public class PrototypeGenerator {
     /**
      * Number of prototypes corresponding of the desired percentage of the reduced set.
      * @param percentage Percentage of size that will have reduced set.
+     * @return Number of prototypes corresponding of the desired percentage of the reduced set.
+     * 
      */
     protected int getSetSizeFromPercentage(double percentage)
     {
@@ -144,6 +161,8 @@ public class PrototypeGenerator {
      * Number of prototypes corresponding of the desired percentage of the reduced set.
      * @param set Original prototype set.
      * @param percentage Percentage of size that will have reduced set.
+     * @return Number of prototypes corresponding of the desired percentage of the reduced set.
+     *
      */
     protected static int getSetSizeFromPercentage(PrototypeSet set, double percentage)
     {
@@ -223,6 +242,7 @@ public class PrototypeGenerator {
     /**
      * Makes the trivial reduction. That is none reduction of the set
      * @return A copy of the training data set
+     * @throws java.lang.Exception if the algorithm can not be applied.
      */
     public Pair<PrototypeSet,PrototypeSet> applyAlgorithm() throws Exception  {
         return null;
@@ -231,6 +251,7 @@ public class PrototypeGenerator {
     /**
      * Execute the reduction of the data set. Note that this function, <i>au contraire</i> that reduceSet, uses timers.
      * @return Reduced data set.
+     * @throws java.lang.Exception if the algorithm can not be executed.
      */
     public final Pair<PrototypeSet,PrototypeSet> execute() throws Exception {
         startTimer();
@@ -243,6 +264,7 @@ public class PrototypeGenerator {
     /**
      * Execute the reduction of the data set
      * @return Reduced data set.
+     * @throws java.lang.Exception if the reduction can not be done.
      */
     public Pair<PrototypeSet, PrototypeSet> generateReducedDataSet() throws Exception {
         return execute();
@@ -285,6 +307,7 @@ public class PrototypeGenerator {
     /**
      * Construct the PrototypeGenerator for Supervised Learning (pos-processing)
      * @param _trainingDataSet Original data to be condensed.
+     * @param _testDataSet Original test prototype set.
      * @param parameters Parameters of the algorithm (the random seedDefaultValueList in [0])
      */
     public PrototypeGenerator(PrototypeSet _trainingDataSet, PrototypeSet _testDataSet, Parameters parameters) {
@@ -298,6 +321,8 @@ public class PrototypeGenerator {
     /**
      * Construct the PrototypeGenerator
      * @param _trainingDataSet Original data to be condensed.
+     * @param _unlabeledDataSet Original unlabeled prototype set for SSL.
+     * @param _testDataSet Original test prototype set.
      * @param parameters Parameters of the algorithm (the random seedDefaultValueList in [0])
      */
     public PrototypeGenerator(PrototypeSet _trainingDataSet, PrototypeSet _unlabeledDataSet , PrototypeSet _testDataSet, Parameters parameters) {
@@ -332,6 +357,7 @@ public class PrototypeGenerator {
      * Calculate the absolute accuracy between two sets
      * @param condensed Reduced data set
      * @param test Test data set
+     * @param k number of nearest neighbours considered.
      * @return Number of prototypes of test set that has been well classificate with KNN on condensed.
      * @author Isaac Triguero
      */
@@ -357,6 +383,12 @@ public class PrototypeGenerator {
         return 100.0 * (absAccuracy / (double)test.size());
     }
     
+    /**
+     * Calculate the percetage of well classificated prototypes of one set using 1NN in a reduced set.
+     * @param condensed Reduced data set
+     * @param test Test data set
+     * @return Percetage of well classificated prototypes of test in condendesd set.
+     */    
     public double accuracy2(PrototypeSet condensed, PrototypeSet test)
     {
         double absAccuracy =  (double)absoluteAccuracy(condensed, test);
@@ -366,6 +398,7 @@ public class PrototypeGenerator {
      * Calculate the absolute accuracy between two sets
      * @param condensed Reduced data set
      * @param test Test data set
+     * @return Number of prototypes well classificated
      */
     protected static Pair<Integer,Integer> absoluteAccuracyAndError(PrototypeSet condensed, PrototypeSet test)
     {
@@ -450,13 +483,20 @@ public class PrototypeGenerator {
             KeelFile.write(fileName, data);
     }
 
-    
-    
+    /**
+     * Initiates the vector given.
+     * @param vector given vector to initiates
+     */
     public void inic_vector(int vector[]){
 
     	for(int i=0; i<vector.length; i++) vector[i] = i; // Lo inicializo de 1 a n-1
     }
 
+    /**
+     * Initiates the vector given without the index given.
+     * @param vector given vector to initiates
+     * @param without index given.
+     */    
     public void inic_vector_sin(int vector[], int without){
 
     	for(int i=0; i<vector.length; i++) 
@@ -479,6 +519,10 @@ public class PrototypeGenerator {
     	}
     }
 
+    /**
+     * Shuffles the vector given.
+     * @param vector given vector to shuffles.
+     */
     public void desordenar_vector(int vector[]){
     	int tmp, pos;
     	for(int i=0; i<vector.length; i++){

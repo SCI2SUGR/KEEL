@@ -27,16 +27,19 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.Calculate;
+
 /**
- * <p>
+ * <p> This class is defined to contain a bidimensional array with the instances
+     * of the dataset, the class of the instance and if it is covered by any rule
+     * 
  * @author Written by Pedro González (University of Jaen) 15/08/2004
  * @version 1.0
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.Calculate;
-
 public class TTable {
     /**
      * <p>

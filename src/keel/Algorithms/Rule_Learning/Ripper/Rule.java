@@ -27,7 +27,15 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Rule_Learning.Ripper;
+
+import java.util.Vector;
+import keel.Dataset.Attributes;
+
 /**
+ * Representation of a string of simple rules chained by 'and's: <b>exemple[a1][=|>|<=]v1 && exemple[a2][=|>=|<=]v2</b>
  * <p>
  * @author Written by Alberto Fernández (University of Granada)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,20 +43,19 @@
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Rule_Learning.Ripper;
-
-import java.util.Vector;
-import keel.Dataset.Attributes;
-
-
 public class Rule {
-/**
- * Representation of a string of simple rules chained by 'and's: <b>exemple[a1][=|>|<=]v1 && exemple[a2][=|>=|<=]v2</b>
- */
 	
+  /**
+     * Flag for greater operator 
+     */  
   public static int GREATER=SimpleRule.GREATER; // operator >
+  /**
+     * Flag for lower operator 
+     */
   public static int LOWER=SimpleRule.LOWER; // operator <=
+  /**
+     * Flag for equal operator 
+     */
   public static int EQUAL=SimpleRule.EQUAL; // operator =
 
   private Vector chain; //string of simple rules

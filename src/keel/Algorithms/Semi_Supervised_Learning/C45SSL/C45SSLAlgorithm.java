@@ -51,9 +51,12 @@ import java.util.*;
 public class C45SSLAlgorithm extends PrototypeGenerationAlgorithm<C45SSLGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new C45SSLGenerator.
      * @param train Training data set.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
      * @param params Parameters of the method.
+     * @return the new C45SSLGenerator. 
      */
     protected C45SSLGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

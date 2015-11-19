@@ -82,6 +82,7 @@ implements Serializable {
 
 	/**
 	 * Creates a new set of the given size.
+         * @param size size of the set.
 	 */
 	public SMOset(int size) {
 
@@ -94,6 +95,8 @@ implements Serializable {
 
 	/**
 	 * Checks whether an element is in the set.
+     * @param index given index.
+     * @return element with the given index.
 	 */
 	public boolean contains(int index) {
 
@@ -102,6 +105,7 @@ implements Serializable {
 
 	/**
 	 * Deletes an element from the set.
+     * @param index given index.
 	 */
 	public void delete(int index) {
 
@@ -121,6 +125,7 @@ implements Serializable {
 
 	/**
 	 * Inserts an element into the set.
+     * @param index given index.
 	 */
 	public void insert(int index) {
 
@@ -142,6 +147,8 @@ implements Serializable {
 
 	/** 
 	 * Gets the next element in the set. -1 gets the first one.
+     * @param index given index
+     * @return the next element of the given index.
 	 */
 	public int getNext(int index) {
 
@@ -172,6 +179,7 @@ implements Serializable {
 
 	/**
 	 * Prints all the current elements in the set.
+     * @return String representation of the set.
 	 */
 	public String elmentsToString() {
 		String elements = "";
@@ -193,6 +201,7 @@ implements Serializable {
 
 	/** 
 	 * Returns the number of elements in the set.
+     * @return the number of elements in the set. 
 	 */
 	public int numElements() {
 

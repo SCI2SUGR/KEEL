@@ -41,7 +41,10 @@ import keel.Dataset.InstanceSet;
 
 import java.util.Arrays;
 
-
+/**
+ * Numerical Naive Bayes algorithm.
+ * @author unknown
+ */
 public class NumericalNaiveBayes extends LazyAlgorithm{
 
 	
@@ -55,12 +58,14 @@ public class NumericalNaiveBayes extends LazyAlgorithm{
 	private double likehood[];
 	private double likehood2[];
 	
-	/** 
-	 * The main method of the class
-	 * 
-	 * @param script Name of the configuration script  
-	 * 
-	 */
+    /**
+     * Executes the Naive Bayes algorithms with the datasets given.
+     * @param train Training input dataset as arrays.
+     * @param clasesTrain  Training output dataset as arrays.
+     * @param test  Test input dataset as arrays.
+     * @param clasesTest  Test output dataset as arrays.
+     * @param clases numnber of classes
+     */
 	public NumericalNaiveBayes (double [][] train, int [] clasesTrain, double [][] test, int [] clasesTest, int clases) {
 	  
 		readDataFiles(train, clasesTrain, test, clasesTest, clases);
@@ -115,9 +120,14 @@ public class NumericalNaiveBayes extends LazyAlgorithm{
 		
 	} //end-method 
 	
-	
-	
-	public NumericalNaiveBayes (String script, InstanceSet train, InstanceSet test, InstanceSet refer) {
+    /**
+     * Executes the Naive Bayes algorithms with the datasets given.
+     * @param script Configuration script.
+     * @param train Training instances set.
+     * @param test Test instances set.
+     * @param refer Reference instances set.
+     */
+    public NumericalNaiveBayes (String script, InstanceSet train, InstanceSet test, InstanceSet refer) {
 		  
 		readDataFiles(script, train, test, refer);
 		//System.out.println("EOO");
@@ -326,8 +336,11 @@ public class NumericalNaiveBayes extends LazyAlgorithm{
 	
 	} //end-method	
 	
-	
-	public double[][] getProbabilities(){
+    /**
+     * Returns the classes probabilities for each test instance.
+     * @return the classes probabilities for each test instance.
+     */
+    public double[][] getProbabilities(){
 		
 	 //System.out.println("OBTENIENDO PROBABILIDADES, "+ testData.length);
 		double [][] probabilities = new double[this.testData.length][this.nClasses];
@@ -342,7 +355,11 @@ public class NumericalNaiveBayes extends LazyAlgorithm{
 		return probabilities;
 	}
 	
-	public int[] getPredictions(){
+    /**
+     * Returns the predicted classes for each test instance.
+     * @return the predicted classes for each test instance.
+     */
+    public int[] getPredictions(){
 		
 			int [] probabilities = new int[this.testData.length];
 			

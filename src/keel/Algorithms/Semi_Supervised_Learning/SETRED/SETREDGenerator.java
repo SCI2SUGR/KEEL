@@ -78,7 +78,14 @@ public class SETREDGenerator extends PrototypeGenerator {
  private double threshold;
   
 
-  protected int numberOfPrototypes;  // Particle size is the percentage
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+
+    /**
+     * Number of classes.
+     */
   protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
@@ -86,10 +93,17 @@ public class SETREDGenerator extends PrototypeGenerator {
   
   /**
    * Build a new SETREDGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public SETREDGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -103,7 +117,8 @@ public class SETREDGenerator extends PrototypeGenerator {
    * Build a new SETREDGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public SETREDGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -123,8 +138,12 @@ public class SETREDGenerator extends PrototypeGenerator {
 
   }
   
-  
-  public long factorial (int x){
+    /**
+     * Computes the factorial number of the given one.
+     * @param x given number.
+     * @return the factorial number of the given one.
+     */
+    public long factorial (int x){
 	 long factor =1;
 	
 	 if(x!=0){
@@ -136,7 +155,13 @@ public class SETREDGenerator extends PrototypeGenerator {
 	  return factor;
   }
   
-  
+      /**
+     * Computes the bernuilli value for a given number with the given probability and value of n.
+     * @param prob bernuilli probability.
+     * @param n bernuilli n value.
+     * @param x given number.
+     * @return the bernuilli value for a given number with the given probability and value of n.
+     */
   public double bernuilli(double prob, int n, int x){
 	  
 	  double bernuilli = 1;

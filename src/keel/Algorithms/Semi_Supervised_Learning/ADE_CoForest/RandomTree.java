@@ -85,7 +85,7 @@ import java.util.Vector;
 
 import org.core.Randomize;
 
-/**
+/** RandomTree
  * <!-- globalinfo-start -->
  * Class for constructing a tree that considers K randomly  chosen attributes at each node. Performs no pruning. Also has an option to allow estimation of class probabilities based on a hold-out set (backfitting).
  * <p/>
@@ -164,9 +164,15 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
   /** Determines how much data is used for backfitting */
   protected int m_NumFolds = 0;
 
-  
-  protected boolean m_Debug = false; 
-  protected int nClasses = 0;
+    /**
+     * Debug flag.
+     */
+    protected boolean m_Debug = false; 
+
+    /**
+     * Number of classes of the problem.
+     */
+    protected int nClasses = 0;
   
   /** Whether unclassified instances are allowed */
   protected boolean m_AllowUnclassifiedInstances = false;
@@ -623,6 +629,8 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
 
   /**
    * Backfits the given data into the tree.
+     * @param data data used to backfit it into the tree.
+     * @throws java.lang.Exception if the backfitting can not be done.
    */
   public void backfitData(PrototypeSet data) throws Exception {
 
@@ -1040,12 +1048,9 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
    *            whether debugging is on
    * @param attIndicesWindow
    *            the attribute window to choose attributes from
-   * @param random
-   *            random number generator for choosing random attributes
    * @param depth
    *            the current depth
-   * @param determineStructure
-   *            whether to determine structure
+     * @param allow flag to allow unclassified instances or not.
    * @throws Exception
    *             if generation fails
    */
@@ -1251,6 +1256,7 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
    *            the attribute index
    * @param data
    *            the data to work with
+     * @return  class distribution for an attribute.
    * @throws Exception
    *             if something goes wrong
    */

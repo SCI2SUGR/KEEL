@@ -27,23 +27,20 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDMap.SDMap;
+
 /**
- * <p>
+ * <p> Class with the quality measures need for obtaining the best subgroups
+     * 
  * @author Written by Cristobal J. Carmona (University of Jaen) 10/07/2010
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDMap.SDMap;
-
 public class QualitySubgroup {
-
-    /**
-     * <p>
-     * Class with the quality measures need for obtaining the best subgroups
-     * </p>
-     */
+    
 
 
     private double tp;

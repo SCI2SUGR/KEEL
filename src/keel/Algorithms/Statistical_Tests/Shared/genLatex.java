@@ -28,14 +28,7 @@
 **********************************************************************/
 
 package keel.Algorithms.Statistical_Tests.Shared;
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 24/02/2005
-* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
+
 
 import java.util.*;
 
@@ -60,13 +53,20 @@ import java.io.FileOutputStream;
 
 import java.text.DecimalFormat;
 
-public class genLatex {
     /**
      * <p>
      * Generates an output file in LaTeX format. Standalone tool, 
      * not linked to the graphical interface (12/2008).
      * </p>
-     */    	
+    * <p>
+* @author Written by Luciano Sanchez (University of Oviedo) 24/02/2005
+* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/ 
+public class genLatex {
+  	
 	
   static DecimalFormat df = new DecimalFormat("0.0000");
   

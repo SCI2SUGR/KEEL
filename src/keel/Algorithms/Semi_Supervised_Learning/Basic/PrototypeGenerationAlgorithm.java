@@ -43,7 +43,7 @@ import org.core.*;
 /**
  * Template used by children classes to executes its algorithms.
  * @author Isaac Triguero
- * @param T Type of the algorithm
+ * @param <T> Type of the algorithm
  */
 public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
 {
@@ -65,11 +65,19 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
     protected static ArrayList<String> outputFiles;
     /** Type of file: training data set. */
     protected static final int TRAINING = 0;
+    /** Type of file: trs data set. */
     protected static final int TRS = 1;
     /** Type of file: test data set. */
     protected static final int TEST = 2;
     
+    /**
+     * Training instances set.
+     */
     protected static InstanceSet train;
+    
+    /**
+     * Test instances set.
+     */
     protected static InstanceSet Itest;
     
     /**
@@ -196,7 +204,12 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
         return new PrototypeSet(training);
     }
     
-    
+    /**
+     * Reads the prototype set from a given file name.
+     * @param nameOfFile file name given.
+     * @param tipo type of the prototype set.
+     * @return the prototype set read.
+     */
     public static PrototypeSet readPrototypeSet(String nameOfFile, String tipo)
     {
         Attributes.clearAll();//BUGBUGBUG
@@ -229,6 +242,8 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
     /**
      * Build a new generator object for SSL.
      * @param train Training data set that will be used for the generator object.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
      * @param params Parameters of the algorithm of reduction.
      * @return New prototype generator object with data and parameters full load.
      */
@@ -364,6 +379,9 @@ public abstract class PrototypeGenerationAlgorithm<T extends PrototypeGenerator>
 	 * @param filename Name of output file
 	 * @param realClass Real output of instances
 	 * @param prediction Predicted output for instances
+     * @param inputs Input attributes.
+     * @param output Output attribute.
+     * @param relation Relation string.
 	 */
 	public static void writeOutput(String filename, int [][] realClass, int [][] prediction, Attribute inputs[], Attribute output, String relation) {
 	

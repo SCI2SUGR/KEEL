@@ -84,17 +84,31 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
  private String classifier = "C45";
  private int numberOfViews = 30;
 
- protected int numberOfPrototypes;  // Particle size is the percentage
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+
+    /**
+     * Number of classes.
+     */
  protected int numberOfClass;
 
 
   
   /**
    * Build a new Rel_RASCOGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public Rel_RASCOGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -108,7 +122,8 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
    * Build a new Rel_RASCOGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public Rel_RASCOGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -127,9 +142,11 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
 
   }
   
-  
-  
-  public void cambiarContextoAttributes()throws Exception{
+    /**
+     * Changes the context of the attributes.
+     * @throws Exception if the context can not be changed.
+     */
+    public void cambiarContextoAttributes()throws Exception{
 	  // Return to the same Attributes problem.
 	  Attributes.clearAll();
 	  InstanceSet mojon2 = new InstanceSet();
@@ -166,8 +183,15 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
 	  return discretizado;
   }
   
-
-  public double probability(PrototypeSet label, int feature, int instance, boolean cond){
+    /**
+     * Computes the reduction probability of a set for a certain value of the given instance and feature.
+     * @param label prototype set.
+     * @param feature given feature.
+     * @param instance given instance.
+     * @param cond condicionated to be from the same class as the instance given.
+     * @return the reduction probability
+     */
+    public double probability(PrototypeSet label, int feature, int instance, boolean cond){
 	  double count=0;
 	  PrototypeSet reducido = null;
 	  
@@ -226,7 +250,10 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
 	  return rel;
   }
   
-  public void getSolicitaGarbageColector(){
+    /**
+     * Asks for the garbage collector.
+     */
+    public void getSolicitaGarbageColector(){
 
 	  try{
 	//  System.out.println( "********** INICIO: 'LIMPIEZA GARBAGE COLECTOR' **********" );
@@ -246,10 +273,9 @@ public class Rel_RASCOGenerator extends PrototypeGenerator {
   
   /**
    * Apply the Rel_RASCOGenerator method.
-   * @return 
-   */
-  
-  
+     * @return transductive test sets.
+     * @throws java.lang.Exception if the algorithm can not be applied.
+     */
   public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm Rel_RASCO is starting...\n Computing...\n");

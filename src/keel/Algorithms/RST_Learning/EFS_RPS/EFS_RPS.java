@@ -28,19 +28,7 @@
   
 **********************************************************************/
 
-/**
- * 
- * File: EFS_RPS.java
- * 
- * The EFS_RPS Algorithm.
- * EFS = Evolutionary Feature Selection (using a SSGA)
- * RPS = Rough Set based Prototype Selection
- * 
- * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
- * @version 1.0 
- * @since JDK1.5
- * 
- */
+
 
 package keel.Algorithms.RST_Learning.EFS_RPS;
 
@@ -57,6 +45,19 @@ import keel.Algorithms.RST_Learning.Timer;
 import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 
+/**
+ * 
+ * File: EFS_RPS.java
+ * 
+ * The EFS_RPS Algorithm.
+ * EFS = Evolutionary Feature Selection (using a SSGA)
+ * RPS = Rough Set based Prototype Selection
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 13/11/2011 
+ * @version 1.0 
+ * @since JDK1.5
+ * 
+ */
 public class EFS_RPS extends RSTAlgorithm{
 
 	private int sizePop; //size of the population

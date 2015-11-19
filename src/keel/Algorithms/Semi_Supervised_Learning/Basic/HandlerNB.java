@@ -43,6 +43,9 @@ import keel.Dataset.Instance;
 import keel.Dataset.InstanceSet;
 import keel.Algorithms.Semi_Supervised_Learning.Basic.NumericalNaiveBayes;
 
+/**
+ * Handler for Naive Bayes algorithm.
+ */
 public class HandlerNB {
 		
 	private int[][] predictions;
@@ -56,10 +59,21 @@ public class HandlerNB {
 	
 	private NumericalNaiveBayes classifier;
 	
-	public HandlerNB(){
+    /**
+     * Default constructor.
+     */
+    public HandlerNB(){
 	}
 	
-	public HandlerNB(String train, String test, int ninstances, int nClasses) throws Exception{
+    /**
+     * Parameter constructor. Initiates the basics variables and executes the algorithm.
+     * @param train Training dataset filename.
+     * @param test Test dataset filename.
+     * @param ninstances number of instances.
+     * @param nClasses number of classes.
+     * @throws Exception if the algorithm can not be executed (problems with the files or the datasets given).
+     */
+    public HandlerNB(String train, String test, int ninstances, int nClasses) throws Exception{
 		this.trainInputFile = train;
 		this.testInputFile = test;
 		this.numInstances = ninstances;
@@ -68,20 +82,42 @@ public class HandlerNB {
 		this.generateFiles();
 	}
 	
-	public HandlerNB(InstanceSet train, InstanceSet test) throws Exception{
+    /**
+     * Parameter constructor. Executes the algorithms with the datasets given.
+     * @param train Training instances set.
+     * @param test Test instances set.
+     * @throws Exception if the algorithm can not be executed (problems with the files or the datasets given).
+     */
+    public HandlerNB(InstanceSet train, InstanceSet test) throws Exception{
 	      this.trainInputFile= "train1.dat";
 	      this.testInputFile = "test1.dat";
      	  this.generateFiles_Instance(train,test);
 	}
 	
-	
-	public HandlerNB(double [][] train, int [] clasesTrain, double [][] test, int [] clasesTest, int clases) throws Exception{
+    /**
+     *Parameter constructor. Executes the algorithms with the datasets given.
+     * @param train Training input dataset as arrays.
+     * @param clasesTrain  Training output dataset as arrays.
+     * @param test  Test input dataset as arrays.
+     * @param clasesTest  Test output dataset as arrays.
+     * @param clases numnber of classes
+     * @throws Exception if the algorithm can not be executed (problems with the files or the datasets given).
+     */
+    public HandlerNB(double [][] train, int [] clasesTrain, double [][] test, int [] clasesTest, int clases) throws Exception{
 
 		this.ejecutar(train, clasesTrain, test, clasesTest, clases);
 	}
 	
-	
-	public void ejecutar(double [][] train, int [] clasesTrain, double [][] test, int [] clasesTest, int clases) throws Exception{
+    /**
+      Executes the algorithms with the datasets given.
+     * @param train Training input dataset as arrays.
+     * @param clasesTrain  Training output dataset as arrays.
+     * @param test  Test input dataset as arrays.
+     * @param clasesTest  Test output dataset as arrays.
+     * @param clases numnber of classes
+     * @throws Exception if the algorithm can not be executed (problems with the files or the datasets given).
+     */
+    public void ejecutar(double [][] train, int [] clasesTrain, double [][] test, int [] clasesTest, int clases) throws Exception{
 		
 		
 		classifier = new NumericalNaiveBayes(train, clasesTrain, test, clasesTest, clases);
@@ -99,7 +135,12 @@ public class HandlerNB {
 
 	}
 	
-	
+	    /**
+     * Executes the algorithms with the datasets given and generates the files with the results.
+     * @param train Training instances set.
+     * @param test Test instances set.
+     * @throws Exception if the algorithm can not be executed (problems with the files or the datasets given).
+     */
 public void generateFiles_Instance(InstanceSet train, InstanceSet test) throws Exception{
 		
 
@@ -167,6 +208,10 @@ public void generateFiles_Instance(InstanceSet train, InstanceSet test) throws E
 	}
 
 
+/**
+     * Executes the algorithm and generates the files with the results.
+     * @throws Exception if the algorithm can not be executed (problems with the files or the datasets given).
+     */
 	public void generateFiles() throws Exception{
 		
 		// crear ficheros de configuracion
@@ -229,7 +274,10 @@ public void generateFiles_Instance(InstanceSet train, InstanceSet test) throws E
 		
 	}
 	
-	public void deleteFiles(){
+	    /**
+     * Deletes all the files generated.
+     */
+        public void deleteFiles(){
 		
 		for(int i = 0 ; i < numPartitions ; ++i){
 			File f = new File("train_" + algSufix + "_" + (i+1) + ".dat");
@@ -241,6 +289,10 @@ public void generateFiles_Instance(InstanceSet train, InstanceSet test) throws E
 		
 	}
 	
+            /**
+     * Returns the predictions for each instance.
+     * @return the predictions
+     */
 	public int[] getPredictions(){
 		
 		return predictions[0];
@@ -248,6 +300,11 @@ public void generateFiles_Instance(InstanceSet train, InstanceSet test) throws E
 	}
 	
 	
+        	
+    /**
+     * Returns the classes probabilities.
+     * @return the classes probabilities.
+     */
 	public double[][] getProbabilities(){
 		
 		return this.probabilities;

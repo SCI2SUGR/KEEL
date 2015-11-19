@@ -51,9 +51,11 @@ import java.util.*;
 public class DemocraticAlgorithm extends PrototypeGenerationAlgorithm<DemocraticGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new DemocraticGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype DemocraticGenerator object with data and parameters full load. 
      */
     protected DemocraticGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

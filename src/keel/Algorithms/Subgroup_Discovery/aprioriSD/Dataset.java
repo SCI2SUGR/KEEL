@@ -29,19 +29,19 @@
 
 package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 
-/**
- * <p>Título: Clase Dataset</p>
- * <p>Descripción: Contiene los metodos de lectura del fichero de train y test</p>
- * <p>Copyright: Copyright Alberto (c) 2005</p>
- * <p>Empresa: Mi Casa</p>
- * @author Alberto Fernández
- * @version 1.0
- */
+
 
 import java.io.*;
 import keel.Dataset.*;
 import java.util.*;
 
+/**
+ * <p>Title: Data-set</p>
+ * <p>Description: It contains the methods for reading the training and test files</p>
+ * @author Written by Alberto Fernández (University of Granada) 11/25/2004
+ * @version 1.0
+ * @since JDK1.4
+ */
 public class Dataset {
 
     private int[][] X = null;
@@ -65,8 +65,8 @@ public class Dataset {
     private int[] comunes;
 
     /**
-     * Devuelve una copia completa del Dataset
-     * @return Dataset Una copia del conjunto de datos leido
+     * Returns a copy of the Dataset read.
+     * @return a copy of the Dataset read.
      */
     public Dataset copiaDataSet() {
         Dataset copia = new Dataset();
@@ -96,24 +96,24 @@ public class Dataset {
     }
 
     /**
-     * Devuelve los valores de los atributos de entrada
-     * @return double[][] Un array con los atributos de entrada
+     * It returns the values of the input attributes
+     * @return double[][] An array with the input attributes
      */
     public int[][] getX() {
         return X;
     }
 
     /**
-     * Devuelve los valores para la salida (clase)
-     * @return int[] Un array con los valores de la clase
+     * It returns the values for the output (class)
+     * @return int[] An array with the ouput values
      */
     public int[] getC() {
         return C;
     }
 
     /**
-     * Realiza una copia del valor de las clases
-     * @return int[] El valor de la clase para cada ejemplo
+     * It returns a copy of the values for the output (class)
+     * @return int[] A copied array with the ouput values
      */
     public int[] copiaC() {
         int[] retorno = new int[C.length];
@@ -124,76 +124,76 @@ public class Dataset {
     }
 
     /**
-     * Devuelve un array con los valores máximos de los atributos de entrada
-     * @return double[] idem
+     * It returns an array with the maximum values of the input attributes
+     * @return double[] an array with the maximum values of the input attributes
      */
     public double[] getemaximo() {
         return emaximo;
     }
 
     /**
-     * Devuelve un array con los valores mínimos de los atributos de entrada
-     * @return double[] idem
+     * It returns an array with the minimum values of the input attributes
+     * @return double[] an array with the minimum values of the input attributes
      */
     public double[] geteminimo() {
         return eminimo;
     }
 
     /**
-     * Devuelve el número de datos
-     * @return int el número de ejemplos
+     * It returns the number of examples
+     * @return int the number of examples
      */
     public int getndatos() {
         return ndatos;
     }
 
     /**
-     * Devuelve el número de variables
-     * @return int El número de variables (incluyendo entrada y salida)
+     * It returns the number of variables
+     * @return int the number of variables (including input and output)
      */
     public int getnvariables() {
         return nvariables;
     }
 
     /**
-     * Devuelve el número de variables de entrada
-     * @return int El total de variables de entrada
+     * It returns the number of input variables
+     * @return int the number of input variables
      */
     public int getnentradas() {
         return nentradas;
     }
 
     /**
-     * Devuelve el número total de clases
-     * @return int el número de clases distintas
+     * It returns the total number of classes
+     * @return int the total number of classes
      */
     public int getnclases() {
         return nclases;
     }
 
     /**
-     * Comprueba si un atributo está "perdido" o no
-     * @param i int Número de ejemplo
-     * @param j int Número de atributo
-     * @return boolean True si falta, False en otro caso
-     */
+   * This function checks if the attribute value is missing
+   * @param i int Example id
+   * @param j int Variable id
+   * @return boolean True is the value is missing, else it returns false
+   */
     public boolean isMissing(int i, int j) {
         // True is the value is missing (0 in the table)
         return missing[i][j];
     }
 
     /**
-     * Constructor. Crea un nuevo conjunto de instancias
+     * Builder. It creates a new instance set
      */
     public Dataset() {
         IS = new InstanceSet(); // Init a new set of instances
     }
 
     /**
-     * Lee el fichero de ejemplos (train o test)
-     * @param nfejemplos String Nombre del fichero de ejemplos
-     * @param train boolean True si se refiere al conjunto de entrenamiento. False si es test
-     * @throws IOException Un posible error de E/S
+     * It reads the examples file (training or test)
+     * @param nfejemplos String Name of the exampes file
+     * @param train boolean True if it refers to the training set. False if it is test
+     * @throws IOException A possible I/O exception
      */
     public void leeConjunto(String nfejemplos, boolean train) throws
             IOException {
@@ -264,8 +264,8 @@ public class Dataset {
     }
 
     /**
-     * Devuelve un String con la cabecera del fichero
-     * @return String Los datos de la cabecera del fichero (train)
+     * It returns a string with the file header
+     * @return String a string with the file header
      */
     public String copiaCabeceraTest() {
         // Header of the output file
@@ -280,7 +280,7 @@ public class Dataset {
     }
 
     /**
-     * Convierte todos los valores del conjunto de datos en el intervalo [0,1]
+     * It converts all values of the data-set to the interval [0,1]
      */
     public void normaliza() {
         int atts = this.getnentradas();
@@ -300,8 +300,8 @@ public class Dataset {
     }
 
     /**
-     * Devuelve los tipos de cada entrada (NOMINAL[0] o NUMERICO[1])
-     * @return int[] Un vector que contiene 0 o 1 en funcion de si los atributos son nominales o numericos
+     * It returns the types of each input (NOMINAL[0] or NUMERIC[1])
+     * @return int[] An array that contains 0 or 1 wether the attributes are nominal or numerical
      */
     public int[] tiposVar() {
         int[] tipos = new int[this.nentradas];
@@ -315,7 +315,7 @@ public class Dataset {
     }
 
     /**
-     * Calcula los valores mas comunes para cada columna o atributo
+     * It computes the most common values for each attribute
      */
     public void calculaMasComunes() {
         comunes = new int[nentradas];
@@ -355,17 +355,17 @@ public class Dataset {
     }
 
     /**
-     * Devuelve el valor mas común del atributo i-esimo
-     * @param i int Número de atributo
-     * @return int Valor mas comnun para esta variable
+     * It return the most common value for the i-th atribute
+     * @param i int Attribute id
+     * @return int most common value for the i-th atribute
      */
     public int masComun(int i) {
         return comunes[i];
     }
 
     /**
-     * Devuelve el nombre de las variables del problema
-     * @return String[] Un Array con los nombres de las variables del problema
+     * It returns the name of the variables of the problem
+     * @return String[] An Array the name of the variables of the problem
      */
     public String[] dameNombres() {
         String[] salida = new String[nvariables];
@@ -377,8 +377,8 @@ public class Dataset {
     }
 
     /**
-     * Devuelve el valor de las clases
-     * @return String[] Un array con el valor para las distintas salidas (clases)
+     * It return the class values
+     * @return String[] An array with the nominal values for the class "id"
      */
     public String[] dameClases() {
         String[] salida = new String[nclases];
@@ -394,16 +394,16 @@ public class Dataset {
     }
 
     /**
-     * Comprueba si en la base de datos hay alguna entrada de tipo real o contínua
-     * @return boolean True si existe alguna entrada continua. False en caso contrario
+     * It checks if in the data-set there is any continous input
+     * @return boolean True if there exists any continous input. False in other case
      */
     public boolean hayAtributosContinuos() {
         return Attributes.hasRealAttributes();
     }
 
     /**
-     * Ordena un conjunto de datos lexicograficamente por columnas y filas respectivamente
-     * @return int[] Un array de enteros correspondiente al nuevo valor maximo de cada columna
+     *  Sorts the datasets following lexical order.
+     * @return int[] indeces array indicating the greater value of each column.
      */
     public int[] ordenLexicografico() {
         int[] maximos = new int[this.nentradas + 1];
@@ -479,8 +479,8 @@ public class Dataset {
     }
 
     /**
-     * Devuelve los valores iniciales del conjunto de datos antes de realizar el cambio
-     * @return int[] Los valores originales del conjunto (0 -> X, 1 -> Y...)
+     * Returns the initial values of the original dataset before making any change.
+     * @return int[] the initial values of the original dataset before making any change. (0 -> X, 1 -> Y...)
      */
     public int[] getCambio() {
         return cambio;

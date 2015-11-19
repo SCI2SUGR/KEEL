@@ -29,28 +29,36 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Alcalaetal;
 
+
+import java.io.IOException;
+import java.util.ArrayList;
+import keel.Dataset.*;
+
 /**
- * <p>
+ * <p>It contains the methods to read a Dataset for the Association Rules Mining problem
+   * 
  * @author Written by Alvaro Lopez
  * @version 1.1
  * @since JDK1.6
  * </p>
  */
 
-import java.io.IOException;
-import java.util.ArrayList;
-import keel.Dataset.*;
-
 public class myDataset {
-  /**
-   * <p>
-   * It contains the methods to read a Dataset for the Association Rules Mining problem
-   * </p>
-   */
-
+    
+    /**
+     * Number to represent type of variable nominal.
+     */
   public static final int NOMINAL = 0;
-  public static final int INTEGER = 1;
-  public static final int REAL = 2;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+  /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 2;
   
   private double[][] trueTransactions = null; //true transactions array
   private boolean[][] missing = null; //possible missing values
@@ -68,8 +76,7 @@ public class myDataset {
 	 * <p>
 	 * Initialize a new set of instances
 	 * </p>
-	 * @param nFuzzyRegionsForNumericAttributes The number of fuzzy regions with which numeric attributes are evaluated
-	 */
+         */
   public myDataset() {
 	  IS = new InstanceSet();
   }
@@ -307,12 +314,22 @@ public class myDataset {
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getType() );
   }
 
+    /**
+   * It returns the type of the attribute as String in "id_attr"
+   * @param id_attr int Id of the attribute
+   * @return String the type of the attribute
+   */
   public String getAttributeTypeString(int id_attr) {
 	if (this.getAttributeType(id_attr) == myDataset.NOMINAL)  return ("NOMINAL");
 	else if (this.getAttributeType(id_attr) == myDataset.INTEGER)  return ("INTEGER");
 	else return ("REAL");
   }
 
+      /**
+   * Checks if the attribute with the given id is nominal.
+   * @param id_attr int Id of the attribute
+   * @return True if the attribute with the given id is nominal.
+   */
   public boolean isNominal(int id_attr) {
 	if (id_attr < this.nInputs) {
 		if (Attributes.getInputAttribute(id_attr).getType() == myDataset.NOMINAL)  return (true);
@@ -336,21 +353,45 @@ public class myDataset {
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getNominalValue(id_val) );
   }
   
+    /**
+     * It returns the maximum value of the attribute specified
+     * 
+     * @param id_attr id of the attribute
+     * @return the maximum value of the attribute
+     */   
   public double getMaxValue(int id_attr) {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getMaxAttribute() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getMaxAttribute() );
   }
 
+  /**
+ * It returns the number of different values that can take a nominal attribute.
+     * @param id_attr attribute asked id.
+ * @return an int with the number of different values that can take a nominal
+ *         attribute.
+ */
   public int nValueNominal(int id_attr) {
 	if (id_attr < this.nInputs) return (Attributes.getInputAttribute(id_attr).getNumNominalValues());
 	else return (Attributes.getOutputAttribute(id_attr - this.nInputs).getNumNominalValues());
   }
 
+    /**
+     * It returns the minimum value of the attribute specified
+     * 
+     * @param id_attr id of the attribute
+     * @return the minimum value of the attribute
+     */  
   public double getMinValue(int id_attr) {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getMinAttribute() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getMinAttribute() );
   }
   
+  /**
+ * It returns the number of different values that can take a nominal attribute.
+     * @param id_attr attribute asked id.
+ * @return an int with the number of different values that can take a nominal
+ *         attribute.
+ */
   public int getNumNominalValues(int id_attr) {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getNumNominalValues() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getNumNominalValues() );

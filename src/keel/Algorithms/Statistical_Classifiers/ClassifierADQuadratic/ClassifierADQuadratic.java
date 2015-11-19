@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
-* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
 
 package keel.Algorithms.Statistical_Classifiers.ClassifierADQuadratic;
 import keel.Algorithms.Statistical_Classifiers.Shared.DiscrAnalysis.*;
@@ -43,12 +35,20 @@ import keel.Algorithms.Shared.Exceptions.*;
 import org.core.*;
 import java.io.*;
 
-public class ClassifierADQuadratic {
 	/**
 	* <p>
 	* In this class, a classifier using Quadratic Discriminant Analysis is implemented 
 	* </p>
-	*/
+* <p>
+* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
+* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
+
+public class ClassifierADQuadratic {
+
 	static Randomize rand;
 	/**
 	* <p>

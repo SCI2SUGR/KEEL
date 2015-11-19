@@ -298,6 +298,9 @@ public class FastVector
 
     /**
      * added by akibriya
+     * Checks if the object given as parameter is contained in the vector.
+     * @param o object to be checked.
+     * @return True if the object is in the vector.
      */
   public /*@pure@*/ boolean contains(Object o) {
       if(o==null)

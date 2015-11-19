@@ -273,6 +273,7 @@ public class Dataset
 
   	/** Returns the name of the dataset. 
   	 * 
+     * @return the name of the dataset.  
   	 */
   	public String getName()
 	{
@@ -282,6 +283,7 @@ public class Dataset
   	/** Returns the attribute that has the index.
   	 * 
   	 * @param index		The index of the attribute.
+     * @return the attribute that has the index given. 
   	 */
 	public final Attribute getAttribute( int index ) 
 	{
@@ -291,6 +293,7 @@ public class Dataset
   	/** Returns the attribute that has the name.
   	 * 
   	 * @param name	The name of the attribute.
+     * @return the attribute that has the name given. 
   	 */
 	public final Attribute getAttribute( String name ) 
 	{
@@ -303,6 +306,7 @@ public class Dataset
 
 	/** Returns class attribute.
 	 * 
+     * @return  class attribute.
 	 */
 	public final Attribute getClassAttribute() 
 	{
@@ -316,6 +320,7 @@ public class Dataset
 
 	/** Returns the index of the class attribute.
 	 * 
+     * @return the index of the class attribute. 
 	 */
 	public final int getClassIndex() 
 	{
@@ -324,6 +329,7 @@ public class Dataset
  
 	/** Returns the number of attributes.
 	 * 
+     * @return  the number of attributes.
 	 */
 	public final int numAttributes()
 	{
@@ -332,6 +338,7 @@ public class Dataset
 
 	/** Returns the number of possible values of the class attribute.
 	 * 
+     * @return  the number of possible values of the class attribute.
 	 */
 	public final int numClasses() 
 	{
@@ -345,6 +352,7 @@ public class Dataset
 
 	/** Returns the number of itemsets.
 	 * 
+     * @return the number of itemsets. 
 	 */
 	public final int numItemsets() 
 	{
@@ -402,6 +410,7 @@ public class Dataset
 	/** Returns the itemset at the given position.
 	 * 
 	 * @param index	The index of the itemset.
+     * @return  the itemset at the given position.
 	 */	
 	public final Itemset itemset( int index )
 	{
@@ -410,6 +419,7 @@ public class Dataset
 
 	/** Returns the last itemset.
 	 * 
+     * @return the last itemset. 
 	 */
 	public final Itemset lastItemset() 
 	{

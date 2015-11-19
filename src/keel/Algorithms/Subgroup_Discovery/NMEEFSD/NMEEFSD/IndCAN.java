@@ -27,25 +27,25 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
  
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import org.core.Files;
 
+/**
+ * <p> Defines the individual of the population
+ * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class IndCAN extends Individual {
     /**
      * <p>
-     * Defines the individual of the population
+     * Individual contents (Canonical chromosome).
      * </p>
      */
-
     public CromCAN cromosoma;   // Individual contents
 
     /**
@@ -57,9 +57,7 @@ public class IndCAN extends Individual {
     }
 
     /**
-     * </p>
      * Creates new instance of Canonical individual
-     * </p>
      * @param lenght          Lenght of the individual
      * @param neje              Number of examples
      * @param nobj              Number of objectives

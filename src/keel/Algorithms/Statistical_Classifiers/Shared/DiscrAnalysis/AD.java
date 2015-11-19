@@ -27,9 +27,7 @@
   
 **********************************************************************/
 
-/** Linear and Cuadratic discriminant analysis,
- with a normal distribution of the examples for each class
- **/
+
 
 package keel.Algorithms.Statistical_Classifiers.Shared.DiscrAnalysis;
 
@@ -39,7 +37,11 @@ import keel.Algorithms.Statistical_Classifiers.Shared.*;
 import java.io.*;
 import java.util.Vector;
 
-
+/** Linear and Quadratic discriminant analysis,
+ with a normal distribution of the examples for each class.
+ * @author Jose A. Saez Munoz
+ * @version 1.0
+ **/
 public class AD {
     double COVAR[][][];
     double MEDIA[][][];
@@ -51,6 +53,11 @@ public class AD {
     int nejemplos[];
 
 
+     /**
+     * Parameter constructor.
+     * @param vejemplos examples considered.
+     * @param vdeseado examples desired.
+     */
     public AD(double[][] vejemplos, double[][] vdeseado) {
         ejemplos = vejemplos;
         deseado = vdeseado;
@@ -69,6 +76,12 @@ public class AD {
         }
     }
 
+      /**
+     * Computes the different parameters for the algorithm where the DA will be used.
+     * @param lineal Lineal (True) or Quadratic (False) flag. 
+     * @throws ErrorDimension Dimension matrix error.
+     * @throws ErrorSingular Sigular matrix error.
+     */
     public void computeParameter(boolean lineal) throws ErrorDimension, ErrorSingular {
 
         // If 'lineal' is true, Every covariance matrix are equal
@@ -134,6 +147,11 @@ public class AD {
 
     }
 
+    /**
+     * Returns a String representation of the array given.
+     * @param s array given.
+     * @return a String representation of the array given.
+     */
     public String AString(double[] s) {
         String result = "[";
         for (int i = 0; i < s.length; i++) {
@@ -142,6 +160,11 @@ public class AD {
         return result + "]";
     }
 
+    /**
+     * Returns a String representation of the array of arrays given.
+     * @param s array of arrays given.
+     * @return a String representation of the array of arrays given.
+     */
     public String AString(double[][] s) {
         String result = "[";
         for (int i = 0; i < s.length; i++) {
@@ -150,7 +173,13 @@ public class AD {
         return result + "]";
     }
 
-
+     /**
+     * Computes the distances for the values given.
+     * @param x values given to compute the distance.
+     * @return the distances computed.
+     * @throws ErrorDimension Dimension matrix error.
+     * @throws ErrorSingular Sigular matrix error.
+     */
     public double[] distances(double[] x) throws ErrorDimension, ErrorSingular {
         // Distance from each example to each prototype is calculated
         double d[] = new double[nsalidas];
@@ -187,6 +216,10 @@ public class AD {
         return d;
     }
 
+    /**
+     * Stores the parameters of the LDA or QDA in the array given. 
+     * @param pesos array where the parameters will be stored.
+     */
     public void AlmacenaParametros(double[] pesos) {
         int p = 0;
         for (int i = 0; i < COVAR.length; i++) {
@@ -208,6 +241,10 @@ public class AD {
         }
     }
 
+    /**
+     * Recovers the parameters of the LDA or QDA stored in the array given. This array should be filled by the method {@link AlmacenaParametros}
+     * @param pesos array given.
+     */
     public void RecuperaParametros(double[] pesos) {
         int p = 0;
         for (int i = 0; i < COVAR.length; i++) {
@@ -229,6 +266,11 @@ public class AD {
         }
     }
 
+    /**
+     * Returns the index of the maximum element of the array given.
+     * @param x array given.
+     * @return the index of the maximum element of the array given.
+     */
     public static int argmax(double[] x) {
         double max = x[0];
         int imax = 0;

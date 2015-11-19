@@ -29,16 +29,18 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Alcalaetal;
 
+
+
+import java.util.ArrayList;
+
 /**
- * <p>
+ * <p>It represents a fuzzy dataset which is based on the original dataset and handles fuzzy transactions
+	 *
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.ArrayList;
-
 public class FuzzyDataset {
 	/**
 	 * <p>
@@ -80,7 +82,12 @@ public class FuzzyDataset {
 		}
 	}
 
-	public int getAttrib(int attr) {
+	/**
+	 * It returns the ID of the attribute with the given position.
+     * @param attr given position.
+	 * @return A value representing the ID of the attribute being considered
+	 */
+    public int getAttrib(int attr) {
 		  return (this.fuzzyAttributes.get(attr).getIdAttr());
 	}
 

@@ -27,25 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada)  15/10/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.2
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Rule_Learning.Ripper;
 
 import java.util.Arrays;
 
 
-
-public class Utilities {
 /**
- * Collection of auxiliar methods.
+ * <p> Collection of auxiliar methods.
+ * @author Written by Alberto Fernández (University of Granada)  15/10/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.2
+ * @since JDK1.2
+ * </p>
  */
+public class Utilities {
 	
 	
   /** The natural logarithm of 2. */

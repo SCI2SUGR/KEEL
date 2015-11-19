@@ -149,7 +149,15 @@ public class C45 extends Algorithm{
     }
   }
 
-  public C45( MyDataset data,boolean pruned,float cf,int minItemsets ) throws Exception
+    /**
+     * Parameter constructor. Generates a C4.5 model with the parameters given.
+     * @param data data to constructor the model.
+     * @param pruned true if prune method will be applied.
+     * @param cf confidence value.
+     * @param minItemsets minimum items per leaf.
+     * @throws Exception if the model can not be built.
+     */
+    public C45( MyDataset data,boolean pruned,float cf,int minItemsets ) throws Exception
   {
     try
     {
@@ -568,7 +576,6 @@ public class C45 extends Algorithm{
 
   /** Evaluates the training dataset and writes the results in the file.
    *
-   * @exception If the file cannot be written.
    */
   public void printTrain()
   {
@@ -608,7 +615,6 @@ public class C45 extends Algorithm{
 
   /** Evaluates the test dataset and writes the results in the file.
    *
-   * @exception If the file cannot be written.
    */
   public void printTest()
   {

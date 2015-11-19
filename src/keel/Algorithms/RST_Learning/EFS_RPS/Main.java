@@ -28,6 +28,10 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.RST_Learning.EFS_RPS;
+
 /**
  * 
  * File: Main.java
@@ -40,9 +44,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.RST_Learning.EFS_RPS;
-
 public class Main {
 	
 	//The classifier

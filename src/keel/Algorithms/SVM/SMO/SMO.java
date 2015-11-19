@@ -225,7 +225,10 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	/** for serialization */
 	static final long serialVersionUID = -6585883636378691736L;
 
-	public double [][] probabilities = null;
+    /**
+     * SMO probabilities.
+     */
+    public double [][] probabilities = null;
 	
 	/**
 	 * Returns a string describing classifier
@@ -327,6 +330,9 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		/** Variables to hold weight vector in sparse form.
 	(To reduce storage requirements.) */
 		protected double[] m_sparseWeights;
+                
+                /** Variables to hold indices vector in sparse form.
+	(To reduce storage requirements.) */
 		protected int[] m_sparseIndices;
 
 		/** Kernel to use **/
@@ -1247,16 +1253,48 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	protected boolean m_nominalToBinary = true;
 
 	//ARFF files
-	protected String input_train_name = new String();
-	protected String input_validation_name;
-	protected String input_test_name = new String();
-	protected String output_train_name = new String();
-	protected String output_test_name = new String();
-	protected String method_output = new String();
+
+    /**
+     * Training dataset filename.
+     */
+    	protected String input_train_name = new String();
+
+    /**
+     * Validation dataset filename.
+     */
+    protected String input_validation_name;
+
+    /**
+     * Test dataset filename.
+     */
+    protected String input_test_name = new String();
+
+    /**
+     * Training output filename.
+     */
+    protected String output_train_name = new String();
+
+    /**
+     * Test output filename.
+     */
+    protected String output_test_name = new String();
+
+    /**
+     * Model output filename.
+     */
+    protected String method_output = new String();
 
 	//variables with the mean and std. deviation of each attribute
-	protected double [] mean = null;
-	protected double [] std_dev = null;
+
+    /**
+     * Variable with the mean of each attribute.
+     */
+    	protected double [] mean = null;
+
+    /**
+     * Variable with the std deviation of each attribute.
+     */
+    protected double [] std_dev = null;
 
 
 	/** Creates a new instance of SMO with a file parameter of KEEL format
@@ -1442,6 +1480,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	 * Estimates class probabilities for given instance.
 	 * 
 	 * @param inst the instance to compute the probabilities for
+     * @return  class probabilities for given instance.
 	 * @throws Exception in case of an error
 	 */
 	public double[] distributionForInstance(Instance inst) throws Exception {
@@ -1622,6 +1661,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 	/**
 	 * Returns the weights in sparse format.
+     * @return  the weights in sparse format.
 	 */
 	public double [][][] sparseWeights() {
 
@@ -1639,6 +1679,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 	/**
 	 * Returns the indices in sparse format.
+     * @return the indices in sparse format.
 	 */
 	public int [][][] sparseIndices() {
 
@@ -1656,6 +1697,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 	/**
 	 * Returns the bias of each binary SMO.
+     * @return  the bias of each binary SMO.
 	 */
 	public double [][] bias() {
 
@@ -1673,6 +1715,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 	/**
 	 * Returns the number of values of the class attribute.
+     * @return  the number of values of the class attribute.
 	 */
 	public int numClassAttributeValues() {
 
@@ -1681,6 +1724,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 	/**
 	 * Returns the names of the class attributes.
+     * @return the names of the class attributes.
 	 */
 	public String [] classAttributeNames() {
 
@@ -1697,6 +1741,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 	/**
 	 * Returns the attribute names.
+     * @return  the attribute names.
 	 */
 	public String [][][] attributeNames() {
 
@@ -2384,6 +2429,8 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	/**
 	 * Run the model once the parameters have been set by the
 	 * method config_read()
+     * @param train training instances set.
+     * @param test test instances set.
 	 */
 	public void runModel(InstanceSet train, InstanceSet test) {
 		Instances isWeka;

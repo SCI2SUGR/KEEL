@@ -30,7 +30,8 @@
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Alcalaetal;
 
 /**
- * <p>
+ * <p> It is used for representing and handling a gene throughout the evolutionary learning
+	 *
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
@@ -75,6 +76,7 @@ public class Gene {
 	
 	/**
 	 * It computes the overlap factor for the membership functions involved in a gene
+         * @param uniform_fuzzy_attr fuzzy attribute given.
 	 * @return A value indicating the overlap factor
 	 */
 	public double calculateOverlapFactor(FuzzyAttribute uniform_fuzzy_attr) {

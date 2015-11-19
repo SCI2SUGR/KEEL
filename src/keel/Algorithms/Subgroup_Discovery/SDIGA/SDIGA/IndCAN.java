@@ -27,8 +27,15 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
+
+import org.core.*;
+
 /**
- * <p>
+ * <p>Defines an individual composed by a Canonical cromosome.
+     * 
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
@@ -36,16 +43,10 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
-
-import org.core.*;
-
-
 public class IndCAN  extends Individual {
     /**
      * <p>
-     * Defines an individual composed by a Canonical cromosome.
+     * Individual contents (Canonical chromosome).
      * </p>
      */
     

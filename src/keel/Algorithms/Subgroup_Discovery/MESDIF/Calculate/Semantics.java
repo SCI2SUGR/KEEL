@@ -27,26 +27,21 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Pedro González (University of Jaen) 15/08/2004
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate;
 
 import org.core.Files;
 
-
+/**
+ * <p>This class is defined to manage de semantics of the linguistic variables
+     * 
+ * @author Written by Pedro González (University of Jaen) 15/08/2004
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Semantics {
-
-    /**
-     * <p>
-     * This class is defined to manage de semantics of the linguistic variables
-     * </p>
-     */
 
     /**
      * <p>

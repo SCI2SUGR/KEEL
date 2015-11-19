@@ -29,25 +29,23 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
-/**
- * <p>
- * @author Written by Alvaro Lopez
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.*;
 import java.util.*;
 
 import org.core.*;
 
+/**
+ * <p>It provides the implementation of the algorithm to be run in a process
+	 * 
+ * @author Written by Alvaro Lopez
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class FingramsProcess {
-	/**
-	 * <p>
-	 * It provides the implementation of the algorithm to be run in a process
-	 * </p>
-	 */
+    
 
 	private myDataset dataset;
 	private DataBase database;
@@ -60,32 +58,9 @@ public class FingramsProcess {
 	 * 
 	 * @param dataset
 	 *            The instance of the dataset for dealing with its records
-	 * @param nEvaluations
-	 *            The maximum number of evaluations to reach before stopping the
-	 *            genetic learning
-	 * @param popSize
-	 *            The maximum size of population to handle after each generation
-	 * @param nBitsGene
-	 *            The number of bit digits for encoding a displacement within a
-	 *            gene
-	 * @param phi
-	 *            It represents the value used for decreasing the "L" threshold
-	 *            (CURRENTLY NOT USED)
-	 * @param d
-	 *            It indicates the value for controlling the Parent Centric BLX
-	 *            crossover
-	 * @param nFuzzyRegionsForNumericAttributes
-	 *            The number of fuzzy regions with which numeric attributes are
-	 *            evaluated
-	 * @param useMaxForOneFrequentItemsets
-	 *            It indicates whether the max operator must be used while
-	 *            discovering 1-Frequent Itemsets
-	 * @param minSupport
-	 *            The user-specified minimum support for the mined association
-	 *            rules
-	 * @param minConfidence
-	 *            The user-specified minimum confidence for the mined
-	 *            association rules
+     * @param database database
+     * 
+	
 	 */
 	public FingramsProcess(myDataset dataset, DataBase database) {
 		this.dataset = dataset;
@@ -97,6 +72,11 @@ public class FingramsProcess {
 	 * <p>
 	 * It runs the algorithm for mining association rules
 	 * </p>
+     * @param ruleBaseFile  Rules base file.       
+     * @param blankThreshold Blank threshold.
+     * @param fingramsFile Fingrams file.
+     * @param minimumLift  minimum lift value.       
+     * @return  0 if the execution ends correctly, -1 otherwise.        
 	 */
 	public int generateFile(String ruleBaseFile, double blankThreshold,
 			String fingramsFile, double minimumLift) {
@@ -358,7 +338,11 @@ public class FingramsProcess {
 		return 0;
 	}
 
-	public String outputLine() {
+    /**
+     * Returns a String output line.
+     * @return a String output line.
+     */
+    public String outputLine() {
 		Itemset itemset;
 		Item item;
 		String[] nameVariables = this.dataset.names();

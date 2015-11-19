@@ -51,9 +51,11 @@ import java.util.*;
 public class CoForestAlgorithm extends PrototypeGenerationAlgorithm<CoForestGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new CoForestGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype CoForestGenerator object with data and parameters full load. 
      */
     protected CoForestGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

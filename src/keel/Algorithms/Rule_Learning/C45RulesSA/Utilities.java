@@ -27,26 +27,20 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Rule_Learning.C45RulesSA;
+
 /**
- * <p>
+ * <p> Collection of auxiliar methods.
  * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Rule_Learning.C45RulesSA;
-
-
 public class Utilities {
-/**
- * <p>
- * Collection of auxiliar methods.
- * </p>
- */
-	
 	
   /** The natural logarithm of 2. */
   private static double log2_cte = Math.log(2);

@@ -54,6 +54,11 @@ import java.text.DecimalFormat;
 import java.text.FieldPosition;
 
 /**
+ * <code>FlexibleDecimalFormat</code> is a concrete subclass of
+ * <code>DecimalFormat</code> that formats decimal numbers in a more flexible way. It has a variety of
+ * features designed to make it possible to parse and format numbers in any
+ * locale, including support for Western, Arabic, and Indic digits.  
+ * 
  * @author Yong Wang
  * @version $Revision: 1.1 $
  */
@@ -75,23 +80,41 @@ public class FlexibleDecimalFormat
   private boolean  grouping = false;
   private boolean  sign = false;
     
-  public FlexibleDecimalFormat ( ) {
+    /**
+     * Default constructor.  Creates a FlexibleDecimalFormat with 5 digits.
+     */
+    public FlexibleDecimalFormat ( ) {
     this( 5 );
   }
 
-  public FlexibleDecimalFormat ( int digits ) {
+    /**
+     * Constructor.  Creates a FlexibleDecimalFormat with the number of digits given.
+     * @param digits number of digits given
+     */
+    public FlexibleDecimalFormat ( int digits ) {
     if( digits < 1 ) 
       throw new IllegalArgumentException("digits < 1");
     this.digits = digits;
     intDigits = 1;
   }
 
-  public FlexibleDecimalFormat ( int digits, boolean trailing ) {
+    /**
+     * Constructor.  Creates a FlexibleDecimalFormat with the number of digits and trailing flag given.
+     * @param digits number of digits given
+     * @param trailing trailing flag given.
+     */
+    public FlexibleDecimalFormat ( int digits, boolean trailing ) {
     this( digits );
     this.trailing = trailing;
   }
 
-  public FlexibleDecimalFormat ( int digits, boolean exp, boolean trailing, 
+    /** Constructor. Creates a FlexibleDecimalFormat with the given arguments.
+     * @param digits given base size.
+     * @param exp given exponent size.
+     * @param grouping given grouping flag.
+     * @param trailing given trailing flag.
+     */
+    public FlexibleDecimalFormat ( int digits, boolean exp, boolean trailing, 
 				 boolean grouping ) {
     this.trailing = trailing;
     this.exp = exp;
@@ -107,7 +130,11 @@ public class FlexibleDecimalFormat
     }
   }
 
-  public FlexibleDecimalFormat ( double d ) {
+    /**
+     * Constructor. Creates a FlexibleDecimalFormat by parsering a number given.
+     * @param d number given.
+     */
+    public FlexibleDecimalFormat ( double d ) {
     newFormat( d );
   }
 
@@ -128,7 +155,11 @@ public class FlexibleDecimalFormat
     }
   }
 
-  public void update ( double d ) {
+    /**
+     * Updates the format of the FlexibleDecimalFormat by parsering a number given.
+     * @param d given number.
+     */
+    public void update ( double d ) {
     if( Math.abs( intDigits(d) -1 ) > 99 ) power = 3;
     expIntDigits = 1;
     expDecimalDigits = Math.max( expDecimalDigits, 
@@ -174,14 +205,23 @@ public class FlexibleDecimalFormat
     return dD;
   }
     
-  public boolean  needExponentialFormat ( double d ) {
+    /**
+     * Checks if the given number needs a {@link ExponentialFormat}.
+     * @param d given number.
+     * @return True if the given number needs a {@link ExponentialFormat}, false otherwise.
+     */
+    public boolean  needExponentialFormat ( double d ) {
     if( d == 0.0 ) return false;
     int e = intDigits( d );
     if( e > digits + 5 || e < -3 ) return true;
     else return false;
   }
     
-  public void grouping ( boolean grouping ) {
+    /**
+     * Sets the grouping flag with the value given.
+     * @param grouping grouping flag value to be set.
+     */
+    public void grouping ( boolean grouping ) {
     this.grouping = grouping;
   }
     
@@ -207,6 +247,7 @@ public class FlexibleDecimalFormat
     setFormat();
   }
 
+  @Override
   public StringBuffer format (double number, StringBuffer toAppendTo,
 			      FieldPosition pos) {
     if( grouping ) {
@@ -219,7 +260,11 @@ public class FlexibleDecimalFormat
     return toAppendTo.append( nf.format(number) );
   }
 
-  public int width () {
+    /**
+     * Returns the width of the flexible decimal numbers format.
+     * @return the width of the flexible decimal numbers format.
+     */
+    public int width () {
 	
     if( !trailing && !grouping ) 
       throw new RuntimeException( "flexible width" );
@@ -227,7 +272,12 @@ public class FlexibleDecimalFormat
     return format(0.).length();
   }
     
-  public StringBuffer formatString ( String str ) {
+    /**
+     * Formats a double to produce a string.
+     * @param str string given.
+     * @return The formatted number string
+     */
+    public StringBuffer formatString ( String str ) {
     int w = width();
     int h = ( w - str.length() ) / 2;
     StringBuffer text = new StringBuffer();

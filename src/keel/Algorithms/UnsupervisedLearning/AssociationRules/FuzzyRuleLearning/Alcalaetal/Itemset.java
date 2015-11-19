@@ -29,15 +29,17 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Alcalaetal;
 
+
+import java.util.*;
+
 /**
- * <p>
+ * <p> It represents an itemset throughout the execution of the algorithm
+   *
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.*;
 
 public class Itemset {
   /**
@@ -177,7 +179,11 @@ public class Itemset {
     return min;
   }
 
-  public void changeIdAttr(FuzzyDataset fuzzyDataset) {
+    /**
+     * Change attribute ID with the given fuzzy dataset.
+     * @param fuzzyDataset given fuzzy dataset.
+     */
+    public void changeIdAttr(FuzzyDataset fuzzyDataset) {
     int i;
 	Item item;
 	   

@@ -51,9 +51,11 @@ import java.util.*;
 public class SelfTrainingAlgorithm extends PrototypeGenerationAlgorithm<SelfTrainingGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new SelfTrainingGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype CoForSelfTrainingGeneratorestGenerator object with data and parameters full load. 
      */
     protected SelfTrainingGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

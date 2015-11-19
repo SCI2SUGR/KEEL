@@ -29,25 +29,23 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.FuzzyApriori;
 
-/**
- * <p>
- * @author Written by Alvaro Lopez
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/**
+ * <p> It gathers all the parameters, launches the algorithm, and prints out the results
+	 * 
+ * @author Written by Alvaro Lopez
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class FuzzyApriori {
-	/**
-	 * <p>
-	 * It gathers all the parameters, launches the algorithm, and prints out the results
-	 * </p>
-	 */
+    
 
     private myDataset trans;
     

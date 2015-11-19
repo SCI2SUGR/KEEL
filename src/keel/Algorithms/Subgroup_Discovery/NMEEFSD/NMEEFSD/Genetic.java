@@ -27,25 +27,23 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import org.core.*;
 import java.util.*;
 
+/**
+ * <p> Methods to define the genetic algorithm and to apply operators and reproduction schema
+     *
+ * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Genetic {
-    /**
-     * <p>
-     * Methods to define the genetic algorithm and to apply operators and reproduction schema
-     * </p>
-     */
+    
 
     private Population poblac;     // Main Population
     
@@ -1140,6 +1138,7 @@ public class Genetic {
      * Eliminates the repeated individuals for DNF representation
      * </p>
      * @param original              A population
+     * @param Variables             Variables structure
      * @return                      A vector which marks the inviduals repeated
      */
     public Vector RemoveRepeatedDNF(Population original, TableVar Variables){

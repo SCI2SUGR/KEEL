@@ -54,6 +54,11 @@ import java.text.DecimalFormat;
 import java.text.FieldPosition;
 
 /**
+ * <code>ExponentialFormat</code> is a concrete subclass of
+ * <code>DecimalFormat</code> that formats exponential numbers. It has a variety of
+ * features designed to make it possible to parse and format exponential numbers in any
+ * locale, including support for Western, Arabic, and Indic digits.  
+ * 
  * @author Yong Wang
  * @version $Revision: 1.1 $
  */
@@ -63,25 +68,63 @@ public class ExponentialFormat
   /** for serialization */
   private static final long serialVersionUID = -5298981701073897741L;
     
-  protected DecimalFormat nf ;
-  protected boolean sign;
-  protected int digits;
-  protected int exp;
-  protected boolean trailing = true;
+    /**
+     * Decimal format of this exponential one.
+     */
+    protected DecimalFormat nf ;
 
-  public ExponentialFormat () {
+    /**
+     * Sign flag.
+     */
+    protected boolean sign;
+
+    /**
+     * Number of digits of the base.
+     */
+    protected int digits;
+
+    /**
+     * Exponent size.
+     */
+    protected int exp;
+
+    /**
+     * Trailing flag.
+     */
+    protected boolean trailing = true;
+
+    /**
+     * Default constructor.  Creates a ExponentialFormat with 5 digits, 2 exp digits, with the sign flag as true and without trailing.
+     */
+    public ExponentialFormat () {
     this( 5 );
   }
     
-  public ExponentialFormat( int digits ) {
+    /**
+     * Constructor. Creates a ExponentialFormat with the given value of digits and 2 exp digits, with the sign flag as true and without trailing.
+     * @param digits given base size.
+     */
+    public ExponentialFormat( int digits ) {
     this( digits, false );
   }
 
-  public ExponentialFormat( int digits, boolean trailing ) {
+    /**
+     * Constructor. Creates a ExponentialFormat with the given value of digits and given trailing flag, 2 exp digits and with the sign flag as true.
+     * @param digits given base size.
+     * @param trailing given trailing flag.
+     */
+    public ExponentialFormat( int digits, boolean trailing ) {
     this( digits, 2, true, trailing );
   }
     
-  public ExponentialFormat( int digits, int exp, boolean sign, 
+    /**
+     ** Constructor. Creates a ExponentialFormat with the given arguments.
+     * @param digits given base size.
+     * @param exp given exponent size.
+     * @param sign given sign flag.
+     * @param trailing given trailing flag.
+     */
+    public ExponentialFormat( int digits, int exp, boolean sign, 
 			    boolean trailing ) {
     this.digits = digits;
     this.exp = exp;
@@ -92,12 +135,17 @@ public class ExponentialFormat
     nf.setNegativePrefix("-");
   }
     
-  public int width () {
+    /**
+     * Returns the width of the exponential numbers format.
+     * @return the width of the exponential numbers format.
+     */
+    public int width () {
     if( !trailing ) throw new RuntimeException( "flexible width" );
     if( sign ) return 1 + digits + 2 + exp;
     else return digits + 2 + exp;
   }
 
+  @Override
   public StringBuffer format(double number, StringBuffer toAppendTo, 
 			     FieldPosition pos) {
     StringBuffer s = new StringBuffer( nf.format(number) );

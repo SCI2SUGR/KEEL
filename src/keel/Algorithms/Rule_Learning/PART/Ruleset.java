@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 
@@ -42,14 +35,19 @@ package keel.Algorithms.Rule_Learning.PART;
 
 import java.util.Vector;
 
-
-public class Ruleset {
 /**
  * <p>
  * Representation of a disjuction of rules with a common consecuent.
- * It may be represented as: <b>if (rule1 || rule2) then output=consecuent<\b>
+ * It may be represented as: if (rule1 || rule2) then output=consecuent
+ * </p>
+ * <p>
+ * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Ruleset {
 	
   //set of rules
   private Vector rules;

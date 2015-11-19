@@ -48,8 +48,9 @@ public class Fuzzy {
   int label;
 
   /**
-   * Default constructor
-   */
+     * Default constructor. 
+     * None attribute will be initialized.
+     */
   public Fuzzy() {
   }
 

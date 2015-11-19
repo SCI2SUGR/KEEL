@@ -42,20 +42,52 @@ import keel.Dataset.Attributes;
 import keel.Dataset.Instance;
 import keel.Dataset.InstanceSet;
 
+/**
+ * Handler for SMO algorithm.
+ */
 public class HandlerSMO {
 		
 	private int[][] predictions;
 	private double[][] probabilities;
 	private String algSufix = "SMO";
 	
+    /**
+     * Number of partitions.
+     */
     public int numPartitions;
+
+    /**
+     * Number of instances.
+     */
     public int numInstances;
+
+    /**
+     * Number of classes.
+     */
     public int numClasses;
+
+    /**
+     * Training dataset filename.
+     */
     public String trainInputFile;
+
+    /**
+     * Test dataset filename.
+     */
     public String testInputFile;
+
+    /**
+     * Seed for random purposes.
+     */
     public String seed;
     
 	
+        /**
+     * Parameter constructor. Initiates the basics variables.
+     * @param clases number of classes.
+     * @param instances number of instances.
+     * @param Seed seed for random purposes.
+     */
 	public HandlerSMO(int clases, int instances, String Seed){
 	      this.numPartitions = 1;
 	      this.trainInputFile= "train1.dat";
@@ -66,6 +98,15 @@ public class HandlerSMO {
 	      
 	}
 	
+            /**
+     * Parameter constructor. Executes the algorithms with the datasets given.
+     * @param train Training instances set.
+     * @param test Test instances set.
+     * @param clases number of classes.
+     * @param Seed seed for random purposes.
+     *
+     * @throws Exception if the algorithm can not be executed (problems with the files or the datasets given).
+     */
 	public HandlerSMO(InstanceSet train, InstanceSet test, int clases, String Seed) throws Exception{
 
 	      this.numPartitions = 1;
@@ -130,7 +171,10 @@ public class HandlerSMO {
 		
 	}
 	
-	
+	    /**
+     * Generates the configuration files and the results files for the algorithm.
+     * @throws Exception if the files can not be generated
+     */
 	public void generateFiles() throws Exception{
 		
 		// crear ficheros de configuracion
@@ -192,6 +236,9 @@ public class HandlerSMO {
 		
 	}
 	
+            /**
+     * Deletes all the files generated.
+     */
 	public void deleteFiles(){
 		
 		for(int i = 0 ; i < this.numPartitions ; ++i){
@@ -204,11 +251,19 @@ public class HandlerSMO {
 		
 	}
 	
+       /**
+     * Returns the predictions for a given partition.
+     * @param part given partition.
+     * @return the predictions for the given partition.
+     */
 	public int[] getPredictions(int part){
 		return predictions[part];
 	}
 	
-	
+    /**
+     * Returns the classes probabilities.
+     * @return the classes probabilities.
+     */
 	public double[][] getProbabilities(){
 		return probabilities;
 	}

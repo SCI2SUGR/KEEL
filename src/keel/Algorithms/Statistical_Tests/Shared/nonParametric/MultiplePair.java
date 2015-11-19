@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
+
 /**
  * File: MultiplePair.java
  * 
@@ -36,12 +39,17 @@
  * @version 1.1 
  * @since JDK1.5
 */
-package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
-
 public class MultiplePair implements Comparable {
 
-  public double indice; //first element
-  public double valor;  //second element
+    /**
+     * first element
+     */
+    public double indice; //first element
+
+    /**
+     * second element
+     */
+    public double valor;  //second element
   
   /**
   * Default builder

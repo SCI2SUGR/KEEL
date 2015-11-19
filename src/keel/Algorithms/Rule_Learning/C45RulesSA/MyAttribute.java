@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.C45RulesSA;
@@ -42,13 +35,15 @@ package keel.Algorithms.Rule_Learning.C45RulesSA;
 import java.util.Vector;
 import java.util.Enumeration;
 
-
-public class MyAttribute {
 /**
- * <p>
- * Class to implement an attribute
+ * <p> Class to implement an attribute
+ * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class MyAttribute {
 	
   /** Continuous attribute. */
   public final static int CONTINUOUS = 0;

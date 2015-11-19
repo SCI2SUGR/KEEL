@@ -27,21 +27,22 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
-* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
+
 package keel.Algorithms.Statistical_Tests.Regression.ModelTest_t;
 import keel.Algorithms.Statistical_Tests.Shared.*;
 import keel.Algorithms.Shared.Parsing.*;
 import org.core.*;
 
 
-
+/**
+* <p>This class has only a main method that calls t for regression problems, test defined in StatTest
+	* 
+* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
+* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
 public class ModelTest_t {
 	/**
 	* <p>

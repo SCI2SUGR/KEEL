@@ -27,26 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import keel.Dataset.*;
 import org.core.*;
 
-
+/**
+ * <p> Class defined to store the information of the variable of the dataset
+     *
+ * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class TableVar {
-    /**
-     * <p>
-     * Class defined to store the information of the variable of the dataset
-     * </p>
-     */
 
     private int num_vars;           // Number of variables
     private int n_etiq;             // Number of labels for the continuous variables

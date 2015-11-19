@@ -193,7 +193,8 @@ public class  DoubleVector implements Cloneable {
     Arrays.sort( V, 0, size() );
   }
 
-  /** Sorts the array in place with index returned */
+  /** Sorts the array in place with index returned
+     * @return  array that stores all indices sorted*/
   public IntVector  sortWithIndex() {
     IntVector index = IntVector.seq( 0, size()-1 );
     sortWithIndex( 0, size()-1, index );
@@ -304,6 +305,7 @@ public class  DoubleVector implements Cloneable {
   
   /**
    *  Returns the squared vector 
+     * @return the squared vector  
    */
   public DoubleVector square() {
     DoubleVector v = new DoubleVector( size() ); 
@@ -313,6 +315,7 @@ public class  DoubleVector implements Cloneable {
 
   /**
    *  Returns the square-root of all the elements in the vector 
+     * @return the square-root of all the elements in the vector  
    */
   public DoubleVector sqrt() {
     DoubleVector v = new DoubleVector( size() ); 
@@ -321,12 +324,14 @@ public class  DoubleVector implements Cloneable {
   }
 
   /** Makes a deep copy of the vector
+     * @return copy of the vector.
    */
   public DoubleVector  copy() { 
     return (DoubleVector) clone();
   }
     
   /** Clones the DoubleVector object.
+     * @return copy of the vector. 
    */
   public Object  clone() { 
     int n = size();
@@ -353,6 +358,7 @@ public class  DoubleVector implements Cloneable {
     
   /** 
    * Returns the signs of all elements in terms of -1, 0 and +1.
+     * @return the signs of all elements in terms of -1, 0 and +1. 
    */
   public DoubleVector sign() 
   {
@@ -366,6 +372,7 @@ public class  DoubleVector implements Cloneable {
   } 
 
   /** Returns the sum of all elements in the vector.
+     * @return the sum of all elements in the vector. 
    */
   public double  sum() 
   {
@@ -375,6 +382,7 @@ public class  DoubleVector implements Cloneable {
   }
     
   /** Returns the squared sum of all elements in the vector.
+     * @return the squared sum of all elements in the vector. 
    */
   public double  sum2()
   {
@@ -384,6 +392,7 @@ public class  DoubleVector implements Cloneable {
   }
   
   /** Returns the L1-norm of the vector
+     * @return the L1-norm of the vector 
    */
   public double norm1()
   {
@@ -393,6 +402,7 @@ public class  DoubleVector implements Cloneable {
   }
   
   /** Returns the L2-norm of the vector
+     * @return the L2-norm of the vector 
    */
   public double norm2()
   {
@@ -401,6 +411,7 @@ public class  DoubleVector implements Cloneable {
 
   /** Returns ||u-v||^2
    *  @param v the second vector
+     * @return ||u-v||^2 
    */
   public double sum2( DoubleVector v ) 
   {
@@ -447,6 +458,7 @@ public class  DoubleVector implements Cloneable {
   
   /** Adds a value to all the elements 
    *  @param x the value
+     * @return vector with the value added.
    */
   public DoubleVector  plus ( double x ) {
     return copy().plusEquals( x );	
@@ -454,6 +466,7 @@ public class  DoubleVector implements Cloneable {
   
   /** Adds a value to all the elements in place
    *  @param x the value
+     * @return vector with the value added. 
    */
   public DoubleVector plusEquals ( double x ) {
     for( int i = 0; i < size(); i++ )
@@ -464,6 +477,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Adds another vector element by element 
    *  @param v the second vector
+     * @return resultant vector.
    */
   public DoubleVector  plus( DoubleVector v ) {
     return copy().plusEquals( v );
@@ -472,6 +486,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Adds another vector in place element by element 
    *  @param v the second vector
+     * @return resultant vector.
    */
   public DoubleVector  plusEquals( DoubleVector v ) {
     for(int i = 0; i < size(); i++ )
@@ -482,6 +497,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Subtracts a value
    *  @param x the value
+     * @return  vector with the value substracted.
    */
   public DoubleVector  minus( double x ) {
     return plus( -x );
@@ -490,6 +506,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Subtracts a value in place
    *  @param x the value
+     * @return  vector with the value substracted. 
    */
   public DoubleVector  minusEquals( double x ) {
     plusEquals( -x );
@@ -499,6 +516,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Subtracts another DoubleVector element by element 
    *  @param v the second DoubleVector
+     * @return resultant vector.
    */
   public DoubleVector  minus( DoubleVector v ) {
     return copy().minusEquals( v );
@@ -507,6 +525,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Subtracts another DoubleVector element by element in place
    *  @param v the second DoubleVector
+     * @return resultant vector.
    */
   public DoubleVector  minusEquals( DoubleVector v ) {
     for(int i = 0; i < size(); i++ )
@@ -536,6 +555,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Multiplies another DoubleVector element by element
    *  @param v the second DoubleVector
+     * @return resultant vector.
    */
   public DoubleVector  times( DoubleVector v ) {
     return copy().timesEquals( v ); 
@@ -545,6 +565,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Multiplies another DoubleVector element by element in place 
    *  @param v the second DoubleVector
+     * @return resultant vector. 
    */
   public DoubleVector  timesEquals( DoubleVector v ) {
     for(int i = 0; i < size(); i++ )
@@ -555,6 +576,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Divided by another DoubleVector element by element
    *  @param v the second DoubleVector
+     * @return  resultant vector from the division.
    */
   public DoubleVector  dividedBy ( DoubleVector v ) {
     return copy().dividedByEquals( v );
@@ -563,6 +585,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    *  Divided by another DoubleVector element by element in place 
    *  @param v the second DoubleVector
+     * @return resultant vector from the division.
    */
   public DoubleVector  dividedByEquals ( DoubleVector v ) {
     for( int i = 0; i < size(); i++ ) {
@@ -573,6 +596,7 @@ public class  DoubleVector implements Cloneable {
   
   /** 
    *  Checks if it is an empty vector
+     * @return True if the vector is empty, false otherwise.
    */
   public boolean  isEmpty() {
     if( size() == 0 ) return true;
@@ -581,7 +605,9 @@ public class  DoubleVector implements Cloneable {
   
   /** 
    * Returns a vector that stores the cumulated values of the original
-   * vector */
+   * vector 
+     * @return  a vector that stores the cumulated values of the original
+   * vector  */
   public DoubleVector cumulate() 
   {
     return copy().cumulateInPlace();
@@ -589,6 +615,7 @@ public class  DoubleVector implements Cloneable {
 	
   /** 
    * Cumulates the original vector in place 
+     * @return vector that stores the cumulated values of the original vector.
    */
   public DoubleVector cumulateInPlace() 
   {
@@ -601,6 +628,7 @@ public class  DoubleVector implements Cloneable {
   /** 
    * Returns the index of the maximum. <p>
    * If multiple maximums exist, the index of the first is returned.
+     * @return  the index of the maximum value.
    */
   public int  indexOfMax()
   {
@@ -619,6 +647,7 @@ public class  DoubleVector implements Cloneable {
 
   /** 
    * Returns true if vector not sorted
+     * @return true if vector not sorted, false otherwise.
    */
   public boolean unsorted () {
     if( size() < 2 ) return false;
@@ -632,6 +661,7 @@ public class  DoubleVector implements Cloneable {
   /**
    *  Combine two vectors together
    *  @param v the second vector
+     * @return vector with the two vector together.
    */
   public DoubleVector  cat( DoubleVector v ) {
     DoubleVector w = new DoubleVector( size() + v.size() );
@@ -654,6 +684,7 @@ public class  DoubleVector implements Cloneable {
 
   /**
    *  Returns the maximum value of all elements
+     * @return the maximum value of all elements 
    */
   public double max () {
     if( size() < 1 ) throw new IllegalArgumentException("zero size");
@@ -670,6 +701,7 @@ public class  DoubleVector implements Cloneable {
    *  Applies a method to the vector
    *  @param className the class name
    *  @param method the method
+     * @return Resultant vector of the method applied.
    */
   public DoubleVector map( String className, String method ) {
     try {
@@ -695,6 +727,7 @@ public class  DoubleVector implements Cloneable {
 
   /**
    * Returns the reverse vector
+     * @return the reverse vector
    */ 
   public DoubleVector  rev() {
     int n = size();
@@ -707,6 +740,7 @@ public class  DoubleVector implements Cloneable {
   /**
    * Returns a random vector of uniform distribution
    * @param n the size of the vector
+     * @return a random vector of uniform distribution 
    */ 
   public static DoubleVector  random( int n ) {
     DoubleVector v = new DoubleVector( n );
@@ -718,6 +752,7 @@ public class  DoubleVector implements Cloneable {
 
   /** Convert the DoubleVecor to a string
    */ 
+  @Override
   public String  toString() {
     return toString( 5, false );
   }
@@ -725,6 +760,7 @@ public class  DoubleVector implements Cloneable {
   /** Convert the DoubleVecor to a string
    *  @param digits the number of digits after decimal point
    *  @param trailing true if trailing zeros are to be shown
+     * @return String representation of the vector.
    */ 
   public String  toString( int digits, boolean trailing ) {
     if( isEmpty() ) return "null vector";
@@ -750,7 +786,11 @@ public class  DoubleVector implements Cloneable {
     return text.toString();
   }
 
-  public static void  main( String args[] ) {
+    /**
+     * Main function. Checks the correct implementation of the class.
+     * @param args main args.
+     */
+    public static void  main( String args[] ) {
 
     
     DoubleVector u = random(10);

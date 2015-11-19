@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2007
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Symbolic_Regression.Shared;
 import keel.Algorithms.Shared.Exceptions.*;
@@ -50,14 +43,22 @@ import java.io.*;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-public class ParseFileRegSym {
 	/**
 	 * <p>
 	 *   This class obtains a symbolic model of training input data using algorithms:
 	 *   -GAP (Genetic Algorithm Programming). method symbolicRegressionFuzzyGAP.
 	 *   -SAP (Simulated Anneling Programming). method symbolicRegressionFuzzySAP.
      * </p>  
-     */
+     
+* <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2007
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class ParseFileRegSym {
+
     /** 
      * <p> 
      * This method learns a symbolic model for training input data given in pc using the Genetic Algorithm Programming (GAP) paradigm. 

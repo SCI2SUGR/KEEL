@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>Title: Data-set</p>
- * <p>Description: It contains the methods for reading the training and test files</p>
- * @author Written by Alberto FernÃ¡ndez (University of Granada) 11/25/2004
- * @version 1.0
- * @since JDK1.4
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDAlgorithm;
 
@@ -42,6 +36,13 @@ import java.util.Arrays;
 
 import keel.Dataset.*;
 
+/**
+ * <p>Title: Data-set</p>
+ * <p>Description: It contains the methods for reading the training and test files</p>
+ * @author Written by Alberto FernÃ¡ndez (University of Granada) 11/25/2004
+ * @version 1.0
+ * @since JDK1.4
+ */
 public class Dataset {
 
     private double[][] X = null;

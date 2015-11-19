@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Rule_Learning.Rules6;
 
+
+
+import java.io.IOException;
+import org.core.*;
+import java.util.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,11 +46,6 @@ package keel.Algorithms.Rule_Learning.Rules6;
  * @author Alberto Fernandez
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-import java.util.*;
-
 public class Algorithm {
 
     myDataset train, val, test;

@@ -29,6 +29,11 @@
 
 package keel.Algorithms.Statistical_Classifiers.Naive_Bayes;
 
+
+
+import java.io.IOException;
+import org.core.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,10 +45,6 @@ package keel.Algorithms.Statistical_Classifiers.Naive_Bayes;
  * @version 1.0
  * @since JDK1.5
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class Algorithm {
 
     myDataset train, val, test;

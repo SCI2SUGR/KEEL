@@ -29,6 +29,13 @@
 
 package keel.Algorithms.Rule_Learning.SRI;
 
+
+
+import java.io.IOException;
+import org.core.*;
+import java.util.*;
+import keel.Dataset.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,12 +47,6 @@ package keel.Algorithms.Rule_Learning.SRI;
  * @author Alberto Fernandez
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-import java.util.*;
-import keel.Dataset.*;
-
 public class Algorithm {
 
     myDataset train, val, test;

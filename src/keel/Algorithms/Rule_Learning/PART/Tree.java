@@ -27,25 +27,20 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Rule_Learning.PART;
+
 /**
- * <p>
+ * <p> Class to handle the classifier tree
  * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Rule_Learning.PART;
-
-
 public class Tree{
-/**
- * <p>
- * Class to handle the classifier tree
- * </p>
- */
 
   /** Total number of Nodes in the tree */
   public static int NumberOfNodes;

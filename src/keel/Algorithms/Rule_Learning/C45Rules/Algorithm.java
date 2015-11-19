@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 12/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
 
 
 package keel.Algorithms.Rule_Learning.C45Rules;
@@ -45,6 +37,14 @@ import java.io.IOException;
 
 import keel.Dataset.Attributes;
 
+/**
+ * <p>Abstract class that contains the basic structures to implements Rule learining algorithms.
+ * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 12/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public abstract class Algorithm{
 	
   /** The name of the file that contains the information to build the model. */

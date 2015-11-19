@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Writed by Pedro González (University of Jaen) 15/02/2004
- * @author Modified by Pedro González (University of Jaen) 4/08/2007
- * @author Modified by Cristóbal J. Carmona (University of Jaen) 30/04/2010
- * @version 2.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
@@ -43,13 +35,18 @@ import keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate.*;
 
 import org.core.*;
 
+/**
+ * <p> Defines an individual composed by a DNF cromosome.
+ * @author Writed by Pedro González (University of Jaen) 15/02/2004
+ * @author Modified by Pedro González (University of Jaen) 4/08/2007
+ * @author Modified by Cristóbal J. Carmona (University of Jaen) 30/04/2010
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
 public class IndDNF  extends Individual{
-    /**
-     * <p>
-     * Defines an individual composed by a DNF cromosome.
-     * </p>
-     */
-      
+
+    /** Individual contents (DNF cromosome). */
     public CromDNF cromosoma;     // Individual contents
 
     /**
@@ -116,6 +113,7 @@ public class IndDNF  extends Individual{
      * Creates biased random instance of Canonical individual
      * </p>
      * @param Variables             Variables structure
+     * @param porcVar  percentage of variables to appear in the biased initialization
      */
     public void InitIndBsd(TableVar Variables, float porcVar) {
       cromosoma.initCromBsd(porcVar);  // Biased random initialization method

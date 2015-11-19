@@ -27,7 +27,15 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Rule_Learning.Ripper;
+
+import java.util.Vector;
+
 /**
+ * Representation of a disjuction of rules with a common consecuent.
+ * It may be represented as: if (rule1 || rule2) then output=consecuent
  * <p>
  * @author Written by Alberto Fernández (University of Granada)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,17 +43,8 @@
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Rule_Learning.Ripper;
-
-import java.util.Vector;
-
-
 public class Ruleset {
-/**
- * Representation of a disjuction of rules with a common consecuent.
- * It may be represented as: <b>if (rule1 || rule2) then output=consecuent<\b>
- */
+
 	
   private Vector rules; //set of rules
   private String type; //class (consecuent)

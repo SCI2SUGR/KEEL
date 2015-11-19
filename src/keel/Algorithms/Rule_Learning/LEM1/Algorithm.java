@@ -29,6 +29,14 @@
 
 package keel.Algorithms.Rule_Learning.LEM1;
 
+
+
+import java.io.IOException;
+import org.core.*;
+import java.util.*;
+import keel.Dataset.Attribute;
+import keel.Dataset.Attributes;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -40,13 +48,6 @@ package keel.Algorithms.Rule_Learning.LEM1;
  * @author Alberto Fernandez
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-import java.util.*;
-import keel.Dataset.Attribute;
-import keel.Dataset.Attributes;
-
 public class Algorithm {
 
     myDataset train, val, test;

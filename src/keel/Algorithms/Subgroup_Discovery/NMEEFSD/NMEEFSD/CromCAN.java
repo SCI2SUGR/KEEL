@@ -27,18 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import org.core.*;
 
+/**
+ * <p> Defines the structure and manage the contents of a rule
+     * This implementation uses only integer values to store the gens.
+     * So, variables values must be discretized (if they are continuous)
+     * or translated into integers (if they are enumerated)
+ * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class CromCAN {
     /**
      * <p>

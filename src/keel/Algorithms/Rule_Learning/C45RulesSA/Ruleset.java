@@ -27,7 +27,18 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Rule_Learning.C45RulesSA;
+
+import java.util.Vector;
+
 /**
+ * <p>
+ * Representation of a disjuction of rules with a common consecuent.
+ * It may be represented as: if (rule1 || rule2) then output=consecuent
+ * </p>
  * <p>
  * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
@@ -35,21 +46,7 @@
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Rule_Learning.C45RulesSA;
-
-import java.util.Vector;
-
-
 public class Ruleset {
-/**
- * <p>
- * Representation of a disjuction of rules with a common consecuent.
- * It may be represented as: <b>if (rule1 || rule2) then output=consecuent<\b>
- * </p>
- */
-	
   //set of rules
   private Vector rules; 
   //class (consecuent)
@@ -154,6 +151,13 @@ public class Ruleset {
 
   }
 
+       /**
+     * Biased function.
+     * @param N N parameter given.
+     * @param E E parameter given.
+     * @param ExpE exponent given. 
+     * @return biased value.
+     */
   public double biased(double N, double E, double ExpE){
 
     double Rate;

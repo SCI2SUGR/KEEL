@@ -27,26 +27,21 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Rule_Learning.C45Rules;
+
+import java.util.Enumeration;
+
 /**
- * <p>
+ * <p>Class to handle a classification of class values.
  * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 12/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Rule_Learning.C45Rules;
-
-import java.util.Enumeration;
-
-
 public class Classification{
-/**
- * <p>
- * Class to handle a classification of class values.
- * </p>
- */
 	
   /** Weight of itemsets per class per value. */
   private double perClassPerValue[][];
@@ -177,7 +172,6 @@ public class Classification{
    * @param source The dataset that contains all the itemsets.
    * @param attIndex The index of the attribute with possible unknown values.
    *
-   * @throws Exception
    */
   public final void addWithUnknownValue( MyDataset source, int attIndex )
   {
@@ -227,7 +221,6 @@ public class Classification{
    * @param start The index of the first itemset to add.
    * @param end The index of the first itemset that will not be added.
    *
-   * @throws Exception
    */
   public final void addRange( int valueIndex, MyDataset source, int start, int end )
   {

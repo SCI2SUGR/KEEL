@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Alberto Fernandez (University of Granada) 01/02/2006
- * @author Modified by Nicolo Flugy Papa (Politecnico di Milano) 24/03/2009
- * @author Modified by Cristobal J. Carmona (University of Jaen) 10/07/2010
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDMap.SDMap;
 
@@ -46,16 +38,32 @@ import java.util.Hashtable;
 
 import keel.Dataset.*;
 
+/**
+ * <p>It contains the methods to read a Dataset for the Association Rules Mining problem
+       * 
+ * @author Written by Alberto Fernandez (University of Granada) 01/02/2006
+ * @author Modified by Nicolo Flugy Papa (Politecnico di Milano) 24/03/2009
+ * @author Modified by Cristobal J. Carmona (University of Jaen) 10/07/2010
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class myDataset {
-      /**
-       * <p>
-       * It contains the methods to read a Dataset for the Association Rules Mining problem
-       * </p>
-       */
-
+    
+    /**
+     * Number to represent type of variable nominal.
+     */
       public static final int NOMINAL = 0;
-      public static final int INTEGER = 1;
-      public static final int REAL = 2;
+
+    /**
+     * Number to represent type of variable integer.
+     */
+    public static final int INTEGER = 1;
+
+    /**
+     * Number to represent type of variable real or double.
+     */
+    public static final int REAL = 2;
 
       private double[][] trueTransactions = null; //true transactions array
       private int[] covered = null; //transactions covered
@@ -89,7 +97,11 @@ public class myDataset {
               nPartitionForNumericAttributes = (nPartition > 0) ? nPartition : 1;
       }
 
-      public String header(){
+    /**
+     * It returns the header.
+     * @return a String with the header of the file.
+     */
+    public String header(){
             return IS.getHeader();
       }
 
@@ -226,6 +238,7 @@ public class myDataset {
        * local array
        * </p>
        * @param datasetFile String name of the file containing the data-set
+       * @param _isTrain is a flag that indicate if the database is for a train or for a test.
        * @throws IOException If there occurs any problem with the reading of the data-set
        */
       public void readDataSet(String datasetFile, boolean _isTrain) throws
@@ -403,7 +416,7 @@ public class myDataset {
        * <p>
        * It returns suitable recasted IDs to recognize later each value belonging to an attribute
        * </p>
-       * @return ArrayList<Integer> an array with the IDs of each attribute value
+       * @return an array with the IDs of each attribute value
        */
       public ArrayList<Integer> getIDsOfAllAttributeValues() {
               int a, v, num_values;

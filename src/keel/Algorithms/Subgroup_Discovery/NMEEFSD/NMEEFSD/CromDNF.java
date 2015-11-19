@@ -27,18 +27,21 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import org.core.*;
 
+/**
+ * <p> Defines the structure and manage the contents of a rule
+      * This implementation uses disjunctive formal norm to store the gens.
+      * So, variables are codified in binary genes
+ * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class CromDNF {
      /**
       * Defines the structure and manage the contents of a rule
@@ -209,6 +212,7 @@ public class CromDNF {
      * <p>
      * Retuns the gene lenght of the chromosome
      * </p>
+     * @param pos gene's position
      * @return          Lenght of the gene
      */
     public int getCromGeneLenght (int pos) {
@@ -222,6 +226,7 @@ public class CromDNF {
      * </p>
      * @param pos      Position of the variable
      * @param elem          Position of the gene
+     * @return the value of the gene indicated
      */
     public boolean getCromGeneElem (int pos, int elem) {
       return cromosoma[pos].getGeneElem(elem);

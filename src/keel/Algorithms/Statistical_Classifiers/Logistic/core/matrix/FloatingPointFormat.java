@@ -65,23 +65,47 @@ public class FloatingPointFormat
   /** for serialization */
   private static final long serialVersionUID = 4500373755333429499L;
     
-  protected DecimalFormat nf ;
-  protected int width;
-  protected int decimal;
-  protected boolean trailing = true;
+    /**
+     * Decimal format.
+     */
+    protected DecimalFormat nf ;
+
+    /**
+     * Total width of the integer number.
+     */
+    protected int width;
+
+    /**
+     * Decimal size.
+     */
+    protected int decimal;
+
+    /**
+     * Trailing flag.
+     */
+    protected boolean trailing = true;
 
   /**
-   * Default constructor
-   */
+   * Default constructor. Creates a FloatingPointFormat with 8 of width value and 5 decimal size.
+     */
   public FloatingPointFormat () {
     this( 8, 5 );
   }
 
-  public FloatingPointFormat ( int digits ) {
+    /**
+     * Constructor. Creates a FloatingPointFormat with 8 of width value and 5 decimal size.
+     * @param digits given digits.
+     */
+    public FloatingPointFormat ( int digits ) {
     this( 8, 2 );
   }
 
-  public FloatingPointFormat( int w, int d ) {
+    /**
+     * Constructor. Creates a FloatingPointFormat with the given values width and decimal size.
+     * @param w width given.
+     * @param d decimal size given.
+     */
+    public FloatingPointFormat( int w, int d ) {
     width = w;
     decimal = d;
     nf = new DecimalFormat( pattern(w, d) );
@@ -89,11 +113,18 @@ public class FloatingPointFormat
     nf.setNegativePrefix("-");
   }
 
-  public FloatingPointFormat( int w, int d, boolean trailingZeros ) {
+    /**
+     * Constructor. Creates a FloatingPointFormat with the given values width and decimal size.
+     * @param w width given.
+     * @param d decimal size given.
+     * @param trailingZeros trailing with zeros flag.
+     */
+    public FloatingPointFormat( int w, int d, boolean trailingZeros ) {
     this( w, d );
     this.trailing = trailingZeros;
   }
 
+  @Override
   public StringBuffer format(double number, StringBuffer toAppendTo, 
 			     FieldPosition pos) {
     StringBuffer s = new StringBuffer( nf.format(number) );
@@ -121,7 +152,13 @@ public class FloatingPointFormat
     return toAppendTo.append( s );
   }
 
-  public static String  pattern( int w, int d ) {
+    /**
+     * Generates a pattern with the given width and decimal size parameters.
+     * @param w given width.
+     * @param d given decimal size.
+     * @return the pattern generated.
+     */
+    public static String  pattern( int w, int d ) {
     StringBuffer s = new StringBuffer();      // "-##0.00"   // fw.d
     s.append( padding(w - d - 3, '#') );
     if( d == 0) s.append('0');
@@ -142,7 +179,11 @@ public class FloatingPointFormat
     return text;
   }
 
-  public int width () {
+    /**
+     * Returns the width of the numbers format.
+     * @return the width of the numbers format.
+     */
+    public int width () {
     if( !trailing ) throw new RuntimeException( "flexible width" );
     return width;
   }

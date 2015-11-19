@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Rosa Venzala 19/09/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.2
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Rule_Learning.Riona;
 
@@ -48,13 +41,16 @@ import java.lang.*;
 import java.text.DecimalFormat;
 import org.core.*;
 
-
-public class Riona {
 /**
- * <p>
- * Main procedures of Rionasd algorithm
+ * <p> Main procedures of Rionasd algorithm
+ * @author Written by Rosa Venzala 19/09/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.2
+ * @since JDK1.2
  * </p>
  */
+public class Riona {
+    
 	// Train file
 	private Dataset train ;
 	// Test file
@@ -73,6 +69,11 @@ public class Riona {
 	private int clasificacionFinalTst[]=null;
 	private int k;
 	
+        /**
+ * <p>
+ * Riona default constructor
+ * </p>
+ */
 	public Riona(){
 	}
 	
@@ -80,6 +81,12 @@ public class Riona {
  * <p>
  * Riona constructor
  * </p>
+     * @param trainFile Training dataset file.
+     * @param testOutFile Test output file.
+     * @param testFile Test dataset file.
+     * @param trainOutFile Traininf output file.
+     * @param fOut Output file.
+     * @param lSeed Seed for random purpose.
  */
 public Riona(String trainFile,String testFile,
                String trainOutFile,
@@ -271,6 +278,8 @@ public Riona(String trainFile,String testFile,
      * @param numItrn the position of the example in the set
      * @param clase the consequent  of the rule
      * @param nClasses the total number of classes
+     * @param es_train identify if it is a training process.
+     * @return a local rule
      */
      public Complex createRuleTestTrain(double[]tst,int numItst,double[]trn,int numItrn,int clase,int nClasses,boolean es_train){
 	    double numeric;
@@ -320,8 +329,10 @@ public Riona(String trainFile,String testFile,
     * <p>
     * Inidcates if a rule is consistent with a determined set of examples
     * </p>
+     * @param R rule to check.
+     * @param verifySet set of examples.
+     * @param util size of the set.
     * @return true if is consistent
-    * @return false otherwise
     */
    public boolean isConsistent(Complex R,int[]verifySet,int util){
    	for(int i=0;i<util;i++){
@@ -338,6 +349,7 @@ public Riona(String trainFile,String testFile,
     * Calculates the optimum size of the neighborhood for the training set
     * </p>
     * @param kmax max malue for neighborhood size
+     * @return 
    */
    public int findOptimalK(int kmax){
     	int A[][]=new int[train.getNData()][];

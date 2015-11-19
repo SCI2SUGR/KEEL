@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 
@@ -43,20 +36,33 @@ package keel.Algorithms.Rule_Learning.PART;
 import java.util.Vector;
 import keel.Dataset.Attributes;
 
-
-public class Rule {
 /**
- * <p>
- * Representation of a string of simple rules chained by 'and's: <b>exemple[a1][=|>|<=]v1 && exemple[a2][=|>=|<=]v2</b>
+ * <p>Representation of a string of simple rules chained by 'and's: <b>exemple[a1][=|>|<=]v1 && exemple[a2][=|>=|<=]v2</b>
+ *
+ * @author Written by Antonio Alejandro Tortosa (University of Granada)  15/10/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Rule {
 	
-  // operator >
+    /**
+     * Flag for greater operator 
+     */
   public static int GREATER=SimpleRule.GREATER; 
-  //operator <=
-  public static int LOWER=SimpleRule.LOWER; 
+  // operator <=
+ 
+    /**
+     * Flag for lower operator 
+     */
+      public static int LOWER=SimpleRule.LOWER; 
   //operator =
-  public static int EQUAL=SimpleRule.EQUAL; 
+ 
+    /**
+     * Flag for equal operator 
+     */
+      public static int EQUAL=SimpleRule.EQUAL; 
   //string of simple rules
   private Vector chain; 
   //right side of the rule

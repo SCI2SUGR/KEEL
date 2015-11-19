@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.PART;
@@ -42,13 +35,15 @@ package keel.Algorithms.Rule_Learning.PART;
 import java.util.Enumeration;
 import java.util.Vector;
 
-
-public class Cut{
 /**
- * <p>
- * Class to implement the calculus of the cut point
+ * <p>Class to implement the calculus of the cut point
+ * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Cut{
 	
   /**Classification of class values. */
   protected Classification classification;
@@ -849,7 +844,11 @@ public class Cut{
     return new String( result );
   }
 
-  public double getCutPoint(){
+    /**
+     * Returns the cut point. 
+     * @return the cut point.
+     */
+    public double getCutPoint(){
     return cutPoint;
   }
 }

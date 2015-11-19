@@ -27,26 +27,23 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Michael Holler 01/03/2003
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDMap.SDMap;
 
 import java.util.*;
 
-public class StopWatch {
-
-    /**
-     * <p>
-     * Class for timing applications. Provides a simple interface for
+/**
+ * <p> Class for timing applications. Provides a simple interface for
      * the basic functionality of a stop watch and printing the results.
-     * </p>
-     */
+     * 
+ * @author Written by Michael Holler 01/03/2003
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
+public class StopWatch {
+    
 
 
   private Vector laps;

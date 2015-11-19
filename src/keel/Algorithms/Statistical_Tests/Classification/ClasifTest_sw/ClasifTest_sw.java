@@ -27,27 +27,23 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
-* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
+
 package keel.Algorithms.Statistical_Tests.Classification.ClasifTest_sw;
 import keel.Algorithms.Statistical_Tests.Shared.*;
 import keel.Algorithms.Shared.Parsing.*;
 import org.core.*;
 
 
-
+/**
+* <p> This class has only a main method that calls Shapiro Wilk test for classification problems, defined in StatTest
+	*
+* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
+* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
 public class ClasifTest_sw {
-	/**
-	* <p>
-	* This class has only a main method that calls Shapiro Wilk test for classification problems, defined in StatTest
-	* </p>
-	*/
 	
 	static Randomize rand;
 	/**

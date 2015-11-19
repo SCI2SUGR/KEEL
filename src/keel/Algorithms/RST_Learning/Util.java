@@ -106,11 +106,10 @@ public class Util{
 	}//end-method
 	
 	/** 
-	 * Generates a string with the contents of the instance
+	 * Prints on the standard output the contents of the instance
 	 * 
-	 * @param a Instance to print. 
+	 * @param instance Instance to print. 
 	 * 
-	 * @return A string, with the values of the instance
 	 * 
 	 */	
 	public static void printInstance(double instance[]){
@@ -127,11 +126,10 @@ public class Util{
 	
 	
 	/** 
-	 * Generates a string with the contents of a data matrix
+	 * Prints on the standard output a string with the contents of a data matrix
 	 * 
-	 * @param a Data matrix to print. 
+	 * @param data Data matrix to print. 
 	 * 
-	 * @return A string, with the values of the data matrix
 	 * 
 	 */	
 	public static void printMatrix(double data[][]){

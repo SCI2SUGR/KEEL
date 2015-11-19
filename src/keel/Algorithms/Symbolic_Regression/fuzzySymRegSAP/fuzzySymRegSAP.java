@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2007
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Symbolic_Regression.fuzzySymRegSAP;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
@@ -43,11 +36,17 @@ import keel.Algorithms.Shared.Parsing.*;
 import org.core.*;
 
 
-
-public class fuzzySymRegSAP {
 	/**
 	 * Wrapper for symbolicRegression with fuzzy sets and based on SA (Simulated Annealing) paradigm).
-	 */
+* <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2007
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class fuzzySymRegSAP {
+
 	//Random number generator
 	static Randomize rand;
 	/**

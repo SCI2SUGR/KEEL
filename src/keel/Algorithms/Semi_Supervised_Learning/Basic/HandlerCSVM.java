@@ -42,21 +42,52 @@ import keel.Dataset.Attributes;
 import keel.Dataset.Instance;
 import keel.Dataset.InstanceSet;
 
+/**
+ * HandlerCSVM for C support vector machine algorithm.
+ */
 public class HandlerCSVM {
 		
 	private int[][] predictions;
 	private double[][] probabilities;
 	private String algSufix = "CSVM";
 	
+    /**
+     * Number of partitions.
+     */
     public int numPartitions;
+
+    /**
+     * Number of instances.
+     */
     public int numInstances;
+
+    /**
+     * Number of classes.
+     */
     public int numClasses;
+
+    /**
+     * Training dataset filename.
+     */
     public String trainInputFile;
+
+    /**
+     * Test dataset filename.
+     */
     public String testInputFile;
+
+    /**
+     * Seed for random purposes.
+     */
     public String seed;
     
-	
-	public HandlerCSVM(int clases, int instances, String Seed){
+    /**
+     * Parameter constructor. Initiates the basics variables.
+     * @param clases number of classes.
+     * @param instances number of instances.
+     * @param Seed seed for random purposes.
+     */
+    public HandlerCSVM(int clases, int instances, String Seed){
 	      this.numPartitions = 1;
 	      this.trainInputFile= "train1.dat";
 	      this.testInputFile = "test1.dat";
@@ -66,7 +97,16 @@ public class HandlerCSVM {
 	      
 	}
 	
-	public HandlerCSVM(InstanceSet train, InstanceSet test, int clases, String Seed) throws Exception{
+    /**
+     * Parameter constructor. Initiates the basics variables.
+     * @param train Training instances set.
+     * @param test Test instances set.
+     * @param clases number of classes.
+     * @param Seed seed for random purposes.
+     *
+     * @throws Exception if the configuration file can not be created.
+     */
+    public HandlerCSVM(InstanceSet train, InstanceSet test, int clases, String Seed) throws Exception{
 
 	      this.numPartitions = 1;
 	      this.trainInputFile= "train1.dat";
@@ -134,7 +174,12 @@ public class HandlerCSVM {
 	}
 	
 	// esta funcioÃ³n no vale pa nah! 
-	public void generateFiles() throws Exception{
+
+    /**
+     * Generates the configuration files and the results files for the CSVM algorithm.
+     * @throws Exception if the files can not be generated
+     */
+    	public void generateFiles() throws Exception{
 		
 		// crear ficheros de configuracion
 		createConfigurationFiles();
@@ -195,7 +240,10 @@ public class HandlerCSVM {
 		
 	}
 	
-	public void deleteFiles(){
+    /**
+     * Deletes all the files generated.
+     */
+    public void deleteFiles(){
 		
 		for(int i = 0 ; i < this.numPartitions ; ++i){
 			File f = new File("train_" + algSufix + "_" + (i+1) + ".dat");
@@ -207,12 +255,20 @@ public class HandlerCSVM {
 		
 	}
 	
-	public int[] getPredictions(int part){
+    /**
+     * Returns the predictions for a given partition.
+     * @param part given partition.
+     * @return the predictions for the given partition.
+     */
+    public int[] getPredictions(int part){
 		return predictions[part];
 	}
 	
-	
-	public double[][] getProbabilities(){
+    /**
+     * Returns the classes probabilities.
+     * @return the classes probabilities.
+     */
+    public double[][] getProbabilities(){
 		return probabilities;
 	}
 

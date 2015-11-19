@@ -35,12 +35,17 @@
 package keel.Algorithms.Semi_Supervised_Learning.utilities;
 
 /**
- *
+ * Implements an approximation of the squared root operator.
  * @author diegoj
  */
 public class ApproximateSqrt
 {
     
+    /**
+     * Fast way to compute the sqrt of the value given.
+     * @param x number given.
+     * @return sqrt of x.
+     */
     public static float fsqrt(float x) {
         if (x == 0)
             return 0;
@@ -52,6 +57,11 @@ public class ApproximateSqrt
         return root;
     }
 
+    /**
+     * Faster way to compute the sqrt of the value given.
+     * @param n number given.
+     * @return sqrt of n.
+     */
     public static float ffsqrt(float n) {
         if (n == 0.0f)
             return 0.0f;
@@ -69,6 +79,11 @@ public class ApproximateSqrt
         return guess;
     }
 
+    /**
+     * Fast way to compute the sqrt of the value given.
+     * @param val number given.
+     * @return sqrt of val.
+     */
     public static float fastSqrt(float val)
     {
         // http://en.wikipedia.org/wiki/Methods_of_computing_square_roots

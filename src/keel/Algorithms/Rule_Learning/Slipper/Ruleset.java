@@ -27,7 +27,20 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Rule_Learning.Slipper;
+
+import java.util.Vector;
+
 /**
+ * <p>
+ * Representation of a disjuction of rules with a common consecuent.
+ * It may be represented as: if (rule1 || rule2) then output=consecuent
+ * Besides each rule has a positive value (confidence) associated. The entire ruleset
+ * has also a default rule whose confidence value must be always negative.
+ * </p>
  * <p>
  * @author Written by Alberto Fernández (University of Granada)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,22 +48,8 @@
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Rule_Learning.Slipper;
-
-import java.util.Vector;
-
-
 public class Ruleset {
-/**
- * <p>
- * Representation of a disjuction of rules with a common consecuent.
- * It may be represented as: <b>if (rule1 || rule2) then output=consecuent<\b>
- * Besides each rule has a positive value (confidence) associated. The entire ruleset
- * has also a default rule whose confidence value must be always negative.
- * </p>
- */
+
 	
   //set of rules
   private Vector rules; 

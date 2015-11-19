@@ -27,18 +27,19 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import java.util.Vector;
 
+/**
+ * <p>Population of candidate rules
+ * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Population {
     /**
      * <p>
@@ -48,9 +49,21 @@ public class Population {
 
       private Individual indivi [];     // Population individuals
       private int num_indiv;           // Max number of individuals in the population
-      public int num_used;             // Number or individuals really used
-      public boolean ej_cubiertos[];   // Covered examples of the population
-      public int ult_cambio_eval;      // Last change in the population
+
+    /**
+     * Number or individuals really used
+     */
+    public int num_used;             // Number or individuals really used
+
+    /**
+     * Covered examples of the population
+     */
+    public boolean ej_cubiertos[];   // Covered examples of the population
+
+    /**
+     * Last change in the population
+     */
+    public int ult_cambio_eval;      // Last change in the population
       
       /**
        * <p>
@@ -222,6 +235,7 @@ public class Population {
        * Returns if the individual of the population has been evaluated
        * </p>
        * @param num_indiv               Position of the individual
+     * @return True if the individual of the population has been evaluated, False otherwise.
        */
       public boolean getIndivEvaluated (int num_indiv) {
           return indivi[num_indiv].getIndivEvaluated ();
@@ -262,7 +276,7 @@ public class Population {
           return indivi[num_indiv].getIndivCromDNF();
       }
       
-      /*
+      /**
        * <p>
        * Return the number of the evaluation with the last change
        * </p>

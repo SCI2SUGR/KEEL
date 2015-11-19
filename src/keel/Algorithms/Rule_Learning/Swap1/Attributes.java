@@ -148,6 +148,7 @@ public final class Attributes {
   
 /**
  * The function returns if there is any nominal attribute
+     * @return True if there is any nominal attribute
  */
   public static boolean hasNominalAttributes() {
     return hasNominal;
@@ -156,6 +157,7 @@ public final class Attributes {
 
 /**
  * The function returns if there is any integer attribute.
+     * @return True if there is any integer attribute.
  */
   public static boolean hasIntegerAttributes() {
     return hasInteger;
@@ -164,6 +166,7 @@ public final class Attributes {
   
 /**
  * The function returns if there is any real attribute.
+     * @return True if there is any real attribute.
  */
   public static boolean hasRealAttributes() {
     return hasReal;
@@ -171,6 +174,7 @@ public final class Attributes {
 
 /**
  * The function returns if there is any missing value
+     * @return True if there is any missing value
  */
   public static boolean hasMissingValues() {
 	return hasMissing;
@@ -179,6 +183,7 @@ public final class Attributes {
 /**
  * It returns the attribute requested.
  * @param _name is the name of the attribute.
+     * @return the attribute requested. 
  */  
   public static Attribute getAttribute(String _name) {
     int i;
@@ -195,6 +200,7 @@ public final class Attributes {
 
 /**
  * It does return an array with all attributes
+     * @return an array with all attributes 
  */
   public static Attribute[] getAttributes(){
     if (attributes.size() == 0) return null;
@@ -210,6 +216,7 @@ public final class Attributes {
 /**
  * It returns the input attribute being int the position passed as an argument.
  * @param pos is the position of the attribute wanted.
+     * @return the input attribute being int the position passed as an argument.
  */
   public static Attribute getInputAttribute(int pos) {
     if (pos<0 || pos >= inputAttr.size()) return null;  
@@ -219,6 +226,7 @@ public final class Attributes {
   
 /**
  * It returns all the input attributes
+     * @return all the input attributes
  */
   public static Attribute[] getInputAttributes(){
     if (inputAttr.size() == 0) return null;
@@ -261,6 +269,7 @@ public final class Attributes {
   
 /**
  * It does return all the output attributes.
+     * @return all the output attributes. 
  */
   public static Attribute[] getOutputAttributes(){
     if (outputAttr.size() == 0) return null;
@@ -275,6 +284,8 @@ public final class Attributes {
 /**
  * It returns the output attribute being int the position passed as an argument.
  * @param pos is the position of the attribute wanted.
+     * @return the output attribute being int the position passed as an argument.
+ * 
  */
   public static Attribute getOutputAttribute(int pos) {
     if (pos<0 || pos >= outputAttr.size()) return null;
@@ -316,6 +327,8 @@ public final class Attributes {
 /**
  * It returns the undefined attribute being int the position passed as an argument.
  * @param pos is the position of the attribute wanted.
+     * @return the undefined attribute being int the position passed as an argument.
+ *
  */
   public static Attribute getUndefinedAttribute(int pos) {
    if (pos<0 || pos >= undefinedAttr.size()) return null; 
@@ -325,6 +338,7 @@ public final class Attributes {
   
 /**
  * It does return all the undefined attributes
+     * @return all the undefined attributes
  */
   public static Attribute[] getUndefinedAttributes(){
     if (undefinedAttr.size() == 0) return null;
@@ -354,6 +368,8 @@ public final class Attributes {
 /**
  * It returns the attribute being int the position passed as an argument.
  * @param pos is the position of the attribute wanted.
+     * @return the attribute being int the position passed as an argument.
+ *  
  */
   public static Attribute getAttribute(int pos) {
    return (Attribute)attributes.elementAt(pos);
@@ -495,6 +511,8 @@ public final class Attributes {
  * is used in a test to check that the definition of output attributes
  * is the same as the definition made in train.
  * @param outputNames is a vector with all output attribute names.
+     * @return True if all the output names vector corresponds with
+ * all the attributes in output vector.
  */
   public static boolean areAllDefinedAsOutputs(Vector outputNames){
     if (outputNames.size() != outputAttr.size()) return false;

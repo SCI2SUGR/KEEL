@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Alejandro Tortosa (University of Granada)  15/10/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.4
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.Ripper;
@@ -44,15 +37,28 @@ import java.io.IOException;
 import org.core.*;
 
 
-
-public class Ripper {
 /**
  * Implementation of the classification algorithm Ripper, according to the paper [Cohen95]
  * and the Weka's implementation.
+ * <p>
+ * @author Written by Alejandro Tortosa (University of Granada)  15/10/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.4
+ * @since JDK1.2
+ * </p>
  */
+public class Ripper {
+
 	
+  /**
+     * Flag ('Worth' metric)
+     */  
   public static int W=1; //'Worth' metric
-  public static int A=2; //'Accuracy'metric
+
+    /**
+     * Flag ('Accuracy'metric)
+     */
+    public static int A=2; //'Accuracy'metric
 
   MyDataset train, val, test; //the datasets for training, validation and test
   String outputTr, outputTst, outputRules; //the names for the output files
@@ -622,6 +628,10 @@ public class Ripper {
     return rules;
   }
 
-  public MyDataset getData(){return train;}
+    /**
+     * Returns the training dataset.
+     * @return the training dataset.
+     */
+    public MyDataset getData(){return train;}
 
 }

@@ -38,8 +38,14 @@
 /*                                                                           */
 /* ------------------------------------------------------------------------- */
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDMap.FPTree;
+
+import keel.Algorithms.Subgroup_Discovery.SDMap.SDMap.myDataset;
+
 /**
- * <p>
+ * <p> Implementation of Han's FP-growth ARM algorithm
  * @author Written by Frans Coenen (University of Liverpool) 09/01/2003
  * @author Modified by Frans Coenen (University of Liverpool) 03/02/2005
  * @author Modified by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
@@ -47,17 +53,8 @@
  * @since JDK1.6
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDMap.FPTree;
-
-import keel.Algorithms.Subgroup_Discovery.SDMap.SDMap.myDataset;
-
 public class FPtree extends TotalSupportTree {
-	/**
-	* <p>
-	* Implementation of Han's FP-growth ARM algorithm
-	* </p>
-	*/
+
     
     /* ------ FIELDS ------ */
     
@@ -132,6 +129,11 @@ public class FPtree extends TotalSupportTree {
         
 	// Constructors
 
+        /**
+         * Constructor.
+         * @param columnNum 1-itemset (attribute) identifier given.
+         */
+        
 	protected FPgrowthHeaderTable (short columnNum) {
 	    itemName = columnNum;
 	    }  

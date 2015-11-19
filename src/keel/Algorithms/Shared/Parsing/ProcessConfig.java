@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 10/03/2004
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @author Modified by Victoria Lopez (University of Granada) 06/06/2010
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Shared.Parsing;
 
@@ -46,17 +38,35 @@ import java.io.*;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-
-public class ProcessConfig {
 	/**
 	 * <p>
 	 * Class that process the configuration file for KEEL algorithms.
 	 * </p>
 	 * 
-	 */
+	 
+* <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 10/03/2004
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @author Modified by Victoria Lopez (University of Granada) 06/06/2010
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class ProcessConfig {
 
+    /**
+     * First file in inputData (training)
+     */
     public final static int IndexTrain = 0; // First file in inputData
+
+    /**
+     * Test file in clustering algorithms
+     */
     public final static int IndexTestKMeans = 1; // Test file in clustering algorithms
+
+    /**
+     *  It ignores the repetition of train file
+     */
     public final static int IndexTest = 2; // It ignores the repetition of train file
     /**
      * <p> 
@@ -106,86 +116,395 @@ public class ProcessConfig {
     private boolean createResultFile = false; 		// Results File
 
     // Configuration parameters for algorithms
-    public static boolean parNewFormat = true; 		// Keel format or not
+
+    /**
+     *  Keel format or not flag.
+     */
+        public static boolean parNewFormat = true; 		// Keel format or not
+
+    /**
+     * Algorithm to execute identifier.
+     */
     public static int parAlgorithmType = 0; 		// Algorithm to execute    
+
+    /**
+     *  Train name.
+     */
     public static Vector parInputData; 				// Train and Test names
+
+    /**
+     * Test name.
+     */
     public static Vector parOutputData;
+
+    /**
+     * All the output files are stored in this vector (in the doOutputData method)
+     */
     public static Vector outputData; 				// NEW: All the output files are stored in this vector (in the doOutputData method)
 
+    /**
+     * Result file name for Trail file
+     */
     public static String parResultTrainName = "resultTrain.log"; // Result file name for Trail file
+
+    /**
+     * Test results file
+     */
     public static String parResultName = "resultTest.log"; // Global results file
+
+    /**
+     *  Results label.
+     */
     public static String parResultLabel;    // Results label
+
+    /**
+     *  Partition label number.
+     */
     public static int parPartitionLabelNum; // Partition label
+
+    /**
+     *  Population size
+     */
     public static int parPopSize = 30;     // Population size
+
+    /**
+     * Number of populations
+     */
     public static int parIslandNumber = 5; // Number of populations
+
+    /**
+     *  Steady or not flag.
+     */
     public static boolean parSteady; // Steady or not
+
+    /**
+     *  Number of iterations (generations of crosses).
+     */
     public static int parIterNumber = 100; // Number of iterations (generations of crosses)
+
+    /**
+     *  Tournament size.
+     */
     public static int parTourSize = 4; // Tournament size
+
+    /**
+     * Mutation probability.
+     */
     public static double parMutProb = 0.01; // Mutation probability
+
+    /**
+     *  Mutation amplitude.
+     */
     public static double parMutAmpl = 0.1; // Mutation amplitude
+
+    /**
+     *  Migration probability.
+     */
     public static double parMigProb = 0.001; // Migration probability
+
+    /**
+     * Local Optimization probability.
+     */
     public static double parLoProb = 0; // Local Optimization probability
+
+    /**
+     * NUmber of iterations for Local Optimization * used nvar.
+     */
     public static int parLoIterNumber = 2; // NUmber of iterations for Local Optimization * used nvar
+
+    /**
+     * Local Optimization Algorithm identifier.
+     */
     public static int parLoId = OperatorIdent.AMEBA; // Local Optimization Algorithm
+
+    /**
+     * Maximum height for each individual
+     */
     public static int parMaxHeigth = 10; // Maximum height for each individual
+
+    /**
+     *  Using GA-P niches flag.
+     */
     public static boolean parNiche = false; // Using GA-P niches
+
+    /**
+     * Maximum number of individuls by niche.
+     */
     public static int parMaxNiche = 10; // Maximum number of individuls by niche
+
+    /**
+     * Crossing probability intra-niche.
+     */
     public static double parIntraNicheProb = 0.5; // Crossing probability intra-niche
+
+    /**
+     * Waited fitness increment for a SAP overcrossing.
+     */
     public static double parDeltaFit = 1; // Waited fitness increment for a SAP overcrossing
+
+    /**
+     * Accepting probability -deltafit on 0 iteration SAP.
+     */
     public static double parP0 = 0.25; // Accepting probability -deltafit on 0 iteration SAP
+
+    /**
+     * Accepting probability -deltafit on iteration SAP.
+     */
     public static double parP1 = 0.01; // Accepting probability -deltafit on iteration SAP
+
+    /**
+     * Number of iterations for each temperature SAP.
+     */
     public static int parNSUB = 25; // Number of iterations for each temperature SAP
+
+    /**
+     * GA Cross probability.
+     */
     public static double parCrGAProb = 0.5; // GA Cross probability
+
+    /**
+     * GA Mutation probability.
+     */
     public static double parMuGAProb = 0.5; // GA Mutation probability
+
+    /**
+     * Number of rules (Boosting and FSS98).
+     */
     public static int parRuleNumber = 5; // Number of rules (Boosting and FSS98)
+
+    /**
+     *  Type of cross operator.
+     */
     public static int parCrossId1 = OperatorIdent.GENERICROSSOVER; // Type of cross operator
+
+    /**
+     * Type of mutation operator.
+     */
     public static int parMutaId1 = OperatorIdent.GENERICMUTATION; // Type of mutation operator
+
+    /**
+     * Type of cross operator GAP.
+     */
     public static int parCrossId2 = OperatorIdent.GAPCROSSGA; // // Type of cross operator GAP
+
+    /**
+     * Type of mutation operator GAP.
+     */
     public static int parMutaId2 = OperatorIdent.GAPMUTAGA; // Type of mutation operator GAP
+
+    /**
+     * Type of cross operator GAP.
+     */
     public static int parCrossId3 = OperatorIdent.GAPCROSSGP; // // Type of cross operator GAP
+
+    /**
+     * Type of mutation operator GAP.
+     */
     public static int parMutaId3 = OperatorIdent.GAPMUTAGP; // Type of mutation operator GAP
+
+    /**
+     * Type of fitness.
+     */
     public static int parFitnessType = OperatorIdent.GI_STANDARD; // Type of fitness
+
+    /**
+     * Neural Network topology.
+     */
     public static int[] parNetTopo; // Neural Network topology
+
+    /**
+     * Kernel parameter.
+     */
     public static double parKernel = 1; // Kernel parameter
+
+    /**
+     * Number of means.
+     */
     public static int parNMeans = 1; // Number of means
+
+    /**
+     * Number of parameters for GA string (GAP).
+     */
     public static int parGALen = 10; // Number of parameters for GA string (GAP)
+
+    /**
+     * Initial Covariance in FSS98.
+     */
     public static double parSigma = 0.0001; // Initial Covariance in FSS98
+
+    /**
+     * Contrast Significance Level.
+     */
     public static double parSignificanceLevel = 0.95; // Contrast Significance Level
+
+    /**
+     * Random seed.
+     */
     public static long parSeed = 1; // Random seed
+
+    /**
+     * Number of cluster in clustering problems.
+     */
     public static int parNClusters = 1; // Number of cluster in clustering problems
+
+    /**
+     * Tolerance added to input examples in Fuzzy Symbolic Regression.
+     */
     public static double fuzzyTolerance = 0.1; // Tolerance added to input examples in Fuzzy Symbolic Regression
 
+    /**
+     * Table type flag 1.
+     */
     public static String tableType1 = "YES";
+
+    /**
+     * Table type flag 2.
+     */
     public static String tableType2 = "YES";
+
+    /**
+     * Table type flag 3.
+     */
     public static String tableType3 = "YES";
+
+    /**
+     * Line number.
+     */
     public static int numberLine = 2;
+
+    /**
+     * Line number 1.
+     */
     public static int numberLine1 = 1;
+
+    /**
+     * Line number 2.
+     */
     public static int numberLine2 = 1;
+
+    /**
+     * Line number 3.
+     */
     public static int numberLine3 = 1;
+
+    /**
+     * Data table order 1.
+     */
     public static String dataTable1 = "TEST-TRAIN";
+
+    /**
+     * Data table order 2.
+     */
     public static String dataTable2 = "TEST-TRAIN";
+
+    /**
+     * Data table order 3.
+     */
     public static String dataTable3 = "TEST-TRAIN";
+
+    /**
+     * Data matrix order.
+     */
     public static String dataMatrix = "TEST-TRAIN";
+
+    /**
+     * Confussion matrix flag.
+     */
     public static String matrixConfussion = "YES";
+
+    /**
+     * Number of datasets.
+     */
     public static int numDataset = 0;
+
+    /**
+     * CUR dataset.
+     */
     public static int curDataset = 0;
+
+    /**
+     * File name.
+     */
     public static String nameFile;
 
+    /**
+     * Apply Iman flag.
+     */
     public static boolean Iman;
+
+    /**
+     * Apply Nem flag.
+     */
     public static boolean Nem;
+
+    /**
+     * Apply Bon flag.
+     */
     public static boolean Bon;
+
+    /**
+     * Apply Holm flag.
+     */
     public static boolean Holm;
+
+    /**
+     * Apply Hoch flag.
+     */
     public static boolean Hoch;
+
+    /**
+     * Apply Hommel flag.
+     */
     public static boolean Hommel;
+
+    /**
+     * Apply Scha flag.
+     */
     public static boolean Scha;
+
+    /**
+     * Apply Berg flag.
+     */
     public static boolean Berg;
+
+    /**
+     * Apply Holland flag.
+     */
     public static boolean Holland;
+
+    /**
+     * Apply Rom flag.
+     */
     public static boolean Rom;
+
+    /**
+     * Apply Finner flag.
+     */
     public static boolean Finner;
+
+    /**
+     * Apply Li flag.
+     */
     public static boolean Li;
+
+    /**
+     * Type of imbalanced measurement used.
+     */
     public static int imbalancedMeasure;
+
+    /**
+     * AUC measurement identifier.
+     */
     public static final int AUC = 1;
+
+    /**
+     * Geometric mean measurement identifier.
+     */
     public static final int GMEAN = 2;
+
+    /**
+     * Standard accuracy identifier.
+     */
     public static final int STANDARDACCURACY = 3;
     private int nl;
 
@@ -1952,12 +2271,14 @@ public class ProcessConfig {
     }
 
     private String lastRel = new String();
+    
     /**
      * <p>
      *  Skips the header of the results file.
      *  
      * </p>
      * @param in the stream to read.
+     * @return string table with valid values for outputs
      */
     public String[] skipHeader(BufferedReader in) {
 

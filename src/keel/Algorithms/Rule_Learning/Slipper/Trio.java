@@ -27,7 +27,18 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Rule_Learning.Slipper;
+
+import keel.Dataset.*;
+
 /**
+ * <p>
+ * <i>Auxiliar class.<\i>
+ * It counts the number of instances (positive and negative) that contains a given value.
+ * of a given attribute in a dataset.
+ * </p>
  * <p>
  * @author Written by Alberto Fernández (University of Granada)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,20 +46,7 @@
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Rule_Learning.Slipper;
-
-import keel.Dataset.*;
-
-
 public class Trio {
-/** 
- * <p>
- * <i>Auxiliar class.<\i>
- * It counts the number of instances (positive and negative) that contains a given value.
- * of a given attribute in a dataset.
- * </p>
- */
 	
   //Atribute's value.
   private double clave;

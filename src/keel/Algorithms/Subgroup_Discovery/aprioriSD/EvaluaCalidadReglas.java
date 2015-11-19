@@ -212,6 +212,7 @@ public class EvaluaCalidadReglas {
     }
 
 
+    
     public void ajustaDistribucion(ConjDatos train) {
         int cl;
         for (int i = 0; i < train.size(); i++) { //Para cada ej.

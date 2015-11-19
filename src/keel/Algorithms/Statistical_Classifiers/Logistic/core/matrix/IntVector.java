@@ -88,6 +88,7 @@ public class  IntVector implements Cloneable {
     
   /** Constructs an n-vector of a constant
    *  @param n    Length.
+     * @param s the value for all the elements
   */
   public IntVector( int n, int s ){
     this(n);
@@ -168,6 +169,8 @@ public class  IntVector implements Cloneable {
    *  two integers.
    *  @param i0 the first integer
    *  @param i1 the second integer 
+     * @return  an IntVector that stores all integers inclusively between
+   *  two integers.
    */
   public static IntVector  seq( int i0, int i1 ) {
     if( i1 < i0 ) throw new IllegalArgumentException("i1 < i0 ");
@@ -206,7 +209,8 @@ public class  IntVector implements Cloneable {
     return b;
   }
 
-  /** Returns the capacity of the vector 
+  /** Returns the capacity of the vector
+     * @return  the capacity of the vector
    */
   public int capacity() {
     return V.length;
@@ -241,12 +245,14 @@ public class  IntVector implements Cloneable {
   }
   
   /** Makes a deep copy of the vector
+     * @return a deep copy of the vector 
    */
   public IntVector  copy() { 
     return (IntVector) clone();
   }
     
   /** Clones the IntVector object.
+     * @return the IntVector object. 
    */
   public Object  clone() { 
     IntVector u = new IntVector( size() );
@@ -317,6 +323,7 @@ public class  IntVector implements Cloneable {
   
   /** 
    * Returns true if the vector is empty
+     * @return true if the vector is empty 
    */
   public boolean  isEmpty() {
     if( size() == 0 ) return true;
@@ -332,6 +339,7 @@ public class  IntVector implements Cloneable {
   /** Convert the IntVecor to a string
    *  @param digits number of digits to be shown
    *  @param trailing true if trailing zeros are to be shown
+     * @return String representation of the IntVector.
    */ 
   public String  toString( int digits, boolean trailing ) {
     if( isEmpty() ) return "null vector";
@@ -359,6 +367,7 @@ public class  IntVector implements Cloneable {
 
   /** 
    *  Tests the IntVector class
+     * @param args main args.
    */
   public static void  main( String args[] ) {
     

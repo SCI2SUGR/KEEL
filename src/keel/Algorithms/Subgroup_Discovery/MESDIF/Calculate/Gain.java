@@ -27,16 +27,17 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate;
+
 /**
- * <p>
+ * <p> This class is defined to manage the information gain of each attribute of the dataset
  * @author Written by Pedro González (University of Jaen) 15/08/2004
  * @version 1.0
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate;
-
 public class Gain {
     /**
      * <p>

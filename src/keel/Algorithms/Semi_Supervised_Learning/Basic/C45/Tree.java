@@ -310,6 +310,7 @@ public class Tree {
 
     /** Function to print the tree.
      *
+     * @return String representation of the tree.
      */
     public String toString() {
         try {
@@ -574,7 +575,11 @@ public class Tree {
         }
     }
     
-	public int coveredSamples () {
+    /**
+     * Returns the number of samples covered.
+     * @return the number of samples covered.
+     */
+    public int coveredSamples () {
 		int cover = 0;
 		
 		if ((isLeaf) || (sons.length == 0)) {
@@ -589,7 +594,11 @@ public class Tree {
 		return cover;
 	}
 
-	public ArrayList <Integer> leafsSize() {
+    /**
+     * Returns the number of samples covered by each leaves.
+     * @return the number of samples covered by each leaves.
+     */
+    public ArrayList <Integer> leafsSize() {
 		ArrayList <Integer> leafSize;
 		
 		leafSize = new ArrayList <Integer> (NumberOfLeafs);
@@ -608,7 +617,12 @@ public class Tree {
 		return leafSize;
 	}
 	
-	public int classifyingLeaf (Itemset itemset) {
+    /**
+     * Classifies the given item.
+     * @param itemset given item to classify.
+     * @return predicted class of the item given.
+     */
+    public int classifyingLeaf (Itemset itemset) {
         int treeIndex;
         
         if (isLeaf) {

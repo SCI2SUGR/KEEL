@@ -222,6 +222,8 @@ TechnicalInformationHandler {
 	/** coefficients used by normalization filter for doing its linear transformation 
 	 * so that result = svmoutput * m_x1 + m_x0 **/
 	protected double m_x1 = 1.0;
+        /** coefficients used by normalization filter for doing its linear transformation 
+	 * so that result = svmoutput * m_x1 + m_x0 **/
 	protected double m_x0 = 0.0;
 
 	/** contains the algorithm used for learning **/

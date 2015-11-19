@@ -258,7 +258,7 @@ public class Dataset {
     }
 
     /**
-     * It returns the types of each input (NOMINAL[0] or NUMERICAL[1])
+     * It returns the types of each input (NOMINAL[0] or NUMERIC[1])
      * @return int[] An array that contains 0 or 1 wether the attributes are nominal or numerical
      */
     public int[] tiposVar() {

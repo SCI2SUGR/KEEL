@@ -27,22 +27,23 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import org.core.Files;
 
+/**
+ * <p>Defines the DNF individual of the population
+ * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class IndDNF extends Individual {
     /**
      * <p>
-     * Defines the DNF individual of the population
+     *  Individual contents (DNF chromosome).
      * </p>
      */
 

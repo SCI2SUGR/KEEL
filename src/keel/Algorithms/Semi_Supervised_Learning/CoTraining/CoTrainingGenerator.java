@@ -84,7 +84,14 @@ public class CoTrainingGenerator extends PrototypeGenerator {
  private String classifier2; 
  private String final_classifier; 
  private int InitialPOOL;
-  protected int numberOfPrototypes;  // Particle size is the percentage
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+
+    /**
+     * Number of classes.
+     */
   protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
@@ -92,10 +99,17 @@ public class CoTrainingGenerator extends PrototypeGenerator {
   
   /**
    * Build a new CoTrainingGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public CoTrainingGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -109,7 +123,8 @@ public class CoTrainingGenerator extends PrototypeGenerator {
    * Build a new CoTrainingGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public CoTrainingGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -131,9 +146,11 @@ public class CoTrainingGenerator extends PrototypeGenerator {
 
   }
   
-  
-  
-  public void cambiarContextoAttributes()throws Exception{
+    /**
+     * Changes the context of the attributes.
+     * @throws Exception if the context can not be changed.
+     */
+    public void cambiarContextoAttributes()throws Exception{
 	  // Return to the same Attributes problem.
 	  Attributes.clearAll();
 	  InstanceSet mojon2 = new InstanceSet();
@@ -144,9 +161,10 @@ public class CoTrainingGenerator extends PrototypeGenerator {
       PrototypeSet intercambio = new PrototypeSet(mojon2);
   }
   
-
-
-  public void getSolicitaGarbageColector(){
+    /**
+     * Asks for the garbage collector.
+     */
+    public void getSolicitaGarbageColector(){
 
 	  try{
 	//  System.out.println( "********** INICIO: 'LIMPIEZA GARBAGE COLECTOR' **********" );
@@ -165,12 +183,11 @@ public class CoTrainingGenerator extends PrototypeGenerator {
   }
   
   
-  /**
-   * Apply the CoTrainingGenerator method.
-   * @return 
-   */
-  
-  
+    /**
+     * Apply the CoTraining method.
+     * @return transductive test sets.
+     * @throws java.lang.Exception if the algorithm can not be applied.
+     */
   public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm Co-TRAINING is starting...\n Computing...\n");

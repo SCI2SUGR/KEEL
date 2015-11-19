@@ -27,8 +27,12 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
+
 /**
- * <p>
+ * <p> Class defined to store the data characteristics
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 04/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 30/06/2010
@@ -36,15 +40,8 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
-
 public class TypeDat {
-    /**
-     * <p>
-     * Class defined to store the data characteristics
-     * </p>
-     */
+    
 
     private float[] ejemplo;    // Example values for all of the variables
     private int clase;          // Class of the example for the target var

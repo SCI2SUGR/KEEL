@@ -27,8 +27,15 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
+
+import org.core.*;
+
 /**
- * <p>
+ * <p>Methods to define the genetic algorithm and to apply operators and reproduction schema
+     * 
  * @author Writed by Pedro González (University of Jaen) 22/08/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 30/06/2010
@@ -36,11 +43,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
-
-import org.core.*;
-
 public class Genetic {
     /**
      * <p>
@@ -466,10 +468,11 @@ public class Genetic {
 
     /**
      * <p>
-     * Get the measures of a single rule of the main population
+     * Get the measurements of a single rule of the main population
      * </p>
      * @param pos           Position of the individual
      * @param nFile         Name of the file to write the values
+     * @return  the measures of a single rule of the main population 
      */
     public QualityMeasures getQualityMeasures (int pos, String nFile) {
         return poblac.getMedidas(this, pos, nFile);
@@ -477,10 +480,11 @@ public class Genetic {
 
     /**
      * <p>
-     * Get the measures of a single rule of the elite population
+     * Get the measurements of a single rule of the elite population
      * </p>
      * @param pos           Position of the individual
      * @param nFile         Name of the file to write the values
+     * @return  the measurements of a single rule of the elite population
      */
     public QualityMeasures getQualityMeasuresElite (int pos, String nFile) {
         return elite.getMedidas(this, pos, nFile);

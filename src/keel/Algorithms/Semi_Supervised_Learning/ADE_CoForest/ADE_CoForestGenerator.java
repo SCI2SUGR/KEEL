@@ -103,7 +103,14 @@ protected int m_KValue = 0;
 // private String final_classifier; 
 
  /// Particle size is the percentage 
-  protected int numberOfPrototypes;  
+  
+    /**
+     * Number of prototypes to generated.
+     */
+      protected int numberOfPrototypes; 
+      /**
+     * Number of classes.
+     */
   protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
@@ -114,8 +121,16 @@ protected int m_KValue = 0;
   
   /**
    * Build a new ADE_CoForestGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors Number of neighbours considered.
+     * @param poblacion population size.
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations.
+     * @param c2 Class 2.
+     * @param c1 Class 1.
+     * @param vmax max value.
+     * @param wend ending value of w.
+     * @param wstart starting value of w.
    */
   
   public ADE_CoForestGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
@@ -131,7 +146,8 @@ protected int m_KValue = 0;
    * Build a new ADE_CoForestGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+   * @param test Test prototype set.
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public ADE_CoForestGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -368,8 +384,13 @@ protected int m_KValue = 0;
     else return false;
   }
 
-  
-  public int votingRule(Prototype inst) throws Exception{
+    /**
+     * Predicted class of the given prototype.
+     * @param inst given prototype.
+     * @return predicted class of the given prototype.
+     * @throws Exception
+     */
+    public int votingRule(Prototype inst) throws Exception{
 	  
 	    double[] res = new double[this.numberOfClass];
 	    for(int j = 0; j < this.num_classifier; j++)
@@ -409,8 +430,10 @@ protected int m_KValue = 0;
   
   /**
    * 
-   * Depuration algorithm
-   * @return
+   * Depuration algorithm. Filters the prototypes from the given set T.
+     * @param T set to be filtered.
+     * @param labeled labeled prototypes ued to filter the rest.
+   * @return Filtered Prototypes.
    */
   protected PrototypeSet removeOnly (PrototypeSet T, PrototypeSet labeled)
   {
@@ -482,10 +505,9 @@ protected int m_KValue = 0;
   
   /**
    * Apply the ADE_CoForestGenerator method.
-   * @return 
+   * @return Pair of prototypes set (transductive, test)
+     * @throws java.lang.Exception if the algorithm can not be applied.
    */
-  
-  
   public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm ADE_CoForest is starting...\n Computing...\n");

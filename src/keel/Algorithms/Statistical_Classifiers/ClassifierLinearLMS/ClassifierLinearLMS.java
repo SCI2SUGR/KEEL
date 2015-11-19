@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
-* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
+
 
 
 package keel.Algorithms.Statistical_Classifiers.ClassifierLinearLMS;
@@ -50,13 +43,19 @@ import java.util.Vector;
 
 
 
-
-public class ClassifierLinearLMS {
-	/**
+/**
 	* <p>
 	* In this class, a linear classifier using Least Mean Squares is implemented 
 	* </p>
-	*/	
+* <p>
+* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
+* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
+public class ClassifierLinearLMS {
+	
 	static Randomize rand;
 	/**
 	* <p>

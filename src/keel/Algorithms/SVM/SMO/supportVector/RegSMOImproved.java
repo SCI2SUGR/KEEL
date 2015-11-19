@@ -133,12 +133,35 @@ public class RegSMOImproved
   /** for serialization */
   private static final long serialVersionUID = 471692841446029784L;
   
-  public final static int I0 = 3;
-  public final static int I0a = 1;
-  public final static int I0b = 2;
-  public final static int I1 = 4;
-  public final static int I2 = 8;
-  public final static int I3 = 16;
+    /**
+     * Configuration flags
+     */
+    public final static int I0 = 3;
+
+    /**
+     * Configuration flags
+     */
+    public final static int I0a = 1;
+
+    /**
+     * Configuration flags
+     */
+    public final static int I0b = 2;
+
+    /**
+     * Configuration flags
+     */
+    public final static int I1 = 4;
+
+    /**
+     * Configuration flags
+     */
+    public final static int I2 = 8;
+
+    /**
+     * Configuration flags
+     */
+    public final static int I3 = 16;
   
   /** The different sets used by the algorithm. */
   protected SMOset m_I0;

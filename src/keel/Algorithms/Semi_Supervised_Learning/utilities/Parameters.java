@@ -41,7 +41,15 @@ import java.util.ArrayList;
  */
 public class Parameters extends ArrayList<String>
 {
+
+    /**
+     * Configuration text (seed).
+     */
     public static final String SEED_TXT = "seed";
+
+    /**
+     * Configuration text (reduction size).
+     */
     public static final String PERC_SIZE_TXT = "reduction size respect training size";
     
     /** Names of the parameteres. */
@@ -50,13 +58,23 @@ public class Parameters extends ArrayList<String>
     /** Contains the message of correct use to the user of the program. */
     protected static String use = null;
     
+    /**
+     * Contains the name of the parameters file.
+     */
     protected static String name = null;
     
     /** Current parameter */
     int current=0;
     
+    /**
+     * Index of the extended argument.
+     */
     protected static int indexExtendedArg = 2;
     
+    /**
+     * Return the name of parameters file.
+     * @return the name of parameters file.
+     */
     public static String getFileName()
     {
         if(name==null)
@@ -72,11 +90,20 @@ public class Parameters extends ArrayList<String>
         Debug.goout(use);
     }
     
+    /**
+     * Constructs the Parameters class (the String's array) with the size given. 
+     * @param _size size given.
+     */
     public Parameters(int _size)
     {
         super(_size);
     }
     
+    /**
+     Constructs the Parameters class (the String's array) with the array given. 
+     *
+     * @param args array given. 
+     */
     public Parameters(String[] args)
     {
         super(args.length);
@@ -84,6 +111,11 @@ public class Parameters extends ArrayList<String>
             add(s);
     }
     
+     /**
+     Constructs the Parameters class (the String's array) with the array given. 
+     *
+     * @param args array given. 
+     */
     public Parameters(ArrayList<String> args)
     {
         super(args.size());
@@ -91,6 +123,12 @@ public class Parameters extends ArrayList<String>
             add(s);
     }
     
+        /**
+     Constructs the Parameters class (the String's array) with the parameters array given and their names. 
+     *
+     * @param names given parameters names.
+     * @param args given parameters array.
+     */
     public Parameters(String[] names, String[] args)
     {
         super(args.length);
@@ -111,11 +149,21 @@ public class Parameters extends ArrayList<String>
         return names.get(index);
     }
     
+    /**
+     * Parses as Integer the parameter with the given index
+     * @param index given index of the parameter to be parsed
+     * @return integer parsed.
+     */
     public int getInt(int index)
     {
         return Integer.parseInt(get(index));
     }
     
+     /**
+     * Parses as Double the parameter with the given index
+     * @param index given index of the parameter to be parsed
+     * @return Double parsed.
+     */
     public double getDouble(int index)
     {
         return Double.parseDouble(get(index));
@@ -162,6 +210,10 @@ public class Parameters extends ArrayList<String>
         return stringArray;
     }
     
+    /**
+     * Returns the parameters that have not been parsed yet.
+     * @return the parameters that have not been parsed yet.
+     */
     public String[] getRemainingParameters()
     {
         int _size = size();

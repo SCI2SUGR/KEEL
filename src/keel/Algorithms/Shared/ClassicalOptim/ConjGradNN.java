@@ -27,23 +27,14 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
 
 package keel.Algorithms.Shared.ClassicalOptim;
 
 import org.core.*;
 
-public class ConjGradNN {
 	/** 
 	* <p> 
-	* <pre>
+
 	* Optimized Classificator/Model by Conjugated Gradient.
 	* Also this class is a container for a perceptron neural network and implements the training methods:
 	*  * Conjugated Gradient: conjugatedGradient.
@@ -61,9 +52,17 @@ public class ConjGradNN {
     *			   | I			  H							  -
     *			   | I			  H							
     *			    - 
-	* <pre>
+
 	* </p> 
-	*/ 
+* <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+public class ConjGradNN {
+
 	//Random seed generator
     static Randomize r;
     //Number of Layers
@@ -741,7 +740,6 @@ public class ConjGradNN {
      *  
      * </p>
      *
-     * @return a String with a printable version of x. 
      */	 
     public void debugOutput() {
         double x[],y[],d[];

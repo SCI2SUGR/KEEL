@@ -27,7 +27,16 @@
   
 **********************************************************************/
 
-/**
+
+
+package keel.Algorithms.Rule_Learning.Ripper;
+
+import keel.Dataset.Attributes;
+
+/** Auxiliar class.
+ * It counts the number of instances (positive and negative) that contains a given value.
+ * of a given attribute in a dataset.
+ *
  * <p>
  * @author Written by Alberto Fernández (University of Granada)  15/10/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,18 +44,7 @@
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Rule_Learning.Ripper;
-
-import keel.Dataset.Attributes;
-
-
 public class Trio implements Comparable{
-/** <i>Auxiliar class.<\i>
- * It counts the number of instances (positive and negative) that contains a given value.
- * of a given attribute in a dataset.
- *
- */
 	
   private double clave; //Atribute's value.
   private int positivos; //positive instances of a given set that contains the value.

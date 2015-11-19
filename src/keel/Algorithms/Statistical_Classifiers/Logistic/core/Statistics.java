@@ -65,7 +65,7 @@ public class Statistics {
   /*************************************************
    *    COEFFICIENTS FOR METHOD  normalInverse()   *
    *************************************************/
-  /* approximation for 0 <= |y - 0.5| <= 3/8 */
+  /** approximation for 0 <= |y - 0.5| <= 3/8 */
   protected static final double P0[] = {
     -5.99633501014107895267E1,
     9.80010754185999661536E1,
@@ -73,6 +73,8 @@ public class Statistics {
     1.39312609387279679503E1,
     -1.23916583867381258016E0,
   };
+  
+    /** approximation for 0 <= |y - 0.5| <= 3/8 */
   protected static final double Q0[] = {
     /* 1.00000000000000000000E0,*/
     1.95448858338141759834E0,
@@ -85,7 +87,7 @@ public class Statistics {
     -1.18331621121330003142E0,
   };
   
-  /* Approximation for interval z = sqrt(-2 log y ) between 2 and 8
+  /** Approximation for interval z = sqrt(-2 log y ) between 2 and 8
    * i.e., y between exp(-2) = .135 and exp(-32) = 1.27e-14.
    */
   protected static final double P1[] = {
@@ -99,6 +101,10 @@ public class Statistics {
     -3.50424626827848203418E-2,
     -8.57456785154685413611E-4,
   };
+  
+    /** Approximation for interval z = sqrt(-2 log y ) between 2 and 8
+   * i.e., y between exp(-2) = .135 and exp(-32) = 1.27e-14.
+   */
   protected static final double Q1[] = {
     /*  1.00000000000000000000E0,*/
     1.57799883256466749731E1,
@@ -111,7 +117,7 @@ public class Statistics {
     -9.33259480895457427372E-4,
   };
   
-  /* Approximation for interval z = sqrt(-2 log y ) between 8 and 64
+  /** Approximation for interval z = sqrt(-2 log y ) between 8 and 64
    * i.e., y between exp(-32) = 1.27e-14 and exp(-2048) = 3.67e-890.
    */
   protected static final double  P2[] = {
@@ -125,6 +131,10 @@ public class Statistics {
     2.65806974686737550832E-6,
     6.23974539184983293730E-9,
   };
+  
+    /** Approximation for interval z = sqrt(-2 log y ) between 8 and 64
+   * i.e., y between exp(-32) = 1.27e-14 and exp(-2048) = 3.67e-890.
+   */
   protected static final double  Q2[] = {
     /*  1.00000000000000000000E0,*/
     6.02427039364742014255E0,
@@ -789,6 +799,7 @@ public class Statistics {
    * @param aa the alpha parameter of the beta distribution.
    * @param bb the beta parameter of the beta distribution.
    * @param xx the integration end point.
+     * @return  the Incomplete Beta Function evaluated from zero to <tt>xx</tt>.
    */
   public static double incompleteBeta( double aa, double bb, double xx ) {
 
@@ -1072,6 +1083,7 @@ public class Statistics {
 
   /**
    * Main method for testing this class.
+     * @param ops main args.
    */
   public static void main(String[] ops) {
 

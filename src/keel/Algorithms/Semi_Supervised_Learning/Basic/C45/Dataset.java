@@ -103,10 +103,8 @@ public class Dataset {
 
 
     
-   /** Function to read the .dat file that contains the information of the dataset.
-    *
-    * @param name 		The reader object where the itemsets are readed.
-    * @param train     The flag if the file is for training
+   /** Sets the training instances set given as parameter.
+     * @param train given instaces set
     */
    public Dataset(InstanceSet train) {
        IS = train;
@@ -329,6 +327,7 @@ public class Dataset {
 
     /** Returns the name of the dataset.
      *
+     * @return the name of the dataset. 
      */
     public String getName() {
         return name;
@@ -337,6 +336,7 @@ public class Dataset {
     /** Returns the attribute that has the index.
      *
      * @param index		The index of the attribute.
+     * @return the attribute that has the index. 
      */
     public final Attribute getAttribute(int index) {
         return (Attribute) attributes.elementAt(index);
@@ -345,6 +345,7 @@ public class Dataset {
     /** Returns the attribute that has the name.
      *
      * @param name	The name of the attribute.
+     * @return the attribute that has the name. 
      */
     public final Attribute getAttribute(String name) {
         for (int i = 0; i < attributes.size(); i++) {
@@ -359,6 +360,7 @@ public class Dataset {
 
     /** Returns class attribute.
      *
+     * @return class attribute. 
      */
     public final Attribute getClassAttribute() {
         if (classIndex < 0) {
@@ -370,6 +372,7 @@ public class Dataset {
 
     /** Returns the index of the class attribute.
      *
+     * @return the index of the class attribute. 
      */
     public final int getClassIndex() {
         return classIndex;
@@ -377,6 +380,7 @@ public class Dataset {
 
     /** Returns the number of attributes.
      *
+     * @return the number of attributes. 
      */
     public final int numAttributes() {
         return attributes.size();
@@ -384,6 +388,8 @@ public class Dataset {
 
     /** Returns the number of possible values of the class attribute.
      *
+     * @return the number of possible values of the class attribute.
+     * 
      */
     public final int numClasses() {
         if (classIndex < 0) {
@@ -395,6 +401,7 @@ public class Dataset {
 
     /** Returns the number of itemsets.
      *
+     * @return the number of itemsets. 
      */
     public final int numItemsets() {
         return itemsets.size();
@@ -451,6 +458,7 @@ public class Dataset {
     /** Returns the itemset at the given position.
      *
      * @param index	The index of the itemset.
+     * @return the itemset at the given position. 
      */
     public final Itemset itemset(int index) {
         return (Itemset) itemsets.elementAt(index);
@@ -458,6 +466,7 @@ public class Dataset {
 
     /** Returns the last itemset.
      *
+     * @return the last itemset. 
      */
     public final Itemset lastItemset() {
         return (Itemset) itemsets.lastElement();

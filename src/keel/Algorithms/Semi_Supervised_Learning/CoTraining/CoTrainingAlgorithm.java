@@ -51,9 +51,11 @@ import java.util.*;
 public class CoTrainingAlgorithm extends PrototypeGenerationAlgorithm<CoTrainingGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new CoTrainingGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype CoTrainingGenerator object with data and parameters full load. 
      */
     protected CoTrainingGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

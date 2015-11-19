@@ -89,6 +89,12 @@ public class Queue
 
     /** 
      * Creates a queue node with the given contents 
+     *
+     * @param contents given contents.
+     * @requires contents != null;
+     * @assignable m_Contents, m_Next;
+     * @ensures m_Contents == contents;
+     * @ensures m_Next == null;
      */
     //@ requires contents != null;
     //@ assignable m_Contents, m_Next;
@@ -101,36 +107,42 @@ public class Queue
 
     /**
      * Sets the next node in the queue, and returns it.
+     * @param next node to set as next.
+     * @return the next noded already set.
+     * @requires next != this ;
+     * @assignable m_Next;
+     * @ensures m_Next==next && \result==next;
      */
-    //@ requires next != this ;
-    //@ assignable m_Next;
-    //@ ensures m_Next==next && \result==next;
     public QueueNode next(QueueNode next) {
       return m_Next = next;
     } //@ nowarn Invariant; // Because it stupidly checks the Queue invariant!
 
     /**
      * Gets the next node in the queue. 
+       * @return the next node in the queue.  
+       * @ensures \result == m_Next;
      */
-    //@ ensures \result == m_Next;
     public /*@ pure @*/ QueueNode next() {
       return m_Next;
     }
 
     /**
      * Sets the contents of the node.
+       * @param contents  the contents to set.
+       * @return the contents already set
+       * @requires contents != null;
+       * @assignable m_Contents;
+       * @ensures  m_Contents == contents && \result == contents;
      */
-    //@ requires contents != null;
-    //@ assignable m_Contents;
-    //@ ensures  m_Contents == contents && \result == contents;
     public Object contents(Object contents) {
       return m_Contents = contents;
     }
 
     /**
      * Returns the contents in the node.
+       * @return the contents in the node.
+       * @ensures \result == m_Contents;
      */
-      //@ ensures \result == m_Contents;
     public /*@ pure @*/ Object contents() {
       return m_Contents;
     }

@@ -27,19 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import org.core.*;
 
-
+/**
+ * <p> This implementation uses boolean values to store the genes values.
+     * It is used to store DNF rules, so that each variable can can get more than one value at a time.
+     * Each gene is an array of boolean values, false indicates that the value is not present,
+     * true indicates that the value is present
+ * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Gene {
     /**
      * <p>

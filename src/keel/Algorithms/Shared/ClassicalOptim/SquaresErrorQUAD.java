@@ -27,7 +27,16 @@
   
 **********************************************************************/
 
-/** 
+
+
+package keel.Algorithms.Shared.ClassicalOptim;
+
+	/**
+     * <p>
+     * Derived class from FUN that implements the error for a perceptron trained with quadratic conjugated gradient.
+     * 
+     * </p>
+     * 
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,22 +44,13 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Shared.ClassicalOptim;
-
 public class SquaresErrorQUAD extends FUN {
-	/**
-     * <p>
-     * Derived class from FUN that implements the error for a perceptron trained with quadratic conjugated gradient.
-     * 
-     * </p>
-     * 
-     */
+
 	//input examples
     double[][] input;
     //expected output
     double[][] output;
-    //Neural network container. 
+    /**Neural network container. */
     public ConjGradQUAD Cua;
     /**
      * <p>

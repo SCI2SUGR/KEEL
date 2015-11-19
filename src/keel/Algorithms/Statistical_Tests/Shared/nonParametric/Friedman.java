@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * File: Multiple.java
- * 
- * This class performs several statisticla comparisons between 1xN methods
- * 
- * @author Written by Joaquín Derrac (University of Granada) 29/04/2010
- * @version 1.1 
- * @since JDK1.5
-*/
+
 package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
 
 import java.text.DecimalFormat;
@@ -46,6 +38,15 @@ import keel.Algorithms.Statistical_Tests.Shared.StatTest;
 
 import org.core.*;
 
+/**
+ * File: Friedman.java
+ * 
+ * This class performs several statistical comparisons between 1xN methods
+ * 
+ * @author Written by Joaquín Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
+*/
 public class Friedman {
 	
 	private boolean Iman, Nemenyi, Bonferroni, Holm, Hoch, Hommel, Scha, Berg, Holland, Rom, Finner, Li; //post-hoc methods to apply

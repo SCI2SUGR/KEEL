@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Rule_Learning.Ritio;
 
+
+
+import java.io.IOException;
+import org.core.*;
+import java.util.*;
+
 /**
  * <p>Title: Algorithm</p>
  *
@@ -37,14 +43,9 @@ package keel.Algorithms.Rule_Learning.Ritio;
  *
  * <p>Company: KEEL </p>
  *
- * @author JesÃºs JimÃ©nez
+ * @author Jesús Jiménez
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-import java.util.*;
-
 public class Algorithm {
 
     myDataset train, val, test;

@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Rosa Venzala (University of Granada) 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Rule_Learning.Prism;
 
@@ -47,12 +40,16 @@ import java.util.Arrays;
 import java.util.*;
 import org.core.*;
 
-public class Main {
 /**
- * <p>
- * Reads the parameters y starts the PRISM CD algorithm
+ * <p>Reads the parameters y starts the PRISM CD algorithm
+ * @author Written by Rosa Venzala (University of Granada) 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Main {
+    
     private String ficheroTrain;
     private String ficheroEval; 
     private String ficheroTest;

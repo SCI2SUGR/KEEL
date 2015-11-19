@@ -54,8 +54,10 @@ class Element<IndexType,ElementType>
 }
 
 /**
- *
+ * Hash Sparse Matrix implementation. Empty. Not useful.
  * @author diegoj
+ * @param <IndexType> Hash index type.
+ * @param <ElementType> Hash element type.
  */
 public class HashSparseMatrix<IndexType, ElementType>
 {

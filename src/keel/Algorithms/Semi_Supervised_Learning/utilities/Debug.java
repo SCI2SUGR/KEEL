@@ -100,6 +100,11 @@ public class Debug
         }
     }
     
+    /**
+     * Prints a message and a array of doubles in the standard console.
+     * @param mess Message to be printed.
+     * @param array Array to be printed.
+     */
     public static void print(String mess, ArrayList<Double> array)
     { 
         if(STD_DEBUG_MODE)

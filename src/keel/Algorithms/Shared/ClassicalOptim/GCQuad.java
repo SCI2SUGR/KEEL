@@ -27,7 +27,17 @@
   
 **********************************************************************/
 
-/** 
+
+
+package keel.Algorithms.Shared.ClassicalOptim;
+import org.core.*;
+
+	/** 
+	* <p> 
+	* <pre>
+	* Wrapper for a perceptron (ConjGradQUAD).
+	* </pre>
+	* </p> 
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,18 +45,8 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Shared.ClassicalOptim;
-import org.core.*;
-
 public class GCQuad {
-	/** 
-	* <p> 
-	* <pre>
-	* Wrapper for a perceptron (ConjGradQUAD).
-	* </pre>
-	* </p> 
-	*/
+
     
     // Stop parameters
     static final int MAX_ITER=10000;        // Maximum number of iterations

@@ -35,13 +35,13 @@
 package keel.Algorithms.Rule_Learning.Rules6;
 
 /**
- * <p>Title: Clase Atributo_Valor</p>
+ * <p>Title: Atributo_Valor class (Attribute_value)</p>
  *
- * <p>Description: Se encarga de almacenar y manejar objetos compuesto por un entero y un double</p>
+ * <p>Description: It stores the index of an attribute and a certein value of it. </p>
  *
  * <p>Company: KEEL</p>
  *
- * @author Ismael Duque GarcÃ­a
+ * @author Ismael Duque García
  * @version 1.0
  */
 
@@ -50,21 +50,37 @@ public class Atributo_valor {
     private Integer atributo;
     private Double valor;
     
+    /**
+     * Default constructor.
+     */
     public Atributo_valor(){}
     
+    /**
+     * Parameter constructor.
+     * @param aAtributo attribute index to set.
+     * @param aValor value of the attribute.
+     */
     public Atributo_valor(Integer aAtributo, Double aValor){
         atributo=aAtributo;
         valor=aValor;
     }
     
+    /**
+     * Returns the attribute index.
+     * @return the attribute index.
+     */
     public Integer getAtributo(){return this.atributo;}
     
+    /**
+     * Returns the value of the attribute stored.
+     * @return the value of the attribute stored.
+     */
     public Double getValor(){return this.valor;}
     
     /**
-     * Compara dos objetos de la clase
-     * @param a Atributo_valor Objeto con el que comparar
-     * @return boolean Verdadero si son iguales, Falso si son distintos
+     * Compares two objects, checking if they are equals.
+     * @param a Atributo_valor Object to compare with.
+     * @return boolean True if they are equals, False otherwise. 
      */
     public boolean equals(Atributo_valor a){
         return ((a.atributo.equals(this.atributo)) && (a.valor.equals(this.valor)));

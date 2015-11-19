@@ -29,33 +29,60 @@
 
 package keel.Algorithms.Semi_Supervised_Learning.Basic;
 
+/**
+ * Implements a normal distribution function.
+ */
 public class NormalDistribution{
 	
 	private double mu;
 	private double sigma;
 	
-	public void setMean(double value){
+    /**
+     * Sets the mean of the distribution.
+     * @param value mean value to set.
+     */
+    public void setMean(double value){
 		mu=value;
 	}
 	
-	public void setSigma(double value){
+    /**
+     * Sets the sigma of the distribution. 
+     * @param value sigma value to set.
+     */
+    public void setSigma(double value){
 		sigma=value;
 	}
 	
-	public double getMean(){
+    /**
+     * Returns the mean value of the distribution.
+     * @return the mean.
+     */
+    public double getMean(){
 		return mu;
 	}
 	
-	public double getSigma(){
+    /**
+     * Returns the sigma value of the distribution.
+     * @return the sigma.
+     */
+    public double getSigma(){
 		return sigma;
 	}
 
-	public NormalDistribution(){
+    /**
+     * Default constructor.
+     */
+    public NormalDistribution(){
 		
 		
 	}
 
-	public double getProbability(double x){
+    /**
+     * Returns the probability for the given value.
+     * @param x value to get its probability.
+     * @return the probability for the given value.
+     */
+    public double getProbability(double x){
 		
 		double value=0.0;
 		
@@ -66,7 +93,12 @@ public class NormalDistribution{
 		return value;
 	}
 	
-	public double getCumulatedProbability(double x){
+    /**
+     * Returns the accumulated probability for the given value.
+     * @param x value to get its probability.
+     * @return the accumulated probability for the given value.
+     */
+    public double getCumulatedProbability(double x){
 		
 		double value;
 		
@@ -144,6 +176,13 @@ public class NormalDistribution{
      * From http://home.online.no/~pjacklam/notes/invnorm/
      * Error is bounded to 1.15E-09
      * */
+
+    /**
+     * Returns the value with the probability given as parameter (inverse normal distribution function).
+     * @param p given probability.
+     * @return the value with the probability given as parameter  
+     */
+    
     public double inverseNormalDistribution(double p){
     	
     	   double a1 = -3.969683028665376e+01;

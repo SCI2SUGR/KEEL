@@ -27,8 +27,14 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
+
+import org.core.*;
+
 /**
- * <p>
+ * <p>Population of candidate rules
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 30/06/2010
@@ -36,11 +42,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
-
-import org.core.*;
-
 public class Population {
     /**
      * <p>
@@ -50,6 +51,10 @@ public class Population {
 
     private Individual indivi [];    // Population individuals
     private int num_indiv;           // Max number of individuals in the population
+
+    /**
+     * Number of individuals really used
+     */
     public int num_used;             // Number or individuals really used
 
     private int strength[];          // To store the strength of each individual in the pop
@@ -129,6 +134,7 @@ public class Population {
        * Evaluates individuals from 0 to this.num_used (not all the individuals)
        * and computes "original support"
        *
+     * @param AG Genetic algorithm used.
        * @param number          Evaluate first "number" individuals
        * @param Variables       Variables structure
        * @param Examples        Examples structure
@@ -183,6 +189,7 @@ public class Population {
        * Evaluates an individual of the population
        * </p>
        * @param pos             Position of the individual
+     * @param AG Genetic Algorithm used.
        * @param Variables       Variables structure
        * @param Examples        Examples structure
        */
@@ -193,11 +200,12 @@ public class Population {
       
       /**
        * <p>
-       * Get the measures of a single rule
+       * Get the measurements of a single rule
        * </p>
        * @param AG                  Instance of the genetic algorithm
        * @param pos             Position of the individual
        * @param nFile           File to write the measures
+     * @return  the measurements of a single rule
        */
       public QualityMeasures getMedidas (Genetic AG, int pos, String nFile) {
           if (!getIndivEvaluated(pos)) {
@@ -233,6 +241,7 @@ public class Population {
       /**
        * Eliminates de duplicated individuals of the population
        *     from the first individual to number max (not to the total number of individuals)
+     * @param max number given.
        * @return pos: Number of individuals left in the population
        */
       public int delDup (int max) {

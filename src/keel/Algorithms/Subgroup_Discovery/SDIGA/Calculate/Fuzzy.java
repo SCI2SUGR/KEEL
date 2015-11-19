@@ -27,16 +27,16 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.Calculate;
+
 /**
- * <p>
+ * <p> Class for a fuzzy set definition
  * @author Written by Pedro González (University of Jaen) 27/08/2004
  * @version 1.0
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.Calculate;
-
 public class Fuzzy {
     /**
      * <p>

@@ -27,7 +27,16 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Rule_Learning.Slipper;
+
+import java.util.Vector;
+
 /**
+ * Representation of a Trio's vector. It counts the number of instances (positive and negative) that contains each value
+ * for a given attribute in a dataset. Each element is a Trio in the form: {value,positives,negatives}
+ * 
  * <p>
  * @author Written by Alberto Fernández (University of Granada)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,19 +44,7 @@
  * @since JDK1.2
  * </p>
  */
-
-package keel.Algorithms.Rule_Learning.Slipper;
-
-import java.util.Vector;
-
-
 public class Score {
-/**
- * <p>
- * Representation of a Trio's vector. It counts the number of instances (positive and negative) that contains each value
- * for a given attribute in a dataset. Each element is a Trio in the form: {value,positives,negatives}
- * </p>
- */
 	
   //vector of {value,positives,negatives}
   private Vector trios; 
@@ -227,7 +224,10 @@ public class Score {
     return ((Trio)trios.elementAt(pos)).getNegative()+((Trio)trios.elementAt(pos)).getPositive();
   }
 
-  public void sort(){
+    /**
+     * Sorts the trios stored with the mergesort algorithm.
+     */
+    public void sort(){
     if (trios.size()>1){
       Trio[] t = new Trio[trios.size()];
       trios.toArray(t);

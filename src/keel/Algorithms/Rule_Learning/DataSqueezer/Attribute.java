@@ -64,6 +64,8 @@ public class Attribute
 
   	/** Constructor for continuous attributes. 
   	 * 
+     * @param attributeName attribute name given.
+     * @param attributeIndex attribute index given.
   	 */
   	public Attribute( String attributeName, int attributeIndex  ) 
 	{
@@ -124,6 +126,7 @@ public class Attribute
 
   	/** Returns if the attribute is discret or not.
   	 * 
+     * @return True if the attribute is discret, false otherwise.
   	 */
   	public final boolean isDiscret() 
 	{
@@ -132,6 +135,7 @@ public class Attribute
 
   	/** Returns if the attribute is continuous or not.
   	 * 
+     * @return True if the attribute is continuous, false otherwise. 
   	 */
   	public final boolean isContinuous()
 	{
@@ -140,6 +144,7 @@ public class Attribute
 
   	/** Returns the name of the attribute.
   	 * 
+     * @return the name of the attribute. 
   	 */
   	public final String name() 
 	{
@@ -161,6 +166,7 @@ public class Attribute
   	/** Returns the value with the given index.
   	 * 
   	 * @param valIndex	The index of the value.
+     * @return the value with the given index.
   	 */
   	public final String value( int valIndex ) 
 	{
@@ -208,6 +214,8 @@ public class Attribute
 
   	/** Returns the minor value of a continuous attribute. 
   	 * 
+     * @return the minor value of a continuous attribute. 
+  	 *  
   	 */
     public final float getMinRange() 
   	{
@@ -219,6 +227,7 @@ public class Attribute
 
   	/** Gets the bigger value of a continuous attribute. 
   	 * 
+     * @return the bigger value of a continuous attribute.  
   	 */
     public final float getMaxRange() 
   	{
@@ -238,6 +247,7 @@ public class Attribute
     
     /** Returns true if this attribute used in output or input clause. 
      * 
+     * @return  true if this attribute used in output or input clause. 
      */
     public boolean isActive()
 	{
@@ -246,6 +256,7 @@ public class Attribute
 
     /** Returns the index of the attribute.
      * 
+     * @return  the index of the attribute.
      */
     public int getIndex()
 	{

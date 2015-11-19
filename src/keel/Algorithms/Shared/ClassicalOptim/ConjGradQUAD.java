@@ -27,7 +27,35 @@
   
 **********************************************************************/
 
-/** 
+
+
+package keel.Algorithms.Shared.ClassicalOptim;
+
+import org.core.*;
+
+	/** 
+	* <p> 
+	* 
+	* Quadratic optimized Classificator/Model by Conjugated Gradient.
+	* Also this class is a container for a perceptron neural network and implements the training methods:
+	*  * Conjugated Gradient: conjugatedGradient.
+	*  * Descendent Gradient: descentGradient.
+	*  
+	*  
+    *		  Input-Layer   Hidden Layer-i x nLayers    Output-Layer
+    *			    -
+    *			   | I            H							
+    *			   | I			  H							  - 
+    *			   | I			  H							O  |
+    *	nInputs    | I			  H							O  | nOutputs 
+    *			   | I			  H							O  |
+    *			   | I			  H							O  |
+    *			   | I			  H							  -
+    *			   | I			  H							
+    *			    - 
+	* 
+	* </p> 
+	
 * <p> 
 * @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
 * @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
@@ -35,11 +63,6 @@
 * @since JDK1.4 
 * </p> 
 */
-
-package keel.Algorithms.Shared.ClassicalOptim;
-
-import org.core.*;
-
 public class ConjGradQUAD {	
 	/** 
 	* <p> 

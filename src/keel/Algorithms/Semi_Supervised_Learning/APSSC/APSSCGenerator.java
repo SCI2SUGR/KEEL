@@ -76,18 +76,30 @@ public class APSSCGenerator extends PrototypeGenerator {
  private double evaporation;
  private double MT; //confidence
  
-  
-
-  protected int numberOfPrototypes;  // Particle size is the percentage
-  protected int numberOfClass;
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+  /**
+     * Number of classes.
+     */
+    protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
 
   
   /**
    * Build a new APSSCGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors Number of neighbours considered.
+     * @param poblacion population size.
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations.
+     * @param c2 Class 2.
+     * @param c1 Class 1.
+     * @param vmax max value.
+     * @param wend ending value of w.
+     * @param wstart starting value of w.
    */
   
   public APSSCGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
@@ -103,7 +115,8 @@ public class APSSCGenerator extends PrototypeGenerator {
    * Build a new APSSCGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Original test prototype set.
+   * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public APSSCGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {

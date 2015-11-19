@@ -97,7 +97,13 @@ protected int m_KValue = 0;
 
 // private String final_classifier; 
 
+     /**
+     * Number of prototypes.
+     */
   protected int numberOfPrototypes;  // Particle size is the percentage
+      /**
+     * Number of classes.
+     */
   protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
@@ -108,10 +114,17 @@ protected int m_KValue = 0;
   
   /**
    * Build a new CoForestGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public CoForestGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -125,7 +138,8 @@ protected int m_KValue = 0;
    * Build a new CoForestGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public CoForestGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -359,8 +373,13 @@ protected int m_KValue = 0;
     else return false;
   }
 
-  
-  public int votingRule(Prototype inst) throws Exception{
+    /**
+     * Classifies the instance given. Returns the predicted class for the instance given.
+     * @param inst given instance.
+     * @return the predicted class for the instance given.
+     * @throws Exception
+     */
+    public int votingRule(Prototype inst) throws Exception{
 	  
 	    double[] res = new double[this.numberOfClass];
 	    for(int j = 0; j < this.num_classifier; j++)
@@ -399,12 +418,11 @@ protected int m_KValue = 0;
 }
   
   
-  /**
-   * Apply the CoForestGenerator method.
-   * @return 
-   */
-  
-  
+    /**
+     * Apply the CoForestGenerator method.
+     * @return transductive test sets.
+     * @throws java.lang.Exception if the algorithm can not be applied.
+     */
   public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm CoForest is starting...\n Computing...\n");

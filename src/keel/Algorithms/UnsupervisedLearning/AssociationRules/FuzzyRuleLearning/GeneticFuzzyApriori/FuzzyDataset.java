@@ -30,7 +30,8 @@
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyApriori;
 
 /**
- * <p>
+ * <p>It represents a fuzzy dataset which is based on the original dataset and handles fuzzy transactions
+	 * 
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6

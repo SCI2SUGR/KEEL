@@ -29,15 +29,17 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
 
+
+import java.util.*;
+
 /**
- * <p>
+ * <p>It represents an itemset throughout the execution of the algorithm
+   * 
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.*;
 
 public class Itemset {
   /**
@@ -106,7 +108,7 @@ public class Itemset {
    * <p>
    * It allows to add an item into an itemset
    * </p>
-   * @param item An item to be added into the itemset
+   * @param newItemset An item to be added into the itemset
    */
   public void addItemset(Itemset newItemset) {
 	  for (int i=0; i < newItemset.size(); i++) {
@@ -160,7 +162,9 @@ public class Itemset {
    * <p>
    * It computes the support of an itemset
    * </p>
-   * @param fuzzyDataset The instance of the fuzzy dataset for dealing with its fuzzy transactions
+     * @param dataset dataset given used to compute the support.
+     * @param database The instance of the fuzzy dataset for dealing with its fuzzy transactions
+     * @param umbral degree threshold.
    * @return An array of integer representing the TIDs covered by the itemset
    */
   public String calculateSupport(myDataset dataset, DataBase database, double umbral) {

@@ -27,19 +27,10 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
 
 package keel.Algorithms.Shared.ClassicalOptim;
 import org.core.*;
 
-public class GCNet {   
 	/** 
 	* <p> 
 	* <pre>
@@ -48,7 +39,17 @@ public class GCNet {
 	*  * nntrainDG: for invoking the Descendent Gradient.
 	* </pre>
 	* </p> 
-	*/
+	
+* <p> 
+* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2004
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
+
+public class GCNet {   
+
     // Stop parameters 
     static final int MAX_ITER=10000;         // Maximum number of iterations
     static final double TOL_ERR=1.0e-8;      // Stop condition

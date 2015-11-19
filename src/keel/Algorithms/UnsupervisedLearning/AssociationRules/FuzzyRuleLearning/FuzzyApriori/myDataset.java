@@ -29,26 +29,33 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.FuzzyApriori;
 
+
+
+import java.io.IOException;
+import keel.Dataset.*;
+
 /**
- * <p>
+ * <p> It contains the methods to read a Dataset for the Association Rules Mining problem
+   * 
  * @author Written by Alvaro Lopez
  * @version 1.1
  * @since JDK1.6
  * </p>
  */
-
-import java.io.IOException;
-import keel.Dataset.*;
-
 public class myDataset {
-  /**
-   * <p>
-   * It contains the methods to read a Dataset for the Association Rules Mining problem
-   * </p>
-   */
-
+    
+    /**
+     * Number to represent type of variable nominal.
+     */
   public static final int NOMINAL = 0;
+  
+      /**
+     * Number to represent type of variable integer.
+     */
   public static final int INTEGER = 1;
+    /**
+     * Number to represent type of variable real or double.
+     */
   public static final int REAL = 2;
   
   private double[][] trueTransactions = null; //true transactions array
@@ -363,13 +370,23 @@ public class myDataset {
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getType() );
   }
   
+      /**
+   * It returns the type of the attribute as String in "id_attr"
+   * @param id_attr int Id of the attribute
+   * @return String the type of the attribute
+   */
   public String getAttributeTypeString(int id_attr) {
 	if (this.getAttributeType(id_attr) == myDataset.NOMINAL)  return ("NOMINAL");
 	else if (this.getAttributeType(id_attr) == myDataset.INTEGER)  return ("INTEGER");
 	else return ("REAL");
   }
 
-  public boolean isNominal(int id_attr) {
+    /**
+     * Checks if the given attribute is nominal.
+     * @param id_attr given attribute's id.
+     * @return True if the given attribute is nominal, False otherwise.
+     */
+    public boolean isNominal(int id_attr) {
 	if (id_attr < this.nInputs) {
 		if (Attributes.getInputAttribute(id_attr).getType() == myDataset.NOMINAL)  return (true);
 		else  return (false);

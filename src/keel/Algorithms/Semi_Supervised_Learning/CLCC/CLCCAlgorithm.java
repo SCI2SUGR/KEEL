@@ -51,9 +51,11 @@ import java.util.*;
 public class CLCCAlgorithm extends PrototypeGenerationAlgorithm<CLCCGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new CLCCGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype CLCCGenerator object with data and parameters full load. 
      */
     protected CLCCGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

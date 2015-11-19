@@ -27,19 +27,20 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Pedro González (University of Jaen) 15/02/2004
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.Calculate;
 
 import org.core.Files;
 import java.text.DecimalFormat;
 
+/**
+ * <p> Population of candidate rules
+ * @author Written by Pedro González (University of Jaen) 15/02/2004
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Population {
 
     /**

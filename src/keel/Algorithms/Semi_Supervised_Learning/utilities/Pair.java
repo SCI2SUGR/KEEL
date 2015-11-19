@@ -36,8 +36,8 @@ package keel.Algorithms.Semi_Supervised_Learning.utilities;
 
 /**
  * Implements a simple pair.
- * @param F Type of the first element of the pair.
- * @param S Type of the second element of the pair.
+ * @param <F>  Type of the first element of the pair.
+ * @param <S>  Type of the second element of the pair.
  * @author diegoj based on Wikipedia Pair java class (http://en.wikipedia.org/wiki/Generics_in_Java)
  */
 public class Pair <F, S> {
@@ -125,11 +125,21 @@ public class Pair <F, S> {
         return new Pair<S, F>(second, first);
     }
     
+    /**
+     * Checks if this pair is equals to the other given. The order matters
+     * @param other other pair to compare with.
+     * @return True if this pair is equals to the other given.
+     */
     public boolean equals(Pair<S, F> other)
     {
         return first.equals(other.first) && second.equals(other.second);
     }
     
+    /**
+     * Checks if this pair has the same elements as the one given. The order does not matter.
+     * @param other  other pair to compare with.
+     * @return True if this pair have the same elements as the one given.
+     */
     public boolean contains(Pair<S, F> other)
     {
         boolean straight = (first == other.first  &&  second == other.second);
@@ -137,6 +147,11 @@ public class Pair <F, S> {
         return straight || inverted;
     }
    
+    /**
+     * Checks if this pair has at least one element equals to one of the pair given. The order does not matter.
+     * @param other  other pair to compare with.
+     * @return True if this pair has at least one element equals to one of the pair given.
+     */
     public boolean containsSomeElementOf(Pair<S, F> other)
     {
         boolean isFirst = first == other.first || first == other.second;

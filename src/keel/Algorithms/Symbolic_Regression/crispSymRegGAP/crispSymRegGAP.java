@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/** 
-* <p> 
-* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2007
-* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
-* @version 1.0 
-* @since JDK1.4 
-* </p> 
-*/
+
 
 package keel.Algorithms.Symbolic_Regression.crispSymRegGAP;
 import keel.Algorithms.Fuzzy_Rule_Learning.Shared.Fuzzy.*;
@@ -43,11 +36,16 @@ import keel.Algorithms.Shared.Parsing.*;
 import org.core.*;
 
 
-
+/** 
+* <p> Wrapper for symbolicRegression with crisp values and based on GAP (Genetic Algorithm Programming) paradigm.
+* @author Written by Luciano Sánchez (University of Oviedo) 27/02/2007
+* @author Modified by Enrique A. de la Cal (University of Oviedo) 13/12/2008  
+* @version 1.0 
+* @since JDK1.4 
+* </p> 
+*/
 public class crispSymRegGAP {
-	/**
-	 * Wrapper for symbolicRegression with crisp values and based on GAP (Genetic Algorithm Programming) paradigm.
-	 */
+    
 	//Random number generator
 	static Randomize rand;
 	/**

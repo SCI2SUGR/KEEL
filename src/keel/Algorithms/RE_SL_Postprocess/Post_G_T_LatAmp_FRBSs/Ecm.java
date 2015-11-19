@@ -33,8 +33,6 @@ package keel.Algorithms.RE_SL_Postprocess.Post_G_T_LatAmp_FRBSs;
  * @author Diana Arquillos
  *
  */
-
-
 public class Ecm {
 	private Base Bs;
 	private int long_tabla_tra;
@@ -43,14 +41,15 @@ public class Ecm {
 	private Ttabla[] tabla_tst;
 	private TipoIntervalo [] extremos;
 	
-	/************************************************************/
-	
+	/** Returns the fuzzy rules base.
+     * @return the fuzzy rules base.  */
 	public Base base(){
 		return Bs;
 	}
 
-	/************************************************************/
-
+	/** Returns the number of rules generated.
+     * @return number of rules generated.         
+         */
 	public int num_reglas(){
 		return Bs.getN_reglas();
 	}
@@ -304,8 +303,14 @@ public class Ecm {
 	   return (suma/(double)this.long_tabla_tst);
 	}
 	
-	/************************************************************/
-	
+	/**
+	 * It calculates the mean square error(MSE) of the training data
+	 * @param cromosoma it contains the chromosome values
+	 * @param cromosomaA it contains the chromosome of amplitude values
+	 * @param cromosomaR it contains the chromosome of rules values
+	 * @param n_reglas_total the number of total rules
+	 * @return the mean square error
+	 */
 	public double eval_EC (double []cromosoma, double []cromosomaA, char []cromosomaR,int n_reglas_total)
 	{
 	   return (ECM_tra (cromosoma,cromosomaA,cromosomaR,n_reglas_total));

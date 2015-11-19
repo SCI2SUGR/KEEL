@@ -149,7 +149,6 @@ public class SerializedObject
    * Returns a serialized object.
    *
    * @return the restored object
-   * @exception Exception if the object couldn't be restored
    */ 
   public Object getObject() {
 

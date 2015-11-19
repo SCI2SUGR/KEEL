@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Writed by Alberto FernÃ¡ndez (University of Granada) 15/01/2006
- * @author Modified by CristÃ³bal J. Carmona (University of Jaen) 24/06/2010
- * @version 2.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDAlgorithm;
 
@@ -44,6 +37,14 @@ import java.io.FileNotFoundException;
 
 import org.core.*;
 
+/**
+ * <p> Title: Main class of the SD algorithm
+ * @author Writed by Alberto Fernández (University of Granada) 15/01/2006
+ * @author Modified by Cristóbal J. Carmona (University of Jaen) 24/06/2010
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Main {
 
     /**

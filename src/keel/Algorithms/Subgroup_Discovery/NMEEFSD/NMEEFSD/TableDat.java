@@ -27,19 +27,20 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import keel.Dataset.*;
 
-
+/**
+ * <p>Class defined to store the information of the complete dataset
+     *
+ * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class TableDat {
     /**
      * <p>
@@ -189,6 +190,7 @@ public class TableDat {
      * Returns the class of the example in position pos
      * </p>
      * @param pos       Position of the example
+     * @return the class of the example in position pos 
      */
     public int getClass (int pos) {
         return dat[pos].getClas();
@@ -235,6 +237,7 @@ public class TableDat {
      * </p>
      * @param numEj     Position of the example
      * @param pos       Position of the variable
+     * @return the value of the variable "pos" of the example "numEj"
      */
     public float getDat (int numEj, int pos) {
         return dat[numEj].getDat(pos);

@@ -51,9 +51,11 @@ import java.util.*;
 public class RASCOAlgorithm extends PrototypeGenerationAlgorithm<RASCOGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new RASCOGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype RASCOGenerator object with data and parameters full load. 
      */
     protected RASCOGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

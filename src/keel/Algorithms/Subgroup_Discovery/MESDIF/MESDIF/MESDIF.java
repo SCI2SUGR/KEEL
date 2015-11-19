@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Writed by Pedro González (University of Jaen) 15/02/2004
- * @author Modified by Pedro González (University of Jaen) 4/08/2007
- * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
- * @version 2.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
 
@@ -49,7 +41,21 @@ import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.StringTokenizer;
 
-
+/**
+ * <p>
+     * MESDIF
+     * </p>
+     * <p>
+     * Algorithm for the discovery of rules describing subgroups
+     * </p>
+ * <p>
+ * @author Writed by Pedro González (University of Jaen) 15/02/2004
+ * @author Modified by Pedro González (University of Jaen) 4/08/2007
+ * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
 public class MESDIF {
     /**
      * <p>
@@ -244,6 +250,7 @@ public class MESDIF {
     * <p>
     * Read the dataset and stores the values
     * </p>
+     * @throws java.io.IOException Exception in readSet 
     */
     public static void capturaDataset () throws IOException   {
     	
@@ -465,6 +472,8 @@ public class MESDIF {
       * <p>
       * Main method of the algorithm
       * </p>
+     * @param args
+     * @throws java.lang.Exception if MESDIF algorithm can not be executed.
       **/
     public static void main(String[] args) throws Exception {
         

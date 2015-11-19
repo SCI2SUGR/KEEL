@@ -57,6 +57,13 @@ public class Prototype
     /** Nominal type of attributes. */
     public static final int NOMINAL = 2;
     
+    /**
+     * Normalizes a value given with its minimum and maximum values of its interval.
+     * @param min minimum value.
+     * @param max maximum value.
+     * @param value given value to normalize.
+     * @return normalized value.
+     */
     protected static double normalize(double min, double max, double value)
     {
         if(value <= min)
@@ -86,7 +93,9 @@ public class Prototype
         }
     }
     
-    
+    /**
+     * Sets the attributes types.
+     */
     public static void setAttributesTypes()
     {
         int numAtt = Attributes.getInputNumAttributes();
@@ -108,6 +117,7 @@ public class Prototype
      /**
      * Return the type of the attribute.
      * @param i ith attribute.
+     * @return  the type of the attribute asked.
      */
     public static int getTypeOfAttribute(int i)
     {
@@ -157,8 +167,8 @@ public class Prototype
     protected double[] outputs = null; //output of the example  
     
     
-    /*
-     *   constructs a null prototype.
+    /**
+     * Default constructor. Constructs a null prototype.
      * 
      */
     public Prototype(){
@@ -169,9 +179,11 @@ public class Prototype
     
     
     /**
+     * Parameter constructor.
      * 
+     * @param numInput number of inputs.
+     * @param numOutput number of outputs.
      */
-    
     public Prototype(int numInput, int numOutput){
     	this.inputs =  new double[numInput];
     	this.outputs =  new double[numOutput];
@@ -278,6 +290,7 @@ public class Prototype
     
     /**
      * Returns the prototype selected inputs of the prototype specified in lista.
+     * @param lista prototype specified.
      * @return Array with the selected inputs of the prototype.
      */     
     public Prototype getPrototypeWithSelectedInputs(ArrayList<Integer> lista)
@@ -410,7 +423,7 @@ public class Prototype
     /**
      * Multiply component by component like a scalar product.
      * @note Two prototype must have the same size.
-     * @param weight Constant to be multiplied to each sum.
+     * @param other prototype to multiply with.
      * @return A prototype which inputs product with other..
      */ 
     public Prototype mul(Prototype other)
@@ -432,10 +445,10 @@ public class Prototype
     }
  
     /**
-     * Multiply component by component like a scalar product.
+     * Multiply component by component and sum them like a scalar product.
      * @note Two prototype must have the same size.
-     * @param weight Constant to be multiplied to each sum.
-     * @return A prototype which inputs product with other..
+     * @param other prototype to multiply with.
+     * @return Sum of the different products.
      */ 
     public double mulEscalar(Prototype other)
     {
@@ -710,6 +723,11 @@ public class Prototype
         return result;
     }
     
+    /**
+     * Rounds a value given. 
+     * @param value given value.
+     * @return rounded value.
+     */
     protected static double round(double value)
     {
         String s = Double.toString(value);

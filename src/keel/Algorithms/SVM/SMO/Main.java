@@ -27,18 +27,32 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.SVM.SMO;
+
 /**
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the algorithm.
+ * It gets the configuration script, builds the algorithm and executes it.
+ * 
  * @author Julian Luengo (julianlm@decsai.ugr.es) as a wrapper of SMO classifier from
  * WEKA to KEEL. 
  * @version 0.1
  * @since JDK 1.5
  */
-
-package keel.Algorithms.SVM.SMO;
-
-
 public class Main {
 
+    /** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
 	public static void main (String args[]) {
 
 		SMO model;

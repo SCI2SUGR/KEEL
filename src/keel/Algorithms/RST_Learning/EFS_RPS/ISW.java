@@ -28,6 +28,12 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.RST_Learning.EFS_RPS;
+
+import java.util.Arrays;
+
 /**
  * 
  * File: ISW.java
@@ -39,11 +45,6 @@
  * @since JDK1.5
  * 
  */
-
-package keel.Algorithms.RST_Learning.EFS_RPS;
-
-import java.util.Arrays;
-
 public class ISW{
 
 	private static double data[][];
@@ -106,6 +107,7 @@ public class ISW{
 	 * Loads the training data into the classifier
 	 * 
 	 * @param newData Data represented with continuous values
+         * @param vecNominal vector indicating which attribute is nominal or not.
 	 */
 	public static void setData(double newData[][],boolean vecNominal []){	
 		

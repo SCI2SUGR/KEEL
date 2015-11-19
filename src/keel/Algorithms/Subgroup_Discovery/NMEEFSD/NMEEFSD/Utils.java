@@ -27,17 +27,18 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
+
+import java.util.*;
+
 /**
- * <p>
+ * <p> Assorted methods to manage several topics
  * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
-
-import java.util.*;
 
 public class Utils {
     /**
@@ -277,7 +278,8 @@ public class Utils {
      * Rounds the generated value for the semantics when necesary
      * </p>
      * @param val       The value to round
-     * @param tope
+     * @param tope      Threshold
+     * @return the value rounded.
      */
     public static float Assigned (float val, float tope) {
         if (val>-0.0001 && val<0.0001)

@@ -71,7 +71,7 @@ import java.util.StringTokenizer;
 
 /**
  * This class implements the Co-traning wrapper. You can use: Knn, C4.5, SMO as classifiers.
- * @author triguero
+ * @author Isaac Triguero
  *
  */
 
@@ -79,11 +79,20 @@ public class CoBCGenerator extends PrototypeGenerator {
 
   /*Own parameters of the algorithm*/
 
- 
+    /**
+     * Number of classifiers considered.
+     */
   protected int numberOfClassifiers;
   private int MaxIter;
-  protected int numberOfPrototypes;  // Particle size is the percentage
-  protected int numberOfClass;
+    /**
+     * Number of prototypes.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
+
+    /**
+     * Number of classes.
+     */
+    protected int numberOfClass;
   /** Parameters of the initial reduction process. */
   private String[] paramsOfInitialReducction = null;
 
@@ -99,10 +108,17 @@ public class CoBCGenerator extends PrototypeGenerator {
   
   /**
    * Build a new CoBCGenerator Algorithm
-   * @param t Original prototype set to be reduced.
+   * @param _trainingDataSet Original prototype set to be reduced.
+     * @param neigbors number of neighbours considered. (not used)
+     * @param poblacion population size. (not used)
    * @param perc Reduction percentage of the prototype set.
+     * @param iteraciones number of iterations. (not used)
+     * @param wend ending w value. (not used)
+     * @param c1 class 1 value. (not used)
+     * @param vmax maximum v value. (not used)
+     * @param c2 class 2 value. (not used)
+     * @param wstart starting w value. (not used)
    */
-  
   public CoBCGenerator(PrototypeSet _trainingDataSet, int neigbors,int poblacion, int perc, int iteraciones, double c1, double c2, double vmax, double wstart, double wend)
   {
       super(_trainingDataSet);
@@ -116,7 +132,8 @@ public class CoBCGenerator extends PrototypeGenerator {
    * Build a new CoBCGenerator Algorithm
    * @param t Original prototype set to be reduced.
    * @param unlabeled Original unlabeled prototype set for SSL.
-   * @param params Parameters of the algorithm (only % of reduced set).
+     * @param test Origital test prototype set.
+     * @param parameters Parameters of the algorithm (only % of reduced set).
    */
   public CoBCGenerator(PrototypeSet t, PrototypeSet unlabeled, PrototypeSet test, Parameters parameters)
   {
@@ -178,9 +195,10 @@ public class CoBCGenerator extends PrototypeGenerator {
   }
 
   /**
-   * Classify 
-   * @param train
-   * @param test
+   * Classify the instances given.
+   * @param train Training instances partitions to build the models.
+   * @param test Test instances set to classify.
+     * @return the predicted classes for test instances.
    * @throws Exception
    */
   
@@ -260,9 +278,11 @@ public class CoBCGenerator extends PrototypeGenerator {
   
   
   /**
-   * 
-   * @param Labeled
- * @throws Exception 
+   * Builds the ensemble with the labeled dataset and classifies the test instances.
+   * @param Labeled Labeled dataset to build the ensemble.
+     * @param test Test dataset to classify.
+     * @return predicted classes for the test instances.
+ * @throws Exception if the models can not be built. 
    */
   public double [] EnsembleLearn(PrototypeSet Labeled[], PrototypeSet test) throws Exception{
 	  double predicho[] = new double[test.size()];
@@ -360,9 +380,10 @@ public class CoBCGenerator extends PrototypeGenerator {
 	  return predicho;
   }
   
-  
-  
-  public void getSolicitaGarbageColector(){
+    /**
+     * Asks for the garbage collector
+     */
+    public void getSolicitaGarbageColector(){
 
 	  try{
 	//  System.out.println( "********** INICIO: 'LIMPIEZA GARBAGE COLECTOR' **********" );
@@ -379,14 +400,14 @@ public class CoBCGenerator extends PrototypeGenerator {
 	  
   
   }
-  /**
-   * Apply the CoBCGenerator method with 3 classifiers:  C45, NB, and 3NN
-   * 
-   * @return 
+
+  
+    /**
+     * Apply the CoBCGenerator method with 3 classifiers:  C45, NB, and 3NN
+   * @return Pair of prototypes set (transductive, test)
+     * @throws java.lang.Exception if the algorithm can not be applied.
    */
-  
-  
-  public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
+    public Pair<PrototypeSet, PrototypeSet> applyAlgorithm() throws Exception
   {
 	  System.out.print("\nThe algorithm CoBC is starting...\n Computing...\n");
 	  

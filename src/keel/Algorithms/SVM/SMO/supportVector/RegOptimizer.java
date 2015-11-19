@@ -108,6 +108,7 @@ public class RegOptimizer
   //};
   /** alpha and alpha* arrays containing weights for solving dual problem **/
   public double[] m_alpha;
+  /** alpha and alpha* arrays containing weights for solving dual problem **/
   public double[] m_alphaStar;
   
   /** offset **/
@@ -155,6 +156,8 @@ public class RegOptimizer
   /** Variables to hold weight vector in sparse form.
    (To reduce storage requirements.) */
   protected double[] m_sparseWeights;
+    /** Variables to hold indices vector in sparse form.
+   (To reduce storage requirements.) */
   protected int[] m_sparseIndices;
   
   /** flag to indicate whether the model is built yet **/

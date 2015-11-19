@@ -27,18 +27,21 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Pedro González (University of Jaen) 15/12/2004
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDIGA.Calculate;
 
 import org.core.Files;
 
+/**
+ * <p> This implementation uses integer values to store the genes values (only 0/1).
+     * It is used to store DNF rules, so that each variable can get more than one
+     * value at a time. Each gene is an array of integer values.
+ * @author Written by Pedro González (University of Jaen) 15/12/2004
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Gene {
     /**
      * <p>

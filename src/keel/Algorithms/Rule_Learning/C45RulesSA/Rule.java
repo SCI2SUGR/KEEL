@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.C45RulesSA;
@@ -42,20 +35,35 @@ package keel.Algorithms.Rule_Learning.C45RulesSA;
 import java.util.Vector;
 
 
-
-public class Rule {
 /**
  * <p>
  * Representation of a string of simple rules chained by 'and's: <b>exemple[a1][=|>|<=]v1 && exemple[a2][=|>=|<=]v2</b>
  * </p>
+ * <p>
+ * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
+public class Rule {
 	
-  // operator >
+    /**
+     * Flag for greater operator 
+     */
   public static int GREATER=SimpleRule.GREATER; 
-  //operator <=
-  public static int LOWER=SimpleRule.LOWER; 
+  // operator <=
+ 
+    /**
+     * Flag for lower operator 
+     */
+      public static int LOWER=SimpleRule.LOWER; 
   //operator =
-  public static int EQUAL=SimpleRule.EQUAL; 
+ 
+    /**
+     * Flag for equal operator 
+     */
+      public static int EQUAL=SimpleRule.EQUAL; 
 
   //string of simple rules
   private Vector chain; 
@@ -233,6 +241,13 @@ public class Rule {
 
   }
 
+     /**
+     * Biased function.
+     * @param N N parameter given.
+     * @param E E parameter given.
+     * @param ExpE exponent given. 
+     * @return biased value.
+     */
   public static double biased(double N, double E, double ExpE){
 
     double Rate;

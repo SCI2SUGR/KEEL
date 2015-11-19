@@ -27,8 +27,15 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
+
+import org.core.*;
+
 /**
- * <p>
+ * <p>Methods to define the genetic algorithm and to apply operators and reproduction schema
+     * 
  * @author Writed by Pedro González (University of Jaen) 22/08/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
@@ -36,11 +43,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
-
-import org.core.*;
-
 public class Genetic {
     /**
      * <p>
@@ -394,6 +396,7 @@ public class Genetic {
      * </p>
      * @param pos           Position of the individual
      * @param nFile         Name of the file to write the values
+     * @return  the measures of a single rule of the main population
      */
     public QualityMeasures getQualityMeasures (int pos, String nFile) {
         return poblac.getMedidas(pos, nFile);

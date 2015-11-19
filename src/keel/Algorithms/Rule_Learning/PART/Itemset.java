@@ -27,27 +27,22 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.PART;
 
 import keel.Dataset.Attribute;
 
-
-public class Itemset{
 /**
- * <p>
- * Class to manipulate an itemset.
+ * <p> Class to manipulate an itemset.
+ * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Itemset{
 	
   /** The dataset which the itemset has access to. */
   protected MyDataset dataset;

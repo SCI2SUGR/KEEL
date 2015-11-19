@@ -27,8 +27,16 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
+
+import keel.Dataset.*;
+import org.core.*;
+
 /**
- * <p>
+ * <p>Class defined to store the information of the variable of the dataset
+     * 
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 30/06/2010
@@ -36,18 +44,8 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
-
-import keel.Dataset.*;
-import org.core.*;
-
 public class TableVar {
-    /**
-     * <p>
-     * Class defined to store the information of the variable of the dataset
-     * </p>
-     */
+    
 
     private int num_vars;           // Number of variables
     private int n_etiq;             // Number of labels for the continuous variables

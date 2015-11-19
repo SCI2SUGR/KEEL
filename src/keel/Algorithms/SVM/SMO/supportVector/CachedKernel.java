@@ -84,6 +84,7 @@ extends Kernel {
 
 	/** Kernel cache */
 	protected double[] m_storage;
+        /** Kernel cache (keys)*/
 	protected long[] m_keys;
 
 	/** The kernel matrix if full cache is used (i.e. size is set to 0) */

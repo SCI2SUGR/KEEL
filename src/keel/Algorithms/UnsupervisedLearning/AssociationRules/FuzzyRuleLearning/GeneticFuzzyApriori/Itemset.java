@@ -29,22 +29,22 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyApriori;
 
-/**
+
+
+import java.util.*;
+
+  /**
+   * <p>
+   * It represents an itemset throughout the execution of the algorithm
+   * </p>
  * <p>
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.*;
-
 public class Itemset {
-  /**
-   * <p>
-   * It represents an itemset throughout the execution of the algorithm
-   * </p>
-   */
+
 	
   private ArrayList<Item> itemset;
   private double support;

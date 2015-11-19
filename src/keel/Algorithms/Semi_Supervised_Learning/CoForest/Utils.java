@@ -107,6 +107,9 @@ public final class Utils{
   /**
    * Casting an object without "unchecked" compile-time warnings.
    * Use only when absolutely necessary (e.g. when using clone()).
+     * @param <T> Type of the Object to be casted.
+     * @param x Object to be casted.
+     * @return object casted.
    */
   @SuppressWarnings("unchecked")
     public static <T> T cast(Object x) {
@@ -531,6 +534,7 @@ public final class Utils{
    *
    * @param a a double
    * @param b a double
+     * @return True if a is equal to b.
    */
   public static /*@pure@*/ boolean eq(double a, double b){
     
@@ -1151,6 +1155,7 @@ public final class Utils{
    *
    * @param a a double
    * @param b a double
+     * @return True  if a is smaller or equal to b.
    */
   public static /*@pure@*/ boolean smOrEq(double a,double b) {
     
@@ -1162,6 +1167,7 @@ public final class Utils{
    *
    * @param a a double
    * @param b a double
+     * @return True if a is greater or equal to b.
    */
   public static /*@pure@*/ boolean grOrEq(double a,double b) {
     
@@ -1173,6 +1179,7 @@ public final class Utils{
    *
    * @param a a double
    * @param b a double
+     * @return True if a is smaller than b. 
    */
   public static /*@pure@*/ boolean sm(double a,double b) {
     
@@ -1184,6 +1191,7 @@ public final class Utils{
    *
    * @param a a double
    * @param b a double 
+     * @return True if a is greater than b. 
    */
   public static /*@pure@*/ boolean gr(double a,double b) {
     

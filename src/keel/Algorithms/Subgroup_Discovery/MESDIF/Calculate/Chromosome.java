@@ -27,28 +27,28 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Pedro González (University of Jaen) 18/02/2004
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate;
 
 import org.core.Files;
 
-public class Chromosome {
-    /**
-     * <p>
+/**
+* <p>
      * Defines the structure and manage the contents of a rule
      * This implementation uses only integer values to store the gens.
      * So, variables values must be discretized (if they are continuous)
      * or translated into integers (if they are enumerated)
      * Uses Keel defined Random
      * </p>
-     */
+ * <p>
+ * @author Written by Pedro González (University of Jaen) 18/02/2004
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
+public class Chromosome {
+    
     private int num_genes;        // Number of genes
       private Gene cromosoma [];   // Individual content - integer representation
       

@@ -27,8 +27,17 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
+
+import org.core.*;
+
 /**
- * <p>
+ * <p> This implementation uses boolean values to store the genes values.
+     * It is used to store DNF rules, so that each variable can can get more than one value at a time.
+     * Each gene is an array of boolean values, false indicates that the value is not present,
+     * true indicates that the value is present.
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
@@ -36,11 +45,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
-
-import org.core.*;
-
 public class Gene {
     /**
      * <p>

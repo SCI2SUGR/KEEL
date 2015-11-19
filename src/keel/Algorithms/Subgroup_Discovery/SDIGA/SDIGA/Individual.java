@@ -27,8 +27,12 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
+
 /**
- * <p>
+ * <p>Individual abstract class for the different types of genetic individuals.
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
@@ -36,19 +40,36 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
-
 public abstract class Individual {
 
-      public int tamano;
-      public boolean evaluado;
-      public QualityMeasures medidas;
+    /**
+     * Size of the individual.
+     */
+    public int tamano;
 
+    /**
+     * Evaluated flag.
+     */
+    public boolean evaluado;
+
+    /**
+     * Measurements of the individual.
+     */
+    public QualityMeasures medidas;
+
+    /**
+     * Default Constructor.
+     */
     public Individual() {
 
     }
 
+     /**
+     * <p>
+     * Creates rangom instance of DNF individual
+     * </p>
+     * @param Variables             Variables structure
+    */
     public abstract void RndInitInd(TableVar Variables);
 
     /**
@@ -104,15 +125,69 @@ public abstract class Individual {
         return res;
     }
 
+    /**
+     * <p>
+     * Sets the value of the indicated gene of the Chromosome
+     * </p>
+     * @param pos               Position of the variable
+     * @param val               Value of the variable
+     */
     public abstract void setCromElem (int pos, int val);
+
+    /**
+     * <p>
+     * Sets the value of the indicated gene of the Chromosome
+     * </p>
+     * @param pos               Position of the variable
+     * @param elem              Position of the gene
+     * @param val               Value of the variable
+     */
     public abstract void setCromElemGene (int pos, int elem, int val);
 
+    /**
+     * <p>
+     * Returns the indicated gene of the Chromosome
+     * </p>
+     * @param pos               Position of the gene
+     * @return                  Value of the gene
+     */
     public abstract int getCromElem(int pos);
+
+    /**
+     * <p>
+     * Retuns the value of the gene indicated
+     * </p>
+     * @param pos          Position of the variable in the chromosome
+     * @param elem              Position of the gene of the variable
+     * @return                  Value of the gene
+     */
     public abstract int getCromElemGene(int pos, int elem);
 
+    /**
+     * <p>
+     * Returns the DNF Chromosome
+     * </p>
+     * @return             DNF Chromosome
+     */
     public abstract CromDNF getIndivCromDNF();
+
+    /**
+     * <p>
+     * Returns the Canonical Chromosome
+     * </p>
+     * @return             Canonical Chromosome
+     */
     public abstract CromCAN getIndivCromCAN();
 
+    /**
+     * <p>
+     * Evaluate a individual. This function evaluates an individual.
+     * </p>
+     * @param AG                Genetic algorithm
+     * @param Variables         Variables structure
+     * @param Examples          Examples structure
+     * @param marcar            Mark the individual.
+     */
     public abstract void evalInd (Genetic AG, TableVar Variables, TableDat Examples, boolean marcar);
 
     /**
@@ -140,6 +215,12 @@ public abstract class Individual {
         return interv;
     }
 
+    /**
+     * <p>
+     * Method to print the contents of the individual
+     * </p>
+     * @param nFile             File to write the individual
+     */
     public abstract void Print(String nFile);
 
 

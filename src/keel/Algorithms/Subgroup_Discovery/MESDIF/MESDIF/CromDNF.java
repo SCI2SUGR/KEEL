@@ -1,5 +1,13 @@
+
+
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
+
+import org.core.*;
+
 /**
- * <p>
+ * <p> Defines the structure and manage the contents of a DNF rule.
+     * This implementation uses only binary values to store the possible values of the variable.
+     *
  * @author Created by Pedro González (University of Jaen) 18/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 30/06/2010
@@ -7,12 +15,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
-
-import org.core.*;
-
-
 public class CromDNF {
     /**
      * <p>
@@ -28,6 +30,7 @@ public class CromDNF {
      * Creates new instance of chromosome, no initialization
      * </p>
      * @param length          Length of the chromosome
+     * @param Variables Variables table.
      */
     public CromDNF(int length, TableVar Variables) {
       num_genes = length;
@@ -55,7 +58,7 @@ public class CromDNF {
      *    chromosomes with a maximum number or participating variables
      *    and for an indicated % of the population (the rest is random)
      * </p>
-     * @param porcVar
+     * @param porcVar  percentage of variables to appear in the biased initialization
      */
     public void initCromBsd (float porcVar) {
         int num_var;
@@ -126,6 +129,8 @@ public class CromDNF {
 
     /**
      * Retuns the gene lenght of the chromosome
+     * @param pos gene's position.
+     * @return the gene lenght of the chromosome
      */
     public int getCromGeneLength (int pos) {
       return chromosome[pos].getGeneLength();

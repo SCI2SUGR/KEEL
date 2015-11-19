@@ -28,6 +28,14 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.RST_Learning.EIS_RFS;
+
+import keel.Algorithms.RST_Learning.KNNClassifier;
+import keel.Algorithms.RST_Learning.RSTData;
+
+import org.core.Randomize;
+
 /**
  * 
  * File: Chromosome.java
@@ -40,13 +48,6 @@
  * 
  */
 
-package keel.Algorithms.RST_Learning.EIS_RFS;
-
-import keel.Algorithms.RST_Learning.KNNClassifier;
-import keel.Algorithms.RST_Learning.RSTData;
-
-import org.core.Randomize;
-
 public class Chromosome implements Comparable<Chromosome>{
 
 	private static int size;
@@ -57,22 +58,41 @@ public class Chromosome implements Comparable<Chromosome>{
 	
 	private int body[];
 	
+        /**
+     * Sets the size of the chromosome with the value given as parameter.
+     * @param value given size to set.
+     */
 	public static void setSize(int value){
 		size=value;
 	}
 	
+            /**
+     * Sets the initial probability to build the chromosome.
+     * @param value probability to set.
+     */
 	public static void setInitProb(double value){
 		init=value;
 	}
 	
+            /**
+     * Sets the alpha parameter with the value given.
+     * @param value alpha to set.
+     */
 	public static void setAlpha(double value){
 		alpha=value;
 	}
 	
+            /**
+     * Sets the mutation probability with the value given.
+     * @param value probability to set.
+     */
 	public static void setMutationProbability(double value){
 		mutationProb=value;
 	}
 	
+            /**
+     * Default constructor. Initiates the chromosome with the class attributes (size, init,...)
+     */
 	public Chromosome(){
 		
 		body=new int [size];
@@ -96,6 +116,10 @@ public class Chromosome implements Comparable<Chromosome>{
 		
 	}
 	
+            /**
+     * Parameter constructor. Initiates the chromosome with the vector given.
+     * @param newBody vector given to initiate the chromosome.
+     */
 	public Chromosome(int [] newBody){
 		
 		body=new int [size];
@@ -108,6 +132,11 @@ public class Chromosome implements Comparable<Chromosome>{
 		
 	}
 
+            /**
+     * Parameter constructor. Initiates the chromosome with the vector and the fitness given.
+     * @param newBody vector given to initiate the chromosome.
+     * @param fitnessValue fitness to set.
+     */
 	public Chromosome(int [] newBody, double fitnessValue){
 		
 		body=new int [size];
@@ -133,10 +162,18 @@ public class Chromosome implements Comparable<Chromosome>{
 	    }
 	}
 	
+            /**
+     * Returns the size of the chromosome.
+     * @return the size of the chromosome.
+     */
 	public static int getSize(){	
 		return size;
 	}
 	
+            /**
+     * Checks if the chromosome has been evaluated.
+     * @return True if the chromosome has been evaluated.
+     */
 	public boolean isEvaluated(){
 		
 		if(fitness==-1.0){
@@ -146,31 +183,57 @@ public class Chromosome implements Comparable<Chromosome>{
 		return true;
 	}
 	
+            /**
+     * Returns the fitness of the chromosome.
+     * @return the fitness of the chromosome.
+     */
 	public double getFitness(){
 		
 		return fitness;
 	}
 	
+            /**
+     * Sets the fitness of this chromosome with the value given.
+     * @param value fitness value to set.
+     */
 	public void setFitness(double value){
 		
 		fitness=value;
 	}
 	
+            /**
+     * Returns the binary value (0 or 1) of the position given.
+     * @param pos position given.
+     * @return the binary value (0 or 1) of the position given.
+     */
 	public int get(int pos){
 		
 		return body[pos];
 	}
 	
+            /**
+     * Sets the value in the chromosome of the given position with the value given.
+     * @param pos position given.
+     * @param value value to set.
+     */
 	public void set(int pos,int value){
 		
 		body[pos]=value;
 	}
 	
+            /**
+     * Returns the chromosome representation (array of integers).
+     * @return the chromosome representation (array of integers).
+     */
 	public int [] getAll(){
 		
 		return body;
 	}
 	
+            /**
+     * Computes and returns the reduction ratio coded in the chromosome.
+     * @return  the reduction ratio coded in the chromosome.
+     */
 	public double computeRed(){
 		
 		double count=0;
@@ -188,7 +251,9 @@ public class Chromosome implements Comparable<Chromosome>{
 		return result;
 	}
 	
-	//Function that evaluates a chromosome
+    /**
+     * Function that evaluates a chromosome. The atttribute {@code fitness} will be set.
+     */
 	public void evaluate () {
 
 		double acc;
@@ -207,7 +272,11 @@ public class Chromosome implements Comparable<Chromosome>{
 
 	}
 	
-	public int [] getBestFeatures(){
+    /**
+     * Returns the best features for the chromosome representation.
+     * @return the best features for the chromosome representation.
+     */
+    public int [] getBestFeatures(){
 		
 		RSTData.setInstances(body);
 		RSTData.computeBestFeatures();
@@ -215,7 +284,9 @@ public class Chromosome implements Comparable<Chromosome>{
 		return RSTData.getAttributes();
 	}
 	
-	//Mutation Operator
+    /**
+     * Mutates the chromosome.
+     */
 	public void mutation() {
 		
 	    for (int i=0; i<body.length; i++) {
@@ -226,7 +297,12 @@ public class Chromosome implements Comparable<Chromosome>{
 	    
 	}	
 	
-	//PMX cross operator
+    /**
+     * Crosses this chromosome with the one given as parameter with PMX operator.
+     * The chromosome will be modified, being one of the child, and the other will be returned.
+     * @param parent given chromosome (as vector) to cross with.
+     * @return the other chromosome child (as vector).
+     */
 	public int [] crossPMX (int [] parent) {
 	
 		int point1,point2;

@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Pedro González (University of Jaen) 15/08/2004
- * @author Modified by Cristóbal J. Carmona (University of Jaen) 15/04/2010
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.MESDIF.Calculate;
 
@@ -45,7 +38,15 @@ import java.io.IOException;
 import java.util.Vector;
 import java.util.StringTokenizer;
 
-
+/**
+ * <p>  Calculate the values of subgroup discovery quality measures
+     * with respect to the rules extracted by the algorithm
+ * @author Written by Pedro González (University of Jaen) 15/08/2004
+ * @author Modified by Cristóbal J. Carmona (University of Jaen) 15/04/2010
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Calculate {
     /**
      * <p>
@@ -95,6 +96,7 @@ public class Calculate {
     * Target variable is stored in "tabla.clase"
     * </p>
     * @param input_file             File to capture
+     * @throws java.io.IOException if the input file can not be read.
     **/
     public static void CaptureDataset (String input_file)
     throws IOException   {
@@ -262,6 +264,7 @@ public class Calculate {
     * Generate the population with the rules obtained by the algorithm
     * </p>
     * @param nFile      File of the rules obtained by the algorithm
+     * @throws java.io.IOException if the rules file can not be read.
     **/
     public static void CaptureRules (String nFile)
     throws IOException   {
@@ -377,6 +380,7 @@ public class Calculate {
     * </p>
     * @param nFile              File of rules obtained by the algorithm
     * @return                   The number of rules obtained by the algorithm
+     * @throws java.io.IOException if the rules file can not be read.
     **/
     public static int CaptureNumRules (String nFile)
     throws IOException   {
@@ -425,6 +429,7 @@ public class Calculate {
      * @param rule_file         Name of the rule file
      * @param quality_file      Name of the output quality file
      * @param nlabels           Number of labels for the continuous variables
+     * @throws java.lang.Exception if any of these files can not be read.
      **/
     public static void Calculate (String output_file_tra, String output_file_tst, String input_file_tra, String input_file_tst, String rule_file, String quality_file, int nlabels) throws Exception {
 

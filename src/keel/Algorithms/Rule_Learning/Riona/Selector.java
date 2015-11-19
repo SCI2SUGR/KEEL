@@ -27,25 +27,20 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Rule_Learning.Riona;
+
 /**
- * <p>
+ * <p>Structure for storing one condition of the antecedent of a rule
  * @author Written by Rosa Venzala 19/09/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.2
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Rule_Learning.Riona;
-
-
 public class Selector implements Comparable {
-/**
- * <p>
- * Structure for storing one condition of the antecedent of a rule
- * </p>
- */
 	
 	// column of dataset (0..m-1)
 	int attribute; 

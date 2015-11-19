@@ -27,27 +27,22 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Rule_Learning.Slipper;
+
+
 /**
- * <p>
+ * <p> Collection of auxiliar methods.
  * @author Written by Alberto Fernández (University of Granada)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
  * @version 1.1
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Rule_Learning.Slipper;
-
-
-
 public class Utilities {
-/**
- * <p>
- * Collection of auxiliar methods.
- * </p>
- */
-	
+    
   /** The small deviation allowed in double comparisons */
   public static double SMALL = 1e-6;
 

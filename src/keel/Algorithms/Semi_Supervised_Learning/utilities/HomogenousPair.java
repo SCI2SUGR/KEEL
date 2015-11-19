@@ -35,12 +35,18 @@
 package keel.Algorithms.Semi_Supervised_Learning.utilities;
 
 /**
- *
- * @param T Type of the elements of the pair.
+ * Homogenous Pair Class.
+ * @param <T> Type of the elements of the pair.
  * @author diegoj
  */
 public class HomogenousPair<T> extends Pair<T, T>
 {
+
+    /**
+     * Constructs a pair with the elements given.
+     * @param first first element of the pair.
+     * @param second second element of the pair.
+     */
     public HomogenousPair(T first, T second)
     {
         super(first,second);

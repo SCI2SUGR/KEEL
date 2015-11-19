@@ -1,4 +1,8 @@
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Fingrams;
+
+import java.util.*;
+import org.core.*;
+
 /**
  * <p>Title: DataBase</p>
  * <p>Description: Fuzzy Data Base</p>
@@ -9,9 +13,6 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.
  * @since JDK1.6
  */
 
-import java.util.*;
-import org.core.*;
-
 public class DataBase {
   int n_variables, partitions;
   int[] nLabels;
@@ -19,16 +20,18 @@ public class DataBase {
   Fuzzy[][] dataBase;
   String names[];
 
-  public DataBase() {
+    /**
+     * Default constructor.
+     */
+    public DataBase() {
   }
 
 /**
 * <p>
 * This method builds the database, creating the initial linguistic partitions
 * </p>
-* @param nLabels Number of Linguistic Values
+* @param dataBaseFile Database file.
 * @param train Training dataset
-* @return The databse
 */
 
   public DataBase(String dataBaseFile, myDataset train) {
@@ -87,12 +90,19 @@ public class DataBase {
     }
   }
 
-
-  public int numVariables() {
+    /**
+     * Returns the number of variables.
+     * @return the number of variables.
+     */
+    public int numVariables() {
     return (this.n_variables);
   }
 
-  public int getnLabelsReal() {
+    /**
+     * Returns the number of real labels
+     * @return the number of real labels
+     */
+    public int getnLabelsReal() {
 	  int i, count;
 
 	  count = 0;
@@ -104,15 +114,30 @@ public class DataBase {
 	  return (count);
   }
 
-  public int numLabels(int variable) {
+    /**
+     * Returns the number of labels of a given variable.
+     * @param variable variable id.
+     * @return the number of labels of a given variable.
+     */
+    public int numLabels(int variable) {
     return (this.nLabels[variable]);
   }
 
-  public int[] getnLabels() {
+    /**
+     * Returns the number of labels of each variable.
+     * @return array with the number of labels of each variable.
+     */
+    public int[] getnLabels() {
     return (this.nLabels);
   }
 
-  public int posValue (int variable, String value){
+    /**
+     * Returns the position of a given value of a given variable.
+     * @param variable given variable id.
+     * @param value value asked.
+     * @return the position of a given value of a given variable.
+     */
+    public int posValue (int variable, String value){
 	  int i;
 	  for (i=0; i < this.nLabels[variable]; i++) {
 		  if (this.dataBase[variable][i].name.equalsIgnoreCase(value))  return (i);
@@ -120,12 +145,25 @@ public class DataBase {
 	  return (-1);
   }
 
-  public double matching(int variable, int label, double value) {
+    /**
+     * Returns the fuzzied value for given variable, label and value.
+     * @param variable given variable.
+     * @param label given label.
+     * @param value given value.
+     * @return the fuzzied value for given variable, label and value.
+     */
+    public double matching(int variable, int label, double value) {
 	if ((variable < 0) || (label < 0))  return (1);  // Don't care
     else  return (this.dataBase[variable][label].Fuzzifica(value));
   }
 
-  public String print(int var, int label) {
+    /**
+     * Returns the name of a given label id of a given variable id.
+     * @param var given label id 
+     * @param label given variable id.
+     * @return  the name of a given label id of a given variable id.
+     */
+    public String print(int var, int label) {
 	return (this.dataBase[var][label].getName());
   }
 }

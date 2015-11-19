@@ -27,8 +27,14 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
+
+import org.core.*;
+
 /**
- * <p>
+ * <p> Population of candidate rules
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
@@ -36,11 +42,6 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
-
-import org.core.*;
-
 public class Population {
     /**
      * <p>
@@ -145,6 +146,7 @@ public class Population {
        * Evaluates an individual of the population
        * </p>
        * @param pos             Position of the individual
+        * @param AG             Genetic algorithm
        * @param Variables       Variables structure
        * @param Examples        Examples structure
        * @param marcar          Indicates to mark the covered examples
@@ -156,10 +158,11 @@ public class Population {
       
       /**
        * <p>
-       * Get the measures of a single rule
+       * Get the measurements of a single rule
        * </p>
        * @param pos             Position of the individual
        * @param nFile           File to write the measures
+     * @return the measurements of a single rule
        */
       public QualityMeasures getMedidas (int pos, String nFile) {
           if (!getIndivEvaluated(pos)) {

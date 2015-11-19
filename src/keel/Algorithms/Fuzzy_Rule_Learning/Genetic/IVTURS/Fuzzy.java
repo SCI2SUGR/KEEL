@@ -44,12 +44,18 @@ public class Fuzzy {
 	double x0, x1, x3, b1, b3, b4, y;
 	String name;
 
-    /**
-     * Default constructor.
+  /**
+     * Default constructor. 
+     * None attribute will be initialized.
      */
     public Fuzzy() {
 	}
 
+      /**
+   * If fuzzyfies a crisp value
+   * @param X The crips value
+   * @return the degree of membership
+   */
 	public double[] Fuzzifica(double X) {
 		double gP[] = new double[2];
 		//Lower bound computation
@@ -86,6 +92,12 @@ public class Fuzzy {
 
 	}
 
+          /**
+   * <p>
+   * Clone Function.
+   * </p>
+   * @return Copy of the Fuzzy object.
+   */
 	public Fuzzy clone(){
 		Fuzzy d = new Fuzzy();
 		d.x0 = this.x0;
@@ -100,6 +112,12 @@ public class Fuzzy {
 		return d;
 	}
 
+          /**
+   * <p>
+   * It returns the name of the fuzzy set
+   * </p>
+   * @return The name of the fuzzy set
+   */
 	public String getName(){
 		return (this.name);
 	}

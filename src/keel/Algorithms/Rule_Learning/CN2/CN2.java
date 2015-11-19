@@ -104,7 +104,7 @@ public class CN2 {
     }
 
     /**
-     * CN2 class builder</br>
+     * CN2 class builder
      * It does a local copy of the filenames for their posterior use.<br/>
      * Then, it obtains all data from file and stores it in a format recognizable for the program.<br/>
      * Finally, it creates all possible selectors for the dataset and stores them.

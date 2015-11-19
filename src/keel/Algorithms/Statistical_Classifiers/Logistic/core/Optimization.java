@@ -176,16 +176,34 @@ import keel.Algorithms.Statistical_Classifiers.Logistic.core.TechnicalInformatio
 public abstract class Optimization
     implements TechnicalInformationHandler {
     
+    /**
+     * Alpha value.
+     */
     protected double m_ALF = 1.0e-4;
 
+    /**
+     * Beta value.
+     */
     protected double m_BETA = 0.9;    
 
+    /**
+     * ToleranceX value.
+     */
     protected double m_TOLX = 1.0e-6;
    
+    /**
+     * STPMX value.
+     */
     protected double m_STPMX = 100.0;
     
+    /**
+     * Maximun iterations.
+     */
     protected int m_MAXITS = 200;
     
+    /**
+     * Debug flag.
+     */
     protected static boolean m_Debug = false;
     
     /** function value */
@@ -1186,6 +1204,7 @@ public abstract class Optimization
      * @param v the update vector v
      * @param coeff the coeffcient of update
      * @param isFixed which variables are not to be updated
+     * @throws java.lang.Exception 
      */    
     protected void updateCholeskyFactor(Matrix L, double[] D, 
 					double[] v, double coeff,

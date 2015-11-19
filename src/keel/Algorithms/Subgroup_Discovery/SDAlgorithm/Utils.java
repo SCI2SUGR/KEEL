@@ -27,20 +27,21 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Created by Pedro GonzÃ¡lez (University of Jaen) 18/02/2004
- * @author Modified by Pedro GonzÃ¡lez (University of Jaen) 4/08/2007
- * @author Modified by CristÃ³bal J. Carmona (University of Jaen) 20/04/2010
- * @version 2.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDAlgorithm;
 
 import java.util.*;
 
+/**
+ * <p> Assorted methods to manage several topics
+ * @author Created by Pedro González (University of Jaen) 18/02/2004
+ * @author Modified by Pedro González (University of Jaen) 4/08/2007
+ * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Utils {
     /**
      * <p>
@@ -279,7 +280,8 @@ public class Utils {
      * Rounds the generated value for the semantics when necesary
      * </p>
      * @param val       The value to round
-     * @param tope
+     * @param tope      Threshold
+     * @return rounded value.
      */
     public static float Assigned (float val, float tope) {
         if (val>-0.0001 && val<0.0001)

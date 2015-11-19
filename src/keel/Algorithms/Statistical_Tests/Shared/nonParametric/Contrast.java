@@ -27,6 +27,15 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.*;
+
+import org.core.*;
+
 /**
  * File: Contrast.java
  * 
@@ -36,14 +45,6 @@
  * @version 1.1 
  * @since JDK1.5
 */
-package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.*;
-
-import org.core.*;
-
 public class Contrast {
 	
 	/**

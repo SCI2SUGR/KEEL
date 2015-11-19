@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Antonio Alejandro Tortosa  (University of Granada)  05/04/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.3
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Rule_Learning.Slipper;
 
@@ -42,17 +35,19 @@ import keel.Dataset.*;
 import java.io.IOException;
 import org.core.*;
 
-
-public class Slipper {
 /**
- * <p>
- * Implementation of the classification algorithm Slipper, according to the paper [AAAI99].
+ * <p>Implementation of the classification algorithm Slipper, according to the paper [AAAI99].
+ * @author Written by Antonio Alejandro Tortosa  (University of Granada)  05/04/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.3
+ * @since JDK1.2
  * </p>
  */
+public class Slipper {
 	
-  //'Worth' metric
+  /** 'Worth' metric */
   public static int W=1; 
-  //'Accuracy'metric
+  /** 'Accuracy'metric */
   public static int A=2; 
   //the datasets for training, validation and test
   MyDataset train, val, test; 

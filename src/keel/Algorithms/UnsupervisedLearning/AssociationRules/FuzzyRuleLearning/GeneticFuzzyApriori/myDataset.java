@@ -29,18 +29,20 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyApriori;
 
-/**
- * <p>
- * @author Written by Alvaro Lopez
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.IOException;
 import java.util.ArrayList;
 import keel.Dataset.*;
 
+/**
+ * <p> It contains the methods to read a Dataset for the Association Rules Mining problem
+   * 
+ * @author Written by Alvaro Lopez
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class myDataset {
   /**
    * <p>
@@ -48,8 +50,17 @@ public class myDataset {
    * </p>
    */
 
+        /**
+     * Number to represent type of variable nominal.
+     */
   public static final int NOMINAL = 0;
+      /**
+     * Number to represent type of variable integer.
+     */
   public static final int INTEGER = 1;
+    /**
+     * Number to represent type of variable real or double.
+     */
   public static final int REAL = 2;
   
   private double[][] trueTransactions = null; //true transactions array
@@ -68,7 +79,6 @@ public class myDataset {
 	 * <p>
 	 * Initialize a new set of instances
 	 * </p>
-	 * @param nFuzzyRegionsForNumericAttributes The number of fuzzy regions with which numeric attributes are evaluated
 	 */
   public myDataset() {
 	  IS = new InstanceSet();
@@ -296,7 +306,7 @@ public class myDataset {
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getName() );
   }
   
-  /**
+    /**
    * It returns the type of the attribute in "id_attr"
    * @param id_attr int Id of the attribute
    * @return int the type of the attribute
@@ -305,13 +315,23 @@ public class myDataset {
 	if (id_attr < this.nInputs) return ( Attributes.getInputAttribute(id_attr).getType() );
 	else return ( Attributes.getOutputAttribute(id_attr - this.nInputs).getType() );
   }
-  
+ 
+    /**
+   * It returns the type as String of the attribute in "id_attr"
+   * @param id_attr int Id of the attribute
+   * @return String the type of the attribute as String
+   */
   public String getAttributeTypeString(int id_attr) {
 	if (this.getAttributeType(id_attr) == myDataset.NOMINAL)  return ("NOMINAL");
 	else if (this.getAttributeType(id_attr) == myDataset.INTEGER)  return ("INTEGER");
 	else return ("REAL");
   }
 
+      /**
+     * Checks if the given attribute is nominal.
+     * @param id_attr given attribute's id.
+     * @return True if the given attribute is nominal, False otherwise.
+     */
   public boolean isNominal(int id_attr) {
 	if (id_attr < this.nInputs) {
 		if (Attributes.getInputAttribute(id_attr).getType() == myDataset.NOMINAL)  return (true);

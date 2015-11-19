@@ -81,6 +81,7 @@ public class Option {
    * @param description the option's description
    * @param name the option's name
    * @param numArguments the number of arguments
+   * @param synopsis synopsis of arguments.
    */
   public Option(String description, String name, 
 		int numArguments, String synopsis) {

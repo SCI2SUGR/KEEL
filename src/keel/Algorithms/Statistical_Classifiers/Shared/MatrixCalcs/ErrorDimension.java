@@ -29,10 +29,14 @@
 
 package keel.Algorithms.Statistical_Classifiers.Shared.MatrixCalcs;
 
+/**
+ * Implements a Exception used just for dimension errors for matrices.
+ */
 public class ErrorDimension extends Exception {
     ErrorDimension(String reason) {
 		super(reason);
     }
+    @Override
     public String toString() {
 		return "Dimensiones incorrectas: " +getMessage();
     }

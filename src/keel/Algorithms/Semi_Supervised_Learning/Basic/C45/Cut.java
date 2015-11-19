@@ -426,6 +426,8 @@ public class Cut {
     /** Returns weights if itemset is assigned to more than one subset, null otherwise.
      *
      * @param itemset		The itemset.
+     * @return weights if itemset is assigned to more than one subset, null otherwise.
+     *
      */
     public final double[] weights(Itemset itemset) {
         if (numSubsets == 1) {
@@ -452,6 +454,8 @@ public class Cut {
     /** Returns index of subset itemset is assigned to.
      *
      * @param itemset		The itemset.
+     * @return index of subset itemset is assigned to.
+     *
      */
     public final int whichSubset(Itemset itemset) {
         if (numSubsets == 1) {
@@ -485,12 +489,16 @@ public class Cut {
 
     /** Returns the classification created by the model.
      *
+     * @return the classification created by the model.
+     *
      */
     public final Classification classification() {
         return classification;
     }
 
     /** Returns the number of created subsets for the cut.
+     *
+     * @return the number of created subsets for the cut.
      *
      */
     public final int numSubsets() {
@@ -526,7 +534,7 @@ public class Cut {
     /** Function to compute the information gain.
      *
      * @param values				The classification used to compute the information gain.
-     * @param totalnoInst			Number of itemsets.
+     * @param totalNoInst			Number of itemsets.
      * @param oldEnt				The value for the entropy before cutting.
      *
      * @return						The information gain.
@@ -615,6 +623,8 @@ public class Cut {
     /** Returns the log2
      *
      * @param num	The number to compute the log2.
+     * @return the log2 of the number given.
+     *
      */
     protected final double logFunc(double num) {
         // Constant hard coded for efficiency reasons
@@ -627,6 +637,8 @@ public class Cut {
 
     /** Returns information gain for the generated cut.
      *
+     * @return  information gain for the generated cut.
+     *
      */
     public final double getInfoGain() {
         return infoGain;
@@ -634,6 +646,8 @@ public class Cut {
 
     /** Returns the gain ratio for the cut.
      *
+     * @return the gain ratio for the cut.
+     * 
      */
     public final double getGainRatio() {
         return gainRatio;
@@ -699,6 +713,8 @@ public class Cut {
     }
 
     /** Returns the index of the attribute to cut on.
+     *
+     * @return the index of the attribute to cut on.
      *
      */
     public final int attributeIndex() {

@@ -30,7 +30,8 @@
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Alcalaetal;
 
 /**
- * <p>
+ * <p>It is used for representing and handling a chromosome throughout the evolutionary learning
+	 * 
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
@@ -38,11 +39,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.
  */
 
 public class Chromosome implements Comparable {
-	/**
-	 * <p>
-	 * It is used for representing and handling a chromosome throughout the evolutionary learning
-	 * </p>
-	 */
+    
 	
 	private Gene[] genes;
 	private double fitness;
@@ -164,7 +161,7 @@ public class Chromosome implements Comparable {
 	 * The comparison is achieved by only considering fitness values.
 	 * For this reason, note that this method provides a natural ordering that is inconsistent with equals
 	 * </p>
-	 * @param obj The object to be compared
+	 * @param chr The object to be compared
 	 * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
 	 */
 	public int compareTo(Object chr) {

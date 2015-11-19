@@ -94,6 +94,7 @@ public class Matrix
    * Constructs a matrix using a given array.
    *
    * @param array the values of the matrix
+     * @throws java.lang.Exception All rows must have the same length
    */
   public Matrix(double[][] array) throws Exception {
     m_Matrix = new keel.Algorithms.Statistical_Classifiers.Logistic.core.matrix.Matrix(array);
@@ -115,7 +116,6 @@ public class Matrix
    * Creates and returns a clone of this object.
    *
    * @return a clone of this instance.
-   * @throws Exception if an error occurs
    */
   public Object clone() {
     try {
@@ -259,6 +259,7 @@ public class Matrix
   /**
    * Returns the sum of this matrix with another.
    *
+     * @param other matrix to sum with.
    * @return a matrix containing the sum.
    */
   public final Matrix add(Matrix other) {
@@ -342,7 +343,8 @@ public class Matrix
    * This does only make sense after LU decomposition.
    *
    * @return matrix with the L part of the matrix; 
-   * @see #LUDecomposition()
+     * @throws java.lang.Exception  All rows must have the same length
+   * @see #LUDecomposition()  All rows must have the same length
    */
   public Matrix getL() throws Exception {
     int nr = numRows();    // num of rows
@@ -364,6 +366,7 @@ public class Matrix
    * This does only make sense after LU decomposition.
    *
    * @return matrix with the U part of a matrix; 
+     * @throws java.lang.Exception  All rows must have the same length
    * @see #LUDecomposition()
    */
   public Matrix getU() throws Exception {
@@ -385,6 +388,7 @@ public class Matrix
    * It changes the matrix into its LU decomposition.
    *
    * @return the indices of the row permutation
+     * @throws java.lang.Exception All rows must have the same length
    */
   public int[] LUDecomposition() throws Exception {
     // decompose
@@ -422,6 +426,7 @@ public class Matrix
    * X returned in parameter bb.
    *
    * @param bb first vector B in above equation then X in same equation.
+     * @throws java.lang.Exception All rows must have the same length
    */
   public void solve(double[] bb) throws Exception {
     // solve
@@ -493,6 +498,7 @@ public class Matrix
    * creates a matrix from the given Matlab string.
    * @param matlab  the matrix in matlab format
    * @return        the matrix represented by the given string
+     * @throws java.lang.Exception if it can be created
    * @see           #toMatlab()
    */
   public static Matrix parseMatlab(String matlab) throws Exception {
@@ -501,6 +507,7 @@ public class Matrix
   
   /**
    * Main method for testing this class.
+     * @param ops main args.
    */
   public static void main(String[] ops) {
 

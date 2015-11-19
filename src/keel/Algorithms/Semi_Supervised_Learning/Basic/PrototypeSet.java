@@ -56,7 +56,13 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     /** Associated instance set to the prototype set. */
     public static InstanceSet associatedInstanceSet = null;
 
+    /**
+     * Features set 1.
+     */
     protected static ArrayList<Integer> FeaturesSet1;
+    /**
+     * Features set 2.
+     */
     protected static ArrayList<Integer> FeaturesSet2;  // If you use CO-training
     
     public int compareTo (Object o1) {
@@ -125,7 +131,10 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
              this.add(source.get(i));
     }
     
-    
+    /**
+     * Transform the prototype set to a instance set object.
+     * @return the instance set object.
+     */
     public InstanceSet toInstanceSet(){
 
     	
@@ -1336,7 +1345,11 @@ public class PrototypeSet extends ArrayList<Prototype> implements Comparable
     	return fin;
     }
     
-    
+    /**
+     *
+     * @param other
+     * @return
+     */
     public boolean removeWithoutClass(PrototypeSet other){
     	
     	boolean fin = false;

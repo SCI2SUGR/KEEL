@@ -51,9 +51,11 @@ import java.util.*;
 public class Rel_RASCOAlgorithm extends PrototypeGenerationAlgorithm<Rel_RASCOGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new Rel_RASCOGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype Rel_RASCOGenerator object with data and parameters full load. 
      */
     protected Rel_RASCOGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

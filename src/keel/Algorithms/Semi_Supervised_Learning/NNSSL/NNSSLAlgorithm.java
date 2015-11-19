@@ -51,9 +51,11 @@ import java.util.*;
 public class NNSSLAlgorithm extends PrototypeGenerationAlgorithm<NNSSLGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new NNSSLGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype NNSSLGenerator object with data and parameters full load. 
      */
     protected NNSSLGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

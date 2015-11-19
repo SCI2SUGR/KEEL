@@ -15,6 +15,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * Implements Fuzzy Inference-grams abstract class for algorithm based on this scheme.
+ *
+ */
 public abstract class Fingrams {
 
 	// /////////// VARIABLES /////////////
@@ -26,57 +30,60 @@ public abstract class Fingrams {
 	// 3 position vector with the operators used in the system
 	// protected List<Integer> operators;
 
-	// Matrix that stores the text of the rules
+	/**Matrix that stores the text of the rules. */
 	protected List<String> textRules;
 
-	// Matrix that stores the complete social network
+	/** Matrix that stores the complete social network */
 	protected List<List<Double>> socialNetwork;
 
-	// Matrix that stores the scaled social network
+	/** Matrix that stores the scaled social network */
 	protected List<List<Double>> scaledSocialNetwork;
 
 	// List that stores the list of examples. Each row means a rule, the
 	// length of rules varies
 	// protected List<List<Integer>> listExamplesCoveredByRule;
 
-	// Matrix that stores the examples that fire the rules
-	// A 1 in position (i,j) means that example j+1 fires rule i
+	/** Matrix that stores the examples that fire the rules.
+	 A 1 in position (i,j) means that example j+1 fires rule i */
 	protected byte[][] matrixRulesXExamples;
 
+        /** Matrix that stores the firing degrees examples by rules. */
 	protected double[][] matrixFiringDegreesRulesXExamples;
 
-	// Vector that contains the total firing degrees of rules
+	/** Vector that contains the total firing degrees of rules. */
 	protected List<Double> totalFiringDegrees;
 
-	// Number of rules of the system
+	/** Number of rules of the system. */
 	protected int numberRules;
 
-	// Number of examples managed
+	/** Number of examples managed. */
 	protected int numberExamples;
 
-	// Number of antecedents of the rules
+	/** Number of antecedents of the rules. */
 	protected List<Integer> numberAntecedents;
 
-	// Set of label conclusions that can appear
+	/** Set of label conclusions that can appear. */
 	protected List<String> possibleLabelConclusions;
 
-	// Rule identifier
+	/** Rule identifier. */
 	protected List<String> rulesIdentifiers;
 
-	// Relation
+	/** Relation. */
 	protected int relation;
 
-	// Type of relation
+	/** Type of relation. */
 	protected boolean relationDirected;
 
-	// File location. This place will be used to store every file
+	/** File location. This place will be used to store every file. */
 	protected String fileLocation;
 
-	// Variables to control the uncovered examples
+	/** Variables to control the uncovered examples. */
 	protected boolean ruleUncoveredExamples;
 
+        /** Variables to control the number of uncovered examples. */
 	protected int numberUncoveredExamples;
 
+        /** Uncovered examples. */
 	protected List<Integer> uncoveredExamples;
 
 	// ///////////// END VARIABLES ///////////////
@@ -84,6 +91,9 @@ public abstract class Fingrams {
 	// ///////////// METHODS ///////////////
 
 	// // // // BUILDERS // // // //
+        /**
+        * Default Constructor. Initiates all basic structures.
+        */
 	public Fingrams() {
 		textRules = new ArrayList<String>();
 		socialNetwork = new ArrayList<List<Double>>();
@@ -102,6 +112,11 @@ public abstract class Fingrams {
 		fileLocation = "";
 	}
 
+        /**
+        * Parameter Constructor. Initiates all basic structures, the relation value and the directory to store all resultant files.
+     * @param relation given relation value.
+     * @param fileLocation directory where to store every resultant file.
+        */
 	public Fingrams(int relation, String fileLocation) {
 		textRules = new ArrayList<String>();
 		socialNetwork = new ArrayList<List<Double>>();
@@ -127,62 +142,129 @@ public abstract class Fingrams {
 
 	// // // // GETS & SETS // // // //
 
+    /**
+     * Returns the matrix that stores the text of all the rules.
+     * @return the matrix that stores the text of all the rules.
+     */
 	public List<String> getTextRules() {
 		return textRules;
 	}
 
-	public List<List<Double>> getSocialNetwork() {
+    /**
+     * Returns the matrix that stores the complete social network.
+     * @return the matrix that stores the complete social network.
+     */
+    public List<List<Double>> getSocialNetwork() {
 		return socialNetwork;
 	}
 
-	public List<List<Double>> getScaledSocialNetwork() {
+    /**
+     * Returns the matrix that stores the scaled social network 
+     * @return the matrix that stores the scaled social network 
+     */
+    public List<List<Double>> getScaledSocialNetwork() {
 		return scaledSocialNetwork;
 	}
 
-	public byte[][] getMatrixRulesXExamples() {
+    /**
+     * Returns the matrix that stores the examples that fire the rules.
+     * A 1 in position (i,j) means that example j+1 fires rule i 
+     * @return the matrix that stores the examples that fire the rules.
+     */
+    public byte[][] getMatrixRulesXExamples() {
 		return matrixRulesXExamples;
 	}
 
-	public int getNumberRules() {
+    /**
+     * Returns the number of rules of the system.
+     * @return the number of rules of the system.
+     */
+    public int getNumberRules() {
 		return numberRules;
 	}
 
-	public int getNumberExamples() {
+    /**
+     * Returns the number of examples managed.
+     * @return the number of examples managed.
+     */
+    public int getNumberExamples() {
 		return numberExamples;
 	}
 
-	public List<Integer> getNumberAntecedents() {
+    /**
+     * Returns the number of antecedents of the rules.
+     * @return the number of antecedents of the rules.
+     */
+    public List<Integer> getNumberAntecedents() {
 		return numberAntecedents;
 	}
 
-	public List<String> getPossibleLabelConclusions() {
+    /**
+     * Returns the Set of label conclusions that can appear.
+     * @return the Set of label conclusions that can appear.
+     */
+    public List<String> getPossibleLabelConclusions() {
 		return possibleLabelConclusions;
 	}
 
-	public List<String> getRulesIdentifiers() {
+    /**
+     * Returns the Rules identifiers
+     * @return the Rules identifiers
+     */
+    public List<String> getRulesIdentifiers() {
 		return rulesIdentifiers;
 	}
 
-	public int getTypeRelation() {
+    /**
+     * Returns the Relation value.
+     * @return the Relation value.
+     */
+    public int getTypeRelation() {
 		return relation;
 	}
 
-	public List<Double> getTotalFiringDegrees() {
+    /**
+     * Returns the Vector that contains the total firing degrees of rules.
+     * @return the Vector that contains the total firing degrees of rules.
+     */
+    public List<Double> getTotalFiringDegrees() {
 		return totalFiringDegrees;
 	}
 
-	public String getFileLocation() {
+    /**
+     * Returns the files directory where every file will be stored.
+     * @return files location.
+     */
+    public String getFileLocation() {
 		return fileLocation;
 	}
 
 	// // // Abstract // // // //
 
+    /**
+     * Constructs and returns an {@link InfoNode} of the node with the given id.
+     * This InfoNode object stores graphical information of a node used when the Figrams are displayed.
+     * @param n given id of the node.
+     * @return an InfoNode object.
+     */
 	protected abstract InfoNode calculateInfoNode(int n);
 
-	public abstract int loadInfoFromFS();
+    /**
+     * Loads all the information needed for the Fingrams object, setting all its variables, 
+     * from a .fs file located on fileLocation. 
+     * @return the number of rules read.
+     */
+    public abstract int loadInfoFromFS();
 
 	// // // Defined and fixed // // // //
 
+    	/**
+	 * Generates the complete social network matrix 
+         * with the list of examples covered by each rule. 
+         * This network could be undirected or directed depending on
+         * the relation value (0 or >0 respectively). 
+	 * 
+	 */
 	public void generateMatrix() {
 		if (relation == 0) {
 			generateUndirectedMatrix();
@@ -196,6 +278,7 @@ public abstract class Fingrams {
 	}
 
 	// protected void writeToFileCompleteNetwork() {}
+
 
 	public String buildConfGraphDotFile(String file) {
 
@@ -578,14 +661,9 @@ public abstract class Fingrams {
 		}
 	}
 
-	/*
-	 * function generateUndirectedMatrix
+	/**
+	 * Generates the complete undirected social network matrix with the list of examples covered by each rule.
 	 * 
-	 * Need: The list of examples covered by each rule
-	 * 
-	 * Produce: Nothing
-	 * 
-	 * Modify: The social network with the information
 	 */
 	protected void generateUndirectedMatrix() {
 
@@ -641,6 +719,9 @@ public abstract class Fingrams {
 
 	}
 
+        /**
+	 * Generates the complete directed social network matrix with the list of examples covered by each rule.
+	 */
 	abstract protected void generateDirectedMatrix();
 
 	protected int elementsInCommon(byte[] rulei, byte[] rulej) {

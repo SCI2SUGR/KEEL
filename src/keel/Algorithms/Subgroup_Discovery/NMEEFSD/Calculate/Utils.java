@@ -27,18 +27,20 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Pedro González (University of Jaen) 15/08/2004
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.Calculate;
 
 import java.util.*;
 
+/**
+ * <p> Assorted methods to manage several topics
+     *
+ * @author Written by Pedro González (University of Jaen) 15/08/2004
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Utils {
     
     /**

@@ -27,18 +27,19 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Writed by Alberto FernÃ¡ndez (University of Granada) 15/01/2006
- * @version 2.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDAlgorithm;
 
 import java.util.*;
 
+/**
+ * <p> Data structure for the examples
+ * @author Writed by Alberto Fernández (University of Granada) 15/01/2006
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
 public class SetData{
 
     /**

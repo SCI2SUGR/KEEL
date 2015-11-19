@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 
 package keel.Algorithms.Rule_Learning.PART;
@@ -46,13 +39,15 @@ import keel.Dataset.*;
 
 
 
-
-public class MyDataset{
 /**
- * <p>
- * Class to implement the dataset
+ * <p>Class to implement the dataset
+ * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class MyDataset{
 	
 	
   /** The name of the dataset. */

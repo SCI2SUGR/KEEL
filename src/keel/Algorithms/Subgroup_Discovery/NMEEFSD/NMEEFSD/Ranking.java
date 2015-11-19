@@ -27,19 +27,27 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * Algorithm for the discovery of rules describing subgroups
- * @author Cristóbal J. Carmona
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
 
 import java.util.*;
 
+/**
+ * <p>
+ * Algorithm for the discovery of rules describing subgroups.
+ * This class implements some facilities for ranking solutions.
+     * Given a Population object, their solutions are ranked
+     * according to scheme proposed in NSGA-II; as a result, a set of subsets
+     * are obtained. The subsets are numbered starting from 0 (in NSGA-II, the
+     * numbering starts from 1); thus, subset 0 contains the non-dominated
+     * solutions, subset 1 contains the non-dominated solutions after removing those
+     * belonging to subset 0, and so on.
+ * @author Cristóbal J. Carmona
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class Ranking {
     /**
      * <p>

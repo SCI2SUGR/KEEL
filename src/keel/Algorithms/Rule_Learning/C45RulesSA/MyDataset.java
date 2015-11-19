@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Rule_Learning.C45RulesSA;
 import java.util.Enumeration;
@@ -42,13 +35,15 @@ import java.util.Vector;
 
 import keel.Dataset.*;
 
-
-public class MyDataset{
 /**
- * <p>
- * Class to implement the dataset
+ * <p>Class to implement the dataset
+ * @author Written by Antonio Alejandro Tortosa (University of Granada) 01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class MyDataset{
 	
 	
   /** The name of the dataset. */

@@ -51,9 +51,11 @@ import java.util.*;
 public class DE_TriTrainingAlgorithm extends PrototypeGenerationAlgorithm<DE_TriTrainingGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new DE_TriTrainingGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype DE_TriTrainingGenerator object with data and parameters full load. 
      */
     protected DE_TriTrainingGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

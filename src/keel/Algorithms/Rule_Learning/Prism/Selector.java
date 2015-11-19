@@ -27,8 +27,11 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Rule_Learning.Prism;
+
 /**
- * <p>
+ * <p>Class to stores selectors with the form (attribute operator values)
  * @author Written by Alberto Fernández (University of Granada) 02/06/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
@@ -36,15 +39,8 @@
  * </p>
  */
 
-package keel.Algorithms.Rule_Learning.Prism;
-
-
 public class Selector implements Comparable {
-/**
- * <p>
- * Class to stores selectors with the form (attribute operator values)
- * </p>
- */
+    
 	// Column of data set (0..m-1)
     int atributo; 
     // Operator> 0:= 1:<> 2:<= 3:>

@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Rosa Venzala 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Rule_Learning.Riona;
 
@@ -45,12 +38,16 @@ import java.io.*;
 import keel.Dataset.*;
 import java.util.Arrays;
 
-public class Main {
 /**
- * <p>
- * Main class
+ * <p> Main class
+ * @author Written by Rosa Venzala 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class Main {
+    
     private String trainFile; 
     private String evaluationFile; 
     private String testFile;
@@ -59,6 +56,9 @@ public class Main {
     private String outFile;
     private long seed;
 
+    /**
+     * Default constructor.
+     */
     public Main() {
     }
 

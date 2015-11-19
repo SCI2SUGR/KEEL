@@ -51,9 +51,11 @@ import java.util.*;
 public class CoBCAlgorithm extends PrototypeGenerationAlgorithm<CoBCGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new CoBCGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype CoBCGenerator object with data and parameters full load. 
      */
     protected CoBCGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

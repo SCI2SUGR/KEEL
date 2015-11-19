@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada) 01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 12/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
+
 
 package keel.Algorithms.Rule_Learning.C45Rules;
 
@@ -42,14 +35,19 @@ import java.util.StringTokenizer;
 import java.util.ArrayList;
 import org.core.*;
 
-
-public class parseParameters {
 /**
  * <p>
  * Title: Parse Configuration File
- * Reads the configuration file (data-set files and parameters)
+ * Reads the configuration file (data-set files and parameters).
+ * </p>
+ * <p>
+ * @author Written by Alberto Fernández (University of Granada) 01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 12/12/2008
+ * @version 1.1
+ * @since JDK1.2
  * </p>
  */
+public class parseParameters {
 	
     private String algorithmName;
     private String trainingFile, validationFile, testFile;

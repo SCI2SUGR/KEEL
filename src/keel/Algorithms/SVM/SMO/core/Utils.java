@@ -478,6 +478,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double
+     * @return True if a is equal to b, False otherwise. 
    */
   public static /*@pure@*/ boolean eq(double a, double b){
     
@@ -1076,6 +1077,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double
+     * @return True if a is smaller or equal to b, False otherwise. 
    */
   public static /*@pure@*/ boolean smOrEq(double a,double b) {
     
@@ -1087,6 +1089,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double
+     * @return True if a is greater or equal to b, False otherwise. 
    */
   public static /*@pure@*/ boolean grOrEq(double a,double b) {
     
@@ -1098,6 +1101,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double
+     * @return True if a is smaller than b, False otherwise.
    */
   public static /*@pure@*/ boolean sm(double a,double b) {
     
@@ -1109,6 +1113,7 @@ public final class Utils {
    *
    * @param a a double
    * @param b a double 
+     * @return True if a is greater than b, False otherwise. 
    */
   public static /*@pure@*/ boolean gr(double a,double b) {
     

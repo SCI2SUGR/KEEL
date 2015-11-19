@@ -51,9 +51,12 @@ import java.util.*;
 public class APSSCAlgorithm extends PrototypeGenerationAlgorithm<APSSCGenerator>
 {
     /**
-     * Builds a new ChenGenerator.
+     * Builds a new APSSCGenerator.
      * @param train Training data set.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
      * @param params Parameters of the method.
+     * @return the new APSSCGenerator.
      */
     protected APSSCGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

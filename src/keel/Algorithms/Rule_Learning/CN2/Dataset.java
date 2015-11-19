@@ -29,6 +29,12 @@
 
 package keel.Algorithms.Rule_Learning.CN2;
 
+
+
+import java.io.*;
+import keel.Dataset.*;
+import java.util.Arrays;
+
 /**
  * <p>Title: Data-set</p>
  * <p>Description: It contains the methods for reading the training and test files</p>
@@ -36,11 +42,6 @@ package keel.Algorithms.Rule_Learning.CN2;
  * @version 1.0
  * @since JDK1.4
  */
-
-import java.io.*;
-import keel.Dataset.*;
-import java.util.Arrays;
-
 public class Dataset {
 
     private double[][] X = null;

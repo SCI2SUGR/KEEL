@@ -165,8 +165,15 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
   protected int m_NumFolds = 0;
 
   
-  protected boolean m_Debug = false; 
-  protected int nClasses = 0;
+    /**
+     * Debug flag.
+     */
+    protected boolean m_Debug = false; 
+
+    /**
+     * Number of classes.
+     */
+    protected int nClasses = 0;
   
   /** Whether unclassified instances are allowed */
   protected boolean m_AllowUnclassifiedInstances = false;
@@ -623,6 +630,8 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
 
   /**
    * Backfits the given data into the tree.
+     * @param data given data to backfit into the tree.
+     * @throws java.lang.Exception
    */
   public void backfitData(PrototypeSet data) throws Exception {
 
@@ -1040,12 +1049,9 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
    *            whether debugging is on
    * @param attIndicesWindow
    *            the attribute window to choose attributes from
-   * @param random
-   *            random number generator for choosing random attributes
    * @param depth
    *            the current depth
-   * @param determineStructure
-   *            whether to determine structure
+     * @param allow if unclassified instances are allowed.
    * @throws Exception
    *             if generation fails
    */
@@ -1251,6 +1257,7 @@ public class RandomTree  {//extends AbstractClassifier implements OptionHandler,
    *            the attribute index
    * @param data
    *            the data to work with
+     * @return distribution for an attribute. 
    * @throws Exception
    *             if something goes wrong
    */

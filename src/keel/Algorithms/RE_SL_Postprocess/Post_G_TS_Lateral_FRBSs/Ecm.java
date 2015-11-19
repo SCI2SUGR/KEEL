@@ -45,12 +45,17 @@ public class Ecm {
 	
 	/************************************************************/
 	
+        	/** Returns the fuzzy rules base.
+     * @return the fuzzy rules base.  */
 	public Base base(){
 		return Bs;
 	}
 
 	/************************************************************/
 
+        	/** Returns the number of rules generated.
+     * @return number of rules generated.         
+         */
 	public int num_reglas(){
 		return Bs.getN_reglas();
 	}
@@ -271,7 +276,6 @@ public class Ecm {
 	 * @param n_reglas_total the number of total rules
 	 * @return the mean square error
 	 */
-
 	public double ECM_tra (double [] cromosoma,  char []cromosomaR ,int n_reglas_total){
 	   int i;
 	   double suma;
@@ -305,6 +309,13 @@ public class Ecm {
 	
 	/************************************************************/
 	
+        	/**
+	 * It calculates the mean square error(MSE) of the training data
+	 * @param cromosoma it contains the chromosome values
+	 * @param cromosomaR it contains the chromosome of rules values
+	 * @param n_reglas_total the number of total rules
+	 * @return the mean square error
+	 */
 	public double eval_EC (double []cromosoma, char []cromosomaR,int n_reglas_total)
 	{
 	   return (ECM_tra (cromosoma,cromosomaR,n_reglas_total));

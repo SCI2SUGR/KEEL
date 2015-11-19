@@ -27,8 +27,13 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.SDMap.SDMap;
+
 /**
- * <p>
+ * <p> It reads the configuration file (data-set files and parameters) and launch the algorithm
+	 *
  * @author Written by Alberto Fernandez (University of Granada) 01/02/2006
  * @author Modified by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
  * @author Modified by Cristobal J. Carmona (University of Jaen) 10/07/2010
@@ -36,15 +41,8 @@
  * @since JDK1.6
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.SDMap.SDMap;
-
 public class Main {
-	/**
-	 * <p>
-	 * It reads the configuration file (data-set files and parameters) and launch the algorithm
-	 * </p>
-	 */
+    
 
     private parseParameters parameters;
 

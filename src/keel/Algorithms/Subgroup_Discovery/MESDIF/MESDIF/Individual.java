@@ -27,8 +27,12 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
+
 /**
- * <p>
+ * <p> Individual abstract class for the different types of genetic individuals.
  * @author Writed by Pedro González (University of Jaen) 15/02/2004
  * @author Modified by Pedro González (University of Jaen) 4/08/2007
  * @author Modified by Cristóbal J. Carmona (University of Jaen) 30/06/2010
@@ -36,18 +40,36 @@
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.MESDIF.MESDIF;
-
 public abstract class Individual {
 
-      public int tamano;
-      public boolean evaluado;
-      public boolean dominado;         // Individual dominated or not
-      public QualityMeasures medidas;
-      public boolean cubre[];          // Store if the invididual covers each example
+    /**
+     * Size of the individual.
+     */
+    public int tamano;
 
+    /**
+     * Evaluated flag.
+     */
+    public boolean evaluado;
 
+    /**
+     * Individual dominated or not flag.
+     */
+    public boolean dominado;         // Individual dominated or not
+
+    /**
+     * Measurements of the individual.
+     */
+    public QualityMeasures medidas;
+
+    /**
+     * Stores if the invididual covers each example.
+     */
+    public boolean cubre[];          // Store if the invididual covers each example
+
+    /**
+     * Default Constructor.
+     */
     public Individual() {
     }
 
@@ -56,14 +78,28 @@ public abstract class Individual {
      * <p>
      * Returns if the example number "pos" is covered by this individual
      * </p>
+     * @param pos example's position given.
      * @return    The example "pos" is covered or not by this individual
      */
     public boolean getIndivCubre (int pos) {
         return cubre[pos];
     }
 
-
+    /**
+     * <p>
+     * Creates random instance of individual
+     * </p>
+     * @param Variables             Variables structure
+     */
     public abstract void InitIndRnd(TableVar Variables);
+
+    /**
+     * <p>
+     * Creates biased random instance of individual
+     * </p>
+     * @param Variables             Variables structure
+     * @param porcVar  percentage of variables to appear in the biased initialization
+     */
     public abstract void InitIndBsd(TableVar Variables, float porcVar);
 
 
@@ -102,13 +138,23 @@ public abstract class Individual {
      * <p>
      * Sets the value for the domination value
      * </p>
+     * @param val value given.
      */
     public void setIndivDom (boolean val) {
         dominado = val;
     }
 
-
+    /**
+     * Copies an individual given.
+     * @param otro given individual to be copied.
+     */
     public abstract void copyIndiv (Individual otro);
+
+    /**
+     * Checks if this individual is equal to other given.
+     * @param otro given individual to compare with.
+     * @return True if this individual is equal to other given, False otherwise. 
+     */
     public abstract boolean equalTo (Individual otro);
 
 
@@ -168,15 +214,67 @@ public abstract class Individual {
         return res;
     }
 
+    /**
+     * Sets a value in a given position in the chromosome.
+     * @param pos given position.
+     * @param val given value.
+     */
     public abstract void setCromElem (int pos, int val);
+
+    /**
+     * <p>
+     * Sets the value of the indicated gene of the Chromosome
+     * </p>
+     * @param pos               Position of the variable
+     * @param elem              Position of the gene
+     * @param val               Value of the variable
+     */
     public abstract void setCromElemGene (int pos, int elem, int val);
 
+    /**
+     * <p>
+     * Returns the indicated gene of the Chromosome
+     * </p>
+     * @param pos               Position of the gene
+     * @return                  Value of the gene
+     */
     public abstract int getCromElem(int pos);
+
+    /**
+     * <p>
+     * Retuns the value of the gene indicated
+     * </p>
+     * @param pos          Position of the variable in the chromosome
+     * @param elem              Position of the gene of the variable
+     * @return                  Value of the gene
+     */
     public abstract int getCromElemGene(int pos, int elem);
 
+    /**
+     * <p>
+     * Returns the DNF Chromosome
+     * </p>
+     * @return             DNF Chromosome
+     */
     public abstract CromDNF getIndivCromDNF();
+
+
+    /**
+     * <p>
+     * Returns the Canonical Chromosome
+     * </p>
+     * @return             Canonical Chromosome
+     */
     public abstract CromCAN getIndivCromCAN();
 
+    /**
+     * <p>
+     * Evaluate a individual. This function evaluates an individual.
+     * </p>
+     * @param AG                Genetic algorithm
+     * @param Variables         Variables structure
+     * @param Examples          Examples structure
+     */
     public abstract void evalInd (Genetic AG, TableVar Variables, TableDat Examples);
 
 
@@ -295,7 +393,12 @@ public abstract class Individual {
           return dist;
     }
 
-
+    /**
+     * <p>
+     * Method to print the contents of the individual
+     * </p>
+     * @param nFile             File to write the individual
+     */
     public abstract void Print(String nFile);
 
 

@@ -50,10 +50,13 @@ import java.util.*;
  */
 public class SMOSSLAlgorithm extends PrototypeGenerationAlgorithm<SMOSSLGenerator>
 {
+
     /**
-     * Builds a new ChenGenerator.
-     * @param train Training data set.
-     * @param params Parameters of the method.
+     * Builds a new SMOSSLGenerator.
+     * @param unlabeled Unlabeled data set.
+     * @param test Test data set.
+     * @param params Parameters of the algorithm of reduction.
+     * @return  New prototype SMOSSLGenerator object with data and parameters full load. 
      */
     protected SMOSSLGenerator buildNewPrototypeGenerator(PrototypeSet train, PrototypeSet unlabeled, PrototypeSet test, Parameters params)
     {

@@ -46,7 +46,15 @@ public class Instance {
     private double muest[];
     private int clas;
     private int type;
+
+    /**
+     * Attribute nominal type flag.
+     */
     static public int NOMINAL = 0;
+
+    /**
+     * Attribute numeric type flag.
+     */
     static public int NUMERICO = 1;
     private long posFile; // position in the file
     private int tam;

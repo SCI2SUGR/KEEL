@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
-* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
+
 package keel.Algorithms.Statistical_Models.ModelQuad;
 import keel.Algorithms.Shared.Parsing.*;
 import keel.Algorithms.Shared.Exceptions.*;
@@ -42,12 +35,17 @@ import keel.Algorithms.Shared.ClassicalOptim.*;
 import org.core.*;
 import java.io.*;
 
+/**
+* <p> In this class, Quadratic Least Squares Regression is implemented 
+	*
+* @author Written by Luciano Sanchez (University of Oviedo) 01/01/2004
+* @author Modified by Jose Otero (University of Oviedo) 01/12/2008
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
 public class ModelPolQuadraticLMS {
-	/**
-	* <p>
-	* In this class, Quadratic Least Squares Regression is implemented 
-	* </p>
-	*/
+    
 	static Randomize rand;
 	/**
 	* <p>

@@ -222,6 +222,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 	/** The Lagrange multipliers */
 	protected double[] m_alpha;
+        /** The Lagrange multipliers */
 	protected double[] m_alpha_;
 
 	/** The thresholds. */
@@ -261,11 +262,15 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	/** The parameters of the linear transforamtion realized 
 	 * by the filter on the class attribute */
 	protected double m_Alin;
+        /** The parameters of the linear transforamtion realized 
+	 * by the filter on the class attribute */
 	protected double m_Blin;
 
 	/** Variables to hold weight vector in sparse form.
       (To reduce storage requirements.) */
 	protected double[] m_sparseWeights;
+        /** Variables to hold indices vector in sparse form.
+      (To reduce storage requirements.) */
 	protected int[] m_sparseIndices;
 
 	/** whether the kernel is a linear one */
@@ -1661,12 +1666,13 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	 * Debuggage function.
 	 * Compute the value of the objective function.
 	 * 
-	 * @param i1
-	 * @param i2
-	 * @param alpha1
-	 * @param alpha1_
-	 * @param alpha2
-	 * @param alpha2_
+	 * @param i1 objetive function index 1.
+	 * @param i2 objetive function index 2.
+	 * @param alpha1  objetive function alpha value 1.
+	 * @param alpha1_   objetive function alpha value 1.
+	 * @param alpha2   objetive function alpha value 2.
+	 * @param alpha2_   objetive function alpha value 2.
+     * @return  the value of the objective function.
 	 * @throws Exception 	if something goes wrong
 	 */
 	protected double objFun(int i1, int i2, 

@@ -626,7 +626,7 @@ public class DataSqueezer extends Algorithm {
     /** Writes the rules and the results of the training and the test in the file.
      * Francisco Charte - 19-ene-2010
      * 
-     * @exception 	If the file cannot be written.
+     * @exception IOException	If the file cannot be written.
      */
   	public void printResult() throws IOException 
   	{

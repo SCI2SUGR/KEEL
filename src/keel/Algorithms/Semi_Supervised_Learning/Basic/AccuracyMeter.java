@@ -79,6 +79,7 @@ public class AccuracyMeter
     /**
      * Main. Measures the accuracy of a reduced set and saves results in a file.
      * @param args Command line arguments.
+     * @throws java.lang.Exception if prototype generator can not be executed.
      */
     public static void main(String[] args)  throws Exception
     {

@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Julian Luengo Martin 09/10/2007
- * @version 0.3
- * @since JDK 1.5
- * </p>
- */
+
 package keel.Algorithms.SVM.C_SVM;
 
 import java.io.*;
@@ -46,12 +40,21 @@ import org.libsvm.*;
  * <p>
  * This class is a wrapper to the LibSVM C-SVM classifier, in order to operate with KEEL data sets and parameters.
  * </p>
+ * <p>
+ * @author Written by Julian Luengo Martin 09/10/2007
+ * @version 0.3
+ * @since JDK 1.5
+ * </p>
  */
 public class svmClassifier {
 	/*TODO - use the libSVM from org package*/
     double[] mean = null;
     double[] std_dev = null;
     double tempData = 0;
+
+    /**
+     * SVM probabilities.
+     */
     public double [][] probabilities = null;
     String[][] X = null; // matrix of transformed data
 
@@ -362,6 +365,8 @@ public class svmClassifier {
      * Process the training and test files provided in the parameters file to the constructor.
 
      * </p>
+     * @param train training file.
+     * @param test test file.
      */
     public void process(InstanceSet train, InstanceSet test) {
         double[] outputs;

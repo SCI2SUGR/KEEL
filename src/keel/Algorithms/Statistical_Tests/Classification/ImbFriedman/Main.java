@@ -27,6 +27,12 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Statistical_Tests.Classification.ImbFriedman;
+
+import keel.Algorithms.Statistical_Tests.Shared.*;
+import keel.Algorithms.Shared.Parsing.*;
+
 /**
  * File: Main.java
  * 
@@ -37,11 +43,6 @@
  * @version 1.1 
  * @since JDK1.5
 */
-package keel.Algorithms.Statistical_Tests.Classification.ImbFriedman;
-
-import keel.Algorithms.Statistical_Tests.Shared.*;
-import keel.Algorithms.Shared.Parsing.*;
-
 public class Main {
 	
 	/**

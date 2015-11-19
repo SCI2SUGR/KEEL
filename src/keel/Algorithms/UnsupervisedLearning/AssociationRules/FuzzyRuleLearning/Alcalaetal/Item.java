@@ -30,7 +30,8 @@
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.Alcalaetal;
 
 /**
- * <p>
+ * <p> It represents an item throughout the execution of the algorithm
+   *
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6
@@ -82,6 +83,7 @@ public class Item implements Comparable {
    * Set the ID of the attribute involved in the item
    * </p>
    * 
+     * @param idAttr Attribute id given.
    */
   public void setIDAttribute(int idAttr) {
 	  this.idAttr = idAttr;
@@ -130,7 +132,7 @@ public class Item implements Comparable {
    * <p>
    * It compares an item with another one in order to accomplish ordering later.
    * </p>
-   * @param obj The object to be compared
+   * @param item The object to be compared
    * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object
    */
   public int compareTo(Object item) {

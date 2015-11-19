@@ -27,20 +27,10 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
 
 
 package keel.Algorithms.Rule_Learning.PART;
 
-
-public class Mask {
 /**
  * <p>
  * Representation of a mask over a MyDataset.
@@ -48,7 +38,15 @@ public class Mask {
  * In fact, it acts as a multiplexer over the MyDataset's entries.
  * It also provides a cursor over those elements.
  * </p>
- **/
+ * <p>
+ * @author Written by Cristóbal Romero Morales (University of Oviedo)  01/07/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
+public class Mask {
+
   
   //this vector indicates the active entries of the dataset
   private boolean[] mask; 

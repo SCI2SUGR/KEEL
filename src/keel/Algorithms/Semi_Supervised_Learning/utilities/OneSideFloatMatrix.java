@@ -40,19 +40,27 @@ import org.core.*;
 import java.util.*;
 
 /**
- *
+ * Implements a one side float matrix.
  * @author diegoj
+ * @param <IndexType> Indeces type.
  */
 public class OneSideFloatMatrix<IndexType>
 {
     HashMap<IndexType,HashMap<IndexType, Double>> matrix;
     
-    
+    /**
+     * Default constructor. The HashMap matrix will be initialized
+     */
     public OneSideFloatMatrix()
     {
         matrix = new HashMap<IndexType,HashMap<IndexType, Double>>();
     }
     
+    /**
+     * Initializes the HashMap matrix with indeces given.
+     * @param origin rows indeces.
+     * @param destiny colums indeces.
+     */
     public OneSideFloatMatrix(ArrayList<IndexType>origin, ArrayList<IndexType>destiny)
     {
         for(IndexType o : origin)
@@ -65,6 +73,10 @@ public class OneSideFloatMatrix<IndexType>
                 }
     }
     
+    /**
+     * Adds a new index (row) to the matrix.
+     * @param a the index of the row added.
+     */
     public void add(IndexType a)
     {
         matrix.put(a, new HashMap<IndexType, Double>());

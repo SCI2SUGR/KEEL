@@ -27,26 +27,23 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Alberto Fernandez (University of Granada)01/01/2008
-* @author Modified by Victoria Lopez (University of Granada) 06/06/2010
-* @version 1.0
-* @since JDK1.5
-* </p>
-*/
+
 package keel.Algorithms.Statistical_Tests.Classification.ImbWilcoxon;
 
 import keel.Algorithms.Statistical_Tests.Shared.*;
 import keel.Algorithms.Shared.Parsing.*;
 import org.core.*;
 
+/**
+* <p>This class has only a main method that calls Wilcoxon  test ('global' version) for classification problems, defined in StatTest
+	* 
+* @author Written by Alberto Fernandez (University of Granada)01/01/2008
+* @author Modified by Victoria Lopez (University of Granada) 06/06/2010
+* @version 1.0
+* @since JDK1.5
+* </p>
+*/
 public class Main {
-	/**
-	* <p>
-	* This class has only a main method that calls Wilcoxon  test ('global' version) for classification problems, defined in StatTest
-	* </p>
-	*/
 	
 	/**
 	* <p>

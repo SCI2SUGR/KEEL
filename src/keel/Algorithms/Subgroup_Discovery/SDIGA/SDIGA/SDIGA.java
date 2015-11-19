@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Writed by Pedro González (University of Jaen) 15/02/2004
- * @author Modified by Pedro González (University of Jaen) 4/08/2007
- * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
- * @version 2.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Subgroup_Discovery.SDIGA.SDIGA;
 
@@ -49,16 +41,22 @@ import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.StringTokenizer;
 
-
-public class SDIGA {
-    /**
-     * <p>
+/**
+* <p>
      * SDIGA
      * </p>
      * <p>
      * Algorithm for the discovery of rules describing subgroups
      * </p>
-     */
+ * <p>
+ * @author Writed by Pedro González (University of Jaen) 15/02/2004
+ * @author Modified by Pedro González (University of Jaen) 4/08/2007
+ * @author Modified by Cristóbal J. Carmona (University of Jaen) 20/04/2010
+ * @version 2.0
+ * @since JDK1.5
+ * </p>
+ */
+public class SDIGA {
 
     private static int seed;             // Seed for the random generator
     private static String nombre_alg;    // Algorithm Name
@@ -231,6 +229,7 @@ public class SDIGA {
     * <p>
     * Read the dataset and stores the values
     * </p>
+     * @throws java.io.IOException if the dataset can not be read.
     */
     public static void capturaDataset () throws IOException   {
     	
@@ -448,6 +447,8 @@ public class SDIGA {
       * <p>
       * Main method of the algorithm
       * </p>
+     * @param args Arguments of the program (a configuration script, generally)  
+     * @throws java.lang.Exception  if the algorithm can not be executed.
       **/
     public static void main(String[] args) throws Exception {
         

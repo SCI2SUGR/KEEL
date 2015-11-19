@@ -611,6 +611,7 @@ public class ContingencyTables {
 */
   /**
    * Main method for testing this class.
+     * @param ops main args.
    */
   public static void main(String[] ops) {
 

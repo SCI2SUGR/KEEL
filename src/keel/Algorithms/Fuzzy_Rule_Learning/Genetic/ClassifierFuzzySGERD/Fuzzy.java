@@ -45,8 +45,9 @@ public class Fuzzy {
   double covering;
 
   /**
-   * Default constructor
-   */
+     * Default constructor. 
+     * None attribute will be initialized.
+     */
   public Fuzzy() {
   }
 

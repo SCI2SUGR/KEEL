@@ -27,16 +27,17 @@
   
 **********************************************************************/
 
+
+
+package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
+
 /**
- * <p>
+ * <p> Class for a fuzzy set definition
  * @author Written by Cristóbal J. Carmona (University of Jaen) 11/08/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
  */
-
-package keel.Algorithms.Subgroup_Discovery.NMEEFSD.NMEEFSD;
-
 public class Fuzzy {
     /**
      * <p>

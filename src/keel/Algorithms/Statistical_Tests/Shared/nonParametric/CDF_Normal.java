@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
+
 /**
  * File: Main.java
  * 
@@ -36,8 +39,6 @@
  * @version 1.1 
  * @since JDK1.5
 */
-package keel.Algorithms.Statistical_Tests.Shared.nonParametric;
-
 public class CDF_Normal extends Object {
 
 /**
@@ -52,16 +53,14 @@ public class CDF_Normal extends Object {
 *Handbook of Mathematical Functions, Dover, 9th printing,
 *formula 26.2.3, page 933.  The error in x is claimed to
 *be less than 4.5e-4 in absolute value.
-*
+* FIX: Eventually I should build in a check that p lies in (0,1)
 *@param   p    p must lie between 0 and 1.  xnormi returns
 *              the normal cdf inverse evaluated at p.
 *
 * Steve Verrill
+     * @return the normal cdf inverse value of p.
 *
 */
-
-//  FIX: Eventually I should build in a check that p lies in (0,1)
-
    public static double xnormi(double p) {
 
       double arg,t,t2,t3,xnum,xden,qinvp,x,pc;
@@ -127,6 +126,7 @@ public class CDF_Normal extends Object {
 *
 *@param   z   The method returns the value of the normal
 *             cumulative distribution function at z.
+     * @return the normal cumulative distribution value for the value given.
 *
 *
 */

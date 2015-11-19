@@ -27,7 +27,18 @@
   
 **********************************************************************/
 
+
+
+
+package keel.Algorithms.Rule_Learning.Ripper;
+
+import org.core.*;
+
 /**
+ * Representation of a mask over a MyDataset.
+ * It allows to select a given set of entries without changing the MyDataset.
+ * In fact, it acts as a multiplexer over the MyDataset's entries.
+ * It also provides a cursor over those elements.
  * <p>
  * @author Written by Alberto Fernández (University of Granada)  01/07/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 03/12/2008
@@ -35,20 +46,8 @@
  * @since JDK1.2
  * </p>
  */
-
-
-package keel.Algorithms.Rule_Learning.Ripper;
-
-import org.core.*;
-
-
 public class Mask {
-/**
- * Representation of a mask over a MyDataset.
- * It allows to select a given set of entries without changing the MyDataset.
- * In fact, it acts as a multiplexer over the MyDataset's entries.
- * It also provides a cursor over those elements.
- */
+
 	
   private boolean[] mask; //this vector indicates the active entries of the dataset
   private int nactivos; //number of active entries

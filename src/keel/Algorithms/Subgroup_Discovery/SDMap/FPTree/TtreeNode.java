@@ -39,8 +39,13 @@
 /*                                                                           */
 /* ------------------------------------------------------------------------- */
 
+
+package keel.Algorithms.Subgroup_Discovery.SDMap.FPTree;
+
 /**
- * <p>
+ * <p> Methods concerned with Ttree node structure. Arrays of these structures are used
+	* to store nodes at the same level in any sub-branch of the T-tree
+	* 
  * @author Written by Frans Coenen (University of Liverpool) 09/01/2003
  * @author Modified by Frans Coenen (University of Liverpool) 03/02/2005
  * @author Modified by Nicola Flugy Papa (Politecnico di Milano) 24/03/2009
@@ -48,8 +53,6 @@
  * @since JDK1.6
  * </p>
  */
-package keel.Algorithms.Subgroup_Discovery.SDMap.FPTree;
-
 public class TtreeNode {
 	/**
 	* <p>
@@ -89,6 +92,7 @@ public class TtreeNode {
     /* ------ METHODS ------ */
     
     /** It returns the number of nodes.
+     * @return the number of nodes. 
      */
     public static int getNumberOfNodes() {
         return(numberOfNodes);

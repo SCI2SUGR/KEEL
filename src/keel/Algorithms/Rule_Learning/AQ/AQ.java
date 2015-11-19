@@ -99,7 +99,7 @@ public class AQ {
     };
 
     /**
-     * AQ class builder</br>
+     * AQ class builder
      * It does a local copy of the filenames for their posterior use.<br/>
      * Then, it obtains all data from file and stores it in a format recognizable for the program.<br/>
      * Finally, it creates all possible selectors for the dataset and stores them.

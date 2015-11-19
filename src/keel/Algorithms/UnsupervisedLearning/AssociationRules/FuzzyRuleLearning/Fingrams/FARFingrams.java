@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Implements Fuzzy Association Rules Learning Fuzzy Inference-grams
+ *
+ */
 public class FARFingrams extends Fingrams {
 
 	// /////////// VARIABLES /////////////
@@ -32,9 +36,9 @@ public class FARFingrams extends Fingrams {
 	// possibleLabelConclusions
 	private List<String> possibleVbleConclusions;
 
-	// Matrix that stores the firingDegrees up to which the examples fire the
-	// rules. Each row means a rule, each column the firingDegree of the
-	// example j
+	/** Matrix that stores the firingDegrees up to which the examples fire the
+	 rules. Each row means a rule, each column the firingDegree of the
+	 example j*/
 	protected double[][] matrixFiringDegrees;
 
 	// /////////// END VARIABLES /////////////
@@ -43,6 +47,9 @@ public class FARFingrams extends Fingrams {
 
 	// // // // BUILDERS // // // //
 
+    /**
+     * Default Constructor. Initiates all basic structures.
+     */
 	public FARFingrams() {
 		super();
 
@@ -63,6 +70,11 @@ public class FARFingrams extends Fingrams {
 
 	}
 
+                /**
+        * Parameter Constructor. Initiates all basic structures, the relation value and the directory to store all resultant files.
+     * @param typeRelation given relation value.
+     * @param file directory where to store every resultant file.
+        */
 	public FARFingrams(int typeRelation, String file) {
 		super(typeRelation, file);
 
@@ -123,6 +135,11 @@ public class FARFingrams extends Fingrams {
 	// // // // ABSTRACT METHODS // // // //
 
 	@Override
+        /**
+        * Loads all the information needed for the Fingrams object, setting all its variables, 
+        * from a .fs file located on fileLocation. 
+        * @return the number of rules read.
+        */
 	public int loadInfoFromFS() {
 		try {
 			// Initializations
@@ -322,7 +339,13 @@ public class FARFingrams extends Fingrams {
 
 	}
 
-	@Override
+    /**
+     * Constructs and returns an {@link InfoNode} of the node with the given id.
+     * This InfoNode object stores graphical information of a node used when the Figrams are displayed.
+     * @param n given id of the node.
+     * @return an InfoNode object.
+     */
+    @Override
 	public InfoNode calculateInfoNode(int n) {
 
 		DecimalFormat df = (new AdministrativeStaff()).format();
@@ -375,19 +398,18 @@ public class FARFingrams extends Fingrams {
 	/*
 	 * public void generateMatrix() { if (typeRelation == 0) {
 	 * super.generateUndirectedMatrix(); } else { if (typeRelation == 1) {
-	 * generateDirectedMatrix(); } } }
+	 * generateDirectedMatrix(); } }
 	 */
-	/*
-	 * function generateDirectedMatrix
-	 * 
+        
+	/**
+	 * Generates the complete directed social network matrix with the list of examples covered by each rule.
+	 * <code> 
 	 * mij=1-(\frac{\sum_{x \in X} |FDi(x)-FDj(x)|}{\sum_{x \in X} FDi(x)}
-	 * 
+	 * </code> 
 	 * being x the examples that fires rules i and FDi(x) the level up to which
 	 * the example x fires the rule i. Note that if an example z does not fire a
 	 * rule j, FDj(z)=0
 	 * 
-	 * Need: The list of examples covered by each rule Produce: Nothing Modify:
-	 * The matrix socialNetwork with the iteration between rules
 	 */
 	protected void generateDirectedMatrix() {
 

@@ -29,22 +29,20 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.FuzzyApriori;
 
+
+import java.util.*;
+
 /**
- * <p>
+ * <p> It provides the implementation of the algorithm to be run in a process
+   * 
  * @author Written by Alvaro LÃ³pez
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
 
-import java.util.*;
-
 public class FuzzyAprioriProcess {
-  /**
-   * <p>
-   * It provides the implementation of the algorithm to be run in a process
-   * </p>
-   */
+    
   
   private double minSupport;
   private double minConfidence;

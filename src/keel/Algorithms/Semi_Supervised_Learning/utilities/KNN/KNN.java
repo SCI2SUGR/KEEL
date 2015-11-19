@@ -450,7 +450,8 @@ public class KNN
      * @param training Training data prototype set
      * @param test Test data prototype set
      * @param k Number of prototype-neighbors to be compared with each prototype of test data prototypes.
-     * @return Number of prototypes well classificated
+     * @param probabilities classes probabilities for the each test instance.
+     * @return predicted classes of the test instances.
      */
     public static int [] classify(PrototypeSet training, PrototypeSet test, int k, double probabilities[][])
     {

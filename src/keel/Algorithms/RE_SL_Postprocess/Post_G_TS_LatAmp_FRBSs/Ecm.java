@@ -42,14 +42,17 @@ public class Ecm {
 	private Ttabla[] tabla_tst;
 	private TipoIntervalo [] extremos;//unsigned
 	
-	/************************************************************/
 	
+        	/** Returns the fuzzy rules base.
+     * @return the fuzzy rules base.  */
 	public Base base(){
 		return Bs;
 	}
 
-	/************************************************************/
-
+	
+        	/** Returns the number of rules generated.
+     * @return number of rules generated.         
+         */
 	public int num_reglas(){
 		return Bs.getN_reglas();
 	}
@@ -312,7 +315,6 @@ public class Ecm {
 	 * @param n_reglas_total the number of total rules
 	 * @return the mean square error
 	 */
-	
 	public double eval_EC (double []cromosoma, double []cromosomaA, int []cromosomaR,int n_reglas_total)
 	{
 	   return (ECM_tra (cromosoma,cromosomaA,cromosomaR,n_reglas_total));

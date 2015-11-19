@@ -42,14 +42,15 @@ public class Ecm {
 	private Ttabla[] tabla_tst;
 	private TipoIntervalo [] extremos;//unsigned
 	
-	/************************************************************/
-	
+	/** Returns the fuzzy rules base.
+     * @return the fuzzy rules base.  */
 	public Base base(){
 		return Bs;
 	}
 
-	/************************************************************/
-
+	/** Returns the number of rules generated.
+     * @return number of rules generated.         
+         */
 	public int num_reglas(){
 		return Bs.getN_reglas();
 	}
