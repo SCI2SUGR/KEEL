@@ -88,6 +88,7 @@ public class TtreeNode {
     /* ------ METHODS ------ */
     
     /** It returns the number of nodes.
+     * @return the number of nodes. 
      */
     public static int getNumberOfNodes() {
         return(numberOfNodes);

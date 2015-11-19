@@ -29,6 +29,12 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.EARMGA;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,15 +46,21 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * @author Nicolò Flugy Papè
  * @version 1.0
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
+        /**
+     * Number to represent type of variable nominal.
+     */
   public static final int NOMINAL = 0;
+  
+      /**
+     * Number to represent type of variable integer.
+     */
   public static final int INTEGER = 1;
+  
+      /**
+     * Number to represent type of variable real or double.
+     */
   public static final int REAL = 2;
   
   private double[][] realTransactions = null; //transactions array
@@ -141,10 +153,9 @@ public class myDataset {
   }
 
   /**
-   * This function checks if the attribute value is missing
-   * @param i int Example id
-   * @param j int Variable id
-   * @return boolean True is the value is missing, else it returns false
+   * This function checks if the attribute is nominal
+   * @param i int attribute id
+   * @return boolean True is the attribute is nominal, else it returns false
    */
   public boolean isNominal(int i) {
     if (type[i] != myDataset.NOMINAL)  return (false);
@@ -161,7 +172,13 @@ public class myDataset {
   /* public int getType(int value) {
     return type[value];
   }*/
-
+  
+    /**
+     * It returns the type of the attribute specified
+     *
+     * @param variable index of the attribute
+     * @return the type of the attribute specified
+     */
   public int getType(int variable) {
       if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).INTEGER)   return this.INTEGER;
       if (Attributes.getAttribute(variable).getType() == Attributes.getAttribute(0).REAL)  return this.REAL;
@@ -234,9 +251,11 @@ public class myDataset {
   }
 
   
-      /**
-     * Devuelve el universo de discuros de las variables de entrada y salida
-     * @return double[][] El rango minimo y maximo de cada variable
+    /**
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
      */
     public double [][] getRanks() {
 	  int i, j;

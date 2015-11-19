@@ -30,7 +30,7 @@
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.FuzzyRuleLearning.GeneticFuzzyApriori;
 
 /**
- * <p>
+ * <p>It is used for representing and handling an Association Rule
  * @author Written by Alvaro Lopez
  * @version 1.0
  * @since JDK1.6

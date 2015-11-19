@@ -38,7 +38,8 @@ import org.core.Randomize;
 
 
 /**
- * <p>
+ * <p>It gathers all the parameters, launches the algorithm, and prints out the results
+	 * 
  * @author Written by Alvaro Lopez
  * @version 1.1
  * @since JDK1.6

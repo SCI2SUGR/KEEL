@@ -137,6 +137,9 @@ public class AssocRuleMining {
     /** The number of one itemsets (singletons). */
     protected int numOneItemSets = 0;
     
+    /**
+     * Instances dataset to generate the association rules.
+     */
     protected myDataset dataset;
 
     // Flags
@@ -523,7 +526,8 @@ public class AssocRuleMining {
     @param antecedent the antecedent (LHS) of the rule.
     @param consequent the consequent (RHS) of the rule.
     @param confidenceForRule the associated confidence value.
-    @param supportForRule the associated support value.  */
+    @param supportForRule the associated support value.
+     * @param supportForAntecedent  the associated antecedet support value.  */
     
     protected void insertRuleintoRulelist(short[] antecedent,
     				short[] consequent, double confidenceForRule, double supportForRule, double supportForAntecedent) {

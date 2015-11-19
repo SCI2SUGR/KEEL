@@ -29,18 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GAR;
 
-/**
- * <p>Title: Algorithm</p>
- *
- * <p>Description: It contains the implementation of the algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
- *
- * @author Alberto Fernández
- * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
- * @version 1.0
- */
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -51,7 +40,18 @@ import org.core.*;
 
 import keel.Dataset.*;
 
-
+/**
+ * <p>Title: Algorithm</p>
+ *
+ * <p>Description: It contains the implementation of the GAR algorithm</p>
+ *
+ *
+ * <p>Company: KEEL </p>
+ *
+ * @author Alberto Fernández
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
+ * @version 1.0
+ */
 public class GAR {
 
     myDataset trans;
@@ -214,6 +214,10 @@ public class GAR {
 			}
         }
     }
+    
+     /**
+     * Prints a line with the time taken by the algorithm's execution on the output file.
+     */
     public void writeTime() {
     	long seg, min, hor;
         String stringOut = new String("");

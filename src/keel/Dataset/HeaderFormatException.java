@@ -54,8 +54,11 @@ public class HeaderFormatException extends Exception{
     super();
   }//end HeaderFormatException
  
-  
-  public HeaderFormatException(String msg){
+    /**
+     * Creates a new instance of HeaderFormatException with a message given.
+     * @param msg message given.
+     */
+    public HeaderFormatException(String msg){
       super(msg);
   }//end HeaderFormatException
   

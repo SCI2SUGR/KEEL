@@ -28,27 +28,36 @@
 **********************************************************************/
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.MOEA_Ghosh;
+
+
+import java.io.IOException;
+import keel.Dataset.*;
+
 /**
- * <p>
+ * <p> It contains the methods to read a Dataset for the Association Rules Mining problem
+   * 
  * @author Written by Alberto Fernández (University of Granada)
  * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @version 1.1
  * @since JDK1.6
  * </p>
  */
-
-import java.io.IOException;
-import keel.Dataset.*;
-
 public class myDataset {
-  /**
-   * <p>
-   * It contains the methods to read a Dataset for the Association Rules Mining problem
-   * </p>
-   */
+    
 
+    /**
+     * Number to represent type of variable nominal.
+     */
   public static final int NOMINAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
   public static final int INTEGER = 1;
+  
+  /**
+     * Number to represent type of variable real or double.
+     */
   public static final int REAL = 2;
   
   private double[][] trueTransactions = null; //true transactions array
@@ -80,7 +89,12 @@ public class myDataset {
     return trueTransactions;
   }
 
-  public double[] getExample(int pos) {
+    /**
+     * Returns the example with the given id.
+     * @param pos example id.
+     * @return the example with the given id.
+     */
+    public double[] getExample(int pos) {
     return trueTransactions[pos];
   }
 
@@ -292,7 +306,12 @@ public class myDataset {
     return Attributes.getInputAttribute(pos).getName();
   }
 
-  public double getAmplitude (int pos) {
+    /**
+     * Returns the amplitude of the attribute with the given id.
+     * @param pos attribute id.
+     * @return the amplitude of the attribute with the given id.
+     */
+    public double getAmplitude (int pos) {
     return this.Amplitude[pos];
   }
   

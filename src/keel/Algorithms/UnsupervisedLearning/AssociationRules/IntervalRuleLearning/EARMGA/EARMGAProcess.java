@@ -29,14 +29,6 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.EARMGA;
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada)
- * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -44,7 +36,15 @@ import java.util.*;
 
 import org.core.Randomize;
 
-
+/**
+ * <p>It provides the implementation of the EARMGA algorithm to be run in a process
+   *
+ * @author Written by Alberto Fernández (University of Granada)
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class EARMGAProcess
 {
 	private myDataset ds;
@@ -417,6 +417,12 @@ public class EARMGAProcess
 	  return tid_list;
   }
   
+      /**
+     * Rounds the number applying the {@link BigDecimal} rounding mode given.
+     * @param number number to be rounded.
+     * @param decimalPlace given rounding mode.
+     * @return the rounded number.
+     */
   public static double roundDouble(double number, int decimalPlace){
 	  double numberRound;
 	  

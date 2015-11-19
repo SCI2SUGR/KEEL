@@ -29,6 +29,12 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.ARMMGA;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,11 +46,6 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * @author Nicolò Flugy Papè
  * @version 1.0
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
     /**
@@ -244,9 +245,11 @@ public class myDataset {
   }
 
   
-      /**
-     * Devuelve el universo de discuros de las variables de entrada y salida
-     * @return double[][] El rango minimo y maximo de cada variable
+  /**
+     * Returns the minimum and maximum values of every attributes as a matrix.
+     * The matrix has a size of number_of_attributes x 2 ([nAttributes][2]).
+     * The minimum value is located at the first position of each array and the maximum, at the second.
+     * @return Matrix which stores the minimum and maximum values of every attributes.
      */
     public double [][] getRanks() {
 	  int i, j;

@@ -29,14 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GENAR;
 
-/**
- * <p>
- * @author Alberto Fernández
- * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -44,6 +37,15 @@ import java.util.*;
 
 import org.core.Randomize;
 
+/**
+ * <p> It provides the implementation of the GENAR algorithm to be run in a process
+   * 
+ * @author Alberto Fernández
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class GENARProcess
 {
 	private myDataset ds;
@@ -59,7 +61,20 @@ public class GENARProcess
 	private double pf;
 	private int limit;
 	
-  public GENARProcess(myDataset ds, int nRules, int nTrials, int popsize, double ps, double pm, double pf, double AF) {
+/**
+   * <p>
+   * It creates a new process for the algorithm by setting up its parameters
+   * </p>
+   * @param ds The instance of the dataset for dealing with its records
+   * @param nRules The maximum number of rules to be generated.
+   * @param nTrials The maximum number of evaluations to accomplish before terminating the genetic learning
+   * @param popsize The maximum size of population to handle after each generation
+   * @param ps The probability of the selection operator
+   * @param pm The probability of the mutation operator
+   * @param pf The probability of the crossover operator
+   * @param AF The parameter which is used while executing the crossover operator
+   */
+    public GENARProcess(myDataset ds, int nRules, int nTrials, int popsize, double ps, double pm, double pf, double AF) {
 	  int i;
 
 	  this.nRules = nRules;
@@ -79,7 +94,9 @@ public class GENARProcess
 	  }
   }
 
-  
+    /**
+     *  It runs the algorithm for mining association rules.
+     */ 
   public void run() {
 	  ArrayList<Chromosome> popNew;
 	  Chromosome chromoBest;
@@ -116,6 +133,14 @@ public class GENARProcess
 	  this.genRules();
   }
 
+      /**
+   * <p>
+   * It prints out on screen relevant information regarding the mined association rules
+   * which have their confidence and support values higher than the minimum ones given.
+   * </p>
+     * @param minConfidence given minimum confidence value.
+     * @param minSupport given minimum support value.
+   */
   public void printReport (double minConfidence, double minSupport) {
 	  int i, countRules, length;
 	  AssociationRule rule;
@@ -165,7 +190,12 @@ public class GENARProcess
 	  } 
    }  
   
-  
+      /**
+     * Rounds the number applying the {@link BigDecimal} rounding mode given.
+     * @param number number to be rounded.
+     * @param decimalPlace given rounding mode.
+     * @return the rounded number.
+     */
   public static double roundDouble(double number, int decimalPlace){
 	  double numberRound;
 	  
@@ -177,6 +207,14 @@ public class GENARProcess
 	  }else return number;
   }
   
+   /**
+   * <p>
+   * Returns a String with relevant information regarding the mined association rules
+   * </p>
+   * @param rules The array of association rules from which gathering relevant information
+     * @return String with relevant information regarding the mined association rules
+   * 
+   */
   public String printRules(ArrayList<AssociationRule> rules) {
 	  int i, lenghtrule;
 	  boolean stop;
@@ -192,6 +230,15 @@ public class GENARProcess
 	  return rulesList;
   }
   
+  /**
+   * <p>
+   * It prints out on the given {@link PrintWriter} object relevant information regarding the mined association rules.
+   * These rules must have their confidence higher than the minimum given.
+   * </p>
+   * 
+     * @param minSupport minimum support value given.
+     * @param w given PrintWriter object to write on.
+   */
   public void saveReport (double minSupport,PrintWriter w) {
 	  int i, countRules, length;
 	  AssociationRule rule;
@@ -262,7 +309,12 @@ public class GENARProcess
 	  
   }  
 
-
+    /**
+     * Returns the rules that have their support values higher than the minimum given.
+     * @param minSupport minimum support value given.
+     * @return the rules that have their confidence and support values higher than the minimum ones given.
+     *
+     */
   public ArrayList<AssociationRule> getSetRules (double minSupport) {
 	  int i;
 	  ArrayList<AssociationRule> selectRules = new ArrayList<AssociationRule>();

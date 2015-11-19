@@ -29,22 +29,19 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Apriori;
 
+
+
+import java.util.*;
+
 /**
- * <p>
+ * <p> It represents an item throughout the execution of the algorithm
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.*;
-
 public class Item {
-  /**
-   * <p>
-   * It represents an item throughout the execution of the algorithm
-   * </p>
-   */
+    
 	
   private int label;
   private int support;

@@ -29,24 +29,22 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.FPgrowth;
 
-/**
- * <p>
- * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 import java.util.*;
 
 import keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.FPgrowth.LUCS_KDD.FPtree;
 
+/**
+ * <p> It provides the implementation of the algorithm to be run in a process
+   *
+ * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class FPgrowthProcess {
-  /**
-   * <p>
-   * It provides the implementation of the algorithm to be run in a process
-   * </p>
-   */
+    
   
   private double minSupport;
   private double minConfidence;

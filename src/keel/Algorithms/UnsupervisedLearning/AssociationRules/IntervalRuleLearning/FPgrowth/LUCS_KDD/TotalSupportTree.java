@@ -419,7 +419,8 @@ public class TotalSupportTree extends AssocRuleMining {
 	    
     /* COUNT NUMBER OF FREQUENT SETS */
     /** Commences process of counting the number of frequent (large/supported
-    sets contained in the T-tree. */
+    sets contained in the T-tree.
+     * @return  number of frequent sets counted  */
     
     protected int countNumFreqSets() {
         // If empty tree return 0
@@ -443,7 +444,8 @@ public class TotalSupportTree extends AssocRuleMining {
     /** Counts the number of supported nodes in a sub branch of the T-tree.
     @param size the length/size of the current array level in the T-tree.
     @param linkRef the reference to the current array level in the T-tree.
-    @param num the number of frequent sets sofar. */
+    @param num the number of frequent sets sofar.
+     * @return the counted number of supported nodes in a sub branch */
 
     protected int countNumFreqSets(int size, TtreeNode[] linkRef, int num) {
 	

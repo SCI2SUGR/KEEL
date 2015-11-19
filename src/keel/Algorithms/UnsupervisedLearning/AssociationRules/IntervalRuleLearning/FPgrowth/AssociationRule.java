@@ -30,7 +30,7 @@
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.FPgrowth;
 
 /**
- * <p>
+ * <p>  It is used for representing and handling an Association Rule
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @version 1.0
  * @since JDK1.6
@@ -38,12 +38,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  */
 
 public class AssociationRule {
-	/**
-	 * <p>
-	 * It is used for representing and handling an Association Rule
-	 * </p>
-	 */
-	
+    
 	private short[] antecedent;
 	private short[] consequent;
 	private double ruleSupport;
@@ -57,6 +52,7 @@ public class AssociationRule {
 	 * @param antecedent The antecedent part of the rule
 	 * @param consequent The consequent part of the rule
 	 * @param ruleSupport The value representing the rule support
+         * @param antecedentSupport The value representing the antecedent support
 	 * @param confidence The value representing the rule confidence
 	 */
 	public AssociationRule(short[] antecedent, short[] consequent, double ruleSupport, double antecedentSupport, double confidence) {

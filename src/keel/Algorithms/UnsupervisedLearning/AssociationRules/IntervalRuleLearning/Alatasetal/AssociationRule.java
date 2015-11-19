@@ -29,25 +29,22 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Alatasetal;
 
+
+
+import java.util.*;
+
 /**
- * <p>
+ * <p> It is used for representing and handling an Association Rule.
+   * It mainly wraps the methods of a chromosome to offer high-level features later
+   *
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.*;
-
-
 public class AssociationRule {
-  /**
-   * <p>
-   * It is used for representing and handling an Association Rule.
-   * It mainly wraps the methods of a chromosome to offer high-level features later
-   * </p>
-   */
+    
 	
   private Chromosome chr;
   
@@ -167,11 +164,19 @@ public class AssociationRule {
 	return ( this.chr.getRuleConfidence() );
   }
   
-  public double getAntecedentSupport(){
+    /**
+     * Returns the support of the antecedent of this rule.
+     * @return the support of the antecedent of this rule.
+     */
+    public double getAntecedentSupport(){
 		return ( this.chr.getAntecedentSupport() ); 
   }
   
-  public double getConsequentSupport(){
+    /**
+     * Returns the support of the consequent of this rule.
+     * @return the support of the consequent of this rule.
+     */
+    public double getConsequentSupport(){
 	  return ( this.chr.getConsequentSupport() ); 
   }
   
@@ -215,6 +220,12 @@ public class AssociationRule {
 	return ( this.chr.getRuleNetconf());
   }
   
+  	/**
+	 * <p>
+	 * It returns the yulesQ of an association rule
+	 * </p>
+	 * @return A value representing the yulesQ of the association rule
+	 */
   public double getyulesQ() {
 		return ( this.chr.getRuleYulesQ());
 	  }

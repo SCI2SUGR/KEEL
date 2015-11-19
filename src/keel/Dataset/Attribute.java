@@ -191,6 +191,7 @@ public class Attribute{
 
 /**
  * It sets the attribute type.
+     * @param _type given attribute type
  */
   public void setType(int _type) {
     if(type!=-1) {
@@ -317,6 +318,7 @@ public class Attribute{
 /**
  * It does check if the value passed as an argument is bounded by
  * the [min, max] interval.
+     * @param val value to check.
  * @return a boolean that indicates if the value is bounded.
  */
   public boolean isInBounds(double val){

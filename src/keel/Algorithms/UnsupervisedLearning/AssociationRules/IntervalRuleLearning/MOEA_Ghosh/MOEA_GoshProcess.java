@@ -35,12 +35,13 @@ import java.math.BigDecimal;
 import java.util.*;
 import org.core.Randomize;
 
-public class MOEA_GoshProcess {
 	/**
 	 * <p>
-	 * It provides the implementation of the algorithm to be run in a process
+	 * It provides the implementation of the MOEA algorithm to be run in a process
 	 * </p>
 	 */
+public class MOEA_GoshProcess {
+
 	private String paretos;
 	private myDataset dataset;
 	private int nTrials;
@@ -64,6 +65,7 @@ public class MOEA_GoshProcess {
 	 * It creates a new process for the algorithm by setting up its parameters
 	 * </p>
 	 * @param dataset The instance of the dataset for dealing with its records
+     * @param numObjectives Number of objectives
 	 * @param nTrials The maximum number of generations to reach before completing the whole evolutionary learning
 	 * @param popSize The number of chromosomes in the population
 	 * @param pc The probability for the crossover operator
@@ -596,6 +598,13 @@ public class MOEA_GoshProcess {
 		 }else return number;
 	 }
 
+                 /**
+        * <p>
+        * It prints out on the given {@link PrintWriter} object relevant information regarding the mined association rules
+        * </p>
+        * @param rules The array of association rules from which gathering relevant information
+          * @param w given PrintWriter object to write on.
+        */
 	 public void saveReport(ArrayList<AssociationRule> rules,PrintWriter w) {
 		 int i, j, r, cnt_cov_rec;
 		 double avg_yulesQ = 0.0, avg_sup = 0.0, avg_conf = 0.0, avg_ant_length = 0.0, avg_lift = 0.0, avg_conv = 0.0, avg_CF = 0.0, avg_netConf = 0.0;

@@ -29,26 +29,23 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Alatasetal;
 
+
+
+
+
+import org.core.Randomize;
+
 /**
- * <p>
+ * <p>It is used for representing and handling a Gene throughout the evolutionary learning
+	 *
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-
-
-import org.core.Randomize;
-
 public class Gene {
-	/**
-	 * <p>
-	 * It is used for representing and handling a Gene throughout the evolutionary learning
-	 * </p>
-	 */
-	
+    
 	public static final int NOT_INVOLVED = -1;
 	public static final int ANTECEDENT = 0;
 	public static final int CONSEQUENT = 1;

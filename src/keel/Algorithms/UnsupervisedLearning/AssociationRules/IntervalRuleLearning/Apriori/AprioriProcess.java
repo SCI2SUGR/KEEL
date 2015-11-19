@@ -29,25 +29,22 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Apriori;
 
+
+
+import java.io.PrintWriter;
+import java.util.*;
+import java.math.*;
+
 /**
- * <p>
+ * <p> It provides the implementation of the Apriori algorithm to be run in a process
+   *
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.io.PrintWriter;
-import java.util.*;
-import java.math.*;
-
 public class AprioriProcess {
-  /**
-   * <p>
-   * It provides the implementation of the algorithm to be run in a process
-   * </p>
-   */
   
   private double minSupport;
   private double minConfidence;
@@ -164,6 +161,13 @@ public class AprioriProcess {
 	  }
   }
   
+    /**
+   * <p>
+   * It prints out on the given {@link PrintWriter} object. relevant information regarding the mined association rules
+   * </p>
+   * @param rules The array of association rules from which gathering relevant information
+     * @param w given PrintWriter object to write on.
+   */
   public void saveReport(ArrayList<AssociationRule> rules,PrintWriter w) {
 	  int r;
 	  double avg_sup = 0.0, avg_yulesQ = 0.0, avg_conf = 0.0,avg_lift = 0.0,avg_conv = 0.0, avg_CF = 0.0, avg_netConf = 0.0, avg_ant_length = 0.0;	  
@@ -377,6 +381,12 @@ public class AprioriProcess {
     }
   }
   
+    /**
+     * Rounds the number applying the {@link BigDecimal} rounding mode given.
+     * @param number number to be rounded.
+     * @param decimalPlace given rounding mode.
+     * @return the rounded number.
+     */
   public static double roundDouble(double number, int decimalPlace){
 	  double numberRound;
 	  

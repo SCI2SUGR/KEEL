@@ -29,14 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Alatasetal;
 
-/**
- * <p>
- * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
- * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -44,12 +37,17 @@ import java.util.*;
 
 import org.core.Randomize;
 
+/**
+ * <p> It provides the implementation of the algorithm to be run in a process
+   *
+ * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class AlatasetalProcess {
-  /**
-   * <p>
-   * It provides the implementation of the algorithm to be run in a process
-   * </p>
-   */
+    
   
   private final int ATTRIBUTE_NOT_COVERED = -1;
   private final int ATTRIBUTE_COVERED_BY_ANTECEDENT = 0;
@@ -83,7 +81,7 @@ public class AlatasetalProcess {
    * It creates a new process for the algorithm by setting up its parameters
    * </p>
    * @param dataset The instance of the dataset for dealing with its records
-   * @param nGen The maximum number of generations to reach before completing the whole evolutionary learning
+   * @param nTrials The maximum number of generations to reach before completing the whole evolutionary learning
    * @param randomChromosomes The number of initial random chromosomes
    * @param r The number of parts in which each random chromosome is divided to generate the others by doing inversions
    * @param tournamentSize The size of tournament to select the fittest chromosome in the current population
@@ -187,7 +185,11 @@ public class AlatasetalProcess {
 	  
   }
   
-  public void removeRedundant (ArrayList<Chromosome> upop) {
+    /**
+     * Removes the redundant chromosomes of the population given.
+     * @param upop given population.
+     */
+    public void removeRedundant (ArrayList<Chromosome> upop) {
 	  int i, j;
 	  boolean stop;
 	  Chromosome chromo1, chromo2;
@@ -213,7 +215,11 @@ public class AlatasetalProcess {
 	  }
   } 
 
-  public void sortByAmplitude( ArrayList<Chromosome> pop) {
+    /**
+     * Sorts the population given by their amplitude values.
+     * @param pop given population.
+     */
+    public void sortByAmplitude( ArrayList<Chromosome> pop) {
 	  
       for ( int i = 0; i < pop.size()-1; i++ ) {
           
@@ -245,7 +251,6 @@ public class AlatasetalProcess {
    * It constructs a rules set once the whole evolutionary learning has been carried out.
    * From the last population it filters those chromosomes which satisfy both confidence and support thresholds
    * </p>
-   * @param minConfidence The user-specified minimum confidence for the mined association rules
    * @param minSupport The user-specified minimum support for the mined association rules
    * @return An array of association rules having both minimum confidence and support
    */
@@ -321,7 +326,13 @@ public class AlatasetalProcess {
 	  }
   }
   
-  public static double roundDouble(double number, int decimalPlace){
+    /**
+     * Rounds the number applying the {@link BigDecimal} rounding mode given.
+     * @param number number to be rounded.
+     * @param decimalPlace given rounding mode.
+     * @return the rounded number.
+     */
+    public static double roundDouble(double number, int decimalPlace){
 	  double numberRound;
 	  
 	  if(!Double.isInfinite(number)&&(!Double.isNaN(number))){
@@ -331,7 +342,14 @@ public class AlatasetalProcess {
 		  return numberRound;
 	  }else return number;
  }
-  
+   /**
+   * <p>
+   * Returns a String with relevant information regarding the mined association rules
+   * </p>
+   * @param rules The array of association rules from which gathering relevant information
+   * @return String with relevant information regarding the mined association rules
+   * 
+   */
   public String printRules(ArrayList<AssociationRule> rules) {
 	  int i, lenghtrule;
 	  boolean stop;
@@ -347,6 +365,13 @@ public class AlatasetalProcess {
 	  return rulesList;
   }
   
+    /**
+   * <p>
+   * It prints out on the given {@link PrintWriter} object. relevant information regarding the mined association rules
+   * </p>
+   * @param rules The array of association rules from which gathering relevant information
+     * @param w given PrintWriter object to write on.
+   */
   public void saveReport(ArrayList<AssociationRule> rules,PrintWriter w) {
 	  int i, r, t, cnt_cov_rec = 0;
 	  double avg_yulesQ = 0.0, avg_sup = 0.0, avg_conf = 0.0, avg_ant_length = 0.0, avg_lift = 0.0,avg_conv = 0.0, avg_CF = 0.0, avg_netConf = 0.0;

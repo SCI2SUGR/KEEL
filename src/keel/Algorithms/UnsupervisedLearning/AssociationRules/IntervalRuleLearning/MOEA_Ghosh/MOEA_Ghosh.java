@@ -29,13 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.MOEA_Ghosh;
 
-/**
- * <p>
- * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -46,12 +40,16 @@ import org.core.*;
 
 import keel.Dataset.*;
 
+/**
+ * <p> It gathers all the parameters, launches the MOEA algorithm, and prints out the results
+	 * 
+ * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class MOEA_Ghosh {
-	/**
-	 * <p>
-	 * It gathers all the parameters, launches the algorithm, and prints out the results
-	 * </p>
-	 */
+    
 
 	private myDataset dataset;
 
@@ -202,6 +200,10 @@ public class MOEA_Ghosh {
 			}
 		}
 	}
+        
+        /**
+         * Prints a line with the time taken by the algorithm's execution on the output file.
+         */
 	public void writeTime() {
 		long seg, min, hor;
 		String stringOut = new String("");

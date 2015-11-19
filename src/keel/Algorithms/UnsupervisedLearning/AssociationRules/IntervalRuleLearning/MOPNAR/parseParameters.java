@@ -29,8 +29,14 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.MOPNAR;
 
+
+import java.util.StringTokenizer;
+import java.util.ArrayList;
+import org.core.Files;
+
 /**
- * <p>
+ * <p> It reads the configuration file (data-set files and parameters)
+	 *
  * @author Written by Alberto Fernández (University of Granada)
  * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @version 1.1
@@ -38,17 +44,8 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * </p>
  */
 
-import java.util.StringTokenizer;
-import java.util.ArrayList;
-import org.core.Files;
-
-
 public class parseParameters {
-	/**
-	 * <p>
-	 * It reads the configuration file (data-set files and parameters)
-	 * </p>
-	 */
+    
 
     private String algorithmName;
     private String transactionsFile;

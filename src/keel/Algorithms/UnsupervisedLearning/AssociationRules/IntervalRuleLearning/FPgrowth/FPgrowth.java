@@ -29,26 +29,24 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.FPgrowth;
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada)
- * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/**
+ * <p>It gathers all the parameters, launches the FPgrowth algorithm, and prints out the results
+	 * 
+ * @author Written by Alberto Fernández (University of Granada)
+ * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class FPgrowth {
-	/**
-	 * <p>
-	 * It gathers all the parameters, launches the algorithm, and prints out the results
-	 * </p>
-	 */
+    
 
     private myDataset trans;
     

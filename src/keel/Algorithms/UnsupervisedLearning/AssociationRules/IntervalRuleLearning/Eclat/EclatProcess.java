@@ -29,25 +29,23 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Eclat;
 
+
+
+import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.util.*;
+
 /**
- * <p>
+ * <p>It provides the implementation of the Eclat algorithm to be run in a process
+   *
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.io.PrintWriter;
-import java.math.BigDecimal;
-import java.util.*;
-
 public class EclatProcess {
-  /**
-   * <p>
-   * It provides the implementation of the algorithm to be run in a process
-   * </p>
-   */
+    
   
   private double minSupport;
   private double minConfidence;
@@ -143,6 +141,12 @@ public class EclatProcess {
 	  }
   }
  
+      /**
+     * Rounds the number applying the {@link BigDecimal} rounding mode given.
+     * @param number number to be rounded.
+     * @param decimalPlace given rounding mode.
+     * @return the rounded number.
+     */
   public static double roundDouble(double number, int decimalPlace){
 	  double numberRound;
 	  

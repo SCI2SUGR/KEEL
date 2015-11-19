@@ -29,12 +29,13 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.MOPNAR;
 
-public class Main {
 	/**
 	 * <p>
 	 * It reads the configuration file (data-set files and parameters) and launch the algorithm
 	 * </p>
 	 */
+public class Main {
+
 
     private parseParameters parameters;
 

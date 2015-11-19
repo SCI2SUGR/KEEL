@@ -30,6 +30,12 @@
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GENAR;
 
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -41,15 +47,21 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * @author Nicolò Flugy Papè
  * @version 1.0
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
+    /**
+     * Number to represent type of variable nominal.
+     */
   public static final int NOMINAL = 0;
+
+    /**
+     * Number to represent type of variable integer.
+     */
   public static final int INTEGER = 1;
+  
+      /**
+     * Number to represent type of variable real or double.
+     */
   public static final int REAL = 2;
   
   private double[][] realTransactions = null; //transactions array
@@ -96,16 +108,31 @@ public class myDataset {
     return emin;
   }
 
-  public boolean isInteger(int pos) {
+    /**
+     * Checks if the type of the attribute with the given id is integer.
+     * @param pos attribute id.
+     * @return True if the type of the attribute with the given id is integer.
+     */
+    public boolean isInteger(int pos) {
 	  if (this.getAttributeType(pos) == this.INTEGER)  return (true);
 	  else  return (false);
   }
 
+        /**
+     * Checks if the type of the attribute with the given id is nominal.
+     * @param pos attribute id.
+     * @return True if the type of the attribute with the given id is nominal.
+     */
   public boolean isNominal(int pos) {
 	  if (this.getAttributeType(pos) == this.NOMINAL)  return (true);
 	  else  return (false);
   }
 
+      /**
+     * Checks if the type of the attribute with the given id is real.
+     * @param pos attribute id.
+     * @return True if the type of the attribute with the given id is real.
+     */
   public boolean isReal(int pos) {
 	  if (this.getAttributeType(pos) == this.REAL)  return (true);
 	  else  return (false);

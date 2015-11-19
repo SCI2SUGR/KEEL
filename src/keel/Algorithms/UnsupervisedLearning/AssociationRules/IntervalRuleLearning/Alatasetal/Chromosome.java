@@ -29,26 +29,23 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Alatasetal;
 
+
+
+import java.util.ArrayList;
+
+import org.core.Randomize;
+
 /**
- * <p>
+ * <p> It is used for representing and handling a Chromosome throughout the evolutionary learning
+	 *
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.ArrayList;
-
-import org.core.Randomize;
-
-
 public class Chromosome implements Comparable {
-	/**
-	 * <p>
-	 * It is used for representing and handling a Chromosome throughout the evolutionary learning
-	 * </p>
-	 */
+    
 	
 	private Gene[] genes;
 	private double fitness;

@@ -42,10 +42,25 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * @since JDK 1.5
  */
 public class Lists {
+
+    /**
+     * Current element of the list.
+     */
     public int index;
+
+    /**
+     * Parent list.
+     */
     public Lists parent;
+
+    /** 
+     * Child list.
+     */
     public Lists child;
     
+    /**
+     * Default constructor.
+     */
     public Lists(){
     	index = -1;
     	parent = null;
@@ -79,6 +94,7 @@ public class Lists {
     /**
 	 * Delete the node NODE from the list  
 	 * @param node node which we want to delete
+     * @return the list without the node given.
 	 */
     public Lists del (Lists node) {
         Lists temp;

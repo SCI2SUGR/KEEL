@@ -31,7 +31,13 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 
 import java.util.*;
 
-
+/**
+ * <p>It is used for representing and handling an Association Rule
+ * @author Written by Alvaro Lopez
+ * @version 1.0
+ * @since JDK1.6
+ * </p>
+ */
 public class AssociationRule
 {
 	private ArrayList<Gene> antecedent;
@@ -96,12 +102,24 @@ public class AssociationRule
 	}
 
 
+        /*
+	 * <p>
+	 * It retrieves the antecedent part of an association rule
+	 * </p>
+	 * @return An ArrayList containing Gene objects and representing antecedent attributes
+	 */
 	public ArrayList<Gene> getAntecedent()
 	{
 		return this.antecedent;
 	}
 
 
+        /**
+	 * <p>
+	 * It retrieves the consequent part of an association rule
+	 * </p>
+	 * @return An ArrayList containing Gene objects and representing consequent attributes
+	 */
 	public ArrayList<Gene> getConsequent()
 	{
 		return this.consequent;
@@ -128,28 +146,57 @@ public class AssociationRule
 		this.all_support = all_support;
 	}
 
+        /**
+	 * <p>
+	 * It returns the support of an association rule
+	 * </p>
+	 * @return A value representing the support of the association rule
+	 */
 	public double getSupport() {
 		return this.support;
 	}
 
 
+        /**
+	 * <p>
+	 * Sets the support of an association rule with the given value.
+	 * </p>
+         * @param support given value.
+	 */
 	public void setSupport(double support) {
 		this.support = support;
 	}
 
 
+        /**
+	 * <p>
+	 * It returns the confidence of an association rule
+	 * </p>
+	 * @return A value representing the confidence of the association rule
+	 */
 	public double getConfidence()
 	{
 		return confidence;
 	}
 
 
+         /**
+	 * 
+	 * Sets the confidence of an association rule with the value given. 
+         * @param confidence given value.
+         */
 	public void setConfidence(double confidence)
 	{
 		this.confidence = confidence;
 	}
 
 
+        /**
+	 * <p>
+	 * It returns a raw string representation of an association rule
+	 * </p>
+	 * @return A raw string representation of the association rule
+	 */
 	public String toString()
 	{
 		return ( this.antecedent.toString() + "-> " + this.consequent.toString() + ": " + this.getSupport() + "; " + this.getAll_support() + "; " + this.getConfidence());

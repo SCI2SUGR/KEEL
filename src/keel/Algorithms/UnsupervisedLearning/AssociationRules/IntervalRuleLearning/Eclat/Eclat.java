@@ -29,15 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Eclat;
 
-/**
- * <p>
- * @author Written by Alberto Fernández (University of Granada)
- * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
- * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -46,12 +38,18 @@ import java.util.ArrayList;
 
 import org.core.Files;
 
+/**
+ * <p>It gathers all the parameters, launches the algorithm, and prints out the results
+	 * 
+ * @author Written by Alberto Fernández (University of Granada)
+ * @author Modified by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class Eclat {
-	/**
-	 * <p>
-	 * It gathers all the parameters, launches the algorithm, and prints out the results
-	 * </p>
-	 */
+    
 
     private myDataset trans;
     
@@ -190,6 +188,14 @@ public class Eclat {
         }
     }
     
+   /**
+   * <p>
+   * Returns a String with relevant information regarding the mined association rule given
+   * </p>
+   * @param rule given association rule from which gathering relevant information
+     * @return String with relevant information regarding the mined association rule given
+   * 
+   */
     public String printRule(AssociationRule rule) {
     	  int lenghtrule;
     	  String ruleString;
@@ -202,6 +208,9 @@ public class Eclat {
     	 return ruleString;
       }
     
+        /**
+     * Prints a line with the time taken by the algorithm's execution on the output file.
+     */
     public void writeTime() {
     	long seg, min, hor;
         String stringOut = new String("");

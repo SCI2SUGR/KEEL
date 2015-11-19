@@ -29,17 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.MODENAR;
 
-/**
- * <p>Title: Algorithm</p>
- *
- * <p>Description: It contains the implementation of the algorithm</p>
- *
- *
- * <p>Company: KEEL </p>
- *
- * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu)
- * @version 1.0
- */
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -50,6 +40,17 @@ import org.core.*;
 
 import keel.Dataset.*;
 
+/**
+ * <p>Title: Algorithm</p>
+ *
+ * <p>Description: It contains the implementation of the MODENAR algorithm</p>
+ *
+ *
+ * <p>Company: KEEL </p>
+ *
+ * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu)
+ * @version 1.0
+ */
 public class MODENAR {
 
 	String outputTr, outputTst;
@@ -211,6 +212,9 @@ public class MODENAR {
 		}
 	}
 
+        /**
+        * Prints a line with the time taken by the algorithm's execution on the output file.
+        */
 	public void writeTime() {
 		long seg, min, hor;
 		String stringOut = new String("");

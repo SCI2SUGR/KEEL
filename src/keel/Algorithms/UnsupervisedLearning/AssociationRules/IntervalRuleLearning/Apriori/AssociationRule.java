@@ -29,23 +29,21 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.Apriori;
 
+
+
+import java.util.ArrayList;
+
 /**
- * <p>
+ * <p> It is used for representing and handling an Association Rule
+	 *
  * @author Written by Nicolò Flugy Papè (Politecnico di Milano) 24/03/2009
  * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu) 
  * @version 1.0
  * @since JDK1.6
  * </p>
  */
-
-import java.util.ArrayList;
-
 public class AssociationRule {
-	/**
-	 * <p>
-	 * It is used for representing and handling an Association Rule
-	 * </p>
-	 */
+    
 
 	private ArrayList<Integer> antecedent;
 	private ArrayList<Integer> consequent;
@@ -234,7 +232,7 @@ public class AssociationRule {
 	 * <p>
 	 * It sets the netconf of an association rule
 	 * </p>
-	 * @param netconf The value representing the rule netconf
+	 * @param netConf The value representing the rule netconf
 	 */
 	public void setNetConf(double netConf) {
 		this.netConf = netConf;
@@ -250,6 +248,12 @@ public class AssociationRule {
 		return consequentSupport;
 	}
 
+        /**
+	 * <p>
+	 * Sets the consequent support of an association rule with the given value
+	 * </p>
+	 * @param consequentSupport A value representing the consequent support of the association rule
+	 */
 	public void setConsequentSupport(double consequentSupport) {
 		this.consequentSupport = consequentSupport;
 	}

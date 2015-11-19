@@ -39,12 +39,13 @@ import org.core.*;
 
 import keel.Dataset.*;
 
-public class MOEA_Gosh {
 	/**
 	 * <p>
-	 * It gathers all the parameters, launches the algorithm, and prints out the results
+	 * It gathers all the parameters, launches the MOEA algorithm, and prints out the results
 	 * </p>
 	 */
+public class MOEA_Gosh {
+
 
 	private myDataset dataset;
 
@@ -195,6 +196,10 @@ public class MOEA_Gosh {
 			}
 		}
 	}
+     
+        /**
+     * Prints a line with the time taken by the algorithm's execution on the output file.
+     */
 	public void writeTime() {
 		long seg, min, hor;
 		String stringOut = new String("");

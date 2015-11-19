@@ -29,6 +29,12 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GAR;
 
+
+
+import java.io.IOException;
+
+import keel.Dataset.*;
+
 /**
  * <p>Title: Dataset</p>
  *
@@ -40,15 +46,21 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * @author Nicolò Flugy Papè
  * @version 1.0
  */
-
-import java.io.IOException;
-
-import keel.Dataset.*;
-
 public class myDataset {
 
+    /**
+     * Number to represent type of variable nominal.
+     */
   public static final int NOMINAL = 0;
+  
+    /**
+     * Number to represent type of variable integer.
+     */
   public static final int INTEGER = 1;
+  
+      /**
+     * Number to represent type of variable real or double.
+     */
   public static final int REAL = 2;
   
   private double[][] realTransactions = null; //transactions array

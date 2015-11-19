@@ -89,6 +89,7 @@ public class FormatErrorKeeper {
   
 /**
  * It does return all the errors
+     * @return all the errors 
  */
   public Vector getAllErrors(){
     return errors;

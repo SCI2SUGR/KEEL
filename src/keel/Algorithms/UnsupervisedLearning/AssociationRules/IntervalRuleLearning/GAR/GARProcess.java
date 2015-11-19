@@ -29,14 +29,7 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.GAR;
 
-/**
- * <p>
- * @author Alberto Fernández
- * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -45,6 +38,15 @@ import java.util.*;
 
 import org.core.Randomize;
 
+/**
+ * <p> It provides the implementation of the GAR algorithm to be run in a process
+   * 
+ * @author Alberto Fernández
+ * @author Modified by Diana Martín (dmartin@ceis.cujae.edu.cu)
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class GARProcess
 {
 	private myDataset ds;
@@ -87,7 +89,9 @@ public class GARProcess
 	  for (i=0; i < this.allow_ampl.length; i++)  this.allow_ampl[i] = (this.ds.getMax(i) - this.ds.getMin(i)) / AF;
   }
 
-  
+    /**
+     *  It runs the algorithm for mining association rules.
+     */
   public void run() {
 	  ArrayList<Chromosome> popNew;
 	  Chromosome chromoBest;
@@ -125,6 +129,14 @@ public class GARProcess
 	  this.genRules();
   }
 
+    /**
+   * <p>
+   * It prints out on screen relevant information regarding the mined association rules
+   * which have their confidence and support values higher than the minimum ones given.
+   * </p>
+     * @param minConfidence given minimum confidence value.
+     * @param minSupport given minimum support value.
+   */
   public void printReport (double minConfidence, double minSupport) {
 	  int i, countRules, length;
 	  AssociationRule rule;
@@ -174,6 +186,14 @@ public class GARProcess
 	  } 
   }  
   
+   /**
+   * <p>
+   * Returns a String with relevant information regarding the mined association rules
+   * </p>
+   * @param rules The array of association rules from which gathering relevant information
+     * @return String with relevant information regarding the mined association rules
+   * 
+   */
   public String printRules(ArrayList<AssociationRule> rules) {
 	  int i, lenghtrule;
 	  boolean stop;
@@ -189,6 +209,15 @@ public class GARProcess
 	  return rulesList;
   }
   
+  /**
+   * <p>
+   * It prints out on the given {@link PrintWriter} object relevant information regarding the mined association rules.
+   * These rules must have their confidence and support values higher than the minimum ones given.
+   * </p>
+     * @param minConfidence minimum confidence value given.
+     * @param minSupport minimum support value given.
+     * @param w given PrintWriter object to write on.
+   */
   public void saveReport (double minConfidence, double minSupport,PrintWriter w) {
 	  int i, countRules, length;
 	  AssociationRule rule;
@@ -258,6 +287,12 @@ public class GARProcess
 	  
   }  
 
+      /**
+     * Rounds the number applying the {@link BigDecimal} rounding mode given.
+     * @param number number to be rounded.
+     * @param decimalPlace given rounding mode.
+     * @return the rounded number.
+     */
   public static double roundDouble(double number, int decimalPlace){
 	  double numberRound;
 	  
@@ -269,7 +304,14 @@ public class GARProcess
 	  }else return number;
   }
 
-  public ArrayList<AssociationRule> getSetRules (double minConfidence, double minSupport) {
+    /**
+     * Returns the rules that have their confidence and support values higher than the minimum ones given.
+     * @param minConfidence minimum confidence value given.
+     * @param minSupport minimum support value given.
+     * @return the rules that have their confidence and support values higher than the minimum ones given.
+     *
+     */
+    public ArrayList<AssociationRule> getSetRules (double minConfidence, double minSupport) {
 	  int i;
 	  ArrayList<AssociationRule> selectRules = new ArrayList<AssociationRule>();
 	  AssociationRule rule;

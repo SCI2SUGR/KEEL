@@ -29,13 +29,6 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.MODENAR;
 
-/**
- * <p>
- * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
 
 import java.util.*;
 import java.io.PrintWriter;
@@ -46,6 +39,14 @@ import org.core.*;
 
 
 
+/**
+ * <p>It provides the implementation of the MODENAR algorithm to be run in a process
+   * 
+ * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class MODENARProcess {
 	myDataset ds;
 	private String paretos;
@@ -62,10 +63,25 @@ public class MODENARProcess {
 	private double allow_ampl[];
 	int max_rank;
 
-	public MODENARProcess() {
+    /**
+     * Default constructor.
+     */
+    public MODENARProcess() {
 		// TODO Auto-generated constructor stub
 	}
 
+              /**
+   * <p>
+   * It creates a new process for the algorithm by setting up its parameters
+   * </p>
+   * @param ds The instance of the dataset for dealing with its records
+   * @param nEvaluations The maximum number of evaluations to accomplish before terminating the genetic learning
+   * @param popSize The maximum size of population to handle after each generation
+   * @param threshold Threshold
+   * @param wk Wk values.
+   * @param cr The probability of the crossover operator
+   * @param AF The parameter which is used while executing the crossover operator
+   */
 	public MODENARProcess(myDataset ds, int nEvaluations, int popSize, double cr, int threshold, double[] wk, double AF) {
 		this.ds = ds;
 		this.popSize = popSize;
@@ -80,7 +96,9 @@ public class MODENARProcess {
 	}
 
 
-
+    /**
+     *  It runs the algorithm for mining association rules.
+     */
 	public void run()
 	{
 		//main fuction algorithm
@@ -132,7 +150,11 @@ public class MODENARProcess {
 		this.printPareto(this.assoc_rules_Pareto);
 	}
 
-	public boolean terminate()
+    /**
+     * Checks the stop condition for the algorithm.
+     * @return True if the algorithm reachs the stop condition, False otherwise.
+     */
+    public boolean terminate()
 	{
 		//stop condition for the algorithm
 		if(this.nRealEvaluations >= this.nEvaluations) return true;
@@ -962,10 +984,18 @@ public class MODENARProcess {
 
 	}
 
-	public ArrayList<Chromosome> getBestrules() {
+    /**
+     * Returns the best rules mined.
+     * @return the best rules mined.
+     */
+    public ArrayList<Chromosome> getBestrules() {
 		return bestRules;
 	}
 
+     /**
+     * Sets the best rules mined with the array given.
+     * @param bestrules given best rules to set.
+     */
 	public void setBestrules(ArrayList<Chromosome> bestrules) {
 		this.bestRules = bestrules;
 	}

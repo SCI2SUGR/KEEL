@@ -233,7 +233,7 @@ public class AssociationRule {
 	 * <p>
 	 * It sets the netconf of an association rule
 	 * </p>
-	 * @param netconf The value representing the rule netconf
+	 * @param netConf The value representing the rule netconf
 	 */
 	public void setNetConf(double netConf) {
 		this.netConf = netConf;

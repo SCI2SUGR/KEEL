@@ -29,19 +29,21 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.ARMMGA;
 
-/**
- * <p>
- * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.*;
 import org.core.Randomize;
 
+/**
+ * <p> It provides the implementation of the ARMMGA algorithm to be run in a process
+   * 
+ * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class ARMMGAProcess
 {
 	private myDataset ds;
@@ -63,6 +65,20 @@ public class ARMMGAProcess
 	private ArrayList<AssociationRule> assocRules;
 	private ArrayList<Gene> allItems;
 
+          /**
+   * <p>
+   * It creates a new process for the algorithm by setting up its parameters
+   * </p>
+   * @param ds The instance of the dataset for dealing with its records
+   * @param dataBase The interval database.
+   * @param nTrials The maximum number of evaluations to accomplish before terminating the genetic learning
+   * @param popsize The maximum size of population to handle after each generation
+   * @param kItemsets Number of items cosidered for chromosome representation.
+   * @param ps The probability of the selection operator
+   * @param pm The probability of the mutation operator
+   * @param pc The probability of the crossover operator
+   * @param alpha The parameter which is used while executing the crossover operator
+   */
 	public ARMMGAProcess(myDataset ds, DataB dataBase, int nTrials, int popsize, int kItemsets, double ps, double pc, double pm, double alpha) {
 		this.ds = ds;
 		this.dataBase = dataBase;
@@ -83,8 +99,10 @@ public class ARMMGAProcess
 
 	}
 
-
-	public void run() {
+    /**
+     *  It runs the algorithm for mining association rules.
+     */
+    public void run() {
 		int nGen = 0;
 		this.trials = 0;
 
@@ -123,6 +141,14 @@ public class ARMMGAProcess
 		}
 	}
 
+   /**
+   * <p>
+   * Returns a String with relevant information regarding the mined association rules
+   * </p>
+   * @param rules The array of association rules from which gathering relevant information
+     * @return String with relevant information regarding the mined association rules
+   * 
+   */
 	public String printRules(ArrayList<AssociationRule> rules) {
 		int i, lenghtrule;
 		boolean stop;
@@ -767,6 +793,13 @@ public class ARMMGAProcess
 		}else return number;
 	}
 	
+  /**
+   * <p>
+   * It prints out on the given {@link PrintWriter} object relevant information regarding the mined association rules
+   * </p>
+   * @param rules The array of association rules from which gathering relevant information
+     * @param w given PrintWriter object to write on.
+   */
 	public void saveReport (ArrayList<AssociationRule> rules,PrintWriter w ) {
 		int i, countRules, length;
 		AssociationRule rule;
@@ -816,7 +849,11 @@ public class ARMMGAProcess
 
 	}  
 
-	public ArrayList<AssociationRule> getRules () {
+    /**
+     * Returns the mined association rules
+     * @return an {@link ArrayList} with the mined association rules.
+     */
+    public ArrayList<AssociationRule> getRules () {
 		return this.assocRules;
 	}  
 

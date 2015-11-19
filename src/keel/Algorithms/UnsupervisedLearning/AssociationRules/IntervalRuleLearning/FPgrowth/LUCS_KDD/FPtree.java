@@ -141,6 +141,10 @@ public class FPtree extends TotalSupportTree {
         
 	// Constructors
 
+        /**
+         * Parameters constructor. It sets the number of columns of the table with the number given.
+         * @param columnNum columns number given.
+         */
 	protected FPgrowthHeaderTable (short columnNum) {
 	    itemName = columnNum;
 	    }  

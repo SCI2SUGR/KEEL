@@ -32,9 +32,20 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 
 public class Gene {
 	
-	public static final int NOMINAL = 0;
-	public static final int INTEGER = 1;
-	public static final int REAL = 2;
+    /**
+     * Number to represent type of variable nominal.
+     */
+  public static final int NOMINAL = 0;
+  
+    /**
+     * Number to represent type of variable integer.
+     */
+  public static final int INTEGER = 1;
+  
+      /**
+     * Number to represent type of variable real or double.
+     */
+  public static final int REAL = 2;
 
 	private int attr;
 	private int type;

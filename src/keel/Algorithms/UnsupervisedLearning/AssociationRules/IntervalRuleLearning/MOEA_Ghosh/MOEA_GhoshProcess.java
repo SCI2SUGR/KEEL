@@ -29,25 +29,23 @@
 
 package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearning.MOEA_Ghosh;
 
-/**
- * <p>
- * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
- * @version 1.1
- * @since JDK1.6
- * </p>
- */
+
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.*;
 import org.core.Randomize;
 
+/**
+ * <p>It provides the implementation of the MOEA algorithm to be run in a process
+	 * 
+ * @author Written by Diana Martín (dmartin@ceis.cujae.edu.cu) 
+ * @version 1.1
+ * @since JDK1.6
+ * </p>
+ */
 public class MOEA_GhoshProcess {
-	/**
-	 * <p>
-	 * It provides the implementation of the algorithm to be run in a process
-	 * </p>
-	 */
+    
 	private String paretos;
 	private myDataset dataset;
 	private int nTrials;
@@ -71,6 +69,7 @@ public class MOEA_GhoshProcess {
 	 * It creates a new process for the algorithm by setting up its parameters
 	 * </p>
 	 * @param dataset The instance of the dataset for dealing with its records
+     * @param numObjectives Number of objectives.
 	 * @param nTrials The maximum number of generations to reach before completing the whole evolutionary learning
 	 * @param popSize The number of chromosomes in the population
 	 * @param pc The probability for the crossover operator
@@ -78,8 +77,6 @@ public class MOEA_GhoshProcess {
 	 * @param pm The probability for the mutation operator
 	 * @param af The factor of amplitude for each of the dataset attribute
 	 */
-
-	//variant 1
 	public MOEA_GhoshProcess (myDataset dataset, int numObjectives, int nTrials, int popSize, int pointCrossover, double pc, double pm, double af) {
 		
 		this.dataset = dataset;
@@ -603,6 +600,13 @@ public class MOEA_GhoshProcess {
 		 }else return number;
 	 }
 
+        /**
+        * <p>
+        * It prints out on the given {@link PrintWriter} object relevant information regarding the mined association rules
+        * </p>
+        * @param rules The array of association rules from which gathering relevant information
+          * @param w given PrintWriter object to write on.
+        */
 	 public void saveReport(ArrayList<AssociationRule> rules,PrintWriter w) {
 		 int i, j, r, cnt_cov_rec;
 		 double avg_yulesQ = 0.0, avg_sup = 0.0, avg_conf = 0.0, avg_ant_length = 0.0, avg_lift = 0.0, avg_conv = 0.0, avg_CF = 0.0, avg_netConf = 0.0;
