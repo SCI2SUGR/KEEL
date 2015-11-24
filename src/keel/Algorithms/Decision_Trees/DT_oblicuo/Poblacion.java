@@ -34,11 +34,12 @@ import org.core.Randomize;
 
 
 /**
- * 
+ * <p>Title: Poblacion (Population). </p>
  *
- * @author Anonymous - 2011
+ * <p>Description: This class implements the population of chromosomes used to perform the genetic algorithm</p>
+ *
+ * @author not attributable
  * @version 1.0
- * @since JDK1.6
  */
 public class Poblacion {
 
@@ -48,6 +49,12 @@ public class Poblacion {
   myDataset train;
   double mejor_fitness, ejemplos[][];
 
+      /**
+     * Checks if the double a is greater than b.
+     * @param a first given number.
+     * @param b second given number.
+     * @return True if the double a is greater than b. 
+     */
   public boolean BETTER(double a, double b) {
     if (a > b) {
       return true;
@@ -55,11 +62,23 @@ public class Poblacion {
     return false;
   }
 
+      /**
+     * Default Constructor. Basic structures will be initialized.
+     */
   public Poblacion() {
     cromosomas = new ArrayList<Individuo> ();
     hijos = new ArrayList<Individuo> ();
   }
 
+          /**
+     * Paramenter constructor. The population structures will be initialized with the parameters given.
+     * @param n_ejemplos number of examples used to build the population.
+     * @param ejemplos examples used to build the population.
+     * @param pesos initial weights associated to the examples given.
+     * @param valor initial value for the chromosomes.
+     * @param nGenerations maximum number for generations.
+     * @param train training dataset. 
+     */
   public Poblacion(myDataset train, int n_ejemplos, int ejemplos[],
                    int nGenerations, double[] pesos, double valor) {
     this.train = train;
@@ -94,7 +113,10 @@ public class Poblacion {
     mejor_fitness = 0.0;
   }
 
-  public void genetico() {
+    /**
+     * Performs the GA to generate the different rules for the decision tree.
+     */
+    public void genetico() {
     evaluate(cromosomas, 0); //evaluacion
     for (int i = 0; i < nGenerations; i++) { //generaciones
       selection(); //seleccion
@@ -121,14 +143,12 @@ public class Poblacion {
     }*/
   }
 
-  /**
-     @brief Torneo binario entre cromosomas
-     @param indice Indice del hijo
-     @param cromosoma1 Es el indice del individuo1 dentro de la poblacion
-     @param cromosoma2 Es el indice del individuo2 dentro de la poblacion
-
-     Comparo las fitness de los dos individuos, el que tenga mayor valor pasa
-     a formar parte del nuevo conjunto de seleccion.
+  /** Selects one of the given two chromosomes to form the new generation (population). 
+   * Compares the two fitness values and selects the greater one.
+     @param indice Son's index for the new population.
+     @param cromosoma1 First individual's index of the actual population.
+     @param cromosoma2 Second individual's index of the actual population.
+     * 
    */
   void torneo(int indice, int cromosoma1, int cromosoma2) {
     if (BETTER(cromosomas.get(cromosoma1).fitness,
@@ -196,7 +216,11 @@ public class Poblacion {
     }
   }
 
-  public double[] mejorSolucion() {
+    /**
+     * Returns the best solution obtained by the GA.
+     * @return the best solution founded.
+     */
+    public double[] mejorSolucion() {
     Collections.sort(cromosomas);
     return cromosomas.get(0).cromosoma.clone();
   }

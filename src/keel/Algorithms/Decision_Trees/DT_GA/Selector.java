@@ -29,37 +29,55 @@
 
 package keel.Algorithms.Decision_Trees.DT_GA;
 
+
+
+import org.core.Randomize;
+
 /**
- * <p>Title: </p>
+ * <p>Title: Selector (Selector). </p>
  *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
+ * <p>Description: This class implements a Selector or Antecedent of a rule (An attribute with a given condition). </p>
  *
  * @author not attributable
  * @version 1.0
  */
-
-import org.core.Randomize;
-
 public class Selector {
 
   int atributo; //posicion del atributo/variable en el dataset
   int operador; // =, <= ó >
-  public static int IGUAL = 0;
-  public static int MENOR_IGUAL = 1;
-  public static int MAYOR = 2;
+
+    /**
+     * Identifier for the equal condition operator.
+     */
+    public static int IGUAL = 0;
+
+    /**
+     * Identifier for the lesser-equal condition operator.
+     */
+    public static int MENOR_IGUAL = 1;
+
+    /**
+     * Identifier for the greater condition operator.
+     */
+    public static int MAYOR = 2;
   double valor; //si el atributo es real
   String valoresNom[]; //si el atributo es nominal (para imprimir)
   double valores[]; //si el atributo es nominal (para comprobar)
   String nombreAtributos[];
   myDataset train;
 
-  public Selector() {
+    /**
+     * Default Constructor. Basic structures will be initialized.
+     */
+    public Selector() {
   }
 
+        /**
+     * Paramenter constructor. The structures will be initialized with the parameters given.
+     * @param atributo attribute of the antecedent.
+     * @param operador condition operator. 
+     * @param valor condition value.
+     */
   public Selector(String atributo, String operador, String valor) {
     //atributo es del tipo AttX con X == posicion del atributo
     String numero = new String("" + atributo.charAt(3));
@@ -87,7 +105,12 @@ public class Selector {
       System.exit(0);
     }
   }
-
+  
+        /**
+     * Paramenter constructor. The structures will be initialized randomly with the parameters given.
+     * @param atributo attribute of the antecedent.
+     * @param train training dataset.
+     */
   public Selector(int atributo, myDataset train){
     this.train = train;
     this.atributo = atributo;
@@ -118,12 +141,20 @@ public class Selector {
     }
   }
 
-  public void adjuntaNombres(String[] atributos) {
+    /**
+     * Sets the attributes names with the given ones.
+     * @param atributos Attributes names.
+     */
+    public void adjuntaNombres(String[] atributos) {
     nombreAtributos = new String[atributos.length];
     nombreAtributos = atributos.clone();
   }
 
-  public String printString() {
+    /**
+     * Returns String representation of the Selector.
+     * @return String representation of the Selector.
+     */
+    public String printString() {
     String cadena = new String("");
     cadena += " " + nombreAtributos[atributo];
     if (operador == IGUAL) {
@@ -143,7 +174,11 @@ public class Selector {
     return cadena;
   }
 
-  public Selector copia(){
+    /**
+     * Returns a copy of the Selector.
+     * @return a copy of the Selector.
+     */
+    public Selector copia(){
     Selector s = new Selector();
     s.atributo = atributo;
     s.operador =  operador; // =, <= ó >
@@ -158,6 +193,11 @@ public class Selector {
     return s;
   }
 
+    /**
+     * Checks if an example given is covered by the selector.
+     * @param ejemplo given example.
+     * @return True if an example given is covered by the selector.
+     */
   public boolean cubre(double[] ejemplo) {
     boolean cubierto = false;
     if (this.operador == IGUAL) {
@@ -174,8 +214,8 @@ public class Selector {
   }
 
   /**
-   * Hago los cambios minimos en el selector para que cubra el ejemplo
-   * @param ejemplo double[] ejemplo a cubrir
+   * Modifies slightly the selector to cover the given example. 
+   * @param ejemplo double[] given example.
    */
   public void modifica(double [] ejemplo){
     if (this.operador == IGUAL){
@@ -197,12 +237,16 @@ public class Selector {
     }
   }
 
-  public int getAtributo(){
+    /**
+     * Returns the antecedent attribute of this selector.
+     * @return the antecedent attribute.
+     */
+    public int getAtributo(){
     return atributo;
   }
 
   /**
-   * Inventada del 15
+   * Mutates the selector by chaging the condition value.
    */
   public void mutar(){
     if (operador == this.IGUAL){

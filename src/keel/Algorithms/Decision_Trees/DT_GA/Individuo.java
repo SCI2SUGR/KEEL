@@ -29,22 +29,19 @@
 
 package keel.Algorithms.Decision_Trees.DT_GA;
 
-/**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
+
 
 import java.util.ArrayList;
 import org.core.Randomize;
 
+/**
+ * <p>Title: Individuo (Individual). </p>
+ *
+ * <p>Description: This class implements an individual for the genetic algorithm, used to build the decision trees.</p>
+ *
+ * @author not attributable
+ * @version 1.0
+ */
 public class Individuo
     implements Comparable {
 
@@ -56,14 +53,24 @@ public class Individuo
   boolean n_e;
   int codigoRegla;
 
-  public Individuo() {
+    /**
+     * Default Constructor. Basic structures will be initialized.
+     */
+    public Individuo() {
     antecedente = new Selector[1];
     antecedente[0] = new Selector();
     seleccionado = new boolean[1];
     n_e = true;
   }
 
-  public Individuo(boolean[] antecedentes, String clase, myDataset train,
+    /**
+     * Paramenter constructor. The individual structures will be initialized with the parameters given.
+     * @param antecedentes Selected antecedents (attributes).
+     * @param clase Class for the individual.
+     * @param train Training dataset. 
+     * @param codigo Individual's code.
+     */
+    public Individuo(boolean[] antecedentes, String clase, myDataset train,
                    int codigo) {
     this.clase = clase;
     this.train = train;
@@ -79,7 +86,12 @@ public class Individuo
     codigoRegla = codigo;
   }
 
-  public Individuo(myDataset train, int pos_ejemplo) {
+    /**
+     * Paramenter constructor. The individual structures will be initialized with the parameters given.
+     * @param train Training dataset.
+     * @param pos_ejemplo Example used to build randomly the antecedents vector. 
+     */
+    public Individuo(myDataset train, int pos_ejemplo) {
     this.clase = "?"; //se escoge dinamicamente
     this.train = train;
     antecedente = new Selector[train.getnInputs()];
@@ -106,9 +118,9 @@ public class Individuo
 
     /**
      * Create a new individual by crossing other two at the position given.
-     * @param padre
-     * @param madre
-     * @param puntoCorte
+     * @param padre First individual.
+     * @param madre Second individual.
+     * @param puntoCorte Cross point.
      */
     public Individuo(Individuo padre, Individuo madre, int puntoCorte) {
     antecedente = new Selector[padre.size()];
@@ -141,7 +153,11 @@ public class Individuo
     n_e = true;
   }
 
-  public String printString() {
+    /**
+     * Returns a String representation of the Individual.
+     * @return a String representation of the Individual.
+     */
+    public String printString() {
     String cadena = new String("");
     cadena += "IF ";
     for (int i = 0; i < antecedente.length; i++) {
@@ -154,8 +170,8 @@ public class Individuo
   }
 
   /**
-   * Convierte al cromosoma en una regla valida
-   * @return Regla la regla creada
+   * Converts the chromosome (individual) representation to a valid rule of the decision tree.
+   * @return the corresponding rule coded on the individual.
    */
   public Regla convertir() {
     Regla r = new Regla();
@@ -177,6 +193,7 @@ public class Individuo
     return r;
   }
 
+  @Override
   public Individuo clone() {
     Individuo ind = new Individuo();
     ind.seleccionado = new boolean[this.seleccionado.length];
@@ -195,7 +212,13 @@ public class Individuo
     return ind;
   }
 
-  public double clasifica(int[] ejemplos, int nEjemplos) {
+    /**
+     * Computes and returns the fitness of the individual as the product of sensitivity and specificity of the given examples classification.  
+     * @param ejemplos examples indeces to be considered. 
+     * @param nEjemplos number of examples.
+     * @return the computed fitness.
+     */
+    public double clasifica(int[] ejemplos, int nEjemplos) {
     int tp, fn, tn, fp;
     tp = fn = tn = fp = 0;
     //teoricamente fitness = (tp/(tp+fn))*(tn/(fp+tn)); pero...
@@ -250,7 +273,13 @@ public class Individuo
     fitness = sens * spec;
     return fitness;
   }
-
+    
+    /**
+     * Computes and returns the fitness of the individual as the product of sensitivity and specificity of the given examples classification.  
+     * @param ejemplos examples indeces to be considered. 
+     * @param nEjemplos number of examples.
+     * @return the computed fitness.
+     */
   public double clasificaLarge(int[] ejemplos, int nEjemplos) {
     int tp, fn, tn, fp;
     tp = fn = tn = fp = 0;
@@ -323,13 +352,17 @@ public class Individuo
     return fitness;
   }
 
-  public int size() {
+    /**
+     * Returns the size of the chromosome.
+     * @return the size of the chromosome.
+     */
+    public int size() {
     return antecedente.length;
   }
 
   /**
-   * Esta funcion me la invento...tomaya!!
-   * @param mutProb probabilidad de mutacion
+   * Mutates the individual with the given probability.
+   * @param mutProb mutation probability.
    */
   public void mutar(double mutProb) {
     for (int i = 0; i < antecedente.length; i++) {
@@ -340,19 +373,19 @@ public class Individuo
   }
 
   /**
-   * Calcula la ganancia de informacion
-   * @param atributo int atributo a considerar
-   * @param ejemplos son los ejemplos de entrenamiento considerados
-   * @param T int Numero de ejemplos de entrenamiento
-   * @return double la ganancia
+   * Computes the information gain. 
+   * @param atributo int attribute's index considered.
+   * @param ejemplos training examples considered.
+   * @param T int Number of examples.
+   * @return double the information gain.
    *
    * Info(G|cond_i) = [ - (|Vi|/|T|)*sum_{j=1}^c{(|Vij|/|Vi|)*(log_2{|Vij|/|Vi|})}
    * - (|¬Vi|/|T|)*sum_{j=1}^c{(|¬Vij|/|¬Vi|)*(log_2{|¬Vij|/|¬Vi|})}
    *
-   * |Vi| = numero de ejemplos que satisfacen la condicion <Ai OPi Vij>
-   * |Vij| = numero de ejemplos que satisfacen la condicion <Ai OPi Vij> y tienen el valor j para la clase
-   * |¬Vi| = numero de ejemplos que NO satisfacen la condicion <Ai OPi Vij>
-   * |¬Vij| = numero de ejemplos que NO satisfacen la condicion <Ai OPi Vij> y tienen el valor j para la clase
+   * |Vi| = number of examples that satisfy the condition <Ai OPi Vij>
+   * |Vij| = number of examples that satisfy the condition <Ai OPi Vij> and have the value j for the class.
+   * |¬Vi| =  number of examples that don't satisfy the condition<Ai OPi Vij>
+   * |¬Vij| =  number of examples that don't satisfy the condition <Ai OPi Vij> and have the value j for the class.
    */
   private double infoGcondi(int atributo, int[] ejemplos, int T) {
     double info = 0;
@@ -390,7 +423,13 @@ public class Individuo
     return info;
   }
 
-  public void pruning(double infoG, int nEjemplos, int[] ejemplos) {
+    /**
+     * Prune the individual using the information gain and the examples passed as argument.
+     * @param infoG Information gain given.
+     * @param nEjemplos Number of examples considered.
+     * @param ejemplos  Training examples considered.
+     */
+    public void pruning(double infoG, int nEjemplos, int[] ejemplos) {
     double[] info_gain = new double[antecedente.length];
     int[] atributos = new int[antecedente.length];
     int n = 0;
@@ -431,6 +470,10 @@ public class Individuo
     }
   }
 
+    /**
+     * Prune the individual using accuracy given as parameter.
+     * @param norm_acc Accuracies for each antedecent.
+     */
   public void pruning(double[] norm_acc) {
     int[] atributos = new int[antecedente.length];
     int n = 0;

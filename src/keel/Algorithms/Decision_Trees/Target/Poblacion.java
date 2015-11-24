@@ -29,24 +29,20 @@
 
 package keel.Algorithms.Decision_Trees.Target;
 
-/**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 import org.core.*;
 
+/**
+ * <p>Title: Poblacion (Population). </p>
+ *
+ * <p>Description: This class implements the population of trees used to perform the genetic algorithm</p>
+ *
+ * @author not attributable
+ * @version 1.0
+ */
 public class Poblacion {
 
   ArrayList<Tree> bosque, hijos;
@@ -56,21 +52,33 @@ public class Poblacion {
   myDataset train;
   double mejor_fitness, prob1_var, prob2_var;
 
-  /**
-   * Minimizacion
-   * @param a double primer valor
-   * @param b double segundo valor
-   * @return boolean true si el primer valor es menor que el segundo
-   */
+    /**
+     * Checks if the double a is greater than b.
+     * @param a first given number.
+     * @param b second given number.
+     * @return True if the double a is greater than b. 
+     */
   public boolean BETTER(double a, double b) {
     return (a < b);
   }
 
+      /**
+     * Default Constructor. Basic structures will be initialized.
+     */
   public Poblacion() {
     bosque = new ArrayList<Tree> ();
     hijos = new ArrayList<Tree> ();
   }
 
+     /** Paramenter constructor. The population structures will be initialized with the parameters given.
+     * @param nGenerations maximum number for generations.
+     * @param pSplit Splitting probability.
+     * @param train training dataset. 
+     * @param nCross Number of crossovers done.
+     * @param nMut Number of mutations done.
+     * @param nClone  Number of clones.
+     * @param nImmigration Number of immigrations.
+     */
   public Poblacion(myDataset train, double pSplit, int nGenerations, int nCross,
                    int nMut, int nClone, int nImmigration) {
     this.train = train;
@@ -86,7 +94,10 @@ public class Poblacion {
     mejor_fitness = Double.MAX_VALUE;
   }
 
-  public void hacerGenetico() {
+    /**
+     * Executes the genetic algorithm over the population.
+     */
+    public void hacerGenetico() {
     init();
     evaluate(bosque, 0);
     //System.exit(0);
@@ -196,9 +207,11 @@ public class Poblacion {
   }
 
   /**
-   * Para todos los posibles arboles a cruzar:
-   * - Selecciono dos padres (la probabilidad de seleccion depende del fitness)
-   * - Aplico el cruce (uno de los dos posibles)
+   * For al possible trees to be crossed:
+   *    - Selects two, depending on their fitness values
+   *    - Applies the cross operator with these two
+   * .
+   * 
    */
   private void cross() {
     for (int i = 0; i < this.nCross; i++) {
@@ -211,11 +224,9 @@ public class Poblacion {
   }
 
   /**
-   * Dos tipos:
-   * - Node Swapping
-   * - Subtree Swapping
-   * @param posPadre int posicion del padre en la poblacion
-   * @param posMadre int posicion de la madre en la poblacion
+   * Cross operator. Two types (Node swapping and subtree swapping).
+   * @param posPadre int Father position in the population.
+   * @param posMadre int Mother position in the population.
    */
   private void cruce(int posPadre, int posMadre) {
     Tree padre = bosque.get(posPadre);
@@ -335,7 +346,11 @@ public class Poblacion {
     //
   }
 
-  public Tree mejorSolucion() {
+    /**
+     * Returns the best solution founded.
+     * @return the best solution founded.
+     */
+    public Tree mejorSolucion() {
     Collections.sort(bosque);
     return bosque.get(0).copia(null);
   }

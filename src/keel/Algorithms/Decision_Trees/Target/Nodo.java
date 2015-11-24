@@ -29,21 +29,17 @@
 
 package keel.Algorithms.Decision_Trees.Target;
 
-/**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
+
 
 import org.core.Randomize;
 
+/**
+ * Tree node.
+ *
+ * @author  not attributable - 2011
+ * @version 1.0
+ * @since JDK1.6
+ */
 public class Nodo {
   String clase;
   int claseInt;
@@ -55,9 +51,19 @@ public class Nodo {
   double[] pesos; //para la combinación lineal
   myDataset train;
 
+      /**
+     * Default constructor.
+     */
   public Nodo() {
   }
 
+  /**
+     * Paramenter constructor. The node structures will be initialized with the parameters given.
+     * @param isLeaf Leaf identifier. (true if the node is a leaf).
+     * @param train training dataset.
+     * @param prob1 first probability used to split the node.
+     * @param prob2 second probability used to split the node.
+     */
   public Nodo(boolean isLeaf, myDataset train, double prob1, double prob2) {
     this.train = train;
     this.isLeaf = isLeaf;
@@ -69,14 +75,25 @@ public class Nodo {
     }
   }
 
-  public void nuevo(double prob1,double prob2) {
+    /**
+     * Constructs a new node by spitting the set with the probability given.
+     * @param prob1 first probability used to split the node.
+     * @param prob2 second probability used to split the node.
+     */
+    public void nuevo(double prob1,double prob2) {
     //primero elijo la variable:
     int atributo = Randomize.RandintClosed(0, train.getnInputs()-1);
     nominal = train.esNominal(atributo);
     splitSet(atributo,prob1,prob2);
   }
 
-  public void splitSet(int atributo,double prob1,double prob2){
+    /**
+     * Splits the node with the given attribute randomly with the given probabilities.
+     * @param atributo attribute used to split the node.
+     * @param prob1 first probability used to split the node.
+     * @param prob2 second probability used to split the node.
+     */
+    public void splitSet(int atributo,double prob1,double prob2){
     if (nominal) { //el atributo es cualitativo
       //hago una división en dos conjuntos (aunque solo necesito guardar uno)
       int totalNominales = train.totalNominales(atributo);
@@ -161,7 +178,11 @@ public class Nodo {
 
   }
 
-  public void asignaPesos(double prob){
+    /**
+     * Sets weights to the attributes within a given probability.
+     * @param prob given probability.
+     */
+    public void asignaPesos(double prob){
     for (int i = 0; i < numAtributos; i++) {
       if (Randomize.Rand() <= prob){
         pesos[i] = Randomize.RanddoubleClosed( -1, 1);
@@ -170,7 +191,11 @@ public class Nodo {
 
   }
 
-  public Nodo copia() {
+    /**
+     * Returns a copy of the node.
+     * @return a copy of the node.
+     */
+    public Nodo copia() {
     Nodo n = new Nodo();
     n.clase = clase;
     n.claseInt = claseInt;
@@ -194,7 +219,11 @@ public class Nodo {
     return n;
   }
 
-  public String printString() {
+    /**
+     * Returns a String representation of the node.
+     * @return a String representation of the node.
+     */
+    public String printString() {
     String cadena = new String("");
     if (isLeaf) {
       cadena += train.nombreVar(train.getnInputs()) + " = " + clase;
@@ -227,17 +256,21 @@ public class Nodo {
     return cadena;
   }
 
-  /*
-    double valor;
-    int numAtributos; //uno, dos ó tres (combinación lineal)
-    int[] atributos;
-    double[] pesos; //para la combinación lineal
-   */
+    /**
+     * Checks if an example with the given index is covered by the node.
+     * @param posEjemplo given example index.
+     * @return True if an example given is covered by the node.
+     */
   public boolean cubre(int posEjemplo) {
     double[] ejemplo = train.getExample(posEjemplo);
     return cubre(ejemplo);
   }
 
+      /**
+     * Checks if an example given is covered by the node.
+     * @param ejemplo given example.
+     * @return True if an example given is covered by the node.
+     */
   public boolean cubre(double [] ejemplo){
     boolean cubierto = false;
     if (nominal) {
@@ -262,7 +295,11 @@ public class Nodo {
 
   }
 
-  public void copiar(Nodo copia) {
+    /**
+     * Copies the given node.
+     * @param copia given node.
+     */
+    public void copiar(Nodo copia) {
     this.clase = copia.clase;
     this.claseInt = copia.claseInt;
     this.isLeaf = copia.isLeaf;

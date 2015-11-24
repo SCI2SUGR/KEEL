@@ -31,50 +31,49 @@ package keel.Algorithms.Decision_Trees.SLIQ;
 
 import java.util.*;
 
-/**
-ImplementaciÃ³n en Java del algoritmo SLIQ
-Basada parcialmente en el cÃ³digo del algoritmo ID3 de CristÃ³bal Romero Morales (UCO)
-@author Francisco Charte Ojeda (prÃ¡ctica ICO de la UJA)
-@version 1.0 (28/12/09 - 10/1/10)
- */
 
 /**
- *  Clase que representa un nodo del Ã¡rbol
+ * 
+ * This class implements the nodes of SLIQ decision tree.
+ * @author Francisco Charte Ojeda
+ * @version 1.0 (28/12/09 - 10/1/10)
  */
 public class Node {
 
-    /** Histograma asociado al nodo. El primer Ã­ndice es el Ã­ndice de clase y
-     * el segundo es 0-izquierda Ã³ 1-derecha, mientras que el valor indicarÃ­a
-     * la frecuencia de esa clase en la rama indicada. La clase 0 estÃ¡ reservada
-     * para conservar el total de cada rama.
+    /** Associated histogram. The first index corresponds to the class index and
+     * the second to the two children (branch) (0-left, 1-right). Each value determinates
+     * the frequency of that class in the given branch.  
+     * The index 0 (class 0) is used to store the total number for each branch. 
      */
     private int[][] histograma;
-    /** indice Gini de este nodo */
+    /** Gini index for the node. */
     private double indiceGini;
-    /** Mejor ganancia para partir */
+    /** Best starting gain (Gini) */
     private double mejorGini;
-    /** En los nodos interiores, referencias a los nodos hijo. */
+    /** References to the children (nodes). */
     private Node[] children;
-    /** Clase asociada al nodo si es un nodo hoja*/
+    /** Class associated to the node if it is a leaf. */
     private int primeraClase;
-    /** Indica si el nodo es una hoja o no */
+    /** Leaf indentifier. */
     private boolean esHoja;
-    /** El conjunto de datos asociados al nodo. */
+    /** Dataset associted to the node. */
     private Vector<ListaAtributos>[] data;
-    /** El padre de este nodo.  En la raÃ­z parent == null. */
+    /** Node's father. Null for the root. */
     private Node parent;
-    /** Valor (atributos continuos) con el mejor corte o
-        Ã­ndice del subconjunto (atributos discretos) con el mejor corte */
+    /**
+     * Continuous value (continuous attributes) or subset index (discrete attributes with the best cut. */
     private double mejorValor;
-    /** En los nodos hoja, el atributo que se utiliza para dividir el conjunto de datos. */
+    /**The attribute used to divide the set in a leaf node. */
     private int mejorAtributo;
-    /** Coste del nodo (para la fase de poda) */
+    /** Node cost (pruning).*/
     private int coste = -1;
-    /** NÃºmero de clases existentes */
+    /** Number of classes. */
     private int numClases;
 
-    /** Crea un nuevo nodo.
-     *
+    /**
+     * Paramenter constructor. The node structures will be initialized with the parameters given.
+     * @param nClases number of classes.
+     * 
      */
     public Node(int nClases) {
         // Inicializar los indicadores
@@ -98,9 +97,10 @@ public class Node {
         parent = null;
     }
 
-    /** Agregar un elemento al nodo
-     *
-     * @param clase Clase a la que pertenece el elemento
+
+    /**
+     * Adds an element of the class given to the node.
+     * @param clase given class.
      */
     public void agregaElemento(int clase) {
         // Si es el primer elemento agregado se toma su clase como principal
@@ -115,8 +115,8 @@ public class Node {
         histograma[0][0]++; // y en el total
     }
 
-    /** MÃ©todo que divide el nodo actual en dos que se agregan como hijos
-     * 
+    /**
+     * Divides the nodes into its two children.
      */
     public void divide() {
         children[0] = new Node(histograma.length);
@@ -127,9 +127,9 @@ public class Node {
         children[1].parent = this;
     }
 
-    /** Registra un elemento de la clase indicada que pasa de la hoja izquierda a la derecha
-     *
-     * @param clase indice de la clase del elemento
+    /**
+     * Changes an element with the class given from the left leaf to the right one.
+     * @param clase class index from the element to be changed.
      */
     protected void actualizaHistograma(int clase) {
         histograma[clase + 1][0]--;
@@ -139,8 +139,9 @@ public class Node {
         histograma[0][1]++;
     }
 
-    /** MÃ©todo que actualiza la clase principal del nodo contando la frecuencia
-     *  de las clases. Se usa despuÃ©s de podar un nodo
+    /**
+     * Actualizes the main class of the node by considering the frecuency of each class.
+     * Used after pruning.
      */
     public void actualizaClasePrincipal() {
         int frecuenciaClase = 0;
@@ -155,11 +156,11 @@ public class Node {
         }
     }
 
-    /** MÃ©todo que prueba un corte y calcula la mejora que se obtendrÃ­a. Para atributos discretos
-     *
-     * @param indAtributo   indice del atributo
-     * @param listaClases   Lista de clases
-     * @param atributo      Referencia al atributo
+    /**
+     * Checks a given cut and computes a possible improvement. (Discrete attributes).
+     * @param indAtributo   attribute index.
+     * @param listaClases   classes list.
+     * @param atributo      attribute reference.
      */
     public void pruebaCorte(int indAtributo, ListaClases[] listaClases, Attribute atributo) {
         // NÃºmero mÃ¡ximo de valores a comprobar de manera exhaustiva, segÃºn la
@@ -238,12 +239,12 @@ public class Node {
         mejorValor = mejorSubconjunto;
     }
 
-    /** MÃ©todo que prueba un corte y calcula la mejora que se obtendrÃ­a. Para atributos continuos
+    /** Checks a given cut and computes a possible improvement. (Continuous attributes).
      *
-     * @param atributo  indice del atributo
-     * @param listaClases   Lista de clases
-     * @param valor     Valor a comprobar
-     * @param siguiente Valor siguiente
+     * @param atributo   attribute index.
+     * @param listaClases   classes list.
+     * @param valor     cut value to check.
+     * @param siguiente next value.
      */
     public void pruebaCorte(int atributo, ListaClases[] listaClases, double valor, double siguiente) {
         // Calcular el valor intermedio entre valor y el siguiente (la lista estÃ¡ ordenada)
@@ -292,8 +293,9 @@ public class Node {
         histograma = copiaHistograma;
     }
 
-    /** MÃ©todo encargado de calcular el Ã­ndice Gini del nodo para atributos continuos
-     *
+    /**
+     * Computes and returns the Gini index for the node (continuous attributes).
+     * @return the Gini index for the node
      */
     public double calculaGini() {
         // Tomar los totales
@@ -320,17 +322,17 @@ public class Node {
                 (totalDerecho / total) * (1 - probDerecho);
     }
 
-    /** MÃ©todo encargado de calcular el Ã­ndice Gini para atributos discretos.
-     *  EstÃ¡ basado parcialmente en la implementaciÃ³n de la clase count_matrix
-     *  de la tÃ©sis de Nathan Rountree titulada 'Initialising Neural Networks 
-     *  with Prior Knowledge', en la que hay un capÃ­tulo dedicado especÃ­ficamente
-     *  al estudio de Ã¡rboles, las tÃ©cnicas de splitting y de poda.
+    /** Computes and returns the Gini index for the node (discrete attributes).
+     *  Based on the implementation of the class Count_Matrix of the Nathan Rountree
+     *  thesis called 'Initialising Neural Networks with Prior Knowledge'. In particular, 
+     *  the chapter where a study of decision trees and  its splitting and pruning methods is done.
      *
-     * @param indSubconjunto    indice del subconjunto a probar
-     * @param ocurrencias       Matriz de ocurrencias
-     * @param numValores        NÃºmero de valores en la matriz
-     * @param numClases         NÃºmero de clases en la matriz
-     * @param totalOcurrencias  Total de ocurrencias
+     * @param indSubconjunto    subset index to check.
+     * @param ocurrencias       occurrences matrix.
+     * @param numValores        number of values in the matrix.
+     * @param numClases         number of classes in the matrix.
+     * @param totalOcurrencias  total number of occurrences
+     * @return Gini index.
      */
     public double calculaGini(int indSubconjunto, int[][] ocurrencias, int numValores, int numClases, int totalOcurrencias) {
         int indice = 0, ciclos = numValores * numClases,
@@ -387,84 +389,94 @@ public class Node {
         return resultado;
     }
 
-    /** MÃ©todo que facilita el Ã­ndice Gini asociado al Ã­ndice
-     *
+    /**
+     * Returns the the Gini index.
+     * @return the the Gini index. 
      */
     public double getIndiceGini() {
         return indiceGini;
     }
 
-    /** MÃ©todo para establecer los conjuntos de elementos que satisfacen la condiciÃ³n del nodo.
-     *
-     * @param newData 	Los conjuntos de elementos.
+    /**
+     * Sets the dataset that satisfies the node's condition.
+     * @param newData 	Given dataset.
      */
     public void setData(Vector<ListaAtributos>[] newData) {
         // Se guardan los datos
         data = newData;
     }
 
-    /** Indica si el nodo es hoja
+    /** 
+     * Checks if the node is a leaf.
+     * 
      *
-     * @return true si el nodo es una hoja
+     * @return true if the node is a leaf.
      */
     public boolean esHoja() {
         return this.esHoja;
     }
 
-    /** Establece la condiciÃ³n de hoja de un nodo
+    /** 
+     * Sets the leaf contition.
      *
-     * @param b true si el nodo es hoja
+     * @param b true if the node is a leaf.
      */
     public void setHoja(boolean b) {
         esHoja = b;
     }
 
-    /** Devuelve los conjuntos de elementos que satisfacen la condiciÃ³n del nodo.
+    /** 
+     *  Returns the dataset that satisfies the node condition.
+     * @return the dataset that satisfies the node condition. 
      */
     public Vector<ListaAtributos>[] getData() {
         return data;
     }
 
-    /** Facilita la clase mÃ¡s representativa del nodo
+    /** 
+     * Returns the class of the node.
      *
-     * @return indice de la clase
+     * @return the class of the node.
      */
     public int getClase() {
         return primeraClase;
     }
 
-    /** Devuelve el Ã­ndice del atributo usado para descomponer el nodo.
-     *
+    /**
+     * Retuns the dataset that satisfies the node's condition.
+     * @return the dataset that satisfies the node's condition.
      */
     public int getDecompositionAttribute() {
         return mejorAtributo;
     }
 
-    /** Devuelve el valor usado para descomponer el nodo.
-     *
+    /** 
+     * Returns the value used to divide the node.
+     * @return the value used to divide the node. 
      */
     public double getDecompositionValue() {
         return mejorValor;
     }
 
-    /** MÃ©todo para establecer los hijos de un nodo.
+    /**
+     *  Sets the children of the node.
      *
-     * @param nodes 	Hijos del nodo.
+     * @param nodes 	the children of the node.
      */
     public void setChildren(Node[] nodes) {
         children = nodes;
     }
 
-    /** Metodo para anadir un hijo al nodo.
+    /** Adds a child to the node.
      *
-     * @param node 	Nuevo hijo.
+     * @param node 	given child.
      */
     public void addChildren(Node node) {
         children[numChildren()] = node;
     }
 
-    /** Devuelve el nÃºmero de hijos del nodo.
-     *
+    /** Returns the number of children.
+     * @return the number of children.
      */
     public int numChildren() {
         int nChildren = 0;
@@ -478,39 +490,42 @@ public class Node {
         return nChildren;
     }
 
-    /** Devuelve los hijos del nodo.
-     *
+    /**
+     * Returns the children of the node.
+     * @return the children of the node.
      */
     public Node[] getChildren() {
         return children;
     }
 
-    /** Devuelve el hijo correspondiente a un Ã­ndice.
+    /** Returns the child with the given index. 
      *
-     * @param index		indice del hijo.
+     * @param index		given child index.
+     * @return  the child with the given index. 
      */
     public Node getChildren(int index) {
         return children[index];
     }
 
-    /** MÃ©todo para establecer el nodo padre.
+    /** Sets the father of the node with the given node.
      *
-     * @param node		El padre del nodo.
+     * @param node		given father.
      */
     public void setParent(Node node) {
         parent = node;
     }
 
-    /** Devuelve el padre del nodo.
+    /** Returns the father node.
      *
+     * @return the father node.
      */
     public Node getParent() {
         return parent;
     }
 
-    /** Devuelve el coste asociado al nodo
+    /**  Returns the associated cost. 
      *
-     * @return El coste
+     * @return the associated cost. 
      */
     public int getCoste() {
         if (coste == -1) {
@@ -520,9 +535,9 @@ public class Node {
         return coste;
     }
 
-    /** MÃ©todo para calcular el coste de tener un nodo en el Ã¡rbol
-     *
-     * @param fase Indica si se estÃ¡ en la fase de poda 1 o en la 2
+    /**
+     * Computes the cost of each node of the tree.
+     * @param fase Pruning phase identifier (1, first; 2, second).
      */
     public void calculaCoste(int fase) {
         coste = fase; // El coste es 1 para la primera fase y 2 para la segunda
@@ -548,10 +563,10 @@ public class Node {
         }
     }
 
-    /** MÃ©todo que calcula el coste del error al incorporar un nodo hijo
-     *
-     * @param hijo  Hijo cuyos datos se incorporarÃ­an al padre
-     * @return  Coste del error
+    /** 
+     * Computes the error cost of adding a child to the node.
+     * @param hijo  child node to add.
+     * @return  rerror cost.
      */
     public int costeError(Node hijo) {
         int suma = 0;
@@ -567,9 +582,10 @@ public class Node {
         return suma;
     }
 
-    /** Establece el coste del nodo
+    /** 
+     * Sets the node cost with the value given.
      *
-     * @param coste Coste
+     * @param coste given cost.
      */
     public void setCoste(int coste) {
         this.coste = coste;

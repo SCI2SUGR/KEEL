@@ -33,7 +33,7 @@ package keel.Algorithms.Decision_Trees.SLIQ;
 import java.util.Vector;
 
 /**
- * Clase que representa el histograma asociado a los nodos del Ã¡rbol
+ * This class implements the histogram associated with the tree nodes.
  *
  * @author Francisco Charte Ojeda
  * @version 1.0 (29-12-09)
@@ -47,13 +47,18 @@ public class Histograma {
     // NÃºmero de elementos en cada parte
     int totalIzquierda, totalDerecha, total;
 
-    // Constructor por defecto
+    /**
+     * Default constructor.
+     */
     Histograma() {
         total = totalIzquierda = totalDerecha = 0;
     }
 
 
-    // Constructor para un cierto nÃºmero de clases
+    /**
+     * Parameter Constructor. Initiates the number of classes considered on the histogram with the one given.
+     * @param numeroClases  given number of classses.
+     */
     Histograma(int numeroClases) {
         total = totalIzquierda = totalDerecha = 0;
 
@@ -63,7 +68,10 @@ public class Histograma {
         }
     }
 
-    // ActualizaciÃ³n tras procesar una fila de datos
+    /**
+     * Actualizes the histogram after processing a data row with the given class.
+     * @param clase given class.
+     */
     void actualiza(int clase) {
        izquierda.set(clase, izquierda.get(clase) - 1);
        derecha.set(clase, derecha.get(clase) + 1);
@@ -72,7 +80,10 @@ public class Histograma {
        totalDerecha++;
     }
 
-    // Incrementar el contador de una cierta clase
+    /**
+     * Increases the counter for the class given.
+     * @param clase class given.
+     */
     void incIzquierda(int clase) {
         total++;
         totalIzquierda++;
@@ -80,7 +91,10 @@ public class Histograma {
         izquierda.set(clase, izquierda.get(clase) + 1);
     }
 
-    // Se intercambian los contenidos de los vectores
+    
+    /**
+     * Swaps the values of the right and left vectors.
+     */
     void intercambia() {
         Vector<Integer> temporal = (Vector<Integer> )izquierda.clone();
         izquierda.removeAllElements();
@@ -92,7 +106,10 @@ public class Histograma {
         totalDerecha = 0;
     }
 
-    // Calcula el Ã­ndice Gini a partir del histograma actual
+    /**
+     * Computes the Gini index with the histogram information.
+     * @return the Gini index
+     */
     double gini() {
         double resultado = 0, frecuencia = 0.0, temporal = 1.0;
 

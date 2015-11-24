@@ -29,22 +29,18 @@
 
 package keel.Algorithms.Decision_Trees.DT_GA;
 
-/**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+/**
+ * <p>Title: Regla (Rule). </p>
+ *
+ * <p>Description: This class implements a rule of the classifier.</p>
+ *
+ * @author not attributable
+ * @version 1.0
+ */
 public class Regla {
 
   ArrayList<Selector> antecedente;
@@ -56,12 +52,20 @@ public class Regla {
   double fitness; //si es una regla producida por el GA
   int codigoRegla; //si es una regla producida por el GA
 
-  public Regla() {
+    /**
+     * Default Constructor. Basic structures will be initialized.
+     */
+    public Regla() {
     antecedente = new ArrayList<Selector> ();
     ejemplosCubiertos = new int[1];
   }
 
-  public Regla(String clase, myDataset train) {
+    /**
+     * Paramenter constructor. The structures will be initialized with the parameters given.
+     * @param clase Consequent class of the rule.
+     * @param train Training dataset. 
+     */
+    public Regla(String clase, myDataset train) {
     antecedente = new ArrayList<Selector> ();
     this.train = train;
     this.clase = clase;
@@ -69,7 +73,12 @@ public class Regla {
     ejemplosBienCubiertos = new int[train.size()];
   }
 
-  public Regla(myDataset train, String linea) {
+    /**
+     * Paramenter constructor. The structures will be initialized with the parameters given.
+     * @param linea String representation of the rule. This will be parsed into rule object.
+     * @param train Training dataset. 
+     */
+    public Regla(myDataset train, String linea) {
     antecedente = new ArrayList<Selector> ();
     this.train = train;
     ejemplosCubiertos = new int[train.size()];
@@ -92,11 +101,19 @@ public class Regla {
     clase = campo.nextToken();
   }
 
-  public void incluyeSelector(Selector s) {
+    /**
+     * Adds a Selector (antedent of the rule, attribute-condition).
+     * @param s Selector to be added.
+     */
+    public void incluyeSelector(Selector s) {
     antecedente.add(s);
   }
 
-  public String printString() {
+    /**
+     * Returns a String representation of the rule.
+     * @return a String representation of the rule.
+     */
+    public String printString() {
     String cadena = new String("");
     cadena += "IF ";
     for (int i = 0; i < antecedente.size()-1; i++) {
@@ -107,7 +124,11 @@ public class Regla {
     return cadena;
   }
 
-  public Regla copia(){
+    /**
+     * Returns a copy of the rule.
+     * @return a copy of the rule.
+     */
+    public Regla copia(){
     Regla r = new Regla(clase, train);
     r.antecedente = new ArrayList<Selector>();
     for (int i = 0; i < antecedente.size(); i++){
@@ -124,15 +145,26 @@ public class Regla {
     return r;
   }
 
-  public int cubiertos(){
+    /**
+     * Returns the number of covered examples.
+     * @return the number of covered examples. 
+     */
+    public int cubiertos(){
     return nCubiertos;
   }
 
-  public int cubiertosOK(){
+    /**
+     * Returns the number of correctly covered examples.
+     * @return the number of correctly covered examples. 
+     */
+    public int cubiertosOK(){
     return nCubiertosOK;
   }
 
-  public void cubrirEjemplos(){
+    /**
+     * Computes the examples covered by the rule.
+     */
+    public void cubrirEjemplos(){
     nCubiertos = nCubiertosOK = 0;
     for (int i = 0; i < train.size(); i++){
       double [] ejemplo = train.getExample(i);
@@ -147,7 +179,12 @@ public class Regla {
     }
   }
 
-  public boolean cubre(double [] ejemplo){
+    /**
+     * Checks if an example given is covered by the rule.
+     * @param ejemplo given example.
+     * @return True if an example given is covered by the rule.
+     */
+    public boolean cubre(double [] ejemplo){
     boolean cubierto = true;
     for (int i = 0; (i < antecedente.size())&&(cubierto); i++){
       cubierto = cubierto && (antecedente.get(i).cubre(ejemplo));
@@ -155,11 +192,20 @@ public class Regla {
     return cubierto;
   }
 
-  public int size(){
+    /**
+     * Returns the size of the rule (number of antecedents).
+     * @return the size of the rule (number of antecedents).
+     */
+    public int size(){
     return antecedente.size();
   }
 
-  public boolean contieneAtributo(int att){
+    /**
+     * Checks if the rule contains the given attribute in its antecedents.
+     * @param att given attribute.
+     * @return True if the rule contains the given attribute in its antecedents. 
+     */
+    public boolean contieneAtributo(int att){
     boolean contiene = false;
     for (int i = 0; i < antecedente.size() && !contiene; i++){
       contiene = (antecedente.get(i).atributo == att);

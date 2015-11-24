@@ -31,7 +31,9 @@ package keel.Algorithms.Decision_Trees.DT_oblicuo;
 
 
 /**
- * 
+* <p>Title: Tree. </p>
+ *
+ * <p>Description: This class implements the decision tree</p>
  *
  * @author Anonymous - 2011
  * @version 1.0
@@ -48,15 +50,30 @@ public class Tree {
 
   /** Number of Leafs in the tree */
   public static int nodosT = 0, nodos = 0;
-  public static int maxNodos = 100;
+
+    /**
+     * Maximum number of nodes allowed.
+     */
+    public static int maxNodos = 100;
 
   /** Number of examples for each leaf/class **/
   public static int ejemplos[][];
 
-  public Tree() {
+    /**
+     * Default Constructor. Basic structures will be initialized.
+     */
+    public Tree() {
   }
 
-  public Tree(Tree pae, myDataset train, int n_ejemplos, int [] ejemplos, int nGenerations) {
+    /**
+     * Paramenter constructor. The population structures will be initialized with the parameters given.
+     * @param pae Father Tree.
+     * @param train Training dataset.
+     * @param n_ejemplos Number of examples in this tree.
+     * @param ejemplos Examples in this tree. 
+     * @param nGenerations Number of generations.
+     */
+    public Tree(Tree pae, myDataset train, int n_ejemplos, int [] ejemplos, int nGenerations) {
     this.train = train;
     padre = pae;
     //System.err.println("Creando nodo a partir de "+n_ejemplos);
@@ -81,7 +98,12 @@ public class Tree {
     }
   }
 
-  public Tree copia(Tree padre) {
+    /**
+     * Returns a copy of the tree with the given father set.
+     * @param padre father to be set to the copy.
+     * @return copy of the tree.
+     */
+    public Tree copia(Tree padre) {
     Tree t = new Tree();
     t.padre = padre;
     t.nodo = nodo.copia();
@@ -94,7 +116,11 @@ public class Tree {
     return t;
   }
 
-  public String printString() {
+    /**
+     * Returns a String representation of the tree.
+     * @return a String representation of the tree.
+     */
+    public String printString() {
     StringBuffer text = new StringBuffer();
     printTree(0, text);
     return text.toString();
@@ -137,7 +163,12 @@ public class Tree {
     text.append(aux + "}\n");
   }
 
-  public String clasificar(double[] ejemplo) {
+    /**
+     * Classifies a given example, returning the predicted class.
+     * @param ejemplo given example.
+     * @return predited class.
+     */
+    public String clasificar(double[] ejemplo) {
     if (nodo.isLeaf) {
       return nodo.clase;
     }

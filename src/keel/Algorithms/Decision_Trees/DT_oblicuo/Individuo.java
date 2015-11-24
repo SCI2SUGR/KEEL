@@ -33,7 +33,9 @@ import org.core.Randomize;
 
 
 /**
- * 
+ * <p>Title: Individuo (Individual). </p>
+ *
+ * <p>Description: This class implements an individual for the genetic algorithm, used to build the decision trees.</p>
  *
  * @author Anonymous - 2011
  * @version 1.0

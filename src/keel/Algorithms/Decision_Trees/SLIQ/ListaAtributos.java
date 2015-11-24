@@ -32,21 +32,22 @@ package keel.Algorithms.Decision_Trees.SLIQ;
 import java.util.Comparator;
 
 /**
- * Clase para gestionar la lista ordenada de cada atributo
+ *
+ * This class manages an ordered list of each attribute.
  *
  * @author Francisco Charte Ojeda
  * @version 1.0 (30-12-09)
  */
 public class ListaAtributos {
-    /** Valor del atributo */
+    /** Attribute value*/
     public double valor;
-    /** indice que apunta a la lista de clases */
+    /** Index on the classes list*/
     public int indice;
 
-    /** Constructor
+    /** Parameter Constructor.  The ListaAtributos structures will be initialized with the parameters given.
      *
-     * @param valor  Valor del atributo
-     * @param indice indice de la entrada en la lista de clases que le corresponde
+     * @param valor  attribute value
+     * @param indice index on the classes list
      */
     public ListaAtributos(double valor, int indice) {
         this.valor = valor;
@@ -54,8 +55,7 @@ public class ListaAtributos {
     }
 
     /**
-     * Clase interna que facilita la comparaciÃ³n de objetos ListaAtributos
-     * para facilitar la ordenaciÃ³n
+     * Class used to compare different ListaAtributos objects, being possible to sort them.
      */
     static class Comparador implements Comparator {
 

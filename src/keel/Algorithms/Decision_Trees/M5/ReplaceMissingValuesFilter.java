@@ -27,13 +27,7 @@
   
 **********************************************************************/
 
-/**
-* <p>
-* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
+
 
 package keel.Algorithms.Decision_Trees.M5;
 
@@ -43,7 +37,12 @@ import java.util.*;
 /**
  * Replaces all missing values for nominal and numeric attributes in a
  * dataset with the modes and means from the training data.
- */
+* <p>
+* @author Written by Cristobal Romero (Universidad de Córdoba) 10/10/2007
+* @version 0.1
+* @since JDK 1.5
+*</p>
+*/
 public class ReplaceMissingValuesFilter {
 
     /** The modes and means */
@@ -87,6 +86,11 @@ public class ReplaceMissingValuesFilter {
         return true;
     }
 
+    /**
+     * Returns the indeces of the given instances.
+     * @param insts given instances.
+     * @return the indeces of the given instances.
+     */
     protected int[] getStringIndices(M5Instances insts) {
 
         // Scan through getting the indices of String attributes
@@ -102,6 +106,13 @@ public class ReplaceMissingValuesFilter {
         return result;
     }
 
+        /**
+     * Sets the format of the output instances.
+     *
+     * @param outputFormat an Instances object containing the output
+     * instance structure (any instances contained in the object are
+     * ignored - only the structure is required).
+     */
     protected void setOutputFormat(M5Instances outputFormat) {
 
         if (outputFormat != null) {
@@ -119,6 +130,16 @@ public class ReplaceMissingValuesFilter {
         m_OutputQueue = new Queue();
     }
 
+        /**
+     * Sets the format of the input instances.
+     *
+     * @param instanceInfo an Instances object containing the input
+     * instance structure (any instances contained in the object are
+     * ignored - only the structure is required).
+     * @return false.
+     * @exception Exception if the input format can't be set
+     * successfully
+     */
     public boolean superSetInputFormat(M5Instances instanceInfo) throws
             Exception {
 
@@ -130,6 +151,10 @@ public class ReplaceMissingValuesFilter {
         return false;
     }
 
+    /**
+     * Returns the format of the input instances.
+     * @return the format of the input instances.
+     */
     protected M5Instances getInputFormat() {
 
         return m_InputFormat;
@@ -163,11 +188,18 @@ public class ReplaceMissingValuesFilter {
         }
     }
 
+    /**
+     * Resets the output queue.
+     */
     protected void resetQueue() {
 
         m_OutputQueue = new Queue();
     }
 
+    /**
+     * Buffers a input format.
+     * @param instance input format given.
+     */
     protected void bufferInput(M5Instance instance) {
 
         if (instance != null) {
@@ -194,6 +226,13 @@ public class ReplaceMissingValuesFilter {
                          destDataset, strAtts);
     }
 
+    /**
+     * Copies the values from a given dataset to other.
+     * @param instance input format.
+     * @param instSrcCompat True to compat the src dataset
+     * @param srcDataset dataset to copy from.
+     * @param destDataset destiny dataset.
+     */
     protected void copyStringValues(M5Instance instance, boolean instSrcCompat,
                                     M5Instances srcDataset,
                                     M5Instances destDataset) {
@@ -202,6 +241,15 @@ public class ReplaceMissingValuesFilter {
                          destDataset, m_OutputStringAtts);
     }
 
+    /**
+     * Copies the values from a given dataset to other.
+     * @param instance  input format.
+     * @param instSrcCompat True to compat the src dataset
+     * @param srcDataset dataset to copy from.
+     * @param srcStrAtts attributes to copy.
+     * @param destDataset destiny dataset.
+     * @param destStrAtts destiny attributes.
+     */
     protected void copyStringValues(M5Instance instance, boolean instSrcCompat,
                                     M5Instances srcDataset, int[] srcStrAtts,
                                     M5Instances destDataset, int[] destStrAtts) {
@@ -305,7 +353,9 @@ public class ReplaceMissingValuesFilter {
         return (numPendingOutput() != 0);
     }
 
-
+    /**
+     * Flushed the inputs (cleans the input formats)
+     */
     protected void flushInput() {
 
         if (m_InputStringAtts.length > 0) {
@@ -316,6 +366,10 @@ public class ReplaceMissingValuesFilter {
         }
     }
 
+    /**
+     * Returns the number of pending output.
+     * @return the number of pending output.
+     */
     public int numPendingOutput() {
 
         if (m_OutputFormat == null) {
@@ -382,7 +436,10 @@ public class ReplaceMissingValuesFilter {
         push(inst);
     }
 
-
+    /**
+     * Pushes an instance format into the output queue.
+     * @param instance given instance.
+     */
     protected void push(M5Instance instance) {
 
         if (instance != null) {
@@ -392,6 +449,13 @@ public class ReplaceMissingValuesFilter {
         }
     }
 
+    /**
+     * Uses the Missing value filter given as parameter to the given dat.
+     * @param data given dataset.
+     * @param filter Missing value filter.
+     * @return the filtered dataset.
+     * @throws Exception if the filter can not be applied.
+     */
     public static M5Instances useFilter(M5Instances data,
                                         ReplaceMissingValuesFilter filter) throws
             Exception {
@@ -416,7 +480,10 @@ public class ReplaceMissingValuesFilter {
         return newData;
     }
 
-
+    /**
+     * Returns the output format.
+     * @return the output format.
+     */
     public final M5Instances getOutputFormat() {
 
         if (m_OutputFormat == null) {
@@ -425,6 +492,10 @@ public class ReplaceMissingValuesFilter {
         return new M5Instances(m_OutputFormat, 0);
     }
 
+    /**
+     * Returns the  outputs.
+     * @return the  outputs.
+     */
     public M5Instance output() {
 
         if (m_OutputFormat == null) {

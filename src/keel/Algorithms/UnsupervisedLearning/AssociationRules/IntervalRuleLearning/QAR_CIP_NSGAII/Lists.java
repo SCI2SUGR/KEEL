@@ -42,10 +42,25 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
  * @since JDK 1.5
  */
 public class Lists {
+
+    /**
+     * Current element of the list.
+     */
     public int index;
+
+    /**
+     * Parent list.
+     */
     public Lists parent;
+
+    /** 
+     * Child list.
+     */
     public Lists child;
     
+    /**
+     * Default constructor.
+     */
     public Lists(){
     	index = -1;
     	parent = null;

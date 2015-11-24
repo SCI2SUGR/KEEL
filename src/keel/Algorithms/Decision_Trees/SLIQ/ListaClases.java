@@ -31,21 +31,21 @@
 package keel.Algorithms.Decision_Trees.SLIQ;
 
 /**
- * Clase para gestionar la lista de clases de un dataset
- *
+ * 
+ * This class manages that list of classes of a dataset.
  * @author Francisco Charte Ojeda
  * @version 1.0 (30-12-09)
  */
 public class ListaClases {
-    /** indice de la clase */
+    /** Class index. */
     public int clase;
-    /** Nodo hoja asociado */
+    /** Associated leaf. */
     public Node hoja;
 
-    /** Constructor
+    /** Parameter Constructor. The ListaClases structures will be initialized with the parameters given.
      *
-     * @param clase indice de la clase
-     * @param hoja  Nodo hoja asociado
+     * @param clase  Class index 
+     * @param hoja  Associated leaf
      */
     public ListaClases(int clase, Node hoja) {
         this.clase = clase;

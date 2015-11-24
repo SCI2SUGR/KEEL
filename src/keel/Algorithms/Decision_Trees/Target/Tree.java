@@ -59,15 +59,34 @@ public class Tree
 
   /** Number of Leafs in the tree */
   public static int nodosT, nodos;
-  public static int maxNodos = 100;
-  public static int bienCubiertos;
+
+    /**
+     * Maximum number of nodes.
+     */
+    public static int maxNodos = 100;
+
+    /**
+     * Number of correct classified examples.
+     */
+    public static int bienCubiertos;
 
   /** Number of examples for each leaf/class **/
   public static int ejemplos[][];
 
+      /**
+     * Default Constructor. Basic structures will be initialized.
+     */
   public Tree() {
   }
-
+    /**
+     * Paramenter constructor. The population structures will be initialized with the parameters given.
+     * @param pae Father Tree.
+     * @param train Training dataset.
+     * @param pSplit Split probability.
+     * @param primero Root identifier.
+     * @param prob1 First probability used to grow the tree.
+     * @param prob2 Second probability used to grow the tree.
+     */
   public Tree(Tree pae, myDataset train, double pSplit, boolean primero,
               double prob1, double prob2) {
     this.train = train;
@@ -106,7 +125,12 @@ public class Tree
     n_e = true;
   }
 
-  public Tree copia(Tree padre) {
+    /**
+     * Returns a copy of the tree with the given father set.
+     * @param padre father to be set to the copy.
+     * @return copy of the tree.
+     */
+    public Tree copia(Tree padre) {
     Tree t = new Tree();
     t.padre = padre;
     /*if (t.padre != null){
@@ -135,6 +159,10 @@ public class Tree
     return t;
   }
 
+        /**
+     * Returns a String representation of the tree.
+     * @return a String representation of the tree.
+     */
   public String printString() {
     StringBuffer text = new StringBuffer();
     printTree(0, text);
@@ -196,7 +224,11 @@ public class Tree
     }
   }
 
-  public int elijeNodo() {
+    /**
+     * Chooses randomly a node.
+     * @return chosen node.
+     */
+    public int elijeNodo() {
     nodos = 0;
     this.calculaNodos();
     int nodo = Randomize.RandintClosed(0, nodos - 2);
@@ -210,6 +242,10 @@ public class Tree
     return arbol;
      }*/
 
+    /**
+     * Computes the fitness for the tree.
+     * @return the fitness for the tree.
+     */
   public double evaluar() {
     double Dbic;
     int clases = train.getnClasses();
@@ -254,6 +290,10 @@ public class Tree
     return Dbic;
   }
 
+      /**
+     * Computes the fitness for the tree.
+     * @return the fitness for the tree.
+     */
   public double evaluar2() {
     double Dbic;
     int clases = train.getnClasses();
@@ -339,7 +379,13 @@ public class Tree
     }
   }
 
-  public void nodeSwap(int nodoYo, int nodoPadre, Tree padre) {
+    /**
+     * Swaps the two nodes given with the given tree.
+     * @param nodoYo node index of this tree to swap.
+     * @param nodoPadre node index of the given tree to swap.
+     * @param padre given tree.
+     */
+    public void nodeSwap(int nodoYo, int nodoPadre, Tree padre) {
     //primero busco los dos nodos
     nodos = 0;
     this.calculaNodos();
@@ -370,7 +416,13 @@ public class Tree
     }
   }
 
-  public void treeSwap(int nodoYo, int nodoPadre, Tree padre) {
+    /**
+     * Swaps the two trees given with the given tree.
+     * @param nodoYo node index of this tree to swap.
+     * @param nodoPadre node index of the given tree to swap.
+     * @param padre given tree.
+     */
+    public void treeSwap(int nodoYo, int nodoPadre, Tree padre) {
     //primero busco los dos nodos
     nodos = 0;
     this.calculaNodos();
@@ -384,7 +436,11 @@ public class Tree
     suNodo = aux;
   }
 
-  public void splitSet(int nodo) {
+    /**
+     * Splits the given node.
+     * @param nodo given node.
+     */
+    public void splitSet(int nodo) {
     //primero busco los dos nodos
     nodos = 0;
     this.calculaNodos();
@@ -392,7 +448,11 @@ public class Tree
     miNodo.splitSet(miNodo.atributos[0], prob1_var, prob2_var);
   }
 
-  public void splitRule(int nodo) {
+    /**
+     * Splits the rule of the given node.
+     * @param nodo given node.
+     */
+    public void splitRule(int nodo) {
     //primero busco los dos nodos
     nodos = 0;
     this.calculaNodos();
@@ -410,7 +470,12 @@ public class Tree
     }
   }
 
-  public String clasificar(double[] ejemplo) {
+    /**
+     * Classifies a given example, returning the predicted class.
+     * @param ejemplo given example.
+     * @return predited class.
+     */
+    public String clasificar(double[] ejemplo) {
     if (isLeaf) {
       return nodo.clase;
     }
@@ -425,11 +490,7 @@ public class Tree
 
   }
 
-  /**
-   * Funcion de minimizacion del fitness
-   * @param a Object Otro arbol
-   * @return int el valor para la comparativa
-   */
+    
   public int compareTo(Object a) {
     if ( ( (Tree) a).fitness > this.fitness) {
       return -1;

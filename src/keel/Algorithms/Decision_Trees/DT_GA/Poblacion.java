@@ -29,23 +29,20 @@
 
 package keel.Algorithms.Decision_Trees.DT_GA;
 
-/**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
+
 
 import java.util.ArrayList;
 import java.util.Collections;
 import org.core.*;
 
+/**
+ * <p>Title: Poblacion (Population). </p>
+ *
+ * <p>Description: This class implements the population of chromosomes used to perform the genetic algorithm</p>
+ *
+ * @author not attributable
+ * @version 1.0
+ */
 public class Poblacion {
 
   ArrayList<Individuo> cromosomas;
@@ -58,18 +55,38 @@ public class Poblacion {
   double infoG;
   double [] norm_acc;
 
-  public boolean BETTER(double a, double b) {
+    /**
+     * Checks if the double a is greater than b.
+     * @param a first given number.
+     * @param b second given number.
+     * @return True if the double a is greater than b. 
+     */
+    public boolean BETTER(double a, double b) {
     if (a > b) {
       return true;
     }
     return false;
   }
 
-  public Poblacion() {
+    /**
+     * Default Constructor. Basic structures will be initialized.
+     */
+    public Poblacion() {
     cromosomas = new ArrayList<Individuo> ();
     mejor_fitness = 0;
   }
 
+        /**
+     * Paramenter constructor. The population structures will be initialized with the parameters given.
+     * @param codigoRegla rule's code.
+     * @param r rule used to initialize the different chromosomes.
+     * @param nGenerations maximum number for generations.
+     * @param popSize population size.
+     * @param crossProb crossover probability.
+     * @param mutProb mutation probability.
+     * @param clase class for the population.
+     * @param train training dataset. 
+     */
   public Poblacion(int codigoRegla, Regla r, int nGenerations, int popSize,
                    double crossProb,
                    double mutProb, myDataset train, String clase) {
@@ -96,7 +113,17 @@ public class Poblacion {
     calculaInfoG();
   }
 
-  public Poblacion(boolean[] ejemplosTr, int nGenerations, int popSize,
+     /**
+     * Paramenter constructor. The population structures will be initialized with the parameters given.
+     * @param ejemplosTr examples considered to be used as training.
+     * @param nGenerations maximum number for generations.
+     * @param popSize population size.
+     * @param crossProb crossover probability.
+     * @param mutProb mutation probability.
+     * @param train training dataset. 
+     * @param norm_acc initial accuracies.
+     */
+    public Poblacion(boolean[] ejemplosTr, int nGenerations, int popSize,
                    double crossProb, double mutProb, myDataset train, double [] norm_acc) {
     cromosomas = new ArrayList<Individuo> ();
     hijos = new ArrayList<Individuo> ();
@@ -117,10 +144,10 @@ public class Poblacion {
   }
 
   /**
-   * Inicializa la poblacion para el caso de GA_Small
-   * @param atributos boolean[] los atributos que se pueden (true) y no se pueden (false) colocar en el cromosoma
-   * @param clase String es la clase consecuente para todos los cromosomas
-   * @param codigoRegla int es el codigo de la regla de la que se generan los individuos
+   * Initializes the population for a small Genetic Algorithm.
+   * @param atributos boolean[]  Selected antecedents (attributes) for the chromosomes.
+   * @param clase String consequent class of all the chromosomes.
+   * @param codigoRegla int rule code.
    */
   private void inicializaPoblacion(boolean[] atributos, String clase,
                                    int codigoRegla) {
@@ -133,7 +160,7 @@ public class Poblacion {
   }
 
   /**
-   * Inicializa la poblacion para el caso de GA_Large
+   * Initializes randomly the population for a large Genetic Algorithm.
    */
   private void inicializaPoblacion() {
     for (int i = 0; i < popSize; i++) {
@@ -145,8 +172,11 @@ public class Poblacion {
     //System.err.println("Poblacion: \n" + this.printString());
   }
 
-
-  public String printString() {
+    /**
+     * Returns a String representation of the population.
+     * @return a String representation of the population.
+     */
+    public String printString() {
     String cadena = new String("");
     for (int i = 0; i < popSize; i++) {
       cadena += "Chromosome[" + (i + 1) + "]: " + cromosomas.get(i).printString();
@@ -154,7 +184,10 @@ public class Poblacion {
     return cadena;
   }
 
-  public void GA_Small() {
+    /**
+     * Performs the small GA to generate the different rules for the decision tree.
+     */
+    public void GA_Small() {
     clasifica(cromosomas, 0);
     for (int i = 0; i < nGenerations; i++) {
       selection();
@@ -282,11 +315,11 @@ public class Poblacion {
   }
 
 
-  /**
+  /** Computes the information gain.
    * Info(G) = - sum_{j=1}^c {|Gj|/|T|*log_2{|Gj|/|T|}}
-   * c = numero de clases
-   * |Gj| = numero de ejemplos de la clase G
-   * |T| = numero total de ejemplos
+   * c = number of classes. 
+   * |Gj| = number of examples of the class j.
+   * |T| = number of total examples.
    */
   private void calculaInfoG(){
     int c = train.getnClasses();
@@ -304,7 +337,11 @@ public class Poblacion {
     }
   }
 
-  public void escogerEjemplos(boolean [] ejemplos){
+    /**
+     * Chooses the examples to be used as training whoses boolean value is true.
+     * @param ejemplos given boolean vector containing the information of the selected examples.
+     */
+    public void escogerEjemplos(boolean [] ejemplos){
     nEjemplos = 0;
     this.ejemplos = new int [ejemplos.length];
     for (int i = 0; i < ejemplos.length; i++){
@@ -315,6 +352,9 @@ public class Poblacion {
     }
   }
 
+     /**
+     * Performs the large GA to generate the different rules for the decision tree.
+     */
   public void GA_Large() {
     System.out.println("#Examples Remaining in Training-Set-2 -> "+nEjemplos);
     while (nEjemplos > 5){
@@ -383,7 +423,11 @@ public class Poblacion {
     }
   }
 
-  public ArrayList<Regla> dameReglas() {
+    /**
+     * Returns the rules generated by the GA and stored on the chromosomes of the population.
+     * @return Array of rules that is used to build the tree.
+     */
+    public ArrayList<Regla> dameReglas() {
     return reglas;
   }
 

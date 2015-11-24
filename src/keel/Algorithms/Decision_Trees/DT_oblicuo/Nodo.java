@@ -52,7 +52,14 @@ public class Nodo {
 
   }
 
-  public Nodo(myDataset train, int n_ejemplos, int[] ejemplos, int nGenerations) {
+    /**
+     * Paramenter constructor. The node structures will be initialized with the parameters given.
+     * @param train training dataset.
+     * @param n_ejemplos number of examples in this node.
+     * @param ejemplos examples in this node. If all the examples have the same class, the node is directly considered as leaf.
+     * @param nGenerations number of generations.
+     */
+    public Nodo(myDataset train, int n_ejemplos, int[] ejemplos, int nGenerations) {
     this.train = train;
     this.n_ejemplos = n_ejemplos;
     this.ejemplos = new int[ejemplos.length];
@@ -163,7 +170,12 @@ public class Nodo {
     //System.exit(0);
   }
 
-  public boolean cubre(double[] ejemplo) {
+    /**
+     * Checks if an example given is covered by the node.
+     * @param ejemplo given example.
+     * @return True if an example given is covered by the node.
+     */
+    public boolean cubre(double[] ejemplo) {
     double aux = 0;
     for (int j = 0; j < ejemplo.length; j++) {
       aux += ejemplo[j] * pesos[j];
@@ -229,7 +241,11 @@ public class Nodo {
     }
   }
 
-  public String printString() {
+    /**
+     * Returns a String representation of the node.
+     * @return a String representation of the node.
+     */
+    public String printString() {
     String cadena = new String("");
     if (isLeaf) {
       cadena += train.nombreVar(train.getnInputs()) + " = " + clase + " (" +
@@ -246,7 +262,11 @@ public class Nodo {
     return cadena;
   }
 
-  public Nodo copia() {
+    /**
+     * Returns a copy of the node.
+     * @return a copy of the node.
+     */
+    public Nodo copia() {
     Nodo n = new Nodo();
     n.clase = this.clase;
     n.isLeaf = this.isLeaf;

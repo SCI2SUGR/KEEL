@@ -33,32 +33,32 @@ import java.io.*;
 import java.lang.reflect.Array;
 import java.util.*;
 
-/**
-Implementación en Java del algoritmo SLIQ
-Basada parcialmente en el código del algoritmo ID3 de Cristóbal Romero Morales (UCO)
-@author Francisco Charte Ojeda (práctica ICO de la UJA)
+/** Implementation of the SLIQ algorithm.
+ * 
+* 
+@author Francisco Charte Ojeda (UJA)
 @version 1.0 (28/12/09 - 10/1/10)
  */
 public class SLIQ extends Algorithm {
 
-    /** Raíz del árbol */
+    /** Tree root */
     Node root;
-    // Para el proceso de división
+    /** For division process. */
     Node subnodoIzquierdo, subnodoDerecho;
-    /** Número de nodos existentes en el árbol */
+    /** Number of nodes in the tree. */
     int NumberOfNodes;
-    /** Número de hojas en el árbol */
+    /** Number of leaves in the tree. */
     int NumberOfLeafs;
-    /** Lista con las clases */
+    /** Classes list. */
     ListaClases[] listaClases;
-    /** Listas con los atributos ordenados */
+    /** Ordered attributes list*/
     Vector<ListaAtributos>[] listas;
-    /** Lista de nodos pendientes de procesar durante el crecimiento del árbol */
+    /** List with the nodes that have not been yet processed. */
     Queue<Node> listaNodos;
 
     /** Constructor.
      *
-     * @param paramFile			El archivo de parámetros.
+     * @param paramFile			parameters file.
      *
      */
     public SLIQ(String paramFile) {
@@ -98,8 +98,8 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** Construye las listas por atributo y lista de clases usadas en SLIQ
-     *
+    /**
+     * Constructs the lists of attriibutes and classes used during SLIQ execution.
      */
     protected void generaListas() {
         int n = 0; // Para contabilizar las clases
@@ -143,8 +143,8 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** Método que genera el árbol según el algoritmo SLIQ
-     *
+    /**
+     * Generates the tree with the SLIQ algorithm.
      */
     public void generateTree() {
         // Se crea el nodo raíz para todas las clases
@@ -193,8 +193,8 @@ public class SLIQ extends Algorithm {
 
     } // generateTree
 
-    /** Método que lleva a cabo la poda del árbol tras la fase de crecimiento
-     *
+    /** 
+     * Prunes the tree.
      */
     protected void podaArbol() {
         int Lt = 2;
@@ -260,9 +260,10 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** Método encargado de podar el nodo que se recibe como parámetro, eliminando sus hijos
-     *
-     * @param padre Nodo del que se podarán los dos hijos
+    /** 
+     * Prunes the node given as parameter, deleting its children.
+     * 
+     * @param padre given node to be pruned.
      */
     protected void podaNodoCompleto(Node padre) {
         // Se podan los dos hijos
@@ -273,10 +274,11 @@ public class SLIQ extends Algorithm {
         padre.setHoja(true);
     }
 
-    /** Método encargado de podar un nodo hijo de un nodo padre
+    /** 
+     * Prunes the node given as parameter, deleting the given child.
      *
-     * @param padre     Nodo del que se va a podar
-     * @param indHijo   Índice del nodo hijo a podar: 0-izquierdo, 1-derecho
+     * @param padre    given father to be pruned.
+     * @param indHijo   given child index to delete.
      */
     protected void podaNodoParcial(Node padre, int indHijo) {
         // Referencia al hijo que corresponda
@@ -291,9 +293,10 @@ public class SLIQ extends Algorithm {
 
     /** Método que se encarga de agregar los datos de un hijo que va a
      *  podarse a la lista de datos de su padre
+     *  Aggregates the data of the given child that will be pruned into the father given.
      *
-     * @param padre Nodo al que se agregarán los datos
-     * @param hijo  Nodo del que se toman los datos
+     * @param padre Father node.
+     * @param hijo  Child node.
      */
     protected void agregaDatos(Node padre, Node hijo) {
         // Se recorre la lista de datos que contiene el hijo, agregando los
@@ -315,11 +318,11 @@ public class SLIQ extends Algorithm {
         padre.actualizaClasePrincipal();
     }
 
-    /** Método encargado de comprobar cuál es el mejor corte para un cierto
-     *  atributo en un nodo dado
+    /**
+     * Computes the best cut of the given attribute for the given node.
      *
-     * @param indAtributo   Índice del atributo por el que se cortaría
-     * @param nodo          Nodo que se pretende dividir
+     * @param indAtributo   Attribute index.
+     * @param nodo          Node to be divided.
      */
     protected void calculaMejorCorte(int indAtributo, Node nodo) {
         // Se recorre la lista ordenada de valores para el atributo índAtributo
@@ -346,18 +349,20 @@ public class SLIQ extends Algorithm {
     }
 
     /** Método que aplica en un nodo el mejor corte obtenido previamente
+     *  Apply the best cut fouded to divide the given node.
      *
-     * @param nodo  Nodo a dividir
+     * @param nodo  node to be divided.
      */
     protected void aplicaMejorCorte(Node nodo) {
         if (modelDataset.getAttribute(nodo.getDecompositionAttribute()).isDiscret()) 
             aplicaMejorCorteDiscreto(nodo);
         else                                                                                                                      aplicaMejorCorteContinuo(nodo);
     }
-
-    /** Método que divide un nodo por un atributo discreto
+    
+    /**
+     * Divides the node in the more optimal way possible (Discrete attribute).
      *
-     * @param nodo  Nodo a dividir
+     * @param nodo  node to be divided.
      */
     protected void aplicaMejorCorteDiscreto(Node nodo) {
         // Índice del atributo por el que se dividirá
@@ -415,9 +420,10 @@ public class SLIQ extends Algorithm {
         nodoD.setData(listaD);
     }
 
-    /** Método que divide un nodo por un atributo continuo
+    /**
+     * Divides the node in the more optimal way possible (Continuous attribute).
      *
-     * @param nodo  Nodo a dividir
+     * @param nodo  node to be divided.
      */
     protected void aplicaMejorCorteContinuo(Node nodo) {
 
@@ -470,12 +476,13 @@ public class SLIQ extends Algorithm {
      */
     }
 
-    /** Método que comprueba la clase a la que correspondería una muestra según el árbol generado
+    /** 
+     * Returns the predicted class of the given example obtained from the given node.
+     * 
+     * @param itemset		given example.
+     * @param node		given node.
      *
-     * @param itemset		La muestra a evaluar
-     * @param node			El nodo que está recorriéndose.
-     *
-     * @return				El índice de la clase predicha.
+     * @return predicted class.
      */
     public int evaluateItemset(Itemset itemset, Node node) {
         try {
@@ -498,9 +505,9 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** Función para contar el número de nodos y de hojas en el árbol
+    /** Counts the number of nodes pending from the given node.
      *
-     * @param node		El nodo actual.
+     * @param node given node.
      */
     public void cuentaNodosHojas(Node node) {
 
@@ -520,9 +527,9 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** Escribe en el archivo los resultados de entrenamiento y pruebas.
+    /** Writes the statistical measurements obtained on the output file.
      *
-     * @exception IOException	Si no es posible escribir en el archivo.
+     * @exception IOException	if the file can not be written.
      */
     public void printResult() throws IOException {
         long totalTime = (System.currentTimeMillis() - startTime) / 1000;
@@ -555,7 +562,7 @@ public class SLIQ extends Algorithm {
         resultPrint.close();
     }
 
-    /** Evalúa el dataset de entrenamiento y escribe el resultado en un archivo.
+    /** Evaluates the training dataset and writes the results on the output file.
      *
      */
     public void printTrain() {
@@ -586,8 +593,8 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** Evalúa el dataset de pruebas y escribe el resultado en un archivo
-     *
+    /**
+     * Evaluates the test dataset and writes the results on the output file.
      */
     public void printTest() {
         String text = getHeader();
@@ -617,11 +624,11 @@ public class SLIQ extends Algorithm {
         }
     }
 
-    /** Método encargado de leer las opciones de ejecución del archivo y establecer los parámetros adecuados.
+    /** 
+     * Reads the parameters used by the algorith.
+     * @param options 		StreamTokenizer used to read the different parameters
      *
-     * @param options 		El StreamTokenizer que lee del archivo de parámetros.
-     *
-     * @throws Exception	En caso de que el formato del archivo no sea el correcto.
+     * @throws Exception	if the input file format is wrong.
      */
     protected void setOptions(StreamTokenizer options) throws Exception {
 
@@ -689,9 +696,9 @@ public class SLIQ extends Algorithm {
 
     } // setOptions
 
-    /** Función main.
+    /** Main function. Executes the SLIQ algorithm with the configuration file given.
      *
-     * @param args 			El archivo de parámetros.
+     * @param args Arguments of the program (a configuration script, generally) 
      */
     public static void main(String[] args) {
         if (args.length != 1) {
