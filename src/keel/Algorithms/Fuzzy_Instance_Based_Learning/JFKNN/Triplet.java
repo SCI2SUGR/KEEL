@@ -74,11 +74,27 @@ import java.util.Arrays;
  */
 public class Triplet {
 	
-	public double w [][];
-	public int k;
-	public double error;
+    /**
+     * Tripel weights.
+     */
+    public double w [][];
+
+    /**
+     * Number of neightbours.
+     */
+    public int k;
+
+    /**
+     * Error obtained.
+     */
+    public double error;
 	
-	public Triplet(int size,int classes){
+    /**
+     * Parameter constructor. Basic structures will be initialized with the parameters given.
+     * @param size Matrix w size.
+     * @param classes Number of classes.
+     */
+    public Triplet(int size,int classes){
 		
 		k=0;
 		error=1.0;
@@ -89,7 +105,11 @@ public class Triplet {
 		}
 	}
 	
-	public Triplet(double wMatrix [][]){
+    /**
+     *Parameter constructor. Basic structures will be initialized with the parameters given. 
+     * @param wMatrix matrix to be set.
+     */
+    public Triplet(double wMatrix [][]){
 		
 		k=0;
 		error=1.0;
@@ -101,7 +121,11 @@ public class Triplet {
 		
 	}
 	
-	public Triplet(Triplet other){
+    /**
+     * Copy Constructor. It creates a new Tripet object by copying the given one.
+     * @param other given Triplet to copy.
+     */
+    public Triplet(Triplet other){
 		
 		k=other.k;
 		error=other.error;

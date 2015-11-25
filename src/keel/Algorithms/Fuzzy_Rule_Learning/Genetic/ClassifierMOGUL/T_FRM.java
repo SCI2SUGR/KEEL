@@ -43,7 +43,29 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
  */
 public class T_FRM {
  
+    /**
+     * F agreement.
+     */
     public int fagre;
-    public double a, b, p, palfa;
+    
+    /**
+     * a value.
+     */
+    public double a,
+
+    /**
+     * b value.
+     */
+    b,
+
+    /**
+     * p value.
+     */
+    p,
+
+    /**
+     * alpha value.
+     */
+    palfa;
 
 }

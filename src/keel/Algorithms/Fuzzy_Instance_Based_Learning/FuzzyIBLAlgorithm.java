@@ -82,50 +82,155 @@ public abstract class FuzzyIBLAlgorithm {
 
 	//Files
 
+    /**
+     *  Output files names.
+     */
+    
 	protected String outFile[];
-	protected String testFile;
-	protected String trainFile;
-	protected String referenceFile;
+
+    /**
+     *  Test file name.
+     */
+    protected String testFile;
+
+    /**
+     *  Train file name.
+     */
+    protected String trainFile;
+
+    /**
+     *  Reference file name.
+     */
+    protected String referenceFile;
 	
 	//Instance Sets
 	
+    /**
+     * Training dataset.
+     */
+    	
 	protected InstanceSet train;
-	protected InstanceSet test;
-	protected InstanceSet reference;
+
+    /**
+     * Test dataset.
+     */
+    protected InstanceSet test;
+
+    /**
+     *  Reference dataset.
+     */
+    protected InstanceSet reference;
 	
-	protected Instance temp;	
+    /**
+     * Temporal instance.
+     */
+    protected Instance temp;	
 	
 	//Data
 	
+    /**
+     * Number of input attributes.
+     */
+    	
 	protected int inputAtt;
-	protected int trainSize;
-	protected Attribute[] inputs;
-	protected Attribute output;
-	protected boolean[] nulls;
-	protected boolean[] nominal;
+
+    /**
+     * Training size.
+     */
+    protected int trainSize;
+
+    /**
+     * Training size.
+     */
+    protected Attribute[] inputs;
+
+    /**
+     * Output attribute.
+     */
+    protected Attribute output;
+
+    /** 
+     * Missing values of a instance.
+     */
+    protected boolean[] nulls;
+
+    /**
+     * Identifies the nominal attributes. (True = it is a nominal attribute).
+     */
+    protected boolean[] nominal;
 	
-	protected double trainData[][];
-	protected int trainOutput[];
-	protected double testData[][];
-	protected int testOutput[];
-	protected double referenceData[][];
-	protected int referenceOutput[];
-	protected String relation;
+    /**
+     * Training input data.
+     */
+    protected double trainData[][];
+
+    /**
+     * Training output data.
+     */
+    protected int trainOutput[];
+
+    /**
+     * Test input data.
+     */
+    protected double testData[][];
+
+    /**
+     * Test output data.
+     */
+    protected int testOutput[];
+
+    /**
+     * Reference input data.
+     */
+    protected double referenceData[][];
+
+    /**
+     * Reference output data.
+     */
+    protected int referenceOutput[];
+
+    /**
+     *  Relation string.
+     */
+    protected String relation;
 	
-	protected int nClasses;
-	protected int nInstances[];
+    /**
+     * Number of classes.
+     */
+    protected int nClasses;
+
+    /**
+     * Number of instances of each classes.
+     */
+    protected int nInstances[];
 	
 	//Naming
 	
+    /**
+     * Algorithm name.
+     */
+    	
 	protected String name;
 	
 	//Random seed
 	
+    /**
+     * Random seed.
+     */
+    	
 	protected long seed;
 	
 	//Classification
-	protected int trainPrediction[];
-	protected int testPrediction[];	
+
+    /**
+     * Predicted classes for the training dataset.
+     */
+    	protected int trainPrediction[];
+	
+    /**
+     * Predicted classes for the test dataset.
+     */
+    protected int testPrediction[];	
 	
 	/** 
 	 * Read the configuration and data files, and process it.
@@ -286,6 +391,7 @@ public abstract class FuzzyIBLAlgorithm {
 	
 	/** 
 	 * This function builds the data matrix for training data and normalizes inputs values
+     * @throws keel.Algorithms.Fuzzy_Instance_Based_Learning.DataException if the dataset is not appropiated for the algorithm.
 	 */	
 	protected void normalizeTrain() throws DataException {
 
@@ -360,6 +466,7 @@ public abstract class FuzzyIBLAlgorithm {
 
 	/** 
 	 * This function builds the data matrix for test data and normalizes inputs values
+     * @throws keel.Algorithms.Fuzzy_Instance_Based_Learning.DataException if the dataset is not appropiated for the algorithm.
 	 */	
 	protected void normalizeTest() throws DataException {
 
@@ -435,6 +542,7 @@ public abstract class FuzzyIBLAlgorithm {
 	
 	/** 
 	 * This function builds the data matrix for reference data and normalizes inputs values
+     * @throws keel.Algorithms.Fuzzy_Instance_Based_Learning.DataException if the dataset is not appropiated for the algorithm.
 	 */	
 	protected void normalizeReference() throws DataException {
 

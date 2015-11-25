@@ -69,6 +69,11 @@ public class KNN extends Metodo {
     int nominalReferencia[][];
     double realReferencia[][];
 
+    /**
+     * Parameter constructor. Basic structures will be initialized with the parameters given. 
+     * @param dataset Training dataset.
+     * @param value_k number of nearest neighbours cosidered.
+     */
     public KNN(InstanceSet dataset, int value_k) {
         /*Read of the script file*/
         configuracion(value_k);
@@ -210,7 +215,14 @@ public class KNN extends Metodo {
         }
     }
 
-
+    /**
+     * Executes the KNN algorithm on the training dataset to obtain the outliers during the classification.
+     * This method will fill the arrays given with the number of instances that belong to each class.
+     * If the number of neightbours with a different class of the evaluated is greater that the threshold
+     * 'k_dif', the evaluated example is consired an outlier.
+     * @param outliers Number of outliers for each classes.
+     * @param ExamplesClass Number of instances for each original classes.
+     */
     public void ejecutar(int[] outliers, int[] ExamplesClass) {
 	
         int i;
@@ -238,7 +250,11 @@ public class KNN extends Metodo {
         }
     }
 
-
+    /**
+     * Configures the KNN algorithm setting the k value and the outliers thershold k values as
+     * the 80% of k.
+     * @param value_k number of neighbors considered. 
+     */
     public void configuracion(int value_k) {
         /*Getting the number of neighbors*/
         this.k = value_k;
@@ -247,6 +263,16 @@ public class KNN extends Metodo {
     }
 
     /* STATIC Methods */
+
+    /**
+     * Returns the number of neighbours of the example given that differ in the class value.
+     * @param nvec number of neighbours considered.
+     * @param classE original class of the example.
+     * @param conj Training dataset.
+     * @param ejemplo example to evaluate.
+     * @return the number of neighbours of the example given that differ in the class value.
+     */
+    
     public static int differentClass(int nvec, int classE,double conj[][],double ejemplo[]) {
 
         int i, j, l;
@@ -298,7 +324,12 @@ public class KNN extends Metodo {
         return (different);
     }
 
-
+    /**
+     * Computes the Euclidean distance between the two examples given.
+     * @param ej1 first given example.
+     * @param ej2 second given example.
+     * @return the Euclidean distance between the two examples given.
+     */
     public static double distancia(double ej1[], double ej2[]) {
         int i;
         double suma = 0;

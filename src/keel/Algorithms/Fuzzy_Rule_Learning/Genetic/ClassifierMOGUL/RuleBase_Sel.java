@@ -46,13 +46,49 @@ import java.util.*;
  */
 public class RuleBase_Sel {
  
+    /**
+     * Rules Array that represents the rulebase.
+     */
     public Rule[] BaseReglas;
+
+    /**
+     * Modifiers representations.
+     */
     public char[] modificador;
+
+    /**
+     * Maximum number of rules.
+     */
     public int max_reglas;
-    public int tipo_reglas, tipo_modificadores, n_etiquetas;
+    
+    /**
+     * Type of fuzzy rules identifier.
+     */
+    public int tipo_reglas,
+
+    /**
+     * Type of liguistic modifiers identifier.
+     */
+    tipo_modificadores,
+
+    /**
+     * Number of tags.
+     */
+    n_etiquetas;
+
+    /**
+     * Number of total rules.
+     */
     public int n_reglas;
+
+    /**
+     * Dataset.
+     */
     public MyDataset tabla;
 
+    /**
+     * Empirical Grade for each rule.
+     */
     public double[] GradoEmp;
 
 

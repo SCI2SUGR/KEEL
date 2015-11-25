@@ -47,13 +47,54 @@ import java.util.*;
  */
 public class RuleBase_Tun {
  
+    /**
+     * Rules Array that represents the rulebase.
+     */
     public Rule[] BaseReglas;
+
+    /**
+     * Modifiers representations.
+     */
     public char[] modificador;
-    public int max_reglas, n_reglas_distintas;
-    public int tipo_reglas, tipo_modificadores, n_etiquetas;
+    
+    /**
+     * Maximum number of rules.
+     */
+    public int max_reglas,
+
+    /**
+     * Number of different rules.
+     */
+    n_reglas_distintas;
+    
+     /**
+     * Type of fuzzy rules identifier.
+     */
+    public int tipo_reglas,
+
+    /**
+     * Type of liguistic modifiers identifier.
+     */
+    tipo_modificadores,
+
+    /**
+     * Number of tags.
+     */
+    n_etiquetas;
+
+    /**
+     * Number of total rules.
+     */
     public int n_reglas;
+
+    /**
+     *  Dataset.
+     */
     public MyDataset tabla;
 
+    /**
+     * Empirical Grade for each rule.
+     */
     public double[] GradoEmp;
 
 

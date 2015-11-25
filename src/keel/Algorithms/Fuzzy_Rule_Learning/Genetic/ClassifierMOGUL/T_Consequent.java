@@ -44,7 +44,14 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierMOGUL;
  */
 public class T_Consequent {
      
+    /**
+     * Consequent class.
+     */
     public int clase;
+
+    /**
+     * Consequent Certainty.
+     */
     public double gcerteza;
     
 }

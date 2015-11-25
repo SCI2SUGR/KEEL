@@ -2,14 +2,14 @@
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.ClassifierNSLV;
 import java.io.*;
 
-
-public class domain_t implements Cloneable {
-	
 	/**	
 	 * <p>
 	 * It contains the methods for handling the domain of the variables
 	 * </p>
 	 */
+public class domain_t implements Cloneable {
+	
+
 	
 	int numero;	//Number of labels
 	double rango_inf;	//Lower value of the range

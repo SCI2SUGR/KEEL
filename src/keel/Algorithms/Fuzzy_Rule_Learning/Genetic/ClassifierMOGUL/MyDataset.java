@@ -48,15 +48,64 @@ import keel.Dataset.*;
 
 public class MyDataset {
  	
+    /**
+     * Dataset.
+     */
     public T_Table[] datos;
-    public int n_variables, n_inputs, long_tabla;
+    
+    /**
+     * Total number of variables.
+     */
+    public int n_variables,
+
+    /**
+     * Number of input variables.
+     */
+    n_inputs,
+
+    /**
+     * Long table size (number of instances).
+     */
+    long_tabla;
+
+    /**
+     * Number of classes.
+     */
     public int nClasses;
+
+    /**
+     * Number of uncovered instaces.
+     */
     public int no_cubiertos;
+
+    /**
+     *  Output files names.
+     */
     public String[] output;
+
+    /**
+     * Classes values.
+     */
     public String[] clases;
+
+    /**
+     * Variables intervals.
+     */
     public T_Interval[] extremos;
+
+    /**
+     * Input filename.
+     */
     public String fichero;
+
+    /**
+     * Dataset (InstanceSet Object).
+     */
     public InstanceSet IS;
+
+    /**
+     * Identifies if there is ouput variables or not.
+     */
     public boolean noOutputs;
 
 
@@ -86,6 +135,7 @@ public class MyDataset {
      * </p>
      * @param nfejemplos String The name containing the Data Set
      * @param train boolean TRUE is the Data Set contains the training data. FALSE if it contains the test data     
+     * @throws java.io.IOException  if the dataset can not be read.  
      */ 
     public void processModelDataset(String nfejemplos, boolean train) throws
             IOException {
@@ -248,6 +298,7 @@ public void newTable() {
      * <p>    
      * Return the output value of the example in position "pos"
      * </p>  
+     * @param pos example position.
      * @return String The output value for example in position "pos" 
      */
 public String getOutputAsString(int pos) {
@@ -258,6 +309,7 @@ public String getOutputAsString(int pos) {
      * <p>    
      * Return the name of the class in position "pos"
      * </p>  
+     * @param pos example position.
      * @return String The name of the class in position "pos" 
      */
 public String getClassAsString(int pos) {
