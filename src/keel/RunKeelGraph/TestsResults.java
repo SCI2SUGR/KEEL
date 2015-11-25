@@ -27,6 +27,17 @@
   
 **********************************************************************/
 
+
+package keel.RunKeelGraph;
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.tree.*;
+import java.io.*;
+import java.util.*;
+import javax.swing.event.*;
+import java.awt.event.*;
+
 /**
  *
  * File: TestResults.java
@@ -38,16 +49,6 @@
  * @since JDK1.5
  *
  */
-package keel.RunKeelGraph;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.tree.*;
-import java.io.*;
-import java.util.*;
-import javax.swing.event.*;
-import java.awt.event.*;
-
 public class TestsResults extends JDialog {
 
     BorderLayout borderLayout1 = new BorderLayout();

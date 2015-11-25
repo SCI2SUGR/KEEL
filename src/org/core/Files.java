@@ -27,14 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jesus Alcala (University of Granada) 16/06/2004
- * @author Modified by Pedro Gonzalez (University of Jaen) 22/12/2008
- * @version 2
- * @since JDK1.5
- * </p>
- */
+
 
 package org.core;
 
@@ -42,6 +35,14 @@ import java.io.*;
 import java.util.*;
 
 
+/**
+ * <p> Implements methods to manage data files
+ * @author Written by Jesus Alcala (University of Granada) 16/06/2004
+ * @author Modified by Pedro Gonzalez (University of Jaen) 22/12/2008
+ * @version 2
+ * @since JDK1.5
+ * </p>
+ */
 public class Files{
 /**
  * <p>

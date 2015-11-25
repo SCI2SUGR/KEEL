@@ -27,6 +27,11 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.help;
+
+import java.net.URL;
+
 /**
  *
  * File: HelpSheet.java
@@ -37,13 +42,16 @@
  * @version 1.0
  * @since JDK1.5
  */
-package keel.GraphInterKeel.help;
-
-import java.net.URL;
-
 public class HelpSheet {
 
+    /**
+     * Name of the sheet.
+     */
     public String name;
+
+    /**
+     * URL (address of the sheet).
+     */
     public URL adress;
 
     /**

@@ -27,17 +27,7 @@
   
 **********************************************************************/
 
-/**
- *
- * File: Application1.java
- *
- * Frame of the application to process the execution of a experiment. Graph version
- *
- * @author Joaquin Derrac (University of Granada) 15/6/2009
- * @version 1.0
- * @since JDK1.5
- *
- */
+
 
 package keel.RunKeelGraph;
 
@@ -47,6 +37,17 @@ import javax.swing.*;
 import java.io.*;
 import java.util.Vector;
 
+/**
+ *
+ * File: Frame1.java
+ *
+ * Frame of the application to process the execution of a experiment. Graph version
+ *
+ * @author Joaquin Derrac (University of Granada) 15/6/2009
+ * @version 1.0
+ * @since JDK1.5
+ *
+ */
 public class Frame1 extends JFrame {
 
     JPanel contentPane;

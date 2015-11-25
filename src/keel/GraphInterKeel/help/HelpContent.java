@@ -27,6 +27,14 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.help;
+
+import java.awt.*;
+import javax.swing.*;
+import java.net.URL;
+import java.io.IOException;
+
 /**
  *
  * File: HelpFrame.java
@@ -37,13 +45,6 @@
  * @version 1.0
  * @since JDK1.5
  */
-package keel.GraphInterKeel.help;
-
-import java.awt.*;
-import javax.swing.*;
-import java.net.URL;
-import java.io.IOException;
-
 public class HelpContent extends JPanel {
 
     BorderLayout borderLayout1 = new BorderLayout();

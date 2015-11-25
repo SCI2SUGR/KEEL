@@ -27,16 +27,17 @@
   
 **********************************************************************/
 
+package keel.GraphInterKeel.datacf.util;
+
+
 /**
- * <p>
+ * <p> Class representing an attribute in a dataset
  * @author Administrator
  * @author Modified by Pedro Antonio GutiÃ©rrez and Juan Carlos FernÃ¡ndez (University of CÃ³rdoba) 23/10/2008
  * @version 1.0
  * @since JDK1.5
  * </p>
  */
-package keel.GraphInterKeel.datacf.util;
-
 public class Attribute {
 
     /**

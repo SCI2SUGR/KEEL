@@ -148,6 +148,7 @@ or
     }
     /**
      * Simple example.
+     * @param args main args.
      */
     public static void main(String[] args)
     {

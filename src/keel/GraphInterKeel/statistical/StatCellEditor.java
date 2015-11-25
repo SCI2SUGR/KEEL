@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * File: statCellEditor.java.
- *
- * Specific cell editor for the data table
- *
- * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
- * @version 1.0
- * @since JDK1.5
-*/
+
 
 package keel.GraphInterKeel.statistical;
 
@@ -45,7 +37,15 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableCellEditor;
 
-
+/**
+ * File: statCellEditor.java.
+ *
+ * Specific cell editor for the data table
+ *
+ * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
+ * @version 1.0
+ * @since JDK1.5
+*/
 public class StatCellEditor extends AbstractCellEditor implements TableCellEditor{
 
    private JTextField field;

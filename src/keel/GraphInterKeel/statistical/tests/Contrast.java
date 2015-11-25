@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * File: Contrast.java
- * 
- * This class obtains the contrast estimation from several methods
- * 
- * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
- * @version 1.1 
- * @since JDK1.5
-*/
+
 package keel.GraphInterKeel.statistical.tests;
 
 import java.text.DecimalFormat;
@@ -45,6 +37,15 @@ import java.util.*;
 import keel.GraphInterKeel.statistical.Configuration;
 import org.core.*;
 
+/**
+ * File: Contrast.java
+ * 
+ * This class obtains the contrast estimation from several methods
+ * 
+ * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
+*/
 public class Contrast {
 	
 	/**

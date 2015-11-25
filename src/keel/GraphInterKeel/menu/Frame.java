@@ -27,16 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>Title: Keel</p>
- * <p>Description: Initial screen</p>
- *
- * @author Jesus Alcala Fernandez
- * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of CÃ³rdoba) 7/07/2009
- * @author Modified by Ana Palacios Jimenez and Luciano Sanchez Ramos (Univerity of Oviedo)
- * @author Modified by Isaac Triguer VelÃ¡zquez (University of Granada) 1/6/2010
- * @version 1.0
- */
+
 package keel.GraphInterKeel.menu;
 
 import java.awt.*;
@@ -48,6 +39,16 @@ import keel.GraphInterKeel.help.HelpContent;
 import keel.GraphInterKeel.datacf.*;
 import java.awt.Rectangle;
 
+/**
+ * <p>Title: Keel</p>
+ * <p>Description: Initial screen</p>
+ *
+ * @author Jesus Alcala Fernandez
+ * @author Modified by Juan Carlos Fernandez Caballero and Pedro Antonio Gutierrez (University of CÃ³rdoba) 7/07/2009
+ * @author Modified by Ana Palacios Jimenez and Luciano Sanchez Ramos (Univerity of Oviedo)
+ * @author Modified by Isaac Triguer VelÃ¡zquez (University of Granada) 1/6/2010
+ * @version 1.0
+ */
 public class Frame extends JFrame {
 
     JPanel contentPane;
@@ -65,6 +66,9 @@ public class Frame extends JFrame {
 
     JButton exit = new JButton();
 
+    /**
+     * Root directory.
+     */
     public String raiz = "../Datasets/";
     JLabel keel = new JLabel();
     JLabel logotipo = new JLabel();

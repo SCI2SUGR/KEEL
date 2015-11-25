@@ -47,6 +47,9 @@ import java.io.File;
  */
 public class Path {
 
+    /**
+     * File path.
+     */
     protected static String path = ".";
 
     /**

@@ -29,13 +29,7 @@
 
 package keel.RunKeelTxtDocente;
 
-/**
- * <p>
- * @author Written by Juan Carlos FernÃ¡ndez and Pedro Antonio GutiÃ©rrez and(University of CÃ³rdoba) 07/07/2009
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -58,7 +52,18 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
-
+    /**
+     * <p>
+     * This class run a iteration of a experiment when the method doIterate()
+     * is invoqued. successive invocations finalize the experiment.
+     * isFinished() method return true if all partitions are completed
+     * </p>
+ * <p>
+ * @author Written by Juan Carlos Fernández and Pedro Antonio Gutierrez (University of Córdoba) 07/07/2009
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class EducationalRunKeelTxt
 {
 
@@ -106,7 +111,12 @@ public class EducationalRunKeelTxt
 	//////////////////////////////////////////////////////
 	//////////////							   constructor
 	//////////////////////////////////////////////////////
-	public EducationalRunKeelTxt(int experimentType) // CLASSIFICATION = 0, REGRESSION = 1 or UNSUPERVISED = 2
+
+    /**
+     * Constructor.
+     * @param experimentType Experiment type (CLASSIFICATION = 0, REGRESSION = 1 or UNSUPERVISED = 2).
+     */
+    	public EducationalRunKeelTxt(int experimentType) // CLASSIFICATION = 0, REGRESSION = 1 or UNSUPERVISED = 2
 	{
 		  this.tipoExp = experimentType;
 		  
@@ -450,6 +460,7 @@ public class EducationalRunKeelTxt
 	 * Method to calculate seed for actual partition
 	 * The config.txt file is inspected
 	 * </p>
+         * @return the seed for actual partition
 	 */	
 	public String calculateActualSeed()
 	{

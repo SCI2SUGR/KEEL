@@ -27,6 +27,12 @@
   
 **********************************************************************/
 
+
+package keel.RunKeelGraph;
+
+import javax.swing.UIManager;
+import java.awt.*;
+
 /**
  *
  * File: Application1.java
@@ -38,11 +44,6 @@
  * @since JDK1.5
  *
  */
-package keel.RunKeelGraph;
-
-import javax.swing.UIManager;
-import java.awt.*;
-
 public class Application1 {
 
     boolean packFrame = false;

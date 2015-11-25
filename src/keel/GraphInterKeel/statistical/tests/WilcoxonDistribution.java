@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * File: WilcoxonDistribution.java.
- *
- * Class modelling Wilcoxon distribution
- *
- * @author Written by Joaquin Derrac (University of Granada) 1/12/2010
- * @version 1.0
- * @since JDK1.5
- */
+
 package keel.GraphInterKeel.statistical.tests;
 
 import java.io.IOException;
@@ -48,6 +40,15 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ * File: WilcoxonDistribution.java.
+ *
+ * Class modelling Wilcoxon distribution
+ *
+ * @author Written by Joaquin Derrac (University of Granada) 1/12/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 public class WilcoxonDistribution{
 	
 	private static Distribution2KeyTable table;

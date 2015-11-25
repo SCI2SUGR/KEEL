@@ -37,7 +37,7 @@ import javax.swing.JPanel;
 import javax.swing.table.AbstractTableModel;
 
 /**
- * <p>
+ * <p>Implements a table for storing variables for a dataset
  * @author Written by Pedro Antonio GutiÃ©rrez and Juan Carlos FernÃ¡ndez (University of CÃ³rdoba) 23/10/2008
  * @version 1.0
  * @since JDK1.5
@@ -217,6 +217,7 @@ public class VariableTable extends AbstractTableModel {
      * <p>
      * Sets the value of a cell
      * </p>
+     * @param value value to set.
      * @param row Row of the cell
      * @param col Column of the cell
      *

@@ -27,6 +27,15 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.help;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.Vector;
+import javax.swing.tree.*;
+
 /**
  *
  * File: HelpFrame.java
@@ -37,14 +46,6 @@
  * @version 1.0
  * @since JDK1.5
  */
-package keel.GraphInterKeel.help;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.util.Vector;
-import javax.swing.tree.*;
-
 public class HelpFrame extends JFrame {
 
     JPanel contentPane;

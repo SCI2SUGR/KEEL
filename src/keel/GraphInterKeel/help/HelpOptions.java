@@ -27,6 +27,16 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.help;
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.tree.*;
+import javax.swing.event.*;
+import java.awt.event.*;
+import java.util.Vector;
+
 /**
  *
  * File: HelpOptions.java
@@ -37,15 +47,6 @@
  * @version 1.0
  * @since JDK1.5
  */
-package keel.GraphInterKeel.help;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.tree.*;
-import javax.swing.event.*;
-import java.awt.event.*;
-import java.util.Vector;
-
 public class HelpOptions extends JPanel {
 
     BorderLayout borderLayout1 = new BorderLayout();

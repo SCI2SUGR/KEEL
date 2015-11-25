@@ -27,6 +27,13 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.statistical.help;
+
+import java.awt.*;
+import javax.swing.*;
+import java.net.URL;
+
 /**
  * File: HelpContent.java
  *
@@ -36,12 +43,6 @@
  * @version 1.0
  * @since JDK1.5
 */
-package keel.GraphInterKeel.statistical.help;
-
-import java.awt.*;
-import javax.swing.*;
-import java.net.URL;
-
 public class HelpContent extends JPanel {
 
     /**

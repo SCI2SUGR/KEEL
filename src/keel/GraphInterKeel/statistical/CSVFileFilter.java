@@ -27,6 +27,14 @@
   
 **********************************************************************/
 
+
+
+package keel.GraphInterKeel.statistical;
+
+import java.io.File;
+import java.util.Vector;
+import javax.swing.filechooser.*;
+
 /**
  * File: CSVFileFilter.java
  *
@@ -36,13 +44,6 @@
  * @version 1.1
  * @since JDK1.5
 */
-
-package keel.GraphInterKeel.statistical;
-
-import java.io.File;
-import java.util.Vector;
-import javax.swing.filechooser.*;
-
 public final class CSVFileFilter extends FileFilter {
 
     private Vector<String> extensions = new Vector<String>();

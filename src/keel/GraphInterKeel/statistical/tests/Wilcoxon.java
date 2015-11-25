@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * File: Wilcoxon.java.
- *
- * Wilcoxon signed ranks test
- *
- * @author Written by Joaquin Derrac (University of Granada) 1/12/2010
- * @version 1.0
- * @since JDK1.5
- */
+
 package keel.GraphInterKeel.statistical.tests;
 
 import java.text.DecimalFormat;
@@ -45,6 +37,15 @@ import java.util.*;
 import keel.GraphInterKeel.statistical.Configuration;
 import org.core.*;
 
+/**
+ * File: Wilcoxon.java.
+ *
+ * Wilcoxon signed ranks test
+ *
+ * @author Written by Joaquin Derrac (University of Granada) 1/12/2010
+ * @version 1.0
+ * @since JDK1.5
+ */
 public class Wilcoxon {
 
     private static DecimalFormat nf;

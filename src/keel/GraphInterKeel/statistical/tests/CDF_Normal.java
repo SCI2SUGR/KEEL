@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.statistical.tests;
+
 /**
  * File: Main.java
  * 
@@ -36,8 +39,6 @@
  * @version 1.1 
  * @since JDK1.5
 */
-package keel.GraphInterKeel.statistical.tests;
-
 public class CDF_Normal extends Object {
 
 /**
@@ -58,6 +59,7 @@ public class CDF_Normal extends Object {
 *
 * Steve Verrill
 * June 7, 1996
+     * @return the normal cdf inverse value.
 *
 */
 
@@ -130,6 +132,7 @@ public class CDF_Normal extends Object {
 *             cumulative distribution function at z.
 *
 * version .5 --- January 10, 2001
+     * @return the normal cumulative distribution value.
 *
 */
 

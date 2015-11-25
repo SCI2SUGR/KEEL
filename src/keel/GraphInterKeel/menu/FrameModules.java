@@ -27,13 +27,7 @@
   
 **********************************************************************/
  
-/**
- * <p>Title: Keel</p>
- * <p>Description: Modules screen</p>
- *
- * @author Isaac Triguero VelÃ¡zquez
- * @version 0.0
- */
+
 package keel.GraphInterKeel.menu;
 
 import java.awt.*;
@@ -44,6 +38,13 @@ import keel.GraphInterKeel.experiments.*;
 import java.awt.Rectangle;
 import keel.GraphInterKeel.statistical.StatisticalF;
 
+/**
+ * <p>Title: Keel</p>
+ * <p>Description: Modules screen</p>
+ *
+ * @author Isaac Triguero Velázquez
+ * @version 0.0
+ */
 public class FrameModules extends JFrame {
 
     JPanel contentPane;
@@ -64,6 +65,10 @@ public class FrameModules extends JFrame {
     JLabel mil = new JLabel();
     JLabel back = new JLabel();
     JButton exit = new JButton();
+
+    /**
+     * Root directory.
+     */
     public String raiz = "../Datasets/";
     JLabel keel = new JLabel();
     JLabel logotipo = new JLabel();

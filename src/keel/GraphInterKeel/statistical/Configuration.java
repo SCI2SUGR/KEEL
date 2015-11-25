@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.statistical;
+
 /**
  * File: Configuration.java
  *
@@ -36,8 +39,6 @@
  * @version 1.0
  * @since JDK1.5
 */
-package keel.GraphInterKeel.statistical;
-
 public class Configuration {
 
     private static String path;

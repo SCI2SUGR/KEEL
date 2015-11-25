@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * File: Multiple.java
- * 
- * This class performs several statistical comparisons between NxN methods
- * 
- * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
- * @version 1.1 
- * @since JDK1.5
-*/
+
 package keel.GraphInterKeel.statistical.tests;
 
 import java.text.DecimalFormat;
@@ -45,6 +37,15 @@ import java.util.*;
 import keel.GraphInterKeel.statistical.Configuration;
 import org.core.*;
 
+/**
+ * File: Multiple.java
+ * 
+ * This class performs several statistical comparisons between NxN methods
+ * 
+ * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
+*/
 public class Multiple {
 	
 	private static boolean Iman, Nemenyi, Bonferroni, Holm, Hoch, Hommel, Scha, Berg; //post-hoc methods to apply
@@ -60,6 +61,7 @@ public class Multiple {
      * <p>
      * In this method, all possible post hoc statistical test between more than three algorithms results 
      * are executed, according to the configuration file
+     * @param data dataset.
      * @param algorithms A vector of String with the names of the algorithms
      * </p>
      */

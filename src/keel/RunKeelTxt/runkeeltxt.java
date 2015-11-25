@@ -27,17 +27,7 @@
   
 **********************************************************************/
 
-/**
- *
- * File: runkeeltxt.java
- *
- * Class to process the execution of a experiment. TXT version
- *
- * @author Joaquin Derrac (University of Granada) 15/6/2009
- * @version 1.0
- * @since JDK1.5
- *
- */
+
 package keel.RunKeelTxt;
 
 import java.io.*;
@@ -49,7 +39,17 @@ import java.util.List;
 import org.jdom.*;
 import org.jdom.input.*;
 
-
+/**
+ *
+ * File: runkeeltxt.java
+ *
+ * Class to process the execution of a experiment. TXT version
+ *
+ * @author Joaquin Derrac (University of Granada) 15/6/2009
+ * @version 1.0
+ * @since JDK1.5
+ *
+ */
 public class runkeeltxt {
 
     /**

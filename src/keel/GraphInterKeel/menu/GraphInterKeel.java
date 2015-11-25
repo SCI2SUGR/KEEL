@@ -27,20 +27,21 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author  Administrador
- * @author Modified by  Pedro Antonio GutiÃ©rrez and Juan Carlos FernÃ¡ndez(University of CÃ³rdoba) 23/10/2008
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 package keel.GraphInterKeel.menu;
 
 import javax.swing.UIManager;
 import java.awt.*;
 import java.util.Locale;
 
+/**
+ * <p> GraphInterKeel
+ * @author  Administrador
+ * @author Modified by  Pedro Antonio Gutierrez and Juan Carlos Fernandez(University of Cordoba) 23/10/2008
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
+ */
 public class GraphInterKeel {
 
     boolean packFrame = false;

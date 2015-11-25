@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * File: Multiple.java
- * 
- * This class performs several statistical comparisons between 1xN methods
- * 
- * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
- * @version 1.1 
- * @since JDK1.5
-*/
+
 package keel.GraphInterKeel.statistical.tests;
 
 import java.text.DecimalFormat;
@@ -45,6 +37,15 @@ import java.util.*;
 import keel.GraphInterKeel.statistical.Configuration;
 import org.core.*;
 
+/**
+ * File: Multiple.java
+ * 
+ * This class performs several statistical comparisons between 1xN methods
+ * 
+ * @author Written by Joaquin Derrac (University of Granada) 29/04/2010
+ * @version 1.1 
+ * @since JDK1.5
+*/
 public class Friedman {
 	
 	private static boolean Iman, Nemenyi, Bonferroni, Holm, Hoch, Hommel, Scha, Berg, Holland, Rom, Finner, Li; //post-hoc methods to apply
@@ -63,6 +64,8 @@ public class Friedman {
      * In this method, all possible post hoc statistical test between more than three algorithms results 
      * are executed, according to the configuration file
      * </p>
+     * @param data dataset.
+     * @param algorithms algorithms lists.
      */
     public static void doFriedman(double data[][], String algorithms[]) {
 
@@ -87,6 +90,8 @@ public class Friedman {
      * In this method, all possible post hoc statistical test between more than three algorithms results
      * are executed, according to the configuration file
      * </p>
+     * @param data dataset.
+     * @param algorithms algorithms lists.
      */
     public static void doFriedmanAligned(double data[][], String algorithms[]) {
 
@@ -111,6 +116,8 @@ public class Friedman {
      * In this method, all possible post hoc statistical test between more than three algorithms results
      * are executed, according to the configuration file
      * </p>
+     * @param data dataset.
+     * @param algorithms algorithms lists.
      */
     public static void doQuade(double data[][], String algorithms[]) {
 

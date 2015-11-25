@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.statistical.tests;
+
 /**
  * File: Relation.java
  * 
@@ -36,12 +39,17 @@
  * @version 1.1 
  * @since JDK1.5
 */
-package keel.GraphInterKeel.statistical.tests;
-
 public class Relation {
 
-  public int i; //first element
-  public int j; //second element
+    /**
+     *first element
+     */
+    public int i; //first element
+
+    /**
+     * second element
+     */
+    public int j; //second element
 
   /**
   * Default builder

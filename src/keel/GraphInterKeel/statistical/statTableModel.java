@@ -27,6 +27,14 @@
   
 **********************************************************************/
 
+
+
+package keel.GraphInterKeel.statistical;
+
+import java.text.DecimalFormat;
+import java.util.StringTokenizer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  * File: statTableModel.java.
  *
@@ -37,13 +45,6 @@
  * @version 1.0
  * @since JDK1.5
 */
-
-package keel.GraphInterKeel.statistical;
-
-import java.text.DecimalFormat;
-import java.util.StringTokenizer;
-import javax.swing.table.DefaultTableModel;
-
 public class statTableModel extends DefaultTableModel{
 
     private int numColumns;
@@ -246,6 +247,7 @@ public class statTableModel extends DefaultTableModel{
      * Load the contents of the table in CSV format
      *
      * @param contents String with the contents of the table in CSV format
+     * @return a code error.
      */
     public int loadCSVData(String contents){
 

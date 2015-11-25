@@ -27,6 +27,11 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.statistical;
+
+import java.io.*;
+
 /**
  * File: Files.java.
  *
@@ -36,10 +41,6 @@
  * @version 1.0
  * @since JDK1.5
 */
-package keel.GraphInterKeel.statistical;
-
-import java.io.*;
-
 public class Files{
 
     /**

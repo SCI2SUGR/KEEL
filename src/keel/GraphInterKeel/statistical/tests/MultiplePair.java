@@ -27,6 +27,9 @@
   
 **********************************************************************/
 
+
+package keel.GraphInterKeel.statistical.tests;
+
 /**
  * File: MultiplePair.java
  * 
@@ -36,12 +39,17 @@
  * @version 1.1 
  * @since JDK1.5
 */
-package keel.GraphInterKeel.statistical.tests;
-
 public class MultiplePair implements Comparable {
 
-  public double indice; //first element
-  public double valor;  //second element
+    /**
+     *first element
+     */
+    public double indice; //first element
+
+    /**
+     *second element
+     */
+    public double valor;  //second element
   
   /**
   * Default builder

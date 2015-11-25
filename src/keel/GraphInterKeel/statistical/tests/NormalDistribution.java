@@ -1,3 +1,6 @@
+
+package keel.GraphInterKeel.statistical.tests;
+
 /**
  * File: NormalDistribution.java.
  *
@@ -7,8 +10,6 @@
  * @version 1.0
  * @since JDK1.5
  */
-package keel.GraphInterKeel.statistical.tests;
-
 public class NormalDistribution{
 	
 	private double mu;
@@ -154,7 +155,7 @@ public class NormalDistribution{
         return (alnorm);
     }//end-method
 	
-    /*
+    /**
      * Computes inverse cumulative distribution.
      * From http://home.online.no/~pjacklam/notes/invnorm/
      * Error is bounded to 1.15E-09

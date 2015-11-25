@@ -27,6 +27,12 @@
   
 **********************************************************************/
 
+
+
+package keel.GraphInterKeel.statistical.tests;
+
+import java.util.Arrays;
+
 /**
  * File: Distribution2KeyTable.java.
  *
@@ -36,11 +42,6 @@
  * @version 1.0
  * @since JDK1.5
  */
-
-package keel.GraphInterKeel.statistical.tests;
-
-import java.util.Arrays;
-
 public class Distribution2KeyTable{
 	
 	private double body [][];
