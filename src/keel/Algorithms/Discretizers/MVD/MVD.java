@@ -62,13 +62,24 @@ public class MVD extends Discretizer {
 	
 	ArrayList<Integer> indexContinuousAtt;
 	
-	protected int numBasicIntervals;
+    /**
+     * Number of basic intervals.
+     */
+    protected int numBasicIntervals;
 	
 	private InstanceSet is;
 	
 	private double alpha;
-	protected int min = -1;
-	protected int max = -1;
+
+    /**
+     * Minimum value.
+     */
+    protected int min = -1;
+
+    /**
+     * Maximum value.
+     */
+    protected int max = -1;
 	int majoritaryGroup;
 	
 	
@@ -95,7 +106,9 @@ public class MVD extends Discretizer {
 	 * <p>
 	 * Constructor of the class
 	 * </p>
-	 * @param _is set of instances
+	 * @param _is set of instances.
+     * @param _numBasicIntervals number of basic intervals.
+     * @param _alpha alpha parameter.
 	 */
 	public MVD(InstanceSet _is, int _numBasicIntervals,double _alpha){
 		
@@ -363,9 +376,10 @@ public class MVD extends Discretizer {
 	
 	/**
 	 * Computes the expected value from the contingency table of this node
+     * @param contingencyTable given contingency table.
 	 * @param i the index of the row
 	 * @param j the index of the column
-	 * @return
+	 * @return the expected value from the contingency table.
 	 */
 	protected double expectedValue(int contingencyTable[][],int i, int j){
 		double expected,aux;
@@ -388,6 +402,7 @@ public class MVD extends Discretizer {
 	
 	/**
 	 * Obtains the Chi square value of this node using the contigency table
+     * @param contingencyTable given contigency table
 	 * @return the chi square value
 	 */
 	public double chiSquare(int contingencyTable[][]){
@@ -406,6 +421,7 @@ public class MVD extends Discretizer {
 	
 	/**
 	 * Gets the maximum support difference
+     * @param contingencyTable given contigency table
 	 * @return the difference between the maximum and minimum support of the contigency table
 	 */
 	public int maximumSupportDifference(int contingencyTable[][]){
@@ -417,6 +433,7 @@ public class MVD extends Discretizer {
 	
 	/**
 	 * Finds the maximum and minimum supports of all groups
+     * @param contingencyTable given contigency table
 	 */
 	protected void computeMaximumAndMinimumSupport(int contingencyTable[][]){
 		max = Integer.MIN_VALUE;

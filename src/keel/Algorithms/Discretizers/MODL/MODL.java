@@ -53,7 +53,11 @@ public class MODL extends Discretizer {
 	static int greedy = 2;
 	static int optimized = 3;
 	
-	public MODL(String processType){
+    /**
+     * Parameter constructor. Initializes the discretization scheme with process type.
+     * @param processType given processing type (optimal, greedy or optimized).
+     */
+    public MODL(String processType){
 		if(processType.compareTo("optimal")==0)
 			discretizationApplied = optimal;
 		if(processType.compareTo("greedy")==0)
@@ -633,7 +637,7 @@ public class MODL extends Discretizer {
 
 	/**
 	 * Computes the MODL value for a current discretization scheme
-	 * @param disc The discretization scheme to be evaluated. Comprises the intervals as ArrayList<Double> of values.
+	 * @param disc The discretization scheme to be evaluated. Comprises the intervals as ArrayList of values.
 	 * @param values Array in which position i there is the number of instance which explanatory (real) value has rank i after sorting 
 	 * @return The MODL value corresponding to the discretization scheme
 	 */
@@ -674,7 +678,7 @@ public class MODL extends Discretizer {
 	
 	/**
 	 * Computes the MODL value for a current discretization scheme
-	 * @param disc The discretization scheme to be evaluated. Comprises the intervals as ArrayList<Double> of values.
+	 * @param disc The discretization scheme to be evaluated. Comprises the intervals as ArrayList of values.
 	 * @param values Array in which position i there is the number of instance which explanatory (real) value has rank i after sorting 
 	 * @return The MODL value corresponding to the discretization scheme
 	 */
@@ -771,6 +775,7 @@ public class MODL extends Discretizer {
 	 * @param i The interval considered
 	 * @param ni Number of instances which belong to interval i
 	 * @param nij Number of instances of class j which belong to interval i
+         * @return the division of factorials of the form
 	 *
 	 */
 	public double factDivision(int i,int ni[],int nij[][]){
@@ -840,7 +845,7 @@ public class MODL extends Discretizer {
 	  
 	  /**
 	   * Construct an array of cutpoints from the set of intervals.
-	   * @param intervals Vector which contains the intervals in ArrayList<Double> format
+	   * @param intervals Vector which contains the intervals in ArrayList format
 	   * @return A Vector with double formatted cutpoints, computed as the midterm between two adjacent intervals.
 	   */
 	  public Vector createCP(Vector intervals){

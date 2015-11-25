@@ -43,14 +43,38 @@ import java.util.ArrayList;
  */
 public class DeltaValue implements Comparable{
 	//pointer list
-	public DeltaValue prev = null; //item for the previous bound of intervals
-	public DeltaValue next = null; //pointer for the next bound of intervals
-	public ArrayList<Double> leftInterval = null; //the left interval in our boundary
-	public ArrayList<Double> rightInterval = null; //the right interval in our boundary
+
+    /**
+     * item for the previous bound of intervals
+     */
+    	public DeltaValue prev = null; //item for the previous bound of intervals
+
+    /**
+     * pointer for the next bound of intervals
+     */
+    public DeltaValue next = null; //pointer for the next bound of intervals
+
+    /**
+     * the left interval in our boundary
+     */
+    public ArrayList<Double> leftInterval = null; //the left interval in our boundary
+
+    /**
+     * the right interval in our boundary
+     */
+    public ArrayList<Double> rightInterval = null; //the right interval in our boundary
 	//cost variation
-	public double delta = 0; //the cost derived from merging the two intervals (erase the boundary)
+
+    /**
+     * the cost derived from merging the two intervals (erase the boundary)
+     */
+    	public double delta = 0; //the cost derived from merging the two intervals (erase the boundary)
 	//index
-	public int index= -1; //index of the first element in the LEFT interval in the global sorted real values 
+
+    /**
+     * index of the first element in the LEFT interval in the global sorted real values 
+     */
+    	public int index= -1; //index of the first element in the LEFT interval in the global sorted real values 
 	
 	/**
 	 * Method from interface Comparable, so this object can be sorted in Java lists

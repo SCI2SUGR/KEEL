@@ -27,7 +27,15 @@
   
 **********************************************************************/
 
+
+package keel.Algorithms.Discretizers.ExtendedChi2_Discretizer;
+
+import java.util.*;
+
 /**
+ * <p>
+ * This class implements the Chi2 discretizer.
+ * </p>
  * <p>
  * @author Written by Salvador García (University of Jaén - Jaén) 3/04/2009
  * @version 1.0
@@ -35,17 +43,11 @@
  * </p>
  */
 
-package keel.Algorithms.Discretizers.ExtendedChi2_Discretizer;
-
-import java.util.*;
-
 public class ExtendedChi2Discretizer extends Discretizer {
-/**
- * <p>
- * This class implements the Chi2 discretizer.
- * </p>
- */
-	
+
+	/**
+         * Default constructor.
+         */
 	public ExtendedChi2Discretizer() {
 
 	}

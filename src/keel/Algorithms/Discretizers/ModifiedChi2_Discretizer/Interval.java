@@ -31,12 +31,13 @@ package keel.Algorithms.Discretizers.ModifiedChi2_Discretizer;
 
 import keel.Algorithms.Genetic_Rule_Learning.Globals.Parameters;
 
-	public class Interval {
 	/**
 	 * <p>
 	 * Interval class.
 	 * </p>
-	 */	
+	 */
+	public class Interval {
+	
 		
 		int attribute;
 		int begin;
@@ -53,6 +54,7 @@ import keel.Algorithms.Genetic_Rule_Learning.Globals.Parameters;
 		 * @param _values
 		 * @param _begin
 		 * @param _end
+                 * @param classes
 		 */
 		public Interval(int _attribute,int []_values,int _begin,int _end,int classes[]) {
 			attribute=_attribute;

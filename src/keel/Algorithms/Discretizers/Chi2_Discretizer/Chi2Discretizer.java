@@ -27,26 +27,29 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Salvador García (University of Jaén - Jaén) 25/03/2009
- * @version 1.0
- * @since JDK1.5
- * </p>
- */
+
 
 package keel.Algorithms.Discretizers.Chi2_Discretizer;
 
 import java.util.*;
 import keel.Algorithms.Genetic_Rule_Learning.Globals.*;
 
-public class Chi2Discretizer extends Discretizer {
 /**
  * <p>
  * This class implements the Chi2 discretizer.
  * </p>
+ * <p>
+ * @author Written by Salvador García (University of Jaén - Jaén) 25/03/2009
+ * @version 1.0
+ * @since JDK1.5
+ * </p>
  */
-	
+public class Chi2Discretizer extends Discretizer {
+
+	/**
+         * Parameter Constructor.
+         * @param _sigma given Inconsistency Threshold.
+         */
 	public Chi2Discretizer(double _sigma) {
 		inconsistencyThreshold=_sigma;
 	}

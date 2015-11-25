@@ -42,8 +42,16 @@ import java.util.ArrayList;
  * </p>
  */
 public class Neighbour implements Comparable {
-	public double cost = 0; //cost of the operation
-	public int type = -1; //type: Split, MergeSplit or MergeMergeSplit
+
+    /**
+     * cost of the operation
+     */
+    public double cost = 0; //cost of the operation
+
+    /**
+     * type: Split, MergeSplit or MergeMergeSplit
+     */
+    public int type = -1; //type: Split, MergeSplit or MergeMergeSplit
 	int index= -1; //index of the split
 	ArrayList<Double> interval = null; //reference to the first interval of the operation
 	int intervalPosition = -1; //position of the interval in the list of all intervals

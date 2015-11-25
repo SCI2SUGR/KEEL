@@ -63,6 +63,7 @@ public class FrequentItemsets {
 	 * </p>
 	 * @param examples matrix of instances
 	 * @param numValues number of different values of each attribute
+     * @return  the frequent itemsets
 	 */	
 	static public Vector<Itemset> getFrequentItemsets(int[][] examples, int[] numValues){
 		

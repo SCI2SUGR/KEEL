@@ -49,7 +49,11 @@ public class OneR extends Discretizer{
 	PrintStream stdout = System.out; //the standard output stored for further manipulation
 	int small = 6; //minimum number of explanatory values with the same class in an interval
 	
-	public OneR(int minimum){
+    /**
+     * Parameter constructor. Initializes the minimum number of explanatory values with the same class in an interval with the parameter given.
+     * @param minimum given minimum number of explanatory.
+     */
+    public OneR(int minimum){
 		small = minimum;
 	}
 	

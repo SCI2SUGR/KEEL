@@ -62,7 +62,10 @@ public class Khiops extends Discretizer {
 	ArrayList<Double> chi2Rows;
 	int nj[];
 	
-	public Khiops(){
+    /**
+     * Default constructor.
+     */
+    public Khiops(){
 		numClasses = Attributes.getOutputAttribute(0).getNumNominalValues();
 		chi2Rows = new ArrayList<Double>();
 		freqConstraint = 5;
@@ -234,6 +237,7 @@ public class Khiops extends Discretizer {
 	 * Computes the cost derived form merging two adjacent intervals na and nb
 	 * @param na Interval to the left to merge
 	 * @param indexna Index of the first element of na in the whole list of real values
+         * @param naChi2 number of intervals
 	 * @param nb Right interval to merge
 	 * @param indexnb Index of the first element of nb in the whole list of real values
 	 * @param nbChi2 Current number of intervals (the total intervals prior to the merging)
@@ -341,7 +345,7 @@ public class Khiops extends Discretizer {
 	
 	/**
 	   * Construct an array of cutpoints from the set of intervals.
-	   * @param intervals Vector which contains the intervals in ArrayList<Double> format
+	   * @param intervals Vector which contains the intervals in ArrayList format
 	   * @return A Vector with double formatted cutpoints, computed as the midterm between two adjacent intervals.
 	   */
 	  public Vector createCP(Vector intervals){

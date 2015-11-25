@@ -47,13 +47,26 @@ import keel.Dataset.Attributes;
  */
 public class HeterDisc extends Discretizer {
 	
-	// this class lets to manipulate discretization schemes
+	/** This class lets to manipulate discretization schemes*/
 	public class DiscretizationScheme {
 		
-		public int[] cpSelected;	// indexes of the selected cutpoints
-		public double fitness;		// fitness of the discretization
+            /**
+             * indeces of the selected cutpoints
+             */
+            public int[] cpSelected;	// indexes of the selected cutpoints
+
+            /**
+             * fitness of the discretization
+             */
+            public double fitness;		// fitness of the discretization
 		
-		public DiscretizationScheme(int v[], int tam, double f){
+            /**
+             * Parameter constructor. Initializes the discretization scheme with the parameters given.
+             * @param v given indeces of the selected cutpoints
+             * @param tam size of the selected cutpoints array.
+             * @param f given fitness of the scheme.
+             */
+            public DiscretizationScheme(int v[], int tam, double f){
 			cpSelected = new int[tam];
 			System.arraycopy(v, 0, cpSelected, 0, tam);
 			fitness = f;

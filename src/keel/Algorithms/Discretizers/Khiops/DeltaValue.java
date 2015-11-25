@@ -43,18 +43,54 @@ import java.util.ArrayList;
  */
 public class DeltaValue implements Comparable{
 	//pointers list
-	public DeltaValue prev = null; //item for the previous merge of intervals
-	public DeltaValue next = null; //pointer for the next merge of intervals
-	public ArrayList<Double> leftInterval = null; //the left interval in our boundary
-	public ArrayList<Double> rightInterval = null; //the right interval in our boundary
-	public Double leftChi2Row = null; //the chi2 row of the left interval in our boundary
-	public Double rightChi2Row = null; //the chi2 row of the right interval in our boundary
+
+    /**
+     * item for the previous merge of intervals
+     */
+    	public DeltaValue prev = null; //item for the previous merge of intervals
+
+    /**
+     * pointer for the next merge of intervals
+     */
+    public DeltaValue next = null; //pointer for the next merge of intervals
+
+    /**
+     * the left interval in our boundary
+     */
+    public ArrayList<Double> leftInterval = null; //the left interval in our boundary
+
+    /**
+     * the right interval in our boundary
+     */
+    public ArrayList<Double> rightInterval = null; //the right interval in our boundary
+
+    /**
+     * the chi2 row of the left interval in our boundary
+     */
+    public Double leftChi2Row = null; //the chi2 row of the left interval in our boundary
+
+    /**
+     * the chi2 row of the right interval in our boundary
+     */
+    public Double rightChi2Row = null; //the chi2 row of the right interval in our boundary
 	//cost variation
-	public double delta = 0; //the cost derived from merging the two intervals (erase the boundary), that is, the Chi2 variation
+
+    /**
+     * the cost derived from merging the two intervals (erase the boundary), that is, the Chi2 variation
+     */
+    	public double delta = 0; //the cost derived from merging the two intervals (erase the boundary), that is, the Chi2 variation
 	//any of the intervals implied in this merge does not meet the frequency constraints
-	public boolean freqConstrMet = false;
+
+    /**
+     * any of the intervals implied in this merge does not meet the frequency constraints
+     */
+    	public boolean freqConstrMet = false;
 	//index
-	public int index= -1; //index of the first element in the LEFT interval in the global sorted real values 
+
+    /**
+     * index of the first element in the LEFT interval in the global sorted real values 
+     */
+    	public int index= -1; //index of the first element in the LEFT interval in the global sorted real values 
 	
 	/**
 	 * Method from interface Comparable, so this object can be sorted in Java lists

@@ -45,8 +45,15 @@ import keel.Dataset.Instance;
  */
 public class Interval {
 
-	public double lowerbound;
-	public double upperbound;
+    /**
+     * Interval lower bound.
+     */
+    public double lowerbound;
+
+    /**
+     * Interval upper bound.
+     */
+    public double upperbound;
 	
 	int attribute; //the attribute to which this interval is related to
 	
@@ -70,6 +77,7 @@ public class Interval {
 	/**
 	 * Checks if the provided instance is covered by this interval in the specified attribute
 	 * @param inst
+     * @return True if the provided instance is covered, false otherwise.
 	 */
 	public boolean covers(Instance inst){
 		double num = inst.getAllInputValues()[attribute]; 
@@ -83,6 +91,7 @@ public class Interval {
 	/**
 	 * Checks if the provided instance is covered by this interval in the specified attribute
 	 * @param index
+     * @return  True if the provided instance is covered, false otherwise.
 	 */
 	public boolean covers(int index){
 		
@@ -135,6 +144,7 @@ public class Interval {
 	
 	/**
 	 * Returns the object in form of string
+     * @return the object in form of string
 	 */
 	public String toString(){
 		return "["+this.lowerbound+","+this.upperbound+"]";
