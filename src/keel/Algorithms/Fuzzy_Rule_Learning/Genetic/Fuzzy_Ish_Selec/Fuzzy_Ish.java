@@ -29,10 +29,15 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Selec;
 
+
+
+import java.io.IOException;
+import org.core.*;
+
 /**
- * <p>Title: Algorithm</p>
+ * <p>Title: Fuzzy_Ish</p>
  *
- * <p>Description: It contains the implementation of the algorithm</p>
+ * <p>Description: It contains the implementation of the Fuzzy Ish algorithm</p>
  *
  *
  * <p>Company: KEEL </p>
@@ -40,10 +45,6 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.Fuzzy_Ish_Selec;
  * @author Alberto Fernández
  * @version 1.0
  */
-
-import java.io.IOException;
-import org.core.*;
-
 public class Fuzzy_Ish {
 
   myDataset train, val, test;

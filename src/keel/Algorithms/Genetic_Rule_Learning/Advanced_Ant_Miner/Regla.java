@@ -34,15 +34,12 @@ import java.io.PrintStream;
 import keel.Dataset.*;
 
 /**
- * <p>Título: Ant Colony Optimization</p>
- * <p>Descripción: Clase regla.
- *    Representa una regla descubierta por el algoritmo ACO. </p>
- * <p>Copyright: Copyright (c) 2007</p>
- * <p>Empresa: </p>
+ * <p>Title: Regla (Rule)</p>
+ * <p>Description:Rule class.
+ *    Represents a rule extracted by the ACO algorithm. </p>
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class Regla {
 
   private Vector condiciones; //Atributos de la regla
@@ -53,12 +50,8 @@ public class Regla {
   private int numCondicionesReales;
 
   /**
-   * Constructor por defecto
-   *
-   * Crea una regla vacia, sin atributos y sin clase definida
+   *  Default constructor. An empty rule is built.
    */
-
-
   public Regla() {
 
     condiciones = new Vector();
@@ -70,11 +63,10 @@ public class Regla {
   }
 
   /**
-   * Constructor de copia.
-   * Crea una regla a partir de la que se le pasa por parametro.
-   * @param regla Regla Regla a copiar en la actual
+   * Copy Constructor. Creates a new rule object by copying the one given as argument.
+   * 
+   * @param regla rule to be copied.
    */
-
   public Regla(Regla regla) {
     c = new ComparadorRegla();
     condiciones = new Vector(regla.condiciones);
@@ -86,14 +78,11 @@ public class Regla {
   }
 
   /**
-   *  Constructor
-   *  Crea una regla a partir de los atributos y la clase que se le pasan
-   *  por parametro.
-   *
-   * @param conjuntoAtributos Vector
-   * @param claseOriginal String
+   *  Parameter Constructor.
+   *  Creates a new rule with the given attribute values and class passed as parameters.
+   * @param conjuntoAtributos Atributes values Vector
+   * @param claseOriginal String class to set.
    */
-
   public Regla(Vector conjuntoAtributos, Atributo claseOriginal) {
 
     condiciones = new Vector(conjuntoAtributos);
@@ -103,26 +92,25 @@ public class Regla {
   }
 
   /**
-   * Modulo que inserta un atributo junto con su valor en la regla
+   * Adds a condition (an attribute with its value and an operator).
    *
-   * @param original Atributo Atributo que se inserta en la regla.
+   * @param original {@link Condition} condition to add.
    */
   public void insertarCondicion(Condicion original) {
     condiciones.addElement(original);
   }
 
-  /**
-   * Modulo que inserta la clase a la que identifica la regla con todos
-   * sus atributos
-   *
-   * @param original Atributo Clase que se inserta en la regla
-   */
+    /**
+     * Adds a class that identifies the rule with all its attributes.
+     *
+     * @param original {@link Atributo} class added to the rule.
+     */
   public void insertarClase(Atributo original) {
     clase = original;
   }
 
   /**
-   * Modulo que ordena los atributos de la regla de menor a mayor
+   * Sorts the rules in increasing order.
    *
    */
   public void ordenaCondiciones() {
@@ -131,39 +119,41 @@ public class Regla {
   }
 
   /**
-   * Modulo que asigna la calidad correspondiente a la regla
+   * Assigns the given quality to the rule.
    *
-   * @param original double Calidad que se asignara a la regla
+   * @param original double Quality to assign.
    */
   public void asignarCalidad(float original) {
     calidad = original;
   }
 
   /**
-   * Modulo que inserta el numero de muestras cubiertas
-   * @param numero int Numero de muestras cubiertas
+   * Sets the number of examples covered by the rule.
+   * @param numero int number of covered examples to be set.
    */
   public void asignarMuestrasCubiertas(float numero) {
     muestrasCubiertas = numero;
   }
 
-  /**
-   * Funcion que avisa si un atributo esta ya junto con su valor en una regla
-   *
-   * @param original Atributo Atributo que se busca en la regla
-   * @return boolean True si el atributo esta en la regla, False en caso contrario
-   */
+    /**
+     * Checks if the given condition is already in the example.
+     *
+     * @param original given attribute to be checked.
+     * @return True if the given condition is already in the example, false otherwise. 
+     */
   public boolean estaCondicion(Condicion original) {
     boolean devolver = condiciones.contains(original);
     return devolver;
   }
 
-  /**
-   * Funcion que indica si un atributo ya tiene asignado un valor en la regla
-   * @param atributo Se busca si el atributo ya tiene valor insertado
-   * @param operador Operador
-   * @return boolean True si el atributo ya tiene un valor, false en caso contrario
-   */
+    /**
+     * Checks if the given attribute is already in the rule with a value
+     * and the give operator.
+     *
+     * @param atributo given attribute to be checked.
+     * @param operador given operator to be checked.
+     * @return True if the given attribute is already in the example, false otherwise. 
+     */
   public boolean tieneValorAtributo(int atributo, int operador) {
     int indice = atributo;
     Condicion actual;
@@ -177,12 +167,11 @@ public class Regla {
   }
 
   /**
-   * Funcion que devuelve la clase predicha por la regla para la muestra en
-   * el caso de que la regla tenga las mismas condiciones que la muestra. En
-   * caso contrario devuelve null.
-   * @param mt Muestra Muestra a comprobar su clase predicha
-   * @param cVacias Condiciones Vacias
-   * @return Atributo Clase predica por la regla
+   * Returns the predicted class of the given sample it they have compatible conditions,
+   * null otherwise.
+   * @param mt {@link Muestra} given sample.
+   * @param cVacias  Empty/Null conditions vector.
+   * @return the predicted class or null.
    */
   public Atributo prediccion(Muestra mt, Vector cVacias) {
     Atributo clasePredicha = null;
@@ -193,12 +182,13 @@ public class Regla {
     return clasePredicha;
   }
 
-  /**
-   * Funcion que indica si la regla cubre la muestra que se le pasa por argumento
-   * @param ejemplo Muestra Muestra a comprobar si se cubre con la regla o no.
-   * @return boolean Boolean que indica si se cubre la muestra (true) o false en caso contrario
+   /**
+   * Checks if the given example is covered by the whole rule 
+   * (covered by the conditions and with the same class of the rule).
+   * If it is correctly covered by the rule.
+   * @param ejemplo given example to check.
+   * @return True if it is covered, false otherwise.
    */
-
   public boolean cubreMuestra(Muestra ejemplo) {
 
     int numCondiciones = condiciones.size();
@@ -223,6 +213,14 @@ public class Regla {
     return true;
   }
 
+    /**
+   * Checks if the given example is covered by the whole rule 
+   * (covered by the conditions and with the same class of the rule).
+   * If it is correctly covered by the rule.
+   * @param ejemplo given example to check.
+   * @param cVacias Empty/Null conditions vector.
+   * @return True if it is covered, false otherwise.
+   */
   public boolean cubreMuestra(Muestra ejemplo, Vector cVacias) {
 
     int numCondiciones = condiciones.size();
@@ -248,6 +246,13 @@ public class Regla {
     return true;
   }
 
+  /**
+   * Checks if the given example is covered by the conditions stored 
+   * in the rule.
+   * @param ejemplo given example to check.
+   * @param cVacias Empty/Null conditions vector.
+   * @return True if it is covered, false otherwise.
+   */
   public boolean cubreMuestraCondiciones(Muestra ejemplo, Vector cVacias) {
 
     int numCondiciones = condiciones.size();
@@ -270,9 +275,9 @@ public class Regla {
   }
 
   /**
-   * Funcion que indica si en la muestra se encuentran todas las condiciones de la regla
-   * @param mt Muestra Muestra donde se buscaran las condiciones de la regla
-   * @return boolean Indica si estan todos los atributos(true) o no (false)
+   * Checks if in the sample, all the rule conditions are found.
+   * @param mt Sample to check.
+   * @return True if in the sample, all the rule conditions are found.
    */
   public boolean estanCondicionesEn(Muestra mt) {
     Condicion co;
@@ -319,6 +324,12 @@ public class Regla {
     return true; //Si termina el bucle sin entrar en el if se devuelve true, en caso contrario false
   }
 
+    /**
+   * Checks if in the sample, all the rule conditions are found.
+   * @param mt Sample to check.
+     * @param cVacias Empty/Null conditions vector.
+   * @return True if in the sample, all the rule conditions are found.
+   */
   public boolean estanCondicionesEn(Muestra mt, Vector cVacias) {
     Condicion co;
     Atributo at;
@@ -342,16 +353,16 @@ public class Regla {
   }
 
   /**
-   * Funcion que devuelve la clase que predice la regla
-   * @return Atributo Clase predicha por la regla
+   * Returns the predicted class for the rule.
+   * @return the predicted class for the rule.
    */
   public Atributo obtenerReglaPredicha() {
     return clase;
   }
 
   /**
-   * Funcion que devuelve un vector con todas las condiciones que se siguen en la regla
-   * @return Vector Lista de las condiciones.
+   * Returns the list of conditions of the rule.
+   * @return Vector the list of conditions of the rule.
    */
   public Vector listaCondiciones() {
     Vector devolver;
@@ -360,16 +371,16 @@ public class Regla {
   }
 
   /**
-   * Funcion que devuelve la calidad de la regla
-   * @return double Double con la calidad que tiene la regla
+   * Returns the quality of the rule.
+   * @return the quality of the rule.
    */
   public float obtenerCalidad() {
     return calidad;
   }
 
   /**
-   * Modulo que imprime por pantalla la regla
-   * @param cVacias Condiciones Vacias
+   * Prints on the standard output the rule.
+   * @param cVacias Empty/Null conditions vector.
    */
   public void imprime(Vector cVacias) {
     int tamanio;
@@ -440,9 +451,9 @@ public class Regla {
   }
 
   /**
-   * Modulo que imprime en un fichero la regla
-   * @param salida Fichero donde se imprimira la regla
-   * @param cVacias Condiciones Vacias
+   * Prints on the given file (PrintStream) the rule.
+   * @param salida given file (PrintStream). 
+   * @param cVacias Empty/Null conditions vector.
    */
   public void imprimeFichero(PrintStream salida, Vector cVacias) {
     int tamanio;
@@ -512,8 +523,8 @@ public class Regla {
   }
 
   /**
-   * Funcion que devuelve el numero de condiciones que contiene la regla
-   * @return int Numero de condiciones de la regla
+   * Returns the number of conditions in the rule.
+   * @return int the number of conditions in the rule.
    */
   public int obtenerNumCondiciones() {
     int devolver;
@@ -522,25 +533,25 @@ public class Regla {
   }
 
   /**
-   * Modulo que inserta las condiciones que se pasan por parametro en la regla
-   * @param atributos Vector Vector con las condiciones a insertar
+   * Adds all the conditions given.
+   * @param atributos Vector of conditions to add.
    */
   public void insertaAtributos(Vector atributos) {
     condiciones = new Vector(atributos);
   }
 
   /**
-   * Modulo que elimina la condicion que se pasa por parametro de la regla
-   * @param condicion Atributo Condicion a eliminar de la regla.
+   * Removes the condition passed as parameter.
+   * @param condicion condition to be removed.
    */
   public void eliminaCondicion(Condicion condicion) {
     condiciones.remove(condicion);
   }
 
   /**
-   * Funcion que indica si dos reglas son iguales o no.
-   * @param regla Regla Regla a comparar con la actual.
-   * @return boolean Booleano que indicia si son iguales (true) o no (false)
+   * Checks if the rule is equal to the given one.
+   * @param regla Rule to compare with.
+   * @return True if the rules are equal.
    */
   public boolean esIgual(Regla regla) {
     if (regla == null) {
@@ -558,13 +569,17 @@ public class Regla {
   }
 
   /**
-   * Funcion que devuelve un comparador de reglas.
-   * @return ComparadorRegla Comparador de reglas
+   * Returns the rules comparative method.
+   * @return the rules comparative method.
    */
   public static ComparadorRegla obtenerComparador() {
     return c;
   }
 
+  /** Copies the rule given as argument.
+   * 
+   * @param regla rule to be copied.
+   */
   public void copia(Regla regla) {
     condiciones = new Vector(regla.condiciones);
     clase = new Atributo(regla.clase);
@@ -572,23 +587,44 @@ public class Regla {
     muestrasCubiertas = regla.muestrasCubiertas;
   }
 
+  /**
+   * Returns the number of covered samples.
+   * @return the number of covered samples.
+   */
   public float obtenerMuestrasCubiertas() {
     return muestrasCubiertas;
   }
 
+  /**
+   * Removes the condition with the index given and adds a new one 
+   * in that position.
+   * @param indice given index where to remove and add.
+   * @param nueva New condition to add.
+   */
   public void eliminaCondicion(int indice, Condicion nueva) {
     condiciones.remove(indice);
     condiciones.insertElementAt(nueva, indice);
   }
 
-  public void eliminaUltimaCondicion() {
+    /**
+     * Removes the last condition.
+     */
+    public void eliminaUltimaCondicion() {
     condiciones.remove(condiciones.size() - 1);
   }
 
-  public void insertaNumCondicionesReales(int numero) {
+    /**
+     * Sets the number of real conditions.
+     * @param numero number to set.
+     */
+    public void insertaNumCondicionesReales(int numero) {
     numCondicionesReales = numero;
   }
 
+    /**
+     * Returns the number of real conditions. 
+     * @return the number of real conditions.  
+     */
   public int obtenerNumCondicionesReales() {
     return numCondicionesReales;
   }

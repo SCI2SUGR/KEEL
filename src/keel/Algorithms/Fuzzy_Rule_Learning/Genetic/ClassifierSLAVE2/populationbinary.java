@@ -6,15 +6,15 @@ import java.util.Random;
 
 import org.core.Randomize;
 
-
-public class populationbinary implements Cloneable {
-	
-	
 	/**	
 	 * <p>
 	 * It contains the methods for handling the binary population of individuals
 	 * </p>
 	 */
+public class populationbinary implements Cloneable {
+	
+	
+
 
 	double prob_mutacion;
 	double prob_cruce;

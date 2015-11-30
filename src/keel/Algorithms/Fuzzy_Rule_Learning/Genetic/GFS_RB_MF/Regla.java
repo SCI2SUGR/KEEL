@@ -44,7 +44,7 @@ package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GFS_RB_MF;
 
 public class Regla{
 
-  int[] antecedente; //etiquetas de los antecedentes
+  int[] antecedente; //etiquetas de los. antecedentes
   int consecuente; //etiqueta del consecuente
   BaseD baseDatos;
 

@@ -329,6 +329,11 @@ class BaseR {
 
     /* Pasa la Base de Conocimiento codificada en el cromosoma a una estructura
        adecuada para inferir */
+    /**
+     * Coverts the chromosome into actual rules.
+     * @param cromosoma given chromosome.
+     * @return number of rules obtained from the chromosome given.
+     */
     public int decodifica(int[] cromosoma) {
         int [] Regla_act = new int[this.tabla.getnVars()];
 

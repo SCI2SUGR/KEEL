@@ -35,9 +35,9 @@ import java.io.IOException;
 import org.core.*;
 
 /**
- * <p>Title: Algorithm</p>
+ * <p>Title: GFS_RB_MF</p>
  *
- * <p>Description: It contains the implementation of the algorithm</p>
+ * <p>Description: It contains the implementation of the GFS RB MF algorithm</p>
  *
  *
  * <p>Company: KEEL </p>

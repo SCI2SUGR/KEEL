@@ -219,14 +219,12 @@ public class Poblacion {
     }
   }
 
-  /**
-     @brief Torneo binario entre cromosomas
-     @param indice Indice del hijo
-     @param cromosoma1 Es el indice del individuo1 dentro de la poblacion
-     @param cromosoma2 Es el indice del individuo2 dentro de la poblacion
-
-     Comparo las fitness de los dos individuos, el que tenga mayor valor pasa
-     a formar parte del nuevo conjunto de seleccion.
+  /** Selects one of the given two chromosomes to form the new generation (population). 
+   * Compares the two fitness values and selects the greater one.
+     @param indice Son's index for the new population.
+     @param cromosoma1 First individual's index of the actual population.
+     @param cromosoma2 Second individual's index of the actual population.
+     * 
    */
   void torneo(int indice, int cromosoma1, int cromosoma2) {
     if (BETTER(cromosomas.get(cromosoma1).fitness,
@@ -301,9 +299,9 @@ public class Poblacion {
   }
 
   /**
-   * Obtiene el numero de ejemplos para la clase i-esima
-   * @param clase int codigo de clase
-   * @return int numero de ejemplos pertenencientes a dicha clase
+   * Obtains the number of examples for the i-th class.
+   * @param clase int class position.
+   * @return int the number of examples for the i-th class.
    */
   public int numEjemplos(int clase){
     int n_ejemplos = 0;

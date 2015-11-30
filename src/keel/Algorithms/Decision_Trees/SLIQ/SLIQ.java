@@ -291,9 +291,7 @@ public class SLIQ extends Algorithm {
         padre.getChildren()[indHijo] = null;
     }
 
-    /** Método que se encarga de agregar los datos de un hijo que va a
-     *  podarse a la lista de datos de su padre
-     *  Aggregates the data of the given child that will be pruned into the father given.
+    /** Aggregates the data of the given child that will be pruned into the father given.
      *
      * @param padre Father node.
      * @param hijo  Child node.

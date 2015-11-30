@@ -29,22 +29,19 @@
 
 package keel.Algorithms.Fuzzy_Rule_Learning.Genetic.GFS_RB_MF;
 
-/**
- * <p>Title: </p>
- *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2007</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
- * @version 1.0
- */
+
 
 import java.util.*;
 import org.core.Randomize;
 
+/**
+ * <p>Title: Poblacion (Population). </p>
+ *
+ * <p>Description: This class implements the population of chromosomes used to perform the genetic algorithm</p>
+ *
+ * @author not attributable
+ * @version 1.0
+ */
 public class Poblacion {
 
   ArrayList<Individuo> cromosomas;
@@ -55,6 +52,13 @@ public class Poblacion {
   int[] selectos;
   double [] soporte;
 
+  
+      /**
+     * Checks if the double a is greater than b.
+     * @param a first given number.
+     * @param b second given number.
+     * @return True if the double a is greater than b. 
+     */
   public boolean BETTER(double a, double b) {
     if (a > b) {
       return true;
@@ -62,6 +66,12 @@ public class Poblacion {
     return false;
   }
 
+            /**
+     * Paramenter constructor. The population structures will be initialized with the parameters given.
+     * @param tamPoblacion population size.
+     * @param baseReglas rulesbase used to build the population.
+     * @param train examples used to build the population (training dataset).
+     */
   public Poblacion(int tamPoblacion, BaseR baseReglas, myDataset train) {
     cromosomas = new ArrayList<Individuo> ();
     hijos = new ArrayList<Individuo> ();
@@ -91,6 +101,12 @@ public class Poblacion {
     return cromosomas.get(0);
   }
 
+        /**
+     * Performs the GA to generate the different solutions.
+     * @param nGeneraciones maximum number of generations.
+     * @param crossProb cross probability.
+     * @param mutProb mutation probability.
+     */
   public void procesoGenetico(int nGeneraciones, double crossProb,
                               double mutProb) {
     this.crossProb = crossProb;
@@ -168,14 +184,12 @@ public class Poblacion {
     System.err.println("Generation[" + generation + "], ECM: " + mejor_ECM);
   }
 
-  /**
-     @brief Torneo binario entre cromosomas
-     @param indice Indice del hijo
-     @param cromosoma1 Es el indice del individuo1 dentro de la poblacion
-     @param cromosoma2 Es el indice del individuo2 dentro de la poblacion
-
-     Comparo las fitness de los dos individuos, el que tenga mayor valor pasa
-     a formar parte del nuevo conjunto de seleccion.
+  /** Selects one of the given two chromosomes to form the new generation (population). 
+   * Compares the two fitness values and selects the greater one.
+     @param indice Son's index for the new population.
+     @param cromosoma1 First individual's index of the actual population.
+     @param cromosoma2 Second individual's index of the actual population.
+     * 
    */
   void torneo(int indice, int cromosoma1, int cromosoma2) {
     if (BETTER(cromosomas.get(cromosoma1).fitness,
@@ -194,13 +208,13 @@ public class Poblacion {
     hijos.clear();
     int aleatorio1, aleatorio2, i, inicio;
     inicio = 0;
-    for (i = inicio; i < cromosomas.size(); i++) { //Generamos la otra mitad por los operadores geneticos, Cojo numIndividuos nuevos individuos...
+    for (i = inicio; i < cromosomas.size(); i++) { //Generamos la otra mitad por los. operadores geneticos, Cojo numIndividuos nuevos individuos...
       aleatorio1 = Randomize.RandintClosed(0, cromosomas.size()-1); //Elijo uno aleatoriamente
       do {
         aleatorio2 = Randomize.RandintClosed(0, cromosomas.size()-1); //Elijo otro aleatoriamente
       }
       while (aleatorio1 == aleatorio2); //pero que no coincida con el anterior
-      torneo(i, aleatorio1, aleatorio2); //Inserto en la posicion 'i' el mejor de los 2
+      torneo(i, aleatorio1, aleatorio2); //Inserto en la posicion 'i' el mejor de los. 2
     }
 
   }

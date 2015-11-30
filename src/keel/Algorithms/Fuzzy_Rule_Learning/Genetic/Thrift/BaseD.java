@@ -122,6 +122,12 @@ class BaseD {
         return (BaseDatos[i][j]).copia();
     }
 
+    /**
+     * Computes the compatibility degree of the given antecedents for the given example.
+     * @param AntRegla given antecedents to check.
+     * @param ejem given example.
+     * @return the compatibility degree of the given antecedents for the given example.
+     */
     public double AntecedenteCubreEjemplo(int[] AntRegla, double[] ejem)
     /* Calcula el grado de compatibilidad (Ri(ek)) de los antecedentes de la regla
        con el ejemplo */
