@@ -26,9 +26,13 @@ KEEL description papers:
 java -jar ./dist/GraphInterKeel.jar
 </pre>
 
+Make sure you have properly setup the Java Path. For related issues, go to https://www.java.com/en/download/help/path.xml.
+
+
+
 # Getting started with the source code.
 
-If you want to compile KEEL source code it is advisable to use the Apache Ant Tool (available for download at the The Apache Ant Project web page: http://ant.apache.org/). The KEEL Software tool includes a "<b>build.xmlz</b>" file to be used together with ant. To compile the KEEL project (assuming you have already installed ant) you just have to type the following commands:
+If you want to compile KEEL source code it is advisable to use the Apache Ant Tool (available for download at the The Apache Ant Project web page: http://ant.apache.org/). The KEEL Software tool includes a "<b>build.xml</b>" file to be used together with ant. To compile the KEEL project (assuming you have already installed ant) you just have to type the following commands:
 
 <pre>
 ant cleanAll
