@@ -32,70 +32,66 @@ package keel.Algorithms.Genetic_Rule_Learning.Ant_Miner_Plus;
 import java.util.*;
 
 /**
- * <p>Título: Ant Colony Optimization</p>
- * <p>Descripción: Clase conjunto de datos.
- *    Representa el conjunto de datos leidos del fichero en un formato entendible
- *    para el algoritmo ACO </p>
- * <p>Copyright: Copyright (c) 2007</p>
- * <p>Empresa: </p>
+ * <p>Title: ConjuntoDatos (Dataset) </p>
+ * <p>Description: Dataset class represents the dataset read from data files
+ * and is used by the ACO algorithm.</p>
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class ConjuntoDatos {
 
     private Vector muestras; //Vector con las muestras sacadas del fichero
 
-    /**
-     * Constructor por defecto
-     * Crea un conjunto vacio.
-     */
+  /**
+   * Default constructor. Nothing is done.
+   */
     public ConjuntoDatos() {
         muestras = new Vector();
     }
 
 
-    /**
-     * Constructor a partir de un vector de muestras
-     * @param datos Vector Vector con las muestras a incluir en el conjunto de datos
-     */
+  /**
+   * Parameter constructor. An dataset is built using the given examples vector.
+   * @param datos Vector with the examples to include in the dataset built.
+   */
     public ConjuntoDatos(Vector datos) {
         muestras = new Vector(datos);
     }
 
-    /**
-     * Modulo que inserta una muestra en el conjunto de datos
-     * @param ejemplo Muestra
-     */
+  /**
+   * Adds the given example to the dataset.
+   * @param ejemplo given example to be added.
+   */
     public void insertaMuestra(Muestra ejemplo) {
         //addElement Añade un elemento al final del vector (perfecto)
         muestras.addElement(ejemplo);
     }
 
-    /**
-     * Modulo que elimina una muestra del conjunto de datos
-     * @param indice int Indice de la muestra a eliminar
-     */
+  /**
+   * Removes an example with the given position.
+   * @param indice int position of the example to be removed.
+   */
     public void eliminaMuestra(int indice) {
 
         muestras.removeElementAt(indice);
     }
 
-    /**
-     * Funcion que elimina una muestra del conjunto de datos
-     * @param muestra Muestra Muestra a eliminar del conjunto de datos
-     * @return boolean Booleano que indica si ha sido eliminado o por el contrario no
-     */
+  /**
+   * Removes the given example from the dataset.
+   * @param muestra {@link Muestra} given example to be removed.
+   * @return True if the example have been removed, false otherwise.
+   */
     public boolean eliminaMuestra(Muestra muestra) {
         boolean devolver;
         devolver = muestras.remove(muestra);
         return devolver;
     }
 
-    /**
-     * Funcion que devuelve la primera muestra del  conjunto de datos
-     * @return Muestra
-     */
+  /**
+   *
+   * Returns the first example of the dataset.
+   * @return {@link Muestra} the first example of the dataset.
+   */
     public Muestra obtenerMuestra() {
         Muestra devolver;
         devolver = (Muestra) muestras.firstElement();
@@ -103,23 +99,21 @@ public class ConjuntoDatos {
 
     }
 
-    /**
-     * Funcion que devuelve la muestra del conjunto de datos en la posicion indice
-     * @param indice int Indice de la muestra a obtener
-     * @return Muestra
-     */
-
+  /**
+   * Returns the example in the position given.
+   @param indice int given position of the example asked.
+   * @return {@link Muestra} the example in the position given.
+   */
     public Muestra obtenerMuestra(int indice) {
         Muestra devolver;
         devolver = (Muestra) muestras.get(indice);
         return devolver;
     }
 
-    /**
-     * Modulo que imprime el conjunto de datos entero por pantalla
-     * @param nombre String Nombre del conjunto de datos
-     */
-
+  /**
+   * Prints the dataset on the standard output.
+   * @param nombre String Name of the dataset.
+   */
     public void imprimir(String nombre) {
         Muestra actual;
 
@@ -130,10 +124,10 @@ public class ConjuntoDatos {
         }
     }
 
-    /**
-     * Funcion que devuelve el numero de muestras que posee el conjunto de datos
-     * @return int Numero de muestras que contiene el conjunto
-     */
+  /**
+   * Returns the number of examples in the dataset.
+   * @return int the number of examples in the dataset.
+   */
     public int tamanio() {
         int devolver;
         devolver = muestras.size();
@@ -142,12 +136,12 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Funcion que devuelve un vector de probabilidades de que haya en las muestras Aij y cada W
-     * @param atributo Atributo Atributo junto con su valor
-     * @param clases Vector Lista con las distintas clases que hay
-     * @return float [] Vector con las probabilidades.
-     */
+  /**
+   * Returns the probabilities vector related to examples with the pair attribute-value and the list of existing classes given.
+   * @param atributo {@link Atributo} pair attribute and value.
+   * @param clases Vector of existing classes.
+   * @return float [] probabilities array.
+   */
     public float[] listaProbabilidadesAtributoClase(Atributo atributo,
             Vector clases) {
         int numClases = clases.size();
@@ -186,11 +180,11 @@ public class ConjuntoDatos {
 
     }
 
-    /**
-     * Modulo que elimina las muestras cubiertas por la regla que se pasa por parametro
-     * @param regla Regla Regla que debe cubrir las muestras a eliminar
-     * @param cVacias Condiciones Vacias
-     */
+  /**
+   * Removes from dataset the covered cases by the given rule.
+   * @param regla {@link Regla} given rule that cover the different cases to be removed.
+   * @param cVacias Empty/Null conditions of the rule.
+   */
     public void eliminaMuestrasCubiertas(Regla regla, Vector cVacias) {
         Vector lista = new Vector();
         Muestra mt;
@@ -205,10 +199,10 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Modulo que elimina las muestras que tienen la clase de la regla que se pasa por parametro
-     * @param regla Regla que contiene la clase que se va a eliminar
-     */
+  /**
+   * Removes from the set the covered cases which have the same class as the rule given.
+   * @param regla {@link Regla} given rule.
+   */
     public void eliminaMuestrasClase(Regla regla) {
         Vector lista = new Vector();
         Muestra mt;
@@ -226,13 +220,12 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Funcion que calcula el porcentaje de muestras cubiertas por la regla que se
-     * le pasa por parametro.
-     * @param regla Regla Regla a comprobar su numero de muestras cubiertas.
-     * @param cVacias Condiciones Vacias
-     * @return float Porcentaje de muestras cubiertas.
-     */
+  /**
+   * Computes the percentage of examples of the dataset covered by the given rule.
+   * @param regla {@link Regla} given rule to check with.
+   * @param cVacias  Empty/Null conditions of the rule.
+   * @return float he percentage of examples covered by the rule.
+   */
     public float porcentajeMuestrasCubiertas(Regla regla, Vector cVacias) {
         float porcentaje = 0;
         float total = muestras.size();
@@ -253,21 +246,20 @@ public class ConjuntoDatos {
         return porcentaje;
     }
 
-    /**
-     * Funcion que devuelve un Vector con las muestras que contiene el conjunto
-     * de datos.
-     * @return Vector Muestras que contiene el conjunto de datos.
-     */
+  /**
+   * Returns all the examples in the dataset.
+   * @return all the examples {@link Muestra} in the dataset.
+   */
     public Vector obtenerMuestras() {
         Vector devolver = new Vector(muestras);
         return devolver;
     }
 
-    /**
-     * Funcion que devuelve la clase que aparece mas veces en el conjunto de datos
-     * @param listaClases Vector Lista con las distintas clases que pueden aparecer
-     * @return int Numero de la clase que aparece mas veces en el conjunto de datos
-     */
+  /**
+   * Returns the majority class of the dataset (most frequent class).
+   * @param listaClases  Vector of existing classes.
+   * @return int the position of the majority class (class id).
+   */
     public int obtenerMayorClase(Vector listaClases) {
         int[] ocurrencias = new int[listaClases.size()];
         Muestra mt;
@@ -302,12 +294,12 @@ public class ConjuntoDatos {
 
     }
 
-    /**
-     * Funcion que calcula el porcentaje de muestras que tienen la condicion y clase.
-     * @param condicion Condicion que deben cumplir las muestras
-     * @param clase Clase que deben tener las muestras
-     * @return Porcentaje de las muestras que cumplen la condicion
-     */
+  /**
+   * Returns the percentage of examples with the given class covered by the given condition. 
+   * @param condicion Given condition to check.
+   * @param clase Given class.
+   * @return the percentage of examples with the given class covered by the given condition. 
+   */
     public float porcentajeMuestrasCondicion(Condicion condicion,
                                              Atributo clase) {
         Muestra mt;
@@ -374,12 +366,12 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Funcion que calcula el porcentaje de muestras vacias con la clase.
-     * @param vacio Atributo Vacio
-     * @param clase Clase que deben tener las muestras.
-     * @return Porcentaje de muestras que cumplen las condiciones.
-     */
+  /**
+   * Returns the percentage of examples with the given class and the attribute as null.
+   * @param vacio Given condition to check.
+   * @param clase Given class.
+   * @return the percentage of examples with the given class and the attribute as null.
+   */
     public float porcentajeMuestrasVacias(Atributo vacio, Atributo clase) {
         float porcentaje;
         float aciertos = 0;
@@ -404,11 +396,11 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Funcion que calcula el porcentaje de muestras que tienen la clase.
-     * @param clase Clase que deben tener las muestras
-     * @return Porcentaje con las muestras que cumplen las condiciones.
-     */
+  /**
+   * Returns the percentage of examples with the given class.
+   * @param clase Given class.
+   * @return the percentage of examples with the given class.
+   */
     public float porcentajeMuestrasClase(Atributo clase) {
         int tamanio = muestras.size();
         Muestra mt;
@@ -426,11 +418,11 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Funcion que calcula el porcentaje de cada clase en el conjunto.
-     * @param clases Distintas clases de las que se quiere saber su porcentaje.
-     * @return Vector con los porcentajes que tiene cada clase.
-     */
+   /**
+   * Returns the percentage of examples for each class.
+   * @param clases   Vector of existing classes.
+   * @return the percentage of examples for each class.
+   */
     public int[] porcentajeMuestrasClase(Vector clases) {
         int tamanio = muestras.size();
         Atributo clase;
@@ -459,12 +451,14 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Funcion que devuelve el numero de muestras que cumplen con las condiciones de la regla
-     * @param hormiga Regla con las condiciones que deben cumplir las muestras.
-     * @param cVacias Condiciones Vacias
-     * @return Numero de muestras.
-     */
+/**
+ * Returns the number of examples covered by the conditions stored 
+ * in the rule given.
+ * @param hormiga Rule given.
+ * @param cVacias Empty/Null conditions vector.
+ * @return the number of examples covered by the conditions stored 
+ * in the rule given.
+ */
     public int numeroMuestrasCondiciones(Regla hormiga, Vector cVacias) {
         int devolver = 0;
         Muestra actual;
@@ -479,12 +473,14 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Funcion que calcula el numero de muestras cubiertas por la regla
-     * @param hormiga Regla con la que se cubren las muestras.
-     * @param cVacias Condiciones vacias
-     * @return Numero de muestras vacias.
-     */
+/**
+ * Returns the number of examples covered by the whole rule given 
+ * (covered by the conditions and with the same class of the rule).
+ * Returns the number of correctly covered examples.
+ * @param hormiga Rule given.
+ * @param cVacias Empty/Null conditions vector.
+ * @return the number of examples covered by the whole rule given.
+ */
     public int numeroMuestrasCubiertas(Regla hormiga, Vector cVacias) {
         int devolver = 0;
         Muestra actual;
@@ -499,13 +495,13 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Funcion que indica si una regla cumple con el minimo impuesto o no
-     * @param hormiga Regla
-     * @param cVacias Condiciones Vacias
-     * @param minimoCasosRegla Minimo impuesto que debe cubrir
-     * @return Booleano que indica si la regla cumple con el minimo o no.
-     */
+/**
+ * Checks if the rule covers the minimum examples to be considered.
+ * @param hormiga Rule to be check.
+ * @param cVacias Empty/Null conditions vector.
+ * @param minimoCasosRegla Minimum number of covered example.
+ * @return True if the rule covers the minimum examples to be considered.
+ */
     public boolean cubreMinimo(Regla hormiga, Vector cVacias,
                                int minimoCasosRegla) {
         Muestra actual;

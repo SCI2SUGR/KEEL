@@ -400,8 +400,8 @@ public class BaseDatos {
     }
 
     /**
-     *
-     * @param b
+     * Sets a database with the data in a vector given as argument.
+     * @param b given vector.
      */
     public void setBase(Vector b) {
         base = b;
@@ -415,8 +415,8 @@ public class BaseDatos {
     }
 
     /**
-     *
-     * @param clas
+     * Sets the class index with the one given.
+     * @param clas given class index.
      */
     public void setClase(int clas) {
         clase = clas;
@@ -451,14 +451,15 @@ public class BaseDatos {
     }
 
     /**
-     * @return Returns the nombres.
+     * @return Returns the names of the attribute.
      */
     public Vector getNombres() {
         return this.nombres;
     }
 
     /**
-     * @param nombres The nombres to set.
+     * Sets the names of the attributes
+     * @param nombres The attributes names to set.
      */
     public void setNombres(Vector nombres) {
         this.nombres = nombres;
@@ -472,8 +473,8 @@ public class BaseDatos {
     }
 
     /**
-     *
-     * @param i
+     * Returns the type of the given attribute index.
+     * @param i attribute index.
      * @return Appropriate type name
      */
     public String getTiposIndex(int i) {
@@ -488,7 +489,7 @@ public class BaseDatos {
     }
 
     /**
-     *
+     * ToString Function.
      * @param campo
      * @return A String object with every value of attribute 'campo' separated by blank spaces
      */

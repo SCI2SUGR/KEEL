@@ -148,7 +148,7 @@ public class Regla {
 
     /**
      * Checks if the given attribute is already in the rule with a value
-     * and the give operator.
+     * and the given operator.
      *
      * @param atributo given attribute to be checked.
      * @param operador given operator to be checked.
@@ -248,7 +248,7 @@ public class Regla {
 
   /**
    * Checks if the given example is covered by the conditions stored 
-   * in the rule.
+   * in the rule. The example can uncorrectly covered.
    * @param ejemplo given example to check.
    * @param cVacias Empty/Null conditions vector.
    * @return True if it is covered, false otherwise.

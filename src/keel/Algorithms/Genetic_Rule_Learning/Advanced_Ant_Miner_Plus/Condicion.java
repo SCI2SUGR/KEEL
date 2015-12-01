@@ -30,33 +30,31 @@
 package keel.Algorithms.Genetic_Rule_Learning.Advanced_Ant_Miner_Plus;
 
 /**
- * <p>Título: Ant Colony Optimization</p>
- * <p>Descripción:Clase Condicion, contiene un valor para un atributo y
- * el operador que lo asigna a la regla (=,>,<) </p>
- * <p>Copyright: Copyright (c) 2007</p>
+ * <p>Title: Condicion (Condition)</p>
+ * <p>Description: Contains a value for an attribute and 
+ * an operator (=,>,<) to be assigned to a rule </p>
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class Condicion {
   private Atributo valor;   //Valor para un tipo de atributo
   private int operador;     //Operador que relaciona ese atributo con la regla
                             //0(=), 1(<), 2(>)
   private static ComparadorCondicion c;
 
-  /**
-   * Constructor
-   */
+      /**
+     * Default constructor.
+     */
   public Condicion() {
     valor=new Atributo();
     operador=0;//Operador por defecto
     c=new ComparadorCondicion();
   }
 
-  /**
-   * Constructor
-   * @param at Atributo de la condicion
-   * @param op Operador de la condicion
+    /**
+   * Parameter constructor. Builds an condition by copying the values of the parameters given. 
+     * @param at attribute to be set.
+     * @param op operator used 0(=), 1(<), 2(>).
    */
   public Condicion(Atributo at, int op){
     valor=at;
@@ -65,52 +63,52 @@ public class Condicion {
   }
 
   /**
-   * Modulo que inicializa el valor de la condicion
-   * @param at Valor de la condicion
+   * Sets the value for the attribute given.
+   * @param at {@link Atribute} with the value and the attribute to be set.
    */
   public void setValor(Atributo at){
     valor=at;
   }
 
   /**
-   * Modulo que inicializa el operador de la condicion
-   * @param op Operador de la condicion
+   * Sets the operator with the value given. 
+   * @param op given operator operator used 0(=), 1(<), 2(>).
    */
   public void setOperador(int op){
     operador=op;
   }
 
   /**
-   * Funcion que devuelve el atributo de una condicion
-   * @return Atributo de la condicion
+   * Returns the value for the attribute of this condition. 
+   * @return the value for the attribute of this condition.  
    */
   public Atributo getValor(){
     return valor;
   }
 
   /**
-   * Funcion que devuelve el operador de una condicion
-   * @return Operador de la condicion
+   * Returns the operator of this condition.
+   * @return the operator of this condition.
    */
   public int getOperador(){
     return operador;
   }
 
 
+
   /**
-   * Funcion que devuelve la posicion de la condicion
-   * @return Posicion de la condicion
+   * Returns the attribute id.
+   * @return the attribute id. 
    */
   public int getIndice(){
     return valor.getAtributo();
   }
 
   /**
-   * Funcion que indica si la condicion cubre un atributo o no
-   * @param at Atributo que debe cubrir la condicion
-   * @return Booleano indicando si la condicion cubre el atributo o no
+   * Checks if the attribute given is covered by the condition.
+   * @param at given attribute.
+   * @return True if the attribute given is covered by the condition. 
    */
-
   public boolean cubre(Atributo at){
     boolean devolver=false;
     double valor1;
@@ -149,12 +147,12 @@ public class Condicion {
     return devolver;
   }
 
-
   /**
-   * Funcion que indica si la condicion tiene valor o no
-   * @param indice Posicion que debe tener la condicion
-   * @param op Operador que debe tener
-   * @return Booleano indicando si la condicion tiene valor o no.
+   * Checks if the pair attribute id and operator given are the one set on this condition.
+   * @param indice given attribute id.
+   * @param op given operator.
+   * @return true if the pair attribute id and operator given are the one set on this condition.
+   * 
    */
   public boolean tieneValor(int indice,int op){
     if(operador==op && valor.getAtributo()==indice)
@@ -164,8 +162,8 @@ public class Condicion {
   }
 
   /**
-   * Funcion que devuelve un comparador de condiciones
-   * @return Comparador de condiciones
+   * Returns the Condition comparative method.
+   * @return the Condition comparative method. 
    */
   public static ComparadorCondicion getComparadorCondiciones(){
     return c;

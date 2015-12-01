@@ -32,17 +32,13 @@ package keel.Algorithms.Genetic_Rule_Learning.Ant_Miner_Plus;
 import java.util.*;
 
 /**
- * <p>Título: Ant Colony Optimization</p>
- * <p>Descripción: Clase muestra.
- *    Contiene una linea del fichero, cada linea tiene una muestra de la forma
- *    condiciones => clase </p>
- * <p>Copyright: Copyright (c) 2007</p>
- * <p>Empresa: </p>
+ * <p>Title: Muestra (Sample)</p>
+ * <p>Description: Sample class:
+ *    Stores an example of a dataset. These examples are treated as rules, 
+ *    every pair attribute-value is considered to be conditions for the class of the example. </p>
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
-
 public class Muestra {
 
     private Vector condiciones; //Atributos de la regla
@@ -50,10 +46,9 @@ public class Muestra {
     private int posicion; //Posicion en el fichero de donde se ha extraido
     private boolean cubierta; //Indica si la muestra esta cubierta por alguna regla
 
-    /**
-     * Constructor por defecto
-     * Crea una muestra vacia
-     */
+  /**
+   *  Default constructor. An empty sample is built.
+   */
     public Muestra() {
         condiciones = new Vector();
         clase = new Atributo();
@@ -61,16 +56,14 @@ public class Muestra {
         cubierta = false;
     }
 
-    /**
-     *  Constructor
-     *  Crea una regla a partir de los atributos y la clase que se le pasan
-     *  por parametro.
+  /**
+     *  Paramater Constructor.
+     *  Creates an example with the attributes values and the class given.
      *
-     * @param conjuntoAtributos Vector
-     * @param claseOriginal String
-     * @param posicionFichero int
+     * @param conjuntoAtributos Vector attributes values.
+     * @param claseOriginal String example class.
+     * @param posicionFichero int file position (example id).
      */
-
     public Muestra(Vector conjuntoAtributos, Atributo claseOriginal,
                    int posicionFichero) {
 
@@ -82,27 +75,26 @@ public class Muestra {
     }
 
     /**
-     * Modulo que inserta un atributo junto con su valor en la regla
+     * Adds an attribute with its value to the example.
      *
-     * @param original Atributo Atributo que se inserta en la regla.
+     * @param original {@link Atributo} pair attribute value to add.
      */
     public void insertarAtributo(Atributo original) {
         condiciones.addElement(original);
     }
 
     /**
-     * Modulo que inserta la clase a la que identifica la regla con todos
-     * sus atributos
+     * Adds a class that identifies the example/rule with all its attributes.
      *
-     * @param original Atributo Clase que se inserta en la regla
+     * @param original {@link Atributo} class added to the rule.
      */
     public void insertarClase(Atributo original) {
         clase = original;
     }
 
     /**
-     * Inserta la posicion que ocupa la muestra en el fichero de origen
-     * @param posicionFichero int
+     * Sets tha position of the example in the file (example id).
+     * @param posicionFichero int given position.
      */
     public void insertaPosicion(int posicionFichero) {
         posicion = posicionFichero;
@@ -110,16 +102,15 @@ public class Muestra {
     }
 
     /**
-     * Modulo que pone a cubierta la muestra
+     * Sets the example as covered.
      */
-
     public void siEstaCubierta() {
         cubierta = true;
 
     }
 
     /**
-     * Modulo que pone a no cubierta la muestra
+     * Sets the example as uncovered.
      */
     public void noEstaCubierta() {
         cubierta = false;
@@ -127,8 +118,8 @@ public class Muestra {
     }
 
     /**
-     * Funcion que indica si la muestra esta cubierta o no
-     * @return boolean Booleano que indica si esta cubierta la muestra
+     * Checks if the example is covered.
+     * @return True if the example is covered, false otherwise.
      */
     public boolean estaCubierta() {
         return cubierta;
@@ -136,10 +127,10 @@ public class Muestra {
     }
 
     /**
-     * Funcion que avisa si un atributo esta ya junto con su valor en una regla
+     * Checks if the given attribute is already in the example.
      *
-     * @param original Atributo Atributo que se busca en la regla
-     * @return boolean True si el atributo esta en la regla, False en caso contrario
+     * @param original given attribute to be checked.
+     * @return True if the given attribute is already in the example, false otherwise. 
      */
     public boolean estaAtributo(Atributo original) {
         boolean devolver = condiciones.contains(original);
@@ -147,9 +138,9 @@ public class Muestra {
     }
 
     /**
-     * Funcion que avisa si la clase que tiene la muestra es igual que la pasada por parametro
-     * @param original Atributo Clase a comparar con la que contiene la muestra
-     * @return boolean Booleano que indica si la clase es igual (true) o no (false)
+     * Checks if the class of the example is the same as the one passed as parameter.
+     * @param original Class to compare with.
+     * @return True if the class is the same, false otherwise.
      */
     public boolean estaClase(Atributo original) {
         boolean devolver;
@@ -164,9 +155,9 @@ public class Muestra {
 
 
     /**
-     * Funcion que devuelve el valor de la condicion que esta en la posicion indice
-     * @param indice int Indice de la condicion
-     * @return double Valor de la condicion
+     * Returns the value for the attribute/condition in the given position.
+     * @param indice int attribute position.
+     * @return double value of the attribute in the given position.
      */
     public Atributo getValor(int indice) {
         Atributo actual = (Atributo) condiciones.get(indice);
@@ -175,8 +166,8 @@ public class Muestra {
     }
 
     /**
-     * Funcion que devuelve el valor de la clase
-     * @return double Valor de la clase de la muestra
+     * Returns the class of this example.
+     * @return the class of this example.
      */
     public Atributo getClase() {
         return clase;
@@ -184,10 +175,8 @@ public class Muestra {
     }
 
     /**
-     * Modulo que imprime por pantalla todas las condiciones de la muestra, seguidas de su
-     * clase correspondiente
+     * Prints on the standard output the example as rule (conditions ---> class).
      */
-
     public void imprimir() {
         String valor;
         Atributo at;

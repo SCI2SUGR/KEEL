@@ -44,7 +44,7 @@ import java.io.FileNotFoundException;
 
 /**
  * <p>Title: Ant Colony Optimization</p>
- * <p>Description: Classification Algorithm by ACO (Ant Miner +).
+ * <p>Description: Classification Algorithm by ACO (Advanced Ant Miner +).
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */

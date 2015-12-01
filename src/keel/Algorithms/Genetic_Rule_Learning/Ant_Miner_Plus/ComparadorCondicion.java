@@ -32,9 +32,8 @@ package keel.Algorithms.Genetic_Rule_Learning.Ant_Miner_Plus;
 import java.util.Comparator;
 
 /**
- * <p>Ant Colony Optimization. </p>
- * <p>Condition comparative method.</p>
- * <p>Copyright: Copyright (c) 2007</p>
+ * <p> Title: ComparadoCondicion (Conditions comparative method) </p>
+ * <p>Conditions comparative method.</p>
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
@@ -46,20 +45,16 @@ public class ComparadorCondicion implements Comparator {
     public ComparadorCondicion() {
   }
 
-  /*
-  * OJO!!!! Como el Collections.sort ordena de mayor a menor y el orden que interesa
-   * que tengan los atributos es de menor a mayor, este CompareTo esta trucado al reves
-   * es decir cuando es menor devuelve mayor y cuando es mayor devuelve menor.
-   */
-  
   /**
    * Compares two condition.
    *
-   * @param o1 Object Attribute to compare
-   * @param o2 Object Attribute to compare
+   * @param o1 Object Condition to compare
+   * @param o2 Object Condition to compare
    * @return int 0 if both have the same position, 1 if first element comes before, -1 if the first element comes after.
    *
-   
+   * Warning!!! Collections.sort sorts in descending order (from greater to lesser).
+   * This method sorts the elements in increasing (from lesser to greater), 
+   * the way needed for conditions.
    */
     public int compare(Object o1, Object o2) {
         Condicion c1 = (Condicion) o1;

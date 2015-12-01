@@ -42,14 +42,11 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 
 /**
- * <p>Título: Ant Colony Optimization</p>
- * <p>Descripción: Algoritmo de clasificacion por ACO</p>
- * <p>Copyright: Copyright (c) 2007</p>
- * <p>Empresa: </p>
+ * <p>Title: Ant Colony Optimization</p>
+ * <p>Description: Classification Algorithm by ACO (Ant Miner).
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class ACO {
 
     private float[][] feromona; //Aqui se almacenara la feromona para cada valor de cada atributo
@@ -89,9 +86,9 @@ public class ACO {
     boolean continuosValues; //Indica si hay que comprobar si los datos son compatibles con el algoritmo
 
 
-    /**
-     * Constructor por defecto (no hace nada)
-     */
+  /**
+   * Default constructor. Nothing is done.
+   */
     public ACO() {
     }
 
@@ -103,22 +100,22 @@ public class ACO {
         return (!continuosValues);
     }
 
-    /**
-     * Constructor de una instancia del algoritmo con los ficheros de datos y
-     *  umbrales definidos por el usuario
-     *
-     * @param fTrainPrep String Nombre del fichero de entrenamiento con preprocesamiento
-     * @param fTrain String Nombre del fichero de entrenamiento entero para validación
-     * @param fTestOriginal String Nombre del fichero de prueba
-     * @param fSalidaTrain String Nombre del fichero de salida para las pruebas al fichero de entrenamiento
-     * @param fSalidaTest String Nombre del fichero de salida para las pruebas al fichero de test
-     * @param fSalidaResult String Nombre del fichero donde se guardaran los resultados globales.
-     * @param nHormigas int Numero de hormigas en el algoritmo
-     * @param maxDatos int Maximo de datos sin cubrir por reglas
-     * @param minCasos int Minimo de casos que debe cubrir una regla creada
-     * @param maxIter int Maximo de iteraciones sin que haya convergencia
-     * @param semillaOriginal long Semilla para el generador de numeros aleatoreos
-     */
+
+  /**
+   * Parameter constructor. Build the algorithm object with the parameter given.
+   *
+   * @param fTrainPrep String Preprocessed Training filename.
+   * @param fTrain String Full training filename.
+   * @param fTestOriginal String Test filename.
+   * @param fSalidaTrain String Training output filename.
+   * @param fSalidaTest String Test output filename.
+   * @param fSalidaResult String Global results filename.
+   * @param nHormigas int Number of ants considered.
+   * @param maxDatos int Maximum number of uncovered data.
+   * @param minCasos int Minimum number of cases that a rule must cover.
+   * @param maxIter int Maximum iterations.
+   * @param semillaOriginal long Seed for the random numbers generator.
+   */
 
     public ACO(String fTrainPrep, String fTrain, String fTestOriginal,
                String fSalidaTrain,
@@ -151,10 +148,11 @@ public class ACO {
     }
 
 
-    /**
-     * Modulo que extrae los datos de los tres ficheros (train, train entero y test) y
-     * los inserta en conjunto de datos con un formato conocido por el algoritmo
-     */
+  /**
+   * 
+   * Extracts the dataset from the training, full-training and test files into
+   * the algorithm structures {@link ConjuntoDatos}.
+   */
     private void extraeDatos() {
 
         continuosValues = false;
@@ -194,12 +192,12 @@ public class ACO {
     }
 
 
-    /**
-     * Funcion que extrae los datos de un dataset y los introduce en un conjunto de
-     * datos
-     * @param original myDataset myDataset del que se extraen los datos
-     * @return ConjuntoDatos Conjunto de datos donde se devuelve con el formato conocido por el algoritmo
-     */
+  /**
+   * Extracts the data from the given dataset into an algorithm structure {@link ConjuntoDatos}.
+   * 
+   * @param original myDataset dataset to extract the data. 
+   * @return {@link ConjuntoDatos} dataset structure used by the ACO algorithm. 
+   */
     private ConjuntoDatos extraeMuestras(myDataset original) {
         double[][] X;
         int[] C;
@@ -244,12 +242,12 @@ public class ACO {
         return devolver;
     }
 
-    /**
-     * Funcion que extrae los datos de un dataset sin preprocesar y los introduce
-     * en un conjunto de datos
-     * @param original myDataset myDataset del que se extraen los datos
-     * @return ConjuntoDatos Conjunto de datos donde se devuelve con el formato conocido por el algoritmo
-     */
+  /**
+   * Extracts the unprocessed data from the given dataset into an algorithm structure {@link ConjuntoDatos}.
+   * 
+   * @param original myDataset dataset to extract the data. 
+   * @return {@link ConjuntoDatos} dataset structure used by the ACO algorithm. 
+   */
     private ConjuntoDatos extraeMuestrasSinP(myDataset original) {
         double[][] X;
         int[] C;
@@ -303,11 +301,11 @@ public class ACO {
     }
 
 
-    /**
-     * Modulo que crea las lista de datos necesarias para el funcionamiento del algoritmo
-     * entre ellas estan, la lista de distintos valores que puede tomar cada atributo
-     * y la lista de distintos valores de salida que puede tomar la clase
-     */
+  /**
+   * Creates the arrays and lists of data needed for the well functioning of the algorithm:
+   * - The list with the different values each attribute can take
+   * - The list with the different values of the output class.
+   */
     private void creaDatos() {
 
         Attribute[] listaAtributos;
@@ -372,8 +370,7 @@ public class ACO {
     }
 
     /**
-     * Modulo que inicializa los valores que puede escoger una hormiga para incorporarlos a
-     * su regla en construccion
+     * Initializes the values to be chosen for an ant to add it to its rule.
      */
     private void inicializaValoresRestantes() {
         listaValoresRestantes = new Vector(listaValores);
@@ -381,9 +378,9 @@ public class ACO {
 
 
     /**
-     * Elimina el atributo que ya ha sido seleccionado junto con todos sus posibles valores
-     * para que en la siguiente iteracion, la hormiga no los puedan seleccionar
-     * @param eliminar Atributo Atributo que se quiere eliminar de la lista de valores restantes
+     * Removes the given attribute and all its possible values for the next iteration, 
+     * the ants can not select it.
+     * @param eliminar Attribute to be removed.
      */
     private void eliminaAtributoColumna(Atributo eliminar) {
         int indice;
@@ -393,9 +390,9 @@ public class ACO {
     }
 
 
-    /**
-     * Modulo que ejecuta el algoritmo
-     */
+  /**
+   * Executes the algorithm.
+   */
     public void run() {
         //Conjunto de entrenamiento esta ya inicializado
         //Reglas descubiertas = {} ya esta hecho
@@ -465,12 +462,11 @@ public class ACO {
 
     }
 
-    /**
-     * Funcion que crea una regla por defecto en caso de no aplicarse cualquiera
-     * de las creadas por el algoritmo
-     * @return Regla Regla por defecto que asigna una clase a cualquier muestra
-     */
-
+  /**
+   * Creates a default rule en case that any of the generated ones by the
+   * algorithm can be applied.
+   * @return {@link Regla} a default rule: assign the same class to every example.
+   */
     private Regla creaReglaGenerica() {
         Regla devolver = new Regla();
         int mayorClase = cTrain.obtenerMayorClase(listaClases); //Obtenemos la clase mas repetida entre las muestras
@@ -483,8 +479,7 @@ public class ACO {
     }
 
     /**
-     * Modulo que crea la matriz con valores de entropia para la funcion de
-     * probabilidad.
+     * Creates the entropy matrix used by the probability function.
      */
     private void creaMatrizN() {
         double[] probabilidades;
@@ -509,10 +504,9 @@ public class ACO {
 
     }
 
-    /**
-     * Modulo que saca a los ficheros predefinidos los resultados obtenidos
-     * por el algoritmo.
-     */
+  /**
+   * Prints all the results on the output results files.
+   */
     public void sacaResultadosAFicheros() {
         File fichero;
         FileOutputStream flujo;
@@ -603,11 +597,11 @@ public class ACO {
 
     }
 
-    /**
-     *  Modulo que muestra los resultados del algoritmo por pantalla.
-     *  Muestra las reglas descubiertas seguido de el porcentaje de acierto
-     *  en los conjuntos de pruebas y test
-     */
+  /**
+   * Prints on the standard output the algorithm results.
+   * Prints each extrated rule followed by its acurracies for training and
+   * test.
+   */
     public void muestraResultados() {
 
         Regla regla;
@@ -669,19 +663,18 @@ public class ACO {
 
     }
 
-    /**
-     * Modulo que elimina los casos cubiertos por la regla del conjunto de entrenamiento
-     * @param regla Regla Regla que cubre las muestras eliminadas del conjunto
-     * de entrenamiento
-     */
+  /**
+   * Removes from the training set the covered cases by the given rule.
+   * @param regla {@link Regla} given rule that cover the different cases to be removed.
+   */
     private void quitarCasosCubiertos(Regla regla) {
         cTrain.eliminaMuestrasCubiertas(regla);
     }
 
-    /**
-     * Modulo que poda la regla una vez se ha creado esta.
-     * @param regla Regla Regla a podar por el modulo.
-     */
+  /**
+   * Prunes the rule given as paramenter.
+   * @param hormiga {@link Regla} Rule to be pruned.
+   */
     private void podaRegla(Regla regla) {
         int numCondiciones;
         Regla reglaModificada;
@@ -745,11 +738,10 @@ public class ACO {
     }
 
 
-    /**
-     * Modulo que actualiza la feromona de la matriz de feromonas siguiendo
-     * las condiciones usadas por la regla
-     * @param regla Regla Regla que contiene las condiciones con las que se actualizara la feromona
-     */
+  /**
+   * Updates the pheromone of the conditions used in the given ant.
+   * @param hormiga Best ant/rule {@link Regla} to update the pheromone.
+   */
     private void actualizarFeromona(Regla regla) {
         //Crear una lista donde se guardan los atributos
         Vector condiciones = regla.listaCondiciones();
@@ -808,12 +800,10 @@ public class ACO {
     }
 
     /**
-     * Crea una regla de acuerdo a las muestras que quedan sin cubrir
-     * @param regla Regla Regla creada que es devuelta por referencia
-     * @param generadorA Randomize Generador de numeros aleatorios
+     * Creates a rule using the uncovered examples.
+     * @param regla {@link Regla} New returned rule.
+     * @param generadorA Randomize random number generator.
      */
-
-
     private void creaRegla(Regla regla, Randomize generadorA) {
         int numMuestrasCubiertas = cTrain.tamanio(); //Antes de añadir terminos a la regla, esta cubre todos los datos
         int atributosUsados = 0; //Numero de atributos que se han añadido a la regla
@@ -851,11 +841,11 @@ public class ACO {
 
     }
 
-    /**
-     * Funcion que calcula la calidad de la regla que se le pasa por parametro
-     * @param regla Regla Regla a la cual se le calculara la calidad
-     * @return float Calidad de la regla
-     */
+  /**
+   * Computes the quality of the rule given as parameter.
+   * @param regla given rule.
+   * @return the quality of the rule.
+   */
     private float obtenerCalidadRegla(Regla regla) {
         float calidad;
         float TP = 0, TN = 0, FP = 0, FN = 0;
@@ -891,11 +881,11 @@ public class ACO {
         return calidad;
     }
 
-    /**
-     * Funcion que calcula la calidad de la regla que se le pasa por parametro
-     * @param regla Regla Regla a la cual se le calculara la calidad
-     * @return float Calidad de la regla
-     */
+  /**
+   * Computes the quality of the rule given as parameter (v.2).
+   * @param regla given rule.
+   * @return the quality of the rule.
+   */
     private float obtenerCalidadRegla2(Regla regla) {
         float calidad;
         float TP = 0, FN = 0;
@@ -928,11 +918,9 @@ public class ACO {
     }
 
     /**
-     * Funcion que devuelve la clase mas adecuada para el conjunto de condiciones
-     * que ya se han asignado a la regla.
-     * @param regla Regla Regla que contiene el conjunto de condiciones a las que se
-     * les busca clase
-     * @return Atributo Clase mas adecuada para las condiciones
+     * Finds the most adequeated class for the conditions set stored in rule given.
+     * @param regla {@link Regla} rule given as parameter.
+     * @return the most adequeated class for the rule.
      */
     private Atributo obtenerClaseMasAdecuada(Regla regla) {
         Atributo clase;
@@ -974,12 +962,11 @@ public class ACO {
         return clase;
     }
 
-    /**
-     * Funcion que devuelve el numero de muestras cubiertas en el conjunto de
-     * entrenamiento por la regla que se pasa por parametro.
-     * @param regla Regla Regla a la que se le buscan sus muestras cubiertas
-     * @return int Numero de muestras cubiertas por la regla.
-     */
+  /**
+   * Returns the number of examples of the training set covered by the given rule.
+   * @param regla {@link Regla} given rule to check with.
+   * @return int number of examples covered by the given rule.
+   */
     private int muestrasCubiertasPor(Regla regla) {
         int numeroCubiertas = 0;
         int numeroMuestras = cTrain.tamanio();
@@ -1004,6 +991,13 @@ public class ACO {
      * @return Atributo Atributo escogido
      */
 
+    /**
+     *  Selects the next attribute to be added to the rule given following 
+     *  the probability and pheromone matrix.
+     * @param generadorA Random numbers generator.
+     * @param regla {@link Regla} Rule that is being built and where the attribute will be added.
+     * @return Selected attribute.
+     */
     private Atributo escogeSiguienteAtributo(Randomize generadorA, Regla regla) {
         Atributo devolver;
         double probabilidadEscoger = 0;
@@ -1071,13 +1065,13 @@ public class ACO {
 
 
     /**
-     * Funcion que devuelve la probabilidad de escoger un valor para el
-     * atributo que se pasan por parametro
+     * Returns the probability of the given value for the given attribute
+     * to be selected and later inserted in the rule given.
      *
-     * @param atributo int Atributo al que se le quiere asignar valor
-     * @param valor int Valor que se asignaria al atributo
-     * @param regla Regla Regla en la que se estan insertando los atributos
-     * @return double Probabilidad de que la hormiga los elija para la regla
+     * @param atributo int attribute id to check.
+     * @param valor int value id of the attribute to check.
+     * @param regla Regla rule given where the attribute couble be later inserted.
+     * @return double probability of the attribute-value to be selected.
      */
     private double probabilidad(int atributo, int valor, Regla regla) {
         double probabilidad = 0;
@@ -1164,10 +1158,10 @@ public class ACO {
 
 
     /**
-     * Funcion que calcula el valor de la funcion Heuristica
-     * @param atributo int Atributo que se desea calcular
-     * @param valor int Valor del atributo
-     * @return double Valor de la funcion Heuristica
+     * Computes the heuristic value for the pair attribute-value given.
+     * @param atributo int Attribute id.
+     * @param valor int Value id of the attribute given.
+     * @return double the heuristic value for the pair attribute-value 
      */
     private float calculaNij(int atributo, int valor) {
         float devolver = 0;
@@ -1201,10 +1195,10 @@ public class ACO {
     };
 
     /**
-     * Funcion que obtiene la Entropia para un valor de un atributo dado.
-     * @param atributo int Atributo del que se quiere calcular la entropia.
-     * @param valor int Valor del atributo.
-     * @return float Valor de entropia para el valor del atributo.
+     * Computes the entropy value for the pair attribute-value given.
+     * @param atributo int Attribute id.
+     * @param valor int Value id of the attribute given.
+     * @return double the entropy value for the pair attribute-value 
      */
     private float obtenerFuncionH(int atributo, int valor) {
         float devolver = 0;
@@ -1248,13 +1242,13 @@ public class ACO {
 
         return devolver;
     }
-
+     
     /**
-     * Funcion que calcula la probabilidad de que la clase sea W si el atributo es Aij
-     * @param muestras Vector Vector con las muestras donde se desea buscar la probabilidad
-     * @param clase Atributo Clase W
-     * @param valor Atributo Atributo Aij
-     * @return double Probabilidad calculada.
+     * Computes the probability of being the class "clase" if the attribute-value is the one given.
+     * @param muestras Vector of samples to compute the probability.
+     * @param clase {@link Atributo} class to compute its probability.
+     * @param valor Atributo Pair attribute-value
+     * @return double computed probability.
      */
     private double probabilidadWAij(Vector muestras, Atributo clase,
                                     Atributo valor) {
@@ -1276,8 +1270,8 @@ public class ACO {
     }
 
     /**
-     * Modulo que crea la matriz de feromona inicializandola con los valores
-     * iniciales propuestos por el algoritmo
+     * Creates and initializes the pheromone matrix with the initial value 
+     * proposed by the algorithm.
      */
     private void creaMatrizFeromona() {
         float valorInicial;
@@ -1304,10 +1298,9 @@ public class ACO {
 
     }
 
-    /**
-     * Modulo que imprime las dos listas creadas con los valores y clases
-     * posibles
-     */
+  /**
+   * Prints the two lists created with the possible values and classes.
+   */
     private void imprimeListas() {
         System.out.println("Lista con distintos valores para cada atributo");
         Vector auxiliar;

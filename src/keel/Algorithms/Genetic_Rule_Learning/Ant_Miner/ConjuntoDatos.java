@@ -32,12 +32,9 @@ package keel.Algorithms.Genetic_Rule_Learning.Ant_Miner;
 import java.util.*;
 
 /**
- * <p>Título: Ant Colony Optimization</p>
- * <p>Descripción: Clase conjunto de datos.
- *    Representa el conjunto de datos leidos del fichero en un formato entendible
- *    para el algoritmo ACO </p>
- * <p>Copyright: Copyright (c) 2007</p>
- * <p>Empresa: </p>
+ * <p>Title: ConjuntoDatos (Dataset) </p>
+ * <p>Description: Dataset class represents the dataset read from data files
+ * and is used by the ACO algorithm.</p>
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
@@ -46,56 +43,56 @@ public class ConjuntoDatos {
 
     private Vector muestras; //Vector con las muestras sacadas del fichero
 
-    /**
-     * Constructor por defecto
-     * Crea un conjunto vacio.
-     */
+  /**
+   * Default constructor. Nothing is done.
+   */
     public ConjuntoDatos() {
         muestras = new Vector();
     }
 
 
-    /**
-     * Constructor a partir de un vector de muestras
-     * @param datos Vector Vector con las muestras a incluir en el conjunto de datos
-     */
+  /**
+   * Parameter constructor. An dataset is built using the given examples vector.
+   * @param datos Vector with the examples to include in the dataset built.
+   */
     public ConjuntoDatos(Vector datos) {
         muestras = new Vector(datos);
     }
 
-    /**
-     * Modulo que inserta una muestra en el conjunto de datos
-     * @param ejemplo Muestra
-     */
+  /**
+   * Adds the given example to the dataset.
+   * @param ejemplo given example to be added.
+   */
     public void insertaMuestra(Muestra ejemplo) {
         //addElement Añade un elemento al final del vector (perfecto)
         muestras.addElement(ejemplo);
     }
 
-    /**
-     * Modulo que elimina una muestra del conjunto de datos
-     * @param indice int Indice de la muestra a eliminar
-     */
+  /**
+   * Removes an example with the given position.
+   * @param indice int position of the example to be removed.
+   */
     public void eliminaMuestra(int indice) {
 
         muestras.removeElementAt(indice);
     }
 
-    /**
-     * Funcion que elimina una muestra del conjunto de datos
-     * @param muestra Muestra Muestra a eliminar del conjunto de datos
-     * @return boolean Booleano que indica si ha sido eliminado o por el contrario no
-     */
+  /**
+   * Removes the given example from the dataset.
+   * @param muestra {@link Muestra} given example to be removed.
+   * @return True if the example have been removed, false otherwise.
+   */
     public boolean eliminaMuestra(Muestra muestra) {
         boolean devolver;
         devolver = muestras.remove(muestra);
         return devolver;
     }
 
-    /**
-     * Funcion que devuelve la primera muestra del conjunto de datos
-     * @return Muestra
-     */
+  /**
+   *
+   * Returns the first example of the dataset.
+   * @return {@link Muestra} the first example of the dataset.
+   */
     public Muestra obtenerMuestra() {
         Muestra devolver;
         devolver = (Muestra) muestras.firstElement();
@@ -103,11 +100,11 @@ public class ConjuntoDatos {
 
     }
 
-    /**
-     * Funcion que devuelve la muestra del conjunto de datos en la posicion indice
-     * @param indice int Indice de la muestra a obtener
-     * @return Muestra
-     */
+  /**
+   * Returns the example in the position given.
+   @param indice int given position of the example asked.
+   * @return {@link Muestra} the example in the position given.
+   */
 
     public Muestra obtenerMuestra(int indice) {
         Muestra devolver;
@@ -115,10 +112,10 @@ public class ConjuntoDatos {
         return devolver;
     }
 
-    /**
-     * Modulo que imprime el conjunto de datos entero por pantalla
-     * @param nombre String Nombre del conjunto de datos
-     */
+  /**
+   * Prints the dataset on the standard output.
+   * @param nombre String Name of the dataset.
+   */
 
     public void imprimir(String nombre) {
         Muestra actual;
@@ -130,10 +127,10 @@ public class ConjuntoDatos {
         }
     }
 
-    /**
-     * Funcion que devuelve el numero de muestras que posee el conjunto de datos
-     * @return int Numero de muestras que contiene el conjunto
-     */
+  /**
+   * Returns the number of examples in the dataset.
+   * @return int the number of examples in the dataset.
+   */
     public int tamanio() {
         int devolver;
         devolver = muestras.size();
@@ -142,12 +139,12 @@ public class ConjuntoDatos {
     }
 
 
-    /**
-     * Funcion que devuelve un vector de probabilidades de que haya en las muestras Aij y cada W
-     * @param atributo Atributo Atributo junto con su valor
-     * @param clases Vector Lista con las distintas clases que hay
-     * @return float [] Vector con las probabilidades.
-     */
+  /**
+   * Returns the probabilities vector related to examples with the pair attribute-value and the list of existing classes given.
+   * @param atributo {@link Atributo} pair attribute and value.
+   * @param clases Vector of existing classes.
+   * @return float [] probabilities array.
+   */
     public float[] listaProbabilidadesAtributoClase(Atributo atributo,
             Vector clases) {
         int numClases = clases.size();
@@ -186,10 +183,10 @@ public class ConjuntoDatos {
 
     }
 
-    /**
-     * Modulo que elimina las muestras cubiertas por la regla que se pasa por parametro
-     * @param regla Regla Regla que debe cubrir las muestras a eliminar
-     */
+  /**
+   * Removes from dataset the covered cases by the given rule.
+   * @param regla {@link Regla} given rule that cover the different cases to be removed.
+   */
     public void eliminaMuestrasCubiertas(Regla regla) {
         Vector lista = new Vector();
         Muestra mt;
@@ -205,12 +202,11 @@ public class ConjuntoDatos {
 
     }
 
-    /**
-     * Funcion que calcula el porcentaje de muestras cubiertas por la regla que se
-     * le pasa por parametro.
-     * @param regla Regla Regla a comprobar su numero de muestras cubiertas.
-     * @return float Porcentaje de muestras cubiertas.
-     */
+  /**
+   * Computes the percentage of examples of the dataset covered by the given rule.
+   * @param regla {@link Regla} given rule to check with.
+   * @return float he percentage of examples covered by the rule.
+   */
     public float porcentajeMuestrasCubiertas(Regla regla) {
         float porcentaje = 0;
         float total = muestras.size();
@@ -231,21 +227,20 @@ public class ConjuntoDatos {
         return porcentaje;
     }
 
-    /**
-     * Funcion que devuelve un Vector con las muestras que contiene el conjunto
-     * de datos.
-     * @return Vector Muestras que contiene el conjunto de datos.
-     */
+  /**
+   * Returns all the examples in the dataset.
+   * @return all the examples {@link Muestra} in the dataset.
+   */
     public Vector obtenerMuestras() {
         Vector devolver = new Vector(muestras);
         return devolver;
     }
 
-    /**
-     * Funcion que devuelve la clase que aparece mas veces en el conjunto de datos
-     * @param listaClases Vector Lista con las distintas clases que pueden aparecer
-     * @return int Numero de la clase que aparece mas veces en el conjunto de datos
-     */
+  /**
+   * Returns the majority class of the dataset (most frequent class).
+   * @param listaClases  Vector of existing classes.
+   * @return int the position of the majority class (class id).
+   */
     public int obtenerMayorClase(Vector listaClases) {
         int[] ocurrencias = new int[listaClases.size()];
         Muestra mt;

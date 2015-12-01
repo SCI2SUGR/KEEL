@@ -32,13 +32,11 @@ package keel.Algorithms.Genetic_Rule_Learning.Ant_Miner_Plus;
 import java.util.Comparator;
 
 /**
- * <p>Ant Colony Optimization. </p>
- * <p>Attributes comparative method.</p>
- * <p>Copyright: Copyright (c) 2007</p>
+ * <p> Title: ComparadorAtributo (Attributes comparative method) </p>
+ * <p> Description: Attributes comparative method.</p>
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class ComparadorAtributo implements Comparator {
 
   /**
@@ -47,11 +45,6 @@ public class ComparadorAtributo implements Comparator {
     public ComparadorAtributo() {
   }
     
-  /*
-  * OJO!!!! Como el Collections.sort ordena de mayor a menor y el orden que interesa
-   * que tengan los atributos es de menor a mayor, este CompareTo esta trucado al reves
-   * es decir cuando es menor devuelve mayor y cuando es mayor devuelve menor.
-   */
   
   /**
    * Compares two attributes
@@ -60,7 +53,10 @@ public class ComparadorAtributo implements Comparator {
    * @param o2 Object Attribute to compare
    * @return int 0 if both have the same position, 1 if first element comes before, -1 if the first element comes after.
    *
-   
+   * Warning!!! Collections.sort sorts in descending order (from greater to lesser).
+   * This method sorts the elements in increasing (from lesser to greater), 
+   * the way needed for attributes.
+   * 
    */
     public int compare(Object o1, Object o2) {
         Atributo original = (Atributo) o1;

@@ -30,12 +30,13 @@
 package keel.Algorithms.Genetic_Rule_Learning.Advanced_Ant_Miner;
 
 /**
- * <p>Title: Atributo (Attribute)</p>
- * <p>Description: Implements the attributes representation used by the ACO algorithm. </p>
+ * <p>Title: Atributo (Attribute). </p>
+ * <p>Description: Implements the attributes representation as
+ * a pair of the attribute id and its value used by the ACO algorithm to
+ * build the dataset and the conditions for the rules. </p>
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class Atributo {
 
   private String valor; //Valor del atributo
@@ -164,7 +165,7 @@ public class Atributo {
 
   /**
    * Checks if this attribute is equal to the one given.
-   * @param obj Object Attribute to compare with.
+   * @param at Object Attribute to compare with.
    * @return boolean True if they are the same, false otherwise.
    */
   public boolean esIgual(Atributo at) {
@@ -177,7 +178,6 @@ public class Atributo {
   }
 
   /**
-   *
    * Returns the compare condition to compare two attributes.
    * @return {@link ComparadorAtributo} the compare condition.
    */

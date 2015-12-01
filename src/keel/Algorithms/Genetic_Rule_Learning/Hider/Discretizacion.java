@@ -54,14 +54,16 @@ public class Discretizacion {
     private Vector cortes = null;
 
     /**
-     * @param cort
+     * Parameter constructor. Build the Discretization object with the parameter given.
+     * @param cort discretization cuts.
      */
     public Discretizacion(Vector cort) {
         cortes = cort;
     }
 
     /**
-     * @param b
+     * Parameter constructor. Build the Discretization object with the parameter given.
+     * @param b database to be discretized.
      */
     public Discretizacion(BaseDatos b) {
         bd = b;
@@ -69,8 +71,9 @@ public class Discretizacion {
     }
 
     /**
-     * @param b
-     * @param cort
+     * Parameter constructor. Build the Discretization object with the parameter given.
+     * @param b database to be discretized.
+     * @param cort discretization cuts.
      */
     public Discretizacion(BaseDatos b, Vector cort) {
         bd = b;
@@ -86,14 +89,15 @@ public class Discretizacion {
      */
 
     /**
-     * @return Returns the bd.
+     * @return Returns the database.
      */
     public BaseDatos getBd() {
         return bd;
     }
 
     /**
-     * @param b The bd to set.
+     * Sets the database with the one given.
+     * @param b The given database to set.
      */
     public void setBd(BaseDatos b) {
         bd = b;
@@ -101,7 +105,7 @@ public class Discretizacion {
 
     /**
      * Makes discretization in database
-     * @throws Exception
+     * @throws Exception if it can not be done.
      */
     public void discretiza() throws Exception {
         //Look through every continuous attribute from database
@@ -309,9 +313,9 @@ public class Discretizacion {
     }
 
     /**
-     *
-     * @param cortes2
-     * @param campo
+     * Prints the discretization cuts guven as parameter.
+     * @param cortes2 cuts to print.
+     * @param campo field of the cuts.
      * @throws Exception
      */
     public void imprimeCortes(Vector cortes2, int campo) throws Exception {
@@ -407,8 +411,8 @@ public class Discretizacion {
 
 
     /**
-     * Inicializa los cortes para la discretización
-     * @param i
+     * Initializes the discretization cuts.
+     * @param i attribute index to build its cuts.
      * @throws Exception
      */
     public void inicializaCortesAtributo(int i) throws Exception {
@@ -552,10 +556,10 @@ public class Discretizacion {
 
     /**
      * Calculate the goodness
-     * @param campo
-     * @param vIni
-     * @param vFin
-     * @return b
+     * @param campo field.
+     * @param vIni initial value.
+     * @param vFin final value.
+     * @return  the goodness
      * @throws Exception
      */
     private double bondad(int campo, double vIni, double vFin) throws Exception {
@@ -687,9 +691,9 @@ public class Discretizacion {
     }
 
     /**
-     *
-     * @param campo
-     * @param vIni
+     * Returns the majority class for the interval
+     * @param campo field.
+     * @param vIni initial value.
      * @return the majority class for the interval
      * @throws Exception
      */
@@ -805,10 +809,10 @@ public class Discretizacion {
     }
 
     /**
-     *
-     * @param campo
-     * @param vIni
-     * @param vFin
+     * Returns the majority class for the interval
+     * @param campo attribute field.
+     * @param vIni initial value.
+     * @param vFin final value.
      * @return the majority class for the interval
      * @throws Exception
      */
@@ -1017,11 +1021,11 @@ public class Discretizacion {
 
 
     /**
-     *
-     * @param j
-     * @param j1
-     * @param j2
-     * @param campo
+     * Checks if if intervals Ii=[j, j1] and Ii+1=[j1, j2] are available to join themselves 
+     * @param j first cut.
+     * @param j1 second cut.
+     * @param j2 third cut.
+     * @param campo attribute field.
      * @return true if intervals Ii=[j, j1] and Ii+1=[j1, j2] are available to join themselves and false otherwise
      * @throws Exception
      */
@@ -1061,13 +1065,15 @@ public class Discretizacion {
     }
 
     /**
-     * @param cort The cortes to set.
+     * Sets the cuts with the ones given.
+     * @param cort The cuts to set.
      */
     public void setCortes(Vector cort) {
         cortes = cort;
     }
 
 
+    @Override
     public String toString() {
         String s = "";
         Iterator it = this.getCortes().iterator();
@@ -1090,9 +1096,9 @@ public class Discretizacion {
     }
 
     /**
-     *
-     * @param a
-     * @param b
+     * Sums two number.
+     * @param a first number
+     * @param b second number
      * @return a+b
      */
     public static double suma(double a, double b) { //return a+b
@@ -1105,9 +1111,9 @@ public class Discretizacion {
     }
 
     /**
-     *
-     * @param a
-     * @param b
+     * Substracts b to a.
+     * @param a first number
+     * @param b second number
      * @return a-b
      */
     public static double resta(double a, double b) { //return a-b
@@ -1120,9 +1126,9 @@ public class Discretizacion {
     }
 
     /**
-     *
-     * @param a
-     * @param b
+     * Multiplies two number.
+     * @param a first number
+     * @param b second number
      * @return a*b
      */
     public static double multiplica(double a, double b) { //return a*b
@@ -1135,9 +1141,9 @@ public class Discretizacion {
     }
 
     /**
-     *
-     * @param a
-     * @param b
+     * Divides two number.
+     * @param a first number
+     * @param b second number
      * @return a/b
      */
     public static double divide(double a, double b) { //return a/b
