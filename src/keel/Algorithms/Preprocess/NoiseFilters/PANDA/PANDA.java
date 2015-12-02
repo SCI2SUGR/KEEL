@@ -113,8 +113,10 @@ public class PANDA {
         discretized = new int[Parameters.numInstances][Parameters.numAttributes];
 	}
 	
-	
-	public void run(){
+    /**
+     * Executes the algorithm.
+     */
+    public void run(){
 		
 		int incIntervals = (Parameters.maxIntervals - Parameters.minIntervals) / (Parameters.numExecutions - 1);
 		numErrors = (int)Math.round(Parameters.numInstances*Parameters.estimatedNoiseLevel);

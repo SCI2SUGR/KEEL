@@ -110,11 +110,11 @@ public class Algorithm {
 }
     
     /**
-     * Decide cuando para el aprendizaje de reglas de una clase.
-     * @param regla Regla   regla con la que evaluamos las filas del dataset
-     * @param intances Instances Objeto que contiene las filas del datase
-     * @param clases int El numero dela clase que estamos evaluando
-     * @return boolean Si se cumple la condicion o no
+     * Decides when the rule learning stops for a certain class.
+     * @param regla {@link Regla} rule to evaluate the dataset.  
+     * @param intances {@link Instances} given dataset.
+     * @param clases int the class that is being evaluated.
+     * @return boolean True if the rule generation should stop or false otherwise.
      */
     private boolean Rule_Generation_Stopping_Criterion(Regla regla,Instances instances,int clases){
         
@@ -128,10 +128,9 @@ public class Algorithm {
     }
     
     /**
-     * Elimina del objeto Instances las filas cubiertas por la regla.
-     * Modifica, sin devolver nada, el objeto Intances
-     * @param regla Regla   regla con la que evaluamos las filas del dataset
-     * @param intances Instances Objeto que contiene las filas del datase
+     * Removes the instances covered by the given rule from the given dataset.
+     * @param regla {@link Regla} the rule used to evaluate the datset.
+     * @param intances {@link Instances} given dataset that will be modified.
      */
     private void coveredPositives(Regla regla,Instances instances){
 
@@ -165,10 +164,10 @@ public class Algorithm {
     }
     
     /**
-     * Cuenta el nÃºmero de instancias positivas que hay en el dataset aun.
-     * @param intances Instances Objeto que contiene las filas del datase
-     * @param clases int El numero dela clase que estamos evaluando
-     * @return int numero de instancias positvas en Instances
+     * Counts the number of instances of the given class that are still in the given dataset.
+     * @param intances {@link Instances} given dataset.
+     * @param clases int given class.
+     * @return int number of uncovered instances of the given class
      */
     private Integer positivesInstances(Instances instances,int clases){
         Attribute s[] = Attributes.getOutputAttributes();

@@ -90,6 +90,10 @@ public class GMCAGenerator extends MCAGenerator
             
     }*/
     
+    /**
+     * Initializes the clusters for the given prototype set.
+     * @param T given prototype set.
+     */
     protected void initClusters(PrototypeSet T)
     {
         R = new PrototypeSet();//representatives set
@@ -131,11 +135,23 @@ public class GMCAGenerator extends MCAGenerator
         return foundBetter;
     }
     
+    /**
+     * Computes the distances between the two given prototypes.
+     * @param a first prototype.
+     * @param b second prototype.
+     * @return the distances between the two given prototypes. 
+     */
     protected static double d(Prototype a, Prototype b)
     {
         return Distance.d(a,b);
     }
     
+    /**
+     * Checks if the given cluster is consistent with the modified prototypeset.
+     * @param mix given cluster to check.
+     * @param modified modified prototype set.
+     * @return True if the given cluster is consistent with the modified prototypeset.
+     */
     protected boolean isConsistent(Cluster mix, PrototypeSet modified)
     {
         //Debug.errorln("Entramos en isConsistent");

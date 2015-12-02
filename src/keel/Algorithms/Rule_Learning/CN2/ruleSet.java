@@ -81,9 +81,9 @@ public class ruleSet {
     }
 
     /**
-     * Devuelve una regla de la lista
-     * @param i indice de la regla
-     * @return la regla i-esima
+     * Returns the rule of the list with the given index.
+     * @param i given index.
+     * @return the ith index.
      */
     public Complex getRule(int i) {
         return (Complex) reglas.get(i);

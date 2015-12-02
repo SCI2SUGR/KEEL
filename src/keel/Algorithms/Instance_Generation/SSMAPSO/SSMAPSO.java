@@ -77,14 +77,26 @@ public class SSMAPSO extends Metodo {
   private double Wstart;
   private double Wend;
   
+  /**
+   * Class Number.
+   */
   protected int numberOfClass;
 
+    /**
+     * prototypes number.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
 
+    /**
+     * number of strategies in the pool.
+     */
+    protected int numberOfStrategies;  // number of strategies in the pool
   
-
-  protected int numberOfPrototypes;  // Particle size is the percentage
-  protected int numberOfStrategies; // number of strategies in the pool
-  
+    	/**
+	 * Builder. Creates the basic structures of the algorithm
+	 *
+	 * @param ficheroScript Configuration script
+	 */
   public SSMAPSO (String ficheroScript) {
 	super (ficheroScript);
     
@@ -160,6 +172,12 @@ public class SSMAPSO extends Metodo {
       return dataSet.get(indexNN);
   }
   
+    /**
+     * Computes the accuracy for the given test dataset with the 1NN algorithm.
+     * @param training training dataset for the 1NN.
+     * @param test Test dataset to compute its accuracy.
+     * @return the accuracy for the given test dataset.
+     */
   public double classficationAccuracy1NN(PrototypeSet training, PrototypeSet test)
   {
 	int wellClassificated = 0;
@@ -384,7 +402,10 @@ public class SSMAPSO extends Metodo {
   }
   
   
-  /* MEzcla de algoritmos */
+  /** 
+   * Executes the algorithms combining them.
+   * 
+   */
   public void ejecutar () {
 
     int i, j, l;
@@ -625,6 +646,7 @@ public class SSMAPSO extends Metodo {
          KNN.writeOutput(ficheroSalida[1], realClass, prediction,  entradas, salida, relation);
   }
 
+  @Override
   public void leerConfiguracion (String ficheroScript) {
 
     String fichero, linea, token;

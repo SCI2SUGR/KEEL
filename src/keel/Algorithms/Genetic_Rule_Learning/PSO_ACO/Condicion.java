@@ -30,14 +30,12 @@
 package keel.Algorithms.Genetic_Rule_Learning.PSO_ACO;
 
 /**
- * <p>Título: Hibridación Pso Aco</p>
- * <p>Descripción: Hibridacion entre los dos algoritmos Pso y Aco</p>
- * <p>Copyright: Copyright (c) 2008</p>
- * <p>Empresa: </p>
- * @author Vicente Rubén del Pino
+ * <p>Title: Condicion (Condition)</p>
+ * <p>Description: Contains a value for an attribute and 
+ * an operator (=,>,<) to be assigned to a rule </p>
+ * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class Condicion {
     private Atributo valor; //Valor para un tipo de atributo
     private int operador; //Operador que relaciona ese atributo con la regla
@@ -45,8 +43,8 @@ public class Condicion {
     private static ComparadorCondicion c;
 
 
-    /**
-     * Constructor
+      /**
+     * Default constructor.
      */
     public Condicion() {
         valor = new Atributo();
@@ -55,80 +53,81 @@ public class Condicion {
     }
 
     /**
-     * Constructor
-     * @param at Atributo
-     * @param op Operador
-     */
+   * Parameter constructor. Builds an condition by copying the values of the parameters given. 
+     * @param at attribute to be set.
+     * @param op operator used 0(=), 1(<), 2(>).
+   */
     public Condicion(Atributo at, int op) {
         valor = at;
         operador = op;
         c = new ComparadorCondicion();
     }
 
-    /**
-     * Constructor de copia
-     * @param co Condicion a copiar
-     */
+  /**
+   * Copy Constructor. Creates a new condition object by copying the one given as argument.
+   * 
+   * @param co condition to be copied.
+   */
     public Condicion(Condicion co) {
         valor = co.valor;
         operador = co.operador;
         c = co.c;
     }
 
-    /**
-     * Modulo que inicializa el valor de la condicion
-     * @param at Atributo con el valor
-     */
+  /**
+   * Sets the value for the attribute given.
+   * @param at {@link Atribute} with the value and the attribute to be set.
+   */
     public void setValor(Atributo at) {
         valor = at;
     }
 
-    /**
-     * Modulo que inicializa el valor de la condicion
-     * @param at Valor
-     */
+  /**
+   * Sets the value for the value given.
+   * @param at the given value to be set.
+   */
     public void setValor(float at) {
         valor.setValor(at);
     }
 
 
-    /**
-     * Modulo que inicializa el operador de la condicion
-     * @param op Operador
-     */
+  /**
+   * Sets the operator with the value given. 
+   * @param op given operator operator used 0(=), 1(<), 2(>).
+   */
     public void setOperador(int op) {
         operador = op;
     }
 
-    /**
-     * Funcion que devuelve el valor de la condicion
-     * @return Valor
-     */
+  /**
+   * Returns the value for the attribute of this condition. 
+   * @return the value for the attribute of this condition.  
+   */
     public Atributo getValor() {
         return valor;
     }
 
-    /**
-     * Funcion que devuelve el operador de la condicion
-     * @return Operador de la condicion
-     */
+  /**
+   * Returns the operator of this condition.
+   * @return the operator of this condition.
+   */
     public int getOperador() {
         return operador;
     }
 
-    /**
-     * Funcion que devuelve el indice del atributo de la condicion
-     * @return Indice
-     */
+  /**
+   * Returns the attribute id.
+   * @return the attribute id. 
+   */
     public int getIndice() {
         return valor.getAtributo();
     }
 
-    /**
-     * Funcion que indica si la condicion cubre un atributo o no
-     * @param at Atributo
-     * @return True en caso de que lo cubra, False en caso contrario
-     */
+  /**
+   * Checks if the attribute given is covered by the condition.
+   * @param at given attribute.
+   * @return True if the attribute given is covered by the condition. 
+   */
     public boolean cubre(Atributo at) {
         boolean devolver = false;
         double valor1;
@@ -168,12 +167,13 @@ public class Condicion {
     }
 
 
-    /**
-     * Funcion que indica si la condicion tiene valor
-     * @param indice Posicion de la condicion
-     * @param op Operador
-     * @return True en caso verdader, False en caso contrario
-     */
+  /**
+   * Checks if the pair attribute id and operator given are the one set on this condition.
+   * @param indice given attribute id.
+   * @param op given operator.
+   * @return true if the pair attribute id and operator given are the one set on this condition.
+   * 
+   */
     public boolean tieneValor(int indice, int op) {
         if (operador == op && valor.getAtributo() == indice) {
             return true;
@@ -183,18 +183,18 @@ public class Condicion {
     }
 
 
-    /**
-     * Funcion que devuelve un comparador de condiciones
-     * @return Comparador de condiciones
-     */
+  /**
+   * Returns the Condition comparative method.
+   * @return the Condition comparative method. 
+   */
     public static ComparadorCondicion getComparadorCondiciones() {
         return c;
     }
 
 
     /**
-     * Funcion que suma un valor al valor de la condicion
-     * @param v Valor a sumar a la condicion
+     * Sums the value given to the one stored.
+     * @param v given value.
      */
     public void sumarValor(float v) {
         valor.sumarValor(v);
@@ -202,7 +202,7 @@ public class Condicion {
 
 
     /**
-     * Funcion que imprime la condicion
+     * Prints in the standard output the condition.
      */
     public void imprime() {
         valor.imprime("Condicion: ");

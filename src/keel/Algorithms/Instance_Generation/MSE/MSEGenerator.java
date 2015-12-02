@@ -59,11 +59,7 @@ import java.util.StringTokenizer;
 
 
 /**
- * 
- * @param  numberOfInitialsCentroids
- * @param  k, to use with knn rule in the initialization.
- * @param GradientStep
- * @param Temperature
+ * MSEGenerator
  * @author Isaac Triguero
  * @version 1.0
  */

@@ -56,6 +56,10 @@ import java.util.StringTokenizer;
 import java.util.Arrays;
 import java.util.Vector;
 
+/**
+ * Hybridization of DROP3 with PSO.
+ * @author Salvador García López
+ */
 public class DROP3PSO extends Metodo {
 
   /*Own parameters of the algorithm*/
@@ -75,15 +79,27 @@ public class DROP3PSO extends Metodo {
   private double Wstart;
   private double Wend;
   
+  /**
+   * Class Number.
+   */
   protected int numberOfClass;
 
+    /**
+     * prototypes number.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
 
+    /**
+     * number of strategies in the pool.
+     */
+    protected int numberOfStrategies; // number of strategies in the pool
   
-
-  protected int numberOfPrototypes;  // Particle size is the percentage
-  protected int numberOfStrategies; // number of strategies in the pool
-  
-  public DROP3PSO (String ficheroScript) {
+	/**
+	 * Builder. Creates the basic structures of the algorithm
+	 *
+	 * @param ficheroScript Configuration script
+	 */
+    public DROP3PSO (String ficheroScript) {
 	super (ficheroScript);
     
   }
@@ -158,7 +174,13 @@ public class DROP3PSO extends Metodo {
       return dataSet.get(indexNN);
   }
   
-  public double classficationAccuracy1NN(PrototypeSet training, PrototypeSet test)
+    /**
+     * Computes the accuracy for the given test dataset with the 1NN algorithm.
+     * @param training training dataset for the 1NN.
+     * @param test Test dataset to compute its accuracy.
+     * @return the accuracy for the given test dataset.
+     */
+    public double classficationAccuracy1NN(PrototypeSet training, PrototypeSet test)
   {
 	int wellClassificated = 0;
       for(Prototype p : test)
@@ -380,8 +402,10 @@ public class DROP3PSO extends Metodo {
   }
   
   
-  /* MEzcla de algoritmos */
-  
+  /** 
+   * Executes the algorithms combining them.
+   * 
+   */
   public void ejecutar () {
 
 	    int i, j, l, m, n, o;
@@ -628,6 +652,7 @@ public class DROP3PSO extends Metodo {
 }
 
 
+  @Override
   public void leerConfiguracion (String ficheroScript) {
 
     String fichero, linea, token;

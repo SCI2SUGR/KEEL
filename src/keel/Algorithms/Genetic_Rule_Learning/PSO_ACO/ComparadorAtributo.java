@@ -32,33 +32,31 @@ package keel.Algorithms.Genetic_Rule_Learning.PSO_ACO;
 import java.util.Comparator;
 
 /**
- * <p>Título: Hibridación Pso Aco</p>
- * <p>Descripción: Hibridacion entre los dos algoritmos Pso y Aco</p>
- * <p>Copyright: Copyright (c) 2008</p>
- * <p>Empresa: </p>
- * @author Vicente Rubén del Pino
+ * <p> Title: ComparadorAtributo (Attributes comparative method) </p>
+ * <p> Description: Attributes comparative method.</p>
+ * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class ComparadorAtributo implements Comparator {
 
-    
+    /**
+     * Default constructor.
+     */
     public ComparadorAtributo() {
     }
 
-    /**
-     * Compara dos atributos
-     *
-     * @param o1 Object Atributo a comparar
-     * @param o2 Object Atributo a comparar
-     * @return int Devuelve 0 si tienen la misma posicion, 1 si el primero esta
-     * antes, -1 si el primero esta despues.
-     *
-     * OJO!!!! Como el Collections.sort ordena de mayor a menor y el orden que interesa
-     * que tengan los atributos es de menor a mayor, este CompareTo esta trucado al reves
-     * es decir cuando es menor devuelve mayor y cuando es mayor devuelve menor.
-     *
-     */
+  /**
+   * Compares two attributes
+   *
+   * @param o1 Object Attribute to compare
+   * @param o2 Object Attribute to compare
+   * @return int 0 if both have the same position, 1 if first element comes before, -1 if the first element comes after.
+   *
+   * Warning!!! Collections.sort sorts in descending order (from greater to lesser).
+   * This method sorts the elements in increasing (from lesser to greater), 
+   * the way needed for attributes.
+   * 
+   */
     public int compare(Object o1, Object o2) {
         Atributo original = (Atributo) o1;
         Atributo actual = (Atributo) o2;

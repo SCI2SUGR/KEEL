@@ -119,7 +119,7 @@ public class Organizacion {
   }
 
   /**
-   * Calcula el conjunto de atributos fijos
+   * Computes the fixed attributes set.
    */
   public void determinaForg(){
     double [] example = train.getExample(miembros[0]);
@@ -158,8 +158,8 @@ public class Organizacion {
   }
 
   /**
-   * Seleccionar N ejemplos de las clases contrarias y ver la combinacion de atributos/valores está en dichos ejemplos
-   * @param N int Numero de ejemplos a comprobar
+   * Selectes N examples with opposing classes and checks the combination of their attributes/values
+   * @param N number of examples to check.
    */
   public void actualizarUorg(int N){
     if (nUtiles > 0){
@@ -262,9 +262,9 @@ public class Organizacion {
   }
 
   /**
-   * Comprueba si una organizacion esta contenida en otra
-   * @param org Organizacion la organizacion a comparar
-   * @return boolean si esta organizacion esta contenida en el parametro.
+   * Checks if one organization contains the other.
+   * @param org given organization to compare with.
+   * @return True if this organization is contained by the given one. 
    */
   public boolean contenido(Organizacion org){
     boolean respuesta = true; //estoy contenido en org

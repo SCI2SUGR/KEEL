@@ -407,16 +407,16 @@ public class Complex implements Comparable {
 
 
     /**
-     * Devuelve el valor heurístico del Complex
-     * @return double idem
+     * Returns the heuristic value of the Complex.
+     * @return double  the heuristic value of the Complex.
      */
     public double getHeuristic() {
         return heuristic;
     }
 
     /**
-     * Asigna un valor heuristico (Wracc) al Complex
-     * @param heu double el valor heuristico
+     * Sets the heuristic value (Wracc) of this Complex object.
+     * @param heu double given value to be set.
      */
     public void setHeuristic(double heu) {
         heuristic = heu;

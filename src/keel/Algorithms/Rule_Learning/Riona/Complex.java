@@ -157,10 +157,9 @@ public class Complex implements Comparable {
     
     /**
      * <p>
-     * Borra los selectores de la lista de selectores que tengan como atributo el pasado
-     * como argumento
+     * Removes the selectors that have the attribute given as argument from the proper list
      * </p>
-     * @param attribute el atributo
+     * @param attribute given attribute.
      */
     public void removeSelectorAttribute(int attribute) {
     	Selector s;

@@ -108,7 +108,12 @@ public class ApproximateSets implements Serializable {
 
 	}
 
-	/** Funcion para la comparacion de los rasgos */
+	/**
+         * Compares the features between the instance given and the one with the index given. 
+     * @param arr1 given instance.
+     * @param indice given index of an instance of this set.
+     * @return Summation obtained by comparing the features.
+         */
 	public double CompRasgos(Instance arr1, int indice) {
 		double sumatoria = 0;
 		double s, resultado = 0;
@@ -152,7 +157,12 @@ public class ApproximateSets implements Serializable {
 
 	}
 
-	/** Similaridad */
+	/** Computes the similarity between this set and the one given.
+     * @param m given set.
+     * @param signo sign flag.
+     * @param valor value determined by the sign flag
+     * @return similarity matrix.
+         */
 	public int[][] RelSimil(double[][] m, int signo, double valor) {
 		int i, j, k;
 		int[][] similaridad = new int[0][0];

@@ -591,7 +591,7 @@ public class PSCSAGenerator extends PrototypeGenerator {
 	  return salida;
   }
   
-  /*
+  /**
    * Update of immne Memory
    */
   

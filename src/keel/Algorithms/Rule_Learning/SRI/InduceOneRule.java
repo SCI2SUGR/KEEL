@@ -41,22 +41,23 @@ import keel.Dataset.Attributes;
 /**
  * <p>Title: Induce One Rule</p>
  *
- * <p>Description: Tiene como objetivo encontrar la mejor regla para un ejemplo del dataset dado</p>
+ * <p>Description: This class finds the best rule posible for an example of the given dataset. </p>
  *
  * <p>Company: KEEL</p>
  *
- * @author Ismael Duque GarcÃ­a
+ * @author Ismael Duque García
  * @version 1.0
  */
-
 public class InduceOneRule {
     
     /**
-     * Devuelve una la mejor regla generada en cada llamada a esta funcion
-     * @param instances Instances Tabla con los datos de entrenamiento
-     * @param clases int Valor de salida a analizar, posicion de la lista de valores de salida
-     * @param w int, valor definido manualmente para tener en cuenta en la reduccion de reglas
-     * @return Regla mejor regla generada
+     * Returns the best rule posible for an example of the given dataset. 
+     * @param instances given training dataset
+     * @param clases number of classes.
+     * @param w rules reduction parameter.
+     * @param min_positives minimum number of positives.
+     * @param min_negatives minimum number of negatives.
+     * @return the best rule posible for an example of the given dataset.
      */
     public static Regla induce_One_Rule(Instances instances,int clases , int w, int min_positives, int min_negatives){
         

@@ -40,13 +40,12 @@ import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 
 /**
- * <p>Title: Clase Base de Reglas</p>
+ * <p>Title: BaseReglas (Rule base)</p>
  *
- * <p>Description: Encargada de comprobar el fichero de test con las reglas suministras y mostrarlas</p>
+ * <p>Description: Stores the rules and checks the test file to evaluates them </p>
+
  *
- * <p>Company: KEEL</p>
- *
- * @author Ismael Duque GarcÃ­a
+ * @author Ismael Duque García
  * @version 1.0
  */
 
@@ -55,11 +54,15 @@ public class BaseReglas {
     private LinkedList<String> base_de_reglas_salida = new LinkedList<String> ();
     private LinkedList<TreeMap<Integer,Double>> base_de_reglas = new LinkedList<TreeMap<Integer,Double>>();
     
+    /**
+     * Default constructor.
+     */
     public BaseReglas(){}
     
     /**
-     * Convierte una lista de reglas en el formato utilizado por BaseReglas
-     * @param regla LinkedList<Regla> contiene la reglas que queremos guardar en BaseReglas
+     * Parameter constructor. 
+     * Creates a rulebase by adding the given list of rules.
+     * @param regla LinkedList given rules list.
      */
     public BaseReglas(LinkedList<Regla> regla){
        
@@ -75,9 +78,9 @@ public class BaseReglas {
     }
     
     /**
-     * Para cada fila del dataset dado para testear el algoritmo, utiliza una de la reglas generadas.
-     * @param test myDataset datase para testear las reglas
-     * @return LinkedList<String> vector con los valores de salida de las filas del dataset
+     * Evaluates the test dataset given using the rules stored.
+     * @param test myDataset dataset classify.
+     * @return LinkedList<String> predicted classes for each instance of the given dataset.
      */
     public LinkedList<String> compruebaReglas(myDataset test){
         
@@ -125,7 +128,7 @@ public class BaseReglas {
     }
     
     /**
-     * Muestra por pantalla la regla
+     * Prints on the standard output the stored rules.
      */
     public void mostrarReglas(){
         
@@ -153,8 +156,8 @@ public class BaseReglas {
     
     
     /**
-     * Genera un fichero con la reglas generada, asÃ­ como unos datos estadÃ­sticos.
-     * @param ficheroReglas String nombre del fichero a generar
+     * Generates a file with the stored rules and their statistics.
+     * @param ficheroReglas String filename to be generated.
      */
     public void ficheroReglas(String ficheroReglas){
         

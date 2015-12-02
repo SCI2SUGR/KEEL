@@ -32,28 +32,29 @@ package keel.Algorithms.Genetic_Rule_Learning.PSO_ACO;
 import java.util.Comparator;
 
 /**
- * <p>Título: Hibridación Pso Aco</p>
- * <p>Descripción: Hibridacion entre los dos algoritmos Pso y Aco</p>
- * <p>Copyright: Copyright (c) 2008</p>
- * <p>Empresa: </p>
- * @author Vicente Rubén del Pino
+ * <p>Title: Rules comparative method.</p>
+ * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class ComparadorRegla implements Comparator {
+    
+    /**
+     * Default constructor.
+     */
     public ComparadorRegla() {
     }
 
-    /**
-     * Compara dos reglas
-     *
-     * @param o1 Object Regla a comparar
-     * @param o2 Object Regla a comparar
-     * @return int Devuelve 0 si tienen la misma posicion, 1 si el primero esta
-     * antes, -1 si el primero esta despues.
-     *
-     *
-     */
+  /**
+   * Compares two rules.
+   *
+   * @param o1 Object Attribute to compare
+   * @param o2 Object Attribute to compare
+   * @return int 0 if both have the same position, 1 if first element comes before, -1 if the first element comes after.
+   *
+   * Warning!!! Collections.sort sorts in descending order (from greater to lesser).
+   * This method sorts the elements in increasing (from lesser to greater), 
+   * the way needed for rules.
+   */
     public int compare(Object o1, Object o2) {
         float calidad1;
         float calidad2;

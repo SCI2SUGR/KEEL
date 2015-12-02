@@ -39,14 +39,16 @@ import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 
 /**
- * <p>Title: Clase Regla</p>
+ * <p>Title: Regla (Rule). </p>
  *
- * <p>Description: Se encarga de manejar los objeto Regla, que contienes antecedentes, consecuentes y lista </p>
- * <p>de atribtutos invalidos</p>
+ * <p>Description: 
+ * This class implements a rule object for this rule learning algorithm.
+ * This class stores the antecedents, consequents and the list of invalid attributes. </p>
+
  *
  * <p>Company: KEEL</p>
  *
- * @author Ismael Duque GarcÃ­a
+ * @author Ismael Duque García
  * @version 1.0
  */
 
@@ -60,9 +62,9 @@ public class Regla {
     private LinkedList<LinkedList<Double>> valoresinvalidos = new LinkedList <LinkedList<Double>> ();
     
     /**
-     * Constructor de Regla
-     * @param c String consecuente de la reglas
-     * @param numAtributos int numero de atributos que hay en el dataset
+     * Parameter constructor. Builds a rule with the parameters given.
+     * @param c String rule consequent
+     * @param numAtributos int number of attributes of the dataset.
      */
     public Regla(String c,int numAtributos){
         antecedentes = new LinkedList <Atributo_valor> ();
@@ -73,10 +75,11 @@ public class Regla {
         }
     }
   
-    /**
-     * Contructor copia de Regla
-     * @param r Regla regla desde la que se copia
-     */
+  /**
+   * Copy Constructor. Creates a new rule object by copying the one given as argument.
+   * 
+   * @param r rule to be copied.
+   */
     public Regla(Regla r){
         antecedentes = (LinkedList) r.getAntecedente().clone();
         consecuente = r.getConsecuente();
@@ -85,65 +88,66 @@ public class Regla {
     }
     
     /**
-     * Devuelve la lista de antecedentes de la regla.
-     * @return LinkedList<Atributo_valor> lista de antecedentes
+     * Returns the list with the antecedents of the rule.
+     * @return the list with the antecedents of the rule.
      */
     public LinkedList<Atributo_valor> getAntecedente(){ return antecedentes;}
     
     /**
-     * Devuelve la lista de valores invalidos de la regla
-     * @return LinkedList<LinkedList<Double>> lista de valores invalidos
+     * Returns the list with the invalid values for the rule.
+     * @return the list with the invalid values for the rule.
      */
     public LinkedList<LinkedList<Double>> getValoresInvalidos(){ return valoresinvalidos;}
    
     /**
-     * Devuelve el consecuente de la regla
-     * @return String consecuente
+     * Returns the consequent of the rule.
+     * @return String the consequent of the rule.
      */
     public String getConsecuente(){ return consecuente;}
     
     /**
-     * Devuelve el tamaÃ±o de la lista de antecedentes
-     * @return int tamaÃ±o de la lista de antecedentes
+     * Returns the size of the antecedents list.
+     * @return the size of the antecedents list.
      */
     public int getSizeAntecedentes(){ return antecedentes.size();}
     
     /**
-     * Devuelve la consistencia de la regla
-     * @return boolean consistencia de la regla
+     * Return the consistency of the rule.
+     * @return boolean the consistency of the rule.
      */
     public boolean getConsistencia() { return consistencia; }
     
     /**
-     * Devuelve verdadero o falso dependiendo de si un atributo  y su valor
-     * estÃ¡n en la lista de valores invalidos
-     * @param Atributo Integer Entero que representa el atributo
-     * @param valor Double Doble que representa el valor del atributo
-     * @return boolean Si la condicion es verdadera o falsa
+     * Checks if the given attribute and its value is invalid for this rule.
+     * The attribute and the value are in the invalid values list.
+     * @param Atributo Integer given attribute.
+     * @param valor Double given value.
+     * @return boolean true if the given attribute and its value is invalid, false otherwise.
      */
     public boolean contenidoValoreInval(Integer Atributo,Double valor){ 
         return valoresinvalidos.get(Atributo).contains((Double) valor);
     }
     
     /**
-     * Devuelve el Atributo_valor deseado de la lista de antecedentes
-     * @return Atributo_valor 
+     * Returns the pair attribute - values asked from the antecedents list.
+     * @param i index of the antecedent asked.
+     * @return the pair attribute - values asked from the antecedents list.
      */
     public Atributo_valor getAV(int i){
         return antecedentes.get(i);
     }
     
     /**
-     * Devuelve el Ãºltimo Atributo_valor aÃ±adido de la lista de antecedentes
-     * @return Atributo_valor 
+     * Returns the last pair attribute - values from the antecedents list.
+     * @return the last antecedent.
      */
     public Atributo_valor getLastAV(){
         return antecedentes.getLast();
     }
     
     /**
-     * AÃ±ade un Atributo_valor a la lista de antecedentes
-     * @param av Atributo_valor Objeto a aÃ±adir a la lista 
+     * Adds the given antecent to the list of the rule. (pair attribute - values)
+     * @param av {@link Atributo_valor} antecedent to be added.
      */
     public void addAntecedente(Atributo_valor av){
         antecedentes.add(av);
@@ -169,11 +173,11 @@ public class Regla {
             valoresinvalidos.get(i).remove(vinv);
     }
     
-    /**
-     * Compara dos reglas
-     * @param rule Regla regla con la que se compara
-     * @return boolea Verdadero si es igual, Falso si es diferente 
-     */
+  /**
+   * Checks if the rule is equal to the given one.
+   * @param rule Rule to compare with.
+   * @return True if the rules are equal.
+   */
     public boolean equals(Regla rule){
         boolean igual = true;
         //si tiene el mismo tamaÃ±o en los antecedentes
@@ -190,8 +194,8 @@ public class Regla {
     }
     
     /**
-     * Devuelve el padre de la regla, su antecesor de esta
-     * @return Regla La regla sin el ultimo valor aÃ±adido 
+     * Returns the father of this rule, its ancestor.
+     * @return {@link Regla} the rule without the last antecedent added. 
      */
     public Regla parentRule(){
         //generamos la nueva regla, padre de la actual
@@ -205,7 +209,7 @@ public class Regla {
     }
     
     /**
-     * Muestra por pantalla la regla actual 
+     * Prints on the standard output the rule information.
      */
     public void mostrarRegla(){
         
@@ -229,9 +233,9 @@ public class Regla {
     }
     
      /**
-     * Calcula y devuelve la puntuacion de una regla, mediante la m-probability-estimate
-     * @param train myDataset Contiene todas la filas del dataset de entrenamiento
-     * @return Double Valor de la m-probability-estimate de la regla
+      * Computes the quality of the rule with the m-probability-estimation.
+     * @param train myDataset training dataset.
+     * @return Double the m-probability-estimation of the rule.
      */
     public Double score(myDataset train){
         

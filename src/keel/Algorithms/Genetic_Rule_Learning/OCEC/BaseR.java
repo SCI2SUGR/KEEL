@@ -75,14 +75,14 @@ public class BaseR {
   }
 
   /**
-   * Ordena las reglas segun su "relative support"
+   * Sorts the rules following their relative supports.
    */
   public void ordenar() {
     Collections.sort(baseReglas);
   }
 
   /**
-   * Elimina aquellas reglas cuyos ejemplos ya esten cubiertos por otras de mas nivel (rs)
+   *  Removes those rules whose examples have been already covered by other with a higher level (relative support).
    */
   public void eliminarSubsumidas() {
     boolean[] ejemplos = new boolean[train.size()];

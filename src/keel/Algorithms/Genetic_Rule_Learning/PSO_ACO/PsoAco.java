@@ -34,16 +34,13 @@ import org.core.*;
 import java.io.*;
 import keel.Dataset.*;
 
-
 /**
- * <p>Título: Hibridación Pso Aco</p>
- * <p>Descripción: Hibridacion entre los dos algoritmos Pso y Aco</p>
- * <p>Copyright: Copyright (c) 2008</p>
- * <p>Empresa: </p>
- * @author Vicente Rubén del Pino
+ * <p>Title: PsoAco (Particle Swarm Optimization and Ant Colony Optimization) </p>
+ * <p>Description: Hybridization of the PSO and ACO algorithms
+ * to conform a rules based classification algorithm. </p>
+ * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class PsoAco {
     private Vector particulas; //Vector con las particulas de la poblacion
     private ConjuntoDatos cTrain; // Muestras del fichero de entrenamiento preprocesado
@@ -84,29 +81,32 @@ public class PsoAco {
     private float porcentajeTrain, porcentajeTest;
     private int bandera;
 
-    
+  /**
+   * Default constructor. Nothing is done.
+   */
     public PsoAco() {
     }
 
-    /**
-     * Constructor de la clase PSOACO
-     * @param fTrainPrep Fichero de entrenamiento Preprocesado
-     * @param fTrain Fichero de entrenamiento
-     * @param fTestOriginal Fichero de Test
-     * @param fSalidaTrain Fichero de salida de Train
-     * @param fSalidaTest Fichero de salida de Test
-     * @param fSalidaResult Fichero de salida de Resultados
-     * @param semillaOriginal Semilla
-     * @param maxCasosSinCubrirO Maximo de casos sin cubrir permitidos
-     * @param numParticulasO Numero de particulas
-     * @param tamEntornoO Tamaño del entorno
-     * @param maxIteracionesO Maximo de iteraciones que se pueden dar
-     * @param minimoCasosCubiertosO Minimo casos cubiertos por una regla
+      /**
+   * Parameter constructor. Build the algorithm object with the parameter given.
+   *
+   * @param fTrainPrep String Preprocessed Training filename.
+   * @param fTrain String Full training filename.
+   * @param fTestOriginal String Test filename.
+   * @param fSalidaTrain String Training output filename.
+   * @param fSalidaTest String Test output filename.
+   * @param fSalidaResult String Global results filename.
+     * @param maxCasosSinCubrirO maximum number of uncovered examples allowed.
+     * @param numParticulasO Number of particles considered.
+     * @param tamEntornoO Environment size.
+     * @param maxIteracionesO Maximum iterations.
+     * @param minimoCasosCubiertosO  Minimum number of cases that a rule must cover.
      * @param xO X
-     * @param c1O Coeficiente c1
-     * @param c2O Coeficiente c2
-     * @param banderaO Flag para eleccion de tipo de condiciones
-     */
+     * @param c1O Coefficient c1.
+     * @param c2O Coefficient cw.
+     * @param banderaO flag for the election of the condition type.
+   * @param semillaOriginal long Seed for the random numbers generator.
+   */
     public PsoAco(String fTrainPrep, String fTrain, String fTestOriginal,
                   String fSalidaTrain,
                   String fSalidaTest, String fSalidaResult,
@@ -151,10 +151,11 @@ public class PsoAco {
 
     }
 
-    /**
-     * Modulo que extrae los datos de los tres ficheros (train, train entero y test) y
-     * los inserta en conjunto de datos con un formato conocido por el algoritmo
-     */
+  /**
+   * 
+   * Extracts the dataset from the training, full-training and test files into
+   * the algorithm structures {@link ConjuntoDatos}.
+   */
     private void extraeDatos() {
 
         myDataset dTrain = new myDataset();
@@ -183,9 +184,11 @@ public class PsoAco {
 
     }
 
-    /**
-     * Modulo que Crea las estructuras de datos internas con las diferentes condiciones
-     */
+  /**
+   * Creates the arrays and lists of data needed for the well functioning of the algorithm:
+   * - The list with the different values each attribute can take
+   * - The list with the different values of the output class.
+   */
     private void creaDatos() {
 
         Attribute[] listaAtributos;
@@ -379,11 +382,12 @@ public class PsoAco {
 
     }
 
-    /**
-     * Funcion que extrae las muestras de un fichero y las devuelve en un ConjuntoDatos
-     * @param original myDataset de donde se extraeran los datos
-     * @return Conjunto con los datos ya adaptados al formato interno
-     */
+  /**
+   * Extracts the data from the given dataset into an algorithm structure {@link ConjuntoDatos}.
+   * 
+   * @param original myDataset dataset to extract the data. 
+   * @return {@link ConjuntoDatos} dataset structure used by the PSOACO algorithm. 
+   */
     private ConjuntoDatos extraeMuestras(myDataset original) {
         double[][] X;
         int[] C;
@@ -428,10 +432,9 @@ public class PsoAco {
     }
 
     /**
-     * Funcion que elige la clase para la que se construira la regla
-     * @return Clase para la regla a construir
+     * Selects the representative class in order to build a rule.
+     * @return Class of the rule to be built.
      */
-
     private Atributo elegirClaseAsignar() {
         double probabilidadAcumulada = 0;
         double probabilidadEscoger;
@@ -453,9 +456,10 @@ public class PsoAco {
 
 
     /**
-     * Funcion que escoge por ruleta la condicion para la posicion
-     * @param index Posicion para la cual se escoge la condicion
-     * @return Condicion para la posicion
+     * Selects a condition with the roulette method to be used by the position 
+     * with the given index.
+     * @param index given position index.
+     * @return selected condition
      */
     private Condicion escogeRuletaCondicion(int index) {
         Vector condiciones = (Vector) listaCondicionesNominales.get(index);
@@ -481,11 +485,11 @@ public class PsoAco {
         return devolver;
 
     }
-
+    
     /**
-     * Modulo que inicializa la posicion de una particula
-     * @param pos Posicion de la particula
-     * @param clase Clase para la que se esta construyendo la regla
+     * Initializes a position of a particle.
+     * @param pos position of the particle to get initialized.
+     * @param clase class which the rule(position) is built for.
      */
     private void inicializaPosicion(Vector pos, Atributo clase) {
 
@@ -503,9 +507,9 @@ public class PsoAco {
     }
 
     /**
-     * Funcion que calcula la calidad de un regla
-     * @param regla Regla para la cual se calculara la calidad
-     * @return Calidad de la regla
+     * Computes the quality of the given rule.
+     * @param regla given rule.
+     * @return the quality of the given rule.
      */
     private float calculaCalidad(Regla regla) {
         float calidad = 0;
@@ -549,12 +553,12 @@ public class PsoAco {
 
     }
 
-
-    /**
-     * Modulo que poda una regla
-     * @param regla Regla que se va a podar
-     * @param clase Clase que se predice en la regla
-     */
+    
+   /**
+   * Prunes the rule given as paramenter.
+   * @param regla {@link Regla} Rule to be pruned.
+   * @param clase class predited by the rule.
+   */
     private void podaRegla(Vector regla, Atributo clase) {
 
         float confidenciaSubRegla;
@@ -605,11 +609,11 @@ public class PsoAco {
 
     }
 
-    /**
-     * Modulo que poda un regla con condiciones de intervalos continuos
-     * @param regla Regla que se va a podar
-     * @param clase Clase para la cula se creo la regla
-     */
+   /**
+   * Prunes the continuous rule given as paramenter.
+   * @param regla {@link Regla} Rule to be pruned.
+   * @param clase class predited by the rule.
+   */
     private void podaReglaContinua(Vector regla, Atributo clase) {
 
         float confidenciaSubRegla;
@@ -669,12 +673,12 @@ public class PsoAco {
     }
 
 
-    /**
-     * Funcion que calcula la confidencia de unas condiciones para una clase predefinida
-     * @param condiciones Condiciones
-     * @param clase Clase
-     * @return Confidencia calculada
-     */
+  /**
+   * Computes the confidence of the given ant/rule with the training set.
+   * @param condiciones Conditions to compute its confidence.
+   * @param clase class predicted by the conditions.
+   * @return Confidence of the given ant/rule
+   */
     private float calculaConfidencia(Vector condiciones, Atributo clase) {
         float calidad = 0;
         boolean cubierta = false;
@@ -704,9 +708,9 @@ public class PsoAco {
     }
 
     /**
-     * Funcion que ejecuta la hibridacion del PSo con ACO
-     * @param particulas Vector con las particulas
-     * @return Vector con las particulas colocadas en el espacio
+     * Executes the hybridization of the PSO with the ACO.
+     * @param particulas particles vector.
+     * @return vector with the particules localized on the search space.
      */
     private Vector PSOACO(Vector particulas) {
         System.out.println("Executing PSO-ACO");
@@ -794,9 +798,9 @@ public class PsoAco {
     }
 
     /**
-     * Funcion que genera una posicion con condiciones continuas para una particula
-     * @param clase Clase para la que se genera la regla
-     * @return Vector con las condiciones que establecen la posicion de la particula
+     * Generates a position for the continuous conditions for a particle.
+     * @param clase Class of the rule to be built.
+     * @return vector with the conditions that represent the position of a particle.
      */
     private Vector generaPosicionContinua(Atributo clase) {
         Condicion coMax;
@@ -857,9 +861,9 @@ public class PsoAco {
     }
 
     /**
-     * Funcion que ejecuta el PSO
-     * @param particulas Particulas sobre las que se ejecuta el PSO
-     * @return Particulas colocadas en el espacio
+     * Executes the PSO algorithm
+     * @param particulas particles to execute it with.
+     * @return Final particles with the solutions.
      */
     private Vector psoNormal(Vector particulas) {
         int numParticulas = particulas.size();
@@ -932,10 +936,10 @@ public class PsoAco {
         return particulas;
     }
 
-    /**
-     * Modulo que calcula las heuristicas de las condiciones
-     * @param clase Clase para las que se genera la regla
-     */
+  /**
+   * Computes the heuristic values of the conditions following the given class.
+   * @param clase given class for all the conditions.
+   */
     private void calculaHeuristicasCondiciones(Atributo clase) {
         //Heuristicas de todas las condiciones
         Condicion co;
@@ -957,10 +961,11 @@ public class PsoAco {
         }
     }
 
-    /**
-     * Funcion que crea la regla generica
-     * @return Regla generica creada
-     */
+  /**
+   * Creates a default rule en case that any of the generated ones by the
+   * algorithm can be applied.
+   * @return {@link Regla} a default rule: assign the same class to every example.
+   */
     public Regla creaReglaGenerica() {
         Regla devolver;
         int mayor = cTrain.obtenerMayorClase(listaClases);
@@ -971,10 +976,10 @@ public class PsoAco {
     }
 
 
-    /**
-     * Modulo que poda la particula Actual
-     * @param p Particula a podar
-     */
+  /**
+   * Prunes the actual position of the particle given as paramenter.
+   * @param p {@link Particula} particle to be pruned.
+   */
     private void podaParticulaActual(Particula p) {
 
         Regla condiciones = p.getPosActual();
@@ -993,10 +998,10 @@ public class PsoAco {
 
     }
 
-    /**
-     * Modulo que poda la mejor posicion de la particula
-     * @param p Particula
-     */
+  /**
+   * Prunes the best position of the particle given as paramenter.
+   * @param p {@link Particula} particle to be pruned.
+   */
     private void podaParticulaPasada(Particula p) {
 
         Regla condiciones = p.getMejorPosicion();
@@ -1016,9 +1021,8 @@ public class PsoAco {
     }
 
     /**
-     * Modulo que ejecuta el algoritmo
+     * Executes the algorithm.
      */
-
     public void run() {
 
         int iteraciones = 0;
@@ -1082,11 +1086,11 @@ public class PsoAco {
 
     }
 
-    /**
-     * Modulo que imprime las reglas descubiertas
-     * @param reglas Reglas descubiertas
-     */
-
+  /**
+   * Prints, on the standard output and the global results file, the extracted rules 
+   * and their accuracy.
+   * @param reglas given extracted rules.
+   */
     private void imprimeReglasDescubiertas(Vector reglas) {
         Regla regla;
         float accuracyTrain;
@@ -1184,8 +1188,8 @@ public class PsoAco {
     }
 
     /**
-     * Modulo que imprime un vector de condiciones
-     * @param total Vector con condiciones para imprimir
+     * Prints a conditions vector on the standard output.
+     * @param total conditions vector to be printed.
      */
     private void imprimeVector(Vector total) {
         Vector condiciones;
@@ -1203,8 +1207,8 @@ public class PsoAco {
 
 
     /**
-     * Modulo que saca los resultados de la evaluacion de las reglas sobre los ficheros
-     * @param reglasDescubiertas Vector con las reglas descubiertas
+     * Prints all the results on the output results files.
+     * @param reglasDescubiertas extracted rules vector.
      */
     public void sacaResultadosAFicheros(Vector reglasDescubiertas) {
         File fichero;

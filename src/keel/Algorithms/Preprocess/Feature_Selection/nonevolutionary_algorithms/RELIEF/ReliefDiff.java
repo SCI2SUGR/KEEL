@@ -264,14 +264,14 @@ public class ReliefDiff {
         
     }
            
-    
-    private void relief(){
-	/**
+    	/**
        * <p>
        * main method of ReliefDiff. Selects a random instance, calculates its hit nearest neighbour (with the same class) and its miss nearest neighbour (different class)
        * Later, calculates the differences between the random instance and the others. Finally, gets the more relevants features (that satisfy the relevance threshold)
        * </p>
        */
+    private void relief(){
+
 
         boolean featuresVector[];
         double w[];

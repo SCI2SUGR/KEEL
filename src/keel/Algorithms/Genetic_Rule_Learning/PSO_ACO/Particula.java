@@ -33,14 +33,15 @@ import java.util.*;
 import org.core.*;
 
 /**
- * <p>Título: Hibridación Pso Aco</p>
- * <p>Descripción: Hibridacion entre los dos algoritmos Pso y Aco</p>
- * <p>Copyright: Copyright (c) 2008</p>
- * <p>Empresa: </p>
- * @author Vicente Rubén del Pino
+ * <p>Title: Particula (Particle)</p>
+ * <p>Description: Particle class:
+ *    Implements the particles needed on the Particle Swarm Optimization algorithm (PSO).
+ *    This class stores the position and velocity of a standard particle of this algorithm,
+ *    also manage those variables by progressing through time, but also stores and manages information used
+ *    by the ACO algorithm like the pheromone matrix. This allows to hybridize these tow algorithms.
+ * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class Particula {
     //Velocidad
     float[] velocidad;
@@ -54,9 +55,9 @@ public class Particula {
     private static ComparadorParticulas c;
 
 
-    /**
-     * Constructor
-     */
+  /**
+   *  Default constructor. An empty particle is built.
+   */
     public Particula() {
         posicion = new Regla();
         mPosicion = new Regla();
@@ -64,11 +65,12 @@ public class Particula {
 
     }
 
-    /**
-     * Constructor
-     * @param numCondiciones Numero de condiciones continuas de la regla
+  /**
+     *  Paramater Constructor.
+     *  Creates an particle with the number of taken condictions given.
+     *
+     * @param numCondiciones number of continuous conditions given.
      */
-
     public Particula(int numCondiciones) {
         posicion = new Regla();
         mPosicion = new Regla();
@@ -77,60 +79,58 @@ public class Particula {
     }
 
     /**
-     * Modulo que reserva la memoria para el vector de velocidad de la regla
-     * @param numCondiciones Numero de condiciones continuas de la regla
+     * Reserves memory enough to manage the particle velocity. 
+     * The velocity vector will be as bigger as the number of conditions taken by the rule.
+     * @param numCondiciones number of conditions taken by the rule.
      */
     public void reservaVelocidad(int numCondiciones) {
         velocidad = new float[numCondiciones];
     }
 
-    /**
-     * Funcion que devuelve un comparador de Particulas
-     * @return Comparador de Particulas
-     */
+  /**
+   * Returns the Particles comparative method.
+   * @return the Particles comparative method. 
+   */
     public ComparadorParticulas getComparadorParticulas() {
         return c;
     }
 
     /**
-     * Modulo que inicializa la posicion de la particula con el vector de condiciones que se le pasa
-     * @param pos Vector con las condiciones de la regla.
+     * Initializes the actual continuous particle position with the given conditions vector
+     * @param pos given conditions vector.
      */
     public void inicializaPosicionActualContinua(Vector pos) {
         posicion.insertaCondicionesContinuos(pos);
     }
-
+    
     /**
-     * Modulo que inicializa la posicion de la particula con el vector de condiciones que se le pasa
-     * @param pos Vector con las condiciones de la regla.
+     * Initializes the actual nominal particle position with the given conditions vector
+     * @param pos given conditions vector.
      */
-
     public void inicializaPosicionActualNominal(Vector pos) {
         posicion.insertaCondicionesNominales(pos);
     }
 
     /**
-     * Modulo que inicializa la posicion de la particula con el vector de condiciones que se le pasa
-     * @param pos Vector con las condiciones de la regla.
+     * Initializes the best continuous particle position with the given conditions vector
+     * @param pos given conditions vector.
      */
-
     public void inicializaMejorPosicionContinua(Vector pos) {
         mPosicion.insertaCondicionesContinuos(pos);
     }
 
     /**
-     * Modulo que inicializa la posicion de la particula con el vector de condiciones que se le pasa
-     * @param pos Vector con las condiciones de la regla.
+     * Initializes the best nominal particle position with the given conditions vector
+     * @param pos given conditions vector.
      */
-
     public void inicializaMejorPosicionNominal(Vector pos) {
         mPosicion.insertaCondicionesNominales(pos);
     }
 
     /**
-     * Modulo que inicializa el valor de la velocidad
-     * @param numCondiciones Numero de condiciones continuas de la regla
-     * @param valorInicial Valor inicial para la velocidad
+     * Initializes the particle velocity with the given value for all the conditions considered.
+     * @param numCondiciones number of continuous conditions considered.
+     * @param valorInicial initial velocity value.
      */
     public void inicializaVelocidad(int numCondiciones, float valorInicial) {
         for (int i = 0; i < numCondiciones; i++) {
@@ -139,9 +139,9 @@ public class Particula {
     }
 
 
-    /**
-     * Modulo que inicializa la feromona para las condiciones
-     * @param listaCondiciones lista de las condiciones para calcular la feromona
+     /**
+     * Initializes the particle pheromone values for the given list of conditions.
+     * @param listaCondiciones conditions to computes their pheromone values.
      */
     public void inicializaFeromona(Vector listaCondiciones) {
         int numCondiciones = listaCondiciones.size();
@@ -167,97 +167,92 @@ public class Particula {
 
 
     /**
-     * Modulo que asigna una clase a la posicion actual de la particula
-     * @param clase Clase a asignar a la posicion
+     * Assigns the class for the actual position of the particle.
+     * @param clase class to be assgined.
      */
     public void asignarClasePosicionActual(Atributo clase) {
         posicion.insertarClase(clase);
     }
 
     /**
-     * Modulo que asigna una clase a la mejor posicion de la particula
-     * @param clase Clase a asignar a la posicion
+     * Assigns the class to the best position of the particle.
+     * @param clase class to be assigned.
      */
     public void asignarClasePosicionMejor(Atributo clase) {
         mPosicion.insertarClase(clase);
     }
-
-    /**
-     * Modulo que asigna una condicion a la mejor posicion de la regla
-     * @param condicion Condicion asignar a la regla
+    
+     /**
+     * Assigns the given nominal condition to the best position of the particle.
+     * @param condicion given condition to be assigned.
      */
     public void asignarCondicionNominalPosicionMejor(Condicion condicion) {
         mPosicion.insertarCondicionNominal(condicion);
     }
 
-    /**
-     * Modulo que asigna una condicion a la mejor posicion de la regla
-     * @param condicion Condicion asignar a la regla
+     /**
+     * Assigns the given continuous condition to the best position of the particle.
+     * @param condicion given condition to be assigned.
      */
-
     public void asignarCondicionContinuaPosicionMejor(Condicion condicion) {
         mPosicion.insertarCondicionContinua(condicion);
     }
 
-    /**
-     * Modulo que asigna una condicion a la posicion de la regla
-     * @param condicion Condicion asignar a la regla
+     /**
+     * Assigns the given nominal condition to the actual position of the particle.
+     * @param condicion given condition to be assigned.
      */
-
-
     public void asignarCondicionNominalPosicionActual(Condicion condicion) {
         posicion.insertarCondicionNominal(condicion);
     }
 
-    /**
-     * Modulo que asigna una condicion a la posicion de la regla
-     * @param condicion Condicion asignar a la regla
+     /**
+     * Assigns the given continuous condition to the actual position of the particle.
+     * @param condicion given condition to be assigned.
      */
-
     public void asignarCondicionContinuaPosicionActual(Condicion condicion) {
         posicion.insertarCondicionContinua(condicion);
     }
 
-    /**
-     * Funcion que devuelve la posicion actual de la particula
-     * @return Regla de la posicion actual
+    /** 
+     * Returns the actual position of the particle.
+     * @return the actual position of the particle. 
      */
     public Regla getPosActual() {
         return posicion;
     }
 
-    /**
-     * Funcion que devuelve la mejor posicion de la particula
-     * @return Regla de la mejor posicion
+     /** 
+     * Returns the best position of the particle.
+     * @return the best position of the particle. 
      */
     public Regla getMejorPosicion() {
         return mPosicion;
 
     }
 
-    /**
-     * Modulo que asigna la calidad a la posicion actual
-     * @param calidad Calidad a asignar
+     /**
+     * Assigns the given quality to the actual position of the particle.
+     * @param calidad given quality to be assigned.
      */
     public void asignarCalidadPosActual(float calidad) {
         posicion.asignarCalidad(calidad);
     }
 
-    /**
-     * Modulo que asigna la calidad a la mejor posicion
-     * @param calidad Calidad a asignar
+     /**
+     * Assigns the given quality to the best position of the particle.
+     * @param calidad given quality to be assigned.
      */
-
     public void asignarCalidadMPosicion(float calidad) {
         mPosicion.asignarCalidad(calidad);
     }
 
     /**
-     * Modulo que actualiza la feromona de la particula
-     * @param particulas Vector con todas las particulas del entorno
-     * @param indice Posicion de la particula
-     * @param tamEntorno Tamaño del entorno
-     * @param listaCondiciones Lista de condiciones
+     * Updates the pheromone values following the environment of particles.
+     * @param particulas All the particles in the environment.
+     * @param indice Position of particle to update its pheromone. 
+     * @param tamEntorno Environment size.
+     * @param listaCondiciones Conditions list.
      */
     public void actualizaFeromona(Vector particulas, int indice, int tamEntorno,
                                   Vector listaCondiciones) {
@@ -275,9 +270,9 @@ public class Particula {
     }
 
     /**
-     * Modulo que modifica la Feromona de una particula
-     * @param vecino Mejor vecino del entorno de la particula
-     * @param listaCondiciones Lista con las condiciones
+     * Modifies the pheromone of this particle using its best neighbour
+     * @param vecino Best neighbour of the particle.
+     * @param listaCondiciones Conditions list. 
      */
     private void modificarFeromona(Particula vecino, Vector listaCondiciones) {
         Regla reglaVecino;
@@ -353,15 +348,15 @@ public class Particula {
         }
 
     }
-
-
+    
+    
     /**
-     * Funcion que devuelve la condicion escogida para insertar en la regla
-     * @param indice Posicion para la que se busca la condicion
-     * @param numCondiciones Numero de condiciones Continuas
-     * @param generadorA Generador de numeros Aleatoreos
-     * @param heuristica Heuristicas de las condiciones
-     * @return Posicion de la condicion escogida
+     * Selects a condition to be added into the actual rule.
+     * @param indice pheromone index.
+     * @param numCondiciones number of conditions considered
+     * @param generadorA Random numbers generator.
+     * @param heuristica Heuristic values for the different conditions.
+     * @return the selected condition to be added into the actual rule.
      */
     private int obtenerCondicion(int indice, int numCondiciones,
                                  Randomize generadorA, float[][] heuristica) {
@@ -387,15 +382,15 @@ public class Particula {
     }
 
     /**
-     * Modulo que genera la posicion de la particula
-     * @param listaCondiciones Lista condiciones
-     * @param listaCondicionesVacias Lista condiciones vacias
-     * @param minimoCasosRegla Minimo numero de casos que debe cubrir una regla
-     * @param cTrain Conjunto de entrenamiento
-     * @param generadorA Generador de numeros aleatoreos
-     * @param heuristica Heuristicas de las condiciones
+     * Generates the particle position using the given posible conditions, its heuristic
+     * values and the data to be covered.
+     * @param listaCondiciones all posible conditions to be used to generate the position (rule).
+     * @param listaCondicionesVacias empty/null conditions list.
+     * @param minimoCasosRegla minimum number of cases that have to be covered to consider the rule as valid.
+     * @param cTrain the data to be covered.
+     * @param generadorA Random numbers generator.
+     * @param heuristica Heuristic values for the different conditions.
      */
-
     public void generaPosicion(Vector listaCondiciones,
                                Vector listaCondicionesVacias,
                                int minimoCasosRegla, ConjuntoDatos cTrain,
@@ -433,11 +428,11 @@ public class Particula {
 
     }
 
-    /**
-     * Funcion que devuelve la calidad de la posicion actual
-     * @return Calidad de la posicion actual
-     */
 
+    /**
+     * Returns the quality of the actual position.
+     * @return the quality of the actual position. 
+     */
     public float obtenerCalidadPosicionActual() {
         float devolver;
         devolver = posicion.obtenerCalidad();
@@ -445,8 +440,8 @@ public class Particula {
     }
 
     /**
-     * Funcion que devuelve la calidad de la mejor posicion de la particula
-     * @return Calidad de la mejor posicion de la particula
+     * Returns the quality of the best position.
+     * @return the quality of the best position. 
      */
     public float obtenerCalidadMejorPosicion() {
         float devolver;
@@ -454,22 +449,20 @@ public class Particula {
         return devolver;
     }
 
-
     /**
-     * Modulo que copia de la posicion actual a la mejor posicion de la particula
+     * Copies the actual position as best position of the particle.
      */
-
     public void copiaPosicionMejorPosicion() {
         Condicion co;
         mPosicion.copia(posicion);
     }
 
-
+    
     /**
-     * Modulo que inicializa la velocidad de la particula
-     * @param intervalos Intervalos de las condiciones continuas
-     * @param numCondicionesContinuas Numero de condiciones continuas
-     * @param generadorA Generador de numeros aleatoreos
+     * Initializes the particle velocity using the given conditions intervals.
+     * @param intervalos continuous conditions intervals.
+     * @param numCondicionesContinuas number of continuous conditions considered.
+     * @param generadorA Random numbers generator.
      */
     public void inicializaVelocidad(float[][] intervalos,
                                     int numCondicionesContinuas,
@@ -497,11 +490,11 @@ public class Particula {
     }
 
     /**
-     * Funcion que devuelve un vector con los n vecinos del entorno de la particula
-     * @param indice Posicion de la particula
-     * @param tamEntorno Tamaño del entorno de la particula
-     * @param particulas Vector con las particulas
-     * @return Vector con las particulas vecinas
+     * Returns a vector with the neighbours of the particle.
+     * @param indice position of the particle in the environment.
+     * @param tamEntorno size of the environment.
+     * @param particulas vector of considered particles, environment.
+     * @return a vector with the neighbours of the particle. 
      */
     public Vector obtenerVecinos(int indice, int tamEntorno, Vector particulas) {
 
@@ -559,18 +552,18 @@ public class Particula {
         return entorno;
     }
 
-
+    
     /**
-     * Modulo que calcula la velocidad de la particula
-     * @param numCondiciones Numero de condiciones continuas
-     * @param particulas Vector con las particulas vecinas
-     * @param entorno Tamaño del entorno de la particula
-     * @param indice Posicion de la particula
-     * @param intervalos Intervalos para las condiciones continuas
+     * Computes the velocity of the particle.
+     * @param numCondiciones number of conditions considered.
+     * @param particulas vector of considered particles, environment.
+     * @param entorno size of the environment.
+     * @param indice particle position in the environment.
+     * @param intervalos continuous conditions intervals.
      * @param x Factor X
      * @param c1 Factor c1
      * @param c2 Factor c2
-     * @param generadorA Generador de numero aleatoreos
+     * @param generadorA Random numbers generator.
      */
     public void calculaVelocidad(int numCondiciones, Vector particulas,
                                  int entorno, int indice, float[][] intervalos,
@@ -627,9 +620,9 @@ public class Particula {
 
 
     /**
-     * Modulo que mueve la particula
-     * @param numCondiciones Numero de condiciones continuas
-     * @param intervalos Intervalos para las condiciones continuas
+     * Moves the particle to the next position, with the actual position and its velocity.
+     * @param numCondiciones  number of conditions considered.
+     * @param intervalos  continuous conditions intervals.
      */
     public void moverParticula(int numCondiciones, float[][] intervalos) {
         Condicion co;
@@ -686,31 +679,31 @@ public class Particula {
     }
 
     /**
-     * Modulo que imprime la posicion de la particula
-     * @param numCondiciones Numero de condiciones continuas
+     * Prints on the standard output the actual position.
+     * @param numCondiciones number of conditions considered.
      */
     public void imprimePosicion(int numCondiciones) {
         posicion.imprime(numCondiciones);
     }
 
     /**
-     * Modulo que elimina las condiciones nominales de la particula
+     * Removes all nominal conditions from the particle.
      */
     public void limpiaCNominales() {
         posicion.limpiaCNominales();
     }
 
     /**
-     * Modulo que asigna las muestras cubiertas por una particula
-     * @param numero Numero de muestras cubiertas por la particula
+     * Assigns the number of examples covered by the actual position of the particle.
+     * @param numero number of examples covered.
      */
     public void asignarMuestrasCubiertasActual(int numero) {
         posicion.asignarNumeroMuestrasCubiertas(numero);
     }
 
     /**
-     * Modulo que asigna las muestras cubiertas por la mejor posicion de la particula
-     * @param numero Numero de muestras cubiertas por la particula
+     * Assigns the number of examples covered by the best position of the particle.
+     * @param numero number of examples covered.
      */
     public void asignarMuestrasCubiertasPasado(int numero) {
         mPosicion.asignarNumeroMuestrasCubiertas(numero);

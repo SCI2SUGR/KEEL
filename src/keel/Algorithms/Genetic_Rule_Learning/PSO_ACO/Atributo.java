@@ -30,8 +30,10 @@
 package keel.Algorithms.Genetic_Rule_Learning.PSO_ACO;
 
 /**
- * <p>This class implements an attribute</p>
- * 
+ * <p>This class implements an attribute. </p>
+ * Description: Implements the attributes representation as
+ * a pair of the attribute id and its value used by the ACO algorithm to
+ * build the dataset and the conditions for the rules. 
  * @author Vicente Rubén del Pino
  * @version 1.0
  */
@@ -43,11 +45,9 @@ public class Atributo {
     private int tipo; //tipo del atributo 0-->Entero, 1--->Nominal, 2--->Real
     private static ComparadorAtributo c; //Comparador para los atributos
 
-    /**
-     * Constructor por defecto
-     *
-     * Construye un atributo vacio
-     */
+  /**
+   * Default constructor. Builds an empty attribute.
+   */
     public Atributo() {
         valor = -1;
         atributo = 0;
@@ -56,14 +56,12 @@ public class Atributo {
 
     }
 
-    /**
-     *
-     * Constructor de Atributo con parametros
-     *
-     * @param valorOriginal double  Valor del atributo que queremos introducir
-     * @param atributoOriginal int  Identifica el atributo al que le estamos asignando el valor
-     * @param tip int      Tipo del atributo: numerico (0) o nominal (1)
-     */
+  /**
+   * Parameter constructor. Builds an attribute by copying the values of the parameters given. 
+   * @param valorOriginal Initial value of the attribute.
+   * @param atributoOriginal Identifies the attribute to be represented. (attribute id). 
+   * @param tip Attribute type: numeric (0) or nominal (1).
+   */
     public Atributo(float valorOriginal, int atributoOriginal, int tip) {
 
         valor = valorOriginal;
@@ -74,13 +72,11 @@ public class Atributo {
     }
 
 
-    /**
-     *
-     * Constructor de copia, crea un atributo nuevo a partir del que se le pasa como argumento
-     * copiando todos sus valores.
-     *
-     * @param original Atributo Atributo que queremos copiar
-     */
+  /**
+   * Copy Constructor. Creates a new attribute object by copying the one given as argument.
+   * 
+   * @param original Attribute to be copied.
+   */
     public Atributo(Atributo original) {
         valor = original.valor;
         atributo = original.atributo;
@@ -89,11 +85,11 @@ public class Atributo {
 
     }
 
-    /**
-     * Funcion que devuelve el identificador del atributo al que estamos asignando valor.
-     *
-     * @return int  Devuelve el atributo al que estamos asignando un valor
-     */
+  /**
+   * Returns the attribute id represented on this object.
+   * 
+   * @return int   the attribute id represented on this object.
+   */
     public int getAtributo() {
 
         int devolver = atributo;
@@ -101,11 +97,11 @@ public class Atributo {
 
     }
 
-    /**
-     * Funcion que devuelve el valor del atributo
-     *
-     * @return String Devuelve el valor del atributo
-     */
+  /**
+   * Returns the assigned value of the attribute.
+   *
+   * @return String the assigned value of the attribute.
+   */
     public float getValor() {
 
         float devolver = valor;
@@ -114,19 +110,21 @@ public class Atributo {
     }
 
 
-    /**
-     * Compara dos atributos
-     *
-     * @param o1 Object Atributo a comparar
-     * @param o2 Object Atributo a comparar
-     * @return int Devuelve 0 si tienen la misma posicion, 1 si el primero esta
-     * antes, -1 si el primero esta despues.
-     *
-     * OJO!!!! Como el Collections.sort ordena de mayor a menor y el orden que interesa
-     * que tengan los atributos es de menor a mayor, este CompareTo esta trucado al reves
-     * es decir cuando es menor devuelve mayor y cuando es mayor devuelve menor.
-     *
-     */
+  /**
+   * Compares two attributes.
+   * 
+   *
+   * @param o1 Object First attribute to compare with.
+   * @param o2 Object Second attribute to compare with.
+   * @return int 0 if they are the same attribute, 1 if the first attribute is 
+   * lesser than the second one (will be sorted as first) or -1 if the first
+   * attribute is greater (will be sorted as second).
+   *
+   * Warning!!! Collections.sort sorts in descending order (from greater to lesser).
+   * This method sorts the elements in increasing (from lesser to greater), 
+   * the way needed for attributes.
+   * 
+   */
     public int compare(Object o1, Object o2) {
         Atributo original = (Atributo) o1;
         Atributo actual = (Atributo) o2;
@@ -148,11 +146,11 @@ public class Atributo {
 
     }
 
-    /**
-     * Funcion usada para comparar dos atributos
-     * @param obj Object Atributo a comparar con el actual.
-     * @return boolean Indica si son iguales (true) o no (false)
-     */
+  /**
+   * Checks if this attribute is equal to the one given.
+   * @param obj Object Attribute to compare with.
+   * @return boolean True if they are the same, false otherwise.
+   */
     public boolean equals(Object obj) {
         boolean devolver;
         Atributo original = (Atributo) obj;
@@ -164,11 +162,11 @@ public class Atributo {
         return devolver;
     }
 
-    /**
-     * Compara dos atributos mediante su valor
-     * @param at Atributo Atributo a comparar con el actual
-     * @return boolean Devuelve true si son iguales y false en caso contrario
-     */
+  /**
+   * Checks if this attribute is equal to the one given.
+   * @param at Object Attribute to compare with.
+   * @return boolean True if they are the same, false otherwise.
+   */
     public boolean esIgual(Atributo at) {
         if (at.valor == valor) {
             return true;
@@ -177,10 +175,10 @@ public class Atributo {
         }
     }
 
-    /**
-     * Funcion que devuelve un comparador para poder comparar dos atributos
-     * @return ComparadorAtributo Comparador de dos atributos
-     */
+  /**
+   * Returns the compare condition to compare two attributes.
+   * @return {@link ComparadorAtributo} the compare condition.
+   */
     public static ComparadorAtributo obtenerComparador() {
         return c;
     }
@@ -217,42 +215,41 @@ public class Atributo {
       }
      */
 
-
     /**
-     * Funcion que devuelve el tipo del Atributo
-     * @return Tipo del atributo
+     * Returns the attribute type.
+     * @return the attribute type.
      */
     public int getTipo() {
         return tipo;
     }
 
     /**
-     * Funcion que inicializa el tipo del atributo
-     * @param tip Tipo del atributo
+     * Sets the attribute type with the one given: numeric (0) or nominal (1).
+     * @param tip given type.
      */
     public void setTipo(int tip) {
         tipo = tip;
     }
 
     /**
-     * Modulo que suma un valor al valor del atributo
-     * @param v Valor a sumar
+     * Sums the value given to the one stored.
+     * @param v given value.
      */
     public void sumarValor(float v) {
         valor += v;
     }
 
     /**
-     * Funcion que imprime el atributo
-     * @param cadena Cadena de titulo
+     * Prints the information of the attribute.
+     * @param cadena title or name of the attribute.
      */
     public void imprime(String cadena) {
         System.out.println(cadena + "  " + valor);
     }
 
     /**
-     * Funcion que inicializa el valor del atributo
-     * @param at Valor para el atributo
+     * Sets the attribute's value with the one given.
+     * @param at value to set.
      */
     public void setValor(float at) {
         valor = at;

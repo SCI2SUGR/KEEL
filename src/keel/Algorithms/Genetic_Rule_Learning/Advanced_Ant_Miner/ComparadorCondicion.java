@@ -32,7 +32,7 @@ package keel.Algorithms.Genetic_Rule_Learning.Advanced_Ant_Miner;
 import java.util.Comparator;
 
 /**
- * <p> Title: ComparadoCondicion (Conditions comparative method) </p>
+ * <p> Title: ComparadorCondicion (Conditions comparative method) </p>
  * <p>Conditions comparative method.</p>
  * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
@@ -46,7 +46,7 @@ public class ComparadorCondicion implements Comparator {
   }
   
   /**
-   * Compares two condition.
+   * Compares two conditions.
    *
    * @param o1 Object Condition to compare
    * @param o2 Object Condition to compare

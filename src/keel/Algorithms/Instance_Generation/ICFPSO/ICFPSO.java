@@ -56,13 +56,20 @@ import java.util.StringTokenizer;
 import java.util.Arrays;
 import java.util.Vector;
 
+/**
+ * Hybridization of ICF with PSO.
+ * @author Salvador García López
+ */
 public class ICFPSO extends Metodo {
 
   /*Own parameters of the algorithm*/
 	  private int k;
 	  private double semilla;
 	  
-  public String Script; // para releer parametros..
+    /**
+     * Configuration file name.
+     */
+    public String Script; // para releer parametros..
   private PrototypeSet trainingDataSet;
   private PrototypeGenerator generador;
   //parametros PSO
@@ -75,14 +82,26 @@ public class ICFPSO extends Metodo {
   private double Wstart;
   private double Wend;
   
-  protected int numberOfClass;
+    /**
+     * Class number.
+     */
+    protected int numberOfClass;
 
+    /**
+     * Prototypes number.
+     */
+    protected int numberOfPrototypes;  // Particle size is the percentage
 
+    /**
+     * Number of strategies in the pool
+     */
+    protected int numberOfStrategies; // number of strategies in the pool
   
-
-  protected int numberOfPrototypes;  // Particle size is the percentage
-  protected int numberOfStrategies; // number of strategies in the pool
-  
+	/**
+	 * Builder. Creates the basic structures of the algorithm
+	 *
+	 * @param ficheroScript Configuration script
+	 */    
   public ICFPSO (String ficheroScript) {
 	super (ficheroScript);
     
@@ -158,6 +177,12 @@ public class ICFPSO extends Metodo {
       return dataSet.get(indexNN);
   }
   
+    /**
+     * Computes the accuracy for the given test dataset with the 1NN algorithm.
+     * @param training training dataset for the 1NN.
+     * @param test Test dataset to compute its accuracy.
+     * @return the accuracy for the given test dataset.
+     */
   public double classficationAccuracy1NN(PrototypeSet training, PrototypeSet test)
   {
 	int wellClassificated = 0;
@@ -380,7 +405,10 @@ public class ICFPSO extends Metodo {
   }
   
   
-  /* MEzcla de algoritmos */
+  /** 
+   * Executes the algorithms combining them.
+   * 
+   */
   public void ejecutar () {
 
 	    int i, j, l, m;
@@ -580,6 +608,7 @@ public class ICFPSO extends Metodo {
  
 
 
+          @Override
   public void leerConfiguracion (String ficheroScript) {
 
     String fichero, linea, token;

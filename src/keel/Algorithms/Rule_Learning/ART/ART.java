@@ -206,9 +206,9 @@ public class ART extends Algorithm
 
 
         /**
-         * Funcion art que construye el árbol
-         * @param data	Vector que contiene los itemset a clasificar
-         * @param nodo	Nodo del árbol a expandir
+         * Function art that builds the tree.
+         * @param data	dateset to be classified.
+         * @param nodo node to be expanded.
 	 *
          */
         private void art(Vector data, Node nodo){
@@ -305,9 +305,9 @@ public class ART extends Algorithm
 
 
         /**
-         * Funcion que devuelve el indice de la clase mas frecuente
-         * @return indice de la clase mas frecuente
-         * @param data  Los datos de los que hay que extraer la informacion
+         * Returns the index of the most frequent class.
+         * @return the index of the most frequent class.
+         * @param data data used to extract this information.
          */
          private int mostFrequentClass(Vector<Itemset> data){
              Attribute a =  this.trainDataset.getClassAttribute();
@@ -336,10 +336,10 @@ public class ART extends Algorithm
          }
 
         /**
-         * Funcion que devuelve los datos no cubiertos por el nodo
-         * @return vector con los datos no cubiertos
-         * @param data  Los datos que hay que determinar si estan cubiertos
-         * @param n     Nodo recien expandido
+         * Returns the uncovered data for a given node.
+         * @return vector with the uncovered data for a given node.
+         * @param data data used to extract this information.
+         * @param n     given node.
          */
          private Vector uncoveredData(Vector data, Node n){
             Vector datos = new Vector();
@@ -373,11 +373,11 @@ public class ART extends Algorithm
          }
 
         /**
-         * Funcion que determina si un itemset esta cubierto por unos valores de los atributos o no
-         * @return true si el itemset satisface todos los valores (false en caso contrario)
-	 * @param ats	Vector que contiene los atributos a evaluar
-	 * @param vals	Vector que contiene los valores de los atributos a evaluar
-         * @param item	Itemset a evaluar
+         * Check if the given itemset is covered by the given values of the given attributes.
+         * @return true if the given itemset is covered, false otherwise.
+	 * @param ats	given attributes.
+	 * @param vals	given values.
+         * @param item	Itemset to be evaluated.
 	 * 
 	 *
          */

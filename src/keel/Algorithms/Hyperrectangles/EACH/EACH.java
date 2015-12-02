@@ -43,7 +43,7 @@ import java.text.DecimalFormat;
 import org.core.*;
 
 /**
- * <p>Main methods of thw EACHsd algorithm
+ * <p>Main methods of the EACHsd algorithm
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
@@ -285,9 +285,9 @@ public class EACH {
 
    /**
 	* <p>
-	* Desordenar aleatoriamente un vector de numeros
+        * Shuffles randomly a vector with the indeces of the dataset used by the algorithm.
     * </p>
- 	* @return v, el vector desordenado 
+ 	* @return vector with the shuffled indeces.
 	*/
 	private int[] ramdomDataGeneration(){
 		int aux,indice;
@@ -303,11 +303,15 @@ public class EACH {
 	}
 	
 	
-	
-	/*Devuelve true si el elemento buscado ya esta en el vector
-	*Vamos a usar esta fucion para detectar si una instancia ya se ha incluido en la 
-	*memoria inicial, para no volverla a incluir
-	*/
+        /**
+         * Returns true if the searched element is already in the vector.
+         * This method is used to check if an instance is already in the initial memory 
+         * to avoid to include it again. 
+         * @param vector vector of elements where to search the element.
+         * @param util size of the vector.
+         * @param buscado given element searched.
+         * @return True if it is already in the vector, false otherwise.
+         */
 	private boolean yetChossen(int []vector, int util,int buscado){
 		boolean encontrado=false;
 		for(int i=0;i<util;i++){
@@ -316,11 +320,12 @@ public class EACH {
 		return encontrado;
 	}
 	
-	
-	/*Crea una regla para un hyperrectangulo
-	*El consecuente de la regla es la clase de H
-	*return la regla creada 
-	*/
+        /**
+         * Creates a rule for a hyper-rectangle.
+         * Its consequent is the class of H with the given id.
+         * @param id H id.
+         * @return the Complex rule.
+         */
 	private Complex createRule(int id){
 		Complex Regla;
 		int []v=new int[2];
@@ -363,15 +368,12 @@ public class EACH {
 	
 	
 	
-   /** 
-	* 
-	* <p>
-	* Evaluacion de los complejos sobre el conjunto de ejemplo para ver cuales se
-	* cubren de cada clase
-	* </p>
-	* @param c Complejo a evaluar
-	* @param e Conjunto de datos
-	*/
+        /**
+         * Evaluates the complex object using the given dataset to check how many 
+         * instances of each class are covered.
+         * @param c complex to be evaluated.
+         * @param e dataset used for the evaluation.
+         */
 	private void complexEvaluation(Complex c, EachDataSet e) {
 		c.removeDistribution();
 		for (int i = 0; i < e.size(); i++) {
@@ -385,7 +387,7 @@ public class EACH {
 	}
 	
 	/**
-     * Calcula los datos estadisticos necesarios y crea los ficheros KEEL de salida
+         * Computes the statistics needead and creates the KEEL output files.
      */
 	private void generaSalida() {
 		Fichero f = new Fichero();
@@ -410,9 +412,9 @@ public class EACH {
 	}
 	
 	/**
-     	* Crea un conjunto de datos (atributos/clase) segun los obtenidos de un fichero de datos
-     	* @param mis_datos Debe ser un conjunto de datos leido del fichero (mirar doc Dataset.java)
-     	* @return El conjunto de datos ya creado, es decir, una lista enlazada de muestras (consultar ConjDatos.java y Muestra.java)
+         * Creates a dataset (attribute/class) with the data obtained from the data file.
+     	* @param mis_datos dataset read from a file (check {@link Dataset})
+     	* @return The created dataset. A linked list of examples (check {@link EachDataSet} and {@link Sample})
      	*/
 	private EachDataSet createSet(Dataset mis_datos) {
         EachDataSet datos = new EachDataSet(); //Creo un nuevo conjunto de datos

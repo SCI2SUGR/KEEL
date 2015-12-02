@@ -91,8 +91,11 @@ class Adap {
 
   /* -------------------------- Medida Local de Error ----------------------- */
 
-  /* Calcula el grado de compatibilidad (Ri(ek)) de los antecedentes de la regla
-    con el ejemplo */
+  /** Computes the compatibility grade (Ri(ek)) of the rule with the given example
+   * @param cromosoma given rule.
+   * @param ejem given example.
+   * @return the compatibility grade (Ri(ek))
+  */
   double AntecedenteCubreEjemplo(double[] cromosoma, double[] ejem) {
     int i, pos_individuo;
     double min;

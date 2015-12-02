@@ -57,7 +57,7 @@ class Node{
         private int support;
 
 	/**
-         * Crea un nuevo nodo.
+         * Default constructor. Creates an empty node.
 	 */
 	public Node(){
 		data = new Vector();
@@ -70,23 +70,23 @@ class Node{
 	
 	
 	/**
-         * Funcion que establece los itemsets que satisfacen la condicion del nodo
-	 * @param newData 	Los itemsets.
+         * Sets the examples that satisfy the node condition.
+	 * @param newData given examples to be set.
 	 */
 	public void setData( Vector newData ){
 		data = newData;
 	}
 	
 	/**
-         * Devuelve los itemsets que satisfacen la condicion del nodo
+         * Returns the examples that satisfy the node condition.
 	 */
 	public Vector getData(){
 		return data;
 	}
 
         /**
-         * Funcion que aniade un itemset al conjunto de datos
-	 * @param item 	Itemset a aniadir.
+         * Adds an example to the dataset.
+	 * @param item 	example to be added.
 	 */
         public void addData(Itemset item){
             data.add(item);
@@ -146,34 +146,66 @@ class Node{
 		return parent;
 	}
 
+        /**
+         * Returns the attributes of the node.
+         * @return  the attributes of the node.
+         */
         public Vector<Integer> getAttributes() {
             return attributes;
         }
 
+        /**
+         * Sets the attributes of the node with the given ones.
+         * @param attributes given attributes to be set.
+         */
         public void setAttributes(Vector<Integer> attributes) {
             this.attributes = attributes;
         }
 
+        /**
+         * Returns the support.
+         * @return the support.
+         */
         public int getSupport() {
             return support;
         }
 
+        /**
+         * Sets the support with the value given.
+         * @param support given value to set.
+         */
         public void setSupport(int support) {
             this.support = support;
         }
 
+        /**
+         * Returns the node values.
+         * @return  the node values.
+         */
         public Vector<Integer> getValues() {
             return values;
         }
-
+        
+        /**
+         * Sets the node values with the given ones.
+         * @param values given values to set.
+         */
         public void setValues(Vector<Integer> values) {
             this.values = values;
         }
 
+        /**
+         * Returns the class value of the node.
+         * @return  the class value of the node.
+         */
         public int getClas() {
             return clas;
         }
 
+        /**
+         * Sets the class value of the node.
+         * @param clas  given class to set. 
+         */
         public void setClas(int clas) {
             this.clas = clas;
         }

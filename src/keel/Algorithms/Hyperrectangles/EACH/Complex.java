@@ -35,7 +35,7 @@ import java.util.LinkedList;
 import keel.Dataset.*;
 
 /**
- * <p>This class storages conj. of Selectors
+ * <p>This class stores the set of Selectors
  * @author Written by Rosa Venzala (University of Granada) 02/06/2008
  * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
  * @version 1.1
@@ -227,23 +227,49 @@ public class Complex implements Comparable {
         this.classAttribute = clase;
     }
     
+    /**
+     * Sets the weight with the value given.
+     * @param w given value to set.
+     */
     public void setWeight(double w){
     	this.weight=w;
     }
+    /**
+     * Returns the weight value of the complex object.
+     * @return the weight value  
+     */
     public double getWeight(){
     	return weight;
     }
     
+    /**
+     * Sets the volume with the value given.
+     * @param v given value to set. 
+     */
     public void setVolume(double v){
     	this.volume=v;
     }
+    
+    /**
+     * Returns the volume value of the complex object.
+     * @return the volume value  
+     */
     public double getVolume(){
     	return volume;
     }
-
+    
+    /**
+     * Sets the number of dimensions with the value given.
+     * @param d given value to set. 
+     */
 	public void setDimensions(int d){
     	this.numDimensions=d;
     }
+      
+    /**
+     * Returns the number of dimensions
+     * @return  the number of dimensions
+     */
     public int getDimensions(){
     	return numDimensions;
     }
@@ -364,7 +390,7 @@ public class Complex implements Comparable {
     }
 
     /**
-     * Resetea el valor de la distribucion para el complejo
+     * Resets the classes distribution to 0.
      */
     public void removeDistribution() {
         for (int i = 0; i < numClasses; i++) {
@@ -373,32 +399,34 @@ public class Complex implements Comparable {
     }
 
     /**
-     * Incrementa en 1 el n de ejemplo para la clase 'clase' cubiertas por el complejo
-     * @param clase int El valor de la clase
+     * Increases by 1 the number of covered examples of the given class
+     * @param clase given class.
      */
     public void incrementDistribution(int clase) {
         distrib[clase]++;
     }
 
     /**
-     * Devuelve el valor de la distribucion para una clase dada
-     * @param clase int El indice de la clase
-     * @return double El valor de la distribucion
+     * Returns the distribution value for the class given. 
+     * Number of examples of the given class covered by the complex object.
+     * @param clase int given class.
+     * @return int the distribution value for the class given. 
      */
     public int getDistributionClass(int clase) {
         return distrib[clase];
     }
 
     /**
-     * Devuelve el valor de la distribucion
-     * @return double [] El valor de cada distribucion
+     * Returns the distribution vector.
+     * @return int[] the distribution vector.
      */
     public int[] getDistribution() {
         return distrib;
     }
 
     /**
-     * Imprime por pantalla el contenido del complejo (Lista -> Atributo operador valor)
+     * Prints on the standard output the content of this complex object.
+     * (List -> Attribute operator value)
      */
      
     public void print(int nominal) {

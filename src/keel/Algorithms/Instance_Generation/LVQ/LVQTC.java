@@ -265,7 +265,12 @@ public class LVQTC extends LVQ1
         }
     }
     
-    
+    /**
+     * Prunes the neurons which have their counting variables lesser
+     * than the retention threshold.
+     * @param data prototype set.
+     * @return Edited prototype set.
+     */
     protected PrototypeSet neuronPruning(PrototypeSet data)
     {
         //Eliminamos las neuronas que tengan la suma de sus contadores menor que
@@ -293,6 +298,11 @@ public class LVQTC extends LVQ1
         //return data;
     }
     
+     /**
+     * Creates new neurons.
+     * @param data prototype set.
+     * @return Edited prototype set.
+     */
     protected PrototypeSet neuronCreation(PrototypeSet data)
     {
         PrototypeSet newPrototypes = new PrototypeSet();

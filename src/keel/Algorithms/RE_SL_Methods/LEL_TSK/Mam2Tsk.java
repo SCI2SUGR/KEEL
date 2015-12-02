@@ -57,7 +57,7 @@ class Mam2Tsk {
     return (sT.nextToken());
   }
 
-  /* Reads the data of the configuration file */
+  /** Reads the data of the configuration file */
   public void leer_conf() {
     int i, j;
     String cadenaEntrada, valor;

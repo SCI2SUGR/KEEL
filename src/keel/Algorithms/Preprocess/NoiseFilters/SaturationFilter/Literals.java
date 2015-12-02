@@ -27,15 +27,7 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
- * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
- * Date: 06/01/10
- * @version 1.0
- * @since JDK1.6
- * </p>
- */
+
 
 package keel.Algorithms.Preprocess.NoiseFilters.SaturationFilter;
 
@@ -47,6 +39,13 @@ import keel.Dataset.Instance;
 /**
  * <p>
  * This class transforms the data set into a set of literals given the positive class
+ * </p>
+ * <p>
+ * @author Written by Jose A. Saez Munoz, research group SCI2S (Soft Computing and Intelligent Information Systems).
+ * DECSAI (DEpartment of Computer Science and Artificial Intelligence), University of Granada - Spain.
+ * Date: 06/01/10
+ * @version 1.0
+ * @since JDK1.6
  * </p>
  */
 public class Literals {

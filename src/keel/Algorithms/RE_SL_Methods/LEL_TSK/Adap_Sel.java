@@ -103,7 +103,11 @@ class Adap_Sel {
 
   /* ------------------------- Criterios de reglas -------------------------- */
 
-  /* Calcula el grado de compatibilidad (Ri(ek)) de la regla con el ejemplo */
+  /** Computes the compatibility grade (Ri(ek)) of the rule with the given example
+   * @param R given rule.
+   * @param ejem given example.
+   * @return the compatibility grade (Ri(ek))
+  */
   public double ReglaCubreEjemplo(Difuso[] R, double[] ejem) {
     int i;
     double minimo;
@@ -122,8 +126,10 @@ class Adap_Sel {
     return (minimo);
   }
 
-  /* Calcula los grados de cubrimiento medio y minimo de la Base de Conocimiento
-    sobre el conjunto de ejemplos  */
+  /**
+   *  Computer the grade of covered examples in medium and minimum level of the 
+   * knowledge base. 
+   */
   public void Cubrimientos_Base() {
     int i, j;
     double RCE, cb;

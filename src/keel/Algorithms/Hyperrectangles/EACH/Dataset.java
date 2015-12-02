@@ -27,14 +27,6 @@
   
 **********************************************************************/
 
-/**
- * <p>
- * @author Written by Rosa Venzala (University of Granada) 02/06/2008
- * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
- * @version 1.1
- * @since JDK1.2
- * </p>
- */
 
 
 package keel.Algorithms.Hyperrectangles.EACH;
@@ -52,6 +44,12 @@ import org.core.*;
  * <p> Class to manage data sets</p>
  * @author Rosa Venzala
  * @version 1.0
+ * <p>
+ * @author Written by Rosa Venzala (University of Granada) 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
 public class Dataset {
 /**
@@ -404,9 +402,9 @@ public class Dataset {
         return retorno;
     }
     /**
-     * Devuelve el valor de los atributos de salida para una instancia determinada
-     *@param pos La posicion de la instancia en el conjunto de datos
-     * @return int el valor de la clase para esa instancia
+     * Returns the value of the output attribute (class) for the example with the given index. 
+     * @param pos index/position of the asked example
+     * @return  the value of the output attribute (class) for the example with the given index
      */
     public int getC(int pos){
     	return C[pos];

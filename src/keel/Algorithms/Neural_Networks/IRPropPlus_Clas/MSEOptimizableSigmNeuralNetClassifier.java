@@ -35,7 +35,8 @@ import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.LinkedLayer;
 import keel.Algorithms.Neural_Networks.NNEP_Common.neuralnet.LinkedNeuron;
 
 /**
- * <p> 
+ * <p>  Sigmoid Neural Net with only a hidden layer and multiple outputs (classifier)
+     * Prepared for optimizing MSE.
  * @author Written by Alfonso Carlos Martinez Estudillo (University of Cordoba) 5/11/2007
  * @author Written by Pedro Antonio GutiÃ©rrez PeÃ±a (University of Crodoba) 5/11/2007
  * @version 0.1

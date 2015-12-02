@@ -33,14 +33,16 @@ import java.util.StringTokenizer;
 import org.core.Fichero;
 
 /**
- * <p>Título: Hibridación Pso Aco</p>
- * <p>Descripción: Hibridacion entre los dos algoritmos Pso y Aco</p>
- * <p>Copyright: Copyright (c) 2008</p>
- * <p>Empresa: </p>
- * @author Vicente Rubén del Pino
- * @version 1.0
+ * 
+ * File: Main.java
+ * 
+ * This is the main class of the PSO-ACO algorithm.
+ * It gets the configuration script, builds the algorithm and executes it.
+ * @author Vicente Rubén del Pino Ruiz 
+ * @version 0.1 
+ * @since JDK1.5
+ * 
  */
-
 public class Main {
 
     String fTrainC;
@@ -63,7 +65,9 @@ public class Main {
     private PsoAco algoritmo;
 
 
-    // private PSO algoritmo;
+    /**
+     *Default constructor.
+     */
     public Main() {
 
     }
@@ -184,7 +188,15 @@ public class Main {
 
 
     }
-
+    
+  /** 
+	 * <p>
+	 * The main method of the class
+	 * </p> 
+	 * 
+	 * @param args Arguments of the program (a configuration script, generally)  
+	 * 
+	 */
     public static void main(String[] args) {
         Main ppal = new Main();
         ppal.extraeArgumentos(args[0]);

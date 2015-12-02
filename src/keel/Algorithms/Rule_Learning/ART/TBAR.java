@@ -50,7 +50,9 @@ public class TBAR {
 
     Vector<Node> nodosNivel;
 
-    /** Constructor que crea e inicializa el arbol con los candidatos de nivel 1*/
+    /** Parameter constructor. Creates and initializes the tree with the level 1
+     * candidates.
+     */
     public TBAR(int MaxSize, double MinSupp, Vector data, List<Attribute> attributes) {
         this.MaxSize = MaxSize;
         this.MinSupp = MinSupp;

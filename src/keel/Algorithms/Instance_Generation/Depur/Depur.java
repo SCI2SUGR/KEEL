@@ -252,6 +252,7 @@ public class Depur extends Metodo {
     OutputIS.escribeSalida(ficheroSalida[1], test, entradas, salida, nEntradas, relation);
   }	
 
+  @Override
   public void leerConfiguracion (String ficheroScript) {
 
     String fichero, linea, token;

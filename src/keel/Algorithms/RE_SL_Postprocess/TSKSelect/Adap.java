@@ -112,8 +112,10 @@ class Adap {
 
 
 
-	/* Calcula los grados de cubrimiento medio y minimo de la Base de Conocimiento
-	sobre el conjunto de ejemplos  */
+  /**
+   *  Computer the grade of covered examples in medium and minimum level of the 
+   * knowledge base. 
+   */
 	public void Cubrimientos_Base () {
 		int i, j;
 		double RCE, cb;

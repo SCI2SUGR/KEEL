@@ -219,12 +219,7 @@ public abstract class Importer {
     }
 
 
-    /*
-     * Metodo que devuelve el tipo del elemento pasado por parÃ¡metros
-     *
-     * @param item elemento pasado
-     * @return int tipo del elemento pasado. 0 nominal, 1 entero y 2 real.
-     */
+
 
     /**
      * Returns the type of the element given as argument.

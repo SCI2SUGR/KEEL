@@ -40,7 +40,7 @@ import org.core.*;
 import java.util.*;
  
 /**
- * Prototypes for Nearest Neighbor Classifiers (Chang para los colegas)
+ * Prototypes for Nearest Neighbor Classifiers
  * @author diegoj
  */
 public class PNNGenerator extends PrototypeGenerator

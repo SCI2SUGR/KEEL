@@ -172,6 +172,7 @@ public class RSPGenerator extends PrototypeGenerator {
   
   
   @SuppressWarnings({ "unchecked", "static-access" })
+  @Override
 public PrototypeSet reduceSet()
   {
 	  System.out.print("\nThe algorithm is starting...\n Computing...\n");

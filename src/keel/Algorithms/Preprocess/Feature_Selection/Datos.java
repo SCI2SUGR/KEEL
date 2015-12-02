@@ -141,7 +141,7 @@ public class Datos {
     }
 
 
-    /** returns the number of features of the datasets 
+    /** Returns the number of features of the datasets 
      *  @return the number of input features */
     public int returnNumFeatures(){
 
@@ -153,7 +153,7 @@ public class Datos {
         return Attributes.getInputNumAttributes();
     }
 
-    /** returns the number of instances of the datasets 
+    /** Returns the number of instances of the datasets 
      *  @return the number of input instances */
     public int returnNumInstances(){
 
@@ -166,7 +166,7 @@ public class Datos {
     }
 
 
-    /** saves the normalized instance sets in the trainNormalized member [0..1]
+    /** Saves the normalized instance sets in the trainNormalized member [0..1]
      *  Also, it saves the training classes in trainOutput 
      *  The train attribute is not normalized
      *  @throws CheckException */
@@ -234,7 +234,7 @@ public class Datos {
     }
 
 
-    /** saves the normalized instance sets in the testNormalized member [0..1]
+    /** Saves the normalized instance sets in the testNormalized member [0..1]
      *  Also, it saves the test classes in testOutput 
      *  The test attribute is not normalized
      *  @throws CheckException */
@@ -299,7 +299,7 @@ public class Datos {
     }
 
 
-    /** calculates the distance between a couple of examples or instances. This distance is calculated
+    /** Calculates the distance between a couple of examples or instances. This distance is calculated
      *  according to selected features
      *  @param ej1 is the first example or instance
      *  @param ej2 is the second example or instance
@@ -320,7 +320,7 @@ public class Datos {
     }
 
 
-    /** calculates the precision (errors/total_instances) in the prediction of the instance class.
+    /** Calculates the precision (errors/total_instances) in the prediction of the instance class.
         This is the Leaving One Out algorithm
      *  @param featuresVector a boolean array with selected features
      *  @return returns a double value with the error  (n_errors/total_instances) */
@@ -374,7 +374,7 @@ public class Datos {
     }
 
 
-    /** calculates the inconcistency ratio.
+    /** Calculates the inconcistency ratio.
      *  @param featuresVector a boolean array with the selected features
      *  @return returns a double value with the inconsistency ratio (0..1) */
     public double medidaInconsistencia(boolean featuresVector[]){
@@ -450,7 +450,7 @@ public class Datos {
     }
 
 
-     /** calculates the inconsistent example pairs ratio (IEP)
+     /** Calculates the inconsistent example pairs ratio (IEP)
      *  @param featuresVector a boolean array with the selected features
      *  @return returns a double value with the inconsistency ratio (0..1) */
     public double measureIEP(boolean featuresVector[]){
@@ -526,7 +526,7 @@ public class Datos {
     }
 
 
-    /** calculates the mutual information measure between the variables and the class. This method will be applied
+    /** Calculates the mutual information measure between the variables and the class. This method will be applied
      *  only at the beginning
         @return a double array with the MI between ith variable and the class */
     public double[] obtenerIMVarsClase(){
@@ -592,9 +592,10 @@ public class Datos {
     }
 
 
-    /** modulo que calcula la informacion mutua entre cada dos variables. Tambien se realizarÃ¡ una Ãºnica vez cuando se
-        utilice la medida de IM 
-        @return matriz de valores double con IM entre la variable i  y la variable j */
+    /** Computes the mutual information between every two variables.
+     * Also used when the IM measurement is used.
+        @return matrix(ij) with the IM measurement (Mutual information) between the variable i and the variable j.
+    */
     public double[][]obtenerIMVars(){
         double IMV[][];
         int i,j, posNX, posNY;

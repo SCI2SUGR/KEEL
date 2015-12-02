@@ -33,15 +33,14 @@ import java.util.*;
 import java.io.PrintStream;
 import keel.Dataset.*;
 
+
 /**
- * <p>Título: Hibridación Pso Aco</p>
- * <p>Descripción: Hibridacion entre los dos algoritmos Pso y Aco</p>
- * <p>Copyright: Copyright (c) 2008</p>
- * <p>Empresa: </p>
- * @author Vicente Rubén del Pino
+ * <p>Title: Regla (Rule)</p>
+ * <p>Description:Rule class.
+ *    Represents a rule extracted by the PSO-ACO algorithm. </p>
+ * @author Vicente Rubén del Pino Ruiz
  * @version 1.0
  */
-
 public class Regla {
 
     private Vector cNominales; //Atributos de la regla
@@ -52,11 +51,9 @@ public class Regla {
     private int numeroMuestrasCubiertas;
 
 
-    /**
-     * Constructor por defecto
-     *
-     * Crea una regla vacia, sin atributos y sin clase definida
-     */
+  /**
+   *  Default constructor. An empty rule is built.
+   */
     public Regla() {
 
         cNominales = new Vector();
@@ -68,11 +65,11 @@ public class Regla {
 
     }
 
-    /**
-     * Constructor de copia.
-     * Crea una regla a partir de la que se le pasa por parametro.
-     * @param regla Regla Regla a copiar en la actual
-     */
+  /**
+   * Copy Constructor. Creates a new rule object by copying the one given as argument.
+   * 
+   * @param regla rule to be copied.
+   */
     public Regla(Regla regla) {
         c = new ComparadorRegla();
         cNominales = new Vector(regla.cNominales);
@@ -82,12 +79,13 @@ public class Regla {
         numeroMuestrasCubiertas = regla.numeroMuestrasCubiertas;
     }
 
-    /**
-     * Constructor
-     * @param continuos Condiciones continuas
-     * @param nominales Condiciones nominales
-     * @param claseOriginal Clase para la regla
-     */
+  /**
+   *  Parameter Constructor.
+   *  Creates a new rule with the given attribute values and class passed as parameters.
+   * @param continuos Continuous Attributes values Vector
+     * @param nominales Nominal Attributes values Vector
+   * @param claseOriginal String class to set.
+   */
     public Regla(Vector continuos, Vector nominales, Atributo claseOriginal) {
 
         cContinuos = new Vector(continuos);
@@ -98,62 +96,62 @@ public class Regla {
 
     }
 
-    /**
-     * Modulo que inserta un atributo junto con su valor en la regla
-     *
-     * @param original Atributo Atributo que se inserta en la regla.
-     */
+  /**
+   * Adds a condition (a nominal attribute with its value and an operator).
+   *
+   * @param original {@link Condition} condition to add.
+   */
     public void insertarCondicionNominal(Condicion original) {
         cNominales.addElement(original);
     }
 
-    /**
-     * Modulo que inserta un atributo junto con su valor en la regla
-     *
-     * @param original Atributo Atributo que se inserta en la regla.
-     */
+  /**
+   * Adds a condition (a continuous attribute with its value and an operator).
+   *
+   * @param original {@link Condition} condition to add.
+   */
     public void insertarCondicionContinua(Condicion original) {
         cContinuos.addElement(original);
     }
 
 
     /**
-     * Modulo que inserta la clase a la que identifica la regla con todos
-     * sus atributos
+     * Adds a class that identifies the rule with all its attributes.
      *
-     * @param original Atributo Clase que se inserta en la regla
+     * @param original {@link Atributo} class added to the rule.
      */
     public void insertarClase(Atributo original) {
         clase = original;
     }
 
 
-    /**
-     * Modulo que ordena los atributos de la regla de menor a mayor
-     *
-     */
+  /**
+   * Sorts the rules in increasing order.
+   *
+   */
     public void ordenaCondiciones() {
         ComparadorCondicion c = Condicion.getComparadorCondiciones();
         Collections.sort(cNominales, c);
         Collections.sort(cContinuos, c);
     }
 
-    /**
-     * Modulo que asigna la calidad correspondiente a la regla
-     *
-     * @param original double Calidad que se asignara a la regla
-     */
+  /**
+   * Assigns the given quality to the rule.
+   *
+   * @param original double Quality to assign.
+   */
     public void asignarCalidad(float original) {
         calidad = original;
     }
 
 
-    /**
-     * Funcion que indica si la regla cubre la muestra que se le pasa por argumento
-     * @param ejemplo Muestra Muestra a comprobar si se cubre con la regla o no.
-     * @return boolean Boolean que indica si se cubre la muestra (true) o false en caso contrario
-     */
-
+   /**
+   * Checks if the given example is covered by the whole rule 
+   * (covered by the conditions and with the same class of the rule).
+   * If it is correctly covered by the rule.
+   * @param ejemplo given example to check.
+   * @return True if it is covered, false otherwise.
+   */
     public boolean cubreMuestraTotal(Muestra ejemplo) {
 
         int numCondicionesNominales = cNominales.size();
@@ -190,11 +188,11 @@ public class Regla {
         return true;
     }
 
-    /**
-     * Funcion que indica si en la muestra se encuentran todas las condiciones de la regla
-     * @param ejemplo Muestra Muestra donde se buscaran las condiciones de la regla
-     * @return boolean Indica si estan todos los atributos(true) o no (false)
-     */
+  /**
+   * Checks if in the sample, all the rule conditions are found.
+   * @param ejemplo Sample to check.
+   * @return True if in the sample, all the rule conditions are found.
+   */
     public boolean estanCondicionesEn(Muestra ejemplo) {
 
         int numCondicionesNominales = cNominales.size();
@@ -227,58 +225,57 @@ public class Regla {
 
     }
 
-    /**
-     * Funcion que devuelve la clase que predice la regla
-     * @return Atributo Clase predicha por la regla
-     */
+  /**
+   * Returns the predicted class for the rule.
+   * @return the predicted class for the rule.
+   */
     public Atributo obtenerReglaPredicha() {
         return clase;
     }
 
-    /**
-     * Funcion que devuelve un vector con todas las condiciones que se siguen en la regla
-     * @return Vector Lista de las condiciones.
-     */
+  /**
+   * Returns the list of nominal conditions of the rule.
+   * @return Vector the list of nominal conditions of the rule.
+   */
     public Vector listaCondicionesNominales() {
         Vector devolver;
         devolver = new Vector(cNominales);
         return devolver;
     }
 
-    /**
-     * Funcion que devuelvo un vector con las condiciones continuas de la regla
-     * @return Vector con las condiciones
-     */
-
+  /**
+   * Returns the list of continuous conditions of the rule.
+   * @return Vector the list of continuous conditions of the rule.
+   */
     public Vector listaCondicionesContinuos() {
         Vector devolver;
         devolver = new Vector(cContinuos);
         return devolver;
     }
 
-    /**
-     * Funcion que devuelve la calidad de la regla
-     * @return double Double con la calidad que tiene la regla
-     */
+  /**
+   * Returns the quality of the rule.
+   * @return the quality of the rule.
+   */
     public float obtenerCalidad() {
         return calidad;
     }
 
 
-    /**
-     * Funcion que devuelve el numero de condiciones que contiene la regla
-     * @return int Numero de condiciones de la regla
-     */
+  /**
+   * Returns the number of continuous conditions of the rule.
+   * @return  the number of continuous conditions of the rule.
+   */
     public int obtenerNumCondicionesContinuas() {
         int devolver;
         devolver = cContinuos.size();
         return devolver;
     }
 
-    /**
-     * Funcion que devuelve el numero de condiciones nominales de la regla
-     * @return Numero de condiciones nominales de la regla
-     */
+  /**
+   * Returns the number of nominal conditions of the rule.
+   * @return the number of nominal conditions of the rule.
+   */
     public int obtenerNumCondicionesNominales() {
         int devolver;
         devolver = cNominales.size();
@@ -286,52 +283,52 @@ public class Regla {
     }
 
 
-    /**
-     * Modulo que inserta las condiciones que se pasan por parametro en la regla
-     * @param atributos Vector Vector con las condiciones a insertar
-     */
+   /**
+   * Adds all the nominal conditions given.
+   * @param atributos Vector of conditions to add.
+   */
     public void insertaCondicionesNominales(Vector atributos) {
         cNominales = new Vector(atributos);
     }
 
-    /**
-     * Modulo que inserrta condiciones continuas en la regla
-     * @param atributos Condiciones a insertar en la regla
-     */
+  /**
+   * Adds all the continuous conditions given.
+   * @param atributos Vector of conditions to add.
+   */
     public void insertaCondicionesContinuos(Vector atributos) {
         cContinuos = new Vector(atributos);
     }
 
 
-    /**
-     * Modulo que elimina la condicion que se pasa por parametro de la regla
-     * @param condicion Atributo Condicion a eliminar de la regla.
-     */
+  /**
+   * Removes the nominal condition passed as parameter.
+   * @param condicion condition to be removed.
+   */
     public void eliminaCondicionNominal(Condicion condicion) {
         cNominales.remove(condicion);
     }
 
-    /**
-     * Modulo que elimina la condicion continua de la regla que se pasa por parametro
-     * @param condicion  Condicion a eliminar
-     */
+  /**
+   * Removes the continuous condition passed as parameter.
+   * @param condicion condition to be removed.
+   */
     public void eliminaCondicionContinuos(Condicion condicion) {
         cContinuos.remove(condicion);
     }
 
-
-    /**
-     * Funcion que devuelve un comparador de reglas.
-     * @return ComparadorRegla Comparador de reglas
-     */
+    
+  /**
+   * Returns the rules comparative method.
+   * @return the rules comparative method.
+   */
     public static ComparadorRegla obtenerComparador() {
         return c;
     }
 
-    /**
-     * Modulo que copia en la regla los valores de la pasada por argumento
-     * @param regla Regla a copiar
-     */
+  /** Copies the rule given as argument.
+   * 
+   * @param regla rule to be copied.
+   */
     public void copia(Regla regla) {
         Condicion copia;
         Condicion original;
@@ -355,29 +352,30 @@ public class Regla {
     }
 
 
-    /**
-     * Modulo que elimina la condicion nominal del indice sustituyendola por la pasada por parametro
-     * @param indice Condicion a sustituir
-     * @param nueva Condicion nueva
-     */
+  /**
+   * Removes the nominal condition with the index given and adds a new one 
+   * in that position.
+   * @param indice given index where to remove and add.
+   * @param nueva New condition to add.
+   */
     public void eliminaCondicionNominal(int indice, Condicion nueva) {
         cNominales.remove(indice);
         cNominales.insertElementAt(nueva, indice);
     }
 
-    /**
-     * Modulo que elimina la condicion nominal del indice sustituyendola por la pasada por parametro
-     * @param indice Condicion a sustituir
-     * @param nueva Condicion nueva
-     */
-
+  /**
+   * Removes the continuous condition with the index given and adds a new one 
+   * in that position.
+   * @param indice given index where to remove and add.
+   * @param nueva New condition to add.
+   */
     public void eliminaCondicionContinuos(int indice, Condicion nueva) {
         cContinuos.remove(indice);
         cContinuos.insertElementAt(nueva, indice);
     }
 
     /**
-     * Modulo que elimina la ultima condicion nominal de la regla
+     * Removes the last nominal condition.
      */
     public void eliminaUltimaCondicionNominal() {
         cNominales.remove(cNominales.size() - 1);
@@ -385,7 +383,7 @@ public class Regla {
 
 
     /**
-     * Modulo que elimina la ultima condicion continua de la regla
+     * Removes the last continuous condition.
      */
     public void eliminaUltimaCondicionContinua() {
         cContinuos.remove(cContinuos.size() - 1);
@@ -393,9 +391,9 @@ public class Regla {
 
 
     /**
-     * Funcion que devuelve la condicion nominal del indice
-     * @param indice Posicion de la condicion nominal a devolver
-     * @return Condicion Nominal de la regla
+     * Returns the nominal condition with the given index.
+     * @param indice given index.
+     * @return the nominal condition with the given index.
      */
     public Condicion getCondicionNominal(int indice) {
         Condicion devolver;
@@ -404,11 +402,10 @@ public class Regla {
     }
 
     /**
-     * Funcion que devuelve la condicion continua del indice
-     * @param indice Posicion de la condicion continua a devolver
-     * @return Condicion continua de la regla
+     * Returns the continuous condition with the given index.
+     * @param indice given index.
+     * @return the continuous condition with the given index.
      */
-
     public Condicion getCondicionContinua(int indice) {
         Condicion devolver;
         devolver = (Condicion) cContinuos.get(indice);
@@ -416,38 +413,34 @@ public class Regla {
     }
 
     /**
-     * Funcion que inicializa una condicion a un valor pasado por parametro
-     * @param indice Posicion de la condicion
-     * @param co Valor
+     * Sets the given nominal condition into the position given.
+     * @param indice given position.
+     * @param co given condition.
      */
-
-
     public void setCondicionNominal(int indice, Condicion co) {
         cNominales.set(indice, co);
     }
 
     /**
-     * Funcion que inicializa una condicion a un valor pasado por parametro
-     * @param indice Posicion de la condicion
-     * @param co Valor
+     * Sets the given continuous condition into the position given.
+     * @param indice given position.
+     * @param co given condition.
      */
-
     public void setCondicionContinua(int indice, Condicion co) {
         cContinuos.set(indice, co);
     }
 
     /**
-     * Modulo que elimina las condiciones nominales de la regla
+     * Removes all nominal conditions.
      */
     public void eliminaCondicionesNominales() {
         cNominales = new Vector();
     }
 
-    /**
-     * Modulo que imprime por pantalla la regla
-     * @param numCondiciones Numero de condiciones nominales
-     */
-
+  /**
+   * Prints on the standard output the rule.
+   * @param numCondiciones number of nominal conditions.
+   */
     public void imprime(int numCondiciones) {
         Attribute[] listaAtributos;
         listaAtributos = Attributes.getInputAttributes();
@@ -539,12 +532,11 @@ public class Regla {
     }
 
 
-    /**
-     * Modulo que imprime en un fichero la regla
-     * @param numCondiciones Numero de condiciones continuas de la regla
-     * @param salida Fichero donde imprimir la regla
-     */
-
+  /**
+   * Prints on the given file (PrintStream) the rule.
+   * @param salida given file (PrintStream). 
+   * @param numCondiciones number of continuous conditions.
+   */
     public void imprimeFichero(int numCondiciones, PrintStream salida) {
         Attribute[] listaAtributos;
         listaAtributos = Attributes.getInputAttributes();
@@ -635,11 +627,12 @@ public class Regla {
     }
 
 
-    /**
-     * Funcion que devuelve la prediccion de la regla para la muestra
-     * @param mt Muestra sobre la que se comprueba la regla
-     * @return Null en caso de no cubrir la regla, la clase en caso contrario
-     */
+  /**
+   * Returns the predicted class of the given sample it they have compatible conditions,
+   * null otherwise.
+   * @param mt {@link Muestra} given sample.
+   * @return the predicted class or null.
+   */
     public Atributo prediccion(Muestra mt) {
         if (estanCondicionesEn(mt)) {
             return clase;
@@ -650,23 +643,23 @@ public class Regla {
 
 
     /**
-     * Modulo que elimina las condiciones nominales de la regla
+     * Removes all nominal conditions.
      */
     public void limpiaCNominales() {
         cNominales = new Vector();
     }
 
     /**
-     * Modulo que asigna las muestras cubiertas por la regla
-     * @param num Numero de muestras cubiertas
+     * Assign the number of examples covered by the rule with the value given.
+     * @param num number of covered examples to set.
      */
     public void asignarNumeroMuestrasCubiertas(int num) {
         numeroMuestrasCubiertas = num;
     }
 
     /**
-     * Funcion que devuekve el numero de muestras cubiertas por la regla
-     * @return Numero de muestras cubiertas
+     * Returns the number of examples covered by the rule. 
+     * @return the number of examples covered by the rule.
      */
     public int obtenerNumeroMuestrasCubiertas() {
         return numeroMuestrasCubiertas;

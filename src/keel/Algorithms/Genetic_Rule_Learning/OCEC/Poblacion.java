@@ -101,8 +101,9 @@ public class Poblacion {
   }
 
   /**
-   *   junta dos organizaciones si los atributos útiles de una estan contenidos en la otra (y tienen
-   * lo mismos valores, obviamente.
+   * Combines each organization with another one if the useful attributes of 
+   * the organization is contained in the other one to be combined with.
+   * The attributes should have the same values.
    */
   public void mezclar() {
     for (int i = 0; i < organizaciones.size() - 1; i++) {

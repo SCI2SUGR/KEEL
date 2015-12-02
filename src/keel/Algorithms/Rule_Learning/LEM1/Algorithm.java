@@ -204,10 +204,10 @@ public class Algorithm {
     }
     
     /**
-     * 
-     * @param A Lista con todos los inputs
-     * @param d ParticiÃ³n conjuntos elementales {d}*
-     * @return Lista con los inputs que representan la cobertura global
+     * Computes the global coverage for the algorithm
+     * @param A all inputs list
+     * @param d Elemental sets partition {d}*
+     * @return inputs list that represent the global coverage
      */
     private LinkedList<Integer> calcula_cobertura_global(LinkedList<Integer> A, LinkedList<LinkedList<Integer>> d){
         

@@ -60,11 +60,7 @@ import java.util.StringTokenizer;
 
 
 /**
- * 
- * @param  numberOfInitialsCentroids
- * @param  k, to use with knn rule in the initialization.
- * @param GradientStep
- * @param Temperature
+ * ENPC prototype generator.
  * @author Isaac Triguero
  * @version 1.0
  */
@@ -77,13 +73,24 @@ public class ENPCGenerator extends PrototypeGenerator {
   private int MaxIter;
 
   //others variables.
-  protected int numberOfPrototypes;  
-  protected int numberOfClass;
+  
+    /**
+     * Number of prototypes.
+     */
+      protected int numberOfPrototypes;  
+
+    /**
+     * Class number.
+     */
+    protected int numberOfClass;
  
   
   /**
    * Build a new ENPCGenerator Algorithm
    *
+     * @param _trainingDataSet training dataset.
+     * @param k k parameter.
+     * @param max maximum number of iterations
    */
   
   public ENPCGenerator(PrototypeSet _trainingDataSet, int k, int max)
@@ -156,7 +163,8 @@ public class ENPCGenerator extends PrototypeGenerator {
    * It is the way of obtain the main class that is usually use when unsupervised learning is applied to supervise classification. 
    * But not onl in a posteriori phase. Remember tha the quality of each prototype depends on the relationship among the number of patterns in 
    * its regions and....,
-   * @param output
+     * @param classifier classifier prototype set
+     * @param V prototype set population.
    */
   
   protected void mutation(PrototypeSet classifier, PrototypeSet V[][]){
@@ -189,7 +197,9 @@ public class ENPCGenerator extends PrototypeGenerator {
    * Introduce new prototypes in the classifier, each prototype has the opportunity to introduce a new prototype
    * in order to increase its own quality. If a region r1 has two non-empty sets V11 and V12 we need
    * to have another region r2 that contain V12
-   * @param output
+     * @param classifier classifier prototype set
+     * @param V prototype set population.
+     * @return new prototype set population.
    */
   
   protected PrototypeSet[][] reproduction(PrototypeSet classifier, PrototypeSet V[][]){
@@ -324,9 +334,9 @@ public class ENPCGenerator extends PrototypeGenerator {
   
   
   /**
-   * Lo ncio que hace esta funcion es llevarlo todo a su centroide.
-   * @param classifier
-   * @param V
+   * Moves all to the centroid.
+     * @param classifier classifier prototype set
+     * @param V prototype set population.
    */
   protected void move(PrototypeSet classifier, PrototypeSet V[][]){
 	  
@@ -339,9 +349,10 @@ public class ENPCGenerator extends PrototypeGenerator {
   }
   
   /**
-   * Die operator. Sirve para eliminar los prototipos que no tienen buena calidad.
-   * @param classifier
-   * @param V
+   * Die operator. Removes all the prototypes that do not have a good quality.
+     * @param classifier classifier prototype set
+     * @param quality quality of the prototypes in the set.
+     * @return Modified classifier prototype set.
    */
   protected PrototypeSet die(PrototypeSet classifier, double quality[]){
 	  double pDie = 0.0;
@@ -375,8 +386,10 @@ public class ENPCGenerator extends PrototypeGenerator {
   }
   
   /**
-   * funcion que devuelve que prototipos de un conjunto dado pertenece a cada region (outputdatSet)
-   * @return
+   * Returns the prototypes of the given set organized by the given regions
+   * @param initial given prototype set.
+   * @param outputDataSet given regions.
+   * @return the prototypes of the given set organized by the given regions
    */
   
   PrototypeSet[] nearPrototype(PrototypeSet initial, PrototypeSet outputDataSet)
@@ -414,11 +427,13 @@ public class ENPCGenerator extends PrototypeGenerator {
 	  return region;
   }
   
-  /**
-   * funcion que devuelve que prototipos de un conjunto dado pertenece a cada conjunto Vij (outputdatSet)
-   * @return
+    /**
+   * Returns the prototypes of the given set organized by the given regions
+   * considering the class value. 
+   * @param initial given prototype set.
+   * @param outputDataSet given regions.
+   * @return the prototypes of the given set organized by the given regions
    */
-  
   PrototypeSet[][] nearPrototypeWithClass(PrototypeSet initial, PrototypeSet outputDataSet)
   {
       double dMin = Double.POSITIVE_INFINITY;
