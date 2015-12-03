@@ -30,16 +30,11 @@
 package keel.Algorithms.Rule_Learning.UnoR;
 
 /**
- * <p>Title: Clase Evalua Calidad Reglas</p>
- *
- * <p>Description: Se encarga de obtener los datos estadisticos del algoritmo </p>
- *
- * <p>Copyright: Copyright Rosa (c) 2007</p>
- *
- * <p>Company: Mi Casa</p>
- *
+ * <p> Get the statistical data from the algorithm. In particular, it evaluates the quality of the rules generated.
  * @author Rosa Venzala
- * @version 1.0
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
 public class EvaluaCalidadReglas {
     private int nClases;
@@ -65,13 +60,15 @@ public class EvaluaCalidadReglas {
     private String[] valorNombreClasesTest;
 
     /**
-     * Calculas las estadisticas finales para un conjunto de reglas dado y un conjunto de datos.
-     * @param conjreg Conjunto de reglas (complejos) final
-     * @param conjTrn Conjunto de datos de entrenamiento
-     * @param conjTst Conjunto de datos de test
-     * @param muestPorClaseTrain int[] Nmero de ejemplos de cada clase en el conj. de entrenamiento
-     * @param muestPorClaseTest int[] Nmero de ejemplos de cada clase en el conj. de test
-     * @param valorNombreClases String[] etiquetas para cada una de las clases
+     * <p>
+     * Calculates the final statisticals for a set of rules and a set of data
+     * </p>
+     * @param conjreg Set of rules(complex) final
+     * @param conjTrn Set of train data
+     * @param conjTst Set of test data
+     * @param muestPorClaseTrain int[] Number of examples of each class in train set
+     * @param muestPorClaseTest int[] Number of examples of each class in train test
+     * @param valorNombreClases String[] Labels for each class
      */
     public EvaluaCalidadReglas(ConjReglas conjreg, ConjDatos conjTrn,
                                ConjDatos conjTst, int[] muestPorClaseTrain,
@@ -120,16 +117,26 @@ public class EvaluaCalidadReglas {
         System.out.println("\nAccuracy: " + porcAciertoTst+"\n-----------------------------");
 
     }
-
+    
+    /**
+     * Returns the accuracy for the training dataset.
+     * @return the accuracy for the training dataset. 
+     */
     public double getAccuracyTrain(){
     	return porcAciertoTr;
     }
+    /**
+     * Returns the accuracy for the test dataset.
+     * @return the accuracy for the test dataset. 
+     */
     public double getAccuracyTest(){
     	return porcAciertoTst;
     }
     /**
-     * Imprime en una cadena con las estadisticas (para test)
-     * @return una cadena con las estadisticas
+     * <p>
+     * Prints on a string the statistical(for test)
+     * </p>
+     * @return the statisticals
      */
     public String printString() {
         String cad = "####Average results for test data####\n";
@@ -150,10 +157,12 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * Calcula en si mismo todas las estadisticas, especialmente el porcentaje de aciertos
-     * @param datos Conjunto de datos (entrenamiento o test)
-     * @param muestPorClase int[] Nmero de ejemplos por cada clase en el conjunto de datos
-     * @param code Codigo para saber si estamos tratando con entrenamiento o test
+     * <p>
+     * Calculates all the statistical results, especially percent mathes
+     * </p>
+     * @param datos Set of data(train or test)
+     * @param muestPorClase int[] Number of examples for each class in the data set
+     * @param code Train or Test
      */
     private void calculaIndices(ConjDatos datos, int[] muestPorClase, int code) {
         int i, j;
@@ -334,10 +343,11 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * Genera un String con la lista de salidas, es decir, &lt;salida esperada&gt; &lt;salida del metodo&gt;
-     * (en nuestro caso, clase en el fichero original, clase que obtiene el metodo)
-     * @param datos Es el conjunto de datos con el que queremos comparar para nuestro conjunto de reglas
-     * @return Una cadena con una lista de pares &lt;clase original&gt; &lt;clase calculada&gt;
+     * <p>
+     * Generates a string with the out-put lists
+     * </p>
+     * @param datos Set of data witch to compare the set of rules 
+     * @return A list of pairs: 'original class;calculated class;'
      */
     public String salida(ConjDatos datos,boolean train) {
     
@@ -417,11 +427,13 @@ public class EvaluaCalidadReglas {
         }
         return cadena;
     }
-
-    /** Evaluacion de los complejos sobre el conjunto de ejemplo para ver cuales se
-     *   cubren de cada clase
-     * @param c Complejo a evaluar
-     * @param e Conjunto de datos
+    
+    /** 
+     * <p>
+     * Evaluation of the complex over the set of examples
+     * </p>
+     * @param c Complex to evaluate
+     * @param e Set of data
      */
     private void evaluarComplejo(Complejo c, ConjDatos e) {
         c.borraDistrib();
@@ -436,11 +448,6 @@ public class EvaluaCalidadReglas {
         }
     }
 
-	/** Evaluacion de los complejos sobre el conjunto de ejemplo para ver cuales se
-	*   cubren de cada clase
-	* @param c Complejo a evaluar
-	* @param e Conjunto de datos
-	*/
 	/*private void evaluarComplejo(Complejo c, ConjDatos e) {
 		c.borraDistrib();
 		for (int i = 0; i < e.size(); i++) {

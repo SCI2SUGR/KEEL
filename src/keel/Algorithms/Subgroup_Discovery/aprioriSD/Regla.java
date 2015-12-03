@@ -32,15 +32,13 @@ package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 import java.util.LinkedList;
 
 /**
- * <p>Titulo: Regla</p>
+ * <p>Title: Regla (Rule). </p>
  *
- * <p>Descripcion: Contiene la estructura de datos de una regla en particular</p>
+ * <p>Description: 
+ * This class implements a rule object for this subgroup dicovery algorithm.
+ * This class stores the antecedents and consequents. </p>
  *
- * <p>Copyright: Alberto Copyright (c) 2006</p>
- *
- * <p>Compañia: Mi casa</p>
- *
- * @author Alber
+ * @author Alberto Fernandez
  * @version 1.0
  */
 public class Regla implements Comparable {
@@ -55,9 +53,9 @@ public class Regla implements Comparable {
     private String [] nombreAtributos;
 
     /**
-     * Compara dos reglas
-     * @param o Object Regla a comparar
-     * @return int 0 si las reglas son iguales. 1 si esta regla es mejor. -1 si es peor
+     * Compares the rule with the one given.
+     * @param o Given rule to compare with.
+     * @return int 0 if they are equals. 1 if this rule is better. -1 if this rule is worse
      */
     public int compareTo(Object o) {
         Regla r2 = (Regla) o;
@@ -80,7 +78,7 @@ public class Regla implements Comparable {
 
 
     /**
-     * Constructor por defecto. Asigna el valor 0 a la regla 0
+     * Default constructor. Empty rule
      */
     public Regla() {
         antecedente = new int[1];
@@ -89,9 +87,9 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Constructor
-     * @param tam int Tamaño del antecedente
-     * @param nClases int Numero de clases del problema
+     * Parameter Constructor. Builds a rule with the parameters given.
+     * @param tam int number of antecedents
+     * @param nClases int number of classes of the problem
      */
     public Regla(int tam, int nClases) {
         antecedente = new int[tam];
@@ -105,9 +103,9 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Constructor con parametros a partir de un item
-     * @param item Item El item para formar la regla
-     * @param nClases int Numero de clases del problema
+     * Parameter Constructor. Builds a rule with the item given.
+     * @param item Item item used to build the rule.
+     * @param nClases int number of classes of the problem
      */
     public Regla(Item item, int nClases) {
         posiciones = item.getColumnas();
@@ -122,8 +120,8 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Copia una regla
-     * @return r Regla ya copiada
+     * Copy the rule
+     * @return r the rule copied.
      */
     public Regla copiaRegla() {
         Regla r = new Regla(antecedente.length, this.nClases);
@@ -141,18 +139,18 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Añade un atributo a la regla
-     * @param i int Posicion dentro del antecedente
-     * @param a int El valor del atributo
+     * Adds a new antecedent (attribute + value).
+     * @param i int given attribute index.
+     * @param a int given value of the attribute.
      */
     public void addAtributo(int i, int a) {
         antecedente[i] = a;
     }
 
     /**
-     * Añade un atributo a la regla
-     * @param i int Posicion dentro del array
-     * @param pos int Posicion del atributo
+     * Adds an attribute to the rule.
+     * @param i int index of the array.
+     * @param pos int attribute position
      */
     public void addPosicion(int i, int pos) {
         posiciones[i] = pos;
@@ -160,52 +158,59 @@ public class Regla implements Comparable {
 
 
     /**
-     * Devuelve el atributo i-esimo
-     * @param i int Posicion dentro de la regla
-     * @return double El atributo devuelto del antecedente
+     * Returns the ith antecedent
+     * @param i int position in the rule.
+     * @return antecedent.
      */
     public int getAtributo(int i) {
         return antecedente[i];
     }
 
     /**
-     * Devuelve el tamaño de la regla (nº atributos en el antecedente)
-     * @return int El tamaño de la regla
+     * Returns the rule size (number of attributes/antecedents)
+     * @return int the rule size
      */
     public int size() {
         return (antecedente.length - 1);
     }
 
     /**
-     * @return la clase
+     * Returns the rule class.
+     * @return the rule class.
      */
     public int getClase() {
         return clase;
     }
 
     /**
-     * @param i valor para la clase
+     * Sets the rule class with the value given.
+     * @param i given value to set the class.
      */
     public void setClase(int i) {
         clase = i;
     }
 
     /**
-     * Inserta el valor de support para esta regla
-     * @param s int El valor
+     * Sets the support value of the rule.
+     * @param s int given support value.
      */
     public void setSupport(int s) {
         support = s;
     }
 
     /**
-     * Devuelve el valor de support para esta regla
-     * @return int El valor C
+     * Returns  the support value of the rule.
+     * @return int  the support value of the rule.
      */
     public int getSupport() {
         return support;
     }
 
+    /**
+     * Checks if the rule covers the sample given.
+     * @param m given sample.
+     * @return  True if the rule covers the sample given.
+     */
     public boolean cubre(Muestra m) {
         boolean resp = true;
         int i;
@@ -219,7 +224,7 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Imprime la regla
+     * Prints the rule information on the standard output.
      */
     public void print() {
         for (int x = 0; x < this.size(); x++) {
@@ -232,8 +237,8 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Imprime la regla
-     * @return String La regla escrita como conocemos
+     *  Returns a string with the rule information.
+     * @return String with the rule information.
      */
     public String printString() {
         String cad = "";
@@ -248,17 +253,19 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Imprime el support de la regla
-     * @return String Una cadena indicando el support
+     * Returns the support of the rule as string.
+     * @return the support of the rule as string. 
      */
     public String printSupport(){
         String cad = new String("-- Support: " + support);
         return cad;
     }
 
-    /**
-     * Realiza un reajuste de los valores de los atributos de la regla
-     * @param cambio int[] Los nuevos valores (0 -> X, 1 -> Y...)
+        /**
+     * <p>
+     * Local copy of the values of the attributes of the rule.
+     * </p>
+     * @param cambio the new values (0 -> X, 1 -> Y...) 
      */
     public void ajusta(int[] cambio) {
         for (int i = 0; i < antecedente.length; i++) {
@@ -268,8 +275,10 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Realizamos una copia local del nombre de las variables de entrada
-     * @param atributos String[] un Array que guarda el nombre de cada variable
+     * <p>
+     * Local copy of the name of variables
+     * </p>
+     * @param atributos String[] stores the name of the variables
      */
     public void adjuntaNombreAtributos(String [] atributos){
         nombreAtributos = new String[atributos.length];
@@ -279,24 +288,28 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Ajusta el valor de la heurística WRAcc a un nuevo valor
-     * @param heu double El nuevo valor de la heurística para la regla
+     * <p>
+     * Assign a heuristic value (Wracc) to the rule
+     * </p>
+     * @param heu heuristic value
      */
     public void setHeuristicaWRAcc(double heu) {
         heuristica = heu;
     }
 
     /**
-     * Devuelve el valor heurístico WRAcc de la regla
-     * @return double el valor heuristico
+     * <p>
+     * return the heuristic value of the rule
+     * </p>
+     * @return double heuristic value of the rule
      */
     public double getHeuristica() {
         return heuristica;
     }
 
     /**
-     * Inserta una distribucion dada
-     * @param distribucion int[] los valores de la distribucion
+     * Sets the given distribution.
+     * @param distribucion int[] given distribution to set.
      */
     public void setDistrib(int [] distribucion){
         for (int i = 0; i < distribucion.length; i++){
@@ -305,8 +318,10 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Devuelve el valor de la distribucion de la regla dada
-     * @return int[] El nº de ejemplos de train que cubre la regla para cada clase
+     * <p>
+     * Return the value of the distribution
+     * </p>
+     * @return double [] the value of each distribution
      */
     public int[] getDistribucion() {
         int ret[] = new int[nClases];
@@ -317,24 +332,30 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Devuelve la distribucion para una clase concreta
-     * @param i int El identificador de la clase
-     * @return int El nº de ejemplos cubiertos por la regla
+     * <p>
+     * Return the value of the distribution
+     * </p>
+     * @param i int index of the class
+     * @return double value of distribution
      */
     public int getDistribucionClase(int i) {
         return distrib[i];
     }
-
+    
     /**
-     * Aunmenta en 1 los ejemplos cubiertos para la clase i
-     * @param i int Indice de clase
+     * <p>
+     * Add one to the n of the rule for the class
+     * </p>
+     * @param i int value of the class
      */
     public void incremDistribClase(int i) {
       distrib[i] ++;
   }
 
     /**
-     * Imprime la distribución de la regla
+     * <p>
+     * Print the classes distribution for the rule
+     * </p>
      */
     public void printDistribucion() {
         System.out.print("   [");
@@ -345,8 +366,10 @@ public class Regla implements Comparable {
     }
 
     /**
-     * Guarda la distribución como un String
-     * @return String La distribucion ("visual")
+     * <p>
+     * Print the classes distribution for the rule
+     * </p>
+     * @return String classes distribution for the rule
      */
     public String printDistribucionString() {
         String cad;

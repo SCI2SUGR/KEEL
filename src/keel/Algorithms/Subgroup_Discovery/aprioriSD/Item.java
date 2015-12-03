@@ -30,9 +30,8 @@
 package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 
 /**
- * <p>Titulo: Item</p>
- *
- * <p>Descripcion: Clase para guardar los Items (valor y posicion de cada valor)</p>
+ * <p>Title: Item</p>
+ * Implements an item of a dataset, with their values and their attributes/columns references.
  *
  * <p>Copyright: Alberto Copyright (c) 2006</p>
  *
@@ -47,14 +46,14 @@ public class Item {
     int support; //support para el item
 
     /**
-     * Constructor por defecto (no hace nada)
+     * Default constructor.
      */
     public Item() {
     }
 
     /**
-     * Crea un K-item vacío
-     * @param k int Número de items en este conjunto
+     * Creates an item with k values but empty.
+     * @param k int Número de values.
      */
     public Item(int k){
         item = new int[k];
@@ -62,10 +61,10 @@ public class Item {
     }
 
     /**
-     * Crea un 1-item
-     * @param valor int valor del item
-     * @param columna int columna en la que está dicho valor
-     * @param support int Valor para el support de este item
+     * Creates an item with one value.
+     * @param valor int the given value
+     * @param columna int index of the attribute/column
+     * @param support int support value for the item.
      */
     public Item(int valor, int columna,int support){
         item = new int[1];
@@ -76,10 +75,10 @@ public class Item {
     }
 
     /**
-     * Crea un nuevo Item (si es posible) de tamaño k+1 de dos items de tamaño k
-     * @param uno Item Primer ITEM
-     * @param dos Item Segundo ITEM
-     * @return True si se crea el Item, false en otro caso
+     * Creates a new item (if possible) of k+1 size from two k items.
+     * @param uno Item first ITEM
+     * @param dos Item second ITEM
+     * @return True if it has been created, false otherwise.
      */
     public boolean creaItem(Item uno, Item dos){
         int [] item1 = uno.getItem();
@@ -110,8 +109,8 @@ public class Item {
     }
 
     /**
-     * Devuelve una copia de los valores del item
-     * @return int[] El array de valores
+     * Returns a copy of the values of the item.
+     * @return a copy of the values of the item.
      */
     public int [] getItem(){
         int tam = this.item.length;
@@ -123,8 +122,8 @@ public class Item {
     }
 
     /**
-     * Devuelve una copia de las columnas de cada valor del item
-     * @return int[] El array de columnas
+     * Returns a copy of the columns references for each value.
+     * @return int[] a copy of the columns references for each value.
      */
     public int [] getColumnas(){
         int tam = this.columnas.length;
@@ -136,21 +135,24 @@ public class Item {
     }
 
     /**
-     * Añade el valor de support para este item concreto
-     * @param support int El valor S
+     * Sets the support value for the item with the one given.
+     * @param support int the value to be set.
      */
     public void setSupport(int support){
         this.support = support;
     }
 
     /**
-     * Devuelve el valor de support para este item concreto
-     * @return double El valor S
+     * Returns the support value for the item.
+     * @return the support value for the item.
      */
     public int getSupport(){
         return support;
     }
 
+    /**
+     * Prints on the standard output the item information.
+     */
     public void print(){
         System.out.print("(");
         for (int j = 0; j < (item.length)-1; j++) {

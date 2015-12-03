@@ -36,16 +36,15 @@ import java.io.*;
 import keel.Dataset.*;
 import java.util.Arrays;
 
+
 /**
- * <p>Title: Clase principal del programa</p>
+ * <p>Title: Main Class of the Program</p>
  *
- * <p>Description: Lee los parametros y lanza el algoritmo 1R SD</p>
+ * <p>Description: It reads the configuration file (data-set files and parameters) and launch the algorithm</p>
  *
- * <p>Copyright: Copyright (c) Rosa 2007</p>
+ * <p>Company: KEEL</p>
  *
- * <p>Company: Yo</p>
- *
- * @author Rosa Venzala
+ * @author  Rosa Venzala
  * @version 1.0
  */
 public class Main {
@@ -58,17 +57,14 @@ public class Main {
     private long semilla;
     private int SMALL;
 
-    /** Constructor por defecto */
+    /** Default constructor. */
     public Main() {
     }
 
     /**
-     * Obtiene toda la informacion necesaria del fichero de parametros<br/>
-     * En primer lugar lee el nombre de los archivos de datos de entrenamiento y test<br/>
-     * Posteriormente lee los ficheros donde queremos guardar las salidas<br/>
-     * Por ltimo lee los parametros del algoritmo<br/>
+     * Obtains al the information needed from the configuration file given.
      *
-     * @param nomFichero Nombre del fichero de parametros
+     * @param nomFichero given configuration filename.
      *
      */
     private void preparaArgumentos(String nomFichero) {
@@ -105,23 +101,24 @@ public class Main {
 	
     };
 
-    /**Lanza el programa Prism
+    /**
+     * Executes the Prism algorithm
      */
     private void ejecutar() {
 	UnoR uno_r=new UnoR(ficheroTrain,ficheroTest,ficheroSalidatr,ficheroSalidatst,ficheroSalida,semilla,SMALL);
     }
 
     /**
-     * Programa principal
-     * @param args Contendra el nombre del fichero de parametros<br/>
-     * Formato:<br/>
-     * <em>algorith = &lt;nombre algoritmo></em><br/>
-     * <em>inputData = "&lt;fichero training&gt;" "&lt;fichero validacion&gt;" "&lt;fichero test&gt;"</em> ...<br/>
-     * <em>outputData = "&lt;fichero training&gt;" "&lt;fichero test&gt;"</em> ...<br/>
+     * Main Program
+     * @param args It contains the name of the configuration file<br/>
+     * Format:<br/>
+     * <em>algorith = &lt;algorithm name></em><br/>
+     * <em>inputData = "&lt;training file&gt;" "&lt;validation file&gt;" "&lt;test file&gt;"</em> ...<br/>
+     * <em>outputData = "&lt;training file&gt;" "&lt;test file&gt;"</em> ...<br/>
      * <br/>
-     * <em>seed = valor</em> (si se usa semilla)<br/>
-     * <em>&lt;Descripcion1&gt; = &lt;valor1&gt;</em><br/>
-     * <em>&lt;Descripcion2&gt; = &lt;valor2&gt;</em> ... (por si hay mas argumentos)<br/>
+     * <em>seed = value</em> (if used)<br/>
+     * <em>&lt;Parameter1&gt; = &lt;value1&gt;</em><br/>
+     * <em>&lt;Parameter2&gt; = &lt;value2&gt;</em> ... <br/>
      */
     public static void main(String args[]) {
         Main mimain = new Main();

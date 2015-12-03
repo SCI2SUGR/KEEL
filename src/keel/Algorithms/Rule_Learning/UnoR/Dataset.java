@@ -77,25 +77,43 @@ public class Dataset {
         return X;
     }
     
+    /**
+     * <p>
+     * Return the values of the in-put attributes
+     * </p>
+     * @return double[][] An array with the in-put attributes
+     */
     public String[][]getX2(){
     	return X2;
     }
     
     /**
-     * Devuelve los valores de los atributos de entrada para una instancia determinada
-     *@param pos La posicion de la instancia en el conjunto de datos
-     * @return double[] Un array con los atributos de entrada para esa instancia
+     * <p>
+     * Return the values of the in-put attributes for an instance
+     * </p>
+     * @param pos The position of the instance in the set of values
+     * @return double[] An array with the in-put attributes for the instance
      */
     public double []getX(int pos){
     	return X[pos];
     }
     
+        /**
+     * Returns the instance set
+     * @return the instance set
+     */
     public InstanceSet getInstanceSet(){
     	return IS;
     }
     
-    /*Devuelve el valor nominal del valor double del atributo
-    */
+    /**
+     * <p>
+     * Returns the nominal value of the double value of the attribute
+     * </p>
+     * @param atr attribute id.
+     * @param valor attribute id.
+     * @return the nominal value of the double value of the attribute
+     */
     public String findNominalValue(int atr,double valor){
     	String dev="";
 	boolean parar=false;
@@ -104,12 +122,14 @@ public class Dataset {
 	  }
 	return dev;
     }
-    /*
-    *Comprueba si en el conjunto de instancias quedan aun instancias de una clase 
-    * determinada
-    @param La clase de la que se busca si hay instancias
-    @return true si hay instancias, false en otro caso
-    */
+    
+    /**
+     * <p>
+     * Checks if in the instances set left instances of a determined class
+     * </p>
+     * @param whichClass The class
+     * @return true if there're instances, false otherwise
+     */
     public boolean hayInstanciasDeClaseC(int whichClass)throws ArrayIndexOutOfBoundsException{
  
 	boolean resul=false;
@@ -129,9 +149,12 @@ public class Dataset {
 	return resul;
     }
      
-    /*
-    Obtiene para cada atributo la lista ordenada de sus posibles valores sin repetir
-    */
+    /**
+     * <p>
+     * Gets for each attribute the sorted list of its possible values
+     * </p>
+     * @return list with each attribute the sorted list of its possible values
+     */
     public double [][]getListValues(){
     	double [][]lista_valores=new double[nentradas] [ndatos];
     	for (int i=0;i<nentradas;i++){
@@ -163,11 +186,12 @@ public class Dataset {
     }
     
     /**
-    * Crea un 3-D array a partir del training set, almacenando para cada clase, cada atributo
-    * y cada valor el numero de ejemplos de clase C que tienen el valor V para el atributo A
-    * COUNT[C,V,A]
-    * @return int [][][] Una matriz con el numero de ejemplos
-    */
+     * <p>
+     * Creates a matrix training set, stored for each class, each attribute, and each value
+     * the number of examples of class C that have value V for the attribute A COUNT[C,V,A]
+     * </p>
+     * @return int [][][] A matrix with the number of examples
+     */
     public int [][][] creaCount(){
     	int [][][] Count=new int [nclases][nentradas] [ndatos];;
 	//para definir la matriz Count, nvalores podria ser en el peor caso
@@ -204,11 +228,13 @@ public class Dataset {
 	}}}//de los 3for
 	return Count;
     }
-    /*
-    busca un elemento en un vector previamente ordenado en orden ascendente
-    Devuelve el indice donde se encuentra el valor
-    Devuelve -1 si no se encuentra el valor
-    */
+
+        /**
+     * <p>
+     * Look for an element in a sorted vector.
+     * Returns the index where found it, returns -1 otherwise.
+     * </p>
+     */
     private int buscar(double[]v,double valor){
 	boolean encontrado=false;
 	int indice=-1;
@@ -217,10 +243,15 @@ public class Dataset {
 	}
 	return indice;
     }
-    /*
-    * Devuelve un vector con la clase optima para cada par atributo-valor
-    * @return int [][]el vector con las clases optimas
-    */
+    
+    /**
+     * <p>
+     * Returns a vector with the optimum class for each pair attribute-value
+     * </p>
+     * @param Count each pair attribute-value
+     * @param seed seed.
+     * @return int [][] vector with the optimum classes
+     */
     public int [][]getClaseOptima(int [][][]Count,long seed){
     	int [][]optima=new int[nentradas] [ndatos];
 	int []vector=new int[nclases];
@@ -233,10 +264,11 @@ public class Dataset {
 	return optima;
     }
     
-    /*
-    * Devuelve el indice donde se encuentra el maximo de un array de enteros
-    * Si hay varios maximo devuelve uno aleatoriamente
-    * @return int el indice donde se encuentra el maximo valor
+    /**
+     * <p>
+     * Returns the index where is the maximum in an array of integers
+     * </p>
+    * @return int index where is the aximum value
     */
     private int getMaximo(int []num, long seed){
     	Randomize.setSeed(seed);
@@ -254,10 +286,13 @@ public class Dataset {
 	return indice;
     }
     
-    /*
-    * Devuelve el indice donde se encuentra el maximo de un array de doubles
-    * Si hay varios maximo devuelve uno aleatoriamente
-    * @return int el indice donde se encuentra el maximo valor
+    /**
+     * <p>
+     * Returns the index where is the maximum in an array of doubles
+     * </p>
+     * @param num array of doubles given.
+     * @param seed seed
+    * @return int index where is the aximum value
     */
     public int getMaximo(double []num, long seed){
     	Randomize.setSeed(seed);
@@ -276,11 +311,12 @@ public class Dataset {
 	return indice;
     }
     
-    /*
-    * Devuelve para cada atributo el numero de valores distintos que toma para el conjunto
-    * de datos
-    * @return int [] un array con el numero de valores distintos para cada atributo
-    */
+    /**
+     * <p>
+     * Returns for each attribute the number of different values 
+     * </p>
+     * @return int [] an array with the number of different values
+     */
     public int []getNumValues(){
     	int []num=new int [nentradas];
     	for(int i=0;i<nentradas;i++){
@@ -292,19 +328,22 @@ public class Dataset {
 	}
 	return num;
     }
-    /*
-    * Devuelve para cada atributo el numero de valores distintos que toma para el conjunto
-    * de datos
-    * @return int [] un array con el numero de valores distintos para cada atributo
-    */
+    /**
+     * <p>
+     * Returns for each attribute the number of different values 
+     * </p>
+     * @return int [] an array with the number of different values
+     */
     public int []getNumValues2(){
 	return num_valores;
     }
     
 
     /**
-     * Devuelve los valores para la salida (clase)
-     * @return int[] Un array con los valores de la clase
+     * <p>
+     * Returns the values for the out-put(class)
+     * </p>
+     * @return int[] An array with the values of the class
      */
     public int[] getC() {
         int[] retorno = new int[C.length];
@@ -314,6 +353,12 @@ public class Dataset {
         return retorno;
     }
     
+    /**
+     * <p>
+     * Returns the values for the out-put(class)
+     * </p>
+     * @return int[] An array with the values of the class
+     */
     public String[] getC2() {
         String[] retorno = new String[C2.length];
         for (int i = 0; i < C2.length; i++) {
@@ -323,7 +368,9 @@ public class Dataset {
     }
 
     /**
-     * Devuelve un array con los valores minimos de los atributos de entrada
+     * <p>
+     * Returns an array with the maximum values of the in-put attributes
+     * </p>
      * @return double[] idem
      */
     public double[] getemaximo() {
@@ -331,7 +378,9 @@ public class Dataset {
     }
 
     /**
-     * Devuelve un array con los valores minimos de los atributos de entrada
+     * <p>
+     * Returns an array with the minimum values of the in-put values
+     * </p>
      * @return double[] idem
      */
     public double[] geteminimo() {
@@ -339,61 +388,75 @@ public class Dataset {
     }
 
     /**
-     * Devuelve el nmero de datos
-     * @return int el nmero de ejemplos
+     * <p>
+     * Return the number of examples
+     * </p>
+     * @return int the number of examples
      */
     public int getndatos() {
         return ndatos;
     }
 
     /**
-     * Devuelve el nmero de variables
-     * @return int El nmero de variables (incluyendo entrada y salida)
+     * <p>
+     * Returns the number of variables
+     * </p>
+     * @return int The number of variables(including in-put and out-put)
      */
     public int getnvariables() {
         return nvariables;
     }
 
     /**
-     * Devuelve el nmero de variables de entrada
-     * @return int El total de variables de entrada
+     * <p>
+     * Return the number of input variables
+     * </p>
+     * @return int Total of the input variables
      */
     public int getnentradas() {
         return nentradas;
     }
 
     /**
-     * Devuelve el nmero total de clases
-     * @return int el nmero de clases distintas
+     * <p>
+     * Returns the total number of classes
+     * </p>
+     * @return int the number of classes
      */
     public int getnclases() {
         return nclases;
     }
 
     /**
-     * Comprueba si un atributo esta "perdido" o no
-     * @param i int Nmero de ejemplo
-     * @param j int Nmero de atributo
-     * @return boolean True si falta, False en otro caso
+     * <p>
+     * Checks if one attribute is missing or not
+     * </p>
+     * @param i int Number of example
+     * @param j int Number of attribue
+     * @return boolean True if lost
      */
     public boolean isMissing(int i, int j) {
         // True is the value is missing (0 in the table)
         return missing[i][j];
     }
 
-    /**
-     * Constructor. Crea un nuevo conjunto de instancias
-     */
+   /**
+    * <p>
+    * Constructor, creates a new set of instances
+    * </p>
+    */
     public Dataset() {
         IS = new InstanceSet(); // Init a new set of instances
     }
 
     
     /**
-     * Lee el fichero de ejemplos (train o test)
-     * @param nfejemplos String Nombre del fichero de ejemplos
-     * @param train boolean True si se refiere al conjunto de entrenamiento. False si es test
-     * @throws IOException Un posible error de E/S
+     * <p>
+     * Reads the file of examples(Train&Test)
+     * </p>
+     * @param nfejemplos String Nom of the examples file
+     * @param train boolean True if Train set. False is test set.
+     * @throws IOException A possible I/O error
      */
     public void leeConjunto(String nfejemplos, boolean train) throws            IOException {
         try {
@@ -518,8 +581,10 @@ public class Dataset {
 
     
     /**
-     * Devuelve un String con la cabecera del fichero
-     * @return String Los datos de la cabecera del fichero (train)
+     * <p>
+     * Returns a string with the header of the file
+     * </p>
+     * @return String The data of the header of the file
      */
     public String copiaCabeceraTest() {
         // Header of the output file
@@ -534,7 +599,9 @@ public class Dataset {
     }
 
     /**
-     * Convierte todos los valores del conjunto de datos en el intervalo [0,1]
+     * <p>
+     * Convert all the values of the set of values in the inetrval[0,1]
+     * </p>
      */
     public void normaliza() {
         int atts = this.getnentradas();
@@ -554,8 +621,10 @@ public class Dataset {
     }
 
     /**
-     * Devuelve los tipos de cada entrada (NOMINAL[0] o NUMERICO[1])
-     * @return int[] Un vector que contiene 0 o 1 en funcion de si los atributos son nominales o numericos
+     * <p>
+     * Return the types of each in-put(NOMINAL[0] o NUMERIC[1])
+     * </p>
+     * @return int[] A vector with (NOMINAL[0] o NUMERIC[1])
      */
     public int[] tiposVar() {
         int[] tipos = new int[this.nentradas];
@@ -569,7 +638,9 @@ public class Dataset {
     }
 
     /**
-     * Calcula los valores mas comunes para cada columna o atributo
+     * <p>
+     * Calculate the values most commons for each column or attribute
+     * </p>
      */
     public void calculaMasComunes() {
         comunes = new int[nentradas];
@@ -609,17 +680,21 @@ public class Dataset {
     }
 
     /**
-     * Devuelve el valor mas comn del atributo i-esimo
-     * @param i int Nmero de atributo
-     * @return int Valor mas comnun para esta variable
+     * <p>
+     * Return the value most common of the attribute 'i'
+     * </p>
+     * @param i int Number of the attribute
+     * @return int Most common value for this variable
      */
     public int masComun(int i) {
         return comunes[i];
     }
 
     /**
-     * Devuelve el nombre de las variables del problema
-     * @return String[] Un Array con los nombres de las variables del problema
+     * <p>
+     * Returns the name of the problem's variables
+     * </p>
+     * @return String[] An array with the name of the problem's variables
      */
     public String[] dameNombres() {
         String[] salida = new String[nvariables];
@@ -631,8 +706,10 @@ public class Dataset {
     }
 
     /**
-     * Devuelve el valor de las clases
-     * @return String[] Un array con el valor para las distintas salidas (clases)
+     * <p>
+     * Returns teh value of the classes
+     * </p>
+     * @return String[] An aray with the name of the out-puts(classes)
      */
     public String[] dameClases(){
         String [] salida = new String[nclases];
@@ -650,8 +727,10 @@ public class Dataset {
     }
 
     /**
-     * Comprueba si en la base de datos hay alguna entrada de tipo real o continua
-     * @return boolean True si existe alguna entrada continua. False en caso contrario
+     * <p>
+     * Checks if in the data base there is a in-put type real or continous
+     * </p>
+     * @return boolean True if exists, False otherwise
      */
     public boolean hayAtributosContinuos(){
         return Attributes.hasRealAttributes();

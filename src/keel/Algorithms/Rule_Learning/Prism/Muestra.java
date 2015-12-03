@@ -67,7 +67,7 @@ public class Muestra {
 
     /**
      * <p>
-     * Other constructor, more easy
+     * Other constructor, simpler
      * </p>
      * @param tamano The size of the data(n attributes)
      */

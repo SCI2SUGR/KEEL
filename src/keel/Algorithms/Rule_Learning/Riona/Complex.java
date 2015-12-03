@@ -68,7 +68,7 @@ public class Complex implements Comparable {
     }
 
     /**
-     * Constructor for Complejo
+     * Constructor for Complex
      * @param nClas int number of classes
      */
     public Complex(int nClas) {

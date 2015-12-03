@@ -39,7 +39,8 @@ import org.core.Fichero;
 /**
  * <p>Title: CN2SD</p>
  *
- * <p>Description: Contiene los metodos principales del algoritmo cn2sd</p>
+ * <p>Description: 
+ * Contents the principal methods of the CN2SD algorithm</p>
  *
  *
  *
@@ -112,6 +113,21 @@ public class CN2SD {
      * @param _seCubre porcentaje minimo para decir que una clase de ejemplos ya queda cubierta por un conjunto de reglas
      * @param _multi Se refiere a si se utilizará el peso multiplicativo (1) o el aditivo (0)
      * @param _eficacia Usamos un método supuestamente mas eficaz (más selectores) o más eficiente
+     */
+    /**
+     * Parameter constructor. Constructs a instance of the CN2 algorithm by copying
+     * the configuration parameters given.
+     * @param ftrain Training dataset filename
+     * @param feval Validation dataset filename.
+     * @param ftest Test dataset filename.
+     * @param fSalidaTr Training output filename.
+     * @param fSalidaTst Test output filename.
+     * @param fsal Global output filename.
+     * @param tamEstrella maximum size of the star for the beam search.
+     * @param _nu nu parameter for multiplication weight.
+     * @param _seCubre minimum percentage of examples of a class to consider it as covered.
+     * @param _multi type of weight update (1 multiplication, 0 summation).
+     * @param _eficacia flag effective of efficient.
      */
     public CN2SD(String ftrain, String feval, String ftest,
                  String fSalidaTr,
@@ -242,7 +258,7 @@ public class CN2SD {
 
     }
 
-    /**
+    /*
      * Crea un conjunto de datos (atributos/clase) segun los obtenidos de un fichero de datos
      * @param mis_datos Debe ser un conjunto de datos leido del fichero (mirar doc Dataset.java)
      * @return El conjunto de datos ya creado, es decir, una lista enlazada de muestras (consultar ConjDatos.java y Muestra.java)
@@ -279,7 +295,7 @@ public class CN2SD {
     }
 
     /**
-     * Realiza el algoritmo CN2SD
+     * Executes the algorithm
      */
     public void ejecutar() {
         hazSelectores(); //Creo todos los posibles selectores para las reglas
@@ -308,7 +324,7 @@ public class CN2SD {
         generaSalida();
     }
 
-    /**
+    /*
      * Crea el conjunto total selectores para obtener así todas las posibles reglas
      */
     private void hazSelectores() {
@@ -410,7 +426,7 @@ public class CN2SD {
     }
 
 
-    /**
+    /*
      * Procedimiento CN2desordenado. Genera reglas desordenadas para cada clase del conj. entrenamiento
      * @param datosTrainAux ConjDatos Conjunto de ejemplos de entrenamiento
      * @param valorClases int[] Clases de entrenamiento
@@ -426,7 +442,7 @@ public class CN2SD {
         }
     }
 
-    /**
+    /*
      * Obtiene las reglas para una clase concreta.
      * @param train ConjDatos datos de ejemplo de entrenamiento
      * @param clase int Clase para la que obtendremos las reglas
@@ -470,7 +486,7 @@ public class CN2SD {
         //return reglas;
     }
 
-    /**
+    /*
      * Procedimiento que se encarga de descubrir el mejor complejo para los datos dados
      * @param train ConjDatos
      * @param clase int
@@ -571,7 +587,7 @@ public class CN2SD {
         return mejorComplex;
     }
 
-    /**
+    /*
      * Se encarga de eliminar los complejos no validos en newStar: Estan en 'star' o son nulos (at1 = 0 ^ at1 <> 0)
      * @param newStar ConjReglas El nuevo conjunto de complejos que estamos creando
      */
@@ -586,7 +602,7 @@ public class CN2SD {
 
     }
 
-    /**
+    /*
      * Test de significancia estadística. El complejo c es significativo si su valor superar un umbral dado.
      * <br/>El cálculo se realiza como 2*SUM[fi·log(fi/ei)] donde:
      * <br/>fi es la distribución de ejemplos cubiertos por c -> Nº ej's cubiertos clase i / nº ejemplos
@@ -618,7 +634,7 @@ public class CN2SD {
     }
 
 
-    /**
+    /*
      * ReCalcula el peso multiplicativo para un ejemplo
      * @param i el número de reglas que cubren al ejemplo
      * @return el nuevo peso
@@ -629,7 +645,7 @@ public class CN2SD {
         return aux;
     }
 
-    /**
+    /*
      * ReCalcula el peso aditivo para un ejemplo
      * @param i int el número de reglas que cubren al ejemplo
      * @return double el nuevo peso
@@ -640,7 +656,7 @@ public class CN2SD {
         return aux;
     }
 
-    /** Evaluacion de los complejos sobre el conjunto de ejemplo para ver cuales se
+    /* Evaluacion de los complejos sobre el conjunto de ejemplo para ver cuales se
      *   cubren de cada clase
      * @param c Complejo a evaluar
      * @param e Conjunto de datos
@@ -687,7 +703,7 @@ public class CN2SD {
         c.ajustaDistrib();
     }
 
-    /**
+    /*
      * Calcula los datos estadísticos necesarios y crea los ficheros KEEL de salida
      */
     private void generaSalida() {

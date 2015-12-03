@@ -154,9 +154,9 @@ public class Regla {
     }
     
     /**
-     * AÃ±ade un Atributo_valor a la lista de valores invalidos
-     * @param i Integer Atributo a aÃ±adir a la lista 
-     * @param vinv Double Valor del atributo a aÃ±adir
+     * Adds an attribute with its value to the invalid values list.
+     * @param i Integer attribute to be added.
+     * @param vinv Double value of the attribute to be added.
      */
     public void addValoresInv(Integer i,Double vinv){
         if(!valoresinvalidos.get(i).contains(vinv))
@@ -164,9 +164,9 @@ public class Regla {
     }
     
     /**
-     * Elimina un Atributo_valor a la lista de valores invalidos
-     * @param i Integer Atributo a aÃ±adir a la lista 
-     * @param vinv Double Valor del atributo a aÃ±adir
+     * Removes an attribute with its value to the invalid values list.
+     * @param i Integer attribute to be removed.
+     * @param vinv Double value of the attribute to be removed.
      */
     public void removeValorInv(Integer i,Double vinv){
         if(!valoresinvalidos.get(i).contains(vinv))

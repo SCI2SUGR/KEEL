@@ -80,6 +80,12 @@ public class Dataset {
 		return X;
 	}
 
+            /**
+     * <p>
+     * Return the values of the in-put attributes
+     * </p>
+     * @return double[][] An array with the in-put attributes
+     */
 	public String[][]getX2(){
 		return X2;
 	}
@@ -96,11 +102,22 @@ public class Dataset {
 		return X[pos];
 	}
 
+            /**
+     * <p>
+     * Return the normalized values of the in-put attributes for an instance
+     * </p>
+     * @param pos The position of the instance in the set of values
+     * @return double[] An array with the normalized in-put attributes for the instance
+     */
 	public double []getXNor(int pos){
 		normalize();
 		return X[pos];
 	}
 
+            /**
+     * Returns the instance set
+     * @return the instance set
+     */
 	public InstanceSet getInstanceSet(){
 		return IS;
 	}
@@ -243,6 +260,8 @@ public class Dataset {
 	 * <p>
 	 * Returns a vector with the class for each pair attribute-value
 	 * </p>
+     * @param Count each pair attribute-value
+     * @param seed seed.
 	 * @return int [][] the vector with the classes
 	 */
 	public int [][]getOptimumClass(int [][][]cuonter,long seed){
@@ -262,6 +281,8 @@ public class Dataset {
 	 * Returns the index where is the maximum of an array of integers
 	 * If there are more than one, returns one of them
 	 * </p>
+              * @param num array of doubles given.
+     * @param seed seed
 	 * @return int the index where is the maximum value
 	 */
 	public int getMaximum(int []num, long seed){
@@ -287,6 +308,8 @@ public class Dataset {
 	 * Returns the index where is the maximum of a double array
 	 * </p>
 	 * If there are more than one. returns one of them
+         *      * @param num array of doubles given.
+     * @param seed seed
 	 * @return int the index where is the maximum value
 	 */
 	public int getMaxim(double []num, long seed){

@@ -32,11 +32,11 @@ package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 import java.util.*;
 
 /**
- * <p>Título: Conjunto de reglas</p>
- * <p>Descripción: Estructura para almacenar un conjunto completo de reglas</p>
- * <p>Creado: 23-feb-2006 </p>
- * @author Alberto Fernández Hilario
- * @version 1.0
+ * <p> Set of rules. Defines a set of rules or complex
+ * @author  Alberto Fernández Hilario
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
 public class ConjReglas {
 
@@ -53,34 +53,42 @@ public class ConjReglas {
     }
 
     /**
-     * Añade una regla a la lista
-     * @param regl Regla a añadir
+     * <p>
+     * Add a rule to the list
+     * </p>
+     * @param regl Rule to add
      */
     public void addRegla(Regla regl) {
         reglas.add(regl);
     }
 
     /**
-     * Elimina una regla de la lista
-     * @param i indice de la regla a eliminar
+     * <p>
+     * Removes a rule from the list
+     * </p>
+     * @param i index of the rule to remove
      */
     public void deleteRegla(int i) {
         reglas.remove(i);
     }
 
     /**
-     * Devuelve una regla de la lista
-     * @param i indice de la regla
-     * @return la regla i-esima
+     * <p>
+     * Returns a rule of the list
+     * </p>
+     * @param i index of the rule
+     * @return the 'i' rule
      */
     public Regla getRegla(int i) {
         return (Regla) reglas.get(i);
     }
 
     /**
-     * Devuelve la regla como una nueva copia
-     * @param i regla i-esima
-     * @return una regla de la lista como una nueva copia
+     * <p>
+     * Returns a rule as a copy of the list
+     * </p>
+     * @param i index of the rule
+     * @return the 'i' rule as a copy
      */
     public Regla getNuevaRegla(int i) {
         Regla c = (Regla) reglas.get(i);
@@ -89,24 +97,31 @@ public class ConjReglas {
     }
 
     /**
-     * Devuelve el numero de reglas con las que estamos trabajando
-     * @return El tamaño del conjunto de reglas
+     * <p>
+     * Returns the number of rules we are working with
+     * </p>
+     * @return the size of the set of rules
      */
     public int size() {
         return (reglas.size());
     }
 
     /**
-     * Devuelve el conjunto completo de reglas
-     * @return el conjunto completo de reglas
+     * <p>
+     * Returns the complet set if rules
+     * </p>
+     * @return the complet set of rules
      */
     public LinkedList getConjReglas() {
         return reglas;
     }
 
     /**
-     * Realiza una copia del conjunto completo de reglas
-     * @return el conjunto completo de reglas como una nueva copia
+     * <p>
+     * Do a copy of the complet set of the rules
+     * </p>
+     * @return The neew set of rules with a new copy
+     *
      */
     public ConjReglas copiaConjReglas() {
         int i;
@@ -121,7 +136,9 @@ public class ConjReglas {
     }
 
     /**
-     * Muestra por pantalla el conjunto de reglas
+     * <p>
+     * Prints on the screen the set of rules
+     * </p>
      */
     public void print() {
         for (int i = 0; i < reglas.size(); i++) {
@@ -137,8 +154,10 @@ public class ConjReglas {
     }
 
     /**
-     * Imprime en una cadena el conjunto de reglas
-     * @return una cadena de texto (string) que almacena el conjunto de reglas
+     * <p>
+     * Prints on a string the set of rules
+     * </p>
+     * @return A strign that stores the set of rules
      */
     public String printString() {
         int i;
@@ -156,16 +175,20 @@ public class ConjReglas {
     }
 
     /**
-     * Devuelve la última regla (normalmente aquella con mejor peso)
-     * @return la última regla de a lista
+     * <p>
+     * Returns the last rule(normally the one with best weight)
+     * </p>
+     * @return the last rule of the list
      */
     public Regla getUltimaRegla() {
         return (Regla) reglas.getLast();
     }
-
-    /**
-     * Realiza un ajuste de valores para todas las reglas del conjunto
-     * @param cambio int[] Un vector con los nuevos valores (cambio[0] -> nuevo valor para el valor 0...)
+    
+        /**
+     * <p>
+     * Do a local copy of the values of the rules.
+     * </p>
+     * @param cambio int[] vector with the new values. 
      */
     public void ajusta(int[] cambio) {
         for (int i = 0; i < reglas.size(); i++) {
@@ -174,16 +197,20 @@ public class ConjReglas {
     }
 
     /**
-     * Realizamos una copia local del nombre de la variable clase
-     * @param nombreClase String nombre de la clase
+     * <p>
+     * Do a clocal copy of the name of the class variable
+     * </p>
+     * @param nombreClase Name of the class
      */
     public void adjuntaNombreClase(String nombreClase) {
         this.nombreClase = nombreClase;
     }
 
     /**
-     * Realizamos una copia local del nombre de las valores de la clase
-     * @param clases String[] un Array que guarda el nombre de valor de la clase
+     * <p>
+     * Do a local copy of the name of the values of the class
+     * </p>
+     * @param clases String[] An array that stores the name of the value of the class
      */
     public void adjuntaNombreClases(String[] clases) {
         valorNombreClases = new String[clases.length];

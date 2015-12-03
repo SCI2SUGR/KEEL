@@ -39,13 +39,7 @@ import java.util.*;
 import org.core.Fichero;
 
 /**
- * <p>Title: Clase UnoRSD</p>
- *
- * <p>Description: Contiene los metodos principales del algoritmo UnoRsd</p>
- *
- * <p>Copyright: Copyright Rosa (c) 2007</p>
- *
- * <p>Company: Mi casa </p>
+ * Contents the principal methods of the UnoR algorithm
  *
  * @author Rosa Venzala
  * @version 1.0
@@ -72,10 +66,24 @@ public class UnoR {
 	private int ganador; //identifica al atributo finalmente ganador
 	private int []tipos;//indica si el atributo de entrada es nominal(0) o numerico(1)
 
-	
+    /**
+     * Default constructor.
+     */
 	public UnoR(){
 	}
 	
+        	/**
+	 * <p>
+	 * Constructor with all the attributes to initialize
+	 * </p>
+	 * @param ficheroTrain Train file
+	 * @param ficheroTest Test file
+	 * @param fSalidaTr Out-put train file
+	 * @param fSalidaTst Out-put test file
+	 * @param fsalida Out-put file
+	 * @param semilla seed
+     * @param SMALL Threshold.
+	 */
 public UnoR(String ficheroTrain,String ficheroTest,
                String fSalidaTr,
                String fSalidaTst, String fsalida,long semilla,int SMALL){
@@ -259,11 +267,13 @@ public UnoR(String ficheroTrain,String ficheroTest,
 	}
 	
 	
-	/** Evaluacion de los complejos sobre el conjunto de ejemplo para ver cuales se
-	*   cubren de cada clase
-	* @param c Complejo a evaluar
-	* @param e Conjunto de datos
-	*/
+	/** 
+	 * <p>
+	 * Evaluation of the complex over the example's set for see witch match all the class
+	 * </p>
+     * @param c Complex to evaluate 
+     * @param e Set of data
+	 */
 	private void evaluarComplejo(Complejo c, ConjDatos e) {
 		c.borraDistrib();
 		for (int i = 0; i < e.size(); i++) {
@@ -276,7 +286,7 @@ public UnoR(String ficheroTrain,String ficheroTest,
 		c.calculaLaplaciano();
 	}
 	
-	/**
+	/*
      * Calcula los datos estadisticos necesarios y crea los ficheros KEEL de salida
      */
 	private void generaSalida(EvaluaCalidadReglas evReg,int atrib) {
@@ -300,7 +310,7 @@ public UnoR(String ficheroTrain,String ficheroTest,
         
 	}
 	
-	/**
+	/*
      	* Crea un conjunto de datos (atributos/clase) segun los obtenidos de un fichero de datos
      	* @param mis_datos Debe ser un conjunto de datos leido del fichero (mirar doc Dataset.java)
      	* @return El conjunto de datos ya creado, es decir, una lista enlazada de muestras (consultar ConjDatos.java y Muestra.java)

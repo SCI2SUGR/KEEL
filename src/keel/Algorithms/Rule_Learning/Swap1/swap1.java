@@ -53,7 +53,7 @@ import org.core.Files;
 
 /**
  *
- * @author Javier RascÃ³n Mesa
+ * @author Javier Rascón Mesa
  */
 public class swap1{
 
@@ -77,9 +77,6 @@ public class swap1{
     
     BufferedWriter bw_output;
 
-    /**
-     * Indica a quÃ© atributo pertenece la cadena
-     */
     private class Attr_pos{
 	public String attr;
 	public int pos;
@@ -132,10 +129,8 @@ public class swap1{
 	}
 
         /**
-         *
-	 * Hace un intercambio disminuyendo el nÃºmero de errores
-	 *
-         * @return Una regla
+         * Performs a swapping decreasing the number of errors.
+         * @return the resulting rule.
          */
 	@SuppressWarnings("empty-statement")
         public rule swap_min_error(){//Decrease number of errors
@@ -172,8 +167,8 @@ public class swap1{
         }
 
 	/**
-	 *
-	 * @return Numero de casos cubiertos por la regla
+	 * Returns the number of cases covered by the rule.
+	 * @return the number of cases covered by the rule.
 	 */
 	int num_covered_cases(){
 
@@ -204,8 +199,8 @@ public class swap1{
 	}
 
 	/**
-	 *
-	 * @return Numero de errores cometidos por la regla
+	 * Returns the number of errors made by the rule.
+	 * @return the number of errors made by the rule.
 	 */
         private int n_errors(){
 
@@ -241,8 +236,8 @@ public class swap1{
         }
 
         /**
-         *
-         * @return Nivel Predictivo de la regla
+         *  Returns the predictive level of the rule.
+         * @return the predictive level of the rule.
          */
         private double predictive_level(){
 	    
@@ -255,10 +250,9 @@ public class swap1{
         }
 
 	/**
+	 * Search the best swap in order to reduce the number of errors, applying it if it is found.
 	 *
-	 * Busca el mejor intercambio que reduzca el numero de errores y lo hace si se encuentra
-	 *
-	 * @return boolean that indicates if the swap has been found
+	 * @return boolean True if it is found, false otherwise.
 	 */
 	private boolean single_best_swap(){ //single best swap for any component of R that reduces the errors made by R on cases in S
 
@@ -308,8 +302,8 @@ public class swap1{
 	}
 
 	/**
-	 *
-	 * @return true Si se ha aÃ±adido un atributo a la regla, false en caso contrario
+	 * Checks if it is posible to add an attribute to the rule and add it in that case.
+	 * @return True if the attribute have been added, false otherwise.
 	 */
 	private boolean add_single_best() {
 
@@ -344,8 +338,8 @@ public class swap1{
 	}
 
 	/**
-	 *
-	 * @return Devuelve un InstanceSet de los casos satisfechos por la regla
+	 * Returns a rule object with the examples that satidfies the rule.
+	 * @return a rule object with the examples that satidfies the rule.
 	 */
 	public rule satisfied_cases(){
 
@@ -378,22 +372,22 @@ public class swap1{
 	}
 
 	/**
-	 * 
-	 * @param ins1 Intancia a ser comparada
-	 * @param ins2 Intancia a ser comparada
-	 * @return true si son iguales, false en caso contrario
+	 *  Checks if two instances are equal.
+	 * @param ins1 first instance.
+	 * @param ins2 second instance.
+	 * @return true if they are, false otherwise.
 	 */
 	private boolean equal_attr(Instance ins1,Instance ins2){
 	    return equal_inst(ins1,ins2,-1,-1);
 	}
 
 	/**
-	 *
-	 * @param ins1 Intancia a ser comparada
-	 * @param ins2 Intancia a ser comparada
-	 * @param pos1 Posicion del atributo a comparar
-	 * @param pos2 Posicion del atributo a comparar
-	 * @return true si son iguales, false en caso contrario
+	 *   Checks if two instances share the same value for a given attribute.
+	 * @param ins1 first instance.
+	 * @param ins2 second instance.
+	 * @param pos1 position of the attribute to compare for the first instance.
+	 * @param pos2 position of the attribute to compare for the second instance.
+	 * @return  true if they do, false otherwise.
 	 */
 	private boolean equal_inst(Instance ins1,Instance ins2,int pos1,int pos2){
 
@@ -412,10 +406,9 @@ public class swap1{
 	}
 
 	/**
-	 * 
-	 * Une la regla pasada por parÃ¡metro a this sin insertar los repetidos
-	 * 
-	 * @param _r Regla que unir
+	 * Unifies the rule given with the one stored, excluiding the repeated elements
+         * 
+	 * @param _r given rule.
 	 */
 	public void union(rule _r){
     	    Instance ins1,ins2;
@@ -439,10 +432,9 @@ public class swap1{
 	}
 
 	/**
+	 * Removes the elements given in the rule passed as paramenter.
 	 * 
-	 * Borra los elementos de _r que haya en this
-	 * 
-	 * @param _r Elementos que borrar
+	 * @param _r elements to be removed.
 	 */
 	public void remove(rule _r){
 
@@ -465,16 +457,16 @@ public class swap1{
 	}
 
 	/**
-	 * 
-	 * @return true si la regla estÃ¡ vacÃ­a, false en caso contrario
+	 * Checks if the rule is empty.
+	 * @return true if it is, false otherwise.
 	 */
 	public boolean isEmpty(){
 	    return 0==super.getNumInstances();
 	}
 
 	/**
-	 *
-	 * @return Clase sobre la que estÃ¡ trabajando la regla
+	 * Returns the class of the rule.
+	 * @return the class of the rule.
 	 */
 	public String get_clase(){
 	    return clase;
@@ -482,6 +474,13 @@ public class swap1{
 
     }
 
+    /**
+     * Parameter Constructor.
+     * Creates an instance of the Swap1 algorithm and executes it with the given datasets.
+     * @param trainName Training dataset filename.
+     * @param testName Test dataset filename.
+     * @throws ExNotNominalAttr 
+     */
     public swap1(String trainName, String testName) throws ExNotNominalAttr{//S: set of training cases
        
 	try{
@@ -540,7 +539,7 @@ public class swap1{
     }
 
     /**
-     * Entrenemiento
+     * Training process.
      */
     public void train(){
 
@@ -637,6 +636,11 @@ public class swap1{
 
 	}
 	
+        /**
+         * Classfies a given instance.
+         * @param ins instance to be classified.
+         * @return the predicted class of the given instance.
+         */
 	public String classify(Instance ins){
 
     	boolean covered = false;
@@ -760,7 +764,7 @@ public class swap1{
 	}
 		
     /**
-     * Pruebas
+     * Test process.
      */
     public void test(){
 
@@ -848,10 +852,8 @@ public class swap1{
     }
 
     /**
-     *
-     * Busca una regla que puede ser borrada sin que afecte a la performance
-     *
-     * @return Posicion de la regla que puede ser borrada
+     * Searches a rule that can be removed without affecting the classifier performance.
+     * @return position of the rule tha can be removed. -1 if there isn't any.
      */
     private int rule_to_be_erased(){ //find a rule R in R that can be deleted without affecting performance on cases in S
 
@@ -873,7 +875,7 @@ public class swap1{
     }
 
     /**
-     * Reglas que han sido generadas por el algoritmo
+     * Writes on the output files the rules obtained.
      */
     private void statistics(){
 
@@ -909,10 +911,9 @@ public class swap1{
     }
 
     /**
+     * Checks if all the attributes are nominal.
      * 
-     * Comprueba si todos los atributos son nominales
-     * 
-     * @throws ExNotNominalAttr Hay atributos no nominales
+     * @throws ExNotNominalAttr if there is not nominal attributes.
      */
     private void checkNominal() throws ExNotNominalAttr{
 
@@ -925,11 +926,10 @@ public class swap1{
     }
 
     /**
+     *  Checks if there are instances of the given class that are not yet covered.
      * 
-     * Busca la existencia de instancias de la clase indicada en el conjunto de elementos que todavÃ­a no estÃ¡n cubiertos
-     * 
-     * @param clase Clase que se busca
-     * @return true si quedan instancias de la clase indicada
+     * @param clase given class.
+     * @return true if there are some instances, false otherwise.
      */
     private boolean quedan_de_la_clase(String clase){
 
@@ -944,9 +944,9 @@ public class swap1{
     }
 
     /**
-     * 
-     * @param is InstanceSet del que calcular la performance
-     * @return Porcentaje (sobre 1) de aciertos
+     * Returns the performance of the given rule set.
+     * @param is given rule set.
+     * @return Accuracy.
      */
     private double performance(ArrayList<rule> is){
 

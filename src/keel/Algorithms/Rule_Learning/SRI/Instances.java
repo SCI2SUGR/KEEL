@@ -37,13 +37,13 @@ package keel.Algorithms.Rule_Learning.SRI;
 import java.util.*;
 
 /**
- * <p>Title: Clase Intances</p>
+ * <p>Title: Intances class </p>
  *
- * <p>Description: Hace una copia de las filas del dataset y se encarga de su manejo </p>
+ * <p>Description: it stores the dataset in a way that this Rule learning algorithm can understand. </p>
  *
  * <p>Company: KEEL</p>
  *
- * @author Ismael Duque GarcÃ­a
+ * @author Ismael Duque García
  * @version 1.0
  */
 public class Instances {
@@ -52,13 +52,18 @@ public class Instances {
     LinkedList<String> outputs = new LinkedList<String>();
     int num_clases;//Posibles valores de la clase salida
     
+    /**
+     * Default constructor.
+     */
     public Instances(){}
     
      /**
-     * Constructor de la clase
-     * @param e Integer double[][] Filas y columnas del dataset
-     * @param o String[] Valores de salida para cada fila
-     * @param n_class in Numero de valores que puede tomar la salida
+     * Parameter constructor. 
+     * Creates a dataset by adding the given examples given.
+     * @param e double[][] examples of the dataset.
+     * @param o String[] Outputs of the examples.
+     * @param num_a not used.
+     * @param n_class number of classes in the dataset.
      */
     public Instances(double[][] e,String[] o, int num_a,int n_class){
         
@@ -77,48 +82,48 @@ public class Instances {
     }
     
     /**
-     * Devuelve el valor de salida de la fila indicada
-     * @param i int numero de fila
-     * @return String Valores de salida de una fila i
+     * Returns the output value of the example in the position given.
+     * @param i int given index/position.
+     * @return String the output value of the ith example
      */
     public String getOutputAsString(int i){
         return outputs.get(i);
     }
     
     /**
-     * Devuelve el numero de atributos del conjunto de entrenamiento
-     * @return int numero de atributos
+     * Returns the number of attributes of the dataset.
+     * @return int number of attributes.
      */
     public int getnInputs(){
         return examples.get(0).size();
     }
     
     /**
-     * Devuelve el numero de filas del dataset
-     * @return int numero de filas
+     * Returns the number of examples.
+     * @return int number of examples.
      */
     public int getnData(){
         return examples.size();
     }
     
     /**
-     * Devuelve numero de valores de salida
-     * @return int numero de valores de salida
+     * Returns the number of classes or output values.
+     * @return int the number of classes or output values.
      */
     public int getnClass(){return num_clases;}
     
     /**
-     * Devuelve una fila del conjunto de datos de entrenamiento
-     * @param i int numero de fila
-     * @return LinkedList<Double> valores de una fila
+     * Returns the example  in the position given. 
+     * @param i int given index/position.
+     * @return LinkedList values of the ith example.
      */
     public LinkedList<Double> getExample(int i){
         return examples.get(i);
     }
     
     /**
-     * Elimina una fila del conjunto de entrenamiento
-     * @param i int numero de fila
+     * Removes the example in the given position.
+     * @param i int given index/position.
      */
     public void removeInstance(int i){
         this.examples.remove(i);
@@ -126,8 +131,8 @@ public class Instances {
     }
    
     /**
-     * Elimina varias filas del conjunto de entrenamiento
-     * @param eliminar LinkedList<Integer> vector con los numeros de fila a eliminar
+     * Removes all the examples whose indeces are given as parameter.
+     * @param eliminar LinkedList<Integer> indeces of the examples to be removed.
      */
     public void removeInstances(LinkedList<Integer> eliminar){
         LinkedList<LinkedList<Double>> auxiliar_examples = new LinkedList<LinkedList<Double>>();
@@ -146,8 +151,8 @@ public class Instances {
     }
     
     /**
-     * Ve si esta vacio el conjuno de entrenamiento
-     * @return boolean Falso si contiene elementos, Verdadero si esta vacio
+     * Checks if the dataset is empty.
+     * @return boolean True if it is empty, false otherwise.
      */
     public boolean isEmpty(){
         return examples.isEmpty();

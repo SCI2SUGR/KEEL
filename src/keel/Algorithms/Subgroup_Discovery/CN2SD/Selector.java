@@ -30,8 +30,7 @@
 package keel.Algorithms.Subgroup_Discovery.CN2SD;
 
 /**
- * <p>Título: Conjunto de reglas</p>
- * <p>Descripción: Estructura para almacenar un conjunto completo de reglas</p>
+ * Class to stores selectors with the form (attribute operator values)
  * @author Alberto Fernández
  * @version 1.0
  */
@@ -43,11 +42,12 @@ public class Selector implements Comparable {
     double[] valor;
 
     /**
-     *  Clase empleada para almacenar selectores de la forma
-     *  (atributo operador valores)
-     * @param atr atributo
-     * @param op operador
-     * @param val valor
+     * <p>
+     * Class to stores selectors with the form (attribute operator values)
+     * </p>
+     * @param atr attribute
+     * @param op operator
+     * @param val value
      */
     public Selector(int atr, int op, double val) {
         atributo = atr;
@@ -57,12 +57,13 @@ public class Selector implements Comparable {
     }
 
     /**
-     *  Clase empleada para almacenar selectores de la forma
-     *  (atributo operador valores)
-     * @param atr atributo
-     * @param op operador
-     * @param val un conjunto de valores (disjuntos -> at = a ó b ó c)
-     */
+     * <p>
+     * Class to stores selectors with the form (attribute operator values), where values are nominal
+     * </p>
+     * @param atr atribute
+     * @param op operator
+     * @param val value
+     */  
     public Selector(int atr, int op, double[] val) {
         atributo = atr;
         operador = op;
@@ -74,11 +75,14 @@ public class Selector implements Comparable {
 
 
     /**
-     * Funcion de comparación entre dos objetos de la clase selector
-     * @param o Objeto selector a comparar
-     * @return 0 si son iguales (mismo atributo,operador y valor ), -1 (mismo atributo, operador y menor valor), 1
-     * (mismo atributo, operador y menor valor), [nuevo->] 2 (distinto atributo y operador) o 3 (distinto atributo)).
-     * -2 -> Mismo atributo, distinto operador; -3 -> mismo atributo, valor = ó +/- 1 (uff) mirar comentario debajo)
+     * <p>
+     * Function to compare two objects of the selector class
+     * </p>
+     * @param o Objeto Seclector to compare
+     * @return 0 if are equals (same attribute,operator and value), -1 (same attribute, operator),
+     * 		   1 (same attribute, operator and less value), [new->] 2 (different attribute and operator)
+     * 		   3 (different attribute)).
+     *        -2 -> Same attribute, different operator; -3 -> same attribute, value = +/- 1 
      */
     public int compareTo(Object o) {
         Selector s2 = (Selector) o;
@@ -107,9 +111,11 @@ public class Selector implements Comparable {
     }
 
     /**
-     * Comprueba si dos selectores tienen el mismo valor o valores
-     * @param valores double[] Conjunto de posibles valores
-     * @return boolean True si tienen exactamente los mismos valores. False en caso contrario
+     * <p>
+     * Checks if two selectors have the same value or values
+     * </p>
+     * @param valores double[] Set of possible values
+     * @return boolean True if have the same values. False otherwise
      */
     private boolean mismoValor(double[] valores) {
         boolean salida = false;
@@ -123,10 +129,12 @@ public class Selector implements Comparable {
     }
 
     /**
-     * Comprueba si los valores de un selector están subsumidos en otro
-     * @param valores double[] Valores con los que comprueba
-     * @param _operador int Operador con el que se comprueba
-     * @return boolean True si el selector de la clase esta subsumido dentro de la clase con que compruebo. False en otro caso.
+     * <p>
+     * Checks if the values of ane selector are included in other
+     * </p>
+     * @param valores double[] Values with compare to
+     * @param _operador int Operator to compare to
+     * @return boolean True if the selector of the class is included in the class. False otherwise.
      */
     private boolean subsumido(double[] valores,int _operador) {
         boolean salida = false;
@@ -153,9 +161,11 @@ public class Selector implements Comparable {
     }
 
     /**
-     * Comprueba si el operador es el contrario ( = y <>, <= y >)
-     * @param op int el operador a comparar
-     * @return boolean True si es el contrario, False en otro caso
+     * <p>
+     * Checks if the operator is the complement( = y <>, <= y >)
+     * </p>
+     * @param op int The operator to compare
+     * @return boolean True if is the complement, False otherwise
      */
     private boolean opContrario(int op) {
         if (operador == 0) {
@@ -174,64 +184,80 @@ public class Selector implements Comparable {
     }
 
     /**
-     * Devuelve el id. de atributo
-     * @return atributo
+     * <p>
+     * Returns the attribute's id
+     * </p>
+     * @return attribute
      */
     public int getAtributo() {
         return atributo;
     }
 
     /**
-     * Devuelve el id de operador (!=, &lt; ...)
-     * @return operador
+     * <p>
+     * Return the operator's id
+     * </p>
+     * @return operator
      */
     public int getOperador() {
         return operador;
     }
 
     /**
-     * Devuelve el valor del atributo asociado
-     * @return valor
+     * <p>
+     * Return the attribute's value associated
+     * </p>
+     * @return value
      */
     public double getValor() {
         return valor[0];
     }
 
     /**
-     * Devuelve el conjunto de valores del selector
-     * @return double[]
+     * <p>
+     * Returns the set of values of the selector
+     * </p>
+     * @return double[] value
      */
     public double[] getValores() {
         return valor;
     }
 
     /**
-     * Asigna el atributo
-     * @param i valor del atributo
+     * <p>
+     * Assign the attribute
+     * </p>
+     * @param i atribute's value
      */
     public void setAtributo(int i) {
         atributo = i;
     }
 
     /**
-     * Asigna el operador
-     * @param i valor del operador
+     * <p>
+     * Assign the operator
+     * </p>
+     * @param i value of the operator
      */
     public void setOperador(int i) {
         operador = i;
     }
 
     /**
-     * Asigna el valor
-     * @param f valor
+     * <p>
+     * Assign the value
+     * </p>
+     * @param f value
      */
     public void setValor(double f) {
         valor[0] = f;
     }
 
     /**
-     * Asigna los valores
-     * @param f valores
+     * <p>
+     * Assign the values
+     * </p>
+     * @param f values
      */
     public void setValores(double[] f) {
         valor = new double[f.length];
@@ -242,8 +268,9 @@ public class Selector implements Comparable {
 
 
     /**
-     * Simplemente muestra el "contenido" del selector:
-     * Atributo - operador - valor.
+     * <p>
+     * Shows the content of a selector: attribute-operator-value
+     * </p>
      */
     public void print() {
         System.out.print("(Atr" + this.getAtributo() + " ");

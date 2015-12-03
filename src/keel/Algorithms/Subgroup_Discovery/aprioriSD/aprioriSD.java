@@ -36,12 +36,14 @@ import java.util.Collections;
 import org.core.Fichero;
 
 /**
- * <p>Título: Clase principal del algoritmo</p>
- * <p>Descripción: Contiene los metodos esenciales del algoritmo APRIORISD</p>
+ * <p>Contents the principal methods of the APRIORISD algorithm</p>
  * @author Alberto Fernández Hilario 31-01-2006.
  * @version 1.0
  */
 public class aprioriSD {
+    /**
+     * Default constructor.
+     */
     public aprioriSD() {
     }
 
@@ -82,6 +84,10 @@ public class aprioriSD {
 
     private boolean hayContinuos = false;
 
+    /**
+     * Checks if all the attributes are nominal/discrete.
+     * @return True if all the attributes are nominal/discrete.
+     */
     public boolean todoBien(){
         return (!hayContinuos);
     }    
@@ -104,6 +110,20 @@ public class aprioriSD {
      * @param _Cmin Minimo Confidence
      * @param _N Número máximo de reglas a generar
      * @param _postpoda Se refiere al tipo de postpoda
+     */
+        /**
+     * Parameter constructor. Constructs a instance of the aprioriSD algorithm by copying
+     * the configuration parameters given.
+     * @param ftrain Training dataset filename
+     * @param feval Validation dataset filename.
+     * @param ftest Test dataset filename.
+     * @param fSalidaTr Training output filename.
+     * @param fSalidaTst Test output filename.
+     * @param fsal Global output filename.
+     * @param _Smin minimum support value.
+     * @param _Cmin minimum confidence value.
+     * @param _N Maximum number of rules.
+     * @param _postpoda type of prunning
      */
     public aprioriSD(String ftrain, String feval, String ftest, String fSalidaTr,
                      String fSalidaTst, String fsal, double _Smin, double _Cmin,
@@ -248,7 +268,7 @@ public class aprioriSD {
 
     }
 
-    /**
+    /*
      * Crea un conjunto de datos (atributos/clase) segun los obtenidos de un fichero de datos
      * @param mis_datos Debe ser un conjunto de datos leido del fichero (mirar doc Dataset.java)
      * @return El conjunto de datos ya creado, es decir, una lista enlazada de muestras (consultar ConjDatos.java y Muestra.java)
@@ -283,7 +303,7 @@ public class aprioriSD {
     }
 
 
-    /**
+    /*
      * Busca y crea los 1-items, es decir, conjuntos de un elemento con un support >= Smin
      * @param L ArrayList Lista donde guardaré los 1-items
      */
@@ -360,7 +380,7 @@ public class aprioriSD {
          */
     }
 
-    /**
+    /*
      * Creacion de candidatos k-items de L(k-1)
      * @param L ArrayList Lista de k-1 items
      * @param Cand ArrayList Lista que contendrá los k-items Candidatos
@@ -379,7 +399,7 @@ public class aprioriSD {
         }
     }
 
-    /**
+    /*
      * Paso que elimina aquellos k-items no válidos (alguno de sus subconjuntos no pertenece a L)
      * @param L ArrayList Lista de k-1 Items
      * @param Cand ArrayList Lista de k-items candidatos
@@ -452,7 +472,7 @@ public class aprioriSD {
 
     }
 
-    /**
+    /*
      * Cuenta las ocurrencias de cada k-item en Cand que aparezca en el conjunto de entrenamiento (transacciones).
      * @param Cand ArrayList Lista de k-items Candidatos
      * @param k int Valor de k actual
@@ -513,7 +533,7 @@ public class aprioriSD {
 
     }
 
-    /**
+    /*
      * Para cada ITEM en el conjunto L comprueba si el ultimo valor corresponde a una clase
      * y crea una regla si supera el Cmin
      * @param L ArrayList Conjunto de Items
@@ -557,7 +577,7 @@ public class aprioriSD {
         }
     }
 
-    /**
+    /*
      * Cuenta los ejemplos cubiertos por la regla r
      * @param r Regla Regla a comprobar
      * @param datos ConjDatos Es la lista de ejemplos a comprobar
@@ -584,7 +604,7 @@ public class aprioriSD {
          }
      */
 
-    /**
+    /*
      * ReCalcula el peso aditivo para un ejemplo
      * @param i int el número de reglas que cubren al ejemplo
      * @return double el nuevo peso
@@ -595,7 +615,7 @@ public class aprioriSD {
         return aux;
     }
 
-    /**
+    /*
      * Recalcula el support para cada regla segun los ejemplos que quedan
      * @param datos ConjDatos Conjunto de ejemplos restantes
      * @return boolean True si no se pueden cubrir mas ejemplos, False en caso contrario (alguna regla tiene S > 0)
@@ -638,7 +658,7 @@ public class aprioriSD {
     }
 
 
-    /**
+    /*
      * Escribe los ficheros de salida KEEL basicos (train y test) y un informe de las reglas (valores y support)
      * @param reglasFinal ConjReglas El conjunto de reglas a analiar
      */
@@ -665,6 +685,9 @@ public class aprioriSD {
         System.out.print(cad);
     }
 
+    /**
+     * Executes the aprioriSD algorithm.
+     */
     public void ejecutar() {
         ArrayList L = new ArrayList();
         //datosTrain.print();

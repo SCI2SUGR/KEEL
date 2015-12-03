@@ -33,8 +33,10 @@ import java.util.StringTokenizer;
 import org.core.Fichero;
 
 /**
- * <p>Título: Programa principal de Cn2</p>
- * <p>Descripción: Es la clase ppal, la que se ejecuta al lanzar el programa</p>
+ /**
+ * <p>Title: Main Class of the Program</p>
+ *
+ * <p>Description: It reads the configuration file (data-set files and parameters) and launch the algorithm</p>
  * @author José Ramón Cano de Amo 28-7-2004.
  * @version 1.0
 */
@@ -51,7 +53,7 @@ public class Main {
   private int N;
   private int postpoda;
 
-    /** Constructor por defecto */
+    /** Default constructor. */
     public Main() {
     }
 
@@ -62,6 +64,12 @@ public class Main {
      * Por último lee los parametros del algoritmo, tales como la semilla o el nº de iteraciones<br/>
      *
      * @param nomFichero Nombre del fichero de parametros
+     *
+     */
+        /**
+     * Obtains al the information needed from the configuration file given.
+     *
+     * @param nomFichero given configuration filename.
      *
      */
     private void preparaArgumentos(String nomFichero){
@@ -105,7 +113,7 @@ public class Main {
     };
 
     /**
-     * Lanza el programa AprioriSD
+     *  Executes the  AprioriSD algorithm
      */
     private void ejecutar(){
         aprioriSD algoritmo = new aprioriSD(ficheroTrain,ficheroEval,ficheroTest,ficheroSalidatr,ficheroSalidatst,ficheroSalida,Smin,Cmin,N,postpoda);
@@ -115,16 +123,16 @@ public class Main {
     }
 
     /**
-     * Programa principal
-     * @param args Contendra el nombre del fichero de parametros<br/>
-     * Formato:<br/>
-     * <em>algorith = &lt;nombre algoritmo></em><br/>
-     * <em>inputData = "&lt;fichero training&gt;" "&lt;fichero validacion&gt;" "&lt;fichero test&gt;"</em> ...<br/>
-     * <em>outputData = "&lt;fichero training&gt;" "&lt;fichero test&gt;"</em> ...<br/>
+     * Main Program
+     * @param args It contains the name of the configuration file<br/>
+     * Format:<br/>
+     * <em>algorith = &lt;algorithm name></em><br/>
+     * <em>inputData = "&lt;training file&gt;" "&lt;validation file&gt;" "&lt;test file&gt;"</em> ...<br/>
+     * <em>outputData = "&lt;training file&gt;" "&lt;test file&gt;"</em> ...<br/>
      * <br/>
-     * <em>seed = valor</em> (si se usa semilla)<br/>
-     * <em>&lt;Descripcion1&gt; = &lt;valor1&gt;</em><br/>
-     * <em>&lt;Descripcion2&gt; = &lt;valor2&gt;</em> ... (por si hay mas argumentos)<br/>
+     * <em>seed = value</em> (if used)<br/>
+     * <em>&lt;Parameter1&gt; = &lt;value1&gt;</em><br/>
+     * <em>&lt;Parameter2&gt; = &lt;value2&gt;</em> ... <br/>
      */
   public static void main(String args[]) {
 

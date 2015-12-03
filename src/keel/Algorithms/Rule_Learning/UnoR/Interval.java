@@ -29,8 +29,8 @@
 
 package keel.Algorithms.Rule_Learning.UnoR;
 /**
- * <p>Titulo: Intervalos de los datos numericos</p>
- * <p>Descripcion: Estructura para almacenar un intervalo</p>
+ *  Simple class to codify an interval for a numerical attribute
+ * 
  * @author Rosa Venzala
  * @version 1.0
  */
@@ -47,6 +47,8 @@ public class Interval /*implements Comparable*/ {
 
     /**
      *  Constructor
+     * @param small SMALL flag.
+     * @param tamanio size of the interval.
      */
     public Interval(int small,int tamanio){
     	numValues=0;
@@ -55,7 +57,9 @@ public class Interval /*implements Comparable*/ {
 	clases=new int [tamanio];
     }
     
-    /*AÃ±ade un nuevo valor al intervalo
+    /**
+     * Adds a new value to the interval.
+     * @param dato value to add.
     */
     public void add(double dato){
     	if(numValues==0)low=dato;
@@ -64,22 +68,41 @@ public class Interval /*implements Comparable*/ {
 	high=dato;
     }
     
-    /*Asigna la clase a la que perteneceran los valores del intervalo
+    /**
+     * Sets a class that belong to the interval.
+     * @param c given class.
+     * @param indice index where to set it.
     */
     public void setClass(int c,int indice){
 	clases[indice]=c;
     }
 
+    /**
+     * Returns the number of values in it.
+     * @return number of values.
+     */
     public int getNumValues(){
     	return numValues;
     }
+    /**
+     * Returns the optimal class.
+     * @return optimal class.
+     */
     public int getOptimalClass(){
     	return claseOptima;
     }
+    /**
+     * Returns the values of the interval.
+     * 
+     * @return the values of the interval. 
+     */
     public double[]getValues(){
     	return valores;
     }
     
+    /**
+     * Clear the interval of values.
+     */
     public void clear(){
     	numValues=0;
     }
@@ -89,6 +112,15 @@ public class Interval /*implements Comparable*/ {
     * excepto si se trata del ultimo intervalo, que devuelve simplemente la clase
     * que mas aparece, aunque no sea para mas de SMALL
     */
+    /**
+     * Finds the optimal class for the interval.
+     * If there are not a class with more values than the threshold SMALL, it returns -1.
+     * But if it is the last interval, it returns the most frequent one.
+     * @param numClases number of classes.
+     * @param seed Seed for the random number generator.
+     * @param ultimoIntervalo Last interval flag.
+     * @return the optimal class for the interval.
+     */
     public int optimalClass(int numClases,long seed,boolean ultimoIntervalo){
     	int cuantas=0;
 	int []cuantasCadaClase=new int[numClases];
@@ -103,11 +135,15 @@ public class Interval /*implements Comparable*/ {
 	claseOptima=indice;
 	return indice;
     }
-    /*
-    * Devuelve el indice donde se encuentra el maximo de un array de enteros
-    * @return int el indice donde se encuentra el maximo valor
-    */
-    //ESTO HABRIA QUE HACERLO ALEATORIO
+
+    
+    /**
+     * Returns the index where the maximum number of the given array is stored.
+     * @param num given array.
+     * @param seed Seed for the random numbers generator.
+     * @param nclases number of classes.
+     * @return the index where the maximum number of the given array is stored. 
+     */
     private int getMaximo(int []num, long seed,int nclases){
     	Randomize.setSeed(seed);
     	int max=num[0];int indice=0;
@@ -123,6 +159,9 @@ public class Interval /*implements Comparable*/ {
 	return indice;
     }
     
+    /**
+     * Prints on the standard output the interval.
+     */
     public void print(){
     	System.out.print("[");
     	for(int i=0;i<numValues;i++)

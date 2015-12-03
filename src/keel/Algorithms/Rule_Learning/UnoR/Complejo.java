@@ -33,16 +33,12 @@ import java.util.LinkedList;
 import keel.Dataset.*;
 
 /**
- * <p>Title: Clase Complejo</p>
- *
- * <p>Description: Define un Complex (o regla)</p>
- *
- * <p>Copyright: Copyright Rosa (c) 2007</p>
- *
- * <p>Company: Mi Casa </p>
- *
- * @author Rosa Venzala
- * @version 1.0
+ * <p> Stores conjunctions of selectors
+ * @author Written by Rosa Venzala 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
 public class Complejo implements Comparable {
 
@@ -56,12 +52,15 @@ public class Complejo implements Comparable {
     private double heuristica; // Coste segun heuristica
     private String [] nombreAtributos;
 
+    /**
+     * Default constructor.
+     */
     public Complejo() {
     }
 
     /**
-     * Constructor para el Complejo
-     * @param nClas int Nmero de clases
+     * Constructor for Complex
+     * @param nClas int number of classes
      */
     public Complejo(int nClas) {
         compl = new LinkedList(); //Inicializo la lista
@@ -73,10 +72,12 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Compara dos objetos de la clase Complejo
-     * @param o Object Complejo a comparar
-     * @return int 0 si son iguales (misma heuristica y tamano), -1 si es mejor (misma heur, menor tamano || mayor heur)
-     * 1 si es peor (misma heur, mayor tamano || menor heuristica).
+     * <p>
+     * Compare two objects of the class
+     * </p>
+     * @param o complex to compare
+     * @return int 0 Are equals (same heuristic and size, -1 if is major (same heuristic, less size || more heuristic)
+     * 1 is worst (same heuristic, less size || less heuristic).
      */
     public int compareTo(Object o) {
         Complejo c2 = (Complejo) o;
@@ -98,9 +99,11 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Comprueba si dos complejos son iguales
-     * @param c Complejo El complejo a comparar
-     * @return boolean True si son iguales. False en caso contrario
+     * <p>
+     * Check if two complex are equals (represent the same)
+     * </p>
+     * @param c El complex to compare
+     * @return boolean True if are equals. False otherwise
      */
     public boolean esIgual(Complejo c){
         boolean iguales = false;
@@ -115,8 +118,10 @@ public class Complejo implements Comparable {
 
 
     /**
-     * Anade el selector a la lista de selectores
-     * @param s Selector el selector (conjunto atr. op. valor)
+     * <p>
+     * Add the selector into the selector list
+     * </p>
+     * @param s the selector (set atr. op. value)
      */
     public void addSelector(Selector s) {
         compl.add(s);
@@ -124,17 +129,20 @@ public class Complejo implements Comparable {
     
     
     /**
-     * Borra el selector de la lista de selectores
-     * @param s Selector el selector (conjunto atr. op. valor)
+     * <p>
+     * Drop the selector of the list selectors
+     * </p>
+     * @param s the selector (set atr. op. value)
      */
     public void removeSelector(Selector s) {
         compl.remove(s);
     }
     
     /**
-     * Borra los selectores de la lista de selectores que tengan como atributo el pasado
-     *como argumento
-     * @param atributo el atributo
+     * <p>
+     * Removes the selectors that have the attribute given as argument from the proper list
+     * </p>
+     * @param atributo given attribute.
      */
     public void removeSelectorAtributo(int atributo) {
     	Selector s;
@@ -149,7 +157,9 @@ public class Complejo implements Comparable {
     }
     
     /**
-     * Deja vacia la lista
+     * <p>
+     * Cleans the list
+     * </p>
      */
     public void clear() {
         compl.clear();
@@ -159,8 +169,10 @@ public class Complejo implements Comparable {
     
 
     /**
-     * Devuelve un selector en una posicion dada del complejo
-     * @param indice int Posicion dentro del complejo
+     * <p>
+     * Return a selector in one position by giving a complex
+     * </p>
+     * @param indice Position inside the complex
      * @return Selector El selector
      */
     public Selector getSelector(int indice) {
@@ -168,7 +180,9 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el tamano del complejo
+     * <p>
+     * Return the size complex
+     * </p>
      * @return int El nmero de selectores que posee el complejo
      */
     public int size() {
@@ -176,31 +190,37 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el n de clases del problema
-     * @return int idem.
+     * <p>
+     * Return the number of classes
+     * </p>
+     * @return int number of classes
      */
     public int getNClases() {
         return this.nClases;
     }
 
     /**
-     * Devuelve la clase que define el complejo
-     * @return int la clase
+     * <p>
+     * Return the class that define the complex
+     * </p>
+     * @return int the class
      */
     public int getClase() {
         return this.clase;
     }
 
     /**
-     * Proporciona el valor de la clase al complejo
-     * @param clase int La clase
+     * <p>
+     * Gives the value of the class to the complex
+     * </p>
+     * @param clase int The class
      */
     public void setClase(int clase) {
         this.clase = clase;
     }
 
     /**
-     * Calcula el valor del laplaciano para un complejo
+     * Computes the laplacian value of the complex.
      */
     public void calculaLaplaciano() {
       double nc;
@@ -220,11 +240,10 @@ public class Complejo implements Comparable {
 
   
   /**
-    *Comprueba si la regla cubre a la instancia pasada como parametro
-    *@param instancia La instancia
-    *@return boolean True si la regla cubre a la instancia
+   * Checks if the rule covers the given instance.
+    *@param instancia given instance.
+    *@return boolean True if the rule covers the instances, false otherwise.
   */
-  
    public boolean reglaCubreInstancia(Instance instancia){
    	boolean cubierto=true;
 	double cadena;
@@ -252,11 +271,11 @@ public class Complejo implements Comparable {
 	return cubierto;
    }
   
-    /**
-     * Comprueba si el complejo cubre a la muestra dada
-     * @param m Muestra El ejemplo
-     * @return boolean True si cubre al ejemplo. False en otro caso
-     */
+  /**
+   * Checks if the complex covers the given sample.
+    *@param m given sample.
+    *@return boolean True if the complex covers the instances, false otherwise.
+  */
     public boolean cubre(Muestra m) {
         boolean cubierto = true;
         double[] ejemplo = m.getMuest();
@@ -293,23 +312,29 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Devuelve el valor heuristico del complejo
-     * @return double idem
+     * <p>
+     * return the heuristic value of the complex
+     * </p>
+     * @return double heuristic value of the complex
      */
     public double getHeuristica() {
         return heuristica;
     }
 
     /**
-     * Asigna un valor heuristico (Wracc) al complejo
-     * @param heu double el valor heuristico
+     * <p>
+     * Assign a heuristic value (Wracc) to the complex
+     * </p>
+     * @param heu heuristic value
      */
     public void setHeuristica(double heu) {
         heuristica = heu;
     }
 
     /**
-     * Resetea el valor de la distribucion para el complejo
+     * <p>
+     * reset the distribution value for the complex
+     * </p>
      */
     public void borraDistrib() {
         for (int i = 0; i < nClases; i++) {
@@ -318,34 +343,42 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Incrementa en 1 el n de ejemplo para la clase 'clase' cubiertas por el complejo
-     * @param clase int El valor de la clase
+     * <p>
+     * Add one to the n of the complex for the class
+     * </p>
+     * @param clase int value of the class
      */
     public void incrementaDistrib(int clase) {
         distrib[clase]++;
     }
 
     /**
-     * Devuelve el valor de la distribucion para una clase dada
-     * @param clase int El indice de la clase
-     * @return double El valor de la distribucion
+     * <p>
+     * Return the value of the distribution
+     * </p>
+     * @param clase int index of the class
+     * @return double value of distribution
      */
     public int getDistribucionClase(int clase) {
         return distrib[clase];
     }
 
     /**
-     * Devuelve el valor de la distribucion
-     * @return double [] El valor de cada distribucion
+     * <p>
+     * Return the value of the distribution
+     * </p>
+     * @return double [] the value of each distribution
      */
     public int[] getDistribucion() {
         return distrib;
     }
 
     /**
-     * Imprime por pantalla el contenido del complejo (Lista -> Atributo operador valor)
+     * <p>
+     * Print the content of the complex (List->Attribute operator value)
+     * </p>
+     * @param nominal if 0 is nominal.
      */
-     
     public void print(int nominal) {
         for (int x = 0; x < compl.size(); x++) {
             Selector s = (Selector) compl.get(x);
@@ -404,12 +437,12 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Imprime en una cadena de caracteres el contenido del complejo (Lista -> Atributo operador valor)
-     *@param nominal indica si el atributo es nominal(0) o numerico(1)
-     *@param inf el extremo inferior del intervalo
-     *@param sup el extremo superior del intervalo
-     *@param ultima indica si se trata de la ultima regla del conjunto de reglas
-     * @return String La cadena con el contenido del complejo
+     * Returns a string with the complex contents (List -> Attribute operator value).
+     * @param nominal indicate if the attribute is nominal(0) or numeric(1).
+     *@param inf initial value of the interval
+     *@param sup end value of the interval
+     *@param ultima indicates if it is the last rule of the set.
+     * @return a string with the complex contents 
      */
     public String printString(int nominal,double inf,double sup,boolean ultima) {
         String cad = "";
@@ -474,7 +507,9 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Imprime por pantalla la distribucion de clases para el complejo
+     * <p>
+     * Print the classes distribution for the complex
+     * </p>
      */
     public void printDistribucion() {
         System.out.print("   [");
@@ -485,8 +520,10 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Imprime en un String la distribucion de clases para el complejo
-     * @return String idem
+     * <p>
+     * Print the classes distribution for the complex
+     * </p>
+     * @return String classes distribution for the complex
      */
     public String printDistribucionString() {
         String cad = new String("   [");
@@ -498,8 +535,10 @@ public class Complejo implements Comparable {
     }
 
     /**
-     * Realizamos una copia local del nombre de las variables de entrada
-     * @param atributos String[] un Array que guarda el nombre de cada variable
+     * <p>
+     * Local copy of the name of variables
+     * </p>
+     * @param atributos String[] stores the name of the variables
      */
     public void adjuntaNombreAtributos(String [] atributos){
         nombreAtributos = new String[atributos.length -1];

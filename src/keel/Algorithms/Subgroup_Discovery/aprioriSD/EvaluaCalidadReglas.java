@@ -30,11 +30,11 @@
 package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 
 /**
- * <p>Título: Evaluación de calidad de las reglas</p>
- * <p>Descripción: Esta clase calcula las estadísticas finales</p>
- * <p>Creado: 20-feb-2006 </p>
+ * <p> Get the statistical data from the algorithm. In particular, it evaluates the quality of the rules generated.
  * @author Alberto Fernández Hilario
- * @version 1.0
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
 public class EvaluaCalidadReglas {
 
@@ -55,13 +55,15 @@ public class EvaluaCalidadReglas {
     private String[] valorNombreClases;
 
     /**
-     * Calculas las estadísticas finales para un conjunto de reglas dado y un conjunto de datos.
-     * @param conjreg Conjunto de reglas (complejos) final
-     * @param conjTrn Conjunto de datos de entrenamiento
-     * @param conjTst Conjunto de datos de test
-     * @param muestPorClaseTrain Número de ejemplos por clase en Train
-     * @param muestPorClaseTest Número de ejemplos por clase en Test
-     * @param valorNombreClases String[] etiquetas para cada una de las clases
+     * <p>
+     * Calculates the final statisticals for a set of rules and a set of data
+     * </p>
+     * @param conjreg Set of rules(complex) final
+     * @param conjTrn Set of train data
+     * @param conjTst Set of test data
+     * @param muestPorClaseTrain int[] Number of examples of each class in train set
+     * @param muestPorClaseTest int[] Number of examples of each class in train test
+     * @param valorNombreClases String[] Labels for each class
      */
     public EvaluaCalidadReglas(ConjReglas conjreg, ConjDatos conjTrn,
                                ConjDatos conjTst, int[] muestPorClaseTrain,
@@ -104,8 +106,10 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * Imprime en una cadena las estadisticas
-     * @return una cadena con las estadísticas
+     * <p>
+     * Prints on a string the statistical(for test)
+     * </p>
+     * @return the statisticals
      */
     public String printString() {
 	    String cad = "#### Final Results (on test) ####\n";	    
@@ -130,10 +134,12 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * Calcula en si mismo todas las estadísticas, especialmente el porcentaje de aciertos
-     * @param datos Conjunto de datos (entrenamiento o test)
-     * @param muestPorClase int[] Número de ejemplos por cada clase en el conjunto de datos
-     * @param code Codigo para saber si estamos tratando con entrenamiento o test
+     * <p>
+     * Calculates all the statistical results, especially percent mathes
+     * </p>
+     * @param datos Set of data(train or test)
+     * @param muestPorClase int[] Number of examples for each class in the data set
+     * @param code Train or Test
      */
     private void calculaIndices(ConjDatos datos, int[] muestPorClase, int code) {
         int i, j;
@@ -212,7 +218,10 @@ public class EvaluaCalidadReglas {
     }
 
 
-    
+    /**
+     * Updates the dataset distribution.
+     * @param train given dataset.
+     */
     public void ajustaDistribucion(ConjDatos train) {
         int cl;
         for (int i = 0; i < train.size(); i++) { //Para cada ej.
@@ -226,12 +235,13 @@ public class EvaluaCalidadReglas {
         }
     }
 
-    /**
-     * Genera un String con la lista de salidas, es decir, &lt;salida esperada&gt; &lt;salida del metodo&gt;
-     * (en nuestro caso, clase en el fichero original, clase que obtiene el metodo)
-     * @param datos Es el conjunto de datos con el que queremos comparar para nuestro conjunto de reglas
-     * @param conj Se refiere si es el conjunto de train o test (0,1)
-     * @return Una cadena con una lista de pares &lt;clase original&gt; &lt;clase calculada&gt;
+         /**
+     * <p>
+     * Generates a string with the out-put lists
+     * </p>
+     * @param datos Set of data witch to compare the set of rules 
+     * @param conj flag to indicates if the set is for training or test (0,1).
+     * @return A list of pairs: 'original class;calculated class;'
      */
     public String salida(ConjDatos datos, int conj) {
         String cadena = new String("");

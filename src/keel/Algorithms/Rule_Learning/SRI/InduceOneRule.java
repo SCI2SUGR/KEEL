@@ -153,10 +153,10 @@ public class InduceOneRule {
     };
  
     /**
-     * Devuelve una lista de los atributos no contenidos en la regla
-     * @param rule Regla regla sobre la que vamos a obtner los atributos no contenidos en esta
-     * @param intances Instances Conjunto de datos que nos facilita todos los atributo que existen
-     * @return LinkedList<Integer> Atributos no contenidos en la regla
+     * Returns the list of attributes not used by the rule.
+     * @param rule the rule to obtain the attributes not used from
+     * @param train training dataset that provides the attributes.
+     * @return the list of attributes not used by the rule.
      */
     private static LinkedList<Integer> getListAttribNotRule(Regla rule, Instances instances){
         
@@ -173,12 +173,12 @@ public class InduceOneRule {
     }
     
     /**
-     * Devuelve el numero de casos positivos cubiertos por la regla
-     * Se consideran positivos aquellos casos o filas, cuyos atributos son cubiertos
-     * por los antecedentes de la regla y ademas el consecuente es el mismo
-     * @param rule Regla regla sobre la que vamos a obtener los antecedentes y cosecuente
-     * @param intances Instances Conjunto de datos a analizar
-     * @return Integer Numero de casos cubiertos positivos
+     * Returns the number of positive covered examples by the given rule.
+     * The positive examples are those that all their attributes are covered 
+     * by the antecedents of the rule and the class by the consequent.
+     * @param rule given rule to check.
+     * @param train dataset to be analyzed.
+     * @return the number of positive covered examples.
      */
     private static Integer coveredPositive(Regla rule, Instances instances){
         
@@ -214,12 +214,12 @@ public class InduceOneRule {
     }
     
     /**
-     * Devuelve el numero de casos negativos cubiertos por la regla
-     * Se consideran negativos aquellos casos o filas, cuyos atributos son cubiertos
-     * por los antecedentes de la regla, pero el consecuente es distinto
-     * @param rule Regla regla sobre la que vamos a obtener los antecedentes y cosecuente
-     * @param intances Instances Conjunto de datos a analizar
-     * @return Integer Numero de casos cubiertos negativos
+     * Returns the number of negative covered examples by the given rule.
+     * The negative examples are those that all their attributes are covered 
+     * by the antecedents of the rule but the class is not covered by the consequent.
+     * @param rule given rule to check.
+     * @param train dataset to be analyzed.
+     * @return the number of negative covered examples.
      */
     private static Integer coveredNegative(Regla rule, Instances instances){
         
@@ -255,9 +255,9 @@ public class InduceOneRule {
     }
     
     /**
-     * Elimina las reglas repetidas del conjunto de reglas suministrado
-     * @param reglas LinkedList<Regla> Conjunto de reglas a dejar sin repetidos
-     * @return LinkeList<Reglas> Conjunto de reglas sin repeticiones
+     * Removes the repeated rules from the rulebase given.
+     * @param reglas given rulebase as a LinkedList
+     * @return the modified rulebase.
      */
     private static LinkedList<Regla> quitarRepetidas(LinkedList<Regla> reglas){
         
@@ -278,10 +278,11 @@ public class InduceOneRule {
     }
    
     /**
-     * Seleciona de un conjunto de reglas, las w mejores reglas segun su puntuacion
-     * @param reglas LinkedList<Regla> Conjunto de reglas
-     * @param w int Numero de reglas a elegir
-     * @return LinkeList<Reglas> Conjunto de las w mejores reglas
+     * Selects the w best rules of a rules set following their quality.
+     * @param new_partial_rules given rules set.
+     * @param w number of rules to select.
+     * @param train training dataset.
+     * @return  the w best rules of the given rules set
      */
    private static LinkedList<Regla> bestWRules(LinkedList<Regla> new_partial_rules, int w,Instances instances) {
        

@@ -32,16 +32,11 @@ package keel.Algorithms.Subgroup_Discovery.CN2SD;
 import java.util.*;
 
 /**
- * <p>Title: Clase Conjunto de Reglas</p>
- *
- * <p>Description: Define un conjunto de reglas o complejos</p>
- *
- * <p>Copyright: Copyright Alberto (c) 2006</p>
- *
- * <p>Company: Mi Casa </p>
- *
- * @author Alberto
- * @version 1.0
+ * <p> Set of rules. Defines a set of rules or complex
+ * @author  Rosa Venzala
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
 public class ConjReglas {
 
@@ -57,8 +52,10 @@ public class ConjReglas {
     }
 
     /**
-     * Añade todo un conjunto de reglas a la lista
-     * @param r ConjReglas El conjunto de reglas
+     * <p>
+     * Add a set of rules to the list
+     * </p>
+     * @param r ConjReglas The set of rules
      */
     public void addReglas(ConjReglas r) {
         for (int i = 0; i < r.size(); i++) {
@@ -68,55 +65,69 @@ public class ConjReglas {
     }
 
     /**
-     * Añade una regla a la lista
-     * @param regl Regla a añadir
+     * <p>
+     * Add a rule to the list
+     * </p>
+     * @param regl Rule to add
      */
     public void addRegla(Complejo regl) {
         reglas.add(regl);
     }
 
     /**
-     * Elimina una regla de la lista
-     * @param i indice de la regla a eliminar
+     * <p>
+     * Removes a rule from the list
+     * </p>
+     * @param i index of the rule to remove
      */
     public void deleteRegla(int i) {
         reglas.remove(i);
     }
 
     /**
-     * Vacía el contenido del conjunto de reglas
+     * <p>
+     * Removes the content of a set of rules
+     * </p>
      */
     public void deleteAll() {
         reglas.removeAll(reglas);
     }
 
     /**
-     * Devuelve una regla de la lista
-     * @param i indice de la regla
-     * @return la regla i-esima
+     * <p>
+     * Returns a rule of the list
+     * </p>
+     * @param i index of the rule
+     * @return the 'i' rule
      */
     public Complejo getRegla(int i) {
         return (Complejo) reglas.get(i);
     }
 
     /**
-     * Devuelve el numero de reglas con las que estamos trabajando
-     * @return El tamaño del conjunto de reglas
+     * <p>
+     * Returns the number of rules we are working with
+     * </p>
+     * @return the size of the set of rules
      */
     public int size() {
         return (reglas.size());
     }
 
     /**
-     * Devuelve el conjunto completo de reglas
-     * @return el conjunto completo de reglas
+     * <p>
+     * Returns the complet set if rules
+     * </p>
+     * @return the complet set of rules
      */
     public LinkedList getConjReglas() {
         return reglas;
     }
 
     /**
-     * Muestra por pantalla el conjunto de reglas
+     * <p>
+     * Prints on the screen the set of rules
+     * </p>
      */
     public void print() {
         for (int i = 0; i < reglas.size(); i++) {
@@ -129,8 +140,10 @@ public class ConjReglas {
     }
 
     /**
-     * Imprime en una cadena el conjunto de reglas
-     * @return una cadena de texto (string) que almacena el conjunto de reglas
+     * <p>
+     * Prints on a string the set of rules
+     * </p>
+     * @return A strign that stores the set of rules
      */
     public String printString() {
         String cad = "";
@@ -145,15 +158,19 @@ public class ConjReglas {
     }
 
     /**
-     * Devuelve la última regla (normalmente aquella con mejor peso)
-     * @return la última regla de a lista
+     * <p>
+     * Returns the last rule(normally the one with best weight)
+     * </p>
+     * @return the last rule of the list
      */
     public Complejo getUltimaRegla() {
         return (Complejo) reglas.getLast();
     }
 
     /**
-     * Se encarga de eliminar complejos con atributos repetidos
+     * <p>
+     * Remove complex with repetitive attributes
+     * </p>
      */
     public void eliminaNulos() {
         boolean salir;
@@ -175,8 +192,10 @@ public class ConjReglas {
     }
 
     /**
-     * Eliminamos aquellos complejos repetidos (at1 = 0 ^ at2 = 0 -- at2 = 0 ^ at1 = 0)
-     * @param tam Tamaño de las estrella
+     * <p>
+     * Remove repetitive complex(at1 = 0 ^ at2 = 0 -- at2 = 0 ^ at1 = 0)
+     * </p>
+     * @param tam Size of the star
      */
     public void eliminaRepetidos(int tam) {
         //for (int i = 0; i < this.size() - 1; i++) {
@@ -213,8 +232,10 @@ public class ConjReglas {
     }
 
     /**
-     * Elimino reglas que sean semánticamente iguales (At = 1, At <> 0, At = [0,1])
-     * @param tam int Tamaño de la estrella
+     * <p>
+     * Remove rules are the same ina semantic way(At = 1, At <> 0, At = [0,1])
+     * </p>
+     * @param tam int Size of the star
      */
     public void eliminaSubsumidos(int tam) {
         //for (int i = 0; i < this.size() - 1; i++) {
@@ -254,16 +275,20 @@ public class ConjReglas {
     }
 
     /**
-     * Realizamos una copia local del nombre de la variable clase
-     * @param nombreClase String nombre de la clase
+     * <p>
+     * Do a clocal copy of the name of the class variable
+     * </p>
+     * @param nombreClase Name of the class
      */
     public void adjuntaNombreClase(String nombreClase){
         this.nombreClase = nombreClase;
     }
 
     /**
-     * Realizamos una copia local del nombre de las valores de la clase
-     * @param clases String[] un Array que guarda el nombre de valor de la clase
+     * <p>
+     * Do a local copy of the name of the values of the class
+     * </p>
+     * @param clases String[] An array that stores the name of the value of the class
      */
     public void adjuntaNombreClases(String [] clases){
         valorNombreClases = new String[clases.length];

@@ -30,16 +30,12 @@
 package keel.Algorithms.Subgroup_Discovery.CN2SD;
 
 /**
- * <p>Title: Clase Evalua Calidad Reglas</p>
- *
- * <p>Description: Se encarga de obtener los datos estadísticos del algoritmo </p>
- *
- * <p>Copyright: Copyright Alberto (c) 2006</p>
- *
- * <p>Company: Mi Casa</p>
- *
- * @author Alberto Fernández
- * @version 1.0
+ * <p> Get the statistical data from the algorithm. In particular, it evaluates the quality of the rules generated.
+ * @author Written by Alberto Fernández (University of Granada) 02/06/2008
+ * @author Modified by Xavi Solé (La Salle, Ramón Llull University - Barcelona) 16/12/2008
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
  */
 public class EvaluaCalidadReglas {
     private int nClases;
@@ -65,16 +61,18 @@ public class EvaluaCalidadReglas {
     private ConjReglas reglas;
     private String[] valorNombreClases;
 
-    /**
-     * Calculas las estadísticas finales para un conjunto de reglas dado y un conjunto de datos.
-     * @param conjreg Conjunto de reglas (complejos) final
-     * @param conjTrn Conjunto de datos de entrenamiento
-     * @param conjTst Conjunto de datos de test
-     * @param muestPorClaseTrain int[] Número de ejemplos de cada clase en el conj. de entrenamiento
-     * @param muestPorClaseTest int[] Número de ejemplos de cada clase en el conj. de test
-     * @param mult int Valor para saber si aplicar el peso multiplicativo(1) o aditivo(0)
-     * @param _nu double Valor de "nu" para el peso multiplicativo (si procede)
-     * @param valorNombreClases String[] nombre que tiene cada clase del problema
+        /**
+     * <p>
+     * Calculates the final statisticals for a set of rules and a set of data
+     * </p>
+     * @param conjreg Set of rules(complex) final
+     * @param conjTrn Set of train data
+     * @param conjTst Set of test data
+     * @param muestPorClaseTrain int[] Number of examples of each class in train set
+     * @param muestPorClaseTest int[] Number of examples of each class in train test
+     * @param mult value to indicate if the weight should be applied multiplying or addition.
+     * @param _nu nu value for the multiplication weight.
+     * @param valorNombreClases String[] Labels for each class
      */
     public EvaluaCalidadReglas(ConjReglas conjreg, ConjDatos conjTrn,
                                ConjDatos conjTst, int[] muestPorClaseTrain,
@@ -140,8 +138,10 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * Imprime en una cadena las estadisticas (para test)
-     * @return una cadena con las estadísticas
+     * <p>
+     * Prints on a string the statistical(for test)
+     * </p>
+     * @return the statisticals
      */
     public String printString() {
         String cad = "####Average results for test data####\n";
@@ -162,10 +162,12 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * Calcula en si mismo todas las estadísticas, especialmente el porcentaje de aciertos
-     * @param datos Conjunto de datos (entrenamiento o test)
-     * @param muestPorClase int[] Número de ejemplos por cada clase en el conjunto de datos
-     * @param code Codigo para saber si estamos tratando con entrenamiento o test
+     * <p>
+     * Calculates all the statistical results, especially percent mathes
+     * </p>
+     * @param datos Set of data(train or test)
+     * @param muestPorClase int[] Number of examples for each class in the data set
+     * @param code Train or Test
      */
     private void calculaIndices(ConjDatos datos, int[] muestPorClase, int code) {
         int i, j;
@@ -322,10 +324,11 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * Genera un String con la lista de salidas, es decir, &lt;salida esperada&gt; &lt;salida del metodo&gt;
-     * (en nuestro caso, clase en el fichero original, clase que obtiene el metodo)
-     * @param datos Es el conjunto de datos con el que queremos comparar para nuestro conjunto de reglas
-     * @return Una cadena con una lista de pares &lt;clase original&gt; &lt;clase calculada&gt;
+     * <p>
+     * Generates a string with the out-put lists
+     * </p>
+     * @param datos Set of data witch to compare the set of rules 
+     * @return A list of pairs: 'original class;calculated class;'
      */
     public String salida(ConjDatos datos) {
         String cadena = new String("");
@@ -371,9 +374,9 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * ReCalcula el peso multiplicativo para un ejemplo
-     * @param i el número de reglas que cubren al ejemplo
-     * @return el nuevo peso
+     * Computes the multiplication weight for the example.
+     * @param i number of rules that cover the example.
+     * @return the multiplication weight
      */
     private double pesoMultiplicativo(int i) {
         double aux;
@@ -382,9 +385,9 @@ public class EvaluaCalidadReglas {
     }
 
     /**
-     * ReCalcula el peso aditivo para un ejemplo
-     * @param i int el número de reglas que cubren al ejemplo
-     * @return double el nuevo peso
+     * Computes the summation weight for the example.
+     * @param i number of rules that cover the example.
+     * @return the multiplication weight
      */
     private double pesoAditivo(int i) {
         double aux;
@@ -392,10 +395,12 @@ public class EvaluaCalidadReglas {
         return aux;
     }
 
-    /** Evaluacion de los complejos sobre el conjunto de ejemplo para ver cuales se
-     *   cubren de cada clase
-     * @param c Complejo a evaluar
-     * @param e Conjunto de datos
+    /** 
+     * <p>
+     * Evaluation of the complex over the set of examples
+     * </p>
+     * @param c Complex to evaluate
+     * @param e Set of data
      */
     private void evaluarComplejo(Complejo c, ConjDatos e) {
         double n, ncond, nclascond, nclas;

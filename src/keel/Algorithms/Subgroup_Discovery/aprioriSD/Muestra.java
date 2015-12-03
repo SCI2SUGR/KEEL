@@ -30,9 +30,7 @@
 package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 
 /**
- * <p>Título: Muestra</p>
- * <p>Descripción: Estructura de Muestra para los conjuntos de datos</p>
- * <p>Creado: 02-ago-2004 </p>
+ * <p>Stores one data with the form: attribute attribute class (02-08-2004) </p>
  * @author José Ramón Cano de Amo
  * @version 1.0
  */
@@ -48,12 +46,14 @@ public class Muestra {
   private int tam;
   private int cubierta;
 
-  /**
-   * Constructor
-   * @param m un vector de atributos (valores)
-   * @param cl la clase a la que pertenece la muestra
-   * @param tamano el tamaño de la muestra (se puede obtener directamente de m.length)
-   */
+    /**
+     * <p>
+     * Constructor
+     * </p>
+     * @param m un Vector of attributes(valores)
+     * @param cl The owner class of the data
+     * @param tamano Size of the data
+     */
   public Muestra(double m[], int cl, int tamano) {
     super();
     muest = m;
@@ -61,45 +61,54 @@ public class Muestra {
     tam = tamano;
     cubierta = 0;
   }
-
-  /**
-   * Constructor mas sencillo (sin datos)
-   * @param tamano El tamaño de la muestra (nº de atributos)
-   */
+    /**
+     * <p>
+     * Other constructor, simpler
+     * </p>
+     * @param tamano The size of the data(n attributes)
+     */
   public Muestra(int tamano) {
     super();
     tam = tamano;
     muest = new double[tam];
   }
 
-  /**
-   * Devuelve la clase del ejemplo
-   * @return la clase
-   */
+    /**
+     * <p>
+     * Returns the example's class
+     * </p>
+     * @return the class
+     */
   public int getClase() {
     return clase;
   }
 
-  /**
-   * Devuelve los atributos (array de valores)
-   * @return la muestra completa
-   */
+    /**
+     * <p>
+     * Returns the attributes(array of values)
+     * </p>
+     * @return the complex data
+     */
   public double[] getMuest() {
     return muest;
   }
 
-  /**
-   * Asigna la clase
-   * @param i "número" de la clase
-   */
+    /**
+     * <p>
+     * Assigns the class
+     * </p>
+     * @param i number of the class
+     */
   public void setClase(int i) {
     clase = i;
   }
 
-  /**
-   * Asigna las entradas de la muestra
-   * @param ds un array de valores para la muestra
-   */
+    /**
+     * <p>
+     * Assigns the in-puts of the data
+     * </p>
+     * @param ds An array of values for the data
+     */
   public void setMuest(double[] ds) {
     int i;
     for (i = 0; i < tam; i++) {
@@ -107,51 +116,63 @@ public class Muestra {
     }
   }
 
-  /**
-   * Devuelve la posicion del ejemplo en el fichero de entrada de datos
-   * @return la posicion en el fichero
-   */
+    /**
+     * <p>
+     * Returns the position of the example inf the in-put file of data
+     * </p>
+     * @return the position in the file
+     */
   public long getPosFile() {
     return posFile;
   }
 
-  /**
-   * Asigna la posicion del ejemplo en el fichero de entrada de datos
-   * @param l la posicion en el fichero
-   */
+    /**
+     * <p>
+     * Assigns the position of the example in the in-put file of data
+     * </p>
+     * @param l the position in the file
+     */
   public void setPosFile(long l) {
     posFile = l;
   }
 
   /**
-   * Devuelve el valor del atributo i del ejemplo
-   * @param i la posicion del atributo
-   * @return el valor del atributo
-   */
+     * <p>
+     * Returns the value of the attribute 'i' of the example
+     * </p>
+     * @param i The atribute's position
+     * @return The value of the attribute
+     */
   public double getAtributo(int i) {
     return muest[i];
   }
 
-  /**
-   * Devuelve el número de atributos del ejemplo
-   * @return el nº de atributos
-   */
+    /**
+     * <p>
+     * Returns the number of attributes of the example
+     * </p>
+     * @return number of attributes
+     */
   public int getNatributos() {
     return tam;
   }
 
-  /**
-   * Le da valor a un atributo
-   * @param i posicion del atributo
-   * @param val nuevo valor
-   */
+    /**
+     * <p>
+     * Gives value to an atribute
+     * </p>
+     * @param i Position of the attribute
+     * @param val new value
+     */
   public void setAtributo(int i, double val) {
     muest[i] = val;
   }
 
-  /**
-   * Muestra por pantalla el contenido del ejemplo
-   */
+    /**
+     * <p>
+     * Prints on the screen the example's content
+     * </p>
+     */
   public void print() {
     int i;
 
@@ -162,10 +183,12 @@ public class Muestra {
     System.out.print("  Cl: " + clase);
   }
 
-  /**
-   * Hace una copia del ejemplo
-   * @return un nuevo ejemplo copia
-   */
+    /**
+     * <p>
+     * Do a copy of the example
+     * </p>
+     * @return A new copy of the example
+     */
   public Muestra copiaMuestra() {
     Muestra m = new Muestra(tam);
     m.setMuest(muest);
@@ -174,11 +197,13 @@ public class Muestra {
     return m;
   }
 
-  /**
-   * Compara si dos ejemplos son iguales
-   * @param m El ejemplo a comparar
-   * @return True si son iguales. False en otro caso
-   */
+    /**
+     * <p>
+     * Compare if two examples are equals
+     * </p>
+     * @param m Example to compare
+     * @return True if are equals. False otherwise
+     */
   public boolean compara(Muestra m){
     boolean iguales = true;
     for (int i = 0; i < this.getNatributos() && iguales; i++){
@@ -186,21 +211,32 @@ public class Muestra {
     }
     return iguales;
   }
-
-  /**
-   * @return cubierta
-   */
+  
+    /**
+     * <p>
+     * Returns the number of times that the example has benn matched
+     * </p>
+     * @return idem.
+     */
   public int getCubierta() {
     return cubierta;
   }
 
+      /**
+     * <p>
+     * Adds one to the number of times that the example has been matched
+     * </p>
+     */
   public void incrementaCubierta() {
     cubierta++;
   }
 
-  /**
-   * @param d valor
-   */
+    /**
+     * <p>
+     * Assign a new value for the 'n' times that the example has benn matched
+     * </p>
+     * @param d value
+     */
   public void setCubierta(int d) {
     cubierta = d;
   }

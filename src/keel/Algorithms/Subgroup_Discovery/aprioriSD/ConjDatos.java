@@ -31,13 +31,14 @@ package keel.Algorithms.Subgroup_Discovery.aprioriSD;
 
 import java.util.*;
 
+
 /**
- * <p>Título: Conjunto de Datos</p>
- * <p>Descripción: Maneja los conjuntos de datos</p>
- * <p>Creado: 02-agosto 2004</p>
+ * <p> Stores a set of data with the form: attribute attribute..class.
  * @author José Ramón Cano de Amo
- * @version 1.0
-*/
+ * @version 1.1
+ * @since JDK1.2
+ * </p>
+ */
 public class ConjDatos {
 
   /**
@@ -47,27 +48,33 @@ public class ConjDatos {
   private LinkedList datos;
 //	private int nAtrib;
 
-  /**
-   *Constructor. Inicializa las variables contenedoras
-   */
+    /**
+     * <p>
+     * Constructor. Initializes the variables
+     * </p>
+     */
   public ConjDatos() { //int nAtributos) {
     super();
     datos = new LinkedList();
 //		nAtrib=nAtributos;
   }
 
-  /**
-   * Borra un dato
-   * @param i Posicion a borrar
-   */
+    /**
+     * <p>
+     * Removes a data item
+     * </p>
+     * @param i Position to delete
+     */
   public void deleteDato(int i) {
     datos.remove(i);
   }
 
-  /**
-   * Añade un dato
-   * @param m Ejemplo
-   */
+    /**
+     * <p>
+     * Add a data item
+     * </p>
+     * @param m Example
+     */
   public void addDato(Muestra m) {
     Muestra mim = m.copiaMuestra();
     datos.add(mim);
@@ -77,36 +84,44 @@ public class ConjDatos {
 //		return nAtrib;
 //	}
 
-  /**
-   * Devuelve un ejemplo
-   * @param i Posicion del ejemplo
-   * @return El ejemplo o muestra en la posicion i-esima
-   */
+    /**
+     * <p>
+     * Returns an example
+     * </p>
+     * @param i Position of the example
+     * @return The example
+     */
   public Muestra getDato(int i) {
     Muestra m = (Muestra) datos.get(i);
     return (Muestra) datos.get(i);
   }
 
-  /**
-   * Asigna un dato. Modifica el que hubiese de antemano
-   * @param i Posicion a insertar
-   * @param m Ejemplo
-   */
+    /**
+     * <p>
+     * Assign a data item
+     * </p>
+     * @param i Position to insert
+     * @param m Example
+     */
   public void setDato(int i, Muestra m) {
     datos.set(i, m);
   }
 
-  /**
-   * Devuelve el número de ejemplos de nuestro conjunto de datos
-   * @return El tamaño
-   */
+    /**
+     * <p>
+     * Returns the number of examples of our set of data items
+     * </p>
+     * @return the size
+     */
   public int size() {
     return (datos.size());
   }
 
-  /**
-   * Muestra por pantalla los ejemplos
-   */
+    /**
+     * <p>
+     * Prints the examples on the screen
+     * </p>
+     */
   public void print() {
     int i;
     for (i = 0; i < datos.size(); i++) {
@@ -116,10 +131,12 @@ public class ConjDatos {
 
   }
 
-  /**
-   * Copia el conjunto de datos en otro nuevo
-   * @return Un nuevo conjunto de datos copia del actual
-   */
+    /**
+     * <p>
+     * Copy the set of data in other one(new)
+     * </p>
+     * @return A new set of data copy of the actual set
+     */
   public ConjDatos copiaConjDatos() {
     int i;
     ConjDatos c = new ConjDatos();
@@ -134,10 +151,12 @@ public class ConjDatos {
     return c;
   }
 
-  /**
-   * Hace que los atributos de todos los ejemplos estén en el intervalo [0,1]
-   * @param datos Conjunto de datos
-   */
+    /**
+     * <p>
+     * Adapt the examples to the [0,1] interval
+     * </p>
+     * @param datos Set of data
+     */
   public void hazUniforme(Dataset datos){
     datos.normaliza();
   }
