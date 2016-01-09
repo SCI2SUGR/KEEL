@@ -137,8 +137,8 @@ public class FuzzyApriori {
 				for (r=0; r < this.associationRulesSet.size(); r++) {
 					ar = this.associationRulesSet.get(r);
 					
-					rules_writer.println("<rule id = \"" + r + "\" />");
-					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + ar.getRuleSupport() + "\" antecedent_support=\"" + ar.getAntecedentSupport() + "\" confidence=\"" + ar.getConfidence() + "\"/>");
+					rules_writer.println("<rule id = \"" + r + "\">");
+					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + ar.getRuleSupport() + "\" antecedent_support=\"" + ar.getAntecedentSupport() + "\" consequent_support=\"" + ar.getConsequentSupport()+ "\" confidence=\"" + ar.getConfidence() + "\"/>");
 					
 					rules_writer.println("<antecedents>");			
 					itemset = ar.getAntecedent();
@@ -199,15 +199,15 @@ public class FuzzyApriori {
 			
 			if (this.trans.isNominal(id_attr)) {
 				for (id_label=0; id_label < fuzzy_attr.length; id_label++) {
-					fuzzy_attrs_writer.println("<value \"" + fuzzy_attr[id_label].getLabel() + "\" />");
+					fuzzy_attrs_writer.println("<value x=\"" + fuzzy_attr[id_label].getLabel() + "\" />");
 				}
 			}
 			else {	
 				for (id_label=0; id_label < fuzzy_attr.length; id_label++) {
-					fuzzy_attrs_writer.print("<value \"" + fuzzy_attr[id_label].getLabel() + "\" ");
-					fuzzy_attrs_writer.print("\"" + fuzzy_attr[id_label].getX0() + "\" ");
-					fuzzy_attrs_writer.print("\"" + fuzzy_attr[id_label].getX1() + "\" ");
-					fuzzy_attrs_writer.println("\"" + fuzzy_attr[id_label].getX3() + "\" />");
+					fuzzy_attrs_writer.print("<value labelname=\"" + fuzzy_attr[id_label].getLabel() + "\" ");
+					fuzzy_attrs_writer.print("x1=\"" + fuzzy_attr[id_label].getX0() + "\" ");
+					fuzzy_attrs_writer.print("x2=\"" + fuzzy_attr[id_label].getX1() + "\" ");
+					fuzzy_attrs_writer.println("x3=\"" + fuzzy_attr[id_label].getX3() + "\" />");
 				}
 			}
 			

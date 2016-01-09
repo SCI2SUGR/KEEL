@@ -5622,6 +5622,45 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 					keel/Dataset/**/*.class"/>
         </jar>
 
+                <!-- Assotiation Rules Visualization modules -->              
+          <jar
+          jarfile="${distTest}/KeelLateXTables.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keellatextables/Manifest">
+          <fileset dir="${bin}" includes="org/core/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keellatextables/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keellatextables/**/*.class"/>
+         </jar>
+         
+         <jar
+          jarfile="${distTest}/KeelAssotiationRulesBoxPlot.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesboxplot/Manifest">
+            <fileset dir="${bin}" includes="org/core/**/*.class"/>
+            <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesboxplot/*.class"/>
+            <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesboxplot/**/*.class"/> 
+            <zipgroupfileset refid="lib_graph.jars"/>
+            <!-- for RunKeelTxtDocente -->
+            <zipgroupfileset refid="lib_xml.jars"/>
+         </jar>
+         
+         <jar
+          jarfile="${distTest}/KeelAssotiationRulesBarChart.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesbarchart/Manifest">
+            <fileset dir="${bin}" includes="org/core/**/*.class"/>
+            <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesbarchart/*.class"/>
+            <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesbarchart/**/*.class"/>
+            <zipgroupfileset refid="lib_graph.jars"/>
+            <!-- for RunKeelTxtDocente -->
+            <zipgroupfileset refid="lib_xml.jars"/>
+         </jar>
+         
+         <!-- Assotiation Rules XML to PMML export module -->              
+          <jar
+          jarfile="${distTest}/KeelToPMML.jar"
+          manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/KeelToPMML/Manifest">
+          <fileset dir="${bin}" includes="org/core/**/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/KeelToPMML/*.class"/>
+          <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/KeelToPMML/**/*.class"/>
+         </jar>
 
  <!-- Semi Supervised Learning Experiments Module -->
 

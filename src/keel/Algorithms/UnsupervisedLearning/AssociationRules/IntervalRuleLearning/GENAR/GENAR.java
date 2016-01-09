@@ -186,7 +186,7 @@ public class GENAR {
 				rule_writer.println("</association_rules>");
 				sup_writer.println("</values>");
 				
-				this.ap.saveReport(this.minSupport, sup_writer);
+				//this.ap.saveReport(this.minSupport, sup_writer);
 				
 				valuesOrder_writer.print(this.ap.printRules(this.assoc_rules));
 				valuesOrder_writer.print("</values>");

@@ -191,7 +191,7 @@ public class GAR {
 				rule_writer.println("</association_rules>");
 				sup_writer.println("</values>");
 				
-				this.ap.saveReport(this.minConfidence, this.minSupport, sup_writer);
+				//this.ap.saveReport(this.minConfidence, this.minSupport, sup_writer);
 				rule_writer.close();
 				sup_writer.close();
 				

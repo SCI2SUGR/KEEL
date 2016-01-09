@@ -203,4 +203,117 @@
       </output>
     <property>unspecified</property>
     </method>
+
+
+<method>
+    <name>KeelLateXTables</name>
+    <family>Assotiation Rules Visualization</family>
+    <jar_file>KeelLateXTables.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>Yes</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>Yes</multioutput>
+      <multiinstance>Yes</multiinstance>
+    </input>
+    <output>
+    <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>Yes</missing>
+      <imprecise>Yes</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>Yes</multioutput>
+      <multiinstance>Yes</multiinstance>
+    </output>
+    <property>unspecified</property>
+  </method>
+
+<method>
+    <name>KeelAssotiationRulesBarChart</name>
+    <family>Assotiation Rules Visualization</family>
+    <jar_file>KeelAssotiationRulesBarChart.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+    <input>
+        <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>Yes</nominal>
+        <missing>Yes</missing>
+        <imprecise>Yes</imprecise>
+        <multiclass>Yes</multiclass>
+        <multioutput>Yes</multioutput>
+        <multiinstance>Yes</multiinstance>
+    </input>
+    <output>
+        <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>Yes</nominal>
+        <missing>Yes</missing>
+        <imprecise>Yes</imprecise>
+        <multiclass>Yes</multiclass>
+        <multioutput>Yes</multioutput>
+        <multiinstance>Yes</multiinstance>
+    </output>
+    <property>unspecified</property>
+</method>
+
+<method>
+    <name>KeelAssotiationRulesBoxPlot</name>
+    <family>Assotiation Rules Visualization</family>
+    <jar_file>KeelAssotiationRulesBoxPlot.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+    <input>
+        <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>Yes</nominal>
+        <missing>Yes</missing>
+        <imprecise>Yes</imprecise>
+        <multiclass>Yes</multiclass>
+        <multioutput>Yes</multioutput>
+        <multiinstance>Yes</multiinstance>
+    </input>
+    <output>
+        <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>Yes</nominal>
+        <missing>Yes</missing>
+        <imprecise>Yes</imprecise>
+        <multiclass>Yes</multiclass>
+        <multioutput>Yes</multioutput>
+        <multiinstance>Yes</multiinstance>
+    </output>
+    <property>unspecified</property>
+</method>
+
+<method>
+    <name>KEELToPMML</name>
+    <family>Assotiation Rules Visualization</family>
+    <jar_file>KeelToPMML.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+    <input>
+        <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>Yes</nominal>
+        <missing>Yes</missing>
+        <imprecise>Yes</imprecise>
+        <multiclass>Yes</multiclass>
+        <multioutput>Yes</multioutput>
+        <multiinstance>Yes</multiinstance>
+    </input>
+    <output>
+        <continuous>Yes</continuous>
+        <integer>Yes</integer>
+        <nominal>Yes</nominal>
+        <missing>Yes</missing>
+        <imprecise>Yes</imprecise>
+        <multiclass>Yes</multiclass>
+        <multioutput>Yes</multioutput>
+        <multiinstance>Yes</multiinstance>
+    </output>
+</method>
+
 </visors_list>

@@ -193,7 +193,7 @@ public class MODENAR {
 				rule_writer.println("</association_rules>");
 				sup_writer.println("</values>");
 
-				ap.saveReport(this.associationRulesPareto,sup_writer);
+				//ap.saveReport(this.associationRulesPareto,sup_writer);
 				rule_writer.close();
 				sup_writer.close();
 

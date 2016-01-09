@@ -172,7 +172,7 @@ public class Apriori {
 				values_writer.println("</values>");
 				valuesOrder_writer.print("</values>");
 				
-				this.proc.saveReport(this.associationRules, values_writer);
+				//this.proc.saveReport(this.associationRules, values_writer);
 				
 				rules_writer.close();
 				values_writer.close();

@@ -187,7 +187,7 @@ public class ARMMGA {
 				sup_writer.println("</values>");
 
 
-				ap.saveReport(this.assoc_rules, sup_writer);
+				//ap.saveReport(this.assoc_rules, sup_writer);
 				rule_writer.close();
 				sup_writer.close();
 

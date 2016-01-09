@@ -158,8 +158,8 @@ public class Alcalaetal {
 				for (r=0; r < this.associationRulesSet.size(); r++) {
 					ar = this.associationRulesSet.get(r);
 					
-					rules_writer.println("<rule id = \"" + r + "\" />");
-					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + ar.getRuleSupport() + "\" antecedent_support=\"" + ar.getAntecedentSupport() + "\" confidence=\"" + ar.getConfidence() + "\"/>");					
+					rules_writer.println("<rule id = \"" + r + "\">");
+					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + ar.getRuleSupport() + "\" antecedent_support=\"" + ar.getAntecedentSupport() + "\" consequent_support=\"" + ar.getConsequentSupport()+ "\" confidence=\"" + ar.getConfidence() + "\"/>");					
 					rules_writer.println("<antecedents>");			
 					itemset = ar.getAntecedent();
 					
@@ -235,7 +235,7 @@ public class Alcalaetal {
 				fuzzy_attrs_writer.println("<attribute name = \"" + this.trans.getAttributeName(attr) + "\" nValues = \"" + this.trans.nValueNominal(attr) + "\" Type = \"" + this.trans.getAttributeTypeString(attr) + "\" >");
 				
 				for (region=0; region < this.trans.nValueNominal(attr); region++) {
-					fuzzy_attrs_writer.println("<value \"" + this.trans.getNominalValue(attr, region) + "\" />");
+					fuzzy_attrs_writer.println("<value x=\"" + this.trans.getNominalValue(attr, region) + "\" />");
 				}
 			}
 			else {
@@ -248,10 +248,10 @@ public class Alcalaetal {
 				}		
 				fuzzy_regions = fuzzy_attr.getFuzzyRegions();
 				for (region=0; region < fuzzy_regions.length; region++) {
-					fuzzy_attrs_writer.print("<value \"" + fuzzy_regions[region].getLabel() + "\" ");
-					fuzzy_attrs_writer.print("\"" + fuzzy_regions[region].getX0() + "\" ");
-					fuzzy_attrs_writer.print("\"" + fuzzy_regions[region].getX1() + "\" ");
-					fuzzy_attrs_writer.println("\"" + fuzzy_regions[region].getX3() + "\" />");
+					fuzzy_attrs_writer.print("<value labelname=\"" + fuzzy_regions[region].getLabel() + "\" ");
+					fuzzy_attrs_writer.print("x1=\"" + fuzzy_regions[region].getX0() + "\" ");
+					fuzzy_attrs_writer.print("x2=\"" + fuzzy_regions[region].getX1() + "\" ");
+					fuzzy_attrs_writer.println("x3=\"" + fuzzy_regions[region].getX3() + "\" />");
 				}
 			}
 			

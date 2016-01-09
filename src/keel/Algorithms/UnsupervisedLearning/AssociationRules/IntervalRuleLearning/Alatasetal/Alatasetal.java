@@ -204,7 +204,7 @@ public class Alatasetal {
 				
 				rules_writer.println("</association_rules>");
 				values_writer.println("</values>");
-				this.proc.saveReport(this.associationRules, values_writer);
+				//this.proc.saveReport(this.associationRules, values_writer);
 				
 				rules_writer.close();
 				values_writer.close();
