@@ -5638,8 +5638,9 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
             <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesboxplot/*.class"/>
             <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesboxplot/**/*.class"/> 
             <zipgroupfileset refid="lib_graph.jars"/>
-            <!-- for RunKeelTxtDocente -->
-            <zipgroupfileset refid="lib_xml.jars"/>
+            <!-- for RunKeelTxtDocente 
+            <zipgroupfileset refid="lib_xml.jars"/>-->
+	  <zipfileset src="${lib}/Interfaz/jdom.jar" excludes="META-INF/*" />
          </jar>
          
          <jar
@@ -5649,8 +5650,9 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
             <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesbarchart/*.class"/>
             <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesbarchart/**/*.class"/>
             <zipgroupfileset refid="lib_graph.jars"/>
-            <!-- for RunKeelTxtDocente -->
-            <zipgroupfileset refid="lib_xml.jars"/>
+            <!-- for RunKeelTxtDocente 
+            <zipgroupfileset refid="lib_xml.jars"/>-->
+	    <zipfileset src="${lib}/Interfaz/jdom.jar" excludes="META-INF/*" />
          </jar>
          
          <!-- Assotiation Rules XML to PMML export module -->              
