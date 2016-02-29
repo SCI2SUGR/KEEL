@@ -103,6 +103,7 @@ public class ImportPanel extends javax.swing.JPanel {
      */
 
     private boolean isUnsupervised;
+    private boolean isImbalanced;
 
     /**
      * <p>
@@ -3124,7 +3125,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
 
     }
 
-    /**
+        /**
      * <p>
      * Adds a dataset to the "Datasets.xml" file of the experiment section
      * </p>
@@ -3136,18 +3137,8 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
     private String addDatasetXML(File file, File fileTesting) {
 
         isUnsupervised=false;
-        /*Load the previuos datasets.xml*/
-        Document data = new Document();
-        try {
-            SAXBuilder builder = new SAXBuilder();
-            data = builder.build("./data/Datasets.xml");
-        } catch (JDOMException ex) {
-            ex.printStackTrace();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("Dataset specification XML file not found");
-            return null;
-        }
+        isImbalanced=false;
+        String dataXML = "./data/Datasets.xml";
 
 
         String rootName = (String) JOptionPane.showInputDialog(
@@ -3161,27 +3152,8 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
 
         //minusculas
         String lowerCaseName= rootName.toLowerCase();
-
-        Iterator it = data.getRootElement().getChildren().iterator();
-        while (it.hasNext()) {
-            Element element = (Element) it.next();
-            if (element.getChild("nameAbr").getValue().equals(lowerCaseName)) {
-                rootName = (String) JOptionPane.showInputDialog(
-                            parent,
-                            "The name of the dataset is also included in the experiment section.\n" + "Please insert another name:",
-                            "Existing name",
-                            JOptionPane.PLAIN_MESSAGE,
-                            null,
-                            null,
-                            rootName);
-                if( ((rootName == null) || (rootName.length() == 0))){
-                    return null;
-                }
-		lowerCaseName= rootName.toLowerCase();
-				
-                it = data.getRootElement().getChildren().iterator();
-            }
-        }
+        
+        
 
         // Loading one data set to extract statitics
         keel.Dataset.InstanceSet iSet = new keel.Dataset.InstanceSet();
@@ -3196,10 +3168,6 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         }
 
         Element root = new Element("dataset");
-        Element nameAbr = new Element("nameAbr");
-        nameAbr.setText(lowerCaseName);
-        Element nameComplete = new Element("nameComplete");
-        nameComplete.setText(rootName);
 
         boolean classification = false;
         Element problemType = new Element("problemType");
@@ -3230,7 +3198,8 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
         //Custom button text
         Object[] options = {"Classification",
                     "Regression",
-                    "Unsupervised"};
+                    "Unsupervised",
+                    "Imbalanced"};
         int optionType = JOptionPane.showOptionDialog(parent,
             "Select the type of problem",
             "Select type",
@@ -3244,20 +3213,72 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
             classification = true;
             problemType.setText("Classification");
             isUnsupervised = false;
+            isImbalanced = false;
+            dataXML = "./data/Datasets.xml";
         }
         else if(optionType==1){
             classification = false;
             problemType.setText("Regression");
             isUnsupervised = false;
+            isImbalanced = false;
+            dataXML = "./data/Datasets.xml";
         }
         else if(optionType==2){
             classification = false;
             problemType.setText("Unsupervised");
             isUnsupervised = true;
+            isImbalanced = false;
+            dataXML = "./data/Datasets.xml";
+        }
+        else if(optionType==3){
+            classification = true;
+            problemType.setText("Classification");
+            isUnsupervised = false;
+            isImbalanced = true;
+            dataXML = "./data/DatasetsImbalanced.xml";
         }
         else{
             //Use default classification
         }
+        
+        /*Load the previuos datasets.xml*/
+        Document data = new Document();
+        try {
+            SAXBuilder builder = new SAXBuilder();
+            data = builder.build(dataXML);
+        } catch (JDOMException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Dataset specification XML file not found");
+            return null;
+        }
+
+        Iterator it = data.getRootElement().getChildren().iterator();
+        while (it.hasNext()) {
+            Element element = (Element) it.next();
+            if (element.getChild("nameAbr").getValue().equals(lowerCaseName)) {
+                rootName = (String) JOptionPane.showInputDialog(
+                            parent,
+                            "The name of the dataset is also included in the experiment section.\n" + "Please insert another name:",
+                            "Existing name",
+                            JOptionPane.PLAIN_MESSAGE,
+                            null,
+                            null,
+                            rootName);
+                if( ((rootName == null) || (rootName.length() == 0))){
+                    return null;
+                }
+        lowerCaseName= rootName.toLowerCase();
+                
+                it = data.getRootElement().getChildren().iterator();
+            }
+        }
+        
+        Element nameAbr = new Element("nameAbr");
+        nameAbr.setText(lowerCaseName);
+        Element nameComplete = new Element("nameComplete");
+        nameComplete.setText(rootName);
 
         if(isUnsupervised==true){
             try {
@@ -3403,17 +3424,11 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
             nClasses.setText(Integer.toString(numClasses));
             root.addContent(nClasses);
         }
-
-        if (userDatasetCheckBox.isSelected()) {
-            Element userDataset = new Element("userDataset");
-            root.addContent(field).addContent(userDataset);
-        }
-
-
+        
         data.getRootElement().addContent(root);
 
         try {
-            File f = new File("./data/Datasets.xml");
+            File f = new File(dataXML);
             FileOutputStream file2 = new FileOutputStream(f);
             XMLOutputter fmt = new XMLOutputter();
             fmt.setFormat(Format.getPrettyFormat());
@@ -3422,6 +3437,7 @@ private void importToExperimentCheckBoxActionPerformed(java.awt.event.ActionEven
             ex.printStackTrace();
         }
         Attributes.clearAll();
+        
 
         //return name in lowerCase
         return lowerCaseName;
