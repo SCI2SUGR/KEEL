@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S√°nchez (luciano@uniovi.es)
-    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
-    S. Garc√≠a (sglopez@ujaen.es)
-    A. Fern√°ndez (alberto.fernandez@ujaen.es)
+    L. S·nchez (luciano@uniovi.es)
+    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÌa (sglopez@ujaen.es)
+    A. Fern·ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
  * <p>
- * @author Written by Juli√°n Luengo Mart√≠n 28/11/2006
+ * @author Written by Juli·n Luengo MartÌn 28/11/2006
  * @version 0.1
  * @since JDK 1.5
  * </p>
@@ -247,7 +247,7 @@ public class gCenter {
         for (int a = 0; a < numCenters; a++) {
             for (int b = 0; b < nvariables; b++) {
             	nInst[a][b] = 0;
-                gravCenters[a][b] = "a";
+                gravCenters[a][b] = null;
                 modes[a][b] = new FreqList();
             }
         }
@@ -268,7 +268,7 @@ public class gCenter {
                     if (tipo != Attribute.NOMINAL
                             && !i.getInputMissingValues(in)) {
                     	nInst[c][l]++;
-                    	if(gravCenters[c][l].compareTo("a") == 0)
+                    	if(gravCenters[c][l]==null)
                     		gravCenters[c][l] = new String("0");
                         tmp = new Double(gravCenters[c][l]).doubleValue();
                         tmp += i.getInputRealValues(in);
@@ -286,7 +286,7 @@ public class gCenter {
                         if (tipo != Attribute.NOMINAL
                                 && !i.getOutputMissingValues(out)) {
                         	nInst[c][l]++;
-                        	if(gravCenters[c][l].compareTo("a") == 0)
+                        	if(gravCenters[c][l]==null)
                         		gravCenters[c][l] = new String("0");
                             tmp = new Double(gravCenters[c][l]).doubleValue();
                             tmp += i.getOutputRealValues(out);
@@ -326,7 +326,7 @@ public class gCenter {
             tipo = at.getType();
             if (tipo != Attribute.NOMINAL) {
                 for (int a = 0; a < numCenters; a++) {
-                	if(gravCenters[a][b].compareTo("a") != 0){
+                	if(gravCenters[a][b]!=null){
                 		tmp = new Double(gravCenters[a][b]).doubleValue();
                 		tmp = tmp / nInst[a][b];
                 		gravCenters[a][b] = String.valueOf(tmp);

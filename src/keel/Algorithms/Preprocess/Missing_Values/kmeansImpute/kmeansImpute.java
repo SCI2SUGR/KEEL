@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S√°nchez (luciano@uniovi.es)
-    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
-    S. Garc√≠a (sglopez@ujaen.es)
-    A. Fern√°ndez (alberto.fernandez@ujaen.es)
+    L. S·nchez (luciano@uniovi.es)
+    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
+    S. GarcÌa (sglopez@ujaen.es)
+    A. Fern·ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
  * <p>
- * @author Written by Juli√°n Luengo Mart√≠n 29/11/2006
+ * @author Written by Juli·n Luengo MartÌn 29/11/2006
  * @version 0.2
  * @since JDK 1.5
  * </p>
@@ -235,10 +235,8 @@ public class kmeansImpute {
      */
     public void process(){
         //declarations
-        double []outputs;
-        double []outputs2;
-        Instance neighbor;
-        double dist,mean;
+    		ArrayList<Integer> initialCenters;
+	    	boolean repeated;
         int actual;
         Randomize rnd = new Randomize();
         Instance ex;
@@ -272,6 +270,7 @@ public class kmeansImpute {
             //first, we choose k 'means' randomly from all
             //instances
             totalMissing = 0;
+            initialCenters = new ArrayList<Integer>();
             for(int i = 0;i < ndatos;i++){
                 Instance inst = IS.getInstance(i);
                 if(inst.existsAnyMissingValue())
@@ -285,8 +284,13 @@ public class kmeansImpute {
                 do{
                     actual = (int) (ndatos*rnd.Rand());
                     ex = IS.getInstance(actual);
-                }while(ex.existsAnyMissingValue() && !allMissing);
-                
+                    repeated = false;
+                    for(int i = 0; !ex.existsAnyMissingValue() && !repeated && i<initialCenters.size();i++){
+                    	if(initialCenters.get(i) == actual)
+                    		repeated = true;
+                    }
+                }while(ex.existsAnyMissingValue() && !allMissing || repeated);
+                initialCenters.add(actual);
                 kmeans.copyCenter(ex,numMeans);
             }
             
