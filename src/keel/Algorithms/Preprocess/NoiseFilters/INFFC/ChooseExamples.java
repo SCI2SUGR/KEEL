@@ -146,11 +146,11 @@ public class ChooseExamples {
 		double res = 0;
 		
 		if(is_clean){
-			res = (1 + (vecinos_limpios/5)) / 2;
+			res = (1 + ( (double) vecinos_limpios / 5.0)) / 2.0;
 		}
 		
 		else{
-			res = (vecinos_ruido/5) / 2;
+			res = ( (double) vecinos_ruido / 5.0) / 2.0;
 		} 
 
 		return res;
