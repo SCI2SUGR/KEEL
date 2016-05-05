@@ -52,6 +52,8 @@ import keel.GraphInterKeel.statistical.tests.Contrast;
 import keel.GraphInterKeel.statistical.tests.Friedman;
 import keel.GraphInterKeel.statistical.tests.Multiple;
 import keel.GraphInterKeel.statistical.tests.Wilcoxon;
+import java.awt.FileDialog;
+import java.io.FilenameFilter;
 
 public class StatisticalF extends javax.swing.JFrame {
 
@@ -779,24 +781,39 @@ public class StatisticalF extends javax.swing.JFrame {
         String contents;
         String path;
 
-        JFileChooser chooser = new JFileChooser(lastPath);
-
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        chooser.setDialogTitle("Select a name to export the file");
-
-        CSVFileFilter filter = new CSVFileFilter();
-        filter.addExtension("csv");
-        filter.setFilterName("CSV Files");
-        chooser.setFileFilter(filter);
-        chooser.setAcceptAllFileFilterUsed(true);
-
-        int returnVal = chooser.showSaveDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            saveFile = chooser.getSelectedFile();
-            lastPath=chooser.getSelectedFile().getParent();
-        } else {
-            return;
-        }
+//        JFileChooser chooser = new JFileChooser(lastPath);
+//
+//        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//        chooser.setDialogTitle("Select a name to export the file");
+//
+//        CSVFileFilter filter = new CSVFileFilter();
+//        filter.addExtension("csv");
+//        filter.setFilterName("CSV Files");
+//        chooser.setFileFilter(filter);
+//        chooser.setAcceptAllFileFilterUsed(true);
+//
+//        int returnVal = chooser.showSaveDialog(this);
+//        if (returnVal == JFileChooser.APPROVE_OPTION) {
+//            saveFile = chooser.getSelectedFile();
+//            lastPath=chooser.getSelectedFile().getParent();
+//        } else {
+//            return;
+//        }
+        
+        FileDialog chooser2 = new FileDialog(this,lastPath,FileDialog.SAVE);
+        chooser2.setTitle("Select a name to export the file");
+        chooser2.setFilenameFilter(new FilenameFilter() {
+            @Override public boolean accept(File dir, String name) {
+                return name.endsWith(".csv");
+            }
+        });
+        chooser2.setMultipleMode(false);
+        chooser2.setVisible(true);
+        
+        if(chooser2.getFile() != null){
+            saveFile = new File(chooser2.getDirectory()+chooser2.getFile());
+            lastPath=saveFile.getParent();
+        }else return;
 
         try {
             path = saveFile.getCanonicalPath();
@@ -824,6 +841,22 @@ public class StatisticalF extends javax.swing.JFrame {
         String contents;
         String path;
 
+        FileDialog chooser2 = new FileDialog(this,lastPath,FileDialog.LOAD);
+        chooser2.setTitle("Select a CSV file to load");
+        chooser2.setFilenameFilter(new FilenameFilter() {
+            @Override public boolean accept(File dir, String name) {
+                return name.endsWith(".csv");
+            }
+        });
+        chooser2.setMultipleMode(false);
+        chooser2.setVisible(true);
+        
+        if(chooser2.getFile() != null){
+            loadFile = new File(chooser2.getDirectory()+chooser2.getFile());
+            lastPath=loadFile.getParent();
+        }else return;
+        
+        /**
         JFileChooser chooser = new JFileChooser(lastPath);
 
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -842,7 +875,7 @@ public class StatisticalF extends javax.swing.JFrame {
             lastPath=chooser.getSelectedFile().getParent();
         } else {
             return;
-        }
+        }*/
 
         try {
             path = loadFile.getCanonicalPath();
