@@ -3476,19 +3476,18 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         Mapping mapping = new Mapping();
         try {
             if ((experimentGraph.getName() == null) || (option == 1)) {
-                JFileChooser f;
-                if (lastDirectory == null) {
-                    f = new JFileChooser();
-                } else {
-                    f = new JFileChooser(lastDirectory);
+                FileDialog f2 = new FileDialog(this,"Save experiment (.xml)",FileDialog.SAVE);
+                f2.setFilenameFilter(new FilenameFilter() {
+                @Override public boolean accept(File dir, String name) {
+                    return name.endsWith(".xml");
                 }
-                f.setDialogTitle("Save experiment");
-                String exten[] = {"xml"};
-                f.setFileFilter(new ArchiveFilter2(exten, "Experiments (.xml)"));
-                opcion = f.showSaveDialog(this);
-                if (opcion == JFileChooser.APPROVE_OPTION) {
-                    lastDirectory = f.getCurrentDirectory().getAbsolutePath();
-                    String nombre = f.getSelectedFile().getAbsolutePath();
+                });
+                f2.setMultipleMode(false);
+                f2.setVisible(true);
+                
+                if(f2.getFile() != null){
+                    lastDirectory = f2.getDirectory();
+                    String nombre = f2.getDirectory()+f2.getFile();
                     if (!nombre.toLowerCase().endsWith(".xml")) {
                         // Add correct extension
                         nombre += ".xml";
@@ -3497,7 +3496,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                     if (!tmp.exists() || JOptionPane.showConfirmDialog(this, "File " + nombre + " already exists. Do you want to replace it?", "Confirm", JOptionPane.YES_NO_OPTION, 3) == JOptionPane.YES_OPTION) {
                         experimentGraph.setName(nombre);
                     }
-                }
+                }else return 1;
             }
             if (experimentGraph.getName() != null) {
                 try {
@@ -6942,21 +6941,24 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                  **************************************************************/
                 if (Frame.buttonPressed == 0) //Button Experiments pressed
                 {
-                    JFileChooser fc;
-                    if (lastDirectory == null) {
-                        fc = new JFileChooser();
-                    } else {
-                        fc = new JFileChooser(lastDirectory);
-                    }
-                    fc.setDialogTitle("Create experiment as ...");
-                    String exten[] = {"zip"};
-                    fc.setFileFilter(new ArchiveFilter2(exten, "Experiments (.zip)"));
-                    opcion1 = fc.showSaveDialog(this);
+                    
+                    FileDialog fc2 = new FileDialog(this,"Create experiment as (*.zip)",FileDialog.SAVE);
+                    fc2.setFilenameFilter(new FilenameFilter() {
+                        @Override public boolean accept(File dir, String name) {
+                            return name.endsWith(".zip");
+                        }
+                    });
+                    fc2.setMultipleMode(false);
+                    fc2.setVisible(true);
+                    
+                    if (fc2.getFile() != null) opcion1 = JFileChooser.APPROVE_OPTION;
+                    else opcion1 = JFileChooser.CANCEL_OPTION;
+                    
                     if (opcion1 == JFileChooser.APPROVE_OPTION) //Eleccion de fichero(fileName) y aceptar. Valor == 0
                     {
-                        lastDirectory = fc.getCurrentDirectory().getAbsolutePath();
-                        comprimio = fc.getSelectedFile().getAbsolutePath();
-                        nameExp = fc.getSelectedFile().getName();
+                        lastDirectory = fc2.getDirectory();
+                        comprimio = fc2.getDirectory()+fc2.getFile();
+                        nameExp = fc2.getFile();
                         if (!comprimio.toLowerCase().endsWith(".zip")) {
                             // Add correct extension
                             comprimio += ".zip";
@@ -6971,9 +6973,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                             if (opcion2 == JOptionPane.YES_OPTION) //El archivo escogido existe y se acepta
                             {
                                 // if file exists, we replace it
-                                if (fc.getSelectedFile().exists()) {
-                                    fc.getSelectedFile().delete();
-                                }
+                                tmp.delete();
 
                                 if (new File("./" + nameExp).exists()) {
                                     FileUtils.rmdir("./" + nameExp);
@@ -7584,20 +7584,21 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
         }
 
         if (salvar != JOptionPane.CANCEL_OPTION) {
-            JFileChooser f;
-            if (lastDirectory == null) {
-                f = new JFileChooser();
-            } else {
-                f = new JFileChooser(lastDirectory);
+            
+            FileDialog f2 = new FileDialog(this,"Load experiment (.xml)",FileDialog.LOAD);
+            f2.setFilenameFilter(new FilenameFilter() {
+            @Override public boolean accept(File dir, String name) {
+                return name.endsWith(".xml");
             }
-            f.setDialogTitle("Load experiment");
-            String exten[] = {"xml"};
-            f.setFileFilter(new ArchiveFilter2(exten, "Experiments (.xml)"));
-            int opcion = f.showOpenDialog(this);
-            if (opcion == JFileChooser.APPROVE_OPTION) {
+            });
+            f2.setMultipleMode(false);
+            f2.setVisible(true);
+            
+            if (f2.getFile() != null) {
                 try {
-                    lastDirectory = f.getCurrentDirectory().getAbsolutePath();
-                    FileInputStream file = new FileInputStream(f.getSelectedFile().getAbsolutePath());
+                    lastDirectory = f2.getDirectory();
+                    String filename = f2.getDirectory()+f2.getFile();
+                    FileInputStream file = new FileInputStream(filename);
 
                     Mapping mapping = new Mapping();
 
@@ -7615,7 +7616,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                         dinDatasets.removeAllData();
                         panelDatasets.removeAllData();
                         continueExperimentGeneration();
-                        experimentGraph.setName(f.getSelectedFile().getAbsolutePath());
+                        experimentGraph.setName(filename);
                         graphDiagramINNER.setToolTipText("Click twice into a node to view its properties");
                         //selectButton.setSelected(true);
                         status.setText("Click in a node to select it");
