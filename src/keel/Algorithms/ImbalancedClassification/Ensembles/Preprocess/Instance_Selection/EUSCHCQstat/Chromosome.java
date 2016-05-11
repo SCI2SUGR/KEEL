@@ -37,7 +37,8 @@ import keel.Dataset.*;
  * Class to implement a chromosome for the EUS-CHC metho
  * @author Created by Salvador García López (UJA) [19-07-2004]
  * @author Modified by Mikel Galar Idoate (UPNA) [03-05-13]
- * @version 1.1 (12-05-14)
+ * @author Modified by Alberto Fernandez Hilario (UGR) [11-05-16]
+ * @version 1.2 (11-05-16)
  * @since JDK 1.5
  */
 public class Chromosome implements Comparable {
@@ -286,6 +287,9 @@ public class Chromosome implements Comparable {
 			double IR = (double)totalN / (double)totalP * 0.1;
 			calidad = calidad * (1.0 / peso) * (1.0 / IR) - q * peso;
 		}
+		if(Double.isNaN(calidad)){
+			calidad = Double.MIN_VALUE;
+		}
 		cruzado = false;
 	}
 
@@ -382,10 +386,9 @@ public class Chromosome implements Comparable {
 	 * Function that lets compare cromosomes for an easilier sort
 	*/
 	public int compareTo (Object o1) {
-
-		if (this.calidad > ((Chromosome)o1).calidad)
+		if (this.calidad > ((Chromosome)o1).getCalidad())
 			return -1;
-		else if (this.calidad < ((Chromosome)o1).calidad)
+		else if (this.calidad < ((Chromosome)o1).getCalidad())
 			return 1;
 		else return 0;
 	}

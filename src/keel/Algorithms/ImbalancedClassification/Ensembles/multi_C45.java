@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. SÃ¡nchez (luciano@uniovi.es)
-    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÃ­a (sglopez@ujaen.es)
-    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
+    L. Sanchez (luciano@uniovi.es)
+    J. Alcala-Fdez (jalcala@decsai.ugr.es)
+    S. Garcika (sglopez@ujaen.es)
+    A. Fernandez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -48,6 +48,7 @@ import keel.Algorithms.ImbalancedClassification.Auxiliar.AUC.PredPair;
  * @author Modified by Alberto Fernandez (University of Jaen) 15/10/2012
  * @author Modified by Sarah Vluymans (University of Ghent) 29/01/2014
  * @author Modified by Alberto Fernandez (University of Jaen) 08/05/2014
+ * @author Modified by Alberto Fernandez (University of Granada) 11/05/2016
  * @version 1.2
  * @since JDK1.6
  */
@@ -175,11 +176,12 @@ public class multi_C45 {
         if (!actua_train_set.vacio())
         {
             // write the data-set which will be readed by C4.5 decision tree learning algorithm
-             Fichero.escribeFichero(ensembleType + cabecera  + ".txt", actua_train_set.printDataSet());
+             //Files.writeFile(ensembleType + cabecera  + ".txt", actua_train_set.printDataSet());
              valid[i] = true;
              System.out.println("Training classifier[" + i + "]");
              // Construct the tree using the weights (they can be unirformly distributed)
-             C45 tree = new C45(ensembleType + cabecera + ".txt", pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
+             //C45 tree = new C45(ensembleType + cabecera + ".txt", pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
+             C45 tree = new C45(actua_train_set.getIS(), pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
              
              try {
                tree.generateTree();

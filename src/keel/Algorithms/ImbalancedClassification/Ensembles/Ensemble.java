@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. SÃ¡nchez (luciano@uniovi.es)
-    J. AlcalÃ¡-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÃ­a (sglopez@ujaen.es)
-    A. FernÃ¡ndez (alberto.fernandez@ujaen.es)
+    L. Sanchez (luciano@uniovi.es)
+    J. Alcala-Fdez (jalcala@decsai.ugr.es)
+    S. Garcia (sglopez@ujaen.es)
+    A. Fernandez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -26,16 +26,6 @@
 	along with this program.  If not, see http://www.gnu.org/licenses/
   
 **********************************************************************/
-
-/**
-* <p>
-* @author Written by Mikel Galar Idoate (Universidad PÃºblica de Navarra) 30/5/2010
-* @author Modified by Sarah Vluymans (University of Ghent) 29/01/2014
-* @author Modified by Alberto Fernandez (University of Jaen) 28/05/2014
-* @version 0.1
-* @since JDK 1.5
-*</p>
-*/
 
 package keel.Algorithms.ImbalancedClassification.Ensembles;
 
@@ -64,7 +54,8 @@ import keel.Algorithms.ImbalancedClassification.Ensembles.Preprocess.Instance_Se
  * <p>Company: KEEL </p>
  * @author Created by Mikel Galar Idoate (UPNA) [30-05-10]
  * @author Modified by Alberto Fernandez (University of Jaen) 15/10/2012
- * @author Modified by Sarah Vluymans (University of Ghent)
+ * @author Modified by Sarah Vluymans (University of Ghent) 29/01/2014
+ * @author Modified by Alberto Fernandez (University of Granada) 11/05/2016
  * @version 1.2
  * @since JDK1.6
  */ 
@@ -575,7 +566,7 @@ class Ensemble {
     */
    private void createConf(String filename){
 	   String output = new String("algorithm = IS Methods\n");
-	   output += "inputData = \"training2.txt\" \"training2.txt\" \"tst.dat\"\n"
+	   output += "inputData = \" "+multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) +"training2.txt\" \""+multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4)+"training2.txt\" \"tst.dat\"\n"
 	   		+ "outputData = \"training.txt\" \"tstOutput.dat\"\n\n"
 	   		+ "Seed = 564545456\n"
 	   		+ "Population Size = 50\n"
@@ -608,8 +599,10 @@ class Ensemble {
       if (ensembleType.equalsIgnoreCase("ERUSBOOST")) {
          Files.writeFile(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "training2.txt", originalDS.printDataSet());
           Metodo m = null;          
-          createConf("EUB_M_GMConf.txt");
-          m = new EUSCHCQstat("EUB_M_GMConf.txt");
+          createConf(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) +"EUB_M_GMConf.txt");
+          m = new EUSCHCQstat(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) +"EUB_M_GMConf.txt");
+          File fm = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) +"EUB_M_GMConf.txt");
+          fm.delete();
           EUSCHCQstat m2 = (EUSCHCQstat)m;
           m2.setAnteriores(anteriores);
           m2.setSalidasAnteriores(salidasAnteriores);
@@ -627,7 +620,7 @@ class Ensemble {
              System.err.println("There was a problem while reading the input preprocessed data-sets: " + e);
            }
             
-            File f = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "training.txt");
+             File f = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "training.txt");
              File f2 = new File(multi_C45.outputTr.substring(0,multi_C45.outputTr.length()-4) + "training2.txt");
              f.delete();
              f2.delete();
