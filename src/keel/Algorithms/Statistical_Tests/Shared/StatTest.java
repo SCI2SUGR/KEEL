@@ -5321,7 +5321,6 @@ p.println();
             double serrI;
             double sumeI = 0;
             double aux_unc;
-            gUNC = new double[1];
 
             for (int j = 0; j < nFolds; j++) {
                 double measure;
