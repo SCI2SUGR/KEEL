@@ -4205,7 +4205,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
      * @param raiz Root node
      */
     private void insertInnerListing(DefaultMutableTreeNode actual, java.net.URL listado, String raiz) {
-
+        
         // SGL - Loading of an internal resource list method file in XML Format
         Document doc = new Document();
         try {
@@ -4418,11 +4418,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                             break;
                     }
                     ;
-
-
-
-
-
+                    
                 } else //Button Teaching Pressed
                 {
                     mipath = mipath.substring(0, mipath.lastIndexOf('/') + 1);
@@ -4438,6 +4434,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 /***************************************************************
                  *********************  EDUCATIONAL KEEL  **********************
                  **************************************************************/
+                mipath="file:"+mipath.substring(mipath.lastIndexOf("/./")+1);
                 DefaultMutableTreeNode fich = new DefaultMutableTreeNode(
                         new ExternalObjectDescription(nombre, mipath, 0, nombrejar));
                 dir.add(fich);
@@ -4545,6 +4542,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 /***************************************************************
                  *********************  EDUCATIONAL KEEL  **********************
                  **************************************************************/
+                mipath="file:"+mipath.substring(mipath.lastIndexOf("/./")+1);
                 DefaultMutableTreeNode fich = new DefaultMutableTreeNode(
                         new ExternalObjectDescription("(" + nombre + ")", mipath, 0,
                         nombrejar));
@@ -4611,6 +4609,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 String mipath = listado.toString();
                 mipath = mipath.substring(0, mipath.lastIndexOf('/') + 1);
                 mipath += "tests/";
+                mipath="file:"+mipath.substring(mipath.lastIndexOf("/./")+1);
                 DefaultMutableTreeNode fich = new DefaultMutableTreeNode(
                         new ExternalObjectDescription(nombre, mipath, 0, nombrejar));
                 dir.add(fich);
@@ -4629,6 +4628,7 @@ private void subgroupDiscoveryButtonActionPerformed(java.awt.event.ActionEvent e
                 String mipath = listado.toString();
                 mipath = mipath.substring(0, mipath.lastIndexOf('/') + 1);
                 mipath += "tests/";
+                mipath="file:"+mipath.substring(mipath.lastIndexOf("/./")+1);
                 DefaultMutableTreeNode fich = new DefaultMutableTreeNode(
                         new ExternalObjectDescription("(" + nombre + ")", mipath, 0,
                         nombrejar));
