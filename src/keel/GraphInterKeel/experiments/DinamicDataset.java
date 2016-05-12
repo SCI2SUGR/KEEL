@@ -1165,7 +1165,7 @@ public class DinamicDataset extends JPanel implements Scrollable {
             parent.graphDiagramINNER.mainGraph.getNodeAt(i).type_lqd + " tipo de dataset 0 o algorimot pre 4 "+
             parent.graphDiagramINNER.mainGraph.getNodeAt(i).type+" y pasa el tipo "+node_type);*/
             if (parent.graphDiagramINNER.mainGraph.getNodeAt(i).type == Node.type_Dataset) {
-
+                        
                 if (parent.graphDiagramINNER.mainGraph.getNodeAt(i).type_lqd == node_type) {
                     if (parent.objType == parent.LQD) {
                         parent.graphDiagramINNER.mainGraph.getNodeAt(i).dsc = new ExternalObjectDescription(dsc);
@@ -1222,14 +1222,7 @@ public class DinamicDataset extends JPanel implements Scrollable {
                                 } catch (Exception ex) {
                                 }
                             }
-                        }
-                        
-
-
-
-
-                        //DOBSCV
-                        if (parent.cvType == Experiments.PDOBSCV) {
+                        }else if (parent.cvType == Experiments.PDOBSCV) { //DOBSCV
                             //add 10 fold cross validation files for each layer  
                             for (int k = 0; k < Layer.numLayers; k++) {
                                 try {
@@ -1272,27 +1265,20 @@ public class DinamicDataset extends JPanel implements Scrollable {
                                 }
                             }
                         }
-
-
-
-                        // if PK
-                        //  if(parent.objType!=parent.LQD) //ESTO LUEGO LO TENGO QUE MIRAR PARA CONTROLAR
-                        // {
                         else if (parent.cvType == Experiments.P5X2) {
                             // add 5x2 cross validation files for each layer
                             for (int k = 0; k < Layer.numLayers; k++) {
                                 try {
                                     dir = new File("." + dsc.getPath(k) + dsc.getName(k));
                                     ficheros = dir.list();
-
+                                    
                                     for (int l = 1; l <= 5; l++) {
                                         String pareja = "";
-                                        String pareja2 = "";
 
                                         found = false;
                                         for (int j = 0; j < ficheros.length && !found; j++) {
                                             if (ficheros[j].indexOf("5x2-" + l + "tra.dat") != -1) {
-                                                pareja = ficheros[j];
+                                                pareja = ficheros[j] + ",";
                                                 found = true;
                                             }
                                         }
@@ -1304,9 +1290,7 @@ public class DinamicDataset extends JPanel implements Scrollable {
                                         found = false;
                                         for (int j = 0; j < ficheros.length && !found; j++) {
                                             if (ficheros[j].indexOf("5x2-" + l + "tst.dat") != -1) {
-                                                pareja2 = ficheros[j] + ",";
-                                                pareja2 = pareja;
-                                                pareja += "," + ficheros[j];
+                                                pareja += ficheros[j];
                                                 found = true;
                                             }
                                         }
@@ -1316,7 +1300,6 @@ public class DinamicDataset extends JPanel implements Scrollable {
                                             ((DataSet) parent.graphDiagramINNER.mainGraph.getNodeAt(i)).addMissingPartition(pareja, k);
                                         } else {
                                             ((Vector) (listas.elementAt(k))).add(pareja);
-                                            ((Vector) (listas.elementAt(k))).add(pareja2);
                                         }
                                     }
                                 } catch (Exception ex) {
