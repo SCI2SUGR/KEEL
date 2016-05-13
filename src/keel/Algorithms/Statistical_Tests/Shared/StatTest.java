@@ -3700,7 +3700,7 @@ p.println();
                     Dataset = fields[3];
                     if (!lastMethod.equals(fields[2])) {
                         lastMethod = fields[2];
-                        algorithms.add(fields[2]);
+                        algorithms.add(fields[2].substring(0, fields[2].lastIndexOf(".")));
                     }
                 }
 
@@ -3870,7 +3870,7 @@ p.println();
                     DatasetI = fields[3];
                     if (!lastMethodI.equals(fields[2])) {
                         lastMethodI = fields[2];
-                        algorithmsI.add(fields[2]);
+                        algorithmsI.add(fields[2].substring(0, fields[2].lastIndexOf(".")));
                     }
                 }
 
