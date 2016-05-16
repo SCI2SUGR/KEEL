@@ -29,6 +29,7 @@
 
 package keel.Algorithms.ImbalancedClassification.Ensembles;
 
+import java.io.File;
 import java.io.IOException;
 import org.core.*;
 import keel.Algorithms.ImbalancedClassification.Ensembles.C45.C45;
