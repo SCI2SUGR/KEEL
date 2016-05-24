@@ -29,6 +29,7 @@
 
 package keel.Algorithms.ImbalancedClassification.Ensembles;
 
+import java.io.File;
 import java.io.IOException;
 import org.core.*;
 import keel.Algorithms.ImbalancedClassification.Ensembles.C45.C45;
@@ -175,13 +176,14 @@ public class multi_C45 {
         boolean mal = false;
         if (!actua_train_set.vacio())
         {
-            // write the data-set which will be readed by C4.5 decision tree learning algorithm
-             //Files.writeFile(ensembleType + cabecera  + ".txt", actua_train_set.printDataSet());
+             Files.writeFile(ensembleType + cabecera  + ".txt", actua_train_set.printDataSet());
              valid[i] = true;
              System.out.println("Training classifier[" + i + "]");
              // Construct the tree using the weights (they can be unirformly distributed)
-             //C45 tree = new C45(ensembleType + cabecera + ".txt", pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
-             C45 tree = new C45(actua_train_set.getIS(), pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
+             C45 tree = new C45(ensembleType + cabecera + ".txt", pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
+             //C45 tree = new C45(actua_train_set.getIS(), pruned, confidence, instancesPerLeaf, ensemble.getWeights().clone());
+             File f = new File(ensembleType + cabecera  + ".txt");
+             f.delete();
              
              try {
                tree.generateTree();

@@ -5623,6 +5623,11 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
         </jar>
 
                 <!-- Assotiation Rules Visualization modules -->              
+          <fileset id="lib_jfree.jars" dir="${lib_graf}">
+            <include name="jcommon-*.jar"/>
+            <include name="jfreechart-*.jar"/>
+            <include name="jfreesvg-*.jar"/>
+          </fileset>         
           <jar
           jarfile="${distTest}/KeelLateXTables.jar"
           manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keellatextables/Manifest">
@@ -5630,17 +5635,13 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
           <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keellatextables/*.class"/>
           <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keellatextables/**/*.class"/>
          </jar>
-         
          <jar
           jarfile="${distTest}/KeelAssotiationRulesBoxPlot.jar"
           manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesboxplot/Manifest">
             <fileset dir="${bin}" includes="org/core/**/*.class"/>
             <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesboxplot/*.class"/>
             <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesboxplot/**/*.class"/> 
-            <zipgroupfileset refid="lib_graph.jars"/>
-            <!-- for RunKeelTxtDocente 
-            <zipgroupfileset refid="lib_xml.jars"/>-->
-	  <zipfileset src="${lib}/Interfaz/jdom.jar" excludes="META-INF/*" />
+            <zipgroupfileset refid="lib_jfree.jars"/>
          </jar>
          
          <jar
@@ -5649,10 +5650,7 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
             <fileset dir="${bin}" includes="org/core/**/*.class"/>
             <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesbarchart/*.class"/>
             <fileset dir="${bin}" includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/Visualization/keelassotiationrulesbarchart/**/*.class"/>
-            <zipgroupfileset refid="lib_graph.jars"/>
-            <!-- for RunKeelTxtDocente 
-            <zipgroupfileset refid="lib_xml.jars"/>-->
-	    <zipfileset src="${lib}/Interfaz/jdom.jar" excludes="META-INF/*" />
+            <zipgroupfileset refid="lib_jfree.jars"/>
          </jar>
          
          <!-- Assotiation Rules XML to PMML export module -->              
