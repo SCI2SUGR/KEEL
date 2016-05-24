@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 
 	F. Herrera (herrera@decsai.ugr.es)
-    L. S·nchez (luciano@uniovi.es)
-    J. Alcal·-Fdez (jalcala@decsai.ugr.es)
-    S. GarcÌa (sglopez@ujaen.es)
-    A. Fern·ndez (alberto.fernandez@ujaen.es)
+    L. S√°nchez (luciano@uniovi.es)
+    J. Alcal√°-Fdez (jalcala@decsai.ugr.es)
+    S. Garc√≠a (sglopez@ujaen.es)
+    A. Fern√°ndez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ package keel.Algorithms.UnsupervisedLearning.AssociationRules.IntervalRuleLearni
 
 /**
  * <p>
- * @author Written by Diana MartÌn (dmartin@ceis.cujae.edu.cu)
+ * @author Written by Diana Mart√≠n (dmartin@ceis.cujae.edu.cu)
  * @version 1.1
  * @since JDK1.7
  * </p>
@@ -618,8 +618,8 @@ public class Chromosome implements Comparable {
 
 	public double distCover(Chromosome chr){
 
-		/*** calculando cantidad de tuplas que cubre cada regla y la cantidad com˙n que cubren las dos*/
-		boolean coverR1, coverR2; // R1 serÌa la regla actual this.  y R2 la regla que se pasa por par·metro
+		/*** calculando cantidad de tuplas que cubre cada regla y la cantidad com√∫n que cubren las dos*/
+		boolean coverR1, coverR2; // R1 ser√≠a la regla actual this.  y R2 la regla que se pasa por par√°metro
 		double cCoverBoth = 0.0, cCoverR1 = 0.0, cCoverR2 = 0.0;
 		for (int i=0; i< this.transCover.length; i++){
 			coverR1 = false;
@@ -639,7 +639,7 @@ public class Chromosome implements Comparable {
 			}
 		}
 
-		/*** variante buscando m·ximo entre proporciÛn de tuplas q cubran ambas reglas 
+		/*** variante buscando m√°ximo entre proporci√≥n de tuplas q cubran ambas reglas 
 		 * entre las que cubre cada una (2da variante)*/
 
 		double distCover = 1.0- Math.max((cCoverBoth/cCoverR1), (cCoverBoth/cCoverR2));

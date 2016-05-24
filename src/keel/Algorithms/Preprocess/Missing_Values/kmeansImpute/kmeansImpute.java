@@ -6,10 +6,10 @@
 	Copyright (C) 2004-2010
 	
 	F. Herrera (herrera@decsai.ugr.es)
-    L. Sánchez (luciano@uniovi.es)
-    J. Alcalá-Fdez (jalcala@decsai.ugr.es)
-    S. García (sglopez@ujaen.es)
-    A. Fernández (alberto.fernandez@ujaen.es)
+    L. Sanchez (luciano@uniovi.es)
+    J. Alcala-Fdez (jalcala@decsai.ugr.es)
+    S. Garcia (sglopez@ujaen.es)
+    A. Fernandez (alberto.fernandez@ujaen.es)
     J. Luengo (julianlm@decsai.ugr.es)
 
 	This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 
 /**
  * <p>
- * @author Written by Julián Luengo Martín 29/11/2006
+ * @author Written by Julian Luengo Martin 29/11/2006
  * @version 0.2
  * @since JDK 1.5
  * </p>
