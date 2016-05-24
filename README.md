@@ -46,6 +46,12 @@ ant
 
 This command builds the whole KEEL project binaries using the available source code.
 
+<pre>
+ant doc
+</pre>
+
+This command generates the Javadoc documentation from the source code.
+
 The installation of new data sets into the application can be done by importing them through the Data Management module or the Experiments module. These modules can convert data from several formats (CVS, ARFF, plain text) to KEEL format, thus allowing the user to quickly integrate them.
 
 If you are interested on submitting some code to the KEEL project, please contact the Webmaster Team.
