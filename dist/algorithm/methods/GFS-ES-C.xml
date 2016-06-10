@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Fuzzy Rule Learning Algorithm Proposed by Shi, Eberhart and Chen</name>
+  <name>Shi et al. Fuzzy Rule Learning</name>
   <nParameters>6</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Classification Based on Associations (CBA)</name>
+  <name>Classification Based on Associations</name>
   <nParameters>4</nParameters>
   <seed>0</seed>
   <nOutput>2</nOutput>

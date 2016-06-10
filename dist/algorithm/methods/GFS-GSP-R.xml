@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Fuzzy Rule Learning, Grammar-GP based operators and Simulated Annealing-based algorithm</name>
+  <name>GP-SA Fuzzy Rule Learning</name>
   <nParameters>18</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

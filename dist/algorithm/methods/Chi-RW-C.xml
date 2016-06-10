@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Fuzzy Rule Learning Model by the Chi et al. approach with rule weights</name>
+  <name>Chi Fuzzy Weighted Rule Learning Model</name>
   <nParameters>4</nParameters>
   <seed>0</seed>
   <nOutput>2</nOutput>

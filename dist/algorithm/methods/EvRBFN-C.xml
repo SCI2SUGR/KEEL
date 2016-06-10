@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Evolutionary Radial Basis Function Neural Network for Classification</name>
+  <name>Evolutionary RBFN classifier</name>
   <nParameters>8</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

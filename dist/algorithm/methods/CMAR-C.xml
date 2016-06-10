@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Accurate and Efficient Classification Based on Multiple Class Association Rules (CMAR)</name>
+  <name>Classif. Multiple Class Association Rules</name>
   <nParameters>3</nParameters>
   <seed>0</seed>
   <nOutput>2</nOutput>

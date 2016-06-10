@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Ensemble Neural Network for Regression Problems</name>
+  <name>Ensemble Neural Network Regressor</name>
   <nParameters>19</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

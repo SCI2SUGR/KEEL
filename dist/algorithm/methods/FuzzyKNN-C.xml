@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Fuzzy K Nearest Neighbors Classifier</name>
+  <name>Fuzzy KNN Classifier</name>
   <nParameters>4</nParameters>
   <seed>0</seed>
   <nOutput>1</nOutput>

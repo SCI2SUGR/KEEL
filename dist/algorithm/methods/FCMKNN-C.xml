@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Fuzzy C-Means for K Nearest Neighbors Classifier</name>
+  <name>Fuzzy C-Means for KNN classifier</name>
   <nParameters>4</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

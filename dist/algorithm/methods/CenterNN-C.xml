@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Center based Nearest Neigbor classifier</name>
+  <name>Center based Nearest Neigbor</name>
   <nParameters>0</nParameters>
   <seed>0</seed>
   <nOutput>1</nOutput>

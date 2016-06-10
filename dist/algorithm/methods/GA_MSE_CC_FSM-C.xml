@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Genetic Algorithm for Editing k-NN with MSE estimation, clustered crossover and fast smart mutation</name>
+  <name>GA for Editing k-NN with MSE </name>
   <nParameters>4</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

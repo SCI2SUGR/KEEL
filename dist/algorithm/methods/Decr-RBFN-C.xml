@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Decremental Radial Basis Function Neural Network for classification problems</name>
+  <name>Decremental RBFN classifier</name>
   <nParameters>3</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

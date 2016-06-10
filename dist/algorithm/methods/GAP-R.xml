@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Symbolic Regression, Grammar-based GAP Algorithm</name>
+  <name>GAP Symbolic Regression</name>
   <nParameters>21</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

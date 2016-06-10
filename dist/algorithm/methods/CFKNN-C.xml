@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Condensed Fuzzy K Nearest Neighbors Classifier</name>
+  <name>Condensed Fuzzy K Nearest Neighbors</name>
   <nParameters>2</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

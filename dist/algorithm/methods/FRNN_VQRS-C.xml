@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Fuzzy Rough Nearest Neighbors - Vaguely Quantified Rough Sets</name>
+  <name>Fuzzy Rough NN (VQ Rough Sets)</name>
   <nParameters>1</nParameters>
   <seed>0</seed>
   <nOutput>1</nOutput>

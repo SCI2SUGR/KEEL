@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Decremental Radial Basis Function Neural Network for Regression Problems</name>
+  <name>Decremental RBFN regressor</name>
   <nParameters>3</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

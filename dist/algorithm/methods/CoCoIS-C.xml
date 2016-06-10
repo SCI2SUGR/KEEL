@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Cooperative Coevolutionary Instance Selection algorithm</name>
+  <name>Cooperative Coevolutionary IS</name>
   <nParameters>16</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

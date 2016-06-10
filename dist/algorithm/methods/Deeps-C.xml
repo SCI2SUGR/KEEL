@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Database extraction of Emerging Patterns classifier</name>
+  <name>Deeps classifier</name>
   <nParameters>1</nParameters>
   <seed>0</seed>
   <nOutput>1</nOutput>

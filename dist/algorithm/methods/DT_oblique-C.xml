@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Oblique Decision Tree Induction with Evolutionary Algorithms</name>
+  <name>Evolutionary Oblique DT Induction</name>
   <nParameters>1</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Ensemble Neural Network for Classification Problems</name>
+  <name>Ensemble Neural Network Classifier</name>
   <nParameters>19</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

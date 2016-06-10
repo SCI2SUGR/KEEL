@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Fuzzy Rule Learning, Grammar-based GAP Algorithm</name>
+  <name>GP Fuzzy Rule Learning</name>
   <nParameters>23</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

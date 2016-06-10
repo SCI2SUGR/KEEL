@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Fuzzy Rule Learning Algorithm Proposed by Ishibuchi et al. in 1999</name>
+  <name>Ishibuchi et al. Fuzzy Rule Learning</name>
   <nParameters>7</nParameters>
   <seed>1</seed>
   <nOutput>4</nOutput>

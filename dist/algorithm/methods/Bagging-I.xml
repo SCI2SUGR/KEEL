@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>AdaBoost algorithm</name>
+  <name>Bagging algorithm</name>
   <nParameters>5</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

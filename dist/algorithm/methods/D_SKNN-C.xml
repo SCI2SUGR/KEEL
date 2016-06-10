@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>K Nearest Neighbors Classifier Based on Dempster-Shafer Theory</name>
+  <name>KNN Based on Dempster-Shafer Theory</name>
   <nParameters>3</nParameters>
   <seed>0</seed>
   <nOutput>1</nOutput>

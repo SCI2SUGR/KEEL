@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>CHC Adaptative Search for Instance Selection</name>
+  <name>CHC Adaptative Search for IS</name>
   <nParameters>8</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

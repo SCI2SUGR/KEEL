@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>GA for Fuzzy K Nearest Neighbors Classifier</name>
+  <name>GA for Fuzzy KNN Classifier</name>
   <nParameters>5</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

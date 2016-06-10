@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Genetic Algorithm with Neural Network</name>
+  <name>GA with Neural Network</name>
   <nParameters>23</nParameters>
   <seed>1</seed>
   <nOutput>1</nOutput>

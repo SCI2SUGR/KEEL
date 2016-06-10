@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Classification with Fuzzy Association Rules (CFAR)</name>
+  <name>Classif. Fuzzy Association Rules (CFAR)</name>
   <nParameters>4</nParameters>
   <seed>1</seed>
   <nOutput>2</nOutput>

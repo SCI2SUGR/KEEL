@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Finding fuzzy classification rules based on the Apriori algorithm</name>
+  <name>Apriori fuzzy classification rules</name>
   <nParameters>11</nParameters>
   <seed>1</seed>
   <nOutput>2</nOutput>
