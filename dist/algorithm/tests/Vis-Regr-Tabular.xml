@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Table with summary of the algorithm, Regression probs.</name>
+  <name>Summary Table of Regression probs.</name>
   <nParameters>9</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

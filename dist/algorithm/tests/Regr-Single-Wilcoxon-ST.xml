@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Statistical two samples mean comparation Wilcoxon signed ranks test</name>
+  <name>Wilcoxon signed ranks test</name>
   <nParameters>4</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

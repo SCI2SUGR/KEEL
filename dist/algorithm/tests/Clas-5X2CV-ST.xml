@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Statistical two samples mean comparation 5x2cv-f test</name>
+  <name>Statistical comparation 5x2cv-f test</name>
   <nParameters>4</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

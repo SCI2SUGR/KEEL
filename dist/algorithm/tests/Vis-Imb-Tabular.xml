@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Table with summary of the algorithm, Imbalanced classification probs.</name>
+  <name>Summary Table of Imbalanced method.</name>
   <nParameters>15</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

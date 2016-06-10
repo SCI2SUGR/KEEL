@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Table with summary of the algorithm, Classification probs.</name>
+  <name>Summary Table with Classification probs.</name>
   <nParameters>14</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

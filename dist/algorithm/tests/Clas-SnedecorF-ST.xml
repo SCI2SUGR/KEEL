@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Statistical two Normal samples variance comparation F test</name>
+  <name>Statistical F test</name>
   <nParameters>4</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Statistical two samples mean comparation Mann-Whitney U test</name>
+  <name>Statistical Mann-Whitney U test</name>
   <nParameters>4</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>

@@ -1,5 +1,5 @@
 <algorithm_specification>
-  <name>Summary of the algorithm, Classification probs.</name>
+  <name>Summary of the classification probs.</name>
   <nParameters>3</nParameters>
   <seed>1</seed>
   <nOutput>0</nOutput>
