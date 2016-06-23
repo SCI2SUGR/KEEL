@@ -370,6 +370,31 @@
     </output>
   </method>
 
+  <method>
+    <name>NICGAR-A</name>
+    <family>Association Rules</family>
+    <jar_file>NICGAR.jar</jar_file>
+    <problem_type>unsupervised</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+  </method>
+
 <method>
       <name>MOEA_Ghosh-A</name>
       <family>Association Rules</family>

@@ -1353,6 +1353,15 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 	*.class
 	   		  org/core/**/*.class"/>
         </jar>
+        <jar
+              jarfile="${distMet}/NICGAR.jar"
+              manifest="${src}/keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/NICGAR/Manifest">
+              <fileset dir="${bin}"
+                 includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/IntervalRuleLearning/NICGAR/**/*.class"/>
+              <fileset dir="${bin}" includes="keel/Dataset/**/
+    *.class
+            	org/core/**/*.class"/>
+        </jar>
 
 
 <!-- -********************************************** -->
