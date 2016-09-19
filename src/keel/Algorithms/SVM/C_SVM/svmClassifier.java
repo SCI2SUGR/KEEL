@@ -346,8 +346,6 @@ public class svmClassifier {
                             svm_predict(svr, SVMn))));
                 }
                 
-                // Added by Isaac and JosÃ© Antonio para SSL.
-                System.out.println("Calla cojones: "+probabilities[i][0]);
                 probabilities[i]=svm.probabilitiesPerClass.clone();
             }
         } catch (Exception e) {
@@ -561,8 +559,6 @@ public class svmClassifier {
                             svm_predict(svr, SVMn))));
                 }
                 
-                // Added by Isaac and JosÃ© Antonio para SSL.
-                System.out.println("Calla cojones: "+probabilities[i][0]);
                 probabilities[i]=svm.probabilitiesPerClass.clone();
             }
         } catch (Exception e) {
