@@ -38,6 +38,7 @@ import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 import keel.Dataset.Instance;
 import keel.Dataset.InstanceSet;
+import org.core.Fichero;
 
 import org.core.Files;
 
@@ -256,7 +257,13 @@ public abstract class LazyAlgorithm {
      */
     protected int trainPrediction[][];
 	
-	
+    
+    /**
+     * Matrix with the probabilities of training and test
+     */
+      protected double probabilitiesTst[][];
+      protected double probabilitiesTra[][];
+    
 	/** 
 	 * Set the training and the test dataset with their classes given as argument. 
 	 *  
@@ -782,7 +789,7 @@ public abstract class LazyAlgorithm {
 		
 		modelTime=((double)System.currentTimeMillis()-initialTime)/1000.0;
 	//	System.out.println(name+" "+ relation + " Model " + modelTime + "s");
-		
+		this.
 		trainRealClass = new int[trainData.length][1];
 		trainPrediction = new int[trainData.length][1];	
 		
@@ -860,6 +867,7 @@ public abstract class LazyAlgorithm {
 		setInitialTime();
 		
 		probabilities = new double[this.testData.length][this.nClasses];
+                
 		predictions = new  int[this.testData.length];
 		
 		for (int i=0; i<realClass.length; i++) {
@@ -867,27 +875,66 @@ public abstract class LazyAlgorithm {
 			prediction[i][0]=evaluate(testData[i]);
 			predictions[i] = prediction[i][0];
 			probabilities[i] = evaluate2(testData[i]);
-
+                        
 		}
 		
-		/*for(int i=0; i< probabilities.length; i++){
-			System.out.println(prediction[i][0]);
-			System.out.println(probabilities[i][0]);
-		}
-*/
+		
+                
 		testTime=((double)System.currentTimeMillis()-initialTime)/1000.0;
 		
 		//Writing results
 		writeOutput(outFile[1], realClass, prediction);	
-	//System.out.println(name+" "+ relation + " Test " + testTime + "s");
+                //System.out.println(name+" "+ relation + " Test " + testTime + "s");
 		
 		printOutput();
-		
 	}//end-method 
 	
-	
-	
-	
+        
+        
+        /** 
+	 * Executes the classification of reference and test data sets. Probabilistic output. 
+	 * 
+	 */
+	public void executeReferenceProbabilistic(){
+		
+		trainRealClass = new int[referenceData.length][1];
+		trainPrediction = new int[referenceData.length][1];	
+		
+                probabilitiesTst = new double[this.testData.length][this.nClasses];
+                probabilitiesTra = new double[this.trainData.length][this.nClasses];
+                
+		
+		//Working on training
+		for (int i=0; i<trainRealClass.length; i++)
+                {   trainRealClass[i][0] = referenceOutput[i];		
+                    probabilitiesTra[i]=evaluate2(trainData[i]);
+		}
+
+		//Writing results
+
+		generateProbabilisticOutput(trainRealClass,probabilitiesTra, this.nClasses,this.trainData.length, outFile[0]);
+                
+                
+		//Working on test
+		realClass = new int[testData.length][1];
+		prediction = new int[testData.length][1];	
+		
+		//Check  time		
+		setInitialTime();
+		
+		probabilitiesTst = new double[this.testData.length][this.nClasses];
+                               
+		predictions = new  int[this.testData.length];
+		
+		for (int i=0; i<realClass.length; i++)
+                {       realClass[i][0] = testOutput[i];
+			probabilitiesTst[i] = evaluate2(testData[i]);
+                        
+		}
+		          		
+                generateProbabilisticOutput(realClass, probabilitiesTst, this.nClasses,this.testData.length, outFile[1]);
+		
+	}
 	
 	/** 
 	 * Evaluates a instance to predict its class. 
@@ -906,9 +953,10 @@ public abstract class LazyAlgorithm {
 	 * @return Vector with the probability for each class.
 	 * 
 	 */
-	protected double[] evaluate2(double example[]){
-		return null;
-	};
+	protected double[] evaluate2(double example[])
+        {
+            return null;
+        };
         
 	/** 
 	 * Calculates the Euclidean distance between two instances
@@ -1358,6 +1406,46 @@ public abstract class LazyAlgorithm {
 		return kappa;
 		
 	}//end-method 
+        
+   /**
+   * Function used to generate the output file with the probabilities for each instance and class
+   *
+   * @param probabilities the matrix with the probabilities
+   * @param numClasses the number of classes in the problem
+   * @param instances the number of intances in the problem
+   * @param filename the string with the name of the output file
+   * 
+   */
+        private void generateProbabilisticOutput(int [][] realclass, double[][] probabilities, int numClasses,int instances, String filename )
+        {
+            int dot = filename.lastIndexOf(".");
+            int sep = filename.lastIndexOf("/");
+            String extension=filename.substring(dot + 1);   
+            String name =filename.substring(sep + 1, dot);
+            String path = filename.substring(0, sep);
+            String outputFile=path+"/Prob-"+name+"."+extension;    
+                
+            String output = "True-Class ";
+
+            //We write the output for each example   
+            for(int i=0; i<numClasses; i++)
+            {
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
+
+            }
+            output+='\n';
+            for(int i=0; i<instances; i++)
+            {       
+                   
+                   output+=Attributes.getOutputAttribute(0).getNominalValue(realclass[i][0])+"\t";
+                   for(int j=0;j<probabilities[i].length;j++)
+                   {
+                      output+=probabilities[i][j]+" \t"; 
+                   }
+                   output+="\n";
+            }
+           Fichero.escribeFichero(outputFile, output);  
+    }
 	
 }//end-class
 

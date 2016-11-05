@@ -31,11 +31,14 @@
 
 package keel.Algorithms.Lazy_Learning.KNN;
 
+import java.util.Arrays;
 import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
 import keel.Dataset.Attribute;
 
 import org.core.Files;
 import java.util.StringTokenizer;
+import keel.Dataset.Attributes;
+import org.core.Fichero;
 
 /**
  * 
@@ -71,6 +74,7 @@ public class KNN extends LazyAlgorithm{
 	
 	private double stdDev [];
 	private double nominalDistance [][][];
+      
 	
 	/** 
 	 * The main method of the class
@@ -96,7 +100,8 @@ public class KNN extends LazyAlgorithm{
 		}
 		
 		//Initialization stuff ends here. So, we can start time-counting
-		
+		this.probabilitiesTst= new double[this.testData.length][this.nClasses];
+                this.probabilitiesTra= new double[this.trainData.length][this.nClasses];
 		setInitialTime();
 		
 	} //end-method 
@@ -157,6 +162,7 @@ public class KNN extends LazyAlgorithm{
 		double minDist[];
 		int nearestN[];
 		int selectedClasses[];
+                double probPrediction[];
 		double dist;
 		int prediction;
 		int predictionValue;
@@ -164,7 +170,8 @@ public class KNN extends LazyAlgorithm{
 
 		nearestN = new int[k];
 		minDist = new double[k];
-	
+                probPrediction = new double [k];
+                int prob [] = new int[k];
 	    for (int i=0; i<k; i++) {
 			nearestN[i] = 0;
 			minDist[i] = Double.MAX_VALUE;
@@ -194,7 +201,9 @@ public class KNN extends LazyAlgorithm{
 						nearestN[j] = i;
 						stop=true;
 					}
+                                         //System.out.println( nearestN[j]);
 				}
+                                 //System.out.println( "ITERACION");
 			}
 		}
 		
@@ -205,16 +214,19 @@ public class KNN extends LazyAlgorithm{
 			selectedClasses[i] = 0;
 		}	
 		
+                
 		for (int i=0; i<k; i++) {
 			selectedClasses[trainOutput[nearestN[i]]]+=1;
 		}
-		
+                  		
 		prediction=0;
 		predictionValue=selectedClasses[0];
 		
+                   
 		for (int i=1; i<nClasses; i++) {
 		    if (predictionValue < selectedClasses[i]) {
 		        predictionValue = selectedClasses[i];
+                       
 		        prediction = i;
 		    }
 		}
@@ -223,6 +235,85 @@ public class KNN extends LazyAlgorithm{
 	
 	} //end-method	
 	
+        
+        
+        @Override
+        protected double[] evaluate2 (double example[]) {
+	
+		double minDist[];
+		int nearestN[];
+		int selectedClasses[];
+                double probPrediction[];
+		double dist;
+		int prediction;
+		int predictionValue;
+		boolean stop;
+                double probabilities[];
+
+		nearestN = new int[k];
+		minDist = new double[k];
+                probPrediction = new double [k];
+                int prob [] = new int[k];
+                for (int i=0; i<k; i++) 
+                {
+			nearestN[i] = 0;
+			minDist[i] = Double.MAX_VALUE;
+		}
+		
+	    //KNN Method starts here
+	    
+		for (int i=0; i<trainData.length; i++) {
+		
+		    dist = distance(trainData[i],example);
+
+			if (dist > 0.0){ //leave-one-out
+			
+				//see if it's nearer than our previous selected neighbors
+				stop=false;
+				
+				for(int j=0;j<k && !stop;j++){
+				
+					if (dist < minDist[j]) {
+					    
+						for (int l = k - 1; l >= j+1; l--) {
+							minDist[l] = minDist[l - 1];
+							nearestN[l] = nearestN[l - 1];
+						}	
+						
+						minDist[j] = dist;
+						nearestN[j] = i;
+						stop=true;
+					}
+                                         //System.out.println( nearestN[j]);
+				}
+                                 //System.out.println( "ITERACION");
+			}
+		}
+		probabilities = new double[nClasses];
+		//we have check all the instances... see what is the most present class
+		selectedClasses= new int[nClasses];
+	
+		for (int i=0; i<nClasses; i++) {
+			selectedClasses[i] = 0;
+		}	
+		
+                
+		for (int i=0; i<k; i++) {
+			selectedClasses[trainOutput[nearestN[i]]]+=1;
+		}
+                  		
+		prediction=0;
+		predictionValue=selectedClasses[0];
+		
+                for (int i=0; i<nClasses; i++)
+                {           
+                    probabilities[i]=(double) ((double)selectedClasses[i]/(double)k);
+                    
+                }
+                  return probabilities;
+	}
+        
+        
 	/** 
 	 * Computes the distance between two instances
 	 * 
@@ -362,6 +453,6 @@ public class KNN extends LazyAlgorithm{
 		return result;  
 		
 	}//end-method	
-	
+	     
 } //end-class 
 

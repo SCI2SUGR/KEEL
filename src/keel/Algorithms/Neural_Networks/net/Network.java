@@ -36,6 +36,7 @@ import java.io.FileInputStream;
 import java.io.DataInputStream;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 
 import keel.Dataset.*;
 import org.core.*;
@@ -229,9 +230,13 @@ public class Network {
             for (int j = 1; j < Noutputs; j++) {
                 if (data[i][Class + Ninputs] < data[i][j + Ninputs]) {
                     Class = j;
-
+                    
+                    
                     // Test if correctly classified
                 }
+                
+                System.out.println(data[i][Class + Ninputs]);
+                    System.out.println(data[i][j + Ninputs]);
             }
             if (Class == max_index) {
                 ok++;
@@ -360,6 +365,7 @@ public class Network {
                                  global.lambda * w[k][i][j];
                         w[k][i][j] += change;
                         momentum[k][i][j] = change;
+                         
                     }
                 }
             }
@@ -484,7 +490,7 @@ public class Network {
             for (int i = 0; i < Nhidden[k + 1]; i++) {
                 for (int j = 0; j < Nhidden[k]; j++) {
                 	Files.addToFile(file_name,Double.toString(w[k][i][j])+" ");
-
+                        
                 }
             }
         }
@@ -614,17 +620,45 @@ public class Network {
 
         // Obtain network output
         GenerateOutput(pattern);
-
+        double [] norm;
+   
         // Classify pattern
         int max_index = 0;
         for (int j = 1; j < Noutputs; j++) {
             if (activation[Nlayers - 1][max_index] < activation[Nlayers - 1][j]) {
                 max_index = j;
-
-            }
+                
+            }           
         }
+        //norm= normalize(activation[Nlayers - 1]);
+        //normalize(norm);
+        //System.out.println(Arrays.toString(norm));
         return max_index;
     }
+    
+    
+    /**
+     * <p>
+     * Return the class where a pattern is classified
+     * </p>
+     * @param pattern Pattern to check
+     * @return Class index
+     */
+    public double[] NetGetProbOfPattern(double pattern[]) {
+
+        // Obtain network output
+        GenerateOutput(pattern);
+        double [] norm;
+   
+        //System.out.println(Arrays.toString(activation[Nlayers - 1]));
+        //norm= normalize(activation[Nlayers - 1]);
+        //normalize(norm);
+        
+        norm=normalize(activation[Nlayers - 1]);
+        return normalize2(norm);
+        //return activation[Nlayers - 1];
+    }
+    
 
     /**
      * <p>
@@ -660,12 +694,10 @@ public class Network {
     public void SaveOutputFile(String file_name, double data[][], int n,
                                String problem, double[] a, double[] b) {
         String line;
-
-        try {
-            // Result file
-            FileOutputStream file = new FileOutputStream(file_name);
-            BufferedWriter f = new BufferedWriter(new OutputStreamWriter(file));
-
+        try ( // Result file
+                FileOutputStream file = new FileOutputStream(file_name); 
+                BufferedWriter f = new BufferedWriter(new OutputStreamWriter(file))) {
+            
             // File header
             f.write("@relation " + Attributes.getRelationName() + "\n");
             f.write(Attributes.getInputAttributesHeader());
@@ -673,8 +705,8 @@ public class Network {
             f.write(Attributes.getInputHeader() + "\n");
             f.write(Attributes.getOutputHeader() + "\n");
             f.write("@data\n");
-
             // For all patterns
+            
             for (int i = 0; i < n; i++) {
 
                 // Classification
@@ -691,6 +723,7 @@ public class Network {
                     }
                     if(tipo!=Attribute.NOMINAL){
                     	f.write(Integer.toString(Class) + " ");
+                        
                     	f.write(Integer.toString(NetGetClassOfPattern(data[i])));
                   	}
                   	else{
@@ -730,8 +763,7 @@ public class Network {
                     }
                 }
             }
-            f.close();
-            file.close();
+
         } catch (FileNotFoundException e) {
             System.err.println("Cannot created output file");
             System.exit( -1);
@@ -739,9 +771,199 @@ public class Network {
             e.printStackTrace();
             System.exit( -1);
         }
-
     }
+    /**
+     * <p>
+     * Save output data to file
+     * </p>
+     * @param file_name Output file name
+     * @param data Input data
+     * @param n Data matrix order (number of rows and columns)
+     * @param problem Type of problem (CLASSIFICATION | REGRESSION )
+     */
+    public void SaveProbOutputFile(String file_name, double data[][], int n, String problem) 
+    {  
+        double [][] probabilities;
+        String[] true_class = new String[n];
+            int Class = 0;
 
+            probabilities= new double[n][Noutputs];
+            Attribute aa = Attributes.getOutputAttribute(0);
+            int tipo = aa.getType();
+            for (int i = 0; i < n; i++) 
+            {
+                 
+                for (int j = 1; j < Noutputs; j++) 
+                {
+                    if (data[i][Class + Ninputs] < data[i][j + Ninputs]) 
+                    {
+                        Class = j;
+                    }
+                }     
+                // Classification
+                if (problem.compareToIgnoreCase("Classification") == 0) 
+                {
+
+                    if(tipo!=Attribute.NOMINAL)
+                    {   
+                        
+                        probabilities[i]=NetGetProbOfPattern(data[i]);
+                        true_class[i]=Integer.toString(Class);
+                    }
+                  	
+                    else                 
+                    {
+                        aa.getNominalValue(Class);
+                        probabilities[i]=NetGetProbOfPattern(data[i]);
+                        true_class[i]=aa.getNominalValue(Class);
+                    }
+                }
+            }
+            
+        generateProbabilisticOutput(true_class, probabilities, probabilities[1].length,probabilities.length, file_name);
+    }
+             
+   /**
+   * Normalizes the doubles in the array using the given value.
+   *
+   * @param doubles the array of double
+   * @return the doubles normalize to the rank 0-1 with sum(rank)>1
+   * @exception IllegalArgumentException if sum is zero or NaN
+   */
+    
+  public double[] normalize(double[] doubles) {
+      
+    double normalize[];
+    normalize = new double[doubles.length];
+    
+    
+    double max= max(doubles);
+    double min= min(doubles);
+    
+  
+    for(int i=0; i<doubles.length; i++)
+    {
+        normalize[i]=((doubles[i])-(min))/((max)-(min));  
+    }
+    
+    
+    return normalize;
+  }
+  
+   /**
+   * Normalizes the doubles in the array using the given value.
+   *
+   * @param doubles the array of double
+   * @return the doubles normalize to the rank 0-1 with sum(rank)=1
+   */
+  
+  public double[] normalize2(double[] doubles) {
+      
+    double normalize[];
+    normalize = new double[doubles.length];
+    
+    double total=0;
+    
+    for(int i=0; i<doubles.length; i++)
+    {
+        total+=doubles[i];  
+    }
+    
+    for(int i=0; i<doubles.length; i++)
+    {
+        normalize[i]=doubles[i]/total;  
+    }
+    
+    
+    return normalize;
+  }
+  
+  /**
+   * Find the min value in a doubles array.
+   *
+   * @param doubles the array of double
+   * @return min value of the array
+   */
+  
+    public double min(double[] doubles) 
+    { 
+        double resultado = 0; 
+        for(int i=0; i<doubles.length; i++) 
+        { 
+            if(doubles[i] < resultado) 
+            { 
+                resultado = doubles[i]; 
+            } 
+        } 
+        
+        return resultado; 
+    } 
+
+    
+   /**
+   * Find the max value in a doubles array.
+   *
+   * @param doubles the array of double
+   * @return max value of the array
+   */
+    public double max(double[] doubles) 
+    { 
+        double resultado =0; 
+        for(int i=0; i<doubles.length; i++) 
+        { 
+            if(doubles[i] > resultado) 
+            { 
+                resultado = doubles[i]; 
+            } 
+        } 
+        
+        return resultado; 
+    } 
+    
+   /**
+   * Function used to generate the output file with the probabilities for each instance and class
+   *
+   * @param probabilities the matrix with the probabilities
+   * @param numClasses the number of classes in the problem
+   * @param instances the number of intances in the problem
+   * @param filename the string with the name of the output file
+   * 
+   */
+    
+    private void generateProbabilisticOutput(String[] trueclass, double[][] probabilities, int numClasses,int instances, String filename )
+    {
+                  
+        int dot = filename.lastIndexOf(".");
+        int sep = filename.lastIndexOf("/");
+        String extension=filename.substring(dot + 1);   
+        String name =filename.substring(sep + 1, dot);
+        String path = filename.substring(0, sep);
+            
+        String outputFile=path+"/Prob-"+name+"."+extension;    
+                
+            String output = "True-Class ";
+
+            //We write the output for each example
+
+            for(int i=0; i<numClasses; i++)
+            {
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
+
+            }
+            output+='\n';
+
+            for(int i=0; i<instances; i++)
+            {
+                   output+=trueclass[i]+" ";
+                   for(int j=0;j<probabilities[i].length;j++)
+                   {
+                      output+=probabilities[i][j]+" \t"; 
+                   }
+                   output+="\n";
+            }
+           Fichero.escribeFichero(outputFile, output);    
+    }
+    
     /* private void BackPropagationErrorMax(Parameters global, int cycles,
                                           double data[][],
                                           int npatterns, Sample sample) {

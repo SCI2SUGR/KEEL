@@ -434,10 +434,14 @@ public class Classification {
      * @param classIndex		The index of the class.
      * @return relative frequency of class over all values.
      */
-    public final double probability(int classIndex) {
-        if (total != 0) {
-            return perClass[classIndex] / total;
-        } else {
+    public final double probability(int classIndex) 
+    {
+        if (total != 0) 
+        {
+            return (perClass[classIndex]) / (total);
+        } 
+        else 
+        {
             return 0;
         }
     }
@@ -448,10 +452,14 @@ public class Classification {
      * @param attIndex			The index of the attribute.
      * @return relative frequency of class for given value.
      */
-    public final double probability(int classIndex, int attIndex) {
-        if (perValue[attIndex] > 0) {
-            return perClassPerValue[attIndex][classIndex] / perValue[attIndex];
-        } else {
+    public final double probability(int classIndex, int attIndex) 
+    {
+        if (perValue[attIndex] > 0) 
+        {
+            return (perClassPerValue[attIndex][classIndex])/ (perValue[attIndex]);
+        } 
+        else 
+        {
             return probability(classIndex);
         }
     }

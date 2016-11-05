@@ -145,7 +145,7 @@ public class Genesis {
             DatasetToArray(data.validation, validation);
 
         }
-        /* TODO Print of weight matrix
+       /* // TODO Print of weight matrix
              System.out.println (global.Ninputs +" "+ global.Noutputs);
              //FileWriter writer = new FileWriter("./matriz.txt");
              for (int f=0; f< global.n_train_patterns; f++)
@@ -276,15 +276,20 @@ public class Genesis {
                                    100.0 * res);
             }
         }
+        
         neural.SaveOutputFile(global.train_output, data.train, //data.validation,
                               global.n_train_patterns, global.problem, data.a, data.b); // global.n_val_patterns, global.problem);
+                              neural.SaveProbOutputFile(global.train_output, data.train, global.n_train_patterns, global.problem);
         if (global.test_data) {
 			neural.SaveOutputFile(global.test_output, data.test,
                                   global.n_test_patterns, global.problem, data.a, data.b);
+                        neural.SaveProbOutputFile(global.test_output, data.test, global.n_test_patterns, global.problem);
+                        
         }
         if (global.val_data) {
 			neural.SaveOutputFile(global.val_output, data.validation,
                                   global.n_val_patterns, global.problem, data.a, data.b);
+                        
         }
 
     }

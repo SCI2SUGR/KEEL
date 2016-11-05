@@ -30,6 +30,9 @@
 package keel.Algorithms.Decision_Trees.C45;
 
 import java.io.*;
+import java.util.Arrays;
+import keel.Dataset.Attributes;
+import org.core.Fichero;
 
 /**
  * Class to implement the C4.5 algorithm
@@ -64,7 +67,11 @@ public class C45 extends Algorithm {
 
     /** The sum of counts for priors. */
     private double classPriorsSum;
+    
+    /** Matrix for the probabilities */
 
+    private double[][] probabilitiesTst=null;
+    private double[][] probabilitiesTra=null;
     /** Constructor.
      *
      * @param paramFile		The parameters file.
@@ -447,25 +454,30 @@ public class C45 extends Algorithm {
      *
      * @throws Exception	If cannot compute the probabilities.
      */
-    public void priorsProbabilities() throws Exception {
+    public void priorsProbabilities() throws Exception 
+    {
         for (int i = 0; i < modelDataset.numClasses(); i++) {
             priorsProbabilities[i] = 1;
         }
 
         classPriorsSum = modelDataset.numClasses();
 
-        for (int i = 0; i < modelDataset.numItemsets(); i++) {
+        for (int i = 0; i < modelDataset.numItemsets(); i++) 
+        {
             if (!modelDataset.itemset(i).classIsMissing()) {
                 try {
                     priorsProbabilities[(int) modelDataset.itemset(i).
                             getClassValue()] += modelDataset.itemset(i).
                             getWeight();
                     classPriorsSum += modelDataset.itemset(i).getWeight();
+                    
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
             }
         }
+        
+        
     }
 
     /** Writes the tree and the results of the training and the test in the file.
@@ -525,17 +537,18 @@ public class C45 extends Algorithm {
      *
      */
     public void printTrain() {
+        String [] true_class = new String[trainDataset.numItemsets()];
         String text = getHeader();
-
+        this.probabilitiesTra = new double[trainDataset.numItemsets()][trainDataset.numClasses()];
         for (int i = 0; i < trainDataset.numItemsets(); i++) {
             try {
                 Itemset itemset = trainDataset.itemset(i);
                 int cl = (int) evaluateItemset(itemset);
-
+                probabilitiesTra[i]=classificationForItemset(itemset);
                 if (cl == (int) itemset.getValue(trainDataset.getClassIndex())) {
                     correct++;
                 }
-
+                true_class[i]=trainDataset.getClassAttribute().value(((int) itemset.getClassValue()));
                 text += trainDataset.getClassAttribute().value(((int) itemset.
                         getClassValue())) + " " + trainDataset.getClassAttribute().value(cl)
                          + "\n";
@@ -549,6 +562,8 @@ public class C45 extends Algorithm {
                     trainOutputFileName));
             print.print(text);
             print.close();
+            generateProbabilisticOutput(true_class,probabilitiesTra, trainDataset.numClasses(),trainDataset.numItemsets(), trainOutputFileName);
+            
         } catch (IOException e) {
             System.err.println("Can not open the training output file: " +
                                e.getMessage());
@@ -560,16 +575,17 @@ public class C45 extends Algorithm {
      */
     public void printTest() {
         String text = getHeader();
-
+        String [] true_class = new String[testDataset.numItemsets()];
+        this.probabilitiesTst = new double[testDataset.numItemsets()][testDataset.numClasses()];
         for (int i = 0; i < testDataset.numItemsets(); i++) {
             try {
                 int cl = (int) evaluateItemset(testDataset.itemset(i));
                 Itemset itemset = testDataset.itemset(i);
-
+                probabilitiesTst[i]=classificationForItemset(itemset);
                 if (cl == (int) itemset.getValue(testDataset.getClassIndex())) {
                     testCorrect++;
                 }
-
+                true_class[i]=testDataset.getClassAttribute().value(((int) itemset.getClassValue()));
                 text += testDataset.getClassAttribute().value(((int) itemset.
                         getClassValue())) + " " + testDataset.getClassAttribute().value(cl)
                          + "\n";
@@ -577,12 +593,13 @@ public class C45 extends Algorithm {
                 System.err.println(e.getMessage());
             }
         }
-
         try {
             PrintWriter print = new PrintWriter(new FileWriter(
                     testOutputFileName));
             print.print(text);
             print.close();
+            generateProbabilisticOutput(true_class,probabilitiesTst, testDataset.numClasses(),testDataset.numItemsets(), testOutputFileName);
+            
         } catch (IOException e) {
             System.err.println("Can not open the training output file.");
         }
@@ -612,10 +629,53 @@ public class C45 extends Algorithm {
         return tree;
 
       }
+    
+    /**
+   * Function used to generate the output file with the probabilities for each instance and class
+   *
+   * @param probabilities the matrix with the probabilities
+   * @param numClasses the number of classes in the problem
+   * @param instances the number of intances in the problem
+   * @param filename the string with the name of the output file
+   * 
+   */
+    
+    public void generateProbabilisticOutput(String[] trueclass,double[][] probabilities, int numClasses,int instances, String filename )
+    {
+        int dot = filename.lastIndexOf(".");
+        int sep = filename.lastIndexOf("/");
+        String extension=filename.substring(dot + 1);   
+        String name =filename.substring(sep + 1, dot);
+        String path = filename.substring(0, sep);
+            
+        String outputFile=path+"/Prob-"+name+"."+extension;    
+                
+            String output = "True-Class ";
 
-    /** Main function.
+            //We write the output for each example
+
+            for(int i=0; i<numClasses; i++)
+            {
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
+
+            }
+            output+='\n';
+            for(int i=0; i<instances; i++)
+            {
+                   output+=trueclass[i]+"\t";
+                   for(int j=0;j<probabilities[i].length;j++)
+                   {
+                      output+=probabilities[i][j]+"\t"; 
+                   }
+                   output+="\n";
+            }
+           Fichero.escribeFichero(outputFile, output);   
+    }
+    
+    /** 
+     * Main function.
      *
-     * @param args 			The parameters file.
+     * @param args The parameters file.
      */
     public static void main(String[] args) {
         try {
