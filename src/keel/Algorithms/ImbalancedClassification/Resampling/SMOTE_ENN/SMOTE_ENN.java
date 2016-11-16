@@ -228,7 +228,6 @@ public class SMOTE_ENN extends Metodo {
     }
 
     /*ENN PART*/
-
     /*Inicialization of the flagged instances vector for a posterior copy*/
     marcas = new boolean[conjS.length];
     for (i=0; i<conjS.length; i++)
@@ -239,8 +238,9 @@ public class SMOTE_ENN extends Metodo {
 
     for (i=0; i<conjS.length; i++) {
       /*Apply KNN to the instance*/
-      claseObt = KNN.evaluacionKNN2 (kENN, conjS, clasesS, conjS[i], 2);
-      if (claseObt == clasesS[i]) { //conform with your mayority, it is included in the solution set
+      //claseObt = KNN.evaluacionKNN2 (kENN, conjS, clasesS, conjS[i], 2);
+    	claseObt = KNN.evaluacionKNN2 (kENN, conjS, conjR, conjN, conjM, clasesS, conjS[i], conjR[i], conjN[i], conjM[i], 2, distanceEu);
+      if (claseObt == clasesS[i]) { //conform with your majority, it is included in the solution set
         marcas[i] = true;
         nSel++;
       }
