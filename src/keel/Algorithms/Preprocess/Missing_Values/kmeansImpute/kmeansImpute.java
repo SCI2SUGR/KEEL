@@ -289,7 +289,7 @@ public class kmeansImpute {
                     	if(initialCenters.get(i) == actual)
                     		repeated = true;
                     }
-                }while(ex.existsAnyMissingValue() && !allMissing || repeated);
+                }while(ex.existsAnyMissingValue() && !allMissing && (totalMissing+initialCenters.size() < ndatos) || repeated);
                 initialCenters.add(actual);
                 kmeans.copyCenter(ex,numMeans);
             }
