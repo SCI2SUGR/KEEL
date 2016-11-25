@@ -302,7 +302,7 @@ public class TotalSupportTree extends AssocRuleMining {
     @param support the associated support value for the given large itemset. */
 
     private void generateARsFromItemset(short[] itemSet, double support) {
-    	double confidenceForAR, supportForAntecedent;
+    	double confidenceForAR, supportForAntecedent, supportForConsequent;
     	short[] antecedent, consequent;
     	boolean atLeastOneGeneratedRule = false;
     	
@@ -315,10 +315,11 @@ public class TotalSupportTree extends AssocRuleMining {
     		// If complement is not empty generate rule
     	    if (antecedent != null) {
     	    	supportForAntecedent = (double)getSupportForItemSetInTtree(antecedent);
+                supportForConsequent = (double)getSupportForItemSetInTtree(consequent);
     	    	confidenceForAR = ((double) support/supportForAntecedent) * 100.0;
     	    	
     	    	if (confidenceForAR >= confidence) {
-    	    		insertRuleintoRulelist(antecedent, consequent, confidenceForAR, support, supportForAntecedent);
+    	    		insertRuleintoRulelist(antecedent, consequent, confidenceForAR, support, supportForAntecedent, supportForConsequent);
     	    		if (! atLeastOneGeneratedRule) atLeastOneGeneratedRule = true;
     	    	}
     	    }

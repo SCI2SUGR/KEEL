@@ -85,7 +85,10 @@ public class AssocRuleMining {
 	double supportForRule=0.0;
 	/** The support value associate with the antecedent of this
 	rule. */
-	double supportForAntecedent=0.0;
+	double supportForAntecedent = 0.0;
+        /** The support value associate with the consequent of this
+	rule. */
+	double supportForConsequent = 0.0;
 	/** Link to next node */
 	RuleNode next = null;
 	
@@ -102,8 +105,24 @@ public class AssocRuleMining {
 	    confidenceForRule = confValue;
 	    supportForRule = ruleSupValue;
 	    supportForAntecedent = antSupValue;
-	    }
-	}
+        }
+        
+        /** Three argument constructor
+	@param ante the antecedent (LHS) of the AR.
+    	@param cons the consequent (RHS) of the AR.
+    	@param confValue the associated confidence value. 
+    	@param ruleSupValue the associated support value. 
+    	@param antSupValue the associated antecedent support value. 
+        @param conSupValue the associated consequent support value. */
+        protected RuleNode(short[] ante, short[]cons, double confValue, double ruleSupValue, double antSupValue, double conSupValue) {
+	    antecedent        = ante;
+	    consequent        = cons;
+	    confidenceForRule = confValue;
+	    supportForRule = ruleSupValue;
+	    supportForAntecedent = antSupValue;
+            supportForConsequent = conSupValue;
+        }
+    }
 	
     // Data structures
 	
@@ -530,11 +549,11 @@ public class AssocRuleMining {
      * @param supportForAntecedent  the associated antecedet support value.  */
     
     protected void insertRuleintoRulelist(short[] antecedent,
-    				short[] consequent, double confidenceForRule, double supportForRule, double supportForAntecedent) {
+    				short[] consequent, double confidenceForRule, double supportForRule, double supportForAntecedent, double supportForConsequent) {
 
 	// Create new node
 	RuleNode newNode = new RuleNode(antecedent,consequent,
-							confidenceForRule, supportForRule, supportForAntecedent);
+							confidenceForRule, supportForRule, supportForAntecedent, supportForConsequent);
 
 	// Empty list situation
 	if (startRulelist == null) {
@@ -967,7 +986,7 @@ public class AssocRuleMining {
     	
     	// Loop through rule list
     	while (linkRuleNode != null) {
-    		rules.add( new AssociationRule( reconvertItemSet(linkRuleNode.antecedent), reconvertItemSet(linkRuleNode.consequent), (double)linkRuleNode.supportForRule / numRows, (double)linkRuleNode.supportForAntecedent / numRows, linkRuleNode.confidenceForRule / 100.0 ) );
+    		rules.add( new AssociationRule( reconvertItemSet(linkRuleNode.antecedent), reconvertItemSet(linkRuleNode.consequent), (double)linkRuleNode.supportForRule / numRows, (double)linkRuleNode.supportForAntecedent / numRows, (double)linkRuleNode.supportForConsequent / numRows, linkRuleNode.confidenceForRule / 100.0 ) );
     		linkRuleNode = linkRuleNode.next;
     	}
     	
