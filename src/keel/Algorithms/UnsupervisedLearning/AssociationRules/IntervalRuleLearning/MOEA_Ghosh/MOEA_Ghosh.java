@@ -231,7 +231,7 @@ public class MOEA_Ghosh {
 	}
 
 	private void createRule(Gene g, int id_attr, PrintWriter w) {	
-		w.println("<attribute name=\"" + Attributes.getAttribute(id_attr).getName() + "\" value\"");
+		w.println("<attribute name=\"" + Attributes.getAttribute(id_attr).getName() + "\" value=\"");
 
 		if (g.getOperator() == Gene.MAJOR ) w.print("MAJOR ");
 		if (g.getOperator() == Gene.MINOR ) w.print("MINOR ");
