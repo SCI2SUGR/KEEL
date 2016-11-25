@@ -104,7 +104,7 @@ public class KeelToPMMLFuzzyProcessor {
         attributeValues.clear();
     }
     
-    public void parseXmlFile(String traFile, String tstFile, String txtFile, String outName)
+    public void parseXmlFile(String traFile, String tstFile, String txtFile, String outName) throws IOException
     {
         //get the factory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -140,8 +140,6 @@ public class KeelToPMMLFuzzyProcessor {
                 pce.printStackTrace();
         }catch(SAXException se) {
                 se.printStackTrace();
-        }catch(IOException ioe) {
-                ioe.printStackTrace();
         }
     }
     
