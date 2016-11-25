@@ -135,7 +135,7 @@ public class FPgrowth {
 					a_r = this.associationRules.get(r);
 					
 					rules_writer.println("<rule id=\"" + r + "\">");
-					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + a_r.getRuleSupport() + "\" antecedent_support=\"" + a_r.getAntecedentSupport() + "\" confidence=\"" + a_r.getConfidence() + "\"/>");
+					values_writer.println("<rule id=\"" + r + "\" rule_support=\"" + a_r.getRuleSupport() + "\" antecedent_support=\"" + a_r.getAntecedentSupport() + "\" consequent_support=\"" + a_r.getConsequentSupport() + "\" confidence=\"" + a_r.getConfidence() + "\"/>");
 					
 					rules_writer.println("<antecedents>");			
 					terms = a_r.getAntecedent();

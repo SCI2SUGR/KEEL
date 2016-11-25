@@ -43,6 +43,7 @@ public class AssociationRule {
 	private short[] consequent;
 	private double ruleSupport;
 	private double antecedentSupport;
+        private double consequentSupport;
 	private double confidence;
 	
 	/**
@@ -53,13 +54,15 @@ public class AssociationRule {
 	 * @param consequent The consequent part of the rule
 	 * @param ruleSupport The value representing the rule support
          * @param antecedentSupport The value representing the antecedent support
+         * @param consequentSupport The value representing the consequent support
 	 * @param confidence The value representing the rule confidence
 	 */
-	public AssociationRule(short[] antecedent, short[] consequent, double ruleSupport, double antecedentSupport, double confidence) {
+	public AssociationRule(short[] antecedent, short[] consequent, double ruleSupport, double antecedentSupport, double consequentSupport, double confidence) {
 		this.setAntecedent(antecedent);
 		this.setConsequent(consequent);
 		this.ruleSupport = ruleSupport;
 		this.antecedentSupport = antecedentSupport;
+                this.consequentSupport = consequentSupport;
 		this.confidence = confidence;
 	}
 		
@@ -116,6 +119,16 @@ public class AssociationRule {
 	public double getAntecedentSupport() {
 		return this.antecedentSupport;
 	}
+        
+        /**
+	 * <p>
+	 * It returns the consequent support of an association rule
+	 * </p>
+	 * @return A value representing the consequent support of the association rule
+	 */
+	public double getConsequentSupport() {
+		return this.consequentSupport;
+	}
 	
 	/**
 	 * <p>
@@ -145,7 +158,7 @@ public class AssociationRule {
 		for (i=0; i < this.consequent.length - 1; i++)
 			str += this.consequent[i] + ", ";
 		
-		str += this.consequent[i] + "}; Rule Support: " + this.ruleSupport + "; Antecedent Support: " + this.antecedentSupport + "; Confidence: " + this.confidence;
+		str += this.consequent[i] + "}; Rule Support: " + this.ruleSupport + "; Antecedent Support: " + this.antecedentSupport + "; Consequent Support: " + this.consequentSupport + "; Confidence: " + this.confidence;
 		
 		return str;
 	}
