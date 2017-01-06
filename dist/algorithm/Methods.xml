@@ -4335,6 +4335,32 @@
     <multiinstance>No</multiinstance> 
 	</output>
   </method>
+    <method>  
+    <name>EF_KNN_IVFS-C</name>
+    <family>Fuzzy Instance Based Learning</family>
+    <jar_file>EF_KNN_IVFS.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+    <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>No</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+      <multiinstance>No</multiinstance> 
+    </input>  
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>No</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    <multiinstance>No</multiinstance> 
+  </output>
+  </method>
   <method>
     <name>KNN-C</name>
     <family>Lazy Learning</family>

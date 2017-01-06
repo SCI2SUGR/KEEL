@@ -1791,6 +1791,16 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
         </jar>			
 		
+        <jar 
+          jarfile="${distMet}/EF_KNN_IVFS.jar" 
+          manifest="${src}/keel/Algorithms/Fuzzy_Instance_Based_Learning/EF_KNN_IVFS/Manifest">
+          <fileset dir="${bin}" 
+             includes="keel/Algorithms/Fuzzy_Instance_Based_Learning/EF_KNN_IVFS/**/*.class"/>
+          <fileset dir="${bin}" includes="org/core/**/*.class
+		  keel/Dataset/**/*.class
+		  keel/Algorithms/Fuzzy_Instance_Based_Learning/*.class"/>
+        </jar>		
+		
 		<!-- Fuzzy Rule Learning -->
 		
 		<jar

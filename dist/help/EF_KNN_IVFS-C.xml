@@ -1,0 +1,109 @@
+<method>
+
+	<name>Evolutionary Fuzzy K-Nearest Neighbors classifier using Interval-Valued Fuzzy Sets</name>
+
+	<reference>  
+
+		<ref>J. Derrac, F. Chiclana, S. García, F. Herrera. Evolutionary fuzzy k-nearest neighbors algorithm using interval-valued fuzzy sets. Information Sciences 329 (2016) 144-163. doi: 10.1016/j.ins.2015.09.007</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Fuzzy Instance-based Learning algorithm</type>
+
+		<objective>Classification tasks.</objective>
+
+		<howWork>
+		EF_KNN_IVFS is an extension of the original Fuzzy-NN classifier.
+
+		The core classification routine, IVFSKNN, implements an interval-valued representation of the membership
+		score of each neighbor to each class of the problem. In this way, multiple scores associated to different
+		classes can be modelled for each test instance, delaying the resolution of the classifier output until all
+		neighbors and distances have been considered.
+
+		EF_KNN_IVFS adds an evolutionary layer on top of IVFSKNN, providing specific and optimal settings for the
+		number of neighbors used during the assesment of class membership for the training instances and the shape
+		of the distance metric. 
+		</howWork>
+  
+		<parameterSpec>  
+			<param>K Value: K parameter in the k-NN voting rule.</param>
+			<param>Population size: Number of chromosomes in the population of the CHC search process.</param>
+			<param>Evaluations limit: Maximum number of evaluations allowed.</param>
+		</parameterSpec>
+ 
+		<properties>
+
+			<continuous>Yes</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>Yes</integer>
+
+			<nominal>No</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: EF_KNN_IVFS-C
+Dataset: iris
+Test Show results: Vis-Clas-Check
+Parameters: Default settings
+
+After running RunKeel.jar we can look into the Vis-Clas-Check results' file for the classification results on training and test phases:
+
+TEST RESULTS
+============
+Classifier= iris 
+Fold 0 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 1 : CORRECT=0.8666666666666667 N/C=0.0 
+Fold 2 : CORRECT=1.0 N/C=0.0 
+Fold 3 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 4 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 5 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 6 : CORRECT=0.9333333333333333 N/C=0.0 
+Fold 7 : CORRECT=1.0 N/C=0.0 
+Fold 8 : CORRECT=1.0 N/C=0.0 
+Fold 9 : CORRECT=1.0 N/C=0.0 
+Global Classification Error + N/C:
+0.04666666666666666 
+stddev Global Classification Error + N/C:
+0.042687494916218996 
+Correctly classified:
+0.9533333333333334 
+Global N/C:
+0.0 
+
+TRAIN RESULTS
+============
+Classifier= iris 
+Summary of data, Classifiers: iris 
+Fold 0 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 1 : CORRECT=0.9777777777777777 N/C=0.0 
+Fold 2 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 3 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 4 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 5 : CORRECT=0.962962962962963 N/C=0.0 
+Fold 6 : CORRECT=0.9555555555555556 N/C=0.0 
+Fold 7 : CORRECT=0.9481481481481482 N/C=0.0 
+Fold 8 : CORRECT=0.9703703703703703 N/C=0.0 
+Fold 9 : CORRECT=0.9703703703703703 N/C=0.0 
+Global Classification Error + N/C:
+0.039999999999999994 
+stddev Global Classification Error + N/C:
+0.009486109981382026 
+Correctly classified:
+0.96 
+Global N/C:
+0.0 
+
+</example>
+
+</method>
