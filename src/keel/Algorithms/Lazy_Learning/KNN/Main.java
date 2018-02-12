@@ -66,6 +66,8 @@ public class Main {
 			
 			classifier = new KNN(args[0]);
 			classifier.executeReference();
+                        classifier.executeReferenceProbabilistic();
+                        
 			
 		}
 		

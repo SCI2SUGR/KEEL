@@ -31,7 +31,9 @@ package keel.Algorithms.Statistical_Classifiers.Naive_Bayes;
 
 
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Util;
 import java.io.IOException;
+import java.util.Arrays;
 import org.core.*;
 
 /**
@@ -47,13 +49,21 @@ import org.core.*;
  */
 public class Algorithm {
 
+    
     myDataset train, val, test;
     String outputTr, outputTst, output;
     double classProb[];
     double attrProb[][][]; //atribute value, atribute position, class
     int counts[][][]; //atribute value, atribute position, class
     int nClasses;
+    
+    //This matrix is used to store the train probabilities
+    
+    double probabilities[][] = null;
 
+    //This matrix is used to store the test probabilities
+    
+    double probabilitiesTst[][]=null;
     //We may declare here the algorithm's parameters
 
     private boolean somethingWrong = false; //to check if everything is correct.
@@ -98,7 +108,6 @@ public class Algorithm {
         outputTr = parameters.getTrainingOutputFile();
         outputTst = parameters.getTestOutputFile();
         output = parameters.getOutputFile(0);
-
         //Now we parse the parameters, for example:
         /*
          seed = Long.parseLong(parameters.getParameter(0));
@@ -119,15 +128,29 @@ public class Algorithm {
             //We should not use the statement: System.exit(-1);
         } else {
             //We do here the algorithm's operations
-
+         
             nClasses = train.getnOutputs();
+            
+            //Initialize de matrix of probabilities 
+            
+            this.probabilities = new double [train.getnData()][this.nClasses];
+            this.probabilitiesTst = new double [test.getnData()][this.nClasses];
+            
             computeProbabilites();
 
             //Finally we should fill the training and test output files
             doOutput(this.val, this.outputTr);
             doOutput(this.test, this.outputTst);
+            
+            
+            /*doOutput(this.val, this.outputTr);
+            doOutput(this.test, this.outputTst);*/
+           
+            doOutputProb(this.val, this.test);
+            
+            generateProbabilisticOutput(this.val,probabilities,nClasses,train.getnData(),this.outputTr);
+            generateProbabilisticOutput(this.test,probabilitiesTst,nClasses,test.getnData(),this.outputTst);
             generateOutputInfo();
-
             System.out.println("Algorithm Finished");
         }
     }
@@ -147,6 +170,19 @@ public class Algorithm {
                     this.classificationOutput(dataset.getExample(i),dataset.getMissing(i)) + "\n";
         }
         Fichero.escribeFichero(filename, output);
+    }    
+    
+    
+    private void doOutputProb(myDataset training, myDataset test) 
+    {
+        for (int i = 0; i < training.getnData(); i++) 
+        {   
+                probabilities[i]=this.classificationOutputProb(training.getExample(i),training.getMissing(i));
+        }
+        for (int i = 0; i < test.getnData(); i++)
+        {
+                probabilitiesTst[i]=this.classificationOutputProb(test.getExample(i), test.getMissing(i));
+        }
     }
 
     /**
@@ -191,6 +227,46 @@ public class Algorithm {
 
         return output;
     }
+    
+    /**
+     * It returns the probability of each class for a given instance 
+     * @param example double[] The input example
+     * @param missing boolean [] A vector that stores the possible missing attributes of the examples
+     * @return array with the probabilites for each class 
+     */
+    
+    
+    private double [] classificationOutputProb(double[] example, boolean [] missing) {
+        
+        /**
+          Here we should include the algorithm directives to generate the
+          classification output from the input example
+         */
+
+        //We compute P(C_i | X_j)
+        double probClasses[] = new double[nClasses];
+        double probExampleClass[] = new double[nClasses];
+        double output [] = new double[nClasses];
+        double probExample = 0.0;
+
+        for (int i = 0; i < nClasses; i++) {
+            probExampleClass[i] = computeProbExampleClass(example, missing, i);
+            probExample += probExampleClass[i] * this.classProb[i];
+        }
+
+        for (int i = 0; i < nClasses; i++) {
+            probClasses[i] = (probExampleClass[i] * this.classProb[i]) /
+                             probExample;
+        }
+        for (int i = 0; i < nClasses; i++) 
+        {             
+           output[i]=probClasses[i];
+           
+        }       
+       return output;
+    }
+        
+    
 
     /**
      * It computes the prior probabilities of the different classes and attribute values corresponding to a class
@@ -269,6 +345,7 @@ public class Algorithm {
             }
         }
         return prob;
+        
     }
 
     /**
@@ -291,6 +368,43 @@ public class Algorithm {
             string += "\n\n";
         }
         Fichero.escribeFichero(output,string);
+    }
+    /**
+   * Function used to generate the output file with the probabilities for each instance and class
+   *
+   * @param probabilities the matrix with the probabilities
+   * @param numClasses the number of classes in the problem
+   * @param instances the number of intances in the problem
+   * @param filename the string with the name of the output file
+   * 
+   */
+    
+    private void generateProbabilisticOutput(myDataset dataset,double[][] probabilities, int numClasses,int instances, String filename )
+    {
+        int dot = filename.lastIndexOf(".");
+        int sep = filename.lastIndexOf("/");
+        String extension=filename.substring(dot + 1);   
+        String name =filename.substring(sep + 1, dot);
+        String path = filename.substring(0, sep);
+        String outputFile=path+"/Prob-"+name+"."+extension;  
+     
+        //We write the output for each example
+        String output="True-Class ";
+        for(int i=0; i<numClasses; i++)
+        {
+               output+=train.getOutputValue(i)+' ';
+        }
+        output+='\n';
+        for(int i=0; i<instances; i++)
+        {
+               output+=dataset.getOutputAsString(i)+'\t';
+               for(int j=0;j<probabilities[i].length;j++)
+               {
+                      output+=probabilities[i][j]+"\t"; 
+               }
+               output+="\n";
+        }
+        Fichero.escribeFichero(outputFile, output);    
     }
 }
 

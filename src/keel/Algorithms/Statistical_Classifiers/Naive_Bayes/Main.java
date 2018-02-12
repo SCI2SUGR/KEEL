@@ -5,7 +5,7 @@
 
 	Copyright (C) 2004-2010
 	
-	F. Herrera (herrera@decsai.ugr.es)
+    F. Herrera (herrera@decsai.ugr.es)
     L. Sánchez (luciano@uniovi.es)
     J. Alcalá-Fdez (jalcala@decsai.ugr.es)
     S. García (sglopez@ujaen.es)
@@ -56,7 +56,9 @@ public class Main {
         parameters = new parseParameters();
         parameters.parseConfigurationFile(confFile);
         Algorithm method = new Algorithm(parameters);
+       
         method.execute();
+         
     }
 
     /**

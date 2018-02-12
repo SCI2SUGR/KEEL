@@ -30,6 +30,8 @@
 
 package keel.Algorithms.Decision_Trees.C45;
 
+import java.util.Arrays;
+
 
 /**
  * Class to handle the classifier tree
@@ -238,7 +240,6 @@ public class Tree {
         for (int i = 0; i < doubles.length; i++) {
             doubles[i] = getProbabilities(i, itemset, 1);
         }
-
         return doubles;
     }
 

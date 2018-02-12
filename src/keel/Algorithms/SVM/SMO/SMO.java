@@ -82,6 +82,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -229,7 +230,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
      * SMO probabilities.
      */
     public double [][] probabilities = null;
-	
+    public double [][] probabilitiesTst=null;
 	/**
 	 * Returns a string describing classifier
 	 * @return a description suitable for
@@ -1480,7 +1481,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	 * Estimates class probabilities for given instance.
 	 * 
 	 * @param inst the instance to compute the probabilities for
-     * @return  class probabilities for given instance.
+         * @return  class probabilities for given instance.
 	 * @throws Exception in case of an error
 	 */
 	public double[] distributionForInstance(Instance inst) throws Exception {
@@ -1512,6 +1513,8 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 					if ((m_classifiers[i][j].m_alpha != null) || 
 							(m_classifiers[i][j].m_sparseWeights != null)) {
 						double output = m_classifiers[i][j].SVMOutput(-1, inst);
+                                               // System.out.println(m_classifiers[i][j]);
+                                                //System.out.println(output);
 						if (output > 0) {
 							result[j] += 1;
 						} else {
@@ -1521,6 +1524,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 				} 
 			}
 			Utils.normalize(result);
+                        
 			return result;
 		} else {
 
@@ -1548,7 +1552,9 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 					}
 				}
 			}
+                        
 			return pairwiseCoupling(n, r);
+                        
 		}
 	}
 
@@ -2333,6 +2339,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		double []dist;
 		String instanciasIN[];
 		String instanciasOUT[];
+               
 
 		try{
 			//*********build de SMO classifier********
@@ -2357,12 +2364,14 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			int tipo = a.getType();
 			instanciasIN = new String[ISval.getNumInstances()];
 			instanciasOUT = new String[ISval.getNumInstances()];
-
+                        this.probabilities = new double[isWeka.numInstances()][this.m_NumClasses];
 			for (int i = 0; i < isWeka.numInstances();i++) {
 				keel.Dataset.Instance inst = ISval.getInstance(i);
 				instWeka = isWeka.instance(i);
 				instWeka.setDataset(isWeka);
 				dist = this.distributionForInstance(instWeka);
+                                probabilities[i]=dist;
+                                
 				int claseObt = 0;
 				for(int j=1;j<m_NumClasses;j++){
 					if(dist[j]>dist[claseObt])
@@ -2379,7 +2388,13 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			}
 			writeOutput(output_train_name, instanciasIN, instanciasOUT, Attributes.getInputAttributes(),
 					Attributes.getOutputAttribute(0), Attributes.getInputNumAttributes(), "relation");
-		}catch(Exception ex){
+                        
+                        
+                        //Write the probabilities for training file
+                        
+                        generateProbabilisticOutput(instanciasIN,probabilities,m_NumClasses,probabilities.length, output_train_name);
+		
+                }catch(Exception ex){
 			System.err.println("Fatal Error building the SMO model!");
 			ex.printStackTrace();
 		};
@@ -2393,12 +2408,13 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			int tipo = a.getType();
 			instanciasIN = new String[IS.getNumInstances()];
 			instanciasOUT = new String[IS.getNumInstances()];
-
+                        this.probabilitiesTst = new double[isWeka.numInstances()][this.m_NumClasses];
 			for (int i = 0; i < isWeka.numInstances();i++) {
 				keel.Dataset.Instance inst = IS.getInstance(i);
 				instWeka = isWeka.instance(i);
 				instWeka.setDataset(isWeka);
 				dist = this.distributionForInstance(instWeka);
+                                probabilitiesTst[i]=dist;
 				int claseObt = 0;
 				for(int j=1;j<m_NumClasses;j++){
 					if(dist[j]>dist[claseObt])
@@ -2415,6 +2431,11 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			}
 			writeOutput(output_test_name, instanciasIN, instanciasOUT, Attributes.getInputAttributes(),
 					Attributes.getOutputAttribute(0), Attributes.getInputNumAttributes(), "relation");
+                        
+                        //Write test probabilities 
+                        
+                        generateProbabilisticOutput(instanciasIN, probabilitiesTst,m_NumClasses,probabilitiesTst.length, output_test_name);
+                        
 		}catch(Exception ex){
 			System.err.println("Fatal Error performing test by the SMO model!");
 			ex.printStackTrace();
@@ -2441,13 +2462,8 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		String instanciasIN[];
 		String instanciasOUT[];
 
-       // System.out.println("******TRAIN*******");
-       
- 
-
-		
-
-		
+                 // System.out.println("******TRAIN*******");
+	
 		try{
 			//*********build de SMO classifier********
 			//IS.readSet(input_train_name, true);
@@ -2462,7 +2478,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			
 	
 			buildClassifier(isWeka);
-
+                   
 					//********validate the obtained SMO*******
 			ISval = new InstanceSet(train); // .readSet(input_validation_name, false);
 			isWeka = InstancesKEEL2Weka(ISval,m_filterType,m_nominalToBinary);
@@ -2476,6 +2492,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 				keel.Dataset.Instance inst = ISval.getInstance(i);
 				instWeka = isWeka.instance(i);
 				instWeka.setDataset(isWeka);
+                                
 				dist = this.distributionForInstance(instWeka);
 				int claseObt = 0;
 				for(int j=1;j<m_NumClasses;j++){
@@ -2518,7 +2535,6 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 				instWeka.setDataset(isWeka);
 				dist = this.distributionForInstance(instWeka);
 				probabilities[i] = dist;
-				
 				int claseObt = 0;
 				for(int j=1;j<m_NumClasses;j++){
 					if(dist[j]>dist[claseObt])
@@ -2843,6 +2859,8 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 		}
 		Files.addToFile(fileName, cadena);
+                
+              
 	}
 
 	/**
@@ -3028,7 +3046,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	}
 
 	/**
-	 * Normalize the input value according to the provided attribute 
+	 * the input value according to the provided attribute 
 	 * @param value The value to be normalized
 	 * @param a The attribute to which value belongs
 	 * @return A new double value in the range [0,1]
@@ -3115,5 +3133,48 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			}
 		}
 	}
+        
+   /**
+   * Function used to generate the output file with the probabilities for each instance and class
+   *
+   * @param probabilities the matrix with the probabilities
+   * @param numClasses the number of classes in the problem
+   * @param instances the number of intances in the problem
+   * @param filename the string with the name of the output file
+   * 
+   */
+        public void generateProbabilisticOutput(String[] trueclass, double[][] probabilities, int numClasses,int instances, String filename )
+        {
+            int dot = filename.lastIndexOf(".");
+            int sep = filename.lastIndexOf("/");
+            String extension=filename.substring(dot + 1);   
+            String name =filename.substring(sep + 1, dot);
+            String path = filename.substring(0, sep);
+            
+            String outputFile=path+"/Prob-"+name+"."+extension;    
+                
+            String output = "True-Class ";
+
+            //We write the output for each example
+
+            for(int i=0; i<numClasses; i++)
+            {
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
+
+            }
+            output+='\n';
+
+
+            for(int i=0; i<instances; i++)
+            {
+                   output+=trueclass[i]+"\t";
+                   for(int j=0;j<probabilities[i].length;j++)
+                   {
+                      output+=probabilities[i][j]+" \t"; 
+                   }
+                   output+="\n";
+            }
+           Fichero.escribeFichero(outputFile, output);
+        }
 }
 
