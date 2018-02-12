@@ -559,7 +559,6 @@ public class Friedman {
 	    		}
 	    		sumatoria += temporal * temporal;
 	    	}
-	    	sumatoria /= (double)nAlgorithms;
 	    	numerador = sumatoria - termino2;
 	    	numerador *= termino1;
 	    
@@ -574,6 +573,7 @@ public class Friedman {
 	    		}
 	    		sumatoria += temporal * temporal;
 	    	}
+	    	sumatoria /= (double)nAlgorithms;
 	    	denominador = termino1 - sumatoria;
 	    
 	    	friedman = numerador / denominador;
