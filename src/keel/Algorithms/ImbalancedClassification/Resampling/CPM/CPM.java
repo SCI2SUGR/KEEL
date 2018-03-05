@@ -171,7 +171,6 @@ public class CPM extends Metodo {
     Referencia pairs[];
     int i, j, k;
     int pos, tmp;
-    int baraje[];
     int puntero = 0;
     int centro1 = 0, centro2 = 0;
     Vector cluster1, cluster2;
@@ -198,18 +197,6 @@ public class CPM extends Metodo {
       for (j=0; j<positives.size(); j++, k++) {
         pairs[k] = new Referencia(((Integer)negatives.elementAt(i)).intValue(),(double)(((Integer)positives.elementAt(j)).intValue()));
       }
-    }
-
-    baraje = new int[pairs.length];
-    for (i=0; i<pairs.length; i++) {
-      baraje[i] = i;
-    }
-
-    for (i=0; i<pairs.length; i++) {
-      pos = Randomize.Randint (i, pairs.length-1);
-      tmp = baraje[i];
-      baraje[i] = baraje[pos];
-      baraje[pos] = tmp;
     }
 
     while (imp <= impurity) {
