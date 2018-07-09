@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <method_list>
 <method>
+    <name>REX1-C</name>
+    <family>Crisp Rule Learning</family>
+    <jar_file>REX1.jar</jar_file>
+    <problem_type>classification</problem_type>
+    <input>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </input>
+    <output>
+      <continuous>Yes</continuous>
+      <integer>Yes</integer>
+      <nominal>Yes</nominal>
+      <missing>No</missing>
+      <imprecise>No</imprecise>
+      <multiclass>Yes</multiclass>
+      <multioutput>No</multioutput>
+    </output>
+</method>
+<method>
     <name>Bojarczuk_GP-C</name>
     <family>Evolutionary Crisp Rule Learning</family>
     <jar_file>Bojarczuk_GP.jar</jar_file>

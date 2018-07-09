@@ -4069,6 +4069,14 @@ includes="keel/Algorithms/UnsupervisedLearning/AssociationRules/FuzzyRuleLearnin
 
 
 		<!-- Rule Learning  -->
+	<jar
+		jarfile="${distMet}/REX1.jar"
+		manifest="${src}/keel/Algorithms/Rule_Learning/REX1/Manifest">
+		<fileset dir="${bin}"
+			includes="keel/Algorithms/Rule_Learning/REX1/**/*.class
+        		org/core/**/*.class
+        		keel/Dataset/**/*.class"/>
+	</jar>
 
         <jar
 		jarfile="${distMet}/Ritio.jar"

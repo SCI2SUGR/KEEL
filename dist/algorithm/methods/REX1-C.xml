@@ -1,0 +1,16 @@
+<algorithm_specification>
+  <name>REX1</name>
+  <nParameters>1</nParameters>
+  <seed>0</seed>
+  <nOutput>1</nOutput>
+
+  <parameter>
+    <name>ENTROPIA</name>
+    <type>integer</type>
+    <domain>
+      <lowerB>1</lowerB>
+      <upperB>2</upperB>
+    </domain>
+    <default>2</default>
+  </parameter>
+</algorithm_specification>

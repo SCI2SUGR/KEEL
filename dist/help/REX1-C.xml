@@ -1,0 +1,406 @@
+<method>
+
+	<name>REX1</name>
+
+	<reference>  
+
+		<ref>Akgobek, O., Aydin, Y. S., Oztemel, E., &amp; Aksoy, M. S. (2006). A new algorithm for automatic knowledge acquisition in inductive learning. Knowledge-based systems, 19(6), 388-395.</ref>
+
+	</reference>
+
+	<generalDescription>  
+
+		<type>Classification model by inductive rule learning.</type>
+
+		<objective>To determine a set of rules that discards the pitfalls encountered in the RULES family algorithms, introducing the use of the entropy value.</objective>
+
+		<howWork>REX1 extracts rules analyzing correlations between class and attributes values, by means of (reformulated) entropy.</howWork>
+
+		<parameterSpec>  
+			<param>ENTROPIA: Entropy calculation equation to be used (see reference. ENTROPIA=1: Eq. (3); ENTROPIA=2: Eq. (4))</param>
+		</parameterSpec> 	
+
+		<properties>
+
+			<continuous>No</continuous>
+
+			<discretized>Yes</discretized>
+
+			<integer>No</integer>
+
+			<nominal>Yes</nominal>
+
+			<valueLess>No</valueLess>
+
+			<impreciseValue>No</impreciseValue>
+
+		</properties>
+
+	</generalDescription>
+
+	<example>Problem type: Classification 
+Method: REX1
+Dataset: pima
+Discretizer: UniformWidth
+Training set: pima-10-1tra.dat
+Test set: pima-10-1tst.dat
+Test Show results: Vis-Clas-Check
+
+
+After the execution of RunKeel.jar we can see into the experiment\results\Vis-Clas-Check folder the classification results for the test and train set:
+
+TEST RESULTS
+============
+Classifier= pima 
+Fold 0 : CORRECT=0.5324675324675325 N/C=0.2727272727272727 
+Fold 1 : CORRECT=0.41025641025641024 N/C=0.28205128205128205 
+Fold 2 : CORRECT=0.5394736842105263 N/C=0.2631578947368421 
+Fold 3 : CORRECT=0.5844155844155844 N/C=0.2077922077922078 
+Fold 4 : CORRECT=0.5194805194805194 N/C=0.2077922077922078 
+Fold 5 : CORRECT=0.5263157894736843 N/C=0.25 
+Fold 6 : CORRECT=0.5714285714285714 N/C=0.23376623376623376 
+Fold 7 : CORRECT=0.6710526315789473 N/C=0.14473684210526316 
+Fold 8 : CORRECT=0.5194805194805194 N/C=0.2077922077922078 
+Fold 9 : CORRECT=0.6103896103896104 N/C=0.22077922077922077 
+Global Classification Error + N/C:
+0.4515239146818094 
+stddev Global Classification Error + N/C:
+0.06503177565365514 
+Correctly classified:
+0.5484760853181906 
+Global N/C:
+0.22905953695427383 
+
+TRAIN RESULTS
+============
+Classifier= pima 
+Summary of data, Classifiers: pima 
+Fold 0 : CORRECT=0.7279305354558611 N/C=0.27206946454413894 
+Fold 1 : CORRECT=0.7521739130434782 N/C=0.24782608695652175 
+Fold 2 : CORRECT=0.7196531791907514 N/C=0.28034682080924855 
+Fold 3 : CORRECT=0.7366136034732271 N/C=0.2633863965267728 
+Fold 4 : CORRECT=0.7829232995658466 N/C=0.2170767004341534 
+Fold 5 : CORRECT=0.7586705202312138 N/C=0.24132947976878613 
+Fold 6 : CORRECT=0.7467438494934877 N/C=0.2532561505065123 
+Fold 7 : CORRECT=0.7630057803468209 N/C=0.23699421965317918 
+Fold 8 : CORRECT=0.7597684515195369 N/C=0.2402315484804631 
+Fold 9 : CORRECT=0.719247467438495 N/C=0.28075253256150506 
+Global Classification Error + N/C:
+0.25332694002412814 
+stddev Global Classification Error + N/C:
+0.019650044089298616 
+Correctly classified:
+0.7466730599758719 
+Global N/C:
+0.25332694002412814 
+
+
+We can also see the output and target classes for each case of the test set (result0.tst) in experiment\results\UniformWidth-D.REX1-C.pima:
+
+@relation  pima
+@attribute 'preg' {0,1,2,3,4}
+@attribute 'plas' {0,1,2,3,4}
+@attribute 'pres' {0,1,2,3,4}
+@attribute 'skin' {0,1,2,3,4}
+@attribute 'insu' {0,1,2,3,4}
+@attribute 'mass' {0,1,2,3,4}
+@attribute 'pedi' {0,1,2,3,4}
+@attribute 'age' {0,1,2,3,4}
+@attribute 'class'{tested_negative,tested_positive}
+@inputs 'preg','plas','pres','skin','insu','mass','pedi','age'
+@outputs 'class'
+@data
+tested_positive ?
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive ?
+tested_positive tested_positive
+tested_positive ?
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive ?
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive ?
+tested_positive tested_positive
+tested_positive tested_negative
+tested_positive tested_positive
+tested_positive ?
+tested_positive tested_negative
+tested_negative tested_negative
+tested_negative ?
+tested_negative tested_negative
+tested_negative ?
+tested_negative tested_negative
+tested_negative ?
+tested_negative tested_negative
+tested_negative ?
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative ?
+tested_negative tested_positive
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative ?
+tested_negative ?
+tested_negative ?
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative ?
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative ?
+tested_negative tested_negative
+tested_negative ?
+tested_negative tested_positive
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative ?
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative ?
+tested_negative tested_negative
+tested_negative tested_negative
+tested_negative ?
+tested_negative ?
+tested_negative tested_negative
+tested_negative tested_negative
+tested_positive tested_positive
+
+
+
+And the Rule Set (result0e0.txt) in experiment\results\UniformWidth-D.REX1-C.pima:
+  
+  
+IF 'preg'=4  THEN 'class'=tested_positive
+IF 'skin'=4  THEN 'class'=tested_positive
+IF 'age'=1 AND 'plas'=0  THEN 'class'=tested_positive
+IF 'insu'=3 AND 'age'=0  THEN 'class'=tested_positive
+IF 'pres'=4 AND 'skin'=2  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'preg'=3  THEN 'class'=tested_positive
+IF 'pedi'=3 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'age'=1 AND 'plas'=1  THEN 'class'=tested_negative
+IF 'preg'=1 AND 'plas'=1  THEN 'class'=tested_negative
+IF 'skin'=0 AND 'plas'=1  THEN 'class'=tested_negative
+IF 'preg'=0 AND 'mass'=0  THEN 'class'=tested_negative
+IF 'plas'=3 AND 'mass'=0  THEN 'class'=tested_negative
+IF 'insu'=2 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'pres'=0 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'preg'=3  THEN 'class'=tested_positive
+IF 'pedi'=3 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'plas'=1 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'age'=3 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'insu'=3 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'pedi'=3 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'plas'=2 AND 'mass'=4  THEN 'class'=tested_positive
+IF 'preg'=1 AND 'mass'=0  THEN 'class'=tested_negative
+IF 'pres'=3 AND 'plas'=1  THEN 'class'=tested_negative
+IF 'pres'=4 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=2 AND 'skin'=0  THEN 'class'=tested_negative
+IF 'pres'=1 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'age'=4 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=2 AND 'age'=2  THEN 'class'=tested_positive
+IF 'pedi'=4 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'insu'=4 AND 'age'=3  THEN 'class'=tested_positive
+IF 'insu'=4 AND 'mass'=3  THEN 'class'=tested_negative
+IF 'pedi'=2 AND 'age'=3  THEN 'class'=tested_negative
+IF 'plas'=4 AND 'mass'=4  THEN 'class'=tested_positive
+IF 'skin'=3 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'plas'=1  THEN 'class'=tested_negative
+IF 'pres'=1 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=4 AND 'age'=0  THEN 'class'=tested_negative
+IF 'insu'=3 AND 'age'=2  THEN 'class'=tested_positive
+IF 'age'=0 AND 'plas'=0  THEN 'class'=tested_negative
+IF 'pres'=0 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'pres'=0 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'preg'=2 AND 'mass'=0  THEN 'class'=tested_positive
+IF 'insu'=3 AND 'age'=1  THEN 'class'=tested_negative
+IF 'age'=2 AND 'plas'=1  THEN 'class'=tested_negative
+IF 'pedi'=2 AND 'plas'=1  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'mass'=4  THEN 'class'=tested_negative
+IF 'age'=4 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'plas'=4 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'age'=0 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'pres'=2 AND 'plas'=4 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'age'=2 AND 'plas'=4 AND 'mass'=1  THEN 'class'=tested_positive
+IF 'pres'=4 AND 'preg'=0 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'pedi'=2 AND 'preg'=2 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'age'=2 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'preg'=0 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'pedi'=2 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_positive
+IF 'age'=1 AND 'plas'=2 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=2 AND 'pedi'=1 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'skin'=2 AND 'preg'=1 AND 'mass'=3  THEN 'class'=tested_negative
+IF 'pres'=2 AND 'plas'=2 AND 'mass'=3  THEN 'class'=tested_negative
+IF 'pres'=4 AND 'plas'=3 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'pedi'=2 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'preg'=2 AND 'plas'=4 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'skin'=1 AND 'age'=0 AND 'preg'=2  THEN 'class'=tested_positive
+IF 'preg'=1 AND 'plas'=2 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'pedi'=0 AND 'skin'=0  THEN 'class'=tested_negative
+IF 'pedi'=2 AND 'plas'=2 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'plas'=2 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=0 AND 'age'=3 AND 'preg'=2  THEN 'class'=tested_negative
+IF 'pres'=0 AND 'age'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pres'=3 AND 'plas'=2 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'pres'=0 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'age'=1 AND 'plas'=4 AND 'mass'=1  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'pedi'=1 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'skin'=2 AND 'plas'=2  THEN 'class'=tested_positive
+IF 'age'=3 AND 'preg'=3 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=2 AND 'pres'=2 AND 'age'=1  THEN 'class'=tested_negative
+IF 'insu'=2 AND 'skin'=2 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'plas'=3 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'pres'=2 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'age'=0 AND 'preg'=2 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'age'=2 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'skin'=2 AND 'plas'=4 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'pres'=2 AND 'skin'=1 AND 'preg'=3  THEN 'class'=tested_positive
+IF 'pres'=3 AND 'age'=1 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'age'=0 AND 'preg'=1 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'age'=3 AND 'preg'=0 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'skin'=0 AND 'age'=2 AND 'preg'=3  THEN 'class'=tested_negative
+IF 'pedi'=2 AND 'age'=2 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pres'=0 AND 'age'=0 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pedi'=2 AND 'skin'=1 AND 'preg'=2  THEN 'class'=tested_positive
+IF 'pres'=2 AND 'age'=2 AND 'preg'=0  THEN 'class'=tested_positive
+IF 'preg'=2 AND 'plas'=3 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'pedi'=2 AND 'plas'=4 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'skin'=0 AND 'age'=2 AND 'mass'=3  THEN 'class'=tested_negative
+IF 'pres'=4 AND 'preg'=0 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'pedi'=2 AND 'pres'=2  THEN 'class'=tested_positive
+IF 'pres'=1 AND 'plas'=2 AND 'mass'=3  THEN 'class'=tested_negative
+IF 'pres'=4 AND 'age'=2 AND 'plas'=2  THEN 'class'=tested_positive
+IF 'insu'=0 AND 'skin'=1 AND 'age'=3  THEN 'class'=tested_negative
+IF 'pres'=4 AND 'age'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pres'=0 AND 'preg'=2 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pedi'=0 AND 'pres'=1 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'pres'=0 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pedi'=2 AND 'preg'=3 AND 'mass'=3  THEN 'class'=tested_negative
+IF 'insu'=2 AND 'pres'=3 AND 'age'=1  THEN 'class'=tested_positive
+IF 'pres'=4 AND 'age'=0 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'preg'=2 AND 'plas'=4  THEN 'class'=tested_positive
+IF 'pres'=4 AND 'preg'=1 AND 'plas'=4  THEN 'class'=tested_negative
+IF 'age'=3 AND 'preg'=2 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'age'=2 AND 'plas'=2 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'age'=2 AND 'preg'=0 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'age'=0 AND 'preg'=0 AND 'plas'=4 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'pres'=3 AND 'skin'=2 AND 'preg'=2  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'age'=1 AND 'preg'=2 AND 'plas'=2  THEN 'class'=tested_positive
+IF 'pres'=2 AND 'skin'=2 AND 'age'=0 AND 'preg'=1  THEN 'class'=tested_positive
+IF 'pedi'=2 AND 'pres'=2 AND 'age'=0 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pres'=2 AND 'age'=1 AND 'preg'=0 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pres'=3 AND 'skin'=2 AND 'age'=2 AND 'plas'=4  THEN 'class'=tested_negative
+IF 'age'=1 AND 'preg'=0 AND 'plas'=3 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'skin'=0 AND 'preg'=2 AND 'plas'=2 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'age'=2 AND 'preg'=1 AND 'plas'=3 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'pres'=2 AND 'age'=3 AND 'plas'=3 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'skin'=2 AND 'preg'=3 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'preg'=0 AND 'plas'=2 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'skin'=2 AND 'age'=1 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'insu'=0 AND 'age'=0 AND 'plas'=4 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'skin'=2 AND 'plas'=3 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'pedi'=2 AND 'pres'=3 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'skin'=0 AND 'age'=0 AND 'plas'=3 AND 'mass'=3  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'pres'=3 AND 'preg'=2 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'age'=2 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'skin'=1 AND 'age'=1 AND 'preg'=0 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pres'=3 AND 'skin'=2 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pres'=2 AND 'skin'=2 AND 'preg'=2 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'pres'=3 AND 'skin'=2 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'age'=1 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'skin'=0 AND 'age'=2 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'pedi'=0 AND 'skin'=2 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'age'=2 AND 'plas'=3 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'pedi'=0 AND 'preg'=1 AND 'plas'=4 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'pedi'=2 AND 'age'=0 AND 'plas'=2 AND 'mass'=3  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'age'=2 AND 'plas'=3 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'pedi'=0 AND 'age'=0 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pedi'=2 AND 'age'=1 AND 'preg'=2 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pres'=2 AND 'age'=3 AND 'preg'=1 AND 'mass'=1  THEN 'class'=tested_positive
+IF 'pres'=0 AND 'age'=1 AND 'preg'=0 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'pres'=3 AND 'preg'=3 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'age'=0 AND 'preg'=0 AND 'plas'=4 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'pedi'=2 AND 'age'=1 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'insu'=2 AND 'pres'=3 AND 'age'=0 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'age'=3 AND 'preg'=0 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'pedi'=0 AND 'age'=3 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pres'=3 AND 'skin'=1 AND 'age'=0 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'age'=0 AND 'plas'=3 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'pres'=3 AND 'skin'=0 AND 'preg'=2 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pedi'=2 AND 'skin'=2 AND 'age'=0 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'age'=2 AND 'preg'=1 AND 'plas'=4 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'insu'=2 AND 'pres'=2 AND 'skin'=1 AND 'age'=0  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'age'=3 AND 'preg'=0 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'age'=1 AND 'preg'=0 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'pedi'=0 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pres'=3 AND 'age'=2 AND 'preg'=3 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'pres'=3 AND 'age'=1 AND 'plas'=2  THEN 'class'=tested_positive
+IF 'pres'=3 AND 'skin'=1 AND 'age'=2 AND 'preg'=1  THEN 'class'=tested_positive
+IF 'age'=1 AND 'preg'=2 AND 'plas'=3 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'skin'=1 AND 'preg'=0 AND 'plas'=2 AND 'mass'=1  THEN 'class'=tested_negative
+IF 'insu'=0 AND 'pedi'=1 AND 'pres'=3 AND 'skin'=2 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'pedi'=0 AND 'skin'=1 AND 'age'=0 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'skin'=1 AND 'age'=1 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'pres'=2 AND 'skin'=0 AND 'preg'=0 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'skin'=1 AND 'age'=1 AND 'preg'=2 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'skin'=2 AND 'preg'=2 AND 'plas'=3 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'skin'=2 AND 'preg'=0 AND 'plas'=3 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'pedi'=0 AND 'pres'=0 AND 'preg'=0 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'insu'=0 AND 'skin'=2 AND 'age'=0 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'pres'=3 AND 'age'=0 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'pres'=2 AND 'skin'=0 AND 'age'=0 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'skin'=0 AND 'age'=0 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'pres'=2 AND 'skin'=0 AND 'age'=1 AND 'plas'=2  THEN 'class'=tested_positive
+IF 'pedi'=0 AND 'pres'=3 AND 'age'=0 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'insu'=0 AND 'pres'=2 AND 'age'=2 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'pres'=2 AND 'age'=1 AND 'plas'=3 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'pedi'=1 AND 'skin'=1 AND 'age'=0 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'age'=2 AND 'preg'=2 AND 'plas'=3 AND 'mass'=1  THEN 'class'=tested_positive
+IF 'pedi'=0 AND 'skin'=0 AND 'age'=1 AND 'preg'=0 AND 'plas'=2  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'skin'=0 AND 'age'=1 AND 'preg'=2 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'insu'=0 AND 'skin'=2 AND 'age'=1 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'insu'=0 AND 'pedi'=1 AND 'skin'=1 AND 'age'=1 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'pres'=2 AND 'age'=0 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'pres'=2 AND 'skin'=0 AND 'age'=1 AND 'preg'=0  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'skin'=2 AND 'preg'=0 AND 'plas'=3 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'pres'=2 AND 'skin'=0 AND 'preg'=2 AND 'plas'=4 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'pres'=2 AND 'age'=1 AND 'preg'=3 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'pedi'=1 AND 'skin'=1 AND 'age'=1 AND 'preg'=1 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'pedi'=0 AND 'skin'=0 AND 'age'=2 AND 'preg'=2 AND 'plas'=3 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'pres'=3 AND 'age'=0 AND 'preg'=0 AND 'plas'=3 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'insu'=0 AND 'pedi'=1 AND 'pres'=3 AND 'age'=0 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'pres'=3 AND 'skin'=1 AND 'age'=1 AND 'preg'=1 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'pedi'=0 AND 'skin'=1 AND 'age'=0 AND 'plas'=3 AND 'mass'=3  THEN 'class'=tested_negative
+IF 'pedi'=0 AND 'pres'=2 AND 'skin'=0 AND 'age'=1 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'pedi'=0 AND 'pres'=2 AND 'skin'=1 AND 'preg'=2 AND 'plas'=2 AND 'mass'=2  THEN 'class'=tested_positive
+IF 'insu'=0 AND 'pedi'=1 AND 'pres'=3 AND 'age'=1 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'insu'=0 AND 'pedi'=0 AND 'pres'=3 AND 'age'=1 AND 'preg'=2 AND 'plas'=2  THEN 'class'=tested_negative
+IF 'pres'=3 AND 'skin'=0 AND 'age'=0 AND 'preg'=0 AND 'plas'=3 AND 'mass'=2  THEN 'class'=tested_negative
+IF 'insu'=0 AND 'pedi'=0 AND 'skin'=1 AND 'age'=1 AND 'preg'=2 AND 'plas'=3  THEN 'class'=tested_negative
+IF 'insu'=1 AND 'pres'=2 AND 'skin'=1 AND 'age'=0 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_positive
+IF 'insu'=1 AND 'pres'=3 AND 'skin'=1 AND 'age'=0 AND 'preg'=1 AND 'plas'=3  THEN 'class'=tested_negative 
+</example>
+
+</method>
